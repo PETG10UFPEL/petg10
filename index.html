@@ -54,12 +54,15 @@
     }
 
     .grid{
+      /* cards padrão: 2 colunas; itens com .span-2 ocupam a largura toda */
       margin-top:18px;
       display:grid;
       grid-template-columns: repeat(2, minmax(0, 1fr));
       gap:14px;
     }
-    @media (max-width: 780px){ .grid{grid-template-columns: repeat(2, minmax(0, 1fr));} }
+    @media (max-width: 780px){ .grid{
+      /* cards padrão: 2 colunas; itens com .span-2 ocupam a largura toda */grid-template-columns: repeat(2, minmax(0, 1fr));} }
+    .span-2{grid-column: 1 / -1;}
 
     .card{
       background:var(--card);
@@ -140,21 +143,18 @@
 
     <section class="grid">
       <div class="card">
-        <h2>Protocolo de Presença</h2>
-        <p>Acesso rápido ao protocolo de presença da equipe.</p>
+       <h2>Formulário de Acompanhamento de Pacientes</h2>
+        <p>Entrada padronizada de informações para acompanhamento (Google Forms).</p>
         <div class="actions">
-          <!-- Sem link fornecido: substitua o # pelo link correto quando tiver -->
-          <a class="btn primary" href="protocolo.presenca.html" target="_blank" rel="noopener">Abrir Protocolo</a>
-          <!-- <a class="btn" href="#" onclick="alert('Sem link ainda. Quando tiver, cole no HTML e pronto.'); return false;">Sem link?</a> -->
+          <a class="btn primary" href="https://docs.google.com/forms/d/e/1FAIpQLScKWMEI2d3jTdq4bmb51YBU_OhCFMZ-7_ZUKcoCtqqXTMi2iA/viewform" target="_blank" rel="noopener">Abrir Formulário</a>
         </div>
-      </div>
+          </div>
 
-      <div class="card">
-        <h2>Planejamento de Posts</h2>
-        <p>Instagram do projeto (e onde os posts vão “ganhar pernas”).</p>
+     <div class="card">
+        <h2>Casos Clínicos por Monitor</h2>
+        <p>Modelo para organizar casos clínicos por monitor (Google Docs).</p>
         <div class="actions">
-         <a class="btn" href="https://docs.google.com/spreadsheets/d/1cOY6WQshQ0fB3iJjJjWonBm5_sLYTgcCfVesYj8EhYg/edit?usp=sharing" target="_blank" rel="noopener">Planeja Insta</a>
-         <a class="btn primary" href="https://www.instagram.com/g10petsaude/" target="_blank" rel="noopener">Abrir Instagram</a>          
+          <a class="btn primary" href="https://docs.google.com/document/d/16ebyYsXrgiGqdDzoZU5Dr5bFX-qckbZPra2cmWWwfr4/edit?tab=t.0" target="_blank" rel="noopener">Abrir Modelo</a>
         </div>
       </div>
 
@@ -164,25 +164,41 @@
         <div class="actions">
           <a class="btn primary" href="https://1drv.ms/x/c/08D9660237E4E0BA/IQC5lJvVOi4wSbG80cgLJVb0Adilc_nfEjUfAlntGZAHc9U?e=PxsM5U" target="_blank" rel="noopener">Abrir Planilha (OneDrive)</a>
         </div>
+ </div>
+
+ <div class="card">
+        <h2>Planejamento de Posts</h2>
+        <p>Instagram do projeto (e onde os posts vão “ganhar pernas”).</p>
+        <div class="actions">
+         <a class="btn" href="https://docs.google.com/spreadsheets/d/1cOY6WQshQ0fB3iJjJjWonBm5_sLYTgcCfVesYj8EhYg/edit?usp=sharing" target="_blank" rel="noopener">Planeja Insta</a>
+         <a class="btn primary" href="https://www.instagram.com/g10petsaude/" target="_blank" rel="noopener">Abrir Instagram</a>          
+        </div>
+     
+
+      
       </div>
 
       <div class="card">
-        <h2>Casos Clínicos por Monitor</h2>
-        <p>Modelo para organizar casos clínicos por monitor (Google Docs).</p>
+       <h2>Protocolo de Presença</h2>
+        <p>Acesso rápido ao protocolo de presença da equipe.</p>
         <div class="actions">
-          <a class="btn primary" href="https://docs.google.com/document/d/16ebyYsXrgiGqdDzoZU5Dr5bFX-qckbZPra2cmWWwfr4/edit?tab=t.0" target="_blank" rel="noopener">Abrir Modelo</a>
+          <!-- Sem link fornecido: substitua o # pelo link correto quando tiver -->
+          <a class="btn primary" href="protocolo.presenca.html" target="_blank" rel="noopener">Abrir Protocolo</a>
+          <!-- <a class="btn" href="#" onclick="alert('Sem link ainda. Quando tiver, cole no HTML e pronto.'); return false;">Sem link?</a> -->
+        </div>
+
+     </div>
+
+
+      <div class="card">
+        <h2>E‑projeto (UFPel)</h2>
+        <p>Acesso rápido ao sistema E‑projeto da UFPel.</p>
+        <div class="actions">
+          <a class="btn primary" href="https://e-projeto.ufpel.edu.br/" target="_blank" rel="noopener">Abrir E‑projeto</a>
         </div>
       </div>
 
-      <div class="card">
-        <h2>Formulário de Acompanhamento de Pacientes</h2>
-        <p>Entrada padronizada de informações para acompanhamento (Google Forms).</p>
-        <div class="actions">
-          <a class="btn primary" href="https://docs.google.com/forms/d/e/1FAIpQLScKWMEI2d3jTdq4bmb51YBU_OhCFMZ-7_ZUKcoCtqqXTMi2iA/viewform" target="_blank" rel="noopener">Abrir Formulário</a>
-        </div>
-      </div>
-
-      <div class="card">
+      <div class="card span-2">
         <h2>Agenda</h2>
         <p>Calendário do G10 (visão operacional).</p>
         <div style="border:1px solid var(--border); border-radius:12px; overflow:hidden; background:#fff;">
