@@ -60,7 +60,8 @@
       grid-template-columns: repeat(2, minmax(0, 1fr));
       gap:14px;
     }
-    @media (max-width: 780px){ .grid{ grid-template-columns: 1fr; } }
+    @media (max-width: 780px){ .grid{
+      /* cards padrão: 2 colunas; itens com .span-2 ocupam a largura toda */grid-template-columns: repeat(2, minmax(0, 1fr));} }
     .span-2{grid-column: 1 / -1;}
 
     .card{
@@ -126,17 +127,6 @@
       border-radius:8px;
       border:1px solid rgba(15,23,42,.10);
     }
-
-    /* ✅ AJUSTE DO IFRAME (SEM SUMIR COM O RESTO) */
-    .card iframe{
-      display:block;
-      width:100%;
-      height:80vh; /* ou 720px se preferir fixo */
-      border:0;
-    }
-    @media (max-width:780px){
-      .card iframe{ height:600px; }
-    }
   </style>
 </head>
 
@@ -153,14 +143,14 @@
 
     <section class="grid">
       <div class="card">
-        <h2>Formulário de Acompanhamento de Pacientes</h2>
+       <h2>Formulário de Acompanhamento de Pacientes</h2>
         <p>Entrada padronizada de informações para acompanhamento (Google Forms).</p>
         <div class="actions">
           <a class="btn primary" href="https://docs.google.com/forms/d/e/1FAIpQLScKWMEI2d3jTdq4bmb51YBU_OhCFMZ-7_ZUKcoCtqqXTMi2iA/viewform" target="_blank" rel="noopener">Formulário</a>
         </div>
-      </div>
+          </div>
 
-      <div class="card">
+     <div class="card">
         <h2>Casos Clínicos por Monitor</h2>
         <p>Modelo para organizar casos clínicos por monitor (Google Docs).</p>
         <div class="actions">
@@ -174,30 +164,37 @@
         <div class="actions">
           <a class="btn primary" href="https://1drv.ms/x/c/08D9660237E4E0BA/IQC5lJvVOi4wSbG80cgLJVb0Adilc_nfEjUfAlntGZAHc9U?e=PxsM5U" target="_blank" rel="noopener">Planilha (OneDrive)</a>
         </div>
-      </div>
+ </div>
 
-      <div class="card">
+ <div class="card">
         <h2>Planejamento de Posts</h2>
         <p>Planejamento dos posts e Instagram do G10.</p>
         <div class="actions">
-          <a class="btn" href="https://docs.google.com/spreadsheets/d/1cOY6WQshQ0fB3iJjJjWonBm5_sLYTgcCfVesYj8EhYg/edit?usp=sharing" target="_blank" rel="noopener">Planeja Insta</a>
-          <a class="btn primary" href="https://www.instagram.com/g10petsaude/" target="_blank" rel="noopener">Instagram</a>
+         <a class="btn" href="https://docs.google.com/spreadsheets/d/1cOY6WQshQ0fB3iJjJjWonBm5_sLYTgcCfVesYj8EhYg/edit?usp=sharing" target="_blank" rel="noopener">Planeja Insta</a>
+         <a class="btn primary" href="https://www.instagram.com/g10petsaude/" target="_blank" rel="noopener">Instagram</a>          
         </div>
+     
+
+      
       </div>
 
       <div class="card">
-        <h2>Protocolo de Presença</h2>
+       <h2>Protocolo de Presença</h2>
         <p>Protocolo de presença G10.</p>
         <div class="actions">
+          <!-- Sem link fornecido: substitua o # pelo link correto quando tiver -->
           <a class="btn primary" href="protocolo.presenca.html" target="_blank" rel="noopener">Protocolo</a>
+          <!-- <a class="btn" href="#" onclick="alert('Sem link ainda. Quando tiver, cole no HTML e pronto.'); return false;">Sem link?</a> -->
         </div>
-      </div>
+
+     </div>
+
 
       <div class="card">
-        <h2>E-projeto (UFPel)</h2>
-        <p>Acesso rápido ao sistema E-projeto da UFPel.</p>
+        <h2>E‑projeto (UFPel)</h2>
+        <p>Acesso rápido ao sistema E‑projeto da UFPel.</p>
         <div class="actions">
-          <a class="btn primary" href="https://e-projeto.ufpel.edu.br/" target="_blank" rel="noopener">E-projeto</a>
+          <a class="btn primary" href="https://e-projeto.ufpel.edu.br/" target="_blank" rel="noopener">E‑projeto</a>
         </div>
       </div>
 
@@ -206,34 +203,23 @@
         <p>Calendário do G10 (visão operacional).</p>
         <div style="border:1px solid var(--border); border-radius:12px; overflow:hidden; background:#fff;">
           <iframe
-  width="100%"
-  height="720"
-  style="border:0;"
-  src="https://calendar.google.com/calendar/embed?height=720&amp;wkst=1&amp;bgcolor=%23ffffff&amp;ctz=America%2FSao_Paulo&amp;showTitle=1&amp;showNav=1&amp;showDate=1&amp;showPrint=1&amp;showTabs=1&amp;showCalendars=1&amp;showTz=1&amp;mode=MONTH&amp;src=d3059915e02e37a7cec0fc73b0127050372119e1baf89ac451d19ae5c66ec9f9%40group.calendar.google.com&amp;color=%23039BE5&amp;src=pt.brazilian%23holiday%40group.v.calendar.google.com&amp;color=%23009688">
-</iframe>
-
-<div class="actions" style="margin-top:12px;">
-  <a class="btn primary" target="_blank" rel="noopener"
-     href="https://calendar.google.com/calendar/u/0/r?cid=d3059915e02e37a7cec0fc73b0127050372119e1baf89ac451d19ae5c66ec9f9%40group.calendar.google.com">
-    Abrir agenda do G10 no Google
-  </a>
-
-  <a class="btn" target="_blank" rel="noopener"
-     href="https://calendar.google.com/calendar/u/0/r?cid=pt.brazilian%23holiday%40group.v.calendar.google.com">
-    Abrir feriados do Brasil no Google
-  </a>
-</div>
-
+            title="Agenda G10"
+            src="https://calendar.google.com/calendar/embed?src=d3059915e02e37a7cec0fc73b0127050372119e1baf89ac451d19ae5c66ec9f9%40group.calendar.google.com&ctz=America%2FSao_Paulo"
+            style="border:0; width:100%; height:420px;"
+            frameborder="0"
+            scrolling="no"></iframe>
         </div>
       </div>
+
     </section>
 
     <div class="hint">
       <strong>Como usar:</strong> salve este arquivo como <code class="k">g10-central.html</code> e abra no navegador.
-    </div>
+      <br />
+      </div>
 
     <footer>
-      PET-Saúde UFPel · G10 Telemonitoramento de Feridas Crônicas · 
+      PET-Saúde UFPel · G10 Telemonitoramento de Feridas Crônicas · Página operacional (arquivo único)
     </footer>
   </div>
 </body>
