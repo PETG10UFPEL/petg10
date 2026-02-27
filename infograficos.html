@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<!-- saved from url=(0054)https://petg10ufpel.github.io/petg10/infograficos.html -->
+<html lang="pt-BR"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>PET-Saúde UFPel | G10 – Central de Infográficos</title>
+
+  <style>
+    :root{
+      --bg:#eefbf7;           /* fundo mais verde/teal (diferente do azul dos sistemas) */
+      --card:#ffffff;
+      --text:#0f172a;
+      --muted:#475569;
+      --border:#e2e8f0;
+
+      /* paleta nova (teal/verde) */
+      --teal:#0ea5a4;
+      --teal2:#0f766e;
+      --lime:#22c55e;
+
+      --shadow: 0 10px 30px rgba(15, 23, 42, .08);
+      --radius: 14px;
+    }
+    *{box-sizing:border-box}
+    body{
+      margin:0;
+      font-family: system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, "Helvetica Neue", Arial, sans-serif;
+      background: linear-gradient(180deg, rgba(14,165,164,.12), transparent 40%), var(--bg);
+      color:var(--text);
+    }
+    .wrap{max-width:1100px;margin:40px auto;padding:24px}
+
+    header{
+      background:var(--card);
+      border:1px solid var(--border);
+      border-radius:var(--radius);
+      padding:20px;
+      box-shadow:var(--shadow);
+    }
+
+    .head{
+      display:flex;
+      gap:18px;
+      align-items:center;
+    }
+    .head img{
+      width:120px;
+      height:120px;
+      object-fit:contain;
+      border-radius:12px;
+      flex:0 0 auto;
+    }
+    .title h1{margin:0;font-size:1.35rem;line-height:1.2}
+    .title p{margin:.5rem 0 0;color:var(--muted);font-size:1rem}
+
+    /* 3 colunas (cresce/encolhe) */
+    .grid{
+      margin-top:16px;
+      display:grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap:12px;
+    }
+    @media (max-width: 900px){
+      .grid{grid-template-columns: 1fr;}
+      .wrap{margin:20px auto}
+      .head img{width:92px;height:92px}
+    }
+
+    .card{
+      background:#fff;
+      border:1px solid var(--border);
+      border-radius:14px;
+      padding:14px;
+      position:relative;
+      overflow:hidden;
+    }
+    .card::before{
+      content:"";
+      position:absolute;
+      inset:-2px -2px auto -2px;
+      height:4px;
+      background: linear-gradient(90deg, var(--teal), var(--lime), var(--teal2));
+      opacity:.95;
+    }
+    .card h2{
+      margin:10px 0 6px;
+      font-size:1.02rem;
+      line-height:1.25;
+    }
+    .card p{margin:0 0 12px;color:var(--muted);font-size:.95rem}
+
+    a.btn{
+      display:inline-flex;
+      width:100%;
+      align-items:center;
+      justify-content:center;
+      padding:10px 12px;
+      border-radius:12px;
+      border:1px solid rgba(14,165,164,.28);
+      text-decoration:none;
+      color:var(--text);
+      background: linear-gradient(90deg, rgba(14,165,164,.14), rgba(34,197,94,.10));
+      font-weight:800;
+      transition: transform .06s ease, box-shadow .2s ease, border-color .2s ease;
+    }
+    a.btn:hover{
+      transform: translateY(-1px);
+      border-color: rgba(14,165,164,.45);
+      box-shadow: 0 10px 25px rgba(15,23,42,.10);
+    }
+
+    /* “em breve” sem cara de link quebrado */
+    .soon{
+      display:inline-flex;
+      width:100%;
+      align-items:center;
+      justify-content:center;
+      padding:10px 12px;
+      border-radius:12px;
+      border:1px dashed rgba(15,118,110,.30);
+      background: rgba(14,165,164,.06);
+      color: rgba(15,118,110,.90);
+      font-weight:800;
+      cursor: default;
+      user-select:none;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="wrap">
+    <header>
+      <div class="head">
+        <img src="img/logo2.jpeg" alt="PET-Saúde UFPel – G10">
+        <div class="title">
+          <h1>PET-Saúde UFPel – Informação e Saúde Digital</h1>
+          <p><strong>G10</strong> · Telemonitoramento de Feridas Crônicas · Central de Infográficos</p>
+        </div>
+      </div>
+
+      <div class="grid">
+          <div class="card">
+          <p>Quais dos minerais essenciais aos data centers são utilizados em curativos de feridas crônicas?</p>
+           <a class="btn" href="html/info/mineraisdata/minerais_data.html" target="_blank" rel="noopener">
+            Minerais x Curativos
+          </a>
+        </div>
+          <div class="card">
+          <p>Livro Guia Feridas Crônicas Unicentro</p>
+           <a class="btn" href="html/info/livroferidas/guia_feridas.html" target="_blank" rel="noopener">
+            Guia
+          </a>
+        </div>
+      <div class="card">
+          <p>Em breve</p>
+           <a class="btn" href="" target="_blank" rel="noopener">
+            Breve
+          </a>
+        </div>
+      </div>
+
+
+    </header>
+  </div>
+
+</body></html>
