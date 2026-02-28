@@ -1,0 +1,168 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>PET-Saúde UFPel | G10 – Central de Sistemas</title>
+  <style>
+    :root{
+      --bg:#f6f8fb;
+      --card:#ffffff;
+      --text:#0f172a;
+      --muted:#475569;
+      --border:#e2e8f0;
+
+      /* cores inspiradas no logo */
+      --blue:#3b82c4;
+      --blue2:#1e3a8a;
+      --orange:#d4653b;
+
+      --shadow: 0 10px 30px rgba(15, 23, 42, .08);
+      --radius: 14px;
+    }
+    *{box-sizing:border-box}
+    body{
+      margin:0;
+      font-family: system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, "Helvetica Neue", Arial, "Noto Sans", sans-serif;
+      background: linear-gradient(180deg, rgba(59,130,196,.08), transparent 35%),
+                  linear-gradient(90deg, rgba(212,101,59,.06), transparent 45%),
+                  var(--bg);
+      color:var(--text);
+    }
+    .wrap{max-width:980px;margin:0 auto;padding:24px}
+    header{
+      display:flex; gap:18px; align-items:center;
+      background:var(--card);
+      border:1px solid var(--border);
+      border-radius:var(--radius);
+      padding:18px 18px;
+      box-shadow:var(--shadow);
+    }
+    header img{width:96px;height:96px;object-fit:contain;border-radius:12px}
+    .title h1{margin:0;font-size:1.25rem;line-height:1.2}
+    .title p{margin:.35rem 0 0;color:var(--muted)}
+    .badge{
+      display:inline-flex; align-items:center; gap:8px;
+      margin-top:8px;
+      font-size:.9rem;
+      color:#0b1220;
+      padding:6px 10px;
+      border-radius:999px;
+      background: linear-gradient(90deg, rgba(59,130,196,.18), rgba(212,101,59,.18));
+      border:1px solid rgba(59,130,196,.25);
+      width:fit-content;
+    }
+
+    .grid{
+      /* cards padrão: 2 colunas; itens com .span-2 ocupam a largura toda */
+      margin-top:18px;
+      display:grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap:14px;
+    }
+    @media (max-width: 780px){ .grid{ grid-template-columns: 1fr; } }
+    .span-2{grid-column: 1 / -1;}
+
+    .card{
+      background:var(--card);
+      border:1px solid var(--border);
+      border-radius:var(--radius);
+      box-shadow:var(--shadow);
+      padding:16px;
+      position:relative;
+      overflow:hidden;
+    }
+    .card:before{
+      content:"";
+      position:absolute;
+      inset:-2px -2px auto -2px;
+      height:4px;
+      background: linear-gradient(90deg, var(--blue), var(--orange), var(--blue2));
+      opacity:.95;
+    }
+    .card h2{margin:10px 0 6px;font-size:1.05rem}
+    .card p{margin:0 0 12px;color:var(--muted);font-size:.95rem}
+    .actions{display:flex;flex-wrap:wrap;gap:10px}
+    a.btn{
+      display:inline-flex; align-items:center; justify-content:center;
+      padding:10px 12px;
+      border-radius:12px;
+      border:1px solid var(--border);
+      text-decoration:none;
+      color:var(--text);
+      background:#fff;
+      font-weight:600;
+      transition: transform .06s ease, border-color .2s ease, box-shadow .2s ease;
+    }
+    a.btn:hover{
+      transform: translateY(-1px);
+      border-color: rgba(59,130,196,.35);
+      box-shadow: 0 10px 25px rgba(15,23,42,.10);
+    }
+    a.btn.primary{
+      background: linear-gradient(90deg, rgba(59,130,196,.16), rgba(212,101,59,.14));
+      border-color: rgba(59,130,196,.25);
+    }
+    .hint{
+      margin-top:16px;
+      color:var(--muted);
+      font-size:.92rem;
+      background: rgba(59,130,196,.06);
+      border:1px dashed rgba(59,130,196,.25);
+      border-radius:var(--radius);
+      padding:12px 14px;
+    }
+    footer{
+      margin:18px 0 6px;
+      color:var(--muted);
+      font-size:.85rem;
+      text-align:center;
+    }
+    code.k{
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+      font-size:.85em;
+      background: rgba(15,23,42,.06);
+      padding:2px 6px;
+      border-radius:8px;
+      border:1px solid rgba(15,23,42,.10);
+    }
+
+    /* ✅ AJUSTE DO IFRAME (SEM SUMIR COM O RESTO) */
+    .card iframe{
+      display:block;
+      width:100%;
+      height:80vh; /* ou 720px se preferir fixo */
+      border:0;
+    }
+    @media (max-width:780px){
+      .card iframe{ height:600px; }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="wrap">
+    <header>
+      <img src="img\logo2.jpeg" alt="PET-Saúde UFPel – G10" style="width:120px;">
+      <div class="title">
+        <h1>PET-Saúde UFPel – Informação e Saúde Digital</h1>
+        <p><strong>G10</strong> · Telemonitoramento de Feridas Crônicas · Material Elaborado </p>
+        <!--<div class="badge">Uma página, cinco atalhos, zero desculpas</div>-->
+      </div>
+    </header>
+
+    <section class="grid">
+      <div class="card">
+        <h2>Apresentações</h2>
+        <p> <a href="v4.polilaminina.pdf"><i>Breakthrough</i> de polilaminina, profa. Tatiane Sampaio </a></p>
+              </div>
+
+      <div class="card">
+        <h2>Material de Divulgação</h2>
+         <p> <a href="v4.polilaminina.pdf">Cuidados dos pés</a></p>
+         <p> <a href="2.cuidado.pes.12_2025.pdf">Exercícios da pantorrillha</a></p>
+              </div>
+
+     
+</body>
+</html>
