@@ -73,6 +73,27 @@ a{color:inherit}
 .avatar{width:38px;height:38px;border-radius:999px;background:var(--sky);color:#fff;display:flex;align-items:center;justify-content:center;font-family:"Bebas Neue";font-size:18px}
 .c strong{display:block}
 .c a{color:var(--sky);text-decoration:none;font-weight:800}
+
+/* Instagram links */
+.instaRow{
+  display:flex;
+  align-items:center;
+  gap:10px;
+  margin-top:12px;
+}
+.instaRow img{
+  width:22px;
+  height:22px;
+  flex:0 0 22px;
+  display:block;
+}
+.instaRow a{
+  color:var(--sky);
+  text-decoration:none;
+  font-weight:800;
+}
+.instaRow a:hover{ text-decoration:underline; }
+
 /* Footer */
 .footer{margin-top:18px;text-align:center;color:var(--muted);font-size:12px;padding:12px}
 /* Modal */
@@ -158,7 +179,9 @@ a{color:inherit}
         <p><strong>Projetos parceiros:</strong> se possível, levem <strong>cadeira de praia</strong> (pode faltar cadeira). </p>
         <p style="margin-top:10px"><strong>Feirantes:</strong> <span class="muted">não</span> haverá mesas, cadeiras ou energia elétrica — a organização fornece apenas o espaço. </p>
         <p style="margin-top:10px"><strong>Feirantes no mapa:</strong> ficam no <strong>lado direito</strong> (lado do Deck) e podem se organizar <strong>um de frente para o outro</strong>.</p>
-        <p style="margin-top:10px" class="muted">Instagram: @ruasdelazer.pelotas</p>
+        <div class="instaRow"><img src="old/instagram.png" alt="Instagram"><a href="https://www.instagram.com/ruasdelazer.pelotas/" target="_blank" rel="noopener">Ruas de Lazer</a></div>
+        <div class="instaRow"><img src="old/instagram.png" alt="Instagram"><a href="https://www.instagram.com/amorapele_ufpel/" target="_blank" rel="noopener">Amor à Pele</a></div>
+        <div class="instaRow"><img src="old/instagram.png" alt="Instagram"><a href="https://www.instagram.com/g10petsaude/" target="_blank" rel="noopener">PET-G10 Saúde Digital, Feridas Crônicas</a></div>
       </div>
     </div>
   </section>
