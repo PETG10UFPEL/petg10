@@ -1,0 +1,142 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>PET-Saúde UFPel | G10 – Central de Sistemas</title>
+  <style>
+    :root{
+      --bg:#f6f8fb;
+      --card:#ffffff;
+      --text:#0f172a;
+      --muted:#475569;
+      --border:#e2e8f0;
+      --blue:#3b82c4;
+      --blue2:#1e3a8a;
+      --orange:#d4653b;
+      --shadow: 0 10px 30px rgba(15, 23, 42, .08);
+      --radius: 14px;
+    }
+    *{box-sizing:border-box}
+    body{
+      margin:0;
+      font-family: system-ui, -apple-system, sans-serif;
+      background: linear-gradient(180deg, rgba(59,130,196,.08), transparent 35%),
+                  linear-gradient(90deg, rgba(212,101,59,.06), transparent 45%),
+                  var(--bg);
+      color:var(--text);
+    }
+    .wrap{max-width:980px;margin:0 auto;padding:24px}
+    header{
+      display:flex; gap:18px; align-items:center;
+      background:var(--card);
+      border:1px solid var(--border);
+      border-radius:var(--radius);
+      padding:18px;
+      box-shadow:var(--shadow);
+      margin-bottom: 20px;
+    }
+    header img{width:96px;height:96px;object-fit:contain;border-radius:12px}
+    .title h1{margin:0;font-size:1.25rem;line-height:1.2}
+    .title p{margin:.35rem 0 0;color:var(--muted)}
+
+    .grid{
+      display:grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap:14px;
+      margin-bottom: 14px;
+    }
+    @media (max-width: 780px){ .grid{ grid-template-columns: 1fr; } }
+    .span-2{grid-column: 1 / -1;}
+
+    .card{
+      background:var(--card);
+      border:1px solid var(--border);
+      border-radius:var(--radius);
+      box-shadow:var(--shadow);
+      padding:16px;
+      position:relative;
+      overflow:hidden;
+    }
+    .card:before{
+      content:"";
+      position:absolute;
+      inset:-2px -2px auto -2px;
+      height:4px;
+      background: linear-gradient(90deg, var(--blue), var(--orange), var(--blue2));
+    }
+    .card h2{margin:10px 0 6px;font-size:1.05rem}
+    .card p{margin:0 0 12px;color:var(--muted);font-size:.95rem}
+    .actions{display:flex;flex-wrap:wrap;gap:10px}
+    
+    a.btn{
+      display:inline-flex; align-items:center; justify-content:center;
+      padding:10px 12px;
+      border-radius:12px;
+      border:1px solid var(--border);
+      text-decoration:none;
+      color:var(--text);
+      background:#fff;
+      font-weight:600;
+      font-size: 0.85rem;
+      transition: all .2s ease;
+    }
+    a.btn:hover{
+      transform: translateY(-1px);
+      border-color: var(--blue);
+      box-shadow: 0 5px 15px rgba(15,23,42,.10);
+    }
+    a.btn.primary{
+      background: linear-gradient(90deg, rgba(59,130,196,.12), rgba(212,101,59,.10));
+      border-color: rgba(59,130,196,.25);
+    }
+  </style>
+</head>
+
+<body>
+  <div class="wrap">
+    <header>
+      <img src="img/logo2.jpeg" alt="PET-Saúde UFPel">
+      <div class="title">
+        <h1><a href="../../../index.html" style="text-decoration: none; color: inherit;">PET-Saúde UFPel – Informação e Saúde Digital</a>
+</h1>
+        <p><strong>G10</strong> · Telemonitoramento de Feridas Crônicas · Sistemas Acadêmicos</p>
+      </div>
+    </header>
+
+    <div class="grid">
+     <div class="card" style="background-color: #fff8e1;">
+  <h2>Chamadas e Editais</h2>
+  <p>Cadastre novas oportunidades de publicação, Congressos, Revistas, etc.</p>
+  <div class="actions">
+    <a href="https://forms.gle/fpGz2WiudNRkfHRR6" target="_blank" class="btn primary">Novo Cadastro</a>
+  </div>
+</div>
+
+<div class="card" style="background-color: #fff8e1;">
+  <h2>Trabalhos do G10</h2>
+  <p>Registre artigos e resumos a elaborar</p>
+  <div class="actions">
+    <a href="https://forms.gle/RnTBRkfy227rnhmDA" target="_blank" class="btn primary">Registrar Trabalho</a>
+  </div>
+</div>
+    </div>
+
+    <div class="grid">
+      <div class="card span-2">
+        <h2>Apresentações</h2>
+        <p><a href="v4.polilaminina.pdf"><i>Breakthrough</i> Polilaminina</a></p>
+      </div>
+
+      <div class="card span-2">
+        <h2>Publicações</h2>
+        <p><a href="https://aljmartins.github.io/content/livroia/info_livroia.html" target="_blank">Livro: Descomplicando a Inteligência Artificial</a></p>
+      </div>
+    </div>
+
+    <footer>
+      <p>PET-Saúde UFPel © 2026 · G10 Central de Sistemas</p>
+    </footer>
+  </div>
+</body>
+</html>

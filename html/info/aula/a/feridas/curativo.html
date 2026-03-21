@@ -1,0 +1,791 @@
+<!DOCTYPE html>
+
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Curativos — FEn UFPel</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&amp;family=DM+Sans:wght@300;400;500&amp;family=Playfair+Display:wght@400;700&amp;display=swap" rel="stylesheet"/>
+<style>
+  :root {
+    --cream: #F9F6EF;
+    --dark-green: #144080;
+    --mid-green: #2C4A72;
+    --light-green: #7A9CC4;
+    --terracota: #F5C400;
+    --warm-sand: #FDD835;
+    --deep-brown: #0D1F35;
+    --off-white: #FDFBF7;
+    --border: rgba(30,95,168,0.12);
+    --ufpel-blue: #1E5FA8;
+    --ufpel-blue-dk: #144080;
+    --ufpel-blue-lt: #3A7DC9;
+    --ufpel-yellow: #F5C400;
+    --ufpel-yellow-lt: #FDD835;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--cream);
+    color: var(--deep-brown);
+    font-family: 'DM Sans', sans-serif;
+    font-size: 15px;
+    line-height: 1.7;
+    overflow-x: hidden;
+  }
+
+  /* ===== HEADER ===== */
+  .site-header {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    background: rgba(249,246,239,0.94);
+    backdrop-filter: blur(14px);
+    border-bottom: 2px solid var(--ufpel-yellow);
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 0 2.5rem;
+    height: 64px;
+  }
+  .logo-area { display: flex; align-items: center; gap: 14px; }
+  .logo-circle {
+    width: 42px; height: 42px; border-radius: 50%;
+    background: linear-gradient(135deg, var(--ufpel-blue) 60%, var(--ufpel-yellow) 100%);
+    display: flex; align-items: center; justify-content: center;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 11px; color: #fff; font-weight: 600; letter-spacing: 0.3px;
+    text-align: center; line-height: 1.2;
+  }
+  .logo-text { font-family: 'Cormorant Garamond', serif; font-size: 15px; color: var(--ufpel-blue-dk); font-weight: 400; letter-spacing: 0.4px; }
+  .logo-text span { font-style: italic; color: var(--ufpel-blue); }
+
+  nav { display: flex; gap: 0; }
+  nav a {
+    font-size: 11.5px; text-transform: uppercase; letter-spacing: 1.2px;
+    color: var(--mid-green); text-decoration: none; font-weight: 500;
+    padding: 0 13px; height: 64px; display: flex; align-items: center;
+    border-bottom: 3px solid transparent;
+    transition: color 0.2s, border-color 0.2s;
+  }
+  nav a:hover, nav a.active { color: var(--ufpel-blue-dk); border-bottom-color: var(--ufpel-yellow); }
+
+  /* ===== HERO ===== */
+  .hero {
+    min-height: 100vh;
+    background: var(--ufpel-blue-dk);
+    display: flex; align-items: center; justify-content: center;
+    position: relative; overflow: hidden; padding-top: 64px;
+  }
+  .hero-stripe {
+    position: absolute; bottom: 0; left: 0; right: 0; height: 6px;
+    background: var(--ufpel-yellow);
+  }
+  .hero-bg-text {
+    position: absolute; font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(120px, 22vw, 320px); font-weight: 300; color: rgba(255,255,255,0.035);
+    top: 50%; left: 50%; transform: translate(-50%,-50%);
+    white-space: nowrap; pointer-events: none; letter-spacing: -4px;
+  }
+  .hero-blob {
+    position: absolute; border-radius: 50%; filter: blur(80px); opacity: 0.15;
+  }
+  .hero-blob-1 { width: 600px; height: 600px; background: var(--ufpel-blue-lt); top: -150px; right: -120px; }
+  .hero-blob-2 { width: 400px; height: 400px; background: var(--ufpel-yellow); bottom: 60px; left: -60px; }
+
+  .hero-inner { position: relative; text-align: center; max-width: 780px; padding: 2rem; }
+  .hero-eyebrow {
+    font-size: 11px; text-transform: uppercase; letter-spacing: 3px;
+    color: var(--ufpel-yellow); font-weight: 400; margin-bottom: 1.5rem;
+  }
+  .hero-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(52px, 9vw, 110px);
+    font-weight: 300; color: var(--off-white); line-height: 0.9;
+    letter-spacing: -2px; margin-bottom: 2rem;
+  }
+  .hero-title em { font-style: italic; color: var(--ufpel-yellow-lt); }
+  .hero-subtitle { font-size: 14px; color: rgba(253,251,247,0.65); max-width: 460px; margin: 0 auto 3rem; line-height: 1.8; font-weight: 300; }
+  .hero-cta {
+    display: inline-flex; align-items: center; gap: 10px;
+    background: var(--ufpel-yellow); color: var(--ufpel-blue-dk);
+    padding: 13px 30px; border-radius: 2px;
+    font-size: 12px; text-transform: uppercase; letter-spacing: 2px; font-weight: 600;
+    text-decoration: none; transition: background 0.3s, transform 0.2s;
+  }
+  .hero-cta:hover { background: var(--ufpel-yellow-lt); transform: translateY(-2px); }
+  .scroll-hint {
+    position: absolute; bottom: 30px; left: 50%; transform: translateX(-50%);
+    display: flex; flex-direction: column; align-items: center; gap: 6px;
+    color: rgba(253,251,247,0.3); font-size: 10px; text-transform: uppercase; letter-spacing: 2px;
+    animation: bounce 2s infinite;
+  }
+  .scroll-line { width: 1px; height: 40px; background: rgba(245,196,0,0.25); }
+  @keyframes bounce { 0%,100%{transform:translateX(-50%) translateY(0)} 50%{transform:translateX(-50%) translateY(6px)} }
+
+  /* ===== SECTIONS ===== */
+  section { padding: 100px 0; }
+  .container { max-width: 1100px; margin: 0 auto; padding: 0 2rem; }
+  .section-label {
+    font-size: 10px; text-transform: uppercase; letter-spacing: 3px;
+    color: var(--ufpel-blue); font-weight: 500; margin-bottom: 0.7rem;
+    display: flex; align-items: center; gap: 10px;
+  }
+  .section-label::before { content:''; width: 20px; height: 2px; background: var(--ufpel-yellow); }
+  .section-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(34px, 5vw, 62px); font-weight: 300;
+    color: var(--ufpel-blue-dk); line-height: 1.05; letter-spacing: -1px;
+    margin-bottom: 1.5rem;
+  }
+  .section-title em { font-style: italic; color: var(--ufpel-blue); }
+  .section-lead { font-size: 15px; color: var(--mid-green); max-width: 560px; line-height: 1.8; font-weight: 300; margin-bottom: 3.5rem; }
+
+  /* ===== COBERTURAS CARDS ===== */
+  .cards-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5px; }
+  .card {
+    background: var(--off-white); padding: 2.2rem 2rem;
+    transition: background 0.3s, transform 0.3s;
+    cursor: pointer; position: relative; overflow: hidden;
+  }
+  .card::before {
+    content: ''; position: absolute; left: 0; top: 0;
+    width: 3px; height: 0; background: var(--ufpel-yellow);
+    transition: height 0.4s ease;
+  }
+  .card:hover { background: var(--ufpel-blue-dk); transform: translateY(-3px); }
+  .card:hover * { color: var(--off-white) !important; }
+  .card:hover::before { height: 100%; }
+  .card-num { font-family: 'Cormorant Garamond', serif; font-size: 48px; font-weight: 300; color: rgba(30,95,168,0.10); line-height: 1; margin-bottom: 0.8rem; }
+  .card-title { font-size: 13px; text-transform: uppercase; letter-spacing: 1.5px; font-weight: 500; color: var(--ufpel-blue-dk); margin-bottom: 0.6rem; }
+  .card-body { font-size: 13.5px; color: var(--mid-green); line-height: 1.7; font-weight: 300; }
+  .card-tag {
+    display: inline-block; margin-top: 1rem;
+    font-size: 10px; text-transform: uppercase; letter-spacing: 1.5px;
+    padding: 4px 10px; border: 1px solid var(--light-green); color: var(--light-green);
+    border-radius: 1px;
+  }
+  .card:hover .card-tag { border-color: var(--ufpel-yellow); color: var(--ufpel-yellow); }
+
+  /* ===== TIMERS INFOGRAPHIC ===== */
+  .timers-section { background: var(--ufpel-blue-dk); color: var(--cream); }
+  .timers-section .section-title { color: var(--off-white); }
+  .timers-section .section-lead { color: rgba(253,251,247,0.65); }
+  .timers-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1px; background: rgba(255,255,255,0.08); }
+  .timer-item { background: var(--ufpel-blue-dk); padding: 2.8rem 2.5rem; position: relative; overflow: hidden; transition: background 0.3s; }
+  .timer-item:hover { background: rgba(255,255,255,0.06); }
+  .timer-letter {
+    font-family: 'Cormorant Garamond', serif; font-size: 80px; font-weight: 300;
+    color: var(--ufpel-yellow); line-height: 0.9; margin-bottom: 0.6rem; display: block;
+  }
+  .timer-word { font-size: 12px; text-transform: uppercase; letter-spacing: 3px; font-weight: 500; color: var(--ufpel-yellow-lt); margin-bottom: 0.8rem; }
+  .timer-desc { font-size: 13.5px; color: rgba(253,251,247,0.75); font-weight: 300; line-height: 1.7; }
+
+  /* ===== PASSOS BÁSICOS ===== */
+  .steps-section { background: var(--off-white); }
+  .steps-flow { display: grid; grid-template-columns: repeat(5, 1fr); gap: 0; position: relative; }
+  .steps-flow::before {
+    content: ''; position: absolute; top: 36px; left: 10%; right: 10%; height: 1px;
+    background: repeating-linear-gradient(90deg, var(--light-green) 0, var(--light-green) 6px, transparent 6px, transparent 14px);
+  }
+  .step { text-align: center; padding: 0 1rem; position: relative; }
+  .step-num {
+    width: 72px; height: 72px; border-radius: 50%;
+    background: var(--cream); border: 2px solid var(--light-green);
+    display: flex; align-items: center; justify-content: center;
+    font-family: 'Cormorant Garamond', serif; font-size: 28px;
+    color: var(--ufpel-blue-dk); margin: 0 auto 1.2rem; position: relative; z-index: 1;
+    transition: background 0.3s, border-color 0.3s;
+  }
+  .step:hover .step-num { background: var(--ufpel-blue-dk); border-color: var(--ufpel-yellow); color: var(--ufpel-yellow); }
+  .step-title { font-size: 12px; text-transform: uppercase; letter-spacing: 1.2px; font-weight: 500; color: var(--ufpel-blue-dk); margin-bottom: 0.5rem; }
+  .step-desc { font-size: 12.5px; color: var(--mid-green); line-height: 1.6; font-weight: 300; }
+  .step-alert {
+    margin-top: 0.8rem; font-size: 11px; color: var(--ufpel-blue);
+    font-weight: 500; line-height: 1.5;
+  }
+
+  /* ===== LIMPEZA ===== */
+  .limpeza-grid { display: grid; grid-template-columns: 1.2fr 0.8fr; gap: 4rem; align-items: start; }
+  .limpeza-points { display: flex; flex-direction: column; gap: 0; }
+  .limpeza-point {
+    display: flex; gap: 1.5rem; padding: 1.4rem 0;
+    border-bottom: 1px solid var(--border);
+    transition: padding-left 0.3s;
+  }
+  .limpeza-point:hover { padding-left: 8px; }
+  .lp-icon {
+    width: 36px; height: 36px; background: var(--ufpel-blue-dk);
+    border-radius: 50%; flex-shrink: 0; display: flex; align-items: center; justify-content: center;
+    font-size: 14px; margin-top: 2px;
+  }
+  .lp-text strong { display: block; font-size: 12px; text-transform: uppercase; letter-spacing: 1px; font-weight: 500; color: var(--ufpel-blue-dk); margin-bottom: 3px; }
+  .lp-text span { font-size: 13px; color: var(--mid-green); font-weight: 300; line-height: 1.6; }
+
+  .limpeza-aside {}
+  .alert-box {
+    background: var(--ufpel-blue-dk); color: var(--off-white);
+    padding: 2rem; border-radius: 2px; margin-bottom: 1.5rem;
+    border-left: 4px solid var(--ufpel-yellow);
+  }
+  .alert-box h4 { font-size: 11px; text-transform: uppercase; letter-spacing: 2px; color: var(--ufpel-yellow); margin-bottom: 0.8rem; }
+  .alert-box p { font-size: 13px; line-height: 1.7; font-weight: 300; color: rgba(253,251,247,0.85); }
+  .warning-box {
+    background: rgba(30,95,168,0.07); border-left: 3px solid var(--ufpel-blue);
+    padding: 1.5rem; margin-bottom: 1rem;
+  }
+  .warning-box h4 { font-size: 11px; text-transform: uppercase; letter-spacing: 2px; color: var(--ufpel-blue); margin-bottom: 0.5rem; }
+  .warning-box p { font-size: 12.5px; color: var(--mid-green); font-weight: 300; line-height: 1.6; }
+
+  /* ===== COBERTURAS PRINCIPAIS ===== */
+  .coberturas-section { background: var(--cream); }
+  .cobertura-table { width: 100%; border-collapse: collapse; margin-top: 2rem; }
+  .cobertura-table thead tr { border-bottom: 2px solid var(--ufpel-blue-dk); }
+  .cobertura-table th { font-size: 10px; text-transform: uppercase; letter-spacing: 2px; font-weight: 500; color: var(--ufpel-blue-dk); padding: 0 1.2rem 1rem; text-align: left; }
+  .cobertura-table tbody tr { border-bottom: 1px solid var(--border); transition: background 0.2s; }
+  .cobertura-table tbody tr:hover { background: var(--off-white); }
+  .cobertura-table td { padding: 1.4rem 1.2rem; font-size: 13.5px; color: var(--mid-green); font-weight: 300; vertical-align: top; line-height: 1.6; }
+  .cobertura-table td:first-child { font-family: 'Cormorant Garamond', serif; font-size: 17px; font-weight: 600; color: var(--ufpel-blue-dk); }
+  .badge {
+    display: inline-block; font-size: 10px; text-transform: uppercase; letter-spacing: 1px;
+    padding: 3px 8px; margin: 2px 2px 0 0;
+  }
+  .badge-green { background: rgba(30,95,168,0.10); color: var(--ufpel-blue-dk); }
+  .badge-red { background: rgba(245,196,0,0.18); color: #8B6800; }
+
+  /* ===== PROTEÇÃO ===== */
+  .protecao-section { background: var(--ufpel-blue-dk); }
+  .protecao-section .section-title { color: var(--off-white); }
+  .protecao-section .section-lead { color: rgba(253,251,247,0.6); }
+  .protecao-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: rgba(255,255,255,0.08); }
+  .protecao-card { background: var(--ufpel-blue-dk); padding: 2.5rem 2rem; }
+  .protecao-card h3 { font-family: 'Cormorant Garamond', serif; font-size: 22px; font-weight: 400; color: var(--ufpel-yellow); margin-bottom: 0.6rem; }
+  .protecao-card p { font-size: 13px; color: rgba(253,251,247,0.7); font-weight: 300; line-height: 1.7; }
+  .protecao-card:hover { background: rgba(255,255,255,0.06); }
+
+  /* ===== DESBRIDAMENTO ===== */
+  .desbrid-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.5rem; margin-top: 2.5rem; }
+  .desbrid-card {
+    border: 1px solid var(--border); padding: 2rem;
+    position: relative; overflow: hidden;
+    transition: border-color 0.3s, transform 0.3s;
+  }
+  .desbrid-card:hover { border-color: var(--ufpel-blue); transform: translateY(-2px); }
+  .desbrid-card h3 { font-family: 'Cormorant Garamond', serif; font-size: 22px; font-weight: 400; color: var(--ufpel-blue-dk); margin-bottom: 0.5rem; }
+  .desbrid-card p { font-size: 13px; color: var(--mid-green); font-weight: 300; line-height: 1.7; }
+  .desbrid-num { position: absolute; top: -10px; right: 20px; font-family: 'Cormorant Garamond', serif; font-size: 80px; font-weight: 300; color: rgba(30,95,168,0.06); }
+
+  /* ===== QUIZ ===== */
+  .quiz-section { background: var(--off-white); }
+  .quiz-box { max-width: 720px; margin: 0 auto; }
+  .quiz-question { margin-bottom: 2.5rem; background: var(--cream); padding: 2rem; border: 1px solid var(--border); }
+  .quiz-q { font-family: 'Cormorant Garamond', serif; font-size: 20px; color: var(--ufpel-blue-dk); margin-bottom: 1.2rem; font-weight: 400; }
+  .quiz-options { display: flex; flex-direction: column; gap: 0.5rem; }
+  .quiz-opt {
+    display: flex; align-items: center; gap: 12px; padding: 10px 14px;
+    cursor: pointer; border: 1px solid transparent;
+    transition: border-color 0.2s, background 0.2s;
+    border-radius: 1px; font-size: 13.5px; font-weight: 300;
+  }
+  .quiz-opt:hover { border-color: var(--ufpel-blue-lt); background: rgba(30,95,168,0.05); }
+  .quiz-opt input { accent-color: var(--ufpel-blue); }
+  .quiz-submit {
+    background: var(--ufpel-blue-dk); color: var(--off-white);
+    border: none; padding: 12px 28px; font-size: 12px;
+    text-transform: uppercase; letter-spacing: 2px; font-weight: 500;
+    cursor: pointer; transition: background 0.3s; margin-top: 1rem;
+  }
+  .quiz-submit:hover { background: var(--ufpel-blue); }
+  .quiz-feedback { margin-top: 1.5rem; padding: 1.2rem; display: none; font-size: 14px; line-height: 1.7; }
+  .quiz-feedback.correct { background: rgba(30,95,168,0.08); border-left: 3px solid var(--ufpel-blue); color: var(--ufpel-blue-dk); }
+  .quiz-feedback.incorrect { background: rgba(245,196,0,0.12); border-left: 3px solid var(--ufpel-yellow); color: #7A6000; }
+
+  /* ===== FOOTER ===== */
+  footer {
+    background: var(--deep-brown); color: rgba(253,251,247,0.5);
+    padding: 3rem 2rem; text-align: center;
+  }
+  footer .footer-logo { font-family: 'Cormorant Garamond', serif; font-size: 28px; font-weight: 300; color: var(--off-white); margin-bottom: 0.5rem; }
+  footer p { font-size: 12px; line-height: 2; }
+  footer a { color: var(--ufpel-yellow); text-decoration: none; }
+  footer a:hover { color: var(--off-white); }
+
+  /* ===== TOOLTIP ===== */
+  [data-tooltip] { position: relative; cursor: help; border-bottom: 1px dashed var(--light-green); }
+  [data-tooltip]:hover::after {
+    content: attr(data-tooltip);
+    position: absolute; bottom: 120%; left: 50%; transform: translateX(-50%);
+    background: var(--deep-brown); color: var(--off-white);
+    font-size: 12px; padding: 8px 12px; white-space: nowrap;
+    border-radius: 2px; z-index: 200; font-weight: 300; letter-spacing: 0;
+    text-transform: none; font-family: 'DM Sans', sans-serif;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+  }
+
+  /* ===== ANIMATIONS ===== */
+  .fade-in { opacity: 0; transform: translateY(24px); transition: opacity 0.7s ease, transform 0.7s ease; }
+  .fade-in.visible { opacity: 1; transform: none; }
+
+
+  .hero-panel { margin: 2rem auto 0; max-width: 420px; border: 1px solid rgba(255,255,255,0.14); background: rgba(255,255,255,0.06); padding: 12px; backdrop-filter: blur(6px); box-shadow: 0 14px 45px rgba(0,0,0,0.20); }
+  .hero-panel img { width: 100%; display: block; border-radius: 2px; }
+  .hero-panel small { display:block; margin-top:8px; font-size:11px; letter-spacing:1.2px; text-transform:uppercase; color: rgba(253,251,247,0.68); }
+  .section-gallery { display:grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1.25rem; margin: 0 0 3rem; }
+  .section-gallery.gallery-3 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  .media-card { background: var(--off-white); border: 1px solid var(--border); padding: 10px; box-shadow: 0 10px 28px rgba(13,31,53,0.06); }
+  .timers-section .media-card, .protecao-section .media-card { background: rgba(255,255,255,0.04); border-color: rgba(255,255,255,0.12); box-shadow: none; }
+  .media-card img { width: 100%; display:block; border-radius: 2px; }
+  .media-card figcaption { font-size: 11px; line-height: 1.5; color: var(--mid-green); margin-top: 8px; }
+  .timers-section .media-card figcaption, .protecao-section .media-card figcaption { color: rgba(253,251,247,0.72); }
+  .gallery-note { font-size: 12px; color: var(--mid-green); margin: -1.8rem 0 2.5rem; }
+  @media (max-width: 800px) {
+    .section-gallery, .section-gallery.gallery-3 { grid-template-columns: 1fr; }
+    .hero-panel { max-width: 300px; }
+  }
+
+  /* ===== RESPONSIVE ===== */
+  @media (max-width: 800px) {
+    .cards-grid { grid-template-columns: 1fr; }
+    .timers-grid { grid-template-columns: 1fr; }
+    .steps-flow { grid-template-columns: 1fr; }
+    .steps-flow::before { display: none; }
+    .limpeza-grid { grid-template-columns: 1fr; }
+    .protecao-grid { grid-template-columns: 1fr; }
+    .desbrid-grid { grid-template-columns: 1fr; }
+    nav { display: none; }
+  }
+</style>
+</head>
+<body>
+<!-- HEADER -->
+<header class="site-header">
+<div class="logo-area">
+<div class="logo-circle">FEn<br/>UFPel</div>
+<div class="logo-text">FEn UFPel · <span>Curativos</span></div>
+</div>
+<nav>
+<a href="#tipos">Tipos</a>
+<a href="#timers">T.I.M.E.R.S</a>
+<a href="#passos">Passos</a>
+<a href="#limpeza">Limpeza</a>
+<a href="#coberturas">Coberturas</a>
+<a href="#quiz">Quiz</a>
+</nav>
+</header>
+<!-- HERO -->
+<section class="hero">
+<div class="hero-blob hero-blob-1"></div>
+<div class="hero-blob hero-blob-2"></div>
+<div class="hero-stripe"></div>
+<div class="hero-bg-text">CURATIVOS</div>
+<div class="hero-inner">
+<p class="hero-eyebrow">Faculdade de Enfermagem · UFPel · Fundada em 1976</p>
+<h1 class="hero-title">Cura<em>tivos</em></h1>
+<p class="hero-subtitle">Um guia interativo sobre avaliação, limpeza, preparo do leito e coberturas para feridas crónicas e agudas.</p>
+<a class="hero-cta" href="#tipos">Iniciar aprendizado →</a>
+<div class="hero-panel fade-in"><img alt="Capa visual do material de curativos extraída do PDF" src="curativo.img/hero-capa.png"/><small>Imagem-base extraída do PDF da aula</small></div></div>
+<div class="scroll-hint">
+<div class="scroll-line"></div>
+    scroll
+  </div>
+</section>
+<!-- TIPOS DE COBERTURA -->
+<section id="tipos">
+<div class="container">
+<p class="section-label fade-in">Módulo 01</p>
+<h2 class="section-title fade-in">Tipos de <em>Cobertura</em></h2>
+<p class="section-lead fade-in">As coberturas classificam-se pela forma como interagem com o tecido em cicatrização. Conhecer cada categoria orienta a escolha terapêutica ideal.</p><div class="section-gallery"><figure class="media-card fade-in"><img alt="Slide sobre classificação dos curativos" src="curativo.img/tipos-curativo.png"/><figcaption>Classificação geral dos curativos e técnicas estéril/limpa.</figcaption></figure><figure class="media-card fade-in"><img alt="Slide com tipos de curativos" src="curativo.img/tipos-curativo-exemplos.png"/><figcaption>Exemplos visuais de curativo aberto, oclusivo, semioclusivo e compressivo.</figcaption></figure></div>
+<!-- Classificação -->
+<div class="cards-grid fade-in" style="margin-bottom:3rem">
+<div class="card">
+<div class="card-num">01</div>
+<div class="card-title">Passivo</div>
+<div class="card-body">Somente protegem e cobrem as feridas, sem interação ativa com o tecido. Indicados para feridas simples e superficiais já em fase de epitelização.</div>
+<span class="card-tag">Proteção</span>
+</div>
+<div class="card">
+<div class="card-num">02</div>
+<div class="card-title">Interativo</div>
+<div class="card-body">Proporcionam um microambiente úmido e ótimo para a cura, mantendo temperatura e pH adequados para atividade celular.</div>
+<span class="card-tag">Meio Úmido</span>
+</div>
+<div class="card">
+<div class="card-num">03</div>
+<div class="card-title">Bioativo</div>
+<div class="card-body">Resgatam ou estimulam a liberação de substâncias bioativas durante o processo de cura, acelerando granulação e reepitelização.</div>
+<span class="card-tag">Bioestimulante</span>
+</div>
+</div>
+<!-- Técnicas -->
+<p class="section-label fade-in">Técnicas</p>
+<div class="cards-grid fade-in">
+<div class="card">
+<div class="card-num">✦</div>
+<div class="card-title">Técnica Estéril</div>
+<div class="card-body">Realizado na unidade de saúde com material estéril (pinças ou luvas), solução fisiológica 0,9% e cobertura estéril. Indicado para feridas complexas e pacientes de risco.</div>
+<span class="card-tag">Unidade de Saúde</span>
+</div>
+<div class="card">
+<div class="card-num">✦</div>
+<div class="card-title">Técnica Limpa</div>
+<div class="card-body">Realizado no domicílio pelo usuário e/ou familiar, com material limpo, água corrente ou SF 0,9% e cobertura estéril. Exige educação em saúde detalhada.</div>
+<span class="card-tag">Domicílio</span>
+</div>
+<div class="card">
+<div class="card-num">✦</div>
+<div class="card-title">Custo × Benefício</div>
+<div class="card-body">A escolha deve considerar o <em>valor total do tratamento</em> e não apenas o custo da cobertura. Cicatrização prolongada e complicações elevam os custos reais.</div>
+<span class="card-tag">Gestão</span>
+</div>
+</div>
+</div>
+</section>
+<!-- TIMERS -->
+<section class="timers-section" id="timers">
+<div class="container">
+<p class="section-label fade-in" style="color:var(--ufpel-yellow)">Módulo 02</p>
+<h2 class="section-title fade-in">Framework <em>T.I.M.E.R.S</em></h2>
+<p class="section-lead fade-in">Ferramenta estruturada para avaliação sistemática do leito da ferida e da pessoa. Cada letra direciona um domínio de avaliação.</p>
+<div class="timers-grid fade-in">
+<div class="timer-item">
+<span class="timer-letter">T</span>
+<div class="timer-word">Tissue — Tecido</div>
+<div class="timer-desc">Avaliação do leito da ferida: presença de tecido necrótico, esfacelos, granulação ou epitelização. Determina necessidade de desbridamento.</div>
+</div>
+<div class="timer-item">
+<span class="timer-letter">I</span>
+<div class="timer-word">Infection / Inflammation</div>
+<div class="timer-desc">Sinais de infecção ou inflamação crônica: calor, rubor, edema, exsudato purulento, dor aumentada, odor. Orienta uso de antimicrobianos tópicos.</div>
+</div>
+<div class="timer-item">
+<span class="timer-letter">M</span>
+<div class="timer-word">Moisture — Umidade</div>
+<div class="timer-desc">Equilíbrio do exsudato: excesso causa maceração da perilesão; escassez resseca o leito e prejudica a migração celular. A cobertura deve regular esse equilíbrio.</div>
+</div>
+<div class="timer-item">
+<span class="timer-letter">E</span>
+<div class="timer-word">Edge — Borda</div>
+<div class="timer-desc">Avaliação das margens: epitelizadas, maceradas, enroladas, callosas ou com bolsão. Borda comprometida impede a migração de queratinócitos.</div>
+</div>
+<div class="timer-item">
+<span class="timer-letter">R</span>
+<div class="timer-word">Repair / Regeneration</div>
+<div class="timer-desc">Monitoramento do progresso de cicatrização ao longo do tempo. Ferida sem redução de 20–40% em 4 semanas sugere revisão do plano terapêutico.</div>
+</div>
+<div class="timer-item">
+<span class="timer-letter">S</span>
+<div class="timer-word">Social Factors</div>
+<div class="timer-desc">Fatores da pessoa: nutricção, comorbidades, suporte familiar, adesão ao tratamento, condições socioeconômicas e capacidade de autocuidado.</div>
+</div>
+</div>
+</div>
+</section>
+<!-- PASSOS BÁSICOS -->
+<section class="steps-section" id="passos">
+<div class="container">
+<p class="section-label fade-in">Módulo 03</p>
+<h2 class="section-title fade-in">Passos <em>Básicos</em></h2>
+<p class="section-lead fade-in">Sequência técnica para a realização do curativo, baseada em princípios de assepsia, preparo do leito e documentação clínica.</p><div class="section-gallery"><figure class="media-card fade-in"><img alt="Fluxo dos passos básicos do curativo" src="curativo.img/passos-basicos.png"/><figcaption>Resumo visual da sequência técnica do curativo.</figcaption></figure><figure class="media-card fade-in"><img alt="Avaliação inicial e abertura do curativo" src="curativo.img/avaliacao-abertura.png"/><figcaption>Abertura não traumática e inspeção inicial da cobertura anterior.</figcaption></figure></div>
+<div class="steps-flow fade-in">
+<div class="step">
+<div class="step-num">1</div>
+<div class="step-title">Avaliação</div>
+<div class="step-desc">Avaliação da ferida pelo TIMERS e da pessoa como um todo.</div>
+</div>
+<div class="step">
+<div class="step-num">2</div>
+<div class="step-title">Abertura</div>
+<div class="step-desc">Remoção não traumática do curativo antigo. Umedecer com SF 0,9% se necessário.</div>
+</div>
+<div class="step">
+<div class="step-num">3</div>
+<div class="step-title">Limpeza</div>
+<div class="step-desc">Irrigação vigorosa com SF 0,9% morno em jato. Técnica asséptica rigorosa.</div>
+<div class="step-alert">⚠ Evite antissépticos citotóxicos</div>
+</div>
+<div class="step">
+<div class="step-num">4</div>
+<div class="step-title">Preparo</div>
+<div class="step-desc">Desbridamento, gerenciamento do espaço morto, antimicrobiano tópico se indicado.</div>
+</div>
+<div class="step">
+<div class="step-num">5</div>
+<div class="step-title">Fechamento</div>
+<div class="step-desc">Proteção da borda, aplicação da cobertura, fixação e registro detalhado.</div>
+</div>
+</div>
+</div>
+</section>
+<!-- LIMPEZA DA FERIDA -->
+<section id="limpeza">
+<div class="container">
+<p class="section-label fade-in">Módulo 04</p>
+<h2 class="section-title fade-in">Limpeza da <em>Ferida</em></h2>
+<p class="section-lead fade-in">A limpeza adequada remove restos celulares, exsudato e tecidos inviáveis, preservando o tecido de granulação e prevenindo infecção.</p><div class="section-gallery gallery-3"><figure class="media-card fade-in"><img alt="Conceitos de limpeza da ferida" src="curativo.img/limpeza-conceitos.png"/><figcaption>Soro fisiológico aquecido, antissépticos citotóxicos e PHMB.</figcaption></figure><figure class="media-card fade-in"><img alt="Limpeza abundante em jato com soro fisiológico" src="curativo.img/limpeza-vigorosa.png"/><figcaption>Ênfase em limpeza vigorosa e descarte do soro após abertura.</figcaption></figure><figure class="media-card fade-in"><img alt="Técnica de irrigação da ferida" src="curativo.img/limpeza-irrigacao.png"/><figcaption>Irrigação pressurizada, aquecimento a 37°C e preservação do leito úmido.</figcaption></figure></div>
+<div class="limpeza-grid fade-in">
+<div class="limpeza-points">
+<div class="limpeza-point">
+<div class="lp-icon">💧</div>
+<div class="lp-text">
+<strong>SF 0,9% como agente de limpeza</strong>
+<span>Solução isotônica com o mesmo pH do plasma. Não promove traumatismo tecidual nem inflamação. Preferencialmente aquecida a 37°C para estimular a mitose celular.</span>
+</div>
+</div>
+<div class="limpeza-point">
+<div class="lp-icon">🚿</div>
+<div class="lp-text">
+<strong>Irrigação em jato (10 psi)</strong>
+<span>Método mais indicado para feridas abertas. Aplica-se SF 0,9% com frasco e agulha 40×1,2mm. Remove detritos sem danificar tecidos saudáveis.</span>
+</div>
+</div>
+<div class="limpeza-point">
+<div class="lp-icon">🌡️</div>
+<div class="lp-text">
+<strong>Solução aquecida a 37°C</strong>
+<span>A temperatura constante estimula a mitose celular durante granulação e reepitelização. Soluções frias retardam o processo cicatricial.</span>
+</div>
+</div>
+<div class="limpeza-point">
+<div class="lp-icon">🧫</div>
+<div class="lp-text">
+<strong><span data-tooltip="Polihexametileno biguanida">PHMB</span> — Polihexanida</strong>
+<span>Antisséptico não citotóxico de amplo espectro. Age contra Gram+, Gram–, fungos, MRSA e Pseudomonas aeruginosa. Indicado para feridas infectadas.</span>
+</div>
+</div>
+<div class="limpeza-point">
+<div class="lp-icon">💊</div>
+<div class="lp-text">
+<strong>Não secar o leito da ferida</strong>
+<span>Líquidos em cavidades devem ser removidos, mas o leito deve permanecer úmido. O meio úmido é essencial para migração celular e cicatrização.</span>
+</div>
+</div>
+</div>
+<div class="limpeza-aside">
+<div class="alert-box">
+<h4>⛔ Antissépticos Citotóxicos</h4>
+<p>PVPI (Iodopovidona), Clorexidina e Hipoclorito de Sódio são <strong>citotóxicos aos tecidos vivos</strong>, têm efetividade reduzida na presença de material orgânico e não devem ser usados em feridas abertas em cicatrização.</p>
+</div>
+<div class="warning-box">
+<h4>🔬 Carga Bacteriana</h4>
+<p>A redução da carga bacteriana está mais associada a um desbridamento efetivo do que ao uso de antissépticos.</p>
+</div>
+<div class="warning-box">
+<h4>📦 Soro Fisiológico</h4>
+<p>Não guarde soro fisiológico aberto. Use e descarte. Frascos abertos tornam-se vetor de contaminação.</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- DESBRIDAMENTO -->
+<section style="background:var(--off-white); padding:80px 0;">
+<div class="container">
+<p class="section-label fade-in">Módulo 04b</p>
+<h2 class="section-title fade-in">Tipos de <em>Desbridamento</em></h2>
+<p class="section-lead fade-in">Objetivo: remover tecidos inviáveis → reduzir carga bacteriana → preservar tecidos viáveis → preparar o leito para cicatrização.</p><div class="section-gallery"><figure class="media-card fade-in"><img alt="Preparo do leito da lesão" src="curativo.img/preparo-leito.png"/><figcaption>Objetivo do preparo do leito: remover tecidos inviáveis, reduzir carga bacteriana e preservar tecido viável.</figcaption></figure><figure class="media-card fade-in"><img alt="Tipos de desbridamento" src="curativo.img/desbridamento.png"/><figcaption>Panorama visual dos diferentes tipos de desbridamento e manejo com gaze/torunda.</figcaption></figure></div>
+<div class="desbrid-grid fade-in">
+<div class="desbrid-card">
+<div class="desbrid-num">A</div>
+<h3>Autolítico</h3>
+<p>Utiliza as enzimas naturais do corpo e a hidratação para decompor o tecido necrótico. Obtido com coberturas que mantêm meio úmido (hidrogel, filmes). Processo mais lento, porém seletivo e atraumático.</p>
+</div>
+<div class="desbrid-card">
+<div class="desbrid-num">M</div>
+<h3>Mecânico</h3>
+<p>Uso de ação física para remover tecido morto: irrigação com jato pressurizado, torunda úmida (de dentro para fora). Técnica simples, indicada ao enfermeiro capacitado.</p>
+</div>
+<div class="desbrid-card">
+<div class="desbrid-num">E</div>
+<h3>Enzimático / Químico</h3>
+<p>Utiliza produtos enzimáticos (colagenase, papaína) que dissolvem o tecido necrótico sem prejudicar o tecido saudável. Seletivo e eficaz. Atenção à concentração da papaína.</p>
+</div>
+<div class="desbrid-card">
+<div class="desbrid-num">C</div>
+<h3>Cirúrgico / Instrumental</h3>
+<p>Remoção do tecido morto com bisturi, tesoura ou outros instrumentos. Método mais rápido. O instrumental conservador deve ser realizado por enfermeiro capacitado.</p>
+</div>
+<div class="desbrid-card">
+<div class="desbrid-num">B</div>
+<h3>Biológico (Larval)</h3>
+<p>Terapia com larvas estéreis que consomem seletivamente o tecido morto. Indicado em casos refratários com biofilme persistente. Promove limpeza precisa sem dano ao tecido viável.</p>
+</div>
+<div class="desbrid-card" style="border-color:var(--ufpel-blue);">
+<div class="desbrid-num" style="color:rgba(30,95,168,0.08)">!</div>
+<h3>Desbridamento Instrumental</h3>
+<p style="color:var(--ufpel-blue); font-weight:400;">⚠ Competência exclusiva do enfermeiro capacitado. Técnicas COVER, SLICE e SQUARE são variações baseadas na localização e morfologia do tecido necrótico.</p>
+</div>
+</div>
+</div>
+</section>
+<!-- COBERTURAS PRINCIPAIS -->
+<section class="coberturas-section" id="coberturas">
+<div class="container">
+<p class="section-label fade-in">Módulo 05</p>
+<h2 class="section-title fade-in">Principais <em>Coberturas</em></h2>
+<p class="section-lead fade-in">A escolha da cobertura depende do tipo de ferida, quantidade de exsudato, presença de infecção e fase do processo cicatricial.</p><div class="section-gallery gallery-3"><figure class="media-card fade-in"><img alt="Características da cobertura ideal" src="curativo.img/cobertura-ideal.png"/><figcaption>Reforço visual dos critérios para uma cobertura ideal.</figcaption></figure><figure class="media-card fade-in"><img alt="Principais coberturas: hidrogel e AGE" src="curativo.img/principais-coberturas-1.png"/><figcaption>Hidrogel e ácidos graxos essenciais com indicações principais.</figcaption></figure><figure class="media-card fade-in"><img alt="Principais coberturas: papaína e colagenase" src="curativo.img/principais-coberturas-2.png"/><figcaption>Papaína e colagenase com indicações e cuidado com concentração/irritação periférica.</figcaption></figure></div>
+<table class="cobertura-table fade-in">
+<thead>
+<tr>
+<th>Cobertura</th>
+<th>Mecanismo</th>
+<th>Indicação</th>
+<th>Contraindicação</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Hidrogel</td>
+<td>Mantém meio úmido; promove desbridamento autolítico; estimula cicatrização</td>
+<td><span class="badge badge-green">Necrose seca</span><span class="badge badge-green">Crostas</span><span class="badge badge-green">Tecido desvitalizado</span></td>
+<td><span class="badge badge-red">Feridas muito exsudativas</span></td>
+</tr>
+<tr>
+<td>Ácidos Graxos Essenciais (AGE)</td>
+<td>Protege e hidrata o leito; restaura a pele; forma filme lipídico barreira</td>
+<td><span class="badge badge-green">Granulação sem infecção</span><span class="badge badge-green">Perilesão</span><span class="badge badge-green">Prevenção</span></td>
+<td><span class="badge badge-red">Feridas infectadas</span></td>
+</tr>
+<tr>
+<td>Papaína</td>
+<td>Desbridamento químico por dissociação proteica; bactericida e bacteriostático</td>
+<td><span class="badge badge-green">2% — Granulação</span><span class="badge badge-green">4–6% — Necrose liq.</span><span class="badge badge-green">8–10% — Necrose coag.</span></td>
+<td><span class="badge badge-red">Atenção: irritante na pele sã</span></td>
+</tr>
+<tr>
+<td>Colagenase</td>
+<td>Remove restos celulares necrosados; estimula indiretamente a granulação e reepitelização</td>
+<td><span class="badge badge-green">Necrose de coagulação</span><span class="badge badge-green">Esfacelos</span></td>
+<td><span class="badge badge-red">Pele perilesional saudável — irritante</span></td>
+</tr>
+<tr>
+<td>PHMB (Polihexanida)</td>
+<td>Antisséptico não citotóxico; desestrutura a parede celular bacteriana por carga elétrica</td>
+<td><span class="badge badge-green">Feridas infectadas</span><span class="badge badge-green">Colonizadas criticamente</span><span class="badge badge-green">MRSA</span></td>
+<td><span class="badge badge-red">Hipersensibilidade</span></td>
+</tr>
+<tr>
+<td>Proteção de Borda</td>
+<td>Barreira lipídica ou polimérica contra maceração (Cavilon, Comfeel Barrier Cream, Bepantriz)</td>
+<td><span class="badge badge-green">Perilesão macerada</span><span class="badge badge-green">Prevenção</span></td>
+<td><span class="badge badge-red">Alergia ao componente</span></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<!-- PROTEÇÃO DA BORDA -->
+<section class="protecao-section">
+<div class="container">
+<p class="section-label fade-in" style="color:var(--ufpel-yellow)">Módulo 06</p>
+<h2 class="section-title fade-in">Terapia Tópica <em>Ideal</em></h2>
+<p class="section-lead fade-in">Uma cobertura ideal deve reunir múltiplas propriedades para maximizar o processo de cicatrização com segurança e eficácia.</p><div class="section-gallery"><figure class="media-card fade-in"><img alt="Terapia tópica ideal" src="curativo.img/terapia-topica-ideal.png"/><figcaption>Critérios de segurança, eficácia, controle de exsudato e conforto do paciente.</figcaption></figure><figure class="media-card fade-in"><img alt="Proteção da borda e pele perilesional" src="curativo.img/protecao-perilesional.png"/><figcaption>Produtos e ênfase na prevenção de maceração.</figcaption></figure></div>
+<div class="protecao-grid fade-in">
+<div class="protecao-card"><h3>Barreira Eficaz</h3><p>Impermeável à água, fluidos e bactérias. Permite trocas gasosas sem exposição à contaminação externa.</p></div>
+<div class="protecao-card"><h3>Fácil Manejo</h3><p>Simples de aplicar e remover sem trauma. Não adere ao leito. Elimina odores e possibilita analgesia.</p></div>
+<div class="protecao-card"><h3>Meio Úmido</h3><p>Controla o exsudato e mantém o leito adequadamente úmido para migração celular e angiogênese.</p></div>
+<div class="protecao-card"><h3>Hemostasia</h3><p>Auxilia na hemostasia e protege contra traumas mecânicos externos durante as atividades diárias.</p></div>
+<div class="protecao-card"><h3>Isolamento Térmico</h3><p>Mantém a temperatura do leito da ferida próxima de 37°C, estimulando a atividade celular e a granulação.</p></div>
+<div class="protecao-card"><h3>Custo-Benefício</h3><p>Pouca frequência de troca, não citotóxica, hipoalergênica. O custo total do tratamento importa mais que o da cobertura.</p></div>
+</div>
+</div>
+</section>
+<!-- QUIZ -->
+<section class="quiz-section" id="quiz">
+<div class="container">
+<p class="section-label fade-in">Fixação</p>
+<h2 class="section-title fade-in"><em>Quiz</em> de Revisão</h2>
+<p class="section-lead fade-in">Teste seus conhecimentos sobre curativos e coberturas.</p>
+<div class="quiz-box fade-in">
+<div class="quiz-question">
+<div class="quiz-q">1. Qual solução é considerada o agente de limpeza mais recomendado para feridas, por ser isotônica e com pH compatível com o plasma?</div>
+<div class="quiz-options">
+<label class="quiz-opt"><input name="q1" type="radio" value="a"/> Clorexidina 0,5%</label>
+<label class="quiz-opt"><input name="q1" type="radio" value="b"/> Solução Fisiológica 0,9%</label>
+<label class="quiz-opt"><input name="q1" type="radio" value="c"/> Água Oxigenada 3%</label>
+<label class="quiz-opt"><input name="q1" type="radio" value="d"/> PVPI degermante</label>
+</div>
+<button class="quiz-submit" onclick="checkQ(1,'b','✅ Correto! SF 0,9% é isotônica, tem o mesmo pH do plasma e não causa traumatismo tecidual. Deve ser aquecida a 37°C para estimular a mitose celular.')">Verificar</button>
+<div class="quiz-feedback" id="fb1"></div>
+</div>
+<div class="quiz-question">
+<div class="quiz-q">2. Em qual concentração a Papaína deve ser usada para tratar feridas com necrose de coagulação?</div>
+<div class="quiz-options">
+<label class="quiz-opt"><input name="q2" type="radio" value="a"/> 2%</label>
+<label class="quiz-opt"><input name="q2" type="radio" value="b"/> 4 a 6%</label>
+<label class="quiz-opt"><input name="q2" type="radio" value="c"/> 8 a 10%</label>
+<label class="quiz-opt"><input name="q2" type="radio" value="d"/> 20%</label>
+</div>
+<button class="quiz-submit" onclick="checkQ(2,'c','✅ Correto! 8–10% para necrose de coagulação (seca). 4–6% para necrose de liquefação. 2% para tecido de granulação. A concentração é fundamental!')">Verificar</button>
+<div class="quiz-feedback" id="fb2"></div>
+</div>
+<div class="quiz-question">
+<div class="quiz-q">3. Qual das seguintes substâncias NÃO é citotóxica e pode ser utilizada com segurança em feridas abertas para reduzir a carga bacteriana?</div>
+<div class="quiz-options">
+<label class="quiz-opt"><input name="q3" type="radio" value="a"/> Clorexidina 2%</label>
+<label class="quiz-opt"><input name="q3" type="radio" value="b"/> Hipoclorito de Sódio</label>
+<label class="quiz-opt"><input name="q3" type="radio" value="c"/> PVPI solução</label>
+<label class="quiz-opt"><input name="q3" type="radio" value="d"/> PHMB (Polihexanida)</label>
+</div>
+<button class="quiz-submit" onclick="checkQ(3,'d','✅ Correto! PHMB (Polihexanida) é o único antisséptico não citotóxico desta lista. Atua contra Gram+, Gram–, MRSA e Pseudomonas, sendo indicado para feridas cutâneas limpas ou infectadas.')">Verificar</button>
+<div class="quiz-feedback" id="fb3"></div>
+</div>
+<div class="quiz-question">
+<div class="quiz-q">4. Qual cobertura está contraindicada em feridas muito exsudativas?</div>
+<div class="quiz-options">
+<label class="quiz-opt"><input name="q4" type="radio" value="a"/> Hidrogel</label>
+<label class="quiz-opt"><input name="q4" type="radio" value="b"/> Colagenase</label>
+<label class="quiz-opt"><input name="q4" type="radio" value="c"/> Espuma (foam)</label>
+<label class="quiz-opt"><input name="q4" type="radio" value="d"/> Alginato</label>
+</div>
+<button class="quiz-submit" onclick="checkQ(4,'a','✅ Correto! O Hidrogel adiciona umidade ao leito, o que o torna contraindicado em feridas muito exsudativas, pois pode macerar ainda mais a perilesão.')">Verificar</button>
+<div class="quiz-feedback" id="fb4"></div>
+</div>
+</div>
+</div>
+</section>
+<!-- FOOTER -->
+<footer>
+<div class="footer-logo">FEn · UFPel</div>
+<p>Faculdade de Enfermagem · Universidade Federal de Pelotas · Fundada em 1976</p>
+<p style="margin-top:0.5rem">
+    Prof.ª <a href="https://institucional.ufpel.edu.br/servidores/id/176265" target="_blank">Adrize</a>  · 
+    Prof.ª <a href="https://institucional.ufpel.edu.br/servidores/id/2858" target="_blank">Marina</a>
+</p>
+<p style="margin-top:1rem; font-size:11px; opacity:0.4;">Material de apoio didático · Aula 55–79 · Curativos e Coberturas</p>
+<p>Versão enriquecida com imagens extraídas do PDF original. Estrutura relativa: HTML + pasta curativo.img/.</p></footer>
+<script>
+// Quiz logic
+function checkQ(num, correct, msg) {
+  const selected = document.querySelector(`input[name="q${num}"]:checked`);
+  const fb = document.getElementById(`fb${num}`);
+  if (!selected) { alert('Selecione uma opção.'); return; }
+  fb.style.display = 'block';
+  if (selected.value === correct) {
+    fb.className = 'quiz-feedback correct';
+    fb.textContent = msg;
+  } else {
+    fb.className = 'quiz-feedback incorrect';
+    fb.textContent = '❌ Incorreto. Revise o conteúdo e tente novamente.';
+  }
+}
+
+// Intersection Observer for fade-in
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach((e, i) => {
+    if (e.isIntersecting) {
+      setTimeout(() => e.target.classList.add('visible'), i * 80);
+    }
+  });
+}, { threshold: 0.08 });
+document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+
+// Active nav link
+const sections = document.querySelectorAll('section[id]');
+const navLinks = document.querySelectorAll('nav a');
+window.addEventListener('scroll', () => {
+  let current = '';
+  sections.forEach(s => { if (window.scrollY >= s.offsetTop - 100) current = s.id; });
+  navLinks.forEach(a => { a.classList.toggle('active', a.getAttribute('href') === '#' + current); });
+});
+</script>
+</body>
+</html>

@@ -1,0 +1,630 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Referencial de IA na Educação — PET-Saúde e Amor-à-Pele</title>
+  <style>
+    :root{
+      --pet-orange:#ef6c2f;
+      --pet-orange-dark:#d9581c;
+      --pet-blue:#2f6fb3;
+      --pet-blue-dark:#1e4676;
+      --pet-light:#eef5fc;
+      --ink:#16324a;
+      --green:#1f8f5a;
+      --soft:#f8fafc;
+      --card:#ffffff;
+      --shadow:0 10px 28px rgba(19,55,86,.12);
+      --radius:22px;
+      --max:1160px;
+    }
+
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{
+      margin:0;
+      font-family:Arial, Helvetica, sans-serif;
+      color:var(--ink);
+      background:
+        radial-gradient(circle at top left, rgba(47,111,179,.10), transparent 26%),
+        radial-gradient(circle at top right, rgba(239,108,47,.10), transparent 24%),
+        linear-gradient(180deg,#f8fbff 0%, #f4f8fc 100%);
+      line-height:1.55;
+    }
+
+    a{color:inherit}
+    .wrap{max-width:var(--max); margin:0 auto; padding:0 22px}
+    .topbar{
+      background:linear-gradient(90deg,var(--pet-blue-dark),var(--pet-blue));
+      color:#fff;
+      font-size:.95rem;
+    }
+    .topbar .wrap{
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      gap:18px;
+      padding:10px 22px;
+      flex-wrap:wrap;
+    }
+
+    header.hero{
+      padding:24px 0 28px;
+    }
+
+    .logos{
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      gap:18px;
+      flex-wrap:wrap;
+      margin:8px 0 18px;
+    }
+    .logos .logo-box{
+      background:#fff;
+      border-radius:18px;
+      padding:10px 16px;
+      box-shadow:var(--shadow);
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      min-height:96px;
+    }
+    .logos img{
+      display:block;
+      max-height:74px;
+      width:auto;
+      object-fit:contain;
+    }
+
+    .hero-grid{
+      display:grid;
+      grid-template-columns: 1.15fr .85fr;
+      gap:28px;
+      align-items:center;
+    }
+
+    .hero-card{
+      background:linear-gradient(180deg, rgba(255,255,255,.96), rgba(255,255,255,.92));
+      border-radius:30px;
+      box-shadow:var(--shadow);
+      padding:34px;
+      border:1px solid rgba(47,111,179,.10);
+    }
+
+    .kicker{
+      display:inline-block;
+      background:rgba(239,108,47,.12);
+      color:var(--pet-orange-dark);
+      padding:8px 14px;
+      border-radius:999px;
+      font-weight:700;
+      letter-spacing:.02em;
+      margin-bottom:14px;
+      font-size:.95rem;
+    }
+
+    h1{
+      margin:0 0 14px;
+      font-size:clamp(2rem, 4vw, 3.5rem);
+      line-height:1.06;
+      color:var(--pet-blue-dark);
+    }
+    h1 .accent{color:var(--pet-orange)}
+    .lead{
+      font-size:1.08rem;
+      margin:0 0 18px;
+      color:#294861;
+    }
+
+    .hero-points{
+      display:grid;
+      grid-template-columns:repeat(2,minmax(0,1fr));
+      gap:12px;
+      margin:22px 0 0;
+    }
+    .mini{
+      background:var(--pet-light);
+      border-left:6px solid var(--pet-orange);
+      padding:14px 14px 14px 16px;
+      border-radius:16px;
+      font-size:.96rem;
+      font-weight:700;
+    }
+
+    .cover-card{
+      background:#fff;
+      border-radius:28px;
+      padding:20px;
+      box-shadow:var(--shadow);
+      text-align:center;
+      border:1px solid rgba(47,111,179,.10);
+    }
+    .cover-card img{
+      width:100%;
+      max-width:410px;
+      border-radius:20px;
+      box-shadow:0 12px 28px rgba(0,0,0,.13);
+    }
+    .cover-card p{
+      margin:14px 0 0;
+      font-size:.96rem;
+      color:#47657d;
+    }
+    .actions{
+      display:flex;
+      gap:12px;
+      flex-wrap:wrap;
+      justify-content:center;
+      margin-top:18px;
+    }
+    .btn{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      gap:8px;
+      text-decoration:none;
+      padding:14px 18px;
+      border-radius:14px;
+      font-weight:700;
+      transition:.2s ease;
+      border:2px solid transparent;
+    }
+    .btn.primary{
+      background:var(--pet-orange);
+      color:#fff;
+    }
+    .btn.primary:hover{background:var(--pet-orange-dark)}
+    .btn.secondary{
+      background:#fff;
+      color:var(--pet-blue-dark);
+      border-color:rgba(47,111,179,.20);
+    }
+    .btn.secondary:hover{
+      background:var(--pet-light);
+    }
+
+    section{
+      padding:22px 0 10px;
+    }
+    .section-title{
+      display:flex;
+      align-items:center;
+      gap:14px;
+      margin:10px 0 18px;
+    }
+    .section-title .num{
+      width:52px;height:52px;border-radius:16px;
+      display:grid;place-items:center;
+      font-weight:800;color:#fff;
+      background:linear-gradient(135deg,var(--pet-orange),var(--pet-orange-dark));
+      box-shadow:var(--shadow);
+      flex:none;
+    }
+    .section-title h2{
+      margin:0;
+      font-size:clamp(1.4rem, 2vw, 2rem);
+      color:var(--pet-blue-dark);
+      line-height:1.1;
+    }
+    .section-title p{
+      margin:4px 0 0;
+      color:#56748b;
+    }
+
+    .cards-3{
+      display:grid;
+      grid-template-columns:repeat(3,minmax(0,1fr));
+      gap:18px;
+    }
+    .cards-2{
+      display:grid;
+      grid-template-columns:repeat(2,minmax(0,1fr));
+      gap:18px;
+    }
+    .card{
+      background:var(--card);
+      border-radius:22px;
+      padding:22px;
+      box-shadow:var(--shadow);
+      border:1px solid rgba(47,111,179,.09);
+    }
+    .card h3{
+      margin:0 0 10px;
+      color:var(--pet-blue-dark);
+      font-size:1.16rem;
+    }
+    .card p{margin:0 0 8px}
+    .card ul{
+      margin:10px 0 0 0;
+      padding-left:18px;
+    }
+    .card li{margin:7px 0}
+    .tag{
+      display:inline-block;
+      background:rgba(47,111,179,.10);
+      color:var(--pet-blue-dark);
+      padding:6px 10px;
+      border-radius:999px;
+      font-size:.82rem;
+      font-weight:700;
+      margin-bottom:10px;
+    }
+
+    .highlight{
+      background:linear-gradient(135deg, var(--pet-blue-dark), var(--pet-blue));
+      color:#fff;
+      border:none;
+    }
+    .highlight h3, .highlight p, .highlight li{color:#fff}
+    .highlight .tag{
+      background:rgba(255,255,255,.16);
+      color:#fff;
+    }
+
+    .timeline{
+      display:grid;
+      grid-template-columns:repeat(4,minmax(0,1fr));
+      gap:16px;
+    }
+    .step{
+      background:#fff;
+      border-radius:20px;
+      box-shadow:var(--shadow);
+      padding:20px;
+      position:relative;
+      border-top:6px solid var(--pet-orange);
+    }
+    .step strong{
+      display:block;
+      font-size:1.02rem;
+      color:var(--pet-blue-dark);
+      margin-bottom:8px;
+    }
+
+    .quote{
+      background:linear-gradient(90deg, rgba(47,111,179,.08), rgba(239,108,47,.08));
+      border-left:6px solid var(--green);
+      border-radius:20px;
+      padding:22px;
+      font-size:1.1rem;
+      font-weight:700;
+      color:#21405a;
+      box-shadow:var(--shadow);
+    }
+
+    .footer{
+      margin-top:24px;
+      padding:30px 0 46px;
+    }
+    .footer-box{
+      background:linear-gradient(135deg, #173b64, #2f6fb3);
+      color:#fff;
+      border-radius:28px;
+      padding:28px;
+      box-shadow:var(--shadow);
+    }
+    .footer-box h3{
+      margin:0 0 10px;
+      font-size:1.5rem;
+    }
+    .footer-box p{margin:0 0 14px}
+    .footer-note{
+      font-size:.92rem;
+      opacity:.95;
+    }
+
+    @media (max-width: 980px){
+      .hero-grid, .cards-3, .timeline, .cards-2{
+        grid-template-columns:1fr;
+      }
+      .hero-points{
+        grid-template-columns:1fr;
+      }
+      .hero-card{padding:24px}
+    }
+  </style>
+</head>
+<body>
+  <div class="topbar">
+    <div class="wrap">
+      <div><strong>Infográfico institucional</strong> · Referencial do MEC sobre IA na Educação</div>
+      <div>Ênfase em governança, docência, equidade e ensino superior</div>
+    </div>
+  </div>
+
+  <header class="hero">
+    <div class="wrap">
+
+      <!-- ordem invertida: PET primeiro -->
+      <div class="logos">
+        <div class="logo-box">
+          <img src="img/govbr.webp" alt="govbr" />
+        </div>
+          <div class="logo-box">
+          <img src="img/logo_amor_a_pele.png" alt="Logo Amor-à-Pele UFPel" />
+        </div>
+        <div class="logo-box">
+          <img src="img/logo_pet_saude.jpeg" alt="Logo PET-Saúde UFPel" />
+          </div>
+      </div>
+
+      <div class="hero-grid">
+        <div class="hero-card">
+          <div class="kicker">Referencial do Governo Federal · MEC</div>
+          <h1>Inteligência Artificial na Educação: <span class="accent">IA como parte das questões da política educacional</span></h1>
+          <p class="lead">
+            O referencial do MEC organiza a discussão em torno de
+            <strong>uso responsável</strong>, <strong>centralidade do professor</strong>,
+            <strong>governança institucional</strong>, <strong>proteção de dados</strong>,
+            <strong>equidade</strong> e <strong>formação crítica para todos os níveis de ensino</strong>.
+          </p>
+          <p class="lead">
+            No ensino superior, o recado é ainda mais claro: universidade não pode só usar ferramenta.
+            Tem de formar pessoas capazes de <strong>avaliar, governar, pesquisar e desenvolver IA</strong>.
+          </p>
+
+          <div class="hero-points">
+            <div class="mini">IA deve apoiar o trabalho docente — não substituir o educador.</div>
+            <div class="mini">Uso legítimo exige supervisão humana, ética e finalidade pedagógica.</div>
+            <div class="mini">Adoção sem infraestrutura e formação aprofunda desigualdades.</div>
+            <div class="mini">Ensino superior tem papel estratégico na formação, pesquisa e governança.</div>
+          </div>
+        </div>
+
+        <div class="cover-card">
+          <img src="img/capa_referencial.png" alt="Capa do Referencial para Desenvolvimento e Uso Responsáveis de Inteligência Artificial na Educação" />
+          <p><strong>Lembre da capa do documento oficial.</strong> É ela que organiza esta síntese.</p>
+          <div class="actions">
+            <a class="btn primary" href="https://www.gov.br/mec/pt-br/referencial-de-ia-na-educacao" target="_blank" rel="noopener noreferrer">
+              📄 Baixar / acessar o referencial
+            </a>
+            <a class="btn secondary" href="#pontos-centrais">
+              ↓ Ver os pontos centrais
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main class="wrap">
+
+    <section id="pontos-centrais">
+      <div class="section-title">
+        <div class="num">1</div>
+        <div>
+          <h2>O núcleo do documento</h2>
+          <p>O referencial trata IA como questão de política educacional.</p>
+        </div>
+      </div>
+
+      <div class="cards-3">
+        <article class="card">
+          <span class="tag">Princípio estrutural</span>
+          <h3>IA é meio, não fim</h3>
+          <p>
+            A integração só faz sentido quando subordinada ao projeto pedagógico,
+            ao direito à educação, à inclusão e à melhoria efetiva do ensino.
+          </p>
+        </article>
+
+        <article class="card">
+          <span class="tag">Ponto inegociável</span>
+          <h3>Professor no centro</h3>
+          <p>
+            O documento insiste em supervisão humana significativa, preservação da autonomia docente
+            e uso da tecnologia como apoio qualificado ao trabalho pedagógico.
+          </p>
+        </article>
+
+        <article class="card">
+          <span class="tag">Condição de legitimidade</span>
+          <h3>Governança antes de entusiasmo</h3>
+          <p>
+            Transparência, explicabilidade, proteção de dados, avaliação de impacto e
+            responsabilização institucional vêm antes do deslumbre com plataforma.
+          </p>
+        </article>
+      </div>
+    </section>
+
+    <section>
+      <div class="section-title">
+        <div class="num">2</div>
+        <div>
+          <h2>Oportunidades que o MEC reconhece</h2>
+          <p>Não são slogans. São usos concretos, com condição e limite.</p>
+        </div>
+      </div>
+
+      <div class="cards-3">
+        <article class="card">
+          <h3>Apoio ao trabalho docente</h3>
+          <ul>
+            <li>planejamento de aulas</li>
+            <li>produção inicial de materiais</li>
+            <li>organização de tarefas e rotinas</li>
+            <li>apoio a avaliações formativas</li>
+          </ul>
+        </article>
+
+        <article class="card">
+          <h3>Personalização com supervisão</h3>
+          <ul>
+            <li>feedback mais rápido</li>
+            <li>identificação de lacunas de aprendizagem</li>
+            <li>adaptação de percursos formativos</li>
+            <li>apoio à permanência escolar e acadêmica</li>
+          </ul>
+        </article>
+
+        <article class="card">
+          <h3>Acessibilidade e inclusão</h3>
+          <ul>
+            <li>descrição automática de imagens</li>
+            <li>legendagem e transcrição</li>
+            <li>interfaces adaptadas</li>
+            <li>redução de barreiras para diferentes perfis de estudantes</li>
+          </ul>
+        </article>
+      </div>
+    </section>
+
+    <section>
+      <div class="section-title">
+        <div class="num">3</div>
+        <div>
+          <h2>Os desafios que o texto trata</h2>
+          <p></p>
+        </div>
+      </div>
+
+      <div class="cards-2">
+        <article class="card">
+          <h3>Transparência, vieses e confiabilidade</h3>
+          <ul>
+            <li>sistemas podem operar como “caixas-pretas”</li>
+            <li>dados desequilibrados reproduzem desigualdades</li>
+            <li>modelos generativos erram com convicção</li>
+            <li>alucinações e respostas factualmente incorretas exigem validação</li>
+          </ul>
+        </article>
+
+        <article class="card">
+          <h3>Privacidade, autoria e desigualdade digital</h3>
+          <ul>
+            <li>dados educacionais são sensíveis e exigem governança</li>
+            <li>há riscos de plágio e erosão da autoria acadêmica</li>
+            <li>infraestrutura desigual pode ampliar exclusão</li>
+            <li>adoção apressada de plataformas pode gerar mais ruído que ganho</li>
+          </ul>
+        </article>
+      </div>
+    </section>
+
+    <section>
+      <div class="section-title">
+        <div class="num">4</div>
+        <div>
+          <h2>O que é solicitado no texto</h2>
+          <p></p>
+        </div>
+      </div>
+
+      <div class="timeline">
+        <article class="step">
+          <strong>Educação Infantil</strong>
+          Uso de IA não é recomendado, exceto situações muito específicas ligadas à inclusão.
+        </article>
+        <article class="step">
+          <strong>Educação Básica</strong>
+          Prioridade: letramento em IA, compreensão crítica, segurança, mediação intensa do professor.
+        </article>
+        <article class="step">
+          <strong>Educação Profissional e Tecnológica</strong>
+          Formação conectada ao mundo do trabalho, inovação aplicada e competências digitais.
+        </article>
+        <article class="step">
+          <strong>Ensino Superior e Pós</strong>
+          Competências avançadas, ética em pesquisa, governança institucional e protagonismo acadêmico.
+        </article>
+      </div>
+    </section>
+
+    <section>
+      <div class="section-title">
+        <div class="num">5</div>
+        <div>
+          <h2>Ensino superior: onde o documento aperta de verdade</h2>
+          <p>Aqui o MEC espera densidade</p>
+        </div>
+      </div>
+
+      <div class="cards-2">
+        <article class="card highlight">
+          <span class="tag">Foco principal</span>
+          <h3>Não basta usar IA. É preciso formar para compreender, criticar e desenvolver.</h3>
+          <ul>
+            <li>reorientar currículos para pensamento crítico, criatividade e problemas inéditos</li>
+            <li>fortalecer comissões de ética e mecanismos de governança institucional</li>
+            <li>tratar IA como tema transversal nas áreas do conhecimento</li>
+            <li>integrar IA à pesquisa acadêmica com integridade e responsabilidade</li>
+          </ul>
+        </article>
+
+        <article class="card">
+          <span class="tag">Papel estratégico das IES</span>
+          <h3>Universidade como formadora do sistema</h3>
+          <ul>
+            <li>preparar futuros professores para ensinar com e sobre IA</li>
+            <li>produzir pesquisa aplicada e crítica</li>
+            <li>desenvolver competências para estudantes e docentes</li>
+            <li>apoiar a integração qualificada da IA na educação básica</li>
+          </ul>
+        </article>
+      </div>
+    </section>
+
+    <section>
+      <div class="quote">
+        “O ponto central não é introduzir tecnologia por introduzir. É garantir que a inteligência
+        artificial esteja a serviço da aprendizagem, da equidade, da docência e da responsabilidade pública.”
+      </div>
+    </section>
+
+    <section>
+      <div class="section-title">
+        <div class="num">6</div>
+        <div>
+          <h2>Leitura útil para projetos como PET-Saúde e Amor-à-Pele</h2>
+          <p>O documento conversa diretamente com iniciativas que articulam ensino, cuidado e tecnologia.</p>
+        </div>
+      </div>
+
+      <div class="cards-3">
+        <article class="card">
+          <h3>Formação interprofissional</h3>
+          <p>
+            O uso de IA precisa estar vinculado a objetivos formativos claros, não a automatismos vazios.
+            Isso vale ainda mais em saúde.
+          </p>
+        </article>
+
+        <article class="card">
+          <h3>Supervisão humana</h3>
+          <p>
+            Em contextos clínicos, educativos e comunitários, IA pode apoiar triagem, organização e estudo,
+            mas decisão e responsabilidade seguem humanas.
+          </p>
+        </article>
+
+        <article class="card">
+          <h3>Ética + dados + inclusão</h3>
+          <p>
+            Projetos em telemonitoramento, cuidado e educação em saúde precisam olhar para proteção de dados,
+            vieses, acessibilidade e efeito real sobre a qualidade do cuidado.
+          </p>
+        </article>
+      </div>
+    </section>
+
+    <section class="footer">
+      <div class="footer-box">
+        <h3>Vale baixar o documento completo</h3>
+        <p>
+          Este infográfico resume o essencial. O texto integral do MEC é a referência para leitura,
+          planejamento institucional, discussão em sala e construção de projetos.
+        </p>
+        <div class="actions" style="justify-content:flex-start;">
+          <a class="btn primary" href="https://www.gov.br/mec/pt-br/referencial-de-ia-na-educacao" target="_blank" rel="noopener noreferrer">
+            📥 Ir para a página oficial do MEC
+          </a>
+        </div>
+        </div>
+<p class="footer-note"> <i> Infográfico elaborado pelos projetos Amor à Pele e PET-Saúde Digital G10 Feridas Crônicas, UFPel, em 03/2026. </i></p>
+    </section>
+  </main>
+</body>
+</html>

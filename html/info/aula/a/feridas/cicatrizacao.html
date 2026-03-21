@@ -1,0 +1,1488 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Interferências e Complicações na Cicatrização — FEn UFPel</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --cream:         #F9F6EF;
+    --off-white:     #FDFBF7;
+    --deep:          #0D1F35;
+    --ufpel-blue:    #1E5FA8;
+    --ufpel-blue-dk: #144080;
+    --ufpel-blue-lt: #3A7DC9;
+    --ufpel-blue-xs: #EAF1FB;
+    --ufpel-yellow:  #F5C400;
+    --ufpel-yellow-lt:#FDD835;
+    --mid:           #2C4A72;
+    --soft:          #7A9CC4;
+    --border:        rgba(30,95,168,0.12);
+  }
+
+  * { margin:0; padding:0; box-sizing:border-box; }
+  html { scroll-behavior:smooth; }
+  body {
+    background: var(--cream);
+    color: var(--deep);
+    font-family: 'DM Sans', sans-serif;
+    font-size: 15px;
+    line-height: 1.7;
+    overflow-x: hidden;
+  }
+
+  /* ===== HEADER ===== */
+  .site-header {
+    position:fixed; top:0; left:0; right:0; z-index:100;
+    background: rgba(249,246,239,0.94);
+    backdrop-filter: blur(14px);
+    border-bottom: 2px solid var(--ufpel-yellow);
+    display:flex; align-items:center; justify-content:space-between;
+    padding: 0 2.5rem; height:64px;
+  }
+  .logo-area { display:flex; align-items:center; gap:14px; }
+  .logo-circle {
+    width:42px; height:42px; border-radius:50%;
+    background: linear-gradient(135deg, var(--ufpel-blue) 60%, var(--ufpel-yellow) 100%);
+    display:flex; align-items:center; justify-content:center;
+    font-family:'Cormorant Garamond',serif; font-size:11px; color:#fff;
+    font-weight:600; letter-spacing:0.3px; text-align:center; line-height:1.2;
+  }
+  .logo-text { font-family:'Cormorant Garamond',serif; font-size:15px; color:var(--ufpel-blue-dk); font-weight:400; letter-spacing:0.4px; }
+  .logo-text span { font-style:italic; color:var(--ufpel-blue); }
+  nav { display:flex; gap:0; }
+  nav a {
+    font-size:11px; text-transform:uppercase; letter-spacing:1.2px;
+    color:var(--mid); text-decoration:none; font-weight:500;
+    padding:0 12px; height:64px; display:flex; align-items:center;
+    border-bottom:3px solid transparent;
+    transition:color .2s, border-color .2s;
+  }
+  nav a:hover, nav a.active { color:var(--ufpel-blue-dk); border-bottom-color:var(--ufpel-yellow); }
+
+  /* ===== HERO ===== */
+  .hero {
+    min-height:100vh;
+    background: var(--ufpel-blue-dk);
+    display:flex; align-items:center; justify-content:center;
+    position:relative; overflow:hidden; padding-top:64px;
+  }
+  .hero-stripe { position:absolute; bottom:0; left:0; right:0; height:6px; background:var(--ufpel-yellow); }
+  .hero-blob { position:absolute; border-radius:50%; filter:blur(80px); opacity:.15; }
+  .hero-blob-1 { width:600px; height:600px; background:var(--ufpel-blue-lt); top:-150px; right:-120px; }
+  .hero-blob-2 { width:400px; height:400px; background:var(--ufpel-yellow); bottom:60px; left:-60px; }
+  .hero-bg-text {
+    position:absolute; font-family:'Cormorant Garamond',serif;
+    font-size:clamp(80px,14vw,220px); font-weight:300; color:rgba(255,255,255,.03);
+    top:50%; left:50%; transform:translate(-50%,-50%);
+    white-space:nowrap; pointer-events:none; letter-spacing:-4px;
+  }
+  .hero-inner { position:relative; text-align:center; max-width:800px; padding:2rem; }
+  .hero-eyebrow { font-size:11px; text-transform:uppercase; letter-spacing:3px; color:var(--ufpel-yellow); font-weight:400; margin-bottom:1.5rem; }
+  .hero-title {
+    font-family:'Cormorant Garamond',serif;
+    font-size:clamp(44px,7.5vw,100px); font-weight:300;
+    color:var(--off-white); line-height:.92; letter-spacing:-2px; margin-bottom:2rem;
+  }
+  .hero-title em { font-style:italic; color:var(--ufpel-yellow-lt); }
+  .hero-subtitle { font-size:14px; color:rgba(253,251,247,.6); max-width:520px; margin:0 auto 2.5rem; line-height:1.8; font-weight:300; }
+  .hero-cta {
+    display:inline-flex; align-items:center; gap:10px;
+    background:var(--ufpel-yellow); color:var(--ufpel-blue-dk);
+    padding:13px 30px; border-radius:2px;
+    font-size:12px; text-transform:uppercase; letter-spacing:2px; font-weight:600;
+    text-decoration:none; transition:background .3s, transform .2s;
+  }
+  .hero-cta:hover { background:var(--ufpel-yellow-lt); transform:translateY(-2px); }
+  .scroll-hint {
+    position:absolute; bottom:28px; left:50%; transform:translateX(-50%);
+    display:flex; flex-direction:column; align-items:center; gap:6px;
+    color:rgba(253,251,247,.3); font-size:10px; text-transform:uppercase; letter-spacing:2px;
+    animation:bob 2s infinite;
+  }
+  .scroll-line { width:1px; height:38px; background:rgba(245,196,0,.25); }
+  @keyframes bob { 0%,100%{transform:translateX(-50%) translateY(0)} 50%{transform:translateX(-50%) translateY(7px)} }
+
+  /* ===== LAYOUT ===== */
+  section { padding:96px 0; }
+  .container { max-width:1120px; margin:0 auto; padding:0 2rem; }
+  .section-label {
+    font-size:10px; text-transform:uppercase; letter-spacing:3px;
+    color:var(--ufpel-blue); font-weight:500; margin-bottom:.7rem;
+    display:flex; align-items:center; gap:10px;
+  }
+  .section-label::before { content:''; width:20px; height:2px; background:var(--ufpel-yellow); }
+  .section-title {
+    font-family:'Cormorant Garamond',serif;
+    font-size:clamp(30px,5vw,58px); font-weight:300;
+    color:var(--ufpel-blue-dk); line-height:1.05; letter-spacing:-1px; margin-bottom:1.2rem;
+  }
+  .section-title em { font-style:italic; color:var(--ufpel-blue); }
+  .section-lead { font-size:15px; color:var(--mid); max-width:580px; line-height:1.8; font-weight:300; margin-bottom:3rem; }
+
+  /* ===== FATORES GRID (2 col) ===== */
+  .fatores-grid {
+    display:grid; grid-template-columns:1fr 1fr; gap:0;
+    border:1px solid var(--border); overflow:hidden;
+  }
+  .fatores-col {
+    padding:3rem 2.8rem;
+  }
+  .fatores-col-left { background:var(--ufpel-blue-dk); }
+  .fatores-col-right { background:var(--off-white); }
+  .fatores-col-left h3 {
+    font-family:'Cormorant Garamond',serif; font-size:20px; font-weight:300;
+    color:var(--ufpel-yellow); letter-spacing:2px; text-transform:uppercase;
+    margin-bottom:1.8rem; padding-bottom:.8rem; border-bottom:1px solid rgba(245,196,0,.2);
+  }
+  .fatores-col-right h3 {
+    font-family:'Cormorant Garamond',serif; font-size:20px; font-weight:300;
+    color:var(--ufpel-blue-dk); letter-spacing:2px; text-transform:uppercase;
+    margin-bottom:1.8rem; padding-bottom:.8rem; border-bottom:2px solid var(--ufpel-yellow);
+  }
+  .fator-item {
+    display:flex; align-items:center; gap:12px;
+    padding:.75rem 1rem; margin-bottom:.4rem;
+    border-left:3px solid transparent;
+    font-size:13.5px; font-weight:300;
+    transition:border-color .2s, background .2s;
+  }
+  .fator-item:hover { border-left-color:var(--ufpel-yellow); }
+  .fatores-col-left .fator-item { color:rgba(253,251,247,.85); background:rgba(255,255,255,.04); }
+  .fatores-col-left .fator-item:hover { background:rgba(255,255,255,.08); }
+  .fatores-col-right .fator-item { color:var(--mid); background:var(--cream); }
+  .fatores-col-right .fator-item:hover { background:rgba(245,196,0,.06); }
+  .fator-dot { width:7px; height:7px; border-radius:50%; background:var(--ufpel-yellow); flex-shrink:0; }
+  .fatores-col-right .fator-dot { background:var(--ufpel-blue); }
+  .source-tag { font-size:10px; color:var(--soft); margin-top:1.5rem; letter-spacing:1px; }
+
+  /* ===== AVALIAÇÃO DA FERIDA (10 itens) ===== */
+  .avaliacao-section { background:var(--ufpel-blue-dk); }
+  .avaliacao-section .section-title { color:var(--off-white); }
+  .avaliacao-section .section-lead { color:rgba(253,251,247,.65); }
+  .avaliacao-nums {
+    display:grid; grid-template-columns:repeat(5,1fr); gap:1px;
+    background:rgba(255,255,255,.08);
+  }
+  .av-item {
+    background:var(--ufpel-blue-dk); padding:2rem 1.5rem;
+    position:relative; overflow:hidden;
+    transition:background .3s;
+    cursor:default;
+  }
+  .av-item:hover { background:rgba(255,255,255,.07); }
+  .av-num {
+    font-family:'Cormorant Garamond',serif; font-size:52px; font-weight:300;
+    color:rgba(245,196,0,.15); line-height:1; margin-bottom:.5rem;
+  }
+  .av-label { font-size:12px; text-transform:uppercase; letter-spacing:1.5px; font-weight:500; color:var(--ufpel-yellow); }
+  .av-desc { font-size:12px; color:rgba(253,251,247,.55); font-weight:300; margin-top:.4rem; line-height:1.5; }
+
+  /* ===== AVALIAÇÃO GLOBAL (4 pilares) ===== */
+  .global-grid { display:grid; grid-template-columns:repeat(2,1fr); gap:1.5px; }
+  .global-card {
+    background:var(--off-white); padding:2.5rem 2.2rem;
+    position:relative; overflow:hidden;
+    border-left:4px solid transparent;
+    transition:border-color .3s, background .3s;
+  }
+  .global-card:hover { border-left-color:var(--ufpel-yellow); background:var(--cream); }
+  .global-icon { font-size:28px; margin-bottom:1rem; }
+  .global-card h3 { font-family:'Cormorant Garamond',serif; font-size:22px; font-weight:400; color:var(--ufpel-blue-dk); margin-bottom:.6rem; }
+  .global-card p { font-size:13.5px; color:var(--mid); font-weight:300; line-height:1.7; }
+  .global-card .tag-row { display:flex; flex-wrap:wrap; gap:.4rem; margin-top:1rem; }
+  .gtag { font-size:10px; text-transform:uppercase; letter-spacing:1.2px; padding:4px 9px; border:1px solid var(--soft); color:var(--soft); border-radius:1px; }
+
+  /* ===== TIMERS ===== */
+  .timers-section { background:var(--ufpel-blue-dk); }
+  .timers-section .section-title { color:var(--off-white); }
+  .timers-section .section-lead { color:rgba(253,251,247,.65); }
+  .timers-grid { display:grid; grid-template-columns:repeat(2,1fr); gap:1px; background:rgba(255,255,255,.08); }
+  .timer-item { background:var(--ufpel-blue-dk); padding:2.8rem 2.5rem; position:relative; overflow:hidden; transition:background .3s; }
+  .timer-item:hover { background:rgba(255,255,255,.06); }
+  .timer-letter { font-family:'Cormorant Garamond',serif; font-size:80px; font-weight:300; color:var(--ufpel-yellow); line-height:.9; margin-bottom:.6rem; display:block; }
+  .timer-word { font-size:12px; text-transform:uppercase; letter-spacing:3px; font-weight:500; color:var(--ufpel-yellow-lt); margin-bottom:.8rem; }
+  .timer-desc { font-size:13.5px; color:rgba(253,251,247,.75); font-weight:300; line-height:1.7; }
+
+  /* ===== TIME PARAMS (wheel-like grid) ===== */
+  .time-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:1.5px; }
+  .time-card {
+    background:var(--off-white); padding:2rem 1.8rem;
+    border-top:3px solid transparent;
+    transition:border-color .3s, transform .3s;
+  }
+  .time-card:hover { border-top-color:var(--ufpel-yellow); transform:translateY(-3px); }
+  .time-card h3 { font-size:13px; text-transform:uppercase; letter-spacing:1.5px; font-weight:500; color:var(--ufpel-blue-dk); margin-bottom:.8rem; }
+  .time-param { font-size:12.5px; color:var(--mid); font-weight:300; line-height:1.6; }
+  .time-param li { list-style:none; padding:.25rem 0; border-bottom:1px solid var(--border); display:flex; align-items:center; gap:8px; }
+  .time-param li::before { content:''; width:5px; height:5px; border-radius:50%; background:var(--ufpel-yellow); flex-shrink:0; }
+
+  /* ===== LPP STAGES ===== */
+  .lpp-section { background:var(--off-white); }
+  .lpp-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:1.5rem; }
+  .lpp-card {
+    border:1px solid var(--border); padding:2rem;
+    position:relative; overflow:hidden;
+    transition:border-color .3s, transform .3s;
+  }
+  .lpp-card:hover { border-color:var(--ufpel-blue); transform:translateY(-2px); }
+  .lpp-stage { font-family:'Cormorant Garamond',serif; font-size:52px; font-weight:300; color:rgba(30,95,168,.08); position:absolute; top:-8px; right:16px; }
+  .lpp-card h3 { font-family:'Cormorant Garamond',serif; font-size:20px; font-weight:400; color:var(--ufpel-blue-dk); margin-bottom:.5rem; }
+  .lpp-card p { font-size:13px; color:var(--mid); font-weight:300; line-height:1.7; }
+  .lpp-badge {
+    display:inline-block; margin-top:.8rem; font-size:10px; text-transform:uppercase;
+    letter-spacing:1.2px; padding:4px 10px; border-radius:1px;
+  }
+  .badge-blue { background:rgba(30,95,168,.1); color:var(--ufpel-blue-dk); }
+  .badge-yellow { background:rgba(245,196,0,.18); color:#7A6000; }
+
+  /* ===== RYB SYSTEM ===== */
+  .ryb-section { background:var(--ufpel-blue-dk); }
+  .ryb-section .section-title { color:var(--off-white); }
+  .ryb-section .section-lead { color:rgba(253,251,247,.65); }
+  .ryb-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:1px; background:rgba(255,255,255,.08); }
+  .ryb-card { padding:2.8rem 2.2rem; transition:background .3s; }
+  .ryb-r { background:rgba(160,30,30,.35); }
+  .ryb-y { background:rgba(120,90,0,.45); }
+  .ryb-b { background:rgba(10,10,10,.55); }
+  .ryb-card:hover { filter:brightness(1.1); }
+  .ryb-letter { font-family:'Cormorant Garamond',serif; font-size:72px; font-weight:300; line-height:.9; margin-bottom:.8rem; }
+  .ryb-r .ryb-letter { color:#F87171; }
+  .ryb-y .ryb-letter { color:var(--ufpel-yellow); }
+  .ryb-b .ryb-letter { color:#94A3B8; }
+  .ryb-word { font-size:11px; text-transform:uppercase; letter-spacing:3px; font-weight:500; color:rgba(253,251,247,.7); margin-bottom:.8rem; }
+  .ryb-desc { font-size:13px; color:rgba(253,251,247,.8); font-weight:300; line-height:1.7; }
+
+  /* ===== TECIDOS (leito) ===== */
+  .tecidos-grid { display:grid; grid-template-columns:repeat(2,1fr); gap:1.5px; }
+  .tecido-card {
+    padding:2.5rem 2.2rem; position:relative; overflow:hidden;
+    transition:transform .3s;
+  }
+  .tecido-card:hover { transform:translateY(-2px); }
+  .tecido-card h3 { font-family:'Cormorant Garamond',serif; font-size:28px; font-weight:300; margin-bottom:.5rem; }
+  .tecido-card p { font-size:13.5px; font-weight:300; line-height:1.7; }
+  .tecido-card .cor-tag { display:inline-block; margin-top:.8rem; font-size:10px; text-transform:uppercase; letter-spacing:2px; padding:4px 12px; border-radius:1px; font-weight:500; }
+  .tc-granulacao { background:#FFF1F0; }
+  .tc-granulacao h3 { color:#C53030; }
+  .tc-granulacao p { color:#7B341E; }
+  .tc-granulacao .cor-tag { background:#FED7D7; color:#C53030; }
+  .tc-epitelizacao { background:#FFF9E6; }
+  .tc-epitelizacao h3 { color:#9B6A00; }
+  .tc-epitelizacao p { color:#7A5900; }
+  .tc-epitelizacao .cor-tag { background:#FEF3C7; color:#9B6A00; }
+  .tc-necrose-c { background:#1A1A2E; }
+  .tc-necrose-c h3 { color:#94A3B8; }
+  .tc-necrose-c p { color:rgba(255,255,255,.6); }
+  .tc-necrose-c .cor-tag { background:rgba(255,255,255,.1); color:#CBD5E1; }
+  .tc-necrose-l { background:#7C6B30; }
+  .tc-necrose-l h3 { color:#FEF3C7; }
+  .tc-necrose-l p { color:rgba(255,255,255,.75); }
+  .tc-necrose-l .cor-tag { background:rgba(255,255,255,.15); color:#FEF3C7; }
+
+  /* ===== EXSUDATO ===== */
+  .exsud-section { background:var(--off-white); }
+  .exsud-intro { display:grid; grid-template-columns:1.2fr .8fr; gap:4rem; align-items:start; margin-bottom:3rem; }
+  .exsud-facts { display:flex; flex-direction:column; gap:0; }
+  .exsud-fact {
+    display:flex; gap:1.5rem; padding:1.4rem 0;
+    border-bottom:1px solid var(--border);
+    transition:padding-left .3s;
+  }
+  .exsud-fact:hover { padding-left:8px; }
+  .exsud-icon { width:36px; height:36px; background:var(--ufpel-blue-dk); border-radius:50%; flex-shrink:0; display:flex; align-items:center; justify-content:center; font-size:14px; margin-top:2px; }
+  .exsud-text strong { display:block; font-size:12px; text-transform:uppercase; letter-spacing:1px; font-weight:500; color:var(--ufpel-blue-dk); margin-bottom:3px; }
+  .exsud-text span { font-size:13px; color:var(--mid); font-weight:300; line-height:1.6; }
+  .exsud-aside {}
+  .info-box {
+    background:var(--ufpel-blue-dk); color:var(--off-white);
+    padding:2rem; border-radius:2px; margin-bottom:1.2rem;
+    border-left:4px solid var(--ufpel-yellow);
+  }
+  .info-box h4 { font-size:11px; text-transform:uppercase; letter-spacing:2px; color:var(--ufpel-yellow); margin-bottom:.8rem; }
+  .info-box p { font-size:13px; line-height:1.7; font-weight:300; color:rgba(253,251,247,.85); }
+
+  /* ===== TIPOS DE EXSUDATO ===== */
+  .exsud-tipos { display:grid; grid-template-columns:repeat(3,1fr); gap:1.5px; margin-top:2.5rem; }
+  .et-card {
+    background:var(--cream); padding:2rem 1.8rem;
+    border-top:3px solid var(--border);
+    transition:border-top-color .3s, background .3s;
+  }
+  .et-card:hover { border-top-color:var(--ufpel-yellow); background:var(--off-white); }
+  .et-card h3 { font-family:'Cormorant Garamond',serif; font-size:20px; font-weight:400; color:var(--ufpel-blue-dk); margin-bottom:.4rem; }
+  .et-card .et-char { font-size:11px; font-weight:500; text-transform:uppercase; letter-spacing:1px; color:var(--ufpel-blue); margin-bottom:.3rem; }
+  .et-card p { font-size:12.5px; color:var(--mid); font-weight:300; line-height:1.6; }
+
+  /* ===== VOLUME CURATIVO ===== */
+  .vol-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:1.5px; margin-top:2.5rem; }
+  .vol-card {
+    background:var(--off-white); padding:2rem 1.5rem;
+    text-align:center; transition:background .3s, transform .3s;
+    position:relative; overflow:hidden;
+  }
+  .vol-card::before {
+    content:''; position:absolute; bottom:0; left:0; right:0; height:3px;
+    background:var(--ufpel-yellow); transform:scaleX(0);
+    transition:transform .4s ease;
+  }
+  .vol-card:hover::before { transform:scaleX(1); }
+  .vol-card:hover { background:var(--cream); transform:translateY(-2px); }
+  .vol-drops { font-size:22px; margin-bottom:.8rem; opacity:.7; }
+  .vol-card h3 { font-family:'Cormorant Garamond',serif; font-size:20px; font-weight:400; color:var(--ufpel-blue-dk); margin-bottom:.5rem; }
+  .vol-card p { font-size:12.5px; color:var(--mid); font-weight:300; line-height:1.6; }
+
+  /* ===== BORDAS ===== */
+  .bordas-section { background:var(--ufpel-blue-dk); }
+  .bordas-section .section-title { color:var(--off-white); }
+  .bordas-section .section-lead { color:rgba(253,251,247,.65); }
+  .bordas-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:1px; background:rgba(255,255,255,.08); }
+  .borda-card { background:var(--ufpel-blue-dk); padding:2.5rem 2rem; transition:background .3s; }
+  .borda-card:hover { background:rgba(255,255,255,.06); }
+  .borda-card h3 { font-family:'Cormorant Garamond',serif; font-size:22px; font-weight:400; color:var(--ufpel-yellow); margin-bottom:.6rem; }
+  .borda-card p { font-size:13px; color:rgba(253,251,247,.7); font-weight:300; line-height:1.7; }
+  .borda-alert { margin-top:.8rem; font-size:11px; color:rgba(253,251,247,.45); font-style:italic; }
+
+  /* ===== MENSURAÇÃO ===== */
+  .mens-section { background:var(--cream); }
+  .mens-formula {
+    background:var(--ufpel-blue-dk); color:var(--off-white);
+    padding:2.5rem 3rem; text-align:center; margin-bottom:3rem;
+    border-bottom:4px solid var(--ufpel-yellow);
+  }
+  .mens-formula .formula { font-family:'Cormorant Garamond',serif; font-size:clamp(22px,4vw,38px); font-weight:300; color:var(--ufpel-yellow); letter-spacing:-0.5px; }
+  .mens-formula p { font-size:13px; color:rgba(253,251,247,.6); margin-top:.5rem; font-weight:300; }
+  .mens-steps { display:grid; grid-template-columns:repeat(3,1fr); gap:1.5rem; }
+  .mens-step {
+    border:1px solid var(--border); padding:2rem;
+    transition:border-color .3s; text-align:center;
+  }
+  .mens-step:hover { border-color:var(--ufpel-blue); }
+  .mens-step-icon { font-size:32px; margin-bottom:1rem; }
+  .mens-step h3 { font-size:13px; text-transform:uppercase; letter-spacing:1.5px; font-weight:500; color:var(--ufpel-blue-dk); margin-bottom:.5rem; }
+  .mens-step p { font-size:13px; color:var(--mid); font-weight:300; line-height:1.6; }
+
+  /* ===== DOR ===== */
+  .dor-section { background:var(--off-white); }
+  .dor-tipos { display:grid; grid-template-columns:repeat(4,1fr); gap:1.5px; margin-bottom:3rem; }
+  .dor-card {
+    background:var(--cream); padding:2rem 1.8rem;
+    border-left:3px solid var(--border);
+    transition:border-left-color .3s, background .3s;
+  }
+  .dor-card:hover { border-left-color:var(--ufpel-yellow); background:var(--off-white); }
+  .dor-card h3 { font-family:'Cormorant Garamond',serif; font-size:20px; font-weight:400; color:var(--ufpel-blue-dk); margin-bottom:.6rem; }
+  .dor-card p { font-size:13px; color:var(--mid); font-weight:300; line-height:1.6; }
+  .escalas-row { display:grid; grid-template-columns:repeat(3,1fr); gap:1.5rem; }
+  .escala-box {
+    border:1px solid var(--border); padding:1.8rem 2rem;
+    transition:border-color .3s;
+  }
+  .escala-box:hover { border-color:var(--ufpel-blue); }
+  .escala-box h4 { font-size:11px; text-transform:uppercase; letter-spacing:2px; color:var(--ufpel-blue); font-weight:500; margin-bottom:.8rem; }
+  .escala-box p { font-size:13px; color:var(--mid); font-weight:300; line-height:1.6; }
+  .num-scale { display:flex; gap:4px; margin-top:.8rem; }
+  .ns { width:28px; height:28px; border-radius:2px; display:flex; align-items:center; justify-content:center; font-size:10px; font-weight:600; }
+  .ns-low { background:rgba(30,95,168,.1); color:var(--ufpel-blue-dk); }
+  .ns-mid { background:rgba(245,196,0,.25); color:#7A6000; }
+  .ns-high { background:rgba(180,0,0,.12); color:#900; }
+
+  /* ===== LPP PREVENTION ===== */
+  .prev-section { background:var(--ufpel-blue-dk); }
+  .prev-section .section-title { color:var(--off-white); }
+  .prev-section .section-lead { color:rgba(253,251,247,.65); }
+  .prev-steps { display:grid; grid-template-columns:repeat(5,1fr); gap:0; position:relative; }
+  .prev-steps::before {
+    content:''; position:absolute; top:36px; left:10%; right:10%; height:1px;
+    background:repeating-linear-gradient(90deg,rgba(245,196,0,.4) 0,rgba(245,196,0,.4) 6px,transparent 6px,transparent 14px);
+  }
+  .prev-step { text-align:center; padding:0 1rem; position:relative; }
+  .prev-num {
+    width:72px; height:72px; border-radius:50%;
+    background:rgba(255,255,255,.08); border:2px solid rgba(245,196,0,.4);
+    display:flex; align-items:center; justify-content:center;
+    font-family:'Cormorant Garamond',serif; font-size:28px;
+    color:var(--ufpel-yellow); margin:0 auto 1.2rem; position:relative; z-index:1;
+    transition:background .3s, border-color .3s;
+  }
+  .prev-step:hover .prev-num { background:var(--ufpel-yellow); border-color:var(--ufpel-yellow); color:var(--ufpel-blue-dk); }
+  .prev-step-title { font-size:11px; text-transform:uppercase; letter-spacing:1.2px; font-weight:500; color:var(--ufpel-yellow); margin-bottom:.5rem; }
+  .prev-step-desc { font-size:12px; color:rgba(253,251,247,.6); line-height:1.6; font-weight:300; }
+
+  /* ===== ODOR TABLE ===== */
+  .odor-section { background:var(--cream); }
+  .odor-table { width:100%; border-collapse:collapse; margin-top:2rem; }
+  .odor-table thead tr { border-bottom:2px solid var(--ufpel-blue-dk); }
+  .odor-table th { font-size:10px; text-transform:uppercase; letter-spacing:2px; font-weight:500; color:var(--ufpel-blue-dk); padding:0 1.2rem 1rem; text-align:left; }
+  .odor-table tbody tr { border-bottom:1px solid var(--border); transition:background .2s; }
+  .odor-table tbody tr:hover { background:var(--off-white); }
+  .odor-table td { padding:1.2rem 1.2rem; font-size:13.5px; color:var(--mid); font-weight:300; vertical-align:top; line-height:1.6; }
+  .odor-table td:first-child { font-family:'Cormorant Garamond',serif; font-size:17px; font-weight:600; color:var(--ufpel-blue-dk); }
+
+  /* ===== QUIZ ===== */
+  .quiz-section { background:var(--off-white); }
+  .quiz-box { max-width:720px; margin:0 auto; }
+  .quiz-question { margin-bottom:2.5rem; background:var(--cream); padding:2rem; border:1px solid var(--border); }
+  .quiz-q { font-family:'Cormorant Garamond',serif; font-size:20px; color:var(--ufpel-blue-dk); margin-bottom:1.2rem; font-weight:400; }
+  .quiz-options { display:flex; flex-direction:column; gap:.5rem; }
+  .quiz-opt {
+    display:flex; align-items:center; gap:12px; padding:10px 14px;
+    cursor:pointer; border:1px solid transparent;
+    transition:border-color .2s, background .2s;
+    border-radius:1px; font-size:13.5px; font-weight:300;
+  }
+  .quiz-opt:hover { border-color:var(--ufpel-blue-lt); background:rgba(30,95,168,.05); }
+  .quiz-opt input { accent-color:var(--ufpel-blue); }
+  .quiz-submit {
+    background:var(--ufpel-blue-dk); color:var(--off-white);
+    border:none; padding:12px 28px; font-size:12px;
+    text-transform:uppercase; letter-spacing:2px; font-weight:500;
+    cursor:pointer; transition:background .3s; margin-top:1rem;
+  }
+  .quiz-submit:hover { background:var(--ufpel-blue); }
+  .quiz-feedback { margin-top:1.5rem; padding:1.2rem; display:none; font-size:14px; line-height:1.7; }
+  .quiz-feedback.correct { background:rgba(30,95,168,.08); border-left:3px solid var(--ufpel-blue); color:var(--ufpel-blue-dk); }
+  .quiz-feedback.incorrect { background:rgba(245,196,0,.12); border-left:3px solid var(--ufpel-yellow); color:#7A6000; }
+
+  /* ===== FOOTER ===== */
+  footer {
+    background:var(--deep); color:rgba(253,251,247,.5);
+    padding:3rem 2rem; text-align:center;
+  }
+  footer .footer-logo { font-family:'Cormorant Garamond',serif; font-size:28px; font-weight:300; color:var(--off-white); margin-bottom:.5rem; }
+  footer p { font-size:12px; line-height:2; }
+  footer a { color:var(--ufpel-yellow); text-decoration:none; }
+  footer a:hover { color:var(--off-white); }
+
+  /* ===== ANIMATIONS ===== */
+  .fade-in { opacity:0; transform:translateY(24px); transition:opacity .7s ease, transform .7s ease; }
+  .fade-in.visible { opacity:1; transform:none; }
+
+  /* ===== RESPONSIVE ===== */
+  @media (max-width:900px) {
+    .fatores-grid { grid-template-columns:1fr; }
+    .avaliacao-nums { grid-template-columns:repeat(2,1fr); }
+    .global-grid { grid-template-columns:1fr; }
+    .timers-grid { grid-template-columns:1fr; }
+    .time-grid { grid-template-columns:repeat(2,1fr); }
+    .lpp-grid { grid-template-columns:1fr; }
+    .ryb-grid { grid-template-columns:1fr; }
+    .tecidos-grid { grid-template-columns:1fr; }
+    .exsud-intro { grid-template-columns:1fr; }
+    .exsud-tipos { grid-template-columns:1fr; }
+    .vol-grid { grid-template-columns:repeat(2,1fr); }
+    .bordas-grid { grid-template-columns:1fr; }
+    .mens-steps { grid-template-columns:1fr; }
+    .dor-tipos { grid-template-columns:repeat(2,1fr); }
+    .escalas-row { grid-template-columns:1fr; }
+    .prev-steps { grid-template-columns:1fr; }
+    .prev-steps::before { display:none; }
+    nav { display:none; }
+  }
+
+
+  /* ===== IMAGENS DO MATERIAL ===== */
+  .img-band {
+    background: var(--off-white);
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+  }
+  .img-band-dark {
+    background: rgba(255,255,255,.04);
+    border-top: 1px solid rgba(255,255,255,.08);
+    border-bottom: 1px solid rgba(255,255,255,.08);
+  }
+  .figure-lead {
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: var(--ufpel-blue);
+    font-weight: 500;
+    margin-bottom: 1rem;
+  }
+  .img-band-dark .figure-lead { color: var(--ufpel-yellow); }
+  .figure-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.2rem;
+  }
+  .figure-grid-3 {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.2rem;
+  }
+  .figure-card {
+    background: var(--cream);
+    border: 1px solid var(--border);
+    overflow: hidden;
+    transition: transform .25s, box-shadow .25s, border-color .25s;
+  }
+  .img-band-dark .figure-card {
+    background: rgba(255,255,255,.03);
+    border-color: rgba(255,255,255,.08);
+  }
+  .figure-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 12px 28px rgba(13,31,53,.08);
+    border-color: rgba(30,95,168,.25);
+  }
+  .figure-card img {
+    display: block;
+    width: 100%;
+    height: auto;
+  }
+  .figure-cap {
+    padding: .9rem 1rem 1rem;
+    font-size: 12.5px;
+    line-height: 1.6;
+    color: var(--mid);
+    font-weight: 300;
+  }
+  .img-band-dark .figure-cap { color: rgba(253,251,247,.78); }
+  .figure-cap strong {
+    display: block;
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 1.2px;
+    margin-bottom: .2rem;
+    color: var(--ufpel-blue-dk);
+    font-weight: 500;
+  }
+  .img-band-dark .figure-cap strong { color: var(--ufpel-yellow); }
+  .hero-visual {
+    margin: 2rem auto 0;
+    max-width: 720px;
+    border: 1px solid rgba(255,255,255,.12);
+    background: rgba(255,255,255,.04);
+    padding: .7rem;
+  }
+  .hero-visual img {
+    width: 100%;
+    display: block;
+  }
+  .wide-figure img { width: 100%; display: block; }
+  .wide-figure {
+    overflow: hidden;
+    border: 1px solid var(--border);
+    background: var(--off-white);
+  }
+  @media (max-width:900px) {
+    .figure-grid, .figure-grid-3 { grid-template-columns: 1fr; }
+  }
+
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header class="site-header">
+  <div class="logo-area">
+    <div class="logo-circle">FEn<br>UFPel</div>
+    <div class="logo-text">FEn UFPel · <span>Cicatrização</span></div>
+  </div>
+  <nav>
+    <a href="#fatores">Fatores</a>
+    <a href="#avaliacao">Avaliação</a>
+    <a href="#timers">TIMERS</a>
+    <a href="#tecidos">Tecidos</a>
+    <a href="#exsudato">Exsudato</a>
+    <a href="#bordas">Bordas</a>
+    <a href="#lpp">LPP</a>
+    <a href="#quiz">Quiz</a>
+  </nav>
+</header>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-blob hero-blob-1"></div>
+  <div class="hero-blob hero-blob-2"></div>
+  <div class="hero-stripe"></div>
+  <div class="hero-bg-text">CICATRIZAÇÃO</div>
+  <div class="hero-inner">
+    <p class="hero-eyebrow">Faculdade de Enfermagem · UFPel · Fundada em 1976</p>
+    <h1 class="hero-title">Interferências e<br><em>Complicações</em><br>na Cicatrização</h1>
+    <p class="hero-subtitle">Guia interativo sobre fatores que interferem na cicatrização, avaliação sistemática de feridas, tecidos, exsudato, bordas e escalas clínicas.</p>
+    <div class="hero-visual fade-in"><img src="cicatriza.img/aula.17_54.cicatrizacao_01.png" alt="Lâmina introdutória sobre cicatrização"></div>
+    <a href="#fatores" class="hero-cta">Iniciar aprendizado →</a>
+  </div>
+  <div class="scroll-hint">
+    <div class="scroll-line"></div>
+    scroll
+  </div>
+</section>
+
+<!-- FATORES QUE INTERFEREM -->
+<section id="fatores">
+  <div class="container">
+    <p class="section-label fade-in">Módulo 01</p>
+    <h2 class="section-title fade-in">Fatores que <em>Interferem</em> na Cicatrização</h2>
+    <p class="section-lead fade-in">A cicatrização é influenciada por dois grupos de fatores: os relacionados à condição sistêmica do paciente e os locais, inerentes à própria ferida.</p>
+
+    <div class="fatores-grid fade-in">
+      <div class="fatores-col fatores-col-left">
+        <h3>Fatores Locais · Ferida</h3>
+        <div class="fator-item"><span class="fator-dot"></span>Umidade / ressecamento na ferida</div>
+        <div class="fator-item"><span class="fator-dot"></span>Vascularização das bordas da ferida</div>
+        <div class="fator-item"><span class="fator-dot"></span>Carga microbiana na ferida</div>
+        <div class="fator-item"><span class="fator-dot"></span>Profundidade da lesão e/ou estruturas acometidas — fáscia, tendões, cartilagens, ossos, vísceras e órgãos</div>
+        <div class="fator-item"><span class="fator-dot"></span>Tratamento propriamente dito</div>
+        <div class="fator-item"><span class="fator-dot"></span>Edema</div>
+        <div class="fator-item"><span class="fator-dot"></span>Infecção, necrose, corpos estranhos</div>
+        <div class="fator-item"><span class="fator-dot"></span>Extensão e local da ferida</div>
+        <p class="source-tag">(SÃO PAULO, 2022)</p>
+      </div>
+      <div class="fatores-col fatores-col-right">
+        <h3>Fatores Gerais · Sistêmicos</h3>
+        <div class="fator-item"><span class="fator-dot"></span>Infecção</div>
+        <div class="fator-item"><span class="fator-dot"></span>Idade</div>
+        <div class="fator-item"><span class="fator-dot"></span>Atividade / mobilidade</div>
+        <div class="fator-item"><span class="fator-dot"></span>Oxigenação e perfusão de tecidos</div>
+        <div class="fator-item"><span class="fator-dot"></span>Obesidade</div>
+        <div class="fator-item"><span class="fator-dot"></span>Nutrição</div>
+        <div class="fator-item"><span class="fator-dot"></span>Doenças</div>
+        <div class="fator-item"><span class="fator-dot"></span>Medicamentos</div>
+        <div class="fator-item"><span class="fator-dot"></span>Tabagismo</div>
+        <div class="fator-item"><span class="fator-dot"></span>Estado imunológico</div>
+        <div class="fator-item"><span class="fator-dot"></span>Psicológicos / espirituais</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="img-band">
+  <div class="container">
+    <p class="figure-lead fade-in">Imagens do material · visão geral</p>
+    <div class="figure-grid fade-in">
+      <figure class="figure-card"><img src="cicatriza.img/aula.17_54.cicatrizacao_02.png" alt="Slide sobre fatores que interferem"><figcaption class="figure-cap"><strong>Fatores intervenientes</strong>Página visual de apoio para revisar fatores locais e sistêmicos que influenciam a cicatrização.</figcaption></figure>
+      <figure class="figure-card"><img src="cicatriza.img/aula.17_54.cicatrizacao_03.png" alt="Slide complementar"><figcaption class="figure-cap"><strong>Leitura complementar</strong>Imagem de apoio para discussão em sala e retomada rápida dos conceitos do módulo inicial.</figcaption></figure>
+    </div>
+  </div>
+</section>
+
+<!-- AVALIAÇÃO DA FERIDA (10 parâmetros) -->
+<section id="avaliacao" class="avaliacao-section">
+  <div class="container">
+    <p class="section-label fade-in" style="color:var(--ufpel-yellow)">Módulo 02</p>
+    <h2 class="section-title fade-in">Parâmetros de <em>Avaliação</em> da Ferida</h2>
+    <p class="section-lead fade-in">A avaliação sistemática da ferida contempla 10 dimensões essenciais para o diagnóstico de enfermagem e o planejamento do cuidado.</p>
+
+    <div class="avaliacao-nums fade-in">
+      <div class="av-item"><div class="av-num">1</div><div class="av-label">Complexidade</div><div class="av-desc">Extensão das estruturas acometidas</div></div>
+      <div class="av-item"><div class="av-num">2</div><div class="av-label">Etiologia</div><div class="av-desc">Causa e origem da ferida</div></div>
+      <div class="av-item"><div class="av-num">3</div><div class="av-label">Localização</div><div class="av-desc">Localização anatômica precisa</div></div>
+      <div class="av-item"><div class="av-num">4</div><div class="av-label">Exsudato</div><div class="av-desc">Tipo, volume e coloração</div></div>
+      <div class="av-item"><div class="av-num">5</div><div class="av-label">Contaminação</div><div class="av-desc">Grau de carga microbiana</div></div>
+      <div class="av-item"><div class="av-num">6</div><div class="av-label">Perda Tecidual</div><div class="av-desc">Classificação da profundidade</div></div>
+      <div class="av-item"><div class="av-num">7</div><div class="av-label">Tecido</div><div class="av-desc">Tipo de tecido no leito da ferida</div></div>
+      <div class="av-item"><div class="av-num">8</div><div class="av-label">Bordas</div><div class="av-desc">Margens e pele perilesional</div></div>
+      <div class="av-item"><div class="av-num">9</div><div class="av-label">Mensuração</div><div class="av-desc">Comprimento × largura × profundidade</div></div>
+      <div class="av-item"><div class="av-num">10</div><div class="av-label">Dor</div><div class="av-desc">Tipo, intensidade e escala</div></div>
+    </div>
+
+    <div style="margin-top:3rem">
+      <p class="section-label fade-in" style="color:var(--ufpel-yellow)">Avaliação Global</p>
+      <h3 class="section-title fade-in" style="font-size:clamp(22px,3.5vw,38px); color:var(--off-white)">Avaliação Global de <em>Pessoas com Feridas</em></h3>
+      <div class="global-grid fade-in">
+        <div class="global-card">
+          <div class="global-icon">🩺</div>
+          <h3>Estado Geral do Paciente</h3>
+          <p>Anamnese completa, exame físico geral e específico, exames laboratoriais e de imagem integram a avaliação da pessoa.</p>
+          <div class="tag-row"><span class="gtag">Anamnese</span><span class="gtag">Exame físico</span><span class="gtag">Exames lab.</span></div>
+        </div>
+        <div class="global-card">
+          <div class="global-icon">🔬</div>
+          <h3>Características da Ferida</h3>
+          <p>Dimensão, tipo de tecido, margem, pele ao redor, tipo e quantidade do exsudato, presença de odor e intensidade da dor → <strong>Registro de Enfermagem</strong>.</p>
+          <div class="tag-row"><span class="gtag">Dimensão</span><span class="gtag">Exsudato</span><span class="gtag">Odor</span><span class="gtag">Dor</span></div>
+        </div>
+        <div class="global-card">
+          <div class="global-icon">🧠</div>
+          <h3>Fatores Psicossociais</h3>
+          <p>Condições emocionais, suporte familiar e social, crenças e aspectos espirituais impactam diretamente no processo de cicatrização.</p>
+        </div>
+        <div class="global-card">
+          <div class="global-icon">✅</div>
+          <h3>Adesão ao Tratamento & Fatores Extrínsecos</h3>
+          <p>Capacidade de autocuidado, acesso ao serviço de saúde, condições socioeconômicas e cumprimento das orientações terapêuticas.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="img-band img-band-dark">
+  <div class="container">
+    <p class="figure-lead fade-in">Imagens do material · avaliação clínica</p>
+    <div class="figure-grid-3 fade-in">
+      <figure class="figure-card"><img src="cicatriza.img/aula.17_54.cicatrizacao_04.png" alt="Parâmetros de avaliação"><figcaption class="figure-cap"><strong>Parâmetros</strong>Lâmina de apoio para complexidade, etiologia, localização e demais variáveis da ferida.</figcaption></figure>
+      <figure class="figure-card"><img src="cicatriza.img/aula.17_54.cicatrizacao_05.png" alt="Avaliação global"><figcaption class="figure-cap"><strong>Avaliação global</strong>Resumo visual para reforçar estado geral, ferida, fatores psicossociais e adesão terapêutica.</figcaption></figure>
+      <figure class="figure-card"><img src="cicatriza.img/aula.17_54.cicatrizacao_06.png" alt="Apoio visual de avaliação"><figcaption class="figure-cap"><strong>Registro clínico</strong>Material ilustrativo para discussão de observação sistemática e documentação.</figcaption></figure>
+    </div>
+  </div>
+</section>
+
+<!-- TIMERS -->
+<section id="timers" class="timers-section">
+  <div class="container">
+    <p class="section-label fade-in" style="color:var(--ufpel-yellow)">Módulo 03</p>
+    <h2 class="section-title fade-in">Framework <em>T.I.M.E.R.S</em></h2>
+    <p class="section-lead fade-in">Sistema empregado para avaliar feridas crônicas, baseado no conceito de <em>wound bed preparation</em> (WBP) — preparo do leito da ferida.</p>
+    <div class="timers-grid fade-in">
+      <div class="timer-item">
+        <span class="timer-letter">T</span>
+        <div class="timer-word">Tissue / Debridement — Tecido</div>
+        <div class="timer-desc">Avaliação do tecido não viável no leito da ferida: necrose, esfacelos, granulação e epitelização. Determina necessidade e tipo de desbridamento.</div>
+      </div>
+      <div class="timer-item">
+        <span class="timer-letter">I</span>
+        <div class="timer-word">Infection / Inflammation</div>
+        <div class="timer-desc">Sinais de infecção e inflamação: calor, rubor, edema, exsudato purulento, dor aumentada, odor. Orienta o uso de antimicrobianos tópicos.</div>
+      </div>
+      <div class="timer-item">
+        <span class="timer-letter">M</span>
+        <div class="timer-word">Moisture — Umidade</div>
+        <div class="timer-desc">Equilíbrio do exsudato. Excesso causa maceração; escassez resseca o leito e prejudica a migração celular. A cobertura regula esse equilíbrio.</div>
+      </div>
+      <div class="timer-item">
+        <span class="timer-letter">E</span>
+        <div class="timer-word">Edge — Borda / Avanço Epitelial</div>
+        <div class="timer-desc">Avaliação das margens: epitelizadas, maceradas, enroladas (epibole), callosas ou com bolsão. Borda comprometida impede a migração de queratinócitos.</div>
+      </div>
+      <div class="timer-item">
+        <span class="timer-letter">R</span>
+        <div class="timer-word">Reparative / Regenerative Capacity</div>
+        <div class="timer-desc">Monitoramento do progresso cicatricial ao longo do tempo. Ferida sem redução de 20–40% em 4 semanas sugere revisão do plano terapêutico.</div>
+      </div>
+      <div class="timer-item">
+        <span class="timer-letter">S</span>
+        <div class="timer-word">Social Factors — Fatores Sociais</div>
+        <div class="timer-desc">Nutrição, comorbidades, suporte familiar, adesão ao tratamento, condições socioeconômicas e capacidade de autocuidado.</div>
+      </div>
+    </div>
+
+    <!-- TIME params -->
+    <div style="margin-top:3rem">
+      <p class="section-label fade-in" style="color:var(--ufpel-yellow)">Framework TIME</p>
+      <h3 class="section-title fade-in" style="font-size:clamp(22px,3.5vw,38px); color:var(--off-white)">Parâmetros para Avaliação da <em>Lesão — TIME</em></h3>
+      <div class="time-grid fade-in">
+        <div class="time-card">
+          <h3>Tecido</h3>
+          <ul class="time-param">
+            <li>Tamanho</li>
+            <li>Profundidade</li>
+            <li>Tipo de necrose</li>
+            <li>Quantidade de necrose</li>
+            <li>Granulação</li>
+            <li>Epitelização</li>
+          </ul>
+        </div>
+        <div class="time-card">
+          <h3>Inflamação / Infecção</h3>
+          <ul class="time-param">
+            <li>Carga bacteriana</li>
+            <li>Dor</li>
+            <li>Odor</li>
+          </ul>
+        </div>
+        <div class="time-card">
+          <h3>Desequilíbrio da Umidade</h3>
+          <ul class="time-param">
+            <li>Tipo de exsudato</li>
+            <li>Quantidade de exsudato</li>
+          </ul>
+        </div>
+        <div class="time-card">
+          <h3>Borda Epitelial que não avança</h3>
+          <ul class="time-param">
+            <li>Bordas</li>
+            <li>Descolamento</li>
+            <li>Edema</li>
+            <li>Endurecimento</li>
+            <li>Cor da pele perilesional</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="img-band img-band-dark">
+  <div class="container">
+    <p class="figure-lead fade-in">Imagens do material · TIME e TIMERS</p>
+    <div class="figure-grid fade-in">
+      <figure class="figure-card"><img src="cicatriza.img/aula.17_54.cicatrizacao_07.png" alt="TIMERS"><figcaption class="figure-cap"><strong>Framework TIMERS</strong>Esquema visual para preparar o leito da ferida e raciocinar condutas.</figcaption></figure>
+      <figure class="figure-card"><img src="cicatriza.img/aula.17_54.cicatrizacao_08.png" alt="TIME"><figcaption class="figure-cap"><strong>Framework TIME</strong>Lâmina de apoio para tecido, infecção, umidade e borda epitelial que não avança.</figcaption></figure>
+    </div>
+  </div>
+</section>
+
+<!-- LIMITES ANATÔMICOS -->
+<section>
+  <div class="container">
+    <p class="section-label fade-in">Módulo 04</p>
+    <h2 class="section-title fade-in">Limites <em>Anatômicos</em> da Ferida</h2>
+    <p class="section-lead fade-in">Cada estrutura da ferida possui função e nomenclatura específica, fundamentais para o registro clínico e para a escolha do tratamento adequado.</p>
+    <div class="global-grid fade-in">
+      <div class="global-card">
+        <div class="global-icon">🔴</div>
+        <h3>Leito da Ferida</h3>
+        <p>Área central da ferida, vascularizada, preenchida por tecido de granulação e/ou necrose. É onde ocorre a regeneração tecidual.</p>
+      </div>
+      <div class="global-card">
+        <div class="global-icon">🟡</div>
+        <h3>Borda</h3>
+        <p>Contorno interno da ferida, onde inicia a etapa da epitelização. Deve estar aderida ao leito para permitir a migração celular.</p>
+      </div>
+      <div class="global-card">
+        <div class="global-icon">🔵</div>
+        <h3>Margem</h3>
+        <p>Contorno externo da ferida — limite anatômico entre os bordos e a pele perilesional. Funciona como fronteira de cicatrização.</p>
+      </div>
+      <div class="global-card">
+        <div class="global-icon">⚪</div>
+        <h3>Pele Perilesional</h3>
+        <p>Tecido sadio ao redor da ferida. Deve ser inspecionada quanto à hidratação, sinais de lesão persistente e aderência à margem do leito.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="img-band">
+  <div class="container">
+    <p class="figure-lead fade-in">Imagens do material · anatomia e limites</p>
+    <div class="figure-grid-3 fade-in">
+      <figure class="figure-card"><img src="cicatriza.img/aula.17_54.cicatrizacao_09.png" alt="Leito da ferida"><figcaption class="figure-cap"><strong>Leito</strong>Referência visual para identificação anatômica do centro da ferida.</figcaption></figure>
+      <figure class="figure-card"><img src="cicatriza.img/aula.17_54.cicatrizacao_10.png" alt="Borda e margem"><figcaption class="figure-cap"><strong>Borda e margem</strong>Apoio para diferenciação entre contorno interno e limite externo.</figcaption></figure>
+      <figure class="figure-card"><img src="cicatriza.img/aula.17_54.cicatrizacao_11.png" alt="Pele perilesional"><figcaption class="figure-cap"><strong>Pele perilesional</strong>Material útil para discussão de hidratação, maceração e sinais de agressão.</figcaption></figure>
+    </div>
+  </div>
+</section>
+
+<!-- TECIDOS NO LEITO -->
+<section id="tecidos">
+  <div class="container">
+    <p class="section-label fade-in">Módulo 05</p>
+    <h2 class="section-title fade-in">Tecidos no <em>Leito da Ferida</em></h2>
+    <p class="section-lead fade-in">O sistema RYB e a classificação por cor orientam a conduta terapêutica com base no tipo de tecido predominante no leito da ferida.</p>
+  </div>
+
+  <!-- RYB -->
+  <div style="margin-top:0" class="ryb-section">
+    <div class="container" style="padding-top:3rem; padding-bottom:1rem">
+      <p class="section-label fade-in" style="color:var(--ufpel-yellow)">Sistema RYB</p>
+      <h3 class="section-title fade-in" style="font-size:clamp(22px,3.5vw,38px); color:var(--off-white)">Red · <em>Yellow</em> · Black</h3>
+    </div>
+    <div class="ryb-grid fade-in">
+      <div class="ryb-card ryb-r">
+        <span class="ryb-letter">R</span>
+        <div class="ryb-word">Vermelho · Red</div>
+        <div class="ryb-desc">Ferida com predomínio de tecido de granulação e novo epitélio. Favorece o ambiente úmido, protege os tecidos e previne infecções. A vermelhidão deve-se à hemoglobina das hemácias circulando pelo tecido. Em casos de colonização crítica ou isquemia, apresenta-se rosada e pálida. <em>Hipergranulação</em> pode ocorrer com alta carga bacteriana ou uso de certos produtos.</div>
+      </div>
+      <div class="ryb-card ryb-y">
+        <span class="ryb-letter">Y</span>
+        <div class="ryb-word">Amarelo · Yellow</div>
+        <div class="ryb-desc">Feridas com exsudato fibroso; tecidos moles e desvitalizados. Podem estar colonizadas, favorecendo infecções. Inclui três subtipos: <strong>Pus</strong> (textura espessa, odor forte — indica infecção); <strong>Fibrina</strong> (produto da coagulação — camada endurecida sobre o leito); <strong>Necrose úmida/esfacelo</strong> (tecido necrótico parcialmente solubilizado, varia entre branco e castanho-amarelado).</div>
+      </div>
+      <div class="ryb-card ryb-b">
+        <span class="ryb-letter">B</span>
+        <div class="ryb-word">Preto · Black</div>
+        <div class="ryb-desc">Apresenta necrose de coagulação (escara), tecido desvitalizado de consistência endurecida, fortemente aderido ao leito e às bordas. Cor varia entre acinzentada, amarronzada e preta. Deve ser retirado para permitir migração celular — exceto em áreas com comprometimento vascular ou risco aumentado de infecção.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Tecidos viáveis e inviáveis -->
+  <div class="container" style="padding-top:3rem">
+    <div class="tecidos-grid fade-in">
+      <div class="tecido-card tc-granulacao">
+        <h3>Granulação</h3>
+        <p>Tecido viável, de coloração vermelho vivo, formado por capilares neoformados e fibroblastos. Indica ativa cicatrização e boa vascularização do leito.</p>
+        <span class="cor-tag">🔴 Vermelho vivo</span>
+      </div>
+      <div class="tecido-card tc-epitelizacao">
+        <h3>Epitelização</h3>
+        <p>Tecido viável, recém-cicatrizado, com coloração róseo-clara ou avermelhada. Representa a fase final de reepitelização da ferida.</p>
+        <span class="cor-tag">🌸 Róseo / Rosa claro</span>
+      </div>
+      <div class="tecido-card tc-necrose-c">
+        <h3>Necrose de Coagulação</h3>
+        <p>Tecido inviável — escara. Células mortas desidratadas formam tecido duro e aderido. Deve ser removido via desbridamento para liberar a migração celular.</p>
+        <span class="cor-tag">⬛ Preta · Escara</span>
+      </div>
+      <div class="tecido-card tc-necrose-l">
+        <h3>Necrose de Liquefação</h3>
+        <p>Tecido inviável — esfacelo. Parcialmente solubilizado, contém bactérias, fibrina, elastina, colágeno e leucócitos. Pode estar frouxo ou firmemente aderido.</p>
+        <span class="cor-tag">🟡 Amarela · Esfacelo</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="img-band img-band-dark">
+  <div class="container">
+    <p class="figure-lead fade-in">Imagens do material · tecidos e sistema RYB</p>
+    <div class="figure-grid-3 fade-in">
+      <figure class="figure-card"><img src="cicatriza.img/aula.17_54.cicatrizacao_12.png" alt="Sistema RYB"><figcaption class="figure-cap"><strong>RYB</strong>Leitura visual do sistema red-yellow-black para escolha da conduta.</figcaption></figure>
+      <figure class="figure-card"><img src="cicatriza.img/aula.17_54.cicatrizacao_13.png" alt="Granulação e epitelização"><figcaption class="figure-cap"><strong>Tecidos viáveis</strong>Apoio para granulação e epitelização no leito da ferida.</figcaption></figure>
+      <figure class="figure-card"><img src="cicatriza.img/aula.17_54.cicatrizacao_14.png" alt="Necroses"><figcaption class="figure-cap"><strong>Tecidos inviáveis</strong>Resumo visual sobre necrose de coagulação e liquefação.</figcaption></figure>
+    </div>
+  </div>
+</section>
+
+<!-- EXSUDATO -->
+<section id="exsudato" class="exsud-section">
+  <div class="container">
+    <p class="section-label fade-in">Módulo 06</p>
+    <h2 class="section-title fade-in"><em>Exsudato</em> da Ferida</h2>
+    <p class="section-lead fade-in">Do latim <em>exsūdāre</em> — "fluir para fora". O exsudato indica aumento na permeabilidade vascular em área de injúria, caracterizando reação inflamatória.</p>
+
+    <div class="exsud-intro fade-in">
+      <div class="exsud-facts">
+        <div class="exsud-fact">
+          <div class="exsud-icon">💧</div>
+          <div class="exsud-text">
+            <strong>Composição</strong>
+            <span>Água, eletrólitos, proteínas, mediadores inflamatórios, proteinases, fatores de crescimento, metabólitos, neutrófilos, macrófagos, plaquetas e microorganismos.</span>
+          </div>
+        </div>
+        <div class="exsud-fact">
+          <div class="exsud-icon">🔬</div>
+          <div class="exsud-text">
+            <strong>Função no processo cicatricial</strong>
+            <span>Aumenta durante o estágio inflamatório para limpar a ferida e proporcionar um ambiente úmido, maximizando a cicatrização.</span>
+          </div>
+        </div>
+        <div class="exsud-fact">
+          <div class="exsud-icon">📊</div>
+          <div class="exsud-text">
+            <strong>Características avaliadas</strong>
+            <span>Tipo, odor, volume, coloração e consistência são os cinco parâmetros fundamentais para classificação do exsudato.</span>
+          </div>
+        </div>
+        <div class="exsud-fact">
+          <div class="exsud-icon">⚠️</div>
+          <div class="exsud-text">
+            <strong>Excesso e déficit</strong>
+            <span>Excesso → maceração da pele perilesional. Déficit → ressecamento do leito, prejudicando a migração celular. O equilíbrio é essencial.</span>
+          </div>
+        </div>
+      </div>
+      <div class="exsud-aside">
+        <div class="info-box">
+          <h4>📋 Volume do Exsudato (Avaliação do Curativo)</h4>
+          <p><strong>Seco:</strong> leito seco, cobertura sem marcas, pode estar aderida.<br><br>
+          <strong>Úmido:</strong> pouca a média quantidade visível ao retirar.<br><br>
+          <strong>Saturado:</strong> cobertura primária saturada, troca necessária para proteger a borda.<br><br>
+          <strong>Vazando:</strong> exsudato não absorvido pelo curativo primário, necessita cobertura com maior retenção.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Tipos de exsudato -->
+    <p class="section-label fade-in">Tipos · Consistência · Coloração</p>
+    <div class="exsud-tipos fade-in">
+      <div class="et-card">
+        <h3>Seroso</h3>
+        <div class="et-char">Características</div>
+        <p>Claro e aquoso. Esperado durante todo o processo de cicatrização. Excesso pode indicar ICC, desnutrição ou fístulas.</p>
+      </div>
+      <div class="et-card">
+        <h3>Fibrinoso</h3>
+        <div class="et-char">Características</div>
+        <p>Claro com pontos gelatinosos. Presença de fibrinas — indicativo de inflamação, pode estar associado a infecção.</p>
+      </div>
+      <div class="et-card">
+        <h3>Serosanguinolento</h3>
+        <div class="et-char">Características</div>
+        <p>Claro com pontos avermelhados/roseados. Normal na fase inflamatória e proliferativa; pode decorrer de remoção traumática de cobertura.</p>
+      </div>
+      <div class="et-card">
+        <h3>Purulento</h3>
+        <div class="et-char">Características</div>
+        <p>Leitoso, amarelado, amarronzado ou esverdeado, geralmente espesso. Composto de neutrófilos, células inflamatórias e patógenos. Indicativo de infecção.</p>
+      </div>
+      <div class="et-card">
+        <h3>Seropurulento</h3>
+        <div class="et-char">Características</div>
+        <p>Leitoso e amarelado, geralmente fino. Composto de exsudato seroso com presença de pus. Pode indicar infecção ou liquefação de necrose.</p>
+      </div>
+      <div class="et-card">
+        <h3>Sanguinolento · Hemorrágico</h3>
+        <div class="et-char">Características</div>
+        <p>Avermelhado, espesso ou fino. Composto por glóbulos vermelhos, indicativo de rompimento de capilares ou trauma na ferida.</p>
+      </div>
+    </div>
+
+    <!-- Volume resumo -->
+    <p class="section-label fade-in" style="margin-top:3rem">Volume</p>
+    <div class="vol-grid fade-in">
+      <div class="vol-card">
+        <div class="vol-drops">∅</div>
+        <h3>Seco</h3>
+        <p>Leito seco, sem umidade visível. Cobertura sem marcas. Pode estar aderida à ferida.</p>
+      </div>
+      <div class="vol-card">
+        <div class="vol-drops">💧</div>
+        <h3>Baixo / Úmido</h3>
+        <p>Pouca a média quantidade visível ao retirar o curativo. Cobertura levemente marcada.</p>
+      </div>
+      <div class="vol-card">
+        <div class="vol-drops">💧💧</div>
+        <h3>Saturado</h3>
+        <p>Cobertura primária saturada. Troca necessária para proteger a borda e a perilesão.</p>
+      </div>
+      <div class="vol-card">
+        <div class="vol-drops">💧💧💧</div>
+        <h3>Vazando</h3>
+        <p>Exsudato não absorvido pelo curativo primário. Necessita cobertura com alta retenção.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="img-band">
+  <div class="container">
+    <p class="figure-lead fade-in">Imagens do material · exsudato</p>
+    <div class="wide-figure fade-in">
+      <img src="cicatriza.img/aula.17_54.cicatrizacao_20.png" alt="Exsudato">
+    </div>
+    <div class="figure-grid-3 fade-in" style="margin-top:1.2rem;">
+      <figure class="figure-card"><img src="cicatriza.img/aula.17_54.cicatrizacao_15.png" alt="Conceitos de exsudato"><figcaption class="figure-cap"><strong>Conceito</strong>Definição e importância clínica do exsudato.</figcaption></figure>
+      <figure class="figure-card"><img src="cicatriza.img/aula.17_54.cicatrizacao_16.png" alt="Tipos de exsudato"><figcaption class="figure-cap"><strong>Tipos</strong>Comparação visual entre apresentações serosas, purulentas e mistas.</figcaption></figure>
+      <figure class="figure-card"><img src="cicatriza.img/aula.17_54.cicatrizacao_17.png" alt="Volume de exsudato"><figcaption class="figure-cap"><strong>Volume</strong>Apoio para interpretar umidade, saturação e vazamento do curativo.</figcaption></figure>
+    </div>
+  </div>
+</section>
+
+<!-- ODOR -->
+<section class="odor-section">
+  <div class="container">
+    <p class="section-label fade-in">Módulo 06b</p>
+    <h2 class="section-title fade-in">Odor da <em>Ferida</em></h2>
+    <p class="section-lead fade-in">As feridas podem gerar mau cheiro de intensidade variável por necrose tecidual ou pelo crescimento de bactérias específicas capazes de produzir odor (anaeróbios, <em>Pseudomonas</em>...).</p>
+    <table class="odor-table fade-in">
+      <thead><tr><th>Odor</th><th>Características</th></tr></thead>
+      <tbody>
+        <tr><td>Ausente</td><td>Sem odor perceptível.</td></tr>
+        <tr><td>Característico</td><td>Odor suportável, exalado no descobrimento da lesão; não impede a aproximação.</td></tr>
+        <tr><td>Fétido</td><td>Odor desagradável que leva à reação de afastamento por parte do profissional e dos familiares.</td></tr>
+        <tr><td>Pútrido</td><td>Odor fétido de grande intensidade, associado a carne em decomposição. Indica presença de necrose extensa ou infecção por anaeróbios.</td></tr>
+      </tbody>
+    </table>
+    <p style="margin-top:1rem; font-size:12px; color:var(--soft)">Fonte: Adaptado de Irion (apud CAMPOS et al., 2016)</p>
+  </div>
+</section>
+
+<section class="img-band">
+  <div class="container">
+    <p class="figure-lead fade-in">Imagens do material · odor</p>
+    <div class="figure-grid fade-in">
+      <figure class="figure-card"><img src="cicatriza.img/aula.17_54.cicatrizacao_18.png" alt="Odor da ferida"><figcaption class="figure-cap"><strong>Classificação do odor</strong>Quadro visual para ausente, característico, fétido e pútrido.</figcaption></figure>
+      <figure class="figure-card"><img src="cicatriza.img/aula.17_54.cicatrizacao_19.png" alt="Odor e microrganismos"><figcaption class="figure-cap"><strong>Interpretação clínica</strong>Imagem de apoio para discutir necrose, bactérias específicas e impacto assistencial.</figcaption></figure>
+    </div>
+  </div>
+</section>
+
+<!-- BORDAS -->
+<section id="bordas" class="bordas-section">
+  <div class="container">
+    <p class="section-label fade-in" style="color:var(--ufpel-yellow)">Módulo 07</p>
+    <h2 class="section-title fade-in">Tipos de <em>Bordas</em></h2>
+    <p class="section-lead fade-in">As bordas são pontos fundamentais para a cicatrização e devem ser inspecionadas quanto à hidratação, sinais de lesão persistente e aderência ao leito da ferida.</p>
+    <div class="bordas-grid fade-in">
+      <div class="borda-card">
+        <h3>Indistinta / Difusa</h3>
+        <p>Não há possibilidade de distinguir claramente o contorno da ferida. Dificulta a mensuração e o acompanhamento da evolução.</p>
+      </div>
+      <div class="borda-card">
+        <h3>Aderida</h3>
+        <p>Plana e nivelada com o leito da ferida. Condição ideal para a migração de queratinócitos e o avanço da epitelização.</p>
+      </div>
+      <div class="borda-card">
+        <h3>Não Aderida</h3>
+        <p>A falta de aderência ao leito pode propiciar a formação de túneis, trajetos fistulosos e abscessos.</p>
+        <p class="borda-alert">⚠ Risco de formação de espaço morto</p>
+      </div>
+      <div class="borda-card">
+        <h3>Desnivelada</h3>
+        <p>O leito da ferida é mais profundo do que a borda e a margem. Pode indicar insuficiência tecidual de base para a migração de células epiteliais.</p>
+      </div>
+      <div class="borda-card">
+        <h3>Fibrótica</h3>
+        <p>Tecido de coloração amarela ou branca, de consistência endurecida e rígida, aderido ao leito, decorrente de áreas cicatrizadas patologicamente.</p>
+      </div>
+      <div class="borda-card">
+        <h3>Hiperqueratosa</h3>
+        <p>Sobreposição da camada córnea da epiderme, formando tecido espesso e endurecido de cor amarelada. Impede a migração celular.</p>
+      </div>
+      <div class="borda-card">
+        <h3>Macerada</h3>
+        <p>Complicação comum na borda, margem e pele adjacente. A pele torna-se intumescida e esbranquiçada devido ao excesso de exsudatos e/ou curativos inadequados.</p>
+        <p class="borda-alert">⚠ Controle de umidade prioritário</p>
+      </div>
+      <div class="borda-card">
+        <h3>Epibole (Borda Enrolada)</h3>
+        <p>Borda e margem dobradas entre si. Impede o avanço epitelial. Em feridas cavitárias, preencher completamente com cobertura e gaze para evitar epibole.</p>
+        <p class="borda-alert">⚠ Evitar espaço morto</p>
+      </div>
+      <div class="borda-card">
+        <h3>Mensuração</h3>
+        <p>A ferida cavitária exige preenchimento total. Objetivo: evitar epibole, infecção e necrose, realizando controle rigoroso de umidade no leito.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="img-band img-band-dark">
+  <div class="container">
+    <p class="figure-lead fade-in">Imagens do material · bordas e perilesão</p>
+    <div class="figure-grid-3 fade-in">
+      <figure class="figure-card"><img src="cicatriza.img/aula.17_54.cicatrizacao_21.png" alt="Tipos de bordas"><figcaption class="figure-cap"><strong>Tipos de borda</strong>Painel para borda aderida, macerada, hiperqueratosa, fibrótica e epibole.</figcaption></figure>
+      <figure class="figure-card"><img src="cicatriza.img/aula.17_54.cicatrizacao_22.png" alt="Borda macerada"><figcaption class="figure-cap"><strong>Macerada</strong>Ajuda visual para discutir controle de umidade e proteção da perilesão.</figcaption></figure>
+      <figure class="figure-card"><img src="cicatriza.img/aula.17_54.cicatrizacao_23.png" alt="Epibole e espaço morto"><figcaption class="figure-cap"><strong>Epibole</strong>Resumo visual sobre borda enrolada e necessidade de preenchimento adequado.</figcaption></figure>
+    </div>
+  </div>
+</section>
+
+<!-- MENSURAÇÃO -->
+<section class="mens-section">
+  <div class="container">
+    <p class="section-label fade-in">Módulo 08</p>
+    <h2 class="section-title fade-in">Mensuração da <em>Ferida / Extensão</em></h2>
+    <p class="section-lead fade-in">A mensuração sistemática permite acompanhar a evolução da cicatrização ao longo do tempo e avaliar a efetividade do tratamento.</p>
+    <div class="mens-formula fade-in">
+      <div class="formula">Comprimento (cm) × Largura (cm) × Profundidade (cm) = cm³</div>
+      <p>Fórmula para cálculo do volume da ferida · Registrar sempre com data e horário</p>
+    </div>
+    <div class="mens-steps fade-in">
+      <div class="mens-step">
+        <div class="mens-step-icon">📏</div>
+        <h3>Régua Descartável</h3>
+        <p>Utilizar régua estéril descartável para mensurar comprimento e largura, sempre orientada da cabeça para os pés (comprimento) e ombro a ombro (largura).</p>
+      </div>
+      <div class="mens-step">
+        <div class="mens-step-icon">🧪</div>
+        <h3>Swab Estéril</h3>
+        <p>Para mensurar a profundidade da ferida, utilizar swab estéril introduzido perpendicularmente ao leito até a sua base, marcar o nível e medir com régua.</p>
+      </div>
+      <div class="mens-step">
+        <div class="mens-step-icon">📷</div>
+        <h3>Fotografia</h3>
+        <p>A fotografia clínica é fundamental para o acompanhamento evolutivo. Realizar sempre com régua visível, boa iluminação e ângulo padronizado.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="img-band">
+  <div class="container">
+    <p class="figure-lead fade-in">Imagens do material · mensuração</p>
+    <div class="figure-grid-3 fade-in">
+      <figure class="figure-card"><img src="cicatriza.img/aula.17_54.cicatrizacao_24.png" alt="Mensuração"><figcaption class="figure-cap"><strong>Fórmula</strong>Comprimento, largura e profundidade no acompanhamento da evolução.</figcaption></figure>
+      <figure class="figure-card"><img src="cicatriza.img/aula.17_54.cicatrizacao_25.png" alt="Swab e profundidade"><figcaption class="figure-cap"><strong>Profundidade</strong>Medição com swab estéril e régua descartável.</figcaption></figure>
+      <figure class="figure-card"><img src="cicatriza.img/aula.17_54.cicatrizacao_26.png" alt="Fotografia clínica"><figcaption class="figure-cap"><strong>Fotografia clínica</strong>Registro comparativo com régua e padronização do ângulo.</figcaption></figure>
+    </div>
+  </div>
+</section>
+
+<!-- DOR -->
+<section class="dor-section">
+  <div class="container">
+    <p class="section-label fade-in">Módulo 09</p>
+    <h2 class="section-title fade-in">Avaliação da <em>Dor</em></h2>
+    <p class="section-lead fade-in">A dor relacionada à ferida pode ser cutânea, visceral, isquêmica ou neuropática, cada uma com características específicas que orientam a conduta clínica.</p>
+
+    <div class="dor-tipos fade-in">
+      <div class="dor-card">
+        <h3>Dor Cutânea</h3>
+        <p>Oriunda de receptores na pele. Aguda, bem localizada. Geralmente se intensifica na troca de curativo ou ao toque.</p>
+      </div>
+      <div class="dor-card">
+        <h3>Dor Visceral</h3>
+        <p>Difusa, mal localizada. Associada a lesões profundas com comprometimento de vísceras ou órgãos internos.</p>
+      </div>
+      <div class="dor-card">
+        <h3>Dor Isquêmica</h3>
+        <p>Constante em repouso; piora com elevação dos membros. Associada a insuficiência arterial — pulsos distais ausentes ou reduzidos.</p>
+      </div>
+      <div class="dor-card">
+        <h3>Dor Neuropática</h3>
+        <p>Parestesias, queimação, dormência. Pode ser ausente em úlceras neuropáticas (pé diabético). Não se modifica com elevação.</p>
+      </div>
+    </div>
+
+    <div class="escalas-row fade-in">
+      <div class="escala-box">
+        <h4>Escala Numérica</h4>
+        <p>O paciente atribui um número de 0 a 10 à intensidade da dor. Simples e amplamente aplicada.</p>
+        <div class="num-scale">
+          <div class="ns ns-low">0</div>
+          <div class="ns ns-low">1</div>
+          <div class="ns ns-low">2</div>
+          <div class="ns ns-mid">3</div>
+          <div class="ns ns-mid">4</div>
+          <div class="ns ns-mid">5</div>
+          <div class="ns ns-mid">6</div>
+          <div class="ns ns-high">7</div>
+          <div class="ns ns-high">8</div>
+          <div class="ns ns-high">9</div>
+          <div class="ns ns-high">10</div>
+        </div>
+      </div>
+      <div class="escala-box">
+        <h4>Escala Descritiva</h4>
+        <p>Categorias verbais: Sem dor · Dor leve · Dor moderada · Dor forte · Dor severa · Pior dor possível.</p>
+      </div>
+      <div class="escala-box">
+        <h4>Escala de Faces</h4>
+        <p>Utilizada em crianças ou pacientes com dificuldade de comunicação verbal. Faces expressam intensidade crescente de dor (1 a 6).</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="img-band">
+  <div class="container">
+    <p class="figure-lead fade-in">Imagens do material · dor</p>
+    <div class="figure-grid-3 fade-in">
+      <figure class="figure-card"><img src="cicatriza.img/aula.17_54.cicatrizacao_27.png" alt="Tipos de dor"><figcaption class="figure-cap"><strong>Tipos</strong>Quadro visual de dor cutânea, visceral, isquêmica e neuropática.</figcaption></figure>
+      <figure class="figure-card"><img src="cicatriza.img/aula.17_54.cicatrizacao_28.png" alt="Escala numérica"><figcaption class="figure-cap"><strong>Escalas</strong>Escalas numérica, descritiva e de faces para apoio à avaliação.</figcaption></figure>
+      <figure class="figure-card"><img src="cicatriza.img/aula.17_54.cicatrizacao_29.png" alt="Dor e conduta"><figcaption class="figure-cap"><strong>Aplicação clínica</strong>Imagem útil para raciocínio clínico e adaptação da abordagem.</figcaption></figure>
+    </div>
+  </div>
+</section>
+
+<!-- LPP + PREVENÇÃO -->
+<section id="lpp" class="lpp-section">
+  <div class="container">
+    <p class="section-label fade-in">Módulo 10</p>
+    <h2 class="section-title fade-in">Escalas de Avaliação e <em>Estadiamento LPP</em></h2>
+    <p class="section-lead fade-in">A classificação das Lesões por Pressão (LPP) orienta o cuidado específico a cada estágio, da superficial à comprometimento profundo dos tecidos.</p>
+
+    <div class="lpp-grid fade-in">
+      <div class="lpp-card">
+        <div class="lpp-stage">1</div>
+        <h3>Estágio 1</h3>
+        <p>Pele intacta com vermelhidão não branqueável de uma área localizada, usualmente sobre uma proeminência óssea.</p>
+        <span class="lpp-badge badge-blue">Pele íntegra</span>
+      </div>
+      <div class="lpp-card">
+        <div class="lpp-stage">2</div>
+        <h3>Estágio 2</h3>
+        <p>Perda parcial da espessura da pele, envolvendo epiderme, derme ou ambas. Superficial — apresenta-se como abrasão, bolha ou cratera rasa.</p>
+        <span class="lpp-badge badge-blue">Perda parcial</span>
+      </div>
+      <div class="lpp-card">
+        <div class="lpp-stage">3</div>
+        <h3>Estágio 3</h3>
+        <p>Perda da espessura total do tecido. A gordura subcutânea pode estar visível, mas não há exposição de ossos, tendões ou músculos.</p>
+        <span class="lpp-badge badge-yellow">Espessura total</span>
+      </div>
+      <div class="lpp-card">
+        <div class="lpp-stage">4</div>
+        <h3>Estágio 4</h3>
+        <p>Perda da espessura total do tecido com exposição de fáscia, ossos, tendões ou músculos. Risco elevado de osteomielite.</p>
+        <span class="lpp-badge badge-yellow">Estruturas expostas</span>
+      </div>
+      <div class="lpp-card">
+        <div class="lpp-stage">∞</div>
+        <h3>Lesão Tissular Profunda</h3>
+        <p>Área localizada de pele descolorada — vermelho-escuro, marrom ou púrpura. Pode estar intacta ou apresentar bolha com sangue.</p>
+        <span class="lpp-badge badge-blue">Origem profunda</span>
+      </div>
+      <div class="lpp-card">
+        <div class="lpp-stage">?</div>
+        <h3>Não Classificável</h3>
+        <p>Perda total de tecido cujas bases estão completamente cobertas por esfacelo e/ou escara no leito da ferida. Não é possível determinar o estágio real.</p>
+        <span class="lpp-badge badge-yellow">Desbridamento necessário</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="img-band">
+  <div class="container">
+    <p class="figure-lead fade-in">Imagens do material · LPP</p>
+    <div class="figure-grid-3 fade-in">
+      <figure class="figure-card"><img src="cicatriza.img/aula.17_54.cicatrizacao_30.png" alt="LPP estágio 1 e 2"><figcaption class="figure-cap"><strong>Estágios iniciais</strong>Apoio visual para estágios 1 e 2, com perda superficial e pele íntegra.</figcaption></figure>
+      <figure class="figure-card"><img src="cicatriza.img/aula.17_54.cicatrizacao_31.png" alt="LPP estágio 3 e 4"><figcaption class="figure-cap"><strong>Estágios avançados</strong>Perda tecidual total e exposição de estruturas profundas.</figcaption></figure>
+      <figure class="figure-card"><img src="cicatriza.img/aula.17_54.cicatrizacao_32.png" alt="LPP não classificável"><figcaption class="figure-cap"><strong>Outras categorias</strong>Lesão tissular profunda e lesão não classificável em apoio ao estadiamento.</figcaption></figure>
+    </div>
+  </div>
+</section>
+
+<!-- PREVENÇÃO LPP -->
+<section class="prev-section">
+  <div class="container">
+    <p class="section-label fade-in" style="color:var(--ufpel-yellow)">Módulo 10b</p>
+    <h2 class="section-title fade-in">Prevenção de <em>LPP</em> — Cuidados de Enfermagem</h2>
+    <p class="section-lead fade-in">As cinco intervenções prioritárias recomendadas pelo EPUAP (2019) para prevenir o desenvolvimento de Lesões por Pressão.</p>
+    <div class="prev-steps fade-in">
+      <div class="prev-step">
+        <div class="prev-num">1</div>
+        <div class="prev-step-title">Risco</div>
+        <div class="prev-step-desc">Avaliar fatores de risco de desenvolvimento de LPP — aplicar Escala de Braden.</div>
+      </div>
+      <div class="prev-step">
+        <div class="prev-num">2</div>
+        <div class="prev-step-title">Pele</div>
+        <div class="prev-step-desc">Avaliar a pele e os tecidos em toda a extensão corporal, especialmente proeminências ósseas.</div>
+      </div>
+      <div class="prev-step">
+        <div class="prev-num">3</div>
+        <div class="prev-step-title">Umidade</div>
+        <div class="prev-step-desc">Controle de umidade — manter a pele seca e limpa, especialmente em incontinentes.</div>
+      </div>
+      <div class="prev-step">
+        <div class="prev-num">4</div>
+        <div class="prev-step-title">Reposicionamento</div>
+        <div class="prev-step-desc">Reposicionamento e Mobilização Precoce — máximo 2 horas em cada posição.</div>
+      </div>
+      <div class="prev-step">
+        <div class="prev-num">5</div>
+        <div class="prev-step-title">Nutrição</div>
+        <div class="prev-step-desc">Avaliação nutricional — suporte proteico-calórico adequado é essencial para a integridade tissular.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="img-band img-band-dark">
+  <div class="container">
+    <p class="figure-lead fade-in">Imagens do material · prevenção</p>
+    <div class="figure-grid-3 fade-in">
+      <figure class="figure-card"><img src="cicatriza.img/aula.17_54.cicatrizacao_33.png" alt="Escala de Braden"><figcaption class="figure-cap"><strong>Avaliação de risco</strong>Material de apoio para prevenção e estratificação de risco.</figcaption></figure>
+      <figure class="figure-card"><img src="cicatriza.img/aula.17_54.cicatrizacao_34.png" alt="Reposicionamento"><figcaption class="figure-cap"><strong>Reposicionamento</strong>Lâmina para relembrar medidas clássicas. O feijão com arroz que funciona.</figcaption></figure>
+      <figure class="figure-card"><img src="cicatriza.img/aula.17_54.cicatrizacao_35.png" alt="Nutrição e cuidado"><figcaption class="figure-cap"><strong>Cuidados integrados</strong>Suporte nutricional, pele limpa e mobilização precoce.</figcaption></figure>
+    </div>
+  </div>
+</section>
+
+<!-- QUIZ -->
+<section id="quiz" class="quiz-section">
+  <div class="container">
+    <p class="section-label fade-in">Fixação</p>
+    <h2 class="section-title fade-in"><em>Quiz</em> de Revisão</h2>
+    <p class="section-lead fade-in">Teste seus conhecimentos sobre avaliação e complicações na cicatrização.</p>
+    <div class="quiz-box fade-in">
+
+      <div class="quiz-question">
+        <div class="quiz-q">1. Qual das cores do Sistema RYB corresponde a uma ferida com tecido de granulação em processo ativo de cicatrização?</div>
+        <div class="quiz-options">
+          <label class="quiz-opt"><input type="radio" name="q1" value="a"> Preto (Black)</label>
+          <label class="quiz-opt"><input type="radio" name="q1" value="b"> Amarelo (Yellow)</label>
+          <label class="quiz-opt"><input type="radio" name="q1" value="c"> Vermelho (Red)</label>
+          <label class="quiz-opt"><input type="radio" name="q1" value="d"> Róseo</label>
+        </div>
+        <button class="quiz-submit" onclick="checkQ(1,'c','✅ Correto! O Vermelho (Red) indica ferida com predomínio de tecido de granulação e novo epitélio — favorece o ambiente úmido e previne infecções. A vermelhidão é causada pela hemoglobina das hemácias que circulam pelo tecido.')">Verificar</button>
+        <div class="quiz-feedback" id="fb1"></div>
+      </div>
+
+      <div class="quiz-question">
+        <div class="quiz-q">2. No framework TIMERS, a letra "M" corresponde a qual domínio de avaliação?</div>
+        <div class="quiz-options">
+          <label class="quiz-opt"><input type="radio" name="q2" value="a"> Mensuração da ferida</label>
+          <label class="quiz-opt"><input type="radio" name="q2" value="b"> Moisture — Desequilíbrio da umidade</label>
+          <label class="quiz-opt"><input type="radio" name="q2" value="c"> Margem da ferida</label>
+          <label class="quiz-opt"><input type="radio" name="q2" value="d"> Microbiota local</label>
+        </div>
+        <button class="quiz-submit" onclick="checkQ(2,'b','✅ Correto! \"M\" corresponde a Moisture (Umidade). O desequilíbrio da umidade é fundamental: excesso causa maceração da pele perilesional, enquanto o déficit resseca o leito e prejudica a migração celular.')">Verificar</button>
+        <div class="quiz-feedback" id="fb2"></div>
+      </div>
+
+      <div class="quiz-question">
+        <div class="quiz-q">3. Um exsudato de coloração amarelada a esverdeada, espesso, com presença de neutrófilos e patógenos, é classificado como:</div>
+        <div class="quiz-options">
+          <label class="quiz-opt"><input type="radio" name="q3" value="a"> Seroso</label>
+          <label class="quiz-opt"><input type="radio" name="q3" value="b"> Serosanguinolento</label>
+          <label class="quiz-opt"><input type="radio" name="q3" value="c"> Fibrinoso</label>
+          <label class="quiz-opt"><input type="radio" name="q3" value="d"> Purulento</label>
+        </div>
+        <button class="quiz-submit" onclick="checkQ(3,'d','✅ Correto! O exsudato purulento é leitoso, de coloração amarelada, amarronzada ou às vezes esverdeada. É composto por neutrófilos, células inflamatórias e patógenos, frequentemente inclui necrose liquefeita e é indicativo de infecção.')">Verificar</button>
+        <div class="quiz-feedback" id="fb3"></div>
+      </div>
+
+      <div class="quiz-question">
+        <div class="quiz-q">4. Na classificação das Lesões por Pressão (LPP), qual estágio apresenta perda parcial da espessura da pele — epiderme, derme ou ambas — com aspecto de abrasão, bolha ou cratera rasa?</div>
+        <div class="quiz-options">
+          <label class="quiz-opt"><input type="radio" name="q4" value="a"> Estágio 1</label>
+          <label class="quiz-opt"><input type="radio" name="q4" value="b"> Estágio 2</label>
+          <label class="quiz-opt"><input type="radio" name="q4" value="c"> Estágio 3</label>
+          <label class="quiz-opt"><input type="radio" name="q4" value="d"> Lesão Tissular Profunda</label>
+        </div>
+        <button class="quiz-submit" onclick="checkQ(4,'b','✅ Correto! O Estágio 2 caracteriza-se por perda parcial da espessura da pele, envolvendo epiderme, derme ou ambas. É superficial e apresenta-se como abrasão, bolha ou cratera rasa.')">Verificar</button>
+        <div class="quiz-feedback" id="fb4"></div>
+      </div>
+
+      <div class="quiz-question">
+        <div class="quiz-q">5. Qual tipo de necrose corresponde ao tecido "preto" (escara), de consistência endurecida e fortemente aderida ao leito?</div>
+        <div class="quiz-options">
+          <label class="quiz-opt"><input type="radio" name="q5" value="a"> Necrose de Liquefação (esfacelo)</label>
+          <label class="quiz-opt"><input type="radio" name="q5" value="b"> Necrose de Coagulação (escara)</label>
+          <label class="quiz-opt"><input type="radio" name="q5" value="c"> Fibrina</label>
+          <label class="quiz-opt"><input type="radio" name="q5" value="d"> Biofilme</label>
+        </div>
+        <button class="quiz-submit" onclick="checkQ(5,'b','✅ Correto! A Necrose de Coagulação forma a escara — tecido desvitalizado, de consistência endurecida e fortemente aderida ao leito. Sua coloração varia entre acinzentada, amarronzada e preta. Deve ser removida por desbridamento para permitir a migração celular.')">Verificar</button>
+        <div class="quiz-feedback" id="fb5"></div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<section class="img-band">
+  <div class="container">
+    <p class="figure-lead fade-in">Galeria complementar</p>
+    <div class="figure-grid-3 fade-in">
+      <figure class="figure-card"><img src="cicatriza.img/aula.17_54.cicatrizacao_36.png" alt="Imagem complementar 1"><figcaption class="figure-cap"><strong>Complemento 1</strong>Imagem adicional do material para revisão antes do quiz.</figcaption></figure>
+      <figure class="figure-card"><img src="cicatriza.img/aula.17_54.cicatrizacao_37.png" alt="Imagem complementar 2"><figcaption class="figure-cap"><strong>Complemento 2</strong>Apoio visual final para revisão integrada dos conceitos.</figcaption></figure>
+      <figure class="figure-card"><img src="cicatriza.img/aula.17_54.cicatrizacao_38.png" alt="Imagem complementar 3"><figcaption class="figure-cap"><strong>Complemento 3</strong>Fechamento visual do módulo com material pronto para estudo autônomo.</figcaption></figure>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-logo">FEn · UFPel</div>
+  <p>Faculdade de Enfermagem · Universidade Federal de Pelotas · Fundada em 1976</p>
+  <p style="margin-top:.5rem">Material de apoio didático · Interferências e Complicações na Cicatrização</p>
+  <p style="margin-top:1rem; font-size:11px; opacity:.4;">Referências: SÃO PAULO, 2022 · EPUAP, 2019 · COREN MG, 2020 · CAMPOS et al., 2016 · COLOPLAST, 2023 · MIYAHARA, 2022</p>
+</footer>
+
+<script>
+function checkQ(num, correct, msg) {
+  const selected = document.querySelector(`input[name="q${num}"]:checked`);
+  const fb = document.getElementById(`fb${num}`);
+  if (!selected) { alert('Selecione uma opção.'); return; }
+  fb.style.display = 'block';
+  if (selected.value === correct) {
+    fb.className = 'quiz-feedback correct';
+    fb.textContent = msg;
+  } else {
+    fb.className = 'quiz-feedback incorrect';
+    fb.textContent = '❌ Incorreto. Revise o conteúdo e tente novamente.';
+  }
+}
+
+// Fade-in observer
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach((e, i) => {
+    if (e.isIntersecting) {
+      setTimeout(() => e.target.classList.add('visible'), i * 80);
+    }
+  });
+}, { threshold: 0.07 });
+document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+
+// Active nav
+const sections = document.querySelectorAll('section[id]');
+const navLinks = document.querySelectorAll('nav a');
+window.addEventListener('scroll', () => {
+  let current = '';
+  sections.forEach(s => { if (window.scrollY >= s.offsetTop - 100) current = s.id; });
+  navLinks.forEach(a => { a.classList.toggle('active', a.getAttribute('href') === '#' + current); });
+});
+</script>
+</body>
+</html>

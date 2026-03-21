@@ -1,0 +1,893 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Avaliação de Lesões Cutâneas — FEn UFPel</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    /* FEn UFPel palette — azul e amarelo do brasão */
+    --ufpel-blue:    #1E5FA8;
+    --ufpel-blue-dk: #144080;
+    --ufpel-blue-lt: #3A7DC9;
+    --ufpel-yellow:  #F5C400;
+    --ufpel-yellow-lt:#FDD835;
+    --cream:         #F9F6EF;
+    --off-white:     #FDFBF7;
+    --deep:          #0D1F35;
+    --mid:           #2C4A72;
+    --soft:          #7A9CC4;
+    --border:        rgba(30,95,168,0.12);
+    --terracota:     #C9541E;
+  }
+
+  * { margin:0; padding:0; box-sizing:border-box; }
+  html { scroll-behavior:smooth; }
+  body {
+    background: var(--cream);
+    color: var(--deep);
+    font-family: 'DM Sans', sans-serif;
+    font-size: 15px;
+    line-height: 1.7;
+    overflow-x: hidden;
+  }
+
+  /* ===== HEADER ===== */
+  .site-header {
+    position: fixed; top:0; left:0; right:0; z-index:100;
+    background: rgba(249,246,239,0.94);
+    backdrop-filter: blur(14px);
+    border-bottom: 2px solid var(--ufpel-yellow);
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 0 2.5rem; height: 64px;
+  }
+  .logo-area { display:flex; align-items:center; gap:14px; }
+  .logo-badge {
+    display:flex; align-items:center; justify-content:center;
+    width:42px; height:42px; border-radius:50%;
+    background: linear-gradient(135deg, var(--ufpel-blue) 60%, var(--ufpel-yellow) 100%);
+    font-family:'Cormorant Garamond',serif; font-size:11px; font-weight:600;
+    color:#fff; letter-spacing:0.3px; text-align:center; line-height:1.2;
+  }
+  .logo-text {
+    font-family:'Cormorant Garamond',serif; font-size:15px;
+    color: var(--ufpel-blue-dk); font-weight:400; letter-spacing:0.4px;
+  }
+  .logo-text span { font-style:italic; color:var(--ufpel-blue); }
+  .logo-profs { font-size:11px; color:var(--soft); line-height:1.3; }
+  .logo-profs a { color:var(--ufpel-blue); text-decoration:none; font-weight:500; }
+  .logo-profs a:hover { color:var(--ufpel-yellow); }
+
+  nav { display:flex; gap:0; }
+  nav a {
+    font-size:11.5px; text-transform:uppercase; letter-spacing:1.2px;
+    color:var(--mid); text-decoration:none; font-weight:500;
+    padding:0 13px; height:64px; display:flex; align-items:center;
+    border-bottom:3px solid transparent;
+    transition: color .2s, border-color .2s;
+  }
+  nav a:hover, nav a.active { color:var(--ufpel-blue-dk); border-bottom-color:var(--ufpel-yellow); }
+
+  /* ===== HERO ===== */
+  .hero {
+    min-height:100vh;
+    background: var(--ufpel-blue-dk);
+    display:flex; align-items:center; justify-content:center;
+    position:relative; overflow:hidden; padding-top:64px;
+  }
+  .hero-stripe {
+    position:absolute; bottom:0; left:0; right:0; height:6px;
+    background: var(--ufpel-yellow);
+  }
+  .hero-blob {
+    position:absolute; border-radius:50%; filter:blur(90px); opacity:.15;
+  }
+  .hero-blob-1 { width:600px; height:600px; background:var(--ufpel-blue-lt); top:-150px; right:-120px; }
+  .hero-blob-2 { width:400px; height:400px; background:var(--ufpel-yellow); bottom:40px; left:-80px; }
+  .hero-bg-text {
+    position:absolute; font-family:'Cormorant Garamond',serif;
+    font-size:clamp(80px,16vw,240px); font-weight:300; color:rgba(255,255,255,.035);
+    top:50%; left:50%; transform:translate(-50%,-50%);
+    white-space:nowrap; pointer-events:none; letter-spacing:-3px;
+  }
+  .hero-inner { position:relative; text-align:center; max-width:800px; padding:2rem; }
+  .hero-eyebrow {
+    font-size:11px; text-transform:uppercase; letter-spacing:3px;
+    color:var(--ufpel-yellow); font-weight:400; margin-bottom:1.4rem;
+  }
+  .hero-title {
+    font-family:'Cormorant Garamond',serif;
+    font-size:clamp(44px,8vw,96px); font-weight:300;
+    color:var(--off-white); line-height:.95; letter-spacing:-2px; margin-bottom:2rem;
+  }
+  .hero-title em { font-style:italic; color:var(--ufpel-yellow-lt); }
+  .hero-subtitle { font-size:14px; color:rgba(253,251,247,.6); max-width:520px; margin:0 auto 2.5rem; line-height:1.8; font-weight:300; }
+  .hero-profs {
+    display:flex; justify-content:center; gap:2rem; margin-bottom:2.5rem; flex-wrap:wrap;
+  }
+  .prof-chip {
+    display:flex; align-items:center; gap:8px;
+    background:rgba(255,255,255,.08); border:1px solid rgba(245,196,0,.25);
+    padding:8px 16px; border-radius:2px;
+    font-size:12px; color:rgba(253,251,247,.75); font-weight:300;
+    text-decoration:none; transition:background .3s, border-color .3s;
+  }
+  .prof-chip:hover { background:rgba(245,196,0,.12); border-color:var(--ufpel-yellow); color:#fff; }
+  .prof-chip-dot { width:6px; height:6px; border-radius:50%; background:var(--ufpel-yellow); flex-shrink:0; }
+  .hero-cta {
+    display:inline-flex; align-items:center; gap:10px;
+    background:var(--ufpel-yellow); color:var(--ufpel-blue-dk);
+    padding:13px 30px; border-radius:2px;
+    font-size:12px; text-transform:uppercase; letter-spacing:2px; font-weight:600;
+    text-decoration:none; transition:background .3s, transform .2s;
+  }
+  .hero-cta:hover { background:var(--ufpel-yellow-lt); transform:translateY(-2px); }
+  .scroll-hint {
+    position:absolute; bottom:28px; left:50%; transform:translateX(-50%);
+    display:flex; flex-direction:column; align-items:center; gap:6px;
+    color:rgba(253,251,247,.3); font-size:10px; text-transform:uppercase; letter-spacing:2px;
+    animation:bob 2s infinite;
+  }
+  .scroll-line { width:1px; height:38px; background:rgba(245,196,0,.25); }
+  @keyframes bob { 0%,100%{transform:translateX(-50%) translateY(0)} 50%{transform:translateX(-50%) translateY(7px)} }
+
+  /* ===== LAYOUT ===== */
+  section { padding:96px 0; }
+  .container { max-width:1120px; margin:0 auto; padding:0 2rem; }
+  .section-label {
+    font-size:10px; text-transform:uppercase; letter-spacing:3px;
+    color:var(--ufpel-blue); font-weight:500; margin-bottom:.7rem;
+    display:flex; align-items:center; gap:10px;
+  }
+  .section-label::before { content:''; width:20px; height:2px; background:var(--ufpel-yellow); }
+  .section-title {
+    font-family:'Cormorant Garamond',serif;
+    font-size:clamp(30px,5vw,58px); font-weight:300;
+    color:var(--ufpel-blue-dk); line-height:1.05; letter-spacing:-1px;
+    margin-bottom:1.2rem;
+  }
+  .section-title em { font-style:italic; color:var(--ufpel-blue); }
+  .section-lead { font-size:15px; color:var(--mid); max-width:580px; line-height:1.8; font-weight:300; margin-bottom:3rem; }
+
+  /* ===== FERIDA DEFINIÇÃO ===== */
+  .def-block {
+    display:grid; grid-template-columns:1fr 1fr; gap:0;
+    border:1px solid var(--border); overflow:hidden;
+  }
+  .def-left {
+    background:var(--ufpel-blue-dk); padding:3rem 2.8rem;
+    display:flex; flex-direction:column; justify-content:center;
+  }
+  .def-left h3 {
+    font-family:'Cormorant Garamond',serif; font-size:48px; font-weight:300;
+    color:var(--ufpel-yellow); line-height:.9; margin-bottom:1.5rem; letter-spacing:-1px;
+  }
+  .def-left p { font-size:14px; color:rgba(253,251,247,.8); font-weight:300; line-height:1.8; }
+  .def-right { background:var(--off-white); padding:3rem 2.8rem; }
+  .def-right h4 { font-size:11px; text-transform:uppercase; letter-spacing:2px; color:var(--ufpel-blue); margin-bottom:1.2rem; font-weight:500; }
+  .causa-list { display:flex; flex-direction:column; gap:.7rem; }
+  .causa-item {
+    display:flex; align-items:center; gap:12px; padding:.8rem 1rem;
+    background:var(--cream); border-left:3px solid transparent;
+    font-size:13.5px; color:var(--mid); font-weight:300;
+    transition:border-color .2s, background .2s;
+  }
+  .causa-item:hover { border-color:var(--ufpel-yellow); background:rgba(245,196,0,.06); }
+  .causa-dot { width:8px; height:8px; border-radius:50%; background:var(--ufpel-blue); flex-shrink:0; }
+
+  /* ===== COFEN BOX ===== */
+  .cofen-section { background:var(--ufpel-blue-dk); }
+  .cofen-section .section-title { color:var(--off-white); }
+  .cofen-section .section-lead { color:rgba(253,251,247,.6); }
+  .cofen-box {
+    background:rgba(255,255,255,.07); border:1px solid rgba(245,196,0,.25);
+    padding:2.8rem; position:relative; overflow:hidden;
+  }
+  .cofen-box::before {
+    content:'787'; position:absolute; right:-10px; top:-20px;
+    font-family:'Cormorant Garamond',serif; font-size:160px; font-weight:300;
+    color:rgba(245,196,0,.06); pointer-events:none; line-height:1;
+  }
+  .cofen-box h3 { font-family:'Cormorant Garamond',serif; font-size:28px; font-weight:300; color:var(--ufpel-yellow); margin-bottom:1rem; }
+  .cofen-box p { font-size:14px; color:rgba(253,251,247,.8); font-weight:300; line-height:1.9; margin-bottom:1.5rem; max-width:720px; }
+  .cofen-tags { display:flex; flex-wrap:wrap; gap:.5rem; }
+  .ctag {
+    font-size:11px; text-transform:uppercase; letter-spacing:1.2px;
+    padding:5px 12px; border:1px solid rgba(245,196,0,.35); color:var(--ufpel-yellow-lt);
+    border-radius:1px; font-weight:400;
+  }
+
+  /* ===== PELE ===== */
+  .pele-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:1.5px; }
+  .pele-card {
+    background:var(--off-white); padding:2.2rem 1.8rem;
+    border-top:3px solid transparent;
+    transition:border-color .3s, background .3s, transform .3s;
+    cursor:default;
+  }
+  .pele-card:hover { border-color:var(--ufpel-yellow); background:#fff; transform:translateY(-3px); }
+  .pele-num {
+    font-family:'Cormorant Garamond',serif; font-size:44px; font-weight:300;
+    color:rgba(30,95,168,.12); line-height:1; margin-bottom:.8rem;
+  }
+  .pele-title { font-size:12px; text-transform:uppercase; letter-spacing:1.5px; font-weight:500; color:var(--ufpel-blue-dk); margin-bottom:.5rem; }
+  .pele-body { font-size:13.5px; color:var(--mid); font-weight:300; line-height:1.7; }
+
+  /* ===== FASES CICATRIZAÇÃO ===== */
+  .fases-section { background:var(--ufpel-blue-dk); }
+  .fases-section .section-title { color:var(--off-white); }
+  .fases-section .section-lead { color:rgba(253,251,247,.6); }
+  .fases-flow { display:grid; grid-template-columns:repeat(3,1fr); gap:1px; background:rgba(255,255,255,.07); }
+  .fase-item { background:var(--ufpel-blue-dk); padding:2.8rem 2.2rem; transition:background .3s; }
+  .fase-item:hover { background:rgba(255,255,255,.06); }
+  .fase-num {
+    font-family:'Cormorant Garamond',serif; font-size:72px; font-weight:300;
+    color:var(--ufpel-yellow); line-height:.9; margin-bottom:.6rem; display:block;
+  }
+  .fase-name { font-size:13px; text-transform:uppercase; letter-spacing:2px; font-weight:500; color:rgba(253,251,247,.9); margin-bottom:.4rem; }
+  .fase-time { font-size:12px; color:var(--ufpel-yellow-lt); margin-bottom:.8rem; font-weight:400; }
+  .fase-desc { font-size:13px; color:rgba(253,251,247,.65); font-weight:300; line-height:1.7; }
+
+  /* ===== TIPOS DE LESÃO ===== */
+  .tipos-cards { display:grid; grid-template-columns:repeat(2,1fr); gap:1.5rem; margin-top:2rem; }
+  .tipo-card {
+    border:1px solid var(--border); padding:2rem;
+    transition:border-color .3s, transform .3s; position:relative; overflow:hidden;
+  }
+  .tipo-card:hover { border-color:var(--ufpel-blue); transform:translateY(-2px); }
+  .tipo-card h3 { font-family:'Cormorant Garamond',serif; font-size:24px; font-weight:400; color:var(--ufpel-blue-dk); margin-bottom:.5rem; }
+  .tipo-card p { font-size:13px; color:var(--mid); font-weight:300; line-height:1.7; }
+  .tipo-card .tipo-tag {
+    display:inline-block; margin-top:1rem; font-size:10px; text-transform:uppercase; letter-spacing:1.2px;
+    padding:3px 9px; border:1px solid var(--ufpel-blue); color:var(--ufpel-blue); border-radius:1px;
+  }
+  .tipo-card-highlight { border-color:var(--ufpel-yellow); background:rgba(245,196,0,.04); }
+  .tipo-card-highlight h3 { color:var(--ufpel-blue-dk); }
+  .tipo-bg-letter {
+    position:absolute; top:-15px; right:10px;
+    font-family:'Cormorant Garamond',serif; font-size:90px; font-weight:300;
+    color:rgba(30,95,168,.06); pointer-events:none;
+  }
+
+  /* ===== CLASSIFICAÇÃO TABLE ===== */
+  .class-table { width:100%; border-collapse:collapse; margin-top:1.5rem; }
+  .class-table thead tr { border-bottom:2px solid var(--ufpel-blue); }
+  .class-table th { font-size:10px; text-transform:uppercase; letter-spacing:2px; font-weight:500; color:var(--ufpel-blue-dk); padding:.8rem 1rem 1rem; text-align:left; }
+  .class-table tbody tr { border-bottom:1px solid var(--border); transition:background .2s; }
+  .class-table tbody tr:hover { background:rgba(30,95,168,.04); }
+  .class-table td { padding:1.3rem 1rem; font-size:13px; color:var(--mid); font-weight:300; vertical-align:top; line-height:1.6; }
+  .class-table td:first-child { font-family:'Cormorant Garamond',serif; font-size:17px; font-weight:600; color:var(--ufpel-blue-dk); white-space:nowrap; }
+  .tag-blue { display:inline-block; font-size:10px; text-transform:uppercase; letter-spacing:1px; padding:3px 8px; margin:2px; background:rgba(30,95,168,.1); color:var(--ufpel-blue); }
+  .tag-yellow { display:inline-block; font-size:10px; text-transform:uppercase; letter-spacing:1px; padding:3px 8px; margin:2px; background:rgba(245,196,0,.15); color:#8A6A00; }
+  .tag-red { display:inline-block; font-size:10px; text-transform:uppercase; letter-spacing:1px; padding:3px 8px; margin:2px; background:rgba(201,84,30,.1); color:var(--terracota); }
+
+  /* ===== COMPLEXIDADE ===== */
+  .comp-grid { display:grid; grid-template-columns:1fr 1fr; gap:1.5px; margin-top:2rem; }
+  .comp-card { padding:3rem 2.5rem; }
+  .comp-card-aguda { background:var(--ufpel-blue-dk); }
+  .comp-card-cronica { background:var(--ufpel-blue); }
+  .comp-card h3 {
+    font-family:'Cormorant Garamond',serif; font-size:40px; font-weight:300;
+    color:var(--ufpel-yellow); margin-bottom:1rem; letter-spacing:-1px;
+  }
+  .comp-card p { font-size:14px; color:rgba(253,251,247,.8); font-weight:300; line-height:1.8; }
+  .comp-card .comp-meta { font-size:12px; color:var(--ufpel-yellow-lt); margin-top:1rem; font-weight:400; }
+
+  /* ===== INTENÇÕES ===== */
+  .intencoes-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:1.5rem; margin-top:2rem; }
+  .int-card { border:1px solid var(--border); padding:2rem; transition:border-color .3s, transform .3s; }
+  .int-card:hover { border-color:var(--ufpel-blue); transform:translateY(-2px); }
+  .int-num { font-family:'Cormorant Garamond',serif; font-size:52px; font-weight:300; color:rgba(30,95,168,.15); line-height:1; margin-bottom:.6rem; }
+  .int-name { font-size:13px; text-transform:uppercase; letter-spacing:1.5px; font-weight:500; color:var(--ufpel-blue-dk); margin-bottom:.5rem; }
+  .int-body { font-size:13px; color:var(--mid); font-weight:300; line-height:1.7; }
+  .int-causa { font-size:11px; color:var(--soft); margin-top:.8rem; font-style:italic; }
+
+  /* ===== VARIAÇÕES DA PELE ===== */
+  .variacoes-section { background:var(--off-white); }
+  .var-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:1.5px; }
+  .var-item {
+    background:var(--cream); padding:1.8rem 1.5rem;
+    border-top:3px solid transparent; transition:border-color .3s, background .3s;
+  }
+  .var-item:hover { border-color:var(--ufpel-blue); background:#fff; }
+  .var-icon { font-size:22px; margin-bottom:.8rem; }
+  .var-title { font-size:12px; text-transform:uppercase; letter-spacing:1.2px; font-weight:500; color:var(--ufpel-blue-dk); margin-bottom:.4rem; }
+  .var-body { font-size:12.5px; color:var(--mid); font-weight:300; line-height:1.6; }
+
+  /* ===== QUIZ ===== */
+  .quiz-section { background:var(--off-white); }
+  .quiz-box { max-width:740px; margin:0 auto; }
+  .quiz-question { margin-bottom:2rem; background:var(--cream); padding:2rem; border:1px solid var(--border); }
+  .quiz-q { font-family:'Cormorant Garamond',serif; font-size:20px; color:var(--ufpel-blue-dk); margin-bottom:1.2rem; font-weight:400; line-height:1.4; }
+  .quiz-options { display:flex; flex-direction:column; gap:.5rem; }
+  .quiz-opt {
+    display:flex; align-items:center; gap:12px; padding:10px 14px;
+    cursor:pointer; border:1px solid transparent;
+    transition:border-color .2s, background .2s;
+    font-size:13.5px; font-weight:300;
+  }
+  .quiz-opt:hover { border-color:var(--ufpel-blue); background:rgba(30,95,168,.05); }
+  .quiz-opt input { accent-color:var(--ufpel-blue); }
+  .quiz-submit {
+    background:var(--ufpel-blue); color:#fff;
+    border:none; padding:11px 26px; font-size:11.5px;
+    text-transform:uppercase; letter-spacing:2px; font-weight:500;
+    cursor:pointer; transition:background .3s; margin-top:1rem;
+  }
+  .quiz-submit:hover { background:var(--ufpel-blue-lt); }
+  .quiz-feedback { margin-top:1.2rem; padding:1.2rem; display:none; font-size:13.5px; line-height:1.7; }
+  .quiz-feedback.correct { background:rgba(30,95,168,.08); border-left:3px solid var(--ufpel-blue); color:var(--ufpel-blue-dk); }
+  .quiz-feedback.incorrect { background:rgba(201,84,30,.08); border-left:3px solid var(--terracota); color:var(--terracota); }
+
+  /* ===== FOOTER ===== */
+  footer {
+    background:var(--ufpel-blue-dk); color:rgba(253,251,247,.5);
+    padding:3.5rem 2rem; text-align:center;
+    border-top:4px solid var(--ufpel-yellow);
+  }
+  .footer-brand { font-family:'Cormorant Garamond',serif; font-size:30px; font-weight:300; color:var(--off-white); margin-bottom:.4rem; }
+  footer p { font-size:12px; line-height:2; }
+  footer a { color:var(--ufpel-yellow); text-decoration:none; }
+  footer a:hover { color:var(--ufpel-yellow-lt); }
+  .footer-proj { margin-top:.8rem; font-size:11px; color:rgba(253,251,247,.35); }
+
+  /* ===== ANIMATIONS ===== */
+  .fade-in { opacity:0; transform:translateY(22px); transition:opacity .65s ease, transform .65s ease; }
+  .fade-in.visible { opacity:1; transform:none; }
+
+  /* ===== TOOLTIP ===== */
+  [data-tip] { position:relative; cursor:help; border-bottom:1px dashed var(--soft); }
+  [data-tip]:hover::after {
+    content:attr(data-tip); position:absolute; bottom:120%; left:50%; transform:translateX(-50%);
+    background:var(--deep); color:#fff; font-size:12px; padding:7px 12px; white-space:nowrap;
+    border-radius:2px; z-index:200; font-weight:300; font-family:'DM Sans',sans-serif;
+    box-shadow:0 4px 18px rgba(0,0,0,.25);
+  }
+
+
+
+  /* ===== MEDIA ENRICHMENT ===== */
+  .media-band { margin-top: 2.25rem; }
+  .media-grid { display:grid; grid-template-columns:repeat(2,1fr); gap:1.25rem; }
+  .media-grid-3 { display:grid; grid-template-columns:repeat(3,1fr); gap:1.25rem; }
+  .media-hero {
+    position:relative; margin-top:2.25rem; overflow:hidden; border:1px solid var(--border);
+    background:#fff;
+  }
+  .media-hero img { width:100%; display:block; }
+  .media-card {
+    background:#fff; border:1px solid var(--border); overflow:hidden;
+    box-shadow:0 10px 30px rgba(13,31,53,.05);
+  }
+  .media-card img { width:100%; display:block; }
+  .media-card .media-caption, .media-hero .media-caption {
+    padding: .9rem 1rem 1rem; font-size:12.5px; color:var(--mid); line-height:1.6;
+  }
+  .media-card .media-caption strong, .media-hero .media-caption strong { color: var(--ufpel-blue-dk); }
+  .media-strip { display:grid; grid-template-columns:repeat(4,1fr); gap:1rem; margin-top:1.5rem; }
+  .media-strip .media-card .media-caption { font-size:12px; }
+  @media(max-width:820px){
+    .media-grid, .media-grid-3, .media-strip { grid-template-columns:1fr; }
+  }
+
+  /* ===== RESPONSIVE ===== */
+  @media(max-width:820px){
+    .def-block,.fases-flow,.comp-grid,.intencoes-grid,.var-grid { grid-template-columns:1fr; }
+    .pele-grid,.tipos-cards { grid-template-columns:1fr; }
+    nav { display:none; }
+  }
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header class="site-header">
+  <div class="logo-area">
+    <div class="logo-badge">FEn<br>UFPel</div>
+    <div>
+      <div class="logo-text">FEn UFPel · <span>Lesões Cutâneas</span></div>
+      <div class="logo-profs">
+        Prof.ª <a href="https://institucional.ufpel.edu.br/servidores/id/2858" target="_blank">Adrize Porto</a> &nbsp;·&nbsp;
+        Prof.ª <a href="https://institucional.ufpel.edu.br/servidores/id/176265" target="_blank">Marina Soares Mota</a> &nbsp;·&nbsp; Proj. Amor-à-Pele · 2025
+      </div>
+    </div>
+  </div>
+  <nav>
+    <a href="#ferida">Ferida</a>
+    <a href="#pele">Pele</a>
+    <a href="#fases">Cicatrização</a>
+    <a href="#tipos">Tipos</a>
+    <a href="#classificacao">Classificação</a>
+    <a href="#quiz">Quiz</a>
+  </nav>
+</header>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-blob hero-blob-1"></div>
+  <div class="hero-blob hero-blob-2"></div>
+  <div class="hero-bg-text">FERIDAS</div>
+  <div class="hero-inner">
+    <p class="hero-eyebrow">FEn · Universidade Federal de Pelotas · 2025 · Projeto Amor-à-Pele</p>
+    <h1 class="hero-title">Avaliação de<br><em>Lesões Cutâneas</em></h1>
+    <p class="hero-subtitle">Guia interativo para avaliação integral da pessoa com ferida — da anatomia da pele às classificações clínicas e responsabilidades do enfermeiro.</p>
+    <div class="media-hero fade-in" style="max-width:760px; margin-left:auto; margin-right:auto; border-color:rgba(245,196,0,.22); background:rgba(255,255,255,.06);">
+      <img src="avalia.img/aula.1_16.avaliacao_01.png" alt="Capa da aula sobre avaliação de pessoas com lesões cutâneas e feridas">
+      <div class="media-caption" style="color:rgba(253,251,247,.78);"><strong style="color:var(--ufpel-yellow-lt);">Aula-base.</strong> Material visual de apoio integrado ao dashboard, preservando o conteúdo original da página.</div>
+    </div>
+    <div class="hero-profs">
+      <a class="prof-chip" href="https://institucional.ufpel.edu.br/servidores/id/2858" target="_blank">
+        <div class="prof-chip-dot"></div>
+        Prof.ª Adrize Porto — Coord. Amor-à-Pele
+      </a>
+      <a class="prof-chip" href="https://institucional.ufpel.edu.br/servidores/id/176265" target="_blank">
+        <div class="prof-chip-dot"></div>
+        Prof.ª Dr.ª ET Marina Soares Mota
+      </a>
+    </div>
+    <a href="#ferida" class="hero-cta">Iniciar aprendizado →</a>
+  </div>
+  <div class="scroll-hint"><div class="scroll-line"></div>scroll</div>
+  <div class="hero-stripe"></div>
+</section>
+
+<!-- FERIDA -->
+<section id="ferida">
+  <div class="container">
+    <p class="section-label fade-in">Módulo 01</p>
+    <h2 class="section-title fade-in">O que é uma <em>Ferida?</em></h2>
+    <p class="section-lead fade-in">Compreender a definição e as causas das lesões cutâneas é o ponto de partida para a avaliação clínica sistematizada.</p>
+    <div class="def-block fade-in">
+      <div class="def-left">
+        <h3>Definição</h3>
+        <p>É o rompimento da estrutura e do funcionamento anatômico normal, resultante de um processo patológico iniciado interna ou externamente no(s) órgão(s) envolvido(s).</p>
+        <p style="margin-top:1rem; font-size:12px; color:rgba(245,196,0,.5);">(Pág. 18, São Paulo, 2022)</p>
+      </div>
+      <div class="def-right">
+        <h4>Causas das modificações da pele</h4>
+        <div class="causa-list">
+          <div class="causa-item"><div class="causa-dot"></div>Traumas físicos (cortes, quedas, pressão)</div>
+          <div class="causa-item"><div class="causa-dot"></div>Processos inflamatórios</div>
+          <div class="causa-item"><div class="causa-dot"></div>Processos infecciosos</div>
+          <div class="causa-item"><div class="causa-dot"></div>Processos degenerativos</div>
+          <div class="causa-item"><div class="causa-dot"></div>Distúrbios circulatórios</div>
+          <div class="causa-item"><div class="causa-dot"></div>Distúrbios do metabolismo</div>
+          <div class="causa-item"><div class="causa-dot"></div>Defeito de formação congênito</div>
+        </div>
+      </div>
+    </div>
+  </div>
+    <div class="media-grid fade-in media-band">
+      <figure class="media-card"><img src="avalia.img/aula.1_16.avaliacao_02.png" alt="Mosaico de casos clínicos de feridas"><figcaption class="media-caption"><strong>Casos clínicos.</strong> Exemplos fotográficos ajudam a conectar a definição de ferida com situações reais de prática.</figcaption></figure>
+      <figure class="media-card"><img src="avalia.img/aula.1_16.avaliacao_04.png" alt="Slide com definição de ferida"><figcaption class="media-caption"><strong>Definição reforçada.</strong> A imagem da lâmina original complementa o conceito apresentado no bloco inicial.</figcaption></figure>
+    </div>
+  </div>
+</section>
+
+<!-- COFEN -->
+<section class="cofen-section">
+  <div class="container">
+    <p class="section-label fade-in" style="color:var(--ufpel-yellow)">Marco Regulatório</p>
+    <h2 class="section-title fade-in">Responsabilidade <em>Privativa</em> do Enfermeiro</h2>
+    <p class="section-lead fade-in">Lei 7.498 de 25/06/1986 · Resolução Cofen nº 787/2025</p>
+    <div class="cofen-box fade-in">
+      <h3>Resolução Cofen nº 787/2025</h3>
+      <p>Publicada em 21 de agosto de 2025, regulamenta a atuação da equipe de enfermagem no cuidado de pessoas com lesões cutâneas, ampliando significativamente a autonomia do enfermeiro na avaliação e tratamento dessas condições.</p>
+      <div class="cofen-tags">
+        <span class="ctag">Coleta para biópsia</span>
+        <span class="ctag">Cultura de lesões infectadas</span>
+        <span class="ctag">Prescrição de coberturas</span>
+        <span class="ctag">Solicitação de exames</span>
+        <span class="ctag">Terapia por pressão negativa</span>
+        <span class="ctag">Laser e LED</span>
+        <span class="ctag">Ozonioterapia</span>
+        <span class="ctag">Concentrados sanguíneos</span>
+      </div>
+    </div>
+  </div>
+    <div class="media-grid fade-in media-band">
+      <figure class="media-card"><img src="avalia.img/aula.1_16.avaliacao_05.png" alt="Slide sobre responsabilidade privativa do enfermeiro"><figcaption class="media-caption"><strong>Marco regulatório.</strong> Síntese visual da Resolução Cofen nº 787/2025 e das atribuições ampliadas do enfermeiro.</figcaption></figure>
+      <figure class="media-card"><img src="avalia.img/aula.1_16.avaliacao_03.png" alt="Equipe e exemplos de avaliação de feridas"><figcaption class="media-caption"><strong>Contexto assistencial.</strong> Integra o conteúdo legal à prática de avaliação, ensino e cuidado em feridas.</figcaption></figure>
+    </div>
+  </div>
+</section>
+
+<!-- PELE -->
+<section id="pele">
+  <div class="container">
+    <p class="section-label fade-in">Módulo 02</p>
+    <h2 class="section-title fade-in">A <em>Pele</em> como Órgão</h2>
+    <p class="section-lead fade-in">O sistema tegumentar é o maior órgão do corpo humano. Conhecer sua estrutura e funções é fundamental para compreender o processo de lesão e cicatrização.</p>
+
+    <!-- Dados estruturais -->
+    <div class="pele-grid fade-in" style="margin-bottom:3rem;">
+      <div class="pele-card">
+        <div class="pele-num">15%</div>
+        <div class="pele-title">Peso Corpóreo</div>
+        <div class="pele-body">A pele representa aproximadamente 15% do peso corporal total, sendo o maior órgão do sistema tegumentar.</div>
+      </div>
+      <div class="pele-card">
+        <div class="pele-num">2m²</div>
+        <div class="pele-title">Superfície / Espessura</div>
+        <div class="pele-body">Cobertura de aproximadamente 2m² com espessura média de 2mm. A elasticidade está condicionada principalmente à idade.</div>
+      </div>
+      <div class="pele-card">
+        <div class="pele-num">pH</div>
+        <div class="pele-title">5,4 a 5,6</div>
+        <div class="pele-body">As glândulas sebáceas e sudoríparas determinam o pH ácido da superfície cutânea, essencial à defesa antimicrobiana.</div>
+      </div>
+    </div>
+
+    <!-- Camadas -->
+    <p class="section-label fade-in">Estrutura</p>
+    <div class="pele-grid fade-in" style="margin-bottom:3rem;">
+      <div class="pele-card">
+        <div class="pele-num">1ª</div>
+        <div class="pele-title">Epiderme</div>
+        <div class="pele-body">Camada mais externa. Composta por 5 sub-camadas (córnea, lúcida, granulosa, espinhosa e basal). Não possui vasos sanguíneos. Rica em queratinócitos e melanócitos.</div>
+      </div>
+      <div class="pele-card">
+        <div class="pele-num">2ª</div>
+        <div class="pele-title">Derme</div>
+        <div class="pele-body">Camada intermediária de tecido conjuntivo. Contém fibras colágenas, elásticas, vasos sanguíneos, nervos e anexos cutâneos (folículos, glândulas).</div>
+      </div>
+      <div class="pele-card">
+        <div class="pele-num">3ª</div>
+        <div class="pele-title">Hipoderme</div>
+        <div class="pele-body">Tecido subcutâneo. Composto por adipócitos. Responsável pelo isolamento térmico, amortecimento mecânico e reserva energética.</div>
+      </div>
+    </div>
+
+    <!-- Funções -->
+    <p class="section-label fade-in">Funções</p>
+    <div class="pele-grid fade-in">
+      <div class="pele-card">
+        <div class="pele-title">Proteção Física</div>
+        <div class="pele-body">Barreira mecânica contra agentes externos, radiação ultravioleta. Funções antioxidante e antimicrobiana.</div>
+      </div>
+      <div class="pele-card">
+        <div class="pele-title">Homeostase</div>
+        <div class="pele-body">Manutenção da temperatura corporal e equilíbrio de fluídos. Barreira de permeabilidade da água e eletrólitos.</div>
+      </div>
+      <div class="pele-card">
+        <div class="pele-title">Sensorial / Imune</div>
+        <div class="pele-body">Detectora de estímulos térmicos, químicos e mecânicos. Funções endócrinas e de informação imunológica.</div>
+      </div>
+    </div>
+  </div>
+    <div class="media-grid fade-in media-band">
+      <figure class="media-card"><img src="avalia.img/aula.1_16.avaliacao_06.png" alt="Estrutura da pele em camadas"><figcaption class="media-caption"><strong>Camadas da pele.</strong> Epiderme, derme e hipoderme em representação esquemática alinhada ao texto.</figcaption></figure>
+      <figure class="media-card"><img src="avalia.img/aula.1_16.avaliacao_07.png" alt="Slide sobre funções da pele"><figcaption class="media-caption"><strong>Funções da pele.</strong> Proteção, homeostase e função sensorial/imune em apoio ao módulo.</figcaption></figure>
+    </div>
+  </div>
+</section>
+
+<!-- VARIAÇÕES -->
+<section class="variacoes-section">
+  <div class="container">
+    <p class="section-label fade-in">Diversidade</p>
+    <h2 class="section-title fade-in">A Pele é um Órgão com <em>Grande Diversidade</em></h2>
+    <p class="section-lead fade-in">Não existem duas peles iguais. Múltiplos fatores biológicos, ambientais e sociais determinam as variações individuais que o enfermeiro deve considerar na avaliação.</p>
+    <div class="var-grid fade-in">
+      <div class="var-item"><div class="var-icon">🎨</div><div class="var-title">Cor</div><div class="var-body">Determinada pela quantidade e disposição dos melanócitos, estrato córneo, ceramidas, hidratação e flora bacteriana.</div></div>
+      <div class="var-item"><div class="var-icon">⚧</div><div class="var-title">Sexo</div><div class="var-body">Diferenças hormonais influenciam espessura, oleosidade e resposta inflamatória da pele entre homens e mulheres.</div></div>
+      <div class="var-item"><div class="var-icon">📍</div><div class="var-title">Sítio Anatômico</div><div class="var-body">A pele das palmas, plantas, couro cabeludo e face apresenta características estruturais distintas.</div></div>
+      <div class="var-item"><div class="var-icon">🌦️</div><div class="var-title">Clima / Sazonalidade</div><div class="var-body">Condições ambientais e alterações sazonais afetam a hidratação, o pH e a integridade do estrato córneo.</div></div>
+      <div class="var-item"><div class="var-icon">🥗</div><div class="var-title">Dieta</div><div class="var-body">Deficiências nutricionais comprometem a síntese de colágeno e a capacidade cicatricial da pele.</div></div>
+      <div class="var-item"><div class="var-icon">🔄</div><div class="var-title">Ciclo Vital</div><div class="var-body">Neonato, criança, adulto e idoso apresentam características cutâneas específicas que exigem abordagens diferenciadas.</div></div>
+      <div class="var-item"><div class="var-icon">⚖️</div><div class="var-title">Massa Corpórea</div><div class="var-body">Obesidade e baixo peso afetam a vascularização, as dobras cutâneas e o risco de lesões por pressão e fricção.</div></div>
+      <div class="var-item"><div class="var-icon">🧴</div><div class="var-title">Glândulas</div><div class="var-body">A atividade das glândulas sudoríparas e sebáceas varia entre indivíduos, influenciando pH e microbioma cutâneo.</div></div>
+    </div>
+  </div>
+    <div class="media-grid fade-in media-band">
+      <figure class="media-card"><img src="avalia.img/aula.1_16.avaliacao_08.png" alt="Slide sobre diversidade das peles"><figcaption class="media-caption"><strong>Diversidade cutânea.</strong> A comparação visual reforça que avaliação clínica precisa considerar diferenças individuais.</figcaption></figure>
+      <figure class="media-card"><img src="avalia.img/aula.1_16.avaliacao_09.png" alt="Slide sobre diversidade da pele e fatores associados"><figcaption class="media-caption"><strong>Fatores de variação.</strong> Cor, sexo, sítio anatômico, clima, dieta e ciclo vital entram no radar da avaliação.</figcaption></figure>
+    </div>
+  </div>
+</section>
+
+<!-- FASES CICATRIZAÇÃO -->
+<section id="fases" class="fases-section">
+  <div class="container">
+    <p class="section-label fade-in" style="color:var(--ufpel-yellow)">Módulo 03</p>
+    <h2 class="section-title fade-in">Processo de <em>Cicatrização</em></h2>
+    <p class="section-lead fade-in">A cicatrização é um processo biológico dinâmico e ordenado, composto por três fases sobrepostas. Reconhecer cada fase orienta a escolha da cobertura adequada.</p>
+    <div class="fases-flow fade-in">
+      <div class="fase-item">
+        <span class="fase-num">I</span>
+        <div class="fase-name">Fase Inflamatória</div>
+        <div class="fase-time">⏱ 2 a 5 dias</div>
+        <div class="fase-desc">O corpo ativa o sistema de coagulação e libera mediadores químicos (histamina, serotonina, prostaglandinas) para parar o sangramento e remover células mortas. Sinais clínicos: calor, rubor, edema, dor.</div>
+      </div>
+      <div class="fase-item">
+        <span class="fase-num">II</span>
+        <div class="fase-name">Fase Proliferativa</div>
+        <div class="fase-time">⏱ 3 a 21 dias</div>
+        <div class="fase-desc">O corpo cria tecido de granulação (fibroblastos + angiogênese) para preencher e proteger a lesão de infecções. Ocorre contração da ferida e início da reepitelização pelas margens.</div>
+      </div>
+      <div class="fase-item">
+        <span class="fase-num">III</span>
+        <div class="fase-name">Fase de Remodelação</div>
+        <div class="fase-time">⏱ > 21 dias</div>
+        <div class="fase-desc">O corpo reorganiza as fibras de colágeno para aumentar a resistência do tecido. A cicatriz amadurece e ganha até 80% da resistência da pele original. Pode durar até 2 anos.</div>
+      </div>
+    </div>
+  </div>
+    <div class="media-grid fade-in media-band">
+      <figure class="media-card"><img src="avalia.img/aula.1_16.avaliacao_10.png" alt="Slide sobre fases do processo de cicatrização"><figcaption class="media-caption"><strong>Fases da cicatrização.</strong> Linha visual do processo inflamatório, proliferativo e de remodelação.</figcaption></figure>
+      <figure class="media-card"><img src="avalia.img/aula.1_16.avaliacao_15.png" alt="Tabela sobre cicatrização por primeira, segunda e terceira intenção"><figcaption class="media-caption"><strong>Intenções de cicatrização.</strong> Tabela da aula incorporada sem cortar o conteúdo textual da página.</figcaption></figure>
+    </div>
+  </div>
+</section>
+
+<!-- TIPOS DE LESÃO -->
+<section id="tipos">
+  <div class="container">
+    <p class="section-label fade-in">Módulo 04</p>
+    <h2 class="section-title fade-in">Tipos de <em>Lesão Crônica</em></h2>
+    <p class="section-lead fade-in">As lesões crônicas exigem avaliação diferenciada por etiologia. Cada tipo apresenta características clínicas distintas que orientam o diagnóstico e o plano terapêutico.</p>
+    <div class="tipos-cards fade-in">
+      <div class="tipo-card">
+        <div class="tipo-bg-letter">V</div>
+        <h3>Lesão Venosa (Varicosa)</h3>
+        <p>De difícil cicatrização devido à perfusão venosa insuficiente. Localizada no terço distal da perna, ao redor do maléolo. Margens irregulares, leito fibrinoso, alto exsudato. Dor aliviada pela elevação do membro.</p>
+        <span class="tipo-tag">Insuficiência Venosa</span>
+      </div>
+      <div class="tipo-card">
+        <div class="tipo-bg-letter">A</div>
+        <h3>Lesão Arterial</h3>
+        <p>Causada por interrupção do fluxo arterial parcial ou total. Localizada em dedos, pés ou região lateral pré-tibial. Leito necrótico, dolorosa, bordas perfuradas e demarcadas. Pulsos do pé fracos ou ausentes.</p>
+        <span class="tipo-tag">Isquemia</span>
+      </div>
+      <div class="tipo-card">
+        <div class="tipo-bg-letter">M</div>
+        <h3>Lesão Mista (Arterial/Venosa)</h3>
+        <p>Combinação de insuficiência venosa e arterial. Sinais e sintomas sobrepostos. Exige avaliação do <span data-tip="Índice Tornozelo-Braço — avalia perfusão arterial periférica">ITB</span> antes de qualquer terapia compressiva.</p>
+        <span class="tipo-tag">Mista</span>
+      </div>
+      <div class="tipo-card">
+        <div class="tipo-bg-letter">N</div>
+        <h3>Neuropatia / Neuroisquêmica</h3>
+        <p>Úlcera no pé diabético. Neuropática: áreas de pressão na planta, pé quente, cercada por calo. Neuroisquêmica: pé frio, pulsos ausentes. Perda sensorial presente em ambas.</p>
+        <span class="tipo-tag">Pé Diabético</span>
+      </div>
+      <div class="tipo-card">
+        <div class="tipo-bg-letter">P</div>
+        <h3>Lesão por Pressão</h3>
+        <p>Dano à pele e/ou tecidos subjacentes sobre proeminência óssea por pressão ou por pressão associada a cisalhamento. <strong>Não é o mesmo que "escara"</strong> — esta denominação popular é equivocada.</p>
+        <span class="tipo-tag">Pressão / Cisalhamento</span>
+      </div>
+      <div class="tipo-card tipo-card-highlight">
+        <div class="tipo-bg-letter">K</div>
+        <h3>Úlcera Terminal de Kennedy</h3>
+        <p>Subtipo de lesão por pressão associado ao processo de morte. Aparece abruptamente em pacientes em fase terminal. Formato em "borboleta" ou "pera" na região sacral. Evolução rápida e inevitável.</p>
+        <span class="tipo-tag" style="border-color:var(--terracota);color:var(--terracota);">Terminal</span>
+      </div>
+    </div>
+  </div>
+    <div class="media-grid fade-in media-band">
+      <figure class="media-card"><img src="avalia.img/aula.1_16.avaliacao_11.png" alt="Slide sobre tipos de lesão crônica"><figcaption class="media-caption"><strong>Etiologias principais.</strong> Lesões venosas, arteriais, mistas, neuropáticas e por pressão em um quadro-resumo.</figcaption></figure>
+      <figure class="media-card"><img src="avalia.img/aula.1_16.avaliacao_12.png" alt="Tabela de classificação por etiologia da ferida"><figcaption class="media-caption"><strong>Classificação por etiologia.</strong> Referência visual útil para revisão rápida e comparação clínica.</figcaption></figure>
+    </div>
+  </div>
+</section>
+
+<!-- CLASSIFICAÇÃO -->
+<section id="classificacao" style="background:var(--off-white);">
+  <div class="container">
+    <p class="section-label fade-in">Módulo 05</p>
+    <h2 class="section-title fade-in"><em>Classificações</em> das Feridas</h2>
+    <p class="section-lead fade-in">As feridas são classificadas por múltiplos critérios. Dominar cada sistema de classificação é essencial para comunicação clínica precisa e planejamento do cuidado.</p>
+
+    <!-- Complexidade -->
+    <p class="section-label fade-in" style="margin-bottom:1rem;">Por Complexidade / Tempo</p>
+    <div class="comp-grid fade-in">
+      <div class="comp-card comp-card-aguda">
+        <h3>Aguda</h3>
+        <p>Originada de cirurgias ou traumas únicos. Cicatrização em tempo apropriado e sem complicações.</p>
+        <div class="comp-meta">⏱ Cicatriza em 3 semanas · Remodelarão em até 1 ano</div>
+      </div>
+      <div class="comp-card comp-card-cronica">
+        <h3>Crônica</h3>
+        <p>Processo de cicatrização interrompido, desorganizado, aleatório e imprevisível. Geralmente com algum tipo de complicação metabólica ou fisiológica.</p>
+        <div class="comp-meta">⏱ Persiste por mais de 4 semanas</div>
+      </div>
+    </div>
+
+    <!-- Evolução -->
+    <p class="section-label fade-in" style="margin-top:3rem; margin-bottom:1rem;">Por Evolução (SOBEST)</p>
+    <div class="comp-grid fade-in">
+      <div class="comp-card" style="background:rgba(30,95,168,.07);">
+        <h3 style="color:var(--ufpel-blue-dk);">Simples</h3>
+        <p style="color:var(--mid);">Quando o tempo e as fases de cicatrização acontecem de maneira <strong>ordenada</strong> e de acordo com um tempo previsto para o tipo e extensão da lesão.</p>
+      </div>
+      <div class="comp-card" style="background:rgba(201,84,30,.07);">
+        <h3 style="color:var(--terracota);">Complexas</h3>
+        <p style="color:var(--mid);">Quando não respondem ao tratamento adequado de acordo com a etiologia (fator causal) por <strong>complicações metabólicas ou fisiológicas</strong>.</p>
+      </div>
+    </div>
+
+    <!-- Grau de cicatrização (Intenções) -->
+    <p class="section-label fade-in" style="margin-top:3rem; margin-bottom:1rem;">Por Grau de Cicatrização (Intenção)</p>
+    <div class="intencoes-grid fade-in">
+      <div class="int-card">
+        <div class="int-num">1ª</div>
+        <div class="int-name">Primeira Intenção</div>
+        <div class="int-body">Ferida fechada: bordas aproximadas por sutura, grampos ou adesivo. Cicatrização rápida com formação mínima de cicatriz e baixo risco de infecção.</div>
+        <div class="int-causa">Ex.: incisão cirúrgica suturada</div>
+      </div>
+      <div class="int-card">
+        <div class="int-num">2ª</div>
+        <div class="int-name">Segunda Intenção</div>
+        <div class="int-body">Bordas não aproximadas. Cicatrização pela formação de tecido de granulação, contração da ferida e epitelização a partir das margens.</div>
+        <div class="int-causa">Ex.: lesão por pressão, úlcera venosa</div>
+      </div>
+      <div class="int-card">
+        <div class="int-num">3ª</div>
+        <div class="int-name">Terceira Intenção</div>
+        <div class="int-body">Ferida mantida aberta por vários dias aguardando resolução de infecção ou inflamação; em seguida as bordas são aproximadas cirurgicamente.</div>
+        <div class="int-causa">Ex.: ferida contaminada com observação</div>
+      </div>
+    </div>
+
+    <!-- Etiologia Table -->
+    <p class="section-label fade-in" style="margin-top:3rem; margin-bottom:0.5rem;">Por Etiologia — Características Diferenciais</p>
+    <table class="class-table fade-in">
+      <thead>
+        <tr>
+          <th>Tipo</th>
+          <th>Localização</th>
+          <th>Características da Úlcera</th>
+          <th>Outros Achados</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Úlcera Venosa</td>
+          <td>Terço distal da perna; ao redor do maléolo</td>
+          <td><span class="tag-blue">Margens irregulares</span><span class="tag-blue">Leito fibrinoso</span><span class="tag-blue">Alto exsudato</span><span class="tag-blue">Dor aliviada por elevação</span></td>
+          <td>Edema, varizes, eczema, lipodermatosclerose, hiperpigmentação</td>
+        </tr>
+        <tr>
+          <td>Úlcera Arterial</td>
+          <td>Dedos, pés ou região lateral pré-tibial</td>
+          <td><span class="tag-red">Bordas perfuradas demarcadas</span><span class="tag-red">Dolorosa</span><span class="tag-red">Leito necrótico</span><span class="tag-red">Exsudato seco/baixo</span></td>
+          <td>Pele seca e brilhante, perda de pelos, pulsos fracos ou ausentes</td>
+        </tr>
+        <tr>
+          <td>Pé Diabético</td>
+          <td>Planta do pé (neuropática); bordas, articulações metatarsofalangeais (neuroisquêmica)</td>
+          <td><span class="tag-yellow">Perda sensorial</span><span class="tag-yellow">Profundidade variável</span><span class="tag-yellow">Pode envolver tendões e ossos</span></td>
+          <td>Neuropática: pé quente, calo perilesional. Neuroisquêmica: pé frio, pulsos ausentes.</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+    <div class="media-grid-3 fade-in media-band">
+      <figure class="media-card"><img src="avalia.img/aula.1_16.avaliacao_13.png" alt="Slide sobre classificação quanto à complexidade"><figcaption class="media-caption"><strong>Complexidade.</strong> Feridas agudas e crônicas em contraste.</figcaption></figure>
+      <figure class="media-card"><img src="avalia.img/aula.1_16.avaliacao_14.png" alt="Slide sobre comprometimento tecidual"><figcaption class="media-caption"><strong>Comprometimento tecidual.</strong> Lesões abertas e fechadas em apoio à classificação.</figcaption></figure>
+      <figure class="media-card"><img src="avalia.img/aula.1_16.avaliacao_16.png" alt="Slide sobre classificação quanto à evolução"><figcaption class="media-caption"><strong>Evolução.</strong> Feridas simples e complexas, fechando o bloco classificatório.</figcaption></figure>
+    </div>
+  </div>
+</section>
+
+<!-- QUIZ -->
+<section id="quiz" class="quiz-section">
+  <div class="container">
+    <p class="section-label fade-in">Fixação</p>
+    <h2 class="section-title fade-in"><em>Quiz</em> de Revisão</h2>
+    <p class="section-lead fade-in">Teste seus conhecimentos sobre avaliação de lesões cutâneas.</p>
+    <div class="quiz-box fade-in">
+
+      <div class="quiz-question">
+        <div class="quiz-q">1. De acordo com a Resolução Cofen nº 787/2025, qual das seguintes ações passou a ser permitida ao enfermeiro no cuidado de pessoas com lesões cutâneas?</div>
+        <div class="quiz-options">
+          <label class="quiz-opt"><input type="radio" name="q1" value="a"> Prescrição de antibióticos sistêmicos</label>
+          <label class="quiz-opt"><input type="radio" name="q1" value="b"> Coleta de material para biópsia e cultura de lesões infectadas</label>
+          <label class="quiz-opt"><input type="radio" name="q1" value="c"> Realização de amputações de urgência</label>
+          <label class="quiz-opt"><input type="radio" name="q1" value="d"> Indicação de próteses vasculares</label>
+        </div>
+        <button class="quiz-submit" onclick="checkQ(1,'b','✅ Correto! A Resolução 787/2025 amplia a autonomia do enfermeiro, incluindo coleta para biópsia/cultura, prescrição de coberturas e terapias, solicitação de exames, além de novas tecnologias como laser, LED, ozonioterapia e concentrados sanguíneos.')">Verificar</button>
+        <div class="quiz-feedback" id="fb1"></div>
+      </div>
+
+      <div class="quiz-question">
+        <div class="quiz-q">2. Uma ferida crônica é caracterizada por persistir por período superior a:</div>
+        <div class="quiz-options">
+          <label class="quiz-opt"><input type="radio" name="q2" value="a"> 1 semana</label>
+          <label class="quiz-opt"><input type="radio" name="q2" value="b"> 2 semanas</label>
+          <label class="quiz-opt"><input type="radio" name="q2" value="c"> 4 semanas</label>
+          <label class="quiz-opt"><input type="radio" name="q2" value="d"> 3 meses</label>
+        </div>
+        <button class="quiz-submit" onclick="checkQ(2,'c','✅ Correto! Feridas crônicas são aquelas que se prolongam por período superior a 4 semanas, com processo de cicatrização interrompido, desorganizado, aleatório e imprevisível.')">Verificar</button>
+        <div class="quiz-feedback" id="fb2"></div>
+      </div>
+
+      <div class="quiz-question">
+        <div class="quiz-q">3. Qual fase da cicatrização é responsável pela criação do tecido de granulação e dura aproximadamente de 3 a 21 dias?</div>
+        <div class="quiz-options">
+          <label class="quiz-opt"><input type="radio" name="q3" value="a"> Fase inflamatória</label>
+          <label class="quiz-opt"><input type="radio" name="q3" value="b"> Fase proliferativa</label>
+          <label class="quiz-opt"><input type="radio" name="q3" value="c"> Fase de remodelação</label>
+          <label class="quiz-opt"><input type="radio" name="q3" value="d"> Fase hemostática</label>
+        </div>
+        <button class="quiz-submit" onclick="checkQ(3,'b','✅ Correto! A fase proliferativa (3–21 dias) é marcada pela formação de tecido de granulação via fibroblastos e angiogênese, contração da ferida e início da reepitelização nas margens.')">Verificar</button>
+        <div class="quiz-feedback" id="fb3"></div>
+      </div>
+
+      <div class="quiz-question">
+        <div class="quiz-q">4. Uma úlcera venosa apresenta tipicamente qual característica diferencial em relação à dor?</div>
+        <div class="quiz-options">
+          <label class="quiz-opt"><input type="radio" name="q4" value="a"> Dor intensa em repouso, piorada pela elevação do membro</label>
+          <label class="quiz-opt"><input type="radio" name="q4" value="b"> Ausência total de dor por neuropatia</label>
+          <label class="quiz-opt"><input type="radio" name="q4" value="c"> Dor aliviada pela elevação do membro</label>
+          <label class="quiz-opt"><input type="radio" name="q4" value="d"> Dor exclusivamente noturna</label>
+        </div>
+        <button class="quiz-submit" onclick="checkQ(4,'c','✅ Correto! A úlcera venosa pode ser dolorosa, mas a dor é tipicamente aliviada pela elevação do membro inferior — o contrário da úlcera arterial, cuja dor piora com a elevação (diminui a perfusão).')">Verificar</button>
+        <div class="quiz-feedback" id="fb4"></div>
+      </div>
+
+      <div class="quiz-question">
+        <div class="quiz-q">5. A "Úlcera Terminal de Kennedy" é um subtipo de qual categoria de lesão?</div>
+        <div class="quiz-options">
+          <label class="quiz-opt"><input type="radio" name="q5" value="a"> Lesão venosa</label>
+          <label class="quiz-opt"><input type="radio" name="q5" value="b"> Lesão por pressão</label>
+          <label class="quiz-opt"><input type="radio" name="q5" value="c"> Úlcera no pé diabético</label>
+          <label class="quiz-opt"><input type="radio" name="q5" value="d"> Lesão por fricção</label>
+        </div>
+        <button class="quiz-submit" onclick="checkQ(5,'b','✅ Correto! A Úlcera Terminal de Kennedy é um subtipo de lesão por pressão que surge em pacientes em processo ativo de morte. Tem evolução rápida e inevitável, geralmente em formato de borboleta ou pera na região sacral.')">Verificar</button>
+        <div class="quiz-feedback" id="fb5"></div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-brand">FEn · UFPel</div>
+  <p>Faculdade de Enfermagem · Universidade Federal de Pelotas · Fundada em 1976</p>
+  <p style="margin-top:.5rem;">
+    Prof.ª <a href="https://institucional.ufpel.edu.br/servidores/id/2858" target="_blank">Adrize Porto</a> — Coordenadora do Projeto Amor-à-Pele
+    &nbsp;·&nbsp;
+    Prof.ª Dr.ª ET <a href="https://institucional.ufpel.edu.br/servidores/id/176265" target="_blank">Marina Soares Mota</a> — Dra. em Enfermagem (FURG), Estomaterapeuta (UNISINOS)
+  </p>
+  <p>Acad. Giovana Machado Xavier · Acad. Thaislan San Martins Rodrigues</p>
+  <div class="footer-proj">Avaliação de Pessoas com Lesões Cutâneas / Feridas · Aulas 1–16 · 2025</div>
+</footer>
+
+<script>
+function checkQ(num, correct, msg) {
+  const sel = document.querySelector(`input[name="q${num}"]:checked`);
+  const fb = document.getElementById(`fb${num}`);
+  if (!sel) { alert('Selecione uma opção.'); return; }
+  fb.style.display = 'block';
+  if (sel.value === correct) {
+    fb.className = 'quiz-feedback correct';
+    fb.textContent = msg;
+  } else {
+    fb.className = 'quiz-feedback incorrect';
+    fb.textContent = '❌ Incorreto. Revise o conteúdo e tente novamente.';
+  }
+}
+
+// Fade-in on scroll
+const obs = new IntersectionObserver(entries => {
+  entries.forEach((e,i) => {
+    if (e.isIntersecting) setTimeout(() => e.target.classList.add('visible'), i*70);
+  });
+}, { threshold:.07 });
+document.querySelectorAll('.fade-in').forEach(el => obs.observe(el));
+
+// Active nav
+const secs = document.querySelectorAll('section[id]');
+const navAs = document.querySelectorAll('nav a');
+window.addEventListener('scroll', () => {
+  let cur = '';
+  secs.forEach(s => { if (window.scrollY >= s.offsetTop - 110) cur = s.id; });
+  navAs.forEach(a => a.classList.toggle('active', a.getAttribute('href') === '#'+cur));
+});
+</script>
+</body>
+</html>

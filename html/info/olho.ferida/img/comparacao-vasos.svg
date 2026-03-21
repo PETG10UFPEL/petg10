@@ -1,0 +1,137 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 260" width="500" height="260">
+  <defs>
+    <linearGradient id="vasoSaudavelLumen" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#FF9999"/>
+      <stop offset="40%" stop-color="#FF4444"/>
+      <stop offset="60%" stop-color="#CC2222"/>
+      <stop offset="100%" stop-color="#FF9999"/>
+    </linearGradient>
+    <linearGradient id="vasoDoenoLumen" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#FF9999"/>
+      <stop offset="45%" stop-color="#DD3333"/>
+      <stop offset="55%" stop-color="#BB1111"/>
+      <stop offset="100%" stop-color="#FF9999"/>
+    </linearGradient>
+    <linearGradient id="bgGrad" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#F8F6F2"/>
+      <stop offset="100%" stop-color="#EEE9E2"/>
+    </linearGradient>
+    <filter id="softShadow" x="-10%" y="-10%" width="120%" height="120%">
+      <feDropShadow dx="0" dy="2" stdDeviation="3" flood-color="#00000018"/>
+    </filter>
+  </defs>
+
+  <rect width="500" height="260" fill="url(#bgGrad)" rx="10"/>
+
+  <!-- ── LADO ESQUERDO: VASO SAUDÁVEL ── -->
+  <!-- Fundo label -->
+  <rect x="12" y="12" width="220" height="236" rx="8" fill="white" opacity="0.7" filter="url(#softShadow)"/>
+  <rect x="12" y="12" width="220" height="28" rx="8" fill="#2E6DA4"/>
+  <rect x="12" y="30" width="220" height="10" fill="#2E6DA4"/>
+  <text x="122" y="31" text-anchor="middle" font-family="Georgia, serif" font-size="12" font-weight="bold" fill="white">Vaso Saudável</text>
+
+  <!-- Corte transversal do vaso saudável -->
+  <!-- Adventícia (externa) -->
+  <circle cx="122" cy="138" r="68" fill="#F5D5B0" stroke="#D4A070" stroke-width="1.5"/>
+  <!-- Média (muscular) -->
+  <circle cx="122" cy="138" r="56" fill="#E8B890" stroke="#C89060" stroke-width="1"/>
+  <!-- Íntima -->
+  <circle cx="122" cy="138" r="46" fill="#F8E0C8" stroke="#E09060" stroke-width="1"/>
+  <!-- Lúmen -->
+  <circle cx="122" cy="138" r="36" fill="url(#vasoSaudavelLumen)"/>
+  <!-- Reflexo no lúmen -->
+  <ellipse cx="112" cy="128" rx="8" ry="5" fill="white" opacity="0.25" transform="rotate(-30 112 128)"/>
+
+  <!-- Endotélio íntegro -->
+  <circle cx="122" cy="138" r="36" fill="none" stroke="#FF8866" stroke-width="2.5"/>
+
+  <!-- Pericitos (células satélite saudáveis) -->
+  <ellipse cx="152" cy="110" rx="7" ry="4" fill="#4A90C4" opacity="0.8" transform="rotate(-45 152 110)"/>
+  <ellipse cx="160" cy="138" rx="7" ry="4" fill="#4A90C4" opacity="0.8"/>
+  <ellipse cx="152" cy="166" rx="7" ry="4" fill="#4A90C4" opacity="0.8" transform="rotate(45 152 166)"/>
+  <ellipse cx="92" cy="112" rx="7" ry="4" fill="#4A90C4" opacity="0.8" transform="rotate(45 92 112)"/>
+  <ellipse cx="84" cy="138" rx="7" ry="4" fill="#4A90C4" opacity="0.8"/>
+  <ellipse cx="92" cy="164" rx="7" ry="4" fill="#4A90C4" opacity="0.8" transform="rotate(-45 92 164)"/>
+
+  <!-- Labels camadas -->
+  <line x1="190" y1="95" x2="166" y2="104" stroke="#888" stroke-width="0.8" stroke-dasharray="2,2"/>
+  <text x="192" y="95" font-family="sans-serif" font-size="8.5" fill="#555">Adventícia</text>
+
+  <line x1="190" y1="115" x2="170" y2="119" stroke="#888" stroke-width="0.8" stroke-dasharray="2,2"/>
+  <text x="192" y="115" font-family="sans-serif" font-size="8.5" fill="#555">Média</text>
+
+  <line x1="190" y1="134" x2="170" y2="134" stroke="#888" stroke-width="0.8" stroke-dasharray="2,2"/>
+  <text x="192" y="134" font-family="sans-serif" font-size="8.5" fill="#555">Íntima</text>
+
+  <line x1="190" y1="153" x2="168" y2="148" stroke="#888" stroke-width="0.8" stroke-dasharray="2,2"/>
+  <text x="192" y="153" font-family="sans-serif" font-size="8.5" fill="#2E6DA4" font-weight="bold">Lúmen amplo</text>
+
+  <!-- Pericito label -->
+  <line x1="162" y1="79" x2="154" y2="105" stroke="#888" stroke-width="0.8" stroke-dasharray="2,2"/>
+  <text x="138" y="76" font-family="sans-serif" font-size="8" fill="#4A90C4">Pericito</text>
+
+  <!-- Status badge -->
+  <rect x="70" y="226" width="104" height="16" rx="8" fill="#E8F5E9"/>
+  <text x="122" y="237" text-anchor="middle" font-family="sans-serif" font-size="9" fill="#2E7D32" font-weight="bold">✓ Fluxo normal · Cicatrização ok</text>
+
+  <!-- ── DIVISOR ── -->
+  <line x1="250" y1="20" x2="250" y2="240" stroke="#CCC" stroke-width="1" stroke-dasharray="4,4"/>
+  <text x="250" y="140" text-anchor="middle" font-family="Georgia,serif" font-size="22" fill="#DDD">≠</text>
+
+  <!-- ── LADO DIREITO: VASO MICROANGIOPÁTICO ── -->
+  <rect x="268" y="12" width="220" height="236" rx="8" fill="white" opacity="0.7" filter="url(#softShadow)"/>
+  <rect x="268" y="12" width="220" height="28" rx="8" fill="#D4541A"/>
+  <rect x="268" y="30" width="220" height="10" fill="#D4541A"/>
+  <text x="378" y="31" text-anchor="middle" font-family="Georgia, serif" font-size="12" font-weight="bold" fill="white">Microangiopatia Diabética</text>
+
+  <!-- Adventícia espessada -->
+  <circle cx="378" cy="138" r="68" fill="#E8C090" stroke="#C08040" stroke-width="2"/>
+  <!-- Média espessada - fibrose -->
+  <circle cx="378" cy="138" r="60" fill="#D4A070" stroke="#B07040" stroke-width="2.5"/>
+  <!-- Membrana basal espessada (camada extra) -->
+  <circle cx="378" cy="138" r="50" fill="#ECC090" stroke="#A06030" stroke-width="3" stroke-dasharray="3,1"/>
+  <!-- Íntima comprometida -->
+  <circle cx="378" cy="138" r="40" fill="#F0C0A0" stroke="#C07040" stroke-width="2"/>
+  <!-- Lúmen reduzido -->
+  <circle cx="378" cy="138" r="24" fill="url(#vasoDoenoLumen)"/>
+  <!-- Trombo parcial -->
+  <path d="M378 120 Q390 125 393 135 Q390 148 380 150 Q368 148 364 135 Q365 122 378 120Z" fill="#8B2020" opacity="0.55"/>
+  <!-- Reflexo -->
+  <ellipse cx="370" cy="130" rx="5" ry="3" fill="white" opacity="0.2" transform="rotate(-30 370 130)"/>
+
+  <!-- Endotélio disfuncional (pontilhado, irregular) -->
+  <circle cx="378" cy="138" r="24" fill="none" stroke="#FF4400" stroke-width="2" stroke-dasharray="2,2"/>
+
+  <!-- Pericitos perdidos (apenas 2, apagados) -->
+  <ellipse cx="406" cy="112" rx="6" ry="3.5" fill="#4A90C4" opacity="0.25" transform="rotate(-45 406 112)"/>
+  <ellipse cx="350" cy="162" rx="6" ry="3.5" fill="#4A90C4" opacity="0.25" transform="rotate(-45 350 162)"/>
+
+  <!-- Depósitos AGE -->
+  <circle cx="398" cy="136" r="4" fill="#FFD700" opacity="0.7"/>
+  <circle cx="362" cy="128" r="3.5" fill="#FFD700" opacity="0.65"/>
+  <circle cx="360" cy="148" r="3" fill="#FFD700" opacity="0.6"/>
+
+  <!-- Labels -->
+  <line x1="410" y1="88" x2="415" y2="100" stroke="#888" stroke-width="0.8" stroke-dasharray="2,2"/>
+  <text x="398" y="86" font-family="sans-serif" font-size="8" fill="#D4541A" font-weight="bold">Membrana</text>
+  <text x="398" y="96" font-family="sans-serif" font-size="8" fill="#D4541A" font-weight="bold">basal espessada</text>
+
+  <line x1="436" y1="128" x2="420" y2="131" stroke="#888" stroke-width="0.8" stroke-dasharray="2,2"/>
+  <text x="438" y="128" font-family="sans-serif" font-size="8.5" fill="#555">Fibrose</text>
+
+  <line x1="436" y1="144" x2="402" y2="138" stroke="#888" stroke-width="0.8" stroke-dasharray="2,2"/>
+  <text x="438" y="148" font-family="sans-serif" font-size="8.5" fill="#D4541A" font-weight="bold">Lúmen estreito</text>
+
+  <!-- AGE label -->
+  <line x1="414" y1="168" x2="400" y2="140" stroke="#888" stroke-width="0.8" stroke-dasharray="2,2"/>
+  <text x="402" y="176" font-family="sans-serif" font-size="8" fill="#998800">Depósitos AGE</text>
+
+  <!-- Pericito perdido -->
+  <line x1="326" y1="90" x2="350" y2="110" stroke="#888" stroke-width="0.8" stroke-dasharray="2,2"/>
+  <text x="306" y="88" font-family="sans-serif" font-size="8" fill="#4A90C4" opacity="0.7">Pericito</text>
+  <text x="308" y="97" font-family="sans-serif" font-size="8" fill="#4A90C4" opacity="0.7">perdido</text>
+
+  <!-- Status badge -->
+  <rect x="320" y="226" width="116" height="16" rx="8" fill="#FEEBE6"/>
+  <text x="378" y="237" text-anchor="middle" font-family="sans-serif" font-size="9" fill="#C0392B" font-weight="bold">✗ Isquemia · Cicatrização comprometida</text>
+</svg>

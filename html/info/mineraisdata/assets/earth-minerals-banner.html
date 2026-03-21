@@ -1,0 +1,483 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Earth Minerals – AI Banner</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { background: #0a0a0f; display: flex; align-items: center; justify-content: center; min-height: 100vh; }
+  .banner-wrapper { width: 100%; max-width: 1600px; aspect-ratio: 16/9; position: relative; }
+  svg { width: 100%; height: 100%; display: block; }
+</style>
+</head>
+<body>
+<div class="banner-wrapper">
+<svg viewBox="0 0 1600 900" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+  <defs>
+    <!-- Background gradient: earthy bottom → crepuscular sky top -->
+    <linearGradient id="bgGrad" x1="0" y1="1" x2="0" y2="0">
+      <stop offset="0%" stop-color="#4a2510"/>
+      <stop offset="22%" stop-color="#6a3a18"/>
+      <stop offset="40%" stop-color="#7a5228"/>
+      <stop offset="58%" stop-color="#1e3a58"/>
+      <stop offset="75%" stop-color="#122848"/>
+      <stop offset="100%" stop-color="#0a1830"/>
+    </linearGradient>
+
+    <!-- Globe gradient -->
+    <radialGradient id="globeGrad" cx="50%" cy="40%" r="55%">
+      <stop offset="0%" stop-color="#9a6030"/>
+      <stop offset="35%" stop-color="#7a4820"/>
+      <stop offset="70%" stop-color="#5c3018"/>
+      <stop offset="100%" stop-color="#3a1e0c"/>
+    </radialGradient>
+
+    <!-- Globe texture overlay -->
+    <radialGradient id="globeLight" cx="35%" cy="25%" r="50%">
+      <stop offset="0%" stop-color="#e0a060" stop-opacity="0.7"/>
+      <stop offset="60%" stop-color="#8a5030" stop-opacity="0.3"/>
+      <stop offset="100%" stop-color="#3a1808" stop-opacity="0"/>
+    </radialGradient>
+
+    <!-- Copper vein gradient -->
+    <linearGradient id="copperGrad" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#b54a1a"/>
+      <stop offset="30%" stop-color="#e87030"/>
+      <stop offset="60%" stop-color="#c85520"/>
+      <stop offset="100%" stop-color="#ff8844"/>
+    </linearGradient>
+
+    <!-- Zinc vein gradient -->
+    <linearGradient id="zincGrad" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#8ab0c0"/>
+      <stop offset="40%" stop-color="#c0dce8"/>
+      <stop offset="70%" stop-color="#a0c8d8"/>
+      <stop offset="100%" stop-color="#d8f0f8"/>
+    </linearGradient>
+
+    <!-- Magnesium gradient -->
+    <linearGradient id="magGrad" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#c8a030"/>
+      <stop offset="40%" stop-color="#f0c840"/>
+      <stop offset="70%" stop-color="#e0b020"/>
+      <stop offset="100%" stop-color="#fff0a0"/>
+    </linearGradient>
+
+    <!-- Silicon gradient -->
+    <linearGradient id="silGrad" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#5080b0" stop-opacity="0.9"/>
+      <stop offset="40%" stop-color="#80c0e0" stop-opacity="0.95"/>
+      <stop offset="70%" stop-color="#60a0c8" stop-opacity="0.9"/>
+      <stop offset="100%" stop-color="#a8e0f8" stop-opacity="0.98"/>
+    </linearGradient>
+
+    <!-- Neural glow gradient top -->
+    <radialGradient id="techGlow" cx="50%" cy="100%" r="80%">
+      <stop offset="0%" stop-color="#1a6080" stop-opacity="0.5"/>
+      <stop offset="50%" stop-color="#0a2040" stop-opacity="0.2"/>
+      <stop offset="100%" stop-color="#050d1a" stop-opacity="0"/>
+    </radialGradient>
+
+    <!-- Sunray gradient -->
+    <radialGradient id="sunRay" cx="50%" cy="70%" r="60%">
+      <stop offset="0%" stop-color="#f8c850" stop-opacity="0.65"/>
+      <stop offset="40%" stop-color="#e09030" stop-opacity="0.3"/>
+      <stop offset="100%" stop-color="#c05010" stop-opacity="0"/>
+    </radialGradient>
+
+    <!-- Glow filters -->
+    <filter id="glowCopper" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="4" result="blur"/>
+      <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+    <filter id="glowZinc" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="3.5" result="blur"/>
+      <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+    <filter id="glowMag" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="5" result="blur"/>
+      <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+    <filter id="glowSil" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="3" result="blur"/>
+      <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+    <filter id="softGlow" x="-100%" y="-100%" width="300%" height="300%">
+      <feGaussianBlur stdDeviation="18" result="blur"/>
+      <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+    <filter id="starGlow" x="-200%" y="-200%" width="500%" height="500%">
+      <feGaussianBlur stdDeviation="1.5" result="blur"/>
+      <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+    <filter id="chipGlow" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="6" result="blur"/>
+      <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+
+    <!-- Clip paths -->
+    <clipPath id="bannerClip">
+      <rect width="1600" height="900"/>
+    </clipPath>
+    <clipPath id="globeClip">
+      <circle cx="800" cy="820" r="280"/>
+    </clipPath>
+
+    <!-- Mineral vein paths reused with animations -->
+    <!-- Noise texture for globe -->
+    <filter id="roughen">
+      <feTurbulence type="fractalNoise" baseFrequency="0.04 0.04" numOctaves="4" seed="3" result="noise"/>
+      <feColorMatrix type="saturate" values="0.3" in="noise" result="colorNoise"/>
+      <feBlend in="SourceGraphic" in2="colorNoise" mode="multiply" result="blended"/>
+      <feComposite in="blended" in2="SourceGraphic" operator="in"/>
+    </filter>
+
+    <!-- Animation keyframes via CSS -->
+    <style>
+      @keyframes pulse {
+        0%, 100% { opacity: 0.7; stroke-width: inherit; }
+        50% { opacity: 1; stroke-width: calc(inherit * 1.3); }
+      }
+      @keyframes flowDash {
+        from { stroke-dashoffset: 0; }
+        to { stroke-dashoffset: -400; }
+      }
+      @keyframes twinkle {
+        0%, 100% { opacity: 0.3; }
+        50% { opacity: 1; }
+      }
+      @keyframes neuralPulse {
+        0%, 100% { opacity: 0.5; }
+        50% { opacity: 1; }
+      }
+      @keyframes serverBlink {
+        0%, 90%, 100% { opacity: 0.4; }
+        95% { opacity: 1; }
+      }
+      @keyframes rootSway {
+        0%, 100% { transform: translateX(0); }
+        50% { transform: translateX(2px); }
+      }
+      @keyframes glowPulse {
+        0%, 100% { opacity: 0.4; }
+        50% { opacity: 0.8; }
+      }
+      .copper-vein { stroke: url(#copperGrad); animation: flowDash 5s linear infinite; }
+      .zinc-vein { stroke: url(#zincGrad); animation: flowDash 6s linear infinite reverse; }
+      .mag-vein { stroke: url(#magGrad); animation: flowDash 7s linear infinite; }
+      .sil-vein { stroke: url(#silGrad); animation: flowDash 5.5s linear infinite reverse; }
+      .star { animation: twinkle var(--dur, 3s) ease-in-out infinite; animation-delay: var(--del, 0s); }
+      .neural { animation: neuralPulse 2.5s ease-in-out infinite; }
+      .blink { animation: serverBlink 4s ease-in-out infinite; animation-delay: var(--del, 0s); }
+      .glow-pulse { animation: glowPulse 3s ease-in-out infinite; }
+    </style>
+  </defs>
+
+  <g clip-path="url(#bannerClip)">
+
+    <!-- ── BACKGROUND ── -->
+    <rect width="1600" height="900" fill="url(#bgGrad)"/>
+
+    <!-- Atmospheric sunray from globe center upward -->
+    <ellipse cx="800" cy="750" rx="700" ry="500" fill="url(#sunRay)" class="glow-pulse"/>
+
+    <!-- Volumetric light columns — brighter -->
+    <polygon points="660,900 730,900 690,200 650,200" fill="#f0b840" opacity="0.07"/>
+    <polygon points="750,900 820,900 810,200 760,200" fill="#f8d060" opacity="0.09"/>
+    <polygon points="830,900 900,900 940,200 890,200" fill="#f0b840" opacity="0.07"/>
+    <polygon points="500,900 560,900 520,300 490,300" fill="#e0a030" opacity="0.04"/>
+    <polygon points="1060,900 1120,900 1100,300 1070,300" fill="#e0a030" opacity="0.04"/>
+
+    <!-- ── STARS ── -->
+    <g filter="url(#starGlow)">
+      <!-- scattered small stars in upper region -->
+      <circle cx="120" cy="60" r="1.2" fill="#c8e8f8" class="star" style="--dur:2.8s;--del:0.2s"/>
+      <circle cx="230" cy="35" r="0.9" fill="#e8f8ff" class="star" style="--dur:4s;--del:1s"/>
+      <circle cx="340" cy="80" r="1.4" fill="#a0d8f0" class="star" style="--dur:3.2s;--del:0.5s"/>
+      <circle cx="450" cy="45" r="1" fill="#d0ecf8" class="star" style="--dur:2.5s;--del:1.5s"/>
+      <circle cx="560" cy="70" r="0.8" fill="#c0e4f8" class="star" style="--dur:3.8s;--del:0.8s"/>
+      <circle cx="200" cy="130" r="1.1" fill="#b8e0f0" class="star" style="--dur:3.5s;--del:2s"/>
+      <circle cx="370" cy="150" r="1.3" fill="#e0f4ff" class="star" style="--dur:2.9s;--del:0.3s"/>
+      <circle cx="980" cy="55" r="1.2" fill="#d0eeff" class="star" style="--dur:3.6s;--del:0.7s"/>
+      <circle cx="1100" cy="80" r="0.9" fill="#b8e4f8" class="star" style="--dur:2.7s;--del:1.8s"/>
+      <circle cx="1220" cy="40" r="1.4" fill="#e8f8ff" class="star" style="--dur:4.2s;--del:0.4s"/>
+      <circle cx="1380" cy="65" r="1.1" fill="#c0e8fc" class="star" style="--dur:3.1s;--del:1.2s"/>
+      <circle cx="1470" cy="110" r="0.8" fill="#d8f0ff" class="star" style="--dur:2.6s;--del:2.2s"/>
+      <circle cx="1540" cy="45" r="1.3" fill="#a8ddf8" class="star" style="--dur:3.9s;--del:0.9s"/>
+      <circle cx="90" cy="200" r="1" fill="#c8eaff" class="star" style="--dur:3.3s;--del:1.6s"/>
+      <circle cx="1560" cy="180" r="1.2" fill="#d0ecff" class="star" style="--dur:2.8s;--del:0.6s"/>
+      <!-- Blue nebula wisps -->
+      <ellipse cx="300" cy="100" rx="80" ry="20" fill="#204060" opacity="0.15" transform="rotate(-15, 300, 100)"/>
+      <ellipse cx="1300" cy="90" rx="100" ry="18" fill="#1a3858" opacity="0.12" transform="rotate(10, 1300, 90)"/>
+    </g>
+
+    <!-- ── GLOBE ── -->
+    <!-- Base globe sphere -->
+    <circle cx="800" cy="820" r="280" fill="url(#globeGrad)" filter="url(#roughen)"/>
+    <circle cx="800" cy="820" r="280" fill="url(#globeLight)"/>
+
+    <!-- Globe surface texture: continental shapes suggestion -->
+    <g clip-path="url(#globeClip)" opacity="0.55">
+      <ellipse cx="740" cy="770" rx="90" ry="55" fill="#7a9858" transform="rotate(-20, 740, 770)"/>
+      <ellipse cx="860" cy="800" rx="70" ry="40" fill="#6a8040" transform="rotate(15, 860, 800)"/>
+      <ellipse cx="790" cy="840" rx="50" ry="30" fill="#587030" transform="rotate(-10, 790, 840)"/>
+      <ellipse cx="700" cy="820" rx="40" ry="25" fill="#526028" transform="rotate(25, 700, 820)"/>
+      <ellipse cx="900" cy="850" rx="55" ry="35" fill="#6a7e38" transform="rotate(-5, 900, 850)"/>
+      <!-- Rocky texture veins inside globe -->
+      <path d="M720,760 Q750,740 780,760 Q800,775 830,755 Q860,740 880,760" stroke="#9a6030" stroke-width="2.5" fill="none" opacity="0.7"/>
+      <path d="M700,800 Q730,790 760,810 Q780,820 800,800 Q830,785 860,805" stroke="#8a5020" stroke-width="2" fill="none" opacity="0.6"/>
+    </g>
+
+    <!-- Globe sheen -->
+    <circle cx="800" cy="820" r="280" fill="none" stroke="#8b6030" stroke-width="1" opacity="0.3"/>
+    <ellipse cx="770" cy="680" rx="140" ry="50" fill="white" opacity="0.04" transform="rotate(-5,770,680)"/>
+
+    <!-- Mineral veins emerging from globe – COPPER (warm reds) -->
+    <g filter="url(#glowCopper)">
+      <!-- Left copper artery -->
+      <path d="M690,760 Q640,700 580,610 Q530,530 500,420 Q480,350 490,250 Q495,200 510,140"
+            stroke="url(#copperGrad)" stroke-width="5" fill="none" stroke-dasharray="12 6" opacity="1" class="copper-vein"/>
+      <path d="M700,755 Q645,690 575,595 Q518,508 492,395 Q474,320 485,218 Q492,168 508,108"
+            stroke="#ff9060" stroke-width="2.5" fill="none" opacity="0.75" class="copper-vein"/>
+      <!-- Right copper artery -->
+      <path d="M910,760 Q960,700 1020,610 Q1070,530 1100,420 Q1120,350 1110,250 Q1105,200 1090,140"
+            stroke="url(#copperGrad)" stroke-width="5" fill="none" stroke-dasharray="12 6" opacity="1" class="copper-vein"/>
+      <!-- Copper mineral nodes -->
+      <circle cx="580" cy="610" r="7" fill="#e87030" opacity="1"/>
+      <circle cx="500" cy="420" r="6" fill="#ff9050" opacity="1"/>
+      <circle cx="1020" cy="610" r="7" fill="#e87030" opacity="1"/>
+      <circle cx="1100" cy="420" r="6" fill="#ff9050" opacity="1"/>
+    </g>
+
+    <!-- ZINC veins (silver iridescent) -->
+    <g filter="url(#glowZinc)">
+      <path d="M760,762 Q730,680 710,580 Q695,500 720,400 Q735,330 780,250 Q800,210 820,160"
+            stroke="url(#zincGrad)" stroke-width="4.5" fill="none" stroke-dasharray="10 5" opacity="1" class="zinc-vein"/>
+      <path d="M840,762 Q870,680 890,580 Q905,500 880,400 Q865,330 820,250 Q800,210 780,160"
+            stroke="url(#zincGrad)" stroke-width="3.5" fill="none" stroke-dasharray="8 6" opacity="0.9" class="zinc-vein"/>
+      <!-- Zinc nodes -->
+      <circle cx="710" cy="580" r="6.5" fill="#c0dce8" opacity="1"/>
+      <circle cx="720" cy="400" r="5.5" fill="#d8f0f8" opacity="1"/>
+      <circle cx="890" cy="580" r="6.5" fill="#c0dce8" opacity="1"/>
+    </g>
+
+    <!-- MAGNESIUM veins (golden ethereal) -->
+    <g filter="url(#glowMag)">
+      <path d="M795,760 Q780,680 770,570 Q762,470 790,360 Q805,295 840,220 Q860,175 875,120"
+            stroke="url(#magGrad)" stroke-width="5.5" fill="none" stroke-dasharray="15 5" opacity="1" class="mag-vein"/>
+      <path d="M805,760 Q820,680 830,570 Q838,470 810,360 Q795,295 760,220 Q740,175 725,120"
+            stroke="url(#magGrad)" stroke-width="3.5" fill="none" stroke-dasharray="10 7" opacity="0.85" class="mag-vein"/>
+      <!-- Magnesium nodes – larger, glowing -->
+      <circle cx="770" cy="570" r="8" fill="#f0c840" opacity="1"/>
+      <circle cx="790" cy="360" r="7" fill="#fff0a0" opacity="1"/>
+      <circle cx="830" cy="570" r="7" fill="#f0c840" opacity="1"/>
+    </g>
+
+    <!-- SILICON veins (translucent crystal) -->
+    <g filter="url(#glowSil)">
+      <!-- Far left -->
+      <path d="M660,770 Q600,720 540,640 Q480,560 450,460 Q430,380 440,290 Q445,240 460,180"
+            stroke="url(#silGrad)" stroke-width="4" fill="none" stroke-dasharray="8 4" opacity="1" class="sil-vein"/>
+      <!-- Far right -->
+      <path d="M940,770 Q1000,720 1060,640 Q1120,560 1150,460 Q1170,380 1160,290 Q1155,240 1140,180"
+            stroke="url(#silGrad)" stroke-width="4" fill="none" stroke-dasharray="8 4" opacity="1" class="sil-vein"/>
+      <!-- Silicon crystal nodes -->
+      <polygon points="535,636 547,620 559,636 547,652" fill="#80c0e0" opacity="1"/>
+      <polygon points="445,456 457,440 469,456 457,472" fill="#a8e0f8" opacity="1"/>
+      <polygon points="1055,636 1067,620 1079,636 1067,652" fill="#80c0e0" opacity="1"/>
+      <polygon points="1145,456 1157,440 1169,456 1157,472" fill="#a8e0f8" opacity="1"/>
+    </g>
+
+    <!-- ── TRANSITION ZONE: organic → geometric (around y=250–300) ── -->
+    <!-- Glowing band at transition -->
+    <rect x="300" y="245" width="1000" height="2" fill="none" stroke="#406880" stroke-width="1" opacity="0.3"/>
+    <ellipse cx="800" cy="270" rx="600" ry="30" fill="#1a4060" opacity="0.08"/>
+
+    <!-- ── NEURAL NETWORKS & CIRCUITS (top half) ── -->
+    <!-- Main neural mesh emerging from veins -->
+    <g class="neural">
+      <!-- Central neural hub -->
+      <circle cx="800" cy="220" r="8" fill="#40c0e0" opacity="0.9"/>
+      <!-- Radiating neural connections from copper paths -->
+      <line x1="510" y1="140" x2="560" y2="175" stroke="#e87030" stroke-width="1.5" opacity="0.8"/>
+      <line x1="560" y1="175" x2="620" y2="155" stroke="#c08040" stroke-width="1.5" opacity="0.7"/>
+      <line x1="620" y1="155" x2="680" y2="185" stroke="#a06030" stroke-width="1.5" opacity="0.65"/>
+      <line x1="680" y1="185" x2="720" y2="170" stroke="#8a7040" stroke-width="1.5" opacity="0.7"/>
+      <line x1="720" y1="170" x2="760" y2="190" stroke="#70a050" stroke-width="1.5" opacity="0.7"/>
+      <line x1="760" y1="190" x2="800" y2="175" stroke="#50c060" stroke-width="1.5" opacity="0.75"/>
+      <!-- Mirror right side -->
+      <line x1="1090" y1="140" x2="1040" y2="175" stroke="#e87030" stroke-width="1.5" opacity="0.8"/>
+      <line x1="1040" y1="175" x2="980" y2="155" stroke="#c08040" stroke-width="1.5" opacity="0.7"/>
+      <line x1="980" y1="155" x2="920" y2="185" stroke="#a06030" stroke-width="1.5" opacity="0.65"/>
+      <line x1="920" y1="185" x2="880" y2="170" stroke="#8a7040" stroke-width="1.5" opacity="0.7"/>
+      <line x1="880" y1="170" x2="840" y2="190" stroke="#70a050" stroke-width="1.5" opacity="0.7"/>
+      <line x1="840" y1="190" x2="800" y2="175" stroke="#50c060" stroke-width="1.5" opacity="0.75"/>
+
+      <!-- Secondary neural layer (higher) -->
+      <circle cx="560" cy="175" r="4" fill="#c08040" opacity="0.8"/>
+      <circle cx="680" cy="185" r="3.5" fill="#80b060" opacity="0.8"/>
+      <circle cx="760" cy="190" r="4" fill="#60c870" opacity="0.85"/>
+      <circle cx="840" cy="190" r="4" fill="#60c870" opacity="0.85"/>
+      <circle cx="920" cy="185" r="3.5" fill="#80b060" opacity="0.8"/>
+      <circle cx="1040" cy="175" r="4" fill="#c08040" opacity="0.8"/>
+
+      <!-- Far-left silicon neural path -->
+      <line x1="460" y1="180" x2="500" y2="155" stroke="#80c0e0" stroke-width="1.5" opacity="0.75"/>
+      <line x1="500" y1="155" x2="540" y2="170" stroke="#60a8cc" stroke-width="1.5" opacity="0.7"/>
+      <!-- Far-right silicon neural path -->
+      <line x1="1140" y1="180" x2="1100" y2="155" stroke="#80c0e0" stroke-width="1.5" opacity="0.75"/>
+      <line x1="1100" y1="155" x2="1060" y2="170" stroke="#60a8cc" stroke-width="1.5" opacity="0.7"/>
+    </g>
+
+    <!-- ── DATA CENTER / SERVER TOWERS ── -->
+    <!-- Main central cluster -->
+    <g filter="url(#chipGlow)">
+      <!-- Central server rack -->
+      <rect x="770" y="45" width="60" height="100" rx="4" fill="#0f3050" stroke="#2a90c0" stroke-width="1.5"/>
+      <rect x="775" y="52" width="50" height="8" rx="2" fill="#183d5e" stroke="#308090" stroke-width="0.8"/>
+      <rect x="775" y="64" width="50" height="8" rx="2" fill="#183d5e" stroke="#308090" stroke-width="0.8"/>
+      <rect x="775" y="76" width="50" height="8" rx="2" fill="#183d5e" stroke="#308090" stroke-width="0.8"/>
+      <rect x="775" y="88" width="50" height="8" rx="2" fill="#183d5e" stroke="#308090" stroke-width="0.8"/>
+      <rect x="775" y="100" width="50" height="8" rx="2" fill="#183d5e" stroke="#308090" stroke-width="0.8"/>
+      <rect x="775" y="112" width="50" height="8" rx="2" fill="#183d5e" stroke="#308090" stroke-width="0.8"/>
+      <!-- Status LEDs -->
+      <circle cx="814" cy="56" r="2.5" fill="#00ff80" class="blink" style="--del:0s"/>
+      <circle cx="814" cy="68" r="2.5" fill="#40c0e0" class="blink" style="--del:0.5s"/>
+      <circle cx="814" cy="80" r="2.5" fill="#00ff80" class="blink" style="--del:1s"/>
+      <circle cx="814" cy="92" r="2.5" fill="#ff8040" class="blink" style="--del:1.5s"/>
+      <circle cx="814" cy="104" r="2.5" fill="#40c0e0" class="blink" style="--del:0.7s"/>
+      <circle cx="814" cy="116" r="2.5" fill="#00ff80" class="blink" style="--del:1.2s"/>
+
+      <!-- Left server rack -->
+      <rect x="680" y="60" width="50" height="85" rx="4" fill="#0c2840" stroke="#2070a0" stroke-width="1.5"/>
+      <rect x="685" y="67" width="40" height="6" rx="1.5" fill="#163450" stroke="#286080" stroke-width="0.8"/>
+      <rect x="685" y="77" width="40" height="6" rx="1.5" fill="#163450" stroke="#286080" stroke-width="0.8"/>
+      <rect x="685" y="87" width="40" height="6" rx="1.5" fill="#163450" stroke="#286080" stroke-width="0.8"/>
+      <rect x="685" y="97" width="40" height="6" rx="1.5" fill="#163450" stroke="#286080" stroke-width="0.8"/>
+      <rect x="685" y="107" width="40" height="6" rx="1.5" fill="#163450" stroke="#286080" stroke-width="0.8"/>
+      <circle cx="715" cy="70" r="2.2" fill="#40c0e0" class="blink" style="--del:0.3s"/>
+      <circle cx="715" cy="80" r="2.2" fill="#00ff80" class="blink" style="--del:0.9s"/>
+      <circle cx="715" cy="90" r="2.2" fill="#40c0e0" class="blink" style="--del:0.6s"/>
+
+      <!-- Right server rack -->
+      <rect x="870" y="60" width="50" height="85" rx="4" fill="#0c2840" stroke="#2070a0" stroke-width="1.5"/>
+      <rect x="875" y="67" width="40" height="6" rx="1.5" fill="#163450" stroke="#286080" stroke-width="0.8"/>
+      <rect x="875" y="77" width="40" height="6" rx="1.5" fill="#163450" stroke="#286080" stroke-width="0.8"/>
+      <rect x="875" y="87" width="40" height="6" rx="1.5" fill="#163450" stroke="#286080" stroke-width="0.8"/>
+      <rect x="875" y="97" width="40" height="6" rx="1.5" fill="#163450" stroke="#286080" stroke-width="0.8"/>
+      <rect x="875" y="107" width="40" height="6" rx="1.5" fill="#163450" stroke="#286080" stroke-width="0.8"/>
+      <circle cx="905" cy="70" r="2.2" fill="#00ff80" class="blink" style="--del:0.4s"/>
+      <circle cx="905" cy="80" r="2.2" fill="#ff8040" class="blink" style="--del:1.1s"/>
+      <circle cx="905" cy="90" r="2.2" fill="#40c0e0" class="blink" style="--del:0.8s"/>
+
+      <!-- Far left small server -->
+      <rect x="560" y="80" width="40" height="65" rx="3" fill="#0a2030" stroke="#205870" stroke-width="1.2"/>
+      <rect x="565" y="87" width="30" height="5" rx="1" fill="#143040" stroke="#285868" stroke-width="0.6"/>
+      <rect x="565" y="96" width="30" height="5" rx="1" fill="#143040" stroke="#285868" stroke-width="0.6"/>
+      <rect x="565" y="105" width="30" height="5" rx="1" fill="#143040" stroke="#285868" stroke-width="0.6"/>
+      <circle cx="586" cy="89.5" r="2" fill="#40c0e0" class="blink" style="--del:1.3s"/>
+      <circle cx="586" cy="98.5" r="2" fill="#00ff80" class="blink" style="--del:0.2s"/>
+
+      <!-- Far right small server -->
+      <rect x="1000" y="80" width="40" height="65" rx="3" fill="#0a2030" stroke="#205870" stroke-width="1.2"/>
+      <rect x="1005" y="87" width="30" height="5" rx="1" fill="#143040" stroke="#285868" stroke-width="0.6"/>
+      <rect x="1005" y="96" width="30" height="5" rx="1" fill="#143040" stroke="#285868" stroke-width="0.6"/>
+      <rect x="1005" y="105" width="30" height="5" rx="1" fill="#143040" stroke="#285868" stroke-width="0.6"/>
+      <circle cx="1026" cy="89.5" r="2" fill="#00ff80" class="blink" style="--del:0.6s"/>
+      <circle cx="1026" cy="98.5" r="2" fill="#40c0e0" class="blink" style="--del:1.4s"/>
+    </g>
+
+    <!-- ── CIRCUIT BOARD CONNECTIONS (top) ── -->
+    <g opacity="0.9">
+      <!-- Horizontal circuit traces -->
+      <path d="M460,180 L560,180 L560,145 L680,145 L680,155"
+            stroke="#2a90b8" stroke-width="2" fill="none"/>
+      <path d="M1140,180 L1040,180 L1040,145 L920,145 L920,155"
+            stroke="#2a90b8" stroke-width="2" fill="none"/>
+      <!-- Vertical traces to servers -->
+      <path d="M580,145 L580,80" stroke="#2a90b8" stroke-width="2" fill="none"/>
+      <path d="M1020,145 L1020,80" stroke="#2a90b8" stroke-width="2" fill="none"/>
+      <!-- Central to server grid connection -->
+      <path d="M800,175 L800,145" stroke="#40c0e0" stroke-width="2.5" fill="none"/>
+      <path d="M800,145 L730,145 L730,60 L770,60"
+            stroke="#40c0e0" stroke-width="2.2" fill="none"/>
+      <path d="M800,145 L870,145 L870,60 L830,60"
+            stroke="#40c0e0" stroke-width="2.2" fill="none"/>
+      <!-- Connection from mag veins -->
+      <path d="M875,120 Q900,145 870,60" stroke="#f0c840" stroke-width="1.6" fill="none" opacity="0.7"/>
+      <path d="M725,120 Q700,145 730,60" stroke="#f0c840" stroke-width="1.6" fill="none" opacity="0.7"/>
+    </g>
+
+    <!-- Chip: central processor (symbolic) -->
+    <g filter="url(#chipGlow)">
+      <rect x="775" y="155" width="50" height="35" rx="3" fill="#0d2235" stroke="#20607a" stroke-width="1.5"/>
+      <!-- Pin traces on chip -->
+      <line x1="785" y1="155" x2="785" y2="145" stroke="#30a8c8" stroke-width="1"/>
+      <line x1="795" y1="155" x2="795" y2="145" stroke="#30a8c8" stroke-width="1"/>
+      <line x1="805" y1="155" x2="805" y2="145" stroke="#30a8c8" stroke-width="1"/>
+      <line x1="815" y1="155" x2="815" y2="145" stroke="#30a8c8" stroke-width="1"/>
+      <line x1="785" y1="190" x2="785" y2="200" stroke="#30a8c8" stroke-width="1"/>
+      <line x1="795" y1="190" x2="795" y2="200" stroke="#30a8c8" stroke-width="1"/>
+      <line x1="805" y1="190" x2="805" y2="200" stroke="#30a8c8" stroke-width="1"/>
+      <line x1="815" y1="190" x2="815" y2="200" stroke="#30a8c8" stroke-width="1"/>
+      <!-- Chip die -->
+      <rect x="782" y="162" width="36" height="21" rx="2" fill="#18405a" stroke="#40c0e0" stroke-width="0.8"/>
+      <circle cx="800" cy="172" r="5" fill="#40c0e0" opacity="0.6"/>
+      <line x1="792" y1="172" x2="808" y2="172" stroke="#60d8f0" stroke-width="0.8" opacity="0.8"/>
+      <line x1="800" y1="164" x2="800" y2="183" stroke="#60d8f0" stroke-width="0.8" opacity="0.8"/>
+    </g>
+
+    <!-- ── ROOTS descending from globe ── -->
+    <g opacity="0.6">
+      <path d="M780,1100 Q775,1050 760,1000 Q750,970 755,940 Q760,910 770,890 Q785,870 795,850"
+            stroke="#3d2010" stroke-width="2.5" fill="none"/>
+      <path d="M820,1100 Q825,1050 840,1000 Q850,970 845,940 Q840,910 830,890 Q815,870 805,850"
+            stroke="#3d2010" stroke-width="2.5" fill="none"/>
+      <path d="M750,1080 Q720,1040 700,990 Q690,960 705,930 Q720,905 740,890"
+            stroke="#3a1e0e" stroke-width="2" fill="none"/>
+      <path d="M850,1080 Q880,1040 900,990 Q910,960 895,930 Q880,905 860,890"
+            stroke="#3a1e0e" stroke-width="2" fill="none"/>
+      <!-- Root hairs -->
+      <path d="M760,1000 Q740,1005 730,1020" stroke="#2a1508" stroke-width="1.2" fill="none"/>
+      <path d="M755,940 Q735,938 725,950" stroke="#2a1508" stroke-width="1.2" fill="none"/>
+      <path d="M840,1000 Q860,1005 870,1020" stroke="#2a1508" stroke-width="1.2" fill="none"/>
+    </g>
+
+    <!-- ── ORGANIC SOIL PARTICLES at base ── -->
+    <g opacity="0.4">
+      <circle cx="550" cy="870" r="3" fill="#6a3a18"/>
+      <circle cx="600" cy="880" r="2.5" fill="#5a3010"/>
+      <circle cx="640" cy="865" r="2" fill="#7a4520"/>
+      <circle cx="1000" cy="870" r="3" fill="#6a3a18"/>
+      <circle cx="960" cy="880" r="2.5" fill="#5a3010"/>
+      <circle cx="1020" cy="862" r="2" fill="#7a4520"/>
+    </g>
+
+    <!-- ── AMBIENT TECH GLOW overlay top ── -->
+    <rect x="0" y="0" width="1600" height="300" fill="url(#techGlow)" opacity="0.5"/>
+
+    <!-- Cobalt shimmer at top corners -->
+    <radialGradient id="cornerGlowL" cx="0%" cy="0%" r="50%">
+      <stop offset="0%" stop-color="#2090d0" stop-opacity="0.28"/>
+      <stop offset="100%" stop-color="#0a1828" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="cornerGlowR" cx="100%" cy="0%" r="50%">
+      <stop offset="0%" stop-color="#2090d0" stop-opacity="0.25"/>
+      <stop offset="100%" stop-color="#0a1828" stop-opacity="0"/>
+    </radialGradient>
+    <rect x="0" y="0" width="1600" height="900" fill="url(#cornerGlowL)"/>
+    <rect x="0" y="0" width="1600" height="900" fill="url(#cornerGlowR)"/>
+
+    <!-- Vignette suave -->
+    <radialGradient id="vignette" cx="50%" cy="50%" r="70%">
+      <stop offset="0%" stop-color="transparent"/>
+      <stop offset="100%" stop-color="#000000" stop-opacity="0.28"/>
+    </radialGradient>
+    <rect width="1600" height="900" fill="url(#vignette)"/>
+
+  </g>
+</svg>
+</div>
+</body>
+</html>

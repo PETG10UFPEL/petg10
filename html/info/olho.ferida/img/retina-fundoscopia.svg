@@ -1,0 +1,137 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" width="400" height="400">
+  <defs>
+    <radialGradient id="fundoBg" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#8B2000"/>
+      <stop offset="60%" stop-color="#6B1800"/>
+      <stop offset="100%" stop-color="#3D0D00"/>
+    </radialGradient>
+    <radialGradient id="discGrad" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#FFD580"/>
+      <stop offset="50%" stop-color="#E8A020"/>
+      <stop offset="100%" stop-color="#C07010"/>
+    </radialGradient>
+    <radialGradient id="cupaGrad" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#FFF0B0"/>
+      <stop offset="100%" stop-color="#FFD060"/>
+    </radialGradient>
+    <radialGradient id="maculaGrad" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#4A0E00"/>
+      <stop offset="70%" stop-color="#6B1800"/>
+      <stop offset="100%" stop-color="#8B2000"/>
+    </radialGradient>
+    <filter id="blur2">
+      <feGaussianBlur stdDeviation="1.5"/>
+    </filter>
+    <filter id="blur1">
+      <feGaussianBlur stdDeviation="0.8"/>
+    </filter>
+    <clipPath id="circleClip">
+      <circle cx="200" cy="200" r="185"/>
+    </clipPath>
+  </defs>
+
+  <!-- Background fundus -->
+  <circle cx="200" cy="200" r="185" fill="url(#fundoBg)" stroke="#1A0500" stroke-width="3"/>
+
+  <!-- Vascular texture background subtle -->
+  <g clip-path="url(#circleClip)" opacity="0.25">
+    <circle cx="200" cy="200" r="180" fill="none" stroke="#C04000" stroke-width="0.5" opacity="0.3"/>
+  </g>
+
+  <!-- ── VASOS PRINCIPAIS ── -->
+  <g clip-path="url(#circleClip)" fill="none" stroke-linecap="round">
+    <!-- Superior temporal artery (artéria - mais fina, mais clara) -->
+    <path d="M250 175 Q290 150 330 120 Q355 100 375 80" stroke="#CC3300" stroke-width="3.5" fill="none"/>
+    <path d="M250 175 Q285 160 310 130 Q340 105 368 78" stroke="#FF6644" stroke-width="1.5" fill="none" opacity="0.5"/>
+    <!-- branches -->
+    <path d="M295 148 Q310 130 325 118" stroke="#CC3300" stroke-width="2" fill="none"/>
+    <path d="M315 132 Q325 120 335 112" stroke="#CC3300" stroke-width="1.5" fill="none"/>
+
+    <!-- Superior temporal vein (veia - mais grossa, mais escura) -->
+    <path d="M250 178 Q285 148 325 115 Q350 96 378 72" stroke="#8B1500" stroke-width="4.5" fill="none"/>
+    <path d="M295 145 Q312 126 328 114" stroke="#8B1500" stroke-width="2.5" fill="none"/>
+
+    <!-- Inferior temporal artery -->
+    <path d="M250 195 Q295 210 335 240 Q360 260 380 285" stroke="#CC3300" stroke-width="3.5" fill="none"/>
+    <path d="M295 215 Q315 235 330 255" stroke="#CC3300" stroke-width="2" fill="none"/>
+    <path d="M318 238 Q330 255 340 270" stroke="#CC3300" stroke-width="1.5" fill="none"/>
+
+    <!-- Inferior temporal vein -->
+    <path d="M250 198 Q292 215 332 246 Q358 266 378 290" stroke="#8B1500" stroke-width="4.5" fill="none"/>
+    <path d="M295 218 Q315 238 332 258" stroke="#8B1500" stroke-width="2.5" fill="none"/>
+
+    <!-- Superior nasal artery -->
+    <path d="M245 175 Q220 155 195 130 Q175 112 155 90" stroke="#CC3300" stroke-width="2.8" fill="none"/>
+    <path d="M220 153 Q205 135 190 120" stroke="#CC3300" stroke-width="1.8" fill="none"/>
+
+    <!-- Superior nasal vein -->
+    <path d="M245 178 Q218 157 192 132 Q172 113 152 90" stroke="#8B1500" stroke-width="3.5" fill="none"/>
+
+    <!-- Inferior nasal artery -->
+    <path d="M245 195 Q218 210 195 230 Q175 248 155 268" stroke="#CC3300" stroke-width="2.8" fill="none"/>
+    <path d="M218 212 Q200 230 185 248" stroke="#CC3300" stroke-width="1.8" fill="none"/>
+
+    <!-- Inferior nasal vein -->
+    <path d="M245 198 Q216 213 192 233 Q172 250 152 270" stroke="#8B1500" stroke-width="3.5" fill="none"/>
+  </g>
+
+  <!-- ── DISCO ÓPTICO ── -->
+  <circle cx="248" cy="186" r="28" fill="url(#discGrad)" stroke="#D08020" stroke-width="1.5"/>
+  <circle cx="248" cy="186" r="14" fill="url(#cupaGrad)" stroke="#E0A030" stroke-width="1"/>
+  <!-- Cup/disc ratio vessels at disc -->
+  <line x1="248" y1="162" x2="248" y2="210" stroke="#CC3300" stroke-width="2.5" opacity="0.7"/>
+  <line x1="224" y1="186" x2="272" y2="186" stroke="#8B1500" stroke-width="3" opacity="0.7"/>
+
+  <!-- ── MÁCULA ── -->
+  <circle cx="155" cy="195" r="22" fill="url(#maculaGrad)" opacity="0.9"/>
+  <circle cx="155" cy="195" r="5" fill="#2A0800" opacity="0.95"/>
+  <!-- Reflexo foveal -->
+  <circle cx="153" cy="193" r="2" fill="#FF8844" opacity="0.6"/>
+
+  <!-- ── LESÕES PATOLÓGICAS ── -->
+
+  <!-- Microaneurismas (pontos vermelhos pequenos) -->
+  <circle cx="185" cy="210" r="3.5" fill="#FF2200" opacity="0.9"/>
+  <circle cx="175" cy="225" r="3" fill="#FF2200" opacity="0.85"/>
+  <circle cx="198" cy="230" r="3.5" fill="#FF3300" opacity="0.9"/>
+  <circle cx="210" cy="218" r="2.5" fill="#FF2200" opacity="0.8"/>
+  <circle cx="168" cy="205" r="3" fill="#EE2200" opacity="0.85"/>
+  <circle cx="220" cy="235" r="3" fill="#FF3300" opacity="0.8"/>
+  <circle cx="190" cy="245" r="2.5" fill="#FF2200" opacity="0.75"/>
+  <circle cx="178" cy="240" r="2" fill="#EE2000" opacity="0.8"/>
+  <circle cx="165" cy="218" r="2.5" fill="#FF2200" opacity="0.8"/>
+
+  <!-- Exsudatos duros (manchas amareladas) -->
+  <ellipse cx="192" cy="215" rx="7" ry="5" fill="#FFEE80" opacity="0.85" transform="rotate(-15 192 215)"/>
+  <ellipse cx="205" cy="228" rx="6" ry="4" fill="#FFE860" opacity="0.8" transform="rotate(10 205 228)"/>
+  <ellipse cx="178" cy="232" rx="5" ry="3.5" fill="#FFEC70" opacity="0.8" transform="rotate(-5 178 232)"/>
+  <ellipse cx="218" cy="222" rx="5" ry="3" fill="#FFE860" opacity="0.75" transform="rotate(20 218 222)"/>
+  <ellipse cx="195" cy="238" rx="4" ry="3" fill="#FFEE80" opacity="0.7"/>
+
+  <!-- Exsudato algodonoso (mancha branca esfumaçada) -->
+  <ellipse cx="170" cy="175" rx="12" ry="9" fill="#EEEEDD" opacity="0.55" filter="url(#blur2)" transform="rotate(-20 170 175)"/>
+  <ellipse cx="225" cy="212" rx="10" ry="7" fill="#EEEEDD" opacity="0.45" filter="url(#blur2)" transform="rotate(10 225 212)"/>
+
+  <!-- Hemorragia em chama (flame hemorrhage) -->
+  <ellipse cx="265" cy="165" rx="6" ry="3.5" fill="#990000" opacity="0.8" transform="rotate(-30 265 165)"/>
+  <ellipse cx="230" cy="160" rx="5" ry="3" fill="#880000" opacity="0.75" transform="rotate(20 230 160)"/>
+  <!-- Hemorragia punctiforme -->
+  <circle cx="280" cy="205" r="3.5" fill="#880000" opacity="0.8"/>
+  <circle cx="290" cy="195" r="2.5" fill="#770000" opacity="0.75"/>
+  <circle cx="272" cy="215" r="3" fill="#880000" opacity="0.7"/>
+
+  <!-- Neovascularização (vasos finos irregulares) -->
+  <path d="M155 180 Q160 172 168 175 Q172 177 170 183 Q165 185 160 182" fill="none" stroke="#FF6633" stroke-width="1.2" opacity="0.7"/>
+  <path d="M158 178 Q162 168 170 171 Q176 174 173 180" fill="none" stroke="#FF5522" stroke-width="1" opacity="0.6"/>
+
+  <!-- Edema macular (halo suave ao redor da mácula) -->
+  <circle cx="155" cy="195" r="30" fill="none" stroke="#CC6600" stroke-width="1.5" stroke-dasharray="3,3" opacity="0.4"/>
+
+  <!-- ── LABEL INTERNO DISCRETO ── -->
+  <text x="248" y="227" text-anchor="middle" font-family="sans-serif" font-size="8" fill="#FFD080" opacity="0.7">Disco óptico</text>
+  <text x="155" y="228" text-anchor="middle" font-family="sans-serif" font-size="8" fill="#FF9966" opacity="0.7">Mácula</text>
+
+  <!-- Borda do olho -->
+  <circle cx="200" cy="200" r="185" fill="none" stroke="#1A0500" stroke-width="4"/>
+  <circle cx="200" cy="200" r="185" fill="none" stroke="#3D1000" stroke-width="2" opacity="0.5"/>
+</svg>
