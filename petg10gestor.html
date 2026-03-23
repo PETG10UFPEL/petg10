@@ -36,6 +36,9 @@
       flex-direction: column; align-items: center; gap: 4px;
       -webkit-tap-highlight-color: transparent;
       user-select: none;
+      font-family: inherit; font-size: 1rem; color: var(--text);
+      width: 100%; box-sizing: border-box; appearance: none;
+      -webkit-appearance: none;
     }
     .btn-nav small, .btn-nav span { pointer-events: none; }
     .btn-nav.active { background: var(--primary); color: white; border-color: var(--primary); }
@@ -75,22 +78,22 @@
   </header>
 
   <nav class="nav-buttons">
-    <div id="btn-in" class="btn-nav active" data-gid="0" data-focus="true">
+    <button class="btn-nav active" onclick="trocarAba(this,'0',true)">
       <span>📅 Registro (In)</span>
       <small>X, F, Xr, H</small>
-    </div>
-    <div class="btn-nav" data-gid="1992212771" data-focus="false">
+    </button>
+    <button class="btn-nav" onclick="trocarAba(this,'1992212771',false)">
       <span>📊 Presenças</span>
       <small>Relatórios</small>
-    </div>
-    <div class="btn-nav" data-gid="2038217552" data-focus="false">
+    </button>
+    <button class="btn-nav" onclick="trocarAba(this,'2038217552',false)">
       <span>🔄 Recuperação</span>
       <small>Reposições</small>
-    </div>
-    <div class="btn-nav" data-gid="564508304" data-focus="false">
+    </button>
+    <button class="btn-nav" onclick="trocarAba(this,'564508304',false)">
       <span>📋 Organização</span>
       <small>Semestre</small>
-    </div>
+    </button>
   </nav>
 
   <a href="https://docs.google.com/spreadsheets/d/1upWzo59kNPchcLO4HzQEPtldgpwK0X2KzTrI9gTsyNk/edit" class="btn-app" target="_blank">
@@ -105,53 +108,27 @@
 <script>
   const spreadsheetId = "1upWzo59kNPchcLO4HzQEPtldgpwK0X2KzTrI9gTsyNk";
 
+  function trocarAba(btn, gid, focusMonth) {
+    document.querySelectorAll('.btn-nav').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    renderSheet(gid, focusMonth);
+  }
+
   function renderSheet(gid, focusMonth) {
     const wrapper = document.getElementById('frameWrapper');
     let url = "https://docs.google.com/spreadsheets/d/" + spreadsheetId + "/edit?gid=" + gid + "&rm=minimal";
 
-    if (focusMonth === "true" || focusMonth === true) {
+    if (focusMonth) {
       const now = new Date();
       const diaUm = new Date(now.getFullYear(), now.getMonth(), 1);
       const diffDays = Math.ceil(Math.abs(diaUm - new Date(now.getFullYear(), 0, 1)) / (1000 * 60 * 60 * 24));
       url += "&range=A" + ((diffDays * 3) + 2);
     }
 
-    // Reinjeção forçada do Iframe para Mobile 
-    wrapper.innerHTML = `<iframe id="sheetFrame" src="${url}" allow="autoplay"></iframe>`;
+    wrapper.innerHTML = `<iframe src="${url}" allow="autoplay"></iframe>`;
   }
 
-  let lastTouchTime = 0;
-
-  function handleInteraction(e) {
-    // Ignora click sintético gerado logo após um touchend (evita duplo disparo)
-    if (e.type === 'click') {
-      const now = Date.now();
-      if (now - lastTouchTime < 500) return;
-    }
-    if (e.type === 'touchend') {
-      lastTouchTime = Date.now();
-      e.preventDefault(); // evita o click sintético subsequente
-    }
-
-    const target = e.currentTarget;
-    document.querySelectorAll('.btn-nav').forEach(b => b.classList.remove('active'));
-    target.classList.add('active');
-
-    const gid = target.getAttribute('data-gid');
-    const focus = target.getAttribute('data-focus');
-
-    renderSheet(gid, focus);
-  }
-
-  // Usa touchend (mais confiável que touchstart) + click como fallback para desktop
-  document.querySelectorAll('.btn-nav').forEach(button => {
-    button.addEventListener('touchend', handleInteraction, {passive: false});
-    button.addEventListener('click', handleInteraction);
-  });
-
-  window.onload = () => {
-    renderSheet('0', true);
-  };
+  window.onload = () => renderSheet('0', true);
 </script>
 
 </body>
