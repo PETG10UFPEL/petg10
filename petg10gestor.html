@@ -10,7 +10,7 @@
       --border: #cbd5e1; --primary: #059669; --secondary: #1e3a8a; 
       --accent: #ea580c; --shadow: 0 10px 25px rgba(0,0,0,0.05); --radius: 12px;
     }
-    body{ margin:0; font-family: system-ui, -apple-system, sans-serif; background: var(--bg); color: var(--text); -webkit-font-smoothing: antialiased; }
+    body{ margin:0; font-family: system-ui, -apple-system, sans-serif; background: var(--bg); color: var(--text); -webkit-font-smoothing: antialiased; touch-action: manipulation; }
     .wrap{ max-width:1200px; margin:0 auto; padding:15px; }
     
     header{
@@ -35,9 +35,9 @@
       font-weight: 600; text-align: center; display: flex; 
       flex-direction: column; align-items: center; gap: 4px;
       -webkit-tap-highlight-color: transparent;
+      user-select: none;
     }
-    .btn-nav small { font-weight: 400; font-size: 0.7rem; color: var(--muted); pointer-events: none; }
-    .btn-nav span { pointer-events: none; font-size: 0.85rem; line-height: 1.2; }
+    .btn-nav small, .btn-nav span { pointer-events: none; }
     .btn-nav.active { background: var(--primary); color: white; border-color: var(--primary); }
     .btn-nav.active small { color: #d1fae5; }
 
@@ -48,11 +48,10 @@
       box-shadow: 0 4px 12px rgba(234, 88, 12, 0.2);
     }
 
-    /* Altura corrigida para visualização mobile */
     .view-container {
       background: var(--card); border: 1px solid var(--border);
       border-radius: var(--radius); overflow: hidden;
-      height: 70vh; min-height: 550px;
+      height: 72vh; min-height: 500px;
       width: 100%; box-shadow: var(--shadow);
     }
     
@@ -76,9 +75,9 @@
   </header>
 
   <nav class="nav-buttons">
-    <div id="btn0" class="btn-nav active" data-gid="0" data-focus="true">
-      <span>📅 Registro (In): X (presença), F (falta), <br>
-Xr (recuperação), H (feriado)</span>
+    <div id="btn-in" class="btn-nav active" data-gid="0" data-focus="true">
+      <span>📅 Registro (In)</span>
+      <small>X, F, Xr, H</small>
     </div>
     <div class="btn-nav" data-gid="1992212771" data-focus="false">
       <span>📊 Presenças</span>
@@ -98,8 +97,7 @@ Xr (recuperação), H (feriado)</span>
     🚀 ABRIR NO APP GOOGLE SHEETS (Para Editar)
   </a>
 
-  <div class="view-container" id="frameWrapper">
-    </div>
+  <div class="view-container" id="frameWrapper"></div>
 
   <footer>PET-Saúde UFPel · 2026</footer>
 </div>
@@ -118,24 +116,30 @@ Xr (recuperação), H (feriado)</span>
       url += "&range=A" + ((diffDays * 3) + 2);
     }
 
-    // "Hard Reset": Destrói e recria o iframe para forçar o carregamento no celular
-    wrapper.innerHTML = `<iframe id="sheetFrame" src="${url}"></iframe>`;
+    // Reinjeção forçada do Iframe para Mobile 
+    wrapper.innerHTML = `<iframe id="sheetFrame" src="${url}" allow="autoplay"></iframe>`;
   }
 
-  // Listener de clique otimizado para Mobile
+  function handleInteraction(e) {
+    // Evita disparar duas vezes (touch e click) 
+    e.preventDefault();
+    
+    const target = e.currentTarget;
+    document.querySelectorAll('.btn-nav').forEach(b => b.classList.remove('active'));
+    target.classList.add('active');
+    
+    const gid = target.getAttribute('data-gid');
+    const focus = target.getAttribute('data-focus');
+    
+    renderSheet(gid, focus);
+  }
+
+  // Adiciona listeners para toque e clique 
   document.querySelectorAll('.btn-nav').forEach(button => {
-    button.addEventListener('click', function() {
-      document.querySelectorAll('.btn-nav').forEach(b => b.classList.remove('active'));
-      this.classList.add('active');
-      
-      const gid = this.getAttribute('data-gid');
-      const focus = this.getAttribute('data-focus');
-      
-      renderSheet(gid, focus);
-    });
+    button.addEventListener('touchstart', handleInteraction, {passive: false});
+    button.addEventListener('click', handleInteraction);
   });
 
-  // Carregamento inicial
   window.onload = () => {
     renderSheet('0', true);
   };
