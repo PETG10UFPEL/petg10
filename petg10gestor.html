@@ -11,9 +11,9 @@
       --text: #0f172a;
       --muted: #475569;
       --border: #cbd5e1;
-      --primary: #059669; /* Esmeralda */
-      --secondary: #1e3a8a; /* Marinho */
-      --accent: #ea580c; /* Laranja para destaque */
+      --primary: #059669; 
+      --secondary: #1e3a8a; 
+      --accent: #ea580c; 
       --shadow: 0 10px 25px rgba(0,0,0,0.05);
       --radius: 12px;
     }
@@ -53,24 +53,22 @@
     .btn-nav.active { background: var(--primary); color: white; border-color: var(--primary); }
     .btn-nav.active small { color: #d1fae5; }
 
-    /* Novo Estilo para o Botão do App */
-    .app-button-container {
-      margin-bottom: 15px;
-    }
+    .app-button-container { margin-bottom: 15px; }
     .btn-app {
       display: flex; align-items: center; justify-content: center; gap: 8px;
       background: var(--accent); color: white; border: none;
       padding: 14px; border-radius: 10px; text-decoration: none;
       font-weight: 700; font-size: 0.95rem; box-shadow: 0 4px 12px rgba(234, 88, 12, 0.2);
-      transition: transform 0.2s;
     }
-    .btn-app:active { transform: scale(0.98); }
 
     .view-container {
       background: var(--card); border: 1px solid var(--border);
       border-radius: var(--radius); overflow: hidden;
       box-shadow: var(--shadow); height: 65vh;
+      position: relative;
     }
+    /* Estilo para garantir que o iframe ocupe tudo */
+    #iframeWrapper { width: 100%; height: 100%; }
     iframe { width: 100%; height: 100%; border: none; }
     
     footer{ margin-top:15px; text-align:center; font-size:0.75rem; color:var(--muted); }
@@ -86,13 +84,13 @@
     </div>
     <div class="title">
       <h1>PET-Saúde UFPel – Painel Monitores</h1>
-      <h1><a href="index.html" target="_blank">=> Ir p/Painel Operacional (geral)</a></h1>
+      <h1><a href="index.html">=> Painel Operacional (Geral)</a></h1>
       <p>G10 · Telemonitoramento de Feridas Crônicas</p>
     </div>
   </header>
 
   <nav class="nav-buttons">
-    <div class="btn-nav active" onclick="changeSheet(this, '0', true)">
+    <div id="btn-in" class="btn-nav active" onclick="changeSheet(this, '0', true)">
       <span>📅 Registro (In)</span>
       <small>Mês atual</small>
     </div>
@@ -116,9 +114,8 @@
     </a>
   </div>
 
-  <div class="view-container">
-    <iframe id="sheetFrame" src="https://docs.google.com/spreadsheets/d/1upWzo59kNPchcLO4HzQEPtldgpwK0X2KzTrI9gTsyNk/edit?gid=0&rm=minimal"></iframe>
-  </div>
+  <div class="view-container" id="iframeWrapper">
+    </div>
 
   <footer>
     PET-Saúde UFPel · 2026
@@ -126,7 +123,18 @@
 </div>
 
 <script>
+  // Função para carregar o iframe do zero
+  function loadIframe(url) {
+    const wrapper = document.getElementById('iframeWrapper');
+    wrapper.innerHTML = ''; // Limpa o conteúdo anterior
+    const newIframe = document.createElement('iframe');
+    newIframe.src = url;
+    newIframe.id = 'sheetFrame';
+    wrapper.appendChild(newIframe);
+  }
+
   function changeSheet(btn, gid, focusMonth = false) {
+    // Feedback visual
     document.querySelectorAll('.btn-nav').forEach(b => b.classList.remove('active'));
     btn.classList.add('active');
     
@@ -142,13 +150,14 @@
       baseUrl += "&range=A" + row;
     }
 
-    const iframe = document.getElementById('sheetFrame');
-    iframe.src = "about:blank"; 
-    
-    setTimeout(() => {
-      iframe.src = baseUrl;
-    }, 50);
+    // Carrega o novo iframe do zero para garantir funcionamento no celular
+    loadIframe(baseUrl);
   }
+
+  // Carrega a aba inicial ao abrir a página
+  window.onload = function() {
+    changeSheet(document.getElementById('btn-in'), '0', true);
+  };
 </script>
 
 </body>
