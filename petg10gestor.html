@@ -120,23 +120,32 @@
     wrapper.innerHTML = `<iframe id="sheetFrame" src="${url}" allow="autoplay"></iframe>`;
   }
 
+  let lastTouchTime = 0;
+
   function handleInteraction(e) {
-    // Evita disparar duas vezes (touch e click) 
-    e.preventDefault();
-    
+    // Ignora click sintético gerado logo após um touchend (evita duplo disparo)
+    if (e.type === 'click') {
+      const now = Date.now();
+      if (now - lastTouchTime < 500) return;
+    }
+    if (e.type === 'touchend') {
+      lastTouchTime = Date.now();
+      e.preventDefault(); // evita o click sintético subsequente
+    }
+
     const target = e.currentTarget;
     document.querySelectorAll('.btn-nav').forEach(b => b.classList.remove('active'));
     target.classList.add('active');
-    
+
     const gid = target.getAttribute('data-gid');
     const focus = target.getAttribute('data-focus');
-    
+
     renderSheet(gid, focus);
   }
 
-  // Adiciona listeners para toque e clique 
+  // Usa touchend (mais confiável que touchstart) + click como fallback para desktop
   document.querySelectorAll('.btn-nav').forEach(button => {
-    button.addEventListener('touchstart', handleInteraction, {passive: false});
+    button.addEventListener('touchend', handleInteraction, {passive: false});
     button.addEventListener('click', handleInteraction);
   });
 
