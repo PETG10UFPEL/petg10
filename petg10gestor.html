@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>PET-Saúde UFPel | Gestão G10</title>
+  <style>
+    :root{
+      --bg: #f1f5f9;
+      --card: #ffffff;
+      --text: #0f172a;
+      --muted: #475569;
+      --border: #cbd5e1;
+      --primary: #059669; /* Esmeralda */
+      --secondary: #1e3a8a; /* Marinho */
+      --shadow: 0 10px 25px rgba(0,0,0,0.05);
+      --radius: 12px;
+    }
+    body{ margin:0; font-family: system-ui, -apple-system, sans-serif; background: var(--bg); color: var(--text); overflow-x: hidden; }
+    .wrap{ max-width:1200px; margin:0 auto; padding:15px; }
+    
+    header{
+      display:flex; gap:15px; align-items:center;
+      background:var(--card); border:1px solid var(--border);
+      border-radius:var(--radius); padding:12px 20px;
+      box-shadow:var(--shadow); margin-bottom: 15px;
+    }
+    .logos{ display:flex; gap:10px; align-items:center; }
+    header img{ width:70px; height:70px; object-fit:contain; border-radius:8px; }
+    
+    .title h1 { margin:0; font-size:1.1rem; }
+    .title a { text-decoration: none; color: var(--secondary); font-weight: bold; }
+    .title p{ margin:2px 0 0; color:var(--muted); font-size:0.85rem; }
+
+    .nav-buttons {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr); /* 2 colunas no celular */
+      gap: 10px; margin-bottom: 15px;
+    }
+    @media (min-width: 768px) {
+      .nav-buttons { grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); }
+    }
+
+    .btn-nav {
+      background: var(--card); border: 1px solid var(--border);
+      padding: 12px 8px; border-radius: 10px; cursor: pointer;
+      font-weight: 600; color: var(--text); transition: all 0.2s;
+      text-align: center; display: flex; flex-direction: column; align-items: center; gap: 4px;
+      -webkit-tap-highlight-color: transparent;
+    }
+    .btn-nav small { font-weight: 400; font-size: 0.7rem; color: var(--muted); }
+    .btn-nav.active { background: var(--primary); color: white; border-color: var(--primary); }
+    .btn-nav.active small { color: #d1fae5; }
+
+    .view-container {
+      background: var(--card); border: 1px solid var(--border);
+      border-radius: var(--radius); overflow: hidden;
+      box-shadow: var(--shadow); height: 70vh; /* Ajuste para não cortar no mobile */
+    }
+    iframe { width: 100%; height: 100%; border: none; }
+    
+    .app-link {
+      display: block; text-align: center; margin-top: 10px;
+      font-size: 0.85rem; color: var(--secondary); text-decoration: none;
+      font-weight: 500;
+    }
+
+    footer{ margin-top:10px; text-align:center; font-size:0.75rem; color:var(--muted); }
+  </style>
+</head>
+<body>
+
+<div class="wrap">
+  <header>
+    <div class="logos">
+      <img src="./PET-Saúde UFPel _ G10 – Operação_files/logo2.jpeg" alt="Logo UFPel">
+      <img src="./img/petgestor.png" alt="Icone Saúde">
+    </div>
+    <div class="title">
+      <h1>PET-Saúde UFPel – Painel Monitores</h1>
+      <h1><a href="index.html" target="_blank">=> Ir p/Painel Operacional (geral)</a></h1>
+      <p>G10 · Telemonitoramento de Feridas Crônicas</p>
+    </div>
+  </header>
+
+  <nav class="nav-buttons">
+    <div class="btn-nav active" onclick="changeSheet(this, '0', true)">
+      <span>📅 Registro (In)</span>
+      <small>Mês atual</small>
+    </div>
+    <div class="btn-nav" onclick="changeSheet(this, '1992212771')">
+      <span>📊 Presenças</span>
+      <small>Relatórios</small>
+    </div>
+    <div class="btn-nav" onclick="changeSheet(this, '2038217552')">
+      <span>🔄 Recuperação</span>
+      <small>Reposições</small>
+    </div>
+    <div class="btn-nav" onclick="changeSheet(this, '564508304')">
+      <span>📋 Organização</span>
+      <small>Semestre</small>
+    </div>
+  </nav>
+
+  <div class="view-container">
+    <iframe id="sheetFrame" src="https://docs.google.com/spreadsheets/d/1upWzo59kNPchcLO4HzQEPtldgpwK0X2KzTrI9gTsyNk/edit?gid=0&rm=minimal"></iframe>
+  </div>
+
+  <a href="googlesheets://https://docs.google.com/spreadsheets/d/1upWzo59kNPchcLO4HzQEPtldgpwK0X2KzTrI9gTsyNk/edit" class="app-link">
+    Abrir no Aplicativo Google Sheets ↗
+  </a>
+
+  <footer>
+    PET-Saúde UFPel · 2026
+  </footer>
+</div>
+
+<script>
+  function changeSheet(btn, gid, focusMonth = false) {
+    document.querySelectorAll('.btn-nav').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    
+    let baseUrl = "https://docs.google.com/spreadsheets/d/1upWzo59kNPchcLO4HzQEPtldgpwK0X2KzTrI9gTsyNk/edit?gid=" + gid + "&rm=minimal";
+
+    if (focusMonth && gid === '0') {
+      const now = new Date();
+      const diaUm = new Date(now.getFullYear(), now.getMonth(), 1);
+      const diffTime = Math.abs(diaUm - new Date(now.getFullYear(), 0, 1));
+      const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
+      const row = (diffDays * 3) + 2; 
+      baseUrl += "&range=A" + row;
+    }
+    
+    document.getElementById('sheetFrame').src = baseUrl;
+  }
+</script>
+
+</body>
+</html>
