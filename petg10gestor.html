@@ -10,66 +10,61 @@
       --border: #cbd5e1; --primary: #059669; --secondary: #1e3a8a; 
       --accent: #ea580c; --shadow: 0 10px 25px rgba(0,0,0,0.05); --radius: 12px;
     }
-    body{ margin:0; font-family: system-ui, -apple-system, sans-serif; background: var(--bg); color: var(--text); -webkit-font-smoothing: antialiased; touch-action: manipulation; }
-    .wrap{ max-width:1200px; margin:0 auto; padding:15px; }
+    body{ margin:0; font-family: system-ui, -apple-system, sans-serif; background: var(--bg); color: var(--text); -webkit-font-smoothing: antialiased; }
+    .wrap{ max-width:600px; margin:0 auto; padding:15px; }
     
     header{
       display:flex; gap:15px; align-items:center; background:var(--card); 
       border:1px solid var(--border); border-radius:var(--radius); 
-      padding:12px 20px; box-shadow:var(--shadow); margin-bottom: 15px;
+      padding:12px 20px; box-shadow:var(--shadow); margin-bottom: 20px;
     }
     header img{ width:60px; height:60px; object-fit:contain; border-radius:8px; }
     .title h1 { margin:0; font-size:1.1rem; }
     .title a { text-decoration: none; color: var(--secondary); font-weight: bold; }
     .title p { margin:2px 0 0; color:var(--muted); font-size:0.85rem; }
 
-    .nav-buttons {
-      display: grid; grid-template-columns: repeat(2, 1fr);
-      gap: 10px; margin-bottom: 10px;
+    .section-title {
+      font-size: 0.75rem; font-weight: 700; text-transform: uppercase;
+      letter-spacing: 0.08em; color: var(--muted); margin: 20px 0 8px;
     }
-    @media (min-width: 768px) { .nav-buttons { grid-template-columns: repeat(4, 1fr); } }
 
-    .btn-nav {
+    .btn-aba {
+      display: flex; align-items: center; gap: 14px;
       background: var(--card); border: 2px solid var(--border);
-      padding: 12px 5px; border-radius: 10px; cursor: pointer;
-      font-weight: 600; text-align: center; display: flex; 
-      flex-direction: column; align-items: center; gap: 4px;
+      border-radius: var(--radius); padding: 16px 18px;
+      text-decoration: none; color: var(--text);
+      font-weight: 600; font-size: 1rem;
+      box-shadow: var(--shadow); margin-bottom: 10px;
       -webkit-tap-highlight-color: transparent;
-      user-select: none;
-      font-family: inherit; font-size: 1rem; color: var(--text);
-      width: 100%; box-sizing: border-box; appearance: none;
-      -webkit-appearance: none;
     }
-    .btn-nav small, .btn-nav span { pointer-events: none; }
-    .btn-nav.active { background: var(--primary); color: white; border-color: var(--primary); }
-    .btn-nav.active small { color: #d1fae5; }
+    .btn-aba:active { background: #f0fdf4; border-color: var(--primary); }
+    .btn-aba .icon { font-size: 1.6rem; flex-shrink: 0; }
+    .btn-aba .info { display: flex; flex-direction: column; gap: 2px; }
+    .btn-aba .info small { font-weight: 400; font-size: 0.8rem; color: var(--muted); }
+    .btn-aba .arrow { margin-left: auto; color: var(--muted); font-size: 1.2rem; }
 
-    .btn-app {
-      display: block; text-align: center; background: var(--accent); 
-      color: white; padding: 15px; border-radius: 10px; 
-      text-decoration: none; font-weight: 700; margin-bottom: 15px;
-      box-shadow: 0 4px 12px rgba(234, 88, 12, 0.2);
+    .btn-editar {
+      display: flex; align-items: center; justify-content: center; gap: 10px;
+      background: var(--accent); color: white;
+      border-radius: var(--radius); padding: 16px;
+      text-decoration: none; font-weight: 700; font-size: 1rem;
+      box-shadow: 0 4px 12px rgba(234,88,12,0.25);
+      margin-top: 24px; margin-bottom: 10px;
+      -webkit-tap-highlight-color: transparent;
     }
+    .btn-editar:active { opacity: 0.85; }
 
-    .view-container {
-      background: var(--card); border: 1px solid var(--border);
-      border-radius: var(--radius); overflow: hidden;
-      height: 72vh; min-height: 500px;
-      width: 100%; box-shadow: var(--shadow);
-      position: relative;
+    .btn-painel {
+      display: flex; align-items: center; justify-content: center; gap: 10px;
+      background: var(--secondary); color: white;
+      border-radius: var(--radius); padding: 14px;
+      text-decoration: none; font-weight: 700; font-size: 0.95rem;
+      box-shadow: var(--shadow); margin-bottom: 20px;
+      -webkit-tap-highlight-color: transparent;
     }
-    
-    iframe { width: 100%; height: 100%; border: none; display: block; }
+    .btn-painel:active { opacity: 0.85; }
 
-    /* Camada transparente que bloqueia o iframe de capturar toques */
-    #iframeOverlay {
-      display: none;
-      position: absolute;
-      top: 0; left: 0; right: 0; bottom: 0;
-      z-index: 10;
-      background: transparent;
-    }
-    footer{ margin-top:15px; text-align:center; font-size:0.75rem; color:var(--muted); padding-bottom: 20px; }
+    footer{ margin-top:30px; text-align:center; font-size:0.75rem; color:var(--muted); padding-bottom: 20px; }
   </style>
 </head>
 <body>
@@ -82,91 +77,58 @@
     </div>
     <div class="title">
       <h1>PET-Saúde UFPel – Painel Monitores</h1>
-      <h1><a href="index.html">=> Ir p/Painel Operacional</a></h1>
       <p>G10 · Telemonitoramento de Feridas Crônicas</p>
     </div>
   </header>
 
-  <nav class="nav-buttons">
-    <button class="btn-nav active" onclick="trocarAba(this,'0',true)">
-      <span>📅 Registro (In)</span>
-      <small>X, F, Xr, H</small>
-    </button>
-    <button class="btn-nav" onclick="trocarAba(this,'1992212771',false)">
-      <span>📊 Presenças</span>
-      <small>Relatórios</small>
-    </button>
-    <button class="btn-nav" onclick="trocarAba(this,'2038217552',false)">
-      <span>🔄 Recuperação</span>
-      <small>Reposições</small>
-    </button>
-    <button class="btn-nav" onclick="trocarAba(this,'564508304',false)">
-      <span>📋 Organização</span>
-      <small>Semestre</small>
-    </button>
-  </nav>
-
-  <a href="https://docs.google.com/spreadsheets/d/1upWzo59kNPchcLO4HzQEPtldgpwK0X2KzTrI9gTsyNk/edit" class="btn-app" target="_blank">
-    🚀 ABRIR NO APP GOOGLE SHEETS (Para Editar)
+  <a href="index.html" class="btn-painel">
+    ← Ir para o Painel Operacional
   </a>
 
-  <div class="view-container" id="frameWrapper">
-    <div id="iframeOverlay"></div>
-  </div>
+  <p class="section-title">📂 Abas da Planilha</p>
+
+  <a class="btn-aba" href="https://docs.google.com/spreadsheets/d/1upWzo59kNPchcLO4HzQEPtldgpwK0X2KzTrI9gTsyNk/edit#gid=0" target="_blank">
+    <span class="icon">📅</span>
+    <span class="info">
+      Registro (In)
+      <small>X, F, Xr, H</small>
+    </span>
+    <span class="arrow">›</span>
+  </a>
+
+  <a class="btn-aba" href="https://docs.google.com/spreadsheets/d/1upWzo59kNPchcLO4HzQEPtldgpwK0X2KzTrI9gTsyNk/edit#gid=1992212771" target="_blank">
+    <span class="icon">📊</span>
+    <span class="info">
+      Presenças
+      <small>Relatórios</small>
+    </span>
+    <span class="arrow">›</span>
+  </a>
+
+  <a class="btn-aba" href="https://docs.google.com/spreadsheets/d/1upWzo59kNPchcLO4HzQEPtldgpwK0X2KzTrI9gTsyNk/edit#gid=2038217552" target="_blank">
+    <span class="icon">🔄</span>
+    <span class="info">
+      Recuperação
+      <small>Reposições</small>
+    </span>
+    <span class="arrow">›</span>
+  </a>
+
+  <a class="btn-aba" href="https://docs.google.com/spreadsheets/d/1upWzo59kNPchcLO4HzQEPtldgpwK0X2KzTrI9gTsyNk/edit#gid=564508304" target="_blank">
+    <span class="icon">📋</span>
+    <span class="info">
+      Organização
+      <small>Semestre</small>
+    </span>
+    <span class="arrow">›</span>
+  </a>
+
+  <a href="https://docs.google.com/spreadsheets/d/1upWzo59kNPchcLO4HzQEPtldgpwK0X2KzTrI9gTsyNk/edit" class="btn-editar" target="_blank">
+    🚀 Abrir Planilha Completa para Editar
+  </a>
 
   <footer>PET-Saúde UFPel · 2026</footer>
 </div>
-
-<script>
-  const spreadsheetId = "1upWzo59kNPchcLO4HzQEPtldgpwK0X2KzTrI9gTsyNk";
-  const overlay = document.getElementById('iframeOverlay');
-
-  // Quando o usuário toca em qualquer lugar fora do iframe,
-  // ativa o overlay para "desbloquear" os botões no próximo toque
-  document.addEventListener('touchstart', function(e) {
-    const wrapper = document.getElementById('frameWrapper');
-    if (wrapper.contains(e.target) && e.target !== overlay) {
-      // Tocou dentro do iframe — esconde overlay (permite interação com iframe)
-      overlay.style.display = 'none';
-    } else {
-      // Tocou fora — mostra overlay para bloquear iframe
-      overlay.style.display = 'block';
-    }
-  }, { passive: true });
-
-  function trocarAba(btn, gid, focusMonth) {
-    document.querySelectorAll('.btn-nav').forEach(b => b.classList.remove('active'));
-    btn.classList.add('active');
-    renderSheet(gid, focusMonth);
-  }
-
-  function renderSheet(gid, focusMonth) {
-    const wrapper = document.getElementById('frameWrapper');
-    let url = "https://docs.google.com/spreadsheets/d/" + spreadsheetId + "/edit?gid=" + gid + "&rm=minimal";
-
-    if (focusMonth) {
-      const now = new Date();
-      const diaUm = new Date(now.getFullYear(), now.getMonth(), 1);
-      const diffDays = Math.ceil(Math.abs(diaUm - new Date(now.getFullYear(), 0, 1)) / (1000 * 60 * 60 * 24));
-      url += "&range=A" + ((diffDays * 3) + 2);
-    }
-
-    // Reinjeta o iframe preservando o overlay
-    const iframe = document.createElement('iframe');
-    iframe.src = url;
-    iframe.allow = 'autoplay';
-    // Remove iframe antigo se existir
-    const old = wrapper.querySelector('iframe');
-    if (old) old.remove();
-    wrapper.appendChild(iframe);
-
-    // Após carregar, ativa overlay para liberar botões imediatamente
-    iframe.onload = () => { overlay.style.display = 'block'; };
-    overlay.style.display = 'block';
-  }
-
-  window.onload = () => renderSheet('0', true);
-</script>
 
 </body>
 </html>
