@@ -13,6 +13,7 @@
       --border: #cbd5e1;
       --primary: #059669; /* Esmeralda */
       --secondary: #1e3a8a; /* Marinho */
+      --accent: #ea580c; /* Laranja para destaque */
       --shadow: 0 10px 25px rgba(0,0,0,0.05);
       --radius: 12px;
     }
@@ -34,11 +35,11 @@
 
     .nav-buttons {
       display: grid;
-      grid-template-columns: repeat(2, 1fr); /* 2 colunas no celular */
-      gap: 10px; margin-bottom: 15px;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 10px; margin-bottom: 10px;
     }
     @media (min-width: 768px) {
-      .nav-buttons { grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); }
+      .nav-buttons { grid-template-columns: repeat(4, 1fr); }
     }
 
     .btn-nav {
@@ -52,20 +53,27 @@
     .btn-nav.active { background: var(--primary); color: white; border-color: var(--primary); }
     .btn-nav.active small { color: #d1fae5; }
 
+    /* Novo Estilo para o Botão do App */
+    .app-button-container {
+      margin-bottom: 15px;
+    }
+    .btn-app {
+      display: flex; align-items: center; justify-content: center; gap: 8px;
+      background: var(--accent); color: white; border: none;
+      padding: 14px; border-radius: 10px; text-decoration: none;
+      font-weight: 700; font-size: 0.95rem; box-shadow: 0 4px 12px rgba(234, 88, 12, 0.2);
+      transition: transform 0.2s;
+    }
+    .btn-app:active { transform: scale(0.98); }
+
     .view-container {
       background: var(--card); border: 1px solid var(--border);
       border-radius: var(--radius); overflow: hidden;
-      box-shadow: var(--shadow); height: 70vh; /* Ajuste para não cortar no mobile */
+      box-shadow: var(--shadow); height: 65vh;
     }
     iframe { width: 100%; height: 100%; border: none; }
     
-    .app-link {
-      display: block; text-align: center; margin-top: 10px;
-      font-size: 0.85rem; color: var(--secondary); text-decoration: none;
-      font-weight: 500;
-    }
-
-    footer{ margin-top:10px; text-align:center; font-size:0.75rem; color:var(--muted); }
+    footer{ margin-top:15px; text-align:center; font-size:0.75rem; color:var(--muted); }
   </style>
 </head>
 <body>
@@ -102,13 +110,15 @@
     </div>
   </nav>
 
+  <div class="app-button-container">
+    <a href="https://docs.google.com/spreadsheets/d/1upWzo59kNPchcLO4HzQEPtldgpwK0X2KzTrI9gTsyNk/edit" class="btn-app" target="_blank">
+      🚀 ABRIR NO APP GOOGLE SHEETS (Para Editar)
+    </a>
+  </div>
+
   <div class="view-container">
     <iframe id="sheetFrame" src="https://docs.google.com/spreadsheets/d/1upWzo59kNPchcLO4HzQEPtldgpwK0X2KzTrI9gTsyNk/edit?gid=0&rm=minimal"></iframe>
   </div>
-
-  <a href="googlesheets://https://docs.google.com/spreadsheets/d/1upWzo59kNPchcLO4HzQEPtldgpwK0X2KzTrI9gTsyNk/edit" class="app-link">
-    Abrir no Aplicativo Google Sheets ↗
-  </a>
 
   <footer>
     PET-Saúde UFPel · 2026
@@ -120,7 +130,8 @@
     document.querySelectorAll('.btn-nav').forEach(b => b.classList.remove('active'));
     btn.classList.add('active');
     
-    let baseUrl = "https://docs.google.com/spreadsheets/d/1upWzo59kNPchcLO4HzQEPtldgpwK0X2KzTrI9gTsyNk/edit?gid=" + gid + "&rm=minimal";
+    const spreadsheetId = "1upWzo59kNPchcLO4HzQEPtldgpwK0X2KzTrI9gTsyNk";
+    let baseUrl = "https://docs.google.com/spreadsheets/d/" + spreadsheetId + "/edit?gid=" + gid + "&rm=minimal";
 
     if (focusMonth && gid === '0') {
       const now = new Date();
@@ -130,8 +141,13 @@
       const row = (diffDays * 3) + 2; 
       baseUrl += "&range=A" + row;
     }
+
+    const iframe = document.getElementById('sheetFrame');
+    iframe.src = "about:blank"; 
     
-    document.getElementById('sheetFrame').src = baseUrl;
+    setTimeout(() => {
+      iframe.src = baseUrl;
+    }, 50);
   }
 </script>
 
