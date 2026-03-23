@@ -2,7 +2,7 @@
 <html lang="pt-BR">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
   <title>PET-Saúde UFPel | Gestão G10</title>
   <style>
     :root{
@@ -10,7 +10,7 @@
       --border: #cbd5e1; --primary: #059669; --secondary: #1e3a8a; 
       --accent: #ea580c; --shadow: 0 10px 25px rgba(0,0,0,0.05); --radius: 12px;
     }
-    body{ margin:0; font-family: system-ui, -apple-system, sans-serif; background: var(--bg); color: var(--text); }
+    body{ margin:0; font-family: system-ui, -apple-system, sans-serif; background: var(--bg); color: var(--text); -webkit-font-smoothing: antialiased; }
     .wrap{ max-width:1200px; margin:0 auto; padding:15px; }
     
     header{
@@ -36,7 +36,8 @@
       flex-direction: column; align-items: center; gap: 4px;
       -webkit-tap-highlight-color: transparent;
     }
-    .btn-nav small { font-weight: 400; font-size: 0.7rem; color: var(--muted); }
+    .btn-nav small { font-weight: 400; font-size: 0.7rem; color: var(--muted); pointer-events: none; }
+    .btn-nav span { pointer-events: none; font-size: 0.85rem; line-height: 1.2; }
     .btn-nav.active { background: var(--primary); color: white; border-color: var(--primary); }
     .btn-nav.active small { color: #d1fae5; }
 
@@ -47,18 +48,16 @@
       box-shadow: 0 4px 12px rgba(234, 88, 12, 0.2);
     }
 
-    /* Altura fixa para Celular */
+    /* Altura corrigida para visualização mobile */
     .view-container {
       background: var(--card); border: 1px solid var(--border);
       border-radius: var(--radius); overflow: hidden;
-      height: 600px; 
-      width: 100%;
-      box-shadow: var(--shadow);
+      height: 70vh; min-height: 550px;
+      width: 100%; box-shadow: var(--shadow);
     }
-    @media (min-width: 768px) { .view-container { height: 75vh; } }
     
     iframe { width: 100%; height: 100%; border: none; display: block; }
-    footer{ margin-top:15px; text-align:center; font-size:0.75rem; color:var(--muted); }
+    footer{ margin-top:15px; text-align:center; font-size:0.75rem; color:var(--muted); padding-bottom: 20px; }
   </style>
 </head>
 <body>
@@ -77,19 +76,19 @@
   </header>
 
   <nav class="nav-buttons">
-    <div id="btn0" class="btn-nav active" onclick="changeSheet('0', true, this)">
-      <span>📅 Registro (In): X (presente), F (falta), <br>
-Xr (presença recuperação), H (feriado ou .facultativo)</span>
+    <div id="btn0" class="btn-nav active" data-gid="0" data-focus="true">
+      <span>📅 Registro (In): X (presença), F (falta), <br>
+Xr (recuperação), H (feriado)</span>
     </div>
-    <div id="btn1" class="btn-nav" onclick="changeSheet('1992212771', false, this)">
+    <div class="btn-nav" data-gid="1992212771" data-focus="false">
       <span>📊 Presenças</span>
       <small>Relatórios</small>
     </div>
-    <div id="btn2" class="btn-nav" onclick="changeSheet('2038217552', false, this)">
+    <div class="btn-nav" data-gid="2038217552" data-focus="false">
       <span>🔄 Recuperação</span>
       <small>Reposições</small>
     </div>
-    <div id="btn3" class="btn-nav" onclick="changeSheet('564508304', false, this)">
+    <div class="btn-nav" data-gid="564508304" data-focus="false">
       <span>📋 Organização</span>
       <small>Semestre</small>
     </div>
@@ -99,42 +98,46 @@ Xr (presença recuperação), H (feriado ou .facultativo)</span>
     🚀 ABRIR NO APP GOOGLE SHEETS (Para Editar)
   </a>
 
-  <div class="view-container">
-    <iframe id="sheetFrame" name="sheetFrame" src="about:blank"></iframe>
-  </div>
+  <div class="view-container" id="frameWrapper">
+    </div>
 
   <footer>PET-Saúde UFPel · 2026</footer>
 </div>
 
 <script>
-  function changeSheet(gid, focusMonth, element) {
-    // 1. Marcar botão ativo
-    const btns = document.getElementsByClassName('btn-nav');
-    for(let i=0; i<btns.length; i++) { btns[i].classList.remove('active'); }
-    element.classList.add('active');
+  const spreadsheetId = "1upWzo59kNPchcLO4HzQEPtldgpwK0X2KzTrI9gTsyNk";
 
-    // 2. Construir URL
-    const spreadsheetId = "1upWzo59kNPchcLO4HzQEPtldgpwK0X2KzTrI9gTsyNk";
+  function renderSheet(gid, focusMonth) {
+    const wrapper = document.getElementById('frameWrapper');
     let url = "https://docs.google.com/spreadsheets/d/" + spreadsheetId + "/edit?gid=" + gid + "&rm=minimal";
 
-    if (focusMonth) {
+    if (focusMonth === "true" || focusMonth === true) {
       const now = new Date();
       const diaUm = new Date(now.getFullYear(), now.getMonth(), 1);
       const diffDays = Math.ceil(Math.abs(diaUm - new Date(now.getFullYear(), 0, 1)) / (1000 * 60 * 60 * 24));
       url += "&range=A" + ((diffDays * 3) + 2);
     }
 
-    // 3. Atualizar Iframe com método forçado para Mobile
-    try {
-      window.frames['sheetFrame'].location.replace(url);
-    } catch(e) {
-      document.getElementById('sheetFrame').src = url;
-    }
+    // "Hard Reset": Destrói e recria o iframe para forçar o carregamento no celular
+    wrapper.innerHTML = `<iframe id="sheetFrame" src="${url}"></iframe>`;
   }
 
-  // Carregar aba inicial ao abrir
-  window.onload = function() {
-    changeSheet('0', true, document.getElementById('btn0'));
+  // Listener de clique otimizado para Mobile
+  document.querySelectorAll('.btn-nav').forEach(button => {
+    button.addEventListener('click', function() {
+      document.querySelectorAll('.btn-nav').forEach(b => b.classList.remove('active'));
+      this.classList.add('active');
+      
+      const gid = this.getAttribute('data-gid');
+      const focus = this.getAttribute('data-focus');
+      
+      renderSheet(gid, focus);
+    });
+  });
+
+  // Carregamento inicial
+  window.onload = () => {
+    renderSheet('0', true);
   };
 </script>
 
