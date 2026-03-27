@@ -1,0 +1,960 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Simulador Interativo — Formação de Ferida de Pé Diabético</title>
+  <style>
+    :root {
+      --bg: #eef3f7;
+      --panel: #ffffff;
+      --panel-2: #f7fafc;
+      --text: #153042;
+      --muted: #5f7485;
+      --line: #d7e2ea;
+      --accent: #1e6fa8;
+      --accent-2: #d96f32;
+      --danger: #a12525;
+      --ok: #2c7a52;
+      --shadow: 0 10px 30px rgba(25, 52, 77, 0.08);
+      --radius: 18px;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      background: linear-gradient(180deg, #edf3f8 0%, #f7fafc 100%);
+      color: var(--text);
+    }
+
+    .app {
+      max-width: 1350px;
+      margin: 0 auto;
+      padding: 24px;
+    }
+
+    .hero {
+      background: linear-gradient(135deg, #11344d 0%, #1f5f88 100%);
+      color: #fff;
+      padding: 28px;
+      border-radius: 24px;
+      box-shadow: var(--shadow);
+      margin-bottom: 22px;
+    }
+
+    .hero h1 {
+      margin: 0 0 10px;
+      font-size: 2rem;
+      line-height: 1.15;
+    }
+
+    .hero p {
+      margin: 0;
+      max-width: 900px;
+      line-height: 1.55;
+      color: rgba(255,255,255,0.92);
+    }
+
+    .layout {
+      display: grid;
+      grid-template-columns: 340px 1fr 350px;
+      gap: 20px;
+      align-items: start;
+    }
+
+    .card {
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      overflow: hidden;
+    }
+
+    .card-header {
+      padding: 16px 18px 10px;
+      border-bottom: 1px solid var(--line);
+      background: linear-gradient(180deg, #fff 0%, #f9fbfd 100%);
+    }
+
+    .card-header h2,
+    .card-header h3 {
+      margin: 0 0 6px;
+      font-size: 1.05rem;
+    }
+
+    .card-header p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 0.92rem;
+      line-height: 1.45;
+    }
+
+    .card-body {
+      padding: 16px 18px 18px;
+    }
+
+    .controls-group + .controls-group { margin-top: 18px; }
+
+    .label-title {
+      font-weight: bold;
+      margin-bottom: 10px;
+      display: block;
+      font-size: 0.95rem;
+    }
+
+    .stage-list {
+      display: grid;
+      gap: 10px;
+    }
+
+    .stage-btn {
+      width: 100%;
+      text-align: left;
+      padding: 12px 14px;
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      background: #fff;
+      cursor: pointer;
+      transition: 0.2s ease;
+      font-size: 0.94rem;
+      color: var(--text);
+    }
+
+    .stage-btn:hover {
+      border-color: var(--accent);
+      transform: translateY(-1px);
+    }
+
+    .stage-btn.active {
+      background: linear-gradient(135deg, #e8f3fb 0%, #f4f9fd 100%);
+      border-color: var(--accent);
+      box-shadow: inset 0 0 0 1px rgba(30,111,168,0.08);
+    }
+
+    .toggle-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+    }
+
+    .toggle-item,
+    .single-toggle {
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      padding: 10px 12px;
+      background: var(--panel-2);
+    }
+
+    .toggle-item label,
+    .single-toggle label {
+      display: flex;
+      gap: 10px;
+      align-items: center;
+      cursor: pointer;
+      font-size: 0.93rem;
+    }
+
+    input[type="checkbox"] {
+      width: 18px;
+      height: 18px;
+      accent-color: var(--accent);
+      cursor: pointer;
+      flex: 0 0 auto;
+    }
+
+    .main-visual {
+      padding: 18px;
+      display: grid;
+      gap: 16px;
+    }
+
+    .top-status {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: #eff5f9;
+      border: 1px solid var(--line);
+      padding: 8px 12px;
+      border-radius: 999px;
+      font-size: 0.88rem;
+      color: var(--muted);
+    }
+
+    .badge strong { color: var(--text); }
+
+    .canvas-wrap {
+      border: 1px solid var(--line);
+      border-radius: 24px;
+      background: radial-gradient(circle at top, #f8fbfd 0%, #e9f1f6 100%);
+      padding: 12px;
+      position: relative;
+    }
+
+    svg {
+      width: 100%;
+      height: auto;
+      display: block;
+      border-radius: 18px;
+      background: linear-gradient(180deg, #f8fbfd 0%, #eef4f8 100%);
+    }
+
+    .timeline {
+      display: grid;
+      grid-template-columns: repeat(6, 1fr);
+      gap: 10px;
+    }
+
+    .timeline-step {
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      padding: 10px;
+      background: #fff;
+      font-size: 0.84rem;
+      color: var(--muted);
+      cursor: pointer;
+      transition: 0.2s ease;
+      text-align: center;
+      min-height: 76px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .timeline-step.active {
+      border-color: var(--accent);
+      background: linear-gradient(180deg, #edf7fd 0%, #ffffff 100%);
+      color: var(--text);
+      font-weight: bold;
+    }
+
+    .micro-boxes {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+    }
+
+    .micro-card {
+      border: 1px solid var(--line);
+      border-radius: 16px;
+      padding: 14px;
+      background: #fbfdff;
+    }
+
+    .micro-card h4 {
+      margin: 0 0 8px;
+      font-size: 0.95rem;
+    }
+
+    .meter {
+      height: 10px;
+      width: 100%;
+      background: #e8eef3;
+      border-radius: 999px;
+      overflow: hidden;
+      margin-bottom: 8px;
+    }
+
+    .meter > span {
+      display: block;
+      height: 100%;
+      border-radius: 999px;
+      background: linear-gradient(90deg, #2c7a52 0%, #d96f32 58%, #a12525 100%);
+    }
+
+    .side-panel {
+      display: grid;
+      gap: 18px;
+    }
+
+    .insight h4,
+    .error-box h4,
+    .legend h4 {
+      margin: 0 0 8px;
+      font-size: 0.98rem;
+    }
+
+    .insight p,
+    .error-box p,
+    .legend p,
+    .legend li,
+    .risk-note,
+    .detail-list li {
+      color: var(--muted);
+      line-height: 1.5;
+      font-size: 0.93rem;
+    }
+
+    .legend ul,
+    .detail-list {
+      margin: 8px 0 0 18px;
+      padding: 0;
+    }
+
+    .error-box {
+      border: 1px solid #efd0d0;
+      background: #fff7f7;
+      border-radius: 16px;
+      padding: 14px;
+    }
+
+    .error-box strong { color: var(--danger); }
+
+    .risk-note {
+      margin-top: 8px;
+      padding: 10px 12px;
+      border-radius: 12px;
+      background: #f5f7fa;
+      border: 1px dashed var(--line);
+    }
+
+    .footer-note {
+      margin-top: 18px;
+      color: var(--muted);
+      font-size: 0.88rem;
+      text-align: center;
+    }
+
+    .hidden { display: none !important; }
+
+    @media (max-width: 1180px) {
+      .layout {
+        grid-template-columns: 1fr;
+      }
+      .timeline {
+        grid-template-columns: repeat(3, 1fr);
+      }
+    }
+
+    @media (max-width: 700px) {
+      .app { padding: 14px; }
+      .hero h1 { font-size: 1.55rem; }
+      .toggle-grid,
+      .micro-boxes,
+      .timeline {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="app">
+    <section class="hero">
+      <h1>Simulador Interativo — Formação de Ferida de Pé Diabético</h1>
+      <p>
+        Ferramenta didática para visualizar, etapa por etapa, a progressão do dano tecidual no pé diabético.
+        O usuário pode alternar camadas anatômicas, ativar o efeito do tabagismo e observar indicadores clínicos.
+        Velha escola: primeiro entender a fisiopatologia, depois falar em conduta.
+      </p>
+    </section>
+
+    <section class="layout">
+      <aside class="card">
+        <div class="card-header">
+          <h2>Controles</h2>
+          <p>Escolha a etapa clínica e ative as camadas que deseja visualizar.</p>
+        </div>
+        <div class="card-body">
+          <div class="controls-group">
+            <span class="label-title">Etapas da progressão</span>
+            <div class="stage-list" id="stageList"></div>
+          </div>
+
+          <div class="controls-group">
+            <span class="label-title">Camadas anatômicas</span>
+            <div class="toggle-grid">
+              <div class="toggle-item"><label><input type="checkbox" id="showEpidermis" checked> Epiderme</label></div>
+              <div class="toggle-item"><label><input type="checkbox" id="showDermis" checked> Derme</label></div>
+              <div class="toggle-item"><label><input type="checkbox" id="showSubcut" checked> Subcutâneo</label></div>
+              <div class="toggle-item"><label><input type="checkbox" id="showMuscle" checked> Músculo</label></div>
+              <div class="toggle-item"><label><input type="checkbox" id="showBone" checked> Osso</label></div>
+              <div class="toggle-item"><label><input type="checkbox" id="showVessels" checked> Vasos</label></div>
+              <div class="toggle-item"><label><input type="checkbox" id="showNerves" checked> Nervos</label></div>
+              <div class="toggle-item"><label><input type="checkbox" id="showCallout" checked> Destaques</label></div>
+            </div>
+          </div>
+
+          <div class="controls-group">
+            <span class="label-title">Modos clínicos</span>
+            <div class="single-toggle"><label><input type="checkbox" id="smokingToggle"> Destacar efeito do tabagismo</label></div>
+            <div class="single-toggle" style="margin-top:10px;"><label><input type="checkbox" id="errorToggle"> Simular erro de interpretação</label></div>
+          </div>
+        </div>
+      </aside>
+
+      <main class="card">
+        <div class="card-header">
+          <h2 id="stageTitle">Etapa</h2>
+          <p id="stageSubtitle">Descrição da fase selecionada.</p>
+        </div>
+        <div class="main-visual">
+          <div class="top-status">
+            <div class="badge"><strong>Tecido:</strong> <span id="badgeTissue">—</span></div>
+            <div class="badge"><strong>Perfusão:</strong> <span id="badgePerfusion">—</span></div>
+            <div class="badge"><strong>Risco:</strong> <span id="badgeRisk">—</span></div>
+          </div>
+
+          <div class="canvas-wrap">
+            <svg id="footSvg" viewBox="0 0 920 470" xmlns="http://www.w3.org/2000/svg" aria-label="Visualização do pé diabético">
+              <defs>
+                <linearGradient id="bgGrad" x1="0" y1="0" x2="0" y2="1">
+                  <stop offset="0%" stop-color="#f9fbfd" />
+                  <stop offset="100%" stop-color="#ecf3f8" />
+                </linearGradient>
+                <linearGradient id="epiGrad" x1="0" y1="0" x2="1" y2="0">
+                  <stop offset="0%" stop-color="#f0be9a" />
+                  <stop offset="100%" stop-color="#d78965" />
+                </linearGradient>
+                <linearGradient id="dermisGrad" x1="0" y1="0" x2="1" y2="0">
+                  <stop offset="0%" stop-color="#e39d7a" />
+                  <stop offset="100%" stop-color="#bf6f52" />
+                </linearGradient>
+                <linearGradient id="subGrad" x1="0" y1="0" x2="1" y2="0">
+                  <stop offset="0%" stop-color="#f0dca6" />
+                  <stop offset="100%" stop-color="#d9bf72" />
+                </linearGradient>
+                <linearGradient id="muscleGrad" x1="0" y1="0" x2="1" y2="0">
+                  <stop offset="0%" stop-color="#c86d6d" />
+                  <stop offset="100%" stop-color="#a34747" />
+                </linearGradient>
+                <linearGradient id="boneGrad" x1="0" y1="0" x2="1" y2="0">
+                  <stop offset="0%" stop-color="#e9e8e2" />
+                  <stop offset="100%" stop-color="#c9c5b6" />
+                </linearGradient>
+                <filter id="softShadow" x="-20%" y="-20%" width="140%" height="140%">
+                  <feDropShadow dx="0" dy="8" stdDeviation="10" flood-color="rgba(29,60,89,0.14)" />
+                </filter>
+              </defs>
+
+              <rect x="0" y="0" width="920" height="470" fill="url(#bgGrad)" />
+
+              <text x="34" y="42" font-size="24" fill="#25475d" font-weight="bold">Corte em camadas — região plantar</text>
+              <text x="34" y="68" font-size="15" fill="#5f7485">Selecione a etapa clínica e observe a progressão do dano tecidual.</text>
+
+              <g transform="translate(70,105)" filter="url(#softShadow)">
+                <path id="outerFoot" d="M60,140 C60,70 110,18 200,10 L470,10 C575,14 670,70 710,132 C735,171 736,224 699,250 C660,278 590,294 515,300 L184,300 C92,300 34,250 28,203 C24,174 35,153 60,140 Z"
+                  fill="#f7d2b7" stroke="#d3a88c" stroke-width="3" />
+
+                <path id="epiLayer" d="M82,148 C82,90 122,42 207,34 L465,34 C560,38 635,79 672,135 C690,164 692,208 664,227 C629,251 573,265 506,270 L191,270 C117,270 75,234 66,198 C61,176 65,159 82,148 Z"
+                  fill="url(#epiGrad)" opacity="0.95" />
+
+                <path id="dermisLayer" d="M100,160 C103,114 141,74 214,68 L456,68 C540,72 605,100 638,144 C653,166 654,194 635,211 C607,235 559,243 499,246 L200,246 C143,246 107,225 97,195 C93,182 94,170 100,160 Z"
+                  fill="url(#dermisGrad)" opacity="0.9" />
+
+                <path id="subLayer" d="M126,171 C132,135 162,103 223,98 L444,98 C512,103 565,122 594,153 C607,168 608,186 595,198 C574,218 534,225 488,226 L221,226 C175,226 142,213 131,193 C127,186 125,178 126,171 Z"
+                  fill="url(#subGrad)" opacity="0.96" />
+
+                <path id="muscleLayer" d="M164,182 C170,156 193,134 234,126 L421,126 C476,130 517,144 539,164 C549,173 550,182 541,189 C526,202 497,208 466,208 L251,208 C213,208 185,201 172,191 C167,188 164,185 164,182 Z"
+                  fill="url(#muscleGrad)" opacity="0.92" />
+
+                <g id="boneLayer" opacity="0.95">
+                  <ellipse cx="286" cy="184" rx="24" ry="15" fill="url(#boneGrad)" stroke="#b8b29d" />
+                  <ellipse cx="350" cy="178" rx="28" ry="17" fill="url(#boneGrad)" stroke="#b8b29d" />
+                  <ellipse cx="425" cy="172" rx="33" ry="18" fill="url(#boneGrad)" stroke="#b8b29d" />
+                  <ellipse cx="502" cy="166" rx="30" ry="17" fill="url(#boneGrad)" stroke="#b8b29d" />
+                  <ellipse cx="572" cy="164" rx="24" ry="14" fill="url(#boneGrad)" stroke="#b8b29d" />
+                </g>
+
+                <g id="vesselLayer" stroke-linecap="round" fill="none">
+                  <path d="M165,108 C235,126 301,128 396,122 C463,117 533,108 611,126" stroke="#b51f37" stroke-width="6" opacity="0.9" />
+                  <path d="M250,126 C240,147 229,171 218,205" stroke="#b51f37" stroke-width="4" opacity="0.9" />
+                  <path d="M336,124 C322,145 310,167 299,205" stroke="#b51f37" stroke-width="4" opacity="0.9" />
+                  <path d="M438,122 C423,143 409,168 396,205" stroke="#b51f37" stroke-width="4" opacity="0.9" />
+                  <path d="M532,122 C516,142 504,167 492,203" stroke="#b51f37" stroke-width="4" opacity="0.9" />
+                </g>
+
+                <g id="nerveLayer" stroke="#d3a21d" stroke-width="4" fill="none" stroke-linecap="round" opacity="0.85">
+                  <path d="M150,145 C225,155 304,157 385,152 C475,147 544,141 628,149" />
+                  <path d="M270,151 C263,164 257,180 250,196" />
+                  <path d="M380,151 C373,166 366,180 359,196" />
+                  <path d="M495,148 C488,163 479,179 473,194" />
+                </g>
+
+                <g id="callusGroup">
+                  <ellipse id="callusZone" cx="580" cy="104" rx="58" ry="22" fill="#d8b068" opacity="0.18" />
+                </g>
+
+                <g id="ulcerGroup">
+                  <ellipse id="ulcerSurface" cx="582" cy="110" rx="32" ry="14" fill="#d5624e" opacity="0.28" />
+                  <ellipse id="ulcerDeep" cx="582" cy="116" rx="18" ry="26" fill="#7a1d1d" opacity="0.12" />
+                  <ellipse id="necrosisPatch" cx="590" cy="115" rx="10" ry="8" fill="#241d1b" opacity="0.1" />
+                  <ellipse id="exudatePatch" cx="571" cy="117" rx="8" ry="5" fill="#d5c26b" opacity="0.08" />
+                </g>
+
+                <g id="smokeOverlay" opacity="0">
+                  <path d="M140,108 C230,121 308,121 400,116 C500,111 572,105 640,126" stroke="#6b2020" stroke-width="7" stroke-linecap="round" fill="none" opacity="0.65" />
+                  <text x="492" y="52" font-size="15" fill="#7b2323" font-weight="bold">Tabagismo: vasoconstrição + pior perfusão</text>
+                </g>
+
+                <g id="calloutGroup">
+                  <line id="calloutLine1" x1="672" y1="95" x2="760" y2="70" stroke="#35576f" stroke-width="2" />
+                  <rect id="calloutBox1" x="760" y="50" width="118" height="42" rx="10" fill="#ffffff" stroke="#c8d8e3" />
+                  <text id="calloutText1" x="772" y="67" font-size="13" fill="#224055" font-weight="bold">Alteração tecidual</text>
+                  <text id="calloutText1b" x="772" y="83" font-size="12" fill="#567084">sem lesão aberta</text>
+
+                  <line id="calloutLine2" x1="532" y1="206" x2="760" y2="226" stroke="#35576f" stroke-width="2" />
+                  <rect id="calloutBox2" x="760" y="206" width="126" height="46" rx="10" fill="#ffffff" stroke="#c8d8e3" />
+                  <text id="calloutText2" x="772" y="224" font-size="13" fill="#224055" font-weight="bold">Profundidade</text>
+                  <text id="calloutText2b" x="772" y="241" font-size="12" fill="#567084">camadas preservadas</text>
+                </g>
+              </g>
+            </svg>
+          </div>
+
+          <div class="timeline" id="timeline"></div>
+
+          <div class="micro-boxes">
+            <div class="micro-card">
+              <h4>Oxigenação tecidual</h4>
+              <div class="meter"><span id="oxygenMeter" style="width: 90%;"></span></div>
+              <div id="oxygenText">Preservada</div>
+            </div>
+            <div class="micro-card">
+              <h4>Fluxo sanguíneo</h4>
+              <div class="meter"><span id="flowMeter" style="width: 88%;"></span></div>
+              <div id="flowText">Adequado</div>
+            </div>
+            <div class="micro-card">
+              <h4>Viabilidade do tecido</h4>
+              <div class="meter"><span id="viabilityMeter" style="width: 92%;"></span></div>
+              <div id="viabilityText">Alta</div>
+            </div>
+          </div>
+        </div>
+      </main>
+
+      <aside class="side-panel">
+        <section class="card insight">
+          <div class="card-header">
+            <h3>Leitura clínica</h3>
+            <p>Resumo fisiopatológico da etapa atual.</p>
+          </div>
+          <div class="card-body">
+            <p id="insightText"></p>
+            <ul class="detail-list" id="detailList"></ul>
+            <div class="risk-note" id="smokingNote">Tabagismo desativado. Sem o cigarro, já complica. Com cigarro, piora o estrago e apressa o relógio biológico.</div>
+          </div>
+        </section>
+
+        <section class="card legend">
+          <div class="card-header">
+            <h3>Legenda rápida</h3>
+            <p>As cores acompanham a deterioração do tecido.</p>
+          </div>
+          <div class="card-body">
+            <ul>
+              <li><strong>Rosado:</strong> tecido preservado</li>
+              <li><strong>Avermelhado:</strong> estresse/inflamação</li>
+              <li><strong>Pálido/arroxeado:</strong> hipoperfusão/isquemia</li>
+              <li><strong>Escuro:</strong> necrose</li>
+              <li><strong>Amarelado:</strong> exsudato/fibrina</li>
+            </ul>
+          </div>
+        </section>
+
+        <section class="error-box hidden" id="errorBox">
+          <h4>Simulação de erro</h4>
+          <p><strong>Atenção:</strong> interpretar a lesão apenas pela aparência superficial pode mascarar isquemia, neuropatia e profundidade real.</p>
+          <p id="errorText">Erro clássico: olhar a ferida e esquecer o leito vascular.</p>
+        </section>
+      </aside>
+    </section>
+
+    <div class="footer-note">
+      Protótipo educacional em HTML/CSS/JS puro. Pode ser adaptado para GitHub Pages, aula interativa ou módulo G10.
+    </div>
+  </div>
+
+  <script>
+    const stages = [
+      {
+        title: '1. Tecido plantar preservado',
+        short: 'Tecido preservado',
+        subtitle: 'Pele íntegra, perfusão adequada e camadas anatômicas preservadas.',
+        tissue: 'Íntegro',
+        perfusion: 'Boa',
+        risk: 'Baixo',
+        oxygen: 90,
+        flow: 88,
+        viability: 92,
+        oxygenText: 'Preservada',
+        flowText: 'Adequado',
+        viabilityText: 'Alta',
+        insight: 'Nesta fase, o tecido plantar mantém arquitetura normal. A pele suporta a carga mecânica e a perfusão ainda compensa as exigências metabólicas locais.',
+        details: [
+          'Epiderme contínua, sem solução de continuidade.',
+          'Ausência de hiperqueratose significativa.',
+          'Microcirculação preservada.'
+        ],
+        ulcer: { surfaceOpacity: 0.06, deepOpacity: 0.02, necrosisOpacity: 0.00, exudateOpacity: 0.00, surfaceRx: 20, surfaceRy: 8, deepRy: 8 },
+        callusOpacity: 0.08,
+        vesselOpacity: 0.95,
+        nerveOpacity: 0.88,
+        vesselWidth: 1,
+        nerveDash: '0',
+        skinTint: '#f0be9a',
+        dermisTint: '#e39d7a',
+        subTint: '#efd99d',
+        muscleTint: '#c96f6f',
+        callout1: ['Alteração tecidual', 'sem lesão aberta'],
+        callout2: ['Profundidade', 'camadas preservadas'],
+        error: 'Erro comum: supor que um pé sem úlcera visível não tem risco. Nem sempre a calmaria é sinal de bonança.'
+      },
+      {
+        title: '2. Neuropatia + pressão repetida',
+        short: 'Neuropatia e pressão',
+        subtitle: 'Perda de sensibilidade, redistribuição inadequada de carga e início de calosidade.',
+        tissue: 'Sob estresse',
+        perfusion: 'Levemente reduzida',
+        risk: 'Moderado',
+        oxygen: 76,
+        flow: 74,
+        viability: 80,
+        oxygenText: 'Levemente reduzida',
+        flowText: 'Comprometido leve',
+        viabilityText: 'Boa, porém vulnerável',
+        insight: 'A neuropatia reduz a proteção sensorial. O paciente segue apoiando a mesma área e o tecido responde com hiperqueratose e microtrauma repetido.',
+        details: [
+          'Calo plantar ganha destaque.',
+          'Aumento do estresse local sobre proeminências ósseas.',
+          'Lesão ainda fechada, mas biologicamente ameaçada.'
+        ],
+        ulcer: { surfaceOpacity: 0.18, deepOpacity: 0.05, necrosisOpacity: 0.00, exudateOpacity: 0.00, surfaceRx: 28, surfaceRy: 12, deepRy: 12 },
+        callusOpacity: 0.32,
+        vesselOpacity: 0.84,
+        nerveOpacity: 0.58,
+        vesselWidth: 0.94,
+        nerveDash: '6 5',
+        skinTint: '#e9b18c',
+        dermisTint: '#d98f72',
+        subTint: '#e7d08d',
+        muscleTint: '#bf6666',
+        callout1: ['Hiperqueratose', 'pressão mantida'],
+        callout2: ['Profundidade', 'sem escavação real'],
+        error: 'Erro comum: tratar apenas o calo e ignorar a causa mecânica. O problema volta como boleto mal pago.'
+      },
+      {
+        title: '3. Isquemia e dano microvascular',
+        short: 'Isquemia inicial',
+        subtitle: 'A redução da perfusão passa a alterar coloração, oxigenação e resposta reparadora.',
+        tissue: 'Hipóxico',
+        perfusion: 'Ruim',
+        risk: 'Alto',
+        oxygen: 56,
+        flow: 50,
+        viability: 60,
+        oxygenText: 'Reduzida',
+        flowText: 'Baixo',
+        viabilityText: 'Intermediária',
+        insight: 'Agora o tecido começa a perder reserva. A hipóxia limita a defesa local e prepara terreno para ruptura da pele.',
+        details: [
+          'Palidez ou tom arroxeado podem surgir.',
+          'Capilares funcionam pior.',
+          'A cicatrização potencial já está comprometida.'
+        ],
+        ulcer: { surfaceOpacity: 0.28, deepOpacity: 0.12, necrosisOpacity: 0.06, exudateOpacity: 0.02, surfaceRx: 30, surfaceRy: 13, deepRy: 16 },
+        callusOpacity: 0.28,
+        vesselOpacity: 0.64,
+        nerveOpacity: 0.44,
+        vesselWidth: 0.80,
+        nerveDash: '8 6',
+        skinTint: '#d4a18f',
+        dermisTint: '#b77c77',
+        subTint: '#dcc88a',
+        muscleTint: '#ad5a67',
+        callout1: ['Microcirculação', 'já insuficiente'],
+        callout2: ['Profundidade', 'dano funcional'],
+        error: 'Erro comum: chamar tudo de infecção. Às vezes, antes da bactéria, veio a isquemia.'
+      },
+      {
+        title: '4. Ruptura tecidual inicial',
+        short: 'Ruptura tecidual',
+        subtitle: 'A pele perde continuidade e a lesão superficial se estabelece.',
+        tissue: 'Ulcerado superficial',
+        perfusion: 'Deficiente',
+        risk: 'Alto',
+        oxygen: 40,
+        flow: 36,
+        viability: 42,
+        oxygenText: 'Baixa',
+        flowText: 'Muito reduzido',
+        viabilityText: 'Baixa',
+        insight: 'A solução de continuidade aparece. A perda da barreira favorece colonização e amplia o dano para planos mais profundos.',
+        details: [
+          'Lesão aberta com bordas definidas.',
+          'Inflamação periférica discreta a moderada.',
+          'Necessidade de avaliação da profundidade real.'
+        ],
+        ulcer: { surfaceOpacity: 0.58, deepOpacity: 0.32, necrosisOpacity: 0.12, exudateOpacity: 0.08, surfaceRx: 34, surfaceRy: 15, deepRy: 22 },
+        callusOpacity: 0.20,
+        vesselOpacity: 0.52,
+        nerveOpacity: 0.34,
+        vesselWidth: 0.72,
+        nerveDash: '10 7',
+        skinTint: '#cb968a',
+        dermisTint: '#aa6a66',
+        subTint: '#d0be81',
+        muscleTint: '#9b5058',
+        callout1: ['Úlcera superficial', 'barreira rompida'],
+        callout2: ['Profundidade', 'subcutâneo em risco'],
+        error: 'Erro comum: subestimar a profundidade porque a abertura na superfície parece pequena.'
+      },
+      {
+        title: '5. Úlcera diabética estabelecida',
+        short: 'Úlcera estabelecida',
+        subtitle: 'Há lesão aberta com dano mais profundo, exsudato e tecido desvitalizado.',
+        tissue: 'Comprometido',
+        perfusion: 'Muito ruim',
+        risk: 'Muito alto',
+        oxygen: 26,
+        flow: 22,
+        viability: 24,
+        oxygenText: 'Crítica',
+        flowText: 'Severamente reduzido',
+        viabilityText: 'Muito baixa',
+        insight: 'A úlcera está estabelecida. O equilíbrio local foi perdido e o tecido mostra necrose, exsudação e progressão vertical do dano.',
+        details: [
+          'Necrose focal visível.',
+          'Exsudato e fibrina podem estar presentes.',
+          'Infecção passa a ser ameaça importante.'
+        ],
+        ulcer: { surfaceOpacity: 0.82, deepOpacity: 0.62, necrosisOpacity: 0.54, exudateOpacity: 0.35, surfaceRx: 36, surfaceRy: 16, deepRy: 34 },
+        callusOpacity: 0.12,
+        vesselOpacity: 0.38,
+        nerveOpacity: 0.22,
+        vesselWidth: 0.62,
+        nerveDash: '12 8',
+        skinTint: '#b58b89',
+        dermisTint: '#8b5b63',
+        subTint: '#c8b472',
+        muscleTint: '#85424b',
+        callout1: ['Necrose + exsudato', 'lesão ativa'],
+        callout2: ['Profundidade', 'subcutâneo atingido'],
+        error: 'Erro comum: pensar só no curativo e esquecer descarga de pressão, perfusão e controle metabólico.'
+      },
+      {
+        title: '6. Complicação avançada',
+        short: 'Complicação avançada',
+        subtitle: 'A lesão aprofunda, compromete tecido profundo e pode expor estruturas nobres.',
+        tissue: 'Severamente destruído',
+        perfusion: 'Crítica',
+        risk: 'Extremo',
+        oxygen: 12,
+        flow: 10,
+        viability: 8,
+        oxygenText: 'Extremamente crítica',
+        flowText: 'Quase ausente',
+        viabilityText: 'Mínima',
+        insight: 'Aqui a ferida ultrapassa a superfície e ameaça estruturas profundas. O cenário é de alto risco para infecção grave, osteomielite e perda do segmento.',
+        details: [
+          'Profundidade maior, com comprometimento muscular.',
+          'Possível exposição de planos profundos.',
+          'Necrose extensa e ambiente desfavorável à reparação.'
+        ],
+        ulcer: { surfaceOpacity: 0.94, deepOpacity: 0.88, necrosisOpacity: 0.82, exudateOpacity: 0.44, surfaceRx: 39, surfaceRy: 18, deepRy: 48 },
+        callusOpacity: 0.08,
+        vesselOpacity: 0.24,
+        nerveOpacity: 0.14,
+        vesselWidth: 0.48,
+        nerveDash: '14 10',
+        skinTint: '#9f8184',
+        dermisTint: '#734c56',
+        subTint: '#b9a362',
+        muscleTint: '#6f3640',
+        callout1: ['Necrose avançada', 'alto risco infeccioso'],
+        callout2: ['Profundidade', 'músculo atingido'],
+        error: 'Erro comum: insistir numa leitura rasa de um problema profundo. Quando o tecido grita, não adianta ouvir só o sussurro.'
+      }
+    ];
+
+    let currentStage = 0;
+
+    const stageList = document.getElementById('stageList');
+    const timeline = document.getElementById('timeline');
+
+    const stageTitle = document.getElementById('stageTitle');
+    const stageSubtitle = document.getElementById('stageSubtitle');
+    const badgeTissue = document.getElementById('badgeTissue');
+    const badgePerfusion = document.getElementById('badgePerfusion');
+    const badgeRisk = document.getElementById('badgeRisk');
+    const insightText = document.getElementById('insightText');
+    const detailList = document.getElementById('detailList');
+    const smokingNote = document.getElementById('smokingNote');
+    const errorBox = document.getElementById('errorBox');
+    const errorText = document.getElementById('errorText');
+
+    const oxygenMeter = document.getElementById('oxygenMeter');
+    const flowMeter = document.getElementById('flowMeter');
+    const viabilityMeter = document.getElementById('viabilityMeter');
+    const oxygenText = document.getElementById('oxygenText');
+    const flowText = document.getElementById('flowText');
+    const viabilityText = document.getElementById('viabilityText');
+
+    const smokingToggle = document.getElementById('smokingToggle');
+    const errorToggle = document.getElementById('errorToggle');
+
+    const layerIds = {
+      showEpidermis: 'epiLayer',
+      showDermis: 'dermisLayer',
+      showSubcut: 'subLayer',
+      showMuscle: 'muscleLayer',
+      showBone: 'boneLayer',
+      showVessels: 'vesselLayer',
+      showNerves: 'nerveLayer',
+      showCallout: 'calloutGroup'
+    };
+
+    function createStageControls() {
+      stages.forEach((stage, index) => {
+        const btn = document.createElement('button');
+        btn.className = 'stage-btn';
+        btn.textContent = stage.title;
+        btn.addEventListener('click', () => {
+          currentStage = index;
+          render();
+        });
+        stageList.appendChild(btn);
+
+        const t = document.createElement('button');
+        t.className = 'timeline-step';
+        t.innerHTML = `<div>${stage.short}</div>`;
+        t.addEventListener('click', () => {
+          currentStage = index;
+          render();
+        });
+        timeline.appendChild(t);
+      });
+    }
+
+    function setAttr(id, attr, value) {
+      const el = document.getElementById(id);
+      if (el) el.setAttribute(attr, value);
+    }
+
+    function setStyle(id, prop, value) {
+      const el = document.getElementById(id);
+      if (el) el.style[prop] = value;
+    }
+
+    function render() {
+      const stage = stages[currentStage];
+      const smokingOn = smokingToggle.checked;
+      const errorOn = errorToggle.checked;
+
+      [...stageList.children].forEach((el, i) => el.classList.toggle('active', i === currentStage));
+      [...timeline.children].forEach((el, i) => el.classList.toggle('active', i === currentStage));
+
+      stageTitle.textContent = stage.title;
+      stageSubtitle.textContent = stage.subtitle;
+      badgeTissue.textContent = stage.tissue;
+      badgePerfusion.textContent = smokingOn ? worsenPerfusionLabel(stage.perfusion) : stage.perfusion;
+      badgeRisk.textContent = smokingOn ? raiseRiskLabel(stage.risk) : stage.risk;
+      insightText.textContent = stage.insight;
+      detailList.innerHTML = stage.details.map(item => `<li>${item}</li>`).join('');
+
+      const oxygen = smokingOn ? Math.max(stage.oxygen - 12, 4) : stage.oxygen;
+      const flow = smokingOn ? Math.max(stage.flow - 14, 3) : stage.flow;
+      const viability = smokingOn ? Math.max(stage.viability - 15, 3) : stage.viability;
+
+      oxygenMeter.style.width = `${oxygen}%`;
+      flowMeter.style.width = `${flow}%`;
+      viabilityMeter.style.width = `${viability}%`;
+      oxygenText.textContent = stage.oxygenText + (smokingOn ? ' (agravada pelo tabagismo)' : '');
+      flowText.textContent = stage.flowText + (smokingOn ? ' (vasoconstrição adicional)' : '');
+      viabilityText.textContent = stage.viabilityText + (smokingOn ? ' (queda adicional)' : '');
+
+      smokingNote.textContent = smokingOn
+        ? 'Tabagismo ativado. A nicotina e o dano vascular pioram a perfusão, reduzem a oxigenação e aceleram necrose e falha cicatricial.'
+        : 'Tabagismo desativado. Sem o cigarro, já complica. Com cigarro, piora o estrago e apressa o relógio biológico.';
+
+      errorBox.classList.toggle('hidden', !errorOn);
+      errorText.textContent = stage.error;
+
+      const surfaceOpacity = stage.ulcer.surfaceOpacity + (smokingOn ? 0.10 : 0);
+      const deepOpacity = stage.ulcer.deepOpacity + (smokingOn ? 0.16 : 0);
+      const necrosisOpacity = Math.min(stage.ulcer.necrosisOpacity + (smokingOn ? 0.18 : 0), 0.95);
+      const exudateOpacity = Math.min(stage.ulcer.exudateOpacity + (smokingOn ? 0.05 : 0), 0.6);
+      const callusOpacity = stage.callusOpacity;
+      const vesselOpacity = Math.max(stage.vesselOpacity - (smokingOn ? 0.14 : 0), 0.12);
+      const nerveOpacity = stage.nerveOpacity;
+      const vesselWidth = stage.vesselWidth * (smokingOn ? 0.82 : 1);
+
+      setStyle('callusZone', 'opacity', callusOpacity);
+      setStyle('ulcerSurface', 'opacity', surfaceOpacity);
+      setStyle('ulcerDeep', 'opacity', deepOpacity);
+      setStyle('necrosisPatch', 'opacity', necrosisOpacity);
+      setStyle('exudatePatch', 'opacity', exudateOpacity);
+      setStyle('vesselLayer', 'opacity', vesselOpacity);
+      setStyle('nerveLayer', 'opacity', nerveOpacity);
+      setStyle('smokeOverlay', 'opacity', smokingOn ? 1 : 0);
+
+      setAttr('ulcerSurface', 'rx', stage.ulcer.surfaceRx);
+      setAttr('ulcerSurface', 'ry', stage.ulcer.surfaceRy);
+      setAttr('ulcerDeep', 'ry', stage.ulcer.deepRy);
+
+      document.querySelectorAll('#vesselLayer path').forEach(p => {
+        const base = Number(p.getAttribute('stroke-width'));
+        p.setAttribute('stroke-width', (base * vesselWidth).toFixed(2));
+      });
+
+      document.querySelectorAll('#nerveLayer path').forEach(p => {
+        p.setAttribute('stroke-dasharray', stage.nerveDash);
+      });
+
+      setStyle('epiLayer', 'fill', stage.skinTint);
+      setStyle('dermisLayer', 'fill', stage.dermisTint);
+      setStyle('subLayer', 'fill', stage.subTint);
+      setStyle('muscleLayer', 'fill', stage.muscleTint);
+
+      document.getElementById('calloutText1').textContent = stage.callout1[0];
+      document.getElementById('calloutText1b').textContent = stage.callout1[1];
+      document.getElementById('calloutText2').textContent = stage.callout2[0];
+      document.getElementById('calloutText2b').textContent = stage.callout2[1];
+
+      for (const [checkboxId, elementId] of Object.entries(layerIds)) {
+        const checked = document.getElementById(checkboxId).checked;
+        document.getElementById(elementId).style.display = checked ? '' : 'none';
+      }
+    }
+
+    function worsenPerfusionLabel(label) {
+      const map = {
+        'Boa': 'Reduzida pelo tabagismo',
+        'Levemente reduzida': 'Piorada',
+        'Ruim': 'Muito ruim',
+        'Deficiente': 'Crítica',
+        'Muito ruim': 'Crítica',
+        'Crítica': 'Extremamente crítica'
+      };
+      return map[label] || label;
+    }
+
+    function raiseRiskLabel(label) {
+      const map = {
+        'Baixo': 'Moderado',
+        'Moderado': 'Alto',
+        'Alto': 'Muito alto',
+        'Muito alto': 'Extremo',
+        'Extremo': 'Extremo+'
+      };
+      return map[label] || label;
+    }
+
+    Object.keys(layerIds).forEach(id => {
+      document.getElementById(id).addEventListener('change', render);
+    });
+    smokingToggle.addEventListener('change', render);
+    errorToggle.addEventListener('change', render);
+
+    createStageControls();
+    render();
+  </script>
+</body>
+</html>
