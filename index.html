@@ -242,10 +242,17 @@ img {
   <h2>Organização presencial 2026-1</h2>
 
   <style>
+    .tabela-turnos-wrapper {
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+      margin-top: 10px;
+    }
+
     .tabela-turnos table {
       width: 100%;
+      min-width: 820px;
       border-collapse: collapse;
-      margin-top: 10px;
+      margin-top: 0;
     }
 
     .tabela-turnos thead {
@@ -258,6 +265,7 @@ img {
       font-size: 0.9rem;
       color: #1f3b63;
       border-bottom: 2px solid #c5d4e8;
+      white-space: nowrap;
     }
 
     .tabela-turnos td {
@@ -272,10 +280,15 @@ img {
       background: #f0f5fc;
       color: #1f3b63;
       width: 120px;
+      white-space: nowrap;
     }
 
     .tabela-turnos .bloco {
       margin-bottom: 8px;
+    }
+
+    .tabela-turnos .bloco:last-child {
+      margin-bottom: 0;
     }
 
     .tabela-turnos .tag {
@@ -287,78 +300,220 @@ img {
       font-size: 0.75rem;
       margin-bottom: 4px;
     }
+
+    .cards-turnos {
+      display: none;
+      margin-top: 10px;
+      gap: 12px;
+    }
+
+    .cards-turnos .dia-card {
+      background: #f8fbff;
+      border: 1px solid #dbe6f2;
+      border-radius: 12px;
+      padding: 14px;
+      margin-bottom: 12px;
+    }
+
+    .cards-turnos .dia-card h3 {
+      margin: 0 0 12px;
+      font-size: 1rem;
+      color: #1f3b63;
+    }
+
+    .cards-turnos .turno-card {
+      border-top: 1px solid #e6ecf3;
+      padding-top: 10px;
+      margin-top: 10px;
+    }
+
+    .cards-turnos .turno-card:first-of-type {
+      border-top: 0;
+      padding-top: 0;
+      margin-top: 0;
+    }
+
+    .cards-turnos .turno-card strong.turno-titulo {
+      display: block;
+      color: #0f172a;
+      margin-bottom: 8px;
+      font-size: 0.95rem;
+    }
+
+    .cards-turnos .bloco {
+      margin-bottom: 10px;
+    }
+
+    .cards-turnos .bloco:last-child {
+      margin-bottom: 0;
+    }
+
+    @media (max-width: 768px) {
+      .tabela-turnos-wrapper {
+        display: none;
+      }
+
+      .cards-turnos {
+        display: block;
+      }
+    }
   </style>
 
-  <div class="tabela-turnos">
-    <table>
-      <thead>
-        <tr>
-          <th>Turno</th>
-          <th>Terça-feira</th>
-          <th>Quarta-feira</th>
-          <th>Sexta-feira</th>
-        </tr>
-      </thead>
+  <div class="tabela-turnos-wrapper">
+    <div class="tabela-turnos">
+      <table>
+        <thead>
+          <tr>
+            <th>Turno</th>
+            <th>Terça-feira</th>
+            <th>Quarta-feira</th>
+            <th>Quinta-feira</th>
+            <th>Sexta-feira</th>
+          </tr>
+        </thead>
 
-      <tbody>
-        <tr>
-          <td class="turno">Manhã</td>
+        <tbody>
+          <tr>
+            <td class="turno">Manhã</td>
 
-          <td>
-            <div class="bloco">
-              <span class="tag">Centro de Especialidades</span><br>
-              <strong>Prec. Lilian</strong><br>
-              Giovana, Lyah, Lucas e Yanka
-            </div>
-          </td>
+            <td>
+              <div class="bloco">
+                <span class="tag">Centro de Especialidades</span><br>
+                <strong>Prec. Lilian</strong><br>
+                Giovana, Lyah, Lucas e Yanka
+              </div>
+            </td>
 
-          <td>
-            <div class="bloco">
-              <span class="tag">UBS Sansca - VD</span><br>
-              <strong>Prec. Gabriela</strong><br>
-              Cassiane
-            </div>
-          </td>
+            <td>
+              <div class="bloco">
+                <span class="tag">UBS Sansca - VD</span><br>
+                <strong>Prec. Gabriela</strong><br>
+                Cassiane
+              </div>
+            </td>
 
-          <td></td>
-        </tr>
+            <td></td>
 
-        <tr>
-          <td class="turno">Tarde</td>
+            <td></td>
+          </tr>
 
-          <td>
-            <div class="bloco">
-              <span class="tag">UBS Sansca - VD / Acompanhamento</span><br>
-              <strong>Prec. Gabriela</strong><br>
-              Gabriela A
-            </div>
+          <tr>
+            <td class="turno">Tarde</td>
 
-            <div class="bloco">
-              <span class="tag">Centro de Especialidades</span><br>
-              <strong>Prec. Lilian</strong><br>
-              Patrícia
-            </div>
-          </td>
+            <td>
+              <div class="bloco">
+                <span class="tag">UBS Sansca - VD / Acompanhamento</span><br>
+                <strong>Prec. Gabriela</strong><br>
+                Gabriela A
+              </div>
 
-          <td>
-            <div class="bloco">
-              <span class="tag"></span><br>
-              <strong></strong><br>
-              
-            </div>
-          </td>
+              <div class="bloco">
+                <span class="tag">Centro de Especialidades</span><br>
+                <strong>Prec. Lilian</strong><br>
+                Patrícia
+              </div>
+            </td>
 
-          <td>
-            <div class="bloco">
-              <span class="tag">UBS Sansca - Procedimentos e VD</span><br>
-              <strong>Coord. Adrize</strong><br> 
-              <strong>Tutor Alejandro</strong><br>
-              Amanda, Danusa, Fernando, Leonardo
-            </div>
-          </td>
-        </tr>
-      </tbody>
-    </table>
+            <td>
+              <div class="bloco"></div>
+            </td>
+
+            <td>
+              <div class="bloco">
+                <span class="tag">Videoconferência</span><br>
+                quinta-feira à tarde, videoconferência<br>
+                <em>comunicada quando acontece, sob aviso</em>
+              </div>
+            </td>
+
+            <td>
+              <div class="bloco">
+                <span class="tag">UBS Sansca - Procedimentos e VD</span><br>
+                <strong>Coord. Adrize</strong><br>
+                <strong>Tutor Alejandro</strong><br>
+                Amanda, Danusa, Fernando, Leonardo
+              </div>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <div class="cards-turnos">
+    <div class="dia-card">
+      <h3>Terça-feira</h3>
+
+      <div class="turno-card">
+        <strong class="turno-titulo">Manhã</strong>
+        <div class="bloco">
+          <span class="tag">Centro de Especialidades</span><br>
+          <strong>Prec. Lilian</strong><br>
+          Giovana, Lyah, Lucas e Yanka
+        </div>
+      </div>
+
+      <div class="turno-card">
+        <strong class="turno-titulo">Tarde</strong>
+        <div class="bloco">
+          <span class="tag">UBS Sansca - VD / Acompanhamento</span><br>
+          <strong>Prec. Gabriela</strong><br>
+          Gabriela A
+        </div>
+        <div class="bloco">
+          <span class="tag">Centro de Especialidades</span><br>
+          <strong>Prec. Lilian</strong><br>
+          Patrícia
+        </div>
+      </div>
+    </div>
+
+    <div class="dia-card">
+      <h3>Quarta-feira</h3>
+
+      <div class="turno-card">
+        <strong class="turno-titulo">Manhã</strong>
+        <div class="bloco">
+          <span class="tag">UBS Sansca - VD</span><br>
+          <strong>Prec. Gabriela</strong><br>
+          Cassiane
+        </div>
+      </div>
+
+      <div class="turno-card">
+        <strong class="turno-titulo">Tarde</strong>
+        <div class="bloco">
+          <em>Sem atividade fixa informada.</em>
+        </div>
+      </div>
+    </div>
+
+    <div class="dia-card">
+      <h3>Quinta-feira</h3>
+
+      <div class="turno-card">
+        <strong class="turno-titulo">Tarde</strong>
+        <div class="bloco">
+          <span class="tag">Videoconferência</span><br>
+          quinta-feira à tarde, videoconferência<br>
+          <em>comunicada quando acontece, sob aviso</em>
+        </div>
+      </div>
+    </div>
+
+    <div class="dia-card">
+      <h3>Sexta-feira</h3>
+
+      <div class="turno-card">
+        <strong class="turno-titulo">Tarde</strong>
+        <div class="bloco">
+          <span class="tag">UBS Sansca - Procedimentos e VD</span><br>
+          <strong>Coord. Adrize</strong><br>
+          <strong>Tutor Alejandro</strong><br>
+          Amanda, Danusa, Fernando, Leonardo
+        </div>
+      </div>
+    </div>
   </div>
 </div>
 
