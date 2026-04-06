@@ -1,0 +1,321 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>G10 • Atividade de Abril • Publicações</title>
+  <style>
+    :root{
+      --orange:#E0642A;
+      --blue:#2E6FA8;
+      --navy:#0E2E4C;
+      --bg:#F6F8FB;
+      --card:#FFFFFF;
+      --muted:#5B6B7C;
+      --line:#E6ECF3;
+      --shadow:0 10px 30px rgba(14,46,76,.10);
+      --radius:18px;
+      --sans:system-ui,-apple-system,Segoe UI,Roboto,Arial,"Noto Sans","Liberation Sans",sans-serif;
+    }
+    *{box-sizing:border-box}
+    body{
+      margin:0;
+      font-family:var(--sans);
+      background:linear-gradient(180deg,#ffffff 0%, var(--bg) 55%, #ffffff 100%);
+      color:#0C1B2A;
+    }
+    a{color:var(--blue); text-decoration:none}
+    a:hover{text-decoration:underline}
+    .container{max-width:1100px; margin:0 auto; padding:22px}
+    header{
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      flex-wrap:wrap;
+      gap:14px;
+      padding:18px;
+      background:rgba(255,255,255,.84);
+      border:1px solid var(--line);
+      border-radius:var(--radius);
+      box-shadow:var(--shadow);
+      backdrop-filter:blur(8px);
+      position:sticky; top:10px; z-index:10;
+    }
+    .header-left{display:flex; align-items:center; gap:16px}
+    .brand{display:flex; gap:14px; align-items:center}
+    .logo{width:86px; height:86px; border-radius:16px; border:1px solid var(--line); background:#fff; padding:8px; object-fit:cover}
+    .title h1{margin:0; font-size:18px; letter-spacing:.2px}
+    .title p{margin:4px 0 0; color:var(--muted); font-size:13px}
+    .header-right{text-align:right}
+    .prazo-box{font-weight:800; font-size:15px}
+    .prazo-box span{font-weight:900; color:var(--orange)}
+    .tag{
+      display:inline-flex; align-items:center; gap:8px;
+      padding:6px 10px; border-radius:999px; border:1px solid var(--line);
+      background:#fff; font-size:12px; color:var(--muted); margin:6px 6px 0 0;
+    }
+    .tag .dot{width:9px; height:9px; border-radius:999px; background:var(--blue)}
+    .tag.orange .dot{background:var(--orange)}
+    .tag.navy .dot{background:var(--navy)}
+    .card{
+      background:var(--card);
+      border:1px solid var(--line);
+      border-radius:var(--radius);
+      box-shadow:var(--shadow);
+      padding:16px;
+      margin-top:16px;
+    }
+    .card h2{margin:0 0 8px; font-size:16px}
+    .card h3{margin:12px 0 6px; font-size:14px}
+    .muted{color:var(--muted)}
+    .mini{font-size:12px}
+    .callout{
+      border-left:6px solid var(--blue);
+      padding:12px 12px 12px 14px;
+      background:#F1F7FF;
+      border-radius:14px;
+      color:#0C1B2A;
+    }
+    .callout.orange{border-left-color:var(--orange); background:#FFF4ED}
+    .callout.navy{border-left-color:var(--navy); background:#EEF4FA}
+    .grid-2{display:grid; grid-template-columns:1fr 1fr; gap:16px; margin-top:16px}
+    .grid-3{display:grid; grid-template-columns:repeat(3,1fr); gap:16px; margin-top:10px}
+    .btnrow{display:flex; gap:10px; flex-wrap:wrap; margin-top:10px}
+    .btn{
+      display:inline-flex; align-items:center; gap:10px;
+      border:1px solid var(--line); background:#fff;
+      padding:10px 12px; border-radius:12px; font-weight:800;
+    }
+    .btn.primary{background:var(--navy); color:#fff; border-color:rgba(14,46,76,.15)}
+    .btn.orange{background:var(--orange); color:#fff; border-color:rgba(224,100,42,.25)}
+    ul{margin:8px 0 0 18px}
+    li{margin:6px 0}
+    .hr{height:1px; background:var(--line); margin:14px 0}
+    .phase{
+      border:1px solid var(--line);
+      border-radius:16px;
+      padding:14px;
+      background:#fff;
+    }
+    .phase.a{box-shadow:inset 0 0 0 2px rgba(46,111,168,.08)}
+    .phase.b{box-shadow:inset 0 0 0 2px rgba(224,100,42,.08)}
+    .kpi{display:grid; grid-template-columns:repeat(4,1fr); gap:12px; margin-top:12px}
+    .kpi .box{
+      border:1px solid var(--line);
+      background:#fff;
+      border-radius:14px;
+      padding:12px;
+      text-align:center;
+    }
+    .kpi b{display:block; font-size:24px; color:var(--navy)}
+    .steps{counter-reset:etapa; list-style:none; margin:0; padding:0}
+    .steps li{
+      counter-increment:etapa;
+      margin:10px 0;
+      padding:12px 12px 12px 52px;
+      position:relative;
+      border:1px solid var(--line);
+      border-radius:14px;
+      background:#fff;
+    }
+    .steps li::before{
+      content:counter(etapa);
+      position:absolute; left:14px; top:12px;
+      width:26px; height:26px; border-radius:999px;
+      background:var(--navy); color:#fff; display:flex; align-items:center; justify-content:center;
+      font-weight:800; font-size:13px;
+    }
+    .footer{text-align:center; color:var(--muted); font-size:12px; padding:16px 0 4px}
+    a, .card, .callout, li, p, h1, h2, h3{overflow-wrap:anywhere; word-break:break-word}
+    @media (max-width:980px){
+      header{position:static}
+      .grid-2,.grid-3,.kpi{grid-template-columns:1fr}
+      .header-right{text-align:left}
+    }
+    @media (max-width:640px){
+      .header-left{align-items:flex-start}
+      .brand{flex-direction:column; align-items:flex-start}
+      .btn{width:100%; justify-content:center}
+      .title h1{font-size:17px}
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <div class="header-left">
+        <div class="brand">
+          <img class="logo" src="img/petg10.jpeg" alt="Logo da atividade de abril do PET G10">
+          <div class="title">
+            <h1>Atividade de Abril • <a href="https://petg10ufpel.github.io/petg10/" target="_blank" rel="noopener">G10. Bora Publicar! </a></h1>
+            <p>Documento interno para monitores • Atualizado em 05/04/2026</p>
+            <div>
+              <span class="tag orange"><span class="dot"></span><b>Fase A</b>: SIIEPE</span>
+              <span class="tag"><span class="dot"></span><b>Fase B</b>: continuidade + revista</span>
+              <span class="tag navy"><span class="dot"></span><b>Publicação</b>: formação + compromisso</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="header-right">
+        <div class="prazo-box">
+          <a href="https://wp.ufpel.edu.br/siiepe/" target="_blank" rel="noopener">Abril em 2 fases • início <span>06/04/2026</span> 📅</a>
+        </div>
+      </div>
+    </header>
+
+    <section class="card">
+      <h2>Orientação geral</h2>
+      <div class="callout">
+        A atividade de abril foi organizada em <b>duas fases de 12 dias</b>, com foco central em <b>publicações</b>.
+        Primeiro entra o esforço voltado ao <b>SIIEPE</b>; depois, a mesma base amadurece com <b>visão de publicação em revista</b>.
+      </div>
+      <div class="btnrow">
+        <a class="btn primary" href="https://docs.google.com/spreadsheets/d/1Q6592sOeUCnoPfRomlOQ4qv-338Bp32O/edit?usp=sharing&ouid=108886314513379456241&rtpof=true&sd=true" target="_blank" rel="noopener">Relação de trabalhos e autores</a>
+        <a class="btn orange" href="https://wp.ufpel.edu.br/siiepe/" target="_blank" rel="noopener">Página do SIIEPE</a>
+      </div>
+    </section>
+
+    <div class="grid-2">
+      <section class="phase a">
+        <img src="img/conceito.png" alt="Pipeline de publicação G10" style="width:100%; height:auto; border-radius:12px; margin-bottom:10px;">
+        <h2>🔵 Fase A • 06 a 18 de abril</h2>
+        <div class="callout">
+          <b>Artigos foco SIIEPE.</b><br>
+          Objetivo: estruturar e submeter <b>resumo expandido (2–4 páginas)</b>.
+        </div>
+        <ul>
+          <li>Foco: publicações no <b>SIIEPE UFPel</b>.</li>
+          <li>Meta: sair com texto pronto para submissão.</li>
+          <li>Suporte direto na construção dos trabalhos.</li>
+        </ul>
+      </section>
+
+      <section class="phase b">
+        <h2>🟢 Fase B • 19 até final de abril</h2>
+        <div class="callout orange">
+          <b>SIIEPE + continuidade em maio para revista.</b><br>
+          Hora de refinar, aprofundar e deixar o material mais redondo.
+        </div>
+        <ul>
+          <li>Foco: continuidade com visão de publicação em revista.</li>
+          <li>Ajuste de qualidade, resultados e redação.</li>
+          <li>Organização do que segue para os próximos envios.</li>
+        </ul>
+      </section>
+    </div>
+
+    <section class="card">
+      <h2>O que precisa ficar pronto</h2>
+      <div class="callout navy">
+        <b>Meta de abril:</b> transformar material já existente em <b>publicação real</b>.<br>
+        <span class="mini muted">Sem romance acadêmico demais: texto, autoria, eixo, formato e envio.</span>
+      </div>
+      <div class="kpi">
+        <div class="box"><b>2</b><span class="muted">fases</span></div>
+        <div class="box"><b>12</b><span class="muted">dias por fase</span></div>
+        <div class="box"><b>3</b><span class="muted">monitores por artigo</span></div>
+        <div class="box"><b>5–6</b><span class="muted">autores no total</span></div>
+      </div>
+    </section>
+
+    <section class="card">
+      <h2>Critérios da divisão dos grupos</h2>
+      <ul>
+        <li>trabalhos já iniciados na atividade de férias;</li>
+        <li>grupos que já vinham trabalhando;</li>
+        <li>frequência presencial.</li>
+      </ul>
+      <div class="callout orange" style="margin-top:10px">
+        Cada artigo tem <b>até 3 monitores</b>. A lógica é simples: coordenação, preceptoria e orientação também precisam aparecer,
+        contribuir e revisar. Máquina parada não publica nada.
+      </div>
+    </section>
+
+    <section class="card">
+      <h2>Regra do jogo</h2>
+      <div class="grid-3">
+        <div class="card" style="box-shadow:none; margin-top:0">
+          <h3>Bolsa implica publicação</h3>
+          <p class="muted">Quem é bolsista precisa publicar. Isso faz parte da formação e da condição da bolsa PET.</p>
+        </div>
+        <div class="card" style="box-shadow:none; margin-top:0">
+          <h3>12 dias bastam</h3>
+          <p class="muted">Para um trabalho no SIIEPE, 12 dias são mais do que suficientes quando o grupo trabalha de verdade.</p>
+        </div>
+        <div class="card" style="box-shadow:none; margin-top:0">
+          <h3>Quem não vai puxar, avisa</h3>
+          <p class="muted">Quem não for trabalhar no artigo precisa comunicar. Aqui ninguém carrega ninguém.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="card">
+      <h2>Como decidir a submissão</h2>
+      <ol class="steps">
+        <li><b>Definir o eixo:</b> ensino, pesquisa ou extensão.</li>
+        <li><b>Definir o nível:</b> graduação.</li>
+        <li><b>Definir o tipo de trabalho</b> que será submetido.</li>
+        <li><b>Alinhar com a equipe:</b> coordenadora, tutor, preceptoras e orientador de serviço.</li>
+        <li><b>Ajustar a forma</b> do texto conforme a modalidade escolhida.</li>
+      </ol>
+      <div class="callout" style="margin-top:12px">
+        A categorização não é detalhe. Ela muda <b>formato</b>, <b>abordagem</b> e até o jeito de apresentar o trabalho.
+      </div>
+    </section>
+
+    <section class="card">
+      <h2>Autoria e estrutura do texto</h2>
+      <div class="grid-2">
+        <div>
+          <h3>✍️ Autoria</h3>
+          <ul>
+            <li><b>1º autor:</b> quem mais trabalhou.</li>
+            <li><b>Último autor:</b> orientador, coordenação, preceptoria ou tutor.</li>
+            <li>A ordem importa e deve ser combinada com maturidade.</li>
+          </ul>
+        </div>
+        <div>
+          <h3>🧠 Estrutura básica</h3>
+          <ul>
+            <li>Introdução</li>
+            <li>Revisão ou base teórica</li>
+            <li>Método</li>
+            <li>Resultados</li>
+            <li>Conclusão</li>
+            <li>Referências</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="card">
+      <h2>Apoio disponível</h2>
+      <div class="grid-2">
+        <div class="callout navy">
+          <b>Parte sistemas / IA / dados</b><br>
+          Apoio direto comigo.
+        </div>
+        <div class="callout orange">
+          <b>Parte clínica / território / VD</b><br>
+          Apoio com preceptoras e orientadores.
+        </div>
+      </div>
+      <div class="hr"></div>
+      <p class="muted">Usem o apoio. Travar sozinho por orgulho acadêmico é desperdício de tempo.</p>
+    </section>
+
+    <section class="card">
+      <h2>Dica final</h2>
+      <div class="callout">
+        Quem nunca publicou deve entrar no site do SIIEPE e olhar <b>trabalhos já aprovados</b>.
+        É o jeito mais rápido de entender padrão, tom e escala do que precisa ser entregue.
+      </div>
+    </section>
+
+    <div class="footer">
+      PET G10 • Abril de 2026 • Bora publicar.
+    </div>
+  </div>
+</body>
+</html>
