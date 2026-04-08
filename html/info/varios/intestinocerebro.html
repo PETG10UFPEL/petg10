@@ -1,0 +1,712 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>O Intestino que Prevê a Demência</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Source+Sans+3:wght@300;400;600&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --cream: #FAFAF7;
+      --white: #FFFFFF;
+      --ink: #1C1C1E;
+      --ink-soft: #3A3A3C;
+      --ink-muted: #6E6E73;
+      --blue: #2D5F8A;
+      --blue-light: #EAF2FA;
+      --teal: #1E7B6E;
+      --teal-light: #E6F4F1;
+      --amber: #B35C1E;
+      --amber-light: #FDF0E6;
+      --border: #E2E2E0;
+      --accent-red: #C0392B;
+      --accent-red-light: #FEF0EF;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Source Sans 3', sans-serif;
+      background: var(--cream);
+      color: var(--ink);
+      line-height: 1.7;
+      font-size: 17px;
+    }
+
+    /* HEADER */
+    header.institutional-header {
+      background: var(--white);
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 14px 48px;
+    }
+    .header-identity {
+      font-family: 'Source Sans 3', sans-serif;
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--ink-muted);
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+    header img { max-height: 48px; }
+
+    /* HERO */
+    .hero {
+      background: linear-gradient(135deg, #1A3A5C 0%, #2D5F8A 60%, #1E7B6E 100%);
+      color: white;
+      padding: 80px 48px 72px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse at 70% 30%, rgba(255,255,255,0.06) 0%, transparent 60%);
+      pointer-events: none;
+    }
+    .hero-label {
+      display: inline-block;
+      background: rgba(255,255,255,0.15);
+      border: 1px solid rgba(255,255,255,0.3);
+      color: rgba(255,255,255,0.9);
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      padding: 6px 16px;
+      border-radius: 20px;
+      margin-bottom: 28px;
+    }
+    .hero h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2rem, 5vw, 3.4rem);
+      font-weight: 900;
+      line-height: 1.15;
+      max-width: 820px;
+      margin: 0 auto 20px;
+    }
+    .hero h1 em { font-style: italic; color: rgba(255,255,255,0.82); }
+    .hero-subtitle {
+      font-size: 1.15rem;
+      color: rgba(255,255,255,0.78);
+      max-width: 600px;
+      margin: 0 auto 40px;
+      font-weight: 300;
+    }
+    .hero-stat-bar {
+      display: flex;
+      justify-content: center;
+      gap: 48px;
+      flex-wrap: wrap;
+    }
+    .hero-stat {
+      text-align: center;
+    }
+    .hero-stat .num {
+      display: block;
+      font-family: 'Playfair Display', serif;
+      font-size: 2.8rem;
+      font-weight: 700;
+      line-height: 1;
+    }
+    .hero-stat .label {
+      display: block;
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.65);
+      margin-top: 6px;
+    }
+    .divider-stat { width: 1px; background: rgba(255,255,255,0.2); align-self: stretch; }
+
+    /* MAIN */
+    main { max-width: 860px; margin: 0 auto; padding: 0 24px 64px; }
+
+    /* SECTION STYLES */
+    section { padding: 56px 0 8px; }
+    section + section { border-top: 1px solid var(--border); }
+
+    .section-tag {
+      display: inline-block;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--blue);
+      margin-bottom: 12px;
+    }
+    h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.4rem, 3vw, 2rem);
+      font-weight: 700;
+      color: var(--ink);
+      line-height: 1.25;
+      margin-bottom: 20px;
+    }
+    p { color: var(--ink-soft); margin-bottom: 16px; }
+    p:last-child { margin-bottom: 0; }
+
+    /* PULLQUOTE */
+    .pullquote {
+      border-left: 4px solid var(--blue);
+      background: var(--blue-light);
+      padding: 20px 24px;
+      margin: 28px 0;
+      border-radius: 0 8px 8px 0;
+    }
+    .pullquote p {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.15rem;
+      font-style: italic;
+      color: var(--blue);
+      margin: 0 0 8px;
+    }
+    .pullquote cite {
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--ink-muted);
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      font-style: normal;
+    }
+
+    /* ALERT CALLOUT */
+    .callout {
+      background: var(--teal-light);
+      border: 1px solid rgba(30,123,110,0.2);
+      border-radius: 10px;
+      padding: 20px 24px;
+      margin: 28px 0;
+      display: flex;
+      gap: 16px;
+      align-items: flex-start;
+    }
+    .callout-icon { font-size: 1.5rem; flex-shrink: 0; }
+    .callout-text { font-size: 0.95rem; color: var(--ink-soft); }
+    .callout-text strong { color: var(--teal); }
+
+    /* METHODOLOGY GRID */
+    .method-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 16px;
+      margin: 32px 0;
+    }
+    .method-card {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 22px;
+      text-align: center;
+    }
+    .method-card .icon { font-size: 2rem; margin-bottom: 12px; }
+    .method-card .value {
+      font-family: 'Playfair Display', serif;
+      font-size: 2rem;
+      font-weight: 700;
+      color: var(--blue);
+      display: block;
+      line-height: 1;
+    }
+    .method-card .desc {
+      font-size: 13px;
+      color: var(--ink-muted);
+      margin-top: 6px;
+    }
+
+    /* METABOLITE FLOW DIAGRAM */
+    .flow-section {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 36px;
+      margin: 32px 0;
+    }
+    .flow-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.2rem;
+      font-weight: 700;
+      text-align: center;
+      margin-bottom: 28px;
+      color: var(--ink);
+    }
+    .flow-diagram {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0;
+      flex-wrap: wrap;
+    }
+    .flow-node {
+      text-align: center;
+      padding: 16px 20px;
+      border-radius: 12px;
+      min-width: 130px;
+    }
+    .flow-node.gut { background: var(--teal-light); border: 2px solid var(--teal); }
+    .flow-node.blood { background: var(--amber-light); border: 2px solid var(--amber); }
+    .flow-node.brain { background: var(--blue-light); border: 2px solid var(--blue); }
+    .flow-node .icon { font-size: 2rem; display: block; margin-bottom: 8px; }
+    .flow-node .node-label {
+      font-weight: 700;
+      font-size: 14px;
+      display: block;
+    }
+    .flow-node .node-desc { font-size: 11px; color: var(--ink-muted); margin-top: 4px; }
+    .flow-arrow {
+      font-size: 1.8rem;
+      color: var(--ink-muted);
+      padding: 0 12px;
+      flex-shrink: 0;
+    }
+
+    /* METABOLITE TABLE */
+    .metabolite-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+      margin: 28px 0;
+    }
+    .metabolite-card {
+      border-radius: 10px;
+      padding: 16px 18px;
+      border: 1px solid transparent;
+    }
+    .metabolite-card.protective {
+      background: var(--teal-light);
+      border-color: rgba(30,123,110,0.2);
+    }
+    .metabolite-card.cytotoxic {
+      background: var(--accent-red-light);
+      border-color: rgba(192,57,43,0.2);
+    }
+    .met-badge {
+      display: inline-block;
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      padding: 3px 10px;
+      border-radius: 20px;
+      margin-bottom: 10px;
+    }
+    .protective .met-badge { background: var(--teal); color: white; }
+    .cytotoxic .met-badge { background: var(--accent-red); color: white; }
+    .metabolite-card h4 {
+      font-size: 14px;
+      font-weight: 700;
+      color: var(--ink);
+      margin-bottom: 4px;
+    }
+    .metabolite-card p {
+      font-size: 12px;
+      color: var(--ink-muted);
+      margin: 0;
+      line-height: 1.5;
+    }
+
+    /* ACCURACY BOX */
+    .accuracy-banner {
+      background: linear-gradient(135deg, #1A3A5C, #2D5F8A);
+      color: white;
+      border-radius: 16px;
+      padding: 36px 40px;
+      margin: 32px 0;
+      display: flex;
+      gap: 32px;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+    .acc-stat { text-align: center; flex: 1; min-width: 120px; }
+    .acc-stat .pct {
+      font-family: 'Playfair Display', serif;
+      font-size: 3.5rem;
+      font-weight: 900;
+      line-height: 1;
+      display: block;
+    }
+    .acc-stat .pct-label {
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.65);
+      margin-top: 8px;
+      display: block;
+    }
+    .acc-divider { width: 1px; background: rgba(255,255,255,0.2); align-self: stretch; min-height: 80px; }
+    .acc-explain {
+      flex: 2;
+      font-size: 14px;
+      color: rgba(255,255,255,0.82);
+      line-height: 1.7;
+      min-width: 200px;
+    }
+    .acc-explain strong { color: white; }
+
+    /* IMPLICATIONS CARDS */
+    .implication-list {
+      display: grid;
+      gap: 14px;
+      margin: 28px 0;
+    }
+    .impl-card {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 18px 22px;
+      display: flex;
+      gap: 16px;
+      align-items: flex-start;
+    }
+    .impl-icon { font-size: 1.6rem; flex-shrink: 0; }
+    .impl-text h4 { font-weight: 700; font-size: 15px; margin-bottom: 4px; }
+    .impl-text p { font-size: 14px; color: var(--ink-muted); margin: 0; }
+
+    /* CAUTION BOX */
+    .caution {
+      background: var(--amber-light);
+      border: 1px solid rgba(179,92,30,0.25);
+      border-radius: 10px;
+      padding: 18px 22px;
+      margin: 28px 0;
+      display: flex;
+      gap: 14px;
+    }
+    .caution-icon { font-size: 1.4rem; flex-shrink: 0; }
+    .caution-text { font-size: 14px; color: var(--ink-soft); }
+    .caution-text strong { color: var(--amber); }
+
+    /* SYNTHESIS */
+    .synthesis {
+      background: var(--ink);
+      color: white;
+      border-radius: 16px;
+      padding: 44px 48px;
+      margin: 40px 0 0;
+      text-align: center;
+    }
+    .synthesis h2 { color: white; font-size: 1.7rem; margin-bottom: 16px; }
+    .synthesis p { color: rgba(255,255,255,0.75); max-width: 600px; margin: 0 auto 12px; }
+    .synthesis .big-idea {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.3rem;
+      font-style: italic;
+      color: rgba(255,255,255,0.9);
+      border-top: 1px solid rgba(255,255,255,0.15);
+      margin-top: 24px;
+      padding-top: 24px;
+      max-width: 580px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    /* REFERENCES */
+    .references {
+      border-top: 1px solid var(--border);
+      padding: 32px 0 8px;
+      font-size: 12px;
+      color: var(--ink-muted);
+    }
+    .references h3 {
+      font-family: 'Source Sans 3', sans-serif;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--ink-muted);
+      margin-bottom: 12px;
+    }
+    .references ol { padding-left: 18px; }
+    .references li { margin-bottom: 6px; line-height: 1.5; }
+    .references a { color: var(--blue); text-decoration: none; }
+
+    /* FOOTER */
+    footer.institutional-footer {
+      border-top: 1px solid var(--border);
+      background: var(--white);
+      text-align: center;
+      padding: 28px 24px;
+      font-size: 12px;
+      color: var(--ink-muted);
+    }
+
+    /* RESPONSIVE */
+    @media (max-width: 640px) {
+      header.institutional-header { padding: 12px 20px; }
+      .hero { padding: 52px 24px 48px; }
+      .hero-stat-bar { gap: 28px; }
+      .divider-stat { display: none; }
+      main { padding: 0 16px 48px; }
+      .flow-arrow { transform: rotate(90deg); }
+      .metabolite-grid { grid-template-columns: 1fr; }
+      .accuracy-banner { padding: 28px 24px; }
+      .acc-divider { display: none; }
+      .synthesis { padding: 36px 24px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- CABEÇALHO INSTITUCIONAL -->
+  <header class="institutional-header">
+    <div class="header-identity">Ciência & Saúde · Neurologia</div>
+    <!-- Logo placeholder — substituir pelo base64 quando disponível -->
+    <div style="font-size:11px;color:var(--ink-muted);font-weight:600;letter-spacing:0.05em;">G10 · UFPel</div>
+  </header>
+
+  <!-- HERO -->
+  <div class="hero">
+    <div class="hero-label">Nova Pesquisa · Gut Microbes, 2026</div>
+    <h1>O intestino que <em>prevê</em><br>a demência</h1>
+    <p class="hero-subtitle">Metabolitos produzidos pelas bactérias do intestino podem sinalizar o declínio cognitivo anos antes de qualquer sintoma clínico.</p>
+    <div class="hero-stat-bar">
+      <div class="hero-stat">
+        <span class="num">55M</span>
+        <span class="label">pessoas com demência no mundo</span>
+      </div>
+      <div class="divider-stat"></div>
+      <div class="hero-stat">
+        <span class="num">150</span>
+        <span class="label">participantes no estudo</span>
+      </div>
+      <div class="divider-stat"></div>
+      <div class="hero-stat">
+        <span class="num">6</span>
+        <span class="label">metabolitos-chave identificados</span>
+      </div>
+    </div>
+  </div>
+
+  <main>
+
+    <!-- SEÇÃO 1: O PROBLEMA -->
+    <section>
+      <span class="section-tag">O problema que ninguém via</span>
+      <h2>Quando o diagnóstico chega, o dano já está feito</h2>
+      <p>A demência afeta 55 milhões de pessoas no mundo, e os números devem crescer dramaticamente com o envelhecimento populacional. O problema central: quando os sintomas se tornam evidentes, grande parte do tecido cerebral já foi irreversivelmente comprometido.</p>
+      <p>Essa janela perdida entre o início silencioso da doença e seu reconhecimento clínico é exatamente onde pesquisadores da Universidade de Anglia do Este (UEA) e da Queen Mary University of London decidiram atuar.</p>
+      <div class="pullquote">
+        <p>"A detecção precoce é crítica porque, quando os sintomas da demência se tornam óbvios, grande parte do dano cerebral já ocorreu."</p>
+        <cite>— David Vauzour, PhD · Pesquisador Principal, UEA Norwich Medical School</cite>
+      </div>
+    </section>
+
+    <!-- SEÇÃO 2: O MECANISMO -->
+    <section>
+      <span class="section-tag">Como entender o mecanismo</span>
+      <h2>O eixo intestino-cérebro: uma conversa constante</h2>
+      <p>O intestino e o cérebro se comunicam de forma contínua por uma rede complexa chamada <strong>eixo microbiota-intestino-cérebro</strong>. Trilhões de bactérias intestinais produzem substâncias químicas — os metabolitos — que entram na corrente sanguínea e podem alcançar e influenciar o sistema nervoso central.</p>
+
+      <div class="flow-section">
+        <div class="flow-title">Como os metabolitos viajam do intestino ao cérebro</div>
+        <div class="flow-diagram">
+          <div class="flow-node gut">
+            <span class="icon">🦠</span>
+            <span class="node-label">Microbiota Intestinal</span>
+            <span class="node-desc">Bactérias produzem metabolitos</span>
+          </div>
+          <div class="flow-arrow">→</div>
+          <div class="flow-node blood">
+            <span class="icon">🩸</span>
+            <span class="node-label">Corrente Sanguínea</span>
+            <span class="node-desc">Metabolitos circulam pelo sangue</span>
+          </div>
+          <div class="flow-arrow">→</div>
+          <div class="flow-node brain">
+            <span class="icon">🧠</span>
+            <span class="node-label">Cérebro</span>
+            <span class="node-desc">Metabolitos afetam cognição</span>
+          </div>
+        </div>
+      </div>
+
+      <p>Quando esse sistema entra em desequilíbrio (disbiose), certas bactérias nocivas aumentam sua produção de compostos citotóxicos, enquanto bactérias benéficas reduzem metabolitos neuroprotetores — criando um ambiente que favorece a neuroinflamação e o declínio cognitivo.</p>
+    </section>
+
+    <!-- SEÇÃO 3: METODOLOGIA -->
+    <section>
+      <span class="section-tag">Como foi feito o estudo</span>
+      <h2>150 adultos, três estágios cognitivos, uma abordagem inovadora</h2>
+      <p>O estudo, publicado na revista <em>Gut Microbes</em>, analisou amostras de sangue e fezes de 150 adultos com 50 anos ou mais, divididos em três grupos:</p>
+
+      <div class="method-grid">
+        <div class="method-card">
+          <div class="icon">✅</div>
+          <span class="value">50</span>
+          <div class="desc">Adultos saudáveis<br>sem queixas cognitivas</div>
+        </div>
+        <div class="method-card">
+          <div class="icon">🔸</div>
+          <span class="value">50</span>
+          <div class="desc">Com queixas subjetivas de memória<br>(testes normais, mas "algo não está certo")</div>
+        </div>
+        <div class="method-card">
+          <div class="icon">⚠️</div>
+          <span class="value">50</span>
+          <div class="desc">Com comprometimento cognitivo leve<br>(precursor frequente da demência)</div>
+        </div>
+      </div>
+
+      <div class="callout">
+        <div class="callout-icon">🔬</div>
+        <div class="callout-text">
+          Os pesquisadores quantificaram <strong>33 metabolitos-chave</strong> no sangue (incluindo compostos do triptofano, ácidos biliares e derivados de TMAO) e mapearam as comunidades bacterianas únicas de cada participante a partir das amostras de fezes. Um modelo de aprendizado de máquina com IA analisou se combinações específicas desses metabolitos poderiam diferenciar os grupos.
+        </div>
+      </div>
+    </section>
+
+    <!-- SEÇÃO 4: DESCOBERTAS -->
+    <section>
+      <span class="section-tag">O que foi descoberto</span>
+      <h2>Seis metabolitos que revelam o que o cérebro ainda esconde</h2>
+      <p>A grande surpresa: mesmo em pessoas que apenas "sentiam" que algo havia mudado — sem qualquer alteração nos testes cognitivos padrão — já era possível detectar mudanças claras nos metabolitos intestinais e na composição bacteriana.</p>
+      <p>O estudo identificou um perfil de dois grupos de substâncias com comportamentos opostos:</p>
+
+      <div class="metabolite-grid">
+        <div class="metabolite-card protective">
+          <span class="met-badge">⬇️ Reduzidos no declínio</span>
+          <h4>Colina</h4>
+          <p>Essencial para a síntese de acetilcolina, neurotransmissor chave na memória e aprendizagem.</p>
+        </div>
+        <div class="metabolite-card cytotoxic">
+          <span class="met-badge">⬆️ Elevado no declínio</span>
+          <h4>Sulfato de Indoxilo</h4>
+          <p>Metabolito citotóxico derivado do triptofano; em excesso, associado a dano neuronal e inflamação.</p>
+        </div>
+        <div class="metabolite-card protective">
+          <span class="met-badge">⬇️ Reduzidos no declínio</span>
+          <h4>Ácido 5-Hidroxiindolacético</h4>
+          <p>Produto da serotonina; marcador da atividade serotoninérgica intestinal, essencial ao eixo gut-cérebro.</p>
+        </div>
+        <div class="metabolite-card cytotoxic">
+          <span class="met-badge">⬆️ Elevado no declínio</span>
+          <h4>Ácido Quinurênico</h4>
+          <p>Derivado do triptofano via via quinurenina; em excesso, pode modular negativamente receptores NMDA.</p>
+        </div>
+        <div class="metabolite-card protective">
+          <span class="met-badge">⬇️ Reduzidos no declínio</span>
+          <h4>Ácido Indolpropiônico (IPA)</h4>
+          <p>Potente antioxidante produzido por bactérias; demonstrou propriedades neuroprotetoras em estudos experimentais.</p>
+        </div>
+        <div class="metabolite-card cytotoxic">
+          <span class="met-badge">↔️ Alterado no declínio</span>
+          <h4>Quinurenina</h4>
+          <p>Precursor de compostos neuroativos; desequilíbrios na via quinurenina ligados a neuroinflamação.</p>
+        </div>
+      </div>
+
+      <div class="accuracy-banner">
+        <div class="acc-stat">
+          <span class="pct">79%</span>
+          <span class="pct-label">Precisão geral<br>nos 3 grupos</span>
+        </div>
+        <div class="acc-divider"></div>
+        <div class="acc-stat">
+          <span class="pct">&gt;80%</span>
+          <span class="pct-label">Precisão ao separar saudáveis de comprometidos</span>
+        </div>
+        <div class="acc-divider"></div>
+        <div class="acc-explain">
+          <strong>Um modelo de IA treinado com apenas 6 metabolitos</strong> conseguiu classificar os participantes nos três grupos com até 79% de precisão — e distinguir adultos saudáveis daqueles com comprometimento cognitivo leve com mais de 80% de acurácia.
+        </div>
+      </div>
+    </section>
+
+    <!-- SEÇÃO 5: IMPLICAÇÕES -->
+    <section>
+      <span class="section-tag">Por que isso importa</span>
+      <h2>Um exame de sangue que vê além dos sintomas</h2>
+      <p>O potencial transformador desta pesquisa está em sua aplicabilidade futura. Se validados em estudos maiores e longitudinais, esses metabolitos poderiam se tornar a base de ferramentas de triagem não invasivas:</p>
+
+      <div class="implication-list">
+        <div class="impl-card">
+          <div class="impl-icon">🩸</div>
+          <div class="impl-text">
+            <h4>Exame de sangue preventivo</h4>
+            <p>Análise dos 6 metabolitos em uma amostra simples poderia identificar pessoas em risco antes de qualquer sintoma clinicamente detectável.</p>
+          </div>
+        </div>
+        <div class="impl-card">
+          <div class="impl-icon">🥗</div>
+          <div class="impl-text">
+            <h4>Intervenção alimentar personalizada</h4>
+            <p>Dietas ricas em triptofano e precursores de IPA (presentes em alimentos como nozes, sementes e vegetais crucíferos) poderiam ser recomendadas precocemente para perfis de risco específicos.</p>
+          </div>
+        </div>
+        <div class="impl-card">
+          <div class="impl-icon">🦠</div>
+          <div class="impl-text">
+            <h4>Probióticos e terapias do microbioma</h4>
+            <p>Se bactérias específicas produzem — ou deixam de produzir — esses metabolitos, o microbioma passa a ser um alvo terapêutico concreto para prevenir demência.</p>
+          </div>
+        </div>
+        <div class="impl-card">
+          <div class="impl-icon">⏱️</div>
+          <div class="impl-text">
+            <h4>Janela de oportunidade para intervenção</h4>
+            <p>Identificar o risco na fase de queixas subjetivas — antes do comprometimento objetivo — abre uma janela de mudança de estilo de vida quando o dano cerebral ainda é mínimo ou reversível.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="pullquote">
+        <p>"Não estamos ainda em condições de oferecer um teste diagnóstico, mas nosso trabalho sugere que podemos usar informações dietéticas e microbianas para detectar a presença da demência mais cedo na vida."</p>
+        <cite>— Dr. Simon McArthur · Queen Mary University of London</cite>
+      </div>
+    </section>
+
+    <!-- SEÇÃO 6: CAUTELA CIENTÍFICA -->
+    <section>
+      <span class="section-tag">Limitações e próximos passos</span>
+      <h2>Promissor — mas ainda em fase inicial</h2>
+      <p>Especialistas que comentaram o estudo destacam que os resultados são encorajadores, mas precisam de validação antes de qualquer aplicação clínica:</p>
+
+      <div class="caution">
+        <div class="caution-icon">⚠️</div>
+        <div class="caution-text">
+          <strong>Estudo transversal com amostra pequena.</strong> Os 150 participantes foram avaliados em um único momento, o que não permite concluir se os metabolitos <em>causam</em> o declínio ou apenas o <em>refletem</em>. Estudos longitudinais são necessários para confirmar se essas pessoas desenvolveram demência ao longo do tempo.
+        </div>
+      </div>
+
+      <p>Os pesquisadores planejam acompanhar os participantes ao longo do tempo e combinar a metabolômica com dados genéticos, neuroimagem e perfis completos do microbioma para desenvolver ferramentas de detecção precoce ainda mais robustas.</p>
+    </section>
+
+    <!-- SÍNTESE FINAL -->
+    <div class="synthesis">
+      <h2>O que fica na cabeça</h2>
+      <p>O intestino não é apenas um órgão digestivo. É um sistema de sinalização que se comunica com o cérebro — e essa conversa deixa rastros mensuráveis no sangue, muito antes de qualquer esquecimento virar diagnóstico.</p>
+      <p>Cuidar do microbioma hoje pode ser, amanhã, parte fundamental da prevenção da demência.</p>
+      <div class="big-idea">"Se as bactérias intestinais ou as substâncias que produzem contribuem para o declínio cognitivo precoce, dieta, probióticos e terapias do microbioma podem um dia integrar estratégias de prevenção da demência."<br><span style="font-size:0.85rem;opacity:0.7;font-style:normal;">— David Vauzour, PhD · UEA</span></div>
+    </div>
+
+    <!-- REFERÊNCIAS -->
+    <div class="references">
+      <h3>Referências</h3>
+      <ol>
+        <li>Connell E, et al. <em>Gut Microbes</em>. 2026;doi:10.1080/19490976.2026.2649487. — Estudo original.</li>
+        <li>University of East Anglia. "Simple blood test could spot dementia years earlier, research shows." Comunicado, abril 2026.</li>
+        <li>Inside Precision Medicine. "Microbe Metabolites in Blood Reveal Early Cognitive Decline." Abril 2026.</li>
+        <li>Science Media Centre. Expert reactions to the paper on gut-derived metabolites and cognitive decline. Abril 2026.</li>
+        <li>Healio Neurology. "Gut-, diet-derived metabolites linked to subjective, mild cognitive impairment." Abril 2026.</li>
+        <li>Lancet Commission on dementia prevention, intervention and care. 14 fatores de risco modificáveis — até 45% dos casos de demência podem ser preveníveis.</li>
+      </ol>
+    </div>
+
+  </main>
+
+  <!-- RODAPÉ INSTITUCIONAL -->
+  <footer class="institutional-footer">
+    <p>Infográfico elaborado pelos projetos Amor à Pele e PET-Saúde Digital G10 Feridas Crônicas, UFPel, em Abril de 2026.</p>
+  </footer>
+
+</body>
+</html>
