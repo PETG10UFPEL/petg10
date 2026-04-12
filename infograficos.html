@@ -124,7 +124,14 @@
       cursor: default;
       user-select:none;
     }
-  </style>
+  
+    .searchbar{margin-top:18px;display:grid;gap:10px;}
+    .searchbox{display:flex;align-items:center;gap:10px;background:#fff;border:1px solid var(--border);border-radius:12px;padding:10px 12px;}
+    .searchbox input{width:100%;border:none;outline:none;font-size:1rem;background:transparent;color:var(--text);}
+    .searchmeta{color:var(--muted);font-size:.95rem;min-height:1.2em;}
+    .hidden-by-search{display:none !important;}
+
+</style>
 </head>
 
 <body>
@@ -138,60 +145,94 @@
         </div>
       </div>
 
-      <div class="grid">
-          <div class="card">
+      
+      <div class="searchbar">
+        <label class="searchbox">
+          🔎 <input type="search" id="busca" placeholder="Buscar infográfico..." />
+        </label>
+        <div class="searchmeta" id="meta"></div>
+      </div>
+<div class="grid grid-busca">
+          <div class="card item" data-search="Quais dos minerais essenciais aos data centers são utilizados em curativos de feridas crônicas? Minerais x Curativos">
           <p>Quais dos minerais essenciais aos data centers são utilizados em curativos de feridas crônicas?</p>
            <a class="btn" href="html/info/mineraisdata/minerais_data.html" target="_blank" rel="noopener">
             Minerais x Curativos
           </a>
         </div>
-          <div class="card">
-          <p>Livro Guia Feridas Crônicas Unicentro</p>
+          <div class="card item" data-search="Livro Guia Feridas Crônicas Unicentro. Esta página apresenta, de forma visual e sintética, a estrutura do Guia Prático: Feridas Crônicas, organizado em módulos que abrangem desde conceitos fundamentais, avaliação clínica e social da pessoa com ferida, até técnicas, coberturas, produtos terapêuticos, aspectos legais e reabilitação. O infográfico destaca os principais tipos de feridas crônicas, as fases da cicatrização e o framework T.I.M.E.R.S., funcionando como um mapa de navegação do conteúdo do livro e como apoio rápido para estudo, consulta e tomada de decisão no cuidado em feridas. Livro Guia">
+          <p>Livro Guia Feridas Crônicas Unicentro. Esta página apresenta, de forma visual e sintética, a estrutura do Guia Prático: Feridas Crônicas, organizado em módulos que abrangem desde conceitos fundamentais, avaliação clínica e social da pessoa com ferida, até técnicas, coberturas, produtos terapêuticos, aspectos legais e reabilitação. O infográfico destaca os principais tipos de feridas crônicas, as fases da cicatrização e o framework T.I.M.E.R.S., funcionando como um mapa de navegação do conteúdo do livro e como apoio rápido para estudo, consulta e tomada de decisão no cuidado em feridas.</p>
            <a class="btn" href="html/info/livroferidas/guia_feridas.html" target="_blank" rel="noopener"> Livro Guia  </a>
         </div>
-      <div class="card">
-          <p>O Olho como Janela Sistêmica da Ferida Crônica</p>
+      <div class="card item" data-search="O Olho como Janela Sistêmica da Ferida Crônica. Como a imagem da retina revela, de forma não invasiva, a microangiopatia que impede a cicatrização — e como a oculômica pode transformar o diagnóstico e o manejo das feridas de difícil resolução. Janela Sistêmica">
+          <p>O Olho como Janela Sistêmica da Ferida Crônica. Como a imagem da retina revela, de forma não invasiva, a microangiopatia que impede a cicatrização — e como a oculômica pode transformar o diagnóstico e o manejo das feridas de difícil resolução.</p>
            <a class="btn" href="html/info/olho.ferida/index.html" target="_blank" rel="noopener"> Janela Sistêmica</a>
         </div>
         </div>
- <div class="grid">
-          <div class="card">
-             <p> Referencial para desenvolvimento e uso responsáveis de Inteligência Artificial na Educação - MEC </p>
+ <div class="grid grid-busca">
+          <div class="card item" data-search="Referencial para desenvolvimento e uso responsáveis de Inteligência Artificial na Educação - MEC. Esta página sintetiza o Referencial do MEC para o uso responsável da Inteligência Artificial na Educação, apresentando seus principais princípios, diretrizes e aplicações práticas. O infográfico destaca a necessidade de integrar o ensinar sobre IA e o ensinar com IA, enfatizando aspectos como equidade, transparência, proteção de dados e centralidade do professor no processo educativo. Funciona como um guia visual para compreender como a IA pode apoiar o ensino de forma ética, crítica e pedagógica, evitando seu uso como “caixa-preta” e reforçando a intencionalidade no aprendizado. IA MEC">
+             <p> Referencial para desenvolvimento e uso responsáveis de Inteligência Artificial na Educação - MEC. Esta página sintetiza o Referencial do MEC para o uso responsável da Inteligência Artificial na Educação, apresentando seus principais princípios, diretrizes e aplicações práticas. O infográfico destaca a necessidade de integrar o ensinar sobre IA e o ensinar com IA, enfatizando aspectos como equidade, transparência, proteção de dados e centralidade do professor no processo educativo. Funciona como um guia visual para compreender como a IA pode apoiar o ensino de forma ética, crítica e pedagógica, evitando seu uso como “caixa-preta” e reforçando a intencionalidade no aprendizado. </p>
            <a class="btn" href="html/info/mecia/index.html" target="_blank" rel="noopener"> IA MEC </a>
         </div>
-<div class="card">
-             <p>Glicose, Alzheimer & Pé Diabético </p> <a class="btn" href="html/info/glicose/indexag.html" target="_blank" rel="noopener"> Glicose </a>
+<div class="card item" data-search="Glicose, Alzheimer & Pé Diabético, explora a relação entre glicose, doença de Alzheimer e pé diabético, integrando aspectos metabólicos, neurológicos e clínicos do diabetes. O infográfico evidencia como o descontrole glicêmico impacta tanto o cérebro — aumentando o risco de declínio cognitivo e demência — quanto os membros inferiores, favorecendo complicações como neuropatia, úlceras e amputações . Funciona como uma visão sistêmica da doença, conectando metabolismo, neurodegeneração e cuidado clínico, e reforçando a importância do controle glicêmico na prevenção e no manejo dessas condições. Glicose">
+             <p>Glicose, Alzheimer & Pé Diabético, explora a relação entre glicose, doença de Alzheimer e pé diabético, integrando aspectos metabólicos, neurológicos e clínicos do diabetes. O infográfico evidencia como o descontrole glicêmico impacta tanto o cérebro — aumentando o risco de declínio cognitivo e demência — quanto os membros inferiores, favorecendo complicações como neuropatia, úlceras e amputações . Funciona como uma visão sistêmica da doença, conectando metabolismo, neurodegeneração e cuidado clínico, e reforçando a importância do controle glicêmico na prevenção e no manejo dessas condições. </p> <a class="btn" href="html/info/glicose/indexag.html" target="_blank" rel="noopener"> Glicose </a>
         </div>
-<div class="card">
-             <p> Pele como Espelho do Envelhecimento Biológico </p><a class="btn" href="html/info/inspire_t/inspire-t-visual.html" target="_blank" rel="noopener"> Pele - Biologia </a>
+<div class="card item" data-search="Pele como Espelho do Envelhecimento Biológico. Um olhar direto para a pele como espelho do tempo biológico. O infográfico conecta perda de colágeno, menor capacidade de regeneração e influência de fatores internos e ambientais, mostrando como o envelhecimento cutâneo vai muito além da estética. A leitura amarra bem clínica e biologia: pele que envelhece também cicatriza diferente, responde diferente — e entrega sinais claros do estado geral do organismo. Pele - Biologia">
+             <p> Pele como Espelho do Envelhecimento Biológico. Um olhar direto para a pele como espelho do tempo biológico. O infográfico conecta perda de colágeno, menor capacidade de regeneração e influência de fatores internos e ambientais, mostrando como o envelhecimento cutâneo vai muito além da estética. A leitura amarra bem clínica e biologia: pele que envelhece também cicatriza diferente, responde diferente — e entrega sinais claros do estado geral do organismo. </p><a class="btn" href="html/info/inspire_t/inspire-t-visual.html" target="_blank" rel="noopener"> Pele - Biologia </a>
         </div>
   </div>
 
-<div class="grid">
-          <div class="card">
-             <p> ITB Índice Tornozelo-Braquial </p>
-           <a class="btn" href="https://petg10ufpel.github.io/petg10/html/info/varios/itb/index.html" target="_blank" rel="noopener"> ITB1 </a>
+<div class="grid grid-busca">
+          <div class="card item" data-search="ITB Índice Tornozelo-Braquial. Um guia direto para entender e aplicar o Índice Tornozelo-Braquial (ITB) na prática clínica. O infográfico articula o conceito, o cálculo e a interpretação dos valores, mostrando como a relação entre a pressão do tornozelo e do braço revela o estado da circulação arterial nas pernas. A leitura conecta teoria e decisão clínica: identificar doença arterial periférica, avaliar risco cardiovascular e orientar condutas — especialmente em pacientes com feridas crônicas, onde circulação ruim não é detalhe, é o jogo inteiro. ITB1 ITB 2">
+             <p> ITB Índice Tornozelo-Braquial. Um guia direto para entender e aplicar o Índice Tornozelo-Braquial (ITB) na prática clínica. O infográfico articula o conceito, o cálculo e a interpretação dos valores, mostrando como a relação entre a pressão do tornozelo e do braço revela o estado da circulação arterial nas pernas. A leitura conecta teoria e decisão clínica: identificar doença arterial periférica, avaliar risco cardiovascular e orientar condutas — especialmente em pacientes com feridas crônicas, onde circulação ruim não é detalhe, é o jogo inteiro.</p>
+           <a class="btn" href="https://petg10ufpel.github.io/petg10/html/info/itb/itb_simulador.html" target="_blank" rel="noopener"> ITB1 </a>
            <a class="btn" href="https://itb-eight.vercel.app/" target="_blank" rel="noopener"> ITB 2 </a>
         </div>
- <div class="card">
-             <p>Comunicação sistêmica dos Vírus </p> <a class="btn" href="html/info/viruscom/" target="_blank" rel="noopener"> VirusComm </a>
+ <div class="card item" data-search="Comunicação sistêmica dos Vírus. Uma leitura integrada de como os vírus operam como sistemas de comunicação dentro do organismo. O infográfico articula interação viral, resposta do hospedeiro e disseminação, mostrando que o vírus não é apenas um agente isolado, mas parte de uma rede dinâmica de sinais, adaptação e conflito biológico. A ideia central é forte: entender vírus como comunicação ajuda a enxergar melhor os padrões de infecção, progressão e resposta — quase como um diálogo contínuo entre organismo e agente invasor. VirusComm">
+             <p>Comunicação sistêmica dos Vírus. Uma leitura integrada de como os vírus operam como sistemas de comunicação dentro do organismo. O infográfico articula interação viral, resposta do hospedeiro e disseminação, mostrando que o vírus não é apenas um agente isolado, mas parte de uma rede dinâmica de sinais, adaptação e conflito biológico. A ideia central é forte: entender vírus como comunicação ajuda a enxergar melhor os padrões de infecção, progressão e resposta — quase como um diálogo contínuo entre organismo e agente invasor. </p> <a class="btn" href="html/info/viruscom/" target="_blank" rel="noopener"> VirusComm </a>
         </div>
-<div class="card">
-             <p> O intestino que prevê a demência </p><a class="btn" href="html/info/varios/intestinocerebro.html" target="_blank" rel="noopener"> Intestino - Cérebro </a>
+<div class="card item" data-search="O intestino que prevê a demência. Um mergulho direto na ideia de que intestino e cérebro funcionam como um sistema integrado, em conversa constante. O infográfico mostra como sinais neurais, hormonais e da microbiota conectam digestão, emoções e cognição, formando um eixo de comunicação bidirecional entre corpo e mente . A leitura reforça uma virada importante: não dá mais para separar cabeça e corpo — o que acontece no intestino pode modular humor, memória e até o risco de doenças, exigindo uma visão mais completa do cuidado. Intestino - Cérebro">
+             <p> O intestino que prevê a demência. Um mergulho direto na ideia de que intestino e cérebro funcionam como um sistema integrado, em conversa constante. O infográfico mostra como sinais neurais, hormonais e da microbiota conectam digestão, emoções e cognição, formando um eixo de comunicação bidirecional entre corpo e mente . A leitura reforça uma virada importante: não dá mais para separar cabeça e corpo — o que acontece no intestino pode modular humor, memória e até o risco de doenças, exigindo uma visão mais completa do cuidado. </p><a class="btn" href="html/info/varios/intestinocerebro.html" target="_blank" rel="noopener"> Intestino - Cérebro </a>
         </div>
   </div>
 
-<div class="grid">
-          <div class="card">
-             <p> A roda que guarda Hidrogênio </p>
+<div class="grid grid-busca">
+          <div class="card item" data-search="A roda que guarda Hidrogênio. Uma proposta visual que conecta energia, engenharia e sustentabilidade a partir do hidrogênio. O infográfico explora como esse elemento pode ser produzido, armazenado e utilizado como vetor energético, destacando seu papel na transição para fontes limpas e na descarbonização de setores difíceis, como transporte e indústria . A ideia central é clara: mais do que uma tecnologia isolada, o hidrogênio funciona como peça de integração — armazenando energia, conectando sistemas e abrindo caminho para uma matriz energética mais eficiente e de larga escala. RodaH">
+             <p> A roda que guarda Hidrogênio. Uma proposta visual que conecta energia, engenharia e sustentabilidade a partir do hidrogênio. O infográfico explora como esse elemento pode ser produzido, armazenado e utilizado como vetor energético, destacando seu papel na transição para fontes limpas e na descarbonização de setores difíceis, como transporte e indústria . A ideia central é clara: mais do que uma tecnologia isolada, o hidrogênio funciona como peça de integração — armazenando energia, conectando sistemas e abrindo caminho para uma matriz energética mais eficiente e de larga escala.</p>
            <a class="btn" href="https://petg10ufpel.github.io/petg10/html/info/varios/rodah.html" target="_blank" rel="noopener"> RodaH</a> </div>
- <div class="card">
-             <p>Schopenhauer revisitado, e porque seu conceito de felicidade continua vigente</p> <a class="btn" href="html/info/varios/schopen.html" target="_blank" rel="noopener"> Schopenhauer: felicidade? </a>
+ <div class="card item" data-search="Schopenhauer revisitado, e porque seu conceito de felicidade continua vigente. Uma provocação direta sobre o que chamamos de felicidade. O infográfico resgata Arthur Schopenhauer para mostrar que viver não é buscar prazer, mas lidar com o desejo — essa força permanente que nos move e nunca se encerra, atravessando a própria experiência humana (como também ecoa em Sigmund Freud e Jacques Lacan). A conexão prática é direta: em nós — e no paciente com feridas crônicas — o cuidado talvez esteja menos em “ser feliz” e mais em reduzir dor, desconforto e frustração, passo a passo. Schopenhauer: felicidade?">
+             <p>Schopenhauer revisitado, e porque seu conceito de felicidade continua vigente. Uma provocação direta sobre o que chamamos de felicidade. O infográfico resgata Arthur Schopenhauer para mostrar que viver não é buscar prazer, mas lidar com o desejo — essa força permanente que nos move e nunca se encerra, atravessando a própria experiência humana (como também ecoa em Sigmund Freud e Jacques Lacan). A conexão prática é direta: em nós — e no paciente com feridas crônicas — o cuidado talvez esteja menos em “ser feliz” e mais em reduzir dor, desconforto e frustração, passo a passo.</p> <a class="btn" href="html/info/varios/schopen.html" target="_blank" rel="noopener"> Schopenhauer: felicidade? </a>
         </div>
-<div class="card">
-             <p> Revisitando a <b> maiêutica </b>. Sócrates trocou o “ensinar” por perguntar até que a verdade apareça. A <b>aporia</b> no método socrático é o beco sem saída — o momento em que a definição do interlocutor colapsa diante de um contraexemplo.</p><a class="btn" href="html/info/varios/mayeutica-infografico.html" target="_blank" rel="noopener"> Maiêutica & Feridas Crônicas </a>
+<div class="card item" data-search="Revisitando a maiêutica . Um convite a pensar o cuidado como diálogo. O infográfico articula maiêutica e aporia como partes de um mesmo processo: perguntar para fazer emergir o que já está no paciente, e atravessar o momento de impasse — quando não há resposta pronta — como etapa necessária do entendimento . No cuidado em feridas crônicas, isso ganha corpo: não se trata só de aplicar técnica, mas de escutar, provocar reflexão e, muitas vezes, sustentar o “não saber” até que um novo caminho de cuidado faça sentido para quem vive a ferida. Maiêutica & Feridas Crônicas">
+             <p> Revisitando a <b> maiêutica </b>. Um convite a pensar o cuidado como diálogo. O infográfico articula maiêutica e aporia como partes de um mesmo processo: perguntar para fazer emergir o que já está no paciente, e atravessar o momento de impasse — quando não há resposta pronta — como etapa necessária do entendimento . No cuidado em feridas crônicas, isso ganha corpo: não se trata só de aplicar técnica, mas de escutar, provocar reflexão e, muitas vezes, sustentar o “não saber” até que um novo caminho de cuidado faça sentido para quem vive a ferida.</p><a class="btn" href="html/info/varios/mayeutica-infografico.html" target="_blank" rel="noopener"> Maiêutica & Feridas Crônicas </a>
         </div> 
   </div>
 
+
+
+<script>
+const input = document.getElementById('busca');
+const meta = document.getElementById('meta');
+const items = document.querySelectorAll('.item');
+const grids = document.querySelectorAll('.grid-busca');
+
+function norm(t){return t.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,'');}
+
+input.addEventListener('input',()=>{
+  let q = norm(input.value);
+  let count=0;
+  items.forEach(i=>{
+    let txt = norm(i.dataset.search);
+    let ok = txt.includes(q);
+    i.classList.toggle('hidden-by-search', !ok);
+    if(ok) count++;
+  });
+  grids.forEach(g=>{
+    let any=[...g.querySelectorAll('.item')].some(i=>!i.classList.contains('hidden-by-search'));
+    g.classList.toggle('hidden-by-search', !any);
+  });
+  meta.textContent = q ? count+" resultado(s)" : count+" infográfico(s)";
+});
+input.dispatchEvent(new Event('input'));
+</script>
 
 </body></html>
