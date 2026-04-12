@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>ITB Simulador</title>
+<style>
+:root{
+  --bg:#0b1220; --panel:#121b2d; --panel2:#f6f8fb; --ink:#0f172a; --muted:#5b677a;
+  --line:#d7deea; --accent:#0f766e; --accent2:#2563eb; --ok:#15803d; --warn:#b45309; --bad:#b91c1c;
+}
+*{box-sizing:border-box}
+body{margin:0;font-family:Arial,Helvetica,sans-serif;background:#eef3f8;color:var(--ink);line-height:1.45}
+.hero{background:linear-gradient(135deg,#0b1220,#152846);color:#fff;padding:34px 24px 24px}
+.wrap{max-width:1180px;margin:0 auto}
+h1{margin:0 0 10px;font-size:42px;line-height:1.05}
+.sub{max-width:980px;color:#d9e5ff;font-size:18px}
+.badges{display:flex;gap:10px;flex-wrap:wrap;margin-top:14px}
+.badge{padding:7px 12px;border:1px solid rgba(255,255,255,.18);border-radius:999px;background:rgba(255,255,255,.08);font-size:13px}
+.main{max-width:1180px;margin:0 auto;padding:22px}
+.grid{display:grid;grid-template-columns:1.15fr .85fr;gap:18px}
+.card{background:white;border:1px solid var(--line);border-radius:20px;box-shadow:0 8px 24px rgba(15,23,42,.06);overflow:hidden}
+.card h2{margin:0;padding:18px 20px 0;font-size:28px}
+.card .body{padding:16px 20px 22px}
+.figure{width:100%;display:block;background:#fff}
+.caption{font-size:13px;color:var(--muted);padding:10px 20px 0}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-top:18px}
+.three{display:grid;grid-template-columns:1fr 1fr 1fr;gap:18px;margin-top:18px}
+.sim{position:sticky;top:12px}
+.step{border:1px solid var(--line);border-radius:16px;padding:14px;margin-bottom:12px;background:#fbfdff}
+.step h3{margin:0 0 8px;font-size:19px}
+.opts{display:flex;gap:10px;flex-wrap:wrap}
+button.opt, .casebtn{border:1px solid #c7d2e2;background:white;border-radius:12px;padding:10px 12px;font-size:14px;cursor:pointer}
+button.opt.active, .casebtn.active{background:#dbeafe;border-color:#60a5fa}
+.casebar{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:12px}
+.kpis{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:10px 0}
+.kpi{border:1px solid var(--line);border-radius:14px;padding:12px;background:#f8fafc}
+.kpi b{display:block;font-size:12px;color:var(--muted);text-transform:uppercase;letter-spacing:.04em}
+.big{font-size:30px;font-weight:700}
+.feedback{margin-top:10px;padding:12px 14px;border-radius:14px;background:#f8fafc;border:1px solid var(--line)}
+.feedback.ok{border-color:#bbf7d0;background:#f0fdf4}
+.feedback.warn{border-color:#fde68a;background:#fffbeb}
+.feedback.bad{border-color:#fecaca;background:#fef2f2}
+.pill{display:inline-block;padding:6px 10px;border-radius:999px;font-size:12px;font-weight:bold}
+.pill.ok{background:#dcfce7;color:#166534}
+.pill.warn{background:#fef3c7;color:#92400e}
+.pill.bad{background:#fee2e2;color:#991b1b}
+.figureTitle{font-size:22px;font-weight:700;padding:18px 20px 4px}
+.small{font-size:14px;color:var(--muted)}
+.footerNote{font-size:13px;color:#607086;margin-top:14px}
+@media (max-width: 980px) {
+  .grid, .two, .three {grid-template-columns:1fr}
+  .sim{position:relative}
+  h1{font-size:34px}
+}
+</style>
+</head>
+<body>
+  <div style="background:white;padding:12px 24px;display:flex;justify-content:flex-end;border-bottom:1px solid #d7deea;">
+    <img src="img/logo.png" alt="Amor-à-Pele e PET-Saúde Digital – UFPel" style="max-height:52px;">
+  </div>
+  <div class="hero">
+    <div class="wrap">
+      <h1>ITB Simulador</h1>
+      <div class="sub">Infográfico + simulador leve para ensino do Índice Tornozelo-Braquial, usando as figuras que você anexou: fluxo, Doppler, cálculo, anatomia, erro por Mönckeberg e demonstração clínica.</div>
+      <div class="badges">
+        <span class="badge">Posicionamento do paciente</span>
+        <span class="badge">Escolha da artéria</span>
+        <span class="badge">Cálculo do ITB</span>
+        <span class="badge">Interpretação com erro</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="main">
+    <div class="grid">
+      <div>
+        <div class="card">
+          <div class="figureTitle">1. O que acontece no vaso</div>
+          <img class="figure" src="img/fluxo-laminar-estenose.png" alt="Fluxo laminar, estenose e turbulência pós-estenótica"/>
+          <div class="body small">A estenose acelera o jato no ponto estreito e dissipa energia depois da lesão, com turbulência e recirculação. Isso ajuda a explicar por que a pressão distal cai e o ITB reduz.</div>
+        </div>
+
+        <div class="two">
+          <div class="card">
+            <div class="figureTitle">2. Onda Doppler</div>
+            <img class="figure" src="img/onda-doppler-trifasica-bifasica-monofasica.png" alt="Comparação entre onda trifásica, bifásica e monofásica"/>
+            <div class="body small">Trifásica: padrão saudável. Bifásica: alteração leve ou transição. Monofásica: alerta de obstrução significativa.</div>
+          </div>
+          <div class="card">
+            <div class="figureTitle">3. Erro clássico: Mönckeberg</div>
+            <img class="figure" src="img/monckeberg-itb-elevado.png" alt="Esclerose de Mönckeberg com ITB falsamente elevado"/>
+            <div class="body small">Quando o vaso fica rígido e incompressível, a pressão medida no tornozelo pode subir artificialmente. Resultado bonito demais, às vezes, é exatamente o problema.</div>
+          </div>
+        </div>
+
+        <div class="two">
+          <div class="card">
+            <div class="figureTitle">4. Fórmula e faixas</div>
+            <img class="figure" src="img/calculo-interpretacao-itb.png" alt="Cálculo e interpretação do ITB"/>
+            <div class="body small">Usa-se a maior pressão sistólica braquial e a maior pressão sistólica do tornozelo na perna analisada.</div>
+          </div>
+          <div class="card">
+            <div class="figureTitle">5. Onde medir</div>
+            <img class="figure" src="img/arteria-tibial-posterior-pediosa.png" alt="Artéria tibial posterior e artéria pediosa dorsal"/>
+            <div class="body small">Os pontos principais são a artéria tibial posterior e a pediosa dorsal. Na prática, as duas importam.</div>
+          </div>
+        </div>
+
+        <div class="three">
+          <div class="card">
+            <div class="figureTitle">6. Física do Doppler</div>
+            <img class="figure" src="img/mecanismo-doppler-angulo.png" alt="Mecanismo Doppler e importância do ângulo de insonação"/>
+          </div>
+          <div class="card">
+            <div class="figureTitle">7. Estenose e isquemia</div>
+            <img class="figure" src="img/placa-aterosclerotica-isquemia.png" alt="Placa aterosclerótica com isquemia distal"/>
+          </div>
+          <div class="card">
+            <div class="figureTitle">8. Amplificação distal</div>
+            <img class="figure" src="img/amplificacao-onda-pulso.png" alt="Mecanismo de amplificação distal da onda de pulso"/>
+          </div>
+        </div>
+
+        <div class="two">
+          <div class="card">
+            <div class="figureTitle">9. Exame clínico</div>
+            <img class="figure" src="img/medida-itb-tornozelo.png" alt="Profissional realizando medida do ITB no tornozelo"/>
+            <div class="body small">Paciente em decúbito dorsal, manguito, Doppler e técnica disciplinada. É o arroz com feijão — e é justamente por isso que precisa ser bem feito.</div>
+          </div>
+          <div class="card">
+            <div class="figureTitle">10. Simulação educacional</div>
+            <img class="figure" src="img/simulacao-doppler-ra.png" alt="Simulação de Doppler vascular com realidade aumentada"/>
+            <div class="body small">O simulador leve abaixo traduz essa lógica em decisão: posição, artéria, cálculo e interpretação final.</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="sim">
+        <div class="card">
+          <h2>Simulador leve</h2>
+          <div class="body">
+            <div class="casebar">
+              <button class="casebtn active" data-case="normal">Caso 1 · Normal</button>
+              <button class="casebtn" data-case="daop">Caso 2 · DAOP moderada</button>
+              <button class="casebtn" data-case="monckeberg">Caso 3 · Mönckeberg</button>
+            </div>
+
+            <div class="step">
+              <h3>Passo 1 · Posicionamento</h3>
+              <div class="opts" id="posOpts">
+                <button class="opt" data-pos="sentado">Sentado</button>
+                <button class="opt" data-pos="supino">Decúbito dorsal</button>
+                <button class="opt" data-pos="empe">Em pé</button>
+              </div>
+              <div id="posFeedback" class="feedback">Escolha a posição antes da medida.</div>
+            </div>
+
+            <div class="step">
+              <h3>Passo 2 · Qual artéria você quer usar para orientar a medida?</h3>
+              <div class="opts" id="artOpts">
+                <button class="opt" data-art="pt">Tibial posterior</button>
+                <button class="opt" data-art="dp">Pediosa dorsal</button>
+              </div>
+              <div id="artFeedback" class="feedback">Lembrete: na interpretação final, vale a MAIOR pressão do tornozelo.</div>
+            </div>
+
+            <div class="step">
+              <h3>Passo 3 · Dados do caso</h3>
+              <div class="kpis">
+                <div class="kpi"><b>Braquial direita</b><span id="brDir" class="big">134</span> mmHg</div>
+                <div class="kpi"><b>Braquial esquerda</b><span id="brEsq" class="big">128</span> mmHg</div>
+                <div class="kpi"><b>Tibial posterior</b><span id="ankPt" class="big">142</span> mmHg</div>
+                <div class="kpi"><b>Pediosa dorsal</b><span id="ankDp" class="big">138</span> mmHg</div>
+              </div>
+              <div><span class="pill" id="wavePill">Onda: trifásica</span></div>
+            </div>
+
+            <div class="step">
+              <h3>Passo 4 · Calcular ITB</h3>
+              <button class="opt" id="calcBtn">Calcular</button>
+              <div id="calcFeedback" class="feedback">Clique para calcular usando a maior pressão braquial e a maior pressão do tornozelo.</div>
+            </div>
+
+            <div class="step">
+              <h3>Passo 5 · Interpretação</h3>
+              <div class="opts" id="interpOpts">
+                <button class="opt" data-int="normal">Normal</button>
+                <button class="opt" data-int="daop">DAOP</button>
+                <button class="opt" data-int="falsoalto">Falso alto por calcificação</button>
+              </div>
+              <div id="interpFeedback" class="feedback">No caso 3, o número engana. A onda monofásica e a rigidez arterial denunciam a armadilha.</div>
+            </div>
+
+            <div class="footerNote">Base conceitual: o documento anexado integra técnica do ITB, morfologia Doppler, perda de pressão distal, calcificação arterial e cenário educacional por simulação. fileciteturn3file0</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+<script>
+const cases = {
+  normal: {
+    brDir:134, brEsq:128, ankPt:142, ankDp:138, wave:'trifásica', waveClass:'ok',
+    rightPos:'supino',
+    answer:'normal',
+    note:'ITB preservado e onda trifásica. Perfusão compatível com padrão normal em repouso.'
+  },
+  daop: {
+    brDir:140, brEsq:136, ankPt:84, ankDp:92, wave:'monofásica', waveClass:'bad',
+    rightPos:'supino',
+    answer:'daop',
+    note:'Maior pressão do tornozelo = 92 mmHg. ITB ~ 0,66. Quadro compatível com DAOP moderada.'
+  },
+  monckeberg: {
+    brDir:135, brEsq:130, ankPt:190, ankDp:182, wave:'monofásica', waveClass:'warn',
+    rightPos:'supino',
+    answer:'falsoalto',
+    note:'ITB ~ 1,41, mas o vaso é rígido e a onda é monofásica. Isso favorece falso alto por calcificação medial.'
+  }
+};
+let current='normal', pos=null, art=null, calcValue=null;
+
+function loadCase(key){
+  current=key; pos=null; art=null; calcValue=null;
+  const c=cases[key];
+  brDir.textContent=c.brDir; brEsq.textContent=c.brEsq; ankPt.textContent=c.ankPt; ankDp.textContent=c.ankDp;
+  wavePill.textContent='Onda: '+c.wave;
+  wavePill.className='pill '+(c.waveClass||'');
+  document.querySelectorAll('.opt.active, .casebtn.active').forEach(el=>{ if(!el.classList.contains('casebtn')) el.classList.remove('active'); });
+  document.querySelectorAll('.casebtn').forEach(btn=>btn.classList.toggle('active', btn.dataset.case===key));
+  posFeedback.className='feedback'; posFeedback.textContent='Escolha a posição antes da medida.';
+  artFeedback.className='feedback'; artFeedback.textContent='Lembrete: na interpretação final, vale a MAIOR pressão do tornozelo.';
+  calcFeedback.className='feedback'; calcFeedback.textContent='Clique para calcular usando a maior pressão braquial e a maior pressão do tornozelo.';
+  interpFeedback.className='feedback'; interpFeedback.textContent='Interprete o caso depois do cálculo.';
+}
+document.querySelectorAll('.casebtn').forEach(btn=>btn.onclick=()=>loadCase(btn.dataset.case));
+
+document.querySelectorAll('#posOpts .opt').forEach(btn=>btn.onclick=()=>{
+  document.querySelectorAll('#posOpts .opt').forEach(x=>x.classList.remove('active'));
+  btn.classList.add('active');
+  pos=btn.dataset.pos;
+  if(pos==='supino'){
+    posFeedback.className='feedback ok';
+    posFeedback.textContent='Correto. O paciente deve ficar em decúbito dorsal e em repouso para reduzir artefato hidrostático.';
+  } else {
+    posFeedback.className='feedback warn';
+    posFeedback.textContent='Inadequado. Sentado ou em pé distorce a coluna hidrostática e pode contaminar a medida.';
+  }
+});
+
+document.querySelectorAll('#artOpts .opt').forEach(btn=>btn.onclick=()=>{
+  document.querySelectorAll('#artOpts .opt').forEach(x=>x.classList.remove('active'));
+  btn.classList.add('active');
+  art=btn.dataset.art;
+  const c=cases[current];
+  const chosen = art==='pt' ? c.ankPt : c.ankDp;
+  const maxA = Math.max(c.ankPt,c.ankDp);
+  artFeedback.className='feedback ok';
+  artFeedback.innerHTML='Você selecionou '+(art==='pt'?'tibial posterior':'pediosa dorsal')+' ('+chosen+' mmHg). Na conta final, usa-se a maior pressão do tornozelo: <b>'+maxA+' mmHg</b>.';
+});
+
+calcBtn.onclick=()=>{
+  const c=cases[current];
+  const braq = Math.max(c.brDir,c.brEsq);
+  const ankle = Math.max(c.ankPt,c.ankDp);
+  calcValue = (ankle / braq);
+  let classe = 'ok', txt = '';
+  if(pos!=='supino'){
+    classe='warn';
+    txt='Você calculou, mas a posição estava inadequada. Isso já enfraquece a validade do exame. ';
+  }
+  txt += 'Maior braquial = '+braq+' mmHg. Maior tornozelo = '+ankle+' mmHg. ';
+  txt += 'ITB = '+ankle+' / '+braq+' = ';
+  txt += '<b>'+calcValue.toFixed(2).replace('.',',')+'</b>. ';
+  txt += c.note;
+  calcFeedback.className='feedback '+classe;
+  calcFeedback.innerHTML=txt;
+};
+
+document.querySelectorAll('#interpOpts .opt').forEach(btn=>btn.onclick=()=>{
+  document.querySelectorAll('#interpOpts .opt').forEach(x=>x.classList.remove('active'));
+  btn.classList.add('active');
+  const guess=btn.dataset.int;
+  const c=cases[current];
+  if(guess===c.answer){
+    interpFeedback.className='feedback ok';
+    if(current==='monckeberg'){
+      interpFeedback.innerHTML='<b>Acertou.</b> Aqui mora a pegadinha: o ITB fica alto, mas o contexto e a onda monofásica derrubam a falsa sensação de normalidade.';
+    } else if(current==='daop'){
+      interpFeedback.innerHTML='<b>Acertou.</b> ITB reduzido + onda monofásica puxam a interpretação para DAOP.';
+    } else {
+      interpFeedback.innerHTML='<b>Acertou.</b> ITB dentro da faixa esperada e morfologia trifásica sustentam padrão normal.';
+    }
+  } else {
+    interpFeedback.className='feedback bad';
+    if(current==='monckeberg' && guess==='normal'){
+      interpFeedback.innerHTML='<b>Errado.</b> Esse é o erro clássico. O número alto não garante normalidade quando o vaso é incompressível.';
+    } else {
+      interpFeedback.innerHTML='<b>Errado.</b> Releia o cálculo, a onda Doppler e a lógica do caso.';
+    }
+  }
+});
+loadCase('normal');
+</script>
+</body>
+</html>
