@@ -1,0 +1,1299 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>PET-Saúde UFPel | G10 – Operação </title>
+  <style>
+    :root{
+      --bg:#f6f8fb;
+      --card:#ffffff;
+      --text:#0f172a;
+      --muted:#475569;
+      --border:#e2e8f0;
+
+      /* cores inspiradas no logo */
+      --blue:#3b82c4;
+      --blue2:#1e3a8a;
+      --orange:#d4653b;
+
+      --shadow: 0 10px 30px rgba(15, 23, 42, .08);
+      --radius: 14px;
+    }
+    *{box-sizing:border-box}
+    body{
+      margin:0;
+      font-family: system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, "Helvetica Neue", Arial, "Noto Sans", sans-serif;
+      background: linear-gradient(180deg, rgba(59,130,196,.08), transparent 35%),
+                  linear-gradient(90deg, rgba(212,101,59,.06), transparent 45%),
+                  var(--bg);
+      color:var(--text);
+    }
+    .wrap{max-width:980px;margin:0 auto;padding:24px}
+    header{
+      display:flex; gap:18px; align-items:center;
+      background:var(--card);
+      border:1px solid var(--border);
+      border-radius:var(--radius);
+      padding:18px 18px;
+      box-shadow:var(--shadow);
+    }
+    header img{width:96px;height:96px;object-fit:contain;border-radius:12px}
+    .title h1{margin:0;font-size:1.25rem;line-height:1.2}
+    .title p{margin:.35rem 0 0;color:var(--muted)}
+    .badge{
+      display:inline-flex; align-items:center; gap:8px;
+      margin-top:8px;
+      font-size:.9rem;
+      color:#0b1220;
+      padding:6px 10px;
+      border-radius:999px;
+      background: linear-gradient(90deg, rgba(59,130,196,.18), rgba(212,101,59,.18));
+      border:1px solid rgba(59,130,196,.25);
+      width:fit-content;
+    }
+
+    .grid{
+      /* cards padrão: 2 colunas; itens com .span-2 ocupam a largura toda */
+      margin-top:18px;
+      display:grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap:14px;
+    }
+    @media (max-width: 780px){ .grid{ grid-template-columns: 1fr; } }
+    .span-2{grid-column: 1 / -1;}
+
+    .card{
+      background:var(--card);
+      border:1px solid var(--border);
+      border-radius:var(--radius);
+      box-shadow:var(--shadow);
+      padding:16px;
+      position:relative;
+      overflow:hidden;
+    }
+    .card:before{
+      content:"";
+      position:absolute;
+      inset:-2px -2px auto -2px;
+      height:4px;
+      background: linear-gradient(90deg, var(--blue), var(--orange), var(--blue2));
+      opacity:.95;
+    }
+    .card h2{margin:10px 0 6px;font-size:1.05rem}
+    .card p{margin:0 0 12px;color:var(--muted);font-size:.95rem}
+    .actions{display:flex;flex-wrap:wrap;gap:10px}
+    a.btn{
+      display:inline-flex; align-items:center; justify-content:center;
+      padding:10px 12px;
+      border-radius:12px;
+      border:1px solid var(--border);
+      text-decoration:none;
+      color:var(--text);
+      background:#fff;
+      font-weight:600;
+      transition: transform .06s ease, border-color .2s ease, box-shadow .2s ease;
+    }
+    a.btn:hover{
+      transform: translateY(-1px);
+      border-color: rgba(59,130,196,.35);
+      box-shadow: 0 10px 25px rgba(15,23,42,.10);
+    }
+    a.btn.primary{
+      background: linear-gradient(90deg, rgba(59,130,196,.16), rgba(212,101,59,.14));
+      border-color: rgba(59,130,196,.25);
+    }
+    .hint{
+      margin-top:16px;
+      color:var(--muted);
+      font-size:.92rem;
+      background: rgba(59,130,196,.06);
+      border:1px dashed rgba(59,130,196,.25);
+      border-radius:var(--radius);
+      padding:12px 14px;
+    }
+    footer{
+      margin:18px 0 6px;
+      color:var(--muted);
+      font-size:.85rem;
+      text-align:center;
+    }
+    code.k{
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+      font-size:.85em;
+      background: rgba(15,23,42,.06);
+      padding:2px 6px;
+      border-radius:8px;
+      border:1px solid rgba(15,23,42,.10);
+    }
+
+    /* ✅ AJUSTE DO IFRAME (SEM SUMIR COM O RESTO) */
+    .card iframe{
+      display:block;
+      width:100%;
+      height:80vh; /* ou 720px se preferir fixo */
+      border:0;
+    }
+    @media (max-width:780px){
+      .card iframe{ height:600px; }
+    }
+
+img {
+  max-width: 100%;
+  height: auto;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="wrap">
+    <header>
+      <img src="img\logo2.jpeg" alt="PET-Saúde UFPel – G10" style="width:120px;">
+      <div class="title">
+        <h1>PET-Saúde UFPel – Informação e Saúde Digital </h1>
+        <p><strong>G10</strong> · Telemonitoramento de Feridas Crônicas · Central operacional</p>
+        <!--<div class="badge">Uma página, cinco atalhos, zero desculpas</div>-->
+      </div>
+    </header>
+      <div class="card">
+        <span style="color: #800000;"><h2>Presença Semanal</h2></span>
+        <p>Registre sua presença semanal. Consulte suas presenças e faltas também aqui.</p>
+        <div class="actions">
+          <a class="btn primary" href="https://forms.gle/FgjWYvBwmU4urhaR8" target="_blank" rel="noopener">Registrar</a>
+          <a class="btn primary" href="javascript:void(0)" onclick="abrirVoz()" style="cursor:pointer;display:inline-flex;align-items:center;gap:6px;">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"/><path d="M19 10v2a7 7 0 0 1-14 0v-2"/><line x1="12" y1="19" x2="12" y2="23"/><line x1="8" y1="23" x2="16" y2="23"/></svg>
+            Registrar por Voz
+          </a>
+
+<a class="btn primary" 
+   href="javascript:void(0)" 
+   onclick="alternarTabela()" 
+   style="cursor: pointer; display: inline-block; text-decoration: none;">
+   Consultar
+</a>
+        </div><!-- /actions -->
+
+<div id="espelho-leitura" style="display: none; margin-top: 15px; width: 100%; overflow: hidden; border-radius: 8px; border: 1px solid #e0e0e0;">
+  <iframe 
+    src="https://docs.google.com/spreadsheets/d/18REvxjBDH_JJE1Ckom7zQWk9I7KvK7f53U78S3t9DIU/preview?gid=0&range=a1:g14&rm=minimal&chrome=false" 
+    width="100%" 
+    height="450" 
+    style="border: none;"
+    frameborder="0">
+  </iframe>
+</div>
+
+<script>
+function alternarTabela() {
+  var x = document.getElementById("espelho-leitura");
+  if (x.style.display === "none") {
+    x.style.display = "block";
+  } else {
+    x.style.display = "none";
+  }
+}
+</script>
+
+      </div><!-- /card Presença Semanal -->
+      <div class="card">
+        <h2>Formulário de Acompanhamento de Pacientes</h2>
+        <p>Entrada padronizada de informações para acompanhamento (Google Forms).</p>
+        <div class="actions">
+          <a class="btn primary" href="https://docs.google.com/forms/d/e/1FAIpQLScKWMEI2d3jTdq4bmb51YBU_OhCFMZ-7_ZUKcoCtqqXTMi2iA/viewform" target="_blank" rel="noopener">Formulário</a>
+        </div>
+      </div>
+
+      <div class="card">
+        <h2>Casos Clínicos por Monitor</h2>
+        <p>Modelo para organizar casos clínicos por monitor (Google Docs).</p>
+        <div class="actions">
+          <a class="btn primary" href="https://docs.google.com/document/d/16ebyYsXrgiGqdDzoZU5Dr5bFX-qckbZPra2cmWWwfr4/edit?tab=t.0" target="_blank" rel="noopener">Modelo</a>
+        </div>
+      </div>
+
+    <div class="card">
+        <h2>Publicações</h2>
+        <p>Livros, Capítulos e Artigos elaborados </p>
+        <div class="actions">
+          <a class="btn primary" href="html\info\publica\publica.html" target="_blank" rel="noopener">Publica</a>
+        </div>
+      </div>
+
+      <div class="card">
+        <h2>Planejamento de Posts</h2>
+        <p>Planejamento dos posts e Instagram do G10.</p>
+        <div class="actions">
+          <a class="btn" href="https://docs.google.com/spreadsheets/d/1cOY6WQshQ0fB3iJjJjWonBm5_sLYTgcCfVesYj8EhYg/edit?usp=sharing" target="_blank" rel="noopener">Planeja Insta</a>
+          <a class="btn primary" href="https://www.instagram.com/g10petsaude/" target="_blank" rel="noopener">Instagram</a>
+        </div>
+      </div>
+
+      <div class="card">
+        <h2>Protocolo de Presença</h2>
+        <p>Protocolo de presença G10.</p>
+        <div class="actions">
+          <a class="btn primary" href="protocolo.presenca.html" target="_blank" rel="noopener">Protocolo</a>
+        </div>
+      </div>
+
+      <div class="card">
+        <h2>E-projeto (UFPel)</h2>
+        <p>Acesso rápido ao sistema E-projeto da UFPel.</p>
+        <div class="actions">
+          <a class="btn primary" href="https://e-projeto.ufpel.edu.br/" target="_blank" rel="noopener">E-projeto</a>
+        </div>
+      </div>
+ <div class="card">
+        <h2>Sistemas</h2>
+        <p>Sistemas em Desenvolvimento pelo G10</p>
+        <div class="actions">
+          <a class="btn primary" href="sistemas.html" target="_blank" rel="noopener">Sistemas G10</a>
+        </div>
+      </div>
+
+      <div class="card">
+        <h2>Infográficos elaborado pelo G10 </h2>
+        <p>Infográficos elaborados</p>
+        <div class="actions">
+          <a class="btn primary" href="infograficos.html" target="_blank" rel="noopener">Infográficos</a>
+        </div>
+      </div>
+
+<div class="card">
+        <h2>Atividades</h2>
+        <p>Planilha Excel Operacional PET G10.</p>
+        <div class="actions">
+          <a class="btn primary" href="https://1drv.ms/x/c/08D9660237E4E0BA/IQC5lJvVOi4wSbG80cgLJVb0Adilc_nfEjUfAlntGZAHc9U?e=PxsM5U" target="_blank" rel="noopener">Planilha (OneDrive)</a>
+         <a class="btn primary" href="atividades.html" target="_blank" rel="noopener">Atividades Equipe</a>
+        </div>
+      </div>
+
+  <div class="card">
+        <h2>Apresentações & Divulgação  </h2>
+        <p>Material de apresentações e divulgação ao público, realizadas pela equipe</p>
+        <div class="actions">
+          <a class="btn primary" href="html/info/apresenta/material.html" target="_blank" rel="noopener">Material</a>
+        </div>
+      </div>
+
+<div class="card span-2">
+  <h2>Organização presencial 2026-1</h2>
+
+  <style>
+    .tabela-turnos-wrapper {
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+      margin-top: 10px;
+    }
+
+    .tabela-turnos table {
+      width: 100%;
+      min-width: 820px;
+      border-collapse: collapse;
+      margin-top: 0;
+    }
+
+    .tabela-turnos thead {
+      background: #e3edf9;
+    }
+
+    .tabela-turnos th {
+      padding: 12px;
+      text-align: left;
+      font-size: 0.9rem;
+      color: #1f3b63;
+      border-bottom: 2px solid #c5d4e8;
+      white-space: nowrap;
+    }
+
+    .tabela-turnos td {
+      padding: 12px;
+      vertical-align: top;
+      border-bottom: 1px solid #e6ecf3;
+      font-size: 0.9rem;
+    }
+
+    .tabela-turnos .turno {
+      font-weight: bold;
+      background: #f0f5fc;
+      color: #1f3b63;
+      width: 120px;
+      white-space: nowrap;
+    }
+
+    .tabela-turnos .bloco {
+      margin-bottom: 8px;
+    }
+
+    .tabela-turnos .bloco:last-child {
+      margin-bottom: 0;
+    }
+
+    .tabela-turnos .tag {
+      display: inline-block;
+      background: #dbe8fb;
+      color: #1f3b63;
+      padding: 2px 6px;
+      border-radius: 6px;
+      font-size: 0.75rem;
+      margin-bottom: 4px;
+    }
+
+    .cards-turnos {
+      display: none;
+      margin-top: 10px;
+      gap: 12px;
+    }
+
+    .cards-turnos .dia-card {
+      background: #f8fbff;
+      border: 1px solid #dbe6f2;
+      border-radius: 12px;
+      padding: 14px;
+      margin-bottom: 12px;
+    }
+
+    .cards-turnos .dia-card h3 {
+      margin: 0 0 12px;
+      font-size: 1rem;
+      color: #1f3b63;
+    }
+
+    .cards-turnos .turno-card {
+      border-top: 1px solid #e6ecf3;
+      padding-top: 10px;
+      margin-top: 10px;
+    }
+
+    .cards-turnos .turno-card:first-of-type {
+      border-top: 0;
+      padding-top: 0;
+      margin-top: 0;
+    }
+
+    .cards-turnos .turno-card strong.turno-titulo {
+      display: block;
+      color: #0f172a;
+      margin-bottom: 8px;
+      font-size: 0.95rem;
+    }
+
+    .cards-turnos .bloco {
+      margin-bottom: 10px;
+    }
+
+    .cards-turnos .bloco:last-child {
+      margin-bottom: 0;
+    }
+
+    @media (max-width: 768px) {
+      .tabela-turnos-wrapper {
+        display: none;
+      }
+
+      .cards-turnos {
+        display: block;
+      }
+    }
+  </style>
+
+  <div class="tabela-turnos-wrapper">
+    <div class="tabela-turnos">
+      <table>
+        <thead>
+          <tr>
+            <th>Turno</th>
+            <th>Terça-feira</th>
+            <th>Quarta-feira</th>
+            <th>Quinta-feira</th>
+            <th>Sexta-feira</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <tr>
+            <td class="turno">Manhã</td>
+
+            <td>
+              <div class="bloco">
+                <span class="tag">Centro de Especialidades</span><br>
+                <strong>Prec. Lilian</strong><br>
+                Giovana, Lyah, Lucas e Yanka
+              </div>
+            </td>
+
+            <td>
+              <div class="bloco">
+                <span class="tag">UBS Sansca - VD</span><br>
+                <strong>Prec. Gabriela</strong><br>
+                Cassiane
+              </div>
+            </td>
+
+            <td></td>
+
+            <td></td>
+          </tr>
+
+          <tr>
+            <td class="turno">Tarde</td>
+
+            <td>
+              <div class="bloco">
+                <span class="tag">UBS Sansca - VD / Acompanhamento</span><br>
+                <strong>Prec. Gabriela</strong><br>
+                Gabriela A
+              </div>
+
+              <div class="bloco">
+                <span class="tag">Centro de Especialidades</span><br>
+                <strong>Prec. Lilian</strong><br>
+                Patrícia
+              </div>
+            </td>
+
+            <td>
+              <div class="bloco"></div>
+            </td>
+
+            <td>
+              <div class="bloco">
+                <span class="tag">Videoconferência</span><br>
+                quinta-feira à tarde, videoconferência<br>
+                <em>comunicada quando acontece, sob aviso</em>
+              </div>
+            </td>
+
+            <td>
+              <div class="bloco">
+                <span class="tag">UBS Sansca - Procedimentos e VD</span><br>
+                <strong>Coord. Adrize</strong><br>
+                <strong>Tutor Alejandro</strong><br>
+                Amanda, Danusa, Fernando, Leonardo
+              </div>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <div class="cards-turnos">
+    <div class="dia-card">
+      <h3>Terça-feira</h3>
+
+      <div class="turno-card">
+        <strong class="turno-titulo">Manhã</strong>
+        <div class="bloco">
+          <span class="tag">Centro de Especialidades</span><br>
+          <strong>Prec. Lilian</strong><br>
+          Giovana, Lyah, Lucas e Yanka
+        </div>
+      </div>
+
+      <div class="turno-card">
+        <strong class="turno-titulo">Tarde</strong>
+        <div class="bloco">
+          <span class="tag">UBS Sansca - VD / Acompanhamento</span><br>
+          <strong>Prec. Gabriela</strong><br>
+          Gabriela A
+        </div>
+        <div class="bloco">
+          <span class="tag">Centro de Especialidades</span><br>
+          <strong>Prec. Lilian</strong><br>
+          Patrícia
+        </div>
+      </div>
+    </div>
+
+    <div class="dia-card">
+      <h3>Quarta-feira</h3>
+
+      <div class="turno-card">
+        <strong class="turno-titulo">Manhã</strong>
+        <div class="bloco">
+          <span class="tag">UBS Sansca - VD</span><br>
+          <strong>Prec. Gabriela</strong><br>
+          Cassiane
+        </div>
+      </div>
+
+      <div class="turno-card">
+        <strong class="turno-titulo">Tarde</strong>
+        <div class="bloco">
+          <em>Sem atividade fixa informada.</em>
+        </div>
+      </div>
+    </div>
+
+    <div class="dia-card">
+      <h3>Quinta-feira</h3>
+
+      <div class="turno-card">
+        <strong class="turno-titulo">Tarde</strong>
+        <div class="bloco">
+          <span class="tag">Videoconferência</span><br>
+          quinta-feira à tarde, videoconferência<br>
+          <em>comunicada quando acontece, sob aviso</em>
+        </div>
+      </div>
+    </div>
+
+    <div class="dia-card">
+      <h3>Sexta-feira</h3>
+
+      <div class="turno-card">
+        <strong class="turno-titulo">Tarde</strong>
+        <div class="bloco">
+          <span class="tag">UBS Sansca - Procedimentos e VD</span><br>
+          <strong>Coord. Adrize</strong><br>
+          <strong>Tutor Alejandro</strong><br>
+          Amanda, Danusa, Fernando, Leonardo
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<div class="card span-2">
+        <h2>Agenda</h2>
+        <p>Calendário do G10 (visão operacional).</p>
+        <div style="border:1px solid var(--border); border-radius:12px; overflow:hidden; background:#fff;">
+          <iframe
+  width="100%"
+  height="720"
+  style="border:0;"
+  src="https://calendar.google.com/calendar/embed?height=720&amp;wkst=1&amp;bgcolor=%23ffffff&amp;ctz=America%2FSao_Paulo&amp;showTitle=1&amp;showNav=1&amp;showDate=1&amp;showPrint=1&amp;showTabs=1&amp;showCalendars=1&amp;showTz=1&amp;mode=MONTH&amp;src=d3059915e02e37a7cec0fc73b0127050372119e1baf89ac451d19ae5c66ec9f9%40group.calendar.google.com&amp;color=%23039BE5&amp;src=pt.brazilian%23holiday%40group.v.calendar.google.com&amp;color=%23009688">
+</iframe>
+
+<div class="actions" style="margin-top:12px;">
+  <a class="btn primary" target="_blank" rel="noopener"
+     href="https://calendar.google.com/calendar/u/0/r?cid=d3059915e02e37a7cec0fc73b0127050372119e1baf89ac451d19ae5c66ec9f9%40group.calendar.google.com">
+    Abrir agenda do G10 no Google
+  </a>
+
+  <a class="btn" target="_blank" rel="noopener"
+     href="https://calendar.google.com/calendar/u/0/r?cid=pt.brazilian%23holiday%40group.v.calendar.google.com">
+    Abrir feriados do Brasil no Google
+  </a>
+</div>
+
+        </div>
+      </div>
+    </section>
+
+    <div class="hint">
+      <strong>Como usar:</strong> salve este arquivo como <code class="k">g10-central.html</code> e abra no navegador.
+    </div>
+
+    <footer>
+      PET-Saúde UFPel · G10 Telemonitoramento de Feridas Crônicas · 
+    </footer>
+  </div>
+<!-- ════════════════════════════════════════
+     MODAL – REGISTRO POR VOZ
+════════════════════════════════════════ -->
+<div id="vozModal" style="display:none;position:fixed;inset:0;z-index:9999;background:rgba(15,23,42,.55);backdrop-filter:blur(4px);overflow-y:auto;padding:24px 16px;" onclick="fecharVozFora(event)">
+  <div id="vozModalInner" style="
+    max-width:540px;margin:0 auto;
+    background:#ffffff;
+    border:1px solid #e2e8f0;
+    border-radius:16px;
+    padding:28px 26px 32px;
+    position:relative;
+    box-shadow:0 20px 60px rgba(15,23,42,.18);
+    overflow:hidden;
+  ">
+  <div style="position:absolute;inset:-2px -2px auto -2px;height:4px;background:linear-gradient(90deg,#3b82c4,#d4653b,#1e3a8a);opacity:.9;border-radius:16px 16px 0 0;"></div>
+    <style>
+      #vozModalInner * { box-sizing:border-box; }
+      #vozModalInner {
+        font-family: system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,Cantarell,"Helvetica Neue",Arial,sans-serif;
+        color:#0f172a;
+      }
+
+      /* close */
+      #vozModalInner .v-close {
+        position:absolute;top:12px;right:14px;
+        background:none;border:none;color:#94a3b8;font-size:1.2rem;cursor:pointer;line-height:1;
+        transition:color .15s;
+      }
+      #vozModalInner .v-close:hover { color:#0f172a; }
+
+      /* header */
+      #vozModalInner .v-header-bar {
+        display:flex;align-items:center;gap:10px;
+        margin-bottom:16px;padding-bottom:14px;
+        border-bottom:1px solid #e2e8f0;
+      }
+      #vozModalInner .v-header-icon {
+        width:36px;height:36px;border-radius:10px;flex-shrink:0;
+        background:linear-gradient(135deg,rgba(59,130,196,.18),rgba(212,101,59,.18));
+        border:1px solid rgba(59,130,196,.25);
+        display:flex;align-items:center;justify-content:center;
+      }
+      #vozModalInner .v-header-text h2 { margin:0;font-size:1.05rem;font-weight:700;color:#0f172a; }
+      #vozModalInner .v-header-text p { margin:2px 0 0;font-size:.8rem;color:#475569; }
+
+      /* progress */
+      #vozModalInner .v-prog { height:4px;background:#e2e8f0;border-radius:99px;margin-bottom:20px; }
+      #vozModalInner .v-prog-fill {
+        height:100%;
+        background:linear-gradient(90deg,#3b82c4,#d4653b);
+        border-radius:99px;transition:width .4s ease;
+      }
+
+      /* step */
+      #vozModalInner .v-step { display:none; }
+      #vozModalInner .v-step.active { display:block; }
+      #vozModalInner .v-step-hdr { display:flex;align-items:center;gap:9px;margin-bottom:16px; }
+      #vozModalInner .v-step-num {
+        width:26px;height:26px;border-radius:50%;flex-shrink:0;
+        background:linear-gradient(135deg,rgba(59,130,196,.15),rgba(212,101,59,.12));
+        border:1px solid rgba(59,130,196,.3);
+        display:flex;align-items:center;justify-content:center;
+        font-size:11px;font-weight:700;color:#1e3a8a;
+      }
+      #vozModalInner .v-step-title { font-size:.9rem;font-weight:600;color:#475569;text-transform:uppercase;letter-spacing:.04em; }
+      #vozModalInner .v-q { font-size:1rem;font-weight:600;margin-bottom:14px;line-height:1.4;color:#0f172a; }
+
+      /* mic */
+      #vozModalInner .v-mic-area { display:flex;flex-direction:column;align-items:center;gap:10px;margin:14px 0; }
+      #vozModalInner .v-mic-btn {
+        width:70px;height:70px;border-radius:50%;
+        border:2px solid #e2e8f0;
+        background:#f8fafc;
+        cursor:pointer;display:flex;align-items:center;justify-content:center;
+        transition:all .2s;outline:none;
+        box-shadow:0 2px 8px rgba(15,23,42,.08);
+      }
+      #vozModalInner .v-mic-btn:hover { border-color:#3b82c4;background:#eff6ff; }
+      #vozModalInner .v-mic-btn.listening {
+        border-color:#d4653b;background:rgba(212,101,59,.08);
+        animation:v-pulse 1.4s infinite;
+      }
+      @keyframes v-pulse {
+        0%,100%{box-shadow:0 0 0 0 rgba(212,101,59,.35)}
+        50%{box-shadow:0 0 0 16px rgba(212,101,59,0)}
+      }
+      #vozModalInner .v-mic-lbl { font-size:.73rem;color:#94a3b8;letter-spacing:.04em; }
+
+      /* transcript */
+      #vozModalInner .v-tx {
+        background:#f8fafc;border:1px solid #e2e8f0;border-radius:10px;
+        padding:11px 13px;min-height:44px;font-size:.88rem;color:#0f172a;
+        line-height:1.5;margin-bottom:13px;transition:border-color .2s;
+      }
+      #vozModalInner .v-tx.has { border-color:rgba(59,130,196,.4);background:#eff6ff; }
+      #vozModalInner .v-tx.ph { color:#94a3b8; }
+
+      /* options grid */
+      #vozModalInner .v-grid { display:grid;grid-template-columns:1fr 1fr;gap:6px;margin-bottom:14px; }
+      #vozModalInner .v-opt {
+        background:#fff;border:1px solid #e2e8f0;border-radius:9px;
+        padding:9px 12px;color:#0f172a;
+        font-size:.84rem;cursor:pointer;text-align:left;transition:all .15s;
+        font-family:inherit;
+      }
+      #vozModalInner .v-opt:hover { border-color:#3b82c4;color:#1e3a8a;background:#eff6ff; }
+      #vozModalInner .v-opt.sel {
+        background:linear-gradient(90deg,rgba(59,130,196,.12),rgba(212,101,59,.10));
+        border-color:rgba(59,130,196,.4);color:#1e3a8a;font-weight:600;
+      }
+
+      /* date */
+      #vozModalInner .v-date {
+        background:#fff;border:1px solid #e2e8f0;border-radius:9px;
+        padding:11px 13px;color:#0f172a;
+        font-size:.95rem;width:100%;outline:none;transition:border-color .2s;margin-bottom:13px;
+        appearance:auto;font-family:inherit;
+      }
+      #vozModalInner .v-date:focus { border-color:#3b82c4; }
+
+      /* radio */
+      #vozModalInner .v-radio-grp { display:flex;gap:9px;margin-bottom:14px; }
+      #vozModalInner .v-radio {
+        flex:1;background:#fff;border:1px solid #e2e8f0;border-radius:9px;
+        padding:12px;text-align:center;cursor:pointer;font-size:.9rem;color:#0f172a;
+        transition:all .15s;font-weight:500;
+      }
+      #vozModalInner .v-radio:hover { border-color:#3b82c4;background:#eff6ff; }
+      #vozModalInner .v-radio.sel {
+        background:linear-gradient(90deg,rgba(59,130,196,.12),rgba(212,101,59,.10));
+        border-color:rgba(59,130,196,.4);color:#1e3a8a;font-weight:700;
+      }
+
+      /* textarea */
+      #vozModalInner .v-ta {
+        width:100%;background:#fff;border:1px solid #e2e8f0;border-radius:9px;
+        padding:11px 13px;color:#0f172a;
+        font-size:.88rem;resize:vertical;min-height:88px;outline:none;
+        transition:border-color .2s;margin-bottom:13px;font-family:inherit;
+      }
+      #vozModalInner .v-ta:focus { border-color:#3b82c4; }
+
+      /* upload */
+      #vozModalInner .v-upload {
+        border:2px dashed #cbd5e1;border-radius:11px;padding:26px 16px;
+        text-align:center;cursor:pointer;transition:all .2s;position:relative;margin-bottom:13px;
+        background:#fafbfc;
+      }
+      #vozModalInner .v-upload:hover, #vozModalInner .v-upload.drag { border-color:#3b82c4;background:#eff6ff; }
+      #vozModalInner .v-upload input { position:absolute;inset:0;opacity:0;cursor:pointer;width:100%;height:100%; }
+      #vozModalInner .v-upload-lbl { font-size:.85rem;color:#475569;line-height:1.5; }
+      #vozModalInner .v-upload-lbl strong { color:#3b82c4; }
+      #vozModalInner .v-upload-types { font-size:.7rem;color:#94a3b8;margin-top:6px;letter-spacing:.04em; }
+
+      #vozModalInner .v-file-prev {
+        display:none;background:#eff6ff;border:1px solid rgba(59,130,196,.3);
+        border-radius:9px;padding:11px 13px;margin-bottom:13px;align-items:center;gap:10px;
+      }
+      #vozModalInner .v-file-prev.vis { display:flex; }
+      #vozModalInner .v-file-ico { width:30px;height:30px;border-radius:7px;background:rgba(59,130,196,.15);display:flex;align-items:center;justify-content:center;font-size:.95rem;flex-shrink:0; }
+      #vozModalInner .v-file-info { flex:1;min-width:0; }
+      #vozModalInner .v-file-name { font-size:.84rem;font-weight:600;color:#1e3a8a;white-space:nowrap;overflow:hidden;text-overflow:ellipsis; }
+      #vozModalInner .v-file-size { font-size:.7rem;color:#64748b; }
+      #vozModalInner .v-file-rm { background:none;border:none;color:#d4653b;cursor:pointer;font-size:.9rem;padding:3px;flex-shrink:0; }
+
+      /* nav */
+      #vozModalInner .v-nav { display:flex;gap:8px;margin-top:6px; }
+      #vozModalInner .v-back {
+        background:#fff;border:1px solid #e2e8f0;border-radius:9px;
+        padding:10px 16px;color:#475569;font-size:.85rem;cursor:pointer;transition:all .15s;
+        font-family:inherit;font-weight:600;
+      }
+      #vozModalInner .v-back:hover { border-color:#3b82c4;color:#1e3a8a; }
+      #vozModalInner .v-next {
+        flex:1;
+        background:linear-gradient(90deg,rgba(59,130,196,.18),rgba(212,101,59,.15));
+        border:1px solid rgba(59,130,196,.3);
+        border-radius:9px;padding:12px;
+        color:#1e3a8a;font-weight:700;font-size:.9rem;cursor:pointer;
+        transition:all .15s;font-family:inherit;
+      }
+      #vozModalInner .v-next:hover { border-color:rgba(59,130,196,.5);box-shadow:0 4px 12px rgba(59,130,196,.15); }
+
+      /* summary */
+      #vozModalInner .v-sum-item { display:flex;justify-content:space-between;align-items:flex-start;padding:9px 0;border-bottom:1px solid #e2e8f0;gap:14px; }
+      #vozModalInner .v-sum-item:last-child { border-bottom:none; }
+      #vozModalInner .v-sum-lbl { font-size:.72rem;color:#94a3b8;text-transform:uppercase;letter-spacing:.06em;flex-shrink:0;font-weight:600; }
+      #vozModalInner .v-sum-val { font-size:.88rem;color:#0f172a;text-align:right;font-weight:500; }
+
+      #vozModalInner .v-err { color:#d4653b;font-size:.78rem;margin-bottom:9px;display:none; }
+      #vozModalInner .v-hint { font-size:.73rem;color:#94a3b8;margin-top:5px;font-style:italic; }
+
+      /* success */
+      #vozModalInner .v-ok-ico {
+        width:60px;height:60px;border-radius:50%;
+        background:linear-gradient(135deg,rgba(59,130,196,.15),rgba(212,101,59,.12));
+        border:2px solid rgba(59,130,196,.35);
+        display:flex;align-items:center;justify-content:center;margin:0 auto 14px;font-size:1.6rem;
+      }
+    </style>
+
+    <button class="v-close" onclick="fecharVoz()">✕</button>
+
+    <div class="v-header-bar">
+      <div class="v-header-icon">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#3b82c4" stroke-width="2.2"><path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"/><path d="M19 10v2a7 7 0 0 1-14 0v-2"/><line x1="12" y1="19" x2="12" y2="23"/><line x1="8" y1="23" x2="16" y2="23"/></svg>
+      </div>
+      <div class="v-header-text">
+        <h2>Registro de Presença por Voz</h2>
+        <p>G10 · PET-Saúde UFPel — Fale ou clique para preencher</p>
+      </div>
+    </div>
+
+    <div class="v-prog"><div class="v-prog-fill" id="vProg" style="width:16%"></div></div>
+
+    <!-- STEP 1: Nome -->
+    <div class="v-step active" id="vs1">
+      <div class="v-step-hdr"><div class="v-step-num">1</div><div class="v-step-title">Identificação</div></div>
+      <div class="v-q">Qual é o seu nome?</div>
+      <div class="v-mic-area">
+        <button class="v-mic-btn" id="vMic1" onclick="vStartVoice(1)">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#3b82c4" stroke-width="2"><path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"/><path d="M19 10v2a7 7 0 0 1-14 0v-2"/><line x1="12" y1="19" x2="12" y2="23"/><line x1="8" y1="23" x2="16" y2="23"/></svg>
+        </button>
+        <span class="v-mic-lbl" id="vLbl1">toque para falar</span>
+      </div>
+      <div class="v-tx ph" id="vTx1">Diga seu nome ou selecione abaixo...</div>
+      <div class="v-grid">
+        <button class="v-opt" onclick="vSelName('Amanda')">Amanda</button>
+        <button class="v-opt" onclick="vSelName('Cassiane')">Cassiane</button>
+        <button class="v-opt" onclick="vSelName('Danusa')">Danusa</button>
+        <button class="v-opt" onclick="vSelName('GabrielaA')">GabrielaA</button>
+        <button class="v-opt" onclick="vSelName('Giovana')">Giovana</button>
+        <button class="v-opt" onclick="vSelName('Fernando')">Fernando</button>
+        <button class="v-opt" onclick="vSelName('Leonardo')">Leonardo</button>
+        <button class="v-opt" onclick="vSelName('Lucas')">Lucas</button>
+        <button class="v-opt" onclick="vSelName('Patrícia')">Patrícia</button>
+        <button class="v-opt" onclick="vSelName('Lyah')">Lyah</button>
+        <button class="v-opt" onclick="vSelName('Yanka')">Yanka</button>
+        <button class="v-opt" onclick="vSelName('Outro')">Outro</button>
+      </div>
+      <p class="v-err" id="vErr1">Por favor, selecione ou diga seu nome.</p>
+      <div class="v-nav"><button class="v-next" onclick="vNext(1)">Continuar →</button></div>
+    </div>
+
+    <!-- STEP 2: Data -->
+    <div class="v-step" id="vs2">
+      <div class="v-step-hdr"><div class="v-step-num">2</div><div class="v-step-title">Data da Atividade</div></div>
+      <div class="v-q">Qual é a data da atividade?</div>
+      <div class="v-mic-area">
+        <button class="v-mic-btn" id="vMic2" onclick="vStartVoice(2)">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#3b82c4" stroke-width="2"><path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"/><path d="M19 10v2a7 7 0 0 1-14 0v-2"/><line x1="12" y1="19" x2="12" y2="23"/><line x1="8" y1="23" x2="16" y2="23"/></svg>
+        </button>
+        <span class="v-mic-lbl" id="vLbl2">toque para falar</span>
+      </div>
+      <div class="v-tx ph" id="vTx2">Ex: "hoje", "ontem", "dez de abril"...</div>
+      <p class="v-hint">Ou selecione manualmente:</p>
+      <input type="date" class="v-date" id="vDate" oninput="vOnDate()">
+      <p class="v-err" id="vErr2">Por favor, informe a data.</p>
+      <div class="v-nav">
+        <button class="v-back" onclick="vBack(2)">← Voltar</button>
+        <button class="v-next" onclick="vNext(2)">Continuar →</button>
+      </div>
+    </div>
+
+    <!-- STEP 2b: Local -->
+    <div class="v-step" id="vs2b">
+      <div class="v-step-hdr"><div class="v-step-num">2b</div><div class="v-step-title">Local da Atividade</div></div>
+      <div class="v-q">Qual é o local da atividade?</div>
+      <div class="v-mic-area">
+        <button class="v-mic-btn" id="vMic2b" onclick="vStartVoice('2b')">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#3b82c4" stroke-width="2"><path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"/><path d="M19 10v2a7 7 0 0 1-14 0v-2"/><line x1="12" y1="19" x2="12" y2="23"/><line x1="8" y1="23" x2="16" y2="23"/></svg>
+        </button>
+        <span class="v-mic-lbl" id="vLbl2b">toque para falar</span>
+      </div>
+      <div class="v-tx ph" id="vTx2b">Diga o local ou selecione abaixo...</div>
+      <div class="v-grid">
+        <button class="v-opt" onclick="vSelLocal('UBS Sansca')">UBS Sansca</button>
+        <button class="v-opt" onclick="vSelLocal('Centro de Especialidades')">Centro de Especialidades</button>
+        <button class="v-opt" onclick="vSelLocal('Outro')">Outro</button>
+      </div>
+      <p class="v-err" id="vErr2b">Por favor, selecione ou diga o local.</p>
+      <div class="v-nav">
+        <button class="v-back" onclick="vBack('2b')">← Voltar</button>
+        <button class="v-next" onclick="vNext('2b')">Continuar →</button>
+      </div>
+    </div>
+
+    <!-- STEP 3: Atestado -->
+    <div class="v-step" id="vs3">
+      <div class="v-step-hdr"><div class="v-step-num">3</div><div class="v-step-title">Atestado</div></div>
+      <div class="v-q">Você está de atestado?</div>
+      <div class="v-mic-area">
+        <button class="v-mic-btn" id="vMic3" onclick="vStartVoice(3)">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#3b82c4" stroke-width="2"><path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"/><path d="M19 10v2a7 7 0 0 1-14 0v-2"/><line x1="12" y1="19" x2="12" y2="23"/><line x1="8" y1="23" x2="16" y2="23"/></svg>
+        </button>
+        <span class="v-mic-lbl" id="vLbl3">toque para falar</span>
+      </div>
+      <div class="v-tx ph" id="vTx3">Diga "sim" ou "não"...</div>
+      <div class="v-radio-grp">
+        <div class="v-radio" id="vRNao" onclick="vSelAtestado('Não')">Não</div>
+        <div class="v-radio" id="vRSim" onclick="vSelAtestado('Sim')">Sim</div>
+      </div>
+      <p class="v-err" id="vErr3">Por favor, responda sim ou não.</p>
+      <div class="v-nav">
+        <button class="v-back" onclick="vBack(3)">← Voltar</button>
+        <button class="v-next" onclick="vNext(3)">Continuar →</button>
+      </div>
+    </div>
+
+    <!-- STEP 3b: Upload atestado -->
+    <div class="v-step" id="vs3b">
+      <div class="v-step-hdr"><div class="v-step-num">!</div><div class="v-step-title">Anexar Atestado</div></div>
+      <div class="v-q">Envie o arquivo do seu atestado.</div>
+      <div class="v-upload" id="vUpZone" ondragover="vDragOver(event)" ondragleave="vDragLeave()" ondrop="vDrop(event)">
+        <input type="file" id="vFile" accept=".txt,.doc,.docx,.pdf,.jpg,.jpeg,.png,.webp" onchange="vOnFile(event)">
+        <div style="font-size:1.8rem;margin-bottom:8px;">📎</div>
+        <div class="v-upload-lbl"><strong>Clique para selecionar</strong> ou arraste aqui</div>
+        <div class="v-upload-types">TXT · DOC · DOCX · PDF · JPG · PNG</div>
+      </div>
+      <div class="v-file-prev" id="vFilePrev">
+        <div class="v-file-ico" id="vFileIco">📄</div>
+        <div class="v-file-info">
+          <div class="v-file-name" id="vFileName">—</div>
+          <div class="v-file-size" id="vFileSize">—</div>
+        </div>
+        <button class="v-file-rm" onclick="vRemoveFile()">✕</button>
+      </div>
+      <p class="v-err" id="vErr3b">Por favor, anexe o atestado para continuar.</p>
+      <div class="v-nav">
+        <button class="v-back" onclick="vBack('3b')">← Voltar</button>
+        <button class="v-next" onclick="vNext('3b')">Continuar →</button>
+      </div>
+    </div>
+
+    <!-- STEP 4: Referente -->
+    <div class="v-step" id="vs4">
+      <div class="v-step-hdr"><div class="v-step-num">4</div><div class="v-step-title">Referente da Atividade</div></div>
+      <div class="v-q">Quem é o referente desta atividade?</div>
+      <div class="v-mic-area">
+        <button class="v-mic-btn" id="vMic4" onclick="vStartVoice(4)">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#3b82c4" stroke-width="2"><path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"/><path d="M19 10v2a7 7 0 0 1-14 0v-2"/><line x1="12" y1="19" x2="12" y2="23"/><line x1="8" y1="23" x2="16" y2="23"/></svg>
+        </button>
+        <span class="v-mic-lbl" id="vLbl4">toque para falar</span>
+      </div>
+      <div class="v-tx ph" id="vTx4">Diga o tipo de referente...</div>
+      <div class="v-grid">
+        <button class="v-opt" onclick="vSelRef('Adrize')">Adrize</button>
+        <button class="v-opt" onclick="vSelRef('Alejandro')">Alejandro</button>
+        <button class="v-opt" onclick="vSelRef('Gabriela S')">Gabriela S</button>
+        <button class="v-opt" onclick="vSelRef('Lilian')">Lilian</button>
+        <button class="v-opt" onclick="vSelRef('Viviane')">Viviane</button>
+      </div>
+      <p class="v-err" id="vErr4">Por favor, selecione ou diga o referente.</p>
+      <div class="v-nav">
+        <button class="v-back" onclick="vBack(4)">← Voltar</button>
+        <button class="v-next" onclick="vNext(4)">Continuar →</button>
+      </div>
+    </div>
+
+    <!-- STEP 5: Descrição -->
+    <div class="v-step" id="vs5">
+      <div class="v-step-hdr"><div class="v-step-num">5</div><div class="v-step-title">Descrição da Atividade</div></div>
+      <div class="v-q">Descreva brevemente a atividade realizada.</div>
+      <div class="v-mic-area">
+        <button class="v-mic-btn" id="vMic5" onclick="vStartVoice(5)">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#3b82c4" stroke-width="2"><path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"/><path d="M19 10v2a7 7 0 0 1-14 0v-2"/><line x1="12" y1="19" x2="12" y2="23"/><line x1="8" y1="23" x2="16" y2="23"/></svg>
+        </button>
+        <span class="v-mic-lbl" id="vLbl5">toque para falar</span>
+      </div>
+      <textarea class="v-ta" id="vDesc" placeholder="Ou escreva aqui..."></textarea>
+      <p class="v-err" id="vErr5">Por favor, descreva a atividade.</p>
+      <div class="v-nav">
+        <button class="v-back" onclick="vBack(5)">← Voltar</button>
+        <button class="v-next" onclick="vNext(5)">Revisar →</button>
+      </div>
+    </div>
+
+    <!-- STEP 6: Revisão -->
+    <div class="v-step" id="vs6">
+      <div class="v-step-hdr"><div class="v-step-num">6</div><div class="v-step-title">Confirmação</div></div>
+      <div class="v-q">Confira seus dados antes de enviar.</div>
+      <div id="vSummary"></div>
+      <div class="v-nav" style="margin-top:16px;">
+        <button class="v-back" onclick="vBack(6)">← Voltar</button>
+        <button class="v-next" onclick="vSubmit()">Enviar ✓</button>
+      </div>
+    </div>
+
+    <!-- STEP 7: Sucesso -->
+    <div class="v-step" id="vs7">
+      <div style="text-align:center;padding:16px 0;">
+        <div class="v-ok-ico">✓</div>
+        <h3 style="margin:0 0 8px;font-size:1.2rem;color:#0f172a;">Presença Registrada!</h3>
+        <p style="color:#475569;font-size:.88rem;line-height:1.6;">
+          Seu registro foi enviado com sucesso.<br>
+          Será avaliado e confirmado em até um dia.
+        </p>
+        <button class="v-next" style="max-width:180px;margin:20px auto 0;display:block;" onclick="vReset()">Novo Registro</button>
+      </div>
+    </div>
+
+  </div><!-- /vozModalInner -->
+</div><!-- /vozModal -->
+
+<script>
+(function(){
+  // ── state ──
+  const vd = { nome:'', data:'', local:'', atestado:'', file:null, referente:'', descricao:'' };
+
+  window.abrirVoz = function() {
+    document.getElementById('vozModal').style.display = 'block';
+    document.body.style.overflow = 'hidden';
+  };
+  window.fecharVoz = function() {
+    document.getElementById('vozModal').style.display = 'none';
+    document.body.style.overflow = '';
+  };
+  window.fecharVozFora = function(e) {
+    if (e.target === document.getElementById('vozModal')) fecharVoz();
+  };
+
+  function vShow(s) {
+    document.querySelectorAll('#vozModalInner .v-step').forEach(el => el.classList.remove('active'));
+    document.getElementById('vs' + s).classList.add('active');
+    const map = {1:16,2:32,3:48,'3b':52,4:64,5:80,6:96,7:100};
+    document.getElementById('vProg').style.width = (map[s]||16) + '%';
+    document.getElementById('vozModalInner').scrollIntoView({behavior:'smooth',block:'start'});
+  }
+
+  function vNextStep(cur) {
+    if (cur===2) return '2b';
+    if (cur==='2b') return 3;
+    if (cur===3) return vd.atestado==='Sim' ? '3b' : 4;
+    if (cur==='3b') return 4;
+    if (cur===5) return 6;
+    return Number(cur)+1;
+  }
+  function vPrevStep(cur) {
+    if (cur==='2b') return 2;
+    if (cur===3) return '2b';
+    if (cur===4) return vd.atestado==='Sim' ? '3b' : 3;
+    if (cur==='3b') return 3;
+    return Number(cur)-1;
+  }
+
+  window.vNext = function(cur) {
+    if (!vValidate(cur)) return;
+    const next = vNextStep(cur);
+    if (next===6) vBuildSummary();
+    vShow(next);
+  };
+  window.vBack = function(cur) { vShow(vPrevStep(cur)); };
+
+  function vValidate(s) {
+    const e = document.getElementById('vErr'+s);
+    e.style.display = 'none';
+    if (s===1 && !vd.nome)       { e.style.display='block'; return false; }
+    if (s===2 && !vd.data)       { e.style.display='block'; return false; }
+    if (s==='2b' && !vd.local)   { e.style.display='block'; return false; }
+    if (s===3 && !vd.atestado)   { e.style.display='block'; return false; }
+    if (s==='3b' && !vd.file)    { e.style.display='block'; return false; }
+    if (s===4 && !vd.referente)  { e.style.display='block'; return false; }
+    if (s===5) {
+      const t = document.getElementById('vDesc').value.trim();
+      if (!t) { e.style.display='block'; return false; }
+      vd.descricao = t;
+    }
+    return true;
+  }
+
+  // name
+  window.vSelName = function(n) {
+    vd.nome = n;
+    document.querySelectorAll('#vs1 .v-opt').forEach(b => b.classList.remove('sel'));
+    event.target.classList.add('sel');
+    vSetTx(1, n, false);
+  };
+
+  // date
+  window.vOnDate = function() {
+    const v = document.getElementById('vDate').value;
+    if (v) { const [y,m,d]=v.split('-'); vd.data=`${d}/${m}/${y}`; vSetTx(2,vd.data,false); }
+  };
+  function vParseDate(t) {
+    const s = t.toLowerCase().trim(), today = new Date();
+    if (s.includes('hoje')) return today;
+    if (s.includes('ontem')) { const d=new Date(today); d.setDate(d.getDate()-1); return d; }
+    const mos=['janeiro','fevereiro','março','abril','maio','junho','julho','agosto','setembro','outubro','novembro','dezembro'];
+    for (let i=0;i<mos.length;i++) {
+      if (s.includes(mos[i])) {
+        const n=s.match(/\d+/); const day=n?parseInt(n[0]):today.getDate();
+        return new Date(today.getFullYear(),i,day);
+      }
+    }
+    return null;
+  }
+  function vFmtDate(d) { return `${String(d.getDate()).padStart(2,'0')}/${String(d.getMonth()+1).padStart(2,'0')}/${d.getFullYear()}`; }
+  function vDateFromVoice(text) {
+    const d = vParseDate(text);
+    if (d) {
+      vd.data = vFmtDate(d);
+      document.getElementById('vDate').value = `${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,'0')}-${String(d.getDate()).padStart(2,'0')}`;
+      vSetTx(2, vd.data, false);
+    } else { vSetTx(2, text, false); }
+  }
+
+  // local
+  window.vSelLocal = function(v) {
+    vd.local = v;
+    document.querySelectorAll('#vs2b .v-opt').forEach(b => b.classList.toggle('sel', b.textContent===v));
+    vSetTx('2b', v, false);
+  };
+    vd.atestado = v;
+    document.getElementById('vRNao').classList.remove('sel');
+    document.getElementById('vRSim').classList.remove('sel');
+    document.getElementById('vR'+v).classList.add('sel');
+    vSetTx(3, v, false);
+    if (v==='Não') { vd.file=null; } // clear file if switching to Não
+  };
+
+  // referente
+  window.vSelRef = function(v) {
+    vd.referente = v;
+    document.querySelectorAll('#vs4 .v-opt').forEach(b=>b.classList.remove('sel'));
+    event.target.classList.add('sel');
+    vSetTx(4, v, false);
+  };
+
+  // file upload
+  const fileIcos = {pdf:'📕',doc:'📘',docx:'📘',txt:'📄',jpg:'🖼',jpeg:'🖼',png:'🖼',webp:'🖼'};
+  function vSetFile(f) {
+    vd.file = f;
+    const ext = f.name.split('.').pop().toLowerCase();
+    const sz = f.size<1048576 ? (f.size/1024).toFixed(1)+' KB' : (f.size/1048576).toFixed(1)+' MB';
+    document.getElementById('vFileIco').textContent = fileIcos[ext]||'📎';
+    document.getElementById('vFileName').textContent = f.name;
+    document.getElementById('vFileSize').textContent = ext.toUpperCase()+' · '+sz;
+    document.getElementById('vFilePrev').classList.add('vis');
+    document.getElementById('vUpZone').style.display = 'none';
+  }
+  window.vOnFile = function(e) { if (e.target.files[0]) vSetFile(e.target.files[0]); };
+  window.vDragOver = function(e) { e.preventDefault(); document.getElementById('vUpZone').classList.add('drag'); };
+  window.vDragLeave = function() { document.getElementById('vUpZone').classList.remove('drag'); };
+  window.vDrop = function(e) { e.preventDefault(); document.getElementById('vUpZone').classList.remove('drag'); if (e.dataTransfer.files[0]) vSetFile(e.dataTransfer.files[0]); };
+  window.vRemoveFile = function() {
+    vd.file=null; document.getElementById('vFile').value='';
+    document.getElementById('vFilePrev').classList.remove('vis');
+    document.getElementById('vUpZone').style.display='block';
+  };
+
+  // summary
+  function vBuildSummary() {
+    const rows = [
+      {l:'Nome', v:vd.nome}, {l:'Data', v:vd.data}, {l:'Local', v:vd.local}, {l:'Atestado', v:vd.atestado},
+    ];
+    if (vd.atestado==='Sim'&&vd.file) rows.push({l:'Arquivo', v:'📎 '+vd.file.name});
+    rows.push({l:'Referente', v:vd.referente},{l:'Descrição', v:vd.descricao});
+    document.getElementById('vSummary').innerHTML = rows.map(r=>`
+      <div class="v-sum-item"><span class="v-sum-lbl">${r.l}</span><span class="v-sum-val">${r.v}</span></div>
+    `).join('');
+  }
+
+  const WEBHOOK_URL = "https://script.google.com/macros/s/AKfycbw3FmQjJUADNuj5E_T24LCOLKj5L6BiMb3YfpVfz50FdLCwBedqIo4MIothZrPR32c/exec";
+
+  window.vSubmit = async function() {
+    // Botão de envio: mostrar loading
+    const btnEnviar = document.querySelector('#vs6 .v-next');
+    btnEnviar.textContent = 'Enviando...';
+    btnEnviar.disabled = true;
+
+    try {
+      // Monta payload base
+      const payload = {
+        nome:      vd.nome,
+        data:      vd.data,
+        local:     vd.local,
+        atestado:  vd.atestado,
+        referente: vd.referente,
+        descricao: vd.descricao
+      };
+
+      // Se tiver arquivo de atestado, converte para base64
+      if (vd.file) {
+        const base64 = await fileToBase64(vd.file);
+        payload.arquivo_base64 = base64;
+        payload.arquivo_nome   = vd.file.name;
+        payload.arquivo_tipo   = vd.file.type || 'application/octet-stream';
+      }
+
+      const resp = await fetch(WEBHOOK_URL, {
+        method: 'POST',
+        body: JSON.stringify(payload)
+      });
+
+      const resultado = await resp.json();
+
+      if (resultado.ok) {
+        vShow(7); // sucesso
+      } else {
+        throw new Error(resultado.mensagem || 'Erro desconhecido');
+      }
+
+    } catch (err) {
+      btnEnviar.textContent = 'Enviar ✓';
+      btnEnviar.disabled = false;
+      alert('Erro ao enviar: ' + err.message + '\nVerifique sua conexão e tente novamente.');
+    }
+  };
+
+  // Converte File para string base64
+  function fileToBase64(file) {
+    return new Promise((resolve, reject) => {
+      const reader = new FileReader();
+      reader.onload  = () => resolve(reader.result.split(',')[1]);
+      reader.onerror = reject;
+      reader.readAsDataURL(file);
+    });
+  }
+  window.vReset = function() {
+    Object.assign(vd,{nome:'',data:'',local:'',atestado:'',file:null,referente:'',descricao:''});
+    document.querySelectorAll('#vozModalInner .v-opt').forEach(b=>b.classList.remove('sel'));
+    document.querySelectorAll('#vozModalInner .v-radio').forEach(b=>b.classList.remove('sel'));
+    document.getElementById('vDate').value='';
+    document.getElementById('vDesc').value='';
+    document.getElementById('vFile').value='';
+    document.getElementById('vFilePrev').classList.remove('vis');
+    document.getElementById('vUpZone').style.display='block';
+    [1,2,3,4,5].forEach(n=>{
+      const t=document.getElementById('vTx'+n);
+      if(t){t.className='v-tx ph';}
+    });
+    vShow(1);
+  };
+
+  // transcript helper
+  function vSetTx(s, text, ph=false) {
+    const el = document.getElementById('vTx'+s);
+    if (!el) return;
+    el.textContent = text;
+    el.className = 'v-tx ' + (ph ? 'ph' : 'has');
+  }
+
+  // ── Voice recognition ──
+  const SR = window.SpeechRecognition || window.webkitSpeechRecognition;
+  let vRec = null;
+
+  window.vStartVoice = function(step) {
+    if (!SR) return;
+    if (vRec) vRec.stop();
+    const btn = document.getElementById('vMic'+step);
+    const lbl = document.getElementById('vLbl'+step);
+    vRec = new SR();
+    vRec.lang='pt-BR'; vRec.interimResults=true; vRec.continuous=false;
+    let vFinalText = '';
+    vRec.onstart = () => { btn.classList.add('listening'); lbl.textContent='ouvindo...'; vSetTx(step,'🎙 Ouvindo...',true); };
+    vRec.onresult = e => { vFinalText=Array.from(e.results).map(r=>r[0].transcript).join(''); vSetTx(step,vFinalText,false); };
+    vRec.onend = () => {
+      btn.classList.remove('listening'); lbl.textContent='toque para falar';
+      if (vFinalText && vFinalText!=='🎙 Ouvindo...') vProcessVoice(step, vFinalText.trim());
+    };
+    vRec.onerror = () => { btn.classList.remove('listening'); lbl.textContent='toque para falar'; vSetTx(step,'Não consegui ouvir. Tente novamente.',true); };
+    vRec.start();
+  };
+
+  function vProcessVoice(step, text) {
+    const low = text.toLowerCase();
+    if (step===1) {
+      const ns=['amanda','cassiane','danusa','gabriela','giovana','fernando','leonardo','lucas','patrícia','patricia','lyah','yanka'];
+      const f=ns.find(n=>low.includes(n));
+      if (f) {
+        const lbl=f==='patricia'?'Patrícia':f.charAt(0).toUpperCase()+f.slice(1);
+        const match=f==='gabriela'?'GabrielaA':lbl;
+        vd.nome=match;
+        document.querySelectorAll('#vs1 .v-opt').forEach(b=>{ b.classList.toggle('sel',b.textContent===match); });
+        vSetTx(1,match,false);
+      } else { vd.nome=text; vSetTx(1,text,false); }
+    }
+    if (step==='2b') {
+      if (low.includes('ubs') || low.includes('sansca')) vSelLocal('UBS Sansca');
+      else if (low.includes('especialidades') || low.includes('centro')) vSelLocal('Centro de Especialidades');
+      else vSelLocal('Outro');
+    }
+    if (step===3) {
+      if (low.includes('sim')||low.includes('yes')) vSelAtestado('Sim');
+      else if (low.includes('não')||low.includes('nao')||low.includes('no')) vSelAtestado('Não');
+    }
+    if (step===4) {
+      if (low.includes('adrize')) vSelRefByName('Adrize');
+      else if (low.includes('alejandro')) vSelRefByName('Alejandro');
+      else if (low.includes('gabriela')) vSelRefByName('Gabriela S');
+      else if (low.includes('lilian')) vSelRefByName('Lilian');
+      else if (low.includes('viviane')) vSelRefByName('Viviane');
+      else { vd.referente=text; vSetTx(4,text,false); }
+    }
+    if (step===5) { document.getElementById('vDesc').value=text; vd.descricao=text; }
+  }
+
+  function vSelRefByName(v) {
+    vd.referente=v;
+    document.querySelectorAll('#vs4 .v-opt').forEach(b=>b.classList.toggle('sel',b.textContent===v));
+    vSetTx(4,v,false);
+  }
+        </div><!-- /actions -->
+
+</body>
+</html>
