@@ -171,7 +171,426 @@ img {
    style="cursor: pointer; display: inline-block; text-decoration: none;">
    Consultar
 </a>
+        </div><!-- /actions -->
 
+<div id="espelho-leitura" style="display: none; margin-top: 15px; width: 100%; overflow: hidden; border-radius: 8px; border: 1px solid #e0e0e0;">
+  <iframe 
+    src="https://docs.google.com/spreadsheets/d/18REvxjBDH_JJE1Ckom7zQWk9I7KvK7f53U78S3t9DIU/preview?gid=0&range=a1:g14&rm=minimal&chrome=false" 
+    width="100%" 
+    height="450" 
+    style="border: none;"
+    frameborder="0">
+  </iframe>
+</div>
+
+<script>
+function alternarTabela() {
+  var x = document.getElementById("espelho-leitura");
+  if (x.style.display === "none") {
+    x.style.display = "block";
+  } else {
+    x.style.display = "none";
+  }
+}
+</script>
+
+      </div><!-- /card Presença Semanal -->
+      <div class="card">
+        <h2>Formulário de Acompanhamento de Pacientes</h2>
+        <p>Entrada padronizada de informações para acompanhamento (Google Forms).</p>
+        <div class="actions">
+          <a class="btn primary" href="https://docs.google.com/forms/d/e/1FAIpQLScKWMEI2d3jTdq4bmb51YBU_OhCFMZ-7_ZUKcoCtqqXTMi2iA/viewform" target="_blank" rel="noopener">Formulário</a>
+        </div>
+      </div>
+
+      <div class="card">
+        <h2>Casos Clínicos por Monitor</h2>
+        <p>Modelo para organizar casos clínicos por monitor (Google Docs).</p>
+        <div class="actions">
+          <a class="btn primary" href="https://docs.google.com/document/d/16ebyYsXrgiGqdDzoZU5Dr5bFX-qckbZPra2cmWWwfr4/edit?tab=t.0" target="_blank" rel="noopener">Modelo</a>
+        </div>
+      </div>
+
+    <div class="card">
+        <h2>Publicações</h2>
+        <p>Livros, Capítulos e Artigos elaborados </p>
+        <div class="actions">
+          <a class="btn primary" href="html\info\publica\publica.html" target="_blank" rel="noopener">Publica</a>
+        </div>
+      </div>
+
+      <div class="card">
+        <h2>Planejamento de Posts</h2>
+        <p>Planejamento dos posts e Instagram do G10.</p>
+        <div class="actions">
+          <a class="btn" href="https://docs.google.com/spreadsheets/d/1cOY6WQshQ0fB3iJjJjWonBm5_sLYTgcCfVesYj8EhYg/edit?usp=sharing" target="_blank" rel="noopener">Planeja Insta</a>
+          <a class="btn primary" href="https://www.instagram.com/g10petsaude/" target="_blank" rel="noopener">Instagram</a>
+        </div>
+      </div>
+
+      <div class="card">
+        <h2>Protocolo de Presença</h2>
+        <p>Protocolo de presença G10.</p>
+        <div class="actions">
+          <a class="btn primary" href="protocolo.presenca.html" target="_blank" rel="noopener">Protocolo</a>
+        </div>
+      </div>
+
+      <div class="card">
+        <h2>E-projeto (UFPel)</h2>
+        <p>Acesso rápido ao sistema E-projeto da UFPel.</p>
+        <div class="actions">
+          <a class="btn primary" href="https://e-projeto.ufpel.edu.br/" target="_blank" rel="noopener">E-projeto</a>
+        </div>
+      </div>
+ <div class="card">
+        <h2>Sistemas</h2>
+        <p>Sistemas em Desenvolvimento pelo G10</p>
+        <div class="actions">
+          <a class="btn primary" href="sistemas.html" target="_blank" rel="noopener">Sistemas G10</a>
+        </div>
+      </div>
+
+      <div class="card">
+        <h2>Infográficos elaborado pelo G10 </h2>
+        <p>Infográficos elaborados</p>
+        <div class="actions">
+          <a class="btn primary" href="infograficos.html" target="_blank" rel="noopener">Infográficos</a>
+        </div>
+      </div>
+
+<div class="card">
+        <h2>Atividades</h2>
+        <p>Planilha Excel Operacional PET G10.</p>
+        <div class="actions">
+          <a class="btn primary" href="https://1drv.ms/x/c/08D9660237E4E0BA/IQC5lJvVOi4wSbG80cgLJVb0Adilc_nfEjUfAlntGZAHc9U?e=PxsM5U" target="_blank" rel="noopener">Planilha (OneDrive)</a>
+         <a class="btn primary" href="atividades.html" target="_blank" rel="noopener">Atividades Equipe</a>
+        </div>
+      </div>
+
+  <div class="card">
+        <h2>Apresentações & Divulgação  </h2>
+        <p>Material de apresentações e divulgação ao público, realizadas pela equipe</p>
+        <div class="actions">
+          <a class="btn primary" href="html/info/apresenta/material.html" target="_blank" rel="noopener">Material</a>
+        </div>
+      </div>
+
+<div class="card span-2">
+  <h2>Organização presencial 2026-1</h2>
+
+  <style>
+    .tabela-turnos-wrapper {
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+      margin-top: 10px;
+    }
+
+    .tabela-turnos table {
+      width: 100%;
+      min-width: 820px;
+      border-collapse: collapse;
+      margin-top: 0;
+    }
+
+    .tabela-turnos thead {
+      background: #e3edf9;
+    }
+
+    .tabela-turnos th {
+      padding: 12px;
+      text-align: left;
+      font-size: 0.9rem;
+      color: #1f3b63;
+      border-bottom: 2px solid #c5d4e8;
+      white-space: nowrap;
+    }
+
+    .tabela-turnos td {
+      padding: 12px;
+      vertical-align: top;
+      border-bottom: 1px solid #e6ecf3;
+      font-size: 0.9rem;
+    }
+
+    .tabela-turnos .turno {
+      font-weight: bold;
+      background: #f0f5fc;
+      color: #1f3b63;
+      width: 120px;
+      white-space: nowrap;
+    }
+
+    .tabela-turnos .bloco {
+      margin-bottom: 8px;
+    }
+
+    .tabela-turnos .bloco:last-child {
+      margin-bottom: 0;
+    }
+
+    .tabela-turnos .tag {
+      display: inline-block;
+      background: #dbe8fb;
+      color: #1f3b63;
+      padding: 2px 6px;
+      border-radius: 6px;
+      font-size: 0.75rem;
+      margin-bottom: 4px;
+    }
+
+    .cards-turnos {
+      display: none;
+      margin-top: 10px;
+      gap: 12px;
+    }
+
+    .cards-turnos .dia-card {
+      background: #f8fbff;
+      border: 1px solid #dbe6f2;
+      border-radius: 12px;
+      padding: 14px;
+      margin-bottom: 12px;
+    }
+
+    .cards-turnos .dia-card h3 {
+      margin: 0 0 12px;
+      font-size: 1rem;
+      color: #1f3b63;
+    }
+
+    .cards-turnos .turno-card {
+      border-top: 1px solid #e6ecf3;
+      padding-top: 10px;
+      margin-top: 10px;
+    }
+
+    .cards-turnos .turno-card:first-of-type {
+      border-top: 0;
+      padding-top: 0;
+      margin-top: 0;
+    }
+
+    .cards-turnos .turno-card strong.turno-titulo {
+      display: block;
+      color: #0f172a;
+      margin-bottom: 8px;
+      font-size: 0.95rem;
+    }
+
+    .cards-turnos .bloco {
+      margin-bottom: 10px;
+    }
+
+    .cards-turnos .bloco:last-child {
+      margin-bottom: 0;
+    }
+
+    @media (max-width: 768px) {
+      .tabela-turnos-wrapper {
+        display: none;
+      }
+
+      .cards-turnos {
+        display: block;
+      }
+    }
+  </style>
+
+  <div class="tabela-turnos-wrapper">
+    <div class="tabela-turnos">
+      <table>
+        <thead>
+          <tr>
+            <th>Turno</th>
+            <th>Terça-feira</th>
+            <th>Quarta-feira</th>
+            <th>Quinta-feira</th>
+            <th>Sexta-feira</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <tr>
+            <td class="turno">Manhã</td>
+
+            <td>
+              <div class="bloco">
+                <span class="tag">Centro de Especialidades</span><br>
+                <strong>Prec. Lilian</strong><br>
+                Giovana, Lyah, Lucas e Yanka
+              </div>
+            </td>
+
+            <td>
+              <div class="bloco">
+                <span class="tag">UBS Sansca - VD</span><br>
+                <strong>Prec. Gabriela</strong><br>
+                Cassiane
+              </div>
+            </td>
+
+            <td></td>
+
+            <td></td>
+          </tr>
+
+          <tr>
+            <td class="turno">Tarde</td>
+
+            <td>
+              <div class="bloco">
+                <span class="tag">UBS Sansca - VD / Acompanhamento</span><br>
+                <strong>Prec. Gabriela</strong><br>
+                Gabriela A
+              </div>
+
+              <div class="bloco">
+                <span class="tag">Centro de Especialidades</span><br>
+                <strong>Prec. Lilian</strong><br>
+                Patrícia
+              </div>
+            </td>
+
+            <td>
+              <div class="bloco"></div>
+            </td>
+
+            <td>
+              <div class="bloco">
+                <span class="tag">Videoconferência</span><br>
+                quinta-feira à tarde, videoconferência<br>
+                <em>comunicada quando acontece, sob aviso</em>
+              </div>
+            </td>
+
+            <td>
+              <div class="bloco">
+                <span class="tag">UBS Sansca - Procedimentos e VD</span><br>
+                <strong>Coord. Adrize</strong><br>
+                <strong>Tutor Alejandro</strong><br>
+                Amanda, Danusa, Fernando, Leonardo
+              </div>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <div class="cards-turnos">
+    <div class="dia-card">
+      <h3>Terça-feira</h3>
+
+      <div class="turno-card">
+        <strong class="turno-titulo">Manhã</strong>
+        <div class="bloco">
+          <span class="tag">Centro de Especialidades</span><br>
+          <strong>Prec. Lilian</strong><br>
+          Giovana, Lyah, Lucas e Yanka
+        </div>
+      </div>
+
+      <div class="turno-card">
+        <strong class="turno-titulo">Tarde</strong>
+        <div class="bloco">
+          <span class="tag">UBS Sansca - VD / Acompanhamento</span><br>
+          <strong>Prec. Gabriela</strong><br>
+          Gabriela A
+        </div>
+        <div class="bloco">
+          <span class="tag">Centro de Especialidades</span><br>
+          <strong>Prec. Lilian</strong><br>
+          Patrícia
+        </div>
+      </div>
+    </div>
+
+    <div class="dia-card">
+      <h3>Quarta-feira</h3>
+
+      <div class="turno-card">
+        <strong class="turno-titulo">Manhã</strong>
+        <div class="bloco">
+          <span class="tag">UBS Sansca - VD</span><br>
+          <strong>Prec. Gabriela</strong><br>
+          Cassiane
+        </div>
+      </div>
+
+      <div class="turno-card">
+        <strong class="turno-titulo">Tarde</strong>
+        <div class="bloco">
+          <em>Sem atividade fixa informada.</em>
+        </div>
+      </div>
+    </div>
+
+    <div class="dia-card">
+      <h3>Quinta-feira</h3>
+
+      <div class="turno-card">
+        <strong class="turno-titulo">Tarde</strong>
+        <div class="bloco">
+          <span class="tag">Videoconferência</span><br>
+          quinta-feira à tarde, videoconferência<br>
+          <em>comunicada quando acontece, sob aviso</em>
+        </div>
+      </div>
+    </div>
+
+    <div class="dia-card">
+      <h3>Sexta-feira</h3>
+
+      <div class="turno-card">
+        <strong class="turno-titulo">Tarde</strong>
+        <div class="bloco">
+          <span class="tag">UBS Sansca - Procedimentos e VD</span><br>
+          <strong>Coord. Adrize</strong><br>
+          <strong>Tutor Alejandro</strong><br>
+          Amanda, Danusa, Fernando, Leonardo
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<div class="card span-2">
+        <h2>Agenda</h2>
+        <p>Calendário do G10 (visão operacional).</p>
+        <div style="border:1px solid var(--border); border-radius:12px; overflow:hidden; background:#fff;">
+          <iframe
+  width="100%"
+  height="720"
+  style="border:0;"
+  src="https://calendar.google.com/calendar/embed?height=720&amp;wkst=1&amp;bgcolor=%23ffffff&amp;ctz=America%2FSao_Paulo&amp;showTitle=1&amp;showNav=1&amp;showDate=1&amp;showPrint=1&amp;showTabs=1&amp;showCalendars=1&amp;showTz=1&amp;mode=MONTH&amp;src=d3059915e02e37a7cec0fc73b0127050372119e1baf89ac451d19ae5c66ec9f9%40group.calendar.google.com&amp;color=%23039BE5&amp;src=pt.brazilian%23holiday%40group.v.calendar.google.com&amp;color=%23009688">
+</iframe>
+
+<div class="actions" style="margin-top:12px;">
+  <a class="btn primary" target="_blank" rel="noopener"
+     href="https://calendar.google.com/calendar/u/0/r?cid=d3059915e02e37a7cec0fc73b0127050372119e1baf89ac451d19ae5c66ec9f9%40group.calendar.google.com">
+    Abrir agenda do G10 no Google
+  </a>
+
+  <a class="btn" target="_blank" rel="noopener"
+     href="https://calendar.google.com/calendar/u/0/r?cid=pt.brazilian%23holiday%40group.v.calendar.google.com">
+    Abrir feriados do Brasil no Google
+  </a>
+</div>
+
+        </div>
+      </div>
+    </section>
+
+    <div class="hint">
+      <strong>Como usar:</strong> salve este arquivo como <code class="k">g10-central.html</code> e abra no navegador.
+    </div>
+
+    <footer>
+      PET-Saúde UFPel · G10 Telemonitoramento de Feridas Crônicas · 
+    </footer>
+  </div>
 <!-- ════════════════════════════════════════
      MODAL – REGISTRO POR VOZ
 ════════════════════════════════════════ -->
@@ -874,428 +1293,7 @@ img {
     document.querySelectorAll('#vs4 .v-opt').forEach(b=>b.classList.toggle('sel',b.textContent===v));
     vSetTx(4,v,false);
   }
-})();
-</script>
+        </div><!-- /actions -->
 
-<div id="espelho-leitura" style="display: none; margin-top: 15px; width: 100%; overflow: hidden; border-radius: 8px; border: 1px solid #e0e0e0;">
-  <iframe 
-    src="https://docs.google.com/spreadsheets/d/18REvxjBDH_JJE1Ckom7zQWk9I7KvK7f53U78S3t9DIU/preview?gid=0&range=a1:g14&rm=minimal&chrome=false" 
-    width="100%" 
-    height="450" 
-    style="border: none;"
-    frameborder="0">
-  </iframe>
-</div>
-
-<script>
-function alternarTabela() {
-  var x = document.getElementById("espelho-leitura");
-  if (x.style.display === "none") {
-    x.style.display = "block";
-  } else {
-    x.style.display = "none";
-  }
-}
-</script>
-
-
-
-    <section class="grid">
-      <div class="card">
-        <h2>Formulário de Acompanhamento de Pacientes</h2>
-        <p>Entrada padronizada de informações para acompanhamento (Google Forms).</p>
-        <div class="actions">
-          <a class="btn primary" href="https://docs.google.com/forms/d/e/1FAIpQLScKWMEI2d3jTdq4bmb51YBU_OhCFMZ-7_ZUKcoCtqqXTMi2iA/viewform" target="_blank" rel="noopener">Formulário</a>
-        </div>
-      </div>
-
-      <div class="card">
-        <h2>Casos Clínicos por Monitor</h2>
-        <p>Modelo para organizar casos clínicos por monitor (Google Docs).</p>
-        <div class="actions">
-          <a class="btn primary" href="https://docs.google.com/document/d/16ebyYsXrgiGqdDzoZU5Dr5bFX-qckbZPra2cmWWwfr4/edit?tab=t.0" target="_blank" rel="noopener">Modelo</a>
-        </div>
-      </div>
-
-    <div class="card">
-        <h2>Publicações</h2>
-        <p>Livros, Capítulos e Artigos elaborados </p>
-        <div class="actions">
-          <a class="btn primary" href="html\info\publica\publica.html" target="_blank" rel="noopener">Publica</a>
-        </div>
-      </div>
-
-      <div class="card">
-        <h2>Planejamento de Posts</h2>
-        <p>Planejamento dos posts e Instagram do G10.</p>
-        <div class="actions">
-          <a class="btn" href="https://docs.google.com/spreadsheets/d/1cOY6WQshQ0fB3iJjJjWonBm5_sLYTgcCfVesYj8EhYg/edit?usp=sharing" target="_blank" rel="noopener">Planeja Insta</a>
-          <a class="btn primary" href="https://www.instagram.com/g10petsaude/" target="_blank" rel="noopener">Instagram</a>
-        </div>
-      </div>
-
-      <div class="card">
-        <h2>Protocolo de Presença</h2>
-        <p>Protocolo de presença G10.</p>
-        <div class="actions">
-          <a class="btn primary" href="protocolo.presenca.html" target="_blank" rel="noopener">Protocolo</a>
-        </div>
-      </div>
-
-      <div class="card">
-        <h2>E-projeto (UFPel)</h2>
-        <p>Acesso rápido ao sistema E-projeto da UFPel.</p>
-        <div class="actions">
-          <a class="btn primary" href="https://e-projeto.ufpel.edu.br/" target="_blank" rel="noopener">E-projeto</a>
-        </div>
-      </div>
- <div class="card">
-        <h2>Sistemas</h2>
-        <p>Sistemas em Desenvolvimento pelo G10</p>
-        <div class="actions">
-          <a class="btn primary" href="sistemas.html" target="_blank" rel="noopener">Sistemas G10</a>
-        </div>
-      </div>
-
-      <div class="card">
-        <h2>Infográficos elaborado pelo G10 </h2>
-        <p>Infográficos elaborados</p>
-        <div class="actions">
-          <a class="btn primary" href="infograficos.html" target="_blank" rel="noopener">Infográficos</a>
-        </div>
-      </div>
-
-<div class="card">
-        <h2>Atividades</h2>
-        <p>Planilha Excel Operacional PET G10.</p>
-        <div class="actions">
-          <a class="btn primary" href="https://1drv.ms/x/c/08D9660237E4E0BA/IQC5lJvVOi4wSbG80cgLJVb0Adilc_nfEjUfAlntGZAHc9U?e=PxsM5U" target="_blank" rel="noopener">Planilha (OneDrive)</a>
-         <a class="btn primary" href="atividades.html" target="_blank" rel="noopener">Atividades Equipe</a>
-        </div>
-      </div>
-
-  <div class="card">
-        <h2>Apresentações & Divulgação  </h2>
-        <p>Material de apresentações e divulgação ao público, realizadas pela equipe</p>
-        <div class="actions">
-          <a class="btn primary" href="html/info/apresenta/material.html" target="_blank" rel="noopener">Material</a>
-        </div>
-      </div>
-
-<div class="card span-2">
-  <h2>Organização presencial 2026-1</h2>
-
-  <style>
-    .tabela-turnos-wrapper {
-      overflow-x: auto;
-      -webkit-overflow-scrolling: touch;
-      margin-top: 10px;
-    }
-
-    .tabela-turnos table {
-      width: 100%;
-      min-width: 820px;
-      border-collapse: collapse;
-      margin-top: 0;
-    }
-
-    .tabela-turnos thead {
-      background: #e3edf9;
-    }
-
-    .tabela-turnos th {
-      padding: 12px;
-      text-align: left;
-      font-size: 0.9rem;
-      color: #1f3b63;
-      border-bottom: 2px solid #c5d4e8;
-      white-space: nowrap;
-    }
-
-    .tabela-turnos td {
-      padding: 12px;
-      vertical-align: top;
-      border-bottom: 1px solid #e6ecf3;
-      font-size: 0.9rem;
-    }
-
-    .tabela-turnos .turno {
-      font-weight: bold;
-      background: #f0f5fc;
-      color: #1f3b63;
-      width: 120px;
-      white-space: nowrap;
-    }
-
-    .tabela-turnos .bloco {
-      margin-bottom: 8px;
-    }
-
-    .tabela-turnos .bloco:last-child {
-      margin-bottom: 0;
-    }
-
-    .tabela-turnos .tag {
-      display: inline-block;
-      background: #dbe8fb;
-      color: #1f3b63;
-      padding: 2px 6px;
-      border-radius: 6px;
-      font-size: 0.75rem;
-      margin-bottom: 4px;
-    }
-
-    .cards-turnos {
-      display: none;
-      margin-top: 10px;
-      gap: 12px;
-    }
-
-    .cards-turnos .dia-card {
-      background: #f8fbff;
-      border: 1px solid #dbe6f2;
-      border-radius: 12px;
-      padding: 14px;
-      margin-bottom: 12px;
-    }
-
-    .cards-turnos .dia-card h3 {
-      margin: 0 0 12px;
-      font-size: 1rem;
-      color: #1f3b63;
-    }
-
-    .cards-turnos .turno-card {
-      border-top: 1px solid #e6ecf3;
-      padding-top: 10px;
-      margin-top: 10px;
-    }
-
-    .cards-turnos .turno-card:first-of-type {
-      border-top: 0;
-      padding-top: 0;
-      margin-top: 0;
-    }
-
-    .cards-turnos .turno-card strong.turno-titulo {
-      display: block;
-      color: #0f172a;
-      margin-bottom: 8px;
-      font-size: 0.95rem;
-    }
-
-    .cards-turnos .bloco {
-      margin-bottom: 10px;
-    }
-
-    .cards-turnos .bloco:last-child {
-      margin-bottom: 0;
-    }
-
-    @media (max-width: 768px) {
-      .tabela-turnos-wrapper {
-        display: none;
-      }
-
-      .cards-turnos {
-        display: block;
-      }
-    }
-  </style>
-
-  <div class="tabela-turnos-wrapper">
-    <div class="tabela-turnos">
-      <table>
-        <thead>
-          <tr>
-            <th>Turno</th>
-            <th>Terça-feira</th>
-            <th>Quarta-feira</th>
-            <th>Quinta-feira</th>
-            <th>Sexta-feira</th>
-          </tr>
-        </thead>
-
-        <tbody>
-          <tr>
-            <td class="turno">Manhã</td>
-
-            <td>
-              <div class="bloco">
-                <span class="tag">Centro de Especialidades</span><br>
-                <strong>Prec. Lilian</strong><br>
-                Giovana, Lyah, Lucas e Yanka
-              </div>
-            </td>
-
-            <td>
-              <div class="bloco">
-                <span class="tag">UBS Sansca - VD</span><br>
-                <strong>Prec. Gabriela</strong><br>
-                Cassiane
-              </div>
-            </td>
-
-            <td></td>
-
-            <td></td>
-          </tr>
-
-          <tr>
-            <td class="turno">Tarde</td>
-
-            <td>
-              <div class="bloco">
-                <span class="tag">UBS Sansca - VD / Acompanhamento</span><br>
-                <strong>Prec. Gabriela</strong><br>
-                Gabriela A
-              </div>
-
-              <div class="bloco">
-                <span class="tag">Centro de Especialidades</span><br>
-                <strong>Prec. Lilian</strong><br>
-                Patrícia
-              </div>
-            </td>
-
-            <td>
-              <div class="bloco"></div>
-            </td>
-
-            <td>
-              <div class="bloco">
-                <span class="tag">Videoconferência</span><br>
-                quinta-feira à tarde, videoconferência<br>
-                <em>comunicada quando acontece, sob aviso</em>
-              </div>
-            </td>
-
-            <td>
-              <div class="bloco">
-                <span class="tag">UBS Sansca - Procedimentos e VD</span><br>
-                <strong>Coord. Adrize</strong><br>
-                <strong>Tutor Alejandro</strong><br>
-                Amanda, Danusa, Fernando, Leonardo
-              </div>
-            </td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
-  </div>
-
-  <div class="cards-turnos">
-    <div class="dia-card">
-      <h3>Terça-feira</h3>
-
-      <div class="turno-card">
-        <strong class="turno-titulo">Manhã</strong>
-        <div class="bloco">
-          <span class="tag">Centro de Especialidades</span><br>
-          <strong>Prec. Lilian</strong><br>
-          Giovana, Lyah, Lucas e Yanka
-        </div>
-      </div>
-
-      <div class="turno-card">
-        <strong class="turno-titulo">Tarde</strong>
-        <div class="bloco">
-          <span class="tag">UBS Sansca - VD / Acompanhamento</span><br>
-          <strong>Prec. Gabriela</strong><br>
-          Gabriela A
-        </div>
-        <div class="bloco">
-          <span class="tag">Centro de Especialidades</span><br>
-          <strong>Prec. Lilian</strong><br>
-          Patrícia
-        </div>
-      </div>
-    </div>
-
-    <div class="dia-card">
-      <h3>Quarta-feira</h3>
-
-      <div class="turno-card">
-        <strong class="turno-titulo">Manhã</strong>
-        <div class="bloco">
-          <span class="tag">UBS Sansca - VD</span><br>
-          <strong>Prec. Gabriela</strong><br>
-          Cassiane
-        </div>
-      </div>
-
-      <div class="turno-card">
-        <strong class="turno-titulo">Tarde</strong>
-        <div class="bloco">
-          <em>Sem atividade fixa informada.</em>
-        </div>
-      </div>
-    </div>
-
-    <div class="dia-card">
-      <h3>Quinta-feira</h3>
-
-      <div class="turno-card">
-        <strong class="turno-titulo">Tarde</strong>
-        <div class="bloco">
-          <span class="tag">Videoconferência</span><br>
-          quinta-feira à tarde, videoconferência<br>
-          <em>comunicada quando acontece, sob aviso</em>
-        </div>
-      </div>
-    </div>
-
-    <div class="dia-card">
-      <h3>Sexta-feira</h3>
-
-      <div class="turno-card">
-        <strong class="turno-titulo">Tarde</strong>
-        <div class="bloco">
-          <span class="tag">UBS Sansca - Procedimentos e VD</span><br>
-          <strong>Coord. Adrize</strong><br>
-          <strong>Tutor Alejandro</strong><br>
-          Amanda, Danusa, Fernando, Leonardo
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-
-
-<div class="card span-2">
-        <h2>Agenda</h2>
-        <p>Calendário do G10 (visão operacional).</p>
-        <div style="border:1px solid var(--border); border-radius:12px; overflow:hidden; background:#fff;">
-          <iframe
-  width="100%"
-  height="720"
-  style="border:0;"
-  src="https://calendar.google.com/calendar/embed?height=720&amp;wkst=1&amp;bgcolor=%23ffffff&amp;ctz=America%2FSao_Paulo&amp;showTitle=1&amp;showNav=1&amp;showDate=1&amp;showPrint=1&amp;showTabs=1&amp;showCalendars=1&amp;showTz=1&amp;mode=MONTH&amp;src=d3059915e02e37a7cec0fc73b0127050372119e1baf89ac451d19ae5c66ec9f9%40group.calendar.google.com&amp;color=%23039BE5&amp;src=pt.brazilian%23holiday%40group.v.calendar.google.com&amp;color=%23009688">
-</iframe>
-
-<div class="actions" style="margin-top:12px;">
-  <a class="btn primary" target="_blank" rel="noopener"
-     href="https://calendar.google.com/calendar/u/0/r?cid=d3059915e02e37a7cec0fc73b0127050372119e1baf89ac451d19ae5c66ec9f9%40group.calendar.google.com">
-    Abrir agenda do G10 no Google
-  </a>
-
-  <a class="btn" target="_blank" rel="noopener"
-     href="https://calendar.google.com/calendar/u/0/r?cid=pt.brazilian%23holiday%40group.v.calendar.google.com">
-    Abrir feriados do Brasil no Google
-  </a>
-</div>
-
-        </div>
-      </div>
-    </section>
-
-    <div class="hint">
-      <strong>Como usar:</strong> salve este arquivo como <code class="k">g10-central.html</code> e abra no navegador.
-    </div>
-
-    <footer>
-      PET-Saúde UFPel · G10 Telemonitoramento de Feridas Crônicas · 
-    </footer>
-  </div>
 </body>
 </html>
