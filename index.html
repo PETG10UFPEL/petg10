@@ -715,9 +715,9 @@ function alternarTabela() {
     <div class="vmic"><button class="vmicb" id="vMic2c" onclick="vStartVoice('2c')"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#3b82c4" stroke-width="2"><path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"/><path d="M19 10v2a7 7 0 0 1-14 0v-2"/><line x1="12" y1="19" x2="12" y2="23"/><line x1="8" y1="23" x2="16" y2="23"/></svg></button><span class="vmiclbl" id="vLbl2c">toque para falar</span></div>
     <div class="vtx ph" id="vTx2c">Diga "manhã", "tarde" ou "noite"...</div>
     <div class="vrgrp">
-      <div class="vrad" id="vPManha" onclick="vSelPeriodo('manhã')">Manhã</div>
-      <div class="vrad" id="vPTarde" onclick="vSelPeriodo('tarde')">Tarde</div>
-      <div class="vrad" id="vPNoite" onclick="vSelPeriodo('noite')">Noite</div>
+      <div class="vrad" data-periodo="manhã" onclick="vSelPeriodo('manhã')">Manhã</div>
+      <div class="vrad" data-periodo="tarde" onclick="vSelPeriodo('tarde')">Tarde</div>
+      <div class="vrad" data-periodo="noite" onclick="vSelPeriodo('noite')">Noite</div>
     </div>
     <p class="verr" id="vErr2c">Por favor, selecione ou diga o período.</p>
     <div class="vnav"><button class="vbk" onclick="vBack('2c')">← Voltar</button><button class="vnxt" onclick="vNext('2c')">Continuar →</button></div>
@@ -812,8 +812,8 @@ function alternarTabela() {
   function vShow(s){
     document.querySelectorAll('#vozModalInner .vstep').forEach(el=>el.classList.remove('active'));
     document.getElementById('vs'+s).classList.add('active');
-    const map={1:14,2:28,'2b':42,3:56,'3b':60,4:72,5:84,6:96,7:100};
-    document.getElementById('vProg').style.width=(map[s]||14)+'%';
+    const map={1:12,2:24,'2b':36,'2c':48,3:58,'3b':62,4:74,5:86,6:96,7:100};
+    document.getElementById('vProg').style.width=(map[s]||12)+'%';
     document.getElementById('vozModalInner').scrollTop=0;
   }
 
@@ -821,50 +821,69 @@ function alternarTabela() {
   window.fecharVoz=function(){document.getElementById('vozModal').style.display='none';document.body.style.overflow='';};
 
   function vNextS(c){
+    if(c===1) return 2;
     if(c===2) return '2b';
     if(c==='2b') return '2c';
     if(c==='2c') return 3;
     if(c===3) return vd.atestado==='Sim'?'3b':4;
     if(c==='3b') return 4;
+    if(c===4) return 5;
     if(c===5) return 6;
-    return Number(c)+1;
+    return 6;
   }
   function vPrevS(c){
+    if(c===2) return 1;
     if(c==='2b') return 2;
     if(c==='2c') return '2b';
     if(c===3) return '2c';
     if(c===4) return vd.atestado==='Sim'?'3b':3;
     if(c==='3b') return 3;
-    return Number(c)-1;
+    if(c===5) return 4;
+    if(c===6) return 5;
+    return 1;
   }
 
   window.vNext=function(c){if(!vVal(c))return;const n=vNextS(c);if(n===6)vBuildSum();vShow(n);};
   window.vBack=function(c){vShow(vPrevS(c));};
 
   function vVal(s){
+    // Para step 2c, o elemento de erro existe no HTML
     const e=document.getElementById('vErr'+s);
-    e.style.display='none';
-    if(s===1&&!vd.nome){e.style.display='block';return false;}
-    if(s===2&&!vd.data){e.style.display='block';return false;}
+    if(e) e.style.display='none';
+    if(s===1&&!vd.nome){if(e)e.style.display='block';return false;}
+    if(s===2&&!vd.data){if(e)e.style.display='block';return false;}
     if(s==='2b'){
-      // Se Outro selecionado, lê o campo de texto
       const outroInput=document.getElementById('vLocalOutro');
       if(document.getElementById('vLocalOutroBox').style.display!=='none'){
         vd.local=outroInput.value.trim();
       }
-      if(!vd.local){e.style.display='block';return false;}
+      if(!vd.local){if(e)e.style.display='block';return false;}
     }
-    if(s==='2c'&&!vd.periodo){e.style.display='block';return false;}
-    if(s===3&&!vd.atestado){e.style.display='block';return false;}
-    if(s==='3b'&&!vd.file){e.style.display='block';return false;}
-    if(s===4&&!vd.referente){e.style.display='block';return false;}
-    if(s===5){const t=document.getElementById('vDesc').value.trim();if(!t){e.style.display='block';return false;}vd.descricao=t;}
+    if(s==='2c'&&!vd.periodo){if(e)e.style.display='block';return false;}
+    if(s===3&&!vd.atestado){if(e)e.style.display='block';return false;}
+    if(s==='3b'&&!vd.file){if(e)e.style.display='block';return false;}
+    if(s===4&&!vd.referente){if(e)e.style.display='block';return false;}
+    if(s===5){
+      const t=document.getElementById('vDesc').value.trim();
+      if(!t){if(e)e.style.display='block';return false;}
+      vd.descricao=t;
+    }
     return true;
   }
 
-  window.vSelName=function(n){vd.nome=n;document.querySelectorAll('#vs1 .vopt').forEach(b=>b.classList.toggle('sel',b.textContent===n));vSetTx(1,n,false);};
+  window.vSelName=function(n){
+    vd.nome=n;
+    document.querySelectorAll('#vs1 .vopt').forEach(b=>b.classList.toggle('sel',b.textContent===n));
+    vSetTx(1,n,false);
+  };
+
+  window.vOnDate=function(){
+    const v=document.getElementById('vDate').value;
+    if(v){const[y,m,d]=v.split('-');vd.data=d+'/'+m+'/'+y;vSetTx(2,vd.data,false);}
+  };
+
   window.vSelLocal=function(v){
-    document.querySelectorAll('#vs2b .vopt').forEach(b=>b.classList.toggle('sel',b.textContent===( v==='__outro__'?'Outro':v)));
+    document.querySelectorAll('#vs2b .vopt').forEach(b=>b.classList.toggle('sel',b.textContent===(v==='__outro__'?'Outro':v)));
     const outroBox=document.getElementById('vLocalOutroBox');
     const outroInput=document.getElementById('vLocalOutro');
     if(v==='__outro__'){
@@ -878,33 +897,81 @@ function alternarTabela() {
       vSetTx('2b',v,false);
     }
   };
-  window.vSelPeriodo=function(v){vd.periodo=v;['manhã','tarde','noite'].forEach(p=>{const el=document.getElementById('vP'+p.charAt(0).toUpperCase()+p.slice(1));if(el)el.classList.toggle('sel',p===v);});vSetTx('2c',v.charAt(0).toUpperCase()+v.slice(1),false);};
-  window.vSelAtest=function(v){vd.atestado=v;document.getElementById('vRNao').classList.toggle('sel',v==='Não');document.getElementById('vRSim').classList.toggle('sel',v==='Sim');vSetTx(3,v,false);if(v==='Não')vd.file=null;};
-  window.vSelRef=function(v){vd.referente=v;document.querySelectorAll('#vs4 .vopt').forEach(b=>b.classList.toggle('sel',b.textContent===v));vSetTx(4,v,false);};
 
-  window.vOnDate=function(){const v=document.getElementById('vDate').value;if(v){const[y,m,d]=v.split('-');vd.data=`${d}/${m}/${y}`;vSetTx(2,vd.data,false);}};
+  window.vSelPeriodo=function(v){
+    vd.periodo=v;
+    document.querySelectorAll('#vs2c .vrad').forEach(b=>b.classList.toggle('sel',b.dataset.periodo===v));
+    vSetTx('2c',v.charAt(0).toUpperCase()+v.slice(1),false);
+  };
+
+  window.vSelAtest=function(v){
+    vd.atestado=v;
+    document.getElementById('vRNao').classList.toggle('sel',v==='Não');
+    document.getElementById('vRSim').classList.toggle('sel',v==='Sim');
+    vSetTx(3,v,false);
+    if(v==='Não') vd.file=null;
+  };
+
+  window.vSelRef=function(v){
+    vd.referente=v;
+    document.querySelectorAll('#vs4 .vopt').forEach(b=>b.classList.toggle('sel',b.textContent===v));
+    vSetTx(4,v,false);
+  };
 
   const FICOS={pdf:'📕',doc:'📘',docx:'📘',txt:'📄',jpg:'🖼',jpeg:'🖼',png:'🖼',webp:'🖼'};
-  window.vSetFile=function(f){if(!f)return;vd.file=f;const ext=f.name.split('.').pop().toLowerCase();const sz=f.size<1048576?(f.size/1024).toFixed(1)+' KB':(f.size/1048576).toFixed(1)+' MB';document.getElementById('vFileIco').textContent=FICOS[ext]||'📎';document.getElementById('vFileName').textContent=f.name;document.getElementById('vFileSize').textContent=ext.toUpperCase()+' · '+sz;document.getElementById('vFilePrev').classList.add('vis');document.getElementById('vUpZone').style.display='none';};
-  window.vRemFile=function(){vd.file=null;document.getElementById('vFilePrev').classList.remove('vis');document.getElementById('vUpZone').style.display='block';};
+  window.vSetFile=function(f){
+    if(!f) return;
+    vd.file=f;
+    const ext=f.name.split('.').pop().toLowerCase();
+    const sz=f.size<1048576?(f.size/1024).toFixed(1)+' KB':(f.size/1048576).toFixed(1)+' MB';
+    document.getElementById('vFileIco').textContent=FICOS[ext]||'📎';
+    document.getElementById('vFileName').textContent=f.name;
+    document.getElementById('vFileSize').textContent=ext.toUpperCase()+' · '+sz;
+    document.getElementById('vFilePrev').classList.add('vis');
+    document.getElementById('vUpZone').style.display='none';
+  };
+  window.vRemFile=function(){
+    vd.file=null;
+    document.getElementById('vFilePrev').classList.remove('vis');
+    document.getElementById('vUpZone').style.display='block';
+  };
 
   function vBuildSum(){
-    const rows=[{l:'Nome',v:vd.nome},{l:'Data',v:vd.data},{l:'Local',v:vd.local},{l:'Período',v:vd.periodo},{l:'Atestado',v:vd.atestado}];
-    if(vd.atestado==='Sim'&&vd.file)rows.push({l:'Arquivo',v:'📎 '+vd.file.name});
+    const rows=[
+      {l:'Nome',v:vd.nome},{l:'Data',v:vd.data},{l:'Local',v:vd.local},
+      {l:'Período',v:vd.periodo},{l:'Atestado',v:vd.atestado}
+    ];
+    if(vd.atestado==='Sim'&&vd.file) rows.push({l:'Arquivo',v:'📎 '+vd.file.name});
     rows.push({l:'Referente',v:vd.referente},{l:'Descrição',v:vd.descricao});
-    document.getElementById('vSummary').innerHTML=rows.map(r=>`<div class="vsumitem"><span class="vsumlbl">${r.l}</span><span class="vsumval">${r.v}</span></div>`).join('');
+    document.getElementById('vSummary').innerHTML=rows.map(r=>'<div class="vsumitem"><span class="vsumlbl">'+r.l+'</span><span class="vsumval">'+r.v+'</span></div>').join('');
   }
 
   window.vSubmit=async function(){
     const btn=document.getElementById('vBtnEnviar');
     btn.textContent='Enviando...';btn.disabled=true;
     try{
-      const payload={nome:vd.nome,data:vd.data,local:vd.local,periodo:vd.periodo,atestado:vd.atestado,referente:vd.referente,descricao:vd.descricao};
-      if(vd.file){const b64=await new Promise((res,rej)=>{const r=new FileReader();r.onload=()=>res(r.result.split(',')[1]);r.onerror=rej;r.readAsDataURL(vd.file);});payload.arquivo_base64=b64;payload.arquivo_nome=vd.file.name;payload.arquivo_tipo=vd.file.type||'application/octet-stream';}
+      const payload={
+        nome:vd.nome, data:vd.data, local:vd.local, periodo:vd.periodo,
+        atestado:vd.atestado, referente:vd.referente, descricao:vd.descricao
+      };
+      if(vd.file){
+        const b64=await new Promise((res,rej)=>{
+          const r=new FileReader();
+          r.onload=()=>res(r.result.split(',')[1]);
+          r.onerror=rej;
+          r.readAsDataURL(vd.file);
+        });
+        payload.arquivo_base64=b64;
+        payload.arquivo_nome=vd.file.name;
+        payload.arquivo_tipo=vd.file.type||'application/octet-stream';
+      }
       const resp=await fetch(WEBHOOK,{method:'POST',body:JSON.stringify(payload)});
       const res=await resp.json();
       if(res.ok){vShow(7);}else{throw new Error(res.mensagem);}
-    }catch(err){btn.textContent='Enviar ✓';btn.disabled=false;alert('Erro ao enviar: '+err.message);}
+    }catch(err){
+      btn.textContent='Enviar ✓';btn.disabled=false;
+      alert('Erro ao enviar: '+err.message);
+    }
   };
 
   window.vReset=function(){
@@ -915,76 +982,107 @@ function alternarTabela() {
     document.getElementById('vDesc').value='';
     document.getElementById('vLocalOutro').value='';
     document.getElementById('vLocalOutroBox').style.display='none';
+    document.getElementById('vFilePrev').classList.remove('vis');
     document.getElementById('vUpZone').style.display='block';
-    [1,2,'2b',3,4,5].forEach(n=>{const t=document.getElementById('vTx'+n);if(t){t.textContent='';t.className='vtx ph';}});
+    [1,2,'2b','2c',3,4,5].forEach(n=>{
+      const t=document.getElementById('vTx'+n);
+      if(t){t.textContent='';t.className='vtx ph';}
+    });
     fecharVoz();
   };
 
-  function vSetTx(s,text,ph){const el=document.getElementById('vTx'+s);if(!el)return;el.textContent=text;el.className='vtx'+(ph?' ph':' has');}
+  function vSetTx(s,text,ph){
+    const el=document.getElementById('vTx'+s);
+    if(!el) return;
+    el.textContent=text;
+    el.className='vtx'+(ph?' ph':' has');
+  }
 
   const SR=window.SpeechRecognition||window.webkitSpeechRecognition;
   let vRec=null;
   window.vStartVoice=function(step){
-    if(!SR)return;
-    if(vRec)vRec.stop();
+    if(!SR) return;
+    if(vRec) vRec.stop();
     const btn=document.getElementById('vMic'+step);
     const lbl=document.getElementById('vLbl'+step);
     let final='';
-    vRec=new SR();vRec.lang='pt-BR';vRec.interimResults=true;vRec.continuous=false;
-    vRec.onstart=()=>{btn.classList.add('listening');lbl.textContent='ouvindo...';vSetTx(step,'🎙 Ouvindo...',true);};
-    vRec.onresult=e=>{final=Array.from(e.results).map(r=>r[0].transcript).join('');vSetTx(step,final,false);};
-    vRec.onend=()=>{
+    vRec=new SR();
+    vRec.lang='pt-BR';vRec.interimResults=true;vRec.continuous=false;
+    vRec.onstart=function(){btn.classList.add('listening');lbl.textContent='ouvindo...';vSetTx(step,'🎙 Ouvindo...',true);};
+    vRec.onresult=function(e){final=Array.from(e.results).map(r=>r[0].transcript).join('');vSetTx(step,final,false);};
+    vRec.onend=function(){
       btn.classList.remove('listening');lbl.textContent='toque para falar';
-      if(final&&final!=='🎙 Ouvindo...')vProcVoice(step,final.trim());
+      if(final&&final!=='🎙 Ouvindo...') vProcVoice(step,final.trim());
     };
-    vRec.onerror=()=>{btn.classList.remove('listening');lbl.textContent='toque para falar';vSetTx(step,'Não consegui ouvir. Tente novamente.',true);};
+    vRec.onerror=function(){btn.classList.remove('listening');lbl.textContent='toque para falar';vSetTx(step,'Não consegui ouvir. Tente novamente.',true);};
     vRec.start();
   };
 
   function vProcVoice(step,text){
     const low=text.toLowerCase();
     if(step===1){
-      const ns=['amanda','cassiane','danusa','gabriela','giovana','fernando','leonardo','lucas','patrícia','patricia','lyah','yanka'];
+      const ns=['amanda','cassiane','danusa','gabriela','giovana','fernando','leonardo','lucas','patricia','patrícia','lyah','yanka'];
       const f=ns.find(n=>low.includes(n));
-      if(f){const lbl=f==='patricia'?'Patrícia':f.charAt(0).toUpperCase()+f.slice(1);const m=f==='gabriela'?'GabrielaA':lbl;vSelName(m);}
-      else{vd.nome=text;vSetTx(1,text,false);}
+      if(f){
+        const lbl=f==='patricia'?'Patrícia':f.charAt(0).toUpperCase()+f.slice(1);
+        const m=f==='gabriela'?'GabrielaA':lbl;
+        vSelName(m);
+      } else {vd.nome=text;vSetTx(1,text,false);}
     }
     if(step===2){
       const mos=['janeiro','fevereiro','março','abril','maio','junho','julho','agosto','setembro','outubro','novembro','dezembro'];
       const today=new Date();
       let d=null;
-      if(low.includes('hoje'))d=today;
+      if(low.includes('hoje')) d=today;
       else if(low.includes('ontem')){d=new Date(today);d.setDate(d.getDate()-1);}
-      else{for(let i=0;i<mos.length;i++){if(low.includes(mos[i])){const n=low.match(/\d+/);d=new Date(today.getFullYear(),i,n?parseInt(n[0]):today.getDate());break;}}}
-      if(d){const dd=String(d.getDate()).padStart(2,'0'),mm=String(d.getMonth()+1).padStart(2,'0'),yy=d.getFullYear();vd.data=`${dd}/${mm}/${yy}`;document.getElementById('vDate').value=`${yy}-${mm}-${dd}`;vSetTx(2,vd.data,false);}
-      else{vSetTx(2,text,false);}
+      else{
+        for(let i=0;i<mos.length;i++){
+          if(low.includes(mos[i])){
+            const n=low.match(/[0-9]+/);
+            d=new Date(today.getFullYear(),i,n?parseInt(n[0]):today.getDate());
+            break;
+          }
+        }
+      }
+      if(d){
+        const dd=String(d.getDate()).padStart(2,'0');
+        const mm=String(d.getMonth()+1).padStart(2,'0');
+        const yy=d.getFullYear();
+        vd.data=dd+'/'+mm+'/'+yy;
+        document.getElementById('vDate').value=yy+'-'+mm+'-'+dd;
+        vSetTx(2,vd.data,false);
+      } else {vSetTx(2,text,false);}
     }
     if(step==='2b'){
       let local='';
-      if(low.includes('ubs')||low.includes('sansca'))local='UBS Sansca';
-      else if(low.includes('especialidades')||low.includes('centro'))local='Centro de Especialidades';
-      else local='Outro';
+      if(low.includes('ubs')||low.includes('sansca')) local='UBS Sansca';
+      else if(low.includes('especialidades')||low.includes('centro')) local='Centro de Especialidades';
+      else local=text;
       vd.local=local;
       document.querySelectorAll('#vs2b .vopt').forEach(b=>b.classList.toggle('sel',b.textContent===local));
       vSetTx('2b',local,false);
     }
     if(step==='2c'){
-      if(low.includes('manhã')||low.includes('manha'))vSelPeriodo('manhã');
-      else if(low.includes('tarde'))vSelPeriodo('tarde');
-      else if(low.includes('noite'))vSelPeriodo('noite');
+      if(low.includes('manhã')||low.includes('manha')) vSelPeriodo('manhã');
+      else if(low.includes('tarde')) vSelPeriodo('tarde');
+      else if(low.includes('noite')) vSelPeriodo('noite');
     }
-      if(low.includes('sim')||low.includes('yes'))vSelAtest('Sim');
-      else if(low.includes('não')||low.includes('nao')||low.includes('no'))vSelAtest('Não');
+    if(step===3){
+      if(low.includes('sim')||low.includes('yes')) vSelAtest('Sim');
+      else if(low.includes('não')||low.includes('nao')) vSelAtest('Não');
     }
     if(step===4){
-      if(low.includes('adrize'))vSelRef('Adrize');
-      else if(low.includes('alejandro'))vSelRef('Alejandro');
-      else if(low.includes('gabriela'))vSelRef('Gabriela S');
-      else if(low.includes('lilian'))vSelRef('Lilian');
-      else if(low.includes('viviane'))vSelRef('Viviane');
-      else{vd.referente=text;vSetTx(4,text,false);}
+      if(low.includes('adrize')) vSelRef('Adrize');
+      else if(low.includes('alejandro')) vSelRef('Alejandro');
+      else if(low.includes('gabriela')) vSelRef('Gabriela S');
+      else if(low.includes('lilian')) vSelRef('Lilian');
+      else if(low.includes('viviane')) vSelRef('Viviane');
+      else {vd.referente=text;vSetTx(4,text,false);}
     }
-    if(step===5){document.getElementById('vDesc').value=text;vd.descricao=text;}
+    if(step===5){
+      document.getElementById('vDesc').value=text;
+      vd.descricao=text;
+    }
   }
 })();
 </script>
