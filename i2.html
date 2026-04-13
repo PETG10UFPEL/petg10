@@ -857,7 +857,6 @@ function alternarTabela() {
     btn.textContent='Enviando...';btn.disabled=true;
     try{
       const payload={nome:vd.nome,data:vd.data,local:vd.local,atestado:vd.atestado,referente:vd.referente,descricao:vd.descricao};
-      alert('DEBUG payload:\n' + JSON.stringify(payload, null, 2));
       if(vd.file){const b64=await new Promise((res,rej)=>{const r=new FileReader();r.onload=()=>res(r.result.split(',')[1]);r.onerror=rej;r.readAsDataURL(vd.file);});payload.arquivo_base64=b64;payload.arquivo_nome=vd.file.name;payload.arquivo_tipo=vd.file.type||'application/octet-stream';}
       const resp=await fetch(WEBHOOK,{method:'POST',body:JSON.stringify(payload)});
       const res=await resp.json();
