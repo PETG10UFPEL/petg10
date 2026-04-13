@@ -436,6 +436,29 @@ img {
       </div>
     </div>
 
+    <!-- STEP 2b: Local -->
+    <div class="v-step" id="vs2b">
+      <div class="v-step-hdr"><div class="v-step-num">2b</div><div class="v-step-title">Local da Atividade</div></div>
+      <div class="v-q">Qual é o local da atividade?</div>
+      <div class="v-mic-area">
+        <button class="v-mic-btn" id="vMic2b" onclick="vStartVoice('2b')">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#3b82c4" stroke-width="2"><path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"/><path d="M19 10v2a7 7 0 0 1-14 0v-2"/><line x1="12" y1="19" x2="12" y2="23"/><line x1="8" y1="23" x2="16" y2="23"/></svg>
+        </button>
+        <span class="v-mic-lbl" id="vLbl2b">toque para falar</span>
+      </div>
+      <div class="v-tx ph" id="vTx2b">Diga o local ou selecione abaixo...</div>
+      <div class="v-grid">
+        <button class="v-opt" onclick="vSelLocal('UBS Sansca')">UBS Sansca</button>
+        <button class="v-opt" onclick="vSelLocal('Centro de Especialidades')">Centro de Especialidades</button>
+        <button class="v-opt" onclick="vSelLocal('Outro')">Outro</button>
+      </div>
+      <p class="v-err" id="vErr2b">Por favor, selecione ou diga o local.</p>
+      <div class="v-nav">
+        <button class="v-back" onclick="vBack('2b')">← Voltar</button>
+        <button class="v-next" onclick="vNext('2b')">Continuar →</button>
+      </div>
+    </div>
+
     <!-- STEP 3: Atestado -->
     <div class="v-step" id="vs3">
       <div class="v-step-hdr"><div class="v-step-num">3</div><div class="v-step-title">Atestado</div></div>
@@ -556,7 +579,7 @@ img {
 <script>
 (function(){
   // ── state ──
-  const vd = { nome:'', data:'', atestado:'', file:null, referente:'', descricao:'' };
+  const vd = { nome:'', data:'', local:'', atestado:'', file:null, referente:'', descricao:'' };
 
   window.abrirVoz = function() {
     document.getElementById('vozModal').style.display = 'block';
@@ -579,12 +602,16 @@ img {
   }
 
   function vNextStep(cur) {
+    if (cur===2) return '2b';
+    if (cur==='2b') return 3;
     if (cur===3) return vd.atestado==='Sim' ? '3b' : 4;
     if (cur==='3b') return 4;
     if (cur===5) return 6;
     return Number(cur)+1;
   }
   function vPrevStep(cur) {
+    if (cur==='2b') return 2;
+    if (cur===3) return '2b';
     if (cur===4) return vd.atestado==='Sim' ? '3b' : 3;
     if (cur==='3b') return 3;
     return Number(cur)-1;
@@ -603,6 +630,7 @@ img {
     e.style.display = 'none';
     if (s===1 && !vd.nome)       { e.style.display='block'; return false; }
     if (s===2 && !vd.data)       { e.style.display='block'; return false; }
+    if (s==='2b' && !vd.local)   { e.style.display='block'; return false; }
     if (s===3 && !vd.atestado)   { e.style.display='block'; return false; }
     if (s==='3b' && !vd.file)    { e.style.display='block'; return false; }
     if (s===4 && !vd.referente)  { e.style.display='block'; return false; }
@@ -650,8 +678,12 @@ img {
     } else { vSetTx(2, text, false); }
   }
 
-  // atestado
-  window.vSelAtestado = function(v) {
+  // local
+  window.vSelLocal = function(v) {
+    vd.local = v;
+    document.querySelectorAll('#vs2b .v-opt').forEach(b => b.classList.toggle('sel', b.textContent===v));
+    vSetTx('2b', v, false);
+  };
     vd.atestado = v;
     document.getElementById('vRNao').classList.remove('sel');
     document.getElementById('vRSim').classList.remove('sel');
@@ -693,7 +725,7 @@ img {
   // summary
   function vBuildSummary() {
     const rows = [
-      {l:'Nome', v:vd.nome}, {l:'Data', v:vd.data}, {l:'Atestado', v:vd.atestado},
+      {l:'Nome', v:vd.nome}, {l:'Data', v:vd.data}, {l:'Local', v:vd.local}, {l:'Atestado', v:vd.atestado},
     ];
     if (vd.atestado==='Sim'&&vd.file) rows.push({l:'Arquivo', v:'📎 '+vd.file.name});
     rows.push({l:'Referente', v:vd.referente},{l:'Descrição', v:vd.descricao});
@@ -715,6 +747,7 @@ img {
       const payload = {
         nome:      vd.nome,
         data:      vd.data,
+        local:     vd.local,
         atestado:  vd.atestado,
         referente: vd.referente,
         descricao: vd.descricao
@@ -758,7 +791,7 @@ img {
     });
   }
   window.vReset = function() {
-    Object.assign(vd,{nome:'',data:'',atestado:'',file:null,referente:'',descricao:''});
+    Object.assign(vd,{nome:'',data:'',local:'',atestado:'',file:null,referente:'',descricao:''});
     document.querySelectorAll('#vozModalInner .v-opt').forEach(b=>b.classList.remove('sel'));
     document.querySelectorAll('#vozModalInner .v-radio').forEach(b=>b.classList.remove('sel'));
     document.getElementById('vDate').value='';
@@ -816,7 +849,11 @@ img {
         vSetTx(1,match,false);
       } else { vd.nome=text; vSetTx(1,text,false); }
     }
-    if (step===2) vDateFromVoice(text);
+    if (step==='2b') {
+      if (low.includes('ubs') || low.includes('sansca')) vSelLocal('UBS Sansca');
+      else if (low.includes('especialidades') || low.includes('centro')) vSelLocal('Centro de Especialidades');
+      else vSelLocal('Outro');
+    }
     if (step===3) {
       if (low.includes('sim')||low.includes('yes')) vSelAtestado('Sim');
       else if (low.includes('não')||low.includes('nao')||low.includes('no')) vSelAtestado('Não');
