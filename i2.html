@@ -916,9 +916,13 @@ function alternarTabela() {
       else{vSetTx(2,text,false);}
     }
     if(step==='2b'){
-      if(low.includes('ubs')||low.includes('sansca'))vSelLocal('UBS Sansca');
-      else if(low.includes('especialidades')||low.includes('centro'))vSelLocal('Centro de Especialidades');
-      else vSelLocal('Outro');
+      let local='';
+      if(low.includes('ubs')||low.includes('sansca'))local='UBS Sansca';
+      else if(low.includes('especialidades')||low.includes('centro'))local='Centro de Especialidades';
+      else local='Outro';
+      vd.local=local;
+      document.querySelectorAll('#vs2b .vopt').forEach(b=>b.classList.toggle('sel',b.textContent===local));
+      vSetTx('2b',local,false);
     }
     if(step===3){
       if(low.includes('sim')||low.includes('yes'))vSelAtest('Sim');
