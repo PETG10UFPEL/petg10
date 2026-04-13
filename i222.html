@@ -495,10 +495,11 @@ img {
       </div>
       <div class="v-tx ph" id="vTx4">Diga o tipo de referente...</div>
       <div class="v-grid">
-        <button class="v-opt" onclick="vSelRef('Coordenadora')">Coordenadora</button>
-        <button class="v-opt" onclick="vSelRef('Tutor')">Tutor</button>
-        <button class="v-opt" onclick="vSelRef('Preceptora')">Preceptora</button>
-        <button class="v-opt" onclick="vSelRef('Orientadora de Serviço')">Orientadora de Serviço</button>
+        <button class="v-opt" onclick="vSelRef('Adrize')">Adrize</button>
+        <button class="v-opt" onclick="vSelRef('Alejandro')">Alejandro</button>
+        <button class="v-opt" onclick="vSelRef('Gabriela S')">Gabriela S</button>
+        <button class="v-opt" onclick="vSelRef('Lilian')">Lilian</button>
+        <button class="v-opt" onclick="vSelRef('Viviane')">Viviane</button>
       </div>
       <p class="v-err" id="vErr4">Por favor, selecione ou diga o referente.</p>
       <div class="v-nav">
@@ -821,10 +822,11 @@ img {
       else if (low.includes('não')||low.includes('nao')||low.includes('no')) vSelAtestado('Não');
     }
     if (step===4) {
-      if (low.includes('coordenadora')) vSelRefByName('Coordenadora');
-      else if (low.includes('tutor')) vSelRefByName('Tutor');
-      else if (low.includes('preceptora')) vSelRefByName('Preceptora');
-      else if (low.includes('orientadora')) vSelRefByName('Orientadora de Serviço');
+      if (low.includes('adrize')) vSelRefByName('Adrize');
+      else if (low.includes('alejandro')) vSelRefByName('Alejandro');
+      else if (low.includes('gabriela')) vSelRefByName('Gabriela S');
+      else if (low.includes('lilian')) vSelRefByName('Lilian');
+      else if (low.includes('viviane')) vSelRefByName('Viviane');
       else { vd.referente=text; vSetTx(4,text,false); }
     }
     if (step===5) { document.getElementById('vDesc').value=text; vd.descricao=text; }
