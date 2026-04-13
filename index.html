@@ -715,11 +715,12 @@ function alternarTabela() {
     <div class="vmic"><button class="vmicb" id="vMic2c" onclick="vStartVoice('2c')"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#3b82c4" stroke-width="2"><path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"/><path d="M19 10v2a7 7 0 0 1-14 0v-2"/><line x1="12" y1="19" x2="12" y2="23"/><line x1="8" y1="23" x2="16" y2="23"/></svg></button><span class="vmiclbl" id="vLbl2c">toque para falar</span></div>
     <div class="vtx ph" id="vTx2c">Diga "manhã", "tarde" ou "noite"...</div>
     <div class="vrgrp">
-      <div class="vrad" data-periodo="manhã" onclick="vSelPeriodo('manhã')">Manhã</div>
-      <div class="vrad" data-periodo="tarde" onclick="vSelPeriodo('tarde')">Tarde</div>
-      <div class="vrad" data-periodo="noite" onclick="vSelPeriodo('noite')">Noite</div>
+      <div class="vrad" data-periodo="manhã" onclick="vTogglePeriodo('manhã')">Manhã</div>
+      <div class="vrad" data-periodo="tarde" onclick="vTogglePeriodo('tarde')">Tarde</div>
+      <div class="vrad" data-periodo="noite" onclick="vTogglePeriodo('noite')">Noite</div>
     </div>
-    <p class="verr" id="vErr2c">Por favor, selecione ou diga o período.</p>
+    <p class="vhint">Pode selecionar mais de um período.</p>
+    <p class="verr" id="vErr2c">Por favor, selecione ao menos um período.</p>
     <div class="vnav"><button class="vbk" onclick="vBack('2c')">← Voltar</button><button class="vnxt" onclick="vNext('2c')">Continuar →</button></div>
   </div>
 
@@ -807,7 +808,7 @@ function alternarTabela() {
 <script>
 (function(){
   const WEBHOOK = "https://script.google.com/macros/s/AKfycbw3FmQjJUADNuj5E_T24LCOLKj5L6BiMb3YfpVfz50FdLCwBedqIo4MIothZrPR32c/exec";
-  const vd = {nome:'',data:'',local:'',periodo:'',atestado:'',file:null,referente:'',descricao:''};
+  const vd = {nome:'',data:'',local:'',periodo:[],atestado:'',file:null,referente:'',descricao:''};
 
   function vShow(s){
     document.querySelectorAll('#vozModalInner .vstep').forEach(el=>el.classList.remove('active'));
@@ -859,7 +860,7 @@ function alternarTabela() {
       }
       if(!vd.local){if(e)e.style.display='block';return false;}
     }
-    if(s==='2c'&&!vd.periodo){if(e)e.style.display='block';return false;}
+    if(s==='2c'&&(!Array.isArray(vd.periodo)||vd.periodo.length===0)){if(e)e.style.display='block';return false;}
     if(s===3&&!vd.atestado){if(e)e.style.display='block';return false;}
     if(s==='3b'&&!vd.file){if(e)e.style.display='block';return false;}
     if(s===4&&!vd.referente){if(e)e.style.display='block';return false;}
@@ -898,10 +899,20 @@ function alternarTabela() {
     }
   };
 
+  window.vTogglePeriodo=function(v){
+    if(!Array.isArray(vd.periodo)) vd.periodo=[];
+    const idx=vd.periodo.indexOf(v);
+    if(idx===-1) vd.periodo.push(v);
+    else vd.periodo.splice(idx,1);
+    document.querySelectorAll('#vs2c .vrad').forEach(b=>b.classList.toggle('sel',vd.periodo.includes(b.dataset.periodo)));
+    vSetTx('2c',vd.periodo.length?vd.periodo.join(', '):'',vd.periodo.length===0);
+  };
+
   window.vSelPeriodo=function(v){
-    vd.periodo=v;
-    document.querySelectorAll('#vs2c .vrad').forEach(b=>b.classList.toggle('sel',b.dataset.periodo===v));
-    vSetTx('2c',v.charAt(0).toUpperCase()+v.slice(1),false);
+    if(!Array.isArray(vd.periodo)) vd.periodo=[];
+    if(!vd.periodo.includes(v)) vd.periodo.push(v);
+    document.querySelectorAll('#vs2c .vrad').forEach(b=>b.classList.toggle('sel',vd.periodo.includes(b.dataset.periodo)));
+    vSetTx('2c',vd.periodo.join(', '),false);
   };
 
   window.vSelAtest=function(v){
@@ -939,7 +950,7 @@ function alternarTabela() {
   function vBuildSum(){
     const rows=[
       {l:'Nome',v:vd.nome},{l:'Data',v:vd.data},{l:'Local',v:vd.local},
-      {l:'Período',v:vd.periodo},{l:'Atestado',v:vd.atestado}
+      {l:'Período',v:Array.isArray(vd.periodo)?vd.periodo.join(', '):vd.periodo},{l:'Atestado',v:vd.atestado}
     ];
     if(vd.atestado==='Sim'&&vd.file) rows.push({l:'Arquivo',v:'📎 '+vd.file.name});
     rows.push({l:'Referente',v:vd.referente},{l:'Descrição',v:vd.descricao});
@@ -951,7 +962,8 @@ function alternarTabela() {
     btn.textContent='Enviando...';btn.disabled=true;
     try{
       const payload={
-        nome:vd.nome, data:vd.data, local:vd.local, periodo:vd.periodo,
+        nome:vd.nome, data:vd.data, local:vd.local,
+        periodo:Array.isArray(vd.periodo)?vd.periodo.join(', '):vd.periodo,
         atestado:vd.atestado, referente:vd.referente, descricao:vd.descricao
       };
       if(vd.file){
@@ -975,7 +987,7 @@ function alternarTabela() {
   };
 
   window.vReset=function(){
-    Object.assign(vd,{nome:'',data:'',local:'',periodo:'',atestado:'',file:null,referente:'',descricao:''});
+    Object.assign(vd,{nome:'',data:'',local:'',periodo:[],atestado:'',file:null,referente:'',descricao:''});
     document.querySelectorAll('#vozModalInner .vopt').forEach(b=>b.classList.remove('sel'));
     document.querySelectorAll('#vozModalInner .vrad').forEach(b=>b.classList.remove('sel'));
     document.getElementById('vDate').value='';
