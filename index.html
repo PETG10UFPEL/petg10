@@ -699,7 +699,10 @@ function alternarTabela() {
     <div class="vgrid">
       <button class="vopt" onclick="vSelLocal('UBS Sansca')">UBS Sansca</button>
       <button class="vopt" onclick="vSelLocal('Centro de Especialidades')">Centro de Especialidades</button>
-      <button class="vopt" onclick="vSelLocal('Outro')">Outro</button>
+      <button class="vopt" onclick="vSelLocal('__outro__')">Outro</button>
+    </div>
+    <div id="vLocalOutroBox" style="display:none;margin-bottom:12px;">
+      <input type="text" id="vLocalOutro" class="vdate" placeholder="Digite o local..." oninput="vd.local=this.value.trim()">
     </div>
     <p class="verr" id="vErr2b">Por favor, selecione ou diga o local.</p>
     <div class="vnav"><button class="vbk" onclick="vBack('2b')">← Voltar</button><button class="vnxt" onclick="vNext('2b')">Continuar →</button></div>
@@ -826,7 +829,14 @@ function alternarTabela() {
     e.style.display='none';
     if(s===1&&!vd.nome){e.style.display='block';return false;}
     if(s===2&&!vd.data){e.style.display='block';return false;}
-    if(s==='2b'&&!vd.local){e.style.display='block';return false;}
+    if(s==='2b'){
+      // Se Outro selecionado, lê o campo de texto
+      const outroInput=document.getElementById('vLocalOutro');
+      if(document.getElementById('vLocalOutroBox').style.display!=='none'){
+        vd.local=outroInput.value.trim();
+      }
+      if(!vd.local){e.style.display='block';return false;}
+    }
     if(s===3&&!vd.atestado){e.style.display='block';return false;}
     if(s==='3b'&&!vd.file){e.style.display='block';return false;}
     if(s===4&&!vd.referente){e.style.display='block';return false;}
@@ -835,7 +845,21 @@ function alternarTabela() {
   }
 
   window.vSelName=function(n){vd.nome=n;document.querySelectorAll('#vs1 .vopt').forEach(b=>b.classList.toggle('sel',b.textContent===n));vSetTx(1,n,false);};
-  window.vSelLocal=function(v){vd.local=v;document.querySelectorAll('#vs2b .vopt').forEach(b=>b.classList.toggle('sel',b.textContent===v));vSetTx('2b',v,false);};
+  window.vSelLocal=function(v){
+    document.querySelectorAll('#vs2b .vopt').forEach(b=>b.classList.toggle('sel',b.textContent===( v==='__outro__'?'Outro':v)));
+    const outroBox=document.getElementById('vLocalOutroBox');
+    const outroInput=document.getElementById('vLocalOutro');
+    if(v==='__outro__'){
+      outroBox.style.display='block';
+      outroInput.focus();
+      vd.local=outroInput.value.trim();
+      vSetTx('2b','Outro: ...',false);
+    } else {
+      outroBox.style.display='none';
+      vd.local=v;
+      vSetTx('2b',v,false);
+    }
+  };
   window.vSelAtest=function(v){vd.atestado=v;document.getElementById('vRNao').classList.toggle('sel',v==='Não');document.getElementById('vRSim').classList.toggle('sel',v==='Sim');vSetTx(3,v,false);if(v==='Não')vd.file=null;};
   window.vSelRef=function(v){vd.referente=v;document.querySelectorAll('#vs4 .vopt').forEach(b=>b.classList.toggle('sel',b.textContent===v));vSetTx(4,v,false);};
 
@@ -870,7 +894,8 @@ function alternarTabela() {
     document.querySelectorAll('#vozModalInner .vrad').forEach(b=>b.classList.remove('sel'));
     document.getElementById('vDate').value='';
     document.getElementById('vDesc').value='';
-    document.getElementById('vFilePrev').classList.remove('vis');
+    document.getElementById('vLocalOutro').value='';
+    document.getElementById('vLocalOutroBox').style.display='none';
     document.getElementById('vUpZone').style.display='block';
     [1,2,'2b',3,4,5].forEach(n=>{const t=document.getElementById('vTx'+n);if(t){t.textContent='';t.className='vtx ph';}});
     fecharVoz();
