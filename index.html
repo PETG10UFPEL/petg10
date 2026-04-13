@@ -1075,9 +1075,13 @@ function alternarTabela() {
       vSetTx('2b',local,false);
     }
     if(step==='2c'){
-      if(low.includes('manhã')||low.includes('manha')) vSelPeriodo('manhã');
-      else if(low.includes('tarde')) vSelPeriodo('tarde');
-      else if(low.includes('noite')) vSelPeriodo('noite');
+      vd.periodo=[];
+      if(low.includes('manhã')||low.includes('manha')) vd.periodo.push('manhã');
+      if(low.includes('tarde')) vd.periodo.push('tarde');
+      if(low.includes('noite')) vd.periodo.push('noite');
+      if(vd.periodo.length===0) vd.periodo.push(text);
+      document.querySelectorAll('#vs2c .vrad').forEach(b=>b.classList.toggle('sel',vd.periodo.includes(b.dataset.periodo)));
+      vSetTx('2c',vd.periodo.join(', '),false);
     }
     if(step===3){
       if(low.includes('sim')||low.includes('yes')) vSelAtest('Sim');
