@@ -791,12 +791,12 @@ img {
     const lbl = document.getElementById('vLbl'+step);
     vRec = new SR();
     vRec.lang='pt-BR'; vRec.interimResults=true; vRec.continuous=false;
+    let vFinalText = '';
     vRec.onstart = () => { btn.classList.add('listening'); lbl.textContent='ouvindo...'; vSetTx(step,'🎙 Ouvindo...',true); };
-    vRec.onresult = e => { const t=Array.from(e.results).map(r=>r[0].transcript).join(''); vSetTx(step,t,false); };
+    vRec.onresult = e => { vFinalText=Array.from(e.results).map(r=>r[0].transcript).join(''); vSetTx(step,vFinalText,false); };
     vRec.onend = () => {
       btn.classList.remove('listening'); lbl.textContent='toque para falar';
-      const txt = document.getElementById('vTx'+step)?.textContent||'';
-      if (txt && txt!=='🎙 Ouvindo...') vProcessVoice(step, txt.trim());
+      if (vFinalText && vFinalText!=='🎙 Ouvindo...') vProcessVoice(step, vFinalText.trim());
     };
     vRec.onerror = () => { btn.classList.remove('listening'); lbl.textContent='toque para falar'; vSetTx(step,'Não consegui ouvir. Tente novamente.',true); };
     vRec.start();
