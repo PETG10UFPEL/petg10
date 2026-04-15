@@ -1,0 +1,763 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Inovações no Cuidado de Feridas Crônicas — G10 UFPel</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Source+Sans+3:ital,wght@0,300;0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --primary: #1A5276;
+      --primary-light: #2D7BB6;
+      --accent: #C00000;
+      --accent-soft: #fdecea;
+      --bg: #FAFAF8;
+      --bg-section: #F4F6F9;
+      --text: #1a1a2e;
+      --text-muted: #5a6577;
+      --border: #dce3ed;
+      --highlight: #EAF2FB;
+      --green: #1F6B2E;
+      --green-soft: #e9f5ec;
+      --orange: #C25B3A;
+      --orange-soft: #fdf0eb;
+      --purple: #6C3483;
+      --purple-soft: #f4eef9;
+    }
+
+    body {
+      font-family: 'Source Sans 3', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.7;
+      font-size: 17px;
+    }
+
+    /* ─── HEADER ─── */
+    header.institutional-header {
+      background: #fff;
+      border-bottom: 2px solid var(--border);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 14px 48px;
+    }
+    .header-identity {
+      font-family: 'Playfair Display', serif;
+      font-size: 0.95rem;
+      color: var(--primary);
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+    }
+    .header-identity span {
+      display: block;
+      font-family: 'Source Sans 3', sans-serif;
+      font-size: 0.75rem;
+      font-weight: 400;
+      color: var(--text-muted);
+      text-transform: none;
+      letter-spacing: 0;
+    }
+    header.institutional-header img {
+      max-height: 64px;
+      object-fit: contain;
+    }
+
+    /* ─── HERO ─── */
+    .hero {
+      background: linear-gradient(135deg, var(--primary) 0%, #0e3352 100%);
+      color: #fff;
+      padding: 72px 48px 56px;
+      position: relative;
+      overflow: hidden;
+    }
+    .hero::before {
+      content: '';
+      position: absolute;
+      right: -80px; top: -80px;
+      width: 400px; height: 400px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.04);
+    }
+    .hero::after {
+      content: '';
+      position: absolute;
+      left: -40px; bottom: -100px;
+      width: 300px; height: 300px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.03);
+    }
+    .hero-tag {
+      display: inline-block;
+      background: var(--accent);
+      color: #fff;
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      padding: 4px 14px;
+      border-radius: 20px;
+      margin-bottom: 20px;
+    }
+    .hero h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2rem, 4vw, 3.2rem);
+      font-weight: 900;
+      line-height: 1.15;
+      margin-bottom: 18px;
+      max-width: 820px;
+    }
+    .hero-lead {
+      font-size: 1.15rem;
+      color: rgba(255,255,255,0.82);
+      max-width: 680px;
+      font-weight: 300;
+      line-height: 1.8;
+    }
+    .hero-meta {
+      margin-top: 32px;
+      font-size: 0.82rem;
+      color: rgba(255,255,255,0.5);
+      letter-spacing: 0.05em;
+    }
+
+    /* ─── LAYOUT ─── */
+    main { max-width: 1060px; margin: 0 auto; padding: 0 32px 64px; }
+
+    section { padding: 52px 0; border-bottom: 1px solid var(--border); }
+    section:last-of-type { border-bottom: none; }
+
+    .section-label {
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--primary-light);
+      margin-bottom: 10px;
+    }
+    h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.5rem, 3vw, 2.1rem);
+      font-weight: 700;
+      color: var(--primary);
+      line-height: 1.25;
+      margin-bottom: 20px;
+    }
+    h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.2rem;
+      font-weight: 700;
+      color: var(--text);
+      margin-bottom: 10px;
+    }
+    p { margin-bottom: 16px; color: var(--text); }
+    p:last-child { margin-bottom: 0; }
+
+    /* ─── STAT BAR ─── */
+    .stat-bar {
+      display: flex;
+      gap: 0;
+      background: var(--primary);
+      border-radius: 12px;
+      overflow: hidden;
+      margin: 40px 0;
+    }
+    .stat-item {
+      flex: 1;
+      padding: 28px 24px;
+      text-align: center;
+      border-right: 1px solid rgba(255,255,255,0.12);
+    }
+    .stat-item:last-child { border-right: none; }
+    .stat-number {
+      font-family: 'Playfair Display', serif;
+      font-size: 2.4rem;
+      font-weight: 900;
+      color: #fff;
+      line-height: 1;
+      display: block;
+    }
+    .stat-desc {
+      font-size: 0.8rem;
+      color: rgba(255,255,255,0.65);
+      margin-top: 6px;
+      line-height: 1.4;
+    }
+
+    /* ─── INNOVATION CARDS ─── */
+    .innovation-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 22px;
+      margin-top: 32px;
+    }
+    .inno-card {
+      background: #fff;
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 28px;
+      position: relative;
+      transition: box-shadow 0.2s;
+    }
+    .inno-card:hover { box-shadow: 0 6px 24px rgba(26,82,118,0.1); }
+    .inno-card .card-icon {
+      font-size: 2rem;
+      margin-bottom: 12px;
+      display: block;
+    }
+    .inno-card .card-tag {
+      position: absolute;
+      top: 20px; right: 20px;
+      font-size: 0.65rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      padding: 3px 10px;
+      border-radius: 20px;
+    }
+    .tag-ai { background: var(--highlight); color: var(--primary); }
+    .tag-tele { background: var(--green-soft); color: var(--green); }
+    .tag-bio { background: var(--purple-soft); color: var(--purple); }
+    .tag-device { background: var(--orange-soft); color: var(--orange); }
+
+    .inno-card p { font-size: 0.92rem; color: var(--text-muted); }
+    .cite { font-size: 0.78rem; color: var(--primary-light); font-style: italic; margin-top: 8px; }
+
+    /* ─── PULL QUOTE ─── */
+    .pull-quote {
+      background: var(--highlight);
+      border-left: 5px solid var(--primary);
+      border-radius: 0 10px 10px 0;
+      padding: 28px 32px;
+      margin: 36px 0;
+    }
+    .pull-quote p {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.2rem;
+      font-style: italic;
+      color: var(--primary);
+      margin: 0;
+      line-height: 1.6;
+    }
+    .pull-quote cite {
+      display: block;
+      font-family: 'Source Sans 3', sans-serif;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      font-style: normal;
+      margin-top: 10px;
+    }
+
+    /* ─── TWO COLUMN ─── */
+    .two-col {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 40px;
+      align-items: start;
+    }
+    .two-col.reverse { direction: rtl; }
+    .two-col.reverse > * { direction: ltr; }
+
+    /* ─── FIGURE / PLACEHOLDER ─── */
+    figure { margin: 0; }
+    figure img { width: 100%; border-radius: 10px; display: block; }
+    figcaption {
+      font-size: 0.78rem;
+      color: var(--text-muted);
+      margin-top: 8px;
+      line-height: 1.5;
+      font-style: italic;
+    }
+
+    .img-placeholder .placeholder-box {
+      border: 2px dashed #b0b8c1;
+      background: #f4f6f8;
+      border-radius: 10px;
+      padding: 32px 24px;
+      text-align: center;
+      color: #6c757d;
+      min-height: 220px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+    }
+    .placeholder-icon { font-size: 2.2rem; }
+    .placeholder-label {
+      font-family: monospace;
+      font-size: 0.82rem;
+      background: #e9ecef;
+      padding: 4px 10px;
+      border-radius: 4px;
+      color: #343a40;
+    }
+    .placeholder-hint {
+      font-size: 0.78rem;
+      color: #868e96;
+      font-style: italic;
+      max-width: 320px;
+    }
+
+    /* ─── IMPLICATIONS ─── */
+    .implication-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      margin-top: 28px;
+    }
+    .implication-list li {
+      display: flex;
+      align-items: flex-start;
+      gap: 16px;
+      background: #fff;
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 18px 22px;
+    }
+    .implication-list .il-icon {
+      font-size: 1.5rem;
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+    .implication-list .il-content h4 {
+      font-weight: 700;
+      font-size: 0.95rem;
+      color: var(--primary);
+      margin-bottom: 4px;
+    }
+    .implication-list .il-content p {
+      font-size: 0.88rem;
+      color: var(--text-muted);
+      margin: 0;
+    }
+
+    /* ─── EQUITY BOX ─── */
+    .equity-box {
+      background: linear-gradient(135deg, #f4eef9, #ede0f7);
+      border: 1px solid #c9a7e0;
+      border-radius: 12px;
+      padding: 32px;
+      margin-top: 32px;
+    }
+    .equity-box h3 { color: var(--purple); margin-bottom: 12px; }
+    .equity-box p { font-size: 0.93rem; color: #4a3060; }
+
+    /* ─── SYNTHESIS ─── */
+    .synthesis-box {
+      background: linear-gradient(135deg, var(--primary) 0%, #0e3352 100%);
+      border-radius: 16px;
+      padding: 48px;
+      color: #fff;
+      text-align: center;
+    }
+    .synthesis-box h2 {
+      color: #fff;
+      font-size: 1.8rem;
+      margin-bottom: 18px;
+    }
+    .synthesis-box p {
+      color: rgba(255,255,255,0.82);
+      font-size: 1.05rem;
+      max-width: 680px;
+      margin: 0 auto;
+      line-height: 1.8;
+    }
+    .synthesis-tag {
+      display: inline-block;
+      background: rgba(255,255,255,0.15);
+      color: #fff;
+      font-size: 0.78rem;
+      font-weight: 600;
+      padding: 6px 18px;
+      border-radius: 20px;
+      margin: 8px 6px 0;
+    }
+
+    /* ─── REFERENCES ─── */
+    .references {
+      background: var(--bg-section);
+      border-top: 2px solid var(--border);
+      padding: 40px 48px;
+    }
+    .references h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.2rem;
+      color: var(--primary);
+      margin-bottom: 20px;
+    }
+    .references ol {
+      padding-left: 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+    .references li {
+      font-size: 0.82rem;
+      color: var(--text-muted);
+      line-height: 1.6;
+    }
+
+    /* ─── FOOTER ─── */
+    footer.institutional-footer {
+      background: #fff;
+      border-top: 1px solid var(--border);
+      text-align: center;
+      padding: 24px 32px;
+      font-size: 0.78rem;
+      color: var(--text-muted);
+      line-height: 1.6;
+    }
+
+    /* ─── RESPONSIVE ─── */
+    @media (max-width: 720px) {
+      header.institutional-header { padding: 12px 20px; }
+      .hero { padding: 48px 20px 40px; }
+      main { padding: 0 16px 48px; }
+      .innovation-grid { grid-template-columns: 1fr; }
+      .two-col { grid-template-columns: 1fr; }
+      .stat-bar { flex-direction: column; }
+      .stat-item { border-right: none; border-bottom: 1px solid rgba(255,255,255,0.12); }
+      .synthesis-box { padding: 32px 20px; }
+      .references { padding: 32px 20px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- CABEÇALHO INSTITUCIONAL -->
+  <header class="institutional-header">
+    <div class="header-identity">
+      G10 — Feridas Crônicas
+      <span>Telemonitoramento · PET-Saúde Digital · UFPel</span>
+    </div>
+    <img src="img/dois.png" alt="Logos Amor-à-Pele e PET-Saúde Digital – UFPel">
+  </header>
+
+  <!-- HERO -->
+  <div class="hero">
+    <span class="hero-tag">Revisão de Inovações · Abril 2025</span>
+    <h1>O que há de novo no cuidado de feridas crônicas?</h1>
+    <p class="hero-lead">
+      Inteligência artificial, telemonitoramento, curativos inteligentes e medicina regenerativa estão redesenhando o cuidado de feridas crônicas — e cada uma dessas inovações dialoga diretamente com a missão do G10.
+    </p>
+    <p class="hero-meta">Elaborado pela equipe G10 · Amor-à-Pele / PET-Saúde Digital UFPel · Abril de 2026</p>
+  </div>
+
+  <main>
+
+    <!-- SEÇÃO 1: CONTEXTO -->
+    <section>
+      <p class="section-label">O problema</p>
+      <h2>Uma epidemia silenciosa com alto custo humano e econômico</h2>
+
+      <div class="two-col">
+        <div>
+          <p>
+            Feridas crônicas são aquelas que não completam o processo cicatricial no período esperado — geralmente 3 meses —
+            e exigem abordagens terapêuticas especializadas e contínuas. Sua prevalência global é expressiva e seu impacto na
+            qualidade de vida dos pacientes é profundo, afetando mobilidade, sono, humor e vida social (Raizman et al., 2025).
+          </p>
+          <p>
+            O cenário está mudando: tecnologias digitais emergentes estão transformando radicalmente a forma como essas feridas
+            são avaliadas, monitoradas e tratadas — deslocando o cuidado do ambiente hospitalar para o domicílio e do
+            julgamento subjetivo para dados objetivos e em tempo real (BioStem Technologies, 2024).
+          </p>
+        </div>
+        <div>
+          <div class="stat-bar" style="flex-direction:column; border-radius:12px; overflow:hidden; margin:0;">
+            <div class="stat-item">
+              <span class="stat-number">1–2%</span>
+              <span class="stat-desc">da população global vive com feridas crônicas (Raizman et al., 2025)</span>
+            </div>
+            <div class="stat-item">
+              <span class="stat-number">US$ 639bi</span>
+              <span class="stat-desc">previsão do mercado global de saúde digital até 2026 (Specialty Wound Care, 2025)</span>
+            </div>
+            <div class="stat-item">
+              <span class="stat-number">80%</span>
+              <span class="stat-desc">de redução de área média com telemonitoramento por app de IA (Raizman et al., 2025)</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SEÇÃO 2: INOVAÇÕES -->
+    <section>
+      <p class="section-label">Fronteiras do conhecimento</p>
+      <h2>Sete inovações que estão mudando o campo</h2>
+      <p>A seguir, as principais tendências identificadas na literatura recente (2024–2025) e sua relação com o telemonitoramento de feridas crônicas.</p>
+
+      <div class="innovation-grid">
+
+        <!-- Card 1 -->
+        <div class="inno-card">
+          <span class="card-icon">🤖</span>
+          <span class="card-tag tag-ai">IA</span>
+          <h3>Avaliação por Inteligência Artificial</h3>
+          <p>
+            Ferramentas como <em>AutoDepth</em> identificam bordas da ferida, calculam dimensões e localizam a área mais profunda
+            em tempo real. O <em>SmartTissue</em> quantifica tipos de tecido — epitelial, granulação, esfacelo e escara —
+            independentemente do tom de pele (Raizman et al., 2025). A IA elimina a subjetividade do olho clínico e padroniza
+            o registro, algo central para protocolos de telemonitoramento.
+          </p>
+          <p class="cite">(Raizman et al., 2025)</p>
+        </div>
+
+        <!-- Card 2 -->
+        <div class="inno-card">
+          <span class="card-icon">📱</span>
+          <span class="card-tag tag-tele">Telesaúde</span>
+          <h3>Aplicativos de Monitoramento Remoto pelo Paciente</h3>
+          <p>
+            Estudo de viabilidade publicado em 2025 mostrou que pacientes com feridas crônicas capturaram uma mediana de
+            13 imagens por ferida, enviadas a cada 8 dias. A equipe clínica revisava remotamente e tomava decisões terapêuticas
+            — resultado: fechamento mediano de 80% da área da ferida (Raizman et al., 2025). O modelo é análogo ao que o G10 já
+            pratica com o PET-Saúde Digital.
+          </p>
+          <p class="cite">(Raizman et al., 2025)</p>
+        </div>
+
+        <!-- Card 3 -->
+        <div class="inno-card">
+          <span class="card-icon">🩺</span>
+          <span class="card-tag tag-tele">Telesaúde</span>
+          <h3>Teleconsulta como Modelo Estrutural de Cuidado</h3>
+          <p>
+            Revisão sistemática confirmou que teleconsultas melhoram a confiança do paciente, a autoeficácia profissional
+            dos enfermeiros e o senso de segurança ao longo do tempo. O sucesso depende de acesso à tecnologia confiável,
+            treinamento adequado e abordagem centrada na pessoa (WCEI, 2025). Esses pilares são diretamente replicáveis no
+            contexto do SUS e nas ações educativas do G10.
+          </p>
+          <p class="cite">(WCEI, 2025)</p>
+        </div>
+
+        <!-- Card 4 -->
+        <div class="inno-card">
+          <span class="card-icon">🧠</span>
+          <span class="card-tag tag-ai">IA Generativa</span>
+          <h3>IA Generativa no Treinamento Clínico</h3>
+          <p>
+            A IA generativa está aprimorando a formação em cuidados com feridas por meio de aprendizado baseado em simulação
+            e cenários clínicos personalizados — capacitando profissionais a aplicar insights de IA à beira do leito
+            (WCEI, 2025). Para o G10, isso representa uma oportunidade de inovar nos materiais didáticos e nas atividades
+            de extensão junto à comunidade acadêmica.
+          </p>
+          <p class="cite">(WCEI, 2025)</p>
+        </div>
+
+        <!-- Card 5 -->
+        <div class="inno-card">
+          <span class="card-icon">🩹</span>
+          <span class="card-tag tag-device">Dispositivo</span>
+          <h3>Curativos Inteligentes com Sensores</h3>
+          <p>
+            Curativos equipados com sensores monitoram temperatura, pH e exsudato em tempo real, fornecendo dados contínuos
+            à equipe clínica (BioStem Technologies, 2024). O dispositivo <em>a-Heal</em> (UCSC) combina câmera e IA para
+            detectar o estágio de cicatrização e liberar medicamento ou campo elétrico de forma personalizada — em testes
+            pré-clínicos, acelerou a cicatrização em cerca de 25% frente ao cuidado padrão (UCSC News, 2025).
+          </p>
+          <p class="cite">(BioStem Technologies, 2024; UCSC News, 2025)</p>
+        </div>
+
+        <!-- Card 6 -->
+        <div class="inno-card">
+          <span class="card-icon">🧬</span>
+          <span class="card-tag tag-bio">Bioengenharia</span>
+          <h3>Medicina Regenerativa e Substitutos de Pele</h3>
+          <p>
+            Avanços em bioengenharia estão criando substitutos de pele que mimetizam a estrutura e a função do tecido
+            natural, acelerando a cicatrização de feridas complexas. Terapias com células-tronco, enxertos de células
+            geneticamente editadas e bioimpressão 3D estão em expansão, oferecendo perspectivas para pacientes com feridas
+            não responsivas ao tratamento convencional (Specialty Wound Care, 2025; WCEI, 2025).
+          </p>
+          <p class="cite">(Specialty Wound Care, 2025; WCEI, 2025)</p>
+        </div>
+
+        <!-- Card 7 - full width -->
+        <div class="inno-card" style="grid-column: 1 / -1;">
+          <span class="card-icon">⚖️</span>
+          <span class="card-tag tag-ai">Equidade</span>
+          <h3>Diversidade de Tonalidade de Pele nos Modelos de IA</h3>
+          <p>
+            Pesquisas recentes evidenciam que o tom de pele é fator crítico no cuidado de feridas: peles mais escuras
+            apresentam menor conteúdo hídrico e maior perda transepidérmica de água, aumentando o risco de lesão por
+            pressão (Wounds International, 2025). Modelos de IA estão sendo redesenhados para melhor representar a
+            diversidade global — como a escala <em>Monk Skin Tone</em>, com 10 gradações —, tornando a avaliação
+            automatizada mais justa e inclusiva. Para o G10 e o contexto brasileiro, com população diversa e miscigenada,
+            essa discussão é especialmente relevante.
+          </p>
+          <p class="cite">(Wounds International, 2025)</p>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- SEÇÃO 3: CONEXÃO COM G10 -->
+    <section>
+      <p class="section-label">Para o G10</p>
+      <h2>O que essas inovações significam na prática do telemonitoramento?</h2>
+
+      <div class="pull-quote">
+        <p>"A tecnologia não substitui o toque humano — ela é um facilitador: quando o profissional de saúde monitora a cura remotamente e identifica problemas precocemente, pode ser mais responsivo e presente com seus pacientes."</p>
+        <cite>— Net Health, 2026 (tradução livre)</cite>
+      </div>
+
+      <ul class="implication-list">
+        <li>
+          <span class="il-icon">📷</span>
+          <div class="il-content">
+            <h4>Qualidade e padronização do registro fotográfico</h4>
+            <p>A adoção de protocolos de imagem baseados em IA pode reduzir a variabilidade subjetiva nas avaliações remotas,
+            fortalecendo a confiabilidade dos dados coletados pelo G10 nas teleconsultas.</p>
+          </div>
+        </li>
+        <li>
+          <span class="il-icon">📚</span>
+          <div class="il-content">
+            <h4>Embasamento científico para publicações acadêmicas</h4>
+            <p>A evidência de 80% de redução de área com monitoramento remoto por app (Raizman et al., 2025) valida o modelo
+            já praticado pelo G10 e pode ser citada em produções científicas do grupo.</p>
+          </div>
+        </li>
+        <li>
+          <span class="il-icon">🎓</span>
+          <div class="il-content">
+            <h4>Inovação nos materiais educativos</h4>
+            <p>O uso de IA generativa para treinamento clínico abre caminhos para o G10 desenvolver casos simulados e
+            materiais interativos para as atividades de extensão e ensino junto à UFPel.</p>
+          </div>
+        </li>
+        <li>
+          <span class="il-icon">🌎</span>
+          <div class="il-content">
+            <h4>Equidade e contexto brasileiro</h4>
+            <p>A discussão sobre diversidade de tonalidade de pele em modelos de IA é particularmente urgente no Brasil.
+            O G10 pode protagonizar essa pauta ao incorporá-la nas ações de educação em saúde e na avaliação de ferramentas
+            digitais para uso no SUS.</p>
+          </div>
+        </li>
+        <li>
+          <span class="il-icon">🏥</span>
+          <div class="il-content">
+            <h4>Expansão do modelo de cuidado domiciliar</h4>
+            <p>Com curativos inteligentes e monitoramento remoto se tornando realidade, o G10 está alinhado à tendência global
+            de descentralização do cuidado — levando qualidade assistencial até pacientes com limitações de mobilidade ou
+            acesso geográfico (Frost & Sullivan, 2025).</p>
+          </div>
+        </li>
+      </ul>
+
+      <div class="equity-box">
+        <h3>🔬 Horizonte: o que vem a seguir (2025–2030)?</h3>
+        <p>
+          O setor de cuidados avançados com feridas avança em direção a diagnósticos por IA, sensores vestíveis,
+          substitutos de pele bioengenheirados e scaffolds 3D até 2030 (Frost & Sullivan, 2025). Nanorrobôs para
+          intervenções precisas, diagnósticos vestíveis contínuos e curativos biodegradáveis inteligentes surgem como
+          possibilidades próximas. Para o G10, acompanhar essa evolução é tanto uma oportunidade de pesquisa quanto
+          de comunicação científica com a sociedade.
+        </p>
+      </div>
+    </section>
+
+    <!-- SEÇÃO 4: FIGURA -->
+    <section>
+      <p class="section-label">Visualização</p>
+      <h2>Da ferida ao dado: o fluxo do telemonitoramento moderno</h2>
+
+      <figure>
+        <img src="img/fluxo-telemonitoramento.png" alt="Diagrama do fluxo de telemonitoramento de feridas crônicas com IA">
+        <figcaption>Figura 1 — Fluxo simplificado do telemonitoramento de feridas crônicas com suporte de inteligência artificial, do registro fotográfico pelo paciente até a decisão clínica remota pela equipe de saúde.</figcaption>
+      </figure>
+
+      <br>
+
+      <figure>
+        <img src="img/smart-dressing.jpg" alt="Curativo inteligente com sensores integrados monitorando ferida crônica">
+        <figcaption>Figura 2 — Curativo inteligente com sensores integrados para monitoramento em tempo real de temperatura, pH e exsudato.</figcaption>
+      </figure>
+    </section>
+
+    <!-- SÍNTESE FINAL -->
+    <section style="border-bottom:none; padding-bottom:0;">
+      <div class="synthesis-box">
+        <h2>O que fica</h2>
+        <p>
+          A confluência entre inteligência artificial, telemonitoramento e bioengenharia está transformando feridas crônicas
+          de um problema de difícil manejo em um campo de possibilidades clínicas e tecnológicas. O G10 — ao unir atenção
+          acadêmica, extensão universitária e cuidado centrado no paciente — está no centro dessa transformação. Cada inovação
+          descrita aqui não é um horizonte distante: é um argumento científico para o que o grupo já faz e um convite para
+          onde pode avançar.
+        </p>
+        <div style="margin-top:24px;">
+          <span class="synthesis-tag">IA na Avaliação</span>
+          <span class="synthesis-tag">Telemonitoramento</span>
+          <span class="synthesis-tag">Curativos Inteligentes</span>
+          <span class="synthesis-tag">Medicina Regenerativa</span>
+          <span class="synthesis-tag">Equidade em Saúde</span>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- REFERÊNCIAS -->
+  <div class="references">
+    <h2>Referências</h2>
+    <ol>
+      <li>
+        BIOSTEM TECHNOLOGIES. <strong>The Future of Chronic Wound Care: What to Expect in 2025.</strong>
+        BioStem Technologies Blog, 16 dez. 2024. Disponível em:
+        &lt;https://biostemtechnologies.com/the-future-of-chronic-wound-care-what-to-expect-in-2025/&gt;. Acesso em: abr. 2026.
+      </li>
+      <li>
+        FROST &amp; SULLIVAN. <strong>Digital Disruption in Wound Care: How Smart Technologies Are Transforming Healing.</strong>
+        Frost &amp; Sullivan Growth Opportunity News, 10 out. 2025. Baseado no estudo estratégico: "Advanced Wound Care Industry Driving Transformational Growth by Developing Digital Wound Management Solutions, Global, 2024–2030". Disponível em:
+        &lt;https://www.frost.com/growth-opportunity-news/healthcare/chronic-care/digital-disruption-in-wound-care-how-smart-technologies-are-transforming-healing-hls03_tg02_medtech_woundcare_kb7d_oct25_cim-sg/&gt;. Acesso em: abr. 2026.
+      </li>
+      <li>
+        NET HEALTH. <strong>Wound Care Technology Connects Patients and Providers.</strong>
+        Net Health Blog, 21 jan. 2026. Disponível em:
+        &lt;https://www.nethealth.com/blog/wound-care-technology-connects-patients-and-providers/&gt;. Acesso em: abr. 2026.
+      </li>
+      <li>
+        RAIZMAN, R. et al. <strong>Empowering Patients and Caregivers to Use Artificial Intelligence and Computer Vision for Wound Monitoring: Nonrandomized, Single-Arm Feasibility Study.</strong>
+        <em>Journal of Participatory Medicine</em>, v. 17, e69470, 4 jun. 2025. doi: 10.2196/69470.
+      </li>
+      <li>
+        SPECIALTY WOUND CARE. <strong>AI Revolution: Stunning Breakthrough in Clinical Wound Care.</strong>
+        SpecialtyWoundCare.com, 11 ago. 2025. Disponível em:
+        &lt;https://specialtywoundcare.com/ai-revolution-stunning-breakthrough-in-clinical-wound-care/&gt;. Acesso em: abr. 2026.
+      </li>
+      <li>
+        ROLANDI, M. et al. (UC SANTA CRUZ). <strong>Smart device uses AI and bioelectronics to speed up wound healing process.</strong>
+        UCSC News, 23 set. 2025. Estudo publicado em: <em>npj Biomedical Innovations</em>. Disponível em:
+        &lt;https://news.ucsc.edu/2025/09/smart-device-ai-bioelectronics-speed-up-wound-healing/&gt;. Acesso em: abr. 2026.
+      </li>
+      <li>
+        WCEI — WOUND CARE EDUCATION INSTITUTE. <strong>WCEI Buzz Report: 10 Notable Wound Management Trends.</strong>
+        WCEI Blog, 6 ago. 2025. Disponível em:
+        &lt;https://blog.wcei.net/wcei-buzz-report-wound-management-trends&gt;. Acesso em: abr. 2026.
+      </li>
+      <li>
+        WOUNDS INTERNATIONAL. <strong>The role of artificial intelligence in wound care: applications, evidence and future directions.</strong>
+        Wounds International, 2025. Disponível em:
+        &lt;https://woundsinternational.com/journal-articles/the-role-of-artificial-intelligence-in-wound-care-applications-evidence-and-future-directions/&gt;. Acesso em: abr. 2026.
+      </li>
+    </ol>
+  </div>
+
+  <!-- RODAPÉ INSTITUCIONAL -->
+  <footer class="institutional-footer">
+    <p>Infográfico elaborado pelos projetos <strong>Amor à Pele</strong> e <strong>PET-Saúde Digital G10 Feridas Crônicas</strong>, UFPel, em Abril de 2026.</p>
+    <p style="margin-top:6px;">Conteúdo baseado em revisão de literatura científica de 2024–2025. Não substitui orientação clínica especializada.</p>
+  </footer>
+
+</body>
+</html>
