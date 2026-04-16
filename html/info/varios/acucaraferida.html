@@ -1019,7 +1019,7 @@
     }
     .qopts {
       display:flex; flex-direction:column; gap:9px;
-      padding:0 24px 0 72px; margin-bottom:16px;
+      padding:0 16px 0 16px; margin-bottom:16px;
     }
     .qopt {
       display:flex; align-items:flex-start; gap:11px;
@@ -1042,7 +1042,7 @@
     .qopt.wrong  .qletter  { background:var(--rose);  color:#fff; }
     .qopt[disabled]{ cursor:default; }
     .qfeedback {
-      display:none; margin:0 24px 20px 72px;
+      display:none; margin:0 16px 20px 16px;
       border-radius:11px; padding:14px 16px;
       font-size:0.89rem; line-height:1.65;
     }
@@ -1110,9 +1110,9 @@
       max-height:0; overflow:hidden;
       transition:max-height .4s cubic-bezier(.4,0,.2,1);
     }
-    .rcard.open .rbody { max-height:600px; }
+    .rcard.open .rbody { max-height:700px; }
     .rbody-inner {
-      padding:0 26px 22px 62px;
+      padding:0 20px 22px 20px;
       display:flex; flex-direction:column; gap:10px;
     }
     .rthread {
@@ -1122,9 +1122,10 @@
     }
     .rthread strong { color:var(--purple); display:block; margin-bottom:3px; font-size:0.88rem; }
     .rhint {
-      background:var(--amber-light); border:1.5px solid #FDE68A;
-      border-radius:11px; padding:12px 15px;
-      font-size:0.86rem; color:#7C3D0A; font-style:italic;
+      background:#FEF3C7; border:2px solid #F59E0B;
+      border-radius:11px; padding:13px 16px;
+      font-size:0.88rem; color:#78350F; font-style:italic;
+      font-weight:500;
     }
   </style>
 
