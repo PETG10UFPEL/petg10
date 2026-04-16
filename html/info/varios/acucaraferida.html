@@ -457,6 +457,16 @@
     .content p { margin-bottom: 13px; }
     .content p:last-child { margin-bottom: 0; }
 
+    /* ── INLINE CITATIONS ── */
+    sup {
+      font-size: 0.68rem;
+      font-weight: 700;
+      color: var(--rose);
+      letter-spacing: 0.01em;
+      vertical-align: super;
+      line-height: 0;
+    }
+
     @media (max-width: 600px) {
       .hero { padding: 40px 20px 36px; }
       .hero-stats { flex-direction: column; border-radius: 12px; }
@@ -486,10 +496,10 @@
   <h1>Do Açúcar à <span>Ferida Crônica</span><br>Como a Hiperglicemia Destrói o Processo de Cura</h1>
   <p class="hero-sub">Um percurso passo a passo pelos mecanismos moleculares e celulares que transformam o excesso de glicose em uma ferida que se recusa a fechar</p>
   <div class="hero-stats">
-    <div class="hero-stat"><strong>537M</strong><span>pessoas com DM no mundo</span></div>
-    <div class="hero-stat"><strong>~25%</strong><span>dos diabéticos terão ferida crônica</span></div>
-    <div class="hero-stat"><strong>19–34%</strong><span>risco de úlcera diabética na vida</span></div>
-    <div class="hero-stat"><strong>65%</strong><span>recorrência em 5 anos</span></div>
+    <div class="hero-stat"><strong>537M</strong><span>pessoas com DM no mundo <sup>[7,1]</sup></span></div>
+    <div class="hero-stat"><strong>~25%</strong><span>dos diabéticos terão ferida crônica <sup>[1]</sup></span></div>
+    <div class="hero-stat"><strong>19–34%</strong><span>risco de úlcera diabética na vida <sup>[10]</sup></span></div>
+    <div class="hero-stat"><strong>65%</strong><span>recorrência em 5 anos <sup>[1]</sup></span></div>
   </div>
 </div>
 
@@ -515,21 +525,38 @@
         <p class="fallback-path">img/pele-normal-vs-diabetica.jpg</p>
         <p class="fallback-hint">Comparação histológica: pele saudável vs. pele hiperglicêmica (vasos, espessura de camadas, nervos)</p>
       </div>
-      <figcaption>Figura 1 — Comparativo histológico: pele saudável (esq.) vs. pele hiperglicêmica (dir.). Note a rarefação vascular e o espessamento da membrana basal.</figcaption>
+      <figcaption>
+        Figura 1 — <strong>Esquerda:</strong> pele de uma pessoa saudável — epiderme íntegra, vasos abundantes, nervos ativos e colágeno organizado.
+        <strong>Direita:</strong> pele de uma pessoa com diabetes e descontrole glicêmico — membrana basal espessada, capilares rarefatos, fibras de colágeno rígidas por AGEs e nervos degenerados. <sup>[1,5,6]</sup>
+      </figcaption>
     </figure>
     <div>
       <div class="callout amber">
         <span class="callout-icon">⚠️</span>
         <div>
-          <h4>Pele diabética: uma bomba-relógio</h4>
+          <h4>Pele diabética: uma bomba-relógio <sup>[1,5]</sup></h4>
           <p>A hiperglicemia reduz a hidratação cutânea, compromete a barreira epidérmica e eleva a colonização por patógenos — tudo <em>antes</em> de qualquer ferida existir. Essa "pré-fragilização" é o ponto de partida do pé diabético.</p>
+        </div>
+      </div>
+      <div class="callout purple">
+        <span class="callout-icon">🌑</span>
+        <div>
+          <h4>Por que a pele pode aparecer mais escura?</h4>
+          <p>A hiperpigmentação que se vê em algumas regiões da pele diabética — especialmente dobras e tornozelos — pode resultar de acantose nigricans (associada à resistência à insulina), depósito de hemossiderina por micro-hemorragias ou alterações na melanogênese induzidas pelos AGEs. <strong>Importante:</strong> nem sempre acontece — sua ausência não indica pele saudável nem descarta risco de ferida. <sup>[5]</sup></p>
+        </div>
+      </div>
+      <div class="callout red">
+        <span class="callout-icon">🔇</span>
+        <div>
+          <h4>A perda de sensibilidade protetora: o risco invisível <sup>[1,7,10]</sup></h4>
+          <p>A neuropatia periférica elimina a capacidade de sentir pressão, atrito e temperatura. Isso significa que um calçado apertado, uma pedra na meia ou uma costura mal posicionada podem provocar lesões progressivas <strong>sem que a pessoa perceba</strong>. Quando a ferida é notada, ela já evoluiu por dias ou semanas — muitas vezes já infectada.</p>
         </div>
       </div>
       <div class="callout blue">
         <span class="callout-icon">🎓</span>
         <div>
           <h4>Para engenharia, enfermagem e medicina</h4>
-          <p>A cicatrização é um problema de <strong>biomecânica</strong> (resistência do colágeno), <strong>bioquímica</strong> (sinalização celular), <strong>vascular</strong> (perfusão de O₂) e <strong>neurológico</strong> (detecção de lesão). A diabetes ataca todos ao mesmo tempo.</p>
+          <p>A cicatrização é um problema de <strong>biomecânica</strong> (resistência do colágeno), <strong>bioquímica</strong> (sinalização celular), <strong>vascular</strong> (perfusão de O₂) e <strong>neurológico</strong> (detecção de lesão). A diabetes ataca todos ao mesmo tempo. <sup>[3,4]</sup></p>
         </div>
       </div>
     </div>
@@ -551,8 +578,8 @@
         <div class="tl-time">Cena 1 · Nível molecular — Semanas a meses</div>
         <h3>O açúcar se liga às proteínas: formação dos AGEs</h3>
         <div class="content">
-          <p>Quando a concentração de glicose se mantém cronicamente elevada, moléculas de açúcar iniciam uma reação não-enzimática com os grupos amino livres de proteínas — a <strong>glicação</strong>. O processo começa com a formação instável de uma <em>base de Schiff</em>, que se estabiliza como produto de Amadori. Ao longo de semanas a anos, essa cadeia origina os <strong>Produtos Finais da Glicação Avançada (AGEs)</strong>.</p>
-          <p>Os AGEs acumulam-se especialmente no colágeno — proteína de meia-vida longa (10–15 anos na pele) — formando <em>crosslinks</em> anormais entre as fibras. O resultado é um colágeno rígido, frágil, resistente à remodelação enzimática e com sítios de ligação para integrinas e proteoglicanos bloqueados.</p>
+          <p>Quando a concentração de glicose se mantém cronicamente elevada, moléculas de açúcar iniciam uma reação não-enzimática com os grupos amino livres de proteínas — a <strong>glicação</strong>. O processo começa com a formação instável de uma <em>base de Schiff</em>, que se estabiliza como produto de Amadori. Ao longo de semanas a anos, essa cadeia origina os <strong>Produtos Finais da Glicação Avançada (AGEs)</strong>. <sup>[5,6]</sup></p>
+          <p>Os AGEs acumulam-se especialmente no colágeno — proteína de meia-vida longa (10–15 anos na pele) — formando <em>crosslinks</em> anormais entre as fibras. O resultado é um colágeno rígido, frágil, resistente à remodelação enzimática e com sítios de ligação para integrinas e proteoglicanos bloqueados. <sup>[6]</sup></p>
         </div>
         <div class="callout orange" style="margin-top:16px;">
           <span class="callout-icon">🔬</span>
@@ -571,7 +598,7 @@
         <div class="tl-time">Cena 2 · Nível vascular — Meses a anos</div>
         <h3>Microangiopatia: os vasos perdem a função</h3>
         <div class="content">
-          <p>A hiperglicemia ativa a via do poliol (que consome NADPH e gera sorbitol) e a via da hexosamina — ambas levando ao acúmulo de espécies reativas de oxigênio (EROs/ROS) e à disfunção endotelial.</p>
+          <p>A hiperglicemia ativa a via do poliol (que consome NADPH e gera sorbitol) e a via da hexosamina — ambas levando ao acúmulo de espécies reativas de oxigênio (EROs/ROS) e à disfunção endotelial. <sup>[1,3,4]</sup></p>
         </div>
         <div class="cards-grid" style="margin-top:14px;">
           <div class="card">
@@ -607,13 +634,13 @@
         <div class="tl-time">Cena 3 · Nível neurológico — Anos</div>
         <h3>Neuropatia periférica: o alarme é silenciado</h3>
         <div class="content">
-          <p>Os nervos periféricos são especialmente vulneráveis à hiperglicemia. A neuropatia diabética resulta em:</p>
+          <p>Os nervos periféricos são especialmente vulneráveis à hiperglicemia. A neuropatia diabética resulta em: <sup>[1,7]</sup></p>
           <ul style="margin: 12px 0 12px 20px; color: var(--mid); font-size: 0.94rem; line-height: 2.1;">
-            <li><strong>Perda da sensibilidade protetora:</strong> o paciente não sente pressão, calor, dor ou objetos penetrantes no pé</li>
-            <li><strong>Disfunção autonômica:</strong> redução da sudorese → pele seca e com fissuras → porta de entrada para bactérias</li>
-            <li><strong>Atrofia muscular intrínseca:</strong> deformidades podais (dedos em garra, proeminências ósseas) → pontos de pressão anormal</li>
+            <li><strong>Perda da sensibilidade protetora:</strong> o paciente não sente pressão, calor, dor ou objetos penetrantes no pé — incluindo calçados inadequados que causam lesão por atrito dia após dia <sup>[10]</sup></li>
+            <li><strong>Disfunção autonômica:</strong> redução da sudorese → pele seca e com fissuras → porta de entrada para bactérias <sup>[1]</sup></li>
+            <li><strong>Atrofia muscular intrínseca:</strong> deformidades podais (dedos em garra, proeminências ósseas) → pontos de pressão anormal <sup>[7,10]</sup></li>
           </ul>
-          <p>A combinação é brutal: o paciente não percebe que tem uma lesão em formação, e quando percebe, ela já se tornou crônica.</p>
+          <p>A combinação é brutal: o paciente não percebe que tem uma lesão em formação, e quando percebe, ela já se tornou crônica. <sup>[1,10]</sup></p>
         </div>
       </div>
     </div>
@@ -625,8 +652,8 @@
         <div class="tl-time">Cena 4 · Inflamação disfuncional — Fase aguda comprometida</div>
         <h3>A resposta inflamatória trava no modo "crônico"</h3>
         <div class="content">
-          <p>Em uma ferida normal, a fase inflamatória dura 3–5 dias: neutrófilos chegam, fagocitam debris e bactérias, sinalizam para macrófagos que, em seguida, polarizam de M1 (pró-inflamatório) para M2 (reparador). Em pacientes diabéticos, esse <em>switch</em> <strong>não acontece</strong>.</p>
-          <p>A hiperglicemia eleva a ativação do fator NF-κB, perpetuando a liberação de IL-6, IL-1β e TNF-α pelos macrófagos M1. Os macrófagos M2 — responsáveis por liberar VEGF e TGF-β — permanecem sub-representados. A ferida fica presa em inflamação sem progressão.</p>
+          <p>Em uma ferida normal, a fase inflamatória dura 3–5 dias: neutrófilos chegam, fagocitam debris e bactérias, sinalizam para macrófagos que, em seguida, polarizam de M1 (pró-inflamatório) para M2 (reparador). Em pacientes diabéticos, esse <em>switch</em> <strong>não acontece</strong>. <sup>[8]</sup></p>
+          <p>A hiperglicemia eleva a ativação do fator NF-κB, perpetuando a liberação de IL-6, IL-1β e TNF-α pelos macrófagos M1. Os macrófagos M2 — responsáveis por liberar VEGF e TGF-β — permanecem sub-representados. A ferida fica presa em inflamação sem progressão. <sup>[8,3]</sup></p>
         </div>
         <figure>
           <img src="img/macrofagos-m1-m2-diabetes.png"
@@ -642,7 +669,7 @@
         <div class="callout purple">
           <span class="callout-icon">🔁</span>
           <div>
-            <h4>NETose: um agravante pouco conhecido</h4>
+            <h4>NETose: um agravante pouco conhecido <sup>[9]</sup></h4>
             <p>Neutrófilos diabéticos liberam NETs (Neutrophil Extracellular Traps) em excesso — estruturas de DNA e proteínas que formam barreira física na ferida, bloqueando a migração celular e amplificando o dano ao tecido adjacente.</p>
           </div>
         </div>
@@ -716,8 +743,8 @@
         <div class="tl-time">Cena 6 · Infecção e biofilme — Semanas a meses</div>
         <h3>Bactérias colonizam o tecido: formação de biofilme</h3>
         <div class="content">
-          <p>A tríade — barreira cutânea comprometida + imunidade celular reduzida + ambiente rico em glicose — cria um habitat ideal para patógenos. Em feridas diabéticas, <em>Staphylococcus aureus</em>, <em>Pseudomonas aeruginosa</em> e bactérias anaeróbias formam <strong>biofilmes</strong> — comunidades microbianas revestidas por matriz de polissacarídeos que as torna até 1.000× mais resistentes a antibióticos e à fagocitose.</p>
-          <p>O biofilme perpetua a resposta inflamatória crônica e inibe diretamente a proliferação de fibroblastos e a síntese de colágeno — fechando o círculo vicioso da ferida que não cicatriza.</p>
+          <p>A tríade — barreira cutânea comprometida + imunidade celular reduzida + ambiente rico em glicose — cria um habitat ideal para patógenos. Em feridas diabéticas, <em>Staphylococcus aureus</em>, <em>Pseudomonas aeruginosa</em> e bactérias anaeróbias formam <strong>biofilmes</strong> — comunidades microbianas revestidas por matriz de polissacarídeos que as torna até 1.000× mais resistentes a antibióticos e à fagocitose. <sup>[1,8]</sup></p>
+          <p>O biofilme perpetua a resposta inflamatória crônica e inibe diretamente a proliferação de fibroblastos e a síntese de colágeno — fechando o círculo vicioso da ferida que não cicatriza. <sup>[1,3]</sup></p>
         </div>
         <div class="callout teal">
           <span class="callout-icon">🧫</span>
@@ -753,14 +780,14 @@
           <div class="callout red">
             <span class="callout-icon">🔴</span>
             <div>
-              <h4>Sequência fatal sem intervenção</h4>
+              <h4>Sequência fatal sem intervenção <sup>[1,10]</sup></h4>
               <p>Lesão → infecção → biofilme → inflamação crônica → tecido necrótico → osteomielite → amputação. Cada etapa demora semanas; o tratamento precoce pode interromper a cascata.</p>
             </div>
           </div>
           <div class="callout orange">
             <span class="callout-icon">📊</span>
             <div>
-              <h4>Dimensão da crise</h4>
+              <h4>Dimensão da crise <sup>[1]</sup></h4>
               <p>A cada 30 segundos, uma amputação de membro inferior é realizada por diabetes no mundo. O custo global de tratamento de úlceras diabéticas deve superar US$ 11 bilhões até 2027.</p>
             </div>
           </div>
@@ -814,6 +841,72 @@
     </div>
   </div>
 
+  <!-- SEÇÃO CALÇADOS -->
+  <div class="section-header">
+    <div class="eyebrow">Prevenção · Um detalhe que define tudo</div>
+    <h2>Calçados adequados e <span>inadequados para o pé diabético</span></h2>
+  </div>
+
+  <div class="content">
+    <p>Como a neuropatia elimina o sinal de dor, o calçado deixa de ser uma questão de conforto e passa a ser uma questão de <strong>sobrevivência tecidual</strong>. Estudos mostram que pressão repetida em pontos de proeminência óssea é a principal causa mecânica de úlceras plantares no pé diabético <sup>[10]</sup>. A escolha correta do calçado é, portanto, uma intervenção terapêutica — não um acessório.</p>
+  </div>
+
+  <div class="two-col" style="margin-top: 24px;">
+    <figure>
+      <img src="img/calcados-inadequados-pe-diabetico.jpg"
+           alt="Exemplos de calçados inadequados para pessoas com diabetes: bico fino, salto alto, sandálias abertas, calçados apertados"
+           onerror="this.classList.add('img-error'); this.nextElementSibling.classList.add('visible')">
+      <div class="img-fallback">
+        <span class="fallback-icon">🖼</span>
+        <p class="fallback-path">img/calcados-inadequados-pe-diabetico.jpg</p>
+        <p class="fallback-hint">Montagem com 4 tipos de calçados inadequados: salto alto, bico fino, chinelo aberto, sapato apertado — com setas indicando os pontos de pressão problemáticos no pé</p>
+      </div>
+      <figcaption>Figura 5 — Calçados <strong>inadequados</strong>: bico fino concentra pressão nos dedos; salto alto desloca o peso para o antepé; chinelos e sandálias expostos aumentam risco de trauma; calçados apertados geram atrito contínuo — tudo isso sem que a pessoa diabética sinta. <sup>[10]</sup></figcaption>
+    </figure>
+    <figure>
+      <img src="img/calcados-adequados-pe-diabetico.jpg"
+           alt="Exemplos de calçados adequados para pessoas com diabetes: tênis ortopédico, solado antiderrapante, bico arredondado e largo, palmilha macia"
+           onerror="this.classList.add('img-error'); this.nextElementSibling.classList.add('visible')">
+      <div class="img-fallback">
+        <span class="fallback-icon">🖼</span>
+        <p class="fallback-path">img/calcados-adequados-pe-diabetico.jpg</p>
+        <p class="fallback-hint">Montagem com 2–3 tipos de calçados adequados: tênis de bico largo, calçado terapêutico fechado, sapato de couro macio com solado firme — com indicações dos recursos protetores</p>
+      </div>
+      <figcaption>Figura 6 — Calçados <strong>adequados</strong>: bico largo e arredondado, sem costuras internas agressivas, solado rígido que distribui pressão, profundidade suficiente para palmilha ortopédica, fechamento ajustável. O calçado terapêutico para diabéticos reduz em até 50% o risco de ulceração plantar. <sup>[10]</sup></figcaption>
+    </figure>
+  </div>
+
+  <div class="cards-grid" style="margin-top: 4px;">
+    <div class="card" style="border-top: 3px solid var(--rose);">
+      <div class="card-icon">🚫</div>
+      <h4 style="color:#7A1F1A;">Evitar sempre</h4>
+      <p>Salto alto, bico fino ou pontiagudo, chinelos abertos, calçados muito apertados ou muito largos, materiais sintéticos sem respiração, costuras internas salientes.</p>
+    </div>
+    <div class="card" style="border-top: 3px solid var(--green);">
+      <div class="card-icon">✅</div>
+      <h4 style="color:#104828;">Preferir sempre</h4>
+      <p>Tênis ou sapato fechado de couro macio, bico largo, solado firme e antiderrapante, palmilha ortopédica removível, sem costuras internas, comprido 1 cm além do dedo mais longo.</p>
+    </div>
+    <div class="card" style="border-top: 3px solid var(--amber);">
+      <div class="card-icon">👁️</div>
+      <h4 style="color:#7C3D0A;">Inspecionar diariamente</h4>
+      <p>Por dentro do calçado antes de calçar (pedras, objetos, dobras). Inspecionar o próprio pé com espelho se necessário. Nunca andar descalço, mesmo dentro de casa. <sup>[10]</sup></p>
+    </div>
+    <div class="card" style="border-top: 3px solid var(--purple);">
+      <div class="card-icon">⏱️</div>
+      <h4 style="color:#4A1B8A;">Adaptação gradual</h4>
+      <p>Calçados novos devem ser usados por períodos curtos inicialmente (1–2h), aumentando progressivamente. Verificar marcas de pressão na pele logo após retirar. <sup>[10]</sup></p>
+    </div>
+  </div>
+
+  <div class="callout orange" style="margin-top: 8px;">
+    <span class="callout-icon">💡</span>
+    <div>
+      <h4>Por que isso é tão crítico na diabetes? <sup>[1,7,10]</sup></h4>
+      <p>Em pessoas sem neuropatia, um calçado ruim dói — e é trocado. Em pessoas com perda de sensibilidade protetora, o mesmo calçado cria lesão por pressão repetida durante horas, dia após dia, <strong>completamente imperceptível</strong>. Quando a ferida é encontrada, frequentemente já existe infecção instalada. Orientar sobre calçados é, portanto, uma competência clínica essencial para enfermagem, medicina e equipes de reabilitação.</p>
+    </div>
+  </div>
+
   <!-- IMPLICAÇÕES CLÍNICAS -->
   <div class="section-header">
     <div class="eyebrow">Implicações clínicas · Para a prática</div>
@@ -836,21 +929,21 @@
     <div class="callout green">
       <span class="callout-icon">✅</span>
       <div>
-        <h4>Controle glicêmico é fundamento</h4>
+        <h4>Controle glicêmico é fundamento <sup>[3,4,8]</sup></h4>
         <p>Reduzir a glicemia reduz a formação de AGEs, diminui a disfunção endotelial e restaura parcialmente a polarização macrofágica. Não existe tratamento de ferida eficaz sem controle metabólico associado.</p>
       </div>
     </div>
     <div class="callout teal">
       <span class="callout-icon">🩹</span>
       <div>
-        <h4>Desbridamento e controle de biofilme</h4>
+        <h4>Desbridamento e controle de biofilme <sup>[1,8]</sup></h4>
         <p>Remover tecido necrótico e biofilme é obrigatório: sem isso, a inflamação crônica persiste e qualquer curativo perde o efeito. O desbridamento transforma a ferida crônica em aguda — reiniciando a cascata normal.</p>
       </div>
     </div>
     <div class="callout blue">
       <span class="callout-icon">🔬</span>
       <div>
-        <h4>Perspectivas terapêuticas emergentes</h4>
+        <h4>Perspectivas terapêuticas emergentes <sup>[4,8]</sup></h4>
         <p>Inibidores de DPP-4, metformina tópica, hidrogéis com GLP-1, terapia por pressão negativa (NPWT) e substitutos de pele bioengenheirados atacam diferentes nós da cascata, com resultados promissores em estudos pré-clínicos e clínicos.</p>
       </div>
     </div>
