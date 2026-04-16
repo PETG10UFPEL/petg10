@@ -956,6 +956,456 @@
     </div>
   </div>
 
+  <!-- ══════════════════════════════════════════════
+       FIXAÇÃO DE CONCEITOS
+  ══════════════════════════════════════════════ -->
+  <div class="section-header" style="margin-top:64px;">
+    <div class="eyebrow">Fixação de conceitos · Teste seus conhecimentos</div>
+    <h2>Você entendeu o <span>mecanismo?</span></h2>
+  </div>
+
+  <p style="color:var(--mid);font-size:0.95rem;margin-bottom:32px;">
+    Seis perguntas de múltipla escolha cobrindo os conceitos centrais do infográfico.
+    Clique em uma alternativa para ver o feedback explicado.
+  </p>
+
+  <div id="quiz-wrap"></div>
+
+  <!-- PARA PENSAR ALÉM -->
+  <div class="section-header" style="margin-top:56px;">
+    <div class="eyebrow">Para pensar além · Reflexão aberta</div>
+    <h2>Perguntas que <span>não têm resposta simples</span></h2>
+  </div>
+
+  <p style="color:var(--mid);font-size:0.95rem;margin-bottom:28px;">
+    Estas perguntas não têm alternativas. Cada uma desdobra em outra —
+    o objetivo não é a resposta certa, mas o raciocínio que ela exige.
+  </p>
+
+  <div id="reflect-wrap"></div>
+
+  <!-- ── ESTILOS DO QUIZ ── -->
+  <style>
+    /* === QUIZ MCQ === */
+    #quiz-wrap { display:flex; flex-direction:column; gap:22px; }
+
+    .qcard {
+      background: var(--white);
+      border-radius:16px;
+      border:1.5px solid var(--border);
+      box-shadow: var(--shadow-sm);
+      overflow:hidden;
+    }
+    .qcard-head {
+      display:flex; align-items:flex-start; gap:14px;
+      padding:20px 24px 16px;
+    }
+    .qnum {
+      flex-shrink:0;
+      width:34px; height:34px; border-radius:50%;
+      display:flex; align-items:center; justify-content:center;
+      font-size:0.8rem; font-weight:800; color:#fff;
+      margin-top:2px;
+    }
+    .qmeta { flex:1; }
+    .qtag {
+      font-size:9px; font-weight:800;
+      letter-spacing:0.15em; text-transform:uppercase;
+      margin-bottom:5px;
+    }
+    .qtext {
+      font-family:'Playfair Display',serif;
+      font-size:1.05rem; line-height:1.45; color:var(--dark);
+    }
+    .qopts {
+      display:flex; flex-direction:column; gap:9px;
+      padding:0 24px 0 72px; margin-bottom:16px;
+    }
+    .qopt {
+      display:flex; align-items:flex-start; gap:11px;
+      background:var(--page-bg); border:1.5px solid var(--border);
+      border-radius:10px; padding:11px 15px;
+      cursor:pointer; font-size:0.91rem; color:var(--mid);
+      text-align:left; transition:border-color .15s, background .15s;
+      width:100%;
+    }
+    .qopt:hover:not([disabled]) { border-color:var(--soft); background:#EEEDF8; }
+    .qletter {
+      flex-shrink:0; width:22px; height:22px; border-radius:50%;
+      background:var(--border); display:flex; align-items:center;
+      justify-content:center; font-size:0.72rem; font-weight:800;
+      color:var(--soft); transition:background .15s, color .15s;
+    }
+    .qopt.correct  { background:var(--green-light); border-color:var(--green); }
+    .qopt.correct .qletter { background:var(--green); color:#fff; }
+    .qopt.wrong    { background:var(--rose-light);  border-color:var(--rose); }
+    .qopt.wrong  .qletter  { background:var(--rose);  color:#fff; }
+    .qopt[disabled]{ cursor:default; }
+    .qfeedback {
+      display:none; margin:0 24px 20px 72px;
+      border-radius:11px; padding:14px 16px;
+      font-size:0.89rem; line-height:1.65;
+    }
+    .qfeedback.show { display:block; }
+    .qfeedback.ok  { background:var(--green-light); border-left:4px solid var(--green); }
+    .qfeedback.err { background:var(--rose-light);  border-left:4px solid var(--rose); }
+    .qfeedback strong { display:block; margin-bottom:3px; font-size:0.93rem; }
+    .qprogress {
+      height:4px; border-radius:0 0 14px 14px;
+      background: linear-gradient(90deg, var(--teal), var(--blue));
+      width:0; transition:width .4s;
+    }
+
+    /* === PLACAR FINAL === */
+    #quiz-score {
+      display:none; margin-top:28px;
+      background:var(--white); border-radius:16px;
+      border:1.5px solid var(--border); box-shadow:var(--shadow-sm);
+      padding:28px 32px; text-align:center;
+    }
+    #quiz-score h3 {
+      font-family:'Playfair Display',serif;
+      font-size:1.4rem; margin-bottom:8px; color:var(--dark);
+    }
+    #quiz-score p { font-size:0.95rem; color:var(--mid); }
+    .score-badge {
+      display:inline-block; font-size:2.6rem; font-weight:800;
+      color:var(--teal); line-height:1; margin:10px 0 6px;
+    }
+
+    /* === REFLECT === */
+    #reflect-wrap { display:flex; flex-direction:column; gap:20px; }
+
+    .rcard {
+      background:var(--white); border-radius:16px;
+      border:1.5px solid var(--border); box-shadow:var(--shadow-sm);
+      overflow:hidden;
+    }
+    .rcard-head {
+      display:flex; align-items:flex-start; gap:14px;
+      padding:20px 24px 16px; cursor:pointer; user-select:none;
+    }
+    .ricon {
+      flex-shrink:0; font-size:22px; margin-top:2px;
+    }
+    .rmeta { flex:1; }
+    .rtag {
+      font-size:9px; font-weight:800;
+      letter-spacing:0.15em; text-transform:uppercase;
+      color:var(--purple); margin-bottom:5px;
+    }
+    .rquestion {
+      font-family:'Playfair Display',serif;
+      font-size:1.05rem; line-height:1.45; color:var(--dark);
+      font-style:italic;
+    }
+    .rtoggle {
+      flex-shrink:0; width:28px; height:28px; border-radius:50%;
+      background:var(--page-bg); border:1.5px solid var(--border);
+      display:flex; align-items:center; justify-content:center;
+      font-size:0.9rem; transition:transform .25s; margin-top:2px;
+    }
+    .rcard.open .rtoggle { transform:rotate(180deg); }
+    .rbody {
+      max-height:0; overflow:hidden;
+      transition:max-height .4s cubic-bezier(.4,0,.2,1);
+    }
+    .rcard.open .rbody { max-height:600px; }
+    .rbody-inner {
+      padding:0 26px 22px 62px;
+      display:flex; flex-direction:column; gap:10px;
+    }
+    .rthread {
+      background:var(--purple-light); border:1.5px solid #C4B5FD;
+      border-radius:11px; padding:13px 16px;
+      font-size:0.9rem; color:var(--mid); line-height:1.6;
+    }
+    .rthread strong { color:var(--purple); display:block; margin-bottom:3px; font-size:0.88rem; }
+    .rhint {
+      background:var(--amber-light); border:1.5px solid #FDE68A;
+      border-radius:11px; padding:12px 15px;
+      font-size:0.86rem; color:#7C3D0A; font-style:italic;
+    }
+  </style>
+
+  <!-- ── SCRIPT DO QUIZ ── -->
+  <script>
+  (function(){
+
+    /* ─── DADOS DAS QUESTÕES ─── */
+    const questions = [
+      {
+        color: '#B45309', lightBg: '#FFFBEB',
+        tag: 'Nível molecular · AGEs',
+        text: 'Um paciente diabético tem uma ferida que não cicatriza. O médico solicita biópsia e encontra crosslinks anormais no colágeno dérmico. Qual mecanismo explica diretamente esse achado?',
+        opts: [
+          'Ativação excessiva de macrófagos M1 liberando TNF-α',
+          'Glicação não-enzimática formando Produtos Finais da Glicação Avançada (AGEs)',
+          'Deficiência de VEGF impedindo angiogênese local',
+          'NETose de neutrófilos criando barreira física na ferida'
+        ],
+        correct: 1,
+        feedback: {
+          ok: '✓ Correto! Os AGEs resultam da reação entre glicose cronicamente elevada e grupos amino de proteínas de longa vida como o colágeno. Os crosslinks que formam tornam o colágeno rígido, resistente à remodelação enzimática e impedem a adesão e migração dos fibroblastos.',
+          err: 'Os crosslinks anormais no colágeno são o resultado direto da glicação — formação de AGEs. As outras opções descrevem mecanismos reais na ferida diabética, mas nenhum deles explica especificamente o achado de crosslinks colágenos.'
+        }
+      },
+      {
+        color: '#0D7B72', lightBg: '#EDFAF8',
+        tag: 'Nível vascular · Microangiopatia',
+        text: 'Por que uma ferida no pé de um paciente diabético pode não sangrar nem apresentar edema típico, mesmo estando gravemente infectada?',
+        opts: [
+          'Porque os AGEs bloqueiam os receptores de dor na ferida',
+          'Porque a microangiopatia espessa a membrana basal dos capilares, reduzindo o fluxo e a resposta vascular local',
+          'Porque os macrófagos M2 suprimem ativamente a inflamação local',
+          'Porque o biofilme absorve o exsudato e mascara os sinais clínicos'
+        ],
+        correct: 1,
+        feedback: {
+          ok: '✓ Correto! A microangiopatia diabética espessa a membrana basal capilar e reduz o fluxo sanguíneo local. Com menos perfusão, a resposta inflamatória vascular — vasodilatação, extravasamento, edema — fica atenuada, mesmo com infecção grave. Isso "mascara" os sinais cardinais da inflamação.',
+          err: 'A ausência de sinais típicos de inflamação se deve à microangiopatia: com capilares disfuncionais e fluxo reduzido, a resposta vascular local é insuficiente para produzir os sinais clássicos de rubor, calor, edema e dor — mesmo com infecção grave subjacente.'
+        }
+      },
+      {
+        color: '#6D28D9', lightBg: '#F5F0FF',
+        tag: 'Neuropatia · Sensibilidade',
+        text: 'Uma paciente com diabetes há 15 anos chega ao pronto-socorro com úlcera plantar profunda. Ela afirma que "não sentiu nada" e descobriu a ferida ao tirar a meia. Qual é o mecanismo fisiopatológico central que explica essa situação?',
+        opts: [
+          'Disfunção autonômica que reduziu a sudorese e ressecou a pele',
+          'Perda de sensibilidade protetora por neuropatia periférica sensitiva',
+          'Isquemia local que reduziu a transmissão nervosa',
+          'Formação de biofilme que inibiu os receptores de pressão'
+        ],
+        correct: 1,
+        feedback: {
+          ok: '✓ Correto! A neuropatia sensitiva periférica destrói progressivamente as fibras nervosas que transmitem pressão, temperatura e dor. Sem esse alarme, a paciente usa calçados inadequados, caminha sobre proeminências ósseas, e sofre microtraumas repetidos por semanas — sem nenhum sinal de alerta.',
+          err: 'O elemento central aqui é a perda da sensibilidade protetora pela neuropatia sensitiva. Sem a via aferente de dor e pressão funcionando, qualquer trauma mecânico — calçado apertado, pedra, costura — ocorre em silêncio absoluto do ponto de vista da percepção da paciente.'
+        }
+      },
+      {
+        color: '#C2500A', lightBg: '#FFF4ED',
+        tag: 'Inflamação · Polarização macrofágica',
+        text: 'Em uma ferida normal, os macrófagos transitam de M1 para M2 após alguns dias. Em feridas diabéticas, esse switch não ocorre. Qual é a consequência direta mais importante dessa falha?',
+        opts: [
+          'A ferida sangra mais intensamente por falta de fatores de coagulação',
+          'A fase proliferativa nunca é iniciada — fibroblastos e células endoteliais não recebem os sinais de reparo (VEGF, TGF-β)',
+          'O biofilme bacteriano se forma mais rapidamente sem macrófagos M1',
+          'O colágeno é degradado em excesso pelos macrófagos M2 bloqueados'
+        ],
+        correct: 1,
+        feedback: {
+          ok: '✓ Correto! Os macrófagos M2 são os "diretores de obras" da fase proliferativa: liberam VEGF (que comanda a angiogênese) e TGF-β (que recruta e ativa fibroblastos). Sem a transição M1→M2, a ferida permanece em inflamação crônica sem jamais avançar para formação de tecido de granulação.',
+          err: 'A consequência central da falha M1→M2 é a não-iniciação da fase proliferativa. São os macrófagos M2 que liberam os sinais (VEGF, TGF-β) que convocam fibroblastos e células endoteliais para reconstruir o tecido. Sem eles, a cascata de reparo simplesmente não avança.'
+        }
+      },
+      {
+        color: '#1A4FBD', lightBg: '#EEF4FF',
+        tag: 'Biofilme · Infecção',
+        text: 'Um enfermeiro aplica antibiótico tópico em uma ferida diabética com biofilme estabelecido e não observa melhora após 2 semanas. Qual é a explicação mais provável?',
+        opts: [
+          'A hiperglicemia inativa quimicamente o antibiótico no exsudato',
+          'Os macrófagos M1 estão degradando o antibiótico antes que ele atinja as bactérias',
+          'O biofilme envolve as bactérias em matriz polissacarídica que reduz em até 1.000× a eficácia do antibiótico e protege da fagocitose',
+          'A neuropatia autonômica impede a absorção local do medicamento'
+        ],
+        correct: 2,
+        feedback: {
+          ok: '✓ Correto! O biofilme é uma das principais razões pelas quais feridas diabéticas infectadas resistem ao tratamento. A matriz extracelular polissacarídica cria uma barreira física e química que impede a penetração de antibióticos e blinda as bactérias da resposta imune. Sem desbridamento para destruir o biofilme, o antibiótico age no "teto" — não nas bactérias.',
+          err: 'O problema não é a atividade do antibiótico em si, mas sua incapacidade de penetrar o biofilme. A matriz polissacarídica que envolve as bactérias reduz em até 1.000× a eficácia dos antibióticos e protege os microrganismos da fagocitose. Por isso, o desbridamento é sempre o primeiro passo — sem ele, nenhum antibiótico funciona adequadamente.'
+        }
+      },
+      {
+        color: '#B83A2E', lightBg: '#FDF0EE',
+        tag: 'Integração · Calçado e prevenção',
+        text: 'Um estudante de enfermagem orienta um paciente diabético a "usar qualquer calçado confortável". Por que essa orientação é insuficiente e potencialmente perigosa?',
+        opts: [
+          'Porque conforto subjetivo não garante distribuição adequada de pressão — e o paciente com neuropatia não sente desconforto nem quando o calçado está causando lesão',
+          'Porque calçados confortáveis geralmente têm solado muito macio, o que piora a circulação',
+          'Porque a sensação de conforto é amplificada na diabetes e faz o paciente subestimar o risco',
+          'Porque calçados confortáveis tendem a ser abertos, expondo o pé a traumas externos'
+        ],
+        correct: 0,
+        feedback: {
+          ok: '✓ Correto! "Confortável" para uma pessoa com neuropatia não significa "seguro". A perda da sensibilidade protetora elimina o sistema de alarme que normalmente faz a pessoa perceber pressão excessiva, atrito ou caimento inadequado. Um calçado pode estar criando lesão por pressão repetida dia após dia — e o paciente genuinamente não sente nada. A orientação correta é objetiva: bico largo, solado rígido, sem costuras internas, fechamento ajustável.',
+          err: 'O ponto crítico é que "conforto" é uma percepção subjetiva que depende da sensibilidade — e pacientes com neuropatia diabética não têm sensibilidade protetora preservada. Um calçado pode ser percebido como confortável e ao mesmo tempo estar causando lesão por pressão em proeminências ósseas. Por isso a orientação precisa ser objetiva e técnica, não subjetiva.'
+        }
+      }
+    ];
+
+    /* ─── DADOS DAS REFLEXÕES ─── */
+    const reflections = [
+      {
+        icon: '🧩',
+        question: 'Se a hiperglicemia danifica os vasos, os nervos e o colágeno ao mesmo tempo — o que aconteceria se tratássemos apenas a ferida, sem controlar a glicemia?',
+        threads: [
+          { label: 'Pense primeiro:', text: 'O tratamento local da ferida (curativo, desbridamento, antibiótico) atua sobre o ambiente da lesão — mas não reverte os AGEs já formados, não restaura os nervos lesados nem reconstrói os capilares destruídos.' },
+          { label: 'Aprofunde:', text: 'Se a causa — a hiperglicemia — continua ativa, novos AGEs continuam sendo formados, novos capilares continuam disfuncionando, e o tecido recém-formado sobre a ferida já nasce comprometido. É como tampar um cano que continua rompendo por dentro.' },
+          { label: 'Questão seguinte:', text: 'Então, qual é o papel da equipe de enfermagem além de cuidar do curativo? O que muda na sua abordagem ao paciente se você entende que a ferida é um sintoma, não o problema?' }
+        ],
+        hint: 'Não há resposta certa — há uma mudança de perspectiva sobre o que significa "cuidar de uma ferida".'
+      },
+      {
+        icon: '⚖️',
+        question: 'A neuropatia elimina a dor — que normalmente é um sinal protetor. Se a dor fosse preservada no pé diabético, isso seria sempre bom?',
+        threads: [
+          { label: 'Considere:', text: 'A dor existe para sinalizar dano tecidual e provocar mudança de comportamento (tirar o sapato, parar de caminhar). Nesse sentido, sua ausência na neuropatia é perigosa.' },
+          { label: 'Mas pense também:', text: 'Pacientes com neuropatia dolorosa — outro subtipo — sofrem dor neuropática intensa e crônica sem lesão ativa. Essa dor não protege, apenas incapacita. O problema então não é simplesmente "ter ou não ter dor".' },
+          { label: 'Questão seguinte:', text: 'O que torna a dor útil como sinal não é sua presença ou ausência, mas sua proporcionalidade ao dano real. Como isso muda a forma como você avalia uma ferida — especialmente quando o paciente diz que "não dói"?' }
+        ],
+        hint: 'Reflita sobre a diferença entre ausência de dor como proteção perdida vs. ausência de dor como sinal clínico enganoso.'
+      },
+      {
+        icon: '🔄',
+        question: 'O biofilme só se forma porque a ferida não cicatrizou — ou ele próprio é uma das razões pelas quais a ferida não cicatriza?',
+        threads: [
+          { label: 'A armadilha circular:', text: 'A hiperglicemia cria um ambiente favorável ao biofilme (glicose elevada no exsudato, imunidade comprometida). O biofilme, uma vez formado, perpetua a inflamação crônica e inibe fibroblastos — impedindo a cicatrização.' },
+          { label: 'Consequência clínica:', text: 'Isso significa que mesmo controlando a glicemia, se o biofilme já estiver estabelecido, a ferida não fecha — porque o biofilme passou a ser um fator independente de manutenção da cronicidade.' },
+          { label: 'Questão seguinte:', text: 'Se você precisasse priorizar uma intervenção em uma ferida diabética infectada com biofilme e hiperglicemia ativa — qual trataria primeiro, e por quê? Existe ordem correta, ou devem ser simultâneos?' }
+        ],
+        hint: 'Pense nos conceitos de causa inicial vs. fator de manutenção — e o que isso implica para a sequência do tratamento.'
+      }
+    ];
+
+    /* ─── RENDERIZA QUIZ MCQ ─── */
+    const wrap = document.getElementById('quiz-wrap');
+    let answered = 0;
+    const total = questions.length;
+
+    questions.forEach((q, qi) => {
+      const card = document.createElement('div');
+      card.className = 'qcard';
+
+      const letters = ['A','B','C','D'];
+      const optsHTML = q.opts.map((o,oi) =>
+        `<button class="qopt" data-qi="${qi}" data-oi="${oi}">
+          <span class="qletter">${letters[oi]}</span>
+          <span>${o}</span>
+        </button>`
+      ).join('');
+
+      card.innerHTML = `
+        <div class="qcard-head">
+          <div class="qnum" style="background:${q.color};">${qi+1}</div>
+          <div class="qmeta">
+            <div class="qtag" style="color:${q.color};">${q.tag}</div>
+            <div class="qtext">${q.text}</div>
+          </div>
+        </div>
+        <div class="qopts">${optsHTML}</div>
+        <div class="qfeedback" id="qfb-${qi}"></div>
+        <div class="qprogress" id="qprog-${qi}"></div>
+      `;
+      wrap.appendChild(card);
+    });
+
+    // score
+    const scoreEl = document.createElement('div');
+    scoreEl.id = 'quiz-score';
+    scoreEl.innerHTML = `
+      <h3>Quiz concluído!</h3>
+      <div class="score-badge" id="score-val"></div>
+      <p id="score-msg"></p>
+    `;
+    wrap.after(scoreEl);
+
+    /* delegação de eventos */
+    wrap.addEventListener('click', function(e){
+      const btn = e.target.closest('.qopt');
+      if (!btn) return;
+      const qi = parseInt(btn.dataset.qi);
+      const oi = parseInt(btn.dataset.oi);
+      const q  = questions[qi];
+      const card = btn.closest('.qcard');
+      const allOpts = card.querySelectorAll('.qopt');
+      const fb = document.getElementById('qfb-'+qi);
+      const prog = document.getElementById('qprog-'+qi);
+
+      // já respondida?
+      if (btn.disabled) return;
+
+      allOpts.forEach(o => o.disabled = true);
+
+      const correct = (oi === q.correct);
+      btn.classList.add(correct ? 'correct' : 'wrong');
+      allOpts[q.correct].classList.add('correct');
+
+      fb.innerHTML = correct
+        ? `<strong>✓ Isso mesmo!</strong>${q.feedback.ok}`
+        : `<strong>✗ Não exatamente.</strong>${q.feedback.err}`;
+      fb.className = 'qfeedback show ' + (correct ? 'ok' : 'err');
+
+      prog.style.width = '100%';
+      answered++;
+
+      if (answered === total) {
+        const rights = wrap.querySelectorAll('.qopt.correct:not([data-qi])').length;
+        // contar corretas
+        let acertos = 0;
+        questions.forEach((_,i) => {
+          const card = wrap.querySelectorAll('.qcard')[i];
+          const chosen = card.querySelector('.qopt.correct, .qopt.wrong');
+          if (chosen && chosen.classList.contains('correct') && !chosen.classList.contains('wrong')) acertos++;
+        });
+        // conta simples: percorrer cards
+        let ct = 0;
+        wrap.querySelectorAll('.qcard').forEach(c => {
+          const w = c.querySelector('.qopt.wrong');
+          const co = c.querySelector('.qopt.correct');
+          if (co && !w) ct++;
+        });
+        const pct = Math.round((ct/total)*100);
+        const msgs = [
+          [100, '🏆 Excelente! Você dominou todos os mecanismos.'],
+          [80,  '🎯 Muito bem! Compreensão sólida dos conceitos.'],
+          [60,  '📖 Bom progresso! Vale reler as cenas onde errou.'],
+          [0,   '💡 Continue estudando — o infográfico tem tudo que você precisa!']
+        ];
+        const msg = msgs.find(m => pct >= m[0])[1];
+        document.getElementById('score-val').textContent = `${ct} / ${total}`;
+        document.getElementById('score-msg').textContent = msg;
+        scoreEl.style.display = 'block';
+        scoreEl.scrollIntoView({behavior:'smooth', block:'nearest'});
+      }
+    });
+
+    /* ─── RENDERIZA REFLEXÕES ─── */
+    const rWrap = document.getElementById('reflect-wrap');
+
+    reflections.forEach((r, ri) => {
+      const card = document.createElement('div');
+      card.className = 'rcard';
+
+      const threadsHTML = r.threads.map(t =>
+        `<div class="rthread"><strong>${t.label}</strong>${t.text}</div>`
+      ).join('');
+
+      card.innerHTML = `
+        <div class="rcard-head">
+          <div class="ricon">${r.icon}</div>
+          <div class="rmeta">
+            <div class="rtag">Para pensar além · Questão ${ri+1}</div>
+            <div class="rquestion">${r.question}</div>
+          </div>
+          <div class="rtoggle">▾</div>
+        </div>
+        <div class="rbody">
+          <div class="rbody-inner">
+            ${threadsHTML}
+            <div class="rhint">💬 ${r.hint}</div>
+          </div>
+        </div>
+      `;
+
+      card.querySelector('.rcard-head').addEventListener('click', () => {
+        card.classList.toggle('open');
+      });
+
+      rWrap.appendChild(card);
+    });
+
+  })();
+  </script>
+
 </main>
 
 <!-- FOOTER -->
