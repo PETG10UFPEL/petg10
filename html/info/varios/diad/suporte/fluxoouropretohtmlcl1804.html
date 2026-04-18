@@ -1,0 +1,700 @@
+
+<style>
+  :root { --teal50:#E1F5EE; --teal600:#0F6E56; --teal800:#085041; --amber50:#FAEEDA; --amber600:#854F0B; --amber800:#633806; --coral50:#FAECE7; --coral600:#993C1D; --coral800:#712B13; --blue50:#E6F1FB; --blue600:#185FA5; --blue800:#0C447C; --purple50:#EEEDFE; --purple600:#534AB7; --purple800:#3C3489; --gray50:#F1EFE8; --gray600:#5F5E5A; --gray800:#444441; --red50:#FCEBEB; --red600:#A32D2D; }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: var(--font-sans, sans-serif); }
+  .app { padding: 0.5rem 0 1.5rem; }
+  .tabs { display:flex; gap:0; border-bottom: 0.5px solid var(--color-border-tertiary); margin-bottom:1.5rem; }
+  .tab { padding:8px 18px; font-size:13px; cursor:pointer; border:none; background:none; color:var(--color-text-secondary); border-bottom:2px solid transparent; transition:all .2s; white-space:nowrap; }
+  .tab.active { color:var(--color-text-primary); border-bottom:2px solid var(--color-text-primary); font-weight:500; }
+  .tab:hover:not(.active) { color:var(--color-text-primary); background:var(--color-background-secondary); }
+  .panel { display:none; } .panel.active { display:block; }
+
+  /* Fluxo */
+  .flow { display:flex; flex-direction:column; gap:0; }
+  .flow-stage { display:flex; align-items:stretch; gap:0; margin-bottom:2px; }
+  .stage-label { width:120px; min-width:120px; display:flex; align-items:center; justify-content:flex-end; padding-right:12px; font-size:11px; font-weight:500; color:var(--color-text-secondary); text-align:right; line-height:1.3; }
+  .stage-content { flex:1; padding:8px 0 8px 12px; border-left:2px solid var(--color-border-tertiary); position:relative; }
+  .stage-dot { width:10px; height:10px; border-radius:50%; position:absolute; left:-6px; top:50%; transform:translateY(-50%); }
+  .boxes { display:flex; gap:6px; flex-wrap:wrap; }
+  .box { border-radius:6px; padding:7px 11px; font-size:12px; font-weight:500; cursor:pointer; border:0.5px solid; transition:opacity .15s; line-height:1.3; }
+  .box:hover { opacity:.8; }
+  .box-teal { background:var(--teal50); color:var(--teal800); border-color:var(--teal600); }
+  .box-amber { background:var(--amber50); color:var(--amber800); border-color:var(--amber600); }
+  .box-coral { background:var(--coral50); color:var(--coral800); border-color:var(--coral600); }
+  .box-blue { background:var(--blue50); color:var(--blue800); border-color:var(--blue600); }
+  .box-purple { background:var(--purple50); color:var(--purple800); border-color:var(--purple600); }
+  .box-gray { background:var(--gray50); color:var(--gray800); border-color:var(--gray600); }
+  .box-red { background:var(--red50); color:var(--red600); border-color:var(--red600); }
+  .connector { font-size:16px; color:var(--color-border-secondary); margin:0 2px; display:flex; align-items:center; }
+  .legend { display:flex; gap:10px; flex-wrap:wrap; margin-top:1rem; padding-top:1rem; border-top:0.5px solid var(--color-border-tertiary); }
+  .leg-item { display:flex; align-items:center; gap:5px; font-size:11px; color:var(--color-text-secondary); }
+  .leg-dot { width:8px; height:8px; border-radius:50%; }
+  .urgency-banner { border-radius:6px; padding:8px 12px; font-size:12px; margin-top:8px; border:0.5px solid var(--red600); background:var(--red50); color:var(--red600); }
+
+  /* Forms */
+  .form-nav { display:flex; gap:6px; flex-wrap:wrap; margin-bottom:1rem; }
+  .fnav { font-size:12px; padding:5px 10px; border-radius:20px; cursor:pointer; border:0.5px solid var(--color-border-tertiary); background:var(--color-background-secondary); color:var(--color-text-secondary); transition:all .15s; }
+  .fnav.active { background:var(--color-background-primary); color:var(--color-text-primary); border-color:var(--color-border-primary); font-weight:500; }
+  .form-card { background:var(--color-background-primary); border:0.5px solid var(--color-border-tertiary); border-radius:var(--border-radius-lg); padding:1rem 1.25rem; }
+  .form-header { display:flex; align-items:center; gap:8px; margin-bottom:1rem; padding-bottom:0.75rem; border-bottom:0.5px solid var(--color-border-tertiary); }
+  .form-icon { width:32px; height:32px; border-radius:6px; display:flex; align-items:center; justify-content:center; font-size:14px; }
+  .form-title { font-size:14px; font-weight:500; }
+  .form-sub { font-size:12px; color:var(--color-text-secondary); }
+  .fgroup { margin-bottom:0.75rem; }
+  .frow { display:grid; gap:8px; margin-bottom:0.75rem; }
+  .frow-2 { grid-template-columns:1fr 1fr; }
+  .frow-3 { grid-template-columns:1fr 1fr 1fr; }
+  label { font-size:12px; color:var(--color-text-secondary); display:block; margin-bottom:3px; }
+  input[type=text], input[type=date], select, textarea { width:100%; font-size:13px; padding:6px 9px; border:0.5px solid var(--color-border-tertiary); border-radius:6px; background:var(--color-background-primary); color:var(--color-text-primary); font-family:inherit; transition:border-color .15s; }
+  input:focus, select:focus, textarea:focus { outline:none; border-color:var(--color-border-primary); }
+  textarea { resize:vertical; min-height:60px; }
+  .checkbox-group { display:flex; flex-wrap:wrap; gap:8px; margin-top:4px; }
+  .check-item { display:flex; align-items:center; gap:4px; font-size:12px; cursor:pointer; }
+  .check-item input { width:auto; margin:0; }
+  .section-title { font-size:11px; font-weight:500; text-transform:uppercase; letter-spacing:.05em; color:var(--color-text-secondary); margin:1rem 0 0.5rem; padding-top:0.75rem; border-top:0.5px solid var(--color-border-tertiary); }
+  .risk-row { display:grid; grid-template-columns:80px 1fr 100px; gap:8px; align-items:start; padding:6px 0; border-bottom:0.5px solid var(--color-border-tertiary); font-size:12px; }
+  .risk-badge { border-radius:4px; padding:2px 8px; font-size:11px; font-weight:500; text-align:center; }
+  .rb-baixo { background:var(--teal50); color:var(--teal800); }
+  .rb-medio { background:var(--amber50); color:var(--amber800); }
+  .rb-alto { background:var(--coral50); color:var(--coral800); }
+  .rb-muitoalto { background:var(--red50); color:var(--red600); }
+  .field-form { display:none; } .field-form.active { display:block; }
+  .btn-row { display:flex; justify-content:flex-end; gap:8px; margin-top:1rem; padding-top:0.75rem; border-top:0.5px solid var(--color-border-tertiary); }
+  .btn { padding:6px 14px; border-radius:6px; font-size:13px; cursor:pointer; border:0.5px solid; }
+  .btn-sec { background:var(--color-background-secondary); color:var(--color-text-secondary); border-color:var(--color-border-tertiary); }
+  .btn-pri { background:var(--color-background-primary); color:var(--color-text-primary); border-color:var(--color-border-primary); font-weight:500; }
+</style>
+
+<div class="app">
+<h2 class="sr-only">Ambulatório de feridas — fluxo e formulários</h2>
+
+<div class="tabs">
+  <button class="tab active" onclick="showTab('fluxo')">Fluxo do atendimento</button>
+  <button class="tab" onclick="showTab('triagem')">Triagem / encaminhamento</button>
+  <button class="tab" onclick="showTab('avaliacao')">Avaliação inicial</button>
+  <button class="tab" onclick="showTab('plano')">Plano terapêutico</button>
+  <button class="tab" onclick="showTab('alta')">Alta / desligamento</button>
+</div>
+
+<!-- FLUXO -->
+<div id="tab-fluxo" class="panel active">
+  <div class="flow">
+
+    <div class="flow-stage">
+      <div class="stage-label">1. Origem</div>
+      <div class="stage-content">
+        <div class="stage-dot" style="background:var(--blue600)"></div>
+        <div class="boxes">
+          <div class="box box-blue">UBS / APS</div>
+          <div class="connector">·</div>
+          <div class="box box-blue">Especialista sec.</div>
+          <div class="connector">·</div>
+          <div class="box box-blue">Santa Casa OP</div>
+        </div>
+        <div style="font-size:11px;color:var(--color-text-secondary);margin-top:5px;">Encaminhamento via prontuário eletrônico → código 14 (Cirurgião Vascular)</div>
+      </div>
+    </div>
+
+    <div class="flow-stage">
+      <div class="stage-label">2. Regulação</div>
+      <div class="stage-content">
+        <div class="stage-dot" style="background:var(--purple600)"></div>
+        <div class="boxes">
+          <div class="box box-purple">Junta reguladora</div>
+        </div>
+        <div style="font-size:11px;color:var(--color-text-secondary);margin-top:5px;">Verifica critérios de inclusão e agenda consulta</div>
+      </div>
+    </div>
+
+    <div class="flow-stage">
+      <div class="stage-label">3. Chegada</div>
+      <div class="stage-content">
+        <div class="stage-dot" style="background:var(--teal600)"></div>
+        <div class="boxes">
+          <div class="box box-teal">Recepção + assinatura do TCLE</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="flow-stage">
+      <div class="stage-label">4. Enfermagem</div>
+      <div class="stage-content">
+        <div class="stage-dot" style="background:var(--teal600)"></div>
+        <div class="boxes">
+          <div class="box box-teal">Avaliação inicial da ferida</div>
+          <div class="connector">→</div>
+          <div class="box box-teal">Verificação dos critérios</div>
+          <div class="connector">→</div>
+          <div class="box box-teal">Laserterapia</div>
+        </div>
+        <div style="font-size:11px;color:var(--color-text-secondary);margin-top:5px;">Ficha de enfermagem + fotos da lesão + curativo técnico</div>
+      </div>
+    </div>
+
+    <div class="flow-stage">
+      <div class="stage-label">5. Decisão</div>
+      <div class="stage-content">
+        <div class="stage-dot" style="background:var(--amber600)"></div>
+        <div class="boxes">
+          <div class="box box-amber">Paciente incluso?</div>
+        </div>
+        <div style="font-size:11px;color:var(--color-text-secondary);margin-top:5px;">SIM → segue no ambulatório &nbsp;·&nbsp; NÃO → contrarreferência à UBS</div>
+      </div>
+    </div>
+
+    <div class="flow-stage">
+      <div class="stage-label">6. Médico</div>
+      <div class="stage-content">
+        <div class="stage-dot" style="background:var(--teal600)"></div>
+        <div class="boxes">
+          <div class="box box-teal">Diagnóstico da patologia base</div>
+          <div class="connector">+</div>
+          <div class="box box-teal">Plano terapêutico</div>
+          <div class="connector">+</div>
+          <div class="box box-teal">Prescrição</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="flow-stage">
+      <div class="stage-label">7. Equipe multi</div>
+      <div class="stage-content">
+        <div class="stage-dot" style="background:var(--blue600)"></div>
+        <div class="boxes">
+          <div class="box box-blue">Fisio</div>
+          <div class="box box-blue">Nutrição</div>
+          <div class="box box-blue">Psicologia</div>
+          <div class="box box-blue">Serviço social</div>
+          <div class="box box-blue">Podologia</div>
+        </div>
+        <div style="font-size:11px;color:var(--color-text-secondary);margin-top:5px;">Avaliação e acompanhamento conforme necessidade identificada</div>
+      </div>
+    </div>
+
+    <div class="flow-stage">
+      <div class="stage-label">8. Encam. externo</div>
+      <div class="stage-content">
+        <div class="stage-dot" style="background:var(--amber600)"></div>
+        <div class="boxes">
+          <div class="box box-amber">Ortopedia / Derma / Reuma / Infecto</div>
+          <div class="connector">ou</div>
+          <div class="box box-coral">Internação hospitalar</div>
+        </div>
+        <div style="font-size:11px;color:var(--color-text-secondary);margin-top:5px;">Quando identificada necessidade de cuidado compartilhado ou hospitalar</div>
+      </div>
+    </div>
+
+    <div class="flow-stage">
+      <div class="stage-label">9. Acomp. contínuo</div>
+      <div class="stage-content">
+        <div class="stage-dot" style="background:var(--teal600)"></div>
+        <div class="boxes">
+          <div class="box box-teal">Retornos + curativos</div>
+          <div class="connector">→</div>
+          <div class="box box-teal">Reunião de equipe mensal</div>
+          <div class="connector">→</div>
+          <div class="box box-teal">PTS se necessário</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="flow-stage">
+      <div class="stage-label">10. Alta</div>
+      <div class="stage-content">
+        <div class="stage-dot" style="background:var(--gray600)"></div>
+        <div class="boxes">
+          <div class="box box-gray">Meta atingida</div>
+          <div class="connector">·</div>
+          <div class="box box-gray">A pedido</div>
+          <div class="connector">·</div>
+          <div class="box box-gray">Abandono / falta</div>
+          <div class="connector">·</div>
+          <div class="box box-gray">Óbito</div>
+        </div>
+        <div style="font-size:11px;color:var(--color-text-secondary);margin-top:5px;">Contrarreferência à UBS com relatório de continuidade</div>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="urgency-banner" style="margin-top:12px;">
+    <strong>Encaminhamento imediato ao pronto-socorro:</strong> choque séptico · isquemia crítica · hemorragia · dor &gt;7 sem controle · infecção grave de pé diabético com instabilidade sistêmica
+  </div>
+
+  <div class="legend">
+    <div class="leg-item"><div class="leg-dot" style="background:var(--blue600)"></div>APS / origem</div>
+    <div class="leg-item"><div class="leg-dot" style="background:var(--purple600)"></div>Regulação</div>
+    <div class="leg-item"><div class="leg-dot" style="background:var(--teal600)"></div>Assistência direta</div>
+    <div class="leg-item"><div class="leg-dot" style="background:var(--amber600)"></div>Decisão / encam. eletivo</div>
+    <div class="leg-item"><div class="leg-dot" style="background:var(--coral600)"></div>Internação</div>
+    <div class="leg-item"><div class="leg-dot" style="background:var(--gray600)"></div>Desfecho</div>
+  </div>
+</div>
+
+<!-- TRIAGEM -->
+<div id="tab-triagem" class="panel">
+  <div class="form-card">
+    <div class="form-header">
+      <div class="form-icon box-blue" style="background:var(--blue50);color:var(--blue800);">→</div>
+      <div><div class="form-title">Ficha de encaminhamento da UBS</div><div class="form-sub">Preenchida pelo médico ou enfermeiro da APS</div></div>
+    </div>
+
+    <div class="frow frow-2">
+      <div><label>Nome do paciente</label><input type="text" placeholder="Nome completo"></div>
+      <div><label>CPF</label><input type="text" placeholder="000.000.000-00"></div>
+    </div>
+    <div class="frow frow-3">
+      <div><label>Data de nascimento</label><input type="date"></div>
+      <div><label>Telefone</label><input type="text" placeholder="(00) 00000-0000"></div>
+      <div><label>UBS de origem</label><input type="text" placeholder="Nome da unidade"></div>
+    </div>
+    <div class="frow frow-2">
+      <div><label>Profissional solicitante</label><input type="text" placeholder="Nome e categoria"></div>
+      <div><label>Data do encaminhamento</label><input type="date"></div>
+    </div>
+
+    <div class="section-title">Estratificação de risco</div>
+    <div style="border:0.5px solid var(--color-border-tertiary);border-radius:6px;overflow:hidden;margin-bottom:0.75rem;">
+      <div class="risk-row" style="font-weight:500;background:var(--color-background-secondary);font-size:11px;">
+        <div>Risco</div><div>Critérios</div><div>Nível</div>
+      </div>
+      <div class="risk-row">
+        <div><span class="risk-badge rb-baixo">Baixo</span></div>
+        <div style="font-size:11px;color:var(--color-text-secondary);">Sem infecção · só pele/subcutâneo · eritema &lt;2cm · doença base controlada</div>
+        <div style="font-size:11px;color:var(--color-text-secondary);">APS</div>
+      </div>
+      <div class="risk-row">
+        <div><span class="risk-badge rb-medio">Médio</span></div>
+        <div style="font-size:11px;color:var(--color-text-secondary);">Eritema &gt;2cm · dor crescente · mobilidade reduzida · doença base controlada</div>
+        <div style="font-size:11px;color:var(--color-text-secondary);">APS ± amb.</div>
+      </div>
+      <div class="risk-row">
+        <div><span class="risk-badge rb-alto">Alto</span></div>
+        <div style="font-size:11px;color:var(--color-text-secondary);">Tendão/músculo/osso · cadeirante/acamado · DM/HAS não controlada · amputação · queimadura Grau II</div>
+        <div style="font-size:11px;color:var(--color-text-secondary);">Amb. feridas</div>
+      </div>
+      <div class="risk-row" style="border-bottom:none;">
+        <div><span class="risk-badge rb-muitoalto">Muito alto</span></div>
+        <div style="font-size:11px;color:var(--color-text-secondary);">Cirurgia prévia de ferida crônica · amputação com cicatrização prolongada · autocuidado insuficiente · queimadura Grau III</div>
+        <div style="font-size:11px;color:var(--color-text-secondary);">Amb. feridas</div>
+      </div>
+    </div>
+
+    <div class="fgroup"><label>Risco identificado (marque um)</label>
+      <div class="checkbox-group">
+        <label class="check-item"><input type="radio" name="risco"> Baixo — permanece na APS</label>
+        <label class="check-item"><input type="radio" name="risco"> Médio — APS com avaliação pontual</label>
+        <label class="check-item"><input type="radio" name="risco"> Alto — encaminhar ao ambulatório</label>
+        <label class="check-item"><input type="radio" name="risco"> Muito alto — encaminhar ao ambulatório</label>
+      </div>
+    </div>
+
+    <div class="section-title">Histórico clínico resumido</div>
+    <div class="fgroup"><label>História clínica, evolução, tabagismo e antecedentes</label><textarea placeholder="Descreva brevemente..."></textarea></div>
+    <div class="frow frow-2">
+      <div><label>Doenças associadas</label><input type="text" placeholder="Ex: DM tipo 2, HAS — informar se controladas"></div>
+      <div><label>Hipótese diagnóstica</label><input type="text" placeholder="CID ou descrição"></div>
+    </div>
+
+    <div class="section-title">Avaliação da ferida</div>
+    <div class="frow frow-3">
+      <div><label>Localização</label><input type="text" placeholder="Ex: MMII, calcâneo D"></div>
+      <div><label>Tempo de evolução</label><input type="text" placeholder="Ex: 6 semanas"></div>
+      <div><label>Causa inicial</label><input type="text" placeholder="Ex: trauma, úlcera venosa"></div>
+    </div>
+    <div class="frow frow-3">
+      <div><label>Largura (cm)</label><input type="text" placeholder="0,0"></div>
+      <div><label>Comprimento (cm)</label><input type="text" placeholder="0,0"></div>
+      <div><label>Profundidade (cm)</label><input type="text" placeholder="0,0"></div>
+    </div>
+    <div class="frow frow-2">
+      <div><label>Tipo de tecido predominante</label>
+        <select><option>Granulação</option><option>Necrose</option><option>Esfacelo/desvitalizado</option><option>Misto</option></select>
+      </div>
+      <div><label>Exsudato</label>
+        <select><option>Ausente</option><option>Pouco</option><option>Médio</option><option>Grande quantidade</option></select>
+      </div>
+    </div>
+    <div class="fgroup"><label>Sinais flogísticos / outras observações da ferida</label>
+      <textarea placeholder="Eritema, calor, odor, túnel, descolamentos..."></textarea>
+    </div>
+
+    <div class="section-title">Exames e tratamentos prévios</div>
+    <div class="fgroup"><label>Exames realizados (hemoglob. glicada se DM; creatinina se DRC — últimos 3 meses)</label>
+      <textarea placeholder="Liste os exames e resultados disponíveis"></textarea>
+    </div>
+    <div class="fgroup"><label>Tratamentos empregados (antibióticos, coberturas, procedimentos cirúrgicos)</label>
+      <textarea placeholder="Informe medicamento, posologia e resultado obtido"></textarea>
+    </div>
+
+    <div class="btn-row">
+      <button class="btn btn-sec">Limpar</button>
+      <button class="btn btn-pri">Registrar encaminhamento ↗</button>
+    </div>
+  </div>
+</div>
+
+<!-- AVALIAÇÃO INICIAL -->
+<div id="tab-avaliacao" class="panel">
+  <div class="form-nav">
+    <button class="fnav active" onclick="showField('enf')">Enfermagem</button>
+    <button class="fnav" onclick="showField('med')">Médico</button>
+    <button class="fnav" onclick="showField('fis')">Fisioterapia</button>
+    <button class="fnav" onclick="showField('nut')">Nutrição</button>
+    <button class="fnav" onclick="showField('psi')">Psicologia</button>
+    <button class="fnav" onclick="showField('soc')">Serviço social</button>
+    <button class="fnav" onclick="showField('pod')">Podologia</button>
+  </div>
+
+  <div id="field-enf" class="field-form form-card active">
+    <div class="form-header">
+      <div class="form-icon" style="background:var(--teal50);color:var(--teal800);">+</div>
+      <div><div class="form-title">Avaliação inicial — enfermagem</div><div class="form-sub">Coleta clínica e descrição da ferida</div></div>
+    </div>
+    <div class="frow frow-2"><div><label>Paciente</label><input type="text" placeholder="Nome completo"></div><div><label>PSF / UBS</label><input type="text"></div></div>
+    <div class="frow frow-3">
+      <div><label>Gênero</label><select><option>Feminino</option><option>Masculino</option><option>Outro</option></select></div>
+      <div><label>Peso (kg)</label><input type="text" placeholder="0,0"></div>
+      <div><label>Altura (m)</label><input type="text" placeholder="0,00"></div>
+    </div>
+    <div class="frow frow-3">
+      <div><label>Fuma?</label><select><option>Não</option><option>Sim — ativo</option><option>Sim — ex-fumante</option></select></div>
+      <div><label>Bebe?</label><select><option>Não</option><option>Sim</option></select></div>
+      <div><label>Alergias</label><input type="text" placeholder="Se sim, descreva"></div>
+    </div>
+    <div class="frow frow-2"><div><label>Doenças atuais</label><input type="text" placeholder="Ex: DM2, HAS, IRC"></div><div><label>Medicamentos em uso</label><input type="text" placeholder="Liste os principais"></div></div>
+    <div class="frow frow-3">
+      <div><label>Vacina antitetânica?</label><select><option>Sim</option><option>Não</option><option>Não sabe</option></select></div>
+      <div><label>Amputação prévia?</label><select><option>Não</option><option>Sim</option></select></div>
+      <div><label>Mobilidade</label><select><option>Deambula</option><option>Deambula c/ auxílio</option><option>Não deambula</option></select></div>
+    </div>
+    <div class="section-title">Descrição da ferida</div>
+    <div class="frow frow-3">
+      <div><label>Localização</label><input type="text" placeholder="Ex: maléolo medial D"></div>
+      <div><label>Tempo de evolução</label><input type="text" placeholder="Ex: 8 semanas"></div>
+      <div><label>Dor (0–10)</label><input type="text" placeholder="0"></div>
+    </div>
+    <div class="frow frow-3">
+      <div><label>Largura (cm)</label><input type="text"></div>
+      <div><label>Comprimento (cm)</label><input type="text"></div>
+      <div><label>Profundidade (cm)</label><input type="text"></div>
+    </div>
+    <div class="frow frow-2">
+      <div><label>Tecido predominante</label><select><option>Granulação</option><option>Necrose</option><option>Esfacelo</option><option>Misto</option></select></div>
+      <div><label>Exsudato</label><select><option>Ausente</option><option>Pouco</option><option>Médio</option><option>Grande quantidade</option></select></div>
+    </div>
+    <div class="frow frow-3">
+      <div><label>Odor</label><select><option>Não</option><option>Sim</option></select></div>
+      <div><label>Temp. do membro</label><select><option>Normal</option><option>Quente</option><option>Fria</option></select></div>
+      <div><label>Coloração</label><select><option>Normal</option><option>Pálida</option><option>Hiperemiada</option><option>Cianótica</option></select></div>
+    </div>
+    <div class="frow frow-2">
+      <div><label>Borda da ferida</label><select><option>Normal</option><option>Macerada</option><option>Ressecada</option><option>Alta</option><option>Queratose</option></select></div>
+      <div><label>Status atual</label><select><option>1ª avaliação</option><option>Melhorando</option><option>Piorando</option><option>Estagnada</option></select></div>
+    </div>
+    <div class="section-title">Cobertura e conduta</div>
+    <div class="frow frow-2"><div><label>Cobertura utilizada</label><input type="text" placeholder="Ex: AGE, hidrocoloide, prata"></div><div><label>Tempo de permanência</label><input type="text" placeholder="Ex: 48h, 72h"></div></div>
+    <div class="fgroup"><label>Justificativa da escolha</label><textarea placeholder="Critério clínico que orientou a cobertura"></textarea></div>
+    <div class="frow frow-2"><div><label>Data do próximo curativo</label><input type="date"></div><div><label>Profissional responsável</label><input type="text"></div></div>
+    <div class="fgroup"><label>Observações gerais</label><textarea></textarea></div>
+    <div class="btn-row"><button class="btn btn-sec">Limpar</button><button class="btn btn-pri">Salvar avaliação ↗</button></div>
+  </div>
+
+  <div id="field-med" class="field-form form-card">
+    <div class="form-header">
+      <div class="form-icon" style="background:var(--blue50);color:var(--blue800);">M</div>
+      <div><div class="form-title">Avaliação médica — cirurgião vascular</div><div class="form-sub">Diagnóstico e plano terapêutico</div></div>
+    </div>
+    <div class="frow frow-2"><div><label>Paciente</label><input type="text"></div><div><label>Data</label><input type="date"></div></div>
+    <div class="fgroup"><label>Doença de base relacionada à ferida</label><input type="text" placeholder="Ex: insuficiência venosa crônica, DAP, DM"></div>
+    <div class="fgroup"><label>Avaliação clínica detalhada</label><textarea placeholder="Achados vasculares, pulsos, ITB, doppler, outros..."></textarea></div>
+    <div class="section-title">Plano terapêutico</div>
+    <div class="fgroup"><label>Diagnóstico médico (CID)</label><input type="text" placeholder="Ex: L97.1 — úlcera varicosa"></div>
+    <div class="fgroup"><label>Condutas medicamentosas prescritas</label><textarea placeholder="Antibióticos, anticoagulantes, outros..."></textarea></div>
+    <div class="fgroup"><label>Proposta de procedimentos cirúrgicos</label><textarea placeholder="Desbridamento, enxerto, angioplastia, amputação..."></textarea></div>
+    <div class="fgroup"><label>Exames complementares solicitados</label><textarea placeholder="ECO-Doppler, hemograma, culturas, biópsia..."></textarea></div>
+    <div class="frow frow-2">
+      <div><label>Frequência de retorno ambulatorial</label><input type="text" placeholder="Ex: quinzenal"></div>
+      <div><label>Frequência de curativos (serviço)</label><input type="text" placeholder="Ex: 2x/semana"></div>
+    </div>
+    <div><label>Frequência de curativos (APS/domicílio)</label><input type="text" placeholder="Ex: dias alternados"></div>
+    <div class="section-title">Encaminhamentos da equipe multi</div>
+    <div class="fgroup"><label>Profissionais para acompanhamento (marque os necessários)</label>
+      <div class="checkbox-group">
+        <label class="check-item"><input type="checkbox"> Fisioterapia</label>
+        <label class="check-item"><input type="checkbox"> Nutrição</label>
+        <label class="check-item"><input type="checkbox"> Psicologia</label>
+        <label class="check-item"><input type="checkbox"> Serviço social</label>
+        <label class="check-item"><input type="checkbox"> Podologia</label>
+        <label class="check-item"><input type="checkbox"> Ortopedia</label>
+        <label class="check-item"><input type="checkbox"> Dermatologia</label>
+        <label class="check-item"><input type="checkbox"> Infectologia</label>
+      </div>
+    </div>
+    <div class="btn-row"><button class="btn btn-sec">Limpar</button><button class="btn btn-pri">Salvar avaliação ↗</button></div>
+  </div>
+
+  <div id="field-fis" class="field-form form-card">
+    <div class="form-header">
+      <div class="form-icon" style="background:var(--purple50);color:var(--purple800);">F</div>
+      <div><div class="form-title">Avaliação inicial — fisioterapia</div><div class="form-sub">Reabilitação motora e recursos terapêuticos</div></div>
+    </div>
+    <div class="frow frow-2"><div><label>Paciente</label><input type="text"></div><div><label>Data de nascimento</label><input type="date"></div></div>
+    <div class="frow frow-2"><div><label>Localização da úlcera</label><input type="text"></div><div><label>Tempo de evolução</label><input type="text"></div></div>
+    <div class="fgroup"><label>Encurtamentos musculares?</label><select><option>Não</option><option>Sim — descrever abaixo</option></select></div>
+    <div class="fgroup"><label>Doenças pré-existentes</label>
+      <div class="checkbox-group">
+        <label class="check-item"><input type="checkbox"> Diabetes</label>
+        <label class="check-item"><input type="checkbox"> Cardiopatia</label>
+        <label class="check-item"><input type="checkbox"> Hipertensão</label>
+        <label class="check-item"><input type="checkbox"> Insuf. venosa</label>
+        <label class="check-item"><input type="checkbox"> Neuropatia</label>
+        <label class="check-item"><input type="checkbox"> DAOP</label>
+        <label class="check-item"><input type="checkbox"> Doença renal</label>
+      </div>
+    </div>
+    <div class="fgroup"><label>Medicamentos em uso</label><textarea placeholder="Liste os principais"></textarea></div>
+    <div class="section-title">Plano de tratamento fisioterapêutico</div>
+    <div class="fgroup"><label>Objetivos do tratamento</label><textarea placeholder="Ex: melhora do retorno venoso, recondicionamento físico..."></textarea></div>
+    <div class="fgroup"><label>Recursos terapêuticos selecionados</label>
+      <div class="checkbox-group">
+        <label class="check-item"><input type="checkbox"> Exercícios aeróbicos</label>
+        <label class="check-item"><input type="checkbox"> Resistidos / fortalecimento</label>
+        <label class="check-item"><input type="checkbox"> Mobilidade articular</label>
+        <label class="check-item"><input type="checkbox"> Compressão elástica</label>
+        <label class="check-item"><input type="checkbox"> Elevação do membro</label>
+      </div>
+    </div>
+    <div class="fgroup"><label>Orientações para domicílio</label><textarea placeholder="Exercícios prescritos, cuidados posturais, fatores ambientais..."></textarea></div>
+    <div class="btn-row"><button class="btn btn-sec">Limpar</button><button class="btn btn-pri">Salvar avaliação ↗</button></div>
+  </div>
+
+  <div id="field-nut" class="field-form form-card">
+    <div class="form-header">
+      <div class="form-icon" style="background:var(--teal50);color:var(--teal800);">N</div>
+      <div><div class="form-title">Avaliação inicial — nutrição</div><div class="form-sub">Diagnóstico nutricional e plano alimentar</div></div>
+    </div>
+    <div class="frow frow-3"><div><label>Paciente</label><input type="text"></div><div><label>Idade</label><input type="text"></div><div><label>Profissão</label><input type="text"></div></div>
+    <div class="frow frow-3">
+      <div><label>Peso (kg)</label><input type="text"></div>
+      <div><label>Altura (m)</label><input type="text"></div>
+      <div><label>IMC</label><input type="text" placeholder="Calculado"></div>
+    </div>
+    <div class="frow frow-2"><div><label>Circ. cintura (cm)</label><input type="text"></div><div><label>Circ. quadril (cm)</label><input type="text"></div></div>
+    <div class="section-title">Histórico e hábitos</div>
+    <div class="frow frow-2"><div><label>Uso de medicamentos</label><input type="text" placeholder="Inclua suplementos"></div><div><label>Histórico familiar de doenças</label><input type="text"></div></div>
+    <div class="frow frow-3">
+      <div><label>Atividade física</label><select><option>Sedentário</option><option>Leve</option><option>Moderada</option><option>Intensa</option></select></div>
+      <div><label>Tabagismo</label><select><option>Não</option><option>Sim</option><option>Ex-fumante</option></select></div>
+      <div><label>Etilismo</label><select><option>Não</option><option>Ocasional</option><option>Regular</option></select></div>
+    </div>
+    <div class="fgroup"><label>Apetite e restrições alimentares</label><textarea placeholder="Alergias, intolerâncias, preferências, restrições religiosas..."></textarea></div>
+    <div class="fgroup"><label>Diagnóstico nutricional e conduta</label><textarea placeholder="Deficiências identificadas, metas, plano alimentar resumido..."></textarea></div>
+    <div class="btn-row"><button class="btn btn-sec">Limpar</button><button class="btn btn-pri">Salvar avaliação ↗</button></div>
+  </div>
+
+  <div id="field-psi" class="field-form form-card">
+    <div class="form-header">
+      <div class="form-icon" style="background:var(--purple50);color:var(--purple800);">P</div>
+      <div><div class="form-title">Anamnese psicológica inicial</div><div class="form-sub">Acolhimento e estratificação de risco em saúde mental</div></div>
+    </div>
+    <div class="frow frow-3"><div><label>Paciente</label><input type="text"></div><div><label>Idade</label><input type="text"></div><div><label>Sexo</label><select><option>Feminino</option><option>Masculino</option><option>Outro</option></select></div></div>
+    <div class="frow frow-2"><div><label>Estado civil</label><select><option>Solteiro(a)</option><option>Casado(a)</option><option>União estável</option><option>Divorciado(a)</option><option>Viúvo(a)</option></select></div><div><label>Ocupação</label><input type="text"></div></div>
+    <div class="frow frow-2"><div><label>Escolaridade</label><input type="text"></div><div><label>Religião</label><input type="text"></div></div>
+    <div class="section-title">Avaliação clínica</div>
+    <div class="fgroup"><label>Queixa principal e histórico da doença atual</label><textarea></textarea></div>
+    <div class="fgroup"><label>História pessoal</label><textarea></textarea></div>
+    <div class="fgroup"><label>História familiar</label><textarea></textarea></div>
+    <div class="fgroup"><label>História patológica pregressa (inclui saúde mental)</label><textarea></textarea></div>
+    <div class="fgroup"><label>Exame do estado mental</label><textarea></textarea></div>
+    <div class="section-title">Conduta e encaminhamentos</div>
+    <div class="fgroup"><label>Modalidade de acompanhamento</label>
+      <div class="checkbox-group">
+        <label class="check-item"><input type="radio" name="psi-mod"> Individual no ambulatório</label>
+        <label class="check-item"><input type="radio" name="psi-mod"> Grupo terapêutico</label>
+        <label class="check-item"><input type="radio" name="psi-mod"> Encaminhamento ao CAPS</label>
+        <label class="check-item"><input type="radio" name="psi-mod"> Cuidado compartilhado amb. + CAPS</label>
+      </div>
+    </div>
+    <div class="fgroup"><label>Conduta e observações</label><textarea></textarea></div>
+    <div class="btn-row"><button class="btn btn-sec">Limpar</button><button class="btn btn-pri">Salvar avaliação ↗</button></div>
+  </div>
+
+  <div id="field-soc" class="field-form form-card">
+    <div class="form-header">
+      <div class="form-icon" style="background:var(--amber50);color:var(--amber800);">S</div>
+      <div><div class="form-title">Ficha de avaliação — serviço social</div><div class="form-sub">Aspectos socioeconômicos e determinantes de saúde</div></div>
+    </div>
+    <div class="frow frow-2"><div><label>Paciente</label><input type="text"></div><div><label>Raça / etnia</label><select><option>Branca</option><option>Parda</option><option>Preta</option><option>Amarela</option><option>Indígena</option><option>Outra</option></select></div></div>
+    <div class="frow frow-2"><div><label>Acompanhante</label><input type="text"></div><div><label>Posto de saúde referência</label><input type="text"></div></div>
+    <div class="section-title">Aspectos sociais</div>
+    <div class="frow frow-2">
+      <div><label>Meio de transporte utilizado</label><input type="text" placeholder="Ex: carro próprio, ônibus, SAMU"></div>
+      <div><label>Situação ocupacional</label><select><option>Em exercício</option><option>Afastado</option><option>Aposentado</option><option>Pensionista</option><option>Bolsa Família</option><option>BPC</option><option>Sem renda</option><option>Autônomo</option></select></div>
+    </div>
+    <div class="frow frow-2">
+      <div><label>Renda familiar</label><select><option>Até 1 salário mínimo</option><option>Até 2,5 SM</option><option>Até 3,5 SM</option><option>Até 4,5 SM</option></select></div>
+      <div><label>Tem CadÚnico?</label><select><option>Não</option><option>Sim</option></select></div>
+    </div>
+    <div class="frow frow-2">
+      <div><label>Local de moradia</label><select><option>Casa própria</option><option>Alugada</option><option>Cedida</option><option>Instituição</option></select></div>
+      <div><label>Relacionamento familiar</label><select><option>Todos presentes</option><option>Alguns presentes</option><option>Todos ausentes</option></select></div>
+    </div>
+    <div class="fgroup"><label>Quem reside na mesma casa?</label><input type="text" placeholder="Ex: cônjuge, filhos, mora sozinho"></div>
+    <div class="fgroup"><label>Possui cuidador disponível?</label>
+      <div class="checkbox-group">
+        <label class="check-item"><input type="radio" name="cuidador"> Sim — familiar</label>
+        <label class="check-item"><input type="radio" name="cuidador"> Sim — cuidador contratado</label>
+        <label class="check-item"><input type="radio" name="cuidador"> Não</label>
+      </div>
+    </div>
+    <div class="fgroup"><label>A rotina dificulta o autocuidado e a adesão ao tratamento?</label><select><option>Não</option><option>Sim — descrever</option></select></div>
+    <div class="fgroup"><label>Relato do atendimento e encaminhamentos</label><textarea placeholder="Demandas identificadas, serviços acionados (CRAS, BPC, transporte)..."></textarea></div>
+    <div class="btn-row"><button class="btn btn-sec">Limpar</button><button class="btn btn-pri">Salvar avaliação ↗</button></div>
+  </div>
+
+  <div id="field-pod" class="field-form form-card">
+    <div class="form-header">
+      <div class="form-icon" style="background:var(--teal50);color:var(--teal800);">Po</div>
+      <div><div class="form-title">Anamnese podológica</div><div class="form-sub">Avaliação dos pés e planejamento podológico</div></div>
+    </div>
+    <div class="frow frow-2"><div><label>Paciente</label><input type="text"></div><div><label>Data de nascimento</label><input type="date"></div></div>
+    <div class="section-title">Histórico de saúde</div>
+    <div class="frow frow-2">
+      <div><label>Diagnóstico de diabetes?</label><select><option>Não</option><option>Sim — Tipo 1</option><option>Sim — Tipo 2</option></select></div>
+      <div><label>Tempo de diagnóstico</label><input type="text" placeholder="Ex: 10 anos"></div>
+    </div>
+    <div class="fgroup"><label>Doenças associadas</label>
+      <div class="checkbox-group">
+        <label class="check-item"><input type="checkbox"> Hipertensão</label>
+        <label class="check-item"><input type="checkbox"> Cardiopatia</label>
+        <label class="check-item"><input type="checkbox"> Insuf. renal</label>
+      </div>
+    </div>
+    <div class="frow frow-2"><div><label>Histórico de úlceras ou amputações</label><input type="text" placeholder="Descreva"></div><div><label>Alergias a medicamentos/substâncias</label><input type="text"></div></div>
+    <div class="section-title">Exame podológico</div>
+    <div class="frow frow-3">
+      <div><label>Feridas nos pés?</label><select><option>Não</option><option>Sim</option></select></div>
+      <div><label>Localização</label><input type="text"></div>
+      <div><label>Classificação</label><select><option>Superficial</option><option>Média</option><option>Profunda</option></select></div>
+    </div>
+    <div class="fgroup"><label>Alterações cutâneas e ungueais</label>
+      <div class="checkbox-group">
+        <label class="check-item"><input type="checkbox"> Ressecamento</label>
+        <label class="check-item"><input type="checkbox"> Hiperqueratose</label>
+        <label class="check-item"><input type="checkbox"> Fissuras</label>
+        <label class="check-item"><input type="checkbox"> Micoses</label>
+        <label class="check-item"><input type="checkbox"> Calos / calosidades</label>
+        <label class="check-item"><input type="checkbox"> Onicomicose</label>
+        <label class="check-item"><input type="checkbox"> Onicocriptose (unha encravada)</label>
+        <label class="check-item"><input type="checkbox"> Onicogrifose</label>
+      </div>
+    </div>
+    <div class="frow frow-2">
+      <div><label>Sensibilidade (monofilamento)</label><select><option>Normal</option><option>Alterada</option></select></div>
+      <div><label>ITB</label><input type="text" placeholder="Valor — normal / alterado"></div>
+    </div>
+    <div class="section-title">Características podoposturais</div>
+    <div class="frow frow-3">
+      <div><label>Pisada</label><select><option>Neutra</option><option>Pronada</option><option>Supinada</option></select></div>
+      <div><label>Arco plantar</label><select><option>Normal</option><option>Plano</option><option>Cavo</option></select></div>
+      <div><label>Usa palmilhas/órteses?</label><select><option>Não</option><option>Sim</option></select></div>
+    </div>
+    <div class="fgroup"><label>Plano de tratamento e encaminhamentos</label><textarea placeholder="Intervenções realizadas, orientações fornecidas, encaminhamentos à fisioterapia..."></textarea></div>
+    <div class="btn-row"><button class="btn btn-sec">Limpar</button><button class="btn btn-pri">Salvar avaliação ↗</button></div>
+  </div>
+</div>
+
+<!-- PLANO TERAPÊUTICO -->
+<div id="tab-plano" class="panel">
+  <div class="form-card">
+    <div class="form-header">
+      <div class="form-icon" style="background:var(--blue50);color:var(--blue800);">PT</div>
+      <div><div class="form-title">Plano terapêutico individualizado</div><div class="form-sub">Síntese multiprofissional — registrado no prontuário eletrônico</div></div>
+    </div>
+    <div class="frow frow-2"><div><label>Paciente</label><input type="text"></div><div><label>Data</label><input type="date"></div></div>
+    <div class="fgroup"><label>Hipótese diagnóstica</label><input type="text" placeholder="CID principal e condições associadas"></div>
+    <div class="section-title">Condutas terapêuticas</div>
+    <div class="fgroup"><label>Tratamentos medicamentosos prescritos</label><textarea></textarea></div>
+    <div class="frow frow-2">
+      <div><label>Cobertura indicada</label><input type="text" placeholder="Tipo e justificativa clínica"></div>
+      <div><label>Frequência no serviço</label><input type="text" placeholder="Ex: 2x/semana"></div>
+    </div>
+    <div><label>Frequência na APS / domicílio</label><input type="text" placeholder="Ex: dias alternados" style="margin-bottom:0.75rem"></div>
+    <div class="fgroup"><label>Exames complementares solicitados</label><textarea placeholder="Inclua biópsia se indicada"></textarea></div>
+    <div class="fgroup"><label>Proposta de procedimentos cirúrgicos</label><textarea placeholder="Se indicado — desbridamento, enxerto, amputação..."></textarea></div>
+    <div class="section-title">Acompanhamento multiprofissional</div>
+    <div class="fgroup"><label>Profissionais em acompanhamento individual no ambulatório</label>
+      <div class="checkbox-group">
+        <label class="check-item"><input type="checkbox"> Fisioterapia</label>
+        <label class="check-item"><input type="checkbox"> Nutrição</label>
+        <label class="check-item"><input type="checkbox"> Psicologia</label>
+        <label class="check-item"><input type="checkbox"> Serviço social</label>
+        <label class="check-item"><input type="checkbox"> Podologia</label>
+      </div>
+    </div>
+    <div class="fgroup"><label>Profissionais referenciados à rede / APS</label><input type="text" placeholder="Ex: nutrição → UBS de origem"></div>
+    <div class="frow frow-2"><div><label>Frequência de retorno em consulta</label><input type="text" placeholder="Ex: mensal"></div><div><label>PTS indicado?</label><select><option>Não</option><option>Sim — agendar reunião de equipe</option></select></div></div>
+    <div class="fgroup"><label>Observações e metas do tratamento</label><textarea placeholder="Meta terapêutica, prazo esperado, aspectos sociais relevantes..."></textarea></div>
+    <div class="btn-row"><button class="btn btn-sec">Limpar</button><button class="btn btn-pri">Registrar plano ↗</button></div>
+  </div>
+</div>
+
+<!-- ALTA / DESLIGAMENTO -->
+<div id="tab-alta" class="panel">
+  <div class="form-card">
+    <div class="form-header">
+      <div class="form-icon" style="background:var(--gray50);color:var(--gray800);">D</div>
+      <div><div class="form-title">Registro de alta ou desligamento</div><div class="form-sub">Gera contrarreferência à UBS de origem</div></div>
+    </div>
+    <div class="frow frow-2"><div><label>Paciente</label><input type="text"></div><div><label>CPF</label><input type="text" placeholder="000.000.000-00"></div></div>
+    <div class="frow frow-2"><div><label>Data de entrada no ambulatório</label><input type="date"></div><div><label>Data do desfecho</label><input type="date"></div></div>
+    <div class="section-title">Motivo do desfecho</div>
+    <div class="fgroup">
+      <div class="checkbox-group" style="flex-direction:column;gap:10px;">
+        <label class="check-item" style="align-items:flex-start;gap:8px;">
+          <input type="radio" name="desfecho" style="margin-top:2px">
+          <div><strong style="font-size:13px;">Alta terapêutica</strong><br><span style="font-size:12px;color:var(--color-text-secondary);">Meta do plano terapêutico atingida — cicatrização, controle de sintomas ou estabilização</span></div>
+        </label>
+        <label class="check-item" style="align-items:flex-start;gap:8px;">
+          <input type="radio" name="desfecho" style="margin-top:2px">
+          <div><strong style="font-size:13px;">Desligamento a pedido</strong><br><span style="font-size:12px;color:var(--color-text-secondary);">Solicitação do paciente, familiar ou cuidador — com orientação e assinatura do termo</span></div>
+        </label>
+        <label class="check-item" style="align-items:flex-start;gap:8px;">
+          <input type="radio" name="desfecho" style="margin-top:2px">
+          <div><strong style="font-size:13px;">Desligamento por critério da equipe</strong><br><span style="font-size:12px;color:var(--color-text-secondary);">Não adesão · 3 faltas consecutivas ou 5 alternadas sem aviso · abandono (&gt;3 faltas sem justificativa)</span></div>
+        </label>
+        <label class="check-item" style="align-items:flex-start;gap:8px;">
+          <input type="radio" name="desfecho" style="margin-top:2px">
+          <div><strong style="font-size:13px;">Óbito</strong></div>
+        </label>
+      </div>
+    </div>
+    <div class="section-title">Relatório de contrarreferência</div>
+    <div class="fgroup"><label>Resumo do tratamento realizado</label><textarea placeholder="Coberturas utilizadas, procedimentos, evolução da ferida, consultas realizadas..."></textarea></div>
+    <div class="fgroup"><label>Estado da ferida na alta</label>
+      <select><option>Cicatrizada</option><option>Em melhora — continua curativos na APS</option><option>Estabilizada — sem proposta de cicatrização completa</option><option>Piora — encaminhamento hospitalar</option></select>
+    </div>
+    <div class="fgroup"><label>Orientações para continuidade na UBS</label><textarea placeholder="Cobertura recomendada, frequência de curativos, sinais de alerta, retorno ao ambulatório se necessário..."></textarea></div>
+    <div class="frow frow-2"><div><label>Profissional responsável</label><input type="text"></div><div><label>Registro profissional</label><input type="text" placeholder="COREN / CRM / CRN..."></div></div>
+    <div class="btn-row"><button class="btn btn-sec">Limpar</button><button class="btn btn-pri">Gerar contrarreferência ↗</button></div>
+  </div>
+</div>
+
+</div>
+
+<script>
+function showTab(id) {
+  document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+  document.querySelectorAll('.panel').forEach(p => p.classList.remove('active'));
+  document.getElementById('tab-' + id).classList.add('active');
+  event.target.classList.add('active');
+}
+function showField(id) {
+  document.querySelectorAll('.fnav').forEach(b => b.classList.remove('active'));
+  document.querySelectorAll('.field-form').forEach(f => f.classList.remove('active'));
+  document.getElementById('field-' + id).classList.add('active');
+  event.target.classList.add('active');
+}
+</script>
