@@ -1,0 +1,457 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Fluxograma do Ambulatório com Suporte por Formulários</title>
+  <style>
+    :root {
+      --azul: #dff1fb;
+      --azul-forte: #8fc6e8;
+      --amarelo: #f7e29c;
+      --amarelo-borda: #d0b45a;
+      --verde: #dff3df;
+      --laranja: #f7d2b7;
+      --rosa: #f3c5c5;
+      --texto: #1f2937;
+      --fundo: #f7f8fb;
+      --linha: #6b7280;
+      --card: #ffffff;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      background: var(--fundo);
+      color: var(--texto);
+      line-height: 1.35;
+    }
+
+    .wrap {
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 24px;
+    }
+
+    h1 {
+      margin: 0 0 8px;
+      font-size: 2rem;
+    }
+
+    .subtitle {
+      margin: 0 0 24px;
+      font-size: 1rem;
+      color: #4b5563;
+    }
+
+    .legend {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-bottom: 20px;
+    }
+
+    .legend span {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: white;
+      border: 1px solid #e5e7eb;
+      border-radius: 999px;
+      padding: 8px 12px;
+      font-size: 0.92rem;
+    }
+
+    .dot {
+      width: 14px;
+      height: 14px;
+      border-radius: 50%;
+      display: inline-block;
+    }
+
+    .dot.azul { background: var(--azul-forte); }
+    .dot.amarelo { background: var(--amarelo-borda); }
+    .dot.verde { background: #7bbf7b; }
+    .dot.rosa { background: #cc7b7b; }
+
+    .layout {
+      display: grid;
+      grid-template-columns: 1.5fr 0.9fr;
+      gap: 22px;
+    }
+
+    .panel {
+      background: var(--card);
+      border: 1px solid #e5e7eb;
+      border-radius: 18px;
+      padding: 20px;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.05);
+    }
+
+    .flowchart {
+      display: grid;
+      grid-template-columns: repeat(12, 1fr);
+      gap: 14px 10px;
+      align-items: stretch;
+    }
+
+    .node {
+      border-radius: 16px;
+      border: 2px solid #d1d5db;
+      padding: 14px 14px 12px;
+      min-height: 88px;
+      position: relative;
+      background: white;
+    }
+
+    .node h3 {
+      margin: 0 0 6px;
+      font-size: 1rem;
+    }
+
+    .node p {
+      margin: 0;
+      font-size: 0.92rem;
+    }
+
+    .blue { background: var(--azul); border-color: var(--azul-forte); }
+    .yellow { background: var(--amarelo); border-color: var(--amarelo-borda); }
+    .green { background: var(--verde); border-color: #8bc58b; }
+    .pink { background: #f8dddd; border-color: #d68e8e; }
+    .orange { background: var(--laranja); border-color: #db9f6c; }
+
+    .tag {
+      display: inline-block;
+      font-size: 0.75rem;
+      font-weight: bold;
+      text-transform: uppercase;
+      letter-spacing: 0.03em;
+      background: rgba(255,255,255,0.65);
+      padding: 4px 8px;
+      border-radius: 999px;
+      margin-bottom: 8px;
+    }
+
+    .arrow {
+      text-align: center;
+      font-size: 1.8rem;
+      color: var(--linha);
+      align-self: center;
+      font-weight: bold;
+    }
+
+    .small-arrow {
+      text-align: center;
+      font-size: 1.2rem;
+      color: var(--linha);
+      align-self: center;
+      font-weight: bold;
+    }
+
+    .col-4 { grid-column: span 4; }
+    .col-6 { grid-column: span 6; }
+    .col-8 { grid-column: span 8; }
+    .col-12 { grid-column: span 12; }
+
+    .forms h2,
+    .rules h2 { margin-top: 0; }
+
+    .form-card {
+      border: 1px solid #e5e7eb;
+      border-left: 6px solid var(--azul-forte);
+      border-radius: 14px;
+      padding: 14px;
+      background: #fff;
+      margin-bottom: 14px;
+    }
+
+    .form-card h3 {
+      margin: 0 0 8px;
+      font-size: 1rem;
+    }
+
+    .form-card p,
+    .form-card li,
+    .rules li {
+      font-size: 0.94rem;
+    }
+
+    .form-card ul,
+    .rules ul {
+      margin: 8px 0 0 18px;
+      padding: 0;
+    }
+
+    .mini {
+      display: inline-block;
+      margin-top: 8px;
+      font-size: 0.8rem;
+      background: #eef6fb;
+      border: 1px solid #cfe6f6;
+      border-radius: 8px;
+      padding: 5px 8px;
+    }
+
+    .rules {
+      margin-top: 16px;
+      padding: 16px;
+      background: #fcfcfd;
+      border: 1px solid #e5e7eb;
+      border-radius: 14px;
+    }
+
+    .footer-note {
+      margin-top: 18px;
+      font-size: 0.95rem;
+      color: #374151;
+      background: #f3f4f6;
+      border-radius: 12px;
+      padding: 14px;
+    }
+
+    @media (max-width: 1100px) {
+      .layout { grid-template-columns: 1fr; }
+    }
+
+    @media (max-width: 780px) {
+      .flowchart { grid-template-columns: 1fr; }
+      .col-4, .col-6, .col-8, .col-12 { grid-column: span 1; }
+      .arrow, .small-arrow { transform: rotate(90deg); }
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <h1>Fluxograma do Ambulatório com Suporte em Formulários</h1>
+    <p class="subtitle">Redesenho em HTML do fluxo assistencial, já amarrando onde entram os formulários de triagem, acompanhamento, parecer e encaminhamento. O papel aceita tudo; o formulário, não — então é melhor amarrar a lógica desde o início.</p>
+
+    <div class="legend">
+      <span><i class="dot azul"></i> Etapa de fluxo</span>
+      <span><i class="dot amarelo"></i> Profissional / setor</span>
+      <span><i class="dot verde"></i> Decisão / elegibilidade</span>
+      <span><i class="dot rosa"></i> Saída / contra-referência / internação</span>
+    </div>
+
+    <div class="layout">
+      <section class="panel">
+        <h2>1) Fluxo assistencial proposto</h2>
+        <div class="flowchart">
+          <div class="node blue col-12">
+            <div class="tag">Entrada</div>
+            <h3>1. Solicitação / entrada do paciente</h3>
+            <p>Origem: UBS, atenção básica, busca regulada, consulta programada ou retorno. Aqui o sistema já deve exigir identificação do paciente, unidade de origem, profissional solicitante e motivo do encaminhamento.</p>
+          </div>
+
+          <div class="arrow col-12">↓</div>
+
+          <div class="node yellow col-12">
+            <div class="tag">Enfermagem</div>
+            <h3>2. Triagem inicial de enfermagem</h3>
+            <p>Avaliação da ferida, coleta de informações clínicas, critérios de inclusão, registro de fotos, sinais de gravidade, consentimentos e definição se o caso realmente pertence ao ambulatório.</p>
+          </div>
+
+          <div class="arrow col-12">↓</div>
+
+          <div class="node green col-12">
+            <div class="tag">Decisão</div>
+            <h3>3. Paciente se enquadra nos critérios do ambulatório?</h3>
+            <p>Decisão baseada em protocolo. Sem protocolo claro, vira feira livre. Com protocolo, vira fluxo.</p>
+          </div>
+
+          <div class="node pink col-6">
+            <div class="tag">Não</div>
+            <h3>4A. Contra-referência para APS / UBS</h3>
+            <p>O ambulatório devolve o caso com orientação estruturada: conduta sugerida, sinais de alerta, prazo para reavaliação e eventual necessidade de novo encaminhamento com dados complementares.</p>
+          </div>
+
+          <div class="node blue col-6">
+            <div class="tag">Sim</div>
+            <h3>4B. Acolhimento e avaliação inicial multiprofissional</h3>
+            <p>O paciente entra formalmente na linha de cuidado do ambulatório. O caso pode gerar atendimento presencial, telemonitoramento, cuidado compartilhado com UBS ou encaminhamento interno.</p>
+          </div>
+
+          <div class="small-arrow col-6">↓</div>
+          <div class="small-arrow col-6">↓</div>
+
+          <div class="node yellow col-4">
+            <div class="tag">Técnico em Enfermagem</div>
+            <h3>5. Curativo e registro</h3>
+            <p>Executa o curativo, registra materiais usados, dor, aspecto da lesão e intercorrências.</p>
+          </div>
+
+          <div class="node yellow col-4">
+            <div class="tag">Médico</div>
+            <h3>6. Avaliação clínica e plano terapêutico</h3>
+            <p>Avaliação diagnóstica, conduta, prescrição, necessidade de exames, antibióticos, desbridamento, alta ou seguimento.</p>
+          </div>
+
+          <div class="node yellow col-4">
+            <div class="tag">Equipe multiprofissional</div>
+            <h3>7. Avaliações complementares</h3>
+            <p>Fisioterapia, Nutrição, Psicologia, Podologia e Serviço Social conforme necessidade clínica e social.</p>
+          </div>
+
+          <div class="small-arrow col-12">↓</div>
+
+          <div class="node blue col-4">
+            <div class="tag">Cuidado compartilhado</div>
+            <h3>8. Suporte à UBS sem deslocar o paciente</h3>
+            <p>Ambulatório devolve orientação, pede novas fotos, ajusta conduta e acompanha remotamente. Bom para evitar peregrinação desnecessária.</p>
+          </div>
+
+          <div class="node blue col-4">
+            <div class="tag">Seguimento ambulatorial</div>
+            <h3>9. Acompanhamento presencial e/ou telemonitoramento</h3>
+            <p>Consultas, curativos seriados, evolução por imagem, alertas e reclassificação do risco ao longo do tempo.</p>
+          </div>
+
+          <div class="node orange col-4">
+            <div class="tag">Encaminhamentos</div>
+            <h3>10. Encaminhar para outras especialidades</h3>
+            <p>Dermatologia, Ortopedia, Infectologia, pequenas cirurgias, biópsia ou outros serviços da rede secundária.</p>
+          </div>
+
+          <div class="small-arrow col-12">↓</div>
+
+          <div class="node pink col-6">
+            <div class="tag">Alta</div>
+            <h3>11. Alta ambulatorial e retorno à rede</h3>
+            <p>Paciente estabilizado, lesão cicatrizada ou seguimento resolvido. Deve sair com orientação final e plano de continuidade na APS.</p>
+          </div>
+
+          <div class="node pink col-6">
+            <div class="tag">Internação</div>
+            <h3>12. Encaminhamento hospitalar</h3>
+            <p>Quando houver indicação de cuidado hospitalar: desbridamento cirúrgico, angioplastia, antibioticoterapia venosa, risco sistêmico, amputação, etc.</p>
+          </div>
+        </div>
+
+        <div class="footer-note">
+          <strong>Ideia central:</strong> cada transição do fluxo deve gerar um registro objetivo. Em vez de um formulário gigante e sofrido, o melhor é ter formulários curtos por etapa: <em>entrada</em>, <em>triagem</em>, <em>atendimento/evolução</em>, <em>telemonitoramento</em>, <em>parecer multiprofissional</em> e <em>saída/encaminhamento</em>.
+        </div>
+      </section>
+
+      <aside class="panel forms">
+        <h2>2) Suporte por formulários</h2>
+
+        <div class="form-card">
+          <h3>Formulário A — Solicitação de encaminhamento</h3>
+          <p>Preenchido pela UBS ou origem do caso.</p>
+          <ul>
+            <li>Identificação do paciente</li>
+            <li>UBS/unidade de origem</li>
+            <li>Profissional solicitante</li>
+            <li>Hipótese/queixa principal</li>
+            <li>Tempo de ferida</li>
+            <li>Tratamentos já realizados</li>
+            <li>Fotos iniciais anexadas</li>
+            <li>Motivo do encaminhamento</li>
+          </ul>
+          <span class="mini">Gatilho no fluxo: Etapa 1</span>
+        </div>
+
+        <div class="form-card">
+          <h3>Formulário B — Triagem e elegibilidade</h3>
+          <p>Usado pela enfermagem no primeiro contato.</p>
+          <ul>
+            <li>Critérios de inclusão/exclusão</li>
+            <li>Tipo de ferida</li>
+            <li>Dor, exsudato, odor, bordas, infecção</li>
+            <li>Comorbidades</li>
+            <li>Escalas padronizadas</li>
+            <li>Consentimento e termo de imagem</li>
+            <li>Decisão: aceita / pede mais dados / devolve à UBS</li>
+          </ul>
+          <span class="mini">Gatilho no fluxo: Etapas 2 e 3</span>
+        </div>
+
+        <div class="form-card">
+          <h3>Formulário C — Evolução de curativo / procedimento</h3>
+          <p>Preenchimento rápido pelo técnico e/ou enfermagem.</p>
+          <ul>
+            <li>Data e hora</li>
+            <li>Tipo de curativo</li>
+            <li>Materiais utilizados</li>
+            <li>Medidas da lesão</li>
+            <li>Fotos de evolução</li>
+            <li>Dor antes/depois</li>
+            <li>Intercorrências</li>
+          </ul>
+          <span class="mini">Gatilho no fluxo: Etapa 5</span>
+        </div>
+
+        <div class="form-card">
+          <h3>Formulário D — Avaliação clínica e plano terapêutico</h3>
+          <p>Voltado ao médico e também útil para consolidar o caso.</p>
+          <ul>
+            <li>Diagnóstico principal</li>
+            <li>Classificação de gravidade</li>
+            <li>Conduta terapêutica</li>
+            <li>Prescrição</li>
+            <li>Necessidade de exames</li>
+            <li>Necessidade de internação</li>
+            <li>Encaminhamentos secundários</li>
+          </ul>
+          <span class="mini">Gatilho no fluxo: Etapa 6</span>
+        </div>
+
+        <div class="form-card">
+          <h3>Formulário E — Parecer multiprofissional</h3>
+          <p>Modelo único, mudando o campo “especialidade”.</p>
+          <ul>
+            <li>Especialidade</li>
+            <li>Avaliação específica</li>
+            <li>Conduta proposta</li>
+            <li>Necessidade de acompanhamento</li>
+            <li>Encaminhamento externo, se houver</li>
+          </ul>
+          <span class="mini">Gatilho no fluxo: Etapa 7</span>
+        </div>
+
+        <div class="form-card">
+          <h3>Formulário F — Telemonitoramento / cuidado compartilhado</h3>
+          <p>Pode ser usado pela equipe e, em versão simplificada, por paciente/cuidador.</p>
+          <ul>
+            <li>Perguntas objetivas com botões</li>
+            <li>Envio de foto e áudio</li>
+            <li>Sinais de alerta</li>
+            <li>Adesão ao tratamento</li>
+            <li>Necessidade de retorno presencial</li>
+            <li>Resposta do ambulatório para UBS/paciente</li>
+          </ul>
+          <span class="mini">Gatilho no fluxo: Etapas 8 e 9</span>
+        </div>
+
+        <div class="form-card">
+          <h3>Formulário G — Alta / contra-referência / internação</h3>
+          <p>Fecha o ciclo com rastreabilidade.</p>
+          <ul>
+            <li>Motivo da saída</li>
+            <li>Resumo clínico</li>
+            <li>Orientações finais</li>
+            <li>Destino: UBS, especialidade, hospital</li>
+            <li>Prazo de reavaliação</li>
+            <li>Profissional responsável</li>
+          </ul>
+          <span class="mini">Gatilho no fluxo: Etapas 10, 11 e 12</span>
+        </div>
+
+        <div class="rules">
+          <h2>3) Regras práticas para implementação</h2>
+          <ul>
+            <li><strong>Não usar um único formulário para tudo.</strong> Isso vira um dinossauro burocrático.</li>
+            <li><strong>Campos essenciais primeiro:</strong> identificação, gravidade, decisão e destino do caso.</li>
+            <li><strong>Fotos e áudios</strong> devem entrar com data, etapa e responsável.</li>
+            <li><strong>Checklist com botões</strong> acelera atendimento em campo e reduz digitação.</li>
+            <li><strong>Telemonitoramento</strong> precisa ter perguntas simples e gatilhos de alerta automático.</li>
+            <li><strong>Cada formulário</strong> deve alimentar uma planilha-base ou banco único com ID do paciente.</li>
+            <li><strong>O prontuário resumido</strong> pode ser montado automaticamente consolidando as respostas.</li>
+          </ul>
+        </div>
+      </aside>
+    </div>
+  </div>
+</body>
+</html>
