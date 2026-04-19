@@ -1,0 +1,172 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="900" viewBox="0 0 900 1720" role="img" style="font-family:'Source Sans 3',sans-serif;background:#F7F5F0;">
+  <title>Linha do tempo da destruição da glicose — 10 etapas fisiopatológicas</title>
+  <desc>Infográfico científico com 10 etapas: glicação (AGEs), ativação AGE→RAGE, estresse oxidativo, microangiopatia, inflamação crônica (M1/M2), NETose, angiogênese prejudicada (VEGF↓), neuropatia periférica, alterações biomecânicas e ferida crônica com biofilme. G10 PET-Saúde UFPel, 2026.</desc>
+
+  <defs>
+    <marker id="arr" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M2 1L8 5L2 9" fill="none" stroke="#888780" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+    </marker>
+  </defs>
+
+  <!-- ── HEADER ── -->
+  <rect x="0" y="0" width="900" height="68" fill="#1C1C2E"/>
+  <text x="450" y="26" text-anchor="middle" font-size="15" font-weight="700" fill="#FFFFFF" letter-spacing="0.04em">LINHA DO TEMPO DA DESTRUIÇÃO DA GLICOSE</text>
+  <text x="450" y="47" text-anchor="middle" font-size="11" fill="#9090B8" letter-spacing="0.08em">10 ETAPAS FISIOPATOLÓGICAS · DA MOLÉCULA AO PÉ DIABÉTICO</text>
+  <text x="450" y="62" text-anchor="middle" font-size="10" fill="#6060A0">G10 PET-Saúde Digital · Feridas Crônicas · UFPel · 2026</text>
+
+  <!-- ── LEGEND ── -->
+  <rect x="24" y="76" width="12" height="12" rx="3" fill="#FFFBEB" stroke="#B45309" stroke-width="1"/>
+  <text x="41" y="87" font-size="10" fill="#444441">Molecular</text>
+  <rect x="115" y="76" width="12" height="12" rx="3" fill="#EEF4FF" stroke="#1A4FBD" stroke-width="1"/>
+  <text x="132" y="87" font-size="10" fill="#444441">Vascular</text>
+  <rect x="200" y="76" width="12" height="12" rx="3" fill="#FFF4ED" stroke="#C2500A" stroke-width="1"/>
+  <text x="217" y="87" font-size="10" fill="#444441">Imune/Inflamação</text>
+  <rect x="335" y="76" width="12" height="12" rx="3" fill="#F5F0FF" stroke="#6D28D9" stroke-width="1"/>
+  <text x="352" y="87" font-size="10" fill="#444441">Proliferação</text>
+  <rect x="435" y="76" width="12" height="12" rx="3" fill="#EDFAF8" stroke="#0D7B72" stroke-width="1"/>
+  <text x="452" y="87" font-size="10" fill="#444441">Neurológico</text>
+  <rect x="535" y="76" width="12" height="12" rx="3" fill="#FDF0EE" stroke="#B83A2E" stroke-width="1"/>
+  <text x="552" y="87" font-size="10" fill="#444441">Desfecho clínico</text>
+
+  <!-- ── SPINE ── -->
+  <line x1="450" y1="98" x2="450" y2="1534" stroke="#D3D1C7" stroke-width="2.5" stroke-dasharray="6 4"/>
+
+  <!-- ══════════════════════════════════════════════ -->
+  <!-- ETAPA 1 · GLICAÇÃO -->
+  <!-- ══════════════════════════════════════════════ -->
+  <circle cx="450" cy="112" r="14" fill="#B45309" stroke="#FFFBEB" stroke-width="3"/>
+  <text x="450" y="117" text-anchor="middle" font-size="11" font-weight="700" fill="#FFFFFF">1</text>
+
+  <rect x="24" y="132" width="388" height="112" rx="10" fill="#FFFBEB" stroke="#B45309" stroke-width="1.2"/>
+  <text x="44" y="155" font-size="13" font-weight="700" fill="#7C3D0A">Glicação de proteínas · AGEs</text>
+  <text x="44" y="172" font-size="10" fill="#B45309">Cena 1 · Nível molecular · Semanas a meses</text>
+  <line x1="44" y1="180" x2="396" y2="180" stroke="#B45309" stroke-width="0.5" opacity="0.4"/>
+  <text x="44" y="197" font-size="11" fill="#3D3D5C">Glicose em excesso reage com proteínas via reação</text>
+  <text x="44" y="213" font-size="11" fill="#3D3D5C">de Maillard → AGEs. Colágeno com crosslinks anormais:</text>
+  <text x="44" y="229" font-size="11" fill="#3D3D5C">rígido, frágil, resistente à remodelação. [5,6]</text>
+  <line x1="412" y1="188" x2="436" y2="112" stroke="#B45309" stroke-width="0.8" stroke-dasharray="4 3"/>
+
+  <!-- ETAPA 2 · AGE→RAGE -->
+  <circle cx="450" cy="268" r="14" fill="#B45309" stroke="#FFFBEB" stroke-width="3"/>
+  <text x="450" y="273" text-anchor="middle" font-size="11" font-weight="700" fill="#FFFFFF">2</text>
+
+  <rect x="488" y="288" width="388" height="112" rx="10" fill="#FFFBEB" stroke="#B45309" stroke-width="1.2"/>
+  <text x="508" y="311" font-size="13" font-weight="700" fill="#7C3D0A">Ativação AGE → RAGE</text>
+  <text x="508" y="328" font-size="10" fill="#B45309">Sinalização pró-inflamatória amplificada</text>
+  <line x1="508" y1="336" x2="860" y2="336" stroke="#B45309" stroke-width="0.5" opacity="0.4"/>
+  <text x="508" y="353" font-size="11" fill="#3D3D5C">AGEs ligam-se ao receptor RAGE em células</text>
+  <text x="508" y="369" font-size="11" fill="#3D3D5C">imunes e endoteliais → ativação de NF-κB,</text>
+  <text x="508" y="385" font-size="11" fill="#3D3D5C">disfunção endotelial, permeabilidade vascular. [11]</text>
+  <line x1="488" y1="344" x2="464" y2="268" stroke="#B45309" stroke-width="0.8" stroke-dasharray="4 3"/>
+
+  <!-- ETAPA 3 · ESTRESSE OXIDATIVO -->
+  <circle cx="450" cy="424" r="14" fill="#1A4FBD" stroke="#EEF4FF" stroke-width="3"/>
+  <text x="450" y="429" text-anchor="middle" font-size="11" font-weight="700" fill="#FFFFFF">3</text>
+
+  <rect x="24" y="444" width="388" height="112" rx="10" fill="#EEF4FF" stroke="#1A4FBD" stroke-width="1.2"/>
+  <text x="44" y="467" font-size="13" font-weight="700" fill="#163A8A">Estresse oxidativo · Via do poliol</text>
+  <text x="44" y="484" font-size="10" fill="#1A4FBD">Cena 2 · Nível vascular · Meses a anos</text>
+  <line x1="44" y1="492" x2="396" y2="492" stroke="#1A4FBD" stroke-width="0.5" opacity="0.4"/>
+  <text x="44" y="509" font-size="11" fill="#3D3D5C">Via do poliol consome NADPH → sorbitol. Via da</text>
+  <text x="44" y="525" font-size="11" fill="#3D3D5C">hexosamina ativa PKC. Ambas ↑ ROS. Disfunção</text>
+  <text x="44" y="541" font-size="11" fill="#3D3D5C">endotelial. ↓ NO. Membrana basal espessada. [1,3,4]</text>
+  <line x1="412" y1="500" x2="436" y2="424" stroke="#1A4FBD" stroke-width="0.8" stroke-dasharray="4 3"/>
+
+  <!-- ETAPA 4 · INFLAMAÇÃO -->
+  <circle cx="450" cy="580" r="14" fill="#C2500A" stroke="#FFF4ED" stroke-width="3"/>
+  <text x="450" y="585" text-anchor="middle" font-size="11" font-weight="700" fill="#FFFFFF">4</text>
+
+  <rect x="488" y="600" width="388" height="126" rx="10" fill="#FFF4ED" stroke="#C2500A" stroke-width="1.2"/>
+  <text x="508" y="623" font-size="13" font-weight="700" fill="#7C2E09">Inflamação crônica · Bloqueio M1→M2</text>
+  <text x="508" y="640" font-size="10" fill="#C2500A">Cena 4 · Imune/Inflamação · Fase aguda comprometida</text>
+  <line x1="508" y1="648" x2="860" y2="648" stroke="#C2500A" stroke-width="0.5" opacity="0.4"/>
+  <text x="508" y="665" font-size="11" fill="#3D3D5C">NF-κB ativado mantém macrófagos M1 dominantes.</text>
+  <text x="508" y="681" font-size="11" fill="#3D3D5C">↑ IL-6, IL-1β, TNF-α. Transição M1→M2 bloqueada.</text>
+  <text x="508" y="697" font-size="11" fill="#3D3D5C">Células T-reg e neutrófilos disfuncionais. [8,3]</text>
+  <text x="508" y="713" font-size="11" fill="#C2500A">↓ TGF-β  ↓ VEGF-M2  ↑ pró-inflamatórias</text>
+  <line x1="488" y1="656" x2="464" y2="580" stroke="#C2500A" stroke-width="0.8" stroke-dasharray="4 3"/>
+
+  <!-- ETAPA 5 · NETOSE -->
+  <circle cx="450" cy="750" r="14" fill="#C2500A" stroke="#FFF4ED" stroke-width="3"/>
+  <text x="450" y="755" text-anchor="middle" font-size="11" font-weight="700" fill="#FFFFFF">5</text>
+
+  <rect x="24" y="770" width="388" height="112" rx="10" fill="#FFF4ED" stroke="#C2500A" stroke-width="1.2"/>
+  <text x="44" y="793" font-size="13" font-weight="700" fill="#7C2E09">NETose · Neutrófilos hiperativados</text>
+  <text x="44" y="810" font-size="10" fill="#C2500A">Agravante imune · Mecanismo emergente</text>
+  <line x1="44" y1="818" x2="396" y2="818" stroke="#C2500A" stroke-width="0.5" opacity="0.4"/>
+  <text x="44" y="835" font-size="11" fill="#3D3D5C">Neutrófilos diabéticos liberam NETs (DNA +</text>
+  <text x="44" y="851" font-size="11" fill="#3D3D5C">proteínas) em excesso → barreira física na ferida,</text>
+  <text x="44" y="867" font-size="11" fill="#3D3D5C">bloqueio da migração celular, dano tecidual. [9]</text>
+  <line x1="412" y1="826" x2="436" y2="750" stroke="#C2500A" stroke-width="0.8" stroke-dasharray="4 3"/>
+
+  <!-- ETAPA 6 · ANGIOGÊNESE PREJUDICADA -->
+  <circle cx="450" cy="906" r="14" fill="#6D28D9" stroke="#F5F0FF" stroke-width="3"/>
+  <text x="450" y="911" text-anchor="middle" font-size="11" font-weight="700" fill="#FFFFFF">6</text>
+
+  <rect x="488" y="926" width="388" height="126" rx="10" fill="#F5F0FF" stroke="#6D28D9" stroke-width="1.2"/>
+  <text x="508" y="949" font-size="13" font-weight="700" fill="#4A1B8A">Angiogênese prejudicada · ↓ VEGF</text>
+  <text x="508" y="966" font-size="10" fill="#6D28D9">Cena 5 · Proliferação bloqueada</text>
+  <line x1="508" y1="974" x2="860" y2="974" stroke="#6D28D9" stroke-width="0.5" opacity="0.4"/>
+  <text x="508" y="991" font-size="11" fill="#3D3D5C">Hiperglicemia reduz expressão de VEGF e FGF-2.</text>
+  <text x="508" y="1007" font-size="11" fill="#3D3D5C">Células progenitoras endoteliais (EPCs) disfuncionais</text>
+  <text x="508" y="1023" font-size="11" fill="#3D3D5C">por acúmulo de AGEs. Fibroblastos não migram. [11,3]</text>
+  <text x="508" y="1039" font-size="11" fill="#6D28D9">↓ VEGF  ↓ FGF-2  ↓ EPCs  ↑ MMP-9</text>
+  <line x1="488" y1="982" x2="464" y2="906" stroke="#6D28D9" stroke-width="0.8" stroke-dasharray="4 3"/>
+
+  <!-- ETAPA 7 · MICROANGIOPATIA/HIPÓXIA -->
+  <circle cx="450" cy="1076" r="14" fill="#1A4FBD" stroke="#EEF4FF" stroke-width="3"/>
+  <text x="450" y="1081" text-anchor="middle" font-size="11" font-weight="700" fill="#FFFFFF">7</text>
+
+  <rect x="24" y="1096" width="388" height="112" rx="10" fill="#EEF4FF" stroke="#1A4FBD" stroke-width="1.2"/>
+  <text x="44" y="1119" font-size="13" font-weight="700" fill="#163A8A">Microangiopatia · Hipóxia tecidual</text>
+  <text x="44" y="1136" font-size="10" fill="#1A4FBD">Disfunção vascular · O₂ reduzido</text>
+  <line x1="44" y1="1144" x2="396" y2="1144" stroke="#1A4FBD" stroke-width="0.5" opacity="0.4"/>
+  <text x="44" y="1161" font-size="11" fill="#3D3D5C">Vasos estreitados, espessamento de membrana basal.</text>
+  <text x="44" y="1177" font-size="11" fill="#3D3D5C">↓ O₂ e nutrientes nos tecidos. ↑ MMP-9 degrada</text>
+  <text x="44" y="1193" font-size="11" fill="#3D3D5C">colágeno e laminina da ECM. Tecido fragilizado. [1,3]</text>
+  <line x1="412" y1="1152" x2="436" y2="1076" stroke="#1A4FBD" stroke-width="0.8" stroke-dasharray="4 3"/>
+
+  <!-- ETAPA 8 · NEUROPATIA -->
+  <circle cx="450" cy="1232" r="14" fill="#0D7B72" stroke="#EDFAF8" stroke-width="3"/>
+  <text x="450" y="1237" text-anchor="middle" font-size="11" font-weight="700" fill="#FFFFFF">8</text>
+
+  <rect x="488" y="1252" width="388" height="126" rx="10" fill="#EDFAF8" stroke="#0D7B72" stroke-width="1.2"/>
+  <text x="508" y="1275" font-size="13" font-weight="700" fill="#0A4F49">Neuropatia periférica</text>
+  <text x="508" y="1292" font-size="10" fill="#0D7B72">Cena 3 · Nível neurológico · Anos</text>
+  <line x1="508" y1="1300" x2="860" y2="1300" stroke="#0D7B72" stroke-width="0.5" opacity="0.4"/>
+  <text x="508" y="1317" font-size="11" fill="#3D3D5C">Perda de fibras sensitivas: ausência de dor,</text>
+  <text x="508" y="1333" font-size="11" fill="#3D3D5C">pressão, temperatura. Disfunção autonômica:</text>
+  <text x="508" y="1349" font-size="11" fill="#3D3D5C">↓ sudorese → pele seca, fissuras. [1,7,10]</text>
+  <text x="508" y="1365" font-size="11" fill="#0D7B72">Lesão forma-se sem que o paciente perceba</text>
+  <line x1="488" y1="1308" x2="464" y2="1232" stroke="#0D7B72" stroke-width="0.8" stroke-dasharray="4 3"/>
+
+  <!-- ETAPA 9 · ALTERAÇÕES BIOMECÂNICAS -->
+  <circle cx="450" cy="1402" r="14" fill="#0D7B72" stroke="#EDFAF8" stroke-width="3"/>
+  <text x="450" y="1407" text-anchor="middle" font-size="11" font-weight="700" fill="#FFFFFF">9</text>
+
+  <rect x="24" y="1422" width="388" height="98" rx="10" fill="#EDFAF8" stroke="#0D7B72" stroke-width="1.2"/>
+  <text x="44" y="1445" font-size="13" font-weight="700" fill="#0A4F49">Alterações biomecânicas do pé</text>
+  <text x="44" y="1462" font-size="10" fill="#0D7B72">Pressão plantar · Deformidades ósseas</text>
+  <line x1="44" y1="1470" x2="396" y2="1470" stroke="#0D7B72" stroke-width="0.5" opacity="0.4"/>
+  <text x="44" y="1487" font-size="11" fill="#3D3D5C">Atrofia muscular → hallux valgus, dedos em garra.</text>
+  <text x="44" y="1503" font-size="11" fill="#3D3D5C">Pressão focal elevada → trauma repetido invisível. [7,10]</text>
+  <line x1="412" y1="1471" x2="436" y2="1402" stroke="#0D7B72" stroke-width="0.8" stroke-dasharray="4 3"/>
+
+  <!-- ETAPA 10 · FERIDA CRÔNICA + BIOFILME -->
+  <circle cx="450" cy="1550" r="16" fill="#B83A2E" stroke="#FDF0EE" stroke-width="3"/>
+  <text x="450" y="1555" text-anchor="middle" font-size="11" font-weight="700" fill="#FFFFFF">10</text>
+
+  <!-- Full-width card spanning both columns -->
+  <rect x="24" y="1574" width="852" height="100" rx="10" fill="#FDF0EE" stroke="#B83A2E" stroke-width="1.5"/>
+  <text x="450" y="1600" text-anchor="middle" font-size="13" font-weight="700" fill="#7A1F1A">Ferida crônica · Biofilme polimicrobiano · Risco de amputação</text>
+  <text x="450" y="1617" text-anchor="middle" font-size="10" fill="#B83A2E">Cena Final · Desfecho clínico · Meses a anos</text>
+  <line x1="44" y1="1625" x2="832" y2="1625" stroke="#B83A2E" stroke-width="0.5" opacity="0.4"/>
+  <text x="450" y="1644" text-anchor="middle" font-size="11" fill="#3D3D5C">Microambiente hiperglicêmico favorece biofilme (S. aureus, P. aeruginosa). ECM degradada,</text>
+  <text x="450" y="1660" text-anchor="middle" font-size="11" fill="#3D3D5C">queratinócitos sem migração, fibroblastos apoptóticos. Cicatrização inviável sem intervenção. [1,8,9,11]</text>
+  <line x1="450" y1="1566" x2="450" y2="1574" stroke="#B83A2E" stroke-width="0.8" stroke-dasharray="4 3"/>
+
+  <!-- ── FOOTER ── -->
+  <rect x="0" y="1688" width="900" height="32" fill="#1C1C2E"/>
+  <text x="450" y="1702" text-anchor="middle" font-size="8.5" fill="#9090B8">Fontes: [1] Olsson 2021 · [3] Liu 2025 · [5] Verdanova 2022 · [6] Bhatt 2009 · [7] Porel 2025 · [8] Chen 2024 · [9] Wong 2015 · [10] Armstrong 2017 · [11] Dawi 2025</text>
+  <text x="450" y="1714" text-anchor="middle" font-size="8.5" fill="#6060A0">G10 PET-Saúde Digital · Feridas Crônicas · UFPel · Abril 2026</text>
+</svg>
