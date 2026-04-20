@@ -1,0 +1,846 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>A Formação da Ferida Crônica · Animação Científica · Amor à Pele & PET G10 UFPel</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=Source+Sans+3:ital,wght@0,300;0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+<style>
+:root {
+  --page-bg:#F7F5F0; --white:#FFFFFF; --dark:#1C1C2E; --mid:#3D3D5C; --soft:#72729A; --border:#E2DED6;
+  --rose:#B83A2E; --rose-light:#FDF0EE;
+  --amber:#B45309; --amber-light:#FFFBEB;
+  --teal:#0D7B72; --teal-light:#EDFAF8;
+  --blue:#1A4FBD; --blue-light:#EEF4FF;
+  --purple:#6D28D9; --purple-light:#F5F0FF;
+  --orange:#C2500A; --orange-light:#FFF4ED;
+  --green:#1A6E3C; --green-light:#EDFAF3;
+  --shadow-sm:0 2px 12px rgba(28,28,46,0.08);
+  --shadow-md:0 4px 28px rgba(28,28,46,0.13);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Source Sans 3',sans-serif;background:var(--page-bg);color:var(--dark);line-height:1.68;font-size:16px}
+
+.inst-header{background:var(--white);border-bottom:1px solid var(--border);padding:13px 40px;display:flex;justify-content:space-between;align-items:center;position:sticky;top:0;z-index:100;box-shadow:var(--shadow-sm)}
+.inst-header img{max-height:50px}
+.header-label{font-size:10px;font-weight:700;letter-spacing:0.13em;text-transform:uppercase;color:var(--soft)}
+.grad-bar{height:4px;background:linear-gradient(90deg,var(--amber) 0%,var(--rose) 40%,var(--purple) 70%,var(--teal) 100%)}
+.progress-track{height:3px;background:var(--border);position:sticky;top:78px;z-index:99}
+.progress-fill{height:100%;background:linear-gradient(90deg,var(--amber),var(--rose));transition:width 0.5s ease;width:10%}
+
+.hero{background:var(--white);border-bottom:1px solid var(--border);padding:36px 40px 32px;text-align:center}
+.hero-tag{display:inline-block;background:var(--rose-light);border:1px solid #F0C4BF;border-radius:100px;padding:4px 18px;font-size:10px;font-weight:700;letter-spacing:0.13em;text-transform:uppercase;color:var(--rose);margin-bottom:14px}
+.hero h1{font-family:'Playfair Display',serif;font-size:clamp(1.5rem,3vw,2.2rem);font-weight:900;line-height:1.2;max-width:680px;margin:0 auto 10px;color:var(--dark)}
+.hero h1 span{color:var(--rose)}
+.hero-sub{font-size:14px;color:var(--soft);max-width:520px;margin:0 auto}
+
+.dots-wrap{display:flex;gap:6px;align-items:center;justify-content:center;padding:18px 24px 0;flex-wrap:wrap}
+.dot{width:9px;height:9px;border-radius:50%;background:var(--border);cursor:pointer;transition:all 0.3s;border:1.5px solid var(--border)}
+.dot.done{background:var(--soft);border-color:var(--soft)}
+.dot.active{background:var(--amber);border-color:var(--amber);transform:scale(1.5)}
+
+.scene-wrap{max-width:960px;margin:0 auto;padding:18px 18px 56px}
+.scene{display:none;flex-direction:column;background:var(--white);border:1px solid var(--border);border-radius:18px;overflow:hidden;box-shadow:var(--shadow-md);animation:fadeIn 0.5s ease}
+.scene.active{display:flex}
+@keyframes fadeIn{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
+
+/* ── VISUAL: split layout ── */
+.scene-visual{width:100%;display:grid;grid-template-columns:220px 1fr;min-height:320px;border-bottom:1px solid var(--border)}
+.foot-panel{background:var(--page-bg);border-right:1px solid var(--border);display:flex;align-items:center;justify-content:center;padding:12px;position:relative}
+.foot-panel svg{width:100%;height:auto}
+.zoom-panel{background:#fff;overflow:hidden;position:relative}
+.zoom-panel svg{width:100%;height:100%}
+
+.scene-text{padding:18px 24px 4px}
+.scene-tag{font-size:10px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;margin-bottom:5px}
+.scene-title{font-family:'Playfair Display',serif;font-size:1.3rem;font-weight:700;line-height:1.25;margin-bottom:8px;color:var(--dark)}
+.scene-desc{font-size:13.5px;color:var(--mid);line-height:1.72;max-width:680px;margin-bottom:10px}
+.scene-detail{font-size:12px;color:var(--soft);background:var(--page-bg);border:1px solid var(--border);border-radius:8px;padding:9px 13px;line-height:1.7;margin-bottom:14px}
+.scene-ref{font-size:10px;color:var(--soft);opacity:0.7}
+
+.nav-row{display:flex;align-items:center;gap:10px;padding:12px 24px 18px;border-top:1px solid var(--border)}
+.nav-btn{background:none;border:1px solid var(--border);color:var(--dark);border-radius:8px;padding:7px 18px;font-size:13px;cursor:pointer;transition:all 0.2s;font-family:'Source Sans 3',sans-serif;font-weight:600}
+.nav-btn:hover{background:var(--page-bg)}
+.nav-btn:disabled{opacity:0.3;cursor:not-allowed}
+.nav-btn.primary{background:var(--amber);border-color:var(--amber);color:#fff;margin-left:auto}
+.nav-btn.primary:hover{background:#9a4507;border-color:#9a4507}
+.nav-btn.restart{margin-left:auto;background:var(--purple-light);border-color:var(--purple);color:var(--purple)}
+.nav-btn.restart:hover{background:var(--purple);color:#fff}
+.scene-counter{font-size:11px;color:var(--soft);letter-spacing:0.08em}
+
+.page-footer{background:var(--white);border-top:1px solid var(--border);padding:18px 40px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px}
+.footer-sig{font-size:11px;color:var(--soft)}
+.footer-sig strong{color:var(--mid)}
+
+/* Shared foot path reused via symbol */
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:0.3}}
+@keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-4px)}}
+@keyframes dash{0%{stroke-dashoffset:400}100%{stroke-dashoffset:0}}
+@keyframes glow{0%,100%{opacity:0.7}50%{opacity:1}}
+@keyframes spread{from{r:0;opacity:0.8}to{r:40;opacity:0}}
+.pulse{animation:pulse 2s ease-in-out infinite}
+.float{animation:float 3s ease-in-out infinite}
+.dash{stroke-dasharray:8 5;animation:dash 3s linear infinite}
+.glow{animation:glow 1.8s ease-in-out infinite}
+
+@media(max-width:560px){
+  .scene-visual{grid-template-columns:1fr}
+  .foot-panel{border-right:none;border-bottom:1px solid var(--border);min-height:160px}
+  .zoom-panel{min-height:200px}
+}
+</style>
+</head>
+<body>
+
+<header class="inst-header">
+  <div style="display:flex; align-items:center; gap:16px;">
+    <a href="../acucaraferida.html" style="display:inline-flex; align-items:center; gap:7px; background:#F7F5F0; border:1px solid #E2DED6; border-radius:8px; padding:7px 14px; font-size:12px; font-weight:700; color:#3D3D5C; text-decoration:none; font-family:'Source Sans 3',sans-serif; transition:background 0.2s; white-space:nowrap;" onmouseover="this.style.background='#E2DED6'" onmouseout="this.style.background='#F7F5F0'">← Voltar ao infográfico</a>
+    <div class="header-label">Animação Científica · Feridas Crônicas</div>
+  </div>
+  <img src="../img/dois.png" alt="Logos Amor à Pele e PET-Saúde Digital G10 UFPel" onerror="this.src='data:image/png;base64,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'">
+</header>
+<div class="grad-bar"></div>
+<div class="progress-track"><div class="progress-fill" id="prog"></div></div>
+
+<div class="hero">
+  <div class="hero-tag">Animação · 10 cenas científicas</div>
+  <h1>Como o açúcar destrói o pé:<br><span>a ferida crônica por dentro</span></h1>
+  <p class="hero-sub">Cada cena mostra o mecanismo acontecendo no interior do tecido do pé diabético — da molécula ao desfecho clínico.</p>
+</div>
+
+<div class="dots-wrap" id="dots"></div>
+<div class="scene-wrap">
+
+<!-- shared foot SVG shape used across all left panels -->
+<!-- FOOT PATH (lateral view, right foot): consistent shape across all scenes -->
+
+<!-- ═══ SCENE 1 · GLICAÇÃO ═══ -->
+<div class="scene active" id="s0">
+  <div class="scene-visual">
+    <!-- LEFT: foot with highlight on skin layer -->
+    <div class="foot-panel">
+      <svg viewBox="0 0 200 340" xmlns="http://www.w3.org/2000/svg">
+        <!-- Foot silhouette lateral view -->
+        <path d="M80 310 Q54 292 48 255 Q42 210 52 170 Q62 130 80 112 Q100 96 118 102 Q138 110 134 138 Q128 166 144 188 Q162 212 168 240 Q174 268 162 290 Q148 312 120 318 Q102 322 80 310 Z" fill="#f5d5b5" stroke="#c8956a" stroke-width="2"/>
+        <!-- Toes -->
+        <ellipse cx="152" cy="108" rx="14" ry="9" fill="#f5d5b5" stroke="#c8956a" stroke-width="1.5" transform="rotate(-20 152 108)"/>
+        <ellipse cx="164" cy="120" rx="12" ry="8" fill="#f5d5b5" stroke="#c8956a" stroke-width="1.5" transform="rotate(-15 164 120)"/>
+        <ellipse cx="172" cy="135" rx="10" ry="7" fill="#f5d5b5" stroke="#c8956a" stroke-width="1.5"/>
+        <!-- Nail area -->
+        <ellipse cx="156" cy="104" rx="8" ry="4" fill="#e8c4a0" stroke="#c8956a" stroke-width="1" transform="rotate(-20 156 104)"/>
+        <!-- Highlight zone: skin surface (whole) -->
+        <path d="M80 310 Q54 292 48 255 Q42 210 52 170 Q62 130 80 112 Q100 96 118 102 Q138 110 134 138 Q128 166 144 188 Q162 212 168 240 Q174 268 162 290 Q148 312 120 318 Q102 322 80 310 Z" fill="none" stroke="#b45309" stroke-width="2.5" stroke-dasharray="6 4" opacity="0.8"><animate attributeName="opacity" values="0.8;0.3;0.8" dur="2s" repeatCount="indefinite"/></path>
+        <!-- Label -->
+        <text x="100" y="10" text-anchor="middle" fill="#b45309" font-size="9" font-weight="700" font-family="Source Sans 3,sans-serif">Pele — todo o pé</text>
+        <!-- Zoom indicator -->
+        <circle cx="90" cy="220" r="18" fill="none" stroke="#b45309" stroke-width="1.5" stroke-dasharray="4 3"/>
+        <line x1="108" y1="220" x2="200" y2="160" stroke="#b45309" stroke-width="1" stroke-dasharray="3 2"/>
+      </svg>
+    </div>
+    <!-- RIGHT: cross-section of skin showing AGE formation -->
+    <div class="zoom-panel">
+      <svg viewBox="0 0 540 320" xmlns="http://www.w3.org/2000/svg">
+        <rect width="540" height="320" fill="#fffbf5"/>
+        <!-- Tissue layers cross-section -->
+        <rect x="0" y="0" width="540" height="55" fill="#f9d8b8" rx="0"/>
+        <text x="10" y="16" fill="#8a5230" font-size="9" font-family="Source Sans 3,sans-serif" font-weight="600">EPIDERME</text>
+        <rect x="0" y="55" width="540" height="80" fill="#f0c89e"/>
+        <text x="10" y="72" fill="#7a4220" font-size="9" font-family="Source Sans 3,sans-serif" font-weight="600">DERME · Colágeno</text>
+        <rect x="0" y="135" width="540" height="90" fill="#e0b080"/>
+        <text x="10" y="152" fill="#5a3010" font-size="9" font-family="Source Sans 3,sans-serif" font-weight="600">TECIDO SUBCUTÂNEO</text>
+        <rect x="0" y="225" width="540" height="95" fill="#c8906a"/>
+        <text x="10" y="242" fill="#3a1a08" font-size="9" font-family="Source Sans 3,sans-serif" font-weight="600">MÚSCULO</text>
+        <!-- Collagen fibers in dermis -->
+        <line x1="40" y1="90" x2="200" y2="90" stroke="#a87050" stroke-width="3" stroke-linecap="round"/>
+        <line x1="40" y1="108" x2="220" y2="108" stroke="#a87050" stroke-width="3" stroke-linecap="round"/>
+        <line x1="40" y1="126" x2="190" y2="126" stroke="#a87050" stroke-width="3" stroke-linecap="round"/>
+        <line x1="280" y1="88" x2="500" y2="88" stroke="#a87050" stroke-width="3" stroke-linecap="round"/>
+        <line x1="280" y1="106" x2="520" y2="106" stroke="#a87050" stroke-width="3" stroke-linecap="round"/>
+        <line x1="280" y1="124" x2="490" y2="124" stroke="#a87050" stroke-width="3" stroke-linecap="round"/>
+        <!-- Glucose molecules floating down from epidermis -->
+        <g class="float" style="animation-delay:0s"><circle cx="120" cy="30" r="14" fill="#fffbeb" stroke="#b45309" stroke-width="1.8"/><text x="120" y="34" text-anchor="middle" fill="#b45309" font-size="8" font-weight="700" font-family="Source Sans 3,sans-serif">GLU</text></g>
+        <g class="float" style="animation-delay:0.6s"><circle cx="260" cy="20" r="14" fill="#fffbeb" stroke="#b45309" stroke-width="1.8"/><text x="260" y="24" text-anchor="middle" fill="#b45309" font-size="8" font-weight="700" font-family="Source Sans 3,sans-serif">GLU</text></g>
+        <g class="float" style="animation-delay:1.2s"><circle cx="400" cy="28" r="14" fill="#fffbeb" stroke="#b45309" stroke-width="1.8"/><text x="400" y="32" text-anchor="middle" fill="#b45309" font-size="8" font-weight="700" font-family="Source Sans 3,sans-serif">GLU</text></g>
+        <!-- AGE bonds on collagen fibers -->
+        <g><line x1="160" y1="90" x2="160" y2="30" stroke="#b45309" stroke-width="1.5" stroke-dasharray="3 2"><animate attributeName="opacity" values="0;1;1" dur="2s" repeatCount="indefinite"/></line><circle cx="160" cy="90" r="6" fill="#b45309"><animate attributeName="opacity" values="0;1;1" dur="2s" repeatCount="indefinite"/></circle><text x="172" y="72" fill="#b45309" font-size="9" font-family="Source Sans 3,sans-serif"><animate attributeName="opacity" values="0;1;1" dur="2s" repeatCount="indefinite"/>AGE</text></g>
+        <g><line x1="350" y1="106" x2="350" y2="25" stroke="#c2500a" stroke-width="1.5" stroke-dasharray="3 2"><animate attributeName="opacity" values="0;0;1;1" dur="2s" begin="0.7s" repeatCount="indefinite"/></line><circle cx="350" cy="106" r="6" fill="#c2500a"><animate attributeName="opacity" values="0;0;1;1" dur="2s" begin="0.7s" repeatCount="indefinite"/></circle><text x="362" y="80" fill="#c2500a" font-size="9" font-family="Source Sans 3,sans-serif"><animate attributeName="opacity" values="0;0;1;1" dur="2s" begin="0.7s" repeatCount="indefinite"/>AGE</text></g>
+        <g><line x1="470" y1="88" x2="470" y2="32" stroke="#b83a2e" stroke-width="1.5" stroke-dasharray="3 2"><animate attributeName="opacity" values="0;0;0;1" dur="2s" begin="1.4s" repeatCount="indefinite"/></line><circle cx="470" cy="88" r="6" fill="#b83a2e"><animate attributeName="opacity" values="0;0;0;1" dur="2s" begin="1.4s" repeatCount="indefinite"/></circle><text x="482" y="68" fill="#b83a2e" font-size="9" font-family="Source Sans 3,sans-serif"><animate attributeName="opacity" values="0;0;0;1" dur="2s" begin="1.4s" repeatCount="indefinite"/>AGE</text></g>
+        <!-- Layer dividers -->
+        <line x1="0" y1="55" x2="540" y2="55" stroke="#c8906a" stroke-width="0.8"/>
+        <line x1="0" y1="135" x2="540" y2="135" stroke="#c8906a" stroke-width="0.8"/>
+        <line x1="0" y1="225" x2="540" y2="225" stroke="#8a5030" stroke-width="0.8"/>
+        <text x="270" y="310" text-anchor="middle" fill="#72729a" font-size="10" font-family="Source Sans 3,sans-serif">Glicose penetra a derme e glica as fibras de colágeno → AGEs irreversíveis</text>
+      </svg>
+    </div>
+  </div>
+  <div class="scene-text">
+    <div class="scene-tag" style="color:var(--amber)">Cena 1 · Nível molecular · Semanas a meses · Pele inteira</div>
+    <div class="scene-title">O açúcar glica o colágeno da pele</div>
+    <div class="scene-desc">Na derme do pé diabético, a glicose em excesso reage com as fibras de colágeno formando AGEs — crosslinks irreversíveis que tornam o tecido rígido, frágil e incapaz de se remodelar ou cicatrizar normalmente.</div>
+    <div class="scene-detail">⚗️ Glicose + Lisina → Base de Schiff → Produto Amadori → <strong>AGE</strong>. O colágeno glicado bloqueia a adesão e migração de fibroblastos reparadores. <span class="scene-ref">[5,6]</span></div>
+  </div>
+  <div class="nav-row">
+    <button class="nav-btn" disabled>← Anterior</button>
+    <span class="scene-counter">Cena 1 de 10</span>
+    <button class="nav-btn primary" onclick="goTo(1)">Próxima →</button>
+  </div>
+</div>
+
+<!-- ═══ SCENE 2 · AGE→RAGE ═══ -->
+<div class="scene" id="s1">
+  <div class="scene-visual">
+    <div class="foot-panel">
+      <svg viewBox="0 0 200 340" xmlns="http://www.w3.org/2000/svg">
+        <path d="M80 310 Q54 292 48 255 Q42 210 52 170 Q62 130 80 112 Q100 96 118 102 Q138 110 134 138 Q128 166 144 188 Q162 212 168 240 Q174 268 162 290 Q148 312 120 318 Q102 322 80 310 Z" fill="#f5d5b5" stroke="#c8956a" stroke-width="2"/>
+        <ellipse cx="152" cy="108" rx="14" ry="9" fill="#f5d5b5" stroke="#c8956a" stroke-width="1.5" transform="rotate(-20 152 108)"/>
+        <ellipse cx="164" cy="120" rx="12" ry="8" fill="#f5d5b5" stroke="#c8956a" stroke-width="1.5" transform="rotate(-15 164 120)"/>
+        <ellipse cx="172" cy="135" rx="10" ry="7" fill="#f5d5b5" stroke="#c8956a" stroke-width="1.5"/>
+        <!-- Highlight: dermis zone (cells) -->
+        <ellipse cx="90" cy="210" rx="32" ry="40" fill="#f5f0ff" stroke="#6d28d9" stroke-width="2" stroke-dasharray="5 3" opacity="0.8"><animate attributeName="opacity" values="0.8;0.3;0.8" dur="2s" repeatCount="indefinite"/></ellipse>
+        <text x="100" y="10" text-anchor="middle" fill="#6d28d9" font-size="9" font-weight="700" font-family="Source Sans 3,sans-serif">Célula dérmica</text>
+        <circle cx="90" cy="210" r="18" fill="none" stroke="#6d28d9" stroke-width="1.5" stroke-dasharray="3 2"/>
+        <line x1="108" y1="210" x2="200" y2="150" stroke="#6d28d9" stroke-width="1" stroke-dasharray="3 2"/>
+      </svg>
+    </div>
+    <div class="zoom-panel">
+      <svg viewBox="0 0 540 320" xmlns="http://www.w3.org/2000/svg">
+        <rect width="540" height="320" fill="#fdfcff"/>
+        <!-- Dermis background -->
+        <rect x="0" y="0" width="540" height="320" fill="#f9d8b8" opacity="0.3"/>
+        <text x="10" y="18" fill="#8a5230" font-size="9" font-family="Source Sans 3,sans-serif" font-weight="600">INTERIOR DA DERME — células endoteliais e imunes</text>
+        <!-- Endothelial cell large -->
+        <ellipse cx="270" cy="180" rx="160" ry="95" fill="#f5f0ff" stroke="#6d28d9" stroke-width="2"/>
+        <text x="270" y="178" text-anchor="middle" fill="#6d28d9" font-size="10" font-weight="600" font-family="Source Sans 3,sans-serif">Célula endotelial / imune</text>
+        <text x="270" y="194" text-anchor="middle" fill="#7c3aed" font-size="8" font-family="Source Sans 3,sans-serif">(parede de capilar dérmico)</text>
+        <!-- RAGE receptors on membrane -->
+        <rect x="148" y="87" width="14" height="32" rx="4" fill="#7c3aed"/>
+        <text x="155" y="133" text-anchor="middle" fill="#6d28d9" font-size="8" font-family="Source Sans 3,sans-serif">RAGE</text>
+        <rect x="214" y="83" width="14" height="32" rx="4" fill="#7c3aed"/>
+        <text x="221" y="129" text-anchor="middle" fill="#6d28d9" font-size="8" font-family="Source Sans 3,sans-serif">RAGE</text>
+        <rect x="312" y="83" width="14" height="32" rx="4" fill="#7c3aed"/>
+        <text x="319" y="129" text-anchor="middle" fill="#6d28d9" font-size="8" font-family="Source Sans 3,sans-serif">RAGE</text>
+        <rect x="378" y="87" width="14" height="32" rx="4" fill="#7c3aed"/>
+        <text x="385" y="133" text-anchor="middle" fill="#6d28d9" font-size="8" font-family="Source Sans 3,sans-serif">RAGE</text>
+        <!-- AGE descending onto RAGE -->
+        <circle cx="155" cy="45" r="13" fill="#fffbeb" stroke="#b45309" stroke-width="1.5"><animate attributeName="cy" values="30;86;86" dur="2.2s" repeatCount="indefinite"/><animate attributeName="opacity" values="1;1;0" dur="2.2s" repeatCount="indefinite"/></circle>
+        <text x="155" y="49" text-anchor="middle" fill="#b45309" font-size="8" font-weight="700" font-family="Source Sans 3,sans-serif"><animate attributeName="y" values="34;90;90" dur="2.2s" repeatCount="indefinite"/>AGE</text>
+        <circle cx="319" cy="35" r="13" fill="#fffbeb" stroke="#b45309" stroke-width="1.5"><animate attributeName="cy" values="20;82;82" dur="2.6s" begin="0.5s" repeatCount="indefinite"/><animate attributeName="opacity" values="1;1;0" dur="2.6s" begin="0.5s" repeatCount="indefinite"/></circle>
+        <text x="319" y="39" text-anchor="middle" fill="#b45309" font-size="8" font-weight="700" font-family="Source Sans 3,sans-serif"><animate attributeName="y" values="24;86;86" dur="2.6s" begin="0.5s" repeatCount="indefinite"/>AGE</text>
+        <!-- NF-kB nucleus -->
+        <circle cx="270" cy="215" r="28" fill="#ede0ff" stroke="#6d28d9" stroke-width="1.5"><animate attributeName="r" values="25;31;25" dur="1.5s" repeatCount="indefinite"/></circle>
+        <text x="270" y="212" text-anchor="middle" fill="#4a1b8a" font-size="10" font-weight="700" font-family="Source Sans 3,sans-serif">NF-κB</text>
+        <text x="270" y="226" text-anchor="middle" fill="#6d28d9" font-size="8" font-family="Source Sans 3,sans-serif">ATIVADO</text>
+        <!-- Outputs from NF-kB -->
+        <line x1="270" y1="187" x2="160" y2="115" stroke="#b83a2e" stroke-width="1.2" stroke-dasharray="4 3"><animate attributeName="opacity" values="0;0;0.8;0.8" dur="2s" begin="0.5s" repeatCount="indefinite"/></line>
+        <line x1="270" y1="187" x2="380" y2="112" stroke="#b83a2e" stroke-width="1.2" stroke-dasharray="4 3"><animate attributeName="opacity" values="0;0;0.8;0.8" dur="2s" begin="0.8s" repeatCount="indefinite"/></line>
+        <text x="115" y="108" fill="#b83a2e" font-size="10" font-weight="600" font-family="Source Sans 3,sans-serif"><animate attributeName="opacity" values="0;0;1;1" dur="2s" begin="0.5s" repeatCount="indefinite"/>↑ ROS</text>
+        <text x="386" y="106" fill="#b83a2e" font-size="10" font-weight="600" font-family="Source Sans 3,sans-serif"><animate attributeName="opacity" values="0;0;1;1" dur="2s" begin="0.8s" repeatCount="indefinite"/>↑ Inflamação</text>
+        <text x="270" y="310" text-anchor="middle" fill="#72729a" font-size="10" font-family="Source Sans 3,sans-serif">AGE → RAGE → NF-κB: ciclo autossustentado de dano na derme</text>
+      </svg>
+    </div>
+  </div>
+  <div class="scene-text">
+    <div class="scene-tag" style="color:var(--purple)">Cena 2 · Sinalização celular · Derme do pé</div>
+    <div class="scene-title">AGEs ativam o receptor RAGE nas células dérmicas</div>
+    <div class="scene-desc">Nas células endoteliais dos capilares dérmicos do pé, os AGEs ligam-se ao receptor RAGE, disparando o NF-κB. Isso cria uma cascata inflamatória autossustentada que amplifica progressivamente o dano tecidual.</div>
+    <div class="scene-detail">🔗 AGE → RAGE → NF-κB → permeabilidade capilar ↑, ROS ↑, recrutamento inflamatório ↑. O pé torna-se um ambiente cronicamente inflamado mesmo sem ferida. <span class="scene-ref">[11]</span></div>
+  </div>
+  <div class="nav-row">
+    <button class="nav-btn" onclick="goTo(-1)">← Anterior</button>
+    <span class="scene-counter">Cena 2 de 10</span>
+    <button class="nav-btn primary" onclick="goTo(1)">Próxima →</button>
+  </div>
+</div>
+
+<!-- ═══ SCENE 3 · ROS ═══ -->
+<div class="scene" id="s2">
+  <div class="scene-visual">
+    <div class="foot-panel">
+      <svg viewBox="0 0 200 340" xmlns="http://www.w3.org/2000/svg">
+        <path d="M80 310 Q54 292 48 255 Q42 210 52 170 Q62 130 80 112 Q100 96 118 102 Q138 110 134 138 Q128 166 144 188 Q162 212 168 240 Q174 268 162 290 Q148 312 120 318 Q102 322 80 310 Z" fill="#f5d5b5" stroke="#c8956a" stroke-width="2"/>
+        <ellipse cx="152" cy="108" rx="14" ry="9" fill="#f5d5b5" stroke="#c8956a" stroke-width="1.5" transform="rotate(-20 152 108)"/>
+        <ellipse cx="164" cy="120" rx="12" ry="8" fill="#f5d5b5" stroke="#c8956a" stroke-width="1.5" transform="rotate(-15 164 120)"/>
+        <ellipse cx="172" cy="135" rx="10" ry="7" fill="#f5d5b5" stroke="#c8956a" stroke-width="1.5"/>
+        <!-- Highlight: capillaries throughout foot (orange glow) -->
+        <path d="M80 310 Q54 292 48 255 Q42 210 52 170 Q62 130 80 112 Q100 96 118 102 Q138 110 134 138 Q128 166 144 188 Q162 212 168 240 Q174 268 162 290 Q148 312 120 318 Q102 322 80 310 Z" fill="#fff4ed" stroke="#c2500a" stroke-width="2.5" opacity="0.7"><animate attributeName="fill" values="#fff4ed;#fde8d8;#fff4ed" dur="2s" repeatCount="indefinite"/></path>
+        <text x="100" y="10" text-anchor="middle" fill="#c2500a" font-size="9" font-weight="700" font-family="Source Sans 3,sans-serif">Mitocôndrias</text>
+        <circle cx="85" cy="195" r="16" fill="none" stroke="#c2500a" stroke-width="1.5" stroke-dasharray="3 2"/>
+        <line x1="101" y1="195" x2="200" y2="150" stroke="#c2500a" stroke-width="1" stroke-dasharray="3 2"/>
+      </svg>
+    </div>
+    <div class="zoom-panel">
+      <svg viewBox="0 0 540 320" xmlns="http://www.w3.org/2000/svg">
+        <rect width="540" height="320" fill="#fff8f2"/>
+        <text x="10" y="18" fill="#7c2e09" font-size="9" font-family="Source Sans 3,sans-serif" font-weight="600">CÉLULAS DO TECIDO DO PÉ — estresse oxidativo</text>
+        <!-- Cell 1 with mitochondria -->
+        <ellipse cx="150" cy="170" rx="100" ry="70" fill="#fff4ed" stroke="#c2500a" stroke-width="1.5"/>
+        <text x="150" y="136" text-anchor="middle" fill="#c2500a" font-size="9" font-family="Source Sans 3,sans-serif">Célula dérmica</text>
+        <!-- Mitochondria inside -->
+        <ellipse cx="138" cy="165" rx="32" ry="18" fill="#edfaf3" stroke="#1a6e3c" stroke-width="1.5"/>
+        <text x="138" y="161" text-anchor="middle" fill="#1a6e3c" font-size="8" font-family="Source Sans 3,sans-serif">Mitocôndria</text>
+        <text x="138" y="172" text-anchor="middle" fill="#1a6e3c" font-size="7" font-family="Source Sans 3,sans-serif">sobrecarregada</text>
+        <!-- ROS bursting out of cell -->
+        <circle cx="150" cy="170" r="0" fill="none" stroke="#b83a2e" stroke-width="2"><animate attributeName="r" values="0;45;0" dur="2.8s" repeatCount="indefinite"/><animate attributeName="opacity" values="0.8;0;0" dur="2.8s" repeatCount="indefinite"/></circle>
+        <text x="150" y="100" text-anchor="middle" fill="#b83a2e" font-size="12" font-weight="700" font-family="Source Sans 3,sans-serif" class="pulse">ROS</text>
+        <!-- Cell 2 -->
+        <ellipse cx="390" cy="180" rx="95" ry="65" fill="#fff4ed" stroke="#c2500a" stroke-width="1.5"/>
+        <text x="390" y="148" text-anchor="middle" fill="#c2500a" font-size="9" font-family="Source Sans 3,sans-serif">Célula dérmica</text>
+        <ellipse cx="378" cy="178" rx="28" ry="16" fill="#edfaf3" stroke="#1a6e3c" stroke-width="1.5"/>
+        <text x="378" y="174" text-anchor="middle" fill="#1a6e3c" font-size="8" font-family="Source Sans 3,sans-serif">Mitocôndria</text>
+        <text x="378" y="184" text-anchor="middle" fill="#1a6e3c" font-size="7" font-family="Source Sans 3,sans-serif">sobrecarregada</text>
+        <circle cx="390" cy="180" r="0" fill="none" stroke="#c2500a" stroke-width="2"><animate attributeName="r" values="0;40;0" dur="2.8s" begin="1s" repeatCount="indefinite"/><animate attributeName="opacity" values="0.8;0;0" dur="2.8s" begin="1s" repeatCount="indefinite"/></circle>
+        <text x="480" y="108" fill="#c2500a" font-size="12" font-weight="700" font-family="Source Sans 3,sans-serif"><animate attributeName="opacity" values="0;1;1;0" dur="2.8s" begin="1s" repeatCount="indefinite"/>ROS</text>
+        <!-- Via poliol box -->
+        <rect x="20" y="260" width="220" height="48" rx="8" fill="#edfaf3" stroke="#1a6e3c" stroke-width="1"/>
+        <text x="130" y="279" text-anchor="middle" fill="#1a6e3c" font-size="9" font-weight="700" font-family="Source Sans 3,sans-serif">Via do Poliol (no pé)</text>
+        <text x="130" y="296" text-anchor="middle" fill="#1a6e3c" font-size="9" font-family="Source Sans 3,sans-serif">Sorbitol acumula → ↓ NADPH → + ROS</text>
+        <!-- Effects -->
+        <rect x="310" y="255" width="210" height="55" rx="8" fill="#fdf0ee" stroke="#b83a2e" stroke-width="1"/>
+        <text x="415" y="274" text-anchor="middle" fill="#b83a2e" font-size="9" font-weight="700" font-family="Source Sans 3,sans-serif">Dano oxidativo no pé</text>
+        <text x="415" y="290" text-anchor="middle" fill="#7a1f1a" font-size="9" font-family="Source Sans 3,sans-serif">↓ NO → vasos não dilatam</text>
+        <text x="415" y="304" text-anchor="middle" fill="#7a1f1a" font-size="9" font-family="Source Sans 3,sans-serif">↑ Membrana basal espessada</text>
+      </svg>
+    </div>
+  </div>
+  <div class="scene-text">
+    <div class="scene-tag" style="color:var(--orange)">Cena 3 · Nível vascular · Células do pé inteiro</div>
+    <div class="scene-title">Tempestade de radicais livres no tecido do pé</div>
+    <div class="scene-desc">Em todas as células do pé diabético, a via do poliol sobrecarrega as mitocôndrias gerando excesso de ROS. O óxido nítrico cai, os capilares perdem capacidade de dilatar e a membrana basal espessa progressivamente.</div>
+    <div class="scene-detail">⚡ ROS → ↓ NO → vasoconstrição → membrana basal espessa → troca de O₂ prejudicada em todo o pé. <span class="scene-ref">[1,3,4]</span></div>
+  </div>
+  <div class="nav-row">
+    <button class="nav-btn" onclick="goTo(-1)">← Anterior</button>
+    <span class="scene-counter">Cena 3 de 10</span>
+    <button class="nav-btn primary" onclick="goTo(1)">Próxima →</button>
+  </div>
+</div>
+
+<!-- ═══ SCENE 4 · INFLAMAÇÃO M1/M2 ═══ -->
+<div class="scene" id="s3">
+  <div class="scene-visual">
+    <div class="foot-panel">
+      <svg viewBox="0 0 200 340" xmlns="http://www.w3.org/2000/svg">
+        <path d="M80 310 Q54 292 48 255 Q42 210 52 170 Q62 130 80 112 Q100 96 118 102 Q138 110 134 138 Q128 166 144 188 Q162 212 168 240 Q174 268 162 290 Q148 312 120 318 Q102 322 80 310 Z" fill="#f5d5b5" stroke="#c8956a" stroke-width="2"/>
+        <ellipse cx="152" cy="108" rx="14" ry="9" fill="#f5d5b5" stroke="#c8956a" stroke-width="1.5" transform="rotate(-20 152 108)"/>
+        <ellipse cx="164" cy="120" rx="12" ry="8" fill="#f5d5b5" stroke="#c8956a" stroke-width="1.5" transform="rotate(-15 164 120)"/>
+        <ellipse cx="172" cy="135" rx="10" ry="7" fill="#f5d5b5" stroke="#c8956a" stroke-width="1.5"/>
+        <!-- Reddened skin indicating inflammation -->
+        <path d="M80 310 Q54 292 48 255 Q42 210 52 170 Q62 130 80 112 Q100 96 118 102 Q138 110 134 138 Q128 166 144 188 Q162 212 168 240 Q174 268 162 290 Q148 312 120 318 Q102 322 80 310 Z" fill="#fdf0ee" stroke="#b83a2e" stroke-width="2.5" opacity="0.6"><animate attributeName="fill" values="#fdf0ee;#f5c4c0;#fdf0ee" dur="2s" repeatCount="indefinite"/></path>
+        <text x="100" y="10" text-anchor="middle" fill="#b83a2e" font-size="9" font-weight="700" font-family="Source Sans 3,sans-serif">Inflamação crônica</text>
+        <circle cx="85" cy="230" r="20" fill="none" stroke="#b83a2e" stroke-width="1.5" stroke-dasharray="3 2"/>
+        <line x1="105" y1="230" x2="200" y2="170" stroke="#b83a2e" stroke-width="1" stroke-dasharray="3 2"/>
+      </svg>
+    </div>
+    <div class="zoom-panel">
+      <svg viewBox="0 0 540 320" xmlns="http://www.w3.org/2000/svg">
+        <rect width="540" height="320" fill="#fff8f6"/>
+        <text x="10" y="18" fill="#7a1f1a" font-size="9" font-family="Source Sans 3,sans-serif" font-weight="600">DERME DO PÉ — macrófagos presos em M1</text>
+        <!-- Background dermis fibers (damaged) -->
+        <line x1="30" y1="60" x2="180" y2="60" stroke="#c8906a" stroke-width="2" opacity="0.4"/>
+        <line x1="30" y1="80" x2="200" y2="80" stroke="#c8906a" stroke-width="2" opacity="0.4"/>
+        <line x1="350" y1="60" x2="510" y2="60" stroke="#c8906a" stroke-width="2" opacity="0.4"/>
+        <line x1="350" y1="80" x2="530" y2="80" stroke="#c8906a" stroke-width="2" opacity="0.4"/>
+        <!-- M1 macrophages dominating -->
+        <circle cx="130" cy="155" r="34" fill="#fdf0ee" stroke="#b83a2e" stroke-width="2"><animate attributeName="stroke-width" values="2;3.5;2" dur="1.5s" repeatCount="indefinite"/></circle>
+        <text x="130" y="151" text-anchor="middle" fill="#b83a2e" font-size="12" font-weight="700" font-family="Source Sans 3,sans-serif">M1</text>
+        <text x="130" y="167" text-anchor="middle" fill="#7a1f1a" font-size="8" font-family="Source Sans 3,sans-serif">Pró-inflamatório</text>
+        <circle cx="290" cy="140" r="30" fill="#fdf0ee" stroke="#b83a2e" stroke-width="2"><animate attributeName="stroke-width" values="2;3.5;2" dur="1.5s" begin="0.3s" repeatCount="indefinite"/></circle>
+        <text x="290" y="136" text-anchor="middle" fill="#b83a2e" font-size="12" font-weight="700" font-family="Source Sans 3,sans-serif">M1</text>
+        <text x="290" y="150" text-anchor="middle" fill="#7a1f1a" font-size="8" font-family="Source Sans 3,sans-serif">Pró-inflamatório</text>
+        <circle cx="430" cy="160" r="32" fill="#fdf0ee" stroke="#b83a2e" stroke-width="2"><animate attributeName="stroke-width" values="2;3.5;2" dur="1.5s" begin="0.6s" repeatCount="indefinite"/></circle>
+        <text x="430" y="156" text-anchor="middle" fill="#b83a2e" font-size="12" font-weight="700" font-family="Source Sans 3,sans-serif">M1</text>
+        <text x="430" y="170" text-anchor="middle" fill="#7a1f1a" font-size="8" font-family="Source Sans 3,sans-serif">Pró-inflamatório</text>
+        <!-- Cytokines released -->
+        <text x="75" y="105" fill="#c2500a" font-size="10" font-weight="600" font-family="Source Sans 3,sans-serif" class="pulse">↑ IL-6</text>
+        <text x="248" y="97" fill="#c2500a" font-size="10" font-weight="600" font-family="Source Sans 3,sans-serif" class="pulse">↑ TNF-α</text>
+        <text x="390" y="112" fill="#c2500a" font-size="10" font-weight="600" font-family="Source Sans 3,sans-serif" class="pulse">↑ IL-1β</text>
+        <!-- M2 absent / faded ghost -->
+        <circle cx="200" cy="255" r="26" fill="#f7f5f0" stroke="#c2c0b6" stroke-width="1.5" stroke-dasharray="4 3" opacity="0.5"/>
+        <text x="200" y="252" text-anchor="middle" fill="#c2c0b6" font-size="10" font-family="Source Sans 3,sans-serif">M2</text>
+        <text x="200" y="265" text-anchor="middle" fill="#c2c0b6" font-size="8" font-family="Source Sans 3,sans-serif">ausente</text>
+        <circle cx="380" cy="255" r="26" fill="#f7f5f0" stroke="#c2c0b6" stroke-width="1.5" stroke-dasharray="4 3" opacity="0.5"/>
+        <text x="380" y="252" text-anchor="middle" fill="#c2c0b6" font-size="10" font-family="Source Sans 3,sans-serif">M2</text>
+        <text x="380" y="265" text-anchor="middle" fill="#c2c0b6" font-size="8" font-family="Source Sans 3,sans-serif">ausente</text>
+        <text x="270" y="305" text-anchor="middle" fill="#72729a" font-size="10" font-family="Source Sans 3,sans-serif">Macrófagos M2 reparadores nunca emergem → inflamação sem resolução</text>
+      </svg>
+    </div>
+  </div>
+  <div class="scene-text">
+    <div class="scene-tag" style="color:var(--rose)">Cena 4 · Imunidade · Derme do pé inflamada</div>
+    <div class="scene-title">A inflamação trava — M1 dominam a derme do pé</div>
+    <div class="scene-desc">Na derme do pé diabético, os macrófagos M1 persistem indefinidamente liberando IL-6, TNF-α e IL-1β. A transição para M2 reparadores é bloqueada pelo NF-κB. Sem M2, não há sinalização de granulação nem de angiogênese reparadora.</div>
+    <div class="scene-detail">🔥 M1 persistentes no pé → sem TGF-β, sem VEGF reparador, sem sinalização de granulação. A ferida quando surge não tem como progredir. <span class="scene-ref">[8,3]</span></div>
+  </div>
+  <div class="nav-row">
+    <button class="nav-btn" onclick="goTo(-1)">← Anterior</button>
+    <span class="scene-counter">Cena 4 de 10</span>
+    <button class="nav-btn primary" onclick="goTo(1)">Próxima →</button>
+  </div>
+</div>
+
+<!-- ═══ SCENE 5 · NETOSE ═══ -->
+<div class="scene" id="s4">
+  <div class="scene-visual">
+    <div class="foot-panel">
+      <svg viewBox="0 0 200 340" xmlns="http://www.w3.org/2000/svg">
+        <path d="M80 310 Q54 292 48 255 Q42 210 52 170 Q62 130 80 112 Q100 96 118 102 Q138 110 134 138 Q128 166 144 188 Q162 212 168 240 Q174 268 162 290 Q148 312 120 318 Q102 322 80 310 Z" fill="#f5d5b5" stroke="#c8956a" stroke-width="2"/>
+        <ellipse cx="152" cy="108" rx="14" ry="9" fill="#f5d5b5" stroke="#c8956a" stroke-width="1.5" transform="rotate(-20 152 108)"/>
+        <ellipse cx="164" cy="120" rx="12" ry="8" fill="#f5d5b5" stroke="#c8956a" stroke-width="1.5" transform="rotate(-15 164 120)"/>
+        <ellipse cx="172" cy="135" rx="10" ry="7" fill="#f5d5b5" stroke="#c8956a" stroke-width="1.5"/>
+        <!-- Purple NETs glow -->
+        <path d="M80 310 Q54 292 48 255 Q42 210 52 170 Q62 130 80 112 Q100 96 118 102 Q138 110 134 138 Q128 166 144 188 Q162 212 168 240 Q174 268 162 290 Q148 312 120 318 Q102 322 80 310 Z" fill="#f5f0ff" stroke="#6d28d9" stroke-width="2" opacity="0.6"><animate attributeName="opacity" values="0.6;0.2;0.6" dur="2s" repeatCount="indefinite"/></path>
+        <text x="100" y="10" text-anchor="middle" fill="#6d28d9" font-size="9" font-weight="700" font-family="Source Sans 3,sans-serif">NETs · neutrófilos</text>
+        <circle cx="95" cy="180" r="18" fill="none" stroke="#6d28d9" stroke-width="1.5" stroke-dasharray="3 2"/>
+        <line x1="113" y1="180" x2="200" y2="140" stroke="#6d28d9" stroke-width="1" stroke-dasharray="3 2"/>
+      </svg>
+    </div>
+    <div class="zoom-panel">
+      <svg viewBox="0 0 540 320" xmlns="http://www.w3.org/2000/svg">
+        <rect width="540" height="320" fill="#fdfaff"/>
+        <text x="10" y="18" fill="#4a1b8a" font-size="9" font-family="Source Sans 3,sans-serif" font-weight="600">FERIDA EM FORMAÇÃO — neutrófilo diabético libera NETs</text>
+        <!-- Tissue wound bed background -->
+        <rect x="0" y="40" width="540" height="40" fill="#f9d8b8" opacity="0.5"/>
+        <text x="10" y="58" fill="#8a5230" font-size="8" font-family="Source Sans 3,sans-serif">Epiderme lesada</text>
+        <rect x="0" y="80" width="540" height="160" fill="#f0c89e" opacity="0.4"/>
+        <text x="10" y="96" fill="#7a4220" font-size="8" font-family="Source Sans 3,sans-serif">Leito da ferida (derme exposta)</text>
+        <!-- Neutrophil exploding NETs -->
+        <circle cx="260" cy="170" r="46" fill="#f5f0ff" stroke="#6d28d9" stroke-width="2"><animate attributeName="r" values="44;50;44" dur="2s" repeatCount="indefinite"/></circle>
+        <text x="260" y="166" text-anchor="middle" fill="#6d28d9" font-size="10" font-weight="700" font-family="Source Sans 3,sans-serif">Neutrófilo</text>
+        <text x="260" y="180" text-anchor="middle" fill="#7c3aed" font-size="8" font-family="Source Sans 3,sans-serif">diabético</text>
+        <!-- NET strands across wound bed -->
+        <path d="M302 150 Q390 120 480 95" fill="none" stroke="#6d28d9" stroke-width="1.8" stroke-dasharray="7 5"><animate attributeName="stroke-dashoffset" values="500;0" dur="3s" repeatCount="indefinite"/></path>
+        <path d="M305 170 Q410 165 510 158" fill="none" stroke="#7c3aed" stroke-width="1.8" stroke-dasharray="7 5"><animate attributeName="stroke-dashoffset" values="500;0" dur="3s" begin="0.4s" repeatCount="indefinite"/></path>
+        <path d="M300 192 Q400 220 490 240" fill="none" stroke="#6d28d9" stroke-width="1.8" stroke-dasharray="7 5"><animate attributeName="stroke-dashoffset" values="500;0" dur="3s" begin="0.8s" repeatCount="indefinite"/></path>
+        <path d="M222 148 Q140 120 60 98" fill="none" stroke="#7c3aed" stroke-width="1.8" stroke-dasharray="7 5"><animate attributeName="stroke-dashoffset" values="500;0" dur="3s" begin="1.2s" repeatCount="indefinite"/></path>
+        <path d="M220 195 Q130 230 50 248" fill="none" stroke="#6d28d9" stroke-width="1.8" stroke-dasharray="7 5"><animate attributeName="stroke-dashoffset" values="500;0" dur="3s" begin="1.6s" repeatCount="indefinite"/></path>
+        <!-- NET labels -->
+        <text x="482" y="91" fill="#6d28d9" font-size="9" font-family="Source Sans 3,sans-serif">NET</text>
+        <text x="512" y="154" fill="#6d28d9" font-size="9" font-family="Source Sans 3,sans-serif">NET</text>
+        <text x="490" y="235" fill="#6d28d9" font-size="9" font-family="Source Sans 3,sans-serif">NET</text>
+        <!-- Blocked repair cell -->
+        <circle cx="460" cy="190" r="22" fill="#eef4ff" stroke="#1a4fbd" stroke-width="1.5" opacity="0.7"/>
+        <text x="460" y="187" text-anchor="middle" fill="#1a4fbd" font-size="8" font-family="Source Sans 3,sans-serif">Cél. reparo</text>
+        <text x="460" y="200" text-anchor="middle" fill="#1a4fbd" font-size="8" font-family="Source Sans 3,sans-serif">BLOQUEADA</text>
+        <text x="270" y="305" text-anchor="middle" fill="#72729a" font-size="10" font-family="Source Sans 3,sans-serif">NETs = barreira de DNA que impede cicatrização no leito da ferida</text>
+      </svg>
+    </div>
+  </div>
+  <div class="scene-text">
+    <div class="scene-tag" style="color:var(--purple)">Cena 5 · Imune · Leito da ferida no pé</div>
+    <div class="scene-title">Neutrófilos liberam armadilhas de DNA no leito da ferida</div>
+    <div class="scene-desc">No leito da ferida do pé diabético, neutrófilos hiperativados liberam NETs — estruturas de DNA e proteínas que formam uma barreira física, bloqueando células reparadoras de chegar ao tecido lesado e amplificando o dano.</div>
+    <div class="scene-detail">🧬 NETs no leito da ferida → barreira física → fibroblastos e queratinócitos não chegam → cronificação acelerada. <span class="scene-ref">[9]</span></div>
+  </div>
+  <div class="nav-row">
+    <button class="nav-btn" onclick="goTo(-1)">← Anterior</button>
+    <span class="scene-counter">Cena 5 de 10</span>
+    <button class="nav-btn primary" onclick="goTo(1)">Próxima →</button>
+  </div>
+</div>
+
+<!-- ═══ SCENE 6 · VEGF / ANGIOGÊNESE ═══ -->
+<div class="scene" id="s5">
+  <div class="scene-visual">
+    <div class="foot-panel">
+      <svg viewBox="0 0 200 340" xmlns="http://www.w3.org/2000/svg">
+        <path d="M80 310 Q54 292 48 255 Q42 210 52 170 Q62 130 80 112 Q100 96 118 102 Q138 110 134 138 Q128 166 144 188 Q162 212 168 240 Q174 268 162 290 Q148 312 120 318 Q102 322 80 310 Z" fill="#f5d5b5" stroke="#c8956a" stroke-width="2"/>
+        <ellipse cx="152" cy="108" rx="14" ry="9" fill="#f5d5b5" stroke="#c8956a" stroke-width="1.5" transform="rotate(-20 152 108)"/>
+        <ellipse cx="164" cy="120" rx="12" ry="8" fill="#f5d5b5" stroke="#c8956a" stroke-width="1.5" transform="rotate(-15 164 120)"/>
+        <ellipse cx="172" cy="135" rx="10" ry="7" fill="#f5d5b5" stroke="#c8956a" stroke-width="1.5"/>
+        <!-- Sparse vessels / pale foot = poor perfusion -->
+        <path d="M95 160 Q110 200 105 250 Q100 280 90 300" fill="none" stroke="#b83a2e" stroke-width="1.5" stroke-dasharray="4 4" opacity="0.5"/>
+        <path d="M110 170 Q125 210 120 255" fill="none" stroke="#b83a2e" stroke-width="1" stroke-dasharray="3 4" opacity="0.3"/>
+        <text x="100" y="10" text-anchor="middle" fill="#1a4fbd" font-size="9" font-weight="700" font-family="Source Sans 3,sans-serif">Vasos · VEGF↓</text>
+        <circle cx="100" cy="200" r="18" fill="none" stroke="#1a4fbd" stroke-width="1.5" stroke-dasharray="3 2"/>
+        <line x1="118" y1="200" x2="200" y2="155" stroke="#1a4fbd" stroke-width="1" stroke-dasharray="3 2"/>
+      </svg>
+    </div>
+    <div class="zoom-panel">
+      <svg viewBox="0 0 540 320" xmlns="http://www.w3.org/2000/svg">
+        <rect width="540" height="320" fill="#f8faff"/>
+        <text x="10" y="18" fill="#163a8a" font-size="9" font-family="Source Sans 3,sans-serif" font-weight="600">DERME DO PÉ — capilares: normal vs. diabético</text>
+        <!-- NORMAL side -->
+        <text x="130" y="44" text-anchor="middle" fill="#1a4fbd" font-size="10" font-weight="600" font-family="Source Sans 3,sans-serif">Normal</text>
+        <rect x="100" y="55" width="58" height="200" rx="10" fill="#eef4ff" stroke="#1a4fbd" stroke-width="2"/>
+        <!-- Blood cells flowing freely -->
+        <circle cx="129" cy="100" r="8" fill="#b83a2e" opacity="0.8"><animate attributeName="cy" values="75;235;75" dur="2s" repeatCount="indefinite"/></circle>
+        <circle cx="129" cy="160" r="8" fill="#b83a2e" opacity="0.6"><animate attributeName="cy" values="155;235;75" dur="2s" begin="0.8s" repeatCount="indefinite"/></circle>
+        <!-- New vessel sprouting -->
+        <path d="M158 165 Q200 148 220 133" fill="none" stroke="#1a6e3c" stroke-width="3"><animate attributeName="stroke-dasharray" values="0 200;200 0" dur="2.5s" repeatCount="indefinite"/></path>
+        <text x="226" y="129" fill="#1a6e3c" font-size="9" font-family="Source Sans 3,sans-serif">↑ VEGF</text>
+        <text x="226" y="142" fill="#1a6e3c" font-size="9" font-family="Source Sans 3,sans-serif">novo vaso ✓</text>
+        <!-- DIABETIC side -->
+        <text x="400" y="44" text-anchor="middle" fill="#b83a2e" font-size="10" font-weight="600" font-family="Source Sans 3,sans-serif">Diabetes</text>
+        <rect x="355" y="55" width="90" height="200" rx="10" fill="#fdf0ee" stroke="#b83a2e" stroke-width="1.5"/>
+        <!-- Thickened wall inside -->
+        <rect x="375" y="75" width="50" height="160" rx="6" fill="#fff0ee" stroke="#e2ded6" stroke-width="1" stroke-dasharray="4 3"/>
+        <!-- Barely flowing -->
+        <circle cx="400" cy="155" r="5" fill="#b83a2e" opacity="0.3"><animate attributeName="cy" values="90;220;90" dur="5s" repeatCount="indefinite"/></circle>
+        <!-- Thickened wall labels -->
+        <text x="450" y="128" fill="#b83a2e" font-size="9" font-family="Source Sans 3,sans-serif">Membrana</text>
+        <text x="450" y="141" fill="#b83a2e" font-size="9" font-family="Source Sans 3,sans-serif">espessada</text>
+        <line x1="445" y1="138" x2="444" y2="138" stroke="#b83a2e" stroke-width="0.8"/>
+        <!-- VEGF absent -->
+        <circle cx="400" cy="285" r="22" fill="#fdf0ee" stroke="#b83a2e" stroke-width="1.5" stroke-dasharray="4 3"><animate attributeName="opacity" values="0.8;0.2;0.8" dur="2s" repeatCount="indefinite"/></circle>
+        <text x="400" y="282" text-anchor="middle" fill="#b83a2e" font-size="9" font-family="Source Sans 3,sans-serif">↓ VEGF</text>
+        <text x="400" y="294" text-anchor="middle" fill="#b83a2e" font-size="7" font-family="Source Sans 3,sans-serif">sem novos vasos</text>
+        <!-- MMP-9 box bottom -->
+        <rect x="20" y="265" width="230" height="44" rx="8" fill="#f5f0ff" stroke="#6d28d9" stroke-width="1"/>
+        <text x="135" y="283" text-anchor="middle" fill="#4a1b8a" font-size="9" font-weight="700" font-family="Source Sans 3,sans-serif">↑ MMP-9 no tecido do pé</text>
+        <text x="135" y="298" text-anchor="middle" fill="#6d28d9" font-size="9" font-family="Source Sans 3,sans-serif">Degrada colágeno e laminina da ECM</text>
+        <text x="270" y="316" text-anchor="middle" fill="#72729a" font-size="10" font-family="Source Sans 3,sans-serif">↓ VEGF + ↑ MMP-9: capilares ocluídos, ECM destruída, granulação impossível</text>
+      </svg>
+    </div>
+  </div>
+  <div class="scene-text">
+    <div class="scene-tag" style="color:var(--blue)">Cena 6 · Vascular · Capilares do pé</div>
+    <div class="scene-title">Novos vasos não se formam no pé</div>
+    <div class="scene-desc">Nos capilares da derme do pé diabético, a hiperglicemia reduz o VEGF e torna as EPCs disfuncionais. Sem novos vasos, o tecido não recebe oxigênio suficiente. A MMP-9 destrói simultaneamente a matriz extracelular — o andaime para cicatrização.</div>
+    <div class="scene-detail">🩸 ↓ VEGF + EPCs disfuncionais + ↑ MMP-9 → sem granulação possível no pé. <span class="scene-ref">[11,3]</span></div>
+  </div>
+  <div class="nav-row">
+    <button class="nav-btn" onclick="goTo(-1)">← Anterior</button>
+    <span class="scene-counter">Cena 6 de 10</span>
+    <button class="nav-btn primary" onclick="goTo(1)">Próxima →</button>
+  </div>
+</div>
+
+<!-- ═══ SCENE 7 · HIPÓXIA ═══ -->
+<div class="scene" id="s6">
+  <div class="scene-visual">
+    <div class="foot-panel">
+      <svg viewBox="0 0 200 340" xmlns="http://www.w3.org/2000/svg">
+        <path d="M80 310 Q54 292 48 255 Q42 210 52 170 Q62 130 80 112 Q100 96 118 102 Q138 110 134 138 Q128 166 144 188 Q162 212 168 240 Q174 268 162 290 Q148 312 120 318 Q102 322 80 310 Z" fill="#e8c8a0" stroke="#b07840" stroke-width="2"/>
+        <ellipse cx="152" cy="108" rx="14" ry="9" fill="#e8c8a0" stroke="#b07840" stroke-width="1.5" transform="rotate(-20 152 108)"/>
+        <ellipse cx="164" cy="120" rx="12" ry="8" fill="#e8c8a0" stroke="#b07840" stroke-width="1.5" transform="rotate(-15 164 120)"/>
+        <ellipse cx="172" cy="135" rx="10" ry="7" fill="#e8c8a0" stroke="#b07840" stroke-width="1.5"/>
+        <!-- Dusky/bluish tones = hypoxic -->
+        <path d="M80 310 Q54 292 48 255 Q42 210 52 170 Q62 130 80 112 Q100 96 118 102 Q138 110 134 138 Q128 166 144 188 Q162 212 168 240 Q174 268 162 290 Q148 312 120 318 Q102 322 80 310 Z" fill="#d4c8e8" stroke="#1a4fbd" stroke-width="2" opacity="0.45"/>
+        <text x="100" y="10" text-anchor="middle" fill="#1a4fbd" font-size="9" font-weight="700" font-family="Source Sans 3,sans-serif">Hipóxia tecidual</text>
+        <!-- Occluded vessel indicator -->
+        <ellipse cx="90" cy="240" rx="24" ry="10" fill="none" stroke="#b83a2e" stroke-width="2"/>
+        <line x1="80" y1="232" x2="100" y2="248" stroke="#b83a2e" stroke-width="2" stroke-linecap="round"/>
+        <circle cx="98" cy="240" r="16" fill="none" stroke="#1a4fbd" stroke-width="1.5" stroke-dasharray="3 2"/>
+        <line x1="114" y1="240" x2="200" y2="185" stroke="#1a4fbd" stroke-width="1" stroke-dasharray="3 2"/>
+      </svg>
+    </div>
+    <div class="zoom-panel">
+      <svg viewBox="0 0 540 320" xmlns="http://www.w3.org/2000/svg">
+        <rect width="540" height="320" fill="#f0f4ff"/>
+        <text x="10" y="18" fill="#163a8a" font-size="9" font-family="Source Sans 3,sans-serif" font-weight="600">CORTE DO PÉ — capilares ocluídos e hipóxia</text>
+        <!-- Foot tissue block -->
+        <rect x="20" y="30" width="500" height="240" rx="12" fill="#e8e0d0" stroke="#b07840" stroke-width="1.5" opacity="0.7"/>
+        <!-- Occluded capillary 1 -->
+        <ellipse cx="150" cy="110" rx="38" ry="15" fill="#eef4ff" stroke="#b83a2e" stroke-width="2"/>
+        <ellipse cx="150" cy="110" rx="22" ry="7" fill="#fdf0ee" stroke="#b83a2e" stroke-width="1"/>
+        <text x="150" y="85" text-anchor="middle" fill="#b83a2e" font-size="9" font-family="Source Sans 3,sans-serif">Capilar estreitado</text>
+        <!-- Occluded capillary 2 -->
+        <ellipse cx="320" cy="130" rx="34" ry="13" fill="#eef4ff" stroke="#b83a2e" stroke-width="2"/>
+        <ellipse cx="320" cy="130" rx="18" ry="6" fill="#fdf0ee" stroke="#b83a2e" stroke-width="1"/>
+        <!-- Occluded capillary 3 -->
+        <ellipse cx="460" cy="110" rx="30" ry="12" fill="#eef4ff" stroke="#b83a2e" stroke-width="2"/>
+        <ellipse cx="460" cy="110" rx="16" ry="5" fill="#fdf0ee" stroke="#b83a2e" stroke-width="1"/>
+        <!-- Hypoxia zone -->
+        <rect x="80" y="155" width="380" height="80" rx="10" fill="#d4e0ff" stroke="#1a4fbd" stroke-width="1.5" opacity="0.7"><animate attributeName="fill" values="#d4e0ff;#b8caff;#d4e0ff" dur="2.5s" repeatCount="indefinite"/></rect>
+        <text x="270" y="185" text-anchor="middle" fill="#1a4fbd" font-size="12" font-weight="700" font-family="Source Sans 3,sans-serif">TECIDO HIPÓXICO</text>
+        <text x="270" y="204" text-anchor="middle" fill="#1a4fbd" font-size="10" font-family="Source Sans 3,sans-serif">↓ O₂ · ↓ Nutrientes · ↑ MMP-9</text>
+        <text x="270" y="220" text-anchor="middle" fill="#1a4fbd" font-size="9" font-family="Source Sans 3,sans-serif">células sem energia para proliferar</text>
+        <!-- MMP indicators -->
+        <text x="85" y="150" fill="#6d28d9" font-size="9" font-weight="600" font-family="Source Sans 3,sans-serif" class="pulse">↑ MMP-9</text>
+        <text x="430" y="150" fill="#6d28d9" font-size="9" font-weight="600" font-family="Source Sans 3,sans-serif" class="pulse">↑ MMP-9</text>
+        <text x="270" y="305" text-anchor="middle" fill="#72729a" font-size="10" font-family="Source Sans 3,sans-serif">Pé isquêmico: vasos ocluídos + ECM destruída pela MMP-9</text>
+      </svg>
+    </div>
+  </div>
+  <div class="scene-text">
+    <div class="scene-tag" style="color:var(--blue)">Cena 7 · Microangiopatia · Pé isquêmico</div>
+    <div class="scene-title">O pé começa a asfixiar por dentro</div>
+    <div class="scene-desc">Os capilares do pé estreitam progressivamente. O tecido entra em hipóxia: células sem energia para proliferar, colágeno destruído pela MMP-9. O pé torna-se externamente semelhante ao normal, mas internamente incapaz de se reparar.</div>
+    <div class="scene-detail">🔬 Pé hipóxico: sem O₂ → sem ATP → sem proliferação celular. MMP-9 / TIMP-1 desequilibrado → andaime extracelular destruído. <span class="scene-ref">[1,3]</span></div>
+  </div>
+  <div class="nav-row">
+    <button class="nav-btn" onclick="goTo(-1)">← Anterior</button>
+    <span class="scene-counter">Cena 7 de 10</span>
+    <button class="nav-btn primary" onclick="goTo(1)">Próxima →</button>
+  </div>
+</div>
+
+<!-- ═══ SCENE 8 · NEUROPATIA ═══ -->
+<div class="scene" id="s7">
+  <div class="scene-visual">
+    <div class="foot-panel">
+      <svg viewBox="0 0 200 340" xmlns="http://www.w3.org/2000/svg">
+        <path d="M80 310 Q54 292 48 255 Q42 210 52 170 Q62 130 80 112 Q100 96 118 102 Q138 110 134 138 Q128 166 144 188 Q162 212 168 240 Q174 268 162 290 Q148 312 120 318 Q102 322 80 310 Z" fill="#f5d5b5" stroke="#c8956a" stroke-width="2"/>
+        <ellipse cx="152" cy="108" rx="14" ry="9" fill="#f5d5b5" stroke="#c8956a" stroke-width="1.5" transform="rotate(-20 152 108)"/>
+        <ellipse cx="164" cy="120" rx="12" ry="8" fill="#f5d5b5" stroke="#c8956a" stroke-width="1.5" transform="rotate(-15 164 120)"/>
+        <ellipse cx="172" cy="135" rx="10" ry="7" fill="#f5d5b5" stroke="#c8956a" stroke-width="1.5"/>
+        <!-- Nerve running through foot -->
+        <path d="M100 115 Q96 160 92 200 Q88 250 85 300" fill="none" stroke="#0d7b72" stroke-width="2" stroke-dasharray="8 5"><animate attributeName="stroke-dashoffset" values="0;-200" dur="3s" repeatCount="indefinite"/><animate attributeName="opacity" values="0.9;0.3;0.9" dur="4s" repeatCount="indefinite"/></path>
+        <text x="100" y="10" text-anchor="middle" fill="#0d7b72" font-size="9" font-weight="700" font-family="Source Sans 3,sans-serif">Nervo periférico</text>
+        <circle cx="90" cy="195" r="16" fill="none" stroke="#0d7b72" stroke-width="1.5" stroke-dasharray="3 2"/>
+        <line x1="106" y1="195" x2="200" y2="155" stroke="#0d7b72" stroke-width="1" stroke-dasharray="3 2"/>
+      </svg>
+    </div>
+    <div class="zoom-panel">
+      <svg viewBox="0 0 540 320" xmlns="http://www.w3.org/2000/svg">
+        <rect width="540" height="320" fill="#f5fdf8"/>
+        <text x="10" y="18" fill="#0a4f49" font-size="9" font-family="Source Sans 3,sans-serif" font-weight="600">NERVO PERIFÉRICO DO PÉ — degeneração progressiva</text>
+        <!-- Nerve cross-section and longitudinal view -->
+        <!-- Nerve fiber healthy (left) -->
+        <text x="130" y="44" text-anchor="middle" fill="#0d7b72" font-size="10" font-weight="600" font-family="Source Sans 3,sans-serif">Normal</text>
+        <ellipse cx="130" cy="130" rx="50" ry="20" fill="#edfaf8" stroke="#0d7b72" stroke-width="2"/>
+        <ellipse cx="130" cy="130" rx="32" ry="12" fill="#9fe1cb" stroke="#0d7b72" stroke-width="1.5"/>
+        <text x="130" y="134" text-anchor="middle" fill="#0a4f49" font-size="8" font-family="Source Sans 3,sans-serif">Axônio</text>
+        <text x="130" y="166" text-anchor="middle" fill="#0d7b72" font-size="9" font-family="Source Sans 3,sans-serif">Mielina íntegra</text>
+        <!-- Signal pulse normal -->
+        <circle cx="190" cy="130" r="0" fill="#0d7b72"><animate attributeName="r" values="0;10;0" dur="1.5s" repeatCount="indefinite"/><animate attributeName="opacity" values="0.8;0;0" dur="1.5s" repeatCount="indefinite"/></circle>
+        <text x="210" y="125" fill="#0d7b72" font-size="9" font-family="Source Sans 3,sans-serif">Sinal</text>
+        <text x="210" y="138" fill="#0d7b72" font-size="9" font-family="Source Sans 3,sans-serif">normal ✓</text>
+        <!-- Nerve fiber diabetic (right) -->
+        <text x="390" y="44" text-anchor="middle" fill="#b83a2e" font-size="10" font-weight="600" font-family="Source Sans 3,sans-serif">Diabetes</text>
+        <ellipse cx="390" cy="130" rx="50" ry="20" fill="#fff4ed" stroke="#b83a2e" stroke-width="2" stroke-dasharray="5 3"/>
+        <ellipse cx="390" cy="130" rx="24" ry="8" fill="#fcd8c0" stroke="#c2500a" stroke-width="1"/>
+        <text x="390" y="134" text-anchor="middle" fill="#7a1f1a" font-size="8" font-family="Source Sans 3,sans-serif">Axônio</text>
+        <text x="390" y="166" text-anchor="middle" fill="#b83a2e" font-size="9" font-family="Source Sans 3,sans-serif">Mielina degenerada</text>
+        <!-- No signal -->
+        <text x="450" y="125" fill="#b83a2e" font-size="9" font-family="Source Sans 3,sans-serif">Sinal</text>
+        <text x="450" y="138" fill="#b83a2e" font-size="9" font-family="Source Sans 3,sans-serif">ausente ✗</text>
+        <!-- Comparison panels below -->
+        <rect x="20" y="195" width="220" height="100" rx="10" fill="#edfaf8" stroke="#0d7b72" stroke-width="1"/>
+        <text x="130" y="216" text-anchor="middle" fill="#0d7b72" font-size="10" font-weight="700" font-family="Source Sans 3,sans-serif">Normal</text>
+        <text x="130" y="234" text-anchor="middle" fill="#0a4f49" font-size="9" font-family="Source Sans 3,sans-serif">Dor → Sinalizada ✓</text>
+        <text x="130" y="251" text-anchor="middle" fill="#0a4f49" font-size="9" font-family="Source Sans 3,sans-serif">Pressão → Percebida ✓</text>
+        <text x="130" y="268" text-anchor="middle" fill="#0a4f49" font-size="9" font-family="Source Sans 3,sans-serif">Calçado ruim → Dói ✓</text>
+        <text x="130" y="283" text-anchor="middle" fill="#0d7b72" font-size="8" font-family="Source Sans 3,sans-serif" font-style="italic">Lesão detectada cedo</text>
+        <rect x="300" y="195" width="220" height="100" rx="10" fill="#fdf0ee" stroke="#b83a2e" stroke-width="1"/>
+        <text x="410" y="216" text-anchor="middle" fill="#b83a2e" font-size="10" font-weight="700" font-family="Source Sans 3,sans-serif">Diabetes</text>
+        <text x="410" y="234" text-anchor="middle" fill="#7a1f1a" font-size="9" font-family="Source Sans 3,sans-serif">Dor → Nada ✗</text>
+        <text x="410" y="251" text-anchor="middle" fill="#7a1f1a" font-size="9" font-family="Source Sans 3,sans-serif">Pressão → Nada ✗</text>
+        <text x="410" y="268" text-anchor="middle" fill="#7a1f1a" font-size="9" font-family="Source Sans 3,sans-serif">Calçado ruim → Nada ✗</text>
+        <text x="410" y="283" text-anchor="middle" fill="#b83a2e" font-size="8" font-family="Source Sans 3,sans-serif" font-weight="600" font-style="italic">Lesão avança por semanas</text>
+        <text x="270" y="310" text-anchor="middle" fill="#72729a" font-size="10" font-family="Source Sans 3,sans-serif">Nervo do pé degenerado: alarme de dor silenciado → lesão invisível</text>
+      </svg>
+    </div>
+  </div>
+  <div class="scene-text">
+    <div class="scene-tag" style="color:var(--teal)">Cena 8 · Neurológico · Nervo do pé</div>
+    <div class="scene-title">O alarme do pé é silenciado</div>
+    <div class="scene-desc">O nervo periférico do pé diabético perde progressivamente sua mielina. A sensação de dor, pressão e temperatura desaparece — um calçado inadequado, uma pedra ou uma costura podem criar uma ferida profunda que avança por dias sem que o paciente perceba.</div>
+    <div class="scene-detail">🔇 Neuropatia autonômica → ↓ sudorese no pé → pele seca e fissurada → porta de entrada bacteriana. Neuropatia motora → deformidades. <span class="scene-ref">[1,7,10]</span></div>
+  </div>
+  <div class="nav-row">
+    <button class="nav-btn" onclick="goTo(-1)">← Anterior</button>
+    <span class="scene-counter">Cena 8 de 10</span>
+    <button class="nav-btn primary" onclick="goTo(1)">Próxima →</button>
+  </div>
+</div>
+
+<!-- ═══ SCENE 9 · BIOMECÂNICA ═══ -->
+<div class="scene" id="s8">
+  <div class="scene-visual">
+    <div class="foot-panel">
+      <svg viewBox="0 0 200 340" xmlns="http://www.w3.org/2000/svg">
+        <!-- Deformed foot outline -->
+        <path d="M80 310 Q54 292 48 255 Q42 210 52 170 Q62 130 80 112 Q100 96 118 102 Q138 110 134 138 Q128 166 144 188 Q162 212 168 240 Q174 268 162 290 Q148 312 120 318 Q102 322 80 310 Z" fill="#f5d5b5" stroke="#c8956a" stroke-width="2"/>
+        <!-- Deformed toes -->
+        <ellipse cx="148" cy="104" rx="15" ry="9" fill="#f5d5b5" stroke="#b45309" stroke-width="2" transform="rotate(-25 148 104)"/>
+        <ellipse cx="162" cy="118" rx="13" ry="8" fill="#f5d5b5" stroke="#b45309" stroke-width="2" transform="rotate(-20 162 118)"/>
+        <ellipse cx="172" cy="134" rx="11" ry="7" fill="#f5d5b5" stroke="#b45309" stroke-width="1.8"/>
+        <!-- Pressure point pulse - plantar -->
+        <circle cx="88" cy="285" r="0" fill="#b83a2e" opacity="0.3"><animate attributeName="r" values="0;22;22;0" dur="3s" repeatCount="indefinite"/><animate attributeName="opacity" values="0;0.3;0.3;0" dur="3s" repeatCount="indefinite"/></circle>
+        <circle cx="88" cy="285" r="9" fill="#b83a2e" opacity="0.5"/>
+        <text x="100" y="10" text-anchor="middle" fill="#c2500a" font-size="9" font-weight="700" font-family="Source Sans 3,sans-serif">Pressão focal</text>
+        <circle cx="88" cy="285" r="18" fill="none" stroke="#c2500a" stroke-width="1.5" stroke-dasharray="3 2"/>
+        <line x1="106" y1="285" x2="200" y2="230" stroke="#c2500a" stroke-width="1" stroke-dasharray="3 2"/>
+      </svg>
+    </div>
+    <div class="zoom-panel">
+      <svg viewBox="0 0 540 320" xmlns="http://www.w3.org/2000/svg">
+        <rect width="540" height="320" fill="#fff8f2"/>
+        <text x="10" y="18" fill="#7c2e09" font-size="9" font-family="Source Sans 3,sans-serif" font-weight="600">PLANTA DO PÉ — ponto de pressão anormal</text>
+        <!-- Foot sole top-down simplified -->
+        <ellipse cx="270" cy="90" rx="220" ry="70" fill="#f5d5b5" stroke="#c8956a" stroke-width="2"/>
+        <text x="270" y="26" text-anchor="middle" fill="#8a5230" font-size="10" font-family="Source Sans 3,sans-serif">Vista plantar do pé diabético</text>
+        <!-- Toes deformed -->
+        <ellipse cx="160" cy="34" rx="18" ry="10" fill="#f5d5b5" stroke="#b45309" stroke-width="1.5"/>
+        <ellipse cx="198" cy="28" rx="16" ry="9" fill="#f5d5b5" stroke="#b45309" stroke-width="1.5"/>
+        <ellipse cx="236" cy="25" rx="15" ry="9" fill="#f5d5b5" stroke="#b45309" stroke-width="1.5"/>
+        <ellipse cx="274" cy="25" rx="15" ry="9" fill="#f5d5b5" stroke="#b45309" stroke-width="1.5"/>
+        <ellipse cx="310" cy="28" rx="14" ry="8" fill="#f5d5b5" stroke="#b45309" stroke-width="1.5"/>
+        <!-- Pressure zone pulsing -->
+        <circle cx="195" cy="100" r="0" fill="#b83a2e" opacity="0.25"><animate attributeName="r" values="0;38;38;0" dur="3s" repeatCount="indefinite"/><animate attributeName="opacity" values="0;0.25;0.25;0" dur="3s" repeatCount="indefinite"/></circle>
+        <circle cx="195" cy="100" r="18" fill="#b83a2e" opacity="0.35"/>
+        <text x="195" y="105" text-anchor="middle" fill="#fff" font-size="11" font-weight="700" font-family="Source Sans 3,sans-serif">!</text>
+        <text x="130" y="88" fill="#b83a2e" font-size="9" font-weight="600" font-family="Source Sans 3,sans-serif">Pressão</text>
+        <text x="130" y="102" fill="#b83a2e" font-size="9" font-family="Source Sans 3,sans-serif">focal ↑↑</text>
+        <circle cx="340" cy="82" r="0" fill="#c2500a" opacity="0.2"><animate attributeName="r" values="0;26;26;0" dur="3s" begin="1.2s" repeatCount="indefinite"/><animate attributeName="opacity" values="0;0.2;0.2;0" dur="3s" begin="1.2s" repeatCount="indefinite"/></circle>
+        <circle cx="340" cy="82" r="12" fill="#c2500a" opacity="0.3"/>
+        <text x="340" y="86" text-anchor="middle" fill="#fff" font-size="10" font-weight="700" font-family="Source Sans 3,sans-serif">!</text>
+        <!-- Skin layers at pressure point -->
+        <rect x="40" y="175" width="460" height="120" rx="10" fill="#fff" stroke="#e2ded6" stroke-width="1"/>
+        <text x="270" y="195" text-anchor="middle" fill="#3d3d5c" font-size="9" font-weight="600" font-family="Source Sans 3,sans-serif">CORTE — ponto de pressão</text>
+        <rect x="60" y="205" width="420" height="22" rx="3" fill="#f9d8b8" stroke="#c8956a" stroke-width="0.8"/>
+        <text x="80" y="220" fill="#8a5230" font-size="8" font-family="Source Sans 3,sans-serif">Epiderme comprimida</text>
+        <rect x="60" y="227" width="420" height="28" rx="3" fill="#f0c89e" stroke="#a87452" stroke-width="0.8"/>
+        <text x="80" y="244" fill="#7a4220" font-size="8" font-family="Source Sans 3,sans-serif">Derme — isquemia localizada por pressão contínua</text>
+        <!-- Pressure arrow down -->
+        <line x1="270" y1="168" x2="270" y2="205" stroke="#b83a2e" stroke-width="2.5" marker-end="url(#)"/>
+        <text x="295" y="188" fill="#b83a2e" font-size="9" font-family="Source Sans 3,sans-serif">↓ pressão</text>
+        <text x="270" y="305" text-anchor="middle" fill="#72729a" font-size="10" font-family="Source Sans 3,sans-serif">Deformidade + sem dor = trauma repetido e invisível dia após dia</text>
+      </svg>
+    </div>
+  </div>
+  <div class="scene-text">
+    <div class="scene-tag" style="color:var(--teal)">Cena 9 · Biomecânica · Planta do pé</div>
+    <div class="scene-title">A pressão concentra-se — e ninguém sente</div>
+    <div class="scene-desc">As deformidades do pé diabético (hallux valgus, dedos em garra) criam pontos de pressão anormal na planta. Como o nervo está silenciado, essa pressão repete-se dia após dia — comprimindo a derme, causando isquemia localizada e, eventualmente, quebrando a pele.</div>
+    <div class="scene-detail">⚙️ Pressão focal + ausência de dor + tecido fragilizado = fissura cutânea que passa despercebida por dias ou semanas. <span class="scene-ref">[7,10]</span></div>
+  </div>
+  <div class="nav-row">
+    <button class="nav-btn" onclick="goTo(-1)">← Anterior</button>
+    <span class="scene-counter">Cena 9 de 10</span>
+    <button class="nav-btn primary" onclick="goTo(1)">Próxima →</button>
+  </div>
+</div>
+
+<!-- ═══ SCENE 10 · FERIDA CRÔNICA ═══ -->
+<div class="scene" id="s9">
+  <div class="scene-visual">
+    <div class="foot-panel">
+      <svg viewBox="0 0 200 340" xmlns="http://www.w3.org/2000/svg">
+        <!-- Foot with visible wound on plantar surface -->
+        <path d="M80 310 Q54 292 48 255 Q42 210 52 170 Q62 130 80 112 Q100 96 118 102 Q138 110 134 138 Q128 166 144 188 Q162 212 168 240 Q174 268 162 290 Q148 312 120 318 Q102 322 80 310 Z" fill="#e8c090" stroke="#b07840" stroke-width="2"/>
+        <ellipse cx="152" cy="108" rx="14" ry="9" fill="#e8c090" stroke="#b07840" stroke-width="1.5" transform="rotate(-20 152 108)"/>
+        <ellipse cx="164" cy="120" rx="12" ry="8" fill="#e8c090" stroke="#b07840" stroke-width="1.5" transform="rotate(-15 164 120)"/>
+        <ellipse cx="172" cy="135" rx="10" ry="7" fill="#e8c090" stroke="#b07840" stroke-width="1.5"/>
+        <!-- The wound! -->
+        <ellipse cx="88" cy="272" rx="22" ry="15" fill="#7a1f1a" stroke="#b83a2e" stroke-width="2"/>
+        <ellipse cx="88" cy="272" rx="14" ry="9" fill="#3a0808"/>
+        <!-- Biofilm green halo -->
+        <ellipse cx="88" cy="268" rx="16" ry="10" fill="none" stroke="#1a6e3c" stroke-width="1.5" stroke-dasharray="3 2"><animate attributeName="opacity" values="0.9;0.3;0.9" dur="1.5s" repeatCount="indefinite"/></ellipse>
+        <text x="100" y="10" text-anchor="middle" fill="#b83a2e" font-size="9" font-weight="700" font-family="Source Sans 3,sans-serif">Ferida crônica</text>
+        <circle cx="88" cy="270" r="22" fill="none" stroke="#b83a2e" stroke-width="1.5" stroke-dasharray="3 2"/>
+        <line x1="110" y1="270" x2="200" y2="210" stroke="#b83a2e" stroke-width="1" stroke-dasharray="3 2"/>
+      </svg>
+    </div>
+    <div class="zoom-panel">
+      <svg viewBox="0 0 540 320" xmlns="http://www.w3.org/2000/svg">
+        <rect width="540" height="320" fill="#fff8f6"/>
+        <text x="10" y="18" fill="#7a1f1a" font-size="9" font-family="Source Sans 3,sans-serif" font-weight="600">CORTE DA FERIDA CRÔNICA NO PÉ DIABÉTICO</text>
+        <!-- Intact skin flanking the wound -->
+        <rect x="0" y="30" width="120" height="28" rx="0" fill="#f9d8b8" stroke="#c8956a" stroke-width="1"/>
+        <rect x="420" y="30" width="120" height="28" rx="0" fill="#f9d8b8" stroke="#c8956a" stroke-width="1"/>
+        <text x="60" y="48" text-anchor="middle" fill="#8a5230" font-size="8" font-family="Source Sans 3,sans-serif">Epiderme</text>
+        <text x="480" y="48" text-anchor="middle" fill="#8a5230" font-size="8" font-family="Source Sans 3,sans-serif">Epiderme</text>
+        <!-- Wound crater -->
+        <path d="M120 30 Q200 30 270 90 Q340 30 420 30" fill="#fdf0ee" stroke="#b83a2e" stroke-width="2"/>
+        <!-- Biofilm layer on top of wound -->
+        <ellipse cx="270" cy="44" rx="130" ry="20" fill="#edfaf3" stroke="#1a6e3c" stroke-width="1.8"><animate attributeName="opacity" values="0.9;0.5;0.9" dur="2s" repeatCount="indefinite"/></ellipse>
+        <text x="270" y="41" text-anchor="middle" fill="#1a6e3c" font-size="9" font-weight="700" font-family="Source Sans 3,sans-serif">BIOFILME</text>
+        <text x="270" y="55" text-anchor="middle" fill="#1a6e3c" font-size="8" font-family="Source Sans 3,sans-serif">S.aureus · P.aeruginosa · resistente a ATB</text>
+        <!-- Bacteria -->
+        <circle cx="216" cy="46" r="3" fill="#1a6e3c" class="pulse"/>
+        <circle cx="238" cy="40" r="3" fill="#1a6e3c" class="pulse" style="animation-delay:0.3s"/>
+        <circle cx="300" cy="40" r="3" fill="#1a6e3c" class="pulse" style="animation-delay:0.6s"/>
+        <circle cx="322" cy="48" r="3" fill="#1a6e3c" class="pulse" style="animation-delay:0.9s"/>
+        <!-- Wound layers -->
+        <rect x="120" y="58" width="300" height="34" rx="0" fill="#f5c4c0" stroke="#b83a2e" stroke-width="0.8"/>
+        <text x="270" y="79" text-anchor="middle" fill="#7a1f1a" font-size="9" font-weight="600" font-family="Source Sans 3,sans-serif">Tecido de granulação ausente · Exsudato inflamatório</text>
+        <rect x="120" y="92" width="300" height="40" rx="0" fill="#d4906c" stroke="#8a4020" stroke-width="0.8"/>
+        <text x="270" y="116" text-anchor="middle" fill="#3a1008" font-size="9" font-family="Source Sans 3,sans-serif">Tecido necrótico · M1 presos · sem M2 reparadores</text>
+        <!-- Dermis below -->
+        <rect x="0" y="58" width="120" height="74" fill="#f0c89e" stroke="#a87452" stroke-width="0.8"/>
+        <rect x="420" y="58" width="120" height="74" fill="#f0c89e" stroke="#a87452" stroke-width="0.8"/>
+        <text x="60" y="100" text-anchor="middle" fill="#7a4220" font-size="8" font-family="Source Sans 3,sans-serif">Derme</text>
+        <text x="480" y="100" text-anchor="middle" fill="#7a4220" font-size="8" font-family="Source Sans 3,sans-serif">Derme</text>
+        <!-- Keratinocytes can't migrate -->
+        <line x1="118" y1="40" x2="80" y2="40" stroke="#1a4fbd" stroke-width="2" marker-end="url(#)"/>
+        <text x="76" y="37" text-anchor="end" fill="#1a4fbd" font-size="8" font-family="Source Sans 3,sans-serif">Queratinócito</text>
+        <text x="76" y="50" text-anchor="end" fill="#b83a2e" font-size="8" font-family="Source Sans 3,sans-serif">NÃO MIGRA ✗</text>
+        <line x1="422" y1="40" x2="460" y2="40" stroke="#1a4fbd" stroke-width="2"/>
+        <text x="464" y="37" fill="#1a4fbd" font-size="8" font-family="Source Sans 3,sans-serif">Queratinócito</text>
+        <text x="464" y="50" fill="#b83a2e" font-size="8" font-family="Source Sans 3,sans-serif">NÃO MIGRA ✗</text>
+        <!-- Progression box -->
+        <rect x="20" y="148" width="240" height="90" rx="10" fill="#fdf0ee" stroke="#b83a2e" stroke-width="1.2"/>
+        <text x="140" y="169" text-anchor="middle" fill="#b83a2e" font-size="10" font-weight="700" font-family="Source Sans 3,sans-serif">Sem intervenção:</text>
+        <text x="140" y="187" text-anchor="middle" fill="#7a1f1a" font-size="9" font-family="Source Sans 3,sans-serif">Infecção profunda</text>
+        <text x="140" y="204" text-anchor="middle" fill="#7a1f1a" font-size="9" font-family="Source Sans 3,sans-serif">Osteomielite</text>
+        <text x="140" y="221" text-anchor="middle" fill="#7a1f1a" font-size="9" font-family="Source Sans 3,sans-serif">Gangrena → Amputação</text>
+        <text x="140" y="233" text-anchor="middle" fill="#b83a2e" font-size="8" font-family="Source Sans 3,sans-serif" font-style="italic">a cada 30 segundos no mundo</text>
+        <!-- Why not healing -->
+        <rect x="290" y="148" width="230" height="90" rx="10" fill="#edfaf3" stroke="#1a6e3c" stroke-width="1"/>
+        <text x="405" y="169" text-anchor="middle" fill="#1a6e3c" font-size="10" font-weight="700" font-family="Source Sans 3,sans-serif">Por que não fecha?</text>
+        <text x="405" y="187" text-anchor="middle" fill="#0a4f49" font-size="9" font-family="Source Sans 3,sans-serif">ECM destruída · sem andaime</text>
+        <text x="405" y="204" text-anchor="middle" fill="#0a4f49" font-size="9" font-family="Source Sans 3,sans-serif">Biofilme ativa mais M1</text>
+        <text x="405" y="221" text-anchor="middle" fill="#0a4f49" font-size="9" font-family="Source Sans 3,sans-serif">Queratinócitos imóveis</text>
+        <text x="405" y="237" text-anchor="middle" fill="#0a4f49" font-size="9" font-family="Source Sans 3,sans-serif">Fibroblastos apoptóticos</text>
+        <text x="270" y="305" text-anchor="middle" fill="#72729a" font-size="10" font-family="Source Sans 3,sans-serif">Todos os mecanismos convergem: cicatrização biologicamente impossível</text>
+      </svg>
+    </div>
+  </div>
+  <div class="scene-text">
+    <div class="scene-tag" style="color:var(--rose)">Cena 10 · Desfecho clínico · Ferida no pé</div>
+    <div class="scene-title">A ferida crônica — todos os mecanismos convergem</div>
+    <div class="scene-desc">Uma pequena fissura na planta do pé encontra um tecido biologicamente incapaz de se reparar. O biofilme polimicrobiano instala-se. Queratinócitos não migram, fibroblastos entram em apoptose, a granulação não se forma. A ferida cronifica.</div>
+    <div class="scene-detail">🦠 Biofilme até 1.000× mais resistente. ECM destruída. M1 perpetuados pelo biofilme. Queratinócitos imóveis. Cascata: fissura → infecção → necrose → osteomielite → amputação. <span class="scene-ref">[1,8,9,11]</span></div>
+  </div>
+  <div class="nav-row">
+    <button class="nav-btn" onclick="goTo(-1)">← Anterior</button>
+    <span class="scene-counter">Cena 10 de 10</span>
+    <button class="nav-btn restart" onclick="restart()">↺ Recomeçar do início</button>
+  </div>
+</div>
+
+</div><!-- /scene-wrap -->
+
+<footer class="page-footer">
+  <div style="display:flex; align-items:center; gap:12px; flex-wrap:wrap;">
+    <a href="../acucaraferida.html" style="display:inline-flex; align-items:center; gap:7px; background:#F7F5F0; border:1px solid #E2DED6; border-radius:8px; padding:8px 16px; font-size:12px; font-weight:700; color:#3D3D5C; text-decoration:none; font-family:'Source Sans 3',sans-serif; transition:background 0.2s;" onmouseover="this.style.background='#E2DED6'" onmouseout="this.style.background='#F7F5F0'">← Voltar ao infográfico</a>
+    <div class="footer-sig">Animação científica · <strong>Amor à Pele</strong> e <strong>PET-Saúde Digital G10 Feridas Crônicas</strong>, UFPel · Abril 2026</div>
+  </div>
+  <div style="font-size:10.5px;color:#72729a">Refs: [1] Olsson 2021 · [3] Liu 2025 · [5] Verdanova 2022 · [6] Bhatt 2009 · [7] Porel 2025 · [8] Chen 2024 · [9] Wong 2015 · [10] Armstrong 2017 · [11] Dawi 2025</div>
+</footer>
+
+<script>
+let cur = 0;
+const total = 10;
+const scenes = document.querySelectorAll('.scene');
+const prog = document.getElementById('prog');
+const dotsWrap = document.getElementById('dots');
+
+for(let i = 0; i < total; i++){
+  const d = document.createElement('div');
+  d.className = 'dot' + (i === 0 ? ' active' : '');
+  d.title = 'Cena ' + (i + 1);
+  d.onclick = () => goToScene(i);
+  dotsWrap.appendChild(d);
+}
+
+function goToScene(n){
+  scenes[cur].classList.remove('active');
+  const allDots = document.querySelectorAll('.dot');
+  allDots[cur].classList.remove('active');
+  allDots[cur].classList.add('done');
+  cur = Math.max(0, Math.min(total - 1, n));
+  scenes[cur].classList.add('active');
+  allDots[cur].classList.remove('done');
+  allDots[cur].classList.add('active');
+  prog.style.width = ((cur + 1) / total * 100) + '%';
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+function goTo(dir){ goToScene(cur + dir); }
+
+function restart(){
+  document.querySelectorAll('.dot').forEach(d => d.classList.remove('active','done'));
+  cur = 0;
+  scenes.forEach(s => s.classList.remove('active'));
+  scenes[0].classList.add('active');
+  document.querySelectorAll('.dot')[0].classList.add('active');
+  prog.style.width = '10%';
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+</script>
+</body>
+</html>
