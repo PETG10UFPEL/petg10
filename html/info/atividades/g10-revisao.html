@@ -435,25 +435,28 @@ function renderList() {
     return;
   }
 
-  list.innerHTML = filteredWorks.map((w, i) => {
-    const r = reviews[w.id] || {};
-    const st = r.status || 'pending';
-    const dotClass = {pending:'status-pending', approved:'status-approved', adjust:'status-adjust'}[st];
-    return `
-    <div class="work-item${w.id===activeId?' active':''}" onclick="selectWork('${w.id}')" style="animation:fadeIn 0.18s ${i*0.025}s both">
-      <div class="status-dot ${dotClass}"></div>
-      <div class="work-item-top">
-        <span class="code-tag">#${w.id}</span>
-        <span class="fase-dot fase-dot-${w.fase}"></span>
-        <span style="font-size:10px;color:var(--muted)">${w.obs}</span>
-      </div>
-      <div class="work-title">${w.title}</div>
-      <div class="work-meta">
-        <div class="authors-mini">
-          ${w.authors.length ? w.authors.slice(0,5).map(a=>`<span class="author-chip">${a}</span>`).join('')+(w.authors.length>5?`<span class="author-chip">+${w.authors.length-5}</span>`:'') : '<span style="font-size:10px;color:var(--muted);font-style:italic">Sem autores</span>'}
-        </div>
-      </div>
-    </div>`;
+  list.innerHTML = filteredWorks.map(function(w, i) {
+    var r = reviews[w.id] || {};
+    var st = r.status || 'pending';
+    var dotClass = {pending:'status-pending', approved:'status-approved', adjust:'status-adjust'}[st];
+    var activeClass = w.id === activeId ? ' active' : '';
+    var authorChips = '';
+    if (w.authors.length) {
+      authorChips = w.authors.slice(0,5).map(function(a){ return '<span class="author-chip">' + a + '</span>'; }).join('');
+      if (w.authors.length > 5) authorChips += '<span class="author-chip">+' + (w.authors.length-5) + '</span>';
+    } else {
+      authorChips = '<span style="font-size:10px;color:var(--muted);font-style:italic">Sem autores</span>';
+    }
+    return '<div class="work-item' + activeClass + '" onclick="selectWork(\'' + w.id + '\')" style="animation:fadeIn 0.18s ' + (i*0.025) + 's both">' +
+      '<div class="status-dot ' + dotClass + '"></div>' +
+      '<div class="work-item-top">' +
+        '<span class="code-tag">#' + w.id + '</span>' +
+        '<span class="fase-dot fase-dot-' + w.fase + '"></span>' +
+        '<span style="font-size:10px;color:var(--muted)">' + w.obs + '</span>' +
+      '</div>' +
+      '<div class="work-title">' + w.title + '</div>' +
+      '<div class="work-meta"><div class="authors-mini">' + authorChips + '</div></div>' +
+    '</div>';
   }).join('');
 }
 
@@ -466,16 +469,16 @@ function selectWork(id) {
   document.getElementById('detail-view').classList.add('visible');
 
   const faseEl = document.getElementById('d-fase');
-  faseEl.textContent = `Fase ${w.fase}`;
-  faseEl.className = `detail-fase detail-fase-${w.fase}`;
+  faseEl.textContent = 'Fase ' + w.fase;
+  faseEl.className = 'detail-fase detail-fase-' + w.fase;
   document.getElementById('d-title').textContent = w.title;
   document.getElementById('d-link').href = w.link;
-  document.getElementById('d-code-badge').textContent = `#${w.id}`;
-  document.getElementById('d-authors').innerHTML = w.authors.map(a=>`<span class="author-badge">${a}</span>`).join('');
+  document.getElementById('d-code-badge').textContent = '#' + w.id;
+  document.getElementById('d-authors').innerHTML = w.authors.map(function(a){ return '<span class="author-badge">' + a + '</span>'; }).join('');
   document.getElementById('d-obs').textContent = w.obs;
   document.getElementById('d-nauthors').textContent = w.nAuthors + (w.nAuthors===1?' autor':' autores');
-  document.getElementById('d-fase2').textContent = `Fase ${w.fase}`;
-  document.getElementById('d-code2').textContent = `#${w.id}`;
+  document.getElementById('d-fase2').textContent = 'Fase ' + w.fase;
+  document.getElementById('d-code2').textContent = '#' + w.id;
 
   setStatus(r.status || 'pending');
   document.getElementById('comment-box').value = r.comment || '';
@@ -491,7 +494,7 @@ function selectWork(id) {
 function setStatus(st) {
   currentStatus = st;
   ['pending','approved','adjust'].forEach(s => {
-    document.getElementById(`btn-${s}`).className = 'status-btn' + (s===st ? ` sel-${s}` : '');
+    document.getElementById('btn-' + s).className = 'status-btn' + (s===st ? ' sel-' + s : '');
   });
 }
 
