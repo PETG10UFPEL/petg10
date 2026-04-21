@@ -88,6 +88,49 @@
 
     .divider { border: none; border-top: 1px solid var(--border); margin: 48px 0; }
 
+    /* EXEMPLOS DE DECISÃO */
+    .examples-section { margin-top: 60px; }
+    .examples-intro { font-size: 16px; color: var(--ink-mid); margin-bottom: 36px; max-width: 720px; }
+    .case-accordion { display: flex; flex-direction: column; gap: 16px; margin-bottom: 40px; }
+    .case-item { border-radius: 12px; overflow: hidden; border: 2px solid transparent; transition: border-color 0.2s; }
+    .case-item.balanced  { border-color: var(--primary); }
+    .case-item.unbalanced { border-color: var(--accent); }
+    .case-header { display: grid; grid-template-columns: auto 1fr auto; align-items: center; gap: 16px; padding: 20px 24px; cursor: pointer; user-select: none; }
+    .case-item.balanced  .case-header { background: var(--primary-pale); }
+    .case-item.unbalanced .case-header { background: var(--accent-light); }
+    .case-badge { font-size: 10px; font-weight: 700; letter-spacing: 0.13em; text-transform: uppercase; padding: 4px 12px; border-radius: 20px; white-space: nowrap; }
+    .balanced  .case-badge { background: var(--primary); color: #fff; }
+    .unbalanced .case-badge { background: var(--accent); color: #fff; }
+    .case-title { font-family: 'Playfair Display', serif; font-size: 1.05rem; font-weight: 700; color: var(--ink); line-height: 1.3; }
+    .case-chevron { font-size: 18px; color: var(--ink-muted); transition: transform 0.25s; }
+    .case-item.open .case-chevron { transform: rotate(180deg); }
+    .case-body { display: none; padding: 0 24px 24px; background: var(--surface); }
+    .case-item.open .case-body { display: block; }
+    .case-situation { background: var(--surface-alt); border-radius: 8px; padding: 16px 18px; margin: 18px 0 20px; font-size: 15px; color: var(--ink-mid); line-height: 1.65; border-left: 3px solid var(--border); }
+    .case-situation strong { color: var(--ink); display: block; margin-bottom: 4px; font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; }
+    .case-cols { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 14px; margin-bottom: 18px; }
+    @media (max-width: 640px) { .case-cols { grid-template-columns: 1fr; } }
+    .case-col { border-radius: 8px; padding: 14px 16px; }
+    .case-col.col-data  { background: #EEF4FF; border: 1px solid #BDD0F5; }
+    .case-col.col-exp   { background: #FDF3E3; border: 1px solid #E8D5A8; }
+    .case-col.col-intui { background: var(--primary-pale); border: 1px solid #A8D5B5; }
+    .case-col-icon { font-size: 1.3rem; margin-bottom: 6px; }
+    .case-col-label { font-size: 10px; font-weight: 700; letter-spacing: 0.13em; text-transform: uppercase; margin-bottom: 6px; }
+    .col-data  .case-col-label { color: #3B5EA6; }
+    .col-exp   .case-col-label { color: var(--gold); }
+    .col-intui .case-col-label { color: var(--primary); }
+    .case-col p { font-size: 13px; color: var(--ink-mid); margin: 0; line-height: 1.55; }
+    .case-outcome { border-radius: 8px; padding: 14px 18px; font-size: 14px; line-height: 1.6; }
+    .balanced  .case-outcome { background: #E8F5EE; border: 1px solid #A8D5B5; color: #1A4B2E; }
+    .unbalanced .case-outcome { background: var(--accent-light); border: 1px solid #E8B9A8; color: #7A2E1A; }
+    .case-outcome strong { display: block; margin-bottom: 4px; font-size: 12px; letter-spacing: 0.08em; text-transform: uppercase; }
+    .case-figure { margin: 18px 0 0; }
+    .case-figure img { width: 100%; border-radius: 8px; display: block; }
+    .case-figure .img-ph { border: 2px dashed #b8c4bc; background: #f4f6f4; border-radius: 8px; padding: 28px 20px; text-align: center; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 8px; min-height: 160px; }
+    .img-ph .ph-path { font-family: monospace; font-size: 12px; background: #e6ece7; padding: 3px 10px; border-radius: 4px; color: var(--primary); }
+    .img-ph .ph-desc { font-size: 12px; color: var(--ink-muted); font-style: italic; max-width: 380px; }
+    .case-figure figcaption { font-size: 12px; color: var(--ink-soft); text-align: center; margin-top: 8px; font-style: italic; }
+
     /* QUIZ */
     .quiz-section { background: var(--surface); border: 2px solid var(--primary); border-radius: 16px; padding: 40px; margin-top: 60px; box-shadow: 0 4px 20px rgba(42,92,69,0.1); }
     .quiz-badge { display: inline-block; background: var(--primary); color: #fff; font-size: 10px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; padding: 5px 14px; border-radius: 20px; margin-bottom: 12px; }
@@ -364,6 +407,183 @@
         <p>"Foque em estar vagamente certo, não precisamente errado." Melhor dado disponível + melhor julgamento disponível + leitura do sistema: isso é a decisão clínica real.</p>
       </div>
     </div>
+  </section>
+
+  <!-- EXEMPLOS DE DECISÃO -->
+  <section class="examples-section" id="exemplos">
+    <div class="sec-label">Na prática clínica</div>
+    <h2>Quando o equilíbrio funciona — e quando falha</h2>
+    <p class="examples-intro">Cada decisão clínica em feridas crônicas mobiliza três fontes: os <strong>dados</strong> objetivos, a <strong>experiência</strong> acumulada e a <strong>intuição</strong> contextual. Veja o que acontece quando as três se integram — e o que pode dar errado quando uma delas é ignorada ou dominante.</p>
+
+    <div class="case-accordion">
+
+      <!-- CASO 1: EQUILIBRADO -->
+      <div class="case-item balanced" id="case1">
+        <div class="case-header" onclick="toggleCase('case1')">
+          <span class="case-badge">✅ Equilibrado</span>
+          <div class="case-title">Úlcera venosa com recidiva inexplicada: a enfermeira que perguntou o que o sistema não via</div>
+          <span class="case-chevron">▾</span>
+        </div>
+        <div class="case-body">
+          <div class="case-situation">
+            <strong>Situação</strong>
+            Paciente de 68 anos, úlcera venosa em tornozelo esquerdo há 8 meses. Métricas do telemonitoramento indicam área estável (4,2 cm²), exsudato moderado, sem sinais fotográficos de infecção. Protocolo de terapia compressiva e curativo de alginato em curso. Indicadores: sem alarmes.
+          </div>
+          <div class="case-cols">
+            <div class="case-col col-data">
+              <div class="case-col-icon">📊</div>
+              <div class="case-col-label">Dados</div>
+              <p>Área da ferida estável há 6 semanas. Fotos sem eritema perilesional. Temperatura local normal. HbA1c 6,8% (última consulta). Questionário de adesão: completo.</p>
+            </div>
+            <div class="case-col col-exp">
+              <div class="case-col-icon">🗂️</div>
+              <div class="case-col-label">Experiência</div>
+              <p>A enfermeira sabe que úlceras venosas que "param de piorar mas não fecham" com compressão correta frequentemente têm fator oculto: edema postural noturno, hipoalbuminemia ou adesão inconsistente à meia elástica no domicílio.</p>
+            </div>
+            <div class="case-col col-intui">
+              <div class="case-col-icon">🧠</div>
+              <div class="case-col-label">Intuição</div>
+              <p>Na videoconsulta, o paciente respondeu "tudo bem" de forma rápida demais. Aparecia sentado de forma diferente do usual. A cuidadora, ao fundo, desviou o olhar quando a compressão foi mencionada.</p>
+            </div>
+          </div>
+          <div class="case-outcome">
+            <strong>Decisão e desfecho</strong>
+            A enfermeira não encerrou a consulta com base nos dados normais. Perguntou diretamente: "Você está conseguindo colocar a meia todos os dias?" O paciente admitiu que parou há 3 semanas — o calçado novo doía. Solução: adaptação da meia, orientação posicional, retorno em 10 dias. A ferida fechou em 5 semanas. Sem o sinal intuitivo, a decisão seria manter o protocolo — e a ferida continuaria estagnada.
+          </div>
+          <figure class="case-figure">
+            <div class="img-ph">
+              <span style="font-size:1.8rem;">🖼</span>
+              <span class="ph-path">img/caso1-adesao-compressao.png</span>
+              <span class="ph-desc">Infográfico de duas colunas: à esquerda, foto estilizada de tela de videoconsulta com paciente idoso (expressão fechada, cuidadora ao fundo levemente desviada); à direita, linha do tempo mostrando "plateau" da ferida por 6 semanas e a virada após identificação do problema de adesão. Paleta verde/azul discreta.</span>
+            </div>
+            <figcaption>Figura 4 — O plateau que os dados não explicavam: a intuição abriu a pergunta certa.</figcaption>
+          </figure>
+        </div>
+      </div>
+
+      <!-- CASO 2: EQUILIBRADO -->
+      <div class="case-item balanced" id="case2">
+        <div class="case-header" onclick="toggleCase('case2')">
+          <span class="case-badge">✅ Equilibrado</span>
+          <div class="case-title">Pé diabético: desbridamento antecipado contra o protocolo — e a ferida que fechou</div>
+          <span class="case-chevron">▾</span>
+        </div>
+        <div class="case-body">
+          <div class="case-situation">
+            <strong>Situação</strong>
+            Paciente de 54 anos, úlcera neuropática plantar grau 2 (Wagner). Retorno de rotina no ambulatório. Protocolo indica reavaliação para desbridamento apenas se área aumentar mais de 20% em 2 semanas. Área atual: cresceu 12% — abaixo do limiar de intervenção.
+          </div>
+          <div class="case-cols">
+            <div class="case-col col-data">
+              <div class="case-col-icon">📊</div>
+              <div class="case-col-label">Dados</div>
+              <p>Área: +12% (abaixo do limiar protocolar de 20%). Fotos: tecido de granulação presente, bordas com leve fibrina. Temperatura cutânea pelo sensor: +1,8°C em relação à semana anterior. HbA1c 9,2%.</p>
+            </div>
+            <div class="case-col col-exp">
+              <div class="case-col-icon">🗂️</div>
+              <div class="case-col-label">Experiência</div>
+              <p>O médico assistente já viu padrão semelhante: aumento de temperatura local de 1,5°C ou mais, mesmo sem outros sinais, precedeu infecção profunda em 3 dos últimos 5 casos similares. A fibrina nas bordas com essa temperatura não "fecha bem".</p>
+            </div>
+            <div class="case-col col-intui">
+              <div class="case-col-icon">🧠</div>
+              <div class="case-col-label">Intuição</div>
+              <p>O paciente disse "não sinto dor" com naturalidade — mas a neuropatia diabética mascara a dor. O odor era discretamente diferente do habitual. A aparência geral do paciente era de alguém que não dormiu bem.</p>
+            </div>
+          </div>
+          <div class="case-outcome">
+            <strong>Decisão e desfecho</strong>
+            O médico decidiu realizar desbridamento nessa consulta, fora do limiar protocolar, e coletou swab de cultura. O resultado: <em>Staphylococcus aureus</em> em carga moderada, sem sinal clínico explícito ainda. Antibioticoterapia iniciada precocemente. Internação evitada. O protocolo — necessário para padronizar — não capturava a combinação de temperatura + odor + contexto clínico. A experiência e a intuição justificaram a decisão antecipada.
+          </div>
+        </div>
+      </div>
+
+      <!-- CASO 3: DESEQUILÍBRIO — DADOS DOMINAM -->
+      <div class="case-item unbalanced" id="case3">
+        <div class="case-header" onclick="toggleCase('case3')">
+          <span class="case-badge">⚠️ Desequilíbrio</span>
+          <div class="case-title">Dados "normais", paciente em risco: quando o número tranquilizou demais</div>
+          <span class="case-chevron">▾</span>
+        </div>
+        <div class="case-body">
+          <div class="case-situation">
+            <strong>Situação</strong>
+            Paciente de 72 anos em telemonitoramento domiciliar de úlcera por pressão sacral grau 2. Cuidadora familiar envia fotos semanais. Sistema de IA classifica: "sem deterioração, manter protocolo". O estudante de enfermagem em estágio, ao revisar o caso, concorda com a IA e não escala para o supervisor.
+          </div>
+          <div class="case-cols">
+            <div class="case-col col-data">
+              <div class="case-col-icon">📊</div>
+              <div class="case-col-label">Dados</div>
+              <p>Área estável. Fotos sem alteração cromática. Questionário de dor: 2/10. Sistema IA: "baixo risco". Todos os campos do formulário preenchidos corretamente pela cuidadora.</p>
+            </div>
+            <div class="case-col col-exp">
+              <div class="case-col-icon">🗂️</div>
+              <div class="case-col-label">Experiência — ausente</div>
+              <p>O estudante não tinha experiência para notar que a foto desta semana tinha ângulo diferente das anteriores — o que dificulta a comparação real. Nem que cuidadoras sobrecarregadas às vezes fotografam "bom" o que ainda não está bom.</p>
+            </div>
+            <div class="case-col col-intui">
+              <div class="case-col-icon">🧠</div>
+              <div class="case-col-label">Intuição — não ativada</div>
+              <p>A cuidadora havia enviado as fotos 3 dias antes do prazo, sem mensagem alguma. Um profissional experiente teria estranhado a mudança de padrão. O estudante não tinha esse referencial.</p>
+            </div>
+          </div>
+          <div class="case-outcome">
+            <strong>Decisão e desfecho</strong>
+            Protocolo mantido. Na visita domiciliar da semana seguinte, o supervisor encontrou a ferida com bordas necróticas e exsudato purulento — evolução para grau 3 em 10 dias. A cuidadora revelou que havia trocado o curativo de forma errada há 2 semanas, mas "achou que estava bem". Os dados estavam corretos — o problema era invisível nos campos de formulário. A confiança irrestrita na IA, sem a leitura contextual da experiência e da intuição, custou 2 semanas de piora evitável.
+          </div>
+          <figure class="case-figure">
+            <div class="img-ph">
+              <span style="font-size:1.8rem;">🖼</span>
+              <span class="ph-path">img/caso3-angulo-foto-cuidadora.png</span>
+              <span class="ph-desc">Comparação lado a lado de duas fotos estilizadas da mesma ferida: foto da semana 1 (ângulo padronizado, iluminação uniforme, bordas visíveis) e foto da semana 3 (ângulo diferente, sombra parcial, bordas cortadas). Uma seta ou ícone de alerta destaca a diferença de ângulo. Paleta discreta, fundo branco, moldura terracota suave para a foto problemática.</span>
+            </div>
+            <figcaption>Figura 5 — O ângulo que muda tudo: fotos aparentemente iguais podem esconder deterioração real.</figcaption>
+          </figure>
+        </div>
+      </div>
+
+      <!-- CASO 4: DESEQUILÍBRIO — INTUIÇÃO DOMINAM -->
+      <div class="case-item unbalanced" id="case4">
+        <div class="case-header" onclick="toggleCase('case4')">
+          <span class="case-badge">⚠️ Desequilíbrio</span>
+          <div class="case-title">Intuição sem dados: a decisão apressada que atrasou a cicatrização</div>
+          <span class="case-chevron">▾</span>
+        </div>
+        <div class="case-body">
+          <div class="case-situation">
+            <strong>Situação</strong>
+            Paciente jovem de 34 anos com úlcera venosa pós-trombose. Primeira consulta com nova enfermeira substituta. A profissional, confiante em sua experiência clínica anterior em outro serviço, toma decisões rápidas baseadas na "impressão geral" da ferida, sem consultar o histórico do prontuário eletrônico.
+          </div>
+          <div class="case-cols">
+            <div class="case-col col-data">
+              <div class="case-col-icon">📊</div>
+              <div class="case-col-label">Dados — ignorados</div>
+              <p>Prontuário registrava alergia documentada a curativo de carboximetilcelulose — informação inserida pelo serviço anterior. Cultura de 3 semanas atrás: flora mista, sem indicação de antibiótico sistêmico.</p>
+            </div>
+            <div class="case-col col-exp">
+              <div class="case-col-icon">🗂️</div>
+              <div class="case-col-label">Experiência — descontextualizada</div>
+              <p>A enfermeira tinha sólida experiência — em outro perfil de pacientes e protocolo de serviço. Aplicou o raciocínio do seu contexto anterior sem verificar as particularidades documentadas deste paciente.</p>
+            </div>
+            <div class="case-col col-intui">
+              <div class="case-col-icon">🧠</div>
+              <div class="case-col-label">Intuição — superestimada</div>
+              <p>"Pelo aspecto, parece infecção secundária" — baseado na coloração do exsudato, sem cultura atual. Prescreveu cobertura com CMC e iniciou antibioticoterapia oral sem resultado de cultura vigente.</p>
+            </div>
+          </div>
+          <div class="case-outcome">
+            <strong>Decisão e desfecho</strong>
+            Em 48 horas, o paciente apresentou reação inflamatória local intensa — a alergia ao CMC. A troca de curativo emergencial gerou trauma mecânico adicional e retrocesso de 3 semanas no processo cicatricial. A intuição sobre "infecção" também estava errada: a nova cultura revelou colonização polimicrobiana sem critério de infecção. Dois erros evitáveis com 5 minutos de leitura do prontuário. Experiência genuína não dispensa a consulta aos dados — ela aprimora a leitura deles.
+          </div>
+        </div>
+      </div>
+
+    </div><!-- /case-accordion -->
+
+    <div class="callout">
+      <div class="callout-title">🔑 O padrão que une os casos</div>
+      <p>Nos casos equilibrados, nenhuma fonte dominou isoladamente: os dados apontaram o que medir, a experiência definiu o que era relevante naquele padrão, e a intuição abriu a pergunta certa no momento certo. Nos desequilíbrios, uma fonte foi silenciada — seja pela confiança cega nos números, seja pela pressa da "impressão geral". A qualidade da decisão clínica não depende de mais dados ou mais intuição: depende da integração consciente das três.</p>
+    </div>
+
   </section>
 
   <hr class="divider">
@@ -665,6 +885,11 @@
     document.getElementById('q' + i).querySelectorAll('.option-btn').forEach((btn, j) => {
       btn.onclick = () => handleAnswer(i, j);
     });
+  }
+
+  function toggleCase(id) {
+    const item = document.getElementById(id);
+    item.classList.toggle('open');
   }
 
   function toggleRef(btn) {
