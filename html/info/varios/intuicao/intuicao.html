@@ -1,0 +1,679 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>A Intuição que a IA Não Tem — G10 Telemonitoramento de Feridas Crônicas</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Source+Sans+3:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --bg: #FAFAF7;
+      --surface: #FFFFFF;
+      --surface-alt: #F1F4F0;
+      --primary: #2A5C45;
+      --primary-light: #3D7A5E;
+      --primary-pale: #E8F2EC;
+      --accent: #C25B3A;
+      --accent-light: #F8EDE9;
+      --gold: #B07D3A;
+      --gold-light: #FDF3E3;
+      --ink: #1C1C1C;
+      --ink-mid: #3E3E3E;
+      --ink-soft: #666;
+      --ink-muted: #999;
+      --border: #E0E0D8;
+      --shadow: rgba(0,0,0,0.07);
+    }
+    body { font-family: 'Source Sans 3', sans-serif; background: var(--bg); color: var(--ink); line-height: 1.75; font-size: 17px; }
+
+    .inst-header { background: #fff; border-bottom: 1px solid var(--border); display: flex; justify-content: space-between; align-items: center; padding: 12px 40px; position: sticky; top: 0; z-index: 100; box-shadow: 0 2px 8px var(--shadow); }
+    .header-id { font-size: 11px; font-weight: 700; letter-spacing: 0.15em; text-transform: uppercase; color: var(--primary); }
+    .logo-placeholder { height: 44px; width: 190px; background: var(--surface-alt); border: 1px dashed var(--border); border-radius: 6px; display: flex; align-items: center; justify-content: center; font-size: 9px; color: var(--ink-muted); font-family: monospace; text-align: center; padding: 4px; }
+
+    .hero { background: linear-gradient(135deg, #1E4532 0%, #2A5C45 60%, #336B52 100%); color: #fff; padding: 76px 40px 60px; position: relative; overflow: hidden; }
+    .hero::before { content: ''; position: absolute; top: -80px; right: -80px; width: 420px; height: 420px; border-radius: 50%; background: rgba(255,255,255,0.04); }
+    .hero-inner { max-width: 780px; margin: 0 auto; position: relative; z-index: 1; }
+    .hero-tag { display: inline-block; font-size: 11px; font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase; background: rgba(255,255,255,0.14); color: rgba(255,255,255,0.92); padding: 5px 14px; border-radius: 20px; margin-bottom: 22px; }
+    .hero h1 { font-family: 'Playfair Display', serif; font-size: clamp(2rem, 5vw, 3.2rem); font-weight: 700; line-height: 1.2; margin-bottom: 18px; }
+    .hero h1 em { font-style: italic; color: #A8D5B5; }
+    .hero .sub { font-size: 1.1rem; color: rgba(255,255,255,0.8); max-width: 580px; font-weight: 300; }
+    .hero-meta { display: flex; gap: 24px; margin-top: 32px; padding-top: 24px; border-top: 1px solid rgba(255,255,255,0.2); flex-wrap: wrap; }
+    .hero-meta span { font-size: 12px; color: rgba(255,255,255,0.65); }
+    .hero-meta strong { color: #fff; }
+
+    main { max-width: 860px; margin: 0 auto; padding: 0 32px 80px; }
+    section { margin-top: 60px; }
+    .sec-label { font-size: 10px; font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase; color: var(--primary); margin-bottom: 10px; display: flex; align-items: center; gap: 10px; }
+    .sec-label::after { content: ''; flex: 1; height: 1px; background: var(--border); max-width: 60px; }
+    h2 { font-family: 'Playfair Display', serif; font-size: clamp(1.5rem, 3vw, 2rem); font-weight: 700; line-height: 1.3; margin-bottom: 18px; }
+    h3 { font-family: 'Playfair Display', serif; font-size: 1.2rem; font-weight: 400; font-style: italic; color: var(--primary-light); margin: 28px 0 10px; }
+    p { margin-bottom: 16px; color: var(--ink-mid); }
+    p:last-child { margin-bottom: 0; }
+
+    .pq { border-left: 4px solid var(--primary); background: var(--surface-alt); padding: 22px 26px; margin: 32px 0; border-radius: 0 8px 8px 0; }
+    .pq p { font-family: 'Playfair Display', serif; font-size: 1.15rem; font-style: italic; color: var(--ink); margin: 0; line-height: 1.6; }
+    .pq cite { display: block; margin-top: 10px; font-size: 12px; font-style: normal; color: var(--ink-soft); font-family: 'Source Sans 3', sans-serif; }
+
+    .callout { background: var(--gold-light); border: 1px solid rgba(176,125,58,0.28); border-radius: 10px; padding: 22px 26px; margin: 28px 0; }
+    .callout-title { font-size: 11px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: var(--gold); margin-bottom: 8px; }
+    .callout p { color: var(--ink-mid); margin: 0; font-size: 15px; }
+
+    .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin: 28px 0; }
+    @media (max-width: 640px) { .grid-2 { grid-template-columns: 1fr; } }
+    .card { background: var(--surface); border: 1px solid var(--border); border-radius: 10px; padding: 22px; box-shadow: 0 2px 6px var(--shadow); }
+    .card-icon { font-size: 1.6rem; margin-bottom: 10px; }
+    .card h4 { font-family: 'Playfair Display', serif; font-size: 1rem; font-weight: 700; margin-bottom: 8px; color: var(--ink); }
+    .card p { font-size: 14px; color: var(--ink-soft); margin: 0; }
+
+    .pillar-list { list-style: none; margin: 24px 0; display: flex; flex-direction: column; gap: 14px; }
+    .pillar-list li { display: flex; gap: 16px; align-items: flex-start; background: var(--surface); border: 1px solid var(--border); border-radius: 8px; padding: 16px 18px; }
+    .pillar-num { font-size: 13px; font-weight: 700; color: var(--primary); background: var(--primary-pale); border-radius: 50%; width: 28px; height: 28px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; margin-top: 2px; }
+    .pillar-list li strong { display: block; font-size: 15px; color: var(--ink); margin-bottom: 3px; }
+    .pillar-list li span { font-size: 14px; color: var(--ink-soft); }
+
+    .emergence-flow { background: var(--primary); color: #fff; border-radius: 12px; padding: 32px; margin: 28px 0; text-align: center; }
+    .flow-title { font-size: 11px; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase; color: rgba(255,255,255,0.6); margin-bottom: 20px; }
+    .flow-steps { display: flex; flex-direction: column; align-items: center; }
+    .flow-step { background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.15); border-radius: 8px; padding: 10px 28px; font-size: 15px; font-weight: 600; min-width: 240px; }
+    .flow-step.hl { background: rgba(168,213,181,0.2); border-color: #A8D5B5; color: #A8D5B5; }
+    .flow-arrow { font-size: 12px; color: rgba(255,255,255,0.4); padding: 5px 0; }
+    .flow-label { font-size: 11px; color: rgba(255,255,255,0.45); font-style: italic; display: block; margin-top: 2px; }
+    .emergence-insight { margin-top: 20px; padding-top: 18px; border-top: 1px solid rgba(255,255,255,0.15); font-size: 14px; color: rgba(255,255,255,0.75); font-style: italic; }
+
+    figure { margin: 32px 0; }
+    figcaption { font-size: 13px; color: var(--ink-soft); text-align: center; margin-top: 10px; font-style: italic; }
+
+    .divider { border: none; border-top: 1px solid var(--border); margin: 48px 0; }
+
+    /* QUIZ */
+    .quiz-section { background: var(--surface); border: 2px solid var(--primary); border-radius: 16px; padding: 40px; margin-top: 60px; box-shadow: 0 4px 20px rgba(42,92,69,0.1); }
+    .quiz-badge { display: inline-block; background: var(--primary); color: #fff; font-size: 10px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; padding: 5px 14px; border-radius: 20px; margin-bottom: 12px; }
+    .quiz-title { font-family: 'Playfair Display', serif; font-size: 1.6rem; font-weight: 700; margin-bottom: 6px; }
+    .quiz-intro { font-size: 14px; color: var(--ink-soft); margin-bottom: 28px; }
+    .quiz-progress { display: flex; gap: 8px; margin-bottom: 28px; }
+    .prog-dot { width: 10px; height: 10px; border-radius: 50%; background: var(--border); transition: background 0.3s; }
+    .prog-dot.answered { background: var(--primary); }
+    .question-block { margin-bottom: 36px; }
+    .q-number { font-size: 11px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--primary); margin-bottom: 6px; }
+    .q-text { font-family: 'Playfair Display', serif; font-size: 1.1rem; font-weight: 700; line-height: 1.4; margin-bottom: 16px; color: var(--ink); }
+    .options { display: flex; flex-direction: column; gap: 10px; }
+    .option-btn { background: var(--bg); border: 2px solid var(--border); border-radius: 8px; padding: 13px 18px; font-family: 'Source Sans 3', sans-serif; font-size: 15px; color: var(--ink-mid); cursor: pointer; text-align: left; transition: all 0.2s; display: flex; align-items: flex-start; gap: 12px; }
+    .option-btn:hover { border-color: var(--primary-light); background: var(--primary-pale); }
+    .opt-letter { font-weight: 700; color: var(--primary); min-width: 20px; margin-top: 1px; }
+    .option-btn.correct { border-color: #2A7D4F; background: #E8F5EE; color: #1A4B2E; }
+    .option-btn.correct .opt-letter { color: #2A7D4F; }
+    .option-btn.wrong { border-color: var(--accent); background: var(--accent-light); color: #7A2E1A; }
+    .option-btn.wrong .opt-letter { color: var(--accent); }
+    .option-btn.disabled { pointer-events: none; opacity: 0.5; }
+    .option-btn.disabled.correct { opacity: 1; }
+    .feedback-box { display: none; margin-top: 14px; border-radius: 8px; padding: 14px 18px; font-size: 14px; line-height: 1.6; }
+    .feedback-box.show { display: block; }
+    .fb-correct { background: #E8F5EE; border: 1px solid #A8D5B5; color: #1A4B2E; }
+    .fb-wrong { background: var(--accent-light); border: 1px solid #E8B9A8; color: #7A2E1A; }
+    .feedback-box strong { display: block; margin-bottom: 4px; }
+    .quiz-score { display: none; background: var(--primary); color: #fff; border-radius: 12px; padding: 28px 32px; text-align: center; margin-top: 32px; }
+    .quiz-score.show { display: block; }
+    .score-num { font-family: 'Playfair Display', serif; font-size: 3.5rem; font-weight: 700; line-height: 1; }
+    .score-label { font-size: 14px; color: rgba(255,255,255,0.7); margin-top: 4px; }
+    .score-msg { font-size: 1rem; margin-top: 14px; color: rgba(255,255,255,0.9); font-style: italic; }
+    .quiz-retry { margin-top: 16px; background: rgba(255,255,255,0.15); border: 1px solid rgba(255,255,255,0.3); color: #fff; padding: 10px 24px; border-radius: 8px; font-family: 'Source Sans 3', sans-serif; font-size: 14px; cursor: pointer; transition: background 0.2s; }
+    .quiz-retry:hover { background: rgba(255,255,255,0.25); }
+
+    /* REFLEXÃO */
+    .reflect-section { background: linear-gradient(135deg, #1E4532 0%, #2A5C45 100%); border-radius: 16px; padding: 44px 40px; margin-top: 60px; color: #fff; }
+    .reflect-badge { display: inline-block; font-size: 10px; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase; background: rgba(255,255,255,0.15); color: rgba(255,255,255,0.9); padding: 5px 14px; border-radius: 20px; margin-bottom: 14px; }
+    .reflect-title { font-family: 'Playfair Display', serif; font-size: 1.7rem; font-weight: 700; color: #fff; margin-bottom: 6px; }
+    .reflect-intro { font-size: 14px; color: rgba(255,255,255,0.7); margin-bottom: 28px; }
+    .ref-card { background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.15); border-radius: 12px; padding: 24px 26px; margin-bottom: 20px; }
+    .ref-card:last-child { margin-bottom: 0; }
+    .ref-num { font-size: 11px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: #A8D5B5; margin-bottom: 8px; }
+    .ref-question { font-family: 'Playfair Display', serif; font-size: 1.15rem; font-weight: 700; color: #fff; line-height: 1.4; margin-bottom: 12px; }
+    .ref-context { font-size: 14px; color: rgba(255,255,255,0.68); margin-bottom: 16px; }
+    .ref-toggle { background: transparent; border: 1px solid rgba(255,255,255,0.3); color: rgba(255,255,255,0.85); padding: 8px 18px; border-radius: 6px; font-family: 'Source Sans 3', sans-serif; font-size: 13px; cursor: pointer; transition: all 0.2s; }
+    .ref-toggle:hover { background: rgba(255,255,255,0.12); }
+    .ref-reflection { display: none; margin-top: 16px; background: rgba(255,255,255,0.08); border-left: 3px solid #A8D5B5; padding: 14px 18px; border-radius: 0 8px 8px 0; font-size: 14px; color: rgba(255,255,255,0.85); line-height: 1.65; }
+    .ref-reflection.open { display: block; }
+    .ref-reflection strong { color: #A8D5B5; display: block; margin-bottom: 4px; }
+
+    .synthesis { background: var(--primary-pale); border-radius: 12px; padding: 40px; margin-top: 60px; text-align: center; }
+    .synthesis h2 { font-size: 1.7rem; margin-bottom: 14px; }
+    .synthesis p { color: var(--ink-mid); max-width: 620px; margin: 0 auto 16px; }
+    .synthesis .big-quote { font-family: 'Playfair Display', serif; font-size: 1.2rem; font-style: italic; color: var(--primary); max-width: 600px; margin: 20px auto 0; line-height: 1.6; }
+
+    /* REFERÊNCIAS */
+    .references-section {
+      background: var(--surface); border-top: 2px solid var(--border);
+      padding: 48px 40px 40px; margin-top: 0;
+    }
+    .references-section .ref-header {
+      max-width: 860px; margin: 0 auto 28px;
+    }
+    .references-section .ref-header .sec-label { margin-bottom: 8px; }
+    .references-section h2 { font-size: 1.3rem; margin-bottom: 4px; }
+    .references-section .ref-note {
+      font-size: 13px; color: var(--ink-soft); font-style: italic; margin-bottom: 0;
+    }
+    .ref-list {
+      max-width: 860px; margin: 0 auto;
+      list-style: none; counter-reset: ref-counter;
+      display: flex; flex-direction: column; gap: 0;
+    }
+    .ref-list li {
+      counter-increment: ref-counter;
+      display: grid; grid-template-columns: 32px 1fr;
+      gap: 8px; padding: 14px 0;
+      border-bottom: 1px solid var(--border); font-size: 14px;
+      line-height: 1.65; color: var(--ink-mid);
+    }
+    .ref-list li:last-child { border-bottom: none; }
+    .ref-list li::before {
+      content: counter(ref-counter) ".";
+      font-weight: 700; color: var(--primary);
+      font-size: 13px; padding-top: 1px;
+    }
+    .ref-list .ref-tag {
+      display: inline-block; font-size: 10px; font-weight: 700;
+      letter-spacing: 0.1em; text-transform: uppercase;
+      background: var(--primary-pale); color: var(--primary);
+      padding: 2px 8px; border-radius: 3px; margin-left: 8px;
+      vertical-align: middle; white-space: nowrap;
+    }
+    .ref-list .ref-doi {
+      display: block; font-size: 12px; color: var(--ink-muted);
+      margin-top: 3px; word-break: break-all;
+    }
+    .inst-footer { border-top: 1px solid var(--border); padding: 22px 40px; text-align: center; font-size: 12px; color: var(--ink-soft); background: var(--surface); }
+
+    @media (max-width: 600px) {
+      .inst-header { padding: 12px 20px; }
+      .hero { padding: 52px 24px 44px; }
+      main { padding: 0 20px 60px; }
+      .quiz-section, .reflect-section { padding: 28px 22px; }
+    }
+  </style>
+</head>
+<body>
+
+<header class="inst-header">
+  <div class="header-id">G10 · Telemonitoramento de Feridas Crônicas · UFPel</div>
+  <img src="img/logos-g10-ufpel.png" alt="Logos Amor-à-Pele e PET-Saúde Digital G10 – UFPel" style="max-height:48px;width:auto;display:block;">
+</header>
+
+<div class="hero">
+  <div class="hero-inner">
+    <span class="hero-tag">Tomada de Decisão Clínica · IA · Intuição · Visão Sistêmica</span>
+    <h1>A <em>intuição</em> que a IA não tem<br>— e o <em>sistema</em> que ela não vê</h1>
+    <p class="sub">Por que dados e algoritmos nunca substituirão o julgamento clínico — e o que o pensamento sistêmico muda para enfermeiros, médicos e engenheiros de produção em saúde.</p>
+    <div class="hero-meta">
+      <span><strong>Público:</strong> Enfermagem · Medicina · Engenharia de Produção</span>
+      <span><strong>Tema:</strong> Julgamento Clínico, IA e Pensamento Sistêmico</span>
+      <span><strong>Abril de 2026</strong></span>
+    </div>
+  </div>
+</div>
+
+<main>
+
+  <section>
+    <div class="sec-label">O problema que ninguém vê</div>
+    <h2>Vivemos afogados em dados — e com fome de julgamento</h2>
+    <p>Uma ferida crônica gera registros fotográficos, medidas de área, índices de exsudato, histórico glicêmico, scores de dor. Hoje, algoritmos classificam tudo isso em segundos. Sistemas de IA detectam sinais de infecção antes que o olho humano perceba a mudança de cor. Isso é extraordinário.</p>
+    <p>E ainda assim — algo escapa.</p>
+    <p>O paciente que chega quieto demais. A ferida que "melhorou nos números" mas que algo no cheiro, na textura, na expressão do cuidador diz que <em>não está bem</em>. A decisão de desbridar agora ou esperar 48 horas — uma escolha que nenhum dashboard fará por você.</p>
+    <div class="pq">
+      <p>"O desafio no mundo de hoje não é a falta de informação, mas o julgamento para usá-la."</p>
+      <cite>— Frank, Magnone &amp; Netzer, <em>Decisions Over Decimals</em> (2022)</cite>
+    </div>
+    <p>Dados confortam com a ilusão de certeza — mas raramente contam a história completa. E quando se trata de feridas crônicas, revisões sistemáticas mostram que grande parte das decisões terapêuticas ainda depende, em última instância, da experiência e do julgamento do profissional.</p>
+  </section>
+
+  <section>
+    <div class="sec-label">O que a IA faz — e o que ela não alcança</div>
+    <h2>A máquina processa. O profissional compreende.</h2>
+
+    <figure>
+      <img src="img/ia-vs-clinico.png" alt="Diagrama comparativo: O que a IA faz versus O que o clínico faz" style="width:100%;border-radius:10px;display:block;">
+      <figcaption>Figura 1 — IA e clínico não competem: ocupam espaços complementares e insubstituíveis na decisão.</figcaption>
+    </figure>
+
+    <div class="grid-2">
+      <div class="card">
+        <div class="card-icon">🤖</div>
+        <h4>A IA é excelente para…</h4>
+        <p>Reconhecer padrões em imagens, cruzar grandes volumes de dados, sugerir protocolos baseados em evidência, alertar desvios em tempo real e antecipar riscos com base em histórico.</p>
+      </div>
+      <div class="card">
+        <div class="card-icon">🧠</div>
+        <h4>A IA não consegue…</h4>
+        <p>Sentir o contexto do paciente, integrar o que não foi dito, ajustar a decisão ao que não está no prontuário, perceber propriedades emergentes do sistema de cuidado — e jamais terá intuição construída pela experiência vivida.</p>
+      </div>
+    </div>
+
+    <div class="callout">
+      <div class="callout-title">⚠️ O risco real</div>
+      <p>O maior perigo não é a IA errar — é o profissional parar de pensar porque a IA disse algo. Dependência acrítica de sistemas automatizados é a armadilha que a formação em saúde precisa combater ativamente.</p>
+    </div>
+  </section>
+
+  <section>
+    <div class="sec-label">Intuição não é achismo</div>
+    <h2>Intuição é experiência acelerada</h2>
+    <p>Quando um enfermeiro experiente entra num quarto e sente que algo não está certo — antes de olhar qualquer monitor — isso não é misticismo. É o reconhecimento ultrarrápido de padrões acumulados em centenas de situações semelhantes. A pesquisadora Patricia Benner (1984) descrevia: no processo de decisão por intuição, a escolha emerge de um julgamento que — embora não seja linear — está diretamente relacionado ao grau de experiência clínica.</p>
+
+    <figure>
+      <img src="img/continuum-cognitivo.png" alt="Continuum cognitivo de Hamm: do polo analítico ao polo intuitivo" style="width:100%;border-radius:10px;display:block;">
+      <figcaption>Figura 2 — O continuum cognitivo de Hamm (1987): toda decisão clínica real transita entre esses polos conforme tempo, dados e experiência disponíveis.</figcaption>
+    </figure>
+
+    <h3>Um exemplo concreto de ferida crônica</h3>
+    <p>Dois pacientes com úlcera venosa idêntica nas métricas. A IA recomenda o mesmo protocolo. Mas o enfermeiro percebe que o Paciente A chegou hoje cabisbaixo, a cuidadora estava tensa, havia algo diferente no odor. Nenhum desses dados está no sistema. A decisão — intensificar monitoramento, acionar assistência social, antecipar retorno — nasce de uma leitura que não cabe em nenhum campo de formulário.</p>
+
+    <div class="pq">
+      <p>"Falhamos mais quando resolvemos o problema errado do que quando erramos a solução do problema certo."</p>
+      <cite>— Russell Ackoff — citado em <em>Decisions Over Decimals</em></cite>
+    </div>
+  </section>
+
+  <section>
+    <div class="sec-label">A terceira competência essencial</div>
+    <h2>Pensar o sistema: a ferida que a IA nunca vê inteira</h2>
+
+    <p>Há uma competência que vai além da intuição e além do dado — e que está no coração do trabalho do G10: a capacidade de enxergar o <strong>sistema</strong>. Não a ferida isolada. Não o protocolo isolado. O paciente inserido numa rede de relações, contextos, fluxos de informação e mecanismos de retroalimentação que determinam se a cicatrização vai acontecer ou não.</p>
+    <p>Pensamento sistêmico não é "pensar grande" nem holismo vago. Como definido nos materiais do próprio G10, adaptados de Gareth Morgan e Donella Meadows: é a abordagem que busca compreender fenômenos a partir das <em>relações, estruturas e padrões de organização do todo</em> — e não apenas pelo comportamento isolado de suas partes. Ela inicia na análise, mas não para nela.</p>
+
+    <figure>
+      <img src="img/sistema-ferida-cronica.png" alt="A ferida crônica como sistema: camadas de fatores biológicos, de cuidado e contexto sistêmico" style="width:100%;border-radius:10px;display:block;">
+      <figcaption>Figura 3 — A ferida crônica como sistema: o que determina a cicatrização raramente está apenas na ferida.</figcaption>
+    </figure>
+
+    <h3>Os pilares na prática clínica</h3>
+    <ul class="pillar-list">
+      <li>
+        <span class="pillar-num">1</span>
+        <div><strong>Contexto antes da parte</strong><span>Nenhuma ferida faz sentido fora do sistema ao qual pertence. Glicemia descontrolada, isolamento social, cuidador sobrecarregado — são parte do sistema que decide se a ferida fecha.</span></div>
+      </li>
+      <li>
+        <span class="pillar-num">2</span>
+        <div><strong>Relações antes de objetos</strong><span>Importa mais como os elementos interagem do que o que eles são. A relação entre enfermeiro, paciente e cuidador é frequentemente mais preditiva do desfecho do que qualquer métrica isolada.</span></div>
+      </li>
+      <li>
+        <span class="pillar-num">3</span>
+        <div><strong>Estrutura gera padrões — eventos são sintomas</strong><span>"Por que a ferida desse paciente nunca fecha?" raramente tem resposta no evento (o curativo errado). A resposta está na estrutura: o sistema de cuidado que produz aquele resultado repetidamente.</span></div>
+      </li>
+      <li>
+        <span class="pillar-num">4</span>
+        <div><strong>Feedback e não linearidade</strong><span>Causa e efeito raramente são proporcionais ou imediatos. Uma pequena mudança no suporte familiar pode ter efeito maior na cicatrização do que qualquer ajuste técnico no protocolo.</span></div>
+      </li>
+      <li>
+        <span class="pillar-num">5</span>
+        <div><strong>Emergência: a função não está no elemento</strong><span>A cicatrização não está no curativo. Está na organização do sistema de cuidado. Restaurar condições — não forçar partes — é a lógica biomimética que o G10 aplica à clínica.</span></div>
+      </li>
+    </ul>
+
+    <div class="emergence-flow">
+      <div class="flow-title">Da biologia ao cuidado — a lógica da emergência</div>
+      <div class="flow-steps">
+        <div class="flow-step">Célula <span class="flow-label">(componente isolado)</span></div>
+        <div class="flow-arrow">↓ interações</div>
+        <div class="flow-step">Tecido <span class="flow-label">(organização)</span></div>
+        <div class="flow-arrow">↓ integração</div>
+        <div class="flow-step">Órgão <span class="flow-label">(função)</span></div>
+        <div class="flow-arrow">↓ retroalimentação + tempo</div>
+        <div class="flow-step hl">Cicatrização <span class="flow-label">(propriedade emergente do sistema)</span></div>
+      </div>
+      <p class="emergence-insight">"A complexidade não vem do tamanho — vem da organização."<br>A cicatrização emerge quando o sistema de cuidado está estruturado para permitir que ela aconteça.</p>
+    </div>
+
+    <h3>A pergunta que muda tudo</h3>
+    <p>A biomimética — e o pensamento sistêmico de onde ela deriva — não pergunta "o que posso adicionar?", nem "como forço o sistema?". Pergunta: <strong>"o que foi perdido quando parou de funcionar?"</strong></p>
+    <p>Para o profissional de feridas crônicas: a ferida não cicatriza porque falta um curativo melhor — ou porque o sistema de cuidado perdeu alguma condição essencial? Falta adesão? Apoio familiar? Controle metabólico? O profissional com visão sistêmica não trata o sintoma isolado: investiga a estrutura que produz aquele padrão.</p>
+
+    <div class="callout">
+      <div class="callout-title">📐 Para a Engenharia de Produção</div>
+      <p>Um protocolo pode estar perfeito no papel e falhar porque o sistema humano ao redor dele não foi considerado. Quem alimenta os dados? Com que frequência? O que acontece quando há atraso? O fluxo de registro é compatível com a rotina real do cuidador? Otimizar uma parte sem considerar as interações é a receita do retrabalho — e de efeitos emergentes indesejados.</p>
+    </div>
+  </section>
+
+  <section>
+    <div class="sec-label">A síntese que transforma</div>
+    <h2>Dados + intuição + visão sistêmica: o profissional do século 21</h2>
+    <p>A proposta que pesquisadores de Columbia, Google e Amazon desenvolveram — a <em>Inteligência Quantitativa (QI)</em> — é o que bons clínicos sempre fizeram: usar os dados para afiar a pergunta certa, o julgamento para interpretar o que os dados não dizem, e a visão sistêmica para entender por que o padrão existe.</p>
+
+    <div class="grid-2">
+      <div class="card">
+        <div class="card-icon">🎯</div>
+        <h4>1. Enquadre o problema antes dos dados</h4>
+        <p>Antes de olhar os indicadores, pergunte: o que preciso realmente saber? Qual é a questão central deste paciente — e do sistema de cuidado ao redor dele — hoje?</p>
+      </div>
+      <div class="card">
+        <div class="card-icon">🔍</div>
+        <h4>2. Interrogue o dado</h4>
+        <p>A média esconde outliers. O dado de ontem reflete hoje? Quem coletou e como? O que está faltando neste registro? Um bom clínico é um interrogador feroz dos próprios dados.</p>
+      </div>
+      <div class="card">
+        <div class="card-icon">🔗</div>
+        <h4>3. Veja relações, não só elementos</h4>
+        <p>O que está interagindo com o que? Qual feedback explica esse padrão? A ferida que não fecha é um evento — qual estrutura a produz?</p>
+      </div>
+      <div class="card">
+        <div class="card-icon">✅</div>
+        <h4>4. Decida — mesmo sem certeza</h4>
+        <p>"Foque em estar vagamente certo, não precisamente errado." Melhor dado disponível + melhor julgamento disponível + leitura do sistema: isso é a decisão clínica real.</p>
+      </div>
+    </div>
+  </section>
+
+  <hr class="divider">
+
+  <!-- QUIZ -->
+  <section class="quiz-section" id="quiz">
+    <span class="quiz-badge">🧩 Quiz</span>
+    <div class="quiz-title">Teste sua compreensão</div>
+    <p class="quiz-intro">Três perguntas de múltipla escolha situadas no contexto real do telemonitoramento. Leia com atenção — nem sempre a resposta óbvia é a correta.</p>
+    <div class="quiz-progress">
+      <div class="prog-dot" id="dot-0"></div>
+      <div class="prog-dot" id="dot-1"></div>
+      <div class="prog-dot" id="dot-2"></div>
+    </div>
+
+    <div class="question-block" id="q0">
+      <div class="q-number">Pergunta 1 de 3</div>
+      <div class="q-text">A IA do sistema de telemonitoramento classifica uma ferida como "em cicatrização, risco baixo". O enfermeiro responsável visita o paciente e sente que algo não está certo — mas os dados do sistema estão todos normais. O que deve fazer?</div>
+      <div class="options">
+        <button class="option-btn"><span class="opt-letter">A</span><span>Confiar na IA, pois ela processou mais dados do que o enfermeiro consegue analisar manualmente.</span></button>
+        <button class="option-btn"><span class="opt-letter">B</span><span>Investigar o que gerou o desconforto — conversar com paciente e cuidador, reavaliar o contexto do sistema de cuidado — antes de fechar a conduta.</span></button>
+        <button class="option-btn"><span class="opt-letter">C</span><span>Registrar a sensação no prontuário e aguardar a próxima consulta.</span></button>
+        <button class="option-btn"><span class="opt-letter">D</span><span>Solicitar novos exames imediatamente, pois o sistema pode estar com erro técnico.</span></button>
+      </div>
+      <div class="feedback-box" id="fb-0"></div>
+    </div>
+
+    <div class="question-block" id="q1">
+      <div class="q-number">Pergunta 2 de 3</div>
+      <div class="q-text">Um paciente com úlcera venosa tratada há 6 meses nunca apresenta evolução positiva, apesar de seguir o protocolo. Aplicando o pensamento sistêmico, qual é a primeira pergunta que o profissional deve fazer?</div>
+      <div class="options">
+        <button class="option-btn"><span class="opt-letter">A</span><span>O paciente está usando o curativo correto?</span></button>
+        <button class="option-btn"><span class="opt-letter">B</span><span>O protocolo precisa ser atualizado para um produto mais moderno?</span></button>
+        <button class="option-btn"><span class="opt-letter">C</span><span>Qual estrutura do sistema de cuidado está produzindo esse padrão? O que foi perdido para que o sistema parasse de funcionar?</span></button>
+        <button class="option-btn"><span class="opt-letter">D</span><span>O serviço de telemonitoramento está registrando os dados corretamente?</span></button>
+      </div>
+      <div class="feedback-box" id="fb-1"></div>
+    </div>
+
+    <div class="question-block" id="q2">
+      <div class="q-number">Pergunta 3 de 3</div>
+      <div class="q-text">Um engenheiro de produção redesenha o fluxo de telemonitoramento para reduzir o tempo entre o registro fotográfico e a análise da IA — e o sistema fica tecnicamente mais rápido. Porém, as não conformidades nos registros dos cuidadores aumentam. Qual é a leitura sistêmica correta?</div>
+      <div class="options">
+        <button class="option-btn"><span class="opt-letter">A</span><span>O problema é técnico: os cuidadores precisam de um celular melhor.</span></button>
+        <button class="option-btn"><span class="opt-letter">B</span><span>A otimização de uma parte do sistema (velocidade de análise) ignorou as interações com outra parte (rotina do cuidador), gerando um efeito emergente negativo não previsto.</span></button>
+        <button class="option-btn"><span class="opt-letter">C</span><span>O fluxo deve ser revertido ao modelo anterior, pois inovações em saúde sempre geram resistência.</span></button>
+        <button class="option-btn"><span class="opt-letter">D</span><span>Os dados de não conformidade são normais num período de adaptação e devem ser ignorados por 3 meses.</span></button>
+      </div>
+      <div class="feedback-box" id="fb-2"></div>
+    </div>
+
+    <div class="quiz-score" id="quiz-score">
+      <div class="score-num" id="score-num">0/3</div>
+      <div class="score-label">acertos no quiz</div>
+      <div class="score-msg" id="score-msg"></div>
+      <button class="quiz-retry" onclick="resetQuiz()">↺ Tentar novamente</button>
+    </div>
+  </section>
+
+  <!-- REFLEXÃO -->
+  <section class="reflect-section">
+    <span class="reflect-badge">🔦 Para reflexão</span>
+    <div class="reflect-title">Três perguntas para pensar de verdade</div>
+    <p class="reflect-intro">Não há resposta certa aqui. O objetivo é que você questione o que parece óbvio. Leia, pense — depois veja o ponto de reflexão.</p>
+
+    <div class="ref-card">
+      <div class="ref-num">Questão 01</div>
+      <div class="ref-question">Se uma IA tem 95% de acurácia no diagnóstico de infecção em feridas crônicas e um enfermeiro experiente acerta 80% — deveríamos eliminar o julgamento humano do processo?</div>
+      <p class="ref-context">Pense: o que está nos 5% de erro da IA? A IA erra de forma aleatória — ou sistemática? Quem paga o preço quando ela erra? E o que acontece com a responsabilidade profissional nesse cenário?</p>
+      <button class="ref-toggle" onclick="toggleRef(this)">💭 Ver ponto de reflexão</button>
+      <div class="ref-reflection">
+        <strong>Ponto de reflexão</strong>
+        5% de erro em saúde não é um número pequeno — é uma vida em cada 20 casos. Mais importante: a IA erra de forma sistemática (viés algorítmico), enquanto humanos erram de forma distribuída. Um modelo treinado majoritariamente em populações brancas pode ter acurácia menor em pele negra — exatamente a população mais vulnerável. Isso é uma propriedade emergente do sistema de dados que alimentou o modelo. Além disso, quem assina a conduta? A responsabilidade ética e legal não pode ser delegada a um algoritmo. O 95% da máquina e o 80% humano, juntos com visão sistêmica, superam qualquer um isolado.
+      </div>
+    </div>
+
+    <div class="ref-card">
+      <div class="ref-num">Questão 02</div>
+      <div class="ref-question">Uma ferida crônica em dois pacientes com perfis clínicos idênticos evolui de forma completamente diferente. O sistema de IA não consegue explicar a diferença. Que tipo de dado ou leitura você buscaria para entender o que o algoritmo não vê?</div>
+      <p class="ref-context">Pense nas camadas do sistema: o que está além dos sensores e prontuários? Que interações entre elementos — família, trabalho, emoções, crenças — poderiam estar produzindo desfechos tão distintos?</p>
+      <button class="ref-toggle" onclick="toggleRef(this)">💭 Ver ponto de reflexão</button>
+      <div class="ref-reflection">
+        <strong>Ponto de reflexão</strong>
+        A diferença raramente está no componente — está na organização do sistema ao redor do paciente. Um tem cuidador presente e comprometido; o outro cuida de si mesmo. Um tem suporte emocional; o outro atravessa um luto. Um tem acesso fácil ao serviço; o outro depende de transporte irregular. Nenhum desses dados está nos sensores. O profissional com visão sistêmica sabe perguntar: "O que está estruturando esse padrão diferente?" A resposta exige escuta, presença e julgamento — não mais dados brutos.
+      </div>
+    </div>
+
+    <div class="ref-card">
+      <div class="ref-num">Questão 03</div>
+      <div class="ref-question">No telemonitoramento, o profissional só vê fotos e dados em tela. Como cultivar intuição clínica e visão sistêmica num ambiente onde a presença é mediada por tecnologia?</div>
+      <p class="ref-context">O que você perde quando tira o paciente da presença física? O que, surpreendentemente, pode ganhar? Que novas "pistas sistêmicas" o telemonitoramento oferece — e que novas cegueiras ele cria?</p>
+      <button class="ref-toggle" onclick="toggleRef(this)">💭 Ver ponto de reflexão</button>
+      <div class="ref-reflection">
+        <strong>Ponto de reflexão</strong>
+        O telemonitoramento não elimina a intuição nem a visão sistêmica — ele as desloca. Perde-se o olfato, o toque, a leitura da postura corporal. Mas ganha-se longitudinalidade: você vê o mesmo paciente ao longo do tempo, nota quando ele demora para responder o questionário, quando o cuidador começa a enviar fotos fora do horário, quando o ângulo muda e sugere dificuldade de manejo. São pistas do sistema — padrões de comportamento que revelam algo sobre a estrutura de cuidado. O profissional do telemonitoramento precisa aprender a ler o que esses dados mediados revelam sobre o sistema todo — e o que eles escondem.
+      </div>
+    </div>
+  </section>
+
+  <section class="synthesis">
+    <div class="sec-label" style="justify-content:center;">O que fica</div>
+    <h2>Dados informam. Intuição percebe. Visão sistêmica compreende.</h2>
+    <p>A IA é uma ferramenta extraordinária — e vale pelo uso que fazemos dela. O profissional que sabe interrogar dados, perceber o que não está no sensor, e enxergar o sistema que produz o padrão é insubstituível. Não apesar da tecnologia — graças a ela, porque ela libera sua atenção para o que só você pode fazer.</p>
+    <div class="big-quote">"Decisores bem-sucedidos equilibram dados, experiência e intuição. Resistem a se embriagar de informação — e enxergam o sistema por trás dos números."</div>
+  </section>
+
+</main>
+
+<section class="references-section">
+  <div class="ref-header">
+    <div class="sec-label">Referências</div>
+    <h2>Fontes e bibliografia</h2>
+    <p class="ref-note">Referências em formato ABNT (NBR 6023:2018). DOIs verificados em abril de 2026.</p>
+  </div>
+  <ol class="ref-list">
+
+    <li>
+      <div>
+        AKST, Daniel. In a data-led world, intuition still matters: a new book argues the best decision makers combine good data with their own good judgment.
+        <strong>strategy+business,</strong>
+        Nova York, 17 nov. 2022. Seção: Business books.
+        <span class="ref-tag">Artigo — fonte inspiradora</span>
+        <span class="ref-doi">Disponível em: https://www.strategy-business.com/article/In-a-data-led-world-intuition-still-matters. Acesso em: abr. 2026. Resenha do livro de Frank, Magnone &amp; Netzer (2022); texto-base que inspirou este infográfico.</span>
+      </div>
+    </li>
+
+    <li>
+      <div>
+        FRANK, Christopher J.; MAGNONE, Paul F.; NETZER, Oded.
+        <strong>Decisions over decimals: striking the balance between intuition and information.</strong>
+        Hoboken: John Wiley &amp; Sons, 2022. 256 p.
+        ISBN 978-1-119-89848-1.
+        <span class="ref-tag">Livro</span>
+        <span class="ref-doi">Citado como: Frank, Magnone &amp; Netzer (2022) — fonte principal do conceito de Inteligência Quantitativa (QI).</span>
+      </div>
+    </li>
+
+    <li>
+      <div>
+        BENNER, Patricia E.
+        <strong>From novice to expert: excellence and power in clinical nursing practice.</strong>
+        Menlo Park: Addison-Wesley, 1984. 284 p.
+        ISBN 978-0-201-00299-7.
+        <span class="ref-tag">Livro</span>
+        <span class="ref-doi">Citado como: Benner (1984) — modelo Dreyfus de aquisição de habilidades e processo de decisão por intuição clínica.</span>
+      </div>
+    </li>
+
+    <li>
+      <div>
+        HAMM, Robert M. Clinical intuition and clinical analysis: expertise and the cognitive continuum.
+        In: DOWIE, Jack; ELSTEIN, Arthur S. (ed.).
+        <strong>Professional judgment: a reader in clinical decision making.</strong>
+        Cambridge: Cambridge University Press, 1988. p. 78–109.
+        <span class="ref-tag">Capítulo</span>
+        <span class="ref-doi">Citado como: Hamm (1988) — continuum cognitivo entre decisão analítica e intuitiva. Nota: obra frequentemente referenciada com ano 1987 (data do manuscrito original), porém publicada em 1988.</span>
+      </div>
+    </li>
+
+    <li>
+      <div>
+        MORGAN, Gareth. Paradigms, metaphors, and puzzle solving in organization theory.
+        <strong>Administrative Science Quarterly,</strong>
+        Ithaca, v. 25, n. 4, p. 605–622, dez. 1980.
+        <span class="ref-tag">Artigo</span>
+        <span class="ref-doi">Disponível em: https://www.jstor.org/stable/2392283. Acesso em: abr. 2026.</span>
+      </div>
+    </li>
+
+    <li>
+      <div>
+        MEADOWS, Donella H.
+        <strong>Thinking in systems: a primer.</strong>
+        White River Junction: Chelsea Green Publishing, 2008. 218 p.
+        Ed. Diana Wright. ISBN 978-1-603-58055-7.
+        <span class="ref-tag">Livro</span>
+        <span class="ref-doi">Citado como: Meadows (2008) — fundamentos do pensamento sistêmico: estoques, fluxos, retroalimentação e propriedades emergentes.</span>
+      </div>
+    </li>
+
+    <li>
+      <div>
+        SAMURIWO, Ray; HANNIGAN, Ben. Wounds in mental health care: the archetype of a 'wicked problem of many hands' that needs to be addressed?
+        <strong>International Journal of Mental Health,</strong>
+        v. 49, n. 1, p. 81–96, 2020.
+        <span class="ref-tag">Artigo</span>
+        <span class="ref-doi">DOI: https://doi.org/10.1080/00207411.2019.1706702</span>
+      </div>
+    </li>
+
+    <li>
+      <div>
+        SAMURIWO, Ray; HANNIGAN, Ben. Wounds and mental health care: system thinking.
+        <strong>Mental Health Review Journal,</strong>
+        v. 24, n. 4, p. 298–305, 2019.
+        <span class="ref-tag">Artigo</span>
+        <span class="ref-doi">DOI: https://doi.org/10.1108/MHRJ-03-2019-0007</span>
+      </div>
+    </li>
+
+    <li>
+      <div>
+        SCHAARUP, Clara; PAPE-HAUGAARD, Louise Bilenberg; HEJLESEN, Ole Kristian. Models used in clinical decision support systems supporting healthcare professionals treating chronic wounds: systematic literature review.
+        <strong>JMIR Diabetes,</strong>
+        v. 3, n. 2, p. e11, 21 jun. 2018.
+        <span class="ref-tag">Artigo</span>
+        <span class="ref-doi">DOI: https://doi.org/10.2196/diabetes.8316 · PMID: 30291078 · PMCID: PMC6238865</span>
+      </div>
+    </li>
+
+    <li>
+      <div>
+        G10 TELEMONITORAMENTO DE FERIDAS CRÔNICAS — UFPel.
+        <strong>Biomimética e pensamento sistêmico: fundamentos para o trabalho da equipe.</strong>
+        Pelotas: PET-Saúde Digital / Amor à Pele, 2026. Apresentação de slides (material didático interno).
+        <span class="ref-tag">Material interno</span>
+        <span class="ref-doi">Adaptado de Morgan (1980) e dos princípios da biomimética de Janine Benyus. Texto de referência: Tatiana Sampaio (UFRJ).</span>
+      </div>
+    </li>
+
+  </ol>
+</section>
+
+<footer class="inst-footer">
+  <p>Infográfico elaborado pelos projetos Amor à Pele e PET-Saúde Digital G10 Feridas Crônicas, UFPel, em Abril de 2026.</p>
+</footer>
+
+<script>
+  const CORRECT = [1, 2, 1];
+  const FEEDBACKS = [
+    {
+      ok: "✅ Correto! A intuição clínica é um dado legítimo. O desconforto do profissional experiente é reconhecimento de padrões sistêmicos que os sensores ainda não capturaram. Ignorá-lo seria um erro clínico e ético.",
+      no: "❌ Atenção. Confiar cegamente na IA sem investigar o sinal clínico humano é exatamente o risco que a formação precisa combater. A IA processa o que foi registrado; o profissional percebe o que o sistema revela além dos dados."
+    },
+    {
+      ok: "✅ Excelente! Essa é a pergunta sistêmica fundamental: eventos são sintomas, estruturas geram padrões. A ferida que não cicatriza por 6 meses é o resultado de uma estrutura que precisa ser investigada. O que foi perdido para que o sistema parasse de funcionar?",
+      no: "❌ Atenção. Focar no curativo ou no protocolo é olhar para o componente, não para o sistema. O pensamento sistêmico pede: qual estrutura produz esse padrão repetidamente? A resposta raramente está na parte — está nas interações."
+    },
+    {
+      ok: "✅ Perfeito! Otimizar uma parte sem considerar as interações com o resto do sistema gera efeitos emergentes não previstos. A propriedade emergente aqui foi negativa — e só é compreensível quando se analisa o sistema como um todo.",
+      no: "❌ Reveja o raciocínio. O problema é sistêmico: a mudança no fluxo alterou as interações entre componentes do sistema de cuidado, gerando um resultado emergente inesperado porque apenas uma parte foi otimizada."
+    }
+  ];
+
+  let answered = [null, null, null];
+  let score = 0;
+
+  function handleAnswer(qIdx, optIdx) {
+    if (answered[qIdx] !== null) return;
+    answered[qIdx] = optIdx;
+    const isCorrect = (optIdx === CORRECT[qIdx]);
+    if (isCorrect) score++;
+
+    const block = document.getElementById('q' + qIdx);
+    const btns = block.querySelectorAll('.option-btn');
+    btns.forEach((btn, i) => {
+      btn.classList.add('disabled');
+      if (i === CORRECT[qIdx]) btn.classList.add('correct');
+    });
+    if (!isCorrect) btns[optIdx].classList.add('wrong');
+
+    const fb = document.getElementById('fb-' + qIdx);
+    fb.classList.add('show');
+    fb.classList.add(isCorrect ? 'fb-correct' : 'fb-wrong');
+    const msg = isCorrect ? FEEDBACKS[qIdx].ok : FEEDBACKS[qIdx].no;
+    fb.innerHTML = '<strong>' + msg.substring(0, 2) + '</strong>' + msg.substring(2).trim();
+
+    document.getElementById('dot-' + qIdx).classList.add('answered');
+    if (answered.every(a => a !== null)) showScore();
+  }
+
+  function showScore() {
+    const el = document.getElementById('quiz-score');
+    el.classList.add('show');
+    document.getElementById('score-num').textContent = score + '/3';
+    const msgs = [
+      "Continue estudando — o raciocínio sistêmico se constrói com reflexão constante.",
+      "Bom início! Releia as seções sobre pensamento sistêmico e intuição clínica.",
+      "Muito bem! Você compreende a complementaridade entre dados, julgamento e visão sistêmica.",
+      "Excelente! Você está pronto para questionar qualquer algoritmo — e qualquer protocolo — com fundamento."
+    ];
+    document.getElementById('score-msg').textContent = msgs[score];
+  }
+
+  function resetQuiz() {
+    answered = [null, null, null]; score = 0;
+    for (let i = 0; i < 3; i++) {
+      const block = document.getElementById('q' + i);
+      block.querySelectorAll('.option-btn').forEach(btn => { btn.className = 'option-btn'; });
+      bindQ(i);
+      const fb = document.getElementById('fb-' + i);
+      fb.className = 'feedback-box'; fb.innerHTML = '';
+      document.getElementById('dot-' + i).classList.remove('answered');
+    }
+    document.getElementById('quiz-score').classList.remove('show');
+  }
+
+  function bindQ(i) {
+    document.getElementById('q' + i).querySelectorAll('.option-btn').forEach((btn, j) => {
+      btn.onclick = () => handleAnswer(i, j);
+    });
+  }
+
+  function toggleRef(btn) {
+    const ref = btn.nextElementSibling;
+    ref.classList.toggle('open');
+    btn.textContent = ref.classList.contains('open') ? '▲ Fechar reflexão' : '💭 Ver ponto de reflexão';
+  }
+
+  window.addEventListener('DOMContentLoaded', () => { for (let i = 0; i < 3; i++) bindQ(i); });
+</script>
+</body>
+</html>
