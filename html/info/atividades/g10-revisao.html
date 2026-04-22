@@ -441,7 +441,7 @@ function renderList() {
       chips = '<span style="font-size:10px;color:var(--muted);font-style:italic">Sem autores</span>';
     }
     var active = w.id === activeId ? ' active' : '';
-    html += '<div class="witem' + active + '" onclick="selectWork('' + w.id + '')" style="animation:fadeIn .18s ' + (i*0.025) + 's both">' +
+    html += '<div class="witem' + active + '" onclick="selectWork(\'' + w.id + '\')" style="animation:fadeIn .18s ' + (i*0.025) + 's both">' +
       '<div class="sdot ' + dotCls + '"></div>' +
       '<div class="witem-top">' +
         '<span class="code-tag">#' + w.id + '</span>' +
@@ -581,19 +581,7 @@ function confirmSend() {
   for (var i = 0; i < boxes.length; i++) checked.push(boxes[i].value);
   if (!checked.length) { alert('Selecione ao menos um destinatario.'); return; }
   if (isWa) {
-    var msg = 'Ola!
-
-Feedback G10 PET-Saude:
-
-Trabalho: ' + w.title + '
-Codigo: #' + w.id + ' - Fase ' + w.fase + '
-Status: ' + stLabel + '
-Data: ' + date + '
-
-Comentarios:
-' + comment + '
-
-Equipe G10 - PET-Saude UFPEL';
+    var msg = 'Ola!\n\nFeedback G10 PET-Saude:\n\nTrabalho: ' + w.title + '\nCodigo: #' + w.id + ' - Fase ' + w.fase + '\nStatus: ' + stLabel + '\nData: ' + date + '\n\nComentarios:\n' + comment + '\n\nEquipe G10 - PET-Saude UFPEL';
     for (var i = 0; i < checked.length; i++) {
       (function(num) {
         setTimeout(function() { window.open('https://wa.me/' + num + '?text=' + encodeURIComponent(msg), '_blank'); }, i * 700);
@@ -604,19 +592,7 @@ Equipe G10 - PET-Saude UFPEL';
     var emails = [];
     for (var i = 0; i < checked.length; i++) { if (EMAILS[checked[i]]) emails.push(EMAILS[checked[i]]); }
     var subj = encodeURIComponent('[G10 PET-Saude] Feedback: ' + w.title);
-    var body = encodeURIComponent('Ola!
-
-Feedback G10 PET-Saude:
-
-Trabalho: ' + w.title + '
-Codigo: #' + w.id + ' - Fase ' + w.fase + '
-Status: ' + stLabel + '
-Data: ' + date + '
-
-Comentarios:
-' + comment + '
-
-Equipe G10 - PET-Saude UFPEL');
+    var body = encodeURIComponent('Ola!\n\nFeedback G10 PET-Saude:\n\nTrabalho: ' + w.title + '\nCodigo: #' + w.id + ' - Fase ' + w.fase + '\nStatus: ' + stLabel + '\nData: ' + date + '\n\nComentarios:\n' + comment + '\n\nEquipe G10 - PET-Saude UFPEL');
     window.location.href = 'mailto:' + emails.join(',') + '?subject=' + subj + '&body=' + body;
     showToast('Cliente de e-mail aberto com ' + emails.length + ' destinatario(s).');
   }
