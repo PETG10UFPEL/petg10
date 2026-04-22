@@ -1,0 +1,1184 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>PET-Saúde UFPel | G10 – Operação </title>
+  <style>
+    :root{
+      --bg:#f6f8fb;
+      --card:#ffffff;
+      --text:#0f172a;
+      --muted:#475569;
+      --border:#e2e8f0;
+
+      /* cores inspiradas no logo */
+      --blue:#3b82c4;
+      --blue2:#1e3a8a;
+      --orange:#d4653b;
+
+      --shadow: 0 10px 30px rgba(15, 23, 42, .08);
+      --radius: 14px;
+    }
+    *{box-sizing:border-box}
+    body{
+      margin:0;
+      font-family: system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, "Helvetica Neue", Arial, "Noto Sans", sans-serif;
+      background: linear-gradient(180deg, rgba(59,130,196,.08), transparent 35%),
+                  linear-gradient(90deg, rgba(212,101,59,.06), transparent 45%),
+                  var(--bg);
+      color:var(--text);
+    }
+    .wrap{max-width:980px;margin:0 auto;padding:24px}
+    header{
+      display:flex; gap:18px; align-items:center;
+      background:var(--card);
+      border:1px solid var(--border);
+      border-radius:var(--radius);
+      padding:18px 18px;
+      box-shadow:var(--shadow);
+    }
+    header img{width:96px;height:96px;object-fit:contain;border-radius:12px}
+    .title h1{margin:0;font-size:1.25rem;line-height:1.2}
+    .title p{margin:.35rem 0 0;color:var(--muted)}
+    .badge{
+      display:inline-flex; align-items:center; gap:8px;
+      margin-top:8px;
+      font-size:.9rem;
+      color:#0b1220;
+      padding:6px 10px;
+      border-radius:999px;
+      background: linear-gradient(90deg, rgba(59,130,196,.18), rgba(212,101,59,.18));
+      border:1px solid rgba(59,130,196,.25);
+      width:fit-content;
+    }
+
+    .grid{
+      /* cards padrão: 2 colunas; itens com .span-2 ocupam a largura toda */
+      margin-top:18px;
+      display:grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap:14px;
+    }
+    @media (max-width: 780px){ .grid{ grid-template-columns: 1fr; } }
+    .span-2{grid-column: 1 / -1;}
+
+    .card{
+      background:var(--card);
+      border:1px solid var(--border);
+      border-radius:var(--radius);
+      box-shadow:var(--shadow);
+      padding:16px;
+      position:relative;
+      overflow:hidden;
+    }
+    .card:before{
+      content:"";
+      position:absolute;
+      inset:-2px -2px auto -2px;
+      height:4px;
+      background: linear-gradient(90deg, var(--blue), var(--orange), var(--blue2));
+      opacity:.95;
+    }
+    .card h2{margin:10px 0 6px;font-size:1.05rem}
+    .card p{margin:0 0 12px;color:var(--muted);font-size:.95rem}
+    .actions{display:flex;flex-wrap:wrap;gap:10px}
+    a.btn{
+      display:inline-flex; align-items:center; justify-content:center;
+      padding:10px 12px;
+      border-radius:12px;
+      border:1px solid var(--border);
+      text-decoration:none;
+      color:var(--text);
+      background:#fff;
+      font-weight:600;
+      transition: transform .06s ease, border-color .2s ease, box-shadow .2s ease;
+    }
+    a.btn:hover{
+      transform: translateY(-1px);
+      border-color: rgba(59,130,196,.35);
+      box-shadow: 0 10px 25px rgba(15,23,42,.10);
+    }
+    a.btn.primary{
+      background: linear-gradient(90deg, rgba(59,130,196,.16), rgba(212,101,59,.14));
+      border-color: rgba(59,130,196,.25);
+    }
+    .hint{
+      margin-top:16px;
+      color:var(--muted);
+      font-size:.92rem;
+      background: rgba(59,130,196,.06);
+      border:1px dashed rgba(59,130,196,.25);
+      border-radius:var(--radius);
+      padding:12px 14px;
+    }
+    footer{
+      margin:18px 0 6px;
+      color:var(--muted);
+      font-size:.85rem;
+      text-align:center;
+    }
+    code.k{
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+      font-size:.85em;
+      background: rgba(15,23,42,.06);
+      padding:2px 6px;
+      border-radius:8px;
+      border:1px solid rgba(15,23,42,.10);
+    }
+
+    /* ✅ AJUSTE DO IFRAME (SEM SUMIR COM O RESTO) */
+    .card iframe{
+      display:block;
+      width:100%;
+      height:80vh; /* ou 720px se preferir fixo */
+      border:0;
+    }
+    @media (max-width:780px){
+      .card iframe{ height:600px; }
+    }
+
+img {
+  max-width: 100%;
+  height: auto;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="wrap">
+    <header>
+      <img src="img\logo2.jpeg" alt="PET-Saúde UFPel – G10" style="width:120px;">
+      <div class="title">
+        <h1>PET-Saúde UFPel – Informação e Saúde Digital </h1>
+        <p><strong>G10</strong> · Telemonitoramento de Feridas Crônicas · Central operacional</p>
+        <!--<div class="badge">Uma página, cinco atalhos, zero desculpas</div>-->
+      </div>
+    </header>
+      <div class="card">
+        <span style="color: #800000;"><h2>Presença Semanal</h2></span>
+        <p>Registre sua presença semanal. Consulte suas presenças e faltas também aqui.</p>
+        <div class="actions">
+          <a class="btn primary" href="https://forms.gle/FgjWYvBwmU4urhaR8" target="_blank" rel="noopener">Registrar</a>
+          <a class="btn primary" href="javascript:void(0)" onclick="abrirVoz()" style="cursor:pointer;display:inline-flex;align-items:center;gap:6px;">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"/><path d="M19 10v2a7 7 0 0 1-14 0v-2"/><line x1="12" y1="19" x2="12" y2="23"/><line x1="8" y1="23" x2="16" y2="23"/></svg>
+            Registrar por Voz
+          </a>
+          <a class="btn primary" href="javascript:void(0)" onclick="alternarTabela()" style="cursor:pointer;">Consultar</a>
+        </div>
+
+        <div id="espelho-leitura" style="display:none;margin-top:15px;width:100%;overflow:hidden;border-radius:8px;border:1px solid #e0e0e0;padding:14px;">
+          <div id="consulta-status" style="color:#3b82c4;font-style:italic;font-size:.93rem;"></div>
+          <div id="consulta-resultado"></div>
+        </div>
+
+        <style>
+          .tabela-pres { width:100%; border-collapse:collapse; margin-top:12px; font-size:13px; font-family:sans-serif; }
+          .tabela-pres th, .tabela-pres td { border:1px solid #e2e8f0; padding:9px 11px; text-align:left; }
+          .tabela-pres th { background:#f0f5fb; font-weight:bold; color:#1f3b63; }
+          .tabela-pres tr:nth-child(even) td { background:#fafcff; }
+          .tabela-sec { margin-top:22px; }
+          .tabela-sec h3 { margin:0 0 6px; font-size:.97rem; color:#1f3b63; }
+        </style>
+
+
+
+    <section class="grid">
+      <div class="card">
+        <h2>Formulário de Acompanhamento de Pacientes</h2>
+        <p>Entrada padronizada de informações para acompanhamento (Google Forms).</p>
+        <div class="actions">
+          <a class="btn primary" href="https://docs.google.com/forms/d/e/1FAIpQLScKWMEI2d3jTdq4bmb51YBU_OhCFMZ-7_ZUKcoCtqqXTMi2iA/viewform" target="_blank" rel="noopener">Formulário</a>
+        </div>
+      </div>
+
+      <div class="card">
+        <h2>Casos Clínicos por Monitor</h2>
+        <p>Modelo para organizar casos clínicos por monitor (Google Docs).</p>
+        <div class="actions">
+          <a class="btn primary" href="https://docs.google.com/document/d/16ebyYsXrgiGqdDzoZU5Dr5bFX-qckbZPra2cmWWwfr4/edit?tab=t.0" target="_blank" rel="noopener">Modelo</a>
+        </div>
+      </div>
+
+    <div class="card">
+        <h2>Publicações</h2>
+        <p>Livros, Capítulos e Artigos elaborados </p>
+        <div class="actions">
+          <a class="btn primary" href="html\info\publica\publica.html" target="_blank" rel="noopener">Publica</a>
+        </div>
+      </div>
+
+      <div class="card">
+        <h2>Planejamento de Posts</h2>
+        <p>Planejamento dos posts e Instagram do G10.</p>
+        <div class="actions">
+          <a class="btn" href="https://docs.google.com/spreadsheets/d/1cOY6WQshQ0fB3iJjJjWonBm5_sLYTgcCfVesYj8EhYg/edit?usp=sharing" target="_blank" rel="noopener">Planeja Insta</a>
+          <a class="btn primary" href="https://www.instagram.com/g10petsaude/" target="_blank" rel="noopener">Instagram</a>
+        </div>
+      </div>
+
+      <div class="card">
+        <h2>Protocolo de Presença</h2>
+        <p>Protocolo de presença G10.</p>
+        <div class="actions">
+          <a class="btn primary" href="protocolo.presenca.html" target="_blank" rel="noopener">Protocolo</a>
+        </div>
+      </div>
+
+      <div class="card">
+        <h2>E-projeto (UFPel)</h2>
+        <p>Acesso rápido ao sistema E-projeto da UFPel.</p>
+        <div class="actions">
+          <a class="btn primary" href="https://e-projeto.ufpel.edu.br/" target="_blank" rel="noopener">E-projeto</a>
+        </div>
+      </div>
+ <div class="card">
+        <h2>Sistemas</h2>
+        <p>Sistemas em Desenvolvimento pelo G10</p>
+        <div class="actions">
+          <a class="btn primary" href="sistemas.html" target="_blank" rel="noopener">Sistemas G10</a>
+        </div>
+      </div>
+
+      <div class="card">
+        <h2>Infográficos elaborado pelo G10 </h2>
+        <p>Infográficos elaborados</p>
+        <div class="actions">
+          <a class="btn primary" href="infograficos.html" target="_blank" rel="noopener">Infográficos</a>
+        </div>
+      </div>
+
+<div class="card">
+        <h2>Atividades</h2>
+        <p>Planilha Excel Operacional PET G10.</p>
+        <div class="actions">
+          <a class="btn primary" href="https://1drv.ms/x/c/08D9660237E4E0BA/IQC5lJvVOi4wSbG80cgLJVb0Adilc_nfEjUfAlntGZAHc9U?e=PxsM5U" target="_blank" rel="noopener">Planilha (OneDrive)</a>
+         <a class="btn primary" href="atividades.html" target="_blank" rel="noopener">Atividades Equipe</a>
+        </div>
+      </div>
+
+  <div class="card">
+        <h2>Apresentações & Divulgação  </h2>
+        <p>Material de apresentações e divulgação ao público, realizadas pela equipe</p>
+        <div class="actions">
+          <a class="btn primary" href="html/info/apresenta/material.html" target="_blank" rel="noopener">Material</a>
+        </div>
+      </div>
+
+<div class="card span-2">
+  <h2>Organização presencial 2026-1</h2>
+
+  <style>
+    .tabela-turnos-wrapper {
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+      margin-top: 10px;
+    }
+
+    .tabela-turnos table {
+      width: 100%;
+      min-width: 820px;
+      border-collapse: collapse;
+      margin-top: 0;
+    }
+
+    .tabela-turnos thead {
+      background: #e3edf9;
+    }
+
+    .tabela-turnos th {
+      padding: 12px;
+      text-align: left;
+      font-size: 0.9rem;
+      color: #1f3b63;
+      border-bottom: 2px solid #c5d4e8;
+      white-space: nowrap;
+    }
+
+    .tabela-turnos td {
+      padding: 12px;
+      vertical-align: top;
+      border-bottom: 1px solid #e6ecf3;
+      font-size: 0.9rem;
+    }
+
+    .tabela-turnos .turno {
+      font-weight: bold;
+      background: #f0f5fc;
+      color: #1f3b63;
+      width: 120px;
+      white-space: nowrap;
+    }
+
+    .tabela-turnos .bloco {
+      margin-bottom: 8px;
+    }
+
+    .tabela-turnos .bloco:last-child {
+      margin-bottom: 0;
+    }
+
+    .tabela-turnos .tag {
+      display: inline-block;
+      background: #dbe8fb;
+      color: #1f3b63;
+      padding: 2px 6px;
+      border-radius: 6px;
+      font-size: 0.75rem;
+      margin-bottom: 4px;
+    }
+
+    .cards-turnos {
+      display: none;
+      margin-top: 10px;
+      gap: 12px;
+    }
+
+    .cards-turnos .dia-card {
+      background: #f8fbff;
+      border: 1px solid #dbe6f2;
+      border-radius: 12px;
+      padding: 14px;
+      margin-bottom: 12px;
+    }
+
+    .cards-turnos .dia-card h3 {
+      margin: 0 0 12px;
+      font-size: 1rem;
+      color: #1f3b63;
+    }
+
+    .cards-turnos .turno-card {
+      border-top: 1px solid #e6ecf3;
+      padding-top: 10px;
+      margin-top: 10px;
+    }
+
+    .cards-turnos .turno-card:first-of-type {
+      border-top: 0;
+      padding-top: 0;
+      margin-top: 0;
+    }
+
+    .cards-turnos .turno-card strong.turno-titulo {
+      display: block;
+      color: #0f172a;
+      margin-bottom: 8px;
+      font-size: 0.95rem;
+    }
+
+    .cards-turnos .bloco {
+      margin-bottom: 10px;
+    }
+
+    .cards-turnos .bloco:last-child {
+      margin-bottom: 0;
+    }
+
+    @media (max-width: 768px) {
+      .tabela-turnos-wrapper {
+        display: none;
+      }
+
+      .cards-turnos {
+        display: block;
+      }
+    }
+  </style>
+
+  <div class="tabela-turnos-wrapper">
+    <div class="tabela-turnos">
+      <table>
+        <thead>
+          <tr>
+            <th>Turno</th>
+            <th>Terça-feira</th>
+            <th>Quarta-feira</th>
+            <th>Quinta-feira</th>
+            <th>Sexta-feira</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <tr>
+            <td class="turno">Manhã</td>
+
+            <td>
+              <div class="bloco">
+                <span class="tag">Centro de Especialidades</span><br>
+                <strong>Prec. Lilian</strong><br>
+                Giovana, Lyah, Lucas e Yanka
+              </div>
+            </td>
+
+            <td>
+              <div class="bloco">
+                <span class="tag">UBS Sansca - VD</span><br>
+                <strong>Prec. Gabriela</strong><br>
+                Cassiane
+              </div>
+            </td>
+
+            <td></td>
+
+            <td></td>
+          </tr>
+
+          <tr>
+            <td class="turno">Tarde</td>
+
+            <td>
+              <div class="bloco">
+                <span class="tag">UBS Sansca - VD / Acompanhamento</span><br>
+                <strong>Prec. Gabriela</strong><br>
+                Gabriela A
+              </div>
+
+              <div class="bloco">
+                <span class="tag">Centro de Especialidades</span><br>
+                <strong>Prec. Lilian</strong><br>
+                Patrícia
+              </div>
+            </td>
+
+            <td>
+              <div class="bloco"></div>
+            </td>
+
+            <td>
+              <div class="bloco">
+                <span class="tag">Videoconferência</span><br>
+                quinta-feira à tarde, videoconferência<br>
+                <em>comunicada quando acontece, sob aviso</em>
+              </div>
+            </td>
+
+            <td>
+              <div class="bloco">
+                <span class="tag">UBS Sansca - Procedimentos e VD</span><br>
+                <strong>Coord. Adrize</strong><br>
+                <strong>Tutor Alejandro</strong><br>
+                Amanda, Danusa, Fernando, Leonardo
+              </div>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <div class="cards-turnos">
+    <div class="dia-card">
+      <h3>Terça-feira</h3>
+
+      <div class="turno-card">
+        <strong class="turno-titulo">Manhã</strong>
+        <div class="bloco">
+          <span class="tag">Centro de Especialidades</span><br>
+          <strong>Prec. Lilian</strong><br>
+          Giovana, Lyah, Lucas e Yanka
+        </div>
+      </div>
+
+      <div class="turno-card">
+        <strong class="turno-titulo">Tarde</strong>
+        <div class="bloco">
+          <span class="tag">UBS Sansca - VD / Acompanhamento</span><br>
+          <strong>Prec. Gabriela</strong><br>
+          Gabriela A
+        </div>
+        <div class="bloco">
+          <span class="tag">Centro de Especialidades</span><br>
+          <strong>Prec. Lilian</strong><br>
+          Patrícia
+        </div>
+      </div>
+    </div>
+
+    <div class="dia-card">
+      <h3>Quarta-feira</h3>
+
+      <div class="turno-card">
+        <strong class="turno-titulo">Manhã</strong>
+        <div class="bloco">
+          <span class="tag">UBS Sansca - VD</span><br>
+          <strong>Prec. Gabriela</strong><br>
+          Cassiane
+        </div>
+      </div>
+
+      <div class="turno-card">
+        <strong class="turno-titulo">Tarde</strong>
+        <div class="bloco">
+          <em>Sem atividade fixa informada.</em>
+        </div>
+      </div>
+    </div>
+
+    <div class="dia-card">
+      <h3>Quinta-feira</h3>
+
+      <div class="turno-card">
+        <strong class="turno-titulo">Tarde</strong>
+        <div class="bloco">
+          <span class="tag">Videoconferência</span><br>
+          quinta-feira à tarde, videoconferência<br>
+          <em>comunicada quando acontece, sob aviso</em>
+        </div>
+      </div>
+    </div>
+
+    <div class="dia-card">
+      <h3>Sexta-feira</h3>
+
+      <div class="turno-card">
+        <strong class="turno-titulo">Tarde</strong>
+        <div class="bloco">
+          <span class="tag">UBS Sansca - Procedimentos e VD</span><br>
+          <strong>Coord. Adrize</strong><br>
+          <strong>Tutor Alejandro</strong><br>
+          Amanda, Danusa, Fernando, Leonardo
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<div class="card span-2">
+        <h2>Agenda</h2>
+        <p>Calendário do G10 (visão operacional).</p>
+        <div style="border:1px solid var(--border); border-radius:12px; overflow:hidden; background:#fff;">
+          <iframe
+  width="100%"
+  height="720"
+  style="border:0;"
+  src="https://calendar.google.com/calendar/embed?height=720&amp;wkst=1&amp;bgcolor=%23ffffff&amp;ctz=America%2FSao_Paulo&amp;showTitle=1&amp;showNav=1&amp;showDate=1&amp;showPrint=1&amp;showTabs=1&amp;showCalendars=1&amp;showTz=1&amp;mode=MONTH&amp;src=d3059915e02e37a7cec0fc73b0127050372119e1baf89ac451d19ae5c66ec9f9%40group.calendar.google.com&amp;color=%23039BE5&amp;src=pt.brazilian%23holiday%40group.v.calendar.google.com&amp;color=%23009688">
+</iframe>
+
+<div class="actions" style="margin-top:12px;">
+  <a class="btn primary" target="_blank" rel="noopener"
+     href="https://calendar.google.com/calendar/u/0/r?cid=d3059915e02e37a7cec0fc73b0127050372119e1baf89ac451d19ae5c66ec9f9%40group.calendar.google.com">
+    Abrir agenda do G10 no Google
+  </a>
+
+  <a class="btn" target="_blank" rel="noopener"
+     href="https://calendar.google.com/calendar/u/0/r?cid=pt.brazilian%23holiday%40group.v.calendar.google.com">
+    Abrir feriados do Brasil no Google
+  </a>
+</div>
+
+        </div>
+      </div>
+    </section>
+
+    <div class="hint">
+      <strong>Como usar:</strong> salve este arquivo como <code class="k">g10-central.html</code> e abra no navegador.
+    </div>
+
+    <footer>
+      PET-Saúde UFPel · G10 Telemonitoramento de Feridas Crônicas · 
+    </footer>
+  </div>
+
+<script>
+// URL do Web App do Apps Script (o mesmo usado pelo doPost)
+const APPS_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbw3FmQjJUADNuj5E_T24LCOLKj5L6BiMb3YfpVfz50FdLCwBedqIo4MIothZrPR32c/exec";
+
+let tabelaCarregada = false;
+
+function alternarTabela() {
+  const painel = document.getElementById("espelho-leitura");
+  const visivel = painel.style.display !== "none";
+
+  if (visivel) {
+    painel.style.display = "none";
+    return;
+  }
+
+  painel.style.display = "block";
+
+  // Só busca uma vez; nas próximas apenas mostra/esconde
+  if (tabelaCarregada) return;
+
+  const status = document.getElementById("consulta-status");
+  const resultado = document.getElementById("consulta-resultado");
+  status.textContent = "Buscando dados da planilha…";
+  resultado.innerHTML = "";
+
+  fetch(APPS_SCRIPT_URL + "?action=consultarPresenca")
+    .then(r => r.json())
+    .then(res => {
+      status.textContent = "";
+      if (res.erro) {
+        resultado.innerHTML = '<p style="color:red">⚠️ ' + res.erro + '</p>';
+        return;
+      }
+
+      let html = "";
+
+      // Tabela de presenças (aba Pres, A1:G14)
+      if (res.tabela && res.tabela.length) {
+        html += '<div class="tabela-sec"><h3>📋 Presença – Período</h3>';
+        html += '<div style="overflow-x:auto"><table class="tabela-pres">';
+        res.tabela.forEach((linha, i) => {
+          html += "<tr>";
+          linha.forEach(cel => {
+            html += i === 0 ? "<th>" + cel + "</th>" : "<td>" + cel + "</td>";
+          });
+          html += "</tr>";
+        });
+        html += "</table></div></div>";
+      }
+
+      // Tabela de gráficos (aba graficos, A1:F15)
+      if (res.grafico && res.grafico.length) {
+        html += '<div class="tabela-sec"><h3>📊 Estatísticas</h3>';
+        html += '<div style="overflow-x:auto"><table class="tabela-pres">';
+        res.grafico.forEach((linha, i) => {
+          html += "<tr>";
+          linha.forEach(cel => {
+            html += i === 0 ? "<th>" + cel + "</th>" : "<td>" + cel + "</td>";
+          });
+          html += "</tr>";
+        });
+        html += "</table></div></div>";
+      }
+
+      resultado.innerHTML = html || '<p style="color:#888">Nenhum dado encontrado.</p>';
+      tabelaCarregada = true;
+    })
+    .catch(err => {
+      status.textContent = "";
+      resultado.innerHTML = '<p style="color:red">Falha na comunicação: ' + err.message + '</p>';
+    });
+}
+</script>
+
+<!-- MODAL REGISTRO POR VOZ -->
+<div id="vozModal" style="display:none;position:fixed;inset:0;z-index:9999;background:rgba(15,23,42,.55);backdrop-filter:blur(4px);overflow-y:auto;padding:24px 16px;" onclick="if(event.target===this)fecharVoz()">
+  <div id="vozModalInner" style="max-width:540px;margin:0 auto;background:#fff;border:1px solid #e2e8f0;border-radius:16px;padding:28px 26px 32px;position:relative;box-shadow:0 20px 60px rgba(15,23,42,.18);overflow:hidden;">
+  <div style="position:absolute;inset:-2px -2px auto -2px;height:4px;background:linear-gradient(90deg,#3b82c4,#d4653b,#1e3a8a);border-radius:16px 16px 0 0;"></div>
+  <style>
+    #vozModalInner{font-family:system-ui,sans-serif;color:#0f172a}
+    #vozModalInner *{box-sizing:border-box}
+    #vozModalInner .vc{position:absolute;top:12px;right:14px;background:none;border:none;color:#94a3b8;font-size:1.2rem;cursor:pointer}
+    #vozModalInner .vhdr{display:flex;align-items:center;gap:10px;margin-bottom:14px;padding-bottom:12px;border-bottom:1px solid #e2e8f0}
+    #vozModalInner .vhico{width:34px;height:34px;border-radius:9px;background:linear-gradient(135deg,rgba(59,130,196,.18),rgba(212,101,59,.18));border:1px solid rgba(59,130,196,.25);display:flex;align-items:center;justify-content:center;flex-shrink:0}
+    #vozModalInner .vhtxt h2{margin:0;font-size:1rem;font-weight:700}
+    #vozModalInner .vhtxt p{margin:2px 0 0;font-size:.78rem;color:#475569}
+    #vozModalInner .vprog{height:4px;background:#e2e8f0;border-radius:99px;margin-bottom:18px}
+    #vozModalInner .vprogf{height:100%;background:linear-gradient(90deg,#3b82c4,#d4653b);border-radius:99px;transition:width .4s}
+    #vozModalInner .vstep{display:none}
+    #vozModalInner .vstep.active{display:block}
+    #vozModalInner .vshdr{display:flex;align-items:center;gap:8px;margin-bottom:14px}
+    #vozModalInner .vsnum{width:26px;height:26px;border-radius:50%;background:rgba(59,130,196,.12);border:1px solid rgba(59,130,196,.3);display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;color:#1e3a8a;flex-shrink:0}
+    #vozModalInner .vstit{font-size:.85rem;font-weight:600;color:#475569;text-transform:uppercase;letter-spacing:.04em}
+    #vozModalInner .vq{font-size:1rem;font-weight:600;margin-bottom:12px;line-height:1.4}
+    #vozModalInner .vmic{display:flex;flex-direction:column;align-items:center;gap:10px;margin:12px 0}
+    #vozModalInner .vmicb{width:68px;height:68px;border-radius:50%;border:2px solid #e2e8f0;background:#f8fafc;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:all .2s;outline:none}
+    #vozModalInner .vmicb:hover{border-color:#3b82c4;background:#eff6ff}
+    #vozModalInner .vmicb.listening{border-color:#d4653b;background:rgba(212,101,59,.08);animation:vp 1.4s infinite}
+    @keyframes vp{0%,100%{box-shadow:0 0 0 0 rgba(212,101,59,.35)}50%{box-shadow:0 0 0 14px rgba(212,101,59,0)}}
+    #vozModalInner .vmiclbl{font-size:.72rem;color:#94a3b8;letter-spacing:.04em}
+    #vozModalInner .vtx{background:#f8fafc;border:1px solid #e2e8f0;border-radius:9px;padding:10px 12px;min-height:42px;font-size:.87rem;color:#0f172a;line-height:1.5;margin-bottom:12px;transition:border-color .2s}
+    #vozModalInner .vtx.has{border-color:rgba(59,130,196,.4);background:#eff6ff}
+    #vozModalInner .vtx.ph{color:#94a3b8}
+    #vozModalInner .vgrid{display:grid;grid-template-columns:1fr 1fr;gap:6px;margin-bottom:12px}
+    #vozModalInner .vopt{background:#fff;border:1px solid #e2e8f0;border-radius:8px;padding:8px 11px;color:#0f172a;font-size:.83rem;cursor:pointer;text-align:left;transition:all .15s;font-family:inherit}
+    #vozModalInner .vopt:hover{border-color:#3b82c4;color:#1e3a8a;background:#eff6ff}
+    #vozModalInner .vopt.sel{background:rgba(59,130,196,.1);border-color:rgba(59,130,196,.4);color:#1e3a8a;font-weight:600}
+    #vozModalInner .vdate{background:#fff;border:1px solid #e2e8f0;border-radius:8px;padding:10px 12px;color:#0f172a;font-size:.93rem;width:100%;outline:none;transition:border-color .2s;margin-bottom:12px;font-family:inherit}
+    #vozModalInner .vdate:focus{border-color:#3b82c4}
+    #vozModalInner .vrgrp{display:flex;gap:8px;margin-bottom:12px}
+    #vozModalInner .vrad{flex:1;background:#fff;border:1px solid #e2e8f0;border-radius:8px;padding:11px;text-align:center;cursor:pointer;font-size:.88rem;font-weight:500;transition:all .15s}
+    #vozModalInner .vrad:hover{border-color:#3b82c4;background:#eff6ff}
+    #vozModalInner .vrad.sel{background:rgba(59,130,196,.1);border-color:rgba(59,130,196,.4);color:#1e3a8a;font-weight:700}
+    #vozModalInner .vta{width:100%;background:#fff;border:1px solid #e2e8f0;border-radius:8px;padding:10px 12px;color:#0f172a;font-size:.87rem;resize:vertical;min-height:86px;outline:none;transition:border-color .2s;margin-bottom:12px;font-family:inherit}
+    #vozModalInner .vta:focus{border-color:#3b82c4}
+    #vozModalInner .vup{border:2px dashed #cbd5e1;border-radius:10px;padding:24px 14px;text-align:center;cursor:pointer;transition:all .2s;position:relative;margin-bottom:12px;background:#fafbfc}
+    #vozModalInner .vup:hover,.vup.drag{border-color:#3b82c4;background:#eff6ff}
+    #vozModalInner .vup input{position:absolute;inset:0;opacity:0;cursor:pointer;width:100%;height:100%}
+    #vozModalInner .vuplbl{font-size:.84rem;color:#475569;line-height:1.5}
+    #vozModalInner .vuplbl strong{color:#3b82c4}
+    #vozModalInner .vuptypes{font-size:.69rem;color:#94a3b8;margin-top:5px;letter-spacing:.04em}
+    #vozModalInner .vfprev{display:none;background:#eff6ff;border:1px solid rgba(59,130,196,.3);border-radius:8px;padding:10px 12px;margin-bottom:12px;align-items:center;gap:9px}
+    #vozModalInner .vfprev.vis{display:flex}
+    #vozModalInner .vfico{width:28px;height:28px;border-radius:6px;background:rgba(59,130,196,.15);display:flex;align-items:center;justify-content:center;font-size:.9rem;flex-shrink:0}
+    #vozModalInner .vfinfo{flex:1;min-width:0}
+    #vozModalInner .vfname{font-size:.83rem;font-weight:600;color:#1e3a8a;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+    #vozModalInner .vfsize{font-size:.69rem;color:#64748b}
+    #vozModalInner .vfrm{background:none;border:none;color:#d4653b;cursor:pointer;font-size:.88rem;padding:3px;flex-shrink:0}
+    #vozModalInner .vnav{display:flex;gap:7px;margin-top:4px}
+    #vozModalInner .vbk{background:#fff;border:1px solid #e2e8f0;border-radius:8px;padding:10px 15px;color:#475569;font-size:.84rem;cursor:pointer;font-family:inherit;font-weight:600;transition:all .15s}
+    #vozModalInner .vbk:hover{border-color:#3b82c4;color:#1e3a8a}
+    #vozModalInner .vnxt{flex:1;background:linear-gradient(90deg,rgba(59,130,196,.18),rgba(212,101,59,.15));border:1px solid rgba(59,130,196,.3);border-radius:8px;padding:11px;color:#1e3a8a;font-weight:700;font-size:.88rem;cursor:pointer;font-family:inherit;transition:all .15s}
+    #vozModalInner .vnxt:hover{border-color:rgba(59,130,196,.5);box-shadow:0 4px 10px rgba(59,130,196,.15)}
+    #vozModalInner .vnxt:disabled{opacity:.5;cursor:not-allowed}
+    #vozModalInner .vsumitem{display:flex;justify-content:space-between;padding:8px 0;border-bottom:1px solid #e2e8f0;gap:12px}
+    #vozModalInner .vsumitem:last-child{border-bottom:none}
+    #vozModalInner .vsumlbl{font-size:.71rem;color:#94a3b8;text-transform:uppercase;letter-spacing:.06em;font-weight:600;flex-shrink:0}
+    #vozModalInner .vsumval{font-size:.87rem;color:#0f172a;text-align:right;font-weight:500}
+    #vozModalInner .verr{color:#d4653b;font-size:.77rem;margin-bottom:8px;display:none}
+    #vozModalInner .vhint{font-size:.72rem;color:#94a3b8;margin-top:4px;font-style:italic}
+    #vozModalInner .vokoico{width:58px;height:58px;border-radius:50%;background:rgba(59,130,196,.12);border:2px solid rgba(59,130,196,.35);display:flex;align-items:center;justify-content:center;margin:0 auto 12px;font-size:1.5rem}
+  </style>
+
+  <button class="vc" onclick="fecharVoz()">✕</button>
+  <div class="vhdr">
+    <div class="vhico"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#3b82c4" stroke-width="2.2"><path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"/><path d="M19 10v2a7 7 0 0 1-14 0v-2"/><line x1="12" y1="19" x2="12" y2="23"/><line x1="8" y1="23" x2="16" y2="23"/></svg></div>
+    <div class="vhtxt"><h2>Registro de Presença por Voz</h2><p>G10 · PET-Saúde UFPel</p></div>
+  </div>
+  <div class="vprog"><div class="vprogf" id="vProg" style="width:14%"></div></div>
+
+  <!-- S1 Nome -->
+  <div class="vstep active" id="vs1">
+    <div class="vshdr"><div class="vsnum">1</div><div class="vstit">Identificação</div></div>
+    <div class="vq">Qual é o seu nome?</div>
+    <div class="vmic"><button class="vmicb" id="vMic1" onclick="vStartVoice(1)"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#3b82c4" stroke-width="2"><path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"/><path d="M19 10v2a7 7 0 0 1-14 0v-2"/><line x1="12" y1="19" x2="12" y2="23"/><line x1="8" y1="23" x2="16" y2="23"/></svg></button><span class="vmiclbl" id="vLbl1">toque para falar</span></div>
+    <div class="vtx ph" id="vTx1">Diga seu nome ou selecione...</div>
+    <div class="vgrid">
+      <button class="vopt" onclick="vSelName('Amanda')">Amanda</button>
+      <button class="vopt" onclick="vSelName('Cassiane')">Cassiane</button>
+      <button class="vopt" onclick="vSelName('Danusa')">Danusa</button>
+      <button class="vopt" onclick="vSelName('GabrielaA')">GabrielaA</button>
+      <button class="vopt" onclick="vSelName('Giovana')">Giovana</button>
+      <button class="vopt" onclick="vSelName('Fernando')">Fernando</button>
+      <button class="vopt" onclick="vSelName('Leonardo')">Leonardo</button>
+      <button class="vopt" onclick="vSelName('Lucas')">Lucas</button>
+      <button class="vopt" onclick="vSelName('Patrícia')">Patrícia</button>
+      <button class="vopt" onclick="vSelName('Lyah')">Lyah</button>
+      <button class="vopt" onclick="vSelName('Yanka')">Yanka</button>
+      <button class="vopt" onclick="vSelName('Outro')">Outro</button>
+    </div>
+    <p class="verr" id="vErr1">Por favor, selecione ou diga seu nome.</p>
+    <div class="vnav"><button class="vnxt" onclick="vNext(1)">Continuar →</button></div>
+  </div>
+
+  <!-- S2 Data -->
+  <div class="vstep" id="vs2">
+    <div class="vshdr"><div class="vsnum">2</div><div class="vstit">Data</div></div>
+    <div class="vq">Qual é a data da atividade?</div>
+    <div class="vmic"><button class="vmicb" id="vMic2" onclick="vStartVoice(2)"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#3b82c4" stroke-width="2"><path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"/><path d="M19 10v2a7 7 0 0 1-14 0v-2"/><line x1="12" y1="19" x2="12" y2="23"/><line x1="8" y1="23" x2="16" y2="23"/></svg></button><span class="vmiclbl" id="vLbl2">toque para falar</span></div>
+    <div class="vtx ph" id="vTx2">Ex: "hoje", "ontem", "dez de abril"...</div>
+    <p class="vhint">Ou selecione:</p>
+    <input type="date" class="vdate" id="vDate" oninput="vOnDate()">
+    <p class="verr" id="vErr2">Por favor, informe a data.</p>
+    <div class="vnav"><button class="vbk" onclick="vBack(2)">← Voltar</button><button class="vnxt" onclick="vNext(2)">Continuar →</button></div>
+  </div>
+
+  <!-- S2b Local -->
+  <div class="vstep" id="vs2b">
+    <div class="vshdr"><div class="vsnum">3</div><div class="vstit">Local</div></div>
+    <div class="vq">Qual é o local da atividade?</div>
+    <div class="vmic"><button class="vmicb" id="vMic2b" onclick="vStartVoice('2b')"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#3b82c4" stroke-width="2"><path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"/><path d="M19 10v2a7 7 0 0 1-14 0v-2"/><line x1="12" y1="19" x2="12" y2="23"/><line x1="8" y1="23" x2="16" y2="23"/></svg></button><span class="vmiclbl" id="vLbl2b">toque para falar</span></div>
+    <div class="vtx ph" id="vTx2b">Diga o local ou selecione...</div>
+    <div class="vgrid">
+      <button class="vopt" onclick="vSelLocal('UBS Sansca')">UBS Sansca</button>
+      <button class="vopt" onclick="vSelLocal('Centro de Especialidades')">Centro de Especialidades</button>
+      <button class="vopt" onclick="vSelLocal('__outro__')">Outro</button>
+    </div>
+    <div id="vLocalOutroBox" style="display:none;margin-bottom:12px;">
+      <input type="text" id="vLocalOutro" class="vdate" placeholder="Digite o local..." oninput="vd.local=this.value.trim()">
+    </div>
+    <p class="verr" id="vErr2b">Por favor, selecione ou diga o local.</p>
+    <div class="vnav"><button class="vbk" onclick="vBack('2b')">← Voltar</button><button class="vnxt" onclick="vNext('2b')">Continuar →</button></div>
+  </div>
+
+  <!-- S2c Período -->
+  <div class="vstep" id="vs2c">
+    <div class="vshdr"><div class="vsnum">4</div><div class="vstit">Período</div></div>
+    <div class="vq">Qual é o período da atividade?</div>
+    <div class="vmic"><button class="vmicb" id="vMic2c" onclick="vStartVoice('2c')"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#3b82c4" stroke-width="2"><path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"/><path d="M19 10v2a7 7 0 0 1-14 0v-2"/><line x1="12" y1="19" x2="12" y2="23"/><line x1="8" y1="23" x2="16" y2="23"/></svg></button><span class="vmiclbl" id="vLbl2c">toque para falar</span></div>
+    <div class="vtx ph" id="vTx2c">Diga "manhã", "tarde" ou "noite"...</div>
+    <div class="vrgrp">
+      <div class="vrad" data-periodo="manhã" onclick="vTogglePeriodo('manhã')">Manhã</div>
+      <div class="vrad" data-periodo="tarde" onclick="vTogglePeriodo('tarde')">Tarde</div>
+      <div class="vrad" data-periodo="noite" onclick="vTogglePeriodo('noite')">Noite</div>
+    </div>
+    <p class="vhint">Pode selecionar mais de um período.</p>
+    <p class="verr" id="vErr2c">Por favor, selecione ao menos um período.</p>
+    <div class="vnav"><button class="vbk" onclick="vBack('2c')">← Voltar</button><button class="vnxt" onclick="vNext('2c')">Continuar →</button></div>
+  </div>
+
+  <!-- S3 Atestado -->
+  <div class="vstep" id="vs3">
+    <div class="vshdr"><div class="vsnum">4</div><div class="vstit">Atestado</div></div>
+    <div class="vq">Você está de atestado?</div>
+    <div class="vmic"><button class="vmicb" id="vMic3" onclick="vStartVoice(3)"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#3b82c4" stroke-width="2"><path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"/><path d="M19 10v2a7 7 0 0 1-14 0v-2"/><line x1="12" y1="19" x2="12" y2="23"/><line x1="8" y1="23" x2="16" y2="23"/></svg></button><span class="vmiclbl" id="vLbl3">toque para falar</span></div>
+    <div class="vtx ph" id="vTx3">Diga "sim" ou "não"...</div>
+    <div class="vrgrp">
+      <div class="vrad" id="vRNao" onclick="vSelAtest('Não')">Não</div>
+      <div class="vrad" id="vRSim" onclick="vSelAtest('Sim')">Sim</div>
+    </div>
+    <p class="verr" id="vErr3">Por favor, responda sim ou não.</p>
+    <div class="vnav"><button class="vbk" onclick="vBack(3)">← Voltar</button><button class="vnxt" onclick="vNext(3)">Continuar →</button></div>
+  </div>
+
+  <!-- S3b Upload atestado -->
+  <div class="vstep" id="vs3b">
+    <div class="vshdr"><div class="vsnum">!</div><div class="vstit">Anexar Atestado</div></div>
+    <div class="vq">Envie o arquivo do seu atestado.</div>
+    <div class="vup" id="vUpZone" ondragover="event.preventDefault();this.classList.add('drag')" ondragleave="this.classList.remove('drag')" ondrop="event.preventDefault();this.classList.remove('drag');vSetFile(event.dataTransfer.files[0])">
+      <input type="file" accept=".txt,.doc,.docx,.pdf,.jpg,.jpeg,.png,.webp" onchange="vSetFile(this.files[0])">
+      <div style="font-size:1.6rem;margin-bottom:7px">📎</div>
+      <div class="vuplbl"><strong>Clique para selecionar</strong> ou arraste aqui</div>
+      <div class="vuptypes">TXT · DOC · DOCX · PDF · JPG · PNG</div>
+    </div>
+    <div class="vfprev" id="vFilePrev">
+      <div class="vfico" id="vFileIco">📄</div>
+      <div class="vfinfo"><div class="vfname" id="vFileName">—</div><div class="vfsize" id="vFileSize">—</div></div>
+      <button class="vfrm" onclick="vRemFile()">✕</button>
+    </div>
+    <p class="verr" id="vErr3b">Por favor, anexe o atestado.</p>
+    <div class="vnav"><button class="vbk" onclick="vBack('3b')">← Voltar</button><button class="vnxt" onclick="vNext('3b')">Continuar →</button></div>
+  </div>
+
+  <!-- S4 Referente -->
+  <div class="vstep" id="vs4">
+    <div class="vshdr"><div class="vsnum">5</div><div class="vstit">Referente</div></div>
+    <div class="vq">Quem é o referente desta atividade?</div>
+    <div class="vmic"><button class="vmicb" id="vMic4" onclick="vStartVoice(4)"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#3b82c4" stroke-width="2"><path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"/><path d="M19 10v2a7 7 0 0 1-14 0v-2"/><line x1="12" y1="19" x2="12" y2="23"/><line x1="8" y1="23" x2="16" y2="23"/></svg></button><span class="vmiclbl" id="vLbl4">toque para falar</span></div>
+    <div class="vtx ph" id="vTx4">Diga o nome do referente...</div>
+    <div class="vgrid">
+      <button class="vopt" onclick="vSelRef('Adrize')">Adrize</button>
+      <button class="vopt" onclick="vSelRef('Alejandro')">Alejandro</button>
+      <button class="vopt" onclick="vSelRef('Gabriela S')">Gabriela S</button>
+      <button class="vopt" onclick="vSelRef('Lilian')">Lilian</button>
+      <button class="vopt" onclick="vSelRef('Viviane')">Viviane</button>
+    </div>
+    <p class="verr" id="vErr4">Por favor, selecione ou diga o referente.</p>
+    <div class="vnav"><button class="vbk" onclick="vBack(4)">← Voltar</button><button class="vnxt" onclick="vNext(4)">Continuar →</button></div>
+  </div>
+
+  <!-- S5 Descrição -->
+  <div class="vstep" id="vs5">
+    <div class="vshdr"><div class="vsnum">6</div><div class="vstit">Descrição</div></div>
+    <div class="vq">Descreva brevemente a atividade realizada.</div>
+    <div class="vmic"><button class="vmicb" id="vMic5" onclick="vStartVoice(5)"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#3b82c4" stroke-width="2"><path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"/><path d="M19 10v2a7 7 0 0 1-14 0v-2"/><line x1="12" y1="19" x2="12" y2="23"/><line x1="8" y1="23" x2="16" y2="23"/></svg></button><span class="vmiclbl" id="vLbl5">toque para falar</span></div>
+    <textarea class="vta" id="vDesc" placeholder="Ou escreva aqui..."></textarea>
+    <p class="verr" id="vErr5">Por favor, descreva a atividade.</p>
+    <div class="vnav"><button class="vbk" onclick="vBack(5)">← Voltar</button><button class="vnxt" onclick="vNext(5)">Revisar →</button></div>
+  </div>
+
+  <!-- S6 Revisão -->
+  <div class="vstep" id="vs6">
+    <div class="vshdr"><div class="vsnum">7</div><div class="vstit">Confirmação</div></div>
+    <div class="vq">Confira seus dados antes de enviar.</div>
+    <div id="vSummary"></div>
+    <div class="vnav" style="margin-top:14px"><button class="vbk" onclick="vBack(6)">← Voltar</button><button class="vnxt" id="vBtnEnviar" onclick="vSubmit()">Enviar ✓</button></div>
+  </div>
+
+  <!-- S7 Sucesso -->
+  <div class="vstep" id="vs7">
+    <div style="text-align:center;padding:14px 0">
+      <div class="vokoico">✓</div>
+      <h3 style="margin:0 0 8px;font-size:1.15rem">Presença Registrada!</h3>
+      <p style="color:#475569;font-size:.87rem;line-height:1.6">Seu registro foi enviado com sucesso.<br>Será avaliado e confirmado em até um dia.</p>
+      <button class="vnxt" style="max-width:160px;margin:18px auto 0;display:block" onclick="vReset()">Novo Registro</button>
+    </div>
+  </div>
+
+  </div>
+</div>
+
+<script>
+(function(){
+  const WEBHOOK = "https://script.google.com/macros/s/AKfycbw3FmQjJUADNuj5E_T24LCOLKj5L6BiMb3YfpVfz50FdLCwBedqIo4MIothZrPR32c/exec";
+  const vd = {nome:'',data:'',local:'',periodo:[],atestado:'',file:null,referente:'',descricao:''};
+
+  function vShow(s){
+    document.querySelectorAll('#vozModalInner .vstep').forEach(el=>el.classList.remove('active'));
+    document.getElementById('vs'+s).classList.add('active');
+    const map={1:12,2:24,'2b':36,'2c':48,3:58,'3b':62,4:74,5:86,6:96,7:100};
+    document.getElementById('vProg').style.width=(map[s]||12)+'%';
+    document.getElementById('vozModalInner').scrollTop=0;
+  }
+
+  window.abrirVoz=function(){document.getElementById('vozModal').style.display='block';document.body.style.overflow='hidden';};
+  window.fecharVoz=function(){document.getElementById('vozModal').style.display='none';document.body.style.overflow='';};
+
+  function vNextS(c){
+    if(c===1) return 2;
+    if(c===2) return '2b';
+    if(c==='2b') return '2c';
+    if(c==='2c') return 3;
+    if(c===3) return vd.atestado==='Sim'?'3b':4;
+    if(c==='3b') return 4;
+    if(c===4) return 5;
+    if(c===5) return 6;
+    return 6;
+  }
+  function vPrevS(c){
+    if(c===2) return 1;
+    if(c==='2b') return 2;
+    if(c==='2c') return '2b';
+    if(c===3) return '2c';
+    if(c===4) return vd.atestado==='Sim'?'3b':3;
+    if(c==='3b') return 3;
+    if(c===5) return 4;
+    if(c===6) return 5;
+    return 1;
+  }
+
+  window.vNext=function(c){if(!vVal(c))return;const n=vNextS(c);if(n===6)vBuildSum();vShow(n);};
+  window.vBack=function(c){vShow(vPrevS(c));};
+
+  function vVal(s){
+    // Para step 2c, o elemento de erro existe no HTML
+    const e=document.getElementById('vErr'+s);
+    if(e) e.style.display='none';
+    if(s===1&&!vd.nome){if(e)e.style.display='block';return false;}
+    if(s===2&&!vd.data){if(e)e.style.display='block';return false;}
+    if(s==='2b'){
+      const outroInput=document.getElementById('vLocalOutro');
+      if(document.getElementById('vLocalOutroBox').style.display!=='none'){
+        vd.local=outroInput.value.trim();
+      }
+      if(!vd.local){if(e)e.style.display='block';return false;}
+    }
+    if(s==='2c'&&(!Array.isArray(vd.periodo)||vd.periodo.length===0)){if(e)e.style.display='block';return false;}
+    if(s===3&&!vd.atestado){if(e)e.style.display='block';return false;}
+    if(s==='3b'&&!vd.file){if(e)e.style.display='block';return false;}
+    if(s===4&&!vd.referente){if(e)e.style.display='block';return false;}
+    if(s===5){
+      const t=document.getElementById('vDesc').value.trim();
+      if(!t){if(e)e.style.display='block';return false;}
+      vd.descricao=t;
+    }
+    return true;
+  }
+
+  window.vSelName=function(n){
+    vd.nome=n;
+    document.querySelectorAll('#vs1 .vopt').forEach(b=>b.classList.toggle('sel',b.textContent===n));
+    vSetTx(1,n,false);
+  };
+
+  window.vOnDate=function(){
+    const v=document.getElementById('vDate').value;
+    if(v){const[y,m,d]=v.split('-');vd.data=d+'/'+m+'/'+y;vSetTx(2,vd.data,false);}
+  };
+
+  window.vSelLocal=function(v){
+    document.querySelectorAll('#vs2b .vopt').forEach(b=>b.classList.toggle('sel',b.textContent===(v==='__outro__'?'Outro':v)));
+    const outroBox=document.getElementById('vLocalOutroBox');
+    const outroInput=document.getElementById('vLocalOutro');
+    if(v==='__outro__'){
+      outroBox.style.display='block';
+      outroInput.focus();
+      vd.local=outroInput.value.trim();
+      vSetTx('2b','Outro: ...',false);
+    } else {
+      outroBox.style.display='none';
+      vd.local=v;
+      vSetTx('2b',v,false);
+    }
+  };
+
+  window.vTogglePeriodo=function(v){
+    if(!Array.isArray(vd.periodo)) vd.periodo=[];
+    const idx=vd.periodo.indexOf(v);
+    if(idx===-1) vd.periodo.push(v);
+    else vd.periodo.splice(idx,1);
+    document.querySelectorAll('#vs2c .vrad').forEach(b=>b.classList.toggle('sel',vd.periodo.includes(b.dataset.periodo)));
+    vSetTx('2c',vd.periodo.length?vd.periodo.join(', '):'',vd.periodo.length===0);
+  };
+
+  window.vSelPeriodo=function(v){
+    if(!Array.isArray(vd.periodo)) vd.periodo=[];
+    if(!vd.periodo.includes(v)) vd.periodo.push(v);
+    document.querySelectorAll('#vs2c .vrad').forEach(b=>b.classList.toggle('sel',vd.periodo.includes(b.dataset.periodo)));
+    vSetTx('2c',vd.periodo.join(', '),false);
+  };
+
+  window.vSelAtest=function(v){
+    vd.atestado=v;
+    document.getElementById('vRNao').classList.toggle('sel',v==='Não');
+    document.getElementById('vRSim').classList.toggle('sel',v==='Sim');
+    vSetTx(3,v,false);
+    if(v==='Não') vd.file=null;
+  };
+
+  window.vSelRef=function(v){
+    vd.referente=v;
+    document.querySelectorAll('#vs4 .vopt').forEach(b=>b.classList.toggle('sel',b.textContent===v));
+    vSetTx(4,v,false);
+  };
+
+  const FICOS={pdf:'📕',doc:'📘',docx:'📘',txt:'📄',jpg:'🖼',jpeg:'🖼',png:'🖼',webp:'🖼'};
+  window.vSetFile=function(f){
+    if(!f) return;
+    vd.file=f;
+    const ext=f.name.split('.').pop().toLowerCase();
+    const sz=f.size<1048576?(f.size/1024).toFixed(1)+' KB':(f.size/1048576).toFixed(1)+' MB';
+    document.getElementById('vFileIco').textContent=FICOS[ext]||'📎';
+    document.getElementById('vFileName').textContent=f.name;
+    document.getElementById('vFileSize').textContent=ext.toUpperCase()+' · '+sz;
+    document.getElementById('vFilePrev').classList.add('vis');
+    document.getElementById('vUpZone').style.display='none';
+  };
+  window.vRemFile=function(){
+    vd.file=null;
+    document.getElementById('vFilePrev').classList.remove('vis');
+    document.getElementById('vUpZone').style.display='block';
+  };
+
+  function vBuildSum(){
+    const rows=[
+      {l:'Nome',v:vd.nome},{l:'Data',v:vd.data},{l:'Local',v:vd.local},
+      {l:'Período',v:Array.isArray(vd.periodo)?vd.periodo.join(', '):vd.periodo},{l:'Atestado',v:vd.atestado}
+    ];
+    if(vd.atestado==='Sim'&&vd.file) rows.push({l:'Arquivo',v:'📎 '+vd.file.name});
+    rows.push({l:'Referente',v:vd.referente},{l:'Descrição',v:vd.descricao});
+    document.getElementById('vSummary').innerHTML=rows.map(r=>'<div class="vsumitem"><span class="vsumlbl">'+r.l+'</span><span class="vsumval">'+r.v+'</span></div>').join('');
+  }
+
+  window.vSubmit=async function(){
+    const btn=document.getElementById('vBtnEnviar');
+    btn.textContent='Enviando...';btn.disabled=true;
+    try{
+      const payload={
+        nome:vd.nome, data:vd.data, local:vd.local,
+        periodo:Array.isArray(vd.periodo)?vd.periodo.join(', '):vd.periodo,
+        atestado:vd.atestado, referente:vd.referente, descricao:vd.descricao
+      };
+      if(vd.file){
+        const b64=await new Promise((res,rej)=>{
+          const r=new FileReader();
+          r.onload=()=>res(r.result.split(',')[1]);
+          r.onerror=rej;
+          r.readAsDataURL(vd.file);
+        });
+        payload.arquivo_base64=b64;
+        payload.arquivo_nome=vd.file.name;
+        payload.arquivo_tipo=vd.file.type||'application/octet-stream';
+      }
+      const resp=await fetch(WEBHOOK,{method:'POST',body:JSON.stringify(payload)});
+      const res=await resp.json();
+      if(res.ok){vShow(7);}else{throw new Error(res.mensagem);}
+    }catch(err){
+      btn.textContent='Enviar ✓';btn.disabled=false;
+      alert('Erro ao enviar: '+err.message);
+    }
+  };
+
+  window.vReset=function(){
+    Object.assign(vd,{nome:'',data:'',local:'',periodo:[],atestado:'',file:null,referente:'',descricao:''});
+    document.querySelectorAll('#vozModalInner .vopt').forEach(b=>b.classList.remove('sel'));
+    document.querySelectorAll('#vozModalInner .vrad').forEach(b=>b.classList.remove('sel'));
+    document.getElementById('vDate').value='';
+    document.getElementById('vDesc').value='';
+    document.getElementById('vLocalOutro').value='';
+    document.getElementById('vLocalOutroBox').style.display='none';
+    document.getElementById('vFilePrev').classList.remove('vis');
+    document.getElementById('vUpZone').style.display='block';
+    [1,2,'2b','2c',3,4,5].forEach(n=>{
+      const t=document.getElementById('vTx'+n);
+      if(t){t.textContent='';t.className='vtx ph';}
+    });
+    fecharVoz();
+  };
+
+  function vSetTx(s,text,ph){
+    const el=document.getElementById('vTx'+s);
+    if(!el) return;
+    el.textContent=text;
+    el.className='vtx'+(ph?' ph':' has');
+  }
+
+  const SR=window.SpeechRecognition||window.webkitSpeechRecognition;
+  let vRec=null;
+  window.vStartVoice=function(step){
+    if(!SR) return;
+    if(vRec) vRec.stop();
+    const btn=document.getElementById('vMic'+step);
+    const lbl=document.getElementById('vLbl'+step);
+    let final='';
+    vRec=new SR();
+    vRec.lang='pt-BR';vRec.interimResults=true;vRec.continuous=false;
+    vRec.onstart=function(){btn.classList.add('listening');lbl.textContent='ouvindo...';vSetTx(step,'🎙 Ouvindo...',true);};
+    vRec.onresult=function(e){final=Array.from(e.results).map(r=>r[0].transcript).join('');vSetTx(step,final,false);};
+    vRec.onend=function(){
+      btn.classList.remove('listening');lbl.textContent='toque para falar';
+      if(final&&final!=='🎙 Ouvindo...') vProcVoice(step,final.trim());
+    };
+    vRec.onerror=function(){btn.classList.remove('listening');lbl.textContent='toque para falar';vSetTx(step,'Não consegui ouvir. Tente novamente.',true);};
+    vRec.start();
+  };
+
+  function vProcVoice(step,text){
+    const low=text.toLowerCase();
+    if(step===1){
+      const ns=['amanda','cassiane','danusa','gabriela','giovana','fernando','leonardo','lucas','patricia','patrícia','lyah','yanka'];
+      const f=ns.find(n=>low.includes(n));
+      if(f){
+        const lbl=f==='patricia'?'Patrícia':f.charAt(0).toUpperCase()+f.slice(1);
+        const m=f==='gabriela'?'GabrielaA':lbl;
+        vSelName(m);
+      } else {vd.nome=text;vSetTx(1,text,false);}
+    }
+    if(step===2){
+      const mos=['janeiro','fevereiro','março','abril','maio','junho','julho','agosto','setembro','outubro','novembro','dezembro'];
+      const today=new Date();
+      let d=null;
+      if(low.includes('hoje')) d=today;
+      else if(low.includes('ontem')){d=new Date(today);d.setDate(d.getDate()-1);}
+      else{
+        for(let i=0;i<mos.length;i++){
+          if(low.includes(mos[i])){
+            const n=low.match(/[0-9]+/);
+            d=new Date(today.getFullYear(),i,n?parseInt(n[0]):today.getDate());
+            break;
+          }
+        }
+      }
+      if(d){
+        const dd=String(d.getDate()).padStart(2,'0');
+        const mm=String(d.getMonth()+1).padStart(2,'0');
+        const yy=d.getFullYear();
+        vd.data=dd+'/'+mm+'/'+yy;
+        document.getElementById('vDate').value=yy+'-'+mm+'-'+dd;
+        vSetTx(2,vd.data,false);
+      } else {vSetTx(2,text,false);}
+    }
+    if(step==='2b'){
+      let local='';
+      if(low.includes('ubs')||low.includes('sansca')) local='UBS Sansca';
+      else if(low.includes('especialidades')||low.includes('centro')) local='Centro de Especialidades';
+      else local=text;
+      vd.local=local;
+      document.querySelectorAll('#vs2b .vopt').forEach(b=>b.classList.toggle('sel',b.textContent===local));
+      vSetTx('2b',local,false);
+    }
+    if(step==='2c'){
+      vd.periodo=[];
+      if(low.includes('manhã')||low.includes('manha')) vd.periodo.push('manhã');
+      if(low.includes('tarde')) vd.periodo.push('tarde');
+      if(low.includes('noite')) vd.periodo.push('noite');
+      if(vd.periodo.length===0) vd.periodo.push(text);
+      document.querySelectorAll('#vs2c .vrad').forEach(b=>b.classList.toggle('sel',vd.periodo.includes(b.dataset.periodo)));
+      vSetTx('2c',vd.periodo.join(', '),false);
+    }
+    if(step===3){
+      if(low.includes('sim')||low.includes('yes')) vSelAtest('Sim');
+      else if(low.includes('não')||low.includes('nao')) vSelAtest('Não');
+    }
+    if(step===4){
+      if(low.includes('adrize')) vSelRef('Adrize');
+      else if(low.includes('alejandro')) vSelRef('Alejandro');
+      else if(low.includes('gabriela')) vSelRef('Gabriela S');
+      else if(low.includes('lilian')) vSelRef('Lilian');
+      else if(low.includes('viviane')) vSelRef('Viviane');
+      else {vd.referente=text;vSetTx(4,text,false);}
+    }
+    if(step===5){
+      document.getElementById('vDesc').value=text;
+      vd.descricao=text;
+    }
+  }
+})();
+</script>
+
+</body>
+</html>
