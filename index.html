@@ -167,19 +167,10 @@ img {
           <a class="btn primary" href="javascript:void(0)" onclick="alternarTabela()" style="cursor:pointer;">Consultar</a>
         </div>
 
-        <div id="espelho-leitura" style="display:none;margin-top:15px;width:100%;overflow:hidden;border-radius:8px;border:1px solid #e0e0e0;padding:14px;">
-          <div id="consulta-status" style="color:#3b82c4;font-style:italic;font-size:.93rem;"></div>
-          <div id="consulta-resultado"></div>
+        <div id="espelho-leitura" style="display:none;margin-top:15px;width:100%;overflow:hidden;border-radius:8px;border:1px solid #e0e0e0;">
+          <iframe src="https://docs.google.com/spreadsheets/d/e/2PACX-1vSixdUd4okC_REPTEYSNJgQqU_YRzTEo-lpkcAn3_BZe8nb3TUAkxTuDafqn4tntIcmepNq2vsgQ__V/pubhtml?gid=1992212771&single=true" width="100%" height="320" style="border:none;" frameborder="0"></iframe>
+          <iframe src="https://docs.google.com/spreadsheets/d/e/2PACX-1vSixdUd4okC_REPTEYSNJgQqU_YRzTEo-lpkcAn3_BZe8nb3TUAkxTuDafqn4tntIcmepNq2vsgQ__V/pubhtml?gid=284097088&single=true" width="100%" height="350" style="border:none;margin-top:8px;" frameborder="0"></iframe>
         </div>
-
-        <style>
-          .tabela-pres { width:100%; border-collapse:collapse; margin-top:12px; font-size:13px; font-family:sans-serif; }
-          .tabela-pres th, .tabela-pres td { border:1px solid #e2e8f0; padding:9px 11px; text-align:left; }
-          .tabela-pres th { background:#f0f5fb; font-weight:bold; color:#1f3b63; }
-          .tabela-pres tr:nth-child(even) td { background:#fafcff; }
-          .tabela-sec { margin-top:22px; }
-          .tabela-sec h3 { margin:0 0 6px; font-size:.97rem; color:#1f3b63; }
-        </style>
 
 
 
@@ -582,76 +573,9 @@ img {
   </div>
 
 <script>
-// URL do Web App do Apps Script (o mesmo usado pelo doPost)
-const APPS_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbw3FmQjJUADNuj5E_T24LCOLKj5L6BiMb3YfpVfz50FdLCwBedqIo4MIothZrPR32c/exec";
-
-let tabelaCarregada = false;
-
 function alternarTabela() {
-  const painel = document.getElementById("espelho-leitura");
-  const visivel = painel.style.display !== "none";
-
-  if (visivel) {
-    painel.style.display = "none";
-    return;
-  }
-
-  painel.style.display = "block";
-
-  // Só busca uma vez; nas próximas apenas mostra/esconde
-  if (tabelaCarregada) return;
-
-  const status = document.getElementById("consulta-status");
-  const resultado = document.getElementById("consulta-resultado");
-  status.textContent = "Buscando dados da planilha…";
-  resultado.innerHTML = "";
-
-  fetch(APPS_SCRIPT_URL + "?action=consultarPresenca")
-    .then(r => r.json())
-    .then(res => {
-      status.textContent = "";
-      if (res.erro) {
-        resultado.innerHTML = '<p style="color:red">⚠️ ' + res.erro + '</p>';
-        return;
-      }
-
-      let html = "";
-
-      // Tabela de presenças (aba Pres, A1:G14)
-      if (res.tabela && res.tabela.length) {
-        html += '<div class="tabela-sec"><h3>📋 Presença – Período</h3>';
-        html += '<div style="overflow-x:auto"><table class="tabela-pres">';
-        res.tabela.forEach((linha, i) => {
-          html += "<tr>";
-          linha.forEach(cel => {
-            html += i === 0 ? "<th>" + cel + "</th>" : "<td>" + cel + "</td>";
-          });
-          html += "</tr>";
-        });
-        html += "</table></div></div>";
-      }
-
-      // Tabela de gráficos (aba graficos, A1:F15)
-      if (res.grafico && res.grafico.length) {
-        html += '<div class="tabela-sec"><h3>📊 Estatísticas</h3>';
-        html += '<div style="overflow-x:auto"><table class="tabela-pres">';
-        res.grafico.forEach((linha, i) => {
-          html += "<tr>";
-          linha.forEach(cel => {
-            html += i === 0 ? "<th>" + cel + "</th>" : "<td>" + cel + "</td>";
-          });
-          html += "</tr>";
-        });
-        html += "</table></div></div>";
-      }
-
-      resultado.innerHTML = html || '<p style="color:#888">Nenhum dado encontrado.</p>';
-      tabelaCarregada = true;
-    })
-    .catch(err => {
-      status.textContent = "";
-      resultado.innerHTML = '<p style="color:red">Falha na comunicação: ' + err.message + '</p>';
-    });
+  var x = document.getElementById("espelho-leitura");
+  x.style.display = (x.style.display === "none") ? "block" : "none";
 }
 </script>
 
