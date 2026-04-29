@@ -1,0 +1,502 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pitágoras além do Triângulo — Feridas Crônicas e a Filosofia do Equilíbrio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&family=Source+Sans+3:wght@300;400;600;700&family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --bg:#FAFAF8;--surface:#fff;--gold:#B8860B;--gold-light:#F5ECC7;--gold-mid:#E8D28A;
+  --teal:#1B6B6B;--teal-light:#E8F4F4;--teal-mid:#A8D4D4;--slate:#2C3E50;
+  --text:#1A1A2E;--muted:#6B7280;--border:#E5E7EB;--accent:#8B4513;--accent-light:#FFF0E6;
+  --correct:#166534;--correct-bg:#DCFCE7;--wrong:#991B1B;--wrong-bg:#FEE2E2;
+}
+body{font-family:'Source Sans 3',sans-serif;background:var(--bg);color:var(--text);line-height:1.7;font-size:16px}
+.institutional-header{background:#fff;border-bottom:2px solid var(--gold-mid);padding:14px 32px;display:flex;justify-content:space-between;align-items:center}
+.header-identity{font-family:'Playfair Display',serif;font-size:.85rem;color:var(--teal);font-style:italic;letter-spacing:.03em}
+.institutional-header img{max-height:56px;object-fit:contain}
+.hero{background:linear-gradient(135deg,#1A1A2E 0%,#2C3E50 60%,#1B6B6B 100%);color:#fff;padding:72px 32px 64px;text-align:center;position:relative;overflow:hidden}
+.hero-eyebrow{font-size:.75rem;letter-spacing:.2em;text-transform:uppercase;color:var(--gold-mid);margin-bottom:16px;font-weight:600}
+.hero h1{font-family:'Playfair Display',serif;font-size:clamp(2rem,5vw,3.4rem);line-height:1.15;margin-bottom:12px;font-weight:900}
+.hero h1 em{color:var(--gold-mid);font-style:italic}
+.hero-subtitle{font-size:1.1rem;color:rgba(255,255,255,.8);max-width:640px;margin:0 auto 24px;font-weight:300}
+.hero-badge{display:inline-block;background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.25);border-radius:999px;padding:6px 20px;font-size:.85rem;color:var(--gold-mid);letter-spacing:.05em}
+main{max-width:860px;margin:0 auto;padding:0 24px 64px}
+section{margin-top:60px}
+.section-label{font-size:.7rem;letter-spacing:.2em;text-transform:uppercase;color:var(--teal);font-weight:700;margin-bottom:8px}
+h2{font-family:'Playfair Display',serif;font-size:clamp(1.5rem,3vw,2rem);color:var(--slate);line-height:1.25;margin-bottom:20px}
+h3{font-family:'DM Serif Display',serif;font-size:1.2rem;color:var(--teal);margin-bottom:12px}
+p{color:#374151;margin-bottom:16px}
+.pull-quote{border-left:4px solid var(--gold);background:var(--gold-light);padding:24px 28px;margin:32px 0;border-radius:0 12px 12px 0}
+.pull-quote blockquote{font-family:'Playfair Display',serif;font-size:1.25rem;font-style:italic;color:var(--accent);line-height:1.5}
+.pull-quote cite{display:block;margin-top:10px;font-size:.85rem;color:var(--muted);font-style:normal;font-weight:600}
+.timeline{position:relative;padding-left:32px;margin:32px 0}
+.timeline::before{content:'';position:absolute;left:8px;top:0;bottom:0;width:2px;background:linear-gradient(to bottom,var(--gold),var(--teal))}
+.timeline-item{position:relative;margin-bottom:28px}
+.timeline-item::before{content:'';position:absolute;left:-28px;top:6px;width:12px;height:12px;border-radius:50%;background:var(--gold);border:2px solid var(--surface);box-shadow:0 0 0 2px var(--gold)}
+.timeline-year{font-size:.72rem;font-weight:700;letter-spacing:.1em;color:var(--gold);text-transform:uppercase;margin-bottom:2px}
+.timeline-title{font-family:'DM Serif Display',serif;font-size:1rem;color:var(--slate);margin-bottom:4px}
+.timeline-desc{font-size:.9rem;color:var(--muted);margin:0}
+.img-placeholder{margin:28px 0}
+.placeholder-box{border:2px dashed #b0b8c1;background:#f4f6f8;border-radius:12px;padding:40px 24px;text-align:center;color:#6c757d;min-height:240px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px}
+.placeholder-icon{font-size:2.4rem}
+.placeholder-label{font-family:monospace;font-size:.82rem;background:#e9ecef;padding:5px 12px;border-radius:6px;color:#343a40}
+.placeholder-hint{font-size:.78rem;color:#868e96;font-style:italic;max-width:360px;line-height:1.4}
+figcaption{font-size:.82rem;color:var(--muted);text-align:center;margin-top:10px;font-style:italic}
+.concept-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:20px;margin:28px 0}
+.concept-card{background:var(--surface);border:1px solid var(--border);border-radius:14px;padding:24px 20px;border-top:4px solid var(--teal)}
+.concept-card .icon{font-size:1.8rem;margin-bottom:10px}
+.concept-card h4{font-family:'DM Serif Display',serif;font-size:1rem;color:var(--teal);margin-bottom:6px}
+.concept-card p{font-size:.88rem;color:var(--muted);margin:0}
+.connection-box{background:linear-gradient(135deg,var(--teal-light),#EFF9F9);border:1px solid var(--teal-mid);border-radius:16px;padding:32px;margin:32px 0}
+.connection-box h3{color:var(--teal);margin-bottom:16px}
+.callout{background:var(--accent-light);border-left:4px solid var(--accent);padding:20px 24px;border-radius:0 10px 10px 0;margin:24px 0}
+.callout strong{color:var(--accent)}
+.infographic-row{display:grid;grid-template-columns:1fr 1fr;gap:24px;margin:28px 0}
+@media(max-width:600px){.infographic-row{grid-template-columns:1fr}}
+.info-panel{background:var(--surface);border:1px solid var(--border);border-radius:14px;padding:24px;text-align:center}
+.info-panel .big-number{font-family:'Playfair Display',serif;font-size:2.8rem;font-weight:900;color:var(--teal);line-height:1;margin-bottom:6px}
+.info-panel .label{font-size:.85rem;color:var(--muted);font-weight:600}
+.quiz-section{background:var(--surface);border:2px solid var(--border);border-radius:20px;padding:36px;margin-top:60px}
+.quiz-header{text-align:center;margin-bottom:36px}
+.quiz-badge{display:inline-block;background:var(--teal);color:#fff;border-radius:999px;padding:4px 18px;font-size:.78rem;letter-spacing:.12em;font-weight:700;text-transform:uppercase;margin-bottom:12px}
+.quiz-header h2{margin-bottom:8px;font-size:1.6rem}
+.quiz-header p{color:var(--muted);font-size:.95rem}
+.quiz-question{margin-bottom:36px;border-bottom:1px solid var(--border);padding-bottom:32px}
+.quiz-question:last-of-type{border-bottom:none;margin-bottom:0}
+.question-text{font-family:'DM Serif Display',serif;font-size:1.05rem;color:var(--slate);margin-bottom:16px;line-height:1.5;display:flex;align-items:flex-start;gap:10px}
+.question-number{display:inline-flex;align-items:center;justify-content:center;background:var(--teal);color:#fff;min-width:28px;height:28px;border-radius:50%;font-size:.8rem;font-weight:700;flex-shrink:0;margin-top:2px}
+.options-list{display:flex;flex-direction:column;gap:10px;list-style:none}
+.option-btn{display:flex;align-items:flex-start;gap:12px;padding:14px 18px;border:2px solid var(--border);border-radius:10px;background:var(--bg);cursor:pointer;text-align:left;font-family:'Source Sans 3',sans-serif;font-size:.95rem;color:var(--text);transition:all .18s ease;width:100%}
+.option-btn:hover:not(:disabled){border-color:var(--teal);background:var(--teal-light)}
+.option-btn.correct{border-color:var(--correct);background:var(--correct-bg);color:var(--correct);font-weight:600}
+.option-btn.wrong{border-color:var(--wrong);background:var(--wrong-bg);color:var(--wrong)}
+.option-btn:disabled{cursor:default}
+.option-letter{display:inline-flex;align-items:center;justify-content:center;width:24px;height:24px;border-radius:50%;background:var(--border);font-size:.75rem;font-weight:700;flex-shrink:0;color:var(--slate)}
+.option-btn.correct .option-letter{background:var(--correct);color:#fff}
+.option-btn.wrong .option-letter{background:var(--wrong);color:#fff}
+.feedback-msg{margin-top:12px;padding:12px 16px;border-radius:8px;font-size:.9rem;display:none}
+.feedback-msg.show{display:block}
+.feedback-msg.correct{background:var(--correct-bg);color:var(--correct)}
+.feedback-msg.wrong{background:var(--wrong-bg);color:var(--wrong)}
+.score-box{display:none;margin-top:32px;background:linear-gradient(135deg,var(--teal),#0D4F4F);color:#fff;border-radius:16px;padding:32px;text-align:center}
+.score-box h3{color:#fff;font-size:1.4rem;margin-bottom:8px}
+.score-number{font-family:'Playfair Display',serif;font-size:4rem;font-weight:900;color:var(--gold-mid);line-height:1;margin:12px 0}
+.score-msg{font-size:1rem;color:rgba(255,255,255,.85)}
+.restart-btn{margin-top:20px;background:rgba(255,255,255,.15);border:2px solid rgba(255,255,255,.4);color:#fff;padding:10px 28px;border-radius:999px;font-size:.9rem;font-weight:600;cursor:pointer;font-family:'Source Sans 3',sans-serif;transition:background .2s}
+.restart-btn:hover{background:rgba(255,255,255,.25)}
+.reflection-section{margin-top:60px}
+.reflection-cards{display:grid;gap:20px;margin-top:24px}
+.reflection-card{background:var(--surface);border:1px solid var(--border);border-radius:14px;overflow:hidden}
+.reflection-card-header{background:var(--slate);color:#fff;padding:16px 24px;display:flex;align-items:center;gap:12px;cursor:pointer;transition:background .2s}
+.reflection-card-header:hover{background:var(--teal)}
+.ref-num{font-family:'Playfair Display',serif;font-size:1.4rem;color:var(--gold-mid);font-weight:700;min-width:28px}
+.reflection-card-header h4{font-family:'DM Serif Display',serif;font-size:1rem;margin:0;flex:1}
+.ref-arrow{font-size:.85rem;transition:transform .3s;margin-left:auto}
+.ref-arrow.open{transform:rotate(180deg)}
+.reflection-body{padding:0 24px;max-height:0;overflow:hidden;transition:max-height .4s ease,padding .3s}
+.reflection-body.open{max-height:600px;padding:24px}
+.reflection-body p{font-size:.95rem;color:#374151}
+.reflection-tags{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px}
+.tag{background:var(--teal-light);color:var(--teal);border:1px solid var(--teal-mid);border-radius:999px;padding:4px 14px;font-size:.78rem;font-weight:600}
+.synthesis-box{background:linear-gradient(135deg,#1A1A2E,#2C3E50);color:#fff;border-radius:20px;padding:48px 36px;text-align:center;margin-top:60px}
+.synthesis-box h2{color:var(--gold-mid);font-family:'Playfair Display',serif;font-size:1.8rem;margin-bottom:16px}
+.synthesis-box p{color:rgba(255,255,255,.85);max-width:600px;margin:0 auto 16px}
+.institutional-footer{background:#fff;border-top:1px solid var(--border);padding:28px 32px;text-align:center;font-size:.82rem;color:var(--muted)}
+.divider{height:1px;background:linear-gradient(to right,transparent,var(--gold-mid),transparent);margin:48px 0}
+@media(max-width:640px){.quiz-section{padding:24px 18px}.hero{padding:48px 20px 40px}main{padding:0 16px 48px}}
+</style>
+</head>
+<body>
+
+<header class="institutional-header">
+  <div class="header-identity">PET-Saúde Digital G10 · Feridas Crônicas · UFPel</div>
+  <img src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/4gHYSUNDX1BST0ZJTEUAAQEAAAHIAAAAAAQwAABtbnRyUkdCIFhZWiAH4AABAAEAAAAAAABhY3NwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAA9tYAAQAAAADTLQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAlkZXNjAAAA8AAAACRyWFlaAAABFAAAABRnWFlaAAABKAAAABRiWFlaAAABPAAAABR3dHB0AAABUAAAABRyVFJDAAABZAAAAChnVFJDAAABZAAAAChiVFJDAAABZAAAAChjcHJ0AAABjAAAADxtbHVjAAAAAAAAAAEAAAAMZW5VUwAAAAgAAAAcAHMAUgBHAEJYWVogAAAAAAAAb6IAADj1AAADkFhZWiAAAAAAAABimQAAt4UAABjaWFlaIAAAAAAAACSgAAAPhAAAts9YWVogAAAAAAAA9tYAAQAAAADTLXBhcmEAAAAAAAQAAAACZmYAAPKnAAANWQAAE9AAAApbAAAAAAAAAABtbHVjAAAAAAAAAAEAAAAMZW5VUwAAACAAAAAcAEcAbwBvAGcAbABlACAASQBuAGMALgAgADIAMAAxADb/2wBDAAUDBAQEAwUEBAQFBQUGBwwIBwcHBw8LCwkMEQ8SEhEPERETFhwXExQaFRERGCEYGh0dHx8fExciJCIeJBweHx7/2wBDAQUFBQcGBw4ICA4eFBEUHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh7/wAARCAB9ATEDASIAAhEBAxEB/8QAHQAAAQQDAQEAAAAAAAAAAAAAAAQFBgcBAgMICf/EAEYQAAEDAwMBBgMFBQYCCgMAAAECAwQABREGEiExBxMiQVFhFHGBCCMykaEWQlJTsRUzYoKSwRckJjRFVFWTlKKy0VZypP/EABsBAAEFAQEAAAAAAAAAAAAAAAABAwQFBgIH/8QANBEAAQMCBAMGBAYDAQAAAAAAAQACAwQRBRIhMUFRYQYTInGBkaGxwdEUIzJC4fAHFvEV/9oADAMBAAIRAxEAPwD2XRRRQhFFFFCEUUUg1DckWmyy7k40t1MdsuFCeqseVcveGNLjsF01pc4NG5S/IrRt5pzPduIWRwdpzivOGptU3W93ZycuVKjIUfu2G3iEtjHQYxn50isV5uVllrlWyWuO6tJSo9Qoe4PBPvWXd2piElgwlvP+Fqm9k5zHmLwHcv5Xp/NFU7ortIuypnwV47qUHB907gIUFehxwc1K5Oori4cIKGR6JGf1NSj2kowwOFyeVlUzYJVQyZHgKb5oqu3blPcOVzHj8lY/pXL4qV/3l7/zDUY9qYuEZSjB5OLgrJzRVconTUHKZb4/zmlTN8ubZ/6xv9lgGumdqID+phCR2ESjYgqeVV3bF24aO7NX026cZNzvK2w4m3QkgrSk9CtRISgHyycnBwDUoi6pI4lxxgDlSD/sa8Y69t8HVepbpfbi2tiZLkrccdaWNxGcIz5HCQkDjoKsG43SOAIN/oo//l1T7ho1HNT+T9sC5/FH4XQMX4fPHe3NQXj6NkfrVp9jf2hdK9oV2bsL0STY726kliNJUlSJGBkhtwcE4ydpwcAkDivG+odMwLZZnp7E2Q+UqSlKVbcZKgOcCozFuUmzTI95hOKblW91EplSTghbZChz9MfImrWCaKoZnj2VLOKillEc25X1TopLaJXxtqiTcY+IYQ7j03JB/wB6VV0piKKKKELCwCBkdDWtbL6VpQhGaM1iihCzms1rUb7Q7rqC1WJ1/T9sbkupbWt191xIRHQkZKtpOVH0HtXEjxG0uPBOQxGZ4Y2wJ5mwW2uNa2XSUZCp7inpTv8AcxGcF1z3x5D3NQxXbhZ0qKVafuyVA4IKmwQf9VMJ0vqS1RW7882xO1DPSHBOnSm0twyRkBAWfE7jzxhPkKia7XAsDi52qX2bncFqLjNuYkhzvSTne+4nICSf3Ryr86oKmuqw648I6jbzPPoPiVr6HCcPcwhxzu6HUnoOAHM+egsr30FrH9rkOyI1iuEOGgeGTIKNjis/hTg5PuelSqvNtk7Sbol5cS9rU5aHjhTcQdwuIOgLJRggD+E5z/VXep2orFeiw3qGe6EhLsd8SFKS62oZSvBJHI8vnV/ghZiLC1snjG9xb5LMdooJMJlDnR2Y7axv6a8V6GzRmmbRV0dvWloFzfSkPPN/ebRgFQJBI+eM08U69pY4tO4UFjg9ocOKzRmsUVylWc1mtaKEq2orGaKELpRRRQhFFFFCEVWfb2qUizQe6mBqOp4hxkKwXTjj5gc8VZLzrbLSnHFBKUjJJ8qrrXbjGpWPhi0O7aJUysnB34xn5e1UePVUcVK5hPidsrXBmn8WyQjQHVUyr1PGKXXWzXK1CMq4RVMiS33jXIO4fTz5HFJrhFehvriyQEOJ4PORV6aeaY1Jpu23C7W8NSUI+6WFFK0DpuSoYIyADisVQUbKouaTYrdYrib6IMkYAWm9/ooHpPTMFqzt3a7ty2phUXI7ZbWUhIxhSgBx59SKkZ610nNxkx32psguXJPfpUXSoy1HnuO424GMY6DB5zzmk8fvfh2xIx32wd5jpuxz+ualYnRMpcgZyWbpa+Sse98n/F0oooqpU1FFFFCFzlHbFdI/lq/oa8vREKQ04E+A52oKsqwAkAH39a9RvJK2XEAZ3JI/SvMKkLQ6pClKG3wKQfIg/pU6jOjgu423KRXuALpaHoLiwhTgHjA/eBBBx8xUSvej4z99sen7UHlv3eSmIWyrcrxLSkrHpwok/KprJkNx05Wcq8kjqalH2btJXF7XMjtEvLSi1BWti1IeT+NfKVOAHolKSUg+ZUr0FaHDat1MC+R9mDhzJVLjNNHMWtY27zx5AL2LAjoiQmIrf4GW0tp+SQAP6V2pBaLkxcWN7ZwtP40Hqml9aqKVkzA9huCqBzCw5XDVFFFFOLlar6VpW6+laUIRRRRQkWRSW8wzcbRMt4c7r4lhbO/bu27kkZx59aVVU/bTqS6RruzZYMp2IyGEvOqaUUqcKiQBkc4GP1p+npjUv7sJqapFM3vDwUI7SLlJuuh9MCS6ZXwbsmHJcUBgvtFKQfqnkexqAJSlIwkAD0FWLply03DT8nR94eESO+98RCmEZ7iRjGVH+E9Pz9aYb1oPVdqfLbtnkSmuqH4aC82seoKeR9QKyGMYRVUkoMrb3A1Go0Ft16R2cx2hq4XMidlsTobA2JJUaTU+1Bn9l9Ilz++NsOc9e7Dh7v8ATNI7HoObtTcdUhdls6Dlxb3heeH8DaOuT0yelbajuar1eS+zHLTISliJHSM920nhCBjqf9zV92Ow+Zs7qlws0C2vFZr/ACBi9NJAykjcHOvc21srw7Jwf+H9s4/dX/8ANVSgj2qpNGaD1K/HbXcrvNtMMcojtPq7zHyBwj9T7VZdotES1tBEdUl1WMFx99bqz9VH+lW9YyMSOLXXJPD7rLUb5DG0Obaw/uiX0UUVCUtFFFFCAs0UcUUJV0ooooQisKUEgknAA5NZqOavuXdtiCyfGsZcI8k+n1qJW1bKSF0ruCdghdM8MCbNSXZU57uGVf8ALoP+s+vypkfeajR3JD6whppBWtSjgJSBkkmt+lebftT68fkXQ6Ftkgoix0hd0KD/AHrhGUtH/CBgkeZI96wlPDNi9XZx336BaCpmjw6muP8ApUo099pbRzi0taj0PMKQ4rZLYU3IATng7VbVDgA4GaufRHajozWP/M6YuploaQBJiqZU07HBJ2lSFAYzgj3x7V8+TnPNXh9k/V0e232VpCUy02Lqvv4sjGFKeQjBbJ8wUjI9wfWthiFA2lpC6mbqFmKGvfUVAZO7Qr11cZiVsSXWrglxl1sJQyUeJCvZWeh9CPrUeo96a9SXKLb4QTJnLt/xGW25fd7kNL8txwQPrwawdTVOqnAuGy2NPTNgBAO6dKKYdOSr6zZJUzUoiBEdpx5Ehg8PNIKQFADP4irjHXFGhb85qOxquD0ZMZYfW0WwScbTxnPn6+9NyU8kQDnDQp5kjX3ym9k/UUUUwu0ZwCSQAOpPlVX9qq9O/s1dF2u2sO3F3an4lpoDaSobju8zjPSpHri5LDibayvw43ugKxn2UfIf1qF3Fj4yC6zkfeIKUrIxz5bQPLNOROyPDlPgoO9jLnHyVa2q1vOPoKkFbqj4Wxzk+9XRoq+SbNaY9suCUSG2gQlaFjc2M52+4FRm02tm3tcpQZCh41rJJ+QA6CljC0vNB1tJ2qztPcYCh6/I1Iqah0x6KRBh0TWZXbq3bLdUhxE23vpcA4OD+hFWHa5rU6Kl9vjPUeh9K83WWc7bpzbzG3BUAtCFFO8ehBq4NP3FUCeCT9w5gLHp6GrHBcTdSyCN58B+Cz2NYXl8Td1PKKwk7hkdDWa9ABvqsitV9K0rdfStKEIooooQiq67QtB3TUmpf7QiyobLIjoa+9Kt2QVZ4A6cirFFVf279rqeyxmE4/pifcm5iVd3LDqWorawR4HF8lKjnIGOecdDUilkkjkvFumKiJkrMsmyY5XZTqRpJLD9ukH0Dqkn9U0xTGdY6ST3LrlztrJPBbdPdH5EHbUAuP2s9XyDmBadMQB6OOOSP13I/pTpo/7TupLvd7bZ7zpuwXGJcZjMN1xhxbe0OOJQTtO8Kxuzjj51ctqKoD81gcP76KqdRQE/luLSnN5+fc5aA+/JmyFqCUd4srUST0GatmyWrTPZpp86k1fcYcR/gKkPq8LJV0bR6qPTjk+VVPcu1Ps603Ovl7sUeWq+Wt96FFskpspQZCXFNl5LnILQ2qOM7gD0yQKqa46lv2q+zbW131DdH7hLeutrOVnCGhuf8DaeiEjyA+uTk0VUzp2hjPC3S/PXgkpKYQOL5NXcPur01R9qzSsV5yNpuw3G7uJTlLshQitH3wcrx/lFQa4fao1s+D8Dp6wQvTvFOv4/VFQOL2l6Ih9mFu0hO7P7XcLrDkF12bJk90l3JUd25BDm4ggY/DgfSmpjW+kX30MRey/Tz77hCW2WbnLWtavIJSF5J9gKjNpmD9nx/lTTK8/u+C9y9kOoJ+q+zLT+o7olhM24wkPvhhBS2FHOdoJJA+pqVVGeyuA9bOzmwQZNoaszzUFvfb2nFLTFJGe7ClEk7c45NSbFVL7ZjZTxsis1iiuUBZ4ooooSrpRRRQhcpbyI8Zx9w4ShJJqupT65MhyQ4cqWok1KdayiiK1FSf71WVfIVEuKw/aSrMkwhGzfmtBhMOVhkPFJrpOZtlrl3KQQlmKwt5Z9kpJ/2rwRdrhJvF0m3WYoqfnPrfcyc8rJOPpnH0r139o+5m2dj952nC5ndw089Q4sBX/tzXjurbspAGxPl5m3sqXtJMTK2PkLp4u+Lja496QB3yCmLPAGPGB927/nSME/xJ96brdNlWy4xblCWUSobyH2SDjxJOQPkcYPsaVWCWzHlrjzFEQZiO4lH+FJOUuD3QrCgfY0luER+BPfhSgA8wsoXjoT5EexGCPYitU4B12lZsEjxBe9NP3SPe7DAvMRQUxOjokII9FDNM+sbNNu0uEhhBMZSg3JKJGxWwnkKSoFCkn16p6iqz7Au0Sw2jsxt1s1DcVR3o8h9hg9w4tJbCgoAlKSE4CwMHyqzI3aBol8Ao1NATn+YpSP6gV5hUYfUU9S7KwkA8twvRaauimhaS8AkJ9TbHXJi0yXW27a1IjRWUoVtZ+5ytQQPJtsBXJ5UpOfIUul/ALlKk2+K3GZllTydoCS90y7tHODxyetJC0zcrVFuPeoftaAXGnuVsbHMArCQQF8dM8Dk4NIdLaBgWHUbsyPJuU2A6AATuKW208hv/FlZKsgYATjzNXUrW19NYjKVXwBtNI5xdf6/ZOlYUoISpZ6JGTXaSlve44wFmN3xabWoY3KA5wOvHP5Goh2oXv+xtMuBtSfiZSu5aB56/iP0Gayj4Hxv7tw1V9DI2UAt2UUuUpLspx9zxB5/A/xqJwM/wCEcVz5KgQTlXmnhSvl6CmpFyi3CC2UDasOshbOeQO8SAB65PNOpB5B8RPBwcbj/CPQCkezKAtRE4HQbBJ5pX8KpppRSp0paHd8AZPJKvUDJrphtIASlCQOAO+6D0pFd5bMRyE9KP3IWobgnISduAQkckcnn3FLmHEvspdYd71tQyFJ2EH6V05rgwFK17e8IJ1Wrq3AuM2CcuyG0DfhQIJ5wfkDVvY4AqqrM0ZOqoTIBwysOLwnb4j0BHyCunqKtX5Vw4WACqcRdmkCmmkZpk2/uVnLjPh+afI09VBNMSTGu7QJwh3wK+vT9anYr0LA6v8AEUovu3RYTEIO5mIGx1Wq+la1svpWlXChIooooQgCtJDDEllTMhlt5pX4kOJCkn6GulYoSJu/sCxf+CWz/wBI3/8AVeQPtBx48X7VNojxWGY7QkWYhDSAlIPxAycDivZ/NeUPtGg6L+0dZe0PUFhcuemhHYPCRsLzXeDBUfCFpUptaQojOOOnEyjNpD5JqYeH1UI7O7LoW/drmuIuvTN+EZfucuMIzi0ctyHVOFRRzkIGQOhOc54qMWnux2R617krUz/a1s7orGFFG9/aT74xn3p5sWorLqbtg1ZfrNCatsKdZro+3EC0kt5incpW0kZUrco44yo03aS1ro2N2N6g0S9YHLhqW8PoXDmMFLmVJH3R2g78tndhKQd273NWBDr7Hh6KHoT7r1d9ma02qT2GaZfk2uC86phe5bkdClH71fUkc1Zce02qM6Ho9sgsuJ6LbjoSofIgVE+wOx3HTnY/pu0Xdgx5zMTc+yojLSlqK9hx5jdg+9Tg1Tym7z5qewWaEVnFYArIptdoooooQs4orFFCF1oPSig9KEKDareLt5cTnwtpCR/U01Uoubne3GSv1dV/Wk9eWVshlqHvPElbGmZ3cLW9FRH2w7oEWCwWRK8KkS3JS0+qW0bR/wC5YrzZVpfafvYu3ao/DaXuZtMdEQD0WfGv/wCSR9Kq2vSMEpzBQsadzr7rAYvN31W88tPZO+jbFI1Nqu16fjK2OT5Aa34zsTglavokKNWP2/8AZr+x1ustzgS5VwhpaEGVIkJAcCxktqVtGMEeH/KOtdPsl2xMztFm3NSQRbrcdvst1QSD+SVV6U1ZYrfqfTk2w3RsriTGihZH4kHqlafRQOCPlVRimMvpK9rP2jf1Vlh2FNqaJzj+o7ei8JRJ86IhSIk+XHSo5KWX1IBPqQCKUN3y/LeRGZvd4cdXwhpuY8pSvkkKyfoK9I6f+znpKG93l4ul0vAHRoqEdH12eI/nVoab0vpvTbPdWGx2+3A9VMMgLV81dSfrTlR2opWaRNLj7Bc0/Z6ocfzDl+KqH7KEHXtn1fMumpLdeE2GVAISbi6SovhSS2UIcVuTxvycDyr0bJ1DNkzWYVtt7yioFa1JTuIA4AyfCkk+ZPAHQnApo6nJ5rSQJS4j7MOY7CedbUhL7WNyCR1Gaz7sefNPne0ZeQV63CWxxZWuueZUR7YNXu2VP9mRpjMjULuDIkNJG2G3kENjjlZwASQDj04FVfrPUsnUsqK++2GkssBGwHjf++ofM4/KmG5tzIUyWmWpch5DrgdOCTvCiM+pB9eTWsYqfUhoJAeKg3sB5Kj0Az61zUEzP7wq3o4WQMDRunjSlskXG5F1kAIhJElxZGQAk8D5k8CpedoBySQARx1wOv5k4pXAmac0hpN23PTW5F1kp3SER/vCF+SSRwAOnJ9ahkjU0g4EeO2gDHiX4jwc9KrJA6Q6cFcUc7GNJcsayfC7i2x1LTfJHko+X0GBTLHQsvjuCtDqyBltRSVH3x1raS+5JfW88dy1nKjjzp70rDPeGetOAkENZ8z5n/an83csXIaaiXRTvs/hpbvDKCtTi20KcWtaipSjgDdnzHljyqxahvZ+ykzZjoH90NifbcckfpUyqA5xJuVGrrCXKOCyhRQoLScFJyPmKsiI6Hozbo6LSFfmKrbOKnmmV95ZIx9EbfyOK0/ZeQiV7Ol1msYZ4WuTgvpWlbr6VpW0VCiiim2+X+y2MMm8XONBD2e775e3djrj8xXLnNYLuNgumMc92Voueic6xTLadW6Yu0sRLbfoEqQr8LTbwKj8h51i7au0xaZy4NyvkGJJQAVNOOYUMjI4rjv4subMLc7p38LNmyZDflY3T5WrrTbrZbdbQ4g9UqSCD9DTDF1tpGV33w2obe73LSnndrudqE4yo+wyK4/8QtEf/k9t/wDNrn8TCBfOPcLr8FUE27t3sU/pgQUnKYUZJII4aSOD18qw3BhNLDjUKMhY6KS0kEfXFcrLd7ZeoZmWmczNjhZQXGlZG4dR+tLqea4OFwdFHcwsOVwsVisdayc1ilSIorNFCFiis0UIWKKKKELrWFdMVmqw1RrW7we0+1w462k6dRLTbp6toJMl1BWgZ8gBt+qq5eQBqnoIHzOIbwF08v2C5qfcWGkYUokeMetJLnYr81b33IUJD8pKD3TZdSkKV5ZJ8qnE9p+TCdZjSlxHlpKUPJQFFB9QDwfrVZdk+sNQXDWd407qSU1I7tKnbc6loN962h1Tajge4FZ9/Z6kDtSdeqs4K2pfG5zbWaFSeofs/auvkt6fLsbbc19wuPPMzUJK1HqSM4Jpjc+zDrfce7bO3PG55okj869IduWsL3pyLAjaddbalOL72S6tsLDbAUlGcH1UtP5GpdLuSNK6Peut/ubkxERkuvSC0lKl+YASkYz0AFWkMBiuxkjrDyUSoi71rZXxtu48L3+BVIdgnY7qPQ0i7qnRuZrbIC1PNnBQVeEBP/7Zq1hp66fyUf6xXGLD1/qKAm5uX9vTQeG9iEzDQ8ptJ6B1auqsdQkADpk9aTaE1bf2tYSdC6zRHN1Q138ObHQUNy2vM7f3Ve3sar6nBqeok7yUuuVKhlmijLYsvh3Av6+fol/7P3T+Sn/WKP2fun8pH+sU13qfqtPa5D0tG1GpiDOgPTQoQ2ytnYoAIBPUc9TzSrTt+1Fbu0k6L1DJj3JuTBVOhTWme6XtSoBSFpBIzz1GKYHZ6jvbX3ThqqrLcEbZvRKv2eun8lP+sVxnWW7RYT0lMNUhTSCsNNqBWvAzge5qf/WsKxjOa7/1mk5n3UYYtP0Xm+8aETrWc9O0+6IF2xul2+cksryON20jI+YBSaaF9iWvArd8FbHCOhEsZ/VNWvpXWNzuHau/b5oaFnnRnjZlBsBSu4cCHCVdTuOSB0wBVo8U7FgdOBoT7qVPidTCQ0gWIvzXlRXYxr8J4tkLjyExP/1Wo7Gu0A/9lxf/AFaK9VuglBCFbVEEA4zj3qqtMy9a3rV+qrD+16WUWR5ppp4W9pRcK2wvxD2yOmKV2CU4sLn4JYcVqZA4+EZRfY87fVVjG7F9bd4kyYccN5G4NyElRHtnFSVvs41a0lDbVqjJSkYBDyf6ZqfaB1HqG53TUej789GbvNpCNk+K1hDqHEnY5sVnBGOmSKadAydcamcv6HdXJjJtlzcgtqRbm1FwIA8RyevNMvwKlfbV3wUtmK1sOY+EWtz2O1ltozR19t8N9EqIltS3MgF1JJGOpx70+/s9dP5SP9YpVoJrVPwl5jaiuKpD7c5bUOR8MloFoITtWEjryT+VMfZjdNTXTWup4N1vvxUOxSxDQhMVDfflSArcojoRkcDFc/67Sab69VEkxCqlc99xpqd+g0905fs9dP5KP9YqUaejPRLW2xITtWkngHPnXLViJ5sEpy23AwJLTZdS73SXPwjO3B4wcYqAdnzuutW6At2pFawRFfnMF1LSLY2pKeSB1OfKplHhUFFLnjveyiSTS1UOZ5AAI57m/wBlaa/w1rTD2eOXt7RVsf1GpZurjIXJC2wgpUSeNo6Y6U/VcBVz25XEX2QKqH7RC2G7lpZySAY6ZC1PAjIKApsqGPPjNW/Vedrmmrxf7vpp62REyGYcrfJ3LSnane2ehPPCTUHEWOfTOa0XOnzCssFlZFWMe82Av04FV/rO46P1BOs8Xs8tu27pmJVvjRSyAnyJGBnCsHPkAaV6wft8btsnu3WxPX1j4VAVEZZDqiru0YVt9Bz+dXo1HjsqKmWGmyfNCAD+lVXqKya2gdqsvVOnrMxNbcjpZQXnkpSQUJB43A5BTVfU0T2MzHUlwvZugAB4aq3ocSjlcWbAMcBmfqSSNM1hbonLQY0nepsyLG7Pn7PmMUurlwQ2l1CiAUZ888ZHtUZ1Xpywxe2nTlojWiG1AktZejJbAbcOHOSOh6D8qnWkrn2gyrylnUen4EG392ol1p4KUF8bRjcevNN+qNOXmb2v6ev8aIF26I1tfd7xI2HDnkTk/iHSnJIA+Btm3IcP220uL6ckzDUmKqfd9gWO/fmF7G2t977JVHutjaj3nSeiWUQ7xHZeWhlEVTbYdGBncRtJyRTVFTpkx2I7Uqdp/UKdm2RP71K1O5GQpSjtcB5GM+dWBe4b820yo0OUqFKdbIakIHibV5H86jV7a1PfLC9Y5un4bbkhvunJapaVspzwXEpxuz5gYHPnWjorsZlJA14aWHkb3HRZStIkfnaDtx1ufMWsne6XW7NTXI1us6JCWG0rdkSJHcNEnPhQdp3EY56AZFJ4GpGrs1aG2GHmBd2HlBYWNzBQBn1BOTwfam2ZYbiL2+p+0xr3HU00iG5KkYRG2pwrcgg9T4sgEnpXG1WW/wBst1jfFvYflWpchpyOh8JDrbnRaCeB5eE06I4sg1F/PoevO3JM55M2xt/I6cr806f2zb9OxbhAEV4MWltgIwvet9budqRnqoq8yeSaQXe5Xld406xcbUYAduIUlTMrvEkBtfgXwMHnOORx14rEnT17uovj8xEWJIlLivwkhzelC2TuSlZxzyBkj146Upls6mu9zsrsm1R4EeFLD0gGUHFLOxQynA/CM+fPNKBGDfQnjr04c9b80hLzprbhp1+1l1f1TLLUq4QbQJVqiLWhx/4kJdXsJC1Nt48QBB6kZwceVSSM81IjtSGVhbTqAtCh5gjINQAaSfhty4Lel7TcVOPLXGnPOAAJWon7xOMkpzjjqAOlT2AwmLCYjJCAlptKAEJ2p4GOB5D2pmobGAMn9+J+nknYHSEnP/fh912z7UUcUVGUhJb/AHKPZ7NMustYQxEZW84T6JGapq82rVU7slltvaaKJzrxvBlGajcl3f3oO0c8DCcegqxu0rTN31Va27ZAvTVtilYVJCo3el7aQUpzuGE5HI86VLgarXp52Gu7Wk3BatqZAgL7oNYwR3feZKuvO7HtTTwXXCnU8rYWtcCL366WSrSV5Yvekrfe2VAtyoiXvllOT+tVJNSbPp/QfaC2nAjyFNTSPOPKcOSfYKKTUv0lofVGm9KStPxdUw3WFoUmKty3nMcqOVYwvkYJwPL36UuiaJlr7MpGi7rcY8tJi/Cx324/d92kJAQSCo5IIzniuSHObYjVOxviglJa67Sev6TcHh1UP7QUC86G15qhJC20oTGgq8u6jKypQ+bm/wCYApz7fXnFdk8OYkkx0TIT0jH8sLSTn26U/wB60S+/2ataKtE5iCwYoivuuMFwqb24VtGRgk85OacbXpt5ejf2b1JJYuzRZ+HWtLPdhbeABkZPiGOtIWONxzC6ZUxsLHXuGu2420+yfobrb8Vp5pQU24gKQR0IIyKrbVsYzO33R4ipy5Dgyn5Sk/utnCUgn3JOPkaX2LSOs9ORk2uyauiO2pvhhFxgF55hH8IWlacgeWRT/prTkaxvyp0iW5Ous0gypr+AtYH4UJA4SgeSR7nkkmnCC8AEKO17KdznNde4IHqLaqFaxavDvbraTYnoTM1FifO6W2pbZT3qcjCSCCeOaW9ka2b3cLpqK7uKVqllw2+cwobUw0oJIbbT/Ar8W48qzz0wFT+ktRL7Q2tWq1JASltoxkRTBOPhyoKKd2/O7j8XT2rredGXNGuU6s0rdo9ukSGks3JiQwXWpSU/hVgKBCx0zXAa4G9uKfdNG6IR5gDl39SbHofmnC/3zVca5OxLNo9U9pABTKdntstqJHQDlXHTpXLXV6uVu0A4+I6Gr1MbRFjsNubwJLuEJAVgZAJzn0GalyQQkZxnHOKhGtdLX6+altlzhahiw49rc79iK7DLgU7tUkqWQsZGFHA4xTjgQNFEhdGXtzWAHnr891CNZtXfTts0feV6eNvi6ZlNIdeExDhLKx3SwQBnHiCifarW1Hc7lAtzUiz2V28vOLADTTyG9qSCdxKjjHTp60x6307fdTaPNgfvFrZTLYU1Pd+DUoO5x/djf4PqVU6aIt12stkat96vLF0UyEtsPpY7o92BgBXiO4+/FctaQSE9NMySJpNswJ012Ovzuumlp+o5wkKv1ij2lKSO4S3MD6l+u7CQBjj1qvNJvaiZ7Ue0FdhtlumtquTCX1SZamShQjNkYAQrcMH2q25BJYVsWlCiCElQ4BxxmoHozSGo7DqG43mTqS3zEXWSJE9tMEo3KCNgDZ3nbwEjnPSh7TdtlzBKxrZSbC4AA15g/TmnrRemnLTMul4uMhuVeLs6lyU42kpQhKRhDaAedqR69SSfOoJ2ZWm+Tn9WP2vUztqaOoJSS0iI27uUCPFlXPpx7VbNyRMct7yLe8yzLKCGXHkFaEq8iUggke2RUC0vorWenWJzUDVlrX8dLcmOl+1FRDi/xYw4OPakc2xFguopyY35nC5tuOXoVN7OFMRG4Mi4mfMjtpD7qglK1Ej8Skp4Tn5VBeyAf9Me0hXn+0IH/wDO1T/o3Tt4syLvKud3ZuV0uT/fF9Mfu0I2thCE7Nx4GM9fM0wad0RrSxTLxNh6sta37vK+Lld7a1FPe7QnKQHRgYAGOelKb3abJI8gbKzONQLb8weSmd4mRpFqvDDL7bjsZhaH0JVktqLe4A+hwQfrVadjFh1HJ7J9NOwtYvwIrkFtbcduC0vu0nnbuUMn5mpJA0fqWFpi7QkaiiO3e7TFvyp64Z27FJCNqUBXBCUgA5IGOhrjpzSGttP6Zh2C16rtKIsJkMMKctSlLCR0ye9wT9KNSbkJxhYyF0YeNSNxwAPTqp4y8y+0VMuodCVFBKFAgKBwRx5g1uKZdEWJ3TumI1qkSkzJCFOOPyAjZ3ri1qWtWPLJUTT1inAbhV7gA4gG4WaY9Xxr9KjRm7BL+Fd709654fCnB5wRzg4OK7aht8yWWHre93UhncQS4oJPhOMpBwrnB5pA1C1Wl8ZubIbUAXCACc7QDjIwOnGOM59a7AXBTdHt+ti0/Imz1FZWgfDR3QCUb8r2KOADjgZGfcUldtnaLtLrd1RvJRtQVowAnuSQTjHOHQSADzn0w/8AwuqRhIuTShgeMhOQdvORs556dMeeelaKg6nbkOONz0LCuACoAYA4JG3Gc4zjqAcYpbpEyIi9ojKQt+Sh5pLS0upbdR3qyXSsqR4cZDeG05PU5I866GDrNc8zWu9RDcjNMlpcpHxICVhajnaEhaklSM5/dT0/FTy5E1V3oQi5NBsteJfh3BfB4Gzp1Hyx51smHqj4koVdGvh8ABYSnfjfk/u4zt46Y/rQhJ2Y2pxPsipDzq47bShNShaMle8bSrkZwnIJAIJzxSF6NrwS3UxnUlkTg+FvPoSVshSiWQAFcEFIz4enkeS9WqNqFmSn4uY2614yrJBBJ3EADaDwSnHPABHvXO0RNStXJC5k1pURSip1BIUonZjg7RgZAIA6c5zmhCZmYOtu9Y+9da2pCFkPt7VujZl1QwcoVhfhHPI4HkoixNWJ0001IclruAkgvlD7aVKRsOdqiSMbsHy8+KVR7dqhttUdV0bLIRhJOCsnaeqiM/j6+3TGKz8Lq1LxU3LZO5Q3lSwRgDHA2cDqR1PqTQhNT8PtBS2oCSl59SFBC0PIQ2gkLySCMk5LZT6AHp59LhbtcNSnFW2cpxjL5AfkJKlb07W8eHjYfFyR18+lPbjOo1QIyEymkyA04HVAp/H+4o+E5GM8DHPrXEQNRJekFu4JCFLKhuUDuO4Afu+FOzyH72T50IT3AcfdiNrkx1sO4wpC1JUQfmkkV2NR0xtVpS0lEpjIUe8UVJwRxjA2ZHHqTyKebUmYm3MpuC0rkgfeKSeDyceQ8sVyQlBSniijFFIlXSiiihCKKKKEIooooQiqo7YtPTtSdoekoTECFLjCJPU9/aEZx6KD9zjcEEYX125P8VWvQRQkIuqQ7fIAOrNGochIctrEKah8uWaTcY6D9xtSppkghRAVtUTxg9c1dFvLRgMFhJS13adidpThOBgYPI48jXfAopSkDbG6brC9e3mHzfIEKG6l5QZTFlKfC2v3VKKkI2qPmnBA9TVddqEx6ya0lXB633WTFuGmZECOqFEcfBk78pQQgHaVBXBOBweRVrVjFIgi6pbtH01epumuyywtwmZDrFwabnIlMuOx0hMB8Hvggg7d4SOSBu20q7XNNTnofZzY7bZoMtqPeNkiMUOJhJbEKQPHtyUthe3GfPaKuDAowKEZQqS7U9NXey9gNssBkPXaXFutvL7jcV19PdfGIUsd0klxbSUEgpzkoTjNdNXISz2BW42eG6tMa72515u3WmRHylFwaU8pEZW51KdoWcc8Z6irpIowKEmW2yQWC7w75bUXGAJIYWpSR8RGcYXkHByhwBQ6eY5pfQBiihdoooooQiiiihCwrpWtbK6VrQhFFFFCEUUUUIRUc1ZqF+zTWY6Gmld/FcWxvB+8fDjaUtjHUkLUcdfD7GpJiilCFAVan1euPHXFtDDj0qRIQw0WcBSW923Ku94CsAbiBjP4TWLbrmWqYRczb40dNzXEdyQkstpLwC1HeTyW0cqSkeLjPFWBRS3HJJZaIUlaErQoKSoZBHQis1k1iuUqKKKKEIooooQiiiihC//Z" alt="Logos Amor-à-Pele e PET-Saúde Digital – UFPel">
+</header>
+
+<div class="hero">
+  <p class="hero-eyebrow">Série Educativa · Projeto G10 Feridas Crônicas</p>
+  <h1>Pitágoras além<br>do <em>triângulo</em></h1>
+  <p class="hero-subtitle">O filósofo que ensinou que o corpo nunca deve ser a tumba da alma — e o que isso tem a ver com cuidar de quem vive com uma ferida crônica</p>
+  <span class="hero-badge">Filosofia · Saúde · Cuidado Integral</span>
+</div>
+
+<main>
+
+  <!-- SEÇÃO 1: QUEM FOI PITÁGORAS DE VERDADE -->
+  <section>
+    <p class="section-label">📜 O outro Pitágoras</p>
+    <h2>Muito além do a² + b² = c²</h2>
+    <p>Todo mundo aprendeu o teorema na escola. Mas Pitágoras de Samos (c. 570–495 a.C.) era muito mais do que um matemático: era filósofo, médico, líder espiritual e fundador de uma escola de vida. Para os pitagóricos, números e harmonia eram os alicerces do universo — e essa harmonia devia existir também dentro de cada ser humano.</p>
+
+    <div class="pull-quote">
+      <blockquote>"Não faça do seu corpo a tumba da sua alma."</blockquote>
+      <cite>— Pitágoras de Samos, século V a.C.</cite>
+    </div>
+
+    <p>Essa frase resume uma cosmologia inteira. Para Pitágoras, a alma era o elemento essencial e imortal — ela poderia inclusive migrar para outros corpos após a morte (metempsicose). Mas isso não significava desprezar o corpo: significava que o corpo precisava estar em harmonia com a alma, e não sufocá-la.</p>
+
+    <figure>
+      <img src="img/pitagoras-retrato.jpg" alt="Busto de Pitágoras de Samos" style="width:100%;max-width:700px;border-radius:12px;display:block;margin:0 auto;box-shadow:0 6px 24px rgba(0,0,0,0.10)">
+      <figcaption>Figura 1 — Busto de Pitágoras: um pensador muito além da geometria.</figcaption>
+    </figure>
+  </section>
+
+  <!-- SEÇÃO 2: LINHA DO TEMPO -->
+  <section>
+    <p class="section-label">📅 Linha do tempo</p>
+    <h2>A vida de um filósofo do equilíbrio</h2>
+    <div class="timeline">
+      <div class="timeline-item">
+        <p class="timeline-year">c. 570 a.C.</p>
+        <p class="timeline-title">Nascimento em Samos, Grécia</p>
+        <p class="timeline-desc">Filho de comerciante, viajou pelo Egito e Babilônia absorvendo matemática, astronomia e medicina.</p>
+      </div>
+      <div class="timeline-item">
+        <p class="timeline-year">c. 530 a.C.</p>
+        <p class="timeline-title">Funda a escola em Crotona, Itália</p>
+        <p class="timeline-desc">Comunidade filosófica com regras de vida: dieta, silêncio, música, exercício físico e meditação.</p>
+      </div>
+      <div class="timeline-item">
+        <p class="timeline-year">c. 500 a.C.</p>
+        <p class="timeline-title">Influência sobre Platão e medicina grega</p>
+        <p class="timeline-desc">Suas ideias sobre equilíbrio dos humores influenciaram Hipócrates e toda a medicina ocidental clássica.</p>
+      </div>
+      <div class="timeline-item">
+        <p class="timeline-year">c. 495 a.C.</p>
+        <p class="timeline-title">Morte — e legado eterno</p>
+        <p class="timeline-desc">Seus ensinamentos sobrevivem em Platão, no neoplatonismo e, hoje, nas ciências da saúde integrativa.</p>
+      </div>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- SEÇÃO 3: FILOSOFIA PITAGÓRICA -->
+  <section>
+    <p class="section-label">⚖️ A filosofia</p>
+    <h2>Os três pilares do pensamento pitagórico sobre saúde</h2>
+
+    <div class="concept-grid">
+      <div class="concept-card">
+        <div class="icon">🎵</div>
+        <h4>Harmonia</h4>
+        <p>Assim como a música só existe quando as notas se equilibram, a saúde existe quando corpo e alma trabalham juntos, não contra si mesmos.</p>
+      </div>
+      <div class="concept-card">
+        <div class="icon">🔢</div>
+        <h4>Proporção</h4>
+        <p>O excesso e a falta são igualmente perigosos. A vida boa está no meio — no que os gregos chamavam de <em>mesotes</em>, o equilíbrio justo.</p>
+      </div>
+      <div class="concept-card">
+        <div class="icon">🔄</div>
+        <h4>Continuidade</h4>
+        <p>A alma não morre com o corpo. Cuidar do corpo é, portanto, cuidar do veículo da alma — uma responsabilidade, não uma vaidade.</p>
+      </div>
+    </div>
+
+    <p>Na comunidade pitagórica, os membros tinham rotina rigorosa: alimentação vegetariana, prática de música diária, caminhadas, reflexão matinal e noturna. Eles entendiam que descuido do corpo era, ao mesmo tempo, descuido da mente e do espírito.</p>
+  </section>
+
+  <!-- SEÇÃO 4: CONEXÃO COM FERIDAS CRÔNICAS -->
+  <section>
+    <p class="section-label">🩹 Da filosofia ao cuidado</p>
+    <h2>O que Pitágoras tem a dizer sobre feridas crônicas?</h2>
+
+    <div class="connection-box">
+      <h3>🔗 A conexão que o projeto G10 enxerga</h3>
+      <p>Uma ferida crônica — como úlceras por pressão, pé diabético, lesões venosas — não é apenas uma lesão de pele. É um sinal de que algo no equilíbrio sistêmico foi rompido. Pitágoras nos lembra: o corpo fala quando a alma é silenciada, quando a rotina, o propósito e o cuidado são negligenciados.</p>
+      <p>Pessoas com feridas crônicas frequentemente enfrentam isolamento social, perda de autonomia, dor constante e depressão. O corpo literalmente torna-se um obstáculo — aquilo que Pitágoras chamava de "tumba da alma".</p>
+    </div>
+
+    <div class="infographic-row">
+      <div class="info-panel">
+        <p class="big-number">≥30%</p>
+        <p class="label">dos pacientes com feridas crônicas apresentam sintomas depressivos ou ansiosos — chegando a ~40% nos casos de pé diabético*</p>
+      </div>
+      <div class="info-panel">
+        <p class="big-number">OR 2,10</p>
+        <p class="label">é o risco aumentado de atraso na cicatrização associado à depressão não tratada — o dobro da chance de complicações†</p>
+      </div>
+    </div>
+
+    <p style="font-size:.78rem;color:var(--muted)">*Renner R, Erfurt-Berge C. Depression and quality of life in patients with chronic wounds. <em>Chronic Wound Care Manag Res.</em> 2017;4:143–151. DOI: 10.2147/CWCMR.S124917. Prevalência de ~40% em úlceras diabéticas: Udovichenko OV et al., 2017; Pedras S et al., 2018. &nbsp;†Riddle et al. Relationships between anxiety, depression and wound healing outcomes in adults: A systematic review and meta-analysis. <em>PLOS ONE.</em> 2025. DOI: 10.1371/journal.pone.0309683. OR=2,10 [IC95%: 1,02–4,33] para atraso na cicatrização; RR=1,30 [IC95%: 1,11–1,53] para complicações.</p>
+
+    <figure>
+      <img src="img/cuidado-ferida.jpg" alt="Profissional de saúde realizando curativo humanizado em paciente com ferida crônica" style="width:100%;max-width:700px;border-radius:12px;display:block;margin:0 auto;box-shadow:0 6px 24px rgba(0,0,0,0.10)">
+      <figcaption>Figura 2 — O cuidado integral inclui atenção ao estado emocional e ao contexto de vida do paciente.</figcaption>
+    </figure>
+
+    <div class="callout">
+      <p><strong>Para refletir na prática:</strong> A adesão ao tratamento de feridas crônicas — troca de curativos, controle glicêmico, mudança de decúbito — depende de motivação. E motivação está diretamente ligada ao senso de propósito e ao suporte social. Pitágoras tinha razão: cuidar da alma é parte do cuidar do corpo.</p>
+    </div>
+  </section>
+
+  <!-- SEÇÃO 5: PITÁGORAS HOJE -->
+  <section>
+    <p class="section-label">💡 Pitágoras nos dias de hoje</p>
+    <h2>"Viver no automático" — a forma moderna de fazer do corpo uma tumba</h2>
+
+    <p>Pitágoras diria que "viver no automático" — sem refletir sobre valores, propósito ou cuidado — é uma forma moderna de "enterrar" a própria essência. A rotina desconectada do que realmente importa transforma o dia a dia em algo vazio.</p>
+
+    <p>Para o paciente com ferida crônica, isso pode se manifestar como abandono do tratamento, descrença na melhora, isolamento social progressivo. Para o profissional de saúde, como burnout e perda do sentido do cuidar.</p>
+
+    <figure>
+      <img src="img/equilibrio-corpo-alma.jpg" alt="Imagem conceitual de equilíbrio representando harmonia entre corpo e mente" style="width:100%;max-width:700px;border-radius:12px;display:block;margin:0 auto;box-shadow:0 6px 24px rgba(0,0,0,0.10)">
+      <figcaption>Figura 3 — O equilíbrio entre cuidado físico e bem-estar emocional é central tanto na filosofia pitagórica quanto na assistência a feridas crônicas.</figcaption>
+    </figure>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- QUIZ DE MÚLTIPLA ESCOLHA -->
+  <div class="quiz-section" id="quiz">
+    <div class="quiz-header">
+      <span class="quiz-badge">🧠 Quiz</span>
+      <h2>Teste seus conhecimentos</h2>
+      <p>Clique na alternativa que você considera correta. O feedback aparece imediatamente.</p>
+    </div>
+
+    <!-- Q1 -->
+    <div class="quiz-question" id="q1">
+      <p class="question-text"><span class="question-number">1</span>Para Pitágoras, qual era a principal função do corpo em relação à alma?</p>
+      <ul class="options-list">
+        <li><button class="option-btn" onclick="answer(this,'wrong','q1')"><span class="option-letter">A</span>O corpo era insignificante e devia ser ignorado para que a alma se libertasse.</button></li>
+        <li><button class="option-btn" onclick="answer(this,'correct','q1')"><span class="option-letter">B</span>O corpo era o veículo da alma — devia ser cuidado para que alma e corpo trabalhassem em harmonia.</button></li>
+        <li><button class="option-btn" onclick="answer(this,'wrong','q1')"><span class="option-letter">C</span>O corpo era a fonte do conhecimento, superior à alma.</button></li>
+        <li><button class="option-btn" onclick="answer(this,'wrong','q1')"><span class="option-letter">D</span>Corpo e alma eram entidades completamente separadas, sem influência mútua.</button></li>
+      </ul>
+      <div class="feedback-msg" id="fb-q1"></div>
+    </div>
+
+    <!-- Q2 -->
+    <div class="quiz-question" id="q2">
+      <p class="question-text"><span class="question-number">2</span>O que significa, no contexto de feridas crônicas, a frase "não faça do seu corpo a tumba da sua alma"?</p>
+      <ul class="options-list">
+        <li><button class="option-btn" onclick="answer(this,'wrong','q2')"><span class="option-letter">A</span>Que o paciente deve evitar pensar na sua condição de saúde para não sofrer.</button></li>
+        <li><button class="option-btn" onclick="answer(this,'wrong','q2')"><span class="option-letter">B</span>Que o corpo fisicamente saudável é mais importante do que o estado emocional.</button></li>
+        <li><button class="option-btn" onclick="answer(this,'correct','q2')"><span class="option-letter">C</span>Que o isolamento, a perda de propósito e o abandono do cuidado podem agravar a condição física — o sofrimento da alma impacta a cicatrização.</button></li>
+        <li><button class="option-btn" onclick="answer(this,'wrong','q2')"><span class="option-letter">D</span>Que apenas o tratamento médico técnico é suficiente para a recuperação.</button></li>
+      </ul>
+      <div class="feedback-msg" id="fb-q2"></div>
+    </div>
+
+    <!-- Q3 -->
+    <div class="quiz-question" id="q3">
+      <p class="question-text"><span class="question-number">3</span>Qual das seguintes práticas da comunidade pitagórica tem equivalente direto nas recomendações atuais para pacientes com feridas crônicas?</p>
+      <ul class="options-list">
+        <li><button class="option-btn" onclick="answer(this,'wrong','q3')"><span class="option-letter">A</span>O estudo de geometria como forma de cura espiritual.</button></li>
+        <li><button class="option-btn" onclick="answer(this,'correct','q3')"><span class="option-letter">B</span>Dieta equilibrada, atividade física regular e suporte social — todos fatores que influenciam a cicatrização.</button></li>
+        <li><button class="option-btn" onclick="answer(this,'wrong','q3')"><span class="option-letter">C</span>O silêncio absoluto como tratamento para infecções.</button></li>
+        <li><button class="option-btn" onclick="answer(this,'wrong','q3')"><span class="option-letter">D</span>A crença na reencarnação como estratégia de enfrentamento da dor crônica.</button></li>
+      </ul>
+      <div class="feedback-msg" id="fb-q3"></div>
+    </div>
+
+    <!-- Q4 -->
+    <div class="quiz-question" id="q4">
+      <p class="question-text"><span class="question-number">4</span>No cuidado integral ao paciente com ferida crônica, o suporte emocional e social é considerado:</p>
+      <ul class="options-list">
+        <li><button class="option-btn" onclick="answer(this,'wrong','q4')"><span class="option-letter">A</span>Um complemento opcional, menos importante que o curativo técnico.</button></li>
+        <li><button class="option-btn" onclick="answer(this,'wrong','q4')"><span class="option-letter">B</span>Responsabilidade exclusiva do psicólogo, fora do escopo da enfermagem.</button></li>
+        <li><button class="option-btn" onclick="answer(this,'correct','q4')"><span class="option-letter">C</span>Parte integrante do cuidado, pois influencia diretamente a adesão ao tratamento e os desfechos clínicos.</button></li>
+        <li><button class="option-btn" onclick="answer(this,'wrong','q4')"><span class="option-letter">D</span>Relevante apenas para pacientes com doenças terminais.</button></li>
+      </ul>
+      <div class="feedback-msg" id="fb-q4"></div>
+    </div>
+
+    <!-- SCORE -->
+    <div class="score-box" id="score-box">
+      <h3>Resultado do Quiz</h3>
+      <div class="score-number" id="score-number">0/4</div>
+      <p class="score-msg" id="score-msg"></p>
+      <button class="restart-btn" onclick="restartQuiz()">↺ Refazer o Quiz</button>
+    </div>
+  </div>
+
+  <!-- QUESTÕES PARA REFLEXÃO -->
+  <section class="reflection-section">
+    <p class="section-label">💭 Para aprofundar</p>
+    <h2>Questões para reflexão</h2>
+    <p>Clique em cada pergunta para expandir e aprofundar a reflexão — individual ou em grupo.</p>
+
+    <div class="reflection-cards">
+
+      <div class="reflection-card">
+        <div class="reflection-card-header" onclick="toggleRef(this)">
+          <span class="ref-num">1</span>
+          <h4>Como você reconhece no seu paciente os sinais de que o corpo "está se tornando uma tumba"?</h4>
+          <span class="ref-arrow">▼</span>
+        </div>
+        <div class="reflection-body">
+          <p>Pense em pacientes que você acompanhou: quais sinais — além da ferida em si — indicavam sofrimento emocional ou perda de propósito? Abandono do tratamento, isolamento, choro frequente, relatos de "não ter mais vontade de nada"?</p>
+          <p>Como sua equipe respondeu a esses sinais? Havia espaço para acolher esse sofrimento, ou o foco era exclusivamente técnico?</p>
+          <div class="reflection-tags">
+            <span class="tag">Escuta ativa</span><span class="tag">Avaliação holística</span><span class="tag">Trabalho em equipe</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="reflection-card">
+        <div class="reflection-card-header" onclick="toggleRef(this)">
+          <span class="ref-num">2</span>
+          <h4>O que é "harmonia" no contexto do cuidado com feridas crônicas?</h4>
+          <span class="ref-arrow">▼</span>
+        </div>
+        <div class="reflection-body">
+          <p>Para Pitágoras, harmonia era o equilíbrio dinâmico entre opostos. No cuidado de feridas, isso pode se traduzir como: equilíbrio entre protocolo técnico e escuta humana, entre autonomia do paciente e orientação profissional, entre urgência clínica e respeito ao tempo emocional do paciente.</p>
+          <p>Você consegue identificar momentos em que esse equilíbrio foi rompido? O que aconteceu e o que poderia ter sido feito de forma diferente?</p>
+          <div class="reflection-tags">
+            <span class="tag">Cuidado centrado na pessoa</span><span class="tag">Comunicação</span><span class="tag">Autonomia</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="reflection-card">
+        <div class="reflection-card-header" onclick="toggleRef(this)">
+          <span class="ref-num">3</span>
+          <h4>E você, profissional de saúde — seu corpo também está sendo uma tumba?</h4>
+          <span class="ref-arrow">▼</span>
+        </div>
+        <div class="reflection-body">
+          <p>Pitágoras não falava apenas para os pacientes. O burnout entre profissionais de saúde é epidêmico. Quando a rotina do trabalho desgasta o propósito de cuidar, quando o profissional "funciona no automático" — isso também é o corpo se tornando uma barreira para a alma.</p>
+          <p>Quais hábitos de equilíbrio você cultiva? Sono, alimentação, vínculos sociais, momentos de reflexão? O que o projeto G10 pode fazer para apoiar o bem-estar da própria equipe?</p>
+          <div class="reflection-tags">
+            <span class="tag">Autocuidado</span><span class="tag">Burnout</span><span class="tag">Saúde do trabalhador</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="reflection-card">
+        <div class="reflection-card-header" onclick="toggleRef(this)">
+          <span class="ref-num">4</span>
+          <h4>A filosofia antiga pode informar o cuidado contemporâneo — ou é romantismo?</h4>
+          <span class="ref-arrow">▼</span>
+        </div>
+        <div class="reflection-body">
+          <p>Existe um risco de usar a filosofia de forma superficial — como inspiração motivacional sem impacto real na prática. Como o pensamento de Pitágoras pode traduzir-se em mudanças concretas no protocolo de atendimento do G10?</p>
+          <p>Pense: incluir avaliação de qualidade de vida e suporte emocional como parte da consulta de feridas, treinar a equipe para escuta ativa, criar grupos de suporte para pacientes — são exemplos. Que outras ideias você propõe?</p>
+          <div class="reflection-tags">
+            <span class="tag">Evidência × humanidades</span><span class="tag">Inovação em cuidado</span><span class="tag">Protocolo</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- SÍNTESE FINAL -->
+  <div class="synthesis-box">
+    <h2>O que fica na cabeça</h2>
+    <p>Pitágoras nos deu um teorema. Mas também nos deu algo mais valioso: o lembrete de que somos mais do que nosso corpo, e que esse corpo merece cuidado — não como fim em si mesmo, mas como condição para que a vida tenha sentido.</p>
+    <p>Para quem tem uma ferida crônica, esse cuidado é duplo: da pele e da alma. E para quem cuida, é triplo: do paciente, da equipe e de si mesmo.</p>
+    <p style="color:var(--gold-mid);font-family:'Playfair Display',serif;font-size:1.15rem;font-style:italic">"Nem desprezar o corpo, nem viver apenas para ele. A vida boa está no meio."</p>
+  </div>
+
+</main>
+
+<footer class="institutional-footer">
+  <p>Infográfico elaborado pelos projetos Amor à Pele e PET-Saúde Digital G10 Feridas Crônicas, UFPel, em Abril de 2026.</p>
+
+  <div style="max-width:820px;margin:20px auto 0;text-align:left;border-top:1px solid #e5e7eb;padding-top:18px">
+    <p style="font-size:.78rem;font-weight:700;color:#374151;letter-spacing:.08em;text-transform:uppercase;margin-bottom:10px">Referências</p>
+
+    <ol style="font-size:.75rem;color:#6b7280;line-height:1.7;padding-left:18px;display:flex;flex-direction:column;gap:8px">
+
+      <li>RENNER, R.; ERFURT-BERGE, C. Depression and quality of life in patients with chronic wounds: ways to measure their influence and their effect on daily life. <em>Chronic Wound Care Management and Research</em>, v. 4, p. 143–151, 2017. DOI: <a href="https://doi.org/10.2147/CWCMR.S124917" style="color:var(--teal)">10.2147/CWCMR.S124917</a>.</li>
+
+      <li>O'DONOVAN, F.; CAPOBIANCO, L.; TAYLOR-BENNETT, J.; WELLS, A. Relationships between anxiety, depression and wound healing outcomes in adults: a systematic review and meta-analysis. <em>PLOS ONE</em>, v. 20, n. 5, e0309683, 20 maio 2025. DOI: <a href="https://doi.org/10.1371/journal.pone.0309683" style="color:var(--teal)">10.1371/journal.pone.0309683</a>.</li>
+
+      <li>WALBURN, J.; VEDHARA, K.; HANKINS, M.; RIXON, L.; WEINMAN, J. Psychological stress and wound healing in humans: a systematic review and meta-analysis. <em>Journal of Psychosomatic Research</em>, v. 67, n. 3, p. 253–271, set. 2009. DOI: <a href="https://doi.org/10.1016/j.jpsychores.2009.04.002" style="color:var(--teal)">10.1016/j.jpsychores.2009.04.002</a>.</li>
+
+      <li>UDOVICHENKO, O. V.; MAXIMOVA, N. V.; AMOSOVA, M. V.; YUNILAYNEN, O. A.; BERSENEVA, E. A.; STAROSTINA, E. G. Prevalence and prognostic value of depression and anxiety in patients with diabetic foot ulcers and possibilities of their treatment. <em>Current Diabetes Reviews</em>, v. 13, n. 1, p. 97–106, 2017. DOI: <a href="https://doi.org/10.2174/1573399812666160523143354" style="color:var(--teal)">10.2174/1573399812666160523143354</a>.</li>
+
+      <li>KIECOLT-GLASER, J. K.; MARUCHA, P. T.; MERCADO, A. M.; MALARKEY, W. B.; GLASER, R. Slowing of wound healing by psychological stress. <em>The Lancet</em>, v. 346, n. 8984, p. 1194–1196, nov. 1995. DOI: <a href="https://doi.org/10.1016/S0140-6736(95)92899-5" style="color:var(--teal)">10.1016/S0140-6736(95)92899-5</a>.</li>
+
+      <li>PLATÃO. <em>Fédon</em>. Tradução de Carlos Alberto Nunes. Belém: EDUFPA, 2001.</li>
+
+      <li>JÂMBLICO. <em>Vida de Pitágoras</em> [<em>De vita Pythagorica</em>]. Tradução e introdução de Miguel Herrero de Jáuregui. Madrid: Gredos, 2003.</li>
+
+      <li>EL CONFIDENCIAL. Pitágoras: "No hagas de tu cuerpo la tumba de tu alma". <em>El Confidencial</em>, 29 abr. 2026. Disponível em: <a href="https://www.elconfidencial.com/alma-corazon-vida/2026-04-29/pitagoras-cuerpo-tumba-alma-1qrt_4343849/" style="color:var(--teal)">elconfidencial.com</a>.</li>
+
+    </ol>
+  </div>
+</footer>
+
+<script>
+const correctFeedback = {
+  q1: "✅ Correto! Para Pitágoras, corpo e alma são inseparáveis. O corpo deve ser cuidado como veículo da alma — excesso ou negligência em qualquer dos dois rompe a harmonia.",
+  q2: "✅ Correto! A frase conecta diretamente ao que vemos no cuidado de feridas crônicas: quando o sofrimento emocional não é tratado, o corpo também não se recupera plenamente.",
+  q3: "✅ Correto! Dieta, exercício e vínculos sociais são evidências científicas consolidadas no manejo de feridas crônicas — e Pitágoras já os praticava há 2.500 anos.",
+  q4: "✅ Correto! O suporte emocional e social influencia diretamente a adesão ao tratamento, a autoeficácia do paciente e, consequentemente, os desfechos de cicatrização."
+};
+const wrongFeedback = {
+  q1: "❌ Não é esta. Para Pitágoras, desprezar ou negligenciar o corpo era tão problemático quanto viver apenas para ele. A harmonia era o ideal.",
+  q2: "❌ Não é esta. A filosofia pitagórica — e a evidência científica atual — indica que o estado emocional e o físico são interdependentes no processo de cura.",
+  q3: "❌ Não é esta. Pense nas práticas concretas da comunidade pitagórica: alimentação cuidadosa, movimento e vínculos — todos com paralelo direto no cuidado contemporâneo.",
+  q4: "❌ Não é esta. O cuidado centrado na pessoa é responsabilidade de toda a equipe de saúde, não apenas de especialistas em saúde mental."
+};
+
+let answered = {};
+let totalAnswered = 0;
+let correctCount = 0;
+const totalQ = 4;
+
+function answer(btn, type, qId) {
+  if (answered[qId]) return;
+  answered[qId] = true;
+  totalAnswered++;
+
+  const allBtns = btn.closest('.options-list').querySelectorAll('.option-btn');
+  allBtns.forEach(b => b.disabled = true);
+  btn.classList.add(type);
+  if (type === 'correct') correctCount++;
+
+  const fb = document.getElementById('fb-' + qId);
+  fb.textContent = type === 'correct' ? correctFeedback[qId] : wrongFeedback[qId];
+  fb.className = 'feedback-msg show ' + type;
+
+  if (totalAnswered === totalQ) {
+    setTimeout(showScore, 500);
+  }
+}
+
+function showScore() {
+  const box = document.getElementById('score-box');
+  const num = document.getElementById('score-number');
+  const msg = document.getElementById('score-msg');
+  num.textContent = correctCount + '/' + totalQ;
+  const pct = correctCount / totalQ;
+  if (pct === 1) msg.textContent = '🏆 Excelente! Você dominou o conteúdo!';
+  else if (pct >= .75) msg.textContent = '😊 Muito bem! Revise as questões que errou.';
+  else if (pct >= .5) msg.textContent = '📚 Bom começo! Vale reler o infográfico e tentar de novo.';
+  else msg.textContent = '🔄 Que tal reler com calma e tentar novamente?';
+  box.style.display = 'block';
+  box.scrollIntoView({behavior:'smooth', block:'center'});
+}
+
+function restartQuiz() {
+  answered = {}; totalAnswered = 0; correctCount = 0;
+  document.querySelectorAll('.option-btn').forEach(b => {
+    b.disabled = false;
+    b.className = 'option-btn';
+  });
+  document.querySelectorAll('.feedback-msg').forEach(f => f.className = 'feedback-msg');
+  document.getElementById('score-box').style.display = 'none';
+  document.getElementById('quiz').scrollIntoView({behavior:'smooth'});
+}
+
+function toggleRef(header) {
+  const body = header.nextElementSibling;
+  const arrow = header.querySelector('.ref-arrow');
+  const isOpen = body.classList.contains('open');
+  body.classList.toggle('open', !isOpen);
+  arrow.classList.toggle('open', !isOpen);
+}
+</script>
+
+</body>
+</html>
