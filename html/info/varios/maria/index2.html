@@ -1,0 +1,1025 @@
+<!DOCTYPE html>
+<!-- saved from url=(0060)https://petg10ufpel.github.io/petg10/html/info/varios/maria/ -->
+<html lang="pt-BR"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Maria, Maria — A Ferida que a Vida Não Fechou</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com/">
+  <link href="img/css2" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      /* Paleta inspirada em Milton — terra, noite, chama */
+      --ocre:        #C8833A;
+      --ocre-light:  #F5E8D4;
+      --ocre-pale:   #FDF7EF;
+      --terracota:   #9E3D2B;
+      --terracota-light: #F9ECE8;
+      --noite:       #1A1E2E;
+      --noite-meio:  #2C3350;
+      --azul-fundo:  #EEF1F8;
+      --verde-musgo: #3D5C3A;
+      --verde-light: #EBF2EA;
+      --creme:       #FBF7F0;
+      --borda:       #DDD5C5;
+      --texto:       #1E1A14;
+      --muted:       #6B6357;
+      --linha:       #C8B89A;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Source Sans 3', sans-serif;
+      background: var(--creme);
+      color: var(--texto);
+      line-height: 1.75;
+      font-size: 17px;
+    }
+
+    /* ─── HEADER ─── */
+    header.institutional-header {
+      background: #fff;
+      border-bottom: 1.5px solid var(--borda);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 14px 40px;
+    }
+    .header-identity {
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+    .header-logo-placeholder {
+      font-size: 0.7rem;
+      color: #aaa;
+      font-style: italic;
+      border: 1px dashed #ccc;
+      padding: 5px 12px;
+      border-radius: 4px;
+    }
+
+    /* ─── HERO ─── */
+    .hero {
+      background: linear-gradient(160deg, var(--noite) 0%, var(--noite-meio) 55%, #3D2C1A 100%);
+      color: #fff;
+      padding: 90px 40px 72px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(ellipse at 20% 80%, rgba(200,131,58,0.22) 0%, transparent 55%),
+        radial-gradient(ellipse at 80% 20%, rgba(158,61,43,0.18) 0%, transparent 50%);
+    }
+    .hero-eyebrow {
+      display: inline-block;
+      font-size: 0.68rem;
+      font-weight: 700;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--ocre);
+      border: 1px solid rgba(200,131,58,0.4);
+      padding: 5px 18px;
+      border-radius: 20px;
+      margin-bottom: 24px;
+      position: relative;
+    }
+    .hero h1 {
+      font-family: 'DM Serif Display', serif;
+      font-size: clamp(2.4rem, 6vw, 4.2rem);
+      font-weight: 400;
+      font-style: italic;
+      line-height: 1.1;
+      max-width: 760px;
+      margin: 0 auto 12px;
+      position: relative;
+      color: #fff;
+    }
+    .hero h1 em {
+      color: var(--ocre);
+      font-style: normal;
+    }
+    .hero-subtitle {
+      font-size: 1.05rem;
+      color: rgba(255,255,255,0.65);
+      max-width: 560px;
+      margin: 12px auto 40px;
+      font-weight: 300;
+      position: relative;
+    }
+    .hero-epigraph {
+      position: relative;
+      display: inline-block;
+      max-width: 520px;
+      margin: 0 auto;
+      background: rgba(255,255,255,0.06);
+      border-left: 3px solid var(--ocre);
+      border-radius: 0 10px 10px 0;
+      padding: 18px 24px;
+      text-align: left;
+    }
+    .hero-epigraph p {
+      font-family: 'Playfair Display', serif;
+      font-style: italic;
+      font-size: 1.1rem;
+      color: rgba(255,255,255,0.88);
+      line-height: 1.6;
+    }
+    .hero-epigraph cite {
+      display: block;
+      margin-top: 10px;
+      font-size: 0.72rem;
+      color: var(--ocre);
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      font-style: normal;
+    }
+
+    /* ─── DADOS FLUTUANTES ─── */
+    .dados-strip {
+      background: var(--ocre);
+      color: #fff;
+      display: flex;
+      justify-content: center;
+      gap: 0;
+      flex-wrap: wrap;
+    }
+    .dado-item {
+      padding: 20px 32px;
+      text-align: center;
+      border-right: 1px solid rgba(255,255,255,0.25);
+      flex: 1;
+      min-width: 180px;
+    }
+    .dado-item:last-child { border-right: none; }
+    .dado-num {
+      font-family: 'Playfair Display', serif;
+      font-size: 2rem;
+      font-weight: 700;
+      display: block;
+      line-height: 1;
+    }
+    .dado-label {
+      font-size: 0.72rem;
+      opacity: 0.85;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      margin-top: 4px;
+    }
+
+    /* ─── LAYOUT NARRATIVO ─── */
+    .narrativa {
+      max-width: 780px;
+      margin: 0 auto;
+      padding: 0 28px 80px;
+    }
+
+    /* ─── CAPÍTULOS ─── */
+    .capitulo {
+      margin: 72px 0 0;
+      position: relative;
+    }
+    .cap-numero {
+      font-family: 'Playfair Display', serif;
+      font-size: 5rem;
+      font-weight: 700;
+      color: var(--borda);
+      line-height: 1;
+      margin-bottom: -12px;
+      user-select: none;
+    }
+    .cap-epigraph {
+      border-left: 3px solid var(--ocre);
+      padding: 14px 20px;
+      margin: 0 0 28px;
+      background: var(--ocre-pale);
+      border-radius: 0 8px 8px 0;
+    }
+    .cap-epigraph p {
+      font-family: 'Playfair Display', serif;
+      font-style: italic;
+      font-size: 1.05rem;
+      color: var(--terracota);
+      line-height: 1.5;
+    }
+    .cap-epigraph cite {
+      font-size: 0.7rem;
+      color: var(--muted);
+      font-style: normal;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      display: block;
+      margin-top: 6px;
+    }
+    .cap-titulo {
+      font-family: 'DM Serif Display', serif;
+      font-size: 1.9rem;
+      font-style: italic;
+      color: var(--noite);
+      margin-bottom: 20px;
+    }
+
+    /* ─── PROSA ─── */
+    .narrativa p {
+      margin-bottom: 20px;
+      color: #2A2218;
+      font-size: 1.02rem;
+    }
+    .narrativa strong { color: var(--terracota); font-weight: 700; }
+
+    /* ─── IMAGENS ─── */
+    figure.img-block {
+      margin: 32px 0;
+    }
+    .placeholder-box {
+      border: 2px dashed var(--linha);
+      background: linear-gradient(135deg, var(--ocre-pale), #F2EBE0);
+      border-radius: 12px;
+      padding: 32px 20px;
+      text-align: center;
+      color: var(--muted);
+      min-height: 220px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+    }
+    .placeholder-icon { font-size: 2.2rem; }
+    .placeholder-label {
+      font-family: monospace;
+      font-size: 0.8rem;
+      background: #E8DDD0;
+      padding: 4px 12px;
+      border-radius: 4px;
+      color: #3D3020;
+    }
+    .placeholder-hint {
+      font-size: 0.78rem;
+      color: #9A8E80;
+      font-style: italic;
+      max-width: 320px;
+      line-height: 1.4;
+    }
+    figcaption {
+      font-size: 0.8rem;
+      color: var(--muted);
+      text-align: center;
+      margin-top: 10px;
+      font-style: italic;
+      padding: 0 12px;
+    }
+
+    /* ─── NOTA CLÍNICA ─── */
+    .nota-clinica {
+      background: var(--azul-fundo);
+      border-radius: 14px;
+      padding: 24px 28px;
+      margin: 28px 0;
+      border-left: 4px solid var(--noite-meio);
+    }
+    .nota-clinica .nc-titulo {
+      font-size: 0.68rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: var(--noite-meio);
+      margin-bottom: 12px;
+    }
+    .nota-clinica ul {
+      padding-left: 18px;
+      color: var(--noite);
+      font-size: 0.92rem;
+    }
+    .nota-clinica ul li { margin-bottom: 6px; }
+    .nota-clinica p { font-size: 0.92rem; color: var(--noite); margin-bottom: 0; }
+
+    .nota-alerta {
+      background: var(--terracota-light);
+      border-left: 4px solid var(--terracota);
+      border-radius: 0 12px 12px 0;
+      padding: 18px 22px;
+      margin: 28px 0;
+      font-size: 0.93rem;
+      color: #5C1A0E;
+    }
+    .nota-alerta strong { color: var(--terracota); }
+
+    .nota-verde {
+      background: var(--verde-light);
+      border-left: 4px solid var(--verde-musgo);
+      border-radius: 0 12px 12px 0;
+      padding: 18px 22px;
+      margin: 28px 0;
+      font-size: 0.93rem;
+      color: #1A3018;
+    }
+    .nota-verde strong { color: var(--verde-musgo); }
+
+    /* ─── PULL QUOTE ─── */
+    .pull-quote {
+      text-align: center;
+      padding: 36px 20px;
+      margin: 40px 0;
+      position: relative;
+    }
+    .pull-quote::before, .pull-quote::after {
+      content: '';
+      display: block;
+      height: 1px;
+      background: linear-gradient(to right, transparent, var(--ocre), transparent);
+      margin: 0 auto;
+      width: 80%;
+    }
+    .pull-quote::before { margin-bottom: 28px; }
+    .pull-quote::after  { margin-top: 28px; }
+    .pull-quote blockquote {
+      font-family: 'Playfair Display', serif;
+      font-style: italic;
+      font-size: 1.45rem;
+      color: var(--terracota);
+      line-height: 1.5;
+      max-width: 600px;
+      margin: 0 auto;
+    }
+    .pull-quote cite {
+      display: block;
+      margin-top: 14px;
+      font-size: 0.75rem;
+      color: var(--muted);
+      font-style: normal;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    /* ─── DIVISOR MUSICAL ─── */
+    .musical-break {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      margin: 56px 0 0;
+    }
+    .musical-break .mb-line {
+      flex: 1;
+      height: 1px;
+      background: var(--linha);
+    }
+    .musical-break .mb-icon {
+      font-size: 1.2rem;
+      color: var(--ocre);
+    }
+
+    /* ─── DESFECHO ─── */
+    .desfecho-hero {
+      background: linear-gradient(135deg, var(--verde-musgo) 0%, #2A4228 100%);
+      border-radius: 18px;
+      padding: 48px 40px;
+      margin: 56px 0 0;
+      color: #fff;
+      text-align: center;
+    }
+    .desfecho-hero h2 {
+      font-family: 'DM Serif Display', serif;
+      font-size: 2rem;
+      font-style: italic;
+      margin-bottom: 12px;
+    }
+    .desfecho-hero p {
+      color: rgba(255,255,255,0.80);
+      max-width: 560px;
+      margin: 0 auto 20px;
+    }
+    .desfecho-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
+      margin-top: 28px;
+    }
+    .desfecho-card {
+      background: rgba(255,255,255,0.12);
+      border: 1px solid rgba(255,255,255,0.2);
+      border-radius: 12px;
+      padding: 20px;
+      text-align: left;
+    }
+    .desfecho-card .dc-num {
+      font-family: 'Playfair Display', serif;
+      font-size: 2rem;
+      font-weight: 700;
+      color: #A8D5A2;
+    }
+    .desfecho-card .dc-label { font-size: 0.72rem; color: rgba(255,255,255,0.6); text-transform: uppercase; letter-spacing: 0.06em; margin-top: 2px; }
+    .desfecho-card p { font-size: 0.85rem; color: rgba(255,255,255,0.75); margin-top: 10px; margin-bottom: 0; }
+
+    /* ─── LIÇÕES ─── */
+    .licoes { margin: 56px 0 0; }
+    .licoes h2 {
+      font-family: 'DM Serif Display', serif;
+      font-size: 1.8rem;
+      font-style: italic;
+      color: var(--noite);
+      margin-bottom: 24px;
+    }
+    .licao-item {
+      display: flex;
+      gap: 20px;
+      margin-bottom: 24px;
+      padding-bottom: 24px;
+      border-bottom: 1px solid var(--borda);
+    }
+    .licao-item:last-child { border-bottom: none; }
+    .licao-num {
+      font-family: 'Playfair Display', serif;
+      font-size: 2.5rem;
+      font-weight: 700;
+      color: var(--borda);
+      line-height: 1;
+      min-width: 40px;
+    }
+    .licao-text h4 {
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--terracota);
+      margin-bottom: 6px;
+    }
+    .licao-text p { font-size: 0.93rem; color: #3A2E22; margin-bottom: 0; }
+
+    /* ─── CLASSIFICAÇÃO CEAP ─── */
+    .ceap-section {
+      background: #fff;
+      border: 1px solid var(--borda);
+      border-radius: 16px;
+      padding: 32px;
+      margin: 48px 0 0;
+    }
+    .ceap-section h3 {
+      font-family: 'DM Serif Display', serif;
+      font-size: 1.4rem;
+      margin-bottom: 6px;
+    }
+    .ceap-section .intro { font-size: 0.92rem; color: var(--muted); margin-bottom: 22px; }
+    .ceap-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; }
+    .ceap-item {
+      border-radius: 10px;
+      padding: 14px 16px;
+      border: 1px solid transparent;
+    }
+    .ceap-item .grau { font-weight: 700; font-size: 1.1rem; margin-bottom: 3px; }
+    .ceap-item p { font-size: 0.78rem; line-height: 1.4; }
+    .c0 { background: #F0F8F0; border-color: #B8DAB8; } .c0 .grau { color: #2D6B2D; }
+    .c1 { background: #FFF9EC; border-color: #F0D490; } .c1 .grau { color: #A07000; }
+    .c2 { background: #FFF3E0; border-color: #F5C070; } .c2 .grau { color: #B06010; }
+    .c3 { background: #FDE8D8; border-color: #E8A060; } .c3 .grau { color: #904010; }
+    .c4 { background: #FAD8C8; border-color: #E08060; } .c4 .grau { color: #802010; }
+    .c5 { background: #F8C8C0; border-color: #D87060; } .c5 .grau { color: #6B1010; }
+    .c6 { background: #F0B0A8; border-color: #C86060; } .c6 .grau { color: #5A0800; }
+    .ceap-destaque {
+      background: var(--ocre-pale);
+      border-radius: 10px;
+      padding: 12px 16px;
+      margin-top: 16px;
+      font-size: 0.85rem;
+      color: #4A3010;
+      grid-column: 1 / -1;
+    }
+
+    /* ─── REFERÊNCIAS ─── */
+    .referencias {
+      border-top: 1px solid var(--borda);
+      margin: 60px 0 0;
+      padding-top: 28px;
+    }
+    .referencias h3 {
+      font-size: 0.72rem;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: var(--muted);
+      margin-bottom: 14px;
+      font-weight: 700;
+    }
+    .referencias ol {
+      padding-left: 18px;
+      font-size: 0.76rem;
+      color: var(--muted);
+      line-height: 1.8;
+    }
+    .referencias ol li { margin-bottom: 4px; }
+
+    /* ─── FOOTER ─── */
+    footer.institutional-footer {
+      background: #fff;
+      border-top: 1px solid var(--borda);
+      text-align: center;
+      padding: 26px 40px;
+      font-size: 0.78rem;
+      color: var(--muted);
+      margin-top: 60px;
+    }
+
+    /* ─── RESPONSIVE ─── */
+    @media (max-width: 680px) {
+      header.institutional-header { padding: 12px 20px; }
+      .hero { padding: 56px 24px 48px; }
+      .dados-strip { flex-direction: column; }
+      .dado-item { border-right: none; border-bottom: 1px solid rgba(255,255,255,0.2); }
+      .narrativa { padding: 0 20px 60px; }
+      .desfecho-grid { grid-template-columns: 1fr; }
+      .ceap-grid { grid-template-columns: 1fr 1fr; }
+      .desfecho-hero { padding: 36px 24px; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- CABEÇALHO INSTITUCIONAL -->
+<header class="institutional-header">
+  <div class="header-identity">G10 · PET-Saúde Digital · UFPel</div>
+  <img src="img/logos_g10_petSaude.png" alt="Logos Amor-à-Pele e PET-Saúde Digital – UFPel" style="max-height:52px;">
+</header>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-eyebrow">📖 Storytelling Clínico · Feridas Crônicas</div>
+  <h1><em>Maria, Maria</em><br>— A Ferida que a Vida Não Fechou</h1>
+  <p class="hero-subtitle">
+    Uma narrativa clínica baseada em evidências sobre úlcera venosa crônica — a ferida mais comum e mais silenciada entre mulheres trabalhadoras do campo.
+  </p>
+  <div class="hero-epigraph">
+    <p>"É uma guerreira, um ser de luz,<br>um sopro de vida que resiste."</p>
+    <cite>Milton Nascimento &amp; Fernando Brant · Maria, Maria · 1978</cite>
+  </div>
+</section>
+
+<!-- DADOS -->
+<div class="dados-strip">
+  <div class="dado-item">
+    <span class="dado-num">64%</span>
+    <div class="dado-label">das úlceras venosas ativas acometem mulheres¹</div>
+  </div>
+  <div class="dado-item">
+    <span class="dado-num">~32%</span>
+    <div class="dado-label">das mulheres têm varizes tronculares clinicamente identificáveis²</div>
+  </div>
+  <div class="dado-item">
+    <span class="dado-num">57–78%</span>
+    <div class="dado-label">das úlceras venosas cicatrizadas recorrem: ~57% em 1 ano e até 78% em 3 anos⁵</div>
+  </div>
+  <div class="dado-item">
+    <span class="dado-num">+10 anos</span>
+    <div class="dado-label">45% dos pacientes relatam histórico de ulceração por mais de 10 anos ao longo da vida³</div>
+  </div>
+</div>
+
+<!-- NARRATIVA PRINCIPAL -->
+<main class="narrativa">
+
+  <!-- ─── CAPÍTULO I ─── -->
+  <div class="capitulo">
+    <div class="cap-numero">I</div>
+    <div class="cap-epigraph">
+      <p>"É preciso ter força,<br>é preciso ter raça,<br>é preciso ter gana sempre."</p>
+      <cite>Milton Nascimento &amp; Fernando Brant · Maria, Maria · 1978</cite>
+    </div>
+    <h2 class="cap-titulo">Quem é Maria</h2>
+
+    <p>
+      Maria tem 68 anos. Passou a vida inteira em pé — na roça, no fogão a lenha, na beira da horta. Carregou peso, andou léguas descalça, trabalhou sem parar desde os doze anos. Criou três filhos sozinha depois que o marido foi embora, e hoje cuida da neta Lúcia, de oito anos, que mora com ela desde pequena.
+    </p>
+    <p>
+      A ferida apareceu na perna esquerda faz dois anos. No começo era só uma mancha marrom, um coceiro. Depois abriu. Maria não contou pra ninguém de início — achou que era coisa de pele velha, que ia passar. Quando a neta começou a perguntar sobre o "machucado", Maria dizia: <em>"Isso não é nada, minha filha. Já vi coisa pior."</em>
+    </p>
+
+    <figure class="img-block">
+      <img src="img/maria-retrato.jpg" alt="Maria, 68 anos — mulher de expressão serena e resistente, contexto rural" style="width:100%;border-radius:10px;display:block;" onerror="this.style.display=&#39;none&#39;;this.nextElementSibling.style.display=&#39;flex&#39;">
+      <div class="placeholder-box" style="display:none;">
+        <span class="placeholder-icon">🖼</span>
+        <p class="placeholder-label">img/maria-retrato.jpg</p>
+        <p class="placeholder-hint">Ilustração ou fotografia: mulher de ~68 anos, pele morena, expressão serena e resistente, contexto rural — roça ou quintal</p>
+      </div>
+      <figcaption>Maria, 68 anos — caso composto, identidade fictícia, baseado em perfil epidemiológico real</figcaption>
+    </figure>
+
+    <div class="nota-clinica">
+      <div class="nc-titulo">📋 Ficha clínica</div>
+      <ul>
+        <li><strong>Idade:</strong> 68 anos · sexo feminino · zona rural</li>
+        <li><strong>Histórico:</strong> 3 gestações · trabalho em pé por décadas · HAS leve</li>
+        <li><strong>Localização da lesão:</strong> terço inferior da perna esquerda, região maleolar medial</li>
+        <li><strong>Tempo de lesão:</strong> ~24 meses antes do primeiro atendimento especializado</li>
+        <li><strong>Queixa:</strong> dor latejante ao final do dia, edema vespertino, prurido, odor discreto</li>
+        <li><strong>Classificação CEAP:</strong> C6 — úlcera venosa ativa</li>
+      </ul>
+    </div>
+
+    <div class="nota-alerta">
+      <strong>⚠ Por que mulheres da roça?</strong> Múltiplas gestações, longos períodos em pé, ausência de meias de compressão e dificuldade de acesso à atenção especializada são fatores que se somam. A úlcera venosa não escolhe ao acaso — ela segue as marcas do trabalho não reconhecido.³
+    </div>
+  </div>
+
+  <!-- ─── DIVISOR ─── -->
+  <div class="musical-break">
+    <div class="mb-line"></div>
+    <div class="mb-icon">♪</div>
+    <div class="mb-line"></div>
+  </div>
+
+  <!-- ─── CAPÍTULO II ─── -->
+  <div class="capitulo">
+    <div class="cap-numero">II</div>
+    <div class="cap-epigraph">
+      <p>"Quem caminha no sol<br>com vontade de aprender<br>a lição que a vida traz."</p>
+      <cite>Milton Nascimento &amp; Fernando Brant · Maria, Maria · 1978</cite>
+    </div>
+    <h2 class="cap-titulo">O Dia que a Lúcia Avisou</h2>
+
+    <p>
+      Foi a neta quem fez Maria ir ao posto. Lúcia voltou da escola com um papel que falava sobre o "Projeto Saúde na Roça" — o agente comunitário passaria pela comunidade naquela semana. Maria não quis ir. Lúcia teimou.
+    </p>
+    <p>
+      A enfermeira viu a ferida pela primeira vez numa sala com cheiro de café e bagunça de papéis. Tirou a meia devagar. A úlcera media 5,5 × 4 cm — base com tecido desvitalizado, esfacelo amarelado, exsudato sero-purulento moderado, bordas irregulares com lipodermatoesclerose. A pele ao redor estava hiperpigmentada, cor de ferrugem, dura. <strong>Maria nem lembrava mais como era a perna antes.</strong>
+    </p>
+
+    <figure class="img-block">
+      <img src="img/ulcera-chegada-ceap6.jpg" alt="Úlcera venosa CEAP C6 na chegada — base com esfacelo, bordas irregulares, hiperpigmentação perilesional" style="width:100%;border-radius:10px;display:block;" onerror="this.style.display=&#39;none&#39;;this.nextElementSibling.style.display=&#39;flex&#39;">
+      <div class="placeholder-box" style="display:none;">
+        <span class="placeholder-icon">🖼</span>
+        <p class="placeholder-label">img/ulcera-chegada-ceap6.jpg</p>
+        <p class="placeholder-hint">Ilustração clínica: úlcera venosa CEAP C6 — base com esfacelo, bordas irregulares, hiperpigmentação perilesional, lipodermatoesclerose</p>
+      </div>
+      <figcaption>Fig. 1 — Aspecto da lesão na primeira avaliação. CEAP C6: úlcera ativa, base com esfacelo, bordas com lipodermatoesclerose.</figcaption>
+    </figure>
+
+    <div class="nota-clinica">
+      <div class="nc-titulo">🔍 Raciocínio clínico — Avaliação inicial</div>
+      <ul>
+        <li>Índice tornozelo-braquial (ITB): 0,97 — componente arterial descartado</li>
+        <li>Dor latejante, piora ao ficar em pé, melhora ao elevar a perna → padrão venoso</li>
+        <li>Edema vespertino bilateral, varicosidades visíveis nas duas pernas</li>
+        <li>Ausência de neuropatia periférica — sensibilidade preservada</li>
+        <li>Teste do monofilamento: normal</li>
+        <li>Glicemia de jejum: 98 mg/dL — diabetes excluído</li>
+      </ul>
+    </div>
+
+    <p>
+      A enfermeira olhou para Maria e disse com calma: <em>"A senhora não falhou. A ferida apareceu porque as veias da perna não estão devolvendo o sangue direito. O corpo da senhora pediu socorro — e a gente chegou."</em>
+    </p>
+  </div>
+
+  <div class="musical-break">
+    <div class="mb-line"></div>
+    <div class="mb-icon">♪</div>
+    <div class="mb-line"></div>
+  </div>
+
+  <!-- ─── CAPÍTULO III ─── -->
+  <div class="capitulo">
+    <div class="cap-numero">III</div>
+    <div class="cap-epigraph">
+      <p>"A dor que ela carrega<br>no olhar que ela tem<br>vem de um povo que não ri."</p>
+      <cite>Milton Nascimento &amp; Fernando Brant · Maria, Maria · 1978</cite>
+    </div>
+    <h2 class="cap-titulo">O Que a Ferida Carregava</h2>
+
+    <p>
+      Úlcera venosa crônica não é só uma ferida na pele. É o resultado visível de um processo que acontece nas profundezas — nas válvulas das veias que deixaram de funcionar, na pressão que se acumulou por anos, no sangue que ficou represado quando deveria circular.
+    </p>
+    <p>
+      Nas veias saudáveis, válvulas unidirecionais empurram o sangue de volta ao coração. Quando essas válvulas falham — por gestações, por trabalho em pé, por predisposição genética — o sangue reflui e fica parado nos capilares. A pressão aumenta. O líquido vaza para os tecidos. A pele endurece, muda de cor, perde nutrição. E então abre.
+    </p>
+
+    <figure class="img-block">
+      <img src="img/mecanismo-insuficiencia-venosa.png" alt="Diagrama do mecanismo da insuficiência venosa — refluxo, hipertensão venosa, lesão cutânea" style="width:100%;border-radius:10px;display:block;" onerror="this.style.display=&#39;none&#39;;this.nextElementSibling.style.display=&#39;flex&#39;">
+      <div class="placeholder-box" style="display:none;">
+        <span class="placeholder-icon">🖼</span>
+        <p class="placeholder-label">img/mecanismo-insuficiencia-venosa.png</p>
+        <p class="placeholder-hint">Diagrama: comparação entre válvula venosa saudável e insuficiente — refluxo, hipertensão venosa, extravasamento capilar, alteração cutânea progressiva</p>
+      </div>
+      <figcaption>Fig. 2 — Mecanismo da insuficiência venosa: o refluxo venoso eleva a pressão hidrostática nos capilares, levando ao extravasamento e à lesão progressiva da pele.</figcaption>
+    </figure>
+
+    <div class="nota-clinica">
+      <div class="nc-titulo">⚙ O que acontece dentro da pele</div>
+      <ul>
+        <li>Hipertensão venosa → extravasamento de fibrinogênio → manguitos de fibrina ao redor dos capilares</li>
+        <li>Hipóxia tecidual → ativação de leucócitos → inflamação crônica local</li>
+        <li>Lipodermatoesclerose: fibrose progressiva do tecido subcutâneo</li>
+        <li>Ferida travada na fase inflamatória → cicatrização bloqueada⁴</li>
+      </ul>
+    </div>
+
+    <div class="pull-quote">
+      <blockquote>"Não é fraqueza que faz a ferida abrir. É a força que a vida cobrou por décadas, sem oferecer retorno."</blockquote>
+      <cite>Narrativa clínica · G10 Feridas Crônicas · UFPel</cite>
+    </div>
+  </div>
+
+  <div class="musical-break">
+    <div class="mb-line"></div>
+    <div class="mb-icon">♪</div>
+    <div class="mb-line"></div>
+  </div>
+
+  <!-- ─── CAPÍTULO IV ─── -->
+  <div class="capitulo">
+    <div class="cap-numero">IV</div>
+    <div class="cap-epigraph">
+      <p>"Mas é preciso ter manha,<br>é preciso ter graça,<br>é preciso ter sonho sempre."</p>
+      <cite>Milton Nascimento &amp; Fernando Brant · Maria, Maria · 1978</cite>
+    </div>
+    <h2 class="cap-titulo">O Plano — e a Resistência</h2>
+
+    <p>
+      O tratamento começou com desbridamento mecânico e limpeza do esfacelo. A cobertura escolhida foi espuma de poliuretano com prata — para controle do exsudato moderado e da contaminação residual. E então veio a parte mais importante — e mais difícil.
+    </p>
+    <p>
+      <strong>A terapia compressiva.</strong> A bota de compressão precisaria ficar na perna de Maria por dias — uma meia longa, apertada, quente. Maria olhou para aquilo como se fosse uma armadilha. <em>"Eu não vou conseguir trabalhar com isso, moça. Tenho horta, tenho galinha, tenho Lúcia pra buscar na escola."</em>
+    </p>
+    <p>
+      A compressão não é detalhe nem conforto: é o tratamento. Sem ela, a pressão venosa não cai, o edema não regride, a ferida não fecha — por melhor que seja qualquer curativo. A enfermeira sabia que a conversa com Maria era tão importante quanto a técnica.
+    </p>
+
+    <figure class="img-block">
+      <img src="img/terapia-compressiva-aplicacao.jpg" alt="Aplicação de bandagem de compressão multicamadas na perna, técnica em espiral" style="width:100%;border-radius:10px;display:block;" onerror="this.style.display=&#39;none&#39;;this.nextElementSibling.style.display=&#39;flex&#39;">
+      <div class="placeholder-box" style="display:none;">
+        <span class="placeholder-icon">🖼</span>
+        <p class="placeholder-label">img/terapia-compressiva-aplicacao.jpg</p>
+        <p class="placeholder-hint">Ilustração: aplicação de bandagem de compressão multicamadas na perna, técnica em espiral, da base ao joelho</p>
+      </div>
+      <figcaption>Fig. 3 — Terapia compressiva multicamadas: o principal tratamento da úlcera venosa. Pressão de 40 mmHg no tornozelo, gradiente decrescente até o joelho.</figcaption>
+    </figure>
+
+    <div class="nota-clinica">
+      <div class="nc-titulo">📌 Protocolo de curativo — Semanas 1–4</div>
+      <ul>
+        <li>Limpeza: soro fisiológico 0,9% em jato, temperatura ambiente</li>
+        <li>Desbridamento autolítico com hidrogel nas primeiras semanas</li>
+        <li>Cobertura primária: espuma de poliuretano com prata (troca 2×/semana)</li>
+        <li>Compressão: bota de 4 camadas — pressão de sustentação 40 mmHg</li>
+        <li>Elevação da perna: 3 períodos de 20 min/dia</li>
+        <li>Orientação nutricional: proteína, zinco, vitamina C</li>
+      </ul>
+    </div>
+
+    <p>
+      A negociação levou três consultas. No fim, Maria aceitou a bota — mas só se a enfermeira viesse duas vezes por semana à comunidade, para ela não precisar sempre ir à cidade. O agente comunitário seria o elo. Lúcia, sem saber, seria a guardiã: ela passou a lembrar a avó de elevar a perna à tarde, enquanto assistiam televisão juntas.
+    </p>
+  </div>
+
+  <div class="musical-break">
+    <div class="mb-line"></div>
+    <div class="mb-icon">♪</div>
+    <div class="mb-line"></div>
+  </div>
+
+  <!-- ─── CAPÍTULO V — O OBSTÁCULO ─── -->
+  <div class="capitulo">
+    <div class="cap-numero">V</div>
+    <div class="cap-epigraph">
+      <p>"Que andar no escuro<br>sem se perder."</p>
+      <cite>Milton Nascimento &amp; Fernando Brant · Maria, Maria · 1978</cite>
+    </div>
+    <h2 class="cap-titulo">O Mês que o Inverno Chegou</h2>
+
+    <p>
+      Na semana oito, a enfermeira chegou e encontrou a bota enrolada num canto. Maria estava de pé na cozinha — tinha chovido cinco dias seguidos, a venda perto havia fechado, e ela precisava ir buscar mantimentos em outro lugar. <em>"Com essa bota não dá, você não entende, moça. Atolou o caminho todo."</em>
+    </p>
+    <p>
+      A ferida havia crescido: 6,8 × 5 cm. A pele perilesional estava eritematosa, quente. Exsudato purulento. Odor. A infecção havia instalado.
+    </p>
+
+    <div class="nota-alerta">
+      <strong>⚠ Ponto crítico:</strong> A não-adesão à compressão raramente é descuido — é quase sempre contexto. Chuva, estrada de terra, trabalho de roça, responsabilidade com a neta. Sem entender o território de Maria, qualquer protocolo falha antes mesmo de começar.
+    </div>
+
+    <div class="nota-clinica">
+      <div class="nc-titulo">🦠 Sinais de infecção — Semana 8</div>
+      <ul>
+        <li>Aumento do exsudato, consistência purulenta, odor fétido</li>
+        <li>Eritema perilesional &gt; 2 cm — celulite instalada</li>
+        <li>Temperatura local elevada, dor aumentada</li>
+        <li>Swab: <em>Staphylococcus aureus</em> sensível à oxacilina</li>
+        <li>Condutas: antibioticoterapia oral + troca de cobertura para alginato de cálcio + prata</li>
+      </ul>
+    </div>
+
+    <figure class="img-block">
+      <img src="img/infeccao-semana8.jpg" alt="Úlcera venosa com celulite perilesional na semana 8 — eritema, exsudato purulento" style="width:100%;border-radius:10px;display:block;" onerror="this.style.display=&#39;none&#39;;this.nextElementSibling.style.display=&#39;flex&#39;">
+      <div class="placeholder-box" style="display:none;">
+        <span class="placeholder-icon">🖼</span>
+        <p class="placeholder-label">img/infeccao-semana8.jpg</p>
+        <p class="placeholder-hint">Ilustração clínica: úlcera venosa com celulite perilesional — eritema &gt; 2 cm, exsudato purulento, pele perilesional eritematosa e quente, ferida ampliada para 6,8 × 5 cm</p>
+      </div>
+      <figcaption>Fig. 3 — Semana 8: agravamento após interrupção da compressão. Celulite perilesional instalada, exsudato purulento, bordas com eritema ativo.</figcaption>
+    </figure>
+
+    <p>
+      A reunião de equipe foi longa. O médico queria internar. A enfermeira argumentou que Maria não iria — ela não largaria Lúcia. Decidiram juntos: tratamento ambulatorial intensivo, visitas diárias por cinco dias, antibiótico oral, e — depois de muita conversa — um par de botas de borracha que o agente comunitário conseguiu emprestado de uma ONG parceira, que Maria poderia usar por cima da compressão nos dias de chuva.
+    </p>
+    <p>
+      A adaptação foi pequena. O efeito, enorme.
+    </p>
+
+    <div class="nota-verde">
+      <strong>📈 Evolução — Semana 10 (duas semanas após intervenção)</strong><br>
+      Eritema perilesional regressou. Exsudato voltou a seroso. Ferida reduziu para 5,2 × 3,8 cm — resposta à antibioticoterapia e retomada da compressão. Maria passou a usar as botas de borracha por cima da bandagem nos dias de chuva. A equipe registrou: <em>adaptação ao contexto funcionou onde o protocolo rígido havia falhado.</em>
+    </div>
+  </div>
+
+  <div class="musical-break">
+    <div class="mb-line"></div>
+    <div class="mb-icon">♪</div>
+    <div class="mb-line"></div>
+  </div>
+
+  <!-- ─── CAPÍTULO VI — PROLIFERAÇÃO ─── -->
+  <div class="capitulo">
+    <div class="cap-numero">VI</div>
+    <div class="cap-epigraph">
+      <p>"É uma flor que vai nascer<br>no asfalto — que vai brotar."</p>
+      <cite>Milton Nascimento &amp; Fernando Brant · Maria, Maria · 1978</cite>
+    </div>
+    <h2 class="cap-titulo">Quando o Tecido Começou a Responder</h2>
+
+    <p>
+      Semana doze. A ferida media 4 × 3 cm. O leito estava vermelho-vivo — granulação ativa, friável, saudável. As bordas tinham pequenas ilhas rosadas de epitelização. O exsudato era seroso, reduzido. Sem odor.
+    </p>
+    <p>
+      Maria chegou à consulta e, antes de sentar, disse: <em>"Eu tô achando que tá melhorando. A Lúcia falou que parece menor."</em> Era a primeira vez que ela falava da ferida com esperança.
+    </p>
+
+    <figure class="img-block">
+      <img src="img/granulacao-semana12.jpg" alt="Tecido de granulação vermelho-vivo na semana 12, epitelização nas bordas" style="width:100%;border-radius:10px;display:block;" onerror="this.style.display=&#39;none&#39;;this.nextElementSibling.style.display=&#39;flex&#39;">
+      <div class="placeholder-box" style="display:none;">
+        <span class="placeholder-icon">🖼</span>
+        <p class="placeholder-label">img/granulacao-semana12.jpg</p>
+        <p class="placeholder-hint">Ilustração: tecido de granulação vermelho-vivo, epitelização nas bordas, ferida em franca redução de dimensões</p>
+      </div>
+      <figcaption>Fig. 4 — Semana 12: granulação ativa e início de epitelização perilesional. A terapia compressiva foi mantida durante toda a fase de proliferação.</figcaption>
+    </figure>
+
+    <div class="nota-verde">
+      <strong>✅ Sinais de evolução positiva — Semana 12</strong><br>
+      Granulação avermelhada e friável — tecido vivo e ativo. Epitelização nas bordas: queratinócitos migrando do perímetro para o centro. Exsudato seroso e reduzido. Sem eritema perilesional. Edema diminuindo — Maria relatou que a perna pesava menos à noite.
+    </div>
+
+    <p>
+      A cobertura foi trocada para hidrofibra simples — o exsudato havia diminuído, a prata não era mais necessária. A compressão seguiu firme. A Lúcia, que acompanhava as consultas nas férias escolares, ficou tão curiosa que a enfermeira começou a explicar o processo para ela também — <em>"para quando você crescer e quiser cuidar da avó."</em>
+    </p>
+  </div>
+
+  <div class="musical-break">
+    <div class="mb-line"></div>
+    <div class="mb-icon">♪</div>
+    <div class="mb-line"></div>
+  </div>
+
+  <!-- ─── CAPÍTULO VII — DESFECHO ─── -->
+  <div class="capitulo">
+    <div class="cap-numero">VII</div>
+    <div class="cap-epigraph">
+      <p>"É uma Maria, Maria,<br>mistura da dor e alegria."</p>
+      <cite>Milton Nascimento &amp; Fernando Brant · Maria, Maria · 1978</cite>
+    </div>
+    <h2 class="cap-titulo">A Perna de Maria, Fechada</h2>
+
+    <p>
+      Semana vinte e oito. A ferida fechou. A enfermeira registrou no prontuário: <em>epitelização completa, bordas integradas, sem sinais de infecção, sem exsudato.</em> Do lado de fora, escreveu uma nota à mão e deixou dentro do prontuário de Maria: <em>"Obrigada por não desistir."</em>
+    </p>
+    <p>
+      Maria não chorou na consulta. Chorou em casa, sozinha, depois que a Lúcia dormiu. Não de alívio — de raiva, ela disse depois. <em>"Eu fico brava de ter esperado dois anos pra procurar ajuda. Que besteira que eu fiz."</em>
+    </p>
+    <p>
+      A enfermeira, quando soube, respondeu: <em>"A senhora não fez besteira. A senhora sobreviveu com o que tinha. Agora a gente vai trabalhar pra que a ferida não volte."</em>
+    </p>
+  </div>
+
+  <!-- DESFECHO VISUAL -->
+  <div class="desfecho-hero">
+    <h2>28 semanas. Uma perna inteira. Uma mulher de pé.</h2>
+    <p>O desfecho de Maria não é o fim da história — é o começo do seguimento. Recorrência: cerca de 57% em 1 ano e até 78% em 3 anos sem seguimento adequado. A compressão continua. As visitas continuam. A Lúcia continua vigiando.</p>
+    <div class="desfecho-grid">
+      <div class="desfecho-card">
+        <div class="dc-num">28</div>
+        <div class="dc-label">semanas de acompanhamento</div>
+        <p>Com uma recaída no meio do caminho — superada com adaptação, não com protocolos rígidos.</p>
+      </div>
+      <div class="desfecho-card">
+        <div class="dc-num">57–78%</div>
+        <div class="dc-label">recorrência: ~57% em 1 ano, até 78% em 3 anos sem seguimento⁵</div>
+        <p>Por isso a alta não é o fim. Maria agora usa meia de compressão 20–30 mmHg diariamente e retorna a cada dois meses.</p>
+      </div>
+      <div class="desfecho-card">
+        <div class="dc-num">0</div>
+        <div class="dc-label">internações realizadas</div>
+        <p>A crise da semana 8 foi tratada ambulatorialmente, com criatividade da equipe e escuta real do contexto de vida de Maria.</p>
+      </div>
+      <div class="desfecho-card">
+        <div class="dc-num">1</div>
+        <div class="dc-label">neta envolvida no cuidado</div>
+        <p>Lúcia virou aliada da equipe sem saber. O vínculo familiar como recurso terapêutico — subestimado, essencial.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- CLASSIFICAÇÃO CEAP -->
+  <div class="ceap-section">
+    <div style="font-size:0.68rem;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:var(--muted);margin-bottom:8px;">Ferramenta Clínica</div>
+    <h3>Classificação CEAP — Doença Venosa Crônica</h3>
+    <p class="intro">Sistema internacional para estadiar a gravidade clínica da doença venosa crônica e orientar a conduta terapêutica.</p>
+    <div class="ceap-grid">
+      <div class="ceap-item c0"><div class="grau">C0</div><p>Sem sinais visíveis de doença venosa.</p></div>
+      <div class="ceap-item c1"><div class="grau">C1</div><p>Telangiectasias ou varizes reticulares.</p></div>
+      <div class="ceap-item c2"><div class="grau">C2</div><p>Varizes tronculares visíveis.</p></div>
+      <div class="ceap-item c3"><div class="grau">C3</div><p>Edema venoso sem alteração cutânea.</p></div>
+      <div class="ceap-item c4"><div class="grau">C4</div><p>Hiperpigmentação, lipodermatoesclerose ou eczema.</p></div>
+      <div class="ceap-item c5"><div class="grau">C5</div><p>Úlcera venosa cicatrizada.</p></div>
+      <div class="ceap-item c6"><div class="grau">C6 ★</div><p>Úlcera venosa ativa — estágio de Maria na chegada.</p></div>
+      <div class="ceap-destaque">
+        <strong>Maria:</strong> chegou como C6, saiu como C5. A compressão contínua é o que evita a progressão de volta a C6.
+      </div>
+    </div>
+  </div>
+
+  <!-- LIÇÕES -->
+  <div class="licoes">
+    <h2>O que Maria ensina</h2>
+    <div class="licao-item">
+      <div class="licao-num">01</div>
+      <div class="licao-text">
+        <h4>A ferida não escolhe quem trabalhou mais</h4>
+        <p>Cerca de 32% das mulheres têm varizes tronculares clinicamente identificáveis — e o trabalho em pé por décadas é um fator de risco que o sistema de saúde raramente pergunta na anamnese.²</p>
+      </div>
+    </div>
+    <div class="licao-item">
+      <div class="licao-num">02</div>
+      <div class="licao-text">
+        <h4>A compressão é o tratamento — não o acessório</h4>
+        <p>Nenhuma cobertura avançada substitui a redução da pressão venosa. Sem compressão, a ferida pode melhorar, mas não fecha. Com compressão adequada, a cicatrização aumenta em até 3 vezes.⁴</p>
+      </div>
+    </div>
+    <div class="licao-item">
+      <div class="licao-num">03</div>
+      <div class="licao-text">
+        <h4>Não-adesão é quase sempre contexto, não caráter</h4>
+        <p>Maria tirou a bota porque choveu e o caminho afundou. A equipe que entende isso adapta — a que não entende, culpa a paciente.</p>
+      </div>
+    </div>
+    <div class="licao-item">
+      <div class="licao-num">04</div>
+      <div class="licao-text">
+        <h4>A rede de cuidado mora dentro de casa</h4>
+        <p>A Lúcia não era profissional de saúde — era uma menina de oito anos. E foi ela quem fez Maria ir ao posto. O cuidado que salva, muitas vezes, começa antes da consulta.</p>
+      </div>
+    </div>
+    <div class="licao-item">
+      <div class="licao-num">05</div>
+      <div class="licao-text">
+        <h4>Cicatrizar não é curar — é recomeçar</h4>
+        <p>Com recorrência em torno de 57% no primeiro ano e até 78% em 3 anos, a alta da úlcera venosa é o início de um programa de seguimento — não o seu encerramento.⁵</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- PULL QUOTE FINAL -->
+  <div class="pull-quote">
+    <blockquote>"É preciso amar as pessoas<br>como se não houvesse amanhã —<br>porque se você parar pra pensar,<br>na verdade não há."</blockquote>
+    <cite>Milton Nascimento &amp; Fernando Brant · Maria, Maria · 1978</cite>
+  </div>
+
+  <!-- REFERÊNCIAS -->
+  <div class="referencias">
+    <h3>Referências</h3>
+    <ol>
+      <li>CRUZ, C. C.; CALIRI, M. H. L.; BERNARDES, R. M. Características epidemiológicas e clínicas de pessoas com úlcera venosa atendidas em unidades municipais de saúde. <em>ESTIMA — Brazilian Journal of Enterostomal Therapy</em>, São Paulo, v. 16, e1218, 2018. DOI: 10.30886/estima.v16.496_PT</li>
+      <li>EVANS, C. J.; FOWKES, F. G. R.; RUCKLEY, C. V.; LEE, A. J. Prevalence of varicose veins and chronic venous insufficiency in men and women in the general population: Edinburgh Vein Study. <em>Journal of Epidemiology and Community Health</em>, v. 53, n. 3, p. 149–153, 1999. DOI: 10.1136/jech.53.3.149</li>
+      <li>CALLAM, M. J. et al. Chronic ulceration of the leg: extent of the problem and provision of care. <em>British Medical Journal</em>, v. 290, n. 6485, p. 1855–1856, 1985. [Estudo escocês: 45% dos pacientes relataram episódios de ulceração por mais de 10 anos.]</li>
+      <li>BORGES, E. L.; BELCZAK, S. Q.; GORNATI, V. C.; AUN, R.; SINCOS, I. R.; FRAGOSO, H. et al. Tratamento tópico de úlcera venosa: proposta de uma diretriz baseada em evidências. <em>Einstein (São Paulo)</em>, v. 9, n. 3, p. 377–385, 2011. DOI: 10.1590/S1679-45082011000300377</li>
+      <li>HE, W. et al. Prevention strategies for the recurrence of venous leg ulcers: A scoping review. <em>International Wound Journal</em>, v. 21, n. 3, e14759, 2024. DOI: 10.1111/iwj.14759. [Taxas de recorrência: ~22% em 3 meses, 57% em 12 meses, 78% em 3 anos.]</li>
+      <li>BRUNELLI, J. V. A. et al. Insuficiência venosa crônica — revisão de literatura. <em>Brazilian Journal of Health Review</em>, v. 7, n. 2, e67983, 2024.</li>
+      <li>NASCIMENTO, Milton; BRANT, Fernando. <strong>Maria, Maria</strong>. Intérprete: Milton Nascimento. In: <em>Clube da Esquina 2</em>. Rio de Janeiro: EMI-Odeon, 1978. 1 disco. [Uso de trechos para fins educativos, não comerciais, em contexto de citação analítica.]</li>
+    </ol>
+    <p style="font-size:0.72rem;color:#aaa;margin-top:14px;font-style:italic;">* Caso clínico composto — Maria é uma personagem fictícia construída sobre perfil epidemiológico real. Nenhuma paciente foi identificada.</p>
+  </div>
+
+</main>
+
+<!-- FOOTER -->
+<footer class="institutional-footer">
+  <p>Infográfico elaborado pelos projetos Amor à Pele e PET-Saúde Digital G10 Feridas Crônicas, UFPel, em <strong>Maio de 2026</strong>.</p>
+</footer>
+
+<audio controls autoplay loop>
+  <source src="maria.mp3" type="audio/mpeg">
+</audio>
+
+</body></html>
