@@ -54,11 +54,6 @@
       text-transform: uppercase;
       color: var(--muted);
     }
-    .header-logo {
-      max-height: 42px;
-      width: auto;
-      display: block;
-    }
     .header-logo-placeholder {
       font-size: 0.7rem;
       color: #aaa;
@@ -275,28 +270,6 @@
       max-width: 320px;
       line-height: 1.4;
     }
-
-    .img-block img {
-      width: 100%;
-      display: block;
-      border-radius: 12px;
-      border: 1px solid var(--borda);
-      box-shadow: 0 10px 28px rgba(26,30,46,0.10);
-      object-fit: cover;
-    }
-    .img-block img.portrait-img {
-      max-height: 700px;
-      object-position: center;
-    }
-    .img-block img.clinical-img {
-      max-height: 600px;
-      object-position: center;
-    }
-    .img-block img.diagram-img {
-      background: #fff;
-      object-fit: contain;
-    }
-
     figcaption {
       font-size: 0.8rem;
       color: var(--muted);
@@ -570,7 +543,7 @@
 <!-- CABEÇALHO INSTITUCIONAL -->
 <header class="institutional-header">
   <div class="header-identity">G10 · PET-Saúde Digital · UFPel</div>
-  <img src="img/logos_g10_petSaude.png" alt="Logo PET-Saúde Digital G10" class="header-logo" onerror="this.style.display='none';this.nextElementSibling.style.display='inline-block';"><div class="header-logo-placeholder" style="display:none">G10 · PET-Saúde</div>
+  <div class="header-logo-placeholder">[ img/logos_g10_petSaude.png ]</div>
 </header>
 
 <!-- HERO -->
@@ -626,7 +599,12 @@
     </p>
 
     <figure class="img-block">
-      <img src="img/maria-retrato.jpg" alt="Maria, mulher de 68 anos em contexto rural, expressão serena e resistente" class="portrait-img" loading="lazy">
+      <img src="img/maria-retrato.jpg" alt="Maria, 68 anos — mulher de expressão serena e resistente, contexto rural" style="width:100%;border-radius:10px;display:block;" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+      <div class="placeholder-box" style="display:none;">
+        <span class="placeholder-icon">🖼</span>
+        <p class="placeholder-label">img/maria-retrato.jpg</p>
+        <p class="placeholder-hint">Ilustração ou fotografia: mulher de ~68 anos, pele morena, expressão serena e resistente, contexto rural — roça ou quintal</p>
+      </div>
       <figcaption>Maria, 68 anos — caso composto, identidade fictícia, baseado em perfil epidemiológico real</figcaption>
     </figure>
 
@@ -671,7 +649,12 @@
     </p>
 
     <figure class="img-block">
-      <img src="img/ulcera-chegada-ceap6.jpg" alt="Úlcera venosa CEAP C6 na chegada ao serviço" class="clinical-img" loading="lazy">
+      <img src="img/ulcera-chegada-ceap6.jpg" alt="Úlcera venosa CEAP C6 na chegada — base com esfacelo, bordas irregulares, hiperpigmentação perilesional" style="width:100%;border-radius:10px;display:block;" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+      <div class="placeholder-box" style="display:none;">
+        <span class="placeholder-icon">🖼</span>
+        <p class="placeholder-label">img/ulcera-chegada-ceap6.jpg</p>
+        <p class="placeholder-hint">Ilustração clínica: úlcera venosa CEAP C6 — base com esfacelo, bordas irregulares, hiperpigmentação perilesional, lipodermatoesclerose</p>
+      </div>
       <figcaption>Fig. 1 — Aspecto da lesão na primeira avaliação. CEAP C6: úlcera ativa, base com esfacelo, bordas com lipodermatoesclerose.</figcaption>
     </figure>
 
@@ -715,7 +698,12 @@
     </p>
 
     <figure class="img-block">
-      <img src="img/mecanismo-insuficiencia-venosa.png" alt="Diagrama explicativo do mecanismo da insuficiência venosa" class="diagram-img" loading="lazy">
+      <img src="img/mecanismo-insuficiencia-venosa.png" alt="Diagrama do mecanismo da insuficiência venosa — refluxo, hipertensão venosa, lesão cutânea" style="width:100%;border-radius:10px;display:block;" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+      <div class="placeholder-box" style="display:none;">
+        <span class="placeholder-icon">🖼</span>
+        <p class="placeholder-label">img/mecanismo-insuficiencia-venosa.png</p>
+        <p class="placeholder-hint">Diagrama: comparação entre válvula venosa saudável e insuficiente — refluxo, hipertensão venosa, extravasamento capilar, alteração cutânea progressiva</p>
+      </div>
       <figcaption>Fig. 2 — Mecanismo da insuficiência venosa: o refluxo venoso eleva a pressão hidrostática nos capilares, levando ao extravasamento e à lesão progressiva da pele.</figcaption>
     </figure>
 
@@ -761,7 +749,12 @@
     </p>
 
     <figure class="img-block">
-      <img src="img/terapia-compressiva-aplicacao.jpg" alt="Profissional do PET G10 aplicando terapia compressiva multicamadas" class="clinical-img" loading="lazy">
+      <img src="img/terapia-compressiva-aplicacao.jpg" alt="Aplicação de bandagem de compressão multicamadas na perna, técnica em espiral" style="width:100%;border-radius:10px;display:block;" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+      <div class="placeholder-box" style="display:none;">
+        <span class="placeholder-icon">🖼</span>
+        <p class="placeholder-label">img/terapia-compressiva-aplicacao.jpg</p>
+        <p class="placeholder-hint">Ilustração: aplicação de bandagem de compressão multicamadas na perna, técnica em espiral, da base ao joelho</p>
+      </div>
       <figcaption>Fig. 3 — Terapia compressiva multicamadas: o principal tratamento da úlcera venosa. Pressão de 40 mmHg no tornozelo, gradiente decrescente até o joelho.</figcaption>
     </figure>
 
@@ -804,13 +797,6 @@
       A ferida havia crescido: 6,8 × 5 cm. A pele perilesional estava eritematosa, quente. Exsudato purulento. Odor. A infecção havia instalado.
     </p>
 
-
-
-    <figure class="img-block">
-      <img src="img/infeccao-semana8.jpg" alt="Úlcera venosa infectada na semana 8, com eritema e exsudato purulento" class="clinical-img" loading="lazy">
-      <figcaption>Fig. 4 — Semana 8: agravamento com sinais de infecção, aumento da lesão, eritema perilesional e exsudato purulento.</figcaption>
-    </figure>
-
     <div class="nota-alerta">
       <strong>⚠ Ponto crítico:</strong> A não-adesão à compressão raramente é descuido — é quase sempre contexto. Chuva, estrada de terra, trabalho de roça, responsabilidade com a neta. Sem entender o território de Maria, qualquer protocolo falha antes mesmo de começar.
     </div>
@@ -826,12 +812,27 @@
       </ul>
     </div>
 
+    <figure class="img-block">
+      <img src="img/infeccao-semana8.jpg" alt="Úlcera venosa com celulite perilesional na semana 8 — eritema, exsudato purulento" style="width:100%;border-radius:10px;display:block;" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+      <div class="placeholder-box" style="display:none;">
+        <span class="placeholder-icon">🖼</span>
+        <p class="placeholder-label">img/infeccao-semana8.jpg</p>
+        <p class="placeholder-hint">Ilustração clínica: úlcera venosa com celulite perilesional — eritema > 2 cm, exsudato purulento, pele perilesional eritematosa e quente, ferida ampliada para 6,8 × 5 cm</p>
+      </div>
+      <figcaption>Fig. 3 — Semana 8: agravamento após interrupção da compressão. Celulite perilesional instalada, exsudato purulento, bordas com eritema ativo.</figcaption>
+    </figure>
+
     <p>
       A reunião de equipe foi longa. O médico queria internar. A enfermeira argumentou que Maria não iria — ela não largaria Lúcia. Decidiram juntos: tratamento ambulatorial intensivo, visitas diárias por cinco dias, antibiótico oral, e — depois de muita conversa — um par de botas de borracha que o agente comunitário conseguiu emprestado de uma ONG parceira, que Maria poderia usar por cima da compressão nos dias de chuva.
     </p>
     <p>
       A adaptação foi pequena. O efeito, enorme.
     </p>
+
+    <div class="nota-verde">
+      <strong>📈 Evolução — Semana 10 (duas semanas após intervenção)</strong><br>
+      Eritema perilesional regressou. Exsudato voltou a seroso. Ferida reduziu para 5,2 × 3,8 cm — resposta à antibioticoterapia e retomada da compressão. Maria passou a usar as botas de borracha por cima da bandagem nos dias de chuva. A equipe registrou: <em>adaptação ao contexto funcionou onde o protocolo rígido havia falhado.</em>
+    </div>
   </div>
 
   <div class="musical-break">
@@ -857,8 +858,13 @@
     </p>
 
     <figure class="img-block">
-      <img src="img/granulacao-semana12.jpg" alt="Úlcera venosa em regressão com tecido de granulação e epitelização" class="clinical-img" loading="lazy">
-      <figcaption>Fig. 5 — Semana 12: granulação ativa e início de epitelização perilesional. A terapia compressiva foi mantida durante toda a fase de proliferação.</figcaption>
+      <img src="img/granulacao-semana12.jpg" alt="Tecido de granulação vermelho-vivo na semana 12, epitelização nas bordas" style="width:100%;border-radius:10px;display:block;" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+      <div class="placeholder-box" style="display:none;">
+        <span class="placeholder-icon">🖼</span>
+        <p class="placeholder-label">img/granulacao-semana12.jpg</p>
+        <p class="placeholder-hint">Ilustração: tecido de granulação vermelho-vivo, epitelização nas bordas, ferida em franca redução de dimensões</p>
+      </div>
+      <figcaption>Fig. 4 — Semana 12: granulação ativa e início de epitelização perilesional. A terapia compressiva foi mantida durante toda a fase de proliferação.</figcaption>
     </figure>
 
     <div class="nota-verde">
