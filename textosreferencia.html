@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<!-- saved from url=(0054)https://petg10ufpel.github.io/petg10/infograficos.html -->
+<html lang="pt-BR"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>PET-Saúde UFPel | G10 – Central de Infográficos</title>
+
+  <style>
+    :root{
+      --bg:#eefbf7;           /* fundo mais verde/teal (diferente do azul dos sistemas) */
+      --card:#ffffff;
+      --text:#0f172a;
+      --muted:#475569;
+      --border:#e2e8f0;
+
+      /* paleta nova (teal/verde) */
+      --teal:#0ea5a4;
+      --teal2:#0f766e;
+      --lime:#22c55e;
+
+      --shadow: 0 10px 30px rgba(15, 23, 42, .08);
+      --radius: 14px;
+    }
+    *{box-sizing:border-box}
+    body{
+      margin:0;
+      font-family: system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, "Helvetica Neue", Arial, sans-serif;
+      background: linear-gradient(180deg, rgba(14,165,164,.12), transparent 40%), var(--bg);
+      color:var(--text);
+    }
+    .wrap{max-width:1100px;margin:40px auto;padding:24px}
+
+    header{
+      background:var(--card);
+      border:1px solid var(--border);
+      border-radius:var(--radius);
+      padding:20px;
+      box-shadow:var(--shadow);
+    }
+
+    .head{
+      display:flex;
+      gap:18px;
+      align-items:center;
+    }
+    .head img{
+      width:120px;
+      height:120px;
+      object-fit:contain;
+      border-radius:12px;
+      flex:0 0 auto;
+    }
+    .title h1{margin:0;font-size:1.35rem;line-height:1.2}
+    .title p{margin:.5rem 0 0;color:var(--muted);font-size:1rem}
+
+    /* 3 colunas (cresce/encolhe) */
+    .grid{
+      margin-top:16px;
+      display:grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap:12px;
+    }
+    @media (max-width: 900px){
+      .grid{grid-template-columns: 1fr;}
+      .wrap{margin:20px auto}
+      .head img{width:92px;height:92px}
+    }
+
+    .card{
+      background:#fff;
+      border:1px solid var(--border);
+      border-radius:14px;
+      padding:14px;
+      position:relative;
+      overflow:hidden;
+    }
+    .card::before{
+      content:"";
+      position:absolute;
+      inset:-2px -2px auto -2px;
+      height:4px;
+      background: linear-gradient(90deg, var(--teal), var(--lime), var(--teal2));
+      opacity:.95;
+    }
+    .card h2{
+      margin:10px 0 6px;
+      font-size:1.02rem;
+      line-height:1.25;
+    }
+    .card p{margin:0 0 12px;color:var(--muted);font-size:.95rem}
+
+    a.btn{
+      display:inline-flex;
+      width:100%;
+      align-items:center;
+      justify-content:center;
+      padding:10px 12px;
+      border-radius:12px;
+      border:1px solid rgba(14,165,164,.28);
+      text-decoration:none;
+      color:var(--text);
+      background: linear-gradient(90deg, rgba(14,165,164,.14), rgba(34,197,94,.10));
+      font-weight:800;
+      transition: transform .06s ease, box-shadow .2s ease, border-color .2s ease;
+    }
+    a.btn:hover{
+      transform: translateY(-1px);
+      border-color: rgba(14,165,164,.45);
+      box-shadow: 0 10px 25px rgba(15,23,42,.10);
+    }
+
+    /* “em breve” sem cara de link quebrado */
+    .soon{
+      display:inline-flex;
+      width:100%;
+      align-items:center;
+      justify-content:center;
+      padding:10px 12px;
+      border-radius:12px;
+      border:1px dashed rgba(15,118,110,.30);
+      background: rgba(14,165,164,.06);
+      color: rgba(15,118,110,.90);
+      font-weight:800;
+      cursor: default;
+      user-select:none;
+    }
+  
+    .searchbar{margin-top:18px;display:grid;gap:10px;}
+    .searchbox{display:flex;align-items:center;gap:10px;background:#fff;border:1px solid var(--border);border-radius:12px;padding:10px 12px;}
+    .searchbox input{width:100%;border:none;outline:none;font-size:1rem;background:transparent;color:var(--text);}
+    .searchmeta{color:var(--muted);font-size:.95rem;min-height:1.2em;}
+    .hidden-by-search{display:none !important;}
+
+</style>
+</head>
+
+<body>
+  <div class="wrap">
+    <header>
+      <div class="head">
+        <img src="img/logo2.jpeg" alt="PET-Saúde UFPel – G10">
+        <div class="title">
+          <h1><a href="index.html" style="text-decoration: none; color: inherit;"> PET-Saúde UFPel – Informação e Saúde Digital</a></h1>
+          <p><strong>G10</strong> · Telemonitoramento de Feridas Crônicas · Central de Infográficos</p>
+        </div>
+      </div>
+
+      
+      <div class="searchbar">
+        <label class="searchbox">
+          🔎 <input type="search" id="busca" placeholder="Buscar infográfico..." />
+        </label>
+        <div class="searchmeta" id="meta"></div>
+      </div>
+<div class="grid grid-busca">
+
+
+          <div class="card item" data-search="Luz contra as bactérias: como o azul de metileno pode salvar feridas infectadas. Um estudo clínico mostra que a Terapia Fotodinâmica com Azul de Metileno (MB-PDT) curou feridas com bactérias multirresistentes em todos os 5 pacientes tratados — sem dor, sem efeitos adversos e com excelente resultado estético.">
+          <p>Luz contra as bactérias: como o azul de metileno pode salvar feridas infectadas. Um estudo clínico mostra que a Terapia Fotodinâmica com Azul de Metileno (MB-PDT) curou feridas com bactérias multirresistentes em todos os 5 pacientes tratados — sem dor, sem efeitos adversos e com excelente resultado estético.</p>
+           <a class="btn" href="html/info/paper/pdtferidas/" target="_blank" rel="noopener">Luz contra as bactérias</a>
+        </div>
+         <!-- <div class="card item" data-search="Livro Guia Feridas Crônicas Unicentro. Esta página apresenta, de forma visual e sintética, a estrutura do Guia Prático: Feridas Crônicas, organizado em módulos que abrangem desde conceitos fundamentais, avaliação clínica e social da pessoa com ferida, até técnicas, coberturas, produtos terapêuticos, aspectos legais e reabilitação. O infográfico destaca os principais tipos de feridas crônicas, as fases da cicatrização e o framework T.I.M.E.R.S., funcionando como um mapa de navegação do conteúdo do livro e como apoio rápido para estudo, consulta e tomada de decisão no cuidado em feridas. Livro Guia">
+          <p>Livro Guia Feridas Crônicas Unicentro. Esta página apresenta, de forma visual e sintética, a estrutura do Guia Prático: Feridas Crônicas, organizado em módulos que abrangem desde conceitos fundamentais, avaliação clínica e social da pessoa com ferida, até técnicas, coberturas, produtos terapêuticos, aspectos legais e reabilitação. O infográfico destaca os principais tipos de feridas crônicas, as fases da cicatrização e o framework T.I.M.E.R.S., funcionando como um mapa de navegação do conteúdo do livro e como apoio rápido para estudo, consulta e tomada de decisão no cuidado em feridas.</p>
+           <a class="btn" href="html/info/livroferidas/guia_feridas.html" target="_blank" rel="noopener"> Livro Guia  </a>
+        </div>
+      <div class="card item" data-search="O Olho como Janela Sistêmica da Ferida Crônica. Como a imagem da retina revela, de forma não invasiva, a microangiopatia que impede a cicatrização — e como a oculômica pode transformar o diagnóstico e o manejo das feridas de difícil resolução. Janela Sistêmica">
+          <p>O Olho como Janela Sistêmica da Ferida Crônica. Como a imagem da retina revela, de forma não invasiva, a microangiopatia que impede a cicatrização — e como a oculômica pode transformar o diagnóstico e o manejo das feridas de difícil resolução.</p>
+           <a class="btn" href="html/info/olho.ferida/index.html" target="_blank" rel="noopener"> Janela Sistêmica</a>
+        </div>
+        </div>
+ <div class="grid grid-busca">
+          <div class="card item" data-search="Referencial para desenvolvimento e uso responsáveis de Inteligência Artificial na Educação - MEC. Esta página sintetiza o Referencial do MEC para o uso responsável da Inteligência Artificial na Educação, apresentando seus principais princípios, diretrizes e aplicações práticas. O infográfico destaca a necessidade de integrar o ensinar sobre IA e o ensinar com IA, enfatizando aspectos como equidade, transparência, proteção de dados e centralidade do professor no processo educativo. Funciona como um guia visual para compreender como a IA pode apoiar o ensino de forma ética, crítica e pedagógica, evitando seu uso como “caixa-preta” e reforçando a intencionalidade no aprendizado. IA MEC">
+             <p> Referencial para desenvolvimento e uso responsáveis de Inteligência Artificial na Educação - MEC. Esta página sintetiza o Referencial do MEC para o uso responsável da Inteligência Artificial na Educação, apresentando seus principais princípios, diretrizes e aplicações práticas. O infográfico destaca a necessidade de integrar o ensinar sobre IA e o ensinar com IA, enfatizando aspectos como equidade, transparência, proteção de dados e centralidade do professor no processo educativo. Funciona como um guia visual para compreender como a IA pode apoiar o ensino de forma ética, crítica e pedagógica, evitando seu uso como “caixa-preta” e reforçando a intencionalidade no aprendizado. </p>
+           <a class="btn" href="html/info/mecia/index.html" target="_blank" rel="noopener"> IA MEC </a>
+        </div>
+<div class="card item" data-search="Glicose, Alzheimer & Pé Diabético, explora a relação entre glicose, doença de Alzheimer e pé diabético, integrando aspectos metabólicos, neurológicos e clínicos do diabetes. O infográfico evidencia como o descontrole glicêmico impacta tanto o cérebro — aumentando o risco de declínio cognitivo e demência — quanto os membros inferiores, favorecendo complicações como neuropatia, úlceras e amputações . Funciona como uma visão sistêmica da doença, conectando metabolismo, neurodegeneração e cuidado clínico, e reforçando a importância do controle glicêmico na prevenção e no manejo dessas condições. Glicose">
+             <p>Glicose, Alzheimer & Pé Diabético, explora a relação entre glicose, doença de Alzheimer e pé diabético, integrando aspectos metabólicos, neurológicos e clínicos do diabetes. O infográfico evidencia como o descontrole glicêmico impacta tanto o cérebro — aumentando o risco de declínio cognitivo e demência — quanto os membros inferiores, favorecendo complicações como neuropatia, úlceras e amputações . Funciona como uma visão sistêmica da doença, conectando metabolismo, neurodegeneração e cuidado clínico, e reforçando a importância do controle glicêmico na prevenção e no manejo dessas condições. </p> <a class="btn" href="html/info/glicose/indexag.html" target="_blank" rel="noopener"> Glicose </a>
+        </div>
+<div class="card item" data-search="Pele como Espelho do Envelhecimento Biológico. Um olhar direto para a pele como espelho do tempo biológico. O infográfico conecta perda de colágeno, menor capacidade de regeneração e influência de fatores internos e ambientais, mostrando como o envelhecimento cutâneo vai muito além da estética. A leitura amarra bem clínica e biologia: pele que envelhece também cicatriza diferente, responde diferente — e entrega sinais claros do estado geral do organismo. Pele - Biologia">
+             <p> Pele como Espelho do Envelhecimento Biológico. Um olhar direto para a pele como espelho do tempo biológico. O infográfico conecta perda de colágeno, menor capacidade de regeneração e influência de fatores internos e ambientais, mostrando como o envelhecimento cutâneo vai muito além da estética. A leitura amarra bem clínica e biologia: pele que envelhece também cicatriza diferente, responde diferente — e entrega sinais claros do estado geral do organismo. </p><a class="btn" href="html/info/inspire_t/inspire-t-visual.html" target="_blank" rel="noopener"> Pele - Biologia </a>
+        </div>
+  </div>
+
+<div class="grid grid-busca">
+          <div class="card item" data-search="ITB Índice Tornozelo-Braquial. Um guia direto para entender e aplicar o Índice Tornozelo-Braquial (ITB) na prática clínica. O infográfico articula o conceito, o cálculo e a interpretação dos valores, mostrando como a relação entre a pressão do tornozelo e do braço revela o estado da circulação arterial nas pernas. A leitura conecta teoria e decisão clínica: identificar doença arterial periférica, avaliar risco cardiovascular e orientar condutas — especialmente em pacientes com feridas crônicas, onde circulação ruim não é detalhe, é o jogo inteiro. ITB1 ITB 2">
+             <p> ITB Índice Tornozelo-Braquial. Um guia direto para entender e aplicar o Índice Tornozelo-Braquial (ITB) na prática clínica. O infográfico articula o conceito, o cálculo e a interpretação dos valores, mostrando como a relação entre a pressão do tornozelo e do braço revela o estado da circulação arterial nas pernas. A leitura conecta teoria e decisão clínica: identificar doença arterial periférica, avaliar risco cardiovascular e orientar condutas — especialmente em pacientes com feridas crônicas, onde circulação ruim não é detalhe, é o jogo inteiro.</p>
+           <a class="btn" href="https://petg10ufpel.github.io/petg10/html/info/itb/itb_simulador.html" target="_blank" rel="noopener"> ITB1 </a>
+           <a class="btn" href="https://itb-eight.vercel.app/" target="_blank" rel="noopener"> ITB 2 </a>
+        </div>
+ <div class="card item" data-search="Comunicação sistêmica dos Vírus. Uma leitura integrada de como os vírus operam como sistemas de comunicação dentro do organismo. O infográfico articula interação viral, resposta do hospedeiro e disseminação, mostrando que o vírus não é apenas um agente isolado, mas parte de uma rede dinâmica de sinais, adaptação e conflito biológico. A ideia central é forte: entender vírus como comunicação ajuda a enxergar melhor os padrões de infecção, progressão e resposta — quase como um diálogo contínuo entre organismo e agente invasor. VirusComm">
+             <p>Comunicação sistêmica dos Vírus. Uma leitura integrada de como os vírus operam como sistemas de comunicação dentro do organismo. O infográfico articula interação viral, resposta do hospedeiro e disseminação, mostrando que o vírus não é apenas um agente isolado, mas parte de uma rede dinâmica de sinais, adaptação e conflito biológico. A ideia central é forte: entender vírus como comunicação ajuda a enxergar melhor os padrões de infecção, progressão e resposta — quase como um diálogo contínuo entre organismo e agente invasor. </p> <a class="btn" href="html/info/viruscom/" target="_blank" rel="noopener"> VirusComm </a>
+        </div>
+<div class="card item" data-search="O intestino que prevê a demência. Um mergulho direto na ideia de que intestino e cérebro funcionam como um sistema integrado, em conversa constante. O infográfico mostra como sinais neurais, hormonais e da microbiota conectam digestão, emoções e cognição, formando um eixo de comunicação bidirecional entre corpo e mente . A leitura reforça uma virada importante: não dá mais para separar cabeça e corpo — o que acontece no intestino pode modular humor, memória e até o risco de doenças, exigindo uma visão mais completa do cuidado. Intestino - Cérebro">
+             <p> O intestino que prevê a demência. Um mergulho direto na ideia de que intestino e cérebro funcionam como um sistema integrado, em conversa constante. O infográfico mostra como sinais neurais, hormonais e da microbiota conectam digestão, emoções e cognição, formando um eixo de comunicação bidirecional entre corpo e mente . A leitura reforça uma virada importante: não dá mais para separar cabeça e corpo — o que acontece no intestino pode modular humor, memória e até o risco de doenças, exigindo uma visão mais completa do cuidado. </p><a class="btn" href="html/info/varios/intestinocerebro.html" target="_blank" rel="noopener"> Intestino - Cérebro </a>
+        </div>
+  </div>
+
+<div class="grid grid-busca">
+          <div class="card item" data-search="A roda que guarda Hidrogênio. Uma proposta visual que conecta energia, engenharia e sustentabilidade a partir do hidrogênio. O infográfico explora como esse elemento pode ser produzido, armazenado e utilizado como vetor energético, destacando seu papel na transição para fontes limpas e na descarbonização de setores difíceis, como transporte e indústria . A ideia central é clara: mais do que uma tecnologia isolada, o hidrogênio funciona como peça de integração — armazenando energia, conectando sistemas e abrindo caminho para uma matriz energética mais eficiente e de larga escala. RodaH">
+             <p> A roda que guarda Hidrogênio. Uma proposta visual que conecta energia, engenharia e sustentabilidade a partir do hidrogênio. O infográfico explora como esse elemento pode ser produzido, armazenado e utilizado como vetor energético, destacando seu papel na transição para fontes limpas e na descarbonização de setores difíceis, como transporte e indústria . A ideia central é clara: mais do que uma tecnologia isolada, o hidrogênio funciona como peça de integração — armazenando energia, conectando sistemas e abrindo caminho para uma matriz energética mais eficiente e de larga escala.</p>
+           <a class="btn" href="https://petg10ufpel.github.io/petg10/html/info/varios/rodah.html" target="_blank" rel="noopener"> RodaH</a> </div>
+ <div class="card item" data-search="Schopenhauer revisitado, e porque seu conceito de felicidade continua vigente. Uma provocação direta sobre o que chamamos de felicidade. O infográfico resgata Arthur Schopenhauer para mostrar que viver não é buscar prazer, mas lidar com o desejo — essa força permanente que nos move e nunca se encerra, atravessando a própria experiência humana (como também ecoa em Sigmund Freud e Jacques Lacan). A conexão prática é direta: em nós — e no paciente com feridas crônicas — o cuidado talvez esteja menos em “ser feliz” e mais em reduzir dor, desconforto e frustração, passo a passo. Schopenhauer: felicidade?">
+             <p>Schopenhauer revisitado, e porque seu conceito de felicidade continua vigente. Uma provocação direta sobre o que chamamos de felicidade. O infográfico resgata Arthur Schopenhauer para mostrar que viver não é buscar prazer, mas lidar com o desejo — essa força permanente que nos move e nunca se encerra, atravessando a própria experiência humana (como também ecoa em Sigmund Freud e Jacques Lacan). A conexão prática é direta: em nós — e no paciente com feridas crônicas — o cuidado talvez esteja menos em “ser feliz” e mais em reduzir dor, desconforto e frustração, passo a passo.</p> <a class="btn" href="html/info/varios/schopen.html" target="_blank" rel="noopener"> Schopenhauer: felicidade? </a>
+        </div>
+<div class="card item" data-search="Revisitando a maiêutica . Um convite a pensar o cuidado como diálogo. O infográfico articula maiêutica e aporia como partes de um mesmo processo: perguntar para fazer emergir o que já está no paciente, e atravessar o momento de impasse — quando não há resposta pronta — como etapa necessária do entendimento . No cuidado em feridas crônicas, isso ganha corpo: não se trata só de aplicar técnica, mas de escutar, provocar reflexão e, muitas vezes, sustentar o “não saber” até que um novo caminho de cuidado faça sentido para quem vive a ferida. Maiêutica & Feridas Crônicas">
+             <p> Revisitando a <b> maiêutica </b>. Um convite a pensar o cuidado como diálogo. O infográfico articula maiêutica e aporia como partes de um mesmo processo: perguntar para fazer emergir o que já está no paciente, e atravessar o momento de impasse — quando não há resposta pronta — como etapa necessária do entendimento . No cuidado em feridas crônicas, isso ganha corpo: não se trata só de aplicar técnica, mas de escutar, provocar reflexão e, muitas vezes, sustentar o “não saber” até que um novo caminho de cuidado faça sentido para quem vive a ferida.</p><a class="btn" href="html/info/varios/mayeutica-infografico.html" target="_blank" rel="noopener"> Maiêutica & Feridas Crônicas </a>
+        </div> 
+  </div>
+
+
+<div class="grid grid-busca">
+          <div class="card item" data-search="IRevisão de Inovações · Abril 2026. O que há de novo no cuidado de feridas crônicas?">
+          <p>As feridas crônicas deixaram de ser um problema silencioso para se tornar um campo de inovação acelerada. Inteligência artificial, telemonitoramento, curativos inteligentes e medicina regenerativa estão transformando a avaliação e o tratamento, levando o cuidado ao domicílio e tornando-o mais preciso e contínuo.<br>Esta página apresenta, de forma clara e visual, as principais inovações recentes e seus impactos práticos: melhores decisões clínicas, maior autonomia do paciente e um modelo de cuidado mais conectado e humano. É um convite para entender para onde o cuidado de feridas está avançando — e como essa transformação já está em curso.</p>
+           <a class="btn" href="html/info/varios/inn042026.html" target="_blank" rel="noopener"> Inovação em Feridas Crônicas -04/26</a>
+        </div>
+        <div class="card item" data-search="Do Açúcar à Ferida Crônica. Como a Hiperglicemia Destrói o Processo de Cura">
+          <p>A diabetes não destrói o corpo de uma vez — ela o faz em silêncio, camada por camada, molécula por molécula. O excesso de glicose endurece o colágeno, obstrui os vasos, apaga a sensibilidade dos nervos e desativa as células responsáveis pela cicatrização; quando uma pequena ferida aparece no pé, o organismo já não tem ferramentas para fechá-la. Para entender cada etapa desse processo — dos AGEs ao biofilme, da neuropatia à amputação — explore o infográfico abaixo, que percorre em detalhes o caminho do açúcar à ferida crônica.</p>
+           <a class="btn" href="html/info/varios/acucaraferida.html" target="_blank" rel="noopener"> O processo do Pé Diabético </a>
+            </div>
+  <div class="card item" data-search="Tomada de Decisão Clínica · IA · Intuição · Visão Sistêmica. A intuição que a IA não tem — e o sistema que ela não vê">
+          <p>O infográfico articula a lógica da emergência aplicada à saúde ao integrar três dimensões centrais da decisão clínica contemporânea: dados, julgamento humano e visão sistêmica. A IA aparece como ferramenta capaz de processar grandes volumes de informação e identificar padrões ao longo do tempo, mas o diagrama evidencia que esses dados só ganham sentido quando inseridos nas interações entre níveis — da célula ao sistema de cuidado — onde ocorre a verdadeira integração clínica.<br>A mensagem central é direta: a cicatrização não é produzida por algoritmos nem por intervenções isoladas, mas emerge de um sistema organizado. Assim, a IA informa, mas não decide — cabe ao profissional interpretar, contextualizar e agir sobre o sistema. Em bom português: dado sem julgamento é ruído; sistema sem leitura é erro.</p>
+           <a class="btn" href="html/info/varios/intuicao/index.html" target="_blank" rel="noopener"> Intuição - IA - Sistemas</a>
+        </div> 
+        </div>
+
+
+<div class="grid grid-busca">
+          <div class="card item" data-search="Pitágoras além do Teorema · Abril 2026. A vigência do filósofo e sua influência no cuidado de feridas crônicas">
+          <p>Há uma ideia antiga — e ainda válida — de Pitágoras de Samos: saúde não é só ausência de doença, é equilíbrio. O infográfico faz a ponte entre essa harmonia corpo–alma e as feridas crônicas; a lesão não é apenas cutânea, mas reflexo de um desajuste físico, emocional e social. Depressão, isolamento e perda de propósito não são detalhe — impactam diretamente a cicatrização.
+<br>Na prática, isso sustenta uma visão de cuidado integral: tratar feridas crônicas exige mais do que técnica, exige vínculo e adesão. O suporte emocional deixa de ser “extra” e vira fator terapêutico. Em bom português: curativo bem feito sem cuidado humano é meia-sola. Projetos como Amor à Pele e G10 PET Feridas Crônicas acertam ao levar essa filosofia à ação — e quem ganha é o paciente.</p> <a class="btn" href="html/info/varios/pit/indexpit.html" target="_blank" rel="noopener"> Pitágoras, o Corpo & Alma</a>
+        </div>
+       <div class="card item" data-search="A história de Maria é a de uma mulher de 68 anos que passou a vida inteira em pé — na roça, no fogão, na criação da neta Lúcia — e desenvolveu uma úlcera venosa crônica de 5,5 cm que ficou aberta por dois anos antes de qualquer atendimento especializado. Foi a neta quem a levou ao posto.">
+          <p>A história de Maria é a de uma mulher de 68 anos que passou a vida inteira em pé — na roça, no fogão, na criação da neta Lúcia — e desenvolveu uma úlcera venosa crônica de 5,5 cm que ficou aberta por dois anos antes de qualquer atendimento especializado. Foi a neta quem a levou ao posto. A narrativa acompanha sete momentos da jornada clínica, cada um aberto com um trecho de Maria, Maria de Milton Nascimento e Fernando Brant: o diagnóstico de insuficiência venosa grave (CEAP C6), a resistência de Maria à terapia compressiva, a recaída na semana oito por causa de uma semana de chuva e estrada afundada, e a decisão da equipe de adaptar o protocolo ao território real — não o contrário.<br> Depois de 28 semanas, a ferida fechou. Um dado para não esquecer: 76% das úlceras venosas cicatrizadas recorrem no primeiro ano sem seguimento contínuo. A cicatrização de Maria não é o fim — é o começo de um programa de compressão diária, retornos bimestrais e vigilância permanente. </p>
+           <a class="btn" href="html/info/varios/maria/" target="_blank" rel="noopener"> Maria, Maria </a>
+            </div>
+<div class="card item" data-search="Tomada de Decisão Clínica · IA · Intuição · Visão Sistêmica. A intuição que a IA não tem — e o sistema que ela não vê">
+          <p>O infográfico articula a lógica da emergência aplicada à saúde ao integrar três dimensões centrais da decisão clínica contemporânea: dados, julgamento humano e visão sistêmica. A IA aparece como ferramenta capaz de processar grandes volumes de informação e identificar padrões ao longo do tempo, mas o diagrama evidencia que esses dados só ganham sentido quando inseridos nas interações entre níveis — da célula ao sistema de cuidado — onde ocorre a verdadeira integração clínica.<br>A mensagem central é direta: a cicatrização não é produzida por algoritmos nem por intervenções isoladas, mas emerge de um sistema organizado. Assim, a IA informa, mas não decide — cabe ao profissional interpretar, contextualizar e agir sobre o sistema. Em bom português: dado sem julgamento é ruído; sistema sem leitura é erro.</p>
+           <a class="btn" href="html/info/varios/intuicao/index.html" target="_blank" rel="noopener"> Intuição - IA - Sistemas</a>
+        </div> -->
+        </div>
+
+
+
+
+<script>
+const input = document.getElementById('busca');
+const meta = document.getElementById('meta');
+const items = document.querySelectorAll('.item');
+const grids = document.querySelectorAll('.grid-busca');
+
+function norm(t){return t.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,'');}
+
+input.addEventListener('input',()=>{
+  let q = norm(input.value);
+  let count=0;
+  items.forEach(i=>{
+    let txt = norm(i.dataset.search);
+    let ok = txt.includes(q);
+    i.classList.toggle('hidden-by-search', !ok);
+    if(ok) count++;
+  });
+  grids.forEach(g=>{
+    let any=[...g.querySelectorAll('.item')].some(i=>!i.classList.contains('hidden-by-search'));
+    g.classList.toggle('hidden-by-search', !any);
+  });
+  meta.textContent = q ? count+" resultado(s)" : count+" infográfico(s)";
+});
+input.dispatchEvent(new Event('input'));
+</script>
+
+</body></html>
