@@ -263,7 +263,7 @@ input.addEventListener('input',()=>{
     let any=[...g.querySelectorAll('.item')].some(i=>!i.classList.contains('hidden-by-search'));
     g.classList.toggle('hidden-by-search', !any);
   });
-  meta.textContent = q ? count+" resultado(s)" : count+" infográfico(s)";
+  meta.textContent = q ? count+" resultado(s)" : count+" texto(s) referência(s)";
 });
 input.dispatchEvent(new Event('input'));
 </script>
