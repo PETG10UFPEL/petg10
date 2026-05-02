@@ -991,6 +991,7 @@
   ];
 
   let answered = [false, false, false, false];
+  let acertou  = [false, false, false, false];
 
   document.querySelectorAll('.quiz-option').forEach(btn => {
     btn.addEventListener('click', function() {
@@ -1004,10 +1005,12 @@
 
       const feedback = document.getElementById(`feedback-${q}`);
       if (a === answers[q]) {
+        acertou[q] = true;
         this.classList.add('correct');
         feedback.textContent = feedbacks[q].ok;
         feedback.className = 'quiz-feedback show ok';
       } else {
+        acertou[q] = false;
         this.classList.add('wrong');
         allOpts[answers[q]].classList.add('correct');
         feedback.textContent = feedbacks[q].nok;
@@ -1017,10 +1020,7 @@
   });
 
   function verificarQuiz() {
-    const score = answered.filter((a, i) => {
-      const opts = document.querySelectorAll(`[data-q="${i}"]`);
-      return opts[answers[i]].classList.contains('correct');
-    }).length;
+    const score = acertou.filter(Boolean).length;
 
     const total = answers.length;
     const el = document.getElementById('quiz-score');
@@ -1033,6 +1033,7 @@
 
   function resetQuiz() {
     answered = [false, false, false, false];
+    acertou  = [false, false, false, false];
     document.querySelectorAll('.quiz-option').forEach(btn => {
       btn.disabled = false;
       btn.classList.remove('correct', 'wrong');
