@@ -1,0 +1,1182 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Erasmo de Rotterdam — O Príncipe dos Humanistas</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Source+Sans+3:ital,wght@0,300;0,400;0,600;1,400&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --ink:       #1a1a2e;
+      --ink-mid:   #3b3b5c;
+      --ink-light: #6b6b8a;
+      --parchment: #fdf8f0;
+      --cream:     #f5ede0;
+      --gold:      #b8860b;
+      --gold-light:#e8c96a;
+      --burgundy:  #7a1c2e;
+      --burgundy-light: #c2556a;
+      --teal:      #1e6b6b;
+      --teal-light:#e0f0f0;
+      --border:    #d9c9a8;
+    }
+
+    body {
+      font-family: 'Source Sans 3', sans-serif;
+      background: var(--parchment);
+      color: var(--ink);
+      line-height: 1.65;
+    }
+
+    /* ── INSTITUTIONAL HEADER ── */
+    .institutional-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 14px 40px;
+      background: #fff;
+      border-bottom: 1px solid var(--border);
+    }
+    .header-identity { flex: 1; }
+
+    /* ── HEADER ── */
+    .page-header {
+      background: var(--ink);
+      color: #fff;
+      padding: 60px 40px 50px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .page-header::before {
+      content: '';
+      position: absolute; inset: 0;
+      background: radial-gradient(ellipse at 30% 50%, #2a2a4a 0%, transparent 70%),
+                  radial-gradient(ellipse at 70% 30%, #3a1a2a 0%, transparent 60%);
+    }
+    .header-inner { position: relative; z-index: 1; max-width: 860px; margin: 0 auto; }
+    .era-tag {
+      display: inline-block;
+      font-size: 0.75rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      background: var(--gold);
+      color: #1a1a2e;
+      padding: 4px 14px;
+      border-radius: 2px;
+      margin-bottom: 20px;
+      font-weight: 600;
+    }
+    .page-header h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2.4rem, 6vw, 4.2rem);
+      font-weight: 900;
+      line-height: 1.1;
+      margin-bottom: 14px;
+    }
+    .page-header h1 span { color: var(--gold-light); }
+    .header-sub {
+      font-size: 1.1rem;
+      color: #c8b8d8;
+      max-width: 600px;
+      margin: 0 auto 28px;
+    }
+    .header-dates {
+      font-family: 'Playfair Display', serif;
+      font-size: 1rem;
+      color: var(--gold-light);
+      letter-spacing: 0.1em;
+    }
+
+    /* ── LAYOUT ── */
+    main { max-width: 980px; margin: 0 auto; padding: 48px 24px 64px; }
+
+    section { margin-bottom: 64px; }
+
+    .section-label {
+      font-size: 0.7rem;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--gold);
+      font-weight: 700;
+      margin-bottom: 8px;
+    }
+    h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.9rem;
+      font-weight: 700;
+      color: var(--ink);
+      margin-bottom: 20px;
+      line-height: 1.2;
+    }
+    h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.2rem;
+      color: var(--burgundy);
+      margin-bottom: 10px;
+    }
+    p { color: var(--ink-mid); font-size: 1rem; margin-bottom: 14px; }
+
+    /* ── BIO GRID ── */
+    .bio-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+      align-items: center;
+    }
+    @media (max-width: 640px) { .bio-grid { grid-template-columns: 1fr; } }
+
+    .portrait-card {
+      background: var(--cream);
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      overflow: hidden;
+    }
+    .portrait-card figure {
+      width: 100%;
+    }
+    .portrait-card figure img {
+      width: 100%;
+      max-height: 340px;
+      height: auto;
+      object-fit: cover;
+      object-position: top center;
+      display: block;
+    }
+    .portrait-card figcaption {
+      font-size: 0.78rem;
+      color: var(--ink-light);
+      padding: 10px 14px;
+      border-top: 1px solid var(--border);
+      font-style: italic;
+    }
+
+    .bio-facts {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+    .fact-item {
+      background: #fff;
+      border-left: 4px solid var(--gold);
+      padding: 14px 18px;
+      border-radius: 0 6px 6px 0;
+      box-shadow: 0 1px 4px rgba(0,0,0,0.05);
+    }
+    .fact-label {
+      font-size: 0.72rem;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: var(--ink-light);
+      margin-bottom: 4px;
+      font-weight: 600;
+    }
+    .fact-value {
+      font-size: 1rem;
+      color: var(--ink);
+      font-weight: 600;
+    }
+
+    /* ── QUOTE BLOCK ── */
+    .quote-block {
+      background: #fff;
+      border: 2px solid var(--burgundy);
+      border-left: 8px solid var(--burgundy);
+      border-radius: 8px;
+      padding: 40px 48px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .quote-block::before {
+      content: '\201C';
+      position: absolute;
+      top: -20px; left: 20px;
+      font-family: 'Playfair Display', serif;
+      font-size: 12rem;
+      color: rgba(122,28,46,0.06);
+      line-height: 1;
+    }
+    .quote-text {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.3rem, 3vw, 1.9rem);
+      font-style: italic;
+      line-height: 1.4;
+      margin-bottom: 18px;
+      position: relative;
+      z-index: 1;
+      color: var(--burgundy);
+    }
+    .quote-attr {
+      font-size: 0.85rem;
+      color: var(--ink-light);
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      position: relative;
+      z-index: 1;
+    }
+
+    /* ── TIMELINE ── */
+    .timeline { position: relative; padding-left: 32px; }
+    .timeline::before {
+      content: '';
+      position: absolute;
+      left: 10px; top: 0; bottom: 0;
+      width: 2px;
+      background: linear-gradient(to bottom, var(--gold), var(--burgundy));
+    }
+    .tl-item { position: relative; margin-bottom: 28px; }
+    .tl-dot {
+      position: absolute;
+      left: -28px;
+      top: 4px;
+      width: 14px; height: 14px;
+      border-radius: 50%;
+      background: var(--gold);
+      border: 2px solid var(--parchment);
+      box-shadow: 0 0 0 2px var(--gold);
+    }
+    .tl-year {
+      font-size: 0.78rem;
+      font-weight: 700;
+      color: var(--gold);
+      letter-spacing: 0.1em;
+      margin-bottom: 2px;
+    }
+    .tl-text {
+      font-size: 0.95rem;
+      color: var(--ink-mid);
+    }
+    .tl-text strong { color: var(--ink); }
+
+    /* ── ELOGIO DA LOUCURA BOX ── */
+    .elogio-box {
+      display: grid;
+      grid-template-columns: 300px 1fr;
+      gap: 36px;
+      background: #fff;
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.07);
+    }
+    @media (max-width: 700px) { .elogio-box { grid-template-columns: 1fr; } }
+
+    .elogio-fig {
+      margin: 0;
+      display: flex;
+      flex-direction: column;
+      background: var(--cream);
+      border-right: 1px solid var(--border);
+    }
+    .elogio-fig img {
+      width: 100%;
+      height: 320px;
+      object-fit: cover;
+      object-position: top center;
+      display: block;
+    }
+    .elogio-fig .placeholder-box {
+      height: 320px;
+      border-radius: 0;
+      border: none;
+      background: var(--cream);
+    }
+    .elogio-fig figcaption {
+      font-size: 0.75rem;
+      color: var(--ink-light);
+      padding: 10px 14px;
+      font-style: italic;
+      border-top: 1px solid var(--border);
+      line-height: 1.4;
+    }
+
+    .elogio-body {
+      padding: 32px 32px 32px 4px;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+    }
+    @media (max-width: 700px) { .elogio-body { padding: 28px 24px; } }
+
+    .elogio-tag {
+      display: inline-block;
+      font-size: 0.7rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--burgundy);
+      font-weight: 700;
+      margin-bottom: 10px;
+    }
+    .elogio-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.3rem;
+      color: var(--ink);
+      margin-bottom: 14px;
+      line-height: 1.3;
+    }
+    .elogio-body p {
+      font-size: 0.95rem;
+      color: var(--ink-mid);
+      margin-bottom: 12px;
+    }
+    .elogio-divider {
+      height: 1px;
+      background: var(--border);
+      margin: 18px 0;
+    }
+    .elogio-conexao {
+      background: var(--teal-light);
+      border-left: 4px solid var(--teal);
+      border-radius: 0 6px 6px 0;
+      padding: 18px 20px;
+    }
+    .elogio-conexao-label {
+      font-size: 0.78rem;
+      font-weight: 700;
+      color: var(--teal);
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      margin-bottom: 10px;
+    }
+    .elogio-conexao p {
+      font-size: 0.9rem;
+      color: #1a3a3a;
+      margin-bottom: 8px;
+    }
+    .elogio-conexao p:last-child { margin-bottom: 0; }
+
+    /* ── OBRAS GRID ── */
+    .obras-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+      gap: 20px;
+    }
+    .obra-card {
+      background: #fff;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 22px 20px;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+    .obra-card:hover { transform: translateY(-3px); box-shadow: 0 6px 20px rgba(0,0,0,0.08); }
+    .obra-year {
+      font-size: 0.75rem;
+      font-weight: 700;
+      color: var(--burgundy);
+      letter-spacing: 0.1em;
+      margin-bottom: 6px;
+    }
+    .obra-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--ink);
+      margin-bottom: 8px;
+    }
+    .obra-desc {
+      font-size: 0.85rem;
+      color: var(--ink-light);
+      line-height: 1.5;
+    }
+
+    /* ── PILLARS ── */
+    .pillars {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      gap: 20px;
+    }
+    .pillar {
+      background: var(--cream);
+      border-top: 4px solid var(--teal);
+      border-radius: 0 0 8px 8px;
+      padding: 24px 20px;
+      text-align: center;
+    }
+    .pillar-icon { font-size: 2rem; margin-bottom: 12px; }
+    .pillar-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--teal);
+      margin-bottom: 8px;
+    }
+    .pillar-text { font-size: 0.88rem; color: var(--ink-mid); }
+
+    /* ── LEGADO ── */
+    .legado-cols {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 32px;
+    }
+    @media (max-width: 640px) { .legado-cols { grid-template-columns: 1fr; } }
+    .legado-block {
+      background: #fff;
+      border-radius: 8px;
+      padding: 28px 24px;
+      border: 1px solid var(--border);
+    }
+
+    /* ── PORTRAIT PLACEHOLDER ── */
+    .img-placeholder .placeholder-box {
+      border: 2px dashed #b0b8c1;
+      background: #f4f6f8;
+      border-radius: 8px;
+      padding: 32px 24px;
+      text-align: center;
+      color: #6c757d;
+      min-height: 220px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+    }
+    .placeholder-icon { font-size: 2rem; }
+    .placeholder-label {
+      font-family: monospace;
+      font-size: 0.85rem;
+      background: #e9ecef;
+      padding: 4px 10px;
+      border-radius: 4px;
+      color: #343a40;
+    }
+    .placeholder-hint {
+      font-size: 0.8rem;
+      color: #868e96;
+      font-style: italic;
+      max-width: 340px;
+    }
+
+    /* ── FIGURAS CONTEXTUAIS ── */
+    .img-contextual {
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      overflow: hidden;
+      background: var(--cream);
+    }
+    .img-contextual img {
+      width: 100%;
+      max-height: 280px;
+      height: auto;
+      object-fit: cover;
+      display: block;
+    }
+    .img-contextual figcaption {
+      font-size: 0.82rem;
+      color: var(--ink-light);
+      padding: 10px 14px;
+      font-style: italic;
+      border-top: 1px solid var(--border);
+    }
+    .img-contextual .placeholder-box {
+      display: flex;
+    }
+
+    /* ── DIVIDER ── */
+    .divider {
+      height: 1px;
+      background: linear-gradient(to right, transparent, var(--border), transparent);
+      margin: 16px 0 40px;
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      background: #fff;
+      border-top: 1px solid var(--border);
+      padding: 32px 24px;
+      text-align: center;
+    }
+    .footer-refs {
+      max-width: 760px;
+      margin: 0 auto 20px;
+      font-size: 0.8rem;
+      color: var(--ink-light);
+    }
+    .footer-refs strong { color: var(--ink-mid); display: block; margin-bottom: 14px; font-size: 0.82rem; letter-spacing: 0.12em; text-transform: uppercase; }
+    .ref-list {
+      list-style: decimal;
+      padding-left: 22px;
+      text-align: left;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      margin-bottom: 24px;
+    }
+    .ref-list li {
+      font-size: 0.79rem;
+      color: var(--ink-light);
+      line-height: 1.55;
+    }
+    .ref-list li em { font-style: italic; color: var(--ink-mid); }
+    .ref-list li a { color: var(--teal); text-decoration: none; border-bottom: 1px dotted var(--teal); }
+    .ref-list li a:hover { color: var(--burgundy); border-bottom-color: var(--burgundy); }
+    .footer-sign {
+      font-size: 0.78rem;
+      color: #999;
+      font-style: italic;
+    }
+
+    /* ── CONEXÃO SAÚDE ── */
+    .conexao-banner {
+      background: linear-gradient(135deg, #0d3d3d 0%, #1e6b6b 60%, #2a5a3a 100%);
+      color: #fff;
+      border-radius: 10px;
+      padding: 40px 44px;
+      display: grid;
+      grid-template-columns: auto 1fr;
+      gap: 32px;
+      align-items: start;
+    }
+    @media (max-width: 640px) { .conexao-banner { grid-template-columns: 1fr; } }
+    .conexao-icon-big { font-size: 3.6rem; line-height: 1; }
+    .conexao-body h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.4rem;
+      color: #a8e6cf;
+      margin-bottom: 12px;
+    }
+    .conexao-body p { color: #d0ede8; font-size: 0.97rem; margin-bottom: 10px; }
+    .conexao-body p:last-child { margin-bottom: 0; }
+    .conexao-body strong { color: #fff; }
+    .conexao-tag {
+      display: inline-block;
+      background: rgba(255,255,255,0.15);
+      border: 1px solid rgba(255,255,255,0.3);
+      border-radius: 20px;
+      padding: 3px 12px;
+      font-size: 0.75rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: #c8f0e0;
+      margin-bottom: 14px;
+    }
+
+    /* ── QUIZ ── */
+    .quiz-wrapper { max-width: 760px; margin: 0 auto; }
+    .quiz-q {
+      background: #fff;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 24px 26px;
+      margin-bottom: 20px;
+    }
+    .quiz-q-num {
+      font-size: 0.72rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--gold);
+      font-weight: 700;
+      margin-bottom: 8px;
+    }
+    .quiz-q-text {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.05rem;
+      color: var(--ink);
+      margin-bottom: 16px;
+      line-height: 1.4;
+    }
+    .quiz-options { list-style: none; display: flex; flex-direction: column; gap: 8px; }
+    .quiz-options li {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      cursor: pointer;
+      padding: 10px 14px;
+      border-radius: 6px;
+      border: 1.5px solid #e0d8cc;
+      font-size: 0.93rem;
+      color: var(--ink-mid);
+      transition: background 0.15s, border-color 0.15s;
+      user-select: none;
+    }
+    .quiz-options li:hover { background: #fdf3e3; border-color: var(--gold); }
+    .quiz-options li.selected { background: #fdf3e3; border-color: var(--gold); }
+    .quiz-options li.correct { background: #e6f4ec; border-color: #2a7a50; color: #1a4a30; }
+    .quiz-options li.wrong   { background: #fdecea; border-color: #b03030; color: #6a1515; }
+    .opt-letter {
+      display: inline-flex;
+      align-items: center; justify-content: center;
+      min-width: 24px; height: 24px;
+      border-radius: 50%;
+      background: #f0e8d8;
+      font-size: 0.75rem;
+      font-weight: 700;
+      color: var(--gold);
+      flex-shrink: 0;
+      margin-top: 1px;
+    }
+    .quiz-options li.correct .opt-letter { background: #2a7a50; color: #fff; }
+    .quiz-options li.wrong   .opt-letter { background: #b03030; color: #fff; }
+    .quiz-feedback {
+      margin-top: 12px;
+      padding: 10px 14px;
+      border-radius: 6px;
+      font-size: 0.88rem;
+      display: none;
+    }
+    .quiz-feedback.show { display: block; }
+    .quiz-feedback.ok  { background: #e6f4ec; color: #1a4a30; border-left: 4px solid #2a7a50; }
+    .quiz-feedback.err { background: #fdecea; color: #6a1515; border-left: 4px solid #b03030; }
+    .quiz-btn {
+      margin-top: 12px;
+      padding: 8px 20px;
+      border: none;
+      border-radius: 20px;
+      background: var(--gold);
+      color: #fff;
+      font-size: 0.85rem;
+      font-weight: 600;
+      cursor: pointer;
+      display: none;
+    }
+    .quiz-btn.show { display: inline-block; }
+    .quiz-btn:hover { background: var(--burgundy); }
+
+    /* ── SOCRÁTICO ── */
+    .socratic-list { display: flex; flex-direction: column; gap: 20px; }
+    .socratic-item {
+      display: grid;
+      grid-template-columns: 44px 1fr;
+      gap: 16px;
+      align-items: start;
+      background: var(--cream);
+      border-radius: 8px;
+      padding: 22px 24px;
+      border-left: 4px solid var(--burgundy);
+    }
+    .soc-num {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.6rem;
+      font-weight: 900;
+      color: var(--burgundy);
+      line-height: 1;
+      margin-top: 2px;
+    }
+    .soc-q {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.05rem;
+      color: var(--ink);
+      font-style: italic;
+      margin-bottom: 8px;
+      line-height: 1.45;
+    }
+    .soc-hint {
+      font-size: 0.85rem;
+      color: var(--ink-light);
+      line-height: 1.5;
+    }
+  </style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header class="institutional-header">
+  <div class="header-identity"></div>
+  <img src="img/logos-g10-ufpel.png" alt="Logos Amor-à-Pele e PET-Saúde Digital G10 Feridas Crônicas – UFPel" style="max-height:52px;">
+</header>
+
+<header class="page-header">
+  <div class="header-inner">
+    <span class="era-tag">Renascimento · Séc. XV–XVI</span>
+    <h1>Erasmo de <span>Rotterdam</span></h1>
+    <p class="header-sub">O "Príncipe dos Humanistas" que uniu a sabedoria clássica à reforma moral da Europa</p>
+    <div class="header-dates">Roterdam, 1466 — Basileia, 1536</div>
+  </div>
+</header>
+
+<main>
+
+  <!-- QUEM ERA -->
+  <section>
+    <div class="section-label">Perfil</div>
+    <h2>Quem foi Erasmo de Rotterdam?</h2>
+    <div class="bio-grid">
+      <div class="portrait-card">
+        <figure>
+          <img src="img/erasmo-holbein.jpg" alt="Retrato de Erasmo de Rotterdam por Hans Holbein, o Jovem">
+          <figcaption>Erasmo de Rotterdam · Hans Holbein, o Jovem (c. 1523) — Retrato que o consagrou na memória visual da Europa</figcaption>
+        </figure>
+      </div>
+      <div class="bio-facts">
+        <div class="fact-item">
+          <div class="fact-label">Nome completo</div>
+          <div class="fact-value">Desiderius Erasmus van Rotterdam</div>
+        </div>
+        <div class="fact-item">
+          <div class="fact-label">Nascimento</div>
+          <div class="fact-value">28 de outubro de 1466, Roterdam (Países Baixos)</div>
+        </div>
+        <div class="fact-item">
+          <div class="fact-label">Morte</div>
+          <div class="fact-value">12 de julho de 1536, Basileia (Suíça)</div>
+        </div>
+        <div class="fact-item">
+          <div class="fact-label">Áreas</div>
+          <div class="fact-value">Filosofia · Teologia · Filologia · Humanismo cristão</div>
+        </div>
+        <div class="fact-item">
+          <div class="fact-label">Título histórico</div>
+          <div class="fact-value">Príncipe dos Humanistas</div>
+        </div>
+      </div>
+    </div>
+    <div class="divider"></div>
+    <p>Filho ilegítimo de um sacerdote, Erasmo cresceu em meio à pobreza e ao rigor monástico — mas jamais aceitou passivamente os limites que a época lhe impunha. Tornou-se o erudito mais lido da Europa do século XVI, escreveu todas as suas obras em latim e manteve correspondência ativa com mais de 500 intelectuais, reis e papas. Sua arma favorita era a ironia; seu alvo predileto, a hipocrisia — religiosa, política ou intelectual.</p>
+  </section>
+
+  <!-- FRASE-CHAVE -->
+  <div class="quote-block">
+    <p class="quote-text">"A verdadeira sabedoria consiste em conhecer-se a si mesmo."</p>
+    <p class="quote-attr">— Erasmo de Rotterdam</p>
+  </div>
+
+  <!-- LINHA DO TEMPO -->
+  <section style="margin-top:64px;">
+    <div class="section-label">Trajetória</div>
+    <h2>Uma vida em movimento</h2>
+    <p>Erasmo nunca parou quieto. Percorreu a Europa como poucos intelectuais de sua época, acumulando experiências que moldaram seu pensamento humanista.</p>
+    <div class="divider"></div>
+
+    <div style="display:grid; grid-template-columns:1fr 1fr; gap:0 48px;">
+      <div class="timeline">
+        <div class="tl-item">
+          <div class="tl-dot"></div>
+          <div class="tl-year">c. 1466</div>
+          <div class="tl-text"><strong>Nasce em Roterdam</strong> (Países Baixos). Batizado como Geert Geertsen.</div>
+        </div>
+        <div class="tl-item">
+          <div class="tl-dot"></div>
+          <div class="tl-year">1478–1483</div>
+          <div class="tl-text">Estuda em <strong>Deventer</strong> com os Irmãos da Vida Comum — primeiro contato com o humanismo.</div>
+        </div>
+        <div class="tl-item">
+          <div class="tl-dot"></div>
+          <div class="tl-year">1486–1492</div>
+          <div class="tl-text">Ingressa no <strong>mosteiro agostiniano de Steyn</strong>. Ordenado sacerdote em 1492.</div>
+        </div>
+        <div class="tl-item">
+          <div class="tl-dot"></div>
+          <div class="tl-year">1495</div>
+          <div class="tl-text">Estuda teologia na <strong>Universidade de Paris</strong>; desenvolve pensamento livre e independente.</div>
+        </div>
+        <div class="tl-item">
+          <div class="tl-dot"></div>
+          <div class="tl-year">1499</div>
+          <div class="tl-text">Primeira visita à <strong>Inglaterra</strong> — conhece Tomás Moro e John Colet. Marco crucial de sua carreira.</div>
+        </div>
+      </div>
+      <div class="timeline">
+        <div class="tl-item">
+          <div class="tl-dot"></div>
+          <div class="tl-year">1500</div>
+          <div class="tl-text">Publica os <strong>Adagia</strong>, coletânea de provérbios latinos que lhe confere fama europeia.</div>
+        </div>
+        <div class="tl-item">
+          <div class="tl-dot"></div>
+          <div class="tl-year">1506–1509</div>
+          <div class="tl-text">Viaja à <strong>Itália</strong>; doutora-se em Turim e trabalha com o editor veneziano Aldo Manuzio.</div>
+        </div>
+        <div class="tl-item">
+          <div class="tl-dot"></div>
+          <div class="tl-year">1511</div>
+          <div class="tl-text">Publica o <strong>Elogio da Loucura</strong> — escrito em uma semana, dedicado a Tomás Moro.</div>
+        </div>
+        <div class="tl-item">
+          <div class="tl-dot"></div>
+          <div class="tl-year">1516</div>
+          <div class="tl-text">Publica edição grega e latina do <strong>Novo Testamento</strong> — sua obra mais impactante para a Reforma.</div>
+        </div>
+        <div class="tl-item">
+          <div class="tl-dot"></div>
+          <div class="tl-year">1536</div>
+          <div class="tl-text">Morre em <strong>Basileia</strong>, recusando-se até o fim a escolher entre Roma e Lutero.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PILARES DO PENSAMENTO -->
+  <section>
+    <div class="section-label">Filosofia</div>
+    <h2>Os pilares do pensamento erasmiano</h2>
+    <div class="divider"></div>
+    <div class="pillars">
+      <div class="pillar">
+        <div class="pillar-icon">🪞</div>
+        <div class="pillar-title">Autoconhecimento</div>
+        <p class="pillar-text">Retomando Sócrates e Aristóteles, Erasmo propõe o conhecimento de si como fundamento de toda sabedoria. A cegueira mais perigosa é a mental.</p>
+      </div>
+      <div class="pillar">
+        <div class="pillar-icon">📖</div>
+        <div class="pillar-title">Retorno às Fontes</div>
+        <p class="pillar-text">Filologia e teologia unidas: ler a Bíblia e os Padres da Igreja nos textos originais gregos e latinos, sem intermediários distorcidos.</p>
+      </div>
+      <div class="pillar">
+        <div class="pillar-icon">☮️</div>
+        <div class="pillar-title">Pacifismo</div>
+        <p class="pillar-text">Erasmo condenou todas as guerras de religião. Numa Europa rasgada pelo conflito, defendia a reforma <em>pela razão</em>, jamais pela violência.</p>
+      </div>
+      <div class="pillar">
+        <div class="pillar-icon">🎭</div>
+        <div class="pillar-title">Crítica pela Ironia</div>
+        <p class="pillar-text">O riso como instrumento filosófico: no <em>Elogio da Loucura</em>, a loucura personificada desnuda a hipocrisia de papas, reis e eruditos.</p>
+      </div>
+      <div class="pillar">
+        <div class="pillar-icon">🏛️</div>
+        <div class="pillar-title">Humanismo Cristão</div>
+        <p class="pillar-text">Fé e razão não se excluem. Erasmo buscava uma espiritualidade autêntica, depurada de ritualismos e escolástica vazia.</p>
+      </div>
+      <div class="pillar">
+        <div class="pillar-icon">👑</div>
+        <div class="pillar-title">Ética Política</div>
+        <p class="pillar-text">O bom governante deve ser guiado pela moral cristã, não pelo poder bruto. Resposta humanista à frieza de Maquiavel.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- OBRAS -->
+  <section>
+    <div class="section-label">Obras Principais</div>
+    <h2>Uma biblioteca para reformar o mundo</h2>
+    <p>Erasmo escreveu em latim — o idioma universal dos eruditos — para ser lido por toda a Europa. Suas obras foram best-sellers do século XVI, reimpressas dezenas de vezes.</p>
+    <div class="divider"></div>
+    <div class="obras-grid">
+      <div class="obra-card">
+        <div class="obra-year">1500</div>
+        <div class="obra-title">Adagia</div>
+        <p class="obra-desc">Coletânea de provérbios greco-latinos com comentários filosóficos. Mais de 4.000 adágios no total. Catapultou sua fama europeia.</p>
+      </div>
+      <div class="obra-card">
+        <div class="obra-year">1503</div>
+        <div class="obra-title">Enchyridion Militis Christiani</div>
+        <p class="obra-desc">"Manual do Cavaleiro Cristão" — guia espiritual para a vida cotidiana, defendendo fé interior em vez de ritualismo exterior.</p>
+      </div>
+      <div class="obra-card">
+        <div class="obra-year">1511</div>
+        <div class="obra-title">Elogio da Loucura</div>
+        <p class="obra-desc">Sátira magistral da hipocrisia humana. Uma das obras mais influentes da literatura ocidental. Escrita em 7 dias; lida por séculos.</p>
+      </div>
+      <div class="obra-card">
+        <div class="obra-year">1516</div>
+        <div class="obra-title">Novo Testamento (Novum Instrumentum)</div>
+        <p class="obra-desc">Primeira edição crítica do Novo Testamento em grego. Revolucionou a teologia e abriu caminho para as reformas protestantes.</p>
+      </div>
+      <div class="obra-card">
+        <div class="obra-year">1516</div>
+        <div class="obra-title">Institutio Principis Christiani</div>
+        <p class="obra-desc">"Educação do Príncipe Cristão" — dedicado ao futuro Carlos V. Define o governante ideal como servo da moral evangélica.</p>
+      </div>
+      <div class="obra-card">
+        <div class="obra-year">1524</div>
+        <div class="obra-title">De Libero Arbitrio</div>
+        <p class="obra-desc">Debate com Lutero sobre o livre-arbítrio. Erasmo defende que o homem tem algum papel na salvação — contra a predestinação absoluta.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ELOGIO DA LOUCURA — DESTAQUE -->
+  <section>
+    <div class="section-label">Obra em Destaque</div>
+    <h2>Elogio da Loucura <span style="font-size:1rem; color:var(--ink-light); font-style:italic;">(Moriae Encomium, 1511)</span></h2>
+    <div class="divider"></div>
+    <div class="elogio-box">
+      <figure class="elogio-fig">
+        <img src="img/elogio-da-loucura.jpg"
+             alt="Página ilustrada do Elogio da Loucura de Erasmo, com desenho marginal de Hans Holbein"
+             onerror="this.style.display='none';this.nextElementSibling.style.display='flex'; align-items:center ">
+        <div class="placeholder-box" style="display:none;">
+          <span class="placeholder-icon">🖼</span>
+          <p class="placeholder-label">[ img/elogio-da-loucura.jpg ]</p>
+          <p class="placeholder-hint">Página do manuscrito original do Elogio da Loucura com ilustrações marginais de Hans Holbein, o Jovem (c. 1515)</p>
+        </div>
+        <figcaption>Manuscrito do <em>Moriae Encomium</em> com desenhos marginais de Hans Holbein (c. 1515) — Kunstmuseum Basel</figcaption>
+      </figure>
+      <div class="elogio-body">
+        <div class="elogio-tag">Sátira · Filosofia Moral · 1511</div>
+        <h3 class="elogio-title">A sabedoria que se disfarça de loucura</h3>
+        <p>Escrito em sete dias durante uma viagem da Itália à Inglaterra, o <em>Elogio da Loucura</em> é narrado pela própria Loucura — que sobe ao púlpito e discursa em seu próprio favor. Com ironia cortante, ela revela que papas, reis, teólogos e filósofos são todos, a seu modo, loucos. Mas há uma inversão: <strong>a loucura que age por amor, que persiste sem garantias, que cuida sem certeza do resultado — essa é a forma mais lúcida de sabedoria.</strong></p>
+        <p>A obra foi dedicada ao amigo Tomás Moro e tornou-se um dos textos mais lidos do século XVI, reimpresso dezenas de vezes em vida do autor.</p>
+        <div class="elogio-divider"></div>
+        <div class="elogio-conexao">
+          <div class="elogio-conexao-label">🩹 Conexão com o cuidado de feridas crônicas</div>
+          <p>No telemonitoramento de feridas crônicas, há uma "loucura" que o <em>Elogio</em> reconheceria como sabedoria: o paciente que retorna semana após semana ao curativo sem ver melhora imediata; o profissional que não desiste diante da ferida que não fecha; a equipe que insiste num protocolo rigoroso mesmo quando os resultados demoram.</p>
+          <p>Erasmo diria que essa persistência <em>aparentemente irracional</em> — cuidar sem garantia, monitorar sem certeza — <strong>é precisamente o oposto da loucura</strong>. É o cuidado em sua forma mais inteligente: paciente, metódico e humano.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- LEGADO & ATUALIDADE -->
+  <section>
+    <div class="section-label">Relevância</div>
+    <h2>Por que Erasmo ainda importa?</h2>
+    <div class="divider"></div>
+    <div class="legado-cols">
+      <div class="legado-block">
+        <h3>🔗 Ponte entre mundos</h3>
+        <p>Contemporâneo de Maquiavel e Lutero, Erasmo recusou o cinismo político do primeiro e o radicalismo do segundo. Propôs uma <strong>terceira via</strong>: reforma gradual, pacífica e racional.</p>
+        <p>Essa postura moderada é hoje um raro antídoto para tempos de polarização extrema.</p>
+      </div>
+      <div class="legado-block">
+        <h3>🧠 Autoconhecimento como prática</h3>
+        <p>Seu apelo ao autoconhecimento antecipa disciplinas modernas como a psicologia, a inteligência emocional e o mindfulness. Conhecer padrões de comportamento e emoções é a base de decisões mais conscientes.</p>
+        <p>A frase "a verdadeira cegueira é mental" ressoa com força na era das redes sociais e das distrações digitais.</p>
+      </div>
+      <div class="legado-block">
+        <h3>🌍 Humanismo Europeu</h3>
+        <p>O programa Erasmus de intercâmbio universitário foi batizado em sua homenagem — símbolo vivo de seu ideal: uma Europa unida pelo conhecimento, pela tolerância e pelo diálogo.</p>
+      </div>
+      <div class="legado-block">
+        <h3>📚 Crítica como método</h3>
+        <p>Erasmo mostrou que questionar as instituições — com rigor, evidência e humor — é um ato de profundo amor intelectual. A crítica não destrói; renova.</p>
+        <p>Seu legado é um convite permanente à honestidade intelectual.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- IMAGEM DO CONTEXTO HISTÓRICO -->
+  <section>
+    <div class="section-label">Contexto Visual</div>
+    <h2>O mundo de Erasmo</h2>
+    <div style="display:grid; grid-template-columns:1fr 1fr; gap:24px;">
+      <figure class="img-contextual">
+        <img src="img/renascimento-europa.jpg" alt="Mapa da Europa renascentista do século XVI com os principais centros humanistas"
+             onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
+        <div class="placeholder-box" style="display:none;">
+          <span class="placeholder-icon">🖼</span>
+          <p class="placeholder-label">[ img/renascimento-europa.jpg ]</p>
+          <p class="placeholder-hint">Mapa ou ilustração da Europa renascentista do século XVI, mostrando os principais centros humanistas</p>
+        </div>
+        <figcaption>Figura 1 — A Europa de Erasmo: rotas intelectuais que uniram Paris, Londres, Basileia e Roma</figcaption>
+      </figure>
+      <figure class="img-contextual">
+        <img src="img/imprensa-gutenberg.jpg" alt="Ilustração da prensa tipográfica de Gutenberg, século XV"
+             onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
+        <div class="placeholder-box" style="display:none;">
+          <span class="placeholder-icon">🖼</span>
+          <p class="placeholder-label">[ img/imprensa-gutenberg.jpg ]</p>
+          <p class="placeholder-hint">Ilustração da prensa tipográfica de Gutenberg — tecnologia que tornou Erasmo o primeiro best-seller da história editorial</p>
+        </div>
+        <figcaption>Figura 2 — A imprensa de Gutenberg: Erasmo foi o primeiro autor a usar a nova mídia como plataforma de influência intelectual global</figcaption>
+      </figure>
+    </div>
+  </section>
+
+
+  <!-- CONEXÃO COM TELEMONITORAMENTO -->
+  <section>
+    <div class="section-label">Conexão com a Prática</div>
+    <h2>Do autoconhecimento filosófico ao cuidado da ferida</h2>
+    <p style="margin-bottom:28px;">Erasmo não escreveu sobre enfermagem nem sobre úlceras. Mas sua ideia central — a de que nada muda sem que o sujeito se conheça primeiro — ressoa de forma direta no maior desafio do telemonitoramento de feridas crônicas: <strong>a adesão do paciente ao próprio tratamento.</strong></p>
+    <div class="conexao-banner">
+      <div class="conexao-icon-big">🩹</div>
+      <div class="conexao-body">
+        <span class="conexao-tag">Telemonitoramento · Feridas Crônicas · PET-Saúde G10 UFPel</span>
+        <h3>"Conhece-te a ti mesmo" — e à tua ferida</h3>
+        <p>Para Erasmo, a <strong>cegueira mais perigosa é a mental</strong>: não reconhecer os próprios padrões, não perceber o que está acontecendo consigo. No contexto das feridas crônicas, essa cegueira tem consequências físicas concretas — o paciente que não percebe a piora da lesão, que não reconhece os sinais de infecção, ou que não entende por que o curativo precisa ser feito com regularidade.</p>
+        <p>O telemonitoramento oferece justamente a <strong>ferramenta para esse autoconhecimento mediado pela tecnologia</strong>: ao registrar fotos, descrever dor, relatar sinais — o paciente é convidado a olhar para si com atenção. Esse olhar não é óbvio. Requer educação, confiança e um cuidado que trate o paciente como sujeito — não como objeto de tratamento.</p>
+        <p>Erasmo diria que o sistema de telemonitoramento, mais do que monitorar a ferida, <strong>convida o paciente a se conhecer como ser capaz de participar ativamente da própria cura.</strong> E esse é o fundamento de qualquer boa prática em saúde.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- QUIZ DE COMPREENSÃO -->
+  <section>
+    <div class="section-label">Avaliação de Compreensão</div>
+    <h2>Teste seus conhecimentos</h2>
+    <p style="margin-bottom:32px;">Perguntas de múltipla escolha — nível misto (básico e intermediário). Clique na alternativa e confirme sua resposta.</p>
+    <div class="quiz-wrapper" id="quiz">
+
+      <!-- Q1 básico -->
+      <div class="quiz-q" data-correct="b">
+        <div class="quiz-q-num">Questão 1 · Básico</div>
+        <p class="quiz-q-text">Em que cidade Erasmo de Rotterdam nasceu?</p>
+        <ul class="quiz-options">
+          <li data-opt="a"><span class="opt-letter">A</span> Basileia, Suíça</li>
+          <li data-opt="b"><span class="opt-letter">B</span> Roterdam, Países Baixos</li>
+          <li data-opt="c"><span class="opt-letter">C</span> Paris, França</li>
+          <li data-opt="d"><span class="opt-letter">D</span> Deventer, Países Baixos</li>
+        </ul>
+        <div class="quiz-feedback ok">✓ Correto! Erasmo nasceu em Roterdam em 1466, embora tenha passado grande parte da vida viajando pela Europa.</div>
+        <div class="quiz-feedback err">✗ Não exatamente. Erasmo nasceu em Roterdam (Países Baixos), cidade que deu origem ao seu nome. Morreu em Basileia, em 1536.</div>
+        <button class="quiz-btn">Confirmar</button>
+      </div>
+
+      <!-- Q2 básico -->
+      <div class="quiz-q" data-correct="c">
+        <div class="quiz-q-num">Questão 2 · Básico</div>
+        <p class="quiz-q-text">Qual é a obra mais famosa de Erasmo, escrita em apenas sete dias durante uma viagem da Itália à Inglaterra?</p>
+        <ul class="quiz-options">
+          <li data-opt="a"><span class="opt-letter">A</span> Adagia</li>
+          <li data-opt="b"><span class="opt-letter">B</span> Institutio Principis Christiani</li>
+          <li data-opt="c"><span class="opt-letter">C</span> Elogio da Loucura</li>
+          <li data-opt="d"><span class="opt-letter">D</span> De Libero Arbitrio</li>
+        </ul>
+        <div class="quiz-feedback ok">✓ Correto! O <em>Elogio da Loucura</em> (1511) foi dedicado ao amigo Tomás Moro e tornou-se uma das obras mais influentes da literatura ocidental.</div>
+        <div class="quiz-feedback err">✗ A resposta correta é o <em>Elogio da Loucura</em> (1511), sátira dedicada a Tomás Moro que desnuda a hipocrisia humana com brilhante ironia.</div>
+        <button class="quiz-btn">Confirmar</button>
+      </div>
+
+      <!-- Q3 intermediário -->
+      <div class="quiz-q" data-correct="a">
+        <div class="quiz-q-num">Questão 3 · Intermediário</div>
+        <p class="quiz-q-text">Erasmo defendia que a verdadeira sabedoria consiste em conhecer-se a si mesmo. No contexto do telemonitoramento de feridas crônicas, essa ideia se aplica melhor a:</p>
+        <ul class="quiz-options">
+          <li data-opt="a"><span class="opt-letter">A</span> Estimular o paciente a perceber ativamente os sinais de evolução ou piora da própria lesão, favorecendo a adesão ao tratamento</li>
+          <li data-opt="b"><span class="opt-letter">B</span> Exigir que o paciente faça cursos de filosofia antes de iniciar o telemonitoramento</li>
+          <li data-opt="c"><span class="opt-letter">C</span> Substituir o julgamento clínico do profissional pela percepção subjetiva do paciente</li>
+          <li data-opt="d"><span class="opt-letter">D</span> Aplicar princípios renascentistas ao design da plataforma de telemonitoramento</li>
+        </ul>
+        <div class="quiz-feedback ok">✓ Muito bem! O autoconhecimento erasmiano, traduzido para a saúde, é justamente essa autopercepção ativa: o paciente como sujeito atento ao próprio corpo, capaz de registrar e comunicar o que observa — base da adesão ao telemonitoramento.</div>
+        <div class="quiz-feedback err">✗ A resposta mais adequada é a alternativa A. O autoconhecimento de Erasmo corresponde, no cuidado em saúde, à capacidade do paciente de perceber ativamente sua própria condição e agir com base nisso — fundamento da adesão ao tratamento.</div>
+        <button class="quiz-btn">Confirmar</button>
+      </div>
+
+      <!-- Q4 intermediário -->
+      <div class="quiz-q" data-correct="d">
+        <div class="quiz-q-num">Questão 4 · Intermediário</div>
+        <p class="quiz-q-text">Erasmo recusou-se a aderir à Reforma Protestante de Lutero, mesmo compartilhando críticas à Igreja. Qual postura filosófica isso revela?</p>
+        <ul class="quiz-options">
+          <li data-opt="a"><span class="opt-letter">A</span> Covardia intelectual e medo da perseguição religiosa</li>
+          <li data-opt="b"><span class="opt-letter">B</span> Total concordância com os dogmas da Igreja Católica</li>
+          <li data-opt="c"><span class="opt-letter">C</span> Indiferença aos problemas sociais e religiosos de sua época</li>
+          <li data-opt="d"><span class="opt-letter">D</span> Defesa de uma reforma gradual e racional, contrária a rupturas violentas ou radicais</li>
+        </ul>
+        <div class="quiz-feedback ok">✓ Exato! Erasmo acreditava na mudança pela educação, pelo diálogo e pela razão — não pela ruptura violenta. Essa posição moderada rendeu-lhe críticas dos dois lados, mas é uma das marcas mais coerentes de seu pensamento humanista.</div>
+        <div class="quiz-feedback err">✗ A resposta correta é a alternativa D. Erasmo não era covarde nem indiferente — era estrategicamente moderado. Defendia a reforma por dentro, pela razão e pela educação, recusando os extremos de Roma e de Lutero.</div>
+        <button class="quiz-btn">Confirmar</button>
+      </div>
+
+      <!-- Q5 intermediário -->
+      <div class="quiz-q" data-correct="b">
+        <div class="quiz-q-num">Questão 5 · Intermediário</div>
+        <p class="quiz-q-text">Qual característica do pensamento de Erasmo o aproxima da noção moderna de inteligência emocional?</p>
+        <ul class="quiz-options">
+          <li data-opt="a"><span class="opt-letter">A</span> Sua produção de mais de 4.000 provérbios latinos</li>
+          <li data-opt="b"><span class="opt-letter">B</span> A ênfase no autoconhecimento como base para compreender as próprias emoções e agir com coerência</li>
+          <li data-opt="c"><span class="opt-letter">C</span> O fato de ter estudado em vários países da Europa</li>
+          <li data-opt="d"><span class="opt-letter">D</span> Sua tradução do Novo Testamento para o grego</li>
+        </ul>
+        <div class="quiz-feedback ok">✓ Perfeito! A inteligência emocional moderna — desenvolvida por Salovey, Mayer e popularizada por Goleman — parte exatamente do autoconhecimento: reconhecer emoções, padrões de comportamento e limitações. Erasmo chegou a esse ponto 500 anos antes.</div>
+        <div class="quiz-feedback err">✗ A resposta é a alternativa B. O traço erasmiano mais próximo da inteligência emocional é justamente a ênfase no autoconhecimento: conhecer as próprias emoções e limitações como condição para agir com coerência no mundo.</div>
+        <button class="quiz-btn">Confirmar</button>
+      </div>
+
+    </div><!-- /quiz -->
+  </section>
+
+  <!-- PERGUNTAS SOCRÁTICAS -->
+  <section>
+    <div class="section-label">Para Refletir</div>
+    <h2>Questionamentos no estilo socrático</h2>
+    <p style="margin-bottom:32px;">Não há respostas certas aqui. São perguntas para incomodar — no bom sentido.</p>
+    <div class="socratic-list">
+
+      <div class="socratic-item">
+        <div class="soc-num">1</div>
+        <div>
+          <p class="soc-q">Erasmo dizia que a cegueira mais perigosa é a mental. Você consegue identificar um momento em que não percebeu algo importante sobre si mesmo ou sobre um paciente — não por falta de dados, mas por falta de atenção ao que já estava visível?</p>
+          <p class="soc-hint">Pense nos registros do telemonitoramento: eles revelam ou ocultam? O que o profissional deixa de perguntar? O que o paciente deixa de contar — e por quê?</p>
+        </div>
+      </div>
+
+      <div class="socratic-item">
+        <div class="soc-num">2</div>
+        <div>
+          <p class="soc-q">Se o autoconhecimento é a base da sabedoria, como um sistema de telemonitoramento pode ser desenhado para ajudar o paciente a se conhecer — e não apenas para fornecer dados ao profissional?</p>
+          <p class="soc-hint">Há diferença entre monitorar uma ferida e ajudar o paciente a compreender a própria ferida. Qual dessas coisas o seu protocolo atual faz?</p>
+        </div>
+      </div>
+
+      <div class="socratic-item">
+        <div class="soc-num">3</div>
+        <div>
+          <p class="soc-q">Erasmo criticava as práticas religiosas vazias — rituais sem compreensão, formas sem conteúdo. Existe algum protocolo de cuidado de feridas que você conhece que funciona assim: executado corretamente na forma, mas sem que o paciente entenda o porquê?</p>
+          <p class="soc-hint">Se o paciente não entende o motivo do curativo, ele o fará quando o profissional não estiver por perto?</p>
+        </div>
+      </div>
+
+      <div class="socratic-item">
+        <div class="soc-num">4</div>
+        <div>
+          <p class="soc-q">Erasmo propunha uma "terceira via" entre dois extremos: nem a rigidez de Roma, nem o radicalismo de Lutero. No cuidado de feridas crônicas, quais são os extremos que você identifica — e onde estaria essa terceira via?</p>
+          <p class="soc-hint">Pense, por exemplo, entre controle total do profissional vs. autonomia total do paciente; entre tecnologia como solução e tecnologia como distância.</p>
+        </div>
+      </div>
+
+      <div class="socratic-item">
+        <div class="soc-num">5</div>
+        <div>
+          <p class="soc-q">O programa universitário Erasmus leva seu nome porque ele acreditava que o conhecimento cresce no encontro entre culturas e perspectivas diferentes. O telemonitoramento une paciente, tecnologia e profissional de saúde em um triângulo de vozes. Qual dessas vozes costuma ser menos ouvida — e o que se perde quando ela fica em silêncio?</p>
+          <p class="soc-hint">Erasmo escrevia cartas para 500 interlocutores. O diálogo era sua metodologia. O que seria o equivalente disso num protocolo de telemonitoramento humanizado?</p>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+</main>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-refs">
+    <strong>Referências</strong>
+    <ol class="ref-list">
+      <li>GARCÍA GONZÁLEZ, J. <em>Erasmo de Rotterdam, filósofo y teólogo: "La verdadera sabiduría consiste en conocerse a uno mismo"</em>. El Confidencial, 02 mai. 2026. Disponível em: <a href="https://www.elconfidencial.com/" target="_blank">elconfidencial.com</a>.</li>
+      <li>ERASMO DE RÓTERDAM. In: <em>Wikipedia, la enciclopedia libre</em>. Wikimedia Foundation, 2025. Disponível em: <a href="https://es.wikipedia.org/wiki/Erasmo_de_R%C3%B3terdam" target="_blank">es.wikipedia.org</a>.</li>
+      <li>ERASMO DE ROTTERDAM: el humanismo que transformó Europa. <em>Revista de Historia</em>, out. 2024. Disponível em: <a href="https://www.revistadehistoria.es/" target="_blank">revistadehistoria.es</a>.</li>
+      <li>ERASMO DE ROTTERDAM, Desiderio. <em>Encyclopaedia Herder</em>. Disponível em: <a href="https://encyclopaedia.herdereditorial.com/" target="_blank">encyclopaedia.herdereditorial.com</a>.</li>
+      <li>ERASMO DE ROTTERDAM. <em>Humanismo y Valores</em>, jan. 2011. Disponível em: <a href="https://humanismoyvalores.blogspot.com/" target="_blank">humanismoyvalores.blogspot.com</a>.</li>
+      <li>ERASMO DE ROTTERDAM: quién fue, biografía, aportes, pensamiento, obras. <em>Euston96</em>. Disponível em: <a href="https://www.euston96.com/" target="_blank">euston96.com</a>.</li>
+      <li>ERASMO DE ROTTERDAM. <em>Busca Biografías</em>. Disponível em: <a href="https://www.buscabiografias.com/" target="_blank">buscabiografias.com</a>.</li>
+      <li>ERASMO DE RÓTERDAM: biografía de este filósofo neerlandés. <em>Psicología y Mente</em>. Disponível em: <a href="https://psicologiaymente.com/" target="_blank">psicologiaymente.com</a>.</li>
+      <li>ERASMO DE ROTTERDAM: obras importantes. <em>Unprofesor</em>, out. 2020. Disponível em: <a href="https://www.unprofesor.com/" target="_blank">unprofesor.com</a>.</li>
+    </ol>
+  </div>
+  <p class="footer-sign">Infográfico elaborado com base no documento <em>Erasmo de Rotterdam</em> — Maio de 2026.</p>
+</footer>
+
+<script>
+  document.querySelectorAll('.quiz-q').forEach(function(qBlock) {
+    var correct = qBlock.dataset.correct;
+    var opts = qBlock.querySelectorAll('.quiz-options li');
+    var btn = qBlock.querySelector('.quiz-btn');
+    var feedbacks = qBlock.querySelectorAll('.quiz-feedback');
+    var selected = null;
+
+    opts.forEach(function(opt) {
+      opt.addEventListener('click', function() {
+        if (btn.classList.contains('answered')) return;
+        opts.forEach(function(o) { o.classList.remove('selected'); });
+        opt.classList.add('selected');
+        selected = opt.dataset.opt;
+        btn.classList.add('show');
+      });
+    });
+
+    btn.addEventListener('click', function() {
+      if (!selected) return;
+      btn.classList.add('answered');
+      btn.style.display = 'none';
+      opts.forEach(function(opt) {
+        if (opt.dataset.opt === correct) {
+          opt.classList.add('correct');
+        } else if (opt.dataset.opt === selected && selected !== correct) {
+          opt.classList.add('wrong');
+        }
+        opt.style.cursor = 'default';
+      });
+      if (selected === correct) {
+        feedbacks[0].classList.add('show');
+      } else {
+        feedbacks[1].classList.add('show');
+      }
+    });
+  });
+</script>
+</body>
+</html>
