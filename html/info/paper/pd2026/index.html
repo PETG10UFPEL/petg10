@@ -1,0 +1,1523 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Publicações Científicas Globais — NSB 2025 | G10 Feridas Crônicas</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;800&family=Source+Sans+3:ital,wght@0,300;0,400;0,600;0,700;1,400&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --blue-deep:   #1A3A5C;
+      --blue-mid:    #2D6A9F;
+      --blue-light:  #E8F2FA;
+      --accent:      #C0392B;
+      --accent-soft: #FDECEA;
+      --gold:        #D4A017;
+      --gold-soft:   #FDF6E3;
+      --green:       #1A6B4A;
+      --green-soft:  #E8F5EE;
+      --text:        #1C2333;
+      --muted:       #5A6478;
+      --border:      #D8DEE9;
+      --bg:          #FAFAFA;
+      --white:       #FFFFFF;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Source Sans 3', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      font-size: 17px;
+      line-height: 1.75;
+    }
+
+    /* ── HEADER ────────────────────────────────── */
+    .institutional-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 14px 40px;
+      background: var(--white);
+      border-bottom: 2px solid var(--blue-deep);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      box-shadow: 0 2px 8px rgba(0,0,0,.07);
+    }
+    .header-identity {
+      display: flex;
+      flex-direction: column;
+    }
+    .header-identity .pub-label {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+    .header-identity .pub-title {
+      font-size: 15px;
+      font-weight: 700;
+      color: var(--blue-deep);
+    }
+    .header-logo img {
+      max-height: 48px;
+      object-fit: contain;
+    }
+
+    /* ── HERO ──────────────────────────────────── */
+    .hero {
+      background: linear-gradient(135deg, #1A3A5C 0%, #0D2137 100%);
+      color: #FFFFFF;
+      padding: 72px 40px 56px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: -60px; right: -60px;
+      width: 320px; height: 320px;
+      border-radius: 50%;
+      background: rgba(255,255,255,.04);
+    }
+    .hero::after {
+      content: '';
+      position: absolute;
+      bottom: -40px; left: -40px;
+      width: 220px; height: 220px;
+      border-radius: 50%;
+      background: rgba(255,255,255,.03);
+    }
+    .hero .tag {
+      display: inline-block;
+      background: var(--gold);
+      color: var(--blue-deep);
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+      padding: 4px 14px;
+      border-radius: 20px;
+      margin-bottom: 20px;
+    }
+    .hero h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2rem, 4vw, 3.2rem);
+      font-weight: 800;
+      line-height: 1.2;
+      max-width: 800px;
+      margin: 0 auto 16px;
+    }
+    .hero .subtitle {
+      font-size: 1.1rem;
+      color: #D6E8F7;
+      max-width: 620px;
+      margin: 0 auto 32px;
+    }
+    .hero .meta-row {
+      display: flex;
+      justify-content: center;
+      gap: 32px;
+      flex-wrap: wrap;
+    }
+    .hero .meta-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    .hero .meta-item .val {
+      font-family: 'Playfair Display', serif;
+      font-size: 2.2rem;
+      font-weight: 700;
+      color: var(--gold);
+    }
+    .hero .meta-item .lbl {
+      font-size: .85rem;
+      color: #B8D4EE;
+    }
+
+    /* ── NAVIGATION PILLS ──────────────────────── */
+    .nav-pills {
+      background: var(--white);
+      padding: 16px 40px;
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      border-bottom: 1px solid var(--border);
+    }
+    .nav-pills a {
+      font-size: .85rem;
+      font-weight: 600;
+      color: var(--blue-mid);
+      text-decoration: none;
+      padding: 6px 14px;
+      border-radius: 20px;
+      border: 1px solid var(--blue-mid);
+      transition: all .2s;
+    }
+    .nav-pills a:hover {
+      background: var(--blue-mid);
+      color: white;
+    }
+
+    /* ── CONTAINER ─────────────────────────────── */
+    .container {
+      max-width: 1060px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    /* ── SECTIONS ──────────────────────────────── */
+    section {
+      padding: 64px 0;
+      border-bottom: 1px solid var(--border);
+    }
+    section:last-of-type { border-bottom: none; }
+
+    .section-label {
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+      color: var(--blue-mid);
+      margin-bottom: 10px;
+    }
+    h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.6rem, 3vw, 2.2rem);
+      color: var(--blue-deep);
+      line-height: 1.25;
+      margin-bottom: 16px;
+    }
+    h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.3rem;
+      color: var(--blue-deep);
+      margin: 32px 0 12px;
+    }
+    p { margin-bottom: 16px; color: var(--text); }
+    p:last-child { margin-bottom: 0; }
+
+    /* ── CALLOUT BOXES ─────────────────────────── */
+    .callout {
+      border-left: 4px solid var(--blue-mid);
+      background: var(--blue-light);
+      padding: 20px 24px;
+      border-radius: 0 8px 8px 0;
+      margin: 28px 0;
+    }
+    .callout.accent {
+      border-color: var(--accent);
+      background: var(--accent-soft);
+    }
+    .callout.gold {
+      border-color: var(--gold);
+      background: var(--gold-soft);
+    }
+    .callout.green {
+      border-color: var(--green);
+      background: var(--green-soft);
+    }
+    .callout p { margin: 0; }
+
+    /* ── STAT CARDS ────────────────────────────── */
+    .stat-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 20px;
+      margin: 32px 0;
+    }
+    .stat-card {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 24px 20px;
+      text-align: center;
+      box-shadow: 0 2px 8px rgba(0,0,0,.05);
+      transition: transform .2s, box-shadow .2s;
+    }
+    .stat-card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 6px 20px rgba(0,0,0,.10);
+    }
+    .stat-card .num {
+      font-family: 'Playfair Display', serif;
+      font-size: 2.4rem;
+      font-weight: 700;
+      color: var(--blue-mid);
+      display: block;
+    }
+    .stat-card .num.red { color: var(--accent); }
+    .stat-card .num.gold { color: var(--gold); }
+    .stat-card .num.green { color: var(--green); }
+    .stat-card .label {
+      font-size: .88rem;
+      color: var(--muted);
+      font-weight: 600;
+      margin-top: 6px;
+      display: block;
+    }
+    .stat-card .sub {
+      font-size: .78rem;
+      color: #8A9BBD;
+      margin-top: 4px;
+      display: block;
+    }
+
+    /* ── RANKING TABLE ─────────────────────────── */
+    .ranking-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 28px 0;
+      font-size: .92rem;
+      background: var(--white);
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 2px 12px rgba(0,0,0,.07);
+    }
+    .ranking-table thead tr {
+      background: var(--blue-deep);
+      color: white;
+    }
+    .ranking-table th {
+      padding: 13px 16px;
+      text-align: left;
+      font-size: .82rem;
+      font-weight: 700;
+      letter-spacing: .05em;
+      text-transform: uppercase;
+    }
+    .ranking-table tbody tr:nth-child(even) { background: #F4F7FB; }
+    .ranking-table tbody tr:hover { background: var(--blue-light); }
+    .ranking-table td {
+      padding: 12px 16px;
+      border-bottom: 1px solid var(--border);
+    }
+    .ranking-table td:first-child { font-weight: 700; color: var(--muted); }
+    .rank-bar-container {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .rank-bar {
+      height: 8px;
+      border-radius: 4px;
+      background: var(--blue-mid);
+      flex-shrink: 0;
+    }
+    .rank-bar.china { background: #C0392B; }
+    .rank-bar.usa   { background: #2D6A9F; }
+    .rank-bar.india { background: #E67E22; }
+    .rank-bar.eu    { background: #8E44AD; }
+    .rank-bar.other { background: #7F8C8D; }
+    .country-flag { font-size: 1.2rem; margin-right: 6px; }
+    .highlight-row td { background: #E8F2FA !important; font-weight: 600; }
+
+    /* ── FIGURE / PLACEHOLDER ──────────────────── */
+    figure {
+      margin: 36px 0;
+      text-align: center;
+    }
+    figure img {
+      max-width: 100%;
+      border-radius: 10px;
+      box-shadow: 0 4px 16px rgba(0,0,0,.12);
+    }
+    figcaption {
+      font-size: .82rem;
+      color: var(--muted);
+      margin-top: 10px;
+      font-style: italic;
+      max-width: 680px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .img-placeholder .placeholder-box {
+      border: 2px dashed #b0b8c1;
+      background: #f4f6f8;
+      border-radius: 10px;
+      padding: 40px 24px;
+      text-align: center;
+      color: #6c757d;
+      min-height: 260px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+    }
+    .placeholder-icon { font-size: 2.4rem; }
+    .placeholder-label {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: .82rem;
+      background: #e9ecef;
+      padding: 4px 12px;
+      border-radius: 4px;
+      color: #343a40;
+    }
+    .placeholder-hint {
+      font-size: .78rem;
+      color: #868e96;
+      font-style: italic;
+      max-width: 360px;
+    }
+
+    /* ── FIELDS GRID ───────────────────────────── */
+    .fields-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 16px;
+      margin: 28px 0;
+    }
+    .field-card {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-top: 4px solid var(--blue-mid);
+      border-radius: 10px;
+      padding: 20px;
+      box-shadow: 0 2px 8px rgba(0,0,0,.05);
+    }
+    .field-card.health { border-top-color: #E74C3C; }
+    .field-card.eng    { border-top-color: #2980B9; }
+    .field-card.cs     { border-top-color: #8E44AD; }
+    .field-card.bio    { border-top-color: #27AE60; }
+    .field-card.chem   { border-top-color: #F39C12; }
+    .field-card.phys   { border-top-color: #16A085; }
+    .field-card h4 {
+      font-size: .95rem;
+      font-weight: 700;
+      color: var(--blue-deep);
+      margin-bottom: 8px;
+    }
+    .field-card .pct {
+      font-family: 'Playfair Display', serif;
+      font-size: 2rem;
+      font-weight: 700;
+      color: var(--blue-mid);
+    }
+    .field-card.health .pct { color: #E74C3C; }
+    .field-card.eng .pct    { color: #2980B9; }
+    .field-card.cs .pct     { color: #8E44AD; }
+    .field-card.bio .pct    { color: #27AE60; }
+    .field-card .desc {
+      font-size: .82rem;
+      color: var(--muted);
+      margin-top: 6px;
+    }
+
+    /* ── TREND CHART (CSS ONLY) ────────────────── */
+    .trend-chart-wrap {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 28px 24px 20px;
+      margin: 28px 0;
+      overflow-x: auto;
+      box-shadow: 0 2px 8px rgba(0,0,0,.05);
+    }
+    .trend-chart-title {
+      font-size: .88rem;
+      font-weight: 700;
+      color: var(--muted);
+      margin-bottom: 20px;
+      text-align: center;
+      letter-spacing: .04em;
+      text-transform: uppercase;
+    }
+    .chart-canvas {
+      width: 100%;
+      min-width: 560px;
+      height: 280px;
+      position: relative;
+    }
+    .bar-group {
+      display: flex;
+      align-items: flex-end;
+      gap: 6px;
+      height: 240px;
+      border-left: 2px solid var(--border);
+      border-bottom: 2px solid var(--border);
+      padding: 0 16px 0 8px;
+      position: relative;
+    }
+    /* Y-axis grid lines */
+    .bar-group::before {
+      content: '';
+      position: absolute;
+      left: 0; right: 0; top: 0;
+      height: 1px;
+      background: var(--border);
+      opacity: .5;
+    }
+
+    /* ── IMPACT TABLE ──────────────────────────── */
+    .impact-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+      margin: 28px 0;
+    }
+    @media (max-width: 680px) {
+      .impact-grid { grid-template-columns: 1fr; }
+    }
+    .impact-card {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 20px;
+    }
+    .impact-card .country {
+      font-size: .82rem;
+      font-weight: 800;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 8px;
+    }
+    .impact-card .hca-val {
+      font-family: 'Playfair Display', serif;
+      font-size: 2.6rem;
+      font-weight: 700;
+      color: var(--blue-mid);
+    }
+    .impact-card .hca-val.red { color: var(--accent); }
+    .impact-card .hca-val.gold { color: var(--gold); }
+    .impact-card .trend {
+      font-size: .82rem;
+      color: var(--muted);
+      margin-top: 6px;
+    }
+    .trend-up   { color: #27AE60; font-weight: 700; }
+    .trend-down { color: var(--accent); font-weight: 700; }
+
+    /* ── INTERACTIVE BAR CHART ─────────────────── */
+    .bar-viz {
+      margin: 28px 0;
+    }
+    .bar-row {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 14px;
+    }
+    .bar-row .country-name {
+      width: 130px;
+      flex-shrink: 0;
+      font-size: .88rem;
+      font-weight: 600;
+      color: var(--text);
+      text-align: right;
+    }
+    .bar-outer {
+      flex: 1;
+      height: 28px;
+      background: #EEF2F8;
+      border-radius: 4px;
+      overflow: hidden;
+      position: relative;
+    }
+    .bar-inner {
+      height: 100%;
+      border-radius: 4px;
+      display: flex;
+      align-items: center;
+      padding-left: 10px;
+      font-size: .78rem;
+      font-weight: 700;
+      color: white;
+      transition: width 1s ease;
+    }
+    .bar-row .count {
+      width: 100px;
+      flex-shrink: 0;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: .82rem;
+      color: var(--muted);
+    }
+
+    /* ── PULLQUOTE ─────────────────────────────── */
+    .pullquote {
+      border-left: 5px solid var(--gold);
+      padding: 20px 28px;
+      margin: 36px 0;
+      background: var(--gold-soft);
+      border-radius: 0 10px 10px 0;
+    }
+    .pullquote p {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.2rem;
+      line-height: 1.5;
+      color: var(--blue-deep);
+      font-style: italic;
+      margin: 0;
+    }
+    .pullquote .source {
+      font-family: 'Source Sans 3', sans-serif;
+      font-size: .8rem;
+      font-style: normal;
+      color: var(--muted);
+      margin-top: 10px;
+      display: block;
+    }
+
+    /* ── COLLAB SECTION ────────────────────────── */
+    .collab-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      padding: 14px 0;
+      border-bottom: 1px solid var(--border);
+    }
+    .collab-row:last-child { border-bottom: none; }
+    .collab-pair {
+      font-weight: 600;
+      font-size: .95rem;
+      color: var(--text);
+    }
+    .collab-num {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: .92rem;
+      color: var(--blue-mid);
+      font-weight: 700;
+    }
+    .collab-bar-wrap {
+      flex: 1;
+      height: 10px;
+      background: #EEF2F8;
+      border-radius: 5px;
+      overflow: hidden;
+    }
+    .collab-bar {
+      height: 100%;
+      background: var(--blue-mid);
+      border-radius: 5px;
+    }
+
+    /* ── WOUND CARE SECTION ────────────────────── */
+    .wound-section {
+      background: linear-gradient(135deg, #0B3D2E, #0F5F46);
+      color: white;
+      border-radius: 16px;
+      padding: 52px 40px;
+      margin: 40px 0;
+    }
+    .wound-section h2 { color: #A8E6CF; }
+    .wound-section p { color: rgba(255,255,255,.88); }
+    .wound-section .section-label { color: #A8E6CF; }
+    .wound-section .callout {
+      background: rgba(255,255,255,.08);
+      border-color: #A8E6CF;
+    }
+    .wound-section .callout p { color: rgba(255,255,255,.9); }
+    .wound-ref {
+      font-size: .8rem;
+      color: rgba(255,255,255,.6);
+      margin-top: 6px;
+    }
+
+    /* ── FOOTER ────────────────────────────────── */
+    .institutional-footer {
+      background: var(--white);
+      border-top: 1px solid var(--border);
+      padding: 32px 40px;
+      text-align: center;
+    }
+    .institutional-footer p {
+      font-size: .82rem;
+      color: var(--muted);
+      margin: 0;
+    }
+    .institutional-footer .refs {
+      margin-top: 20px;
+      text-align: left;
+      max-width: 800px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .institutional-footer .refs h4 {
+      font-size: .88rem;
+      font-weight: 800;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      color: var(--blue-deep);
+      margin-bottom: 10px;
+    }
+    .institutional-footer .refs ol {
+      padding-left: 20px;
+    }
+    .institutional-footer .refs li {
+      font-size: .78rem;
+      color: var(--muted);
+      margin-bottom: 6px;
+      line-height: 1.5;
+    }
+
+    /* ── RESPONSIVE ────────────────────────────── */
+    @media (max-width: 768px) {
+      .institutional-header { padding: 12px 20px; }
+      .hero { padding: 48px 20px 40px; }
+      .nav-pills { padding: 12px 20px; }
+      section { padding: 44px 0; }
+      .container { padding: 0 16px; }
+      .wound-section { padding: 36px 24px; }
+      .bar-row .country-name { width: 90px; font-size: .78rem; }
+    }
+
+    /* ── ANNO CHIP ─────────────────────────────── */
+    .chip {
+      display: inline-block;
+      font-size: .75rem;
+      font-weight: 700;
+      padding: 2px 10px;
+      border-radius: 12px;
+      margin-left: 6px;
+      vertical-align: middle;
+    }
+    .chip.up   { background: #D5F5E3; color: #1A6B4A; }
+    .chip.down { background: #FDECEA; color: var(--accent); }
+    .chip.flat { background: #EEF2F8; color: var(--muted); }
+
+    /* timeline */
+    .timeline {
+      border-left: 3px solid var(--blue-mid);
+      padding-left: 24px;
+      margin: 28px 0;
+    }
+    .timeline-item {
+      position: relative;
+      margin-bottom: 24px;
+    }
+    .timeline-item::before {
+      content: '';
+      position: absolute;
+      left: -30px;
+      top: 6px;
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      background: var(--blue-mid);
+      border: 2px solid white;
+      box-shadow: 0 0 0 2px var(--blue-mid);
+    }
+    .timeline-item .year {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: .82rem;
+      font-weight: 700;
+      color: var(--blue-mid);
+      margin-bottom: 4px;
+    }
+    .timeline-item p { margin: 0; font-size: .92rem; }
+  </style>
+</head>
+<body>
+
+<!-- ══ INSTITUTIONAL HEADER ══════════════════════════════════════════════ -->
+<header class="institutional-header">
+  <div class="header-identity">
+    <span class="pub-label">G10 Feridas Crônicas · PET-Saúde Digital · UFPel</span>
+    <span class="pub-title">Radar de Ciência Global 2025</span>
+  </div>
+  <div class="header-logo">
+    <img src="img/logo.png" alt="Logos G10 / PET-Saúde Digital / UFPel">
+  </div>
+</header>
+
+<!-- ══ NAV PILLS ═════════════════════════════════════════════════════════ -->
+<nav class="nav-pills">
+  <a href="#panorama">📊 Panorama Global</a>
+  <a href="#campos">🔬 Campos Científicos</a>
+  <a href="#impacto">🏆 Impacto (HCA)</a>
+  <a href="#colaboracao">🤝 Colaborações</a>
+  <a href="#contexto">🩹 Conexão Clínica</a>
+</nav>
+
+<!-- ══ HERO ═══════════════════════════════════════════════════════════════ -->
+<div class="hero">
+  <span class="tag">NSB Science &amp; Engineering Indicators 2026 · NSB-2025-7</span>
+  <h1>Quem publica mais ciência — e o que isso significa para a saúde</h1>
+  <p class="subtitle">
+    Análise das publicações científicas globais por país e campo do conhecimento (2002–2023),
+    com dados do National Science Board (EUA) e base Scopus. Traduzido e adaptado para monitores Amor à Pele e PETG10.
+  </p>
+  <div class="meta-row">
+    <div class="meta-item">
+      <span class="val">3,3 mi</span>
+      <span class="lbl">artigos publicados em 2023</span>
+    </div>
+    <div class="meta-item">
+      <span class="val">+50%</span>
+      <span class="lbl">crescimento 2014–2023</span>
+    </div>
+    <div class="meta-item">
+      <span class="val">23%</span>
+      <span class="lbl">das publicações em Ciências da Saúde</span>
+    </div>
+    <div class="meta-item">
+      <span class="val">China nº1</span>
+      <span class="lbl">maior produtor em volume (2023)</span>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════════════════════════════════ -->
+<div class="container">
+
+<!-- ── SEÇÃO 1: PANORAMA ─────────────────────────────────────────────── -->
+<section id="panorama">
+  <p class="section-label">Seção 1 · Volume Global</p>
+  <h2>A produção científica explodiu — mas não de forma uniforme</h2>
+  <p>
+    Em 2023, o mundo publicou <strong>3,3 milhões de artigos científicos</strong> em ciência e engenharia (S&E), 
+    com base nos dados da Scopus. Isso representa um crescimento de 50% em apenas uma década. 
+    Mas quatro países respondem por mais da metade de toda essa produção — e a distância entre eles está aumentando rapidamente.
+  </p>
+
+  <div class="callout gold">
+    <p><strong>Método:</strong> Contagem fracionada — quando autores de vários países co-assinam um artigo, 
+    cada país recebe crédito proporcional ao número de autores. Isso evita dupla contagem e reflete 
+    contribuição real ao campo.</p>
+  </div>
+
+  <!-- Ranking bar chart -->
+  <h3>Os 15 maiores produtores de artigos S&E — 2023</h3>
+
+  <div class="bar-viz">
+    <!-- China -->
+    <div class="bar-row">
+      <span class="country-name">🇨🇳 China</span>
+      <div class="bar-outer">
+        <div class="bar-inner" style="width:100%;background:#C0392B;">932.712</div>
+      </div>
+      <span class="count">28,5% do total</span>
+    </div>
+    <!-- USA -->
+    <div class="bar-row">
+      <span class="country-name">🇺🇸 EUA</span>
+      <div class="bar-outer">
+        <div class="bar-inner" style="width:46%;background:#2D6A9F;">430.843</div>
+      </div>
+      <span class="count">13,2% do total</span>
+    </div>
+    <!-- India -->
+    <div class="bar-row">
+      <span class="country-name">🇮🇳 Índia</span>
+      <div class="bar-outer">
+        <div class="bar-inner" style="width:24%;background:#E67E22;">228.174</div>
+      </div>
+      <span class="count">7,0% do total</span>
+    </div>
+    <!-- Germany -->
+    <div class="bar-row">
+      <span class="country-name">🇩🇪 Alemanha</span>
+      <div class="bar-outer">
+        <div class="bar-inner" style="width:11.7%;background:#8E44AD;">108.782</div>
+      </div>
+      <span class="count">3,3% do total</span>
+    </div>
+    <!-- UK -->
+    <div class="bar-row">
+      <span class="country-name">🇬🇧 Reino Unido</span>
+      <div class="bar-outer">
+        <div class="bar-inner" style="width:10.5%;background:#5DADE2;">97.536</div>
+      </div>
+      <span class="count">3,0% do total</span>
+    </div>
+    <!-- Japan -->
+    <div class="bar-row">
+      <span class="country-name">🇯🇵 Japão</span>
+      <div class="bar-outer">
+        <div class="bar-inner" style="width:10.4%;background:#1ABC9C;">96.543</div>
+      </div>
+      <span class="count">2,95% do total</span>
+    </div>
+    <!-- Russia -->
+    <div class="bar-row">
+      <span class="country-name">🇷🇺 Rússia</span>
+      <div class="bar-outer">
+        <div class="bar-inner" style="width:9.2%;background:#7F8C8D;">85.558</div>
+      </div>
+      <span class="count">2,6% do total</span>
+    </div>
+    <!-- Italy -->
+    <div class="bar-row">
+      <span class="country-name">🇮🇹 Itália</span>
+      <div class="bar-outer">
+        <div class="bar-inner" style="width:8.9%;background:#A04000;">82.771</div>
+      </div>
+      <span class="count">2,5% do total</span>
+    </div>
+    <!-- South Korea -->
+    <div class="bar-row">
+      <span class="country-name">🇰🇷 Coreia do Sul</span>
+      <div class="bar-outer">
+        <div class="bar-inner" style="width:7.7%;background:#884EA0;">71.724</div>
+      </div>
+      <span class="count">2,2% do total</span>
+    </div>
+    <!-- Brazil -->
+    <div class="bar-row">
+      <span class="country-name">🇧🇷 Brasil</span>
+      <div class="bar-outer">
+        <div class="bar-inner" style="width:6.3%;background:#148F77;">58.292</div>
+      </div>
+      <span class="count">1,78% do total</span>
+    </div>
+  </div>
+
+  <p class="section-label" style="margin-top:4px; font-size:.75rem;">Fonte: NCSES; Science-Metrix; Elsevier Scopus, fev/2025. NSB-2025-7, Tabela DISC-12.</p>
+
+  <!-- Evolution table -->
+  <h3>Evolução 2002 → 2023: quem cresceu mais?</h3>
+
+  <table class="ranking-table">
+    <thead>
+      <tr>
+        <th>#</th>
+        <th>País / Região</th>
+        <th>Artigos 2002</th>
+        <th>Artigos 2013</th>
+        <th>Artigos 2023</th>
+        <th>Crescimento 2002–2023</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>1</td>
+        <td>🇨🇳 China</td>
+        <td>74.940</td>
+        <td>351.526</td>
+        <td><strong>932.712</strong></td>
+        <td><span class="chip up">▲ +1.145%</span></td>
+      </tr>
+      <tr>
+        <td>2</td>
+        <td>🇮🇳 Índia</td>
+        <td>23.697</td>
+        <td>80.195</td>
+        <td><strong>228.174</strong></td>
+        <td><span class="chip up">▲ +863%</span></td>
+      </tr>
+      <tr class="highlight-row">
+        <td>3</td>
+        <td>🇺🇸 EUA</td>
+        <td>321.622</td>
+        <td>427.373</td>
+        <td><strong>430.843</strong></td>
+        <td><span class="chip flat">→ +34%</span></td>
+      </tr>
+      <tr>
+        <td>4</td>
+        <td>🇩🇪 Alemanha</td>
+        <td>—</td>
+        <td>104.396</td>
+        <td><strong>108.782</strong></td>
+        <td><span class="chip flat">→ +4%</span></td>
+      </tr>
+      <tr>
+        <td>5</td>
+        <td>🇬🇧 Reino Unido</td>
+        <td>74.894</td>
+        <td>98.613</td>
+        <td><strong>97.536</strong></td>
+        <td><span class="chip down">▼ −1%</span></td>
+      </tr>
+      <tr>
+        <td>6</td>
+        <td>🇯🇵 Japão</td>
+        <td>98.708</td>
+        <td>106.968</td>
+        <td><strong>96.543</strong></td>
+        <td><span class="chip down">▼ −2%</span></td>
+      </tr>
+      <tr>
+        <td>13</td>
+        <td>🇧🇷 Brasil</td>
+        <td>—</td>
+        <td>45.991</td>
+        <td><strong>58.292</strong></td>
+        <td><span class="chip up">▲ +27%</span></td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="callout accent">
+    <p>
+      <strong>📌 Ponto estratégico:</strong> A China já produz <strong>mais do dobro</strong> dos artigos dos EUA 
+      e o volume continua crescendo. 51% do crescimento global de publicações entre 2014 e 2023 
+      veio de autores chineses — e outros 13%, de autores indianos. EUA, EU-27, Reino Unido e 
+      Japão tiveram crescimento modesto ou queda.
+    </p>
+  </div>
+
+  <!-- Timeline -->
+  <h3>Linha do tempo: China e EUA em publicações científicas</h3>
+  <div class="timeline">
+    <div class="timeline-item">
+      <div class="year">2002</div>
+      <p>EUA lideram com 321.622 artigos. China tem 74.940 (apenas 23% do volume americano).</p>
+    </div>
+    <div class="timeline-item">
+      <div class="year">2009</div>
+      <p>China ultrapassa 284 mil artigos. Crescimento acelerado coincide com políticas estatais de C&T.</p>
+    </div>
+    <div class="timeline-item">
+      <div class="year">2013</div>
+      <p>China quase alcança os EUA (351k vs 427k). Distância cai de 4:1 para 1,2:1.</p>
+    </div>
+    <div class="timeline-item">
+      <div class="year">2015–16</div>
+      <p>China ultrapassa os EUA em volume absoluto de artigos S&E.</p>
+    </div>
+    <div class="timeline-item">
+      <div class="year">2021</div>
+      <p>Pico histórico dos EUA: 471.378 artigos. Mas China já somava 756.203 — 60% a mais.</p>
+    </div>
+    <div class="timeline-item">
+      <div class="year">2023</div>
+      <p>China: 932.712 artigos (28,5% do total mundial). EUA: 430.843 (13,2%). Razão: <strong>2,2:1</strong>.</p>
+    </div>
+  </div>
+
+  <figure>
+    <img src="img/nsb20257-figdisc-022.png"
+         alt="Figura DISC-22 — Publicações S&E por país/região: 2002–2023"
+         onerror="this.style.display='none'">
+    <figcaption>Figura DISC-22 — Publicações S&E por país/região: 2002–23. Fonte: NCSES; Elsevier Scopus, fev/2025. <a href="https://ncses.nsf.gov/pubs/nsb20257/figure/DISC-22" target="_blank" style="color:var(--blue-mid);">Ver original ↗</a></figcaption>
+  </figure>
+</section>
+
+<!-- ── SEÇÃO 2: CAMPOS CIENTÍFICOS ──────────────────────────────────── -->
+<section id="campos">
+  <p class="section-label">Seção 2 · Campos do Conhecimento</p>
+  <h2>O que cada país publica — e o que domina globalmente</h2>
+  <p>
+    A distribuição de publicações por campo científico revela as <strong>prioridades estratégicas</strong> 
+    de cada nação — e define onde a competição internacional é mais intensa.
+  </p>
+
+  <h3>Distribuição global — participação de cada campo (2023)</h3>
+
+  <div class="fields-grid">
+    <div class="field-card health">
+      <h4>🏥 Ciências da Saúde</h4>
+      <div class="pct">23%</div>
+      <div class="desc">Campo com maior volume global. EUA publicam <strong>36%</strong> de tudo o que produzem em saúde. Líderes: EUA, EU-27, Japão.</div>
+    </div>
+    <div class="field-card eng">
+      <h4>⚙️ Engenharia</h4>
+      <div class="pct">17%</div>
+      <div class="desc">China domina: <strong>26%</strong> de toda sua produção é em engenharia. Campo estratégico para manufatura e tecnologia.</div>
+    </div>
+    <div class="field-card cs">
+      <h4>💻 Computação &amp; Informação</h4>
+      <div class="pct">13%</div>
+      <div class="desc">Índia lidera com <strong>28%</strong> de sua produção nessa área. Campo de crescimento mais acelerado globalmente.</div>
+    </div>
+    <div class="field-card bio">
+      <h4>🧬 Biociências &amp; Biomedicina</h4>
+      <div class="pct">12%</div>
+      <div class="desc">Base de toda pesquisa translacional. Intimamente ligada à pesquisa em feridas crônicas, cicatrização e biotecnologia.</div>
+    </div>
+    <div class="field-card chem">
+      <h4>⚗️ Química</h4>
+      <div class="pct">~8%</div>
+      <div class="desc">Relevante para curativos, biomateriais e farmacologia tópica. Campo competitivo com forte presença chinesa.</div>
+    </div>
+    <div class="field-card phys">
+      <h4>🔭 Física &amp; Ciências Exatas</h4>
+      <div class="pct">~7%</div>
+      <div class="desc">EUA em queda (−35% de 2010 a 2023). Desafio estratégico apontado pelo relatório.</div>
+    </div>
+  </div>
+
+  <div class="callout">
+    <p>
+      <strong>Ciências da Saúde é o campo científico com maior número absoluto de publicações globais.</strong>
+      Mas o crescimento mais rápido está em Computação &amp; Informação e Ciências Sociais — sinalizando 
+      que a fronteira da inovação em saúde está migrando para intersecções com tecnologia e comportamento.
+    </p>
+  </div>
+
+  <h3>O que cada grande país mais publica (2023)</h3>
+
+  <table class="ranking-table">
+    <thead>
+      <tr>
+        <th>País</th>
+        <th>Campo dominante</th>
+        <th>% da própria produção</th>
+        <th>Destaque estratégico</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>🇺🇸 EUA</td>
+        <td>Ciências da Saúde</td>
+        <td><strong>36%</strong></td>
+        <td>Maior concentração em saúde entre países-líderes</td>
+      </tr>
+      <tr>
+        <td>🇯🇵 Japão</td>
+        <td>Ciências da Saúde</td>
+        <td><strong>32%</strong></td>
+        <td>Envelhecimento pop. direciona agenda de pesquisa</td>
+      </tr>
+      <tr>
+        <td>🇪🇺 EU-27</td>
+        <td>Ciências da Saúde</td>
+        <td><strong>25%</strong></td>
+        <td>Forte financiamento em pesquisa clínica e translacional</td>
+      </tr>
+      <tr>
+        <td>🇩🇪 Alemanha</td>
+        <td>Ciências da Saúde</td>
+        <td><strong>24%</strong></td>
+        <td>Forte em biotecnologia e dispositivos médicos</td>
+      </tr>
+      <tr class="highlight-row">
+        <td>🇨🇳 China</td>
+        <td>Engenharia</td>
+        <td><strong>26%</strong></td>
+        <td>Foco em tecnologia, manufatura, infra e IA</td>
+      </tr>
+      <tr>
+        <td>🇮🇳 Índia</td>
+        <td>Computação &amp; Informação</td>
+        <td><strong>28%</strong></td>
+        <td>Software, IA aplicada, serviços digitais</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h3>Evolução dos campos nos EUA (2010–2023)</h3>
+  <p>O relatório registra mudanças importantes na composição da produção científica americana:</p>
+
+  <div class="stat-grid">
+    <div class="stat-card">
+      <span class="num green">+30%</span>
+      <span class="label">Psicologia</span>
+      <span class="sub">Campo que mais cresceu nos EUA</span>
+    </div>
+    <div class="stat-card">
+      <span class="num green">+27%</span>
+      <span class="label">Ciências Sociais</span>
+      <span class="sub">2º maior crescimento 2010–2023</span>
+    </div>
+    <div class="stat-card">
+      <span class="num green">+23%</span>
+      <span class="label">Ciências da Saúde</span>
+      <span class="sub">3º maior crescimento — base já era alta</span>
+    </div>
+    <div class="stat-card">
+      <span class="num red">−35%</span>
+      <span class="label">Física</span>
+      <span class="sub">Maior queda — preocupação estratégica</span>
+    </div>
+    <div class="stat-card">
+      <span class="num red">−26%</span>
+      <span class="label">Ciência dos Materiais</span>
+      <span class="sub">2ª maior queda nos EUA</span>
+    </div>
+    <div class="stat-card">
+      <span class="num red">−17%</span>
+      <span class="label">Geociências / Oceanos</span>
+      <span class="sub">3ª maior queda no período</span>
+    </div>
+  </div>
+
+  <figure>
+    <img src="img/nsb20257-figdisc-023.png"
+         alt="Figura DISC-23 — Distribuição dos portfólios nacionais de pesquisa por campo S&E: 2023"
+         onerror="this.style.display='none'">
+    <figcaption>Figura DISC-23 — Distribuição dos portfólios nacionais de pesquisa por campo S&E: 2023. Fonte: NCSES; Elsevier Scopus, fev/2025. <a href="https://ncses.nsf.gov/pubs/nsb20257/figure/DISC-23" target="_blank" style="color:var(--blue-mid);">Ver original ↗</a></figcaption>
+  </figure>
+
+  <figure>
+    <img src="img/nsb20257-figdisc-024.png"
+         alt="Figura DISC-24 — Índice de publicações dos EUA por campo S&E: 2010–2023"
+         onerror="this.style.display='none'">
+    <figcaption>Figura DISC-24 — Índice de publicações dos EUA por campo S&E: 2010–23. Fonte: NCSES; Elsevier Scopus, fev/2025. <a href="https://ncses.nsf.gov/pubs/nsb20257/figure/DISC-24" target="_blank" style="color:var(--blue-mid);">Ver original ↗</a></figcaption>
+  </figure>
+</section>
+
+<!-- ── SEÇÃO 3: IMPACTO / HCA ────────────────────────────────────────── -->
+<section id="impacto">
+  <p class="section-label">Seção 3 · Qualidade e Impacto</p>
+  <h2>Volume não é tudo — quem publica os artigos mais influentes?</h2>
+  <p>
+    O <strong>Índice HCA (Highly Cited Articles)</strong> mede a proporção de publicações de cada país 
+    que estão entre o <strong>1% mais citado</strong> no mundo em seu respectivo campo. 
+    Um HCA &gt; 1,0% significa que o país produz mais influência do que a média global. 
+    Essa é a métrica de <em>qualidade real</em>, não apenas quantidade.
+  </p>
+
+  <div class="callout gold">
+    <p>
+      <strong>Por que isso importa para monitores do G10?</strong> Quando buscamos evidências para 
+      fundamentar protocolos clínicos (ex.: curativos, pressão negativa, telemonitoramento), 
+      os artigos mais citados são os que mais provavelmente aparecem em revisões sistemáticas 
+      e diretrizes de prática clínica. Saber quem os produz orienta onde buscar.
+    </p>
+  </div>
+
+  <h3>HCA por país — 2022 (último ano disponível)</h3>
+
+  <div class="impact-grid">
+    <div class="impact-card">
+      <div class="country">🇺🇸 Estados Unidos</div>
+      <div class="hca-val">1,7%</div>
+      <div class="trend">
+        Ainda acima da média global (1,0%), mas em queda desde 2017 
+        — atingiu o <strong>menor nível histórico</strong> da série 2006–2022.
+        <br><span class="trend-down">↓ Declínio contínuo desde 2014</span>
+      </div>
+    </div>
+    <div class="impact-card">
+      <div class="country">🇨🇳 China</div>
+      <div class="hca-val red">1,3%</div>
+      <div class="trend">
+        Subiu de 0,4% (2006) para 1,3% (2022). 
+        <strong>Crescimento ininterrupto</strong> — agora ultrapassa EU-27.
+        <br><span class="trend-up">↑ Convergindo rapidamente com os EUA</span>
+      </div>
+    </div>
+    <div class="impact-card">
+      <div class="country">🇪🇺 EU-27</div>
+      <div class="hca-val gold">≥1,2%</div>
+      <div class="trend">
+        Estável acima de 1,2% desde 2011. 
+        Produção qualificada e consistente em saúde, engenharia e ciências exatas.
+      </div>
+    </div>
+    <div class="impact-card">
+      <div class="country">🇮🇳 Índia</div>
+      <div class="hca-val">1,1%</div>
+      <div class="trend">
+        Recentemente ultrapassou a média global (1,0%). 
+        Forte em Ciências Sociais — sinalizando maturidade crescente.
+        <br><span class="trend-up">↑ Novo entrante no pelotão de frente</span>
+      </div>
+    </div>
+  </div>
+
+  <h3>HCA por campo científico — EUA vs. competidores (2022)</h3>
+
+  <table class="ranking-table">
+    <thead>
+      <tr>
+        <th>Campo</th>
+        <th>EUA (HCA%)</th>
+        <th>China (HCA%)</th>
+        <th>EU-27</th>
+        <th>Observação</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Ciência dos Materiais</td>
+        <td><strong>2,2%</strong></td>
+        <td>próximo</td>
+        <td>—</td>
+        <td>EUA lideram em impacto</td>
+      </tr>
+      <tr>
+        <td>Física</td>
+        <td><strong>1,9%</strong></td>
+        <td>—</td>
+        <td>—</td>
+        <td>Alto impacto apesar de queda em volume</td>
+      </tr>
+      <tr class="highlight-row">
+        <td>Ciências da Saúde</td>
+        <td><strong>1,8%</strong></td>
+        <td>&lt;1,8%</td>
+        <td>&lt;1,8%</td>
+        <td>EUA ainda à frente em qualidade</td>
+      </tr>
+      <tr class="highlight-row">
+        <td>Biociências &amp; Biomedicina</td>
+        <td><strong>1,8%</strong></td>
+        <td>&lt;1,8%</td>
+        <td>&lt;1,8%</td>
+        <td>EUA ainda lideram em impacto</td>
+      </tr>
+      <tr>
+        <td>Computação &amp; Informação</td>
+        <td><strong>1,8%</strong></td>
+        <td>—</td>
+        <td>—</td>
+        <td>Campo em disputa acirrada</td>
+      </tr>
+      <tr>
+        <td>Engenharia</td>
+        <td>1,3%</td>
+        <td><strong>1,3%</strong></td>
+        <td>—</td>
+        <td><strong>Empate técnico</strong> EUA × China</td>
+      </tr>
+      <tr>
+        <td>Química</td>
+        <td>1,4%</td>
+        <td><strong>1,5%</strong></td>
+        <td>—</td>
+        <td>China lidera em impacto neste campo</td>
+      </tr>
+      <tr>
+        <td>Ciências Sociais</td>
+        <td>&lt;3,3%</td>
+        <td><strong>3,3%</strong></td>
+        <td>&lt;3,3%</td>
+        <td>China surpreende — maior HCA global no campo</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="pullquote">
+    <p>
+      "Os EUA mantêm liderança em impacto científico — mas a China converge rapidamente. 
+      A janela de vantagem qualitativa americana está se fechando em vários campos, 
+      enquanto se mantém robusta em saúde e biomedicina."
+    </p>
+    <span class="source">Interpretação de: National Science Board, NSB-2025-7, p. 60–62.</span>
+  </div>
+
+  <figure>
+    <img src="img/nsb20257-figdisc-026.png"
+         alt="Figura DISC-26 — HCA share por país, 2006–2022"
+         onerror="this.style.display='none'">
+    <figcaption>Figura DISC-26 — Proporção de artigos no top 1% mais citados, por país: 2006–22. Fonte: NCSES; Elsevier Scopus, fev/2025. <a href="https://ncses.nsf.gov/pubs/nsb20257/figure/DISC-26" target="_blank" style="color:var(--blue-mid);">Ver original ↗</a></figcaption>
+  </figure>
+
+  <figure>
+    <img src="img/nsb20257-figdisc-027.png"
+         alt="Figura DISC-27 — HCA por campo científico por país: 2022"
+         onerror="this.style.display='none'">
+    <figcaption>Figura DISC-27 — Top 1% artigos mais citados por campo científico e país: 2022. Fonte: NCSES; Elsevier Scopus, fev/2025. <a href="https://ncses.nsf.gov/pubs/nsb20257/figure/DISC-27" target="_blank" style="color:var(--blue-mid);">Ver original ↗</a></figcaption>
+  </figure>
+</section>
+
+<!-- ── SEÇÃO 4: COLABORAÇÃO INTERNACIONAL ───────────────────────────── -->
+<section id="colaboracao">
+  <p class="section-label">Seção 4 · Colaborações Internacionais</p>
+  <h2>A ciência se torna global — mas as redes têm geometrias definidas</h2>
+  <p>
+    Em 2023, <strong>22%</strong> de todos os artigos científicos do mundo foram produzidos com 
+    coautores de diferentes países — ante 19% em 2012. A ciência colaborativa cresce, 
+    mas as parcerias não são aleatórias: refletem laços históricos, língua, financiamento e geopolítica.
+  </p>
+
+  <div class="stat-grid">
+    <div class="stat-card">
+      <span class="num">225.565</span>
+      <span class="label">artigos internacionais dos EUA</span>
+      <span class="sub">32% de todos os artigos internacionais do mundo (2023)</span>
+    </div>
+    <div class="stat-card">
+      <span class="num">68%</span>
+      <span class="label">artigos do RU com coautores internacionais</span>
+      <span class="sub">Subiu de 32% em 2002 — maior taxa entre os líderes</span>
+    </div>
+    <div class="stat-card">
+      <span class="num">40%</span>
+      <span class="label">artigos dos EUA com coautoria internacional</span>
+      <span class="sub">Subiu de 20% em 2003</span>
+    </div>
+    <div class="stat-card">
+      <span class="num">17%</span>
+      <span class="label">artigos da China com coautores internacionais</span>
+      <span class="sub">Queda desde pico de 22% em 2018 — tendência de "internalização"</span>
+    </div>
+  </div>
+
+  <h3>Os maiores parceiros internacionais dos EUA (% de artigos co-assinados)</h3>
+
+  <div style="background:var(--white);border:1px solid var(--border);border-radius:12px;padding:28px;margin:20px 0;box-shadow:0 2px 8px rgba(0,0,0,.05);">
+    <div class="collab-row">
+      <span class="collab-pair">🇨🇳 China (1º parceiro)</span>
+      <div class="collab-bar-wrap">
+        <div class="collab-bar" style="width:85%;"></div>
+      </div>
+      <span class="collab-num">23% dos art. internacionais</span>
+    </div>
+    <div class="collab-row">
+      <span class="collab-pair">🇬🇧 Reino Unido</span>
+      <div class="collab-bar-wrap">
+        <div class="collab-bar" style="width:55%;background:#5DADE2;"></div>
+      </div>
+      <span class="collab-num">15%</span>
+    </div>
+    <div class="collab-row">
+      <span class="collab-pair">🇨🇦 Canadá</span>
+      <div class="collab-bar-wrap">
+        <div class="collab-bar" style="width:38%;background:#1ABC9C;"></div>
+      </div>
+      <span class="collab-num">~11%</span>
+    </div>
+    <div class="collab-row">
+      <span class="collab-pair">🇩🇪 Alemanha</span>
+      <div class="collab-bar-wrap">
+        <div class="collab-bar" style="width:35%;background:#8E44AD;"></div>
+      </div>
+      <span class="collab-num">~10%</span>
+    </div>
+    <div class="collab-row">
+      <span class="collab-pair">🇮🇳 Índia</span>
+      <div class="collab-bar-wrap">
+        <div class="collab-bar" style="width:22%;background:#E67E22;"></div>
+      </div>
+      <span class="collab-num">6% (subiu de 4% em 2019)</span>
+    </div>
+    <div class="collab-row">
+      <span class="collab-pair">🇯🇵 Japão</span>
+      <div class="collab-bar-wrap">
+        <div class="collab-bar" style="width:18%;background:#E74C3C;"></div>
+      </div>
+      <span class="collab-num">5% (estável)</span>
+    </div>
+    <p style="font-size:.75rem;color:var(--muted);margin-top:16px;margin-bottom:0;">Fonte: NSB-2025-7, Figura DISC-30; Tabela SDISC-71. Dados de 2023.</p>
+  </div>
+
+  <div class="callout accent">
+    <p>
+      <strong>⚠️ Sinal geopolítico:</strong> A colaboração EUA–China caiu de <strong>27%</strong> (2019) 
+      para <strong>23%</strong> (2023) dos artigos internacionais americanos. Ao mesmo tempo, 
+      a colaboração com Índia subiu de 4% para 6% — sinalizando uma reconfiguração das redes 
+      científicas globais com implicações para financiamento e acesso a pesquisas.
+    </p>
+  </div>
+
+  <figure>
+    <img src="img/nsb20257-figdisc-029.png"
+         alt="Figura DISC-29 — Taxa de coautoria internacional: 2002–2023"
+         onerror="this.style.display='none'">
+    <figcaption>Figura DISC-29 — Taxa de coautoria internacional dos maiores produtores: 2002–23. Fonte: NCSES; Elsevier Scopus, fev/2025. <a href="https://ncses.nsf.gov/pubs/nsb20257/figure/DISC-29" target="_blank" style="color:var(--blue-mid);">Ver original ↗</a></figcaption>
+  </figure>
+</section>
+
+<!-- ── SEÇÃO 5: CONEXÃO CLÍNICA / FERIDAS CRÔNICAS ─────────────────── -->
+<section id="contexto">
+  <div class="wound-section">
+    <p class="section-label">Seção 5 · Implicação Clínica</p>
+    <h2>O que esses dados significam para quem atua com feridas crônicas?</h2>
+    <p>
+      As tendências globais de publicação científica não são abstratas: elas determinam 
+      <strong>onde nascem as evidências</strong> que sustentam protocolos clínicos, 
+      curativos e tecnologias que usamos (ou que deveríamos usar) na atenção a feridas crônicas.
+    </p>
+
+    <div class="callout">
+      <p>
+        <strong>Ciências da Saúde</strong> é o campo com maior volume de publicações globais (23% do total 
+        e 36% da produção americana). Isso inclui pesquisa em cicatrização de feridas, úlceras, 
+        diabetes, doenças vasculares e curativos — o núcleo da nossa agenda no G10.
+        As Biociências &amp; Biomedicina (12% do total global) cobrem os mecanismos celulares 
+        de cicatrização: inflamação, angiogênese, fibroblastos e matriz extracelular.
+      </p>
+    </div>
+
+    <h3 style="color:#A8E6CF;">Por que o HCA importa na prática clínica?</h3>
+    <p>
+      Diretrizes como as da <em>International Wound Infection Institute</em> (IWII), 
+      <em>European Wound Management Association</em> (EWMA) e do <em>National Pressure Injury Advisory Panel</em> (NPIAP) 
+      baseiam suas recomendações em revisões sistemáticas e meta-análises — que, por sua vez, 
+      citam os artigos de maior impacto (HCA). Em Ciências da Saúde, <strong>os EUA ainda publicam 1,8% 
+      de HCA</strong> — liderança real em qualidade que ancora boa parte das evidências clínicas que usamos.
+    </p>
+    <p class="wound-ref">Referências: IWII Wound Infection in Clinical Practice, 2022; EWMA position documents; NPIAP/EPUAP Guidelines 2019.</p>
+
+    <h3 style="color:#A8E6CF;">O crescimento chinês e o que monitorar</h3>
+    <p>
+      Com China produzindo <strong>2,2× mais artigos</strong> que os EUA e aumentando rapidamente seu HCA 
+      (de 0,4% em 2006 para 1,3% em 2022), a pesquisa chinesa em bioengenharia, biomateriais e 
+      curativos avançados deve ser monitorada ativamente. Plataformas como 
+      PubMed/MEDLINE, Cochrane Library e Scopus já indexam volumes crescentes 
+      de estudos em língua inglesa de pesquisadores chineses sobre cicatrização, 
+      curativos de hidrogel e terapia por pressão negativa (NPWT).
+    </p>
+    <p class="wound-ref">Exemplo: Yao et al. (2022) — "Hydrogel wound dressings for diabetic foot ulcers." Biomaterials. DOI:10.1016/j.biomaterials.2022.121610 (grupo chinês, alto impacto).</p>
+
+    <h3 style="color:#A8E6CF;">Biotecnologia: campo em explosão, relevante para feridas</h3>
+    <p>
+      O relatório destaca que publicações em biotecnologia cresceram 1.292% na China entre 2002 e 2023. 
+      Para feridas crônicas, isso se traduz em pesquisa de <strong>pele sintética, fatores de crescimento 
+      recombinantes, scaffolds de biopolímeros e terapias celulares</strong> — todas com potencial 
+      clínico nos próximos 5–10 anos.
+    </p>
+    <p class="wound-ref">Referência: NSB-2025-7, Sidebar "Biotechnology R&D and Publications Output", p. 49–54.</p>
+
+    <h3 style="color:#A8E6CF;">O Brasil no contexto global</h3>
+    <p>
+      O Brasil aparece em 13º lugar global com 58.292 artigos em 2023 (crescimento de ~27% desde 2013). 
+      Proporcionalmente, o Brasil concentra boa parte de sua produção em ciências da saúde 
+      — consistente com a força das escolas médicas e da pesquisa clínica brasileira. 
+      Isso significa que evidências geradas localmente (inclusive em feridas crônicas) 
+      têm potencial de impacto internacional — desde que publicadas em periódicos indexados 
+      e com metodologia robusta.
+    </p>
+    <p class="wound-ref">Referência: NSB-2025-7, Tabela DISC-12; NCSES Scopus dataset, fev/2025.</p>
+
+    <div class="callout green" style="background:rgba(168,230,207,.15);border-color:#A8E6CF;">
+      <p style="color:white;">
+        <strong>💡 Mensagem-chave para o G10:</strong> A ciência global de saúde é dominada por países 
+        com alto investimento em P&amp;D — e os EUA ainda lideram em qualidade (HCA) nas áreas mais 
+        relevantes para nós. Use PubMed, Cochrane e Scopus para encontrar esses artigos de alto impacto. 
+        Fique atento à produção emergente da China em biomateriais. E contribua: pesquisa brasileira 
+        bem conduzida e publicada tem lugar nessa conversa global.
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- ── SÍNTESE FINAL ──────────────────────────────────────────────────── -->
+<section>
+  <p class="section-label">Síntese</p>
+  <h2>O que fica — três ideias para não esquecer</h2>
+
+  <div class="stat-grid">
+    <div class="stat-card">
+      <span class="num" style="font-size:2.8rem;">①</span>
+      <span class="label">Volume ≠ Qualidade</span>
+      <span class="sub">China publica mais, mas EUA ainda lida em artigos altamente citados em saúde e biomedicina (HCA 1,8% vs. média global 1%). Busque os mais citados.</span>
+    </div>
+    <div class="stat-card">
+      <span class="num" style="font-size:2.8rem;">②</span>
+      <span class="label">Saúde é o campo-líder</span>
+      <span class="sub">23% de tudo que é publicado no mundo é em Ciências da Saúde. EUA concentram 36% da própria produção nessa área. Evidências abundam — o desafio é filtrar as melhores.</span>
+    </div>
+    <div class="stat-card">
+      <span class="num" style="font-size:2.8rem;">③</span>
+      <span class="label">Monitoramento ativo</span>
+      <span class="sub">Com China crescendo em qualidade e biotecnologia em explosão, manter-se atualizado via PubMed, Scopus e Cochrane é parte do trabalho do monitor do G10.</span>
+    </div>
+  </div>
+</section>
+
+</div><!-- /container -->
+
+<!-- ══ FOOTER ═════════════════════════════════════════════════════════════ -->
+<footer class="institutional-footer">
+  <div class="refs">
+    <h4>📚 Referências</h4>
+    <ol>
+      <li>National Science Board; National Science Foundation. Discovery: R&D Activity and Research Publications. <em>Science and Engineering Indicators 2026.</em> NSB-2025-7. Alexandria, VA; 2025. Disponível em: https://ncses.nsf.gov/pubs/nsb20257/</li>
+      <li>NCSES; Science-Metrix; Elsevier. <em>Scopus abstract and citation database.</em> Acesso em: fev. 2025.</li>
+      <li>International Wound Infection Institute (IWII). <em>Wound Infection in Clinical Practice.</em> Wounds International; 2022.</li>
+      <li>European Pressure Ulcer Advisory Panel (EPUAP); National Pressure Injury Advisory Panel (NPIAP); Pan Pacific Pressure Injury Alliance (PPPIA). <em>Prevention and Treatment of Pressure Ulcers/Injuries: Clinical Practice Guideline.</em> 3. ed. EPUAP; 2019.</li>
+      <li>Yao et al. Hydrogel wound dressings for diabetic foot ulcers. <em>Biomaterials.</em> 2022. DOI: 10.1016/j.biomaterials.2022.121610.</li>
+      <li>Organisation for Economic Co-operation and Development (OECD). <em>Main Science and Technology Indicators (MSTI).</em> Jul. 2024.</li>
+    </ol>
+  </div>
+  <p style="margin-top:24px;">Infográfico elaborado pelos projetos Amor à Pele e PET-Saúde Digital G10 Feridas Crônicas, UFPel, em Maio de 2026.</p>
+  <p style="margin-top:8px; font-size:.75rem; color:#8A9BBD;">Conteúdo traduzido, resumido e contextualizado a partir de fonte pública. Dados originais: NSB-2025-7 (National Science Board / NSF, EUA). Uso educacional não-comercial.</p>
+</footer>
+
+</body>
+</html>
