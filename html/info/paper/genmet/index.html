@@ -271,6 +271,7 @@ const TIMELINE = [
 
 function buildTimeline(){
   const c=document.getElementById("timeline-container");
+  if(!c)return;
   TIMELINE.forEach((item,i)=>{
     const div=document.createElement("div");
     div.className="tl-item";
@@ -284,8 +285,10 @@ function buildTimeline(){
         <div class="tl-title">${item.title}</div>
         <div class="tl-desc">${item.desc}</div>
         <div>${item.tags.map(t=>`<span class="tl-tag" style="background:${t.c}22;border:1px solid ${t.c}55;color:${t.c}">${t.t}</span>`).join("")}</div>
-        <a href="${item.url}" target="_blank" class="tl-link">
-          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+        <a href="${item.url}" target="_blank" class="tl-link" aria-label="Assistir no YouTube">
+          <svg viewBox="0 0 24 24" fill="#FF0000" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <path d="M23.5 6.2a3 3 0 0 0-2.1-2.1C19.6 3.5 12 3.5 12 3.5s-7.6 0-9.4.6A3 3 0 0 0 .5 6.2 31.7 31.7 0 0 0 0 12a31.7 31.7 0 0 0 .5 5.8 3 3 0 0 0 2.1 2.1c1.8.6 9.4.6 9.4.6s7.6 0 9.4-.6a3 3 0 0 0 2.1-2.1A31.7 31.7 0 0 0 24 12a31.7 31.7 0 0 0-.5-5.8zM9.6 15.5v-7l6.2 3.5-6.2 3.5z"/>
+          </svg>
           Assistir no YouTube
         </a>
       </div>
@@ -443,7 +446,6 @@ buildTimeline();
     </figure>
     <div class="pquote">
       "Os genes definitivamente não são nosso destino. Eles podem nos dar informações úteis sobre o risco aumentado de uma doença, mas na maioria dos casos não determinarão a causa real da doença."
-      <br><span style="font-family:'Source Sans 3',sans-serif;font-size:.82rem;font-style:normal;color:var(--tl);">— Craig Venter, citado por Anand et al., 2008 (PMC2515569)</span>
       <br><span style="font-family:'Source Sans 3',sans-serif;font-size:.82rem;font-style:normal;color:var(--tl);">— Craig Venter, citado por Anand et al., 2008 (PMC2515569)</span>
     </div>
 
@@ -721,9 +723,15 @@ function buildSocratic(){
 function toggleSoc(i){
   var b=document.getElementById('sbody-'+i);
   var ic=document.getElementById('sicon-'+i);
+  if(!b || !ic)return;
   b.classList.toggle('open');
   ic.classList.toggle('open');
 }
+
+/* Disponibiliza as funções usadas nos atributos onclick do HTML.
+   Sem isso, em alguns navegadores o botão do quiz e as setas das perguntas não acionam. */
+window.submitQuiz = submitQuiz;
+window.toggleSoc = toggleSoc;
 
 buildQuiz();
 buildSocratic();
