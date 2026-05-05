@@ -1,0 +1,1052 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>O Erro que Matou Bob Marley — Melanoma Subungueal e o Perigo das Feridas que Não Cicatrizam</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&family=Source+Sans+3:wght@300;400;600;700&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --cream:    #FAF7F2;
+      --offwhite: #F5F2ED;
+      --dark:     #1A1410;
+      --charcoal: #2E2820;
+      --brown:    #5C3D2E;
+      --gold:     #B8922A;
+      --gold-lt:  #F0D98A;
+      --red:      #8B2020;
+      --red-lt:   #F5E0E0;
+      --green:    #2C5F4A;
+      --green-lt: #E0EDE8;
+      --slate:    #2D4A6B;
+      --slate-lt: #E0E9F5;
+      --border:   #D9D0C4;
+      --text-muted: #6B5E52;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Source Sans 3', sans-serif;
+      background: var(--cream);
+      color: var(--dark);
+      font-size: 17px;
+      line-height: 1.75;
+    }
+
+    /* ── HEADER ── */
+    .institutional-header {
+      background: #fff;
+      border-bottom: 1.5px solid var(--border);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 14px 40px;
+    }
+    .header-label {
+      font-family: 'Source Sans 3', sans-serif;
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+    }
+    .header-logos {
+      display: flex;
+      align-items: center;
+      gap: 18px;
+    }
+    .header-logos img {
+      height: 44px;
+      width: auto;
+    }
+
+    /* ── HERO ── */
+    .hero {
+      background: var(--dark);
+      color: #fff;
+      padding: 80px 40px 64px;
+      position: relative;
+      overflow: hidden;
+    }
+    .hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse at 80% 50%, rgba(184,146,42,0.18) 0%, transparent 70%);
+    }
+    .hero-inner {
+      max-width: 860px;
+      margin: 0 auto;
+      position: relative;
+      z-index: 1;
+    }
+    .hero-tag {
+      display: inline-block;
+      background: var(--gold);
+      color: #fff;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      padding: 5px 14px;
+      border-radius: 2px;
+      margin-bottom: 28px;
+    }
+    .hero h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2rem, 4vw, 3.2rem);
+      font-weight: 900;
+      line-height: 1.15;
+      margin-bottom: 20px;
+      color: #fff;
+    }
+    .hero h1 em {
+      color: var(--gold-lt);
+      font-style: italic;
+    }
+    .hero-sub {
+      font-size: 1.15rem;
+      color: rgba(255,255,255,0.76);
+      max-width: 640px;
+      line-height: 1.65;
+    }
+    .hero-meta {
+      margin-top: 36px;
+      display: flex;
+      gap: 32px;
+      flex-wrap: wrap;
+    }
+    .meta-item {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+    .meta-label {
+      font-size: 10px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.45);
+    }
+    .meta-value {
+      font-size: 14px;
+      color: rgba(255,255,255,0.85);
+      font-weight: 600;
+    }
+
+    /* ── LAYOUT ── */
+    main { max-width: 900px; margin: 0 auto; padding: 0 32px 80px; }
+
+    section { padding: 64px 0 0; }
+
+    h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.75rem;
+      font-weight: 700;
+      color: var(--charcoal);
+      margin-bottom: 20px;
+      line-height: 1.25;
+    }
+    h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.2rem;
+      font-weight: 700;
+      color: var(--brown);
+      margin-bottom: 12px;
+    }
+    p { margin-bottom: 18px; color: var(--charcoal); }
+    p:last-child { margin-bottom: 0; }
+
+    /* ── CALLOUT / PULLQUOTE ── */
+    .callout {
+      border-left: 4px solid var(--gold);
+      background: #FDF9F0;
+      padding: 22px 26px;
+      margin: 32px 0;
+      border-radius: 0 6px 6px 0;
+    }
+    .callout p {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.1rem;
+      line-height: 1.6;
+      color: var(--brown);
+      margin-bottom: 0;
+      font-style: italic;
+    }
+    .callout-red {
+      border-left-color: var(--red);
+      background: var(--red-lt);
+    }
+    .callout-red p { color: var(--red); }
+    .callout-green {
+      border-left-color: var(--green);
+      background: var(--green-lt);
+    }
+    .callout-green p { color: var(--green); font-style: normal; font-family: 'Source Sans 3', sans-serif; font-size: 0.97rem; }
+    .callout-slate {
+      border-left-color: var(--slate);
+      background: var(--slate-lt);
+    }
+    .callout-slate p { color: var(--slate); font-style: normal; font-family: 'Source Sans 3', sans-serif; font-size: 0.97rem; }
+
+    /* ── DIVIDER ── */
+    .divider {
+      border: none;
+      height: 1px;
+      background: var(--border);
+      margin: 0;
+    }
+
+    /* ── TIMELINE ── */
+    .timeline {
+      position: relative;
+      margin: 48px 0 0;
+      padding-left: 0;
+    }
+    .timeline::before {
+      content: '';
+      position: absolute;
+      left: 84px;
+      top: 0;
+      bottom: 0;
+      width: 3px;
+      background: linear-gradient(to bottom, var(--gold), var(--red));
+    }
+    .tl-event {
+      display: flex;
+      gap: 0;
+      margin-bottom: 44px;
+      position: relative;
+    }
+    .tl-year {
+      width: 84px;
+      flex-shrink: 0;
+      text-align: right;
+      padding-right: 20px;
+      padding-top: 2px;
+    }
+    .tl-year-badge {
+      display: inline-block;
+      font-family: 'DM Mono', monospace;
+      font-size: 12.5px;
+      font-weight: 500;
+      color: var(--text-muted);
+      line-height: 1.3;
+    }
+    .tl-dot {
+      width: 3px;
+      flex-shrink: 0;
+      position: relative;
+      margin-top: 4px;
+    }
+    .tl-dot::before {
+      content: '';
+      position: absolute;
+      left: 50%;
+      top: 6px;
+      transform: translateX(-50%);
+      width: 14px;
+      height: 14px;
+      border-radius: 50%;
+      background: #fff;
+      border: 3px solid var(--gold);
+      z-index: 2;
+    }
+    .tl-event.critical .tl-dot::before { border-color: var(--red); width: 18px; height: 18px; top: 4px; }
+    .tl-event.death .tl-dot::before { background: var(--red); border-color: var(--red); width: 20px; height: 20px; top: 3px; }
+    .tl-body {
+      flex: 1;
+      padding-left: 24px;
+      padding-top: 0;
+    }
+    .tl-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: var(--charcoal);
+      margin-bottom: 6px;
+    }
+    .tl-event.critical .tl-title { color: var(--red); }
+    .tl-text {
+      font-size: 0.95rem;
+      color: var(--text-muted);
+      line-height: 1.65;
+      margin-bottom: 0;
+    }
+    .tl-tag {
+      display: inline-block;
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      padding: 3px 9px;
+      border-radius: 3px;
+      margin-bottom: 8px;
+    }
+    .tag-erro { background: var(--red-lt); color: var(--red); }
+    .tag-diag { background: #FDF5E0; color: #7A5A00; }
+    .tag-trat { background: var(--slate-lt); color: var(--slate); }
+    .tag-meta { background: #F5E0E8; color: #7A2040; }
+    .tag-mort { background: var(--dark); color: #fff; }
+
+    /* ── CARDS GRID ── */
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 20px;
+      margin-top: 36px;
+    }
+    .card {
+      background: #fff;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 24px 22px;
+    }
+    .card-icon { font-size: 1.8rem; margin-bottom: 12px; display: block; }
+    .card-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--charcoal);
+      margin-bottom: 8px;
+    }
+    .card-text { font-size: 0.9rem; color: var(--text-muted); line-height: 1.6; }
+
+    /* ── SINAIS ABCD ── */
+    .abcd-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+      gap: 16px;
+      margin-top: 32px;
+    }
+    .abcd-item {
+      border-radius: 8px;
+      padding: 22px 18px;
+      text-align: center;
+    }
+    .abcd-letter {
+      font-family: 'Playfair Display', serif;
+      font-size: 2.4rem;
+      font-weight: 900;
+      line-height: 1;
+      margin-bottom: 6px;
+    }
+    .abcd-word { font-size: 0.78rem; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; margin-bottom: 8px; }
+    .abcd-desc { font-size: 0.82rem; line-height: 1.5; color: var(--text-muted); }
+    .abcd-a { background: #FFF5E0; } .abcd-a .abcd-letter { color: #B87000; }
+    .abcd-b { background: #F0EDF8; } .abcd-b .abcd-letter { color: #5040A0; }
+    .abcd-c { background: #F0F8F0; } .abcd-c .abcd-letter { color: #2C6030; }
+    .abcd-d { background: #F8F0F0; } .abcd-d .abcd-letter { color: #902020; }
+    .abcd-e { background: #E8F4F8; } .abcd-e .abcd-letter { color: #1A4A6B; }
+
+    /* ── STAT BOX ── */
+    .stat-row {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 16px;
+      margin: 32px 0;
+    }
+    .stat-box {
+      background: var(--dark);
+      color: #fff;
+      border-radius: 8px;
+      padding: 24px 20px;
+      text-align: center;
+    }
+    .stat-num {
+      font-family: 'Playfair Display', serif;
+      font-size: 2.6rem;
+      font-weight: 900;
+      color: var(--gold-lt);
+      line-height: 1;
+      margin-bottom: 6px;
+    }
+    .stat-desc { font-size: 0.82rem; color: rgba(255,255,255,0.65); line-height: 1.5; }
+
+    /* ── IMAGE PLACEHOLDERS ── */
+    .img-placeholder .placeholder-box {
+      border: 2px dashed #b0b8c1;
+      background: #f4f6f8;
+      border-radius: 8px;
+      padding: 32px 24px;
+      text-align: center;
+      color: #6c757d;
+      min-height: 220px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+    }
+    .placeholder-icon { font-size: 2rem; }
+    .placeholder-label {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.82rem;
+      background: #e9ecef;
+      padding: 4px 10px;
+      border-radius: 4px;
+      color: #343a40;
+    }
+    .placeholder-hint { font-size: 0.78rem; color: #868e96; font-style: italic; max-width: 340px; }
+
+    figure { margin: 36px 0; }
+    figcaption {
+      font-size: 0.82rem;
+      color: var(--text-muted);
+      font-style: italic;
+      margin-top: 10px;
+      text-align: center;
+    }
+
+    /* ── HIGHLIGHT BOX ── */
+    .highlight-box {
+      background: linear-gradient(135deg, #1A1410 0%, #2E1810 100%);
+      color: #fff;
+      border-radius: 10px;
+      padding: 40px 36px;
+      margin: 48px 0;
+    }
+    .highlight-box h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.3rem;
+      color: var(--gold-lt);
+      margin-bottom: 16px;
+    }
+    .highlight-box p { color: rgba(255,255,255,0.82); margin-bottom: 14px; font-size: 0.97rem; }
+    .highlight-box ul { list-style: none; padding: 0; }
+    .highlight-box ul li {
+      padding: 8px 0 8px 24px;
+      position: relative;
+      color: rgba(255,255,255,0.82);
+      font-size: 0.97rem;
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+    }
+    .highlight-box ul li:last-child { border-bottom: none; }
+    .highlight-box ul li::before {
+      content: '→';
+      position: absolute;
+      left: 0;
+      color: var(--gold);
+    }
+
+    /* ── CUBED RULE ── */
+    .cubed-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+      gap: 14px;
+      margin-top: 28px;
+    }
+    .cubed-item {
+      background: #fff;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 18px 16px;
+      border-top: 4px solid var(--slate);
+    }
+    .cubed-letter {
+      font-family: 'DM Mono', monospace;
+      font-size: 1.3rem;
+      font-weight: 500;
+      color: var(--slate);
+      margin-bottom: 4px;
+    }
+    .cubed-word { font-size: 0.78rem; font-weight: 700; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 6px; }
+    .cubed-desc { font-size: 0.82rem; color: var(--charcoal); line-height: 1.5; }
+
+    /* ── SECTION DIVIDER ── */
+    .section-label {
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 12px;
+      display: block;
+    }
+
+    /* ── DOCTOR CARD ── */
+    .doctor-card {
+      background: var(--green-lt);
+      border: 1px solid #b0d4c0;
+      border-radius: 10px;
+      overflow: hidden;
+      display: grid;
+      grid-template-columns: 150px 1fr;
+      margin-top: 16px;
+    }
+    .doctor-photo-col {
+      position: relative;
+      min-height: 200px;
+      overflow: hidden;
+      background: #1a3d2e;
+    }
+    .doctor-photo-col img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center top;
+      display: block;
+      position: absolute;
+      inset: 0;
+    }
+    .doctor-photo-placeholder {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(160deg, #2C5F4A 0%, #1a3d2e 100%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      font-size: 3rem;
+    }
+    .doctor-photo-label {
+      font-family: 'DM Mono', monospace;
+      font-size: 8px;
+      color: rgba(255,255,255,0.4);
+      text-align: center;
+      letter-spacing: 0.07em;
+      text-transform: uppercase;
+      line-height: 1.4;
+      padding: 0 8px;
+    }
+    .doctor-body-col { padding: 22px 24px; }
+    .doctor-name { font-family: 'Playfair Display', serif; font-size: 1.1rem; font-weight: 700; color: var(--green); margin-bottom: 4px; }
+    .doctor-role { font-size: 0.78rem; color: var(--text-muted); font-weight: 600; text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 10px; line-height: 1.5; }
+    .doctor-text { font-size: 0.93rem; color: var(--charcoal); line-height: 1.65; }
+
+    /* ── FOOTER ── */
+    .institutional-footer {
+      background: #fff;
+      border-top: 1.5px solid var(--border);
+      padding: 28px 40px;
+      text-align: center;
+    }
+    .institutional-footer p {
+      font-size: 12px;
+      color: var(--text-muted);
+      margin-bottom: 6px;
+      line-height: 1.6;
+    }
+    .institutional-footer p:last-child { margin-bottom: 0; }
+
+    /* ── REFERENCES ── */
+    .references {
+      background: var(--offwhite);
+      border-radius: 8px;
+      padding: 28px 28px;
+      margin-top: 48px;
+    }
+    .references h3 { font-size: 0.9rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--text-muted); margin-bottom: 16px; font-family: 'Source Sans 3', sans-serif; }
+    .references ol { padding-left: 20px; }
+    .references li { font-size: 0.82rem; color: var(--text-muted); line-height: 1.65; margin-bottom: 8px; }
+
+    @media (max-width: 640px) {
+      .institutional-header { padding: 12px 20px; }
+      .hero { padding: 52px 20px 44px; }
+      main { padding: 0 20px 60px; }
+      .timeline::before { left: 68px; }
+      .tl-year { width: 68px; }
+      h2 { font-size: 1.45rem; }
+      .doctor-card { grid-template-columns: 1fr; }
+      .doctor-photo-col { min-height: 160px; }
+      .header-logos img { height: 34px; }
+    }
+  </style>
+</head>
+<body>
+
+<audio controls loop>
+  <source src="img/nowomannocry.mp3" type="audio/mpeg">
+  Seu navegador não suporta áudio HTML5.
+</audio>
+
+<!-- HEADER INSTITUCIONAL -->
+<header class="institutional-header">
+  <div class="header-label">PET-Saúde Digital · G10 Telemonitoramento de Feridas Crônicas · UFPel</div>
+  <div class="header-logos">
+    <img src="img/logo_amor_pele.png" alt="Amor à Pele – UFPel">
+    <img src="img/logo_ufpel.png" alt="UFPel">
+  </div>
+</header>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-inner">
+    <span class="hero-tag">Caso Clínico Histórico · Melanoma Subungueal</span>
+    <h1>A ferida que <em>não era ferida</em> — e matou Bob Marley</h1>
+    <p class="hero-sub">
+      O ícone do reggae viveu quatro anos com uma lesão embaixo da própria unha que médicos, amigos e ele mesmo confundiram com trauma esportivo. Era melanoma — o câncer de pele mais agressivo. O que sua história ensina sobre feridas que não cicatrizam e diagnóstico precoce?
+    </p>
+    <div class="hero-meta">
+      <div class="meta-item">
+        <span class="meta-label">Data do óbito</span>
+        <span class="meta-value">11 de maio de 1981</span>
+      </div>
+      <div class="meta-item">
+        <span class="meta-label">Idade</span>
+        <span class="meta-value">36 anos</span>
+      </div>
+      <div class="meta-item">
+        <span class="meta-label">Diagnóstico</span>
+        <span class="meta-value">Melanoma Acral Lentiginoso</span>
+      </div>
+      <div class="meta-item">
+        <span class="meta-label">Sinal inicial ignorado</span>
+        <span class="meta-value">~1973–1977</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<main>
+
+  <!-- SEÇÃO 1: O QUE ACONTECEU -->
+  <section>
+    <span class="section-label">O caso</span>
+    <h2>Uma mancha preta embaixo da unha — e anos de engano</h2>
+
+    <p>
+      Robert Nesta Marley, nascido em 6 de fevereiro de 1945, na Jamaica, era o maior nome do reggae no mundo quando uma pequena mancha escura sob a unha do dedão do pé direito começou a chamar atenção. Fotos de turnês europeias dos anos 1970 já o mostram com curativo na região — sinal de que o problema existia muito antes de qualquer consulta médica formal.
+    </p>
+    <p>
+      Bob Marley adorava futebol. Jogava com a mesma intensidade com que criava música. E foi para o futebol que ele — e as pessoas ao redor — atribuíram a lesão: um trauma banal, uma "unhada", um hematoma subungueal típico de atleta. O erro parecia razoável. O resultado foi fatal.
+    </p>
+
+    <div class="callout callout-red">
+      <p>"Uma ferida que não cicatriza não é apenas uma ferida. É um sinal que o organismo não consegue resolver sozinho — e que merece investigação, não espera."</p>
+    </div>
+
+    <p>
+      Em 1977, quando a dor persistiu e a unha caiu, Marley finalmente buscou atendimento médico com o Dr. William Baker, ortopedista. Após insistência, uma biópsia foi realizada. O resultado foi chocante: melanoma invasivo — já infiltrando estruturas profundas do dedo. Não era trauma. Nunca foi.
+    </p>
+  </section>
+
+  <!-- FIGURA 1: Melanoma subungueal — imagem real -->
+  <figure style="margin: 36px 0;">
+    <img src="img/melanoma-subungueal.jpg" alt="Melanoma subungueal — melanoniquia estriada no hálux: faixa pigmentar longitudinal marrom a negra sob a unha, com bordas irregulares" style="width:100%;max-width:760px;display:block;margin:0 auto;border-radius:10px;box-shadow:0 4px 18px rgba(0,0,0,0.13);">
+    <figcaption>Figura 1 — Melanoniquia estriada: faixa pigmentar longitudinal marrom a negra sob a unha do hálux, com bordas irregulares e variação de cor — sinal cardinal do melanoma subungueal. Toda faixa escura que não migra com o crescimento da unha deve ser investigada. Pode ser facilmente confundida com hematoma traumático ou micose.</figcaption>
+  </figure>
+
+  <hr class="divider" style="margin-top:48px;">
+
+  <!-- SEÇÃO 2: A LINHA DO TEMPO -->
+  <section>
+    <span class="section-label">Cronologia clínica</span>
+    <h2>Da lesão ignorada à metástase cerebral — quatro anos de diagnóstico perdido</h2>
+
+    <div class="timeline">
+
+      <div class="tl-event">
+        <div class="tl-year"><span class="tl-year-badge">c. 1973<br>–1976</span></div>
+        <div class="tl-dot"></div>
+        <div class="tl-body">
+          <span class="tl-tag tag-erro">Erro Inicial</span>
+          <div class="tl-title">Sinais precoces ignorados</div>
+          <p class="tl-text">Registros fotográficos de turnês mostram Bob Marley com curativo no dedão do pé direito anos antes do diagnóstico. Relatos de conhecidos indicam que ele descrevia o local como "ferida" há tempos. A lesão era atribuída ao futebol — sua grande paixão. Ninguém considerou melanoma.</p>
+        </div>
+      </div>
+
+      <div class="tl-event">
+        <div class="tl-year"><span class="tl-year-badge">1976<br>–1977</span></div>
+        <div class="tl-dot"></div>
+        <div class="tl-body">
+          <span class="tl-tag tag-erro">Confusão Diagnóstica</span>
+          <div class="tl-title">Turnê na Europa — lesão tratada como trauma esportivo</div>
+          <p class="tl-text">Durante turnê pela Europa, Marley buscou atendimento em Paris. A lesão foi tratada como trauma ortopédico. A mancha escura sob a unha — sinal clássico de melanoniquia, que pode indicar melanoma subungueal — não foi reconhecida como suspeita. O termo "melanoma acral lentiginoso" havia sido cunhado apenas em 1976 e era pouco conhecido pela medicina geral.</p>
+        </div>
+      </div>
+
+      <div class="tl-event critical">
+        <div class="tl-year"><span class="tl-year-badge">1977<br>Julho</span></div>
+        <div class="tl-dot"></div>
+        <div class="tl-body">
+          <span class="tl-tag tag-diag">Diagnóstico</span>
+          <div class="tl-title">Biópsia — resultado: melanoma invasivo</div>
+          <p class="tl-text">Após a queda da unha e persistência da dor, Marley procurou o Dr. William Baker, ortopedista. Com insistência de amigos, foi realizada biópsia incisional. O anatomopatológico revelou melanoma acral lentiginoso com invasão profunda. Avaliação subsequente no Royal College of Surgeons em Londres confirmou o diagnóstico. Em ambas as instituições, a recomendação foi amputação do hálux direito.</p>
+        </div>
+      </div>
+
+      <div class="tl-event">
+        <div class="tl-year"><span class="tl-year-badge">1977<br>Ago–Set</span></div>
+        <div class="tl-dot"></div>
+        <div class="tl-body">
+          <span class="tl-tag tag-trat">Tratamento Parcial</span>
+          <div class="tl-title">Recusa da amputação — cirurgia excisional limitada</div>
+          <p class="tl-text">Bob Marley recusou a amputação por dois motivos: convicções rastafáris (o corpo é templo de Jah e não deve ser mutilado) e preocupação com sua carreira de performer. Após pressão, aceitou apenas exérese ampla local com enxerto de pele retirada da coxa — procedimento insuficiente para controlar a doença que já progredia microscopicamente. O melanoma continuou avançando em silêncio.</p>
+        </div>
+      </div>
+
+      <div class="tl-event">
+        <div class="tl-year"><span class="tl-year-badge">1977<br>–1980</span></div>
+        <div class="tl-dot"></div>
+        <div class="tl-body">
+          <span class="tl-tag tag-meta">Progressão Silenciosa</span>
+          <div class="tl-title">Três anos de turnês — o câncer se espalhava</div>
+          <p class="tl-text">Marley continuou realizando shows ao redor do mundo — incluindo o histórico concerto pela independência do Zimbabwe (1980). Durante esse período, o melanoma metastatizou para linfonodos, fígado, pulmões e cérebro. A doença avançou sem sintomas dramáticos até atingir estágio IV. Crises convulsivas foram o sinal de alerta, conforme descrito em artigo clínico publicado na Revista Brasileira de Neurologia (2017).</p>
+        </div>
+      </div>
+
+      <div class="tl-event critical">
+        <div class="tl-year"><span class="tl-year-badge">1980<br>Set</span></div>
+        <div class="tl-dot"></div>
+        <div class="tl-body">
+          <span class="tl-tag tag-meta">Colapso</span>
+          <div class="tl-title">Central Park — desmaio durante corrida matinal</div>
+          <p class="tl-text">Em setembro de 1980, Marley desmaiou enquanto corria no Central Park, Nova York. Levado ao hospital, a equipe médica descobriu metástases múltiplas: cérebro, pulmões e estômago. O diagnóstico agora era melanoma estágio IV. Mesmo assim, dois dias depois realizou seu último show, em Pittsburgh, Pennsylvania, em 23 de setembro de 1980.</p>
+        </div>
+      </div>
+
+      <div class="tl-event">
+        <div class="tl-year"><span class="tl-year-badge">1980<br>Nov</span></div>
+        <div class="tl-dot"></div>
+        <div class="tl-body">
+          <span class="tl-tag tag-trat">Tratamento Alternativo</span>
+          <div class="tl-title">Alemanha — Clínica Ringberg, Dr. Josef Issels</div>
+          <p class="tl-text">Sem opções convencionais eficazes, Marley foi encaminhado à Ringberg-Klinik, na Baviera, onde o médico Josef Issels aplicava terapias não convencionais — dieta, imunoestimulação e métodos sem validação científica adequada. Por oito meses tentou tratar um melanoma metastático com medicina não comprovada. As terapias não surtiram efeito e possivelmente atrasaram cuidados paliativos adequados.</p>
+        </div>
+      </div>
+
+      <div class="tl-event death">
+        <div class="tl-year"><span class="tl-year-badge">1981<br>11 Mai</span></div>
+        <div class="tl-dot"></div>
+        <div class="tl-body">
+          <span class="tl-tag tag-mort">Óbito</span>
+          <div class="tl-title">Bob Marley falece no Cedars of Lebanon Hospital — Miami, 36 anos</div>
+          <p class="tl-text">Tentando voltar à Jamaica para morrer em sua terra, Marley precisou ser internado de emergência em Miami durante o voo. Faleceu no dia 11 de maio de 1981, na companhia de sua mãe. A causa da morte foi melanoma acral lentiginoso metastático — com metástases em cérebro, pulmões e fígado. Seu funeral na Jamaica teve honras de chefe de Estado.</p>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <hr class="divider" style="margin-top:48px;">
+
+  <!-- SEÇÃO 3: O MELANOMA QUE NINGUÉM CONHECIA -->
+  <section>
+    <span class="section-label">Ciência</span>
+    <h2>O câncer que não precisa de sol — e afeta sobretudo pele negra</h2>
+
+    <p>
+      O melanoma acral lentiginoso (MAL) é radicalmente diferente dos outros melanomas. Ele não é causado por exposição solar. Surge em áreas sem pelos — solas dos pés, palmas das mãos, debaixo das unhas — por mecanismos ainda não completamente esclarecidos, mas possivelmente ligados a trauma mecânico repetitivo e fatores genéticos.
+    </p>
+    <p>
+      Em países como Japão, China e entre populações afrodescendentes, o MAL representa o tipo <em>mais comum</em> de melanoma. No entanto, é frequentemente subdiagnosticado justamente porque o mito de que "pele negra não tem câncer de pele" ainda persiste — com consequências mortais.
+    </p>
+
+    <div class="stat-row">
+      <div class="stat-box">
+        <div class="stat-num">3%</div>
+        <div class="stat-desc">de todos os melanomas — mas principal tipo em afrodescendentes e asiáticos</div>
+      </div>
+      <div class="stat-box">
+        <div class="stat-num">70%</div>
+        <div class="stat-desc">taxa de sobrevivência em 5 anos para pessoas negras com melanoma (vs ~90% em brancos)</div>
+      </div>
+      <div class="stat-box">
+        <div class="stat-num">1976</div>
+        <div class="stat-desc">ano em que o termo "melanoma acral lentiginoso" foi cunhado — um ano antes do diagnóstico de Marley</div>
+      </div>
+      <div class="stat-box">
+        <div class="stat-num">1986</div>
+        <div class="stat-desc">quando agências de saúde passaram a reconhecer o MAL como subtipo distinto de melanoma</div>
+      </div>
+    </div>
+
+    <div class="callout callout-slate" style="margin-top:36px;">
+      <p>⚠️ O melanoma subungueal — especificamente sob as unhas — metastatiza mais rapidamente do que o melanoma acral das plantas/palmas. Pesquisas recentes mostram diferenças moleculares significativas entre os dois, com ausência de mutação BRAF no subungueal, o que torna o tratamento ainda mais desafiador.</p>
+    </div>
+
+    <h3 style="margin-top:36px;">Por que é confundido com ferida crônica?</h3>
+    <p>
+      O MAL cresce lentamente em fase inicial, simulando diversas condições benignas. O resultado: diagnóstico tardio na esmagadora maioria dos casos. Quando finalmente identificado, o tumor geralmente já é espesso (alto índice de Breslow) e com maior risco de metástase linfonodal.
+    </p>
+
+    <div class="cards">
+      <div class="card">
+        <span class="card-icon">🔨</span>
+        <div class="card-title">Confundido com trauma</div>
+        <p class="card-text">A mancha escura sob a unha parece hematoma por "unhada". A dor e o não-cicatrizamento são atribuídos a lesão esportiva — exatamente como aconteceu com Marley.</p>
+      </div>
+      <div class="card">
+        <span class="card-icon">🍄</span>
+        <div class="card-title">Confundido com micose</div>
+        <p class="card-text">Na planta do pé ou entre os dedos, a lesão pigmentada pode ser tratada como onicomicose ou tinea pedis por meses — perdendo janela terapêutica preciosa.</p>
+      </div>
+      <div class="card">
+        <span class="card-icon">🩹</span>
+        <div class="card-title">Confundido com úlcera crônica</div>
+        <p class="card-text">Feridas que não cicatrizam em regiões acras podem representar melanoma ulcerado. A ausência de cicatrização é um sinal de alarme que exige biópsia — não apenas curativo.</p>
+      </div>
+      <div class="card">
+        <span class="card-icon">💜</span>
+        <div class="card-title">Confundido com verruga</div>
+        <p class="card-text">Lesões elevadas e pigmentadas na sola do pé podem ser tratadas como verruga plantar por dermatologistas com menos experiência nesse subtipo raro.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- FIGURA 2: Regiões acrais de risco -->
+  <figure style="margin: 48px 0;">
+    <img src="img/regioes-acral.png" alt="Regiões acras — locais mais comuns do melanoma acral lentiginoso: palmas das mãos, plantas dos pés, leitos ungueais das mãos e dos pés" style="width:100%;max-width:760px;display:block;margin:0 auto;border-radius:10px;box-shadow:0 4px 18px rgba(0,0,0,0.13);">
+    <figcaption>Figura 2 — Regiões acras: palmas das mãos, solas dos pés e leitos ungueais são as zonas de risco para o melanoma acral lentiginoso. Estas áreas frequentemente ficam fora do autoexame convencional de pele — e não são protegidas pelo protetor solar.</figcaption>
+  </figure>
+
+  <hr class="divider" style="margin-top:48px;">
+
+  <!-- SEÇÃO 4: SINAIS CLÍNICOS -->
+  <section>
+    <span class="section-label">Diagnóstico</span>
+    <h2>Como reconhecer — a Regra ABCDE e a Regra CUBED</h2>
+
+    <p>
+      Dois instrumentos clínicos são fundamentais para suspeitar de melanoma em regiões acras. O ABCDE é clássico; o CUBED foi desenvolvido especificamente para lesões nos pés e unhas — o exato cenário de Bob Marley.
+    </p>
+
+    <h3>Regra ABCDE — para qualquer lesão pigmentada</h3>
+    <div class="abcd-grid">
+      <div class="abcd-item abcd-a">
+        <div class="abcd-letter">A</div>
+        <div class="abcd-word">Assimetria</div>
+        <p class="abcd-desc">Uma metade diferente da outra — não-espelhada</p>
+      </div>
+      <div class="abcd-item abcd-b">
+        <div class="abcd-letter">B</div>
+        <div class="abcd-word">Borda</div>
+        <p class="abcd-desc">Irregulares, mal-definidas, recortadas ou esfumaçadas</p>
+      </div>
+      <div class="abcd-item abcd-c">
+        <div class="abcd-letter">C</div>
+        <div class="abcd-word">Cor</div>
+        <p class="abcd-desc">Múltiplas tonalidades: preto, marrom, cinza, vermelho, branco</p>
+      </div>
+      <div class="abcd-item abcd-d">
+        <div class="abcd-letter">D</div>
+        <div class="abcd-word">Diâmetro</div>
+        <p class="abcd-desc">Maior que 6 mm — mas melanomas menores existem</p>
+      </div>
+      <div class="abcd-item abcd-e">
+        <div class="abcd-letter">E</div>
+        <div class="abcd-word">Evolução</div>
+        <p class="abcd-desc">Qualquer mudança em lesão pré-existente exige avaliação</p>
+      </div>
+    </div>
+
+    <h3 style="margin-top:40px;">Regra CUBED — específica para pés e unhas</h3>
+    <p>Desenvolvida para o contexto acral, avalia características que tornam uma lesão suspeita nessas regiões frequentemente negligenciadas:</p>
+    <div class="cubed-grid">
+      <div class="cubed-item">
+        <div class="cubed-letter">C</div>
+        <div class="cubed-word">Colored</div>
+        <p class="cubed-desc">Presença de qualquer pigmentação — marrom, preta, cinza</p>
+      </div>
+      <div class="cubed-item">
+        <div class="cubed-letter">U</div>
+        <div class="cubed-word">Uncertain</div>
+        <p class="cubed-desc">Diagnóstico incerto — dúvida clínica já é indicação de biópsia</p>
+      </div>
+      <div class="cubed-item">
+        <div class="cubed-letter">B</div>
+        <div class="cubed-word">Bleeding</div>
+        <p class="cubed-desc">Sangramento espontâneo ou ao toque mínimo</p>
+      </div>
+      <div class="cubed-item">
+        <div class="cubed-letter">E</div>
+        <div class="cubed-word">Enlarged</div>
+        <p class="cubed-desc">Crescimento progressivo da lesão ao longo do tempo</p>
+      </div>
+      <div class="cubed-item">
+        <div class="cubed-letter">D</div>
+        <div class="cubed-word">Delay</div>
+        <p class="cubed-desc">Cicatrização retardada — ferida que não fecha em tempo esperado</p>
+      </div>
+    </div>
+
+    <div class="callout" style="margin-top:36px;">
+      <p>O "D" de Delay — cicatrização retardada — era exatamente o que Bob Marley apresentava. Uma ferida que não cicatrizava, meses depois do suposto trauma. Esse sinal, em qualquer lesão acral, exige biópsia. Não observação. Biópsia.</p>
+    </div>
+  </section>
+
+  <hr class="divider" style="margin-top:48px;">
+
+  <!-- SEÇÃO 5: CONEXÃO COM FERIDAS CRÔNICAS -->
+  <section>
+    <span class="section-label">Relevância clínica</span>
+    <h2>Por que isso importa para quem cuida de feridas crônicas</h2>
+
+    <p>
+      O telemonitoramento de feridas crônicas é uma prática que salva vidas — e o caso Bob Marley mostra que essa vigilância precisa ir além da úlcera clássica. Lesões em solas de pé diabético, regiões periungueais e plantas dos pés podem abrigar melanoma disfarçado de ferida crônica.
+    </p>
+    <p>
+      A mensagem clínica é direta: toda ferida que não cicatriza segundo o ritmo esperado é suspeita. O protocolo de telemonitoramento deve incluir critérios de alerta para encaminhamento dermatológico urgente quando determinados sinais surgem.
+    </p>
+
+    <div class="highlight-box">
+      <h3>🚨 Sinais de alarme que exigem encaminhamento dermatológico urgente</h3>
+      <ul>
+        <li>Ferida na sola do pé, planta ou região periungueal que não cicatriza em 4–6 semanas com tratamento adequado</li>
+        <li>Lesão pigmentada (marrom, preta, cinza) em região acral, com ou sem ulceração</li>
+        <li>Faixa de pigmentação escura longitudinal sob a lâmina ungueal (melanoniquia estriada)</li>
+        <li>Lesão que sangra espontaneamente ou ao curativo, sem trauma óbvio</li>
+        <li>Crescimento progressivo de lesão já monitorada, mesmo que lentamente</li>
+        <li>Bordas irregulares ou coloração heterogênea em qualquer lesão acral</li>
+        <li>Paciente afrodescendente com qualquer lesão pigmentada acral suspeita</li>
+      </ul>
+    </div>
+
+    <p>
+      Em pessoas negras, a percepção de risco é historicamente mais baixa — tanto na população quanto entre profissionais de saúde. Esse viés mata. A taxa de mortalidade por melanoma em afrodescendentes é desproporcionalmente maior, não porque o câncer seja biologicamente mais agressivo nesse grupo, mas porque o diagnóstico chega tarde demais.
+    </p>
+  </section>
+
+  <!-- PROFA. ADRIZE RUTZ PORTO -->
+  <div class="doctor-card" style="border-color:#a0c4b8; margin-bottom:16px;">
+    <div class="doctor-photo-col">
+      <img src="img/adrize.jpg" alt="Profa. Adrize Rutz Porto"
+           onerror="this.outerHTML='<div class=\'doctor-photo-placeholder\'>👩‍🏫</div>'">
+      <span class="doctor-photo-label">img/adrize.jpg</span>
+    </div>
+    <div class="doctor-body-col">
+      <div class="doctor-name">Profa. Dra. Adrize Rutz Porto</div>
+      <div class="doctor-role">Enfermeira · Professora Associada · FEO — UFPel · Coordenadora Amor-à-Pele &amp; PET-Saúde Digital G10</div>
+      <p class="doctor-text">
+        Doutora em Enfermagem pela UFRGS (2016), Adrize é a coordenadora do projeto de extensão <strong>Amor-à-Pele</strong> e lidera o <strong>Núcleo de Estudos em Práticas de Saúde e Enfermagem (NEPEn)</strong> da UFPel, com foco em lesões cutâneas crônicas, práticas integrativas e populações vulneráveis. No PET-Saúde Digital, coordena o telemonitoramento para pessoas com feridas crônicas — iniciativa que torna a história de Bob Marley diretamente relevante: reconhecer quando uma ferida que não cicatriza transcende o diagnóstico habitual é a essência do cuidado qualificado. Editora da <em>Journal of Nursing and Health</em> (JONAH) e colaboradora do grupo Sankofa de pesquisa em saúde das mulheres negras.
+      </p>
+      <p style="font-size:0.8rem;color:var(--text-muted);margin-top:8px;margin-bottom:0;">
+        Lattes: <a href="http://lattes.cnpq.br/9425000336640831" target="_blank" style="color:#2D4A6B;">lattes.cnpq.br/9425000336640831</a> &nbsp;·&nbsp;
+        ORCID: <a href="https://orcid.org/0000-0002-5616-1626" target="_blank" style="color:#2D4A6B;">0000-0002-5616-1626</a>
+      </p>
+    </div>
+  </div>
+
+  <!-- DRA. GABRIELA CARPENA SCHRAMM -->
+  <div class="doctor-card">
+    <div class="doctor-photo-col">
+      <img src="img/gabriela.jpg" alt="Dra. Gabriela Carpena Schramm"
+           onerror="this.outerHTML='<div class=\'doctor-photo-placeholder\'>👩‍⚕️</div>'">
+      <span class="doctor-photo-label">img/gabriela.jpg</span>
+    </div>
+    <div class="doctor-body-col">
+      <div class="doctor-name">Dra. Gabriela Carpena Schramm</div>
+      <div class="doctor-role">Médica Dermatologista · UBS Sansca · Pelotas – RS · Matriciamento Dermatologia — Telessaúde/SMS Pelotas</div>
+      <p class="doctor-text">
+        Médica graduada pela UCPel (2016), com especialização em <strong>Dermatologia Clínica</strong> pela FAPSS/Instituto BWS (Porto Alegre) e especialização em Atenção Básica pela UFSC. Atua na UBS Sansca e também como apoio no matriciamento de dermatologia da Prefeitura de Pelotas (projeto Telessaúde). Participou do <strong>PET-Saúde (2022–2023)</strong> na UFPel e possui dupla formação — Medicina e Farmácia e Bioquímica — pela UCPel. A presença de dermatologista com experiência em lesões pigmentadas e acesso via atenção básica é recurso estratégico para o G10: lesões com qualquer sinal CUBED positivo devem ser encaminhadas para avaliação dermatológica — de preferência com dermatoscopia — antes de prosseguir com protocolo exclusivo de ferida crônica.
+      </p>
+      <p style="font-size:0.8rem;color:var(--text-muted);margin-top:8px;margin-bottom:0;">
+        Lattes: <a href="http://lattes.cnpq.br/4834300972797265" target="_blank" style="color:#2D4A6B;">lattes.cnpq.br/4834300972797265</a>
+      </p>
+    </div>
+  </div>
+
+  <hr class="divider" style="margin-top:48px;">
+
+  <!-- SEÇÃO 6: O QUE PODERIA TER SIDO DIFERENTE -->
+  <section>
+    <span class="section-label">Lição histórica</span>
+    <h2>O que a medicina poderia ter feito diferente</h2>
+
+    <p>
+      O caso Bob Marley é estudado em dermatologia precisamente porque concentra múltiplos fatores de falha diagnóstica e terapêutica. Não foi apenas uma confusão clínica — foi um sistema de crenças, lacunas do conhecimento da época e decisões individuais que se sobrepuseram tragicamente.
+    </p>
+
+    <div class="cards">
+      <div class="card">
+        <span class="card-icon">🔬</span>
+        <div class="card-title">Biópsia precoce</div>
+        <p class="card-text">Qualquer ferida que não cicatriza em região acral deveria ter sido biopsiada na primeira consulta — não meses depois. A biópsia incisional precoce teria dado o diagnóstico em estágio I, curável com cirurgia.</p>
+      </div>
+      <div class="card">
+        <span class="card-icon">🏥</span>
+        <div class="card-title">Encaminhamento a dermatologista</div>
+        <p class="card-text">O primeiro contato foi com um ortopedista. Um dermatologista treinado para lesões pigmentadas teria reconhecido a melanoniquia estriada como sinal de alarme muito antes.</p>
+      </div>
+      <div class="card">
+        <span class="card-icon">✂️</span>
+        <div class="card-title">Amputação em 1977</div>
+        <p class="card-text">Com diagnóstico em estágio I–II, a amputação do hálux teria tido alta probabilidade de cura. Pesquisas recentes indicam que mesmo a amputação pode não evitar metástases no subungueal — mas em 1977, era a melhor opção disponível.</p>
+      </div>
+      <div class="card">
+        <span class="card-icon">📚</span>
+        <div class="card-title">Conhecimento médico da época</div>
+        <p class="card-text">O MAL foi descrito apenas em 1976. A medicina geral da época não reconhecia o padrão clínico. Isso não justifica, mas contextualiza: a educação médica continuada é obrigação permanente.</p>
+      </div>
+    </div>
+
+    <div class="callout callout-green" style="margin-top:36px;">
+      <p>
+        <strong>Se o câncer de Marley tivesse sido identificado e tratado adequadamente em 1977, a Skin Cancer Foundation estima que ele poderia ter sido curado.</strong> Com diagnóstico precoce, a taxa de sobrevivência em 5 anos para MAL chega a 70–80%. Em estágio IV, o prognóstico despenca para menos de 20%.
+      </p>
+    </div>
+  </section>
+
+  <!-- FIGURA 3: Estadiamento do melanoma e sobrevida -->
+  <figure style="margin: 48px 0;">
+    <img src="img/estadiamento-melanoma.png" alt="Estadiamento do melanoma e taxa de sobrevida relativa em 5 anos: Estágio I (98%), Estágio II (65-85%), Estágio III (40-70%), Estágio IV (15-20%)" style="width:100%;max-width:760px;display:block;margin:0 auto;border-radius:10px;box-shadow:0 4px 18px rgba(0,0,0,0.13);">
+    <figcaption>Figura 3 — Estadiamento do melanoma e sobrevida relativa em 5 anos. A diferença entre estágio I (98%) e estágio IV (15–20%) é dramática — e representa precisamente o que aconteceu com Bob Marley: anos de atraso diagnóstico transformaram um câncer curável em uma sentença de morte. Fonte: Adaptado de SEER/NCI e AJCC Cancer Staging Manual.</figcaption>
+  </figure>
+
+  <hr class="divider" style="margin-top:48px;">
+
+  <!-- SEÇÃO 7: SÍNTESE -->
+  <section>
+    <span class="section-label">Síntese</span>
+    <h2>O que fica — a lição de Bob Marley para a prática do cuidado de feridas</h2>
+
+    <p>
+      Bob Marley não morreu por falta de recursos médicos. Morreu por um diagnóstico tardio — alimentado por uma combinação de desconhecimento clínico, preconceito velado (a ideia de que pessoas negras não desenvolvem câncer de pele), crenças religiosas e a ilusão coletiva de que uma "ferida não cicatrizante" era menos grave do que era.
+    </p>
+    <p>
+      Para profissionais que monitoram feridas crônicas, o legado clínico de Marley é direto: <strong>toda ferida que não fecha é uma hipótese aberta</strong>. O diagnóstico de úlcera crônica não exclui neoplasia. O telemonitoramento eficaz precisa de olhos treinados para reconhecer quando uma ferida transcende sua aparência.
+    </p>
+
+    <div class="callout">
+      <p>"Não ignore uma mancha escura, uma ferida que não cicatriza ou uma 'unha encravada diferente'. A diferença entre estágio I e estágio IV é, muitas vezes, apenas o tempo que levamos para olhar com atenção." — Dr. Timótio Dorn, dermatologista</p>
+    </div>
+
+    <p>
+      O reggae de Bob Marley continua vivo — e com ele, a lição de que o corpo fala, mas cabe ao cuidador saber ouvir. Uma ferida que não cicatriza é um pedido de socorro. Que a próxima consulta seja o momento em que esse pedido seja finalmente atendido.
+    </p>
+  </section>
+
+  <!-- REFERÊNCIAS -->
+  <div class="references">
+    <h3>Referências</h3>
+
+    <p style="font-size:0.82rem;font-weight:700;color:#5C3D2E;text-transform:uppercase;letter-spacing:0.08em;margin-bottom:10px;margin-top:4px;">Artigos científicos</p>
+    <ol>
+      <li>ANJOS, R. A. et al. Bob Marley's disease: cerebral metastasis of acral melanoma. <em>Revista Brasileira de Neurologia</em>, Rio de Janeiro, v. 53, n. 1, p. 42–44, abr. 2017.</li>
+      <li>FONSECA, E. S. et al. Melanoma lentiginoso acral. <em>Caminhos – Revista UNIFOA</em>, Barbacena, v. 9, n. 1, p. 1–12, 2023. Disponível em: <a href="https://revistas.unifoa.edu.br/caminhos/article/download/5116/3633" target="_blank" style="color:#2D4A6B;">https://revistas.unifoa.edu.br/caminhos/article/download/5116/3633</a>.</li>
+      <li>BRADFORD, P. T. et al. Acral lentiginous melanoma: incidence and survival patterns in the United States. <em>Archives of Dermatology</em> (now <em>JAMA Dermatology</em>), Chicago, v. 145, n. 4, p. 427–434, 2009. DOI: <a href="https://doi.org/10.1001/archderm.145.4.427" target="_blank" style="color:#2D4A6B;">10.1001/archderm.145.4.427</a>.</li>
+      <li>ALBRESKI, D.; SLOAN, S. B. Melanoma of the feet: misdiagnosed and misunderstood. <em>Clinics in Dermatology</em>, Oxford, v. 27, n. 6, p. 556–563, 2009. DOI: <a href="https://doi.org/10.1016/j.clindermatol.2009.03.011" target="_blank" style="color:#2D4A6B;">10.1016/j.clindermatol.2009.03.011</a>.</li>
+    </ol>
+
+    <p style="font-size:0.82rem;font-weight:700;color:#5C3D2E;text-transform:uppercase;letter-spacing:0.08em;margin-bottom:10px;margin-top:18px;">Artigos-revisão e monografias</p>
+    <ol start="5">
+      <li>Acral lentiginous melanoma and Bob Marley. <em>Indian Journal of Dermatology, Venereology and Leprology</em>, Mumbai, v. 91, n. 1, p. 2–3, 2025. Disponível em: <a href="https://ijdvl.com/acral-lentiginous-melanoma-and-bob-marley-mavericks-in-their-own-right/" target="_blank" style="color:#2D4A6B;">ijdvl.com/acral-lentiginous-melanoma-and-bob-marley-mavericks-in-their-own-right/</a>.</li>
+      <li>[Autor(a) não explicitado(a)]. Melanoma lentiginoso acral em análise molecular e terapêutica. <em>Linus Pauling – Revista de Educação e Valores</em>, v. 12, n. 1, p. 1–10, 2026. Disponível em: <a href="https://periodicos.newsciencepubl.com/LEV/article/view/12166" target="_blank" style="color:#2D4A6B;">periodicos.newsciencepubl.com/LEV/article/view/12166</a>.</li>
+    </ol>
+
+    <p style="font-size:0.82rem;font-weight:700;color:#5C3D2E;text-transform:uppercase;letter-spacing:0.08em;margin-bottom:10px;margin-top:18px;">Sites institucionais e blogs</p>
+    <ol start="7">
+      <li>SKIN CANCER FOUNDATION. Bob Marley should not have died from melanoma. <em>SkinCancer.org</em>, 2024. Disponível em: <a href="https://www.skincancer.org/blog/bob-marley-should-not-have-died-from-melanoma/" target="_blank" style="color:#2D4A6B;">skincancer.org/blog/bob-marley-should-not-have-died-from-melanoma/</a>.</li>
+      <li>AIM AT MELANOMA FOUNDATION. Five things you may not know about Bob Marley and acral lentiginous melanoma. <em>AIMatMelanoma.org</em>, 2024. Disponível em: <a href="https://www.aimatmelanoma.org/five-things-you-may-not-know-about-bob-marley-and-acral-lentiginous-melanoma/" target="_blank" style="color:#2D4A6B;">aimatmelanoma.org/five-things-you-may-not-know-about-bob-marley-and-acral-lentiginous-melanoma/</a>.</li>
+      <li>UNIVERSITY OF COLORADO CANCER CENTER. What is the rare melanoma that killed Bob Marley? <em>News.cuanschutz.edu</em>, 2024. Disponível em: <a href="https://news.cuanschutz.edu/2024/02/what-is-the-rare-melanoma-that-killed-bob-marley/" target="_blank" style="color:#2D4A6B;">news.cuanschutz.edu/2024/02/what-is-the-rare-melanoma-that-killed-bob-marley/</a>.</li>
+      <li>INSTITUTO MELANOMA BRASIL. Melanoma lentiginoso acral: mais comum entre afrodescendentes. <em>MelanomaBrasil.org</em>, 2020. Disponível em: <a href="https://melanomabrasil.org" target="_blank" style="color:#2D4A6B;">melanomabrasil.org</a> (buscar por título).</li>
+      <li>DORN, T. A história completa do melanoma acral mais famoso do mundo: o caso Bob Marley. <em>Drtimotiodorn.com.br</em>, 2025. Disponível em: <a href="https://www.drtimotiodorn.com.br/" target="_blank" style="color:#2D4A6B;">drtimotiodorn.com.br</a> (buscar por "melanoma acral" ou "Bob Marley").</li>
+      <li>Resumo de melanoma lentiginoso acral: riscos, tratamento e mais! <em>Med Estratégia</em>, 2025. Disponível em: <a href="https://med.estrategia.com/portal/conteudos-gratis/doencas/resumo-de-melanoma-diagnostico-tratamento-e-mais/" target="_blank" style="color:#2D4A6B;">med.estrategia.com/portal/conteudos-gratis/doencas/resumo-de-melanoma-diagnostico-tratamento-e-mais/</a>.</li>
+    </ol>
+  </div>
+
+</main>
+
+<!-- FOOTER -->
+<footer class="institutional-footer">
+  <p>Infográfico elaborado pelos projetos Amor à Pele e PET-Saúde Digital G10 Feridas Crônicas, UFPel, em Maio de 2026.</p>
+  <p>Conteúdo de caráter educativo. Para avaliação de lesões, consulte sempre um profissional de saúde habilitado.</p>
+</footer>
+
+</body>
+</html>
