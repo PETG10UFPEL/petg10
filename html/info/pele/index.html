@@ -1,10 +1,6 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-<audio controls loop>
-  <source src="img/nowomannocry.mp3" type="audio/mpeg">
-  Seu navegador não suporta áudio HTML5.
-</audio>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>O Erro que Matou Bob Marley — Melanoma Subungueal e o Perigo das Feridas que Não Cicatrizam</title>
@@ -580,13 +576,42 @@
       .timeline::before { left: 68px; }
       .tl-year { width: 68px; }
       h2 { font-size: 1.45rem; }
-      .doctor-card { grid-template-columns: 1fr; }
-      .doctor-photo-col { min-height: 160px; }
+      /* Doctor cards — mobile: cabeçalho de perfil */
+      .doctor-card {
+        grid-template-columns: 1fr;
+      }
+      .doctor-photo-col {
+        position: static;
+        min-height: unset;
+        background: linear-gradient(135deg, #2C5F4A 0%, #1a3d2e 100%);
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        gap: 14px;
+        padding: 16px 18px;
+        overflow: visible;
+      }
+      .doctor-photo-col img {
+        position: static;
+        width: 64px;
+        height: 64px;
+        border-radius: 50%;
+        object-fit: cover;
+        object-position: center top;
+        flex-shrink: 0;
+        border: 2px solid rgba(255,255,255,0.4);
+      }
+      .doctor-photo-label { display: none; }
       .header-logos img { height: 34px; }
     }
   </style>
 </head>
 <body>
+
+<audio controls loop>
+  <source src="img/nowomannocry.mp3" type="audio/mpeg">
+  Seu navegador não suporta áudio HTML5.
+</audio>
 
 <!-- HEADER INSTITUCIONAL -->
 <header class="institutional-header">
