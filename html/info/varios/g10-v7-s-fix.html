@@ -1,0 +1,615 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>G10 — Identidade Generativa</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root {
+  --laranja: #E8522A;
+  --azul-claro: #5BA4CF;
+  --azul-escuro: #1B3A6B;
+  --bg: #F7F4F0;
+  --surface: #FFFFFF;
+  --border: rgba(0,0,0,0.08);
+  --text: #1a1512;
+  --text-muted: #8a8480;
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: 'DM Sans', sans-serif; background: var(--bg); color: var(--text); min-height: 100vh; display: flex; flex-direction: column; }
+header { padding: 1.2rem 2rem; display: flex; align-items: center; justify-content: space-between; border-bottom: 1px solid var(--border); background: var(--surface); }
+.header-logo { display: flex; align-items: center; gap: 10px; }
+.header-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--laranja); animation: pulse-dot 2s ease-in-out infinite; }
+@keyframes pulse-dot { 0%,100%{opacity:1;transform:scale(1)}50%{opacity:0.4;transform:scale(0.6)} }
+.header-label { font-family: 'DM Mono', monospace; font-size: 0.7rem; color: var(--text-muted); letter-spacing: 0.08em; }
+.header-right { font-family: 'DM Mono', monospace; font-size: 0.65rem; color: var(--text-muted); text-align: right; line-height: 1.8; }
+main { flex: 1; display: grid; grid-template-columns: 1fr 300px; }
+.canvas-area { display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 2rem; gap: 1.5rem; }
+canvas#mainCanvas { display: block; max-width: 100%; border-radius: 12px; box-shadow: 0 2px 32px rgba(0,0,0,0.08); }
+.stage-tabs { display: flex; gap: 6px; flex-wrap: wrap; justify-content: center; }
+.stage-tab { font-family:'DM Sans',sans-serif; font-size:0.72rem; font-weight:500; padding:5px 13px; border-radius:20px; cursor:pointer; border:1px solid var(--border); background:transparent; color:var(--text-muted); transition:all 0.2s; }
+.stage-tab:hover { color: var(--text); }
+.stage-tab[data-stage="inflamacao"].active   { background:#E8522A12; color:#C43E18; border-color:#E8522A55; }
+.stage-tab[data-stage="granulacao"].active   { background:#5BA4CF12; color:#2A7DB5; border-color:#5BA4CF55; }
+.stage-tab[data-stage="epitelizacao"].active { background:#1B3A6B12; color:#1B3A6B; border-color:#1B3A6B55; }
+.stage-tab[data-stage="remodelacao"].active  { background:#2d8c6e12; color:#1e6e52; border-color:#4aaa8a55; }
+.btn-row { display: flex; gap: 8px; flex-wrap: wrap; justify-content: center; }
+.btn { font-family:'DM Sans',sans-serif; font-size:0.75rem; font-weight:500; padding:7px 16px; border-radius:8px; cursor:pointer; border:1px solid var(--border); background:var(--surface); color:var(--text-muted); transition:all 0.18s; display:flex; align-items:center; gap:6px; }
+.btn:hover { background:#eeeae5; color:var(--text); }
+.btn.generate { background:var(--laranja); color:#fff; border-color:var(--laranja); font-weight:600; }
+.btn.generate:hover { background:#d4471f; }
+
+/* chaos indicator */
+.chaos-bar-wrap { width: 100%; max-width: 580px; }
+.chaos-label { display:flex; justify-content:space-between; font-family:'DM Mono',monospace; font-size:0.65rem; color:var(--text-muted); margin-bottom:5px; }
+.chaos-label .chaos-state { font-weight:500; }
+.chaos-track { height:4px; background:rgba(0,0,0,0.08); border-radius:2px; overflow:hidden; }
+.chaos-fill { height:100%; border-radius:2px; transition:width 0.3s, background 0.3s; }
+
+.sidebar { border-left:1px solid var(--border); background:var(--surface); padding:1.8rem 1.4rem; display:flex; flex-direction:column; gap:1.8rem; overflow-y:auto; }
+.sidebar h3 { font-family:'DM Mono',monospace; font-size:0.62rem; letter-spacing:0.1em; color:var(--text-muted); text-transform:uppercase; margin-bottom:0.9rem; }
+.control-group { margin-bottom:1.1rem; }
+.control-label { display:flex; justify-content:space-between; align-items:center; margin-bottom:6px; }
+.control-label span:first-child { font-size:0.78rem; color:var(--text); }
+.control-label .val { font-family:'DM Mono',monospace; font-size:0.7rem; color:var(--text-muted); }
+.control-desc { font-size:0.68rem; color:var(--text-muted); margin-top:4px; line-height:1.5; }
+input[type="range"] { -webkit-appearance:none; appearance:none; width:100%; height:2px; background:rgba(0,0,0,0.1); border-radius:2px; outline:none; }
+input[type="range"]::-webkit-slider-thumb { -webkit-appearance:none; width:14px; height:14px; border-radius:50%; background:var(--azul-escuro); cursor:pointer; border:2px solid var(--surface); box-shadow:0 0 0 1px rgba(0,0,0,0.12); }
+.status-box { font-family:'DM Mono',monospace; font-size:0.68rem; color:var(--text-muted); background:var(--bg); border:1px solid var(--border); border-radius:8px; padding:0.8rem; line-height:2; }
+.status-box span { color:var(--text); }
+footer { padding:0.9rem 2rem; border-top:1px solid var(--border); background:var(--surface); display:flex; justify-content:space-between; align-items:center; font-family:'DM Mono',monospace; font-size:0.65rem; color:var(--text-muted); }
+
+/* MODAL */
+.modal-overlay { position:fixed; inset:0; background:rgba(10,8,6,0.55); display:flex; align-items:center; justify-content:center; z-index:100; opacity:0; pointer-events:none; transition:opacity 0.25s; }
+.modal-overlay.open { opacity:1; pointer-events:all; }
+.modal { background:var(--surface); border-radius:16px; padding:2rem; width:520px; max-width:95vw; display:flex; flex-direction:column; gap:1.4rem; box-shadow:0 24px 64px rgba(0,0,0,0.18); transform:translateY(12px); transition:transform 0.25s; }
+.modal-overlay.open .modal { transform:translateY(0); }
+.modal-header { display:flex; justify-content:space-between; align-items:flex-start; }
+.modal-title { font-size:1rem; font-weight:600; color:var(--text); }
+.modal-sub { font-family:'DM Mono',monospace; font-size:0.68rem; color:var(--text-muted); margin-top:3px; }
+.modal-close { background:none; border:none; cursor:pointer; font-size:1.2rem; color:var(--text-muted); padding:2px 6px; border-radius:6px; line-height:1; }
+.modal-close:hover { background:var(--bg); color:var(--text); }
+.logo-preview-wrap { border-radius:12px; overflow:hidden; border:1px solid var(--border); position:relative; display:flex; align-items:center; justify-content:center; height:220px; }
+.checker { position:absolute; inset:0; background-image:linear-gradient(45deg,#e0ddd8 25%,transparent 25%),linear-gradient(-45deg,#e0ddd8 25%,transparent 25%),linear-gradient(45deg,transparent 75%,#e0ddd8 75%),linear-gradient(-45deg,transparent 75%,#e0ddd8 75%); background-size:14px 14px; background-position:0 0,0 7px,7px -7px,-7px 0; background-color:#f0ede8; }
+canvas#logoCanvas { position:relative; z-index:1; display:block; max-width:100%; border-radius:10px; }
+.option-label { font-family:'DM Mono',monospace; font-size:0.62rem; letter-spacing:0.08em; color:var(--text-muted); text-transform:uppercase; margin-bottom:6px; }
+.bg-toggle-row,.res-row { display:flex; gap:8px; flex-wrap:wrap; }
+.bg-opt { font-family:'DM Sans',sans-serif; font-size:0.72rem; font-weight:500; padding:5px 12px; border-radius:6px; cursor:pointer; border:1px solid var(--border); background:transparent; color:var(--text-muted); transition:all 0.15s; }
+.bg-opt.active { border-color:var(--azul-escuro); color:var(--azul-escuro); background:#1B3A6B0e; }
+.res-opt { font-family:'DM Mono',monospace; font-size:0.68rem; padding:4px 10px; border-radius:6px; cursor:pointer; border:1px solid var(--border); background:transparent; color:var(--text-muted); transition:all 0.15s; }
+.res-opt.active { border-color:var(--laranja); color:var(--laranja); background:#E8522A0e; }
+.modal-actions { display:flex; gap:8px; justify-content:flex-end; }
+.btn-cancel { font-family:'DM Sans',sans-serif; font-size:0.75rem; padding:8px 16px; border-radius:8px; cursor:pointer; border:1px solid var(--border); background:transparent; color:var(--text-muted); }
+.btn-cancel:hover { background:var(--bg); }
+.btn-download { font-family:'DM Sans',sans-serif; font-size:0.75rem; font-weight:600; padding:8px 20px; border-radius:8px; cursor:pointer; border:none; background:var(--laranja); color:#fff; display:flex; align-items:center; gap:6px; transition:background 0.15s; }
+.btn-download:hover { background:#d4471f; }
+@media (max-width:768px) { main{grid-template-columns:1fr} .sidebar{border-left:none;border-top:1px solid var(--border)} .modal{padding:1.4rem} }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="header-logo">
+    <div class="header-dot"></div>
+    <div class="header-label">IDENTIDADE GENERATIVA — G10</div>
+  </div>
+  <div class="header-right">PET-Saúde / UFPel<br>Telemonitoramento de feridas crônicas</div>
+</header>
+
+<main>
+  <div class="canvas-area">
+    <canvas id="mainCanvas" width="660" height="420"></canvas>
+
+    <div class="chaos-bar-wrap">
+      <div class="chaos-label">
+        <span>cicatrizada · estável</span>
+        <span class="chaos-state" id="chaosLabel">moderada</span>
+        <span>inflamada · caótica</span>
+      </div>
+      <div class="chaos-track">
+        <div class="chaos-fill" id="chaosFill" style="width:50%;background:#5BA4CF;"></div>
+      </div>
+    </div>
+
+    <div class="stage-tabs">
+      <button class="stage-tab active" data-stage="inflamacao">Inflamação</button>
+      <button class="stage-tab" data-stage="granulacao">Granulação</button>
+      <button class="stage-tab" data-stage="epitelizacao">Epitelização</button>
+      <button class="stage-tab" data-stage="remodelacao">Remodelação</button>
+    </div>
+
+    <div class="btn-row">
+      <button class="btn" id="btnRandom">↻ Aleatorizar</button>
+      <button class="btn" id="btnPause">⏸ Pausar</button>
+      <button class="btn generate" id="btnGenerate">✦ Gerar logo</button>
+    </div>
+  </div>
+
+  <div class="sidebar">
+    <div>
+      <h3>Parâmetros clínicos</h3>
+      <div class="control-group">
+        <div class="control-label"><span>Irregularidade da borda</span><span class="val" id="bordaVal">40</span></div>
+        <input type="range" min="0" max="100" value="40" id="borda" step="1">
+        <div class="control-desc">0 = borda lisa · 100 = contorno fragmentado</div>
+      </div>
+      <div class="control-group">
+        <div class="control-label"><span>Exsudato (fluxo)</span><span class="val" id="exsudatoVal">35</span></div>
+        <input type="range" min="0" max="100" value="35" id="exsudato" step="1">
+        <div class="control-desc">0 = seco · 100 = linhas de fundo densas e turbulentas</div>
+      </div>
+      <div class="control-group">
+        <div class="control-label"><span>Profundidade</span><span class="val" id="profVal">30</span></div>
+        <input type="range" min="0" max="100" value="30" id="prof" step="1">
+        <div class="control-desc">0 = traço fino · 100 = traço espesso e pesado</div>
+      </div>
+      <div class="control-group">
+        <div class="control-label"><span>Atividade tecidual</span><span class="val" id="atividadeVal">40</span></div>
+        <input type="range" min="0" max="100" value="40" id="atividade" step="1">
+        <div class="control-desc">0 = letras firmes · 100 = letras se dissolvem</div>
+      </div>
+    </div>
+
+    <div>
+      <h3>Estado atual</h3>
+      <div class="status-box">
+        estágio: <span id="stStage">Inflamação</span><br>
+        borda: <span id="stB">40</span> · exsudato: <span id="stE">35</span><br>
+        profund.: <span id="stP">30</span> · atividade: <span id="stA">40</span>
+      </div>
+    </div>
+
+    <div>
+      <h3>Lógica de caos</h3>
+      <p style="font-size:0.72rem;color:var(--text-muted);line-height:1.8;">
+        Parâmetros baixos = ferida controlada, letras limpas e estáveis.<br><br>
+        Parâmetros altos = ferida inflamada: letras se deformam, fragmentam, o fundo entra em erupção.<br><br>
+        O logo <em style="color:var(--text)">sente</em> o estado clínico.
+      </p>
+    </div>
+
+    <div>
+      <h3>Sobre</h3>
+      <p style="font-size:0.72rem;color:var(--text-muted);line-height:1.8;">
+        Inspirado no <strong style="color:var(--text)">Igaratipo</strong> (Visite Amazônia). Ajuste os parâmetros e clique em <strong style="color:var(--laranja)">✦ Gerar logo</strong> para exportar.
+      </p>
+    </div>
+  </div>
+</main>
+
+<footer>
+  <span>G10 — PET-Saúde · Informação e Saúde Digital · UFPel · Pelotas, RS</span>
+  <span id="footerStage">Inflamação</span>
+</footer>
+
+<!-- MODAL -->
+<div class="modal-overlay" id="modalOverlay">
+  <div class="modal">
+    <div class="modal-header">
+      <div>
+        <div class="modal-title">Logo gerado ✦</div>
+        <div class="modal-sub">Escolha o fundo e a resolução antes de baixar</div>
+      </div>
+      <button class="modal-close" id="modalClose">✕</button>
+    </div>
+    <div class="logo-preview-wrap">
+      <div class="checker"></div>
+      <canvas id="logoCanvas" width="480" height="200"></canvas>
+    </div>
+    <div>
+      <div class="option-label">Fundo</div>
+      <div class="bg-toggle-row">
+        <button class="bg-opt active" data-bg="claro">☀ Claro</button>
+        <button class="bg-opt" data-bg="escuro">☾ Escuro</button>
+        <button class="bg-opt" data-bg="transparente">◻ Transparente</button>
+        <button class="bg-opt" data-bg="laranja">● Laranja</button>
+        <button class="bg-opt" data-bg="azul">● Azul</button>
+      </div>
+    </div>
+    <div>
+      <div class="option-label">Resolução</div>
+      <div class="res-row">
+        <button class="res-opt active" data-scale="1">1× — 480px</button>
+        <button class="res-opt" data-scale="2">2× — 960px</button>
+        <button class="res-opt" data-scale="4">4× — 1920px</button>
+      </div>
+    </div>
+    <div class="modal-actions">
+      <button class="btn-cancel" id="modalCancel">Cancelar</button>
+      <button class="btn-download" id="btnDownload">↓ Baixar PNG</button>
+    </div>
+  </div>
+</div>
+
+<script>
+const canvas = document.getElementById('mainCanvas');
+const ctx = canvas.getContext('2d');
+const W = canvas.width, H = canvas.height;
+const logoCanvas = document.getElementById('logoCanvas');
+const lctx = logoCanvas.getContext('2d');
+
+const STAGES = {
+  inflamacao:   { primary:'#E8522A', secondary:'#F09A7A', label:'Inflamação' },
+  granulacao:   { primary:'#5BA4CF', secondary:'#85B7EB', label:'Granulação' },
+  epitelizacao: { primary:'#7aa3d4', secondary:'#5BA4CF', label:'Epitelização' },
+  remodelacao:  { primary:'#4aaa8a', secondary:'#2d8c6e', label:'Remodelação' },
+};
+
+let stage = 'inflamacao';
+let params = { borda:40, exsudato:35, prof:30, atividade:40 };
+let running = true;
+let t = 0;
+let frozenT = 0;
+let logoBg = 'claro';
+let logoScale = 1;
+
+function noise(x, seed) {
+  const s = Math.sin(x * 127.1 + seed * 311.7) * 43758.5453;
+  return s - Math.floor(s);
+}
+function hexAlpha(hex, a) {
+  return hex + Math.floor(Math.min(1,Math.max(0,a)) * 255).toString(16).padStart(2,'0');
+}
+
+// chaos = combined parameter pressure 0–1
+function getChaos() {
+  return (params.borda + params.exsudato + params.prof + params.atividade) / 400;
+}
+
+// ── organic line with DRAMATIC deformation ──────────────────────
+function oLine(tc, x1, y1, x2, y2, seed, irreg, activ, chaos) {
+  const steps = Math.max(20, Math.floor(20 + chaos * 60));
+  tc.beginPath();
+  for (let i = 0; i <= steps; i++) {
+    const u = i / steps;
+    let bx = x1 + (x2 - x1) * u;
+    let by = y1 + (y2 - y1) * u;
+    const perp = Math.atan2(y2 - y1, x2 - x1) + Math.PI / 2;
+
+    // subtle wobble at low chaos; violent deformation at high chaos
+    const wobble = (noise(u * 6  + t * 0.3, seed)     - 0.5) * irreg * 18 * chaos;
+    const tremble= (noise(u * 14 + t * 0.8, seed + 1) - 0.5) * activ  * 12 * chaos;
+    const shatter= chaos > 0.6 ? (noise(u * 30 + t * 1.5, seed + 2) - 0.5) * Math.pow(chaos - 0.6, 1.5) * 80 : 0;
+
+    // displacement along perpendicular + random scatter at high chaos
+    const perp_d = wobble + tremble + shatter;
+    bx += Math.cos(perp) * perp_d;
+    by += Math.sin(perp) * perp_d;
+
+    // at very high chaos, scatter along the line direction too
+    if (chaos > 0.7) {
+      const along = (noise(u * 20 + t, seed + 3) - 0.5) * Math.pow(chaos - 0.7, 2) * 60;
+      const lineDir = Math.atan2(y2 - y1, x2 - x1);
+      bx += Math.cos(lineDir) * along;
+      by += Math.sin(lineDir) * along;
+    }
+
+    i === 0 ? tc.moveTo(bx, by) : tc.lineTo(bx, by);
+  }
+  tc.stroke();
+}
+
+function oArc(tc, x, y, r, a0, a1, seed, irreg, activ, chaos) {
+  const steps = Math.max(30, Math.floor(30 + chaos * 50));
+  tc.beginPath();
+  for (let i = 0; i <= steps; i++) {
+    const u = i / steps;
+    const ang = a0 + (a1 - a0) * u;
+    const radDist  = (noise(u * 8  + t * 0.4, seed)     - 0.5) * irreg * 20 * chaos;
+    const radDist2 = (noise(u * 18 + t * 0.7, seed + 1) - 0.5) * activ  * 14 * chaos;
+    const shatter  = chaos > 0.6 ? (noise(u * 35 + t, seed + 2) - 0.5) * Math.pow(chaos - 0.6, 1.5) * 70 : 0;
+    const nr = r + radDist + radDist2 + shatter;
+    const px = x + Math.cos(ang) * nr;
+    const py = y + Math.sin(ang) * nr;
+    i === 0 ? tc.moveTo(px, py) : tc.lineTo(px, py);
+  }
+  tc.stroke();
+}
+
+// ── draw letter ─────────────────────────────────────────────────
+function drawLetter(tc, letter, cx, cy, size, irreg, activ, chaos, color, lw) {
+  const h = size * 1.3, hw = size * 0.6;
+  const ox = cx - hw / 2, oy = cy - h / 2;
+
+  // line width also scales with profundidade (thickness)
+  tc.save();
+  tc.strokeStyle = color;
+  tc.lineWidth = lw;
+  tc.lineCap = 'round';
+  tc.lineJoin = 'round';
+
+  // at very high chaos, letters become semi-transparent (dissolving)
+  if (chaos > 0.65) {
+    const dissolve = 1 - (chaos - 0.65) * 1.5;
+    tc.globalAlpha = Math.max(0.15, dissolve);
+  }
+
+  const L = (x1,y1,x2,y2,s) => oLine(tc,x1,y1,x2,y2,s,irreg,activ,chaos);
+  const A = (x,y,r,a0,a1,s) => oArc(tc,x,y,r,a0,a1,s,irreg,activ,chaos);
+
+  if (letter==='P')      { L(ox,oy,ox,oy+h,10); A(ox+hw*.1,oy+h*.28,hw*.38,-Math.PI/2,Math.PI/2,20); L(ox,oy,ox+hw*.1,oy,30); L(ox,oy+h*.55,ox+hw*.1,oy+h*.55,40); }
+  else if (letter==='E'||letter==='É') { L(ox,oy,ox,oy+h,10); L(ox,oy,ox+hw,oy,20); L(ox,oy+h/2,ox+hw*.75,oy+h/2,30); L(ox,oy+h,ox+hw,oy+h,40); }
+  else if (letter==='T') { L(ox,oy,ox+hw,oy,10); L(ox+hw/2,oy,ox+hw/2,oy+h,20); }
+  else if (letter==='-') { L(cx-hw*.3,cy,cx+hw*.3,cy,10); }
+  else if (letter==='S') { A(cx+hw*.08,oy+h*.28,hw*.28,Math.PI,Math.PI*2,10); A(cx-hw*.08,oy+h*.72,hw*.28,0,Math.PI,20); }
+  else if (letter==='A') { L(cx,oy,ox,oy+h,10); L(cx,oy,ox+hw,oy+h,20); L(ox+hw*.18,oy+h*.6,ox+hw*.82,oy+h*.6,30); }
+  else if (letter==='Ú'||letter==='U') { L(ox,oy,ox,oy+h*.7,10); A(cx,oy+h*.7,hw*.5,0,Math.PI,20); L(ox+hw,oy,ox+hw,oy+h*.7,30); }
+  else if (letter==='D') { L(ox,oy,ox,oy+h,10); A(ox+hw*.15,cy,hw*.52,-Math.PI/2,Math.PI/2,20); L(ox,oy,ox+hw*.15,oy,30); L(ox,oy+h,ox+hw*.15,oy+h,40); }
+  else if (letter==='G') { A(cx,cy,hw*.5,Math.PI*.2,Math.PI*1.8,10); L(cx,cy,cx+hw*.45,cy,20); L(cx+hw*.45,cy,cx+hw*.45,cy+h*.28,30); }
+  else if (letter==='1') { L(cx-hw*.1,oy,cx+hw*.15,oy,10); L(cx+hw*.15,oy,cx+hw*.15,oy+h,20); L(cx-hw*.25,oy+h,cx+hw*.4,oy+h,30); L(cx-hw*.1,oy,cx+hw*.05,oy+h*.25,40); }
+  else if (letter==='0') { A(cx,cy,hw*.46,0,Math.PI*2,10); }
+  else if (letter==='/') { L(ox+hw*.7,oy,ox+hw*.3,oy+h,10); }
+  else if (letter==='F') { L(ox,oy,ox,oy+h,10); L(ox,oy,ox+hw,oy,20); L(ox,oy+h*.5,ox+hw*.8,oy+h*.5,30); }
+  else if (letter==='L') { L(ox,oy,ox,oy+h,10); L(ox,oy+h,ox+hw,oy+h,20); }
+  else if (letter==='e') { A(cx,cy+h*.05,hw*.38,Math.PI*.1,Math.PI*1.95,10); L(cx-hw*.38,cy+h*.05,cx+hw*.38,cy+h*.05,20); }
+  else if (letter==='l') { L(cx+hw*.05,oy,cx+hw*.05,oy+h,10); }
+  else if (letter==='p') { L(ox,oy-h*.1,ox,oy+h,10); A(ox+hw*.38,oy+h*.35,hw*.35,0,Math.PI*2,20); }
+
+  tc.globalAlpha = 1;
+  tc.restore();
+}
+
+// ── background field — scales with chaos ────────────────────────
+function drawBgField(tc, tw, th, st, flux, chaos) {
+  // at high chaos, background becomes dense and turbulent
+  const lineCount = Math.floor(4 + flux * 0.2 * 12 + chaos * 30);
+  for (let i = 0; i < lineCount; i++) {
+    const seed = i * 17.3;
+    const y0 = noise(seed, 50) * th;
+    const steps = Math.floor(60 + chaos * 80);
+    tc.beginPath();
+    for (let j = 0; j <= steps; j++) {
+      const u = j / steps;
+      const x = u * tw;
+      const turbulence = chaos * chaos * 0.6; // quadratic: chaos matters more at high end
+      const ny = (noise(u * 3 + t * 0.08, seed)  - 0.5) * th * (0.1 + turbulence * 0.5)
+               + (noise(u * 8 + t * 0.15, seed+1) - 0.5) * th * turbulence * 0.3
+               + (noise(u * 18 + t * 0.4, seed+2) - 0.5) * th * turbulence * 0.15;
+      j === 0 ? tc.moveTo(x, y0 + ny) : tc.lineTo(x, y0 + ny);
+    }
+    const alpha = 0.05 + chaos * 0.18 + noise(seed, 55) * 0.08;
+    tc.strokeStyle = hexAlpha(st.primary, alpha);
+    tc.lineWidth = 0.3 + chaos * 2 + noise(seed, 56) * 1.5;
+    tc.stroke();
+  }
+}
+
+// ── nodes — multiply and scatter with chaos ──────────────────────
+function drawNodes(tc, tw, th, st, chaos, activ) {
+  const count = Math.floor(3 + chaos * 25);
+  for (let i = 0; i < count; i++) {
+    const seed = i * 23.7;
+    const x = noise(seed, 60) * tw;
+    const y = noise(seed, 61) * th;
+    const pulse = 0.5 + 0.5 * Math.sin(t * (0.5 + noise(seed, 62) * 2 * (1 + chaos)) + seed);
+    const r = (1.5 + noise(seed, 63) * 4 + chaos * 6) * (0.6 + 0.4 * pulse);
+    tc.beginPath();
+    tc.arc(x, y, r, 0, Math.PI * 2);
+    tc.fillStyle = hexAlpha(st.primary, 0.05 + chaos * 0.18 * pulse);
+    tc.fill();
+  }
+}
+
+// ── dividers ────────────────────────────────────────────────────
+function drawDividers(tc, tw, th, st, irreg, activ, chaos) {
+  [[th * 0.44, 70, 0.15], [th * 0.74, 80, 0.12]].forEach(([y, seed, a]) => {
+    tc.beginPath();
+    for (let i = 0; i <= 100; i++) {
+      const u = i / 100;
+      const x = u * tw * 0.7 + tw * 0.15;
+      const dy = (noise(u * 6 + t * 0.15, seed) - 0.5) * irreg * 14 * chaos
+               + (noise(u * 14 + t * 0.3, seed+1) - 0.5) * activ * 8 * chaos;
+      i === 0 ? tc.moveTo(x, y + dy) : tc.lineTo(x, y + dy);
+    }
+    tc.strokeStyle = hexAlpha(st.primary, a + chaos * 0.15);
+    tc.lineWidth = 0.5 + chaos * 1;
+    tc.stroke();
+  });
+}
+
+// ── full scene ──────────────────────────────────────────────────
+function renderScene(tc, tw, th, st, irreg, flux, prof, activ, bgColor) {
+  const chaos = getChaos();
+
+  // line width: thin at low chaos, thick and expressive at high
+  const lw = 0.8 + prof * 0.03 * tw / 100 * 6 + chaos * chaos * tw * 0.012;
+
+  // background
+  if (bgColor === 'transparent') { tc.clearRect(0, 0, tw, th); }
+  else { tc.fillStyle = bgColor; tc.fillRect(0, 0, tw, th); }
+
+  drawBgField(tc, tw, th, st, flux, chaos);
+  drawNodes(tc, tw, th, st, chaos, activ);
+
+  const row1y = th * 0.30, row2y = th * 0.62, row3y = th * 0.86;
+  const isDark = bgColor === '#0d1117' || bgColor === '#E8522A' || bgColor === '#1B3A6B';
+
+  const petColor   = isDark ? '#f0ede8' : '#E8522A';
+  const saudeColor = isDark ? '#c8dff2' : st.primary;
+  const g10G = isDark ? '#ffaa88' : '#E8522A';
+  const g101 = isDark ? '#a8cfe8' : '#5BA4CF';
+  const g100 = isDark ? '#7aa3d4' : '#1B3A6B';
+  const ufCol = isDark ? hexAlpha('#ffffff', 0.35) : hexAlpha(st.primary, 0.38);
+
+  // PET-Saúde
+  const letters1 = ['P','E','T','-','S','A','Ú','D','É'];
+  const sz1 = tw * 0.033;
+  const sp1 = sz1 * 1.55 + chaos * sz1 * 0.4; // spacing expands with chaos
+  const tot1 = letters1.length * sp1;
+  const s1 = tw / 2 - tot1 / 2 + sp1 / 2;
+  letters1.forEach((l, i) => {
+    const col = i < 3 ? petColor : saudeColor;
+    // at high chaos, each letter drifts independently
+    const drift = chaos > 0.5 ? (noise(i * 7.3 + t * 0.2, 90) - 0.5) * Math.pow(chaos - 0.5, 1.5) * th * 0.12 : 0;
+    drawLetter(tc, l, s1 + i * sp1, row1y + drift, sz1, irreg, activ, chaos, col, lw * 0.7);
+  });
+
+  // G10 — biggest, most dramatic
+  const sz2 = tw * 0.08;
+  const gp  = sz2 * 1.5 + chaos * sz2 * 0.5;
+  const gDrift = chaos > 0.5 ? (noise(t * 0.15, 91) - 0.5) * Math.pow(chaos - 0.5, 2) * th * 0.1 : 0;
+  const oDrift = chaos > 0.5 ? (noise(t * 0.18, 92) - 0.5) * Math.pow(chaos - 0.5, 2) * th * 0.1 : 0;
+  drawLetter(tc, 'G', tw/2 - gp,     row2y + gDrift, sz2, irreg, activ, chaos, g10G, lw * 1.4);
+  drawLetter(tc, '1', tw/2,           row2y,          sz2, irreg, activ, chaos, g101, lw * 1.4);
+  drawLetter(tc, '0', tw/2 + gp,      row2y + oDrift, sz2, irreg, activ, chaos, g100, lw * 1.4);
+
+  // UFPel
+  const letters3 = ['U','F','P','e','l'];
+  const sz3 = tw * 0.022;
+  const sp3 = sz3 * 1.5;
+  const tot3 = letters3.length * sp3;
+  const s3 = tw / 2 - tot3 / 2 + sp3 / 2;
+  letters3.forEach((l, i) => {
+    drawLetter(tc, l, s3 + i * sp3, row3y, sz3, irreg * 0.5, activ * 0.5, chaos * 0.5, ufCol, lw * 0.45);
+  });
+
+  drawDividers(tc, tw, th, st, irreg, activ, chaos);
+
+  // stage label
+  tc.font = `400 ${Math.round(tw * 0.015)}px "DM Mono", monospace`;
+  tc.fillStyle = hexAlpha(st.primary, 0.45);
+  tc.textAlign = 'right';
+  tc.fillText(st.label.toUpperCase(), tw - 14, 22);
+  tc.textAlign = 'left';
+}
+
+// ── chaos UI ────────────────────────────────────────────────────
+function updateChaosBar() {
+  const chaos = getChaos();
+  const fill = document.getElementById('chaosFill');
+  const label = document.getElementById('chaosLabel');
+  fill.style.width = (chaos * 100) + '%';
+
+  let color, text;
+  if (chaos < 0.2)      { color='#4aaa8a'; text='cicatrizada'; }
+  else if (chaos < 0.4) { color='#5BA4CF'; text='moderada'; }
+  else if (chaos < 0.6) { color='#E8A02A'; text='ativa'; }
+  else if (chaos < 0.8) { color='#E8522A'; text='inflamada'; }
+  else                  { color='#c0234a'; text='caótica'; }
+
+  fill.style.background = color;
+  label.textContent = text;
+  label.style.color = color;
+}
+
+// ── main loop ───────────────────────────────────────────────────
+function draw() {
+  const st = STAGES[stage];
+  renderScene(ctx, W, H, st, params.borda/100, params.exsudato/100, params.prof/100, params.atividade/100, '#F7F4F0');
+  t += 0.022;
+}
+
+function loop() { draw(); if (running) requestAnimationFrame(loop); }
+loop();
+
+// ── logo modal ──────────────────────────────────────────────────
+function getBgColor(k) {
+  return {claro:'#F7F4F0',escuro:'#0d1117',transparente:'transparent',laranja:'#E8522A',azul:'#1B3A6B'}[k];
+}
+
+function renderLogo() {
+  const LW = logoCanvas.width, LH = logoCanvas.height;
+  const st = STAGES[stage];
+  lctx.clearRect(0, 0, LW, LH);
+  const savedT = t;
+  t = frozenT;
+  renderScene(lctx, LW, LH, st, params.borda/100, params.exsudato/100, params.prof/100, params.atividade/100, getBgColor(logoBg));
+  t = savedT;
+}
+
+const overlay = document.getElementById('modalOverlay');
+document.getElementById('btnGenerate').addEventListener('click', () => {
+  frozenT = t;
+  overlay.classList.add('open');
+  renderLogo();
+});
+function closeModal() { overlay.classList.remove('open'); }
+document.getElementById('modalClose').addEventListener('click', closeModal);
+document.getElementById('modalCancel').addEventListener('click', closeModal);
+overlay.addEventListener('click', e => { if (e.target === overlay) closeModal(); });
+
+document.querySelectorAll('.bg-opt').forEach(btn => {
+  btn.addEventListener('click', () => {
+    document.querySelectorAll('.bg-opt').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    logoBg = btn.dataset.bg;
+    renderLogo();
+  });
+});
+
+document.querySelectorAll('.res-opt').forEach(btn => {
+  btn.addEventListener('click', () => {
+    document.querySelectorAll('.res-opt').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    logoScale = parseInt(btn.dataset.scale);
+  });
+});
+
+document.getElementById('btnDownload').addEventListener('click', () => {
+  const scale = logoScale;
+  const ew = 480 * scale, eh = 200 * scale;
+  const ec = document.createElement('canvas');
+  ec.width = ew; ec.height = eh;
+  const ectx = ec.getContext('2d');
+  ectx.scale(scale, scale);
+  const st = STAGES[stage];
+  const savedT = t; t = frozenT;
+  renderScene(ectx, 480, 200, st, params.borda/100, params.exsudato/100, params.prof/100, params.atividade/100, getBgColor(logoBg));
+  t = savedT;
+  const link = document.createElement('a');
+  const sl = st.label.toLowerCase().replace(/[ãâ]/g,'a').replace(/[çc]/g,'c').replace(/[óô]/g,'o').replace(/[éê]/g,'e');
+  link.download = `g10-${sl}-${scale}x.png`;
+  link.href = ec.toDataURL('image/png');
+  link.click();
+});
+
+// ── controls ────────────────────────────────────────────────────
+['borda','exsudato','prof','atividade'].forEach(id => {
+  document.getElementById(id).addEventListener('input', function() {
+    params[id] = parseInt(this.value);
+    document.getElementById(id+'Val').textContent = this.value;
+    updateStatus(); updateChaosBar();
+    if (!running) draw();
+  });
+});
+
+function updateStatus() {
+  document.getElementById('stStage').textContent = STAGES[stage].label;
+  document.getElementById('stB').textContent = params.borda;
+  document.getElementById('stE').textContent = params.exsudato;
+  document.getElementById('stP').textContent = params.prof;
+  document.getElementById('stA').textContent = params.atividade;
+  document.getElementById('footerStage').textContent = STAGES[stage].label;
+}
+
+document.getElementById('btnRandom').addEventListener('click', () => {
+  ['borda','exsudato','prof','atividade'].forEach(id => {
+    const v = Math.floor(Math.random() * 100);
+    params[id] = v;
+    document.getElementById(id).value = v;
+    document.getElementById(id+'Val').textContent = v;
+  });
+  updateStatus(); updateChaosBar();
+});
+
+document.getElementById('btnPause').addEventListener('click', function() {
+  running = !running;
+  this.textContent = running ? '⏸ Pausar' : '▶ Retomar';
+  if (running) loop();
+});
+
+document.querySelectorAll('.stage-tab').forEach(tab => {
+  tab.addEventListener('click', () => {
+    document.querySelectorAll('.stage-tab').forEach(t => t.classList.remove('active'));
+    tab.classList.add('active');
+    stage = tab.dataset.stage;
+    updateStatus();
+    if (!running) draw();
+  });
+});
+
+updateStatus(); updateChaosBar();
+</script>
+</body>
+</html>
