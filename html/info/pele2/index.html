@@ -261,6 +261,42 @@
       line-height: 1.4;
     }
 
+    /* par de imagens lado a lado com altura igualada */
+    .img-par {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+      align-items: stretch;
+    }
+    @media(max-width: 560px) {
+      .img-par { grid-template-columns: 1fr; }
+    }
+    .img-par-item {
+      margin: 0;
+      display: flex;
+      flex-direction: column;
+      border-radius: 10px;
+      overflow: hidden;
+      background: var(--cinza-claro);
+    }
+    .img-par-item img {
+      width: 100%;
+      flex: 1;
+      object-fit: contain;
+      display: block;
+      min-height: 180px;
+      background: var(--cinza-claro);
+    }
+    .img-par-item figcaption {
+      font-size: 0.72rem;
+      color: var(--cinza-texto);
+      padding: 7px 12px;
+      background: var(--cinza-claro);
+      border-top: 1px solid var(--cinza-medio);
+      font-style: italic;
+      line-height: 1.4;
+    }
+
     /* placeholder de imagem */
     .img-placeholder {
       margin: 0;
@@ -892,21 +928,26 @@
         </div>
       </div>
 
-      <figure class="img-figure" style="margin-top:28px;">
- <img src="img/abcde-diagrama1.png" alt="Figura 4 — Comparação visual dos critérios ABCDE: pinta normal versus lesão suspeita para cada parâmetro."
-          style="width:100%; display:block; object-fit:contain; min-height:160px; background:var(--cinza-claro);"
-          onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"><br>
-               <img src="img/abcde-diagrama2.png"
-          style="width:100%; display:block; object-fit:contain; max-height:200px; background:var(--cinza-claro);"
-          onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
-       
- <div class="placeholder-box" style="display:none; min-height:160px;">
-          <span class="placeholder-icon">🖼</span>
-          <p class="placeholder-label">img/abcde-diagrama.png</p>
-          <p class="placeholder-hint">Ilustração comparativa: 5 pares de pintas (normal × suspeita) representando cada letra do ABCDE, lado a lado. Horizontal, fundo claro.</p>
-        </div>
-        <figcaption>Figura 4 — Comparação visual dos critérios ABCDE: pinta normal (esq.) versus lesão suspeita (dir.) para cada parâmetro.</figcaption>
-      </figure>
+      <div class="img-par" style="margin-top:28px;">
+        <figure class="img-par-item">
+          <img src="img/abcde-diagrama1.png" alt="Diagrama ABCDE — parte 1"
+            onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+          <div class="placeholder-box" style="display:none;">
+            <span class="placeholder-icon">🖼</span>
+            <p class="placeholder-label">img/abcde-diagrama1.png</p>
+          </div>
+          <figcaption>Figura 4a — Critérios A, B e C do ABCDE</figcaption>
+        </figure>
+        <figure class="img-par-item">
+          <img src="img/abcde-diagrama2.png" alt="Diagrama ABCDE — parte 2"
+            onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+          <div class="placeholder-box" style="display:none;">
+            <span class="placeholder-icon">🖼</span>
+            <p class="placeholder-label">img/abcde-diagrama2.png</p>
+          </div>
+          <figcaption>Figura 4b — Critérios D e E do ABCDE</figcaption>
+        </figure>
+      </div>
 
       <p style="font-size:0.75rem;color:#aaa;margin-top:16px;font-style:italic;">
         [7] Ministério da Saúde / Sociedade Brasileira de Dermatologia. Diagnóstico precoce do melanoma. 
@@ -950,22 +991,26 @@
       </div>
     </div>
 
-    <figure class="img-figure" style="margin-top:24px;">
-      <img src="img/fototipo1.png" alt="Figura 5 — Classificação de Fitzpatrick: fototipos I a VI com gradação de risco para câncer de pele."
-        style="width:100%; display:block; object-fit:contain; min-height:170px; background:var(--cinza-claro);"
-        onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"><br>
-<img src="img/fototipo2.png" alt="Figura 5 — Classificação de Fitzpatrick: fototipos I a VI com gradação de risco para câncer de pele."
-        style="width:100%; display:block; object-fit:contain; max-height:300px; background:var(--cinza-claro);"
-        onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
-      <div class="placeholder-box" style="display:none; min-height:170px;">
-        <span class="placeholder-icon">🖼</span>
-        <p class="placeholder-label">img/fototipo.png</p><br>
-
-        <p class="placeholder-hint">Ilustração: escala de Fitzpatrick com 6 fototipos (I a VI), indicando gradação de cor da pele e nível de risco para câncer de pele. Layout horizontal.</p>
-      </div>
-      <figcaption>Figura 5 — Classificação de Fitzpatrick: fototipos I e II apresentam maior risco para câncer de pele por menor produção de melanina.</figcaption>
-    </figure>
-    <p style="font-size:0.75rem;color:#aaa;margin-top:8px;font-style:italic;">Classificação de Fitzpatrick. Referência: Hospital Sírio-Libanês, 2022.</p>
+    <div class="img-par" style="margin-top:24px;">
+      <figure class="img-par-item">
+        <img src="img/fototipo1.png" alt="Fototipos de Fitzpatrick I a III"
+          onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+        <div class="placeholder-box" style="display:none;">
+          <span class="placeholder-icon">🖼</span>
+          <p class="placeholder-label">img/fototipo1.png</p>
+        </div>
+        <figcaption>Figura 5a — Fototipos I a III: maior sensibilidade à radiação UV</figcaption>
+      </figure>
+      <figure class="img-par-item">
+        <img src="img/fototipo2.png" alt="Fototipos de Fitzpatrick IV a VI"
+          onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+        <div class="placeholder-box" style="display:none;">
+          <span class="placeholder-icon">🖼</span>
+          <p class="placeholder-label">img/fototipo2.png</p>
+        </div>
+        <figcaption>Figura 5b — Fototipos IV a VI: maior proteção natural, mas não isentos de risco</figcaption>
+      </figure>
+    </div>
   </section>
 
   <!-- ══ PREVENÇÃO ══ -->
