@@ -1,0 +1,1305 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Câncer de Pele no Brasil — Tipos, Sinais e Prevenção</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Source+Sans+3:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --laranja:        #E8650A;
+      --laranja-claro:  #FFF0E6;
+      --laranja-mid:    #F5A96B;
+      --bege:           #FDF8F2;
+      --cinza-claro:    #F4F4F2;
+      --cinza-medio:    #CCC8BF;
+      --cinza-texto:    #5A5248;
+      --preto-texto:    #1E1A17;
+      --branco:         #FFFFFF;
+      --verde:          #2E7D47;
+      --verde-claro:    #EAF5EE;
+      --azul:           #1B5E8A;
+      --azul-claro:     #E6F0F8;
+      --vermelho:       #B83230;
+      --vermelho-claro: #FDECEA;
+      --amarelo:        #B8860B;
+      --amarelo-claro:  #FDF8E1;
+    }
+
+    body {
+      font-family: 'Source Sans 3', sans-serif;
+      background: var(--bege);
+      color: var(--preto-texto);
+      line-height: 1.7;
+      font-size: 16px;
+    }
+
+    /* ═══ CABEÇALHO INSTITUCIONAL ═══ */
+    .institutional-header {
+      background: var(--branco);
+      border-bottom: 3px solid var(--laranja);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 14px 40px;
+    }
+    .header-identity {
+      font-family: 'Playfair Display', serif;
+      font-size: 0.85rem;
+      color: var(--cinza-texto);
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+    }
+    .header-logo img {
+      max-height: 52px;
+      display: block;
+    }
+
+    /* ═══ HERO ═══ */
+    .hero {
+      background: linear-gradient(135deg, #1E1208 0%, #3B2210 55%, #5A3318 100%);
+      color: var(--branco);
+      padding: 72px 40px 64px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse at 65% 35%, rgba(232,101,10,0.22) 0%, transparent 65%);
+      pointer-events: none;
+    }
+    .hero-tag {
+      display: inline-block;
+      background: var(--laranja);
+      color: var(--branco);
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      padding: 5px 16px;
+      border-radius: 20px;
+      margin-bottom: 22px;
+    }
+    .hero h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2rem, 5.5vw, 3.6rem);
+      font-weight: 900;
+      line-height: 1.1;
+      margin-bottom: 18px;
+      position: relative;
+    }
+    .hero h1 span { color: var(--laranja-mid); }
+    .hero-sub {
+      font-size: 1.05rem;
+      font-weight: 300;
+      color: rgba(255,255,255,0.78);
+      max-width: 620px;
+      margin: 0 auto 40px;
+      line-height: 1.75;
+      position: relative;
+    }
+
+    /* ─ Stats row ─ */
+    .stat-row {
+      display: flex;
+      justify-content: center;
+      gap: 28px;
+      flex-wrap: wrap;
+      position: relative;
+    }
+    .stat-box {
+      background: rgba(255,255,255,0.07);
+      border: 1px solid rgba(255,255,255,0.13);
+      border-radius: 14px;
+      padding: 20px 32px;
+      min-width: 160px;
+      text-align: center;
+    }
+    .stat-box .num {
+      display: block;
+      font-family: 'Playfair Display', serif;
+      font-size: 2.3rem;
+      font-weight: 900;
+      color: var(--laranja-mid);
+      line-height: 1;
+    }
+    .stat-box .label {
+      font-size: 0.72rem;
+      color: rgba(255,255,255,0.65);
+      margin-top: 5px;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      line-height: 1.4;
+    }
+    .stat-box .ref-stat {
+      font-size: 0.62rem;
+      color: rgba(255,255,255,0.38);
+      margin-top: 4px;
+      font-style: italic;
+    }
+
+    /* ═══ LAYOUT GERAL ═══ */
+    main { max-width: 980px; margin: 0 auto; padding: 0 24px 80px; }
+    section { margin-top: 64px; }
+
+    h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.85rem;
+      font-weight: 700;
+      color: var(--preto-texto);
+      margin-bottom: 8px;
+      line-height: 1.2;
+    }
+    .section-intro {
+      color: var(--cinza-texto);
+      font-size: 0.97rem;
+      margin-bottom: 32px;
+      max-width: 720px;
+    }
+    .divider {
+      width: 48px; height: 4px;
+      background: var(--laranja);
+      border-radius: 2px;
+      margin-bottom: 16px;
+    }
+
+    /* ═══ SEÇÃO: PANORAMA (gráfico de pizza simples SVG) ═══ */
+    .panorama-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 32px;
+      align-items: center;
+    }
+    @media(max-width:640px){ .panorama-grid{ grid-template-columns:1fr; } }
+
+    .pizza-wrap {
+      background: var(--branco);
+      border-radius: 16px;
+      padding: 28px;
+      box-shadow: 0 2px 16px rgba(0,0,0,0.06);
+      text-align: center;
+    }
+    .pizza-wrap svg { width: 100%; max-width: 240px; display: block; margin: 0 auto 16px; }
+    .pizza-legend { display: flex; flex-direction: column; gap: 8px; text-align: left; max-width: 220px; margin: 0 auto; }
+    .pizza-legend li { display: flex; align-items: center; gap: 8px; font-size: 0.82rem; color: var(--preto-texto); list-style: none; }
+    .dot { width: 12px; height: 12px; border-radius: 50%; flex-shrink: 0; }
+
+    .panorama-text h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.25rem;
+      margin-bottom: 12px;
+    }
+    .panorama-text p { font-size: 0.95rem; color: var(--cinza-texto); margin-bottom: 10px; line-height: 1.65; }
+    .panorama-text .ref { font-size: 0.78rem; color: #aaa; font-style: italic; }
+
+    /* ═══ CARDS DOS 3 TIPOS ═══ */
+    .tipos-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+    }
+    @media(max-width:760px){ .tipos-grid{ grid-template-columns:1fr; } }
+
+    .tipo-card {
+      background: var(--branco);
+      border-radius: 16px;
+      overflow: hidden;
+      box-shadow: 0 2px 18px rgba(0,0,0,0.07);
+      display: flex;
+      flex-direction: column;
+    }
+    .tipo-card-header {
+      padding: 22px 24px 18px;
+      position: relative;
+    }
+    .tipo-card-header .badge {
+      display: inline-block;
+      font-size: 0.65rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      padding: 3px 10px;
+      border-radius: 20px;
+      margin-bottom: 10px;
+    }
+    .tipo-card-header h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.35rem;
+      font-weight: 700;
+      line-height: 1.2;
+    }
+    .tipo-card-header .subtitulo {
+      font-size: 0.8rem;
+      color: var(--cinza-texto);
+      margin-top: 4px;
+    }
+    .tipo-card-header .pct-pill {
+      position: absolute;
+      top: 22px; right: 22px;
+      font-family: 'Playfair Display', serif;
+      font-size: 1.6rem;
+      font-weight: 900;
+      line-height: 1;
+    }
+
+    /* imagem real com fallback para placeholder */
+    .img-figure { margin: 0; }
+    .img-figure img { border-radius: 0; }
+    .img-figure figcaption {
+      font-size: 0.75rem;
+      color: var(--cinza-texto);
+      padding: 8px 16px;
+      background: var(--cinza-claro);
+      font-style: italic;
+      line-height: 1.4;
+    }
+
+    /* placeholder de imagem */
+    .img-placeholder {
+      margin: 0;
+    }
+    .placeholder-box {
+      border: 2px dashed var(--cinza-medio);
+      background: var(--cinza-claro);
+      padding: 28px 20px;
+      text-align: center;
+      color: var(--cinza-texto);
+      min-height: 200px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+    }
+    .placeholder-icon { font-size: 2rem; }
+    .placeholder-label {
+      font-family: monospace;
+      font-size: 0.78rem;
+      background: #e9ecef;
+      padding: 3px 8px;
+      border-radius: 4px;
+      color: #343a40;
+    }
+    .placeholder-hint {
+      font-size: 0.75rem;
+      color: #868e96;
+      font-style: italic;
+      max-width: 300px;
+      line-height: 1.4;
+    }
+    figcaption {
+      font-size: 0.75rem;
+      color: var(--cinza-texto);
+      padding: 8px 16px;
+      background: var(--cinza-claro);
+      font-style: italic;
+      line-height: 1.4;
+    }
+
+    .tipo-card-body {
+      padding: 20px 24px 24px;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+    .tipo-card-body p { font-size: 0.9rem; color: var(--cinza-texto); line-height: 1.65; }
+
+    .info-list { list-style: none; display: flex; flex-direction: column; gap: 7px; }
+    .info-list li {
+      display: flex; align-items: flex-start; gap: 8px;
+      font-size: 0.87rem; color: var(--preto-texto);
+    }
+    .info-list li::before {
+      content: '▸';
+      flex-shrink: 0;
+      margin-top: 1px;
+    }
+
+    .danger-badge {
+      display: inline-block;
+      font-size: 0.72rem;
+      font-weight: 700;
+      padding: 4px 12px;
+      border-radius: 20px;
+      margin-top: 4px;
+      align-self: flex-start;
+    }
+    .card-ref {
+      font-size: 0.7rem;
+      color: #bbb;
+      font-style: italic;
+      margin-top: auto;
+    }
+
+    /* cores por tipo */
+    .card-cbc .tipo-card-header { background: var(--azul-claro); border-top: 4px solid var(--azul); }
+    .card-cbc .badge { background: var(--azul); color: #fff; }
+    .card-cbc .pct-pill { color: var(--azul); }
+    .card-cbc .info-list li::before { color: var(--azul); }
+    .card-cbc .danger-badge { background: var(--azul-claro); color: var(--azul); border: 1px solid var(--azul); }
+
+    .card-cec .tipo-card-header { background: var(--amarelo-claro); border-top: 4px solid var(--amarelo); }
+    .card-cec .badge { background: var(--amarelo); color: #fff; }
+    .card-cec .pct-pill { color: var(--amarelo); }
+    .card-cec .info-list li::before { color: var(--amarelo); }
+    .card-cec .danger-badge { background: var(--amarelo-claro); color: var(--amarelo); border: 1px solid var(--amarelo); }
+
+    .card-mel .tipo-card-header { background: var(--vermelho-claro); border-top: 4px solid var(--vermelho); }
+    .card-mel .badge { background: var(--vermelho); color: #fff; }
+    .card-mel .pct-pill { color: var(--vermelho); }
+    .card-mel .info-list li::before { color: var(--vermelho); }
+    .card-mel .danger-badge { background: var(--vermelho-claro); color: var(--vermelho); border: 1px solid var(--vermelho); }
+
+    /* ═══ SEÇÃO: ABCDE ═══ */
+    .abcde-section {
+      background: var(--branco);
+      border-radius: 20px;
+      padding: 40px 40px 36px;
+      box-shadow: 0 2px 20px rgba(0,0,0,0.06);
+    }
+    .abcde-grid {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 16px;
+      margin-top: 28px;
+    }
+    @media(max-width:700px){ .abcde-grid{ grid-template-columns: repeat(2,1fr); } }
+
+    .abcde-card {
+      border-radius: 12px;
+      padding: 20px 16px;
+      text-align: center;
+      background: var(--bege);
+      border: 1.5px solid var(--cinza-medio);
+    }
+    .abcde-letter {
+      font-family: 'Playfair Display', serif;
+      font-size: 2.8rem;
+      font-weight: 900;
+      color: var(--vermelho);
+      line-height: 1;
+      margin-bottom: 8px;
+    }
+    .abcde-word {
+      font-weight: 700;
+      font-size: 0.88rem;
+      color: var(--preto-texto);
+      margin-bottom: 6px;
+    }
+    .abcde-desc {
+      font-size: 0.78rem;
+      color: var(--cinza-texto);
+      line-height: 1.45;
+    }
+
+    /* ═══ SEÇÃO: FATORES DE RISCO ═══ */
+    .risco-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+    }
+    @media(max-width:640px){ .risco-grid{ grid-template-columns:1fr; } }
+
+    .risco-card {
+      background: var(--branco);
+      border-radius: 14px;
+      padding: 24px 26px;
+      box-shadow: 0 2px 14px rgba(0,0,0,0.05);
+    }
+    .risco-card h4 {
+      font-weight: 700;
+      font-size: 1rem;
+      margin-bottom: 12px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .risco-card ul { list-style: none; display: flex; flex-direction: column; gap: 8px; }
+    .risco-card ul li {
+      font-size: 0.88rem;
+      color: var(--cinza-texto);
+      padding-left: 16px;
+      position: relative;
+      line-height: 1.5;
+    }
+    .risco-card ul li::before {
+      content: '•';
+      position: absolute;
+      left: 0;
+      color: var(--laranja);
+      font-size: 1.1rem;
+      line-height: 1.4;
+    }
+    .risco-ref { font-size: 0.7rem; color: #bbb; font-style: italic; margin-top: 12px; }
+
+    /* ═══ SEÇÃO: PREVENÇÃO ═══ */
+    .prev-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 20px;
+    }
+    @media(max-width:700px){ .prev-grid{ grid-template-columns: repeat(2,1fr); } }
+
+    .prev-card {
+      background: var(--branco);
+      border-radius: 14px;
+      padding: 24px 18px 20px;
+      text-align: center;
+      box-shadow: 0 2px 14px rgba(0,0,0,0.05);
+      border-top: 3px solid var(--laranja);
+    }
+    .prev-icon { font-size: 2rem; margin-bottom: 10px; }
+    .prev-card h4 { font-size: 0.9rem; font-weight: 700; margin-bottom: 8px; }
+    .prev-card p { font-size: 0.8rem; color: var(--cinza-texto); line-height: 1.5; }
+
+    /* ═══ CALLOUT ALERTA ═══ */
+    .callout {
+      background: var(--laranja-claro);
+      border-left: 5px solid var(--laranja);
+      border-radius: 0 12px 12px 0;
+      padding: 20px 28px;
+      margin-top: 36px;
+      font-size: 0.92rem;
+      color: var(--preto-texto);
+      line-height: 1.7;
+    }
+    .callout strong { color: var(--laranja); }
+
+    /* ═══ CARD DOCENTE ═══ */
+    .doctor-card {
+      background: var(--azul-claro);
+      border: 1px solid #a8c8e0;
+      border-radius: 14px;
+      overflow: hidden;
+      display: grid;
+      grid-template-columns: 160px 1fr;
+      margin-top: 36px;
+      box-shadow: 0 2px 16px rgba(0,0,0,0.07);
+    }
+    @media(max-width:600px){
+      .doctor-card { grid-template-columns: 1fr; }
+    }
+    .doctor-photo-col {
+      position: relative;
+      min-height: 200px;
+      overflow: hidden;
+      background: #0e3a5a;
+    }
+    .doctor-photo-col img {
+      width: 100%; height: 100%;
+      object-fit: cover; object-position: center top;
+      display: block; position: absolute; inset: 0;
+    }
+    .doctor-photo-placeholder {
+      position: absolute; inset: 0;
+      background: linear-gradient(160deg, #1B5E8A 0%, #0e3a5a 100%);
+      display: flex; flex-direction: column;
+      align-items: center; justify-content: center;
+      gap: 10px; font-size: 3rem;
+    }
+    .doctor-photo-label {
+      font-family: monospace; font-size: 8px;
+      color: rgba(255,255,255,0.4); text-align: center;
+      letter-spacing: 0.07em; text-transform: uppercase;
+      line-height: 1.4; padding: 0 8px;
+      position: absolute; bottom: 8px; left: 0; right: 0;
+    }
+    .doctor-body-col { padding: 24px 28px; }
+    .doctor-name {
+      font-family: 'Playfair Display', serif; font-size: 1.1rem;
+      font-weight: 700; color: var(--azul); margin-bottom: 4px;
+    }
+    .doctor-role {
+      font-size: 0.75rem; color: var(--cinza-texto); font-weight: 600;
+      text-transform: uppercase; letter-spacing: 0.06em;
+      margin-bottom: 12px; line-height: 1.5;
+    }
+    .doctor-text { font-size: 0.9rem; color: var(--preto-texto); line-height: 1.68; }
+
+    /* ═══ QUIZ ═══ */
+    .quiz-lista { display: flex; flex-direction: column; gap: 24px; }
+
+    .quiz-item {
+      background: var(--branco);
+      border-radius: 14px;
+      padding: 24px 28px;
+      box-shadow: 0 2px 14px rgba(0,0,0,0.06);
+      border-left: 4px solid var(--cinza-medio);
+    }
+    .quiz-num {
+      font-size: 0.7rem; font-weight: 700; letter-spacing: 0.1em;
+      text-transform: uppercase; color: var(--laranja); margin-bottom: 6px;
+    }
+    .quiz-enunciado {
+      font-size: 0.97rem; font-weight: 600; color: var(--preto-texto);
+      margin-bottom: 16px; line-height: 1.5;
+    }
+    .quiz-opcoes { display: flex; flex-direction: column; gap: 8px; }
+    .quiz-opcao {
+      display: flex; align-items: flex-start; gap: 10px;
+      padding: 10px 14px; border-radius: 8px;
+      border: 1.5px solid var(--cinza-medio); cursor: pointer;
+      font-size: 0.88rem; color: var(--preto-texto);
+      background: var(--bege); transition: background 0.2s, border-color 0.2s;
+      line-height: 1.45;
+    }
+    .quiz-opcao:hover:not(.disabled) { background: var(--laranja-claro); border-color: var(--laranja); }
+    .quiz-opcao.certa  { background: var(--verde-claro); border-color: var(--verde); font-weight: 600; }
+    .quiz-opcao.wrong  { background: var(--vermelho-claro); border-color: var(--vermelho); }
+    .quiz-opcao.disabled { cursor: default; }
+    .opcao-letra {
+      width: 22px; height: 22px; border-radius: 50%;
+      background: var(--cinza-medio); color: var(--branco);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 0.72rem; font-weight: 700; flex-shrink: 0; margin-top: 1px;
+    }
+    .quiz-opcao.certa .opcao-letra { background: var(--verde); }
+    .quiz-opcao.wrong .opcao-letra { background: var(--vermelho); }
+    .quiz-feedback {
+      margin-top: 14px; padding: 10px 14px; border-radius: 8px;
+      font-size: 0.84rem; line-height: 1.55; display: none;
+    }
+    .quiz-feedback.show { display: block; }
+    .quiz-feedback.ok  { background: var(--verde-claro); color: var(--verde); border: 1px solid #b2dfc0; }
+    .quiz-feedback.nok { background: var(--vermelho-claro); color: var(--vermelho); border: 1px solid #f5c0be; }
+
+    /* ═══ REFLEXÃO ═══ */
+    .reflexao-lista { display: flex; flex-direction: column; gap: 20px; }
+    .reflexao-card {
+      background: var(--branco); border-radius: 14px; padding: 28px 32px;
+      box-shadow: 0 2px 14px rgba(0,0,0,0.06);
+      display: flex; gap: 24px; align-items: flex-start;
+    }
+    @media(max-width:600px){ .reflexao-card{ flex-direction:column; gap:12px; } }
+    .reflexao-num {
+      font-family: 'Playfair Display', serif; font-size: 2.8rem; font-weight: 900;
+      color: var(--cinza-medio); line-height: 1; flex-shrink: 0; width: 48px; text-align: center;
+    }
+    .reflexao-corpo h4 { font-size: 1rem; font-weight: 700; color: var(--laranja); margin-bottom: 10px; }
+    .reflexao-corpo p  { font-size: 0.92rem; color: var(--cinza-texto); line-height: 1.7; }
+
+    /* ═══ REFERÊNCIAS ═══ */
+    .referencias {
+      background: var(--cinza-claro);
+      border-radius: 14px;
+      padding: 28px 32px;
+      margin-top: 64px;
+    }
+    .referencias h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.1rem;
+      margin-bottom: 16px;
+      color: var(--preto-texto);
+    }
+    .referencias ol {
+      padding-left: 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+    .referencias li {
+      font-size: 0.78rem;
+      color: var(--cinza-texto);
+      line-height: 1.55;
+    }
+    .referencias li a {
+      color: var(--azul);
+      text-decoration: none;
+    }
+    .referencias li a:hover { text-decoration: underline; }
+
+    /* ═══ RODAPÉ ═══ */
+    .institutional-footer {
+      background: var(--branco);
+      border-top: 1px solid var(--cinza-medio);
+      padding: 28px 40px;
+      text-align: center;
+      font-size: 0.78rem;
+      color: var(--cinza-texto);
+      line-height: 1.6;
+    }
+  </style>
+</head>
+<body>
+
+<!-- ══ CABEÇALHO INSTITUCIONAL ══ -->
+<header class="institutional-header">
+  <div class="header-identity">Amor à Pele · UFPel</div>
+  <div class="header-logo">
+    <img src="img/logo.png" alt="Logos Amor-à-Pele e PET-Saúde Digital – UFPel">
+  </div>
+</header>
+
+<!-- ══ HERO ══ -->
+<div class="hero">
+  <div class="hero-tag">Dezembro Laranja · Saúde da Pele</div>
+  <h1>Câncer de Pele<br><span>no Brasil</span></h1>
+  <p class="hero-sub">
+    O tipo de câncer mais frequente do país. Conhecer seus diferentes tipos,
+    sinais de alerta e formas de prevenção pode salvar vidas.
+  </p>
+  <div class="stat-row">
+    <div class="stat-box">
+      <span class="num">263 mil</span>
+      <span class="label">novos casos/ano<br>não melanoma</span>
+      <span class="ref-stat">[1]</span>
+    </div>
+    <div class="stat-box">
+      <span class="num">&gt;30%</span>
+      <span class="label">de todos os cânceres<br>diagnosticados no Brasil</span>
+      <span class="ref-stat">[1]</span>
+    </div>
+    <div class="stat-box">
+      <span class="num">95%</span>
+      <span class="label">dos casos têm<br>o sol como causa principal</span>
+      <span class="ref-stat">[2]</span>
+    </div>
+    <div class="stat-box">
+      <span class="num">≈100%</span>
+      <span class="label">de cura se diagnosticado<br>precocemente (CBC)</span>
+      <span class="ref-stat">[3]</span>
+    </div>
+  </div>
+</div>
+
+<main>
+
+  <!-- ══ PANORAMA ══ -->
+  <section>
+    <div class="divider"></div>
+    <h2>Por que o Brasil lidera?</h2>
+    <p class="section-intro">
+      A combinação de clima tropical, grande extensão territorial, cultura de exposição solar e 
+      população miscigenada — com diferentes fototipos — faz do Brasil um dos países com maior 
+      incidência de câncer de pele no mundo. <span style="font-size:0.78rem;color:#aaa;">[1,2]</span>
+    </p>
+
+    <div class="panorama-grid">
+      <!-- pizza SVG -->
+      <div class="pizza-wrap">
+        <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg" aria-label="Gráfico de distribuição dos tipos de câncer de pele">
+          <!-- CBC ~80% -->
+          <path d="M100,100 L100,10 A90,90 0 1,1 17.8,145 Z" fill="#1B5E8A"/>
+          <!-- CEC ~19% -->
+          <path d="M100,100 L17.8,145 A90,90 0 0,1 93.7,10.3 Z" fill="#B8860B"/>
+          <!-- Melanoma ~1% -->
+          <path d="M100,100 L93.7,10.3 A90,90 0 0,1 100,10 Z" fill="#B83230"/>
+          <circle cx="100" cy="100" r="50" fill="white"/>
+          <text x="100" y="95" text-anchor="middle" font-size="11" font-weight="700" fill="#1E1A17" font-family="Source Sans 3, sans-serif">Câncer</text>
+          <text x="100" y="110" text-anchor="middle" font-size="11" font-weight="700" fill="#1E1A17" font-family="Source Sans 3, sans-serif">de Pele</text>
+        </svg>
+        <ul class="pizza-legend">
+          <li><span class="dot" style="background:#1B5E8A"></span> Carcinoma Basocelular — ~80% <sup>[4]</sup></li>
+          <li><span class="dot" style="background:#B8860B"></span> Carcinoma Espinocelular — ~19% <sup>[4]</sup></li>
+          <li><span class="dot" style="background:#B83230"></span> Melanoma — ~1% <sup>[5]</sup></li>
+        </ul>
+      </div>
+
+      <div class="panorama-text">
+        <h3>O mais comum de todos os cânceres</h3>
+        <p>
+          Segundo a <strong>Estimativa 2026–2028 do INCA</strong>, o câncer de pele não melanoma é 
+          responsável por <strong>263 mil novos casos por ano</strong> — mais de <strong>30%</strong> 
+          de todos os diagnósticos oncológicos do país. <sup>[1]</sup>
+        </p>
+        <p>
+          Apesar da incidência altíssima, os tumores não melanoma têm <strong>baixa letalidade</strong> 
+          quando detectados cedo. Já o melanoma, com apenas 1% dos casos, concentra a maior 
+          mortalidade entre os cânceres de pele, devido à sua capacidade de causar metástases. <sup>[5]</sup>
+        </p>
+        <p>
+          As regiões <strong>Sul e Sudeste</strong> concentram a maior parte dos diagnósticos, 
+          refletindo maior IDH, maior acesso a diagnóstico e maior exposição acumulada ao sol em 
+          populações de pele clara. <sup>[1]</sup>
+        </p>
+        <p class="ref">Fonte: INCA, Estimativa 2026–2028: Incidência de Câncer no Brasil.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══ OS TRÊS TIPOS ══ -->
+  <section>
+    <div class="divider"></div>
+    <h2>Os três principais tipos</h2>
+    <p class="section-intro">
+      Cada tipo tem origem celular, comportamento clínico e prognóstico distintos. 
+      Reconhecê-los é o primeiro passo para o diagnóstico precoce. <sup style="font-size:0.78rem;color:#aaa;">[4,5]</sup>
+    </p>
+
+    <div class="tipos-grid">
+
+      <!-- ─ BASOCELULAR ─ -->
+      <div class="tipo-card card-cbc">
+        <div class="tipo-card-header">
+          <span class="badge">Não Melanoma</span>
+          <span class="pct-pill">~80%</span>
+          <h3>Carcinoma<br>Basocelular</h3>
+          <div class="subtitulo">CBC · O mais frequente de todos</div>
+        </div>
+
+        <figure class="img-figure">
+          <img src="img/cbc-lesao.png" alt="Figura 1 — Aspecto típico do CBC: nódulo perláceo com telangiectasias, comum na face e pescoço."
+            style="width:100%; display:block; object-fit:cover; min-height:200px; background:var(--cinza-claro);"
+            onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+          <div class="placeholder-box" style="display:none;">
+            <span class="placeholder-icon">🖼</span>
+            <p class="placeholder-label">img/cbc-lesao.png</p>
+            <p class="placeholder-hint">Ilustração: nódulo perláceo, levemente translúcido, em área fotoexposta (face/nariz). Bordas peroladas, possível ulceração central.</p>
+          </div>
+          <figcaption>Figura 1 — Aspecto típico do CBC: nódulo perláceo com telangiectasias, comum na face e pescoço.</figcaption>
+        </figure>
+
+        <div class="tipo-card-body">
+          <p>
+            Origina-se nas <strong>células basais</strong>, camada mais profunda da epiderme. 
+            Cresce lentamente e raramente se dissemina para outros órgãos 
+            (risco de metástase &lt;0,03%). <sup>[3]</sup>
+          </p>
+          <ul class="info-list">
+            <li>Aspecto perláceo, brilhante, pode fazer crosta e sangrar</li>
+            <li>Localização preferencial: rosto, orelhas, pescoço e couro cabeludo</li>
+            <li>Mais comum em pele clara (fototipos I e II de Fitzpatrick) <sup>[4]</sup></li>
+            <li>Fator principal: exposição solar crônica acumulada <sup>[2]</sup></li>
+          </ul>
+          <span class="danger-badge">⬤ Baixo risco de metástase</span>
+          <p class="card-ref">[3] Sociedade Brasileira de Dermatologia / Hospital Sírio-Libanês, 2026 · [4] SBD/INCA</p>
+        </div>
+      </div>
+
+      <!-- ─ ESPINOCELULAR ─ -->
+      <div class="tipo-card card-cec">
+        <div class="tipo-card-header">
+          <span class="badge">Não Melanoma</span>
+          <span class="pct-pill">~19%</span>
+          <h3>Carcinoma<br>Espinocelular</h3>
+          <div class="subtitulo">CEC · O segundo mais comum</div>
+        </div>
+
+        <figure class="img-figure">
+          <img src="img/cec-lesao.png" alt="Figura 2 — CEC: placa avermelhada endurecida com bordas irregulares, frequentemente em lábio, orelha ou dorso da mão."
+            style="width:100%; display:block; object-fit:cover; min-height:200px; background:var(--cinza-claro);"
+            onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+          <div class="placeholder-box" style="display:none;">
+            <span class="placeholder-icon">🖼</span>
+            <p class="placeholder-label">img/cec-lesao.png</p>
+            <p class="placeholder-hint">Ilustração: placa eritematosa, endurecida, com bordas irregulares e elevadas; úlcera que não cicatriza; superfície descamativa.</p>
+          </div>
+          <figcaption>Figura 2 — CEC: placa avermelhada endurecida com bordas irregulares, frequentemente em lábio, orelha ou dorso da mão.</figcaption>
+        </figure>
+
+        <div class="tipo-card-body">
+          <p>
+            Surge nas <strong>células escamosas</strong> (camada superficial da epiderme). 
+            É mais agressivo que o CBC e tem maior capacidade de se disseminar para 
+            linfonodos regionais. <sup>[4]</sup>
+          </p>
+          <ul class="info-list">
+            <li>Lesão avermelhada, endurecida, com bordas elevadas e irregulares</li>
+            <li>Ferida que não cicatriza; pode surgir em queratose actínica pré-existente</li>
+            <li>Mais comum em homens; frequente em lábios, orelhas e dorso das mãos <sup>[4]</sup></li>
+            <li>Também pode ocorrer em genitais e mucosas <sup>[6]</sup></li>
+          </ul>
+          <span class="danger-badge">⬤ Risco moderado de metástase regional</span>
+          <p class="card-ref">[4] Felippe RMS et al., Rev Eletr Acervo Med., 2023 · [6] CUF Saúde</p>
+        </div>
+      </div>
+
+      <!-- ─ MELANOMA ─ -->
+      <div class="tipo-card card-mel">
+        <div class="tipo-card-header">
+          <span class="badge">Melanoma</span>
+          <span class="pct-pill">~1%</span>
+          <h3>Melanoma<br>Maligno</h3>
+          <div class="subtitulo">O mais perigoso — e tratável se precoce</div>
+        </div>
+
+        <figure class="img-figure">
+          <img src="img/melanoma-lesao.png" alt="Figura 3 — Melanoma: lesão assimétrica, com bordas irregulares e variação de cor — sinais do ABCDE."
+            style="width:100%; display:block; object-fit:cover; min-height:200px; background:var(--cinza-claro);"
+            onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+          <div class="placeholder-box" style="display:none;">
+            <span class="placeholder-icon">🖼</span>
+            <p class="placeholder-label">img/melanoma-lesao.png</p>
+            <p class="placeholder-hint">Ilustração: pinta assimétrica com bordas serrilhadas, múltiplas cores (preto, marrom, azul, vermelho), diâmetro > 6 mm. Aplicar critérios ABCDE visualmente.</p>
+          </div>
+          <figcaption>Figura 3 — Melanoma: lesão assimétrica, com bordas irregulares e variação de cor — sinais do ABCDE.</figcaption>
+        </figure>
+
+        <div class="tipo-card-body">
+          <p>
+            Origina-se nos <strong>melanócitos</strong>, células que produzem melanina. 
+            Apesar de representar apenas ~1% dos casos, é responsável pela maior parte das 
+            mortes por câncer de pele, devido à alta capacidade de metástase. <sup>[5]</sup>
+          </p>
+          <ul class="info-list">
+            <li>Pinta ou mancha enegrecida com bordas irregulares e variação de cor</li>
+            <li>Homens: mais frequente no tronco; mulheres: membros inferiores <sup>[5]</sup></li>
+            <li>Associado a exposição solar intensa e intermitente (queimaduras) <sup>[2]</sup></li>
+            <li>Pode surgir em áreas sem exposição solar (palmas, plantas, unhas) <sup>[5]</sup></li>
+          </ul>
+          <span class="danger-badge">⬤ Alto risco de metástase — diagnóstico precoce é vital</span>
+          <p class="card-ref">[5] Grupo Brasileiro de Melanoma / Ministério da Saúde · [2] IOP Oncologia, 2025</p>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ══ ABCDE ══ -->
+  <section>
+    <div class="abcde-section">
+      <div class="divider"></div>
+      <h2>A Regra do ABCDE</h2>
+      <p class="section-intro">
+        Método validado pela <strong>Sociedade Brasileira de Dermatologia</strong> e pela 
+        <strong>American Cancer Society</strong> para identificar lesões suspeitas de melanoma 
+        no autoexame de pele. <sup>[7]</sup> Não substitui avaliação médica.
+      </p>
+
+      <div class="abcde-grid">
+        <div class="abcde-card">
+          <div class="abcde-letter">A</div>
+          <div class="abcde-word">Assimetria</div>
+          <div class="abcde-desc">Uma metade da pinta não corresponde à outra. Lesões benignas costumam ser simétricas.</div>
+        </div>
+        <div class="abcde-card">
+          <div class="abcde-letter">B</div>
+          <div class="abcde-word">Bordas</div>
+          <div class="abcde-desc">Contornos irregulares, serrilhados ou mal definidos. Melanomas têm bordas borradas ou entalhadas.</div>
+        </div>
+        <div class="abcde-card">
+          <div class="abcde-letter">C</div>
+          <div class="abcde-word">Cor</div>
+          <div class="abcde-desc">Variação em tons de marrom, preto, azul, vermelho ou branco na mesma lesão.</div>
+        </div>
+        <div class="abcde-card">
+          <div class="abcde-letter">D</div>
+          <div class="abcde-word">Diâmetro</div>
+          <div class="abcde-desc">Lesões maiores que 6 mm (tamanho de uma borracha de lápis) merecem avaliação imediata.</div>
+        </div>
+        <div class="abcde-card">
+          <div class="abcde-letter">E</div>
+          <div class="abcde-word">Evolução</div>
+          <div class="abcde-desc">Qualquer mudança perceptível em tamanho, forma, cor ou textura nas últimas semanas ou meses.</div>
+        </div>
+      </div>
+
+      <figure class="img-figure" style="margin-top:28px;">
+        <img src="img/abcde-diagrama.png" alt="Figura 4 — Comparação visual dos critérios ABCDE: pinta normal versus lesão suspeita para cada parâmetro."
+          style="width:100%; display:block; object-fit:contain; min-height:160px; background:var(--cinza-claro);"
+          onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+        <div class="placeholder-box" style="display:none; min-height:160px;">
+          <span class="placeholder-icon">🖼</span>
+          <p class="placeholder-label">img/abcde-diagrama.png</p>
+          <p class="placeholder-hint">Ilustração comparativa: 5 pares de pintas (normal × suspeita) representando cada letra do ABCDE, lado a lado. Horizontal, fundo claro.</p>
+        </div>
+        <figcaption>Figura 4 — Comparação visual dos critérios ABCDE: pinta normal (esq.) versus lesão suspeita (dir.) para cada parâmetro.</figcaption>
+      </figure>
+
+      <p style="font-size:0.75rem;color:#aaa;margin-top:16px;font-style:italic;">
+        [7] Ministério da Saúde / Sociedade Brasileira de Dermatologia. Diagnóstico precoce do melanoma. 
+        Disponível em: <a href="https://www.gov.br/saude/pt-br/assuntos/saude-de-a-a-z/c/cancer-de-pele/diagnostico-precoce" 
+        style="color:#aaa;" target="_blank">gov.br/saude</a>. Acesso em: maio 2026.
+      </p>
+    </div>
+  </section>
+
+  <!-- ══ FATORES DE RISCO ══ -->
+  <section>
+    <div class="divider"></div>
+    <h2>Quem tem maior risco?</h2>
+    <p class="section-intro">
+      O principal fator de risco é a exposição à radiação ultravioleta (UV), mas outros 
+      elementos ampliam a vulnerabilidade. <sup style="font-size:0.78rem;color:#aaa;">[2,8]</sup>
+    </p>
+
+    <div class="risco-grid">
+      <div class="risco-card">
+        <h4>☀️ Exposição Solar</h4>
+        <ul>
+          <li>Exposição cumulativa ao longo da vida → principal causa dos carcinomas (CBC e CEC) <sup>[2]</sup></li>
+          <li>Exposição intensa e intermitente (queimaduras) → associada ao melanoma <sup>[8]</sup></li>
+          <li>Queimaduras na infância e adolescência aumentam o risco de melanoma no adulto <sup>[8]</sup></li>
+          <li>Bronzeamento artificial: risco aumentado de melanoma, especialmente em mulheres jovens <sup>[8]</sup></li>
+        </ul>
+        <p class="risco-ref">[2] IOP Oncologia, 2025 · [8] Vencer o Câncer, 2025</p>
+      </div>
+
+      <div class="risco-card">
+        <h4>🧬 Características Individuais</h4>
+        <ul>
+          <li>Fototipos I e II (pele clara, olhos claros, cabelos ruivos ou loiros) — maior sensibilidade ao UV <sup>[4]</sup></li>
+          <li>Peles morenas e negras têm proteção maior, mas não são imunes ao câncer de pele <sup>[9]</sup></li>
+          <li>Histórico familiar de câncer de pele ou melanoma <sup>[9]</sup></li>
+          <li>Grande número de nevos (pintas); doenças de pele pré-existentes (queratose actínica) <sup>[7]</sup></li>
+          <li>Imunossupressão (transplantados, pacientes com HIV) <sup>[6]</sup></li>
+        </ul>
+        <p class="risco-ref">[4] Felippe RMS et al., 2023 · [9] Hospital Sírio-Libanês, 2022</p>
+      </div>
+    </div>
+
+    <figure class="img-figure" style="margin-top:24px;">
+      <img src="img/fototipos.png" alt="Figura 5 — Classificação de Fitzpatrick: fototipos I a VI com gradação de risco para câncer de pele."
+        style="width:100%; display:block; object-fit:contain; min-height:170px; background:var(--cinza-claro);"
+        onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+      <div class="placeholder-box" style="display:none; min-height:170px;">
+        <span class="placeholder-icon">🖼</span>
+        <p class="placeholder-label">img/fototipos.png</p>
+        <p class="placeholder-hint">Ilustração: escala de Fitzpatrick com 6 fototipos (I a VI), indicando gradação de cor da pele e nível de risco para câncer de pele. Layout horizontal.</p>
+      </div>
+      <figcaption>Figura 5 — Classificação de Fitzpatrick: fototipos I e II apresentam maior risco para câncer de pele por menor produção de melanina.</figcaption>
+    </figure>
+    <p style="font-size:0.75rem;color:#aaa;margin-top:8px;font-style:italic;">Classificação de Fitzpatrick. Referência: Hospital Sírio-Libanês, 2022.</p>
+  </section>
+
+  <!-- ══ PREVENÇÃO ══ -->
+  <section>
+    <div class="divider"></div>
+    <h2>Como prevenir</h2>
+    <p class="section-intro">
+      A maioria dos cânceres de pele é evitável com hábitos simples de fotoproteção. 
+      A prevenção começa na infância. <sup style="font-size:0.78rem;color:#aaa;">[9,10]</sup>
+    </p>
+
+    <div class="prev-grid">
+      <div class="prev-card">
+        <div class="prev-icon">🧴</div>
+        <h4>Protetor Solar</h4>
+        <p>FPS ≥ 30 diariamente. Reaplicar a cada 2h em exposição prolongada. Fototipos I e II: FPS ≥ 50. <sup>[9]</sup></p>
+      </div>
+      <div class="prev-card">
+        <div class="prev-icon">👒</div>
+        <h4>Barreiras Físicas</h4>
+        <p>Chapéu de aba larga, óculos UV, camiseta de malha. Complementam o protetor — não o substituem. <sup>[9]</sup></p>
+      </div>
+      <div class="prev-card">
+        <div class="prev-icon">🕐</div>
+        <h4>Evitar Horário de Pico</h4>
+        <p>Evitar sol entre 10h e 16h, quando a radiação UV é mais intensa. Fundamental em crianças. <sup>[10]</sup></p>
+      </div>
+      <div class="prev-card">
+        <div class="prev-icon">🔍</div>
+        <h4>Autoexame Mensal</h4>
+        <p>Inspecionar toda a pele mensalmente. Consultar dermatologista ao menos uma vez por ano. <sup>[7]</sup></p>
+      </div>
+    </div>
+
+    <div class="callout">
+      <strong>⚠️ Atenção:</strong> qualquer lesão que <strong>não cicatriza em mais de 4 semanas</strong>, 
+      que sangra espontaneamente, cresce rapidamente ou apresenta os critérios do ABCDE deve ser 
+      avaliada por um médico. O diagnóstico precoce é o fator mais determinante para a cura. <sup>[7]</sup>
+    </div>
+  </section>
+
+  <!-- ══ CARD PROFA. ADRIZE ══ -->
+  <div class="doctor-card">
+    <div class="doctor-photo-col">
+      <img src="img/adrize.png" alt="Profa. Adrize Rutz Porto"
+           onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+      <div class="doctor-photo-placeholder" style="display:none;">👩‍🏫</div>
+      <span class="doctor-photo-label">img/adrize.png</span>
+    </div>
+    <div class="doctor-body-col">
+      <div class="doctor-name">Profa. Dra. Adrize Rutz Porto</div>
+      <div class="doctor-role">Enfermeira · Professora Associada · FEO — UFPel · Coordenadora Amor-à-Pele &amp; PET-Saúde Digital G10</div>
+      <p class="doctor-text">
+        Doutora em Enfermagem pela UFRGS (2016), Adrize é a coordenadora do projeto de extensão <strong>Amor-à-Pele</strong> e lidera o <strong>Núcleo de Estudos em Práticas de Saúde e Enfermagem (NEPEn)</strong> da UFPel, com foco em lesões cutâneas crônicas, práticas integrativas e populações vulneráveis. No PET-Saúde Digital, coordena o telemonitoramento para pessoas com feridas crônicas — iniciativa em que reconhecer quando uma ferida que não cicatriza transcende o diagnóstico habitual é a essência do cuidado qualificado. Editora da <em>Journal of Nursing and Health</em> (JONAH) e colaboradora do grupo Sankofa de pesquisa em saúde das mulheres negras.
+      </p>
+      <p style="font-size:0.78rem; color:var(--cinza-texto); margin-top:10px; margin-bottom:0;">
+        Lattes: <a href="http://lattes.cnpq.br/9425000336640831" target="_blank" style="color:var(--azul);">lattes.cnpq.br/9425000336640831</a>
+        &nbsp;·&nbsp;
+        ORCID: <a href="https://orcid.org/0000-0002-5616-1626" target="_blank" style="color:var(--azul);">0000-0002-5616-1626</a>
+      </p>
+    </div>
+  </div>
+
+  <!-- ══ QUESTÕES DE MÚLTIPLA ESCOLHA ══ -->
+  <section id="quiz">
+    <div class="divider"></div>
+    <h2>Questões de Múltipla Escolha</h2>
+    <p class="section-intro">
+      Teste seus conhecimentos sobre os tipos de câncer de pele, fatores de risco e prevenção.
+      Clique em uma alternativa para ver o gabarito.
+    </p>
+
+    <div class="quiz-lista" id="quizContainer"></div>
+  </section>
+
+  <!-- ══ QUESTÕES PARA REFLETIR ══ -->
+  <section id="reflexao">
+    <div class="divider"></div>
+    <h2>Questões para Refletir</h2>
+    <p class="section-intro">
+      Não há resposta única — estas perguntas convidam à análise crítica e à integração do 
+      conhecimento com a prática clínica e o contexto social.
+    </p>
+
+    <div class="reflexao-lista">
+
+      <div class="reflexao-card">
+        <div class="reflexao-num">01</div>
+        <div class="reflexao-corpo">
+          <h4>Detecção precoce como determinante de cura</h4>
+          <p>
+            O carcinoma basocelular, apesar de ser o câncer mais comum no Brasil, tem taxa de 
+            cura próxima a 100% quando diagnosticado precocemente. <sup>[3]</sup> Por que, então, 
+            muitos casos ainda chegam ao sistema de saúde em estágios avançados? Quais barreiras 
+            — socioeconômicas, geográficas ou culturais — dificultam o acesso ao diagnóstico 
+            precoce nas diferentes regiões do Brasil?
+          </p>
+        </div>
+      </div>
+
+      <div class="reflexao-card">
+        <div class="reflexao-num">02</div>
+        <div class="reflexao-corpo">
+          <h4>O paradoxo do melanoma: raro, mas mais letal</h4>
+          <p>
+            O melanoma representa apenas ~1% dos casos de câncer de pele, mas é responsável 
+            pela maior parte das mortes por esse grupo de doenças. <sup>[5]</sup> O que esse dado 
+            revela sobre a relação entre incidência e mortalidade em oncologia? Como você explicaria 
+            essa aparente contradição a um paciente que minimiza o risco por "ser raro"?
+          </p>
+        </div>
+      </div>
+
+      <div class="reflexao-card">
+        <div class="reflexao-num">03</div>
+        <div class="reflexao-corpo">
+          <h4>Pele negra, risco invisibilizado</h4>
+          <p>
+            Pessoas de pele negra ou morena têm maior proteção natural ao UV devido à melanina, 
+            mas não são imunes ao câncer de pele. <sup>[9]</sup> Além disso, nessa população o 
+            diagnóstico tende a ser mais tardio, em parte pela falsa sensação de segurança — tanto 
+            do paciente quanto do profissional de saúde. Como combater esse viés na prática clínica 
+            e nas estratégias de comunicação em saúde?
+          </p>
+        </div>
+      </div>
+
+      <div class="reflexao-card">
+        <div class="reflexao-num">04</div>
+        <div class="reflexao-corpo">
+          <h4>Prevenção começa na infância — mas chega tarde?</h4>
+          <p>
+            A exposição solar acumulada ao longo da vida — especialmente queimaduras na infância 
+            e adolescência — é um dos principais determinantes do câncer de pele no adulto. <sup>[8]</sup>
+            Considerando que o Brasil é um país tropical com forte cultura de exposição solar, 
+            como o sistema de saúde, a escola e as famílias poderiam atuar de forma integrada 
+            para construir hábitos protetores desde a infância?
+          </p>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ══ REFERÊNCIAS ══ -->
+  <div class="referencias">
+    <h3>📚 Referências</h3>
+    <ol>
+      <li>
+        INSTITUTO NACIONAL DE CÂNCER (Brasil). <em>INCA estima 781 mil novos casos de câncer por ano no Brasil entre 2026 e 2028.</em>
+        Rio de Janeiro: INCA, 2026. Disponível em:
+        <a href="https://www.gov.br/inca/pt-br/assuntos/noticias/2026/inca-estima-781-mil-novos-casos-de-cancer-por-ano-no-brasil-entre-2026-e-2028" target="_blank">https://www.gov.br/inca/[...]</a>.
+      </li>
+      <li>
+        IOP ONCOLOGIA. <em>95% dos casos de câncer de pele são causados pelo sol.</em> 2025. Disponível em:
+        <a href="https://iop.com.br/noticias/95-dos-casos-de-cancer-de-pele-sao-causados-pelo-sol/" target="_blank">https://iop.com.br/noticias/[...]</a>.
+      </li>
+      <li>
+        ESTADO DE MINAS. <em>Lula retira câncer de pele carcinoma basocelular no couro cabeludo; entenda.</em>
+        23 abr. 2026. Disponível em:
+        <a href="https://www.em.com.br/bem-viver/2026/04/7405474-lula-retira-cancer-de-pele-carcinoma-basocelular-no-couro-cabeludo-entenda.html" target="_blank">https://www.em.com.br/[...]</a>.
+      </li>
+      <li>
+        FELIPPE, R. M. S. et al. Avaliação global do carcinoma basocelular e espinocelular.
+        <em>Revista Eletrônica Acervo Médico</em>, v. 23, n. 1, e11549, 2023. Disponível em:
+        <a href="https://acervomais.com.br/index.php/medico/article/download/11549/6998/" target="_blank">https://acervomais.com.br/[...]</a>.
+      </li>
+      <li>
+        GRUPO BRASILEIRO DE MELANOMA. <em>O melanoma.</em> Disponível em:
+        <a href="https://gbm.org.br/o-melanoma/" target="_blank">https://gbm.org.br/o-melanoma/</a>.
+      </li>
+      <li>
+        CUF. <em>Carcinoma basocelular e espinocelular: do diagnóstico ao tratamento.</em> Disponível em:
+        <a href="https://www.cuf.pt/saude-a-z/carcinoma-basocelular-e-espinocelular" target="_blank">https://www.cuf.pt/[...]</a>.
+      </li>
+      <li>
+        BRASIL. Ministério da Saúde. <em>Diagnóstico precoce do câncer de pele.</em> Disponível em:
+        <a href="https://www.gov.br/saude/pt-br/assuntos/saude-de-a-a-z/c/cancer-de-pele/diagnostico-precoce" target="_blank">https://www.gov.br/saude/[...]</a>.
+      </li>
+      <li>
+        VENCER O CÂNCER. <em>Fatores de risco do câncer de pele: melanoma e não melanoma.</em> 2025. Disponível em:
+        <a href="https://vencerocancer.org.br/cancer/fatores-de-risco-do-cancer-de-pele-melanoma-e-nao-melanoma/" target="_blank">https://vencerocancer.org.br/[...]</a>.
+      </li>
+      <li>
+        HOSPITAL SÍRIO-LIBANÊS. <em>Sol e câncer de pele: mitos e verdades.</em> 2022. Disponível em:
+        <a href="https://hospitalsiriolibanes.org.br/blog/oncologia/sol-e-cancer-de-pele-mitos-e-verdades" target="_blank">https://hospitalsiriolibanes.org.br/[...]</a>.
+      </li>
+      <li>
+        SKIN CANCER FOUNDATION. <em>Sinais e imagens de alerta de melanoma.</em> Disponível em:
+        <a href="https://www.skincancer.org/pt/skin-cancer-information/melanoma/melanoma-warning-signs-and-images/" target="_blank">https://www.skincancer.org/[...]</a>.
+      </li>
+    </ol>
+  </div>
+
+</main>
+
+<!-- ══ RODAPÉ ══ -->
+<footer class="institutional-footer">
+  <p>
+    Infográfico elaborado pelos projetos <strong>Amor à Pele</strong> e <strong>PET-Saúde Digital G10 Feridas Crônicas</strong>, UFPel, em Maio de 2026.<br>
+    As informações aqui contidas têm caráter educativo e não substituem avaliação médica profissional.
+  </p>
+</footer>
+
+<script>
+  const quizData = [
+    {
+      n: "Questão 1",
+      enunciado: "Qual é o tipo de câncer de pele mais frequente no Brasil, correspondendo a aproximadamente 80% dos casos?",
+      opcoes: [
+        "Melanoma maligno",
+        "Carcinoma espinocelular (CEC)",
+        "Carcinoma basocelular (CBC)",
+        "Linfoma cutâneo"
+      ],
+      correta: 2,
+      feedback: "Correto! O carcinoma basocelular representa cerca de 70–80% de todos os casos de câncer de pele. Apesar de ser o mais frequente, é também o menos agressivo, com baixíssimo risco de metástase quando tratado precocemente. [Ref. 4]"
+    },
+    {
+      n: "Questão 2",
+      enunciado: "Segundo o INCA (Estimativa 2026–2028), quantos novos casos de câncer de pele não melanoma são esperados por ano no Brasil?",
+      opcoes: [
+        "Aproximadamente 50 mil casos",
+        "Aproximadamente 120 mil casos",
+        "Aproximadamente 263 mil casos",
+        "Aproximadamente 500 mil casos"
+      ],
+      correta: 2,
+      feedback: "Correto! A Estimativa 2026–2028 do INCA projeta 263 mil novos casos de câncer de pele não melanoma por ano — correspondendo a mais de 30% de todos os diagnósticos oncológicos do país. [Ref. 1]"
+    },
+    {
+      n: "Questão 3",
+      enunciado: "A letra 'C' da Regra do ABCDE, utilizada na identificação do melanoma, refere-se a:",
+      opcoes: [
+        "Crescimento rápido da lesão",
+        "Cor heterogênea, com variações de marrom, preto, azul, vermelho ou branco",
+        "Crosta persistente que não cicatriza",
+        "Circunferência irregular da pinta"
+      ],
+      correta: 1,
+      feedback: "Correto! O 'C' do ABCDE refere-se à variação de cor dentro da mesma lesão — tons de marrom, preto, azul, vermelho ou branco. Lesões benignas geralmente têm coloração uniforme. [Ref. 7]"
+    },
+    {
+      n: "Questão 4",
+      enunciado: "Qual tipo de câncer de pele, apesar de representar apenas ~1% dos casos, é responsável pela maior parte das mortes por esse grupo de doenças?",
+      opcoes: [
+        "Carcinoma basocelular",
+        "Carcinoma espinocelular",
+        "Melanoma maligno",
+        "Carcinoma de células de Merkel"
+      ],
+      correta: 2,
+      feedback: "Correto! O melanoma maligno é o mais perigoso entre os cânceres de pele devido à sua elevada capacidade de causar metástases para linfonodos e órgãos distantes. O diagnóstico precoce é fundamental para a cura. [Ref. 5]"
+    },
+    {
+      n: "Questão 5",
+      enunciado: "Qual é a principal causa do câncer de pele não melanoma (CBC e CEC)?",
+      opcoes: [
+        "Exposição a agentes químicos industriais",
+        "Predisposição genética hereditária exclusiva",
+        "Exposição crônica e acumulada à radiação ultravioleta solar",
+        "Infecções virais crônicas, como o HPV"
+      ],
+      correta: 2,
+      feedback: "Correto! A exposição cumulativa à radiação UV ao longo da vida é o principal fator de risco para o CBC e o CEC. Já o melanoma está mais associado a episódios de exposição intensa e intermitente, com queimaduras. [Ref. 2]"
+    },
+    {
+      n: "Questão 6",
+      enunciado: "Em relação ao carcinoma espinocelular (CEC), qual das afirmativas abaixo é correta?",
+      opcoes: [
+        "Origina-se nos melanócitos e tem alto risco de metástase",
+        "É o tipo mais comum de câncer de pele, representando 80% dos casos",
+        "Pode surgir a partir de lesões pré-existentes como a queratose actínica",
+        "Ocorre exclusivamente em áreas não expostas ao sol"
+      ],
+      correta: 2,
+      feedback: "Correto! O CEC frequentemente se desenvolve sobre lesões precursoras, como a queratose actínica. É mais agressivo que o CBC e pode, em casos não tratados, disseminar-se para linfonodos regionais. [Ref. 4, 6]"
+    },
+    {
+      n: "Questão 7",
+      enunciado: "Qual fototipo da classificação de Fitzpatrick apresenta MAIOR risco para câncer de pele?",
+      opcoes: [
+        "Fototipo V (pele morena escura, raramente se queima)",
+        "Fototipo VI (pele negra, nunca se queima)",
+        "Fototipo III (pele morena clara, às vezes se queima)",
+        "Fototipo I (pele muito clara, sempre se queima, nunca bronzeia)"
+      ],
+      correta: 3,
+      feedback: "Correto! Os fototipos I e II de Fitzpatrick têm menor quantidade de melanina e maior sensibilidade à radiação UV, conferindo o maior risco para o desenvolvimento de cânceres de pele. Isso não significa que outros fototipos estejam isentos de risco. [Ref. 4, 9]"
+    }
+  ];
+
+  const letras = ['A','B','C','D'];
+
+  function renderQuiz() {
+    const container = document.getElementById('quizContainer');
+    quizData.forEach((q, qi) => {
+      const item = document.createElement('div');
+      item.className = 'quiz-item';
+      item.innerHTML = `
+        <div class="quiz-num">${q.n}</div>
+        <div class="quiz-enunciado">${q.enunciado}</div>
+        <div class="quiz-opcoes" id="opcoes-${qi}">
+          ${q.opcoes.map((op, oi) => `
+            <div class="quiz-opcao" data-qi="${qi}" data-oi="${oi}">
+              <span class="opcao-letra">${letras[oi]}</span>
+              <span>${op}</span>
+            </div>
+          `).join('')}
+        </div>
+        <div class="quiz-feedback" id="feedback-${qi}"></div>
+      `;
+      container.appendChild(item);
+    });
+
+    document.querySelectorAll('.quiz-opcao').forEach(el => {
+      el.addEventListener('click', function() {
+        const qi = parseInt(this.dataset.qi);
+        const oi = parseInt(this.dataset.oi);
+        const grupo = document.querySelectorAll(`[data-qi="${qi}"]`);
+        if (grupo[0].classList.contains('disabled')) return;
+
+        grupo.forEach((op, idx) => {
+          op.classList.add('disabled');
+          if (idx === quizData[qi].correta) op.classList.add('certa');
+          else if (idx === oi) op.classList.add('wrong');
+        });
+
+        const fb = document.getElementById(`feedback-${qi}`);
+        if (oi === quizData[qi].correta) {
+          fb.className = 'quiz-feedback show ok';
+          fb.innerHTML = '✅ ' + quizData[qi].feedback;
+        } else {
+          fb.className = 'quiz-feedback show nok';
+          fb.innerHTML = '❌ Resposta incorreta. ' + quizData[qi].feedback;
+        }
+      });
+    });
+  }
+
+  renderQuiz();
+</script>
+
+</body>
+</html>
