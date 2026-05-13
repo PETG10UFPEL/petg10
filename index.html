@@ -270,7 +270,7 @@ img {
 <div class="card span-2">
   <h2>Organização presencial 2026-1</h2>
 
-  <style>
+<style>
     .tabela-turnos-wrapper {
       overflow-x: auto;
       -webkit-overflow-scrolling: touch;
@@ -414,10 +414,10 @@ img {
             </td>
 
             <td>
-              <div class="bloco">
-                <span class="tag">UBS Sansca - VD</span><br>
+               <div class="bloco">
+           <!--  <span class="tag">UBS Sansca - VD</span><br>
                 <strong>Prec. Gabriela</strong><br>
-                Cassiane
+                Laura  -->
               </div>
             </td>
 
@@ -431,20 +431,27 @@ img {
 
             <td>
               <div class="bloco">
-                <span class="tag">UBS Sansca - VD / Acompanhamento</span><br>
+               <!--  <span class="tag">UBS Sansca - VD / Acompanhamento</span><br>
                 <strong>Prec. Gabriela</strong><br>
-                Gabriela A
+                Thaislan --> 
               </div>
 
               <div class="bloco">
                 <span class="tag">Centro de Especialidades</span><br>
                 <strong>Prec. Lilian</strong><br>
-                Patrícia
+                Leticia, Patricia, Thaislan
               </div>
             </td>
 
             <td>
-              <div class="bloco"></div>
+              <div class="bloco">
+ <span class="tag">UBS Sansca</span><br>
+                <strong>Prec. Gabriela</strong><br>
+                Laura
+ <span class="tag">Centro de Especialidades</span><br>
+                <strong>Prec. Lilian</strong><br>
+                Bruna
+         </div>
             </td>
 
             <td>
@@ -460,7 +467,7 @@ img {
                 <span class="tag">UBS Sansca - Procedimentos e VD</span><br>
                 <strong>Coord. Adrize</strong><br>
                 <strong>Tutor Alejandro</strong><br>
-                Amanda, Danusa, Fernando, Leonardo
+                Danusa, Leonardo
               </div>
             </td>
           </tr>
@@ -487,7 +494,7 @@ img {
         <div class="bloco">
           <span class="tag">UBS Sansca - VD / Acompanhamento</span><br>
           <strong>Prec. Gabriela</strong><br>
-          Gabriela A
+          Thaislan
         </div>
         <div class="bloco">
           <span class="tag">Centro de Especialidades</span><br>
@@ -505,7 +512,7 @@ img {
         <div class="bloco">
           <span class="tag">UBS Sansca - VD</span><br>
           <strong>Prec. Gabriela</strong><br>
-          Cassiane
+          Laura
         </div>
       </div>
 
@@ -539,7 +546,7 @@ img {
           <span class="tag">UBS Sansca - Procedimentos e VD</span><br>
           <strong>Coord. Adrize</strong><br>
           <strong>Tutor Alejandro</strong><br>
-          Amanda, Danusa, Fernando, Leonardo
+          Bruna, Danusa, Leticia, Leonardo
         </div>
       </div>
     </div>
@@ -673,12 +680,12 @@ function alternarTabela() {
     <div class="vmic"><button class="vmicb" id="vMic1" onclick="vStartVoice(1)"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#3b82c4" stroke-width="2"><path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"/><path d="M19 10v2a7 7 0 0 1-14 0v-2"/><line x1="12" y1="19" x2="12" y2="23"/><line x1="8" y1="23" x2="16" y2="23"/></svg></button><span class="vmiclbl" id="vLbl1">toque para falar</span></div>
     <div class="vtx ph" id="vTx1">Diga seu nome ou selecione...</div>
     <div class="vgrid">
-      <button class="vopt" onclick="vSelName('Amanda')">Amanda</button>
-      <button class="vopt" onclick="vSelName('Cassiane')">Cassiane</button>
+      <button class="vopt" onclick="vSelName('Bruna')">Bruna</button>
+      <button class="vopt" onclick="vSelName('Laura')">Laura</button>
       <button class="vopt" onclick="vSelName('Danusa')">Danusa</button>
-      <button class="vopt" onclick="vSelName('GabrielaA')">GabrielaA</button>
+      <button class="vopt" onclick="vSelName('Thaislan')">Thaislan</button>
       <button class="vopt" onclick="vSelName('Giovana')">Giovana</button>
-      <button class="vopt" onclick="vSelName('Fernando')">Fernando</button>
+      <button class="vopt" onclick="vSelName('Leticia')">Leticia</button>
       <button class="vopt" onclick="vSelName('Leonardo')">Leonardo</button>
       <button class="vopt" onclick="vSelName('Lucas')">Lucas</button>
       <button class="vopt" onclick="vSelName('Patrícia')">Patrícia</button>
@@ -1045,11 +1052,11 @@ function alternarTabela() {
   function vProcVoice(step,text){
     const low=text.toLowerCase();
     if(step===1){
-      const ns=['amanda','cassiane','danusa','gabriela','giovana','fernando','leonardo','lucas','patricia','patrícia','lyah','yanka'];
+      const ns=['bruna','laura','danusa','thaislan','giovana','leticia','leonardo','lucas','patricia','patrícia','lyah','yanka'];
       const f=ns.find(n=>low.includes(n));
       if(f){
         const lbl=f==='patricia'?'Patrícia':f.charAt(0).toUpperCase()+f.slice(1);
-        const m=f==='gabriela'?'GabrielaA':lbl;
+        const m=lbl;
         vSelName(m);
       } else {vd.nome=text;vSetTx(1,text,false);}
     }
