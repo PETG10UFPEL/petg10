@@ -1,0 +1,842 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Context Graph na Gestão Universitária · Bresque (2026) · Ed. Ampliada</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Source+Sans+3:wght@300;400;600;700&family=Source+Code+Pro:wght@400;600&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;font-size:16px}
+:root{
+  --ink:#1a1a2e;--slate:#374151;--mid:#6b7280;--mist:#9ca3af;
+  --rule:#e5e7eb;--paper:#fafaf8;--cream:#f5f3ee;--warm:#ede9e1;
+  --navy:#1e3a5f;--cobalt:#2563eb;--teal:#0d9488;
+  --green:#15803d;--amber:#b45309;--rose:#be123c;--violet:#6d28d9;
+  --cg-gold:#c9a227;--cg-dark:#0f2443;
+  --serif:'DM Serif Display',Georgia,serif;
+  --sans:'Source Sans 3',system-ui,sans-serif;
+  --mono:'Source Code Pro',monospace;
+}
+body{font-family:var(--sans);background:var(--paper);color:var(--ink);line-height:1.65}
+.topbar{background:var(--cg-dark);color:#fff;display:flex;justify-content:space-between;align-items:center;padding:12px 48px;font-size:.75rem;letter-spacing:.1em;text-transform:uppercase;border-bottom:3px solid var(--cg-gold);position:sticky;top:0;z-index:200}
+.topbar-left{opacity:.7;font-size:.68rem;line-height:1.5}
+.topbar-right{font-size:.7rem;opacity:.55;text-align:right;line-height:1.5}
+.hero{background:linear-gradient(150deg,#0a1628 0%,#0f2443 40%,#142d52 70%,#0d2240 100%);color:#fff;padding:80px 64px 72px;position:relative;overflow:hidden}
+.hero::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 55% 45% at 78% 25%,rgba(201,162,39,.12),transparent),radial-gradient(ellipse 40% 55% at 15% 75%,rgba(13,148,136,.14),transparent)}
+.hero-inner{max-width:1020px;margin:0 auto;position:relative;display:grid;grid-template-columns:1fr 320px;gap:52px;align-items:start}
+.hero-eyebrow{font-size:.72rem;letter-spacing:.22em;text-transform:uppercase;color:var(--cg-gold);margin-bottom:16px;font-weight:600}
+.hero-title{font-family:var(--serif);font-size:clamp(2rem,4vw,3.2rem);line-height:1.15;margin-bottom:18px}
+.hero-title em{font-style:italic;color:#7dd3fc}
+.hero-sub{font-size:1rem;color:rgba(255,255,255,.72);line-height:1.75;margin-bottom:32px;max-width:560px}
+.hero-chips{display:flex;flex-wrap:wrap;gap:9px}
+.hchip{background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.16);border-radius:5px;padding:7px 13px;font-size:.79rem;line-height:1.35}
+.hchip strong{display:block;font-size:.62rem;letter-spacing:.12em;text-transform:uppercase;color:var(--cg-gold);margin-bottom:2px}
+.hero-diagram{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.12);border-radius:14px;padding:22px 18px}
+.hd-label{font-size:.63rem;letter-spacing:.15em;text-transform:uppercase;color:rgba(255,255,255,.38);margin-bottom:14px;text-align:center}
+.hd-node{background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.12);border-radius:7px;padding:9px 13px;margin-bottom:7px;font-size:.8rem;line-height:1.45}
+.hd-node strong{display:block;color:#93c5fd;font-size:.76rem;margin-bottom:2px}
+.hd-node.core{background:linear-gradient(135deg,rgba(37,99,235,.3),rgba(13,148,136,.25));border-color:rgba(201,162,39,.4);margin:10px 0}
+.hd-node.core strong{color:var(--cg-gold)}
+.hd-arrow{text-align:center;color:var(--cg-gold);font-size:.85rem;margin:3px 0;opacity:.65}
+.ch-nav{background:var(--navy);position:sticky;top:51px;z-index:190;display:flex;overflow-x:auto;border-bottom:2px solid rgba(255,255,255,.1)}
+.ch-nav::-webkit-scrollbar{height:3px}
+.ch-nav::-webkit-scrollbar-thumb{background:rgba(255,255,255,.2)}
+.ch-nav a{color:rgba(255,255,255,.55);text-decoration:none;font-size:.68rem;letter-spacing:.1em;text-transform:uppercase;padding:10px 18px;white-space:nowrap;border-right:1px solid rgba(255,255,255,.08);transition:color .2s,background .2s;font-weight:600}
+.ch-nav a:hover{color:#fff;background:rgba(255,255,255,.05)}
+section{padding:68px 64px}
+section:nth-child(even){background:var(--cream)}
+.inner{max-width:1040px;margin:0 auto}
+.sec-tag{font-size:.68rem;letter-spacing:.2em;text-transform:uppercase;color:var(--cobalt);font-weight:700;margin-bottom:8px}
+.sec-title{font-family:var(--serif);font-size:clamp(1.6rem,2.8vw,2.3rem);color:var(--navy);line-height:1.2;margin-bottom:16px}
+.sec-intro{font-size:1rem;color:var(--slate);max-width:700px;margin-bottom:44px;line-height:1.75;border-left:3px solid var(--cobalt);padding-left:18px}
+.prose{font-size:.95rem;color:var(--slate);line-height:1.8;margin-bottom:24px}
+.ch-band{background:var(--navy);color:#fff;padding:20px 64px;display:flex;align-items:center;gap:18px;border-top:1px solid rgba(255,255,255,.08)}
+.ch-band-num{font-size:3.5rem;font-weight:900;color:rgba(255,255,255,.08);line-height:1;flex-shrink:0;font-family:var(--serif)}
+.ch-band-label{font-size:.66rem;letter-spacing:.18em;text-transform:uppercase;color:#93c5fd;margin-bottom:5px;font-weight:600}
+.ch-band-name{font-family:var(--serif);font-size:1.3rem;font-weight:700}
+.pq{background:var(--navy);color:#fff;border-radius:12px;padding:40px 48px;margin:40px 0;position:relative;overflow:hidden}
+.pq::before{content:'"';font-family:var(--serif);font-size:140px;color:rgba(201,162,39,.15);position:absolute;top:-16px;left:18px;line-height:1}
+.pq p{font-family:var(--serif);font-style:italic;font-size:clamp(1.05rem,1.8vw,1.38rem);line-height:1.55;position:relative}
+.pq em{color:#7dd3fc;font-style:normal}
+.pq cite{display:block;font-family:var(--sans);font-size:.78rem;opacity:.5;margin-top:12px;font-style:normal}
+.hl{border-left:4px solid var(--teal);background:rgba(13,148,136,.06);border-radius:0 8px 8px 0;padding:16px 20px;margin:20px 0;font-size:.93rem;color:var(--slate)}
+.hl strong{color:var(--teal)}
+.hl-gold{border-left-color:var(--cg-gold);background:rgba(201,162,39,.06)}
+.hl-gold strong{color:var(--amber)}
+.hl-rose{border-left-color:var(--rose);background:rgba(190,18,60,.05)}
+.hl-rose strong{color:var(--rose)}
+.grid{display:grid;gap:20px;margin-top:12px}
+.g2{grid-template-columns:repeat(auto-fit,minmax(300px,1fr))}
+.g3{grid-template-columns:repeat(auto-fit,minmax(258px,1fr))}
+.card{background:#fff;border-radius:10px;padding:24px 20px;box-shadow:0 2px 14px rgba(30,58,95,.06);border-top:3px solid var(--cobalt)}
+.card.t-teal{border-top-color:var(--teal)}
+.card.t-amber{border-top-color:var(--amber)}
+.card.t-gold{border-top-color:var(--cg-gold)}
+.card.t-violet{border-top-color:var(--violet)}
+.card.t-rose{border-top-color:var(--rose)}
+.card.dark{background:var(--navy);color:#fff}
+.card.dark .c-title{color:#7dd3fc}
+.card.dark .c-body{color:rgba(255,255,255,.75)}
+.c-icon{font-size:1.6rem;margin-bottom:10px}
+.c-title{font-family:var(--serif);font-size:1.03rem;font-weight:700;color:var(--navy);margin-bottom:7px}
+.c-body{font-size:.87rem;line-height:1.7;color:var(--slate)}
+.c-tags{display:flex;flex-wrap:wrap;gap:5px;margin-top:12px}
+.tag{font-size:.63rem;letter-spacing:.07em;text-transform:uppercase;padding:3px 8px;border-radius:3px;background:var(--warm);color:var(--slate);font-weight:600}
+.tag.gold{background:rgba(201,162,39,.12);color:var(--amber)}
+.tag.teal{background:rgba(13,148,136,.1);color:var(--teal)}
+/* REGRAS VS RASTROS */
+.rv-wrap{display:grid;grid-template-columns:1fr 52px 1fr;gap:0;margin:32px 0;align-items:stretch}
+.rv-col{border-radius:10px;padding:24px 20px}
+.rv-col.rules{background:#fff;border:1.5px solid var(--rule)}
+.rv-col.traces{background:linear-gradient(135deg,rgba(37,99,235,.04),rgba(13,148,136,.05));border:1.5px solid rgba(201,162,39,.3)}
+.rv-badge{font-size:.62rem;letter-spacing:.13em;text-transform:uppercase;font-weight:700;padding:3px 10px;border-radius:3px;display:inline-block;margin-bottom:14px}
+.rv-badge.r{background:var(--warm);color:var(--mid)}
+.rv-badge.t{background:rgba(201,162,39,.12);color:var(--amber)}
+.rv-title{font-family:var(--serif);font-size:1rem;color:var(--navy);margin-bottom:10px}
+.rv-eg{font-family:var(--mono);font-size:.77rem;background:var(--warm);border-radius:6px;padding:10px 13px;color:var(--slate);line-height:1.65;margin-bottom:10px;border-left:3px solid var(--rule)}
+.rv-eg.gold{background:rgba(201,162,39,.07);border-left-color:var(--cg-gold);color:var(--ink)}
+.rv-list{list-style:none;font-size:.86rem;color:var(--slate);line-height:1.7}
+.rv-list li{padding:5px 0;border-bottom:1px solid var(--rule);display:flex;gap:8px}
+.rv-list li:last-child{border-bottom:none}
+.rv-center{display:flex;align-items:center;justify-content:center;font-size:1.5rem;color:var(--cg-gold)}
+/* FEEDBACK LOOP */
+.loop-wrap{background:var(--cg-dark);border-radius:16px;padding:44px 40px;margin:36px 0;color:#fff}
+.loop-title{font-family:var(--serif);font-style:italic;color:var(--cg-gold);font-size:1.18rem;text-align:center;margin-bottom:6px}
+.loop-sub{font-size:.78rem;text-align:center;opacity:.5;margin-bottom:34px;letter-spacing:.05em}
+.loop-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:0}
+.loop-step{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.12);border-radius:9px;padding:18px 13px;text-align:center;position:relative;margin:0 5px}
+.loop-step:not(:last-child)::after{content:'→';position:absolute;right:-16px;top:50%;transform:translateY(-50%);color:rgba(201,162,39,.65);font-size:1rem;z-index:2}
+.loop-num{font-size:.6rem;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,.32);margin-bottom:6px;font-weight:600}
+.loop-name{font-size:.84rem;font-weight:600;color:#fff;margin-bottom:4px}
+.loop-desc{font-size:.74rem;color:rgba(255,255,255,.6);line-height:1.5}
+.loop-back{text-align:center;margin-top:18px;font-size:.78rem;color:rgba(201,162,39,.6);letter-spacing:.04em}
+.loop-note{margin-top:20px;background:rgba(201,162,39,.07);border:1px solid rgba(201,162,39,.18);border-radius:8px;padding:14px 18px;font-size:.82rem;color:rgba(255,255,255,.72);line-height:1.6}
+.loop-note strong{color:var(--cg-gold)}
+/* WRITE PATH */
+.path-grid{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin:28px 0}
+.path-card{border-radius:10px;padding:22px 20px;border:1.5px solid}
+.path-card.write{background:rgba(13,148,136,.04);border-color:rgba(13,148,136,.28)}
+.path-card.read{background:rgba(107,114,128,.04);border-color:var(--rule);opacity:.72}
+.path-label{font-size:.61rem;letter-spacing:.13em;text-transform:uppercase;font-weight:700;margin-bottom:10px;padding:3px 9px;border-radius:3px;display:inline-block}
+.path-label.w{background:rgba(13,148,136,.1);color:var(--teal)}
+.path-label.r{background:var(--warm);color:var(--mid)}
+.path-title{font-family:var(--serif);font-size:.98rem;color:var(--navy);margin-bottom:8px}
+.path-body{font-size:.87rem;color:var(--slate);line-height:1.65}
+.path-verdict{margin-top:12px;font-size:.78rem;font-weight:600;padding:5px 11px;border-radius:4px;display:inline-block}
+.path-verdict.can{background:rgba(13,148,136,.1);color:var(--teal)}
+.path-verdict.cannot{background:rgba(190,18,60,.08);color:var(--rose)}
+/* CG DIAGRAM */
+.cg-section{background:var(--cg-dark);border-radius:16px;padding:44px 38px;margin:36px 0;color:#fff}
+.cg-section-title{font-family:var(--serif);font-style:italic;font-size:1.2rem;color:var(--cg-gold);text-align:center;margin-bottom:6px}
+.cg-section-sub{font-size:.78rem;text-align:center;opacity:.5;margin-bottom:32px;letter-spacing:.05em}
+.cg-diagram{display:grid;grid-template-columns:1fr 1.55fr 1fr;gap:14px;align-items:start}
+.cg-col-label{font-size:.61rem;letter-spacing:.13em;text-transform:uppercase;color:rgba(255,255,255,.32);text-align:center;margin-bottom:8px;font-weight:600}
+.cg-node{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.11);border-radius:7px;padding:11px 13px;font-size:.79rem;line-height:1.5;margin-bottom:7px}
+.cg-node strong{display:block;font-size:.81rem;color:#93c5fd;margin-bottom:2px}
+.cg-node.gold{border-color:rgba(201,162,39,.32);background:rgba(201,162,39,.06)}
+.cg-node.gold strong{color:var(--cg-gold)}
+.cg-node.teal{border-color:rgba(13,148,136,.32);background:rgba(13,148,136,.06)}
+.cg-node.teal strong{color:#5eead4}
+.cg-center-col{display:flex;flex-direction:column;align-items:center;gap:9px}
+.cg-core{background:linear-gradient(135deg,rgba(37,99,235,.4),rgba(13,148,136,.35));border:1.5px solid rgba(201,162,39,.48);border-radius:13px;padding:22px 18px;width:100%;text-align:center;box-shadow:0 0 36px rgba(201,162,39,.11)}
+.cg-core-title{font-family:var(--serif);font-size:1.45rem;color:var(--cg-gold);margin-bottom:4px}
+.cg-core-sub{font-size:.77rem;opacity:.78;margin-bottom:10px;line-height:1.45}
+.cg-core-stats{font-size:.71rem;opacity:.58;line-height:1.8;border-top:1px solid rgba(255,255,255,.1);padding-top:9px;margin-top:7px}
+.cg-trace{background:rgba(255,255,255,.05);border:1px solid rgba(201,162,39,.22);border-radius:8px;padding:10px 13px;width:100%;font-size:.77rem;line-height:1.5}
+.cg-trace strong{display:block;color:var(--cg-gold);font-size:.74rem;margin-bottom:3px;letter-spacing:.06em;text-transform:uppercase}
+.cg-arr{color:rgba(201,162,39,.58);font-size:.82rem;letter-spacing:4px;text-align:center}
+/* TABLE */
+.tbl-wrap{overflow-x:auto;margin:24px 0}
+table{border-collapse:collapse;width:100%;font-size:.87rem}
+th{background:var(--navy);color:#fff;font-size:.68rem;letter-spacing:.08em;text-transform:uppercase;padding:10px 13px;text-align:left;font-weight:700}
+td{padding:9px 13px;border-bottom:1px solid var(--rule);vertical-align:top;color:var(--slate)}
+tr:nth-child(even) td{background:rgba(0,0,0,.02)}
+tr:last-child td{border-bottom:none}
+td strong{color:var(--ink)}
+/* EVIDENCE */
+.ev-item{display:flex;gap:13px;align-items:flex-start;padding:13px 17px;border-radius:8px;background:#fff;margin-bottom:8px;box-shadow:0 1px 5px rgba(30,58,95,.05)}
+.ev-tag{flex-shrink:0;font-size:.66rem;letter-spacing:.07em;text-transform:uppercase;padding:4px 9px;border-radius:4px;margin-top:2px;font-weight:700;white-space:nowrap}
+.ev-tag.pos{background:rgba(21,128,61,.1);color:var(--green)}
+.ev-tag.lim{background:rgba(180,83,9,.1);color:var(--amber)}
+.ev-text{font-size:.89rem;color:var(--slate);line-height:1.65}
+.ev-text strong{color:var(--ink)}
+/* FLOW PIPE */
+.flow-pipe{display:flex;align-items:stretch;gap:0;margin:28px 0;flex-wrap:wrap}
+.fp-step{flex:1;min-width:138px;background:#fff;padding:18px 14px;border-top:4px solid var(--cobalt);box-shadow:0 2px 8px rgba(30,58,95,.06);position:relative}
+.fp-step.active{background:var(--navy)}
+.fp-step.active .fp-n{color:#7dd3fc}
+.fp-step.active .fp-t{color:#fff}
+.fp-step.active .fp-d{color:rgba(255,255,255,.65)}
+.fp-step.active:not(:last-child)::after{color:#7dd3fc}
+.fp-step.cg{background:linear-gradient(135deg,#0f2443,#1e3a5f);border-top-color:var(--cg-gold)}
+.fp-step.cg .fp-n{color:var(--cg-gold)}
+.fp-step.cg .fp-t{color:#fff}
+.fp-step.cg .fp-d{color:rgba(255,255,255,.65)}
+.fp-step:not(:last-child)::after{content:'→';position:absolute;right:-10px;top:50%;transform:translateY(-50%);font-size:1rem;color:var(--cobalt);z-index:1;background:inherit;padding:0 2px}
+.fp-step.cg:not(:last-child)::after{color:var(--cg-gold)}
+.fp-n{font-size:.63rem;letter-spacing:.12em;text-transform:uppercase;color:var(--cobalt);margin-bottom:4px;font-weight:700}
+.fp-t{font-family:var(--serif);font-size:.91rem;font-weight:700;color:var(--navy);margin-bottom:3px}
+.fp-d{font-size:.77rem;color:var(--mid);line-height:1.5}
+/* STATS */
+.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(143px,1fr));gap:15px;margin:26px 0}
+.stat{text-align:center;background:#fff;border-radius:10px;padding:20px 11px;box-shadow:0 2px 8px rgba(30,58,95,.06)}
+.stat-n{font-size:2.1rem;font-weight:700;color:var(--cobalt);line-height:1;font-family:var(--serif)}
+.stat-u{font-size:.74rem;color:var(--mist);margin-top:2px}
+.stat-l{font-size:.74rem;color:var(--slate);margin-top:5px;line-height:1.35}
+/* ECOSYSTEM */
+.eco-wrap{background:var(--navy);border-radius:14px;padding:38px 34px;margin:30px 0;color:#fff}
+.eco-title{font-family:var(--serif);font-size:1.15rem;color:#7dd3fc;text-align:center;margin-bottom:7px;font-style:italic}
+.eco-sub{font-size:.77rem;text-align:center;opacity:.48;margin-bottom:28px;letter-spacing:.05em}
+.eco-grid{display:grid;grid-template-columns:1fr 1.45fr 1fr;gap:13px;align-items:center}
+.eco-col{display:flex;flex-direction:column;gap:9px}
+.eco-node{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.11);border-radius:7px;padding:10px 12px;font-size:.78rem;line-height:1.4;text-align:center}
+.eco-node strong{display:block;color:#93c5fd;font-size:.82rem;margin-bottom:2px}
+.eco-node.cg-e{border-color:rgba(201,162,39,.32);background:rgba(201,162,39,.06)}
+.eco-node.cg-e strong{color:var(--cg-gold)}
+.eco-center{display:flex;flex-direction:column;align-items:center;gap:9px}
+.eco-core{background:linear-gradient(135deg,#2563eb,#0d9488);border-radius:12px;padding:20px 16px;text-align:center;width:100%;box-shadow:0 0 28px rgba(201,162,39,.18);border:1px solid rgba(201,162,39,.28)}
+.eco-core strong{font-family:var(--serif);font-size:1.35rem;display:block;margin-bottom:3px;color:var(--cg-gold)}
+.eco-core span{font-size:.76rem;opacity:.82;line-height:1.6}
+.eco-arr{color:#7dd3fc;font-size:1rem;letter-spacing:3px;text-align:center;opacity:.65}
+/* BEFORE AFTER */
+.ba-grid{display:grid;grid-template-columns:1fr 46px 1fr;gap:0;align-items:start;margin:26px 0}
+.ba-col{border-radius:10px;padding:20px 18px}
+.ba-col.before{background:#fff;border:1px solid var(--rule)}
+.ba-col.after{background:linear-gradient(135deg,rgba(37,99,235,.04),rgba(13,148,136,.05));border:1.5px solid rgba(37,99,235,.18)}
+.ba-label{font-size:.63rem;letter-spacing:.13em;text-transform:uppercase;font-weight:700;margin-bottom:12px;padding:4px 10px;border-radius:4px;display:inline-block}
+.ba-label.b{background:var(--warm);color:var(--mid)}
+.ba-label.a{background:rgba(37,99,235,.1);color:var(--cobalt)}
+.ba-list{list-style:none}
+.ba-list li{font-size:.85rem;color:var(--slate);line-height:1.6;padding:5px 0;border-bottom:1px solid var(--rule);display:flex;gap:7px;align-items:flex-start}
+.ba-list li:last-child{border-bottom:none}
+.ba-arrow{display:flex;align-items:center;justify-content:center;font-size:1.3rem;color:var(--cg-gold);padding-top:46px}
+/* ROADMAP */
+.roadmap{margin:30px 0}
+.rm-step{display:flex;gap:14px;align-items:flex-start}
+.rm-left{display:flex;flex-direction:column;align-items:center;width:30px;flex-shrink:0}
+.rm-dot{width:13px;height:13px;border-radius:50%;background:var(--cobalt);border:2px solid var(--paper);box-shadow:0 0 0 2px var(--cobalt);flex-shrink:0;margin-top:3px}
+.rm-dot.teal{background:var(--teal);box-shadow:0 0 0 2px var(--teal)}
+.rm-dot.gold{background:var(--cg-gold);box-shadow:0 0 0 2px var(--cg-gold)}
+.rm-line{width:2px;flex:1;background:var(--rule);margin:4px auto 0;min-height:34px}
+.rm-content{flex:1;padding-bottom:26px}
+.rm-phase{font-size:.63rem;letter-spacing:.12em;text-transform:uppercase;color:var(--mist);font-weight:600;margin-bottom:2px}
+.rm-title{font-weight:700;color:var(--navy);font-size:.91rem;margin-bottom:3px}
+.rm-body{font-size:.84rem;color:var(--slate);line-height:1.6}
+/* RESULT BARS */
+.rb{margin-bottom:14px}
+.rb-head{display:flex;justify-content:space-between;font-size:.82rem;margin-bottom:4px}
+.rb-label{font-weight:600;color:var(--navy)}
+.rb-val{font-weight:700;color:var(--cobalt);font-family:var(--mono)}
+.rb-track{background:var(--warm);border-radius:3px;height:7px;overflow:hidden}
+.rb-fill{height:100%;border-radius:3px;background:linear-gradient(90deg,var(--cobalt),var(--teal))}
+.rb-fill.gold{background:linear-gradient(90deg,var(--amber),var(--cg-gold))}
+/* CODE */
+.code-block{background:#0f172a;border-radius:8px;padding:18px 20px;margin:18px 0;font-family:var(--mono);font-size:.79rem;line-height:1.7;color:#94a3b8;overflow-x:auto}
+.code-block .keyword{color:#7dd3fc}
+.code-block .string{color:#86efac}
+.code-block .comment{color:#475569;font-style:italic}
+.code-block .value{color:var(--cg-gold)}
+.code-block .label{color:#c4b5fd}
+hr.div{border:none;border-top:1px solid var(--rule);margin:38px 0}
+/* PLACEHOLDER */
+.img-placeholder .placeholder-box{border:2px dashed #b0b8c1;background:#f4f6f8;border-radius:8px;padding:30px 22px;text-align:center;color:#6c757d;min-height:220px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px}
+.placeholder-icon{font-size:1.9rem}
+.placeholder-label{font-family:monospace;font-size:.81rem;background:#e9ecef;padding:4px 10px;border-radius:4px;color:#343a40}
+.placeholder-hint{font-size:.77rem;color:#868e96;font-style:italic;max-width:360px}
+figure{margin:0}
+figcaption{font-size:.79rem;color:var(--mid);margin-top:9px;line-height:1.5;font-style:italic}
+footer{background:var(--navy);color:rgba(255,255,255,.45);text-align:center;padding:28px 40px;font-size:.78rem;border-top:2px solid rgba(201,162,39,.28)}
+footer strong{color:rgba(255,255,255,.7)}
+.footer-div{width:40px;height:1px;background:rgba(255,255,255,.14);margin:14px auto}
+@media(max-width:768px){
+  .hero-inner,.cg-diagram,.eco-grid,.ba-grid,.rv-wrap,.path-grid{grid-template-columns:1fr}
+  .hero-diagram,.ba-arrow,.rv-center{display:none}
+  .loop-grid{grid-template-columns:1fr 1fr}
+  section,.ch-band,.topbar{padding-left:24px;padding-right:24px}
+}
+</style>
+</head>
+<body>
+
+<div class="topbar">
+  <div class="topbar-left">UFPel · PET-Saúde Digital G10 · Context Graph &amp; Gestão Universitária · Ed. Ampliada</div>
+  <div class="topbar-right">Bresque (2026) UFPel/ULE · Gupta &amp; Garg, Foundation Capital (dez/2025) · artigo completo</div>
+</div>
+
+<div class="hero">
+  <div class="hero-inner">
+    <div>
+      <p class="hero-eyebrow">Estudo de Caso · Infográfico Científico · Edição Ampliada com artigo completo</p>
+      <h1 class="hero-title">O <em>Context Graph</em><br>na Gestão Universitária</h1>
+      <p class="hero-sub">Como o conceito de Context Graph encontra na tese de Bresque seu caso de aplicação mais preciso — e o que o artigo completo de Gupta &amp; Garg adiciona: a distinção regras vs. rastros, o loop de retroalimentação e por que o SEI, sozinho, nunca será suficiente.</p>
+      <div class="hero-chips">
+        <div class="hchip"><strong>Distinção central</strong>Regras vs. rastros de decisão</div>
+        <div class="hchip"><strong>Mecanismo novo</strong>O loop que faz o grafo crescer</div>
+        <div class="hchip"><strong>Argumento estrutural</strong>Write path vs. read path</div>
+        <div class="hchip"><strong>Tese empírica</strong>Bresque (2026) · UFPel &amp; ULE</div>
+      </div>
+    </div>
+    <div class="hero-diagram">
+      <div class="hd-label">O loop de retroalimentação do CG</div>
+      <div class="hd-node"><strong>Decisão tomada</strong>Gestor sintetiza, aplica norma, concede exceção — raciocínio fica na cabeça</div>
+      <div class="hd-arrow">↓ captura no write path (BPM)</div>
+      <div class="hd-node"><strong>Rastro registrado</strong>Norma · Precedente · Exceção · Síntese multi-sistema · Rationale</div>
+      <div class="hd-arrow">↓ acumula no grafo</div>
+      <div class="hd-node core"><strong>Context Graph cresce</strong>Precedente vira dado consultável — próxima decisão análoga fica mais rápida e isônoma</div>
+      <div class="hd-arrow">↓ retroalimenta o loop</div>
+      <div class="hd-node"><strong>Autonomia aumenta</strong>Casos repetidos automatizados; novos casos geram novos rastros — o grafo nunca para</div>
+    </div>
+  </div>
+</div>
+
+<nav class="ch-nav">
+  <a href="#problema">O problema</a>
+  <a href="#distincao">Regras vs. rastros</a>
+  <a href="#mecanismo">O loop do CG</a>
+  <a href="#writepath">Write path</a>
+  <a href="#tese">A tese de Bresque</a>
+  <a href="#convergencia">Convergência</a>
+  <a href="#arquitetura">Arquitetura</a>
+  <a href="#roadmap">Roadmap</a>
+  <a href="#sintese">Síntese</a>
+</nav>
+
+<!-- 0. PROBLEMA -->
+<section id="problema">
+  <div class="inner">
+    <div class="sec-tag">O buraco negro organizacional</div>
+    <h2 class="sec-title">Uma universidade cheia de dados<br>que não sabe por que decidiu</h2>
+    <p class="sec-intro">Um processo do SEI mostra o resultado. Não mostra o raciocínio. Esse é o nó que Bresque identifica empiricamente e que Gupta &amp; Garg formalizam com precisão: «o raciocínio que conecta dado a ação nunca foi tratado como dado em primeiro lugar.»</p>
+    <div class="grid g3">
+      <div class="card t-rose">
+        <div class="c-icon">📁</div>
+        <div class="c-title">O que o SEI registra</div>
+        <div class="c-body">Documentos, assinaturas, timestamps, status. O <strong>estado final</strong> de cada decisão. Exatamente como o Salesforce que Gupta &amp; Garg criticam: sabe o preço final do contrato, não sabe quem aprovou o desconto e por quê — porque é «built on current state storage».</div>
+        <div class="c-tags"><span class="tag">current state storage</span></div>
+      </div>
+      <div class="card t-amber">
+        <div class="c-icon">💭</div>
+        <div class="c-title">O que se perde todos os dias</div>
+        <div class="c-body">«Servidores com processo de saúde aberto têm prioridade tácita.» «Aquele contrato de TI de 2022 abriu um precedente.» «E4 consultou COBALTO + SIAFI + e-mail antes de decidir.» Nenhum desses raciocínios é dado. Estão nas cabeças de E1–E6.</div>
+        <div class="c-tags"><span class="tag">tribal knowledge</span><span class="tag">decision traces ausentes</span></div>
+      </div>
+      <div class="card t-gold">
+        <div class="c-icon">⚠️</div>
+        <div class="c-title">O que acontece quando a pessoa sai</div>
+        <div class="c-body">365 mil processos e a instituição ainda é incapaz de explicar por que decidiu como decidiu. A aposentadoria de E3 não apaga documentos — apaga raciocínio. E o SEI não foi projetado para capturar raciocínio como dado.</div>
+        <div class="c-tags"><span class="tag gold">perda institucional</span></div>
+      </div>
+    </div>
+    <div class="pq">
+      <p>«O verdadeiro gargalo não são os sistemas — <em>são as pessoas, sua visão estratégica e sua capacidade de transformar dados em governança institucional.»</em></p>
+      <cite>— Bresque (2026), p. 183 · mesma conclusão que Gupta &amp; Garg chegam pelo caminho do capital de risco</cite>
+    </div>
+  </div>
+</section>
+
+<!-- 1. REGRAS vs RASTROS -->
+<div class="ch-band" id="distincao">
+  <div class="ch-band-num">1</div>
+  <div><div class="ch-band-label">Novo · artigo completo Gupta &amp; Garg (2025)</div><div class="ch-band-name">Regras vs. Rastros de decisão: a distinção que o resumo não capturava</div></div>
+</div>
+
+<section>
+  <div class="inner">
+    <div class="sec-tag">A distinção mais afiada do artigo — ausente nas versões resumidas</div>
+    <h2 class="sec-title">Agentes precisam de rastros,<br>não apenas de regras</h2>
+    <p class="sec-intro">O artigo completo faz uma distinção operacional precisa que transforma o diagnóstico em receita de implementação: regras dizem o que deveria acontecer em geral; rastros capturam o que aconteceu neste caso específico. São dois tipos radicalmente diferentes de dado — e o SEI só tem o primeiro.</p>
+
+    <div class="rv-wrap">
+      <div class="rv-col rules">
+        <span class="rv-badge r">Regra · o que o SEI já captura</span>
+        <div class="rv-title">O que deveria acontecer em geral</div>
+        <div class="rv-eg">«Usar ARR oficial para relatórios.»<br>«Processos de capacitação seguem a Resolução COCEPE 07/2022.»<br>«Licitações acima de R$200K exigem parecer da SGTIC.»</div>
+        <ul class="rv-list">
+          <li><span>📋</span>Vive nas 185 bases de GC do SEI</li>
+          <li><span>🔒</span>Estática: não muda com o contexto</li>
+          <li><span>✅</span>Diz <strong>o que fazer</strong> no caso genérico</li>
+          <li><span>❌</span>Não captura exceções nem precedentes situacionais</li>
+        </ul>
+      </div>
+      <div class="rv-center">→</div>
+      <div class="rv-col traces">
+        <span class="rv-badge t">Rastro de decisão · o que falta</span>
+        <div class="rv-title">O que aconteceu neste caso específico</div>
+        <div class="rv-eg gold">«Usamos a definição X, sob a política v3.2, com exceção aprovada pela PROGEP, com base no precedente Z do processo de 2022, aqui está o que mudamos.»</div>
+        <ul class="rv-list">
+          <li><span>🧠</span>Vive nas cabeças de E1–E6, em reuniões e e-mails</li>
+          <li><span>🔄</span>Dinâmico: captura como a regra foi aplicada naquele contexto</li>
+          <li><span>✅</span>Diz <strong>por que se decidiu assim</strong> neste caso concreto</li>
+          <li><span>✅</span>Captura exceções, precedentes e sínteses multi-sistema</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="code-block">
+<span class="comment">// Regra: o que as 185 bases de GC do SEI já capturam</span>
+{ <span class="keyword">norma</span>: <span class="string">"Resolução COCEPE 07/2022, art.14"</span>,
+  <span class="keyword">ação</span>: <span class="string">"Deferir auxílio-capacitação se carga ≤ 20h/sem"</span> }
+
+<span class="comment">// Rastro de decisão: o que um Context Graph sobre o SEI capturaria</span>
+{
+  <span class="keyword">norma_base</span>: <span class="string">"Resolução COCEPE 07/2022, art.14"</span>,
+  <span class="keyword">resultado</span>: <span class="string">"DEFERIDO"</span>,
+  <span class="label">// aqui começa o rastro — isso é o que o SEI atual NÃO registra:</span>
+  <span class="keyword">precedente_consultado</span>: <span class="string">"processo 23110.008901/2023-55"</span>,
+  <span class="keyword">excecao_invocada</span>: <span class="string">"§3 — período eleitoral institucional"</span>,
+  <span class="keyword">aprovacao_excecao</span>: <span class="string">"PROGEP · reunião 12/08/2024"</span>,
+  <span class="keyword">sintese_multi_sistema</span>: <span class="string">"COBALTO confirma carga 22h — exceção justificada"</span>,
+  <span class="keyword">base_gc_consultada</span>: <span class="value">47</span>,
+  <span class="keyword">racional</span>: <span class="string">"Caso análogo ao proc. X; isenção aplicada conforme GC #47"</span>
+}
+    </div>
+    <p style="font-size:.78rem;color:var(--mist);margin-top:6px">O bloco de cima existe nas bases do SEI. O bloco de baixo está na cabeça de E3. O Context Graph é o sistema que torna o segundo tão consultável quanto o primeiro.</p>
+  </div>
+</section>
+
+<!-- 2. FEEDBACK LOOP -->
+<div class="ch-band" id="mecanismo">
+  <div class="ch-band-num">2</div>
+  <div><div class="ch-band-label">Novo · mecanismo do artigo completo</div><div class="ch-band-name">O loop que faz o Context Graph crescer — e por que isso importa</div></div>
+</div>
+
+<section>
+  <div class="inner">
+    <div class="sec-tag">O CG não é uma foto — é um sistema vivo de retroalimentação</div>
+    <h2 class="sec-title">Cada decisão alimenta o grafo.<br>O grafo melhora a próxima decisão.</h2>
+    <p class="sec-intro">O ponto mais importante do artigo completo, ausente nas versões resumidas: o Context Graph não é um repositório estático de conhecimento. É um sistema de retroalimentação que cresce com cada decisão, tornando a próxima decisão mais informada — e eventualmente automatizável.</p>
+
+    <div class="loop-wrap">
+      <div class="loop-title">O loop de retroalimentação do Context Graph</div>
+      <div class="loop-sub">Cada decisão alimenta o grafo · o grafo melhora a próxima · a autonomia aumenta gradualmente</div>
+      <div class="loop-grid">
+        <div class="loop-step">
+          <div class="loop-num">Passo 1</div>
+          <div class="loop-name">Decisão humana</div>
+          <div class="loop-desc">Gestor avalia contexto multi-sistema, aplica norma, concede exceção. O raciocínio existe — só na cabeça.</div>
+        </div>
+        <div class="loop-step">
+          <div class="loop-num">Passo 2</div>
+          <div class="loop-name">Captura do rastro</div>
+          <div class="loop-desc">BPM instrumentado registra: inputs coletados, política avaliada, exceção invocada, aprovação, rationale — como dado estruturado.</div>
+        </div>
+        <div class="loop-step">
+          <div class="loop-num">Passo 3</div>
+          <div class="loop-name">Precedente consultável</div>
+          <div class="loop-desc">Rastro vira precedente pesquisável. Próximo gestor consulta: «houve caso análogo?» — e obtém resposta com base real da UFPel.</div>
+        </div>
+        <div class="loop-step">
+          <div class="loop-num">Passo 4</div>
+          <div class="loop-name">Automação gradual</div>
+          <div class="loop-desc">Casos repetidos: agente executa sem intervenção humana. Casos novos: vai ao humano — que gera novo rastro. O grafo nunca para.</div>
+        </div>
+      </div>
+      <div class="loop-back">↩ cada decisão automatizada também gera um rastro · o loop continua indefinidamente</div>
+      <div class="loop-note">
+        <strong>Traduzindo para a UFPel:</strong> o SEI hoje é um sistema de estado atual — captura o resultado («DEFERIDO»). Um Context Graph sobre o SEI seria um sistema de raciocínio acumulado — captura a evolução das decisões e o porquê de cada uma. «O grafo se torna a fonte real de verdade para a autonomia — porque explica não apenas o que aconteceu, mas <strong>por que foi permitido acontecer.</strong>» — Gupta &amp; Garg (2025)
+      </div>
+    </div>
+
+    <div class="flow-pipe">
+      <div class="fp-step"><div class="fp-n">UFPel hoje</div><div class="fp-t">Caso análogo</div><div class="fp-d">E3 lembra (ou não) e consulta processos manualmente no SEI</div></div>
+      <div class="fp-step active"><div class="fp-n">CG · ano 1</div><div class="fp-t">Precedente consultável</div><div class="fp-d">Sistema apresenta casos análogos com norma, exceção e rationale aplicados</div></div>
+      <div class="fp-step active"><div class="fp-n">CG · ano 3</div><div class="fp-t">Recomendação</div><div class="fp-d">Agente propõe decisão; humano valida ou ajusta — e o rastro cresce com o ajuste</div></div>
+      <div class="fp-step cg"><div class="fp-n">CG · ano 5+</div><div class="fp-t">Automação isônoma</div><div class="fp-d">Rotineiros executados automaticamente; exceções novas vão ao humano e alimentam o grafo</div></div>
+    </div>
+
+    <div class="hl">
+      <strong>O que Bresque identificou sem nomear:</strong> a capacitação estratégica que ele recomenda como próxima etapa é precisamente o que habilita o loop. Gestores que sabem <em>registrar o raciocínio</em>, não apenas tramitar documentos, são o combustível do feedback loop. Sem isso, o grafo não cresce.
+    </div>
+  </div>
+</section>
+
+<!-- 3. WRITE PATH -->
+<div class="ch-band" id="writepath">
+  <div class="ch-band-num">3</div>
+  <div><div class="ch-band-label">Novo · argumento estrutural do artigo completo</div><div class="ch-band-name">Por que o SEI sozinho nunca será um Context Graph</div></div>
+</div>
+
+<section>
+  <div class="inner">
+    <div class="sec-tag">O argumento do write path vs. read path — devastador para incumbentes</div>
+    <h2 class="sec-title">Estar no write path decisório<br>é a condição incontornável</h2>
+    <p class="sec-intro">Gupta &amp; Garg fazem uma distinção técnica que elimina os sistemas estabelecidos: capturar rastros exige estar no write path — no momento exato em que a decisão acontece. O SEI está no write path documental; não está no write path decisório. Essa diferença não pode ser remendada.</p>
+
+    <div class="path-grid">
+      <div class="path-card write">
+        <span class="path-label w">Write path decisório ✓</span>
+        <div class="path-title">Quem vê o raciocínio no momento em que acontece</div>
+        <div class="path-body">O workflow que orquestra a coleta de contexto, avalia a política, roteia a exceção e registra a aprovação — em tempo real, não depois. No contexto da UFPel: <strong>o BPM/BPMN da SGTIC é a camada mais próxima</strong> desse ponto — o único orchestration layer que vê o processo enquanto ele acontece.</div>
+        <span class="path-verdict can">Pode construir um Context Graph</span>
+      </div>
+      <div class="path-card read">
+        <span class="path-label r">Read path / ETL tardio ✗</span>
+        <div class="path-title">Quem recebe o dado depois que a decisão foi tomada</div>
+        <div class="path-body">Sistemas de BI, relatórios periódicos, data warehouses. «Quando o dado chega via ETL, o contexto da decisão já sumiu.» Na UFPel: o SEI registra o documento final; o COBALTO registra o estado acadêmico atual; o SIAFI registra a execução financeira. Todos chegam depois do raciocínio.</div>
+        <span class="path-verdict cannot">Não pode construir um Context Graph</span>
+      </div>
+    </div>
+
+    <div class="pq">
+      <p>«Capturar rastros de decisão exige estar no execution path no momento do commit — não boltar governance depois do fato. Incumbentes podem tornar a extração mais difícil, mas <em>não conseguem se inserir em um orchestration layer do qual nunca fizeram parte.</em>»</p>
+      <cite>— Gupta &amp; Garg (2025) · Foundation Capital · «Why incumbents can't build the context graph»</cite>
+    </div>
+
+    <div class="tbl-wrap">
+      <table>
+        <thead><tr><th>Sistema / Camada · UFPel</th><th>Posição no fluxo decisório</th><th>O que captura</th><th>Consegue construir CG?</th></tr></thead>
+        <tbody>
+          <tr><td><strong>SEI</strong></td><td>Write path documental — registra o documento resultante</td><td>Documento final, assinaturas, timestamps, status do processo</td><td>❌ Captura estado, não raciocínio</td></tr>
+          <tr><td><strong>COBALTO</strong></td><td>Sistema de registro acadêmico — estado atual</td><td>Dados correntes; sem histórico do raciocínio que os gerou</td><td>❌ Mesmo problema estrutural</td></tr>
+          <tr><td><strong>SIAFI</strong></td><td>Read path financeiro federal — dados chegam após execução</td><td>Execução orçamentária; o contexto de alocação já sumiu</td><td>❌ ETL tardio — context gone</td></tr>
+          <tr><td><strong>185 bases de GC (SEI)</strong></td><td>Repositório de regras — captura o que deveria acontecer</td><td>Normas, fluxos padronizados, competências mapeadas</td><td>⚠️ Embrião — layer de regras, não de rastros</td></tr>
+          <tr><td><strong>BPM/BPMN (SGTIC)</strong></td><td><strong>Write path do processo</strong> — mapeia o fluxo em tempo real</td><td>Fluxo, exceções identificadas, pontos críticos — se instrumentado para capturar raciocínio</td><td>✅ <strong>É o orchestration layer — onde o CG deve ser instrumentado</strong></td></tr>
+          <tr><td><strong>Context Graph (proposto)</strong></td><td>Write path decisório completo</td><td>Rastro: norma + precedente + exceção + síntese multi-sistema + rationale + feedback loop</td><td>✅ O que precisa ser construído sobre o BPM</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="hl-rose hl">
+      <strong>Diagnóstico estrutural:</strong> o SEI, tal como está, é arquitetado como o Salesforce que Gupta &amp; Garg criticam — «knows what the opportunity looks like now, not what it looked like when the decision was made». Isso não é falha de implementação: é limitação arquitetural. O Context Graph não é um upgrade do SEI — é uma nova camada que precisa ser construída <em>sobre</em> o ecossistema existente, instrumentando o BPM como orchestration layer.
+    </div>
+
+    <hr class="div">
+    <h3 style="font-family:var(--serif);color:var(--navy);font-size:1.1rem;margin-bottom:14px">O que torna a UFPel diferente — e mais bem posicionada do que parece</h3>
+    <p class="prose">No artigo de Gupta &amp; Garg, a vantagem estrutural é de startups nativas de IA que «sit in the orchestration path desde o primeiro dia». Mas universidades públicas têm um ativo que startups não têm: <strong>7 anos de decisões acumuladas</strong>. O SEI da UFPel tem 365 mil processos, 185 bases de GC e um BPM já operando. O grafo não começa do zero — precisa ser instrumentado sobre o que já existe. Essa é uma vantagem de tempo irreplicável.</p>
+
+    <div class="grid g3">
+      <div class="card t-teal"><div class="c-icon">⏱️</div><div class="c-title">7 anos de precedentes latentes</div><div class="c-body">365 mil processos que, com mineração e estruturação retroativa, podem alimentar o grafo com precedentes históricos. Uma startup começa do zero. A UFPel começa com um patrimônio decisório imenso — só não foi tratado como dado ainda.</div></div>
+      <div class="card t-gold"><div class="c-icon">🏗️</div><div class="c-title">BPM como orchestration layer nativo</div><div class="c-body">A SGTIC já opera o mapeamento BPM — que é exatamente o orchestration layer onde o CG deve ser instrumentado. A infraestrutura conceitual existe. Falta a instrumentação para capturar raciocínio, não apenas fluxo.</div></div>
+      <div class="card t-violet"><div class="c-icon">📚</div><div class="c-title">185 bases de GC como layer de regras</div><div class="c-body">O CG precisa de regras como ponto de partida. A UFPel já tem. As bases de GC são a layer de regras sobre a qual os rastros de decisão serão sobrepostos — exatamente a distinção regra/rastro que Gupta &amp; Garg formalizam.</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- 4. A TESE DE BRESQUE -->
+<div class="ch-band" id="tese">
+  <div class="ch-band-num">4</div>
+  <div><div class="ch-band-label">Tese Doutoral</div><div class="ch-band-name">Bresque (2026): o que a pesquisa empírica descobriu</div></div>
+</div>
+
+<section>
+  <div class="inner">
+    <div class="sec-tag">UFPel &amp; ULE · Qualitativo · Estudo de Caso · Bardin (2016) · 6 gestores entrevistados</div>
+    <h2 class="sec-title">O SEI entre o operacional<br>e o estratégico: o que os gestores revelaram</h2>
+    <p class="sec-intro">Seis gestores da UFPel (E1–E6), entrevistas semiestruturadas, análise documental comparada com a ULE. Conclusão central: o SEI atingiu maturidade funcional relevante, mas opera como sistema documental — não como SAD. O gargalo não é tecnológico. É exatamente o que Gupta &amp; Garg chamam de «missing decision traces».</p>
+
+    <div class="stats">
+      <div class="stat"><div class="stat-n">365K</div><div class="stat-u">processos gerados</div><div class="stat-l">no SEI/UFPel desde 2017</div></div>
+      <div class="stat"><div class="stat-n">1,71M</div><div class="stat-u">documentos digitais</div><div class="stat-l">produzidos e arquivados</div></div>
+      <div class="stat"><div class="stat-n">185</div><div class="stat-u">bases de conhecimento</div><div class="stat-l">normas, fluxos · layer de regras</div></div>
+      <div class="stat"><div class="stat-n">928</div><div class="stat-u">tipos de documentos</div><div class="stat-l">mapeados e padronizados</div></div>
+      <div class="stat"><div class="stat-n">545</div><div class="stat-u">unidades cadastradas</div><div class="stat-l">cobertura institucional</div></div>
+      <div class="stat"><div class="stat-n">6</div><div class="stat-u">gestores entrevistados</div><div class="stat-l">GR · PROPLAN · PROGEP · SGTIC · PRE · PRA</div></div>
+    </div>
+
+    <hr class="div">
+
+    <div class="ev-item"><span class="ev-tag pos">Conquista</span><div class="ev-text"><strong>Write path documental funciona:</strong> o SEI registra fluxos, assinaturas e estado final de decisões. Trazabilidade documental estabelecida — o alicerce sobre o qual o CG será construído.</div></div>
+    <div class="ev-item"><span class="ev-tag pos">Conquista</span><div class="ev-text"><strong>Layer de regras em construção:</strong> 185 bases de GC explicitam normas e fluxos — a camada de regras que o CG usa como base. A UFPel tem o ponto de partida. Falta a sobreposição de rastros.</div></div>
+    <div class="ev-item"><span class="ev-tag pos">Conquista</span><div class="ev-text"><strong>Isonomia potencial:</strong> histórico de processos permite consulta manual de precedentes. A isonomia existe — mas depende de memória humana, não de um grafo consultável por qualquer gestor.</div></div>
+    <div class="ev-item"><span class="ev-tag lim">Limite = missing decision traces</span><div class="ev-text"><strong>SEI registra «DEFERIDO» — não «por que, com qual norma, qual exceção, quem aprovou, qual precedente».</strong> É exatamente a «missing layer that actually runs enterprises» de Gupta &amp; Garg. A camada decisória está ausente.</div></div>
+    <div class="ev-item"><span class="ev-tag lim">Limite = cross-system synthesis</span><div class="ev-text"><strong>E4 consulta COBALTO + SIAFI + e-mail antes de decidir; o processo SEI mostra só o resultado.</strong> É o mesmo «support lead checks ARR in Salesforce, Zendesk, Slack — the synthesis happens in their head. The ticket just says escalated.» de Gupta &amp; Garg. Em ambos os casos, o raciocínio morre.</div></div>
+    <div class="ev-item"><span class="ev-tag lim">Limite = loop não iniciado</span><div class="ev-text"><strong>Capacitação foi operacional, não analítica.</strong> Gestores sabem usar o SEI; não sabem registrar raciocínio. Sem essa habilidade, o feedback loop do CG nunca começa — o grafo não cresce.</div></div>
+
+    <div class="eco-wrap" style="margin-top:32px">
+      <div class="eco-title">Ecosistema de Sistemas na UFPel — modelo de Bresque (2026)</div>
+      <div class="eco-sub">Contribuição teórica central da tese: o SAD não é um supersistema — é um ecossistema articulado</div>
+      <div class="eco-grid">
+        <div class="eco-col">
+          <div style="color:rgba(255,255,255,.33);font-size:.61rem;letter-spacing:.12em;text-transform:uppercase;text-align:center;margin-bottom:6px;font-weight:600">Sistemas satélite</div>
+          <div class="eco-node"><strong>COBALTO</strong>Acadêmico-administrativo integrado</div>
+          <div class="eco-node"><strong>PERGAMUM</strong>Bibliotecas, arquivos e museus</div>
+          <div class="eco-node"><strong>SIAFI</strong>Administração financeira federal</div>
+          <div class="eco-node"><strong>SICAF / SIPPAGweb / SOUGOV</strong>Fornecedores · pessoal · servidor ativo</div>
+        </div>
+        <div class="eco-center">
+          <div class="eco-arr">← ← ←</div>
+          <div class="eco-core">
+            <strong>SEI</strong>
+            <span>Núcleo articulador<br>365.819 processos · 1,71M docs<br>185 bases GC · 545 unidades</span>
+          </div>
+          <div class="eco-arr">→ → →</div>
+        </div>
+        <div class="eco-col">
+          <div style="color:rgba(255,255,255,.33);font-size:.61rem;letter-spacing:.12em;text-transform:uppercase;text-align:center;margin-bottom:6px;font-weight:600">Saídas + Context Graph</div>
+          <div class="eco-node"><strong>Trazabilidade documental</strong>Write path documental funcionando</div>
+          <div class="eco-node"><strong>Isonomia (parcial)</strong>Precedentes consultáveis manualmente</div>
+          <div class="eco-node"><strong>Layer de regras (185 bases GC)</strong>Ponto de partida para o CG</div>
+          <div class="eco-node cg-e"><strong>Context Graph (próxima camada)</strong>Rastros: norma + precedente + exceção + rationale + loop</div>
+          <div class="eco-node cg-e"><strong>SAD Ecosistêmico pleno</strong>Decisões informadas, trazáveis, gradualmente autônomas</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 5. CONVERGÊNCIA -->
+<div class="ch-band" id="convergencia">
+  <div class="ch-band-num">5</div>
+  <div><div class="ch-band-label">Análise comparada · artigo completo incorporado</div><div class="ch-band-name">Dois campos, um problema idêntico — a tabela completa</div></div>
+</div>
+
+<section>
+  <div class="inner">
+    <div class="sec-tag">Com o artigo completo, a convergência se torna ainda mais precisa</div>
+    <h2 class="sec-title">Bresque e Gupta &amp; Garg:<br>a mesma tese em dois idiomas</h2>
+    <p class="sec-intro">Cada conceito central de Bresque tem agora um análogo exato no framework completo de Context Graph. A convergência não é superficial — é estrutural.</p>
+
+    <div class="tbl-wrap">
+      <table>
+        <thead><tr><th>Dimensão</th><th>Bresque (2026) · UFPel/ULE</th><th>Gupta &amp; Garg (2025) · artigo completo</th></tr></thead>
+        <tbody>
+          <tr><td><strong>Problema nomeado</strong></td><td>SEI registra o resultado; raciocínio vive nos gestores E1–E6</td><td>«The reasoning connecting data to action was never treated as data»</td></tr>
+          <tr><td><strong>Regras vs. rastros</strong></td><td>185 bases de GC capturam normas — mas não o por quê situacional</td><td>Rules = what should happen / Decision traces = what happened in this specific case</td></tr>
+          <tr><td><strong>Síntese multi-sistema</strong></td><td>E4 consulta COBALTO + SIAFI + e-mail; o SEI mostra só o resultado</td><td>«Support lead checks ARR, Zendesk, Slack — synthesis in their head. Ticket: 'escalated to Tier 3.'»</td></tr>
+          <tr><td><strong>Write path decisório</strong></td><td>BPM/BPMN da SGTIC é a única camada próxima do execution path</td><td>«Capturing traces requires being in the execution path at commit time»</td></tr>
+          <tr><td><strong>Limitação dos sistemas</strong></td><td>SEI, COBALTO e SIAFI são current state storage</td><td>«Salesforce is built on current state storage — can't replay the state at decision time»</td></tr>
+          <tr><td><strong>Embrião do CG</strong></td><td>185 bases de GC: layer de regras — ponto de partida</td><td>Rules layer que o CG usa como base; rastros se sobrepõem às regras existentes</td></tr>
+          <tr><td><strong>Feedback loop</strong></td><td>«Agenda futura: casos rotineiros automatizáveis após acumulação de precedentes»</td><td>«Captured traces become searchable precedent. Every automated decision adds another trace. The loop compounds.»</td></tr>
+          <tr><td><strong>Gargalo humano</strong></td><td>«O verdadeiro gargalo são as pessoas e sua visão estratégica»</td><td>O loop só funciona se o humano registra o raciocínio; sem isso, o grafo não cresce</td></tr>
+          <tr><td><strong>Solução proposta</strong></td><td>SAD Ecosistêmico: BPM + GC + capacitação estratégica sobre sistemas existentes</td><td>Context Graph: instrumentar o orchestration layer (BPM) para emitir decision trace a cada run</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="pq">
+      <p>Bresque (2026) descobre empiricamente, na gestão de uma universidade federal brasileira, o mesmo problema que Gupta &amp; Garg (2025) formalizam como oportunidade de um trilhão de dólares: <em>as organizações não registram o raciocínio que governa suas decisões — e por isso não conseguem escalar a inteligência institucional, automatizar com segurança ou garantir continuidade quando as pessoas saem.</em></p>
+      <cite>— Síntese integradora · Context Graph aplicado à gestão universitária · maio/2026</cite>
+    </div>
+  </div>
+</section>
+
+<!-- 6. ARQUITETURA -->
+<div class="ch-band" id="arquitetura">
+  <div class="ch-band-num">6</div>
+  <div><div class="ch-band-label">Aplicação prática</div><div class="ch-band-name">O Context Graph que a UFPel já quase tem — e o que falta exatamente</div></div>
+</div>
+
+<section>
+  <div class="inner">
+    <div class="sec-tag">Arquitetura proposta · Bresque (2026) + Gupta &amp; Garg (2025) · artigo completo</div>
+    <h2 class="sec-title">A infraestrutura existe.<br>Falta instrumentar o write path decisório.</h2>
+    <p class="sec-intro">SEI + COBALTO + BPM da SGTIC + 185 bases de GC — o esqueleto já está lá. O Context Graph universitário não começa do zero: precisa ser instrumentado sobre o ecossistema existente para capturar o que hoje vive nas cabeças dos gestores.</p>
+
+    <div class="cg-section">
+      <div class="cg-section-title">Arquitetura do Context Graph Universitário (UFPel)</div>
+      <div class="cg-section-sub">Layer de regras (185 bases GC) + instrumentação de rastros via BPM + feedback loop · baseado em Bresque (2026) + Gupta &amp; Garg (2025)</div>
+      <div class="cg-diagram">
+        <div>
+          <div class="cg-col-label">Fontes · dados + raciocínio</div>
+          <div class="cg-node"><strong>SEI (write path documental)</strong>365K processos · documentos · assinaturas · fluxos</div>
+          <div class="cg-node"><strong>COBALTO</strong>Dados acadêmicos · histórico · docentes · técnicos</div>
+          <div class="cg-node"><strong>SIAFI</strong>Execução financeira · empenhos · liquidações</div>
+          <div class="cg-node gold"><strong>BPM/BPMN · SGTIC (orchestration layer)</strong>O write path decisório — onde o CG deve ser instrumentado para capturar rastros</div>
+          <div class="cg-node gold"><strong>Gestores E1–E6 (raciocínio tácito)</strong>O dado mais valioso e menos registrado; capturado pelo loop de capacitação + BPM instrumentado</div>
+        </div>
+        <div class="cg-center-col">
+          <div class="cg-arr">← ← captura no write path ← ←</div>
+          <div class="cg-core">
+            <div class="cg-core-title">Context Graph UFPel</div>
+            <div class="cg-core-sub">Sistema de registro de <em>decisões</em> · não apenas documentos</div>
+            <div class="cg-core-stats">
+              Layer de regras: 185 bases GC ✓<br>
+              Layer de rastros: norma aplicada ·<br>precedente · exceção · quem decidiu ·<br>por quê · síntese multi-sistema<br><br>
+              Feedback loop: rastro → precedente<br>→ automação → novo rastro
+            </div>
+          </div>
+          <div class="cg-arr">→ → consulta + automação gradual → →</div>
+          <div class="cg-trace">
+            <strong>Rastro de decisão (exemplo)</strong>
+            Processo: 23110.xxx/2024<br>
+            Norma: Res. COCEPE 07/2022, art.14<br>
+            Precedente: proc. 23110.yyy/2022<br>
+            Exceção: período eleitoral · PROGEP<br>
+            Síntese: COBALTO confirma carga 22h<br>
+            Rationale: base GC #47 aplicada
+          </div>
+        </div>
+        <div>
+          <div class="cg-col-label">Capacidades desbloqueadas</div>
+          <div class="cg-node teal"><strong>Isonomia automatizada</strong>Precedentes consultáveis sem depender de quem lembra</div>
+          <div class="cg-node teal"><strong>Onboarding acelerado</strong>Novo gestor consulta raciocínio histórico real da UFPel</div>
+          <div class="cg-node teal"><strong>Auditoria inteligente</strong>Controle interno vê resultado + raciocínio que o gerou</div>
+          <div class="cg-node teal"><strong>Continuidade institucional</strong>Aposentadoria não apaga memória estratégica</div>
+          <div class="cg-node gold"><strong>Automação gradual (SAD pleno)</strong>Rotineiros automatizados; novos casos → humano → novo rastro</div>
+          <div class="cg-node gold"><strong>Cooperação UFPel–ULE</strong>Modelos de CG transferíveis entre IES ibero-americanas</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="ba-grid" style="margin-top:32px">
+      <div class="ba-col before">
+        <span class="ba-label b">SEI atual · current state + regras</span>
+        <ul class="ba-list">
+          <li><span>📁</span>«DEFERIDO» — resultado sem raciocínio</li>
+          <li><span>🔍</span>Precedente: consulta manual por E3 em processos antigos</li>
+          <li><span>🧠</span>Síntese multi-sistema: feita por E4 na cabeça, não registrada</li>
+          <li><span>📊</span>Indicadores: extraídos manualmente por unidade</li>
+          <li><span>⚠️</span>E3 se aposenta: raciocínio estratégico de anos se perde</li>
+          <li><span>🔄</span>Sem feedback loop: o SEI não aprende com as decisões</li>
+        </ul>
+      </div>
+      <div class="ba-arrow">→</div>
+      <div class="ba-col after">
+        <span class="ba-label a">Context Graph · regras + rastros + loop</span>
+        <ul class="ba-list">
+          <li><span>📁</span>«DEFERIDO» + norma + precedente + exceção + rationale</li>
+          <li><span>🔍</span>Precedente: consultável em linguagem natural, cruzado entre sistemas</li>
+          <li><span>🧠</span>Síntese multi-sistema: capturada como rastro no momento da decisão</li>
+          <li><span>📊</span>Indicadores: automáticos via SEI + COBALTO + SIAFI + grafo</li>
+          <li><span>✅</span>E3 se aposenta: raciocínio está no grafo — instituição continua</li>
+          <li><span>🔄</span>Feedback loop ativo: cada decisão melhora a próxima</li>
+        </ul>
+      </div>
+    </div>
+
+    <figure style="margin:32px 0 0">
+      <img
+        src="img/sei-context-graph-architecture.png"
+        alt="Arquitetura do Context Graph Universitário — três camadas: sistemas de registro (SEI, COBALTO, SIAFI), write path decisório via BPM/BPMN, e grafo de rastros de decisão com feedback loop"
+        style="width:100%;border-radius:10px;display:block;background:var(--cream)"
+        onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"
+      >
+      <div class="placeholder-box" style="min-height:240px;display:none">
+        <span class="placeholder-icon">🖼</span>
+        <p class="placeholder-label">[ img/sei-context-graph-architecture.png ]</p>
+        <p class="placeholder-hint">Coloque o arquivo nesta pasta para exibir a imagem. Diagrama com três camadas: sistemas de registro → write path decisório (BPM) → context graph com feedback loop. Paleta azul-teal-dourado.</p>
+      </div>
+      <figcaption><strong>Figura 1</strong> — Arquitetura do Context Graph Universitário (UFPel). Três camadas: sistemas de registro → write path decisório (BPM) → grafo de rastros com feedback loop. Baseado em Bresque (2026) + Gupta &amp; Garg (2025).</figcaption>
+    </figure>
+  </div>
+</section>
+
+<!-- 7. ROADMAP -->
+<div class="ch-band" id="roadmap">
+  <div class="ch-band-num">7</div>
+  <div><div class="ch-band-label">Agenda prática</div><div class="ch-band-name">Roadmap: do SEI ao Context Graph em cinco movimentos</div></div>
+</div>
+
+<section>
+  <div class="inner">
+    <div class="sec-tag">Diretrizes de Bresque (2026) + lógica do feedback loop de Gupta &amp; Garg · a ordem importa</div>
+    <h2 class="sec-title">Cinco movimentos —<br>na ordem que o loop exige</h2>
+    <p class="sec-intro">As recomendações de Bresque já apontam o caminho. O artigo de Gupta &amp; Garg mostra por que a ordem importa: o loop só começa quando o write path decisório está instrumentado. Sem isso, os demais movimentos produzem mais documentos — não um grafo.</p>
+
+    <div class="roadmap">
+      <div class="rm-step"><div class="rm-left"><div class="rm-dot"></div><div class="rm-line"></div></div><div class="rm-content">
+        <div class="rm-phase">Movimento 1 · Já em curso — fundação</div>
+        <div class="rm-title">Consolidar a trazabilidade documental e expandir as bases de GC</div>
+        <div class="rm-body">Write path documental funcionando. 185 bases de GC como layer de regras. BPM da SGTIC operando. Esse é o alicerce — e precisa ser expandido para todas as 545 unidades antes de qualquer passo seguinte. Sem a layer de regras completa, o CG não tem onde se apoiar.</div>
+      </div></div>
+
+      <div class="rm-step"><div class="rm-left"><div class="rm-dot teal"></div><div class="rm-line"></div></div><div class="rm-content">
+        <div class="rm-phase">Movimento 2 · Passo crítico — inicia o loop</div>
+        <div class="rm-title">Instrumentar o BPM para capturar rastros de decisão (ativar o write path decisório)</div>
+        <div class="rm-body">Implementar, nos processos mapeados pela SGTIC, campos estruturados de captura: norma aplicada, precedente consultado, exceção invocada, síntese multi-sistema, quem aprovou e por quê. Este é o passo que inicia o feedback loop. BPM não é apenas otimização: é o orchestration layer onde o raciocínio é capturado como dado.</div>
+      </div></div>
+
+      <div class="rm-step"><div class="rm-left"><div class="rm-dot teal"></div><div class="rm-line"></div></div><div class="rm-content">
+        <div class="rm-phase">Movimento 3 · Gargalo tecnológico de Bresque</div>
+        <div class="rm-title">Resolver a interoperabilidade automática (viabilizar a síntese multi-sistema como dado)</div>
+        <div class="rm-body">A síntese COBALTO + SIAFI + SEI hoje é feita manualmente por E4. Para o CG capturar esse raciocínio, as APIs precisam permitir coleta de contexto multi-sistema em tempo real, no momento da decisão — não após o fato via ETL. Iniciativa SIPPAG como ponto de partida.</div>
+      </div></div>
+
+      <div class="rm-step"><div class="rm-left"><div class="rm-dot gold"></div><div class="rm-line"></div></div><div class="rm-content">
+        <div class="rm-phase">Movimento 4 · O gargalo humano — Bresque + Gupta &amp; Garg</div>
+        <div class="rm-title">Capacitação em uso analítico-estratégico (ensinar gestores a registrar raciocínio)</div>
+        <div class="rm-body">O gargalo identificado independentemente pelos dois trabalhos: gestores foram treinados para usar o SEI, não para registrar raciocínio. O loop só retroalimenta se o gestor sabe que o rationale precisa ser explicitado. A próxima geração de capacitação deve ensinar a diferença entre regra e rastro de decisão — e por que registrar o segundo é governança, não burocracia.</div>
+      </div></div>
+
+      <div class="rm-step"><div class="rm-left"><div class="rm-dot gold"></div></div><div class="rm-content">
+        <div class="rm-phase">Movimento 5 · Horizonte — quando o grafo tiver massa crítica</div>
+        <div class="rm-title">Ativar agentes de IA sobre o Context Graph (SAD Ecosistêmico pleno)</div>
+        <div class="rm-body">Com rastros registrados e sistemas interoperáveis, agentes recomendam decisões com base em precedentes reais da UFPel. Começa com human-in-the-loop: o agente propõe, o humano valida, o rastro cresce. Com o tempo, casos rotineiros são automatizados; exceções novas vão ao humano e alimentam o grafo. Exatamente a agenda futura que Bresque indica — agora com o mecanismo de implementação claro.</div>
+      </div></div>
+    </div>
+
+    <hr class="div">
+    <h3 style="font-family:var(--serif);color:var(--navy);font-size:1.05rem;margin-bottom:14px">Maturidade atual vs. maturidade alvo</h3>
+    <div class="rb"><div class="rb-head"><span class="rb-label">Trazabilidade documental (write path documental · SEI)</span><span class="rb-val">85%</span></div><div class="rb-track"><div class="rb-fill" style="width:85%"></div></div></div>
+    <div class="rb"><div class="rb-head"><span class="rb-label">Layer de regras (185 bases de GC · normas e fluxos)</span><span class="rb-val">60%</span></div><div class="rb-track"><div class="rb-fill" style="width:60%"></div></div></div>
+    <div class="rb"><div class="rb-head"><span class="rb-label">Interoperabilidade automática entre sistemas</span><span class="rb-val">35%</span></div><div class="rb-track"><div class="rb-fill" style="width:35%"></div></div></div>
+    <div class="rb"><div class="rb-head"><span class="rb-label">Write path decisório instrumentado (BPM → captura de rastros)</span><span class="rb-val">15%</span></div><div class="rb-track"><div class="rb-fill gold" style="width:15%"></div></div></div>
+    <div class="rb"><div class="rb-head"><span class="rb-label">Capacitação para registrar raciocínio (não só operar o sistema)</span><span class="rb-val">20%</span></div><div class="rb-track"><div class="rb-fill gold" style="width:20%"></div></div></div>
+    <div class="rb"><div class="rb-head"><span class="rb-label">Feedback loop ativo (rastro → precedente → automação → novo rastro)</span><span class="rb-val">5%</span></div><div class="rb-track"><div class="rb-fill gold" style="width:5%"></div></div></div>
+    <p style="font-size:.77rem;color:var(--mist);margin-top:9px">* Estimativa baseada em Bresque (2026). Barras douradas = dimensões do Context Graph ainda não implementadas.</p>
+  </div>
+</section>
+
+<!-- 8. SÍNTESE -->
+<div class="ch-band" id="sintese">
+  <div class="ch-band-num">8</div>
+  <div><div class="ch-band-label">Síntese final</div><div class="ch-band-name">O que o artigo completo adiciona — e o que fica como agenda</div></div>
+</div>
+
+<section>
+  <div class="inner">
+    <div class="sec-tag">Três contribuições do artigo completo que transformam diagnóstico em agenda</div>
+    <h2 class="sec-title">Mais preciso, mais mecânico,<br>mais urgente</h2>
+    <p class="sec-intro">O artigo integral de Gupta &amp; Garg não muda a tese — torna-a mais precisa. Três contribuições que o resumo não capturava e que mudam como se implementa o Context Graph na UFPel.</p>
+
+    <div class="grid g3">
+      <div class="card t-gold">
+        <div class="c-icon">⚖️</div>
+        <div class="c-title">Regras vs. rastros: a distinção operacional</div>
+        <div class="c-body">As 185 bases de GC são a layer de regras — necessária, mas insuficiente. O CG começa onde as regras terminam: captura <em>como cada regra foi aplicada</em> naquele contexto específico. A UFPel tem a layer de regras. Falta construir a layer de rastros sobre ela.</div>
+      </div>
+      <div class="card t-teal">
+        <div class="c-icon">🔄</div>
+        <div class="c-title">O loop que faz o grafo crescer</div>
+        <div class="c-body">O CG não é uma foto — é um sistema vivo. Cada decisão registrada vira precedente; casos repetidos se automatizam; exceções novas vão ao humano e alimentam o grafo. O loop não para. Isso transforma o SEI de arquivo em memória institucional que se retroalimenta.</div>
+      </div>
+      <div class="card t-violet">
+        <div class="c-icon">✍️</div>
+        <div class="c-title">Write path: a condição incontornável</div>
+        <div class="c-body">O SEI não está no write path decisório — está no write path documental. O BPM da SGTIC é o orchestration layer. Instrumentá-lo para capturar rastros é o passo que nenhuma melhoria incremental no SEI pode substituir. É uma nova camada, não um upgrade.</div>
+      </div>
+    </div>
+
+    <div class="pq" style="margin-top:36px">
+      <p>O que Bresque chama de SAD Ecosistêmico e o que Gupta &amp; Garg chamam de Context Graph são a mesma arquitetura: <em>um sistema que não apenas armazena o que a instituição fez, mas preserva e torna consultável o raciocínio com que ela governou — e usa esse raciocínio acumulado para tomar a próxima decisão de forma mais informada, isônoma e eventualmente autônoma.</em></p>
+      <cite>— Síntese integradora · Context Graph aplicado à gestão universitária · maio/2026</cite>
+    </div>
+
+    <div class="hl-gold hl">
+      <strong>Para os gestores da UFPel:</strong> cada «DEFERIDO» sem rationale é um precedente perdido e um ciclo do feedback loop que não aconteceu. O Context Graph não é uma nova tecnologia — é uma nova prática de governança. E começa na próxima decisão que alguém registrar <em>por que</em> tomou, e não apenas <em>o que</em> decidiu.
+    </div>
+
+    <hr class="div">
+
+    <div class="grid g2">
+      <div class="card dark">
+        <div class="c-icon">📋</div>
+        <div class="c-title">Referência completa da tese</div>
+        <div class="c-body" style="font-size:.82rem;line-height:1.75">Bresque, M. L. R. (2026). <em>Estudio sobre la implantación de la Administración Electrónica en la tramitación de documentos administrativos y su incidencia en la mejora de la gestión universitaria: UFPel (Brasil) y ULE (España).</em> Tese Doutoral — Programa Mundo Hispánico. Universidad de León, España.<br><br>Diretores: María del Carmen Rodríguez López · Cristiane Hoffmann Moreira · Alejandro Martins Rodriguez.</div>
+      </div>
+      <div class="card dark">
+        <div class="c-icon">🔗</div>
+        <div class="c-title">Referências do Context Graph</div>
+        <div class="c-body" style="font-size:.82rem;line-height:1.75">Gupta, J. &amp; Garg, A. (2025, dez/22). <em>AI's Trillion-Dollar Opportunity: Context Graphs.</em> Foundation Capital. foundationcapital.com — artigo completo incorporado nesta edição.<br><br>MIT Sloan Management Review (2025). <em>Why AI Will Not Provide Sustainable Competitive Advantage.</em><br><br>Frontiers in Education (2025). Vol. 10. Digital transformation in HEIs.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div style="max-width:800px;margin:0 auto">
+    <strong>Bresque, M. L. R. (2026)</strong> · Tese Doutoral — Programa Mundo Hispánico · Universidad de León · España<br>
+    Diretores: Alejandro Martins Rodriguez · Cristiane Hoffmann Moreira · María del Carmen Rodríguez López
+    <div class="footer-div"></div>
+    <p>Context Graph: Gupta &amp; Garg, Foundation Capital (dez/2025) — artigo completo incorporado na edição ampliada<br>
+    MIT Sloan Management Review (2025) · Frontiers in Education (2025)</p>
+    <div class="footer-div"></div>
+    <p>Infográfico elaborado pelos projetos Amor à Pele e PET-Saúde Digital G10 Feridas Crônicas, UFPel, em Maio de 2026.</p>
+    <p style="margin-top:10px;font-size:.71rem;opacity:.42">📁 Imagem para <code style="background:rgba(255,255,255,.08);padding:1px 5px;border-radius:3px">img/</code>: <code>sei-context-graph-architecture.png</code></p>
+  </div>
+</footer>
+
+</body>
+</html>
