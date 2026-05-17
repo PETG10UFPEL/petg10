@@ -1,0 +1,1384 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Fuligem na Atmosfera & Feridas Crônicas — Uma Conexão Invisível</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&family=Source+Sans+3:wght@300;400;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --off-white: #FAFAF7;
+      --cream: #F5EFE3;
+      --slate: #1E3A52;
+      --slate-light: #2D5F8A;
+      --amber: #C85C1A;
+      --amber-pale: #FDF0E6;
+      --teal: #1A6B6B;
+      --teal-pale: #E0F0F0;
+      --red-dark: #8B1A1A;
+      --red-pale: #FDEAEA;
+      --purple: #5A2D82;
+      --purple-pale: #F0EAF8;
+      --green: #2D6B3A;
+      --green-pale: #E8F4EA;
+      --gray: #6B7280;
+      --gray-light: #E5E7EB;
+      --text: #1A1A2E;
+      --text-muted: #4B5563;
+      --border: #D1D5DB;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Source Sans 3', sans-serif;
+      background: var(--off-white);
+      color: var(--text);
+      line-height: 1.7;
+      font-size: 17px;
+    }
+
+    /* ── HEADER ── */
+    .institutional-header {
+      background: #fff;
+      border-bottom: 2px solid var(--border);
+      padding: 14px 40px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      box-shadow: 0 1px 8px rgba(0,0,0,.06);
+    }
+    .header-tag {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 11px;
+      color: var(--gray);
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+    }
+    .header-logo-group {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+    .logo-placeholder {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .logo-badge {
+      background: var(--slate);
+      color: #fff;
+      font-family: 'Source Sans 3', sans-serif;
+      font-size: 10px;
+      font-weight: 700;
+      padding: 5px 10px;
+      border-radius: 4px;
+      letter-spacing: .5px;
+      white-space: nowrap;
+    }
+    .logo-badge.amber { background: var(--amber); }
+    .logo-badge.teal { background: var(--teal); }
+
+    /* ── HERO ── */
+    .hero {
+      background: linear-gradient(150deg, #0D2137 0%, #1A3A52 40%, #0F3028 100%);
+      color: #fff;
+      padding: 80px 40px 60px;
+      position: relative;
+      overflow: hidden;
+    }
+    .hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse at 70% 40%, rgba(200,92,26,.15) 0%, transparent 60%),
+                  radial-gradient(ellipse at 20% 80%, rgba(26,107,107,.2) 0%, transparent 50%);
+    }
+    .hero-inner {
+      max-width: 860px;
+      margin: 0 auto;
+      position: relative;
+    }
+    .hero-label {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      color: rgba(255,255,255,.55);
+      margin-bottom: 18px;
+    }
+    .hero h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2rem, 5vw, 3.4rem);
+      font-weight: 900;
+      line-height: 1.15;
+      margin-bottom: 20px;
+      color: #fff;
+    }
+    .hero h1 em {
+      color: #F4A55A;
+      font-style: normal;
+    }
+    .hero-sub {
+      font-size: 1.15rem;
+      color: rgba(255,255,255,.78);
+      max-width: 620px;
+      line-height: 1.75;
+      margin-bottom: 36px;
+    }
+    .hero-stats {
+      display: flex;
+      gap: 28px;
+      flex-wrap: wrap;
+    }
+    .stat-card {
+      background: rgba(255,255,255,.08);
+      border: 1px solid rgba(255,255,255,.15);
+      border-radius: 10px;
+      padding: 18px 22px;
+      min-width: 160px;
+      backdrop-filter: blur(4px);
+    }
+    .stat-number {
+      font-family: 'Playfair Display', serif;
+      font-size: 2.4rem;
+      font-weight: 700;
+      color: #F4A55A;
+      line-height: 1;
+    }
+    .stat-label {
+      font-size: 0.8rem;
+      color: rgba(255,255,255,.65);
+      margin-top: 6px;
+      line-height: 1.4;
+    }
+
+    /* ── MAIN ── */
+    main { max-width: 900px; margin: 0 auto; padding: 0 24px; }
+
+    /* ── SECTION GENERIC ── */
+    section { padding: 56px 0; border-bottom: 1px solid var(--gray-light); }
+    section:last-of-type { border-bottom: none; }
+    .section-label {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      color: var(--slate-light);
+      margin-bottom: 10px;
+    }
+    h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.5rem, 3vw, 2rem);
+      color: var(--slate);
+      margin-bottom: 20px;
+      line-height: 1.3;
+    }
+    h3 {
+      font-family: 'Source Sans 3', sans-serif;
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: var(--slate);
+      margin-bottom: 8px;
+    }
+    p { color: var(--text-muted); margin-bottom: 16px; }
+    p:last-child { margin-bottom: 0; }
+
+    /* ── CALLOUT ── */
+    .callout {
+      border-left: 4px solid var(--amber);
+      background: var(--amber-pale);
+      padding: 18px 22px;
+      border-radius: 0 8px 8px 0;
+      margin: 24px 0;
+    }
+    .callout.teal { border-color: var(--teal); background: var(--teal-pale); }
+    .callout.red { border-color: var(--red-dark); background: var(--red-pale); }
+    .callout.purple { border-color: var(--purple); background: var(--purple-pale); }
+    .callout.green { border-color: var(--green); background: var(--green-pale); }
+    .callout p { color: var(--text); margin: 0; font-size: .95rem; }
+    .callout strong { color: var(--slate); }
+
+    /* ── PULL QUOTE ── */
+    .pull-quote {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.35rem;
+      font-style: italic;
+      color: var(--slate);
+      border-top: 3px solid var(--amber);
+      border-bottom: 3px solid var(--amber);
+      padding: 20px 0;
+      margin: 36px 0;
+      text-align: center;
+      line-height: 1.55;
+    }
+
+    /* ── IMAGE PLACEHOLDER ── */
+    .img-placeholder { margin: 28px 0; }
+    .placeholder-box {
+      border: 2px dashed #b0b8c1;
+      background: #f4f6f8;
+      border-radius: 8px;
+      padding: 32px 24px;
+      text-align: center;
+      color: #6c757d;
+      min-height: 220px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+    }
+    .placeholder-icon { font-size: 2rem; }
+    .placeholder-label {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.82rem;
+      background: #e9ecef;
+      padding: 4px 10px;
+      border-radius: 4px;
+      color: #343a40;
+    }
+    .placeholder-hint {
+      font-size: 0.78rem;
+      color: #868e96;
+      font-style: italic;
+      max-width: 360px;
+      line-height: 1.45;
+    }
+    figure { margin: 28px 0; }
+    figure img {
+      display: block;
+      max-width: 100%;          /* nunca ultrapassa o container */
+      width: auto;              /* não força esticamento horizontal */
+      height: auto;             /* mantém proporção original */
+      margin: 0 auto;           /* centraliza se menor que o container */
+      border-radius: 8px;
+      image-rendering: -webkit-optimize-contrast; /* nitidez Safari/Chrome */
+      image-rendering: crisp-edges;               /* nitidez Firefox */
+      -ms-interpolation-mode: bicubic;            /* IE fallback */
+    }
+    /* Imagens que realmente devem ocupar toda a largura (diagramas largos) */
+    figure.full-width img {
+      width: 100%;
+      height: auto;
+    }
+    figcaption {
+      font-size: 0.82rem;
+      color: var(--gray);
+      font-style: italic;
+      margin-top: 8px;
+      text-align: center;
+    }
+
+    /* ── MECHANISM FLOW ── */
+    .mechanism-flow {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 0;
+      margin: 32px 0;
+      position: relative;
+    }
+    .flow-step {
+      display: flex;
+      align-items: flex-start;
+      gap: 18px;
+      padding: 20px 0;
+      position: relative;
+    }
+    .flow-step:not(:last-child)::after {
+      content: '';
+      position: absolute;
+      left: 20px;
+      top: 60px;
+      bottom: 0;
+      width: 2px;
+      background: linear-gradient(to bottom, var(--amber), var(--amber-pale));
+    }
+    .step-icon {
+      width: 42px;
+      height: 42px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.1rem;
+      flex-shrink: 0;
+      border: 2px solid transparent;
+      position: relative;
+      z-index: 1;
+    }
+    .step-icon.amber { background: var(--amber-pale); border-color: var(--amber); }
+    .step-icon.red { background: var(--red-pale); border-color: var(--red-dark); }
+    .step-icon.purple { background: var(--purple-pale); border-color: var(--purple); }
+    .step-icon.teal { background: var(--teal-pale); border-color: var(--teal); }
+    .step-icon.green { background: var(--green-pale); border-color: var(--green); }
+    .step-body { flex: 1; }
+    .step-body h4 {
+      font-family: 'Source Sans 3', sans-serif;
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--slate);
+      margin-bottom: 4px;
+    }
+    .step-body p { margin: 0; font-size: .92rem; color: var(--text-muted); }
+
+    /* ── GRID CARDS ── */
+    .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin: 28px 0; }
+    .grid-3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 16px; margin: 28px 0; }
+    @media(max-width:640px){
+      .grid-2, .grid-3 { grid-template-columns: 1fr; }
+    }
+    .mini-card {
+      background: #fff;
+      border: 1px solid var(--gray-light);
+      border-radius: 10px;
+      padding: 20px;
+      box-shadow: 0 2px 8px rgba(0,0,0,.04);
+    }
+    .mini-card .card-icon { font-size: 1.6rem; margin-bottom: 10px; }
+    .mini-card h4 {
+      font-size: .95rem;
+      font-weight: 700;
+      color: var(--slate);
+      margin-bottom: 6px;
+    }
+    .mini-card p { font-size: .85rem; margin: 0; }
+
+    /* ── SATELLITE SECTION ── */
+    .satellite-section {
+      background: linear-gradient(135deg, #0D2137 0%, #1A3A52 100%);
+      color: #fff;
+      border-radius: 16px;
+      padding: 48px 40px;
+      margin: 40px 0;
+      position: relative;
+      overflow: hidden;
+    }
+    .satellite-section::before {
+      content: '🛰';
+      position: absolute;
+      right: 30px;
+      top: 30px;
+      font-size: 4rem;
+      opacity: .15;
+    }
+    .satellite-section .section-label { color: rgba(255,255,255,.5); }
+    .satellite-section h2 { color: #fff; }
+    .satellite-section p { color: rgba(255,255,255,.78); }
+    .satellite-section .callout { background: rgba(255,255,255,.08); border-color: #F4A55A; }
+    .satellite-section .callout p { color: rgba(255,255,255,.9); }
+    .sat-stats {
+      display: flex;
+      gap: 20px;
+      flex-wrap: wrap;
+      margin-top: 28px;
+    }
+    .sat-stat {
+      background: rgba(255,255,255,.08);
+      border: 1px solid rgba(255,255,255,.15);
+      border-radius: 10px;
+      padding: 16px 20px;
+      text-align: center;
+      flex: 1;
+      min-width: 130px;
+    }
+    .sat-stat .num {
+      font-family: 'Playfair Display', serif;
+      font-size: 2rem;
+      color: #F4A55A;
+      font-weight: 700;
+    }
+    .sat-stat .lbl { font-size: .78rem; color: rgba(255,255,255,.6); margin-top: 4px; line-height: 1.35; }
+
+    /* ── CONNECTIONS TABLE ── */
+    .connection-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 24px 0;
+      font-size: .88rem;
+    }
+    .connection-table th {
+      background: var(--slate);
+      color: #fff;
+      padding: 12px 16px;
+      text-align: left;
+      font-weight: 600;
+    }
+    .connection-table td {
+      padding: 12px 16px;
+      border-bottom: 1px solid var(--gray-light);
+      vertical-align: top;
+    }
+    .connection-table tr:nth-child(even) td { background: #fafafa; }
+
+    /* ── SYNTHESIS BOX ── */
+    .synthesis-box {
+      background: var(--cream);
+      border: 2px solid var(--slate);
+      border-radius: 16px;
+      padding: 40px;
+      margin: 40px 0;
+      position: relative;
+    }
+    .synthesis-box h2 { margin-bottom: 16px; }
+    .synthesis-box p { font-size: 1rem; }
+
+    /* ── REFERENCE ── */
+    .ref-tag {
+      display: inline-block;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 9px;
+      background: var(--slate);
+      color: #fff;
+      padding: 1px 5px;
+      border-radius: 3px;
+      vertical-align: super;
+      cursor: default;
+    }
+    .references-section {
+      background: #fff;
+      border-top: 3px solid var(--slate);
+      padding: 48px 0 20px;
+    }
+    .references-section h2 { font-size: 1.3rem; margin-bottom: 24px; }
+    .ref-list { list-style: none; }
+    .ref-list li {
+      font-size: .82rem;
+      color: var(--text-muted);
+      padding: 8px 0;
+      border-bottom: 1px solid var(--gray-light);
+      display: flex;
+      gap: 12px;
+      line-height: 1.5;
+    }
+    .ref-list li:last-child { border-bottom: none; }
+    .ref-num {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: .78rem;
+      color: var(--slate-light);
+      font-weight: 700;
+      flex-shrink: 0;
+      width: 28px;
+    }
+    .ref-list a { color: var(--slate-light); text-decoration: none; }
+    .ref-list a:hover { text-decoration: underline; }
+
+    /* ── FOOTER ── */
+    .institutional-footer {
+      background: #f9f9f9;
+      border-top: 1px solid var(--border);
+      padding: 28px 40px;
+      text-align: center;
+      font-size: 12px;
+      color: var(--gray);
+      line-height: 1.7;
+    }
+
+    /* ── STRONG em fundos escuros ── */
+    .satellite-section strong,
+    .hero strong,
+    .satellite-section .callout strong {
+      color: #F4A55A;
+      font-weight: 700;
+    }
+    .satellite-section p strong { color: #FBBF72; }
+
+    /* ── QUIZ MÚLTIPLA ESCOLHA ── */
+    .quiz-section {
+      padding: 56px 0;
+      border-bottom: 1px solid var(--gray-light);
+    }
+    .quiz-intro {
+      font-size: .95rem;
+      color: var(--text-muted);
+      margin-bottom: 32px;
+      font-style: italic;
+    }
+    .quiz-item {
+      background: #fff;
+      border: 1.5px solid var(--gray-light);
+      border-radius: 12px;
+      padding: 24px 28px;
+      margin-bottom: 20px;
+      box-shadow: 0 2px 8px rgba(0,0,0,.04);
+      transition: border-color .2s;
+    }
+    .quiz-item:hover { border-color: var(--slate-light); }
+    .quiz-question {
+      font-family: 'Source Sans 3', sans-serif;
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--slate);
+      margin-bottom: 14px;
+      line-height: 1.5;
+    }
+    .quiz-number {
+      display: inline-block;
+      background: var(--slate);
+      color: #fff;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: .7rem;
+      padding: 2px 7px;
+      border-radius: 4px;
+      margin-right: 8px;
+      vertical-align: middle;
+    }
+    .quiz-options { list-style: none; display: flex; flex-direction: column; gap: 8px; }
+    .quiz-options li {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+    }
+    .quiz-options label {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      cursor: pointer;
+      font-size: .93rem;
+      color: var(--text-muted);
+      padding: 10px 14px;
+      border: 1.5px solid var(--gray-light);
+      border-radius: 8px;
+      width: 100%;
+      transition: all .2s;
+      line-height: 1.45;
+    }
+    .quiz-options label:hover { background: #f0f4f8; border-color: var(--slate-light); color: var(--text); }
+    .quiz-options input[type="radio"] { display: none; }
+    .quiz-options input[type="radio"]:checked + label {
+      background: var(--cream);
+      border-color: var(--amber);
+      color: var(--text);
+      font-weight: 600;
+    }
+    .option-letter {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-width: 24px;
+      height: 24px;
+      background: var(--gray-light);
+      border-radius: 50%;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: .72rem;
+      font-weight: 700;
+      color: var(--slate);
+      flex-shrink: 0;
+      margin-top: 1px;
+    }
+    input[type="radio"]:checked + label .option-letter {
+      background: var(--amber);
+      color: #fff;
+    }
+    .quiz-feedback {
+      margin-top: 10px;
+      font-size: .85rem;
+      border-radius: 6px;
+      padding: 10px 14px;
+      display: none;
+      line-height: 1.5;
+    }
+    .quiz-feedback.correct { background: var(--green-pale); color: var(--green); border: 1px solid #aed6b3; display: block; }
+    .quiz-feedback.incorrect { background: var(--red-pale); color: var(--red-dark); border: 1px solid #f5b8b8; display: block; }
+    .quiz-btn {
+      margin-top: 16px;
+      background: var(--slate);
+      color: #fff;
+      border: none;
+      padding: 9px 20px;
+      border-radius: 7px;
+      font-family: 'Source Sans 3', sans-serif;
+      font-size: .88rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background .2s;
+    }
+    .quiz-btn:hover { background: var(--slate-light); }
+    .quiz-score-bar {
+      background: var(--cream);
+      border: 1px solid var(--amber);
+      border-radius: 10px;
+      padding: 16px 22px;
+      margin-top: 28px;
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      display: none;
+    }
+    .score-num {
+      font-family: 'Playfair Display', serif;
+      font-size: 2rem;
+      color: var(--amber);
+      font-weight: 700;
+      line-height: 1;
+    }
+    .score-label { font-size: .88rem; color: var(--text-muted); }
+
+    /* ── QUESTÕES PARA PENSAR ── */
+    .reflection-section {
+      padding: 56px 0;
+      border-bottom: 1px solid var(--gray-light);
+    }
+    .reflection-grid {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+      margin-top: 28px;
+    }
+    .reflection-card {
+      display: flex;
+      gap: 20px;
+      align-items: flex-start;
+      background: #fff;
+      border-radius: 12px;
+      padding: 24px 26px;
+      border: 1.5px solid var(--gray-light);
+      box-shadow: 0 2px 8px rgba(0,0,0,.04);
+      transition: box-shadow .2s, border-color .2s;
+      cursor: pointer;
+    }
+    .reflection-card:hover {
+      box-shadow: 0 4px 16px rgba(0,0,0,.08);
+      border-color: var(--teal);
+    }
+    .reflection-card.open { border-color: var(--teal); }
+    .ref-icon-box {
+      width: 46px;
+      height: 46px;
+      border-radius: 10px;
+      background: var(--teal-pale);
+      border: 1.5px solid var(--teal);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.3rem;
+      flex-shrink: 0;
+    }
+    .ref-body { flex: 1; }
+    .ref-body h4 {
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--slate);
+      margin-bottom: 6px;
+      line-height: 1.45;
+    }
+    .ref-expand {
+      font-size: .85rem;
+      color: var(--text-muted);
+      line-height: 1.6;
+      margin-top: 12px;
+      padding-top: 12px;
+      border-top: 1px solid var(--gray-light);
+      display: none;
+    }
+    .reflection-card.open .ref-expand { display: block; }
+    .ref-toggle {
+      font-size: .75rem;
+      color: var(--teal);
+      font-weight: 600;
+      margin-top: 6px;
+      display: inline-block;
+    }
+
+    /* ── SCROLL PROGRESS ── */
+    .progress-bar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      height: 3px;
+      background: linear-gradient(90deg, var(--amber), var(--teal));
+      z-index: 200;
+      transition: width .1s;
+    }
+  </style>
+</head>
+<body>
+
+<div class="progress-bar" id="progress"></div>
+
+<!-- INSTITUTIONAL HEADER -->
+<header class="institutional-header">
+  <div class="header-tag">Ciência &amp; Saúde | PET-Saúde Digital – UFPel</div>
+  <div class="header-logo-group">
+    <img src="img/logo.png" alt="Logos Amor à Pele e PET-Saúde Digital G10 – UFPel" style="max-height:52px;display:block;">
+  </div>
+</header>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-inner">
+    <div class="hero-label">Infográfico Científico · Feridas Crônicas &amp; Poluição</div>
+    <h1>A fuligem que você não vê<br>e a ferida que não fecha</h1>
+    <p class="hero-sub">Da queimada na esquina aos foguetes de megaconstelações no espaço: o carbono negro atravessa fronteiras que a ciência ainda está aprendendo a mapear — e as feridas crônicas estão no centro dessa trama molecular.</p>
+    <div class="hero-stats">
+      <div class="stat-card">
+        <div class="stat-number">90–94%</div>
+        <div class="stat-label">da população mundial vive em áreas com MP acima dos limites da OMS<span class="ref-tag">1</span></div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-number">500×</div>
+        <div class="stat-label">maior impacto climático da fuligem estratosférica vs. solo<span class="ref-tag">2</span></div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-number">42%</div>
+        <div class="stat-label">do impacto climático espacial virá de megaconstelações até 2029<span class="ref-tag">3</span></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- MAIN CONTENT -->
+<main>
+
+  <!-- 1. O QUE É FULIGEM -->
+  <section id="o-que-e">
+    <div class="section-label">01 — Fundamentos</div>
+    <h2>O que é fuligem, afinal?</h2>
+    <p>A fuligem — chamada de <strong>carbono negro (black carbon)</strong> pela ciência — é formada por partículas ultrafinas de carbono não-completamente queimado. Ela nasce de motores a diesel, queimadas, indústrias e, mais recentemente, de foguetes espaciais.</p>
+
+    <div class="grid-3">
+      <div class="mini-card">
+        <div class="card-icon">🔬</div>
+        <h4>Tamanho</h4>
+        <p>PM2.5 (&lt;2,5 µm) e ultrafinas (&lt;0,1 µm). Invisíveis a olho nu, atravessam pulmões e alcançam a corrente sanguínea.<span class="ref-tag">4</span></p>
+      </div>
+      <div class="mini-card">
+        <div class="card-icon">🧪</div>
+        <h4>Composição</h4>
+        <p>Além do carbono, carrega metais pesados, hidrocarbonetos policíclicos aromáticos (PAH) e compostos orgânicos tóxicos.<span class="ref-tag">5</span></p>
+      </div>
+      <div class="mini-card">
+        <div class="card-icon">🌍</div>
+        <h4>Persistência</h4>
+        <p>No solo, é lavada pela chuva em dias. Na estratosfera, permanece por <strong>anos</strong> — e esse é o grande problema novo.<span class="ref-tag">2</span></p>
+      </div>
+    </div>
+
+    <figure>
+      <img src="img/pm25-tamanho-comparativo.png" alt="Diagrama comparativo de escala: fio de cabelo humano, PM10, PM2.5 e partícula ultrafina com referência em µm">
+      <figcaption>Figura 1 — Escala comparativa de partículas. PM2.5 é 30× mais fino que um fio de cabelo humano.</figcaption>
+    </figure>
+
+    <div class="callout teal">
+      <p><strong>Duas fontes, um mesmo problema:</strong> fuligem terrestre (carros, queimadas, indústria) afeta principalmente a troposfera. A nova fuligem espacial (foguetes, reentrada de satélites) fica presa na estratosfera — longe da chuva, longe da depuração natural.</p>
+    </div>
+  </section>
+
+  <!-- 2. MECANISMOS BIOLÓGICOS -->
+  <section id="mecanismos">
+    <div class="section-label">02 — Mecanismos Moleculares</div>
+    <h2>Como o carbono negro invade o corpo e trava a cicatrização</h2>
+    <p>A trajetória da fuligem do ar até a ferida crônica passa por cinco mecanismos interligados. Cada etapa amplifica a próxima — criando um ciclo que a pele lesionada não consegue romper sozinha.</p>
+
+    <div class="mechanism-flow">
+
+      <div class="flow-step">
+        <div class="step-icon amber">🌬</div>
+        <div class="step-body">
+          <h4>1. Entrada: pulmão, pele e até sweat glands</h4>
+          <p>PM2.5 penetra por vias aéreas e atinge a circulação. Estudos mostram que partículas finas infiltram inclusive a pele íntegra por folículos pilosos e glândulas sudoríparas. Em pele com barreira comprometida — como ao redor de feridas crônicas — a penetração é ainda maior.<span class="ref-tag">6</span></p>
+        </div>
+      </div>
+
+      <div class="flow-step">
+        <div class="step-icon red">⚡</div>
+        <div class="step-body">
+          <h4>2. Estresse Oxidativo: ROS em cascata</h4>
+          <p>Partículas de fuligem (especialmente os PAHs e metais que carregam) ativam o receptor AhR e induzem produção maciça de <strong>espécies reativas de oxigênio (ROS)</strong>. A via NF-κB é ativada, disparando uma tempestade inflamatória de IL-6, TNF-α e IL-1β.<span class="ref-tag">7,8</span></p>
+          <div class="callout red" style="margin-top:10px">
+            <p>🔬 <strong>O problema para feridas:</strong> feridas crônicas já apresentam excesso de ROS basal. A poluição turbina esse desequilíbrio, travando a ferida na fase inflamatória permanentemente.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="flow-step">
+        <div class="step-icon purple">🧱</div>
+        <div class="step-body">
+          <h4>3. Barreira cutânea quebrada</h4>
+          <p>Queratinócitos expostos ao PM2.5 reduzem expressão de <strong>filagrina e loricrina</strong> — proteínas estruturais chave. Isso compromete a integridade da barreira epidérmica e inicia respostas inflamatórias adicionais, criando um portal permanente para novos agentes agressores.<span class="ref-tag">9</span></p>
+        </div>
+      </div>
+
+      <div class="flow-step">
+        <div class="step-icon teal">🔧</div>
+        <div class="step-body">
+          <h4>4. Disfunção dos Fibroblastos</h4>
+          <p>Fibroblastos dérmicos expostos à fuligem ativam IL-13 e TGF-β via células imunes. Isso leva ao <strong>fenótipo fibrótico</strong>: produção excessiva e desorganizada de colágeno, com dois receptores-chave (heparina 1 e receptor ativado por protease 2) sendo disfuncionalizados. O resultado é colágeno que não fecha a ferida — apenas a inflama mais.<span class="ref-tag">5</span></p>
+          <div class="callout purple" style="margin-top:10px">
+            <p>🔬 <strong>Matriz Metaloproteinases (MMPs) ativadas:</strong> monócitos e macrófagos estimulados pela fuligem liberam MMPs em excesso, degradando colágeno e elastina antes mesmo da síntese completar-se — destruindo o andaime da cicatrização.<span class="ref-tag">6</span></p>
+          </div>
+        </div>
+      </div>
+
+      <div class="flow-step">
+        <div class="step-icon green">💉</div>
+        <div class="step-body">
+          <h4>5. Lesão Microvascular e Estado Pró-Trombótico</h4>
+          <p>PM2.5 circulante induz ativação plaquetária, geração de trombina e lesão endotelial. O resultado é um estado pró-trombótico sistêmico com microangiopatia — exatamente o substrato das úlceras venosas, arteriais e diabéticas, onde a perfusão já é crítica.<span class="ref-tag">10</span></p>
+        </div>
+      </div>
+
+    </div>
+
+    <figure class="full-width">
+      <img src="img/mecanismo-molecular-pm25-ferida.png" alt="Diagrama esquemático da cascata molecular: PM2.5 → AhR → ROS → NF-κB → citocinas → fibroblasto disfuncional → ferida crônica">
+      <figcaption>Figura 2 — Cascade molecular: do carbono negro à ferida que não fecha. Adaptado de Maunjumpon et al., 2026 e Gu et al., 2024.</figcaption>
+    </figure>
+  </section>
+
+  <!-- 3. PELE COMO ALVO -->
+  <section id="pele">
+    <div class="section-label">03 — Pele como Órgão-Alvo</div>
+    <h2>A pele no epicentro: quando a barreira vira porta de entrada</h2>
+
+    <div class="pull-quote">
+      "PM2.5 foi designado o 'tóxico do ano' pela dermatologia — e a cicatrização de feridas é uma das funções mais diretamente comprometidas."<span class="ref-tag">11</span>
+    </div>
+
+    <p>A pele é o único órgão com exposição dupla: recebe poluentes por contato direto <em>e</em> pelos poluentes que chegam pela circulação via pulmão. Para feridas crônicas, isso é catastrófico: a área lesionada é um portal aberto.</p>
+
+    <div class="grid-2">
+      <div class="mini-card">
+        <div class="card-icon">🔴</div>
+        <h4>Queratinócitos (Epiderme)</h4>
+        <p>Detectam PM2.5 via AhR → ativam produção de ROS e citocinas → reduzem filagrina e loricrina → barreira quebrada → ferida não re-epiteliza.<span class="ref-tag">9</span></p>
+      </div>
+      <div class="mini-card">
+        <div class="card-icon">🟣</div>
+        <h4>Fibroblastos (Derme)</h4>
+        <p>Respondem a mediadores inflamatórios → adquirem fenótipo fibrótico → colágeno desorganizado → sem fechamento funcional da ferida.<span class="ref-tag">5</span></p>
+      </div>
+      <div class="mini-card">
+        <div class="card-icon">🟠</div>
+        <h4>Macrófagos Dérmicos</h4>
+        <p>Poluição compromete a polarização M1→M2, atrasando a resolução da inflamação — fase obrigatória para progredir à proliferação.<span class="ref-tag">12</span></p>
+      </div>
+      <div class="mini-card">
+        <div class="card-icon">🔵</div>
+        <h4>Mitocôndrias Celulares</h4>
+        <p>Disfunção mitocondrial por PM2.5 reduz produção de ATP e libera fatores pró-apoptóticos — células com menor capacidade regenerativa.<span class="ref-tag">6</span></p>
+      </div>
+    </div>
+
+    <figure class="full-width">
+      <img src="img/camadas-pele-pm25.png" alt="Corte histológico esquemático da pele mostrando epiderme, derme e hipoderme com setas indicando profundidade de penetração por tamanho de partícula">
+      <figcaption>Figura 3 — Profundidade de penetração por tamanho de partícula. PM2.5 alcança a derme e a circulação; PM10 age principalmente na superfície epidérmica.</figcaption>
+    </figure>
+
+    <div class="callout amber">
+      <p><strong>Sinergismo UV + Poluição:</strong> PM2.5 contendo PAHs causa reações fototóxicas quando exposto à radiação UVA, com acúmulo de adutos de DNA e dano oxidativo amplificado — especialmente relevante em zonas tropicais com alta irradiância solar como o Brasil.<span class="ref-tag">13</span></p>
+    </div>
+  </section>
+
+  <!-- 4. SATÉLITES -->
+  <div class="satellite-section">
+    <div class="section-label">04 — A Fronteira Nova do Problema</div>
+    <h2>Fuligem de satélites: quando o espaço polui a Terra</h2>
+    <p>Uma nova e inesperada fonte de carbono negro está se acumulando — silenciosa e irregulatória — na estratosfera. O boom das megaconstelações de satélites representa uma dimensão inteiramente nova da poluição por fuligem.</p>
+
+    <div class="callout" style="border-color:#F4A55A;background:rgba(255,255,255,.08)">
+      <p style="color:rgba(255,255,255,.9)">🛰 <strong>Estudo UCL, <em>Earth's Future</em>, 14 de maio de 2026:</strong> pesquisadores do University College London modelaram todas as emissões de poluentes de lançamentos e reentradas de megaconstelações entre 2020-2022 e projetaram até 2029.<span class="ref-tag">3</span></p>
+    </div>
+
+    <div class="sat-stats">
+      <div class="sat-stat">
+        <div class="num">329</div>
+        <div class="lbl">lançamentos de foguetes em 2025 (era 114 em 2020)<span class="ref-tag">3</span></div>
+      </div>
+      <div class="sat-stat">
+        <div class="num">870t</div>
+        <div class="lbl">de fuligem/ano na estratosfera prevista até 2029<span class="ref-tag">14</span></div>
+      </div>
+      <div class="sat-stat">
+        <div class="num">540×</div>
+        <div class="lbl">mais impacto climático que a mesma fuligem ao nível do solo<span class="ref-tag">14</span></div>
+      </div>
+      <div class="sat-stat">
+        <div class="num">42%</div>
+        <div class="lbl">do impacto total do setor espacial em 2029<span class="ref-tag">3</span></div>
+      </div>
+    </div>
+
+    <p style="color:rgba(255,255,255,.78);margin-top:28px">Os foguetes Falcon 9 da SpaceX usam combustível à base de querosene, liberando partículas de fuligem nas camadas superiores da atmosfera durante o lançamento. Na reentrada, satélites desativados liberam carbono negro e metais pesados. Diferentemente da fuligem terrestre — removida pela chuva em dias — essa fuligem estratosférica fica retida por <strong>anos</strong>, sem mecanismo de remoção eficiente.<span class="ref-tag">2,3</span></p>
+  </div>
+
+  <!-- 5. A PONTE: COMO O ESPAÇO AFETA FERIDAS -->
+  <section id="ponte">
+    <div class="section-label">05 — Connecting the Dots</div>
+    <h2>A ponte invisível: do espaço à ferida crônica</h2>
+    <p>A conexão entre fuligem estratosférica e feridas crônicas não é direta — mas é real, através de efeitos sistêmicos em cascata sobre o clima, o ozônio e a qualidade do ar que respiramos.</p>
+
+    <table class="connection-table">
+      <thead>
+        <tr>
+          <th>Fonte de fuligem</th>
+          <th>Onde age</th>
+          <th>Mecanismo</th>
+          <th>Impacto nas feridas</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>Terrestre</strong><br><small>carros, queimadas, indústria</small></td>
+          <td>Troposfera (0–12 km)</td>
+          <td>Inalação direta, deposição cutânea, absorção vascular</td>
+          <td>ROS ↑, fibroblastos disfuncionais, barreira cutânea comprometida<span class="ref-tag">7,8,9</span></td>
+        </tr>
+        <tr>
+          <td><strong>Espacial</strong><br><small>foguetes, reentrada de satélites</small></td>
+          <td>Estratosfera (20–50 km)</td>
+          <td>Bloqueio de radiação solar, depleção do ozônio, alteração padrões climáticos</td>
+          <td>↑ UV-B (ozônio depletado) → dano ao DNA cutâneo → cicatrização prejudicada; alterações climáticas → maior frequência de queimadas → mais PM2.5 terrestre<span class="ref-tag">2,15</span></td>
+        </tr>
+        <tr>
+          <td><strong>Combinado</strong><br><small>PM2.5 + UV elevado</small></td>
+          <td>Pele diretamente</td>
+          <td>Fototoxicidade sinérgica de PAHs + radiação UVA/B</td>
+          <td>Acúmulo de adutos de DNA, inflamação amplificada, risco de malignização em bordas de feridas crônicas<span class="ref-tag">13</span></td>
+        </tr>
+      </tbody>
+    </table>
+
+    <figure class="full-width">
+      <img src="img/diagrama-espaco-pele-ferida.png" alt="Diagrama vertical mostrando cadeia de efeitos: foguetes emitem fuligem estratosférica → depleção de ozônio → aumento de UV → combinado com PM terrestre → ferida crônica">
+      <figcaption>Figura 4 — Cadeia de efeitos: da fuligem estratosférica de satélites à ferida cutânea crônica. Elaboração própria com base em Marais et al., 2026; JAAD Reviews, 2025.</figcaption>
+    </figure>
+
+    <div class="callout green">
+      <p>🌿 <strong>Ponto de esperança:</strong> estudos recentes identificam compostos botânicos (sulforafano, polifenóis do chá verde, flavonoides) que restauram a cicatrização de feridas cutâneas comprometida por PM2.5, agindo nas vias NF-κB, AhR e Nrf2.<span class="ref-tag">16,17</span> Isso abre frentes para protocolos adjuvantes em cuidado de feridas em populações expostas à alta poluição.</p>
+    </div>
+  </section>
+
+  <!-- 6b. LIMITES DE SEGURANÇA -->
+  <section id="limites">
+    <div class="section-label">06 — Quanto é demais?</div>
+    <h2>Existe um limite seguro de fuligem para respirar?<br><em style="font-size:.85em;color:var(--amber)">A resposta incômoda: para a fuligem, ainda não sabemos.</em></h2>
+
+    <p>Essa é uma das lacunas mais relevantes da saúde ambiental contemporânea. Para o carbono negro (fuligem) em si, a ciência ainda não estabeleceu um valor-guia numérico — o que por si só é um sinal de alerta.</p>
+
+    <div class="callout red">
+      <p>🚨 <strong>OMS, 2021 — Diretrizes Globais de Qualidade do Ar:</strong> o grupo de desenvolvimento decidiu não formular limites numéricos para carbono negro/carbono elementar por considerar que a evidência quantitativa sobre efeitos adversos à saúde independentes ainda era insuficiente. Em vez de um número, publicou apenas "declarações de boas práticas" — medir, monitorar e reduzir.<span class="ref-tag">R1</span></p>
+    </div>
+
+    <p>Isso não significa que a fuligem é inofensiva. Significa que os efeitos já documentados ocorrem <em>abaixo de qualquer patamar que se possa chamar de seguro</em>. <span class="ref-tag">R2</span></p>
+
+    <div class="grid-2" style="margin-top:24px">
+      <div class="mini-card" style="border-color:var(--amber)">
+        <div class="card-icon">🌬</div>
+        <h4>PM2.5 — limite OMS 2021 (ar)</h4>
+        <p><strong style="color:var(--slate)">5 µg/m³</strong> (média anual)<br><strong style="color:var(--slate)">15 µg/m³</strong> (média em 24h)<br><small>Revisão de 2021 reduziu o limite anual à metade em relação a 2005 (era 10 µg/m³).<span class="ref-tag">R3</span></small></p>
+      </div>
+      <div class="mini-card" style="border-color:var(--amber)">
+        <div class="card-icon">🏭</div>
+        <h4>Carbono negro — limite ocupacional (EUA/NIOSH)</h4>
+        <p><strong style="color:var(--slate)">3,5 mg/m³</strong> (média de 10h/dia)<br><strong style="color:var(--slate)">0,1 mg PAHs/m³</strong> (quando há PAHs associados)<br><small>Apenas para contexto ocupacional — não existe equivalente ambiental.<span class="ref-tag">R4</span></small></p>
+      </div>
+      <div class="mini-card" style="border-color:var(--red-dark)">
+        <div class="card-icon">🖐</div>
+        <h4>Para a pele — limite de exposição cutânea</h4>
+        <p><strong style="color:var(--red-dark)">Não existe.</strong> Documentos de segurança recomendam apenas lavar a pele exposta com água e sabão e usar barreiras protetoras. Nenhum órgão regulatório definiu uma concentração cutânea tolerável.<span class="ref-tag">R4</span></p>
+      </div>
+      <div class="mini-card" style="border-color:var(--red-dark)">
+        <div class="card-icon">📉</div>
+        <h4>O problema dos "níveis seguros"</h4>
+        <p>Estudos mostram efeitos adversos à saúde <strong style="color:var(--red-dark)">mesmo abaixo dos padrões internacionais vigentes</strong> de qualidade do ar. A evidência acumulada vem reduzindo os limites a cada revisão — sempre para baixo.<span class="ref-tag">R2</span></p>
+      </div>
+    </div>
+
+    <div class="pull-quote" style="margin-top:32px">
+      "É particularmente alarmante que efeitos negativos à saúde sejam observados mesmo em níveis bem abaixo dos padrões internacionais de qualidade do ar."<span class="ref-tag">R2</span>
+    </div>
+
+    <h3 style="margin-top:8px;margin-bottom:12px">Por que é tão difícil definir um limite para a fuligem?</h3>
+    <p>Porque o carbono negro raramente viaja sozinho. Ele carrega PAHs (hidrocarbonetos aromáticos policíclicos), metais pesados e compostos orgânicos — uma mistura variável conforme a fonte. Definir um limite para "fuligem" seria como definir um limite para "sopa": depende do que está dentro. Além disso, <span class="ref-tag">R5</span> estudos populacionais mostram que a fuligem proveniente de combustão (veículos, queimadas) causa danos maiores que PM de fontes não-combustão com a mesma massa — tornando o limite de PM2.5 uma proxy imperfeita.</p>
+
+  </section>
+
+  <!-- 7. CONTEXTO BRASILEIRO -->
+  <section id="brasil">
+    <div class="section-label">06 — Contexto Clínico e Local</div>
+    <h2>No Brasil: poluição, queimadas e feridas — uma equação urgente</h2>
+
+    <p>O Brasil combina fatores que tornam essa conexão especialmente relevante: grandes centros urbanos com MP2.5 acima dos limites da OMS, queimadas extensas (especialmente Amazônia, Cerrado e Pantanal) e alta prevalência de feridas crônicas — sobretudo úlceras diabéticas e por pressão em populações vulneráveis.</p>
+
+    <div class="grid-2">
+      <div class="mini-card">
+        <div class="card-icon">🏙</div>
+        <h4>São Paulo</h4>
+        <p>"Os índices de material particulado em São Paulo encontram-se em níveis mais elevados do que o recomendado pela OMS", com impacto documentado em morbidade cardiovascular e respiratória.<span class="ref-tag">18</span></p>
+      </div>
+      <div class="mini-card">
+        <div class="card-icon">🔥</div>
+        <h4>Queimadas</h4>
+        <p>Eventos de queimada geram picos agudos de PM2.5 que se dispersam por centenas de km. Pacientes com feridas crônicas em regiões afetadas enfrentam piora sistêmica da inflamação e perfusão tecidual.<span class="ref-tag">4</span></p>
+      </div>
+    </div>
+
+    <figure class="full-width">
+      <img src="img/mapa-queimadas-pm25-brasil.png" alt="Mapa do Brasil com sobreposição de focos de queimada e concentração de PM2.5 por região, destacando áreas de maior risco para populações com feridas crônicas">
+      <figcaption>Figura 5 — Distribuição de queimadas e MP2.5 no Brasil. Fontes: INPE, FEPAM, OMS.</figcaption>
+    </figure>
+
+    <div class="callout amber">
+      <p>⚠️ <strong>Lacuna de pesquisa:</strong> até o momento, não há estudos clínicos brasileiros que correlacionem diretamente os níveis locais de PM2.5 com desfechos de feridas crônicas. Esse é um campo fértil e urgente para o G10 UFPel e grupos semelhantes.</p>
+    </div>
+  </section>
+
+  <!-- 7. SÍNTESE -->
+  <div class="synthesis-box">
+    <div class="section-label">07 — Síntese</div>
+    <h2>O que fica: uma conexão real, multimecânica e crescente</h2>
+    <p>Fuligem e feridas crônicas compartilham um terreno molecular comum: <strong>inflamação não-resolvida, disfunção de fibroblastos, barreira cutânea comprometida e isquemia microvascular</strong>. A poluição particulada não causa feridas crônicas — mas amplifica, perpetua e provavelmente agrava a falha de cicatrização em pacientes já vulneráveis.</p>
+    <p style="margin-top:16px">A nova dimensão espacial — fuligem de megaconstelações de satélites — adiciona uma camada ainda pouco compreendida: aumento de UV-B por depleção do ozônio, alterações climáticas que intensificam queimadas, e acúmulo estratosférico sem mecanismo de remoção natural. <strong>A janela de ação ainda está aberta</strong>, alertam os pesquisadores do UCL — mas ela se fecha com cada novo lançamento não regulado.<span class="ref-tag">3</span></p>
+    <p style="margin-top:16px">Para o cuidado de feridas, isso aponta para uma nova variável ambiental a ser considerada na avaliação clínica: <em>onde o paciente vive, respira e trabalha</em> pode ser tão determinante quanto o índice glicêmico ou a pressão sobre o leito da ferida.</p>
+  </div>
+
+  <!-- 8. QUIZ MÚLTIPLA ESCOLHA -->
+  <section class="quiz-section" id="quiz">
+    <div class="section-label">08 — Teste seu Conhecimento</div>
+    <h2>Quanto você absorveu?</h2>
+    <p class="quiz-intro">Oito questões baseadas no conteúdo deste infográfico. Selecione a alternativa e clique em "Verificar" para ver a explicação.</p>
+
+    <!-- Q1 -->
+    <div class="quiz-item" id="qi1">
+      <div class="quiz-question"><span class="quiz-number">Q1</span> Qual é a principal diferença entre a fuligem emitida ao nível do solo e a emitida por foguetes na estratosfera?</div>
+      <ul class="quiz-options">
+        <li><input type="radio" name="q1" id="q1a" value="a"><label for="q1a"><span class="option-letter">A</span> A fuligem estratosférica é quimicamente diferente e não contém carbono negro</label></li>
+        <li><input type="radio" name="q1" id="q1b" value="b"><label for="q1b"><span class="option-letter">B</span> A fuligem estratosférica permanece por anos sem ser removida pela chuva, com impacto climático ~500× maior</label></li>
+        <li><input type="radio" name="q1" id="q1c" value="c"><label for="q1c"><span class="option-letter">C</span> A fuligem ao nível do solo é mais perigosa porque é inalada diretamente</label></li>
+        <li><input type="radio" name="q1" id="q1d" value="d"><label for="q1d"><span class="option-letter">D</span> Não há diferença relevante entre as duas fontes</label></li>
+      </ul>
+      <button class="quiz-btn" onclick="checkQuiz('q1','b','A fuligem estratosférica fica retida por anos porque não há chuva ou mecanismos de deposição úmida nessa altitude. Isso torna seu impacto climático ~500–540× maior que a mesma quantidade de fuligem emitida próxima ao solo. [Ref. 2, 3]')">Verificar</button>
+      <div class="quiz-feedback" id="fb-q1"></div>
+    </div>
+
+    <!-- Q2 -->
+    <div class="quiz-item" id="qi2">
+      <div class="quiz-question"><span class="quiz-number">Q2</span> Qual receptor celular é ativado quando queratinócitos detectam PM2.5, iniciando a cascata de dano à pele?</div>
+      <ul class="quiz-options">
+        <li><input type="radio" name="q2" id="q2a" value="a"><label for="q2a"><span class="option-letter">A</span> Receptor de insulina (IR)</label></li>
+        <li><input type="radio" name="q2" id="q2b" value="b"><label for="q2b"><span class="option-letter">B</span> Receptor ativado por proliferador de peroxissoma (PPAR-γ)</label></li>
+        <li><input type="radio" name="q2" id="q2c" value="c"><label for="q2c"><span class="option-letter">C</span> Receptor de hidrocarboneto aril (AhR)</label></li>
+        <li><input type="radio" name="q2" id="q2d" value="d"><label for="q2d"><span class="option-letter">D</span> Receptor toll-like 4 (TLR-4) exclusivamente</label></li>
+      </ul>
+      <button class="quiz-btn" onclick="checkQuiz('q2','c','O receptor AhR (aryl hydrocarbon receptor) é o principal sensor de PM2.5 nos queratinócitos. Sua ativação dispara produção de ROS e citocinas inflamatórias, e reduz proteínas estruturais da barreira (filagrina, loricrina). [Ref. 9]')">Verificar</button>
+      <div class="quiz-feedback" id="fb-q2"></div>
+    </div>
+
+    <!-- Q3 -->
+    <div class="quiz-item" id="qi3">
+      <div class="quiz-question"><span class="quiz-number">Q3</span> O que acontece com os fibroblastos dérmicos expostos cronicamente à fuligem e mediadores inflamatórios por ela induzidos?</div>
+      <ul class="quiz-options">
+        <li><input type="radio" name="q3" id="q3a" value="a"><label for="q3a"><span class="option-letter">A</span> Tornam-se mais ativos e produzem colágeno de forma acelerada, fechando a ferida mais rápido</label></li>
+        <li><input type="radio" name="q3" id="q3b" value="b"><label for="q3b"><span class="option-letter">B</span> Adquirem fenótipo fibrótico com produção excessiva e desorganizada de colágeno, dificultando a cicatrização</label></li>
+        <li><input type="radio" name="q3" id="q3c" value="c"><label for="q3c"><span class="option-letter">C</span> Entram em apoptose imediata sem causar alterações funcionais</label></li>
+        <li><input type="radio" name="q3" id="q3d" value="d"><label for="q3d"><span class="option-letter">D</span> Migram para os pulmões e não afetam a pele</label></li>
+      </ul>
+      <button class="quiz-btn" onclick="checkQuiz('q3','b','IL-13 e TGF-β produzidos em resposta à fuligem ativam fibroblastos via receptores heparina 1 e PAR-2, levando ao fenótipo fibrótico: colágeno excessivo e desorganizado, MMPs ativas que destroem o andaime extracelular. O resultado é uma ferida que não progride. [Ref. 5]')">Verificar</button>
+      <div class="quiz-feedback" id="fb-q3"></div>
+    </div>
+
+    <!-- Q4 -->
+    <div class="quiz-item" id="qi4">
+      <div class="quiz-question"><span class="quiz-number">Q4</span> Por que a depleção da camada de ozônio causada pela fuligem estratosférica é relevante para feridas crônicas?</div>
+      <ul class="quiz-options">
+        <li><input type="radio" name="q4" id="q4a" value="a"><label for="q4a"><span class="option-letter">A</span> O ozônio é necessário para a produção de vitamina C na pele</label></li>
+        <li><input type="radio" name="q4" id="q4b" value="b"><label for="q4b"><span class="option-letter">B</span> Menos ozônio → mais UV-B atinge a pele → dano ao DNA cutâneo e inflamação amplificada, que prejudicam a cicatrização</label></li>
+        <li><input type="radio" name="q4" id="q4c" value="c"><label for="q4c"><span class="option-letter">C</span> O ozônio produz antioxidantes que neutralizam as ROS das feridas</label></li>
+        <li><input type="radio" name="q4" id="q4d" value="d"><label for="q4d"><span class="option-letter">D</span> A depleção do ozônio não tem efeito direto sobre a pele</label></li>
+      </ul>
+      <button class="quiz-btn" onclick="checkQuiz('q4','b','A camada de ozônio filtra radiação UV-B. Com sua depleção, mais UV-B chega à superfície, causando dano ao DNA das células cutâneas, acúmulo de adutos de DNA e inflamação amplificada — um ambiente hostil à cicatrização, especialmente em zonas tropicais como o Brasil. [Ref. 2, 15]')">Verificar</button>
+      <div class="quiz-feedback" id="fb-q4"></div>
+    </div>
+
+    <!-- Q5 -->
+    <div class="quiz-item" id="qi5">
+      <div class="quiz-question"><span class="quiz-number">Q5</span> Qual das seguintes afirmativas sobre PM2.5 e feridas crônicas é <em>incorreta</em>?</div>
+      <ul class="quiz-options">
+        <li><input type="radio" name="q5" id="q5a" value="a"><label for="q5a"><span class="option-letter">A</span> PM2.5 pode penetrar a pele integra por folículos pilosos e glândulas sudoríparas</label></li>
+        <li><input type="radio" name="q5" id="q5b" value="b"><label for="q5b"><span class="option-letter">B</span> PM2.5 induz ativação plaquetária e estado pró-trombótico que piora a perfusão tecidual</label></li>
+        <li><input type="radio" name="q5" id="q5c" value="c"><label for="q5c"><span class="option-letter">C</span> PM2.5 causa feridas crônicas diretamente em pessoas saudáveis, sem outros fatores de risco</label></li>
+        <li><input type="radio" name="q5" id="q5d" value="d"><label for="q5d"><span class="option-letter">D</span> O estresse oxidativo crônico induzido pelo PM2.5 degrada colágeno via ativação de metaloproteases</label></li>
+      </ul>
+      <button class="quiz-btn" onclick="checkQuiz('q5','c','PM2.5 amplifica e perpetua falhas de cicatrização em pacientes com fatores de risco — não causa feridas crônicas de forma isolada em indivíduos saudáveis. Ele age como co-fator agravante, não como causa única. As demais afirmativas estão corretas. [Ref. 6, 8, 10]')">Verificar</button>
+      <div class="quiz-feedback" id="fb-q5"></div>
+    </div>
+
+    <!-- Q6 -->
+    <div class="quiz-item" id="qi6">
+      <div class="quiz-question"><span class="quiz-number">Q6</span> Qual mecanismo explica por que a poluição do ar atrasa a resolução da inflamação no tecido lesionado?</div>
+      <ul class="quiz-options">
+        <li><input type="radio" name="q6" id="q6a" value="a"><label for="q6a"><span class="option-letter">A</span> PM2.5 aumenta a temperatura corporal, acelerando o metabolismo inflamatório</label></li>
+        <li><input type="radio" name="q6" id="q6b" value="b"><label for="q6b"><span class="option-letter">B</span> PM2.5 compromete a resposta dos macrófagos e a ativação de linfócitos, impedindo a polarização M1→M2 necessária para resolver a inflamação</label></li>
+        <li><input type="radio" name="q6" id="q6c" value="c"><label for="q6c"><span class="option-letter">C</span> PM2.5 elimina bactérias da ferida, causando resposta imune excessiva</label></li>
+        <li><input type="radio" name="q6" id="q6d" value="d"><label for="q6d"><span class="option-letter">D</span> PM2.5 bloqueia os canais de cálcio das células inflamatórias</label></li>
+      </ul>
+      <button class="quiz-btn" onclick="checkQuiz('q6','b','Pesquisadores da USP demonstraram que a poluição compromete a função de macrófagos e linfócitos, atrasando a transição da fase inflamatória aguda para a resolução. Em feridas crônicas, essa incapacidade de "desligar" a inflamação é central para a estagnação. [Ref. 12]')">Verificar</button>
+      <div class="quiz-feedback" id="fb-q6"></div>
+    </div>
+
+    <!-- Q7 -->
+    <div class="quiz-item" id="qi7">
+      <div class="quiz-question"><span class="quiz-number">Q7</span> Em 2025, quantos lançamentos de foguetes ocorreram globalmente — e qual era o número em 2020?</div>
+      <ul class="quiz-options">
+        <li><input type="radio" name="q7" id="q7a" value="a"><label for="q7a"><span class="option-letter">A</span> 50 em 2020 e 150 em 2025</label></li>
+        <li><input type="radio" name="q7" id="q7b" value="b"><label for="q7b"><span class="option-letter">B</span> 114 em 2020 e 329 em 2025</label></li>
+        <li><input type="radio" name="q7" id="q7c" value="c"><label for="q7c"><span class="option-letter">C</span> 200 em 2020 e 400 em 2025</label></li>
+        <li><input type="radio" name="q7" id="q7d" value="d"><label for="q7d"><span class="option-letter">D</span> 114 em 2020 e 215 em 2025</label></li>
+      </ul>
+      <button class="quiz-btn" onclick="checkQuiz('q7','b','Segundo o estudo UCL publicado em Earth\'s Future (maio 2026), os lançamentos anuais quase triplicaram — de 114 em 2020 para 329 em 2025 —, impulsionados principalmente pelos foguetes Falcon 9 da SpaceX. [Ref. 3]')">Verificar</button>
+      <div class="quiz-feedback" id="fb-q7"></div>
+    </div>
+
+    <!-- Q8 -->
+    <div class="quiz-item" id="qi8">
+      <div class="quiz-question"><span class="quiz-number">Q8</span> Qual grupo de compostos demonstra potencial para restaurar a cicatrização comprometida por PM2.5, atuando nas vias NF-κB, AhR e Nrf2?</div>
+      <ul class="quiz-options">
+        <li><input type="radio" name="q8" id="q8a" value="a"><label for="q8a"><span class="option-letter">A</span> Antibióticos de amplo espectro (ex: amoxicilina, ciprofloxacino)</label></li>
+        <li><input type="radio" name="q8" id="q8b" value="b"><label for="q8b"><span class="option-letter">B</span> Compostos botânicos e fitoquímicos (sulforafano, polifenóis do chá verde, flavonoides)</label></li>
+        <li><input type="radio" name="q8" id="q8c" value="c"><label for="q8c"><span class="option-letter">C</span> Corticosteroides sistêmicos em altas doses</label></li>
+        <li><input type="radio" name="q8" id="q8d" value="d"><label for="q8d"><span class="option-letter">D</span> Suplementos de cálcio e vitamina D exclusivamente</label></li>
+      </ul>
+      <button class="quiz-btn" onclick="checkQuiz('q8','b','Estudos recentes (PMC12045276; Maunjumpon et al., 2026) identificam sulforafano, polifenóis do chá verde e flavonoides como agentes com capacidade de restaurar a cicatrização prejudicada por PM2.5, atuando como antioxidantes e anti-inflamatórios nas vias moleculares centrais. [Ref. 16, 17]')">Verificar</button>
+      <div class="quiz-feedback" id="fb-q8"></div>
+    </div>
+
+    <div class="quiz-score-bar" id="scoreBar">
+      <div class="score-num" id="scoreNum">0/8</div>
+      <div class="score-label">questões corretas — <span id="scoreFeedback"></span></div>
+    </div>
+  </section>
+
+  <!-- 9. QUESTÕES PARA PENSAR -->
+  <section class="reflection-section" id="reflexao">
+    <div class="section-label">09 — Para ir além</div>
+    <h2>Cinco perguntas que ficam na cabeça</h2>
+    <p style="color:var(--text-muted);margin-bottom:8px">Não há resposta certa. Clique em cada pergunta para ver ângulos de reflexão que podem guiar sua análise.</p>
+
+    <div class="reflection-grid">
+
+      <div class="reflection-card" onclick="toggleReflection(this)">
+        <div class="ref-icon-box">🌍</div>
+        <div class="ref-body">
+          <h4>Se a fuligem de foguetes tem impacto 540× maior que a fuligem terrestre, por que ainda não existe regulação internacional para emissões do setor espacial?</h4>
+          <span class="ref-toggle">▼ Ver ângulos de análise</span>
+          <div class="ref-expand">
+            Considere: o espaço opera em uma zona de "soberania difusa" — fora da jurisdição de qualquer país. A Convenção de Chicago regula a aviação, mas não o espaço. A corrida entre empresas privadas (SpaceX, Amazon Kuiper, OneWeb) e nações (EUA, China, Rússia, Índia) cria pressão competitiva que supera a precaução ambiental. O estudo UCL alerta: "ainda temos tempo de agir — mas a janela se fecha." Quem deveria regular? A ONU? A ITU (que já aloca frequências de satélites)? Agências nacionais? E qual seria o mecanismo de enforcement?
+          </div>
+        </div>
+      </div>
+
+      <div class="reflection-card" onclick="toggleReflection(this)">
+        <div class="ref-icon-box">🏥</div>
+        <div class="ref-body">
+          <h4>Se onde um paciente vive e respira influencia a cicatrização, como isso deveria mudar a avaliação clínica de feridas crônicas na prática cotidiana?</h4>
+          <span class="ref-toggle">▼ Ver ângulos de análise</span>
+          <div class="ref-expand">
+            A anamnese padrão de feridas pergunta sobre diabetes, mobilidade, nutrição, pressão. Raramente pergunta sobre exposição ocupacional a poluentes, proximidade de vias de alto tráfego, histórico de queimadas na região ou uso de fogão a lenha. Esses dados ambientais poderiam integrar escalas de risco? Ferramentas como o PUSH ou o TIME deveriam ter um módulo ambiental? E quais intervenções seriam possíveis — mudança de ambiente, proteção de barreira, antioxidantes tópicos?
+          </div>
+        </div>
+      </div>
+
+      <div class="reflection-card" onclick="toggleReflection(this)">
+        <div class="ref-icon-box">⚖️</div>
+        <div class="ref-body">
+          <h4>Quem arca com o ônus da saúde causado pela poluição de satélites? Aqueles que usufruem da internet via Starlink, ou as populações que sofrem os impactos climáticos e de saúde?</h4>
+          <span class="ref-toggle">▼ Ver ângulos de análise</span>
+          <div class="ref-expand">
+            Megaconstelações oferecem conectividade a regiões remotas — um benefício real. Mas os custos ambientais (fuligem estratosférica, depleção do ozônio) são distribuídos globalmente e de forma desigual: populações de países tropicais com maior incidência de UV, maior vulnerabilidade climática e menor acesso a serviços de saúde tendem a sofrer mais os efeitos — sem ter participado da decisão de lançar esses satélites. Isso é uma questão de justiça ambiental clássica aplicada a uma dimensão nova: o espaço.
+          </div>
+        </div>
+      </div>
+
+      <div class="reflection-card" onclick="toggleReflection(this)">
+        <div class="ref-icon-box">🔬</div>
+        <div class="ref-body">
+          <h4>Por que a conexão entre poluição atmosférica e feridas crônicas ainda é uma lacuna na literatura científica brasileira — e como pesquisadores do G10 UFPel poderiam contribuir?</h4>
+          <span class="ref-toggle">▼ Ver ângulos de análise</span>
+          <div class="ref-expand">
+            O Brasil tem dados do INPE sobre queimadas, dados do CETESB/SMAC sobre MP2.5 em cidades, e registros clínicos de pacientes com feridas crônicas — mas esses bancos raramente se cruzam. Um estudo ecológico correlacionando índices de poluição por município com incidência e tempo de fechamento de feridas crônicas seria factível, de baixo custo e altamente relevante. O G10, com foco em telemonitoramento, poderia integrar a variável "exposição ambiental estimada por CEP" nos seus protocolos. Qual seria o desfecho primário ideal? Tempo de cicatrização? Taxa de recidiva? Infecção?
+          </div>
+        </div>
+      </div>
+
+      <div class="reflection-card" onclick="toggleReflection(this)">
+        <div class="ref-icon-box">💊</div>
+        <div class="ref-body">
+          <h4>Se compostos botânicos como sulforafano restauram vias moleculares comprometidas pelo PM2.5, isso representa uma oportunidade terapêutica real — ou ainda estamos longe da aplicação clínica?</h4>
+          <span class="ref-toggle">▼ Ver ângulos de análise</span>
+          <div class="ref-expand">
+            Os estudos existentes são em sua maioria in vitro (culturas de queratinócitos e fibroblastos) ou em modelos animais. O salto para ensaios clínicos controlados em pacientes com feridas crônicas e alta exposição a PM2.5 ainda não aconteceu. Questões pendentes: qual a dose eficaz? Via de administração (oral, tópica)? Qual o perfil de paciente que mais se beneficiaria? Há interações com anticoagulantes (comuns em pacientes com úlceras vasculares)? A evidência atual é promissora o suficiente para protocolos experimentais — mas ainda insuficiente para recomendações clínicas formais.
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- 10. REFERÊNCIAS -->
+  <section class="references-section">
+    <div class="section-label">10 — Referências</div>
+    <h2>Fontes e Referências Científicas</h2>
+    <ol class="ref-list">
+      <li>
+        <span class="ref-num">[1]</span>
+        <div>Maunjumpon P, Thamsermsang O, Panich U. <em>Mitigating PM2.5-induced skin injury and aging: botanical strategies targeting redox and inflammatory pathways.</em> Redox Rep. 2026;31(1). DOI: <a href="https://doi.org/10.1080/13510002.2026.2629079" target="_blank">10.1080/13510002.2026.2629079</a>. PMC12927407.</div>
+      </li>
+      <li>
+        <span class="ref-num">[2]</span>
+        <div>Phys.org / UCL News. <em>Satellite launch pollution is rapidly accumulating in the upper atmosphere.</em> 14 maio 2026. Disponível em: <a href="https://phys.org/news/2026-05-satellite-pollution-rapidly-accumulating-upper.html" target="_blank">phys.org</a>. Acesso: 17 maio 2026.</div>
+      </li>
+      <li>
+        <span class="ref-num">[3]</span>
+        <div>Marais EA et al. <em>Radiative Forcing and Ozone Depletion of a Decade of Satellite Megaconstellation Missions.</em> Earth's Future. 2026. DOI: 10.1029/2025EF007229. Disponível em: <a href="https://www.ucl.ac.uk/news/2026/may/satellite-launch-pollution-rapidly-accumulating-upper-atmosphere" target="_blank">UCL News</a>.</div>
+      </li>
+      <li>
+        <span class="ref-num">[4]</span>
+        <div>PubMed/NIH. <em>Particulate Matter-Induced Emerging Health Effects Associated with Oxidative Stress and Inflammation.</em> 2024. PMC: <a href="https://pubmed.ncbi.nlm.nih.gov/39456509/" target="_blank">39456509</a>.</div>
+      </li>
+      <li>
+        <span class="ref-num">[5]</span>
+        <div>Ravindra K, Sokhi R, Van Grieken R. <em>The Toxicological Mechanisms of Environmental Soot (Black Carbon) and Carbon Black: Focus on Oxidative Stress and Inflammatory Pathways.</em> Front Immunol. 2017. PMC: <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC5492873/" target="_blank">PMC5492873</a>.</div>
+      </li>
+      <li>
+        <span class="ref-num">[6]</span>
+        <div>JAAD Reviews. <em>The impact of pollution and climate change on skin health: Mechanisms, protective strategies, and future directions.</em> 2025. Disponível em: <a href="https://www.jaadreviews.org/article/S2950-1989(25)00061-3/fulltext" target="_blank">jaadreviews.org</a>.</div>
+      </li>
+      <li>
+        <span class="ref-num">[7]</span>
+        <div>PMC/NIH. <em>Oxidative Stress Induced by Air Pollution.</em> 2024. PMC: <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC11590906/" target="_blank">PMC11590906</a>.</div>
+      </li>
+      <li>
+        <span class="ref-num">[8]</span>
+        <div>PMC/NIH. <em>Effects of Particulate Matter on Inflammation and Thrombosis: Past Evidence for Future Prevention.</em> PMC: <a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC9317970/" target="_blank">PMC9317970</a>.</div>
+      </li>
+      <li>
+        <span class="ref-num">[9]</span>
+        <div>Rolfes KM, Singh N, Haarmann-Stemmann T, Krutmann J. <em>The Toxin of the Year: Airborne PM2.5.</em> J Invest Dermatol. 2025. DOI: <a href="https://journals.sagepub.com/doi/10.1177/17103568251385571" target="_blank">10.1177/17103568251385571</a>.</div>
+      </li>
+      <li>
+        <span class="ref-num">[10]</span>
+        <div>PMC/NIH. <em>Particulate air pollution, systemic oxidative stress, inflammation, and atherosclerosis.</em> PMC: <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC3040314/" target="_blank">PMC3040314</a>.</div>
+      </li>
+      <li>
+        <span class="ref-num">[11]</span>
+        <div>Rolfes KM et al., 2025 — idem [9].</div>
+      </li>
+      <li>
+        <span class="ref-num">[12]</span>
+        <div>Jornal USP. <em>Poluição do ar prejudica recuperação de lesões pulmonares, sugere pesquisa.</em> 2021. Disponível em: <a href="https://jornal.usp.br/ciencias/poluicao-do-ar-prejudica-recuperacao-de-lesoes-pulmonares-sugere-pesquisa/" target="_blank">jornal.usp.br</a>.</div>
+      </li>
+      <li>
+        <span class="ref-num">[13]</span>
+        <div>Rolfes KM et al., 2025 — seção fototoxicidade PM2.5 + UV. Idem [9].</div>
+      </li>
+      <li>
+        <span class="ref-num">[14]</span>
+        <div>TUN / EurekAlert. <em>Satellite Megaconstellations Are Polluting the Upper Atmosphere.</em> Maio 2026. Disponível em: <a href="https://www.eurekalert.org/news-releases/1127941" target="_blank">eurekalert.org</a>.</div>
+      </li>
+      <li>
+        <span class="ref-num">[15]</span>
+        <div>Salata Institute / Harvard SEAS. <em>Burning satellites in the stratosphere: Emerging questions for climate.</em> Jan 2026. Disponível em: <a href="https://salatainstitute.harvard.edu/burning-satellites-in-the-stratosphere-emerging-questions-for-climate/" target="_blank">salatainstitute.harvard.edu</a>.</div>
+      </li>
+      <li>
+        <span class="ref-num">[16]</span>
+        <div>PMC/NIH. <em>Natural products as promising therapeutics for fine particulate matter–induced skin damage.</em> PMC: <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC12045276/" target="_blank">PMC12045276</a>.</div>
+      </li>
+      <li>
+        <span class="ref-num">[17]</span>
+        <div>Maunjumpon P et al., 2026 — idem [1].</div>
+      </li>
+      <li>
+        <span class="ref-num">[18]</span>
+        <div>FEPAM. <em>Poluição Atmosférica — Material Particulado.</em> Jun 2024. Disponível em: <a href="https://www.fepam.rs.gov.br/poluicao-atmosferica" target="_blank">fepam.rs.gov.br</a>.</div>
+      </li>
+      <li>
+        <span class="ref-num">[R1]</span>
+        <div>WHO. <em>Good practice statements about other PM types — Black carbon/elemental carbon.</em> In: WHO Global Air Quality Guidelines 2021. NCBI Bookshelf: <a href="https://www.ncbi.nlm.nih.gov/books/NBK574595/" target="_blank">NBK574595</a>.</div>
+      </li>
+      <li>
+        <span class="ref-num">[R2]</span>
+        <div>PMC. <em>Comparison of personal exposure to black carbon levels with fixed-site monitoring data and with dispersion modelling.</em> PMC: <a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC11222137/" target="_blank">PMC11222137</a>. ("negative health effects are observed even at levels well below international air pollution standards")</div>
+      </li>
+      <li>
+        <span class="ref-num">[R3]</span>
+        <div>PAHO/WHO. <em>Billions of people still breathe unhealthy air: new WHO data.</em> Abr 2022. Disponível em: <a href="https://www.paho.org/en/news/4-4-2022-billions-people-still-breathe-unhealthy-air-new-who-data" target="_blank">paho.org</a>.</div>
+      </li>
+      <li>
+        <span class="ref-num">[R4]</span>
+        <div>NCBI Bookshelf / NIOSH. <em>Exposure Data — Carbon Black, Titanium Dioxide, and Talc.</em> Disponível em: <a href="https://www.ncbi.nlm.nih.gov/books/NBK326510/" target="_blank">NBK326510</a>. (Limite NIOSH: 3,5 mg/m³ TWA 10h; 0,1 mg PAHs/m³)</div>
+      </li>
+      <li>
+        <span class="ref-num">[R5]</span>
+        <div>PMC. <em>Black Carbon as an Additional Indicator of the Adverse Health Effects of Airborne Particles Compared with PM10 and PM2.5.</em> PMC: <a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC3261976/" target="_blank">PMC3261976</a>.</div>
+      </li>
+    </ol>
+  </section>
+
+</main>
+
+<!-- FOOTER -->
+<footer class="institutional-footer">
+  <p>Infográfico elaborado pelos projetos <strong>Amor à Pele</strong> e <strong>PET-Saúde Digital G10 Feridas Crônicas, UFPel</strong>, em Maio de 2026.</p>
+  <p style="margin-top:6px;color:#9ca3af;font-size:11px">Conteúdo baseado em evidências científicas disponíveis até maio de 2026. Não substitui orientação clínica profissional.</p>
+</footer>
+
+<script>
+  // Scroll progress bar
+  window.addEventListener('scroll', () => {
+    const el = document.getElementById('progress');
+    const scrollTop = window.scrollY;
+    const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+    const pct = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
+    el.style.width = pct + '%';
+  });
+
+  // Quiz logic
+  const quizAnswered = {};
+  function checkQuiz(name, correct, explanation) {
+    const selected = document.querySelector(`input[name="${name}"]:checked`);
+    const fb = document.getElementById(`fb-${name}`);
+    if (!selected) { fb.className = 'quiz-feedback incorrect'; fb.textContent = 'Selecione uma alternativa antes de verificar.'; return; }
+    if (quizAnswered[name]) return;
+    quizAnswered[name] = selected.value;
+    const isCorrect = selected.value === correct;
+    fb.className = 'quiz-feedback ' + (isCorrect ? 'correct' : 'incorrect');
+    fb.innerHTML = (isCorrect ? '✅ <strong>Correto!</strong> ' : '❌ <strong>Incorreto.</strong> ') + explanation;
+    // disable all radios for this question
+    document.querySelectorAll(`input[name="${name}"]`).forEach(r => r.disabled = true);
+    updateScore();
+  }
+
+  function updateScore() {
+    const total = 8;
+    const answered = Object.keys(quizAnswered).length;
+    const correct = Object.values(quizAnswered).filter((v, i) => {
+      const key = Object.keys(quizAnswered)[i];
+      const correctMap = {q1:'b',q2:'c',q3:'b',q4:'b',q5:'c',q6:'b',q7:'b',q8:'b'};
+      return v === correctMap[key];
+    }).length;
+    if (answered === total) {
+      const bar = document.getElementById('scoreBar');
+      bar.style.display = 'flex';
+      document.getElementById('scoreNum').textContent = correct + '/' + total;
+      const msgs = ['Continue estudando! 💪','Bom começo! 📖','Metade lá! 🌗','Indo bem! 🔬','Ótimo! 🎯','Muito bem! 🏆','Excelente! 🌟','Perfeito! 🥇','Parabéns! 🎉'];
+      document.getElementById('scoreFeedback').textContent = msgs[correct] || '';
+    }
+  }
+
+  // Reflection toggle
+  function toggleReflection(card) {
+    card.classList.toggle('open');
+    const toggle = card.querySelector('.ref-toggle');
+    toggle.textContent = card.classList.contains('open') ? '▲ Fechar' : '▼ Ver ângulos de análise';
+  }
+</script>
+</body>
+</html>
