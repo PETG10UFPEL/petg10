@@ -255,19 +255,19 @@
     figure { margin: 28px 0; }
     figure img {
       display: block;
-      max-width: 100%;          /* nunca ultrapassa o container */
-      width: auto;              /* não força esticamento horizontal */
-      height: auto;             /* mantém proporção original */
-      margin: 0 auto;           /* centraliza se menor que o container */
+      max-width: 100%;
+      width: auto;
+      height: auto;
+      margin: 0 auto;
       border-radius: 8px;
-      image-rendering: -webkit-optimize-contrast; /* nitidez Safari/Chrome */
-      image-rendering: crisp-edges;               /* nitidez Firefox */
-      -ms-interpolation-mode: bicubic;            /* IE fallback */
+      image-rendering: auto;           /* deixa o browser escolher o melhor algoritmo */
+      -webkit-transform: translateZ(0); /* força GPU rendering no Chrome/Safari */
+      transform: translateZ(0);
     }
-    /* Imagens que realmente devem ocupar toda a largura (diagramas largos) */
     figure.full-width img {
       width: 100%;
       height: auto;
+      image-rendering: auto;
     }
     figcaption {
       font-size: 0.82rem;
