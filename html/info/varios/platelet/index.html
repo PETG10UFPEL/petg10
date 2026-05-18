@@ -1,0 +1,1399 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Fibrina Rica em Plaquetas (PRF) — Aplicação em Feridas Crônicas</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Source+Sans+3:wght@300;400;600;700&family=Source+Serif+4:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg: #FAFAF8;
+      --surface: #FFFFFF;
+      --accent: #1A5276;
+      --accent-light: #D6EAF8;
+      --accent-mid: #2980B9;
+      --highlight: #E8F5E9;
+      --highlight-border: #2E7D32;
+      --warm: #FDF3E7;
+      --warm-border: #D35400;
+      --text-main: #1C2833;
+      --text-body: #2C3E50;
+      --text-muted: #5D6D7E;
+      --text-light: #85929E;
+      --border: #E0E4E8;
+      --red: #C0392B;
+      --red-light: #FDEDEC;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Source Sans 3', sans-serif;
+      background: var(--bg);
+      color: var(--text-body);
+      line-height: 1.7;
+      font-size: 17px;
+    }
+
+    /* ── HEADER ── */
+    .institutional-header {
+      background: #fff;
+      border-bottom: 1px solid var(--border);
+      padding: 10px 40px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+    .header-label {
+      font-size: 11px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      font-weight: 600;
+    }
+    .header-tag {
+      background: var(--accent);
+      color: #fff;
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      padding: 3px 10px;
+      border-radius: 20px;
+      margin-top: 4px;
+      display: inline-block;
+    }
+    .header-logo {
+      height: 48px;
+      width: auto;
+      display: block;
+    }
+
+    /* ── HERO ── */
+    .hero {
+      background: linear-gradient(135deg, #1A3A52 0%, #1A5276 60%, #1F618D 100%);
+      color: #fff;
+      padding: 80px 40px 70px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: -60px; left: -60px;
+      width: 300px; height: 300px;
+      background: rgba(255,255,255,0.04);
+      border-radius: 50%;
+    }
+    .hero::after {
+      content: '';
+      position: absolute;
+      bottom: -80px; right: -40px;
+      width: 400px; height: 400px;
+      background: rgba(255,255,255,0.03);
+      border-radius: 50%;
+    }
+    .hero-kicker {
+      font-size: 12px;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: #A9CCE3;
+      font-weight: 600;
+      margin-bottom: 20px;
+    }
+    .hero h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2rem, 5vw, 3.4rem);
+      font-weight: 900;
+      line-height: 1.15;
+      margin-bottom: 20px;
+      max-width: 800px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .hero h1 em { font-style: italic; color: #AED6F1; }
+    .hero-sub {
+      font-size: 1.15rem;
+      color: #AED6F1;
+      max-width: 620px;
+      margin: 0 auto 36px;
+      line-height: 1.6;
+      font-weight: 300;
+    }
+    .hero-badges { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
+    .badge {
+      background: rgba(255,255,255,0.12);
+      border: 1px solid rgba(255,255,255,0.25);
+      color: #fff;
+      font-size: 12px;
+      font-weight: 600;
+      padding: 6px 16px;
+      border-radius: 20px;
+      letter-spacing: 0.5px;
+    }
+
+    /* ── LAYOUT ── */
+    .container { max-width: 880px; margin: 0 auto; padding: 0 24px; }
+
+    section { padding: 64px 0; }
+    section + section { border-top: 1px solid var(--border); }
+
+    h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: 2rem;
+      font-weight: 700;
+      color: var(--text-main);
+      margin-bottom: 8px;
+      line-height: 1.25;
+    }
+    .section-label {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 2.5px;
+      text-transform: uppercase;
+      color: var(--accent-mid);
+      margin-bottom: 12px;
+    }
+    h3 {
+      font-family: 'Source Serif 4', serif;
+      font-size: 1.25rem;
+      font-weight: 600;
+      color: var(--accent);
+      margin-bottom: 10px;
+    }
+    p { margin-bottom: 16px; color: var(--text-body); }
+    p:last-child { margin-bottom: 0; }
+
+    /* ── INLINE CITATION ── */
+    .ref {
+      display: inline-block;
+      font-size: 0.72rem;
+      font-weight: 700;
+      color: var(--accent-mid);
+      background: var(--accent-light);
+      border-radius: 4px;
+      padding: 1px 5px;
+      margin-left: 2px;
+      vertical-align: super;
+      line-height: 1;
+      text-decoration: none;
+      white-space: nowrap;
+    }
+    .ref:hover { background: var(--accent); color: #fff; }
+
+    /* ── PULLQUOTE ── */
+    .pullquote {
+      border-left: 4px solid var(--accent);
+      background: var(--accent-light);
+      padding: 20px 28px;
+      margin: 32px 0;
+      border-radius: 0 8px 8px 0;
+    }
+    .pullquote p {
+      font-family: 'Source Serif 4', serif;
+      font-size: 1.15rem;
+      font-style: italic;
+      color: var(--accent);
+      margin: 0;
+      line-height: 1.6;
+    }
+
+    /* ── CALLOUT ── */
+    .callout {
+      background: var(--highlight);
+      border-left: 4px solid var(--highlight-border);
+      border-radius: 0 8px 8px 0;
+      padding: 20px 24px;
+      margin: 24px 0;
+    }
+    .callout-warn { background: var(--warm); border-color: var(--warm-border); }
+    .callout-red  { background: var(--red-light); border-color: var(--red); }
+    .callout strong { color: var(--text-main); }
+
+    /* ── STAT CARDS ── */
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 20px;
+      margin: 36px 0;
+    }
+    .stat-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 28px 24px;
+      text-align: center;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+    }
+    .stat-number {
+      font-family: 'Playfair Display', serif;
+      font-size: 2.6rem;
+      font-weight: 900;
+      color: var(--accent);
+      line-height: 1;
+      margin-bottom: 8px;
+    }
+    .stat-label { font-size: 13px; color: var(--text-muted); line-height: 1.4; font-weight: 600; }
+
+    /* ── STEPS ── */
+    .steps {
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+      margin: 32px 0;
+      position: relative;
+    }
+    .steps::before {
+      content: '';
+      position: absolute;
+      left: 22px; top: 24px; bottom: 24px;
+      width: 2px;
+      background: linear-gradient(to bottom, var(--accent), #AED6F1);
+    }
+    .step { display: flex; gap: 20px; align-items: flex-start; padding: 16px 0; }
+    .step-num {
+      width: 44px; height: 44px; min-width: 44px;
+      background: var(--accent);
+      color: #fff;
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-weight: 700; font-size: 15px;
+      position: relative; z-index: 1;
+    }
+    .step-content h4 { font-weight: 700; color: var(--text-main); margin-bottom: 4px; font-size: 1rem; }
+    .step-content p  { margin: 0; font-size: 0.95rem; }
+
+    /* ── COMPARISON TABLE ── */
+    .compare-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 28px 0;
+      font-size: 0.95rem;
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+    }
+    .compare-table th {
+      background: var(--accent);
+      color: #fff;
+      padding: 14px 18px;
+      text-align: left;
+      font-weight: 700;
+      font-size: 13px;
+    }
+    .compare-table th:first-child { background: #15455E; }
+    .compare-table td { padding: 12px 18px; border-bottom: 1px solid var(--border); vertical-align: top; }
+    .compare-table tr:last-child td { border-bottom: none; }
+    .compare-table tr:nth-child(even) td { background: #F4F8FB; }
+    .compare-table .check { color: #27AE60; font-weight: 700; }
+    .compare-table .cross { color: #E74C3C; font-weight: 700; }
+    .compare-table .feature-col { font-weight: 600; color: var(--text-main); }
+
+    /* ── MECHANISM GRID ── */
+    .mechanism-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+      gap: 16px;
+      margin: 32px 0;
+    }
+    .mech-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 24px 20px;
+      position: relative;
+      overflow: hidden;
+    }
+    .mech-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 4px;
+      background: var(--accent);
+    }
+    .mech-card.orange::before { background: #E67E22; }
+    .mech-card.green::before  { background: #27AE60; }
+    .mech-card.purple::before { background: #8E44AD; }
+    .mech-emoji { font-size: 1.8rem; margin-bottom: 12px; display: block; }
+    .mech-card h4 { font-size: 0.95rem; font-weight: 700; color: var(--text-main); margin-bottom: 8px; }
+    .mech-card p  { font-size: 0.88rem; color: var(--text-muted); margin: 0; line-height: 1.5; }
+
+    /* ── EVIDENCE CARDS ── */
+    .evidence-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 20px;
+      margin: 32px 0;
+    }
+    .ev-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 24px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+    }
+    .ev-type { font-size: 10px; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; color: var(--accent-mid); margin-bottom: 10px; }
+    .ev-card h4 { font-size: 1rem; font-weight: 700; color: var(--text-main); margin-bottom: 8px; }
+    .ev-card p  { font-size: 0.88rem; color: var(--text-muted); margin: 0; line-height: 1.5; }
+    .ev-result {
+      margin-top: 12px;
+      background: var(--highlight);
+      border-radius: 6px;
+      padding: 8px 12px;
+      font-size: 0.85rem;
+      color: var(--highlight-border);
+      font-weight: 600;
+    }
+
+    /* ── FIGURES ── */
+    figure { margin: 36px 0; }
+    figure img {
+      width: 100%;
+      border-radius: 10px;
+      display: block;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.10);
+    }
+    figcaption {
+      font-size: 0.82rem;
+      color: var(--text-muted);
+      text-align: center;
+      margin-top: 10px;
+      font-style: italic;
+      line-height: 1.5;
+    }
+    .fig-source {
+      display: block;
+      margin-top: 5px;
+      font-size: 0.76rem;
+      color: var(--text-light);
+      font-style: normal;
+    }
+    .fig-source a { color: var(--accent-mid); }
+
+    /* ── INFOGRAPHIC FIGURE ── */
+    .infographic-figure { margin: 32px 0; text-align: center; }
+    .infographic-figure img {
+      max-width: 100%;
+      border-radius: 10px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.10);
+    }
+    .infographic-figure figcaption {
+      margin-top: 8px;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      font-style: italic;
+    }
+
+    /* ── PHASE ROWS ── */
+    .phase-row {
+      display: grid;
+      grid-template-columns: 110px 1fr;
+      gap: 20px;
+      align-items: start;
+      padding: 20px 0;
+      border-bottom: 1px solid var(--border);
+    }
+    .phase-row:last-child { border-bottom: none; }
+    .phase-label { text-align: center; }
+    .phase-badge {
+      background: var(--accent);
+      color: #fff;
+      border-radius: 8px;
+      padding: 8px 6px;
+      font-size: 11px;
+      font-weight: 700;
+      text-align: center;
+      line-height: 1.3;
+    }
+    .phase-badge.orange { background: #E67E22; }
+    .phase-badge.green  { background: #27AE60; }
+    .phase-badge.purple { background: #6C3483; }
+
+    /* ── ALERT BOX ── */
+    .alert-box {
+      background: #EBF5FB;
+      border: 1px solid #AED6F1;
+      border-radius: 10px;
+      padding: 24px 28px;
+      margin: 28px 0;
+      display: flex;
+      gap: 16px;
+      align-items: flex-start;
+    }
+    .alert-icon { font-size: 1.5rem; flex-shrink: 0; }
+    .alert-content h4 { font-weight: 700; color: var(--accent); margin-bottom: 6px; }
+    .alert-content p  { font-size: 0.92rem; color: var(--text-body); margin: 0; }
+
+    /* ── REFS ── */
+    .refs {
+      background: #F8F9FA;
+      border-top: 1px solid var(--border);
+      padding: 48px 40px;
+    }
+    .refs h3 {
+      font-size: 0.9rem;
+      font-weight: 700;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      margin-bottom: 20px;
+    }
+    .refs ol { padding-left: 20px; }
+    .refs li {
+      font-size: 0.82rem;
+      color: var(--text-muted);
+      margin-bottom: 10px;
+      line-height: 1.6;
+    }
+    .refs li a { color: var(--accent-mid); }
+    .ref-anchor {
+      font-size: 0.72rem;
+      font-weight: 700;
+      color: var(--accent);
+      margin-right: 6px;
+    }
+
+    /* ── FOOTER ── */
+    .institutional-footer {
+      background: #F2F3F4;
+      border-top: 1px solid var(--border);
+      padding: 28px 40px;
+      text-align: center;
+    }
+    .institutional-footer p {
+      font-size: 12px;
+      color: var(--text-muted);
+      margin: 0;
+      line-height: 1.6;
+    }
+
+    /* ── QUIZ ── */
+    .quiz-section {
+      background: #F0F7FF;
+      border-top: 1px solid var(--border);
+      padding: 64px 0;
+    }
+    .quiz-score-bar {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      margin-bottom: 32px;
+      background: #fff;
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 16px 24px;
+    }
+    .score-display {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.6rem;
+      font-weight: 900;
+      color: var(--accent);
+      min-width: 60px;
+    }
+    .score-label { color: var(--text-muted); font-size: 0.9rem; }
+    .quiz-btn-reset {
+      margin-left: auto;
+      background: var(--accent);
+      color: #fff;
+      border: none;
+      border-radius: 8px;
+      padding: 8px 20px;
+      font-size: 0.88rem;
+      font-weight: 700;
+      cursor: pointer;
+      font-family: 'Source Sans 3', sans-serif;
+    }
+    .quiz-btn-reset:hover { background: #154360; }
+    .quiz-item {
+      background: #fff;
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 28px;
+      margin-bottom: 20px;
+    }
+    .quiz-item.correct  { border-color: #27AE60; background: #F0FBF4; }
+    .quiz-item.wrong    { border-color: #E74C3C; background: #FEF5F4; }
+    .quiz-question {
+      font-weight: 700;
+      color: var(--text-main);
+      margin-bottom: 16px;
+      font-size: 1rem;
+      line-height: 1.5;
+    }
+    .qnum {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      background: var(--accent);
+      color: #fff;
+      border-radius: 50%;
+      width: 24px; height: 24px;
+      font-size: 0.78rem;
+      font-weight: 700;
+      margin-right: 10px;
+      flex-shrink: 0;
+      vertical-align: middle;
+    }
+    .quiz-options { display: flex; flex-direction: column; gap: 10px; }
+    .quiz-option {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      background: #F8FAFC;
+      border: 1.5px solid var(--border);
+      border-radius: 8px;
+      padding: 12px 16px;
+      cursor: pointer;
+      font-size: 0.93rem;
+      color: var(--text-body);
+      transition: border-color 0.15s, background 0.15s;
+      text-align: left;
+      width: 100%;
+      font-family: 'Source Sans 3', sans-serif;
+    }
+    .quiz-option:hover:not([disabled]) { border-color: var(--accent-mid); background: var(--accent-light); }
+    .quiz-option.sel-correct { border-color: #27AE60; background: #E8F8EF; color: #1A6B38; font-weight: 700; }
+    .quiz-option.sel-wrong   { border-color: #E74C3C; background: #FDECEA; color: #922B21; font-weight: 700; }
+    .quiz-option.show-ans    { border-color: #27AE60; background: #E8F8EF; color: #1A6B38; }
+    .quiz-option[disabled]   { cursor: default; }
+    .opt-letter {
+      width: 22px; height: 22px; min-width: 22px;
+      border-radius: 50%;
+      background: var(--border);
+      color: var(--text-muted);
+      font-size: 0.75rem;
+      font-weight: 700;
+      display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0;
+      transition: background 0.15s, color 0.15s;
+    }
+    .sel-correct .opt-letter { background: #27AE60; color: #fff; }
+    .sel-wrong   .opt-letter { background: #E74C3C; color: #fff; }
+    .show-ans    .opt-letter { background: #27AE60; color: #fff; }
+    .quiz-feedback {
+      margin-top: 14px;
+      padding: 12px 16px;
+      border-radius: 8px;
+      font-size: 0.88rem;
+      line-height: 1.5;
+      display: none;
+    }
+    .quiz-feedback.show { display: block; }
+    .fb-correct { background: #E8F8EF; color: #1A6B38; border-left: 3px solid #27AE60; }
+    .fb-wrong   { background: #FDECEA; color: #7B241C; border-left: 3px solid #E74C3C; }
+
+    /* ── REFLECTION ── */
+    .reflection-section {
+      background: linear-gradient(135deg, #1A3A52 0%, #1A5276 100%);
+      padding: 64px 0;
+      border-top: none;
+    }
+    .reflection-section h2 { color: #fff; margin-bottom: 8px; }
+    .reflection-section .section-label { color: #A9CCE3; }
+    .reflection-intro { color: #AED6F1; margin-bottom: 32px; font-size: 1rem; }
+    .reflection-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(330px, 1fr));
+      gap: 20px;
+    }
+    .reflection-card {
+      background: rgba(255,255,255,0.07);
+      border: 1px solid rgba(255,255,255,0.15);
+      border-radius: 12px;
+      padding: 28px 24px;
+    }
+    .r-num {
+      font-family: 'Playfair Display', serif;
+      font-size: 2rem;
+      font-weight: 900;
+      color: #AED6F1;
+      line-height: 1;
+      margin-bottom: 12px;
+      opacity: 0.7;
+    }
+    .reflection-card p { color: #D6EAF8; font-size: 0.95rem; line-height: 1.65; margin: 0; }
+    .r-hint { margin-top: 12px; font-size: 0.82rem; color: #85C1E9; font-style: italic; }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 680px) {
+      .hero { padding: 52px 20px 48px; }
+      section { padding: 44px 0; }
+      .institutional-header { padding: 10px 16px; }
+      .header-logo { height: 36px; }
+      .stats-grid { grid-template-columns: 1fr 1fr; }
+      .phase-row { grid-template-columns: 80px 1fr; }
+      .refs { padding: 28px 20px; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ══ HEADER ══ -->
+<header class="institutional-header">
+  <div>
+    <div class="header-label">G10 — Telemonitoramento de Feridas Crônicas</div>
+    <span class="header-tag">PET-Saúde Digital · UFPel</span>
+  </div>
+  <img src="img/logo.png" alt="Logos Amor-à-Pele e PET-Saúde Digital – UFPel" class="header-logo">
+</header>
+
+<!-- ══ HERO ══ -->
+<section class="hero">
+  <div class="hero-kicker">Medicina Regenerativa · Revisão Crítica com Foco Clínico</div>
+  <h1>Fibrina Rica em Plaquetas<br><em>(PRF)</em> em Feridas Crônicas</h1>
+  <p class="hero-sub">Do sangue do próprio paciente, uma membrana biológica que libera fatores de crescimento por dias — e pode mudar o curso de úlceras que não fecham.</p>
+  <div class="hero-badges">
+    <span class="badge">Úlceras Diabéticas</span>
+    <span class="badge">Úlceras Venosas</span>
+    <span class="badge">Lesões por Pressão</span>
+    <span class="badge">Autólogo · Sem aditivos</span>
+  </div>
+</section>
+
+<!-- ══ O PROBLEMA ══ -->
+<section>
+  <div class="container">
+    <div class="section-label">O Contexto</div>
+    <h2>Feridas que não fecham: um problema de biologia, não só de curativo</h2>
+
+    <p>Feridas crônicas — úlceras diabéticas, venosas e lesões por pressão — compartilham uma característica central: o ambiente biológico local está esgotado. Há excesso de inflamação, déficit de fatores de crescimento, angiogênese insuficiente e tecido de granulação pobre.<a href="#ref1" class="ref">[1]</a> Curativos avançados controlam o ambiente externo, mas não repõem o que falta no leito da ferida.</p>
+
+    <div class="stats-grid">
+      <div class="stat-card">
+        <div class="stat-number">~1%</div>
+        <div class="stat-label">da população mundial vive com úlceras de perna crônicas<a href="#ref10" class="ref">[10]</a></div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-number">25%</div>
+        <div class="stat-label">dos diabéticos desenvolverão úlcera no pé ao longo da vida<a href="#ref15" class="ref">[15]</a></div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-number">Meses</div>
+        <div class="stat-label">a anos de tratamento convencional sem fechamento completo, em casos refratários<a href="#ref10" class="ref">[10]</a></div>
+      </div>
+    </div>
+
+    <div class="callout callout-red">
+      <strong>O problema central:</strong> feridas crônicas ficam presas na fase inflamatória. O ambiente local tem excesso de proteases que destroem fatores de crescimento antes que possam agir<a href="#ref15" class="ref">[15]</a> — e é exatamente essa lacuna que o PRF tenta preencher.
+    </div>
+  </div>
+</section>
+
+<!-- ══ O QUE É PRF ══ -->
+<section>
+  <div class="container">
+    <div class="section-label">O Biomaterial</div>
+    <h2>PRF: sangue centrifugado, biologia concentrada</h2>
+
+    <p>Platelet-Rich Fibrin (PRF) é uma <strong>membrana biológica autóloga</strong> — obtida do próprio sangue do paciente — que concentra plaquetas, leucócitos e fatores de crescimento numa malha tridimensional de fibrina. Não há aditivos, anticoagulantes ou produtos de origem animal no processo.<a href="#ref1" class="ref">[1]</a></p>
+
+    <p>Foi desenvolvido em 2001 pelo cirurgião francês Joseph Choukroun para uso em cirurgia oral.<a href="#ref2" class="ref">[2]</a> Nas duas décadas seguintes, sua aplicação se expandiu para feridas de pele, úlceras crônicas e medicina regenerativa em geral.<a href="#ref4" class="ref">[4]</a></p>
+
+    <div class="pullquote">
+      <p>"A matriz de fibrina do PRF não é apenas um suporte — ela controla quando e quanto de cada fator de crescimento é liberado, mimetizando o processo fisiológico de cicatrização."<a href="#ref1" class="ref">[1]</a></p>
+    </div>
+
+    <figure>
+      <img src="img/prf-tubos-centrifuga.jpg" alt="Tubos vacutainer após centrifugação mostrando as três camadas: plasma acelular no topo, coágulo de fibrina PRF no meio e hemácias no fundo">
+      <figcaption>
+        Figura 1 — Resultado visual da centrifugação: o coágulo âmbar central é o PRF, rico em plaquetas e fatores de crescimento. As três camadas são claramente distinguíveis após centrifugação.
+        <span class="fig-source">Fonte: PRF Canada. <em>The Benefits of Platelet-Rich Fibrin</em>. Disponível em: <a href="https://prfcanada.com/en/the-benefits-of-platelet-rich-fibrin-1708356454" target="_blank">prfcanada.com</a> [Ref. img1]</span>
+      </figcaption>
+    </figure>
+  </div>
+</section>
+
+<!-- ══ PREPARO ══ -->
+<section>
+  <div class="container">
+    <div class="section-label">Protocolo</div>
+    <h2>Preparo em 4 passos, à beira do leito</h2>
+
+    <p>A vantagem logística do PRF sobre outros concentrados plaquetários é a simplicidade. Não exige laboratório especializado, reagentes externos ou processamento prolongado.<a href="#ref1" class="ref">[1]</a><a href="#ref5" class="ref">[5]</a></p>
+
+    <figure class="infographic-figure">
+      <img src="img/preparoem04passos.png" alt="Infográfico: Preparo do PRF em 4 passos — coleta, centrifugação, separação e aplicação">
+      <figcaption>Infográfico 1 — Protocolo de preparo do PRF em 4 passos, à beira do leito.<a href="#ref1" class="ref">[1]</a></figcaption>
+    </figure>
+
+    <div class="steps">
+      <div class="step">
+        <div class="step-num">1</div>
+        <div class="step-content">
+          <h4>Coleta de sangue venoso</h4>
+          <p>Aproximadamente 10–20 mL de sangue coletado em tubos de vidro <strong>sem anticoagulante</strong>.<a href="#ref1" class="ref">[1]</a> O contato com o vidro já inicia o processo de coagulação natural.</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">2</div>
+        <div class="step-content">
+          <h4>Centrifugação imediata</h4>
+          <p>Os tubos são centrifugados em velocidade padronizada (protocolo clássico: 3.000 rpm por 10 min; protocolo A-PRF de baixa velocidade: ~200g por 8 min).<a href="#ref1" class="ref">[1]</a><a href="#ref8" class="ref">[8]</a> <strong>O tempo entre a coleta e a centrifugação deve ser mínimo</strong> — a coagulação se inicia rapidamente.</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">3</div>
+        <div class="step-content">
+          <h4>Separação das três camadas</h4>
+          <p>Após a centrifugação formam-se: (topo) plasma acelular PPP, (meio) coágulo de fibrina rico em plaquetas — o PRF — e (base) fração de hemácias.<a href="#ref1" class="ref">[1]</a> O PRF é coletado 2 mm abaixo da divisória inferior.</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">4</div>
+        <div class="step-content">
+          <h4>Aplicação imediata</h4>
+          <p>O coágulo é aplicado diretamente sobre o leito da ferida ou comprimido para obter uma membrana mais firme. Estudos recomendam uso imediato após formação para maximizar a liberação de fatores de crescimento.<a href="#ref9" class="ref">[9]</a></p>
+        </div>
+      </div>
+    </div>
+
+    <div class="alert-box">
+      <span class="alert-icon">⏱️</span>
+      <div class="alert-content">
+        <h4>Ponto crítico de técnica</h4>
+        <p>O intervalo entre a coleta do sangue e a centrifugação deve ser o menor possível. O sangue sem anticoagulante começa a coagular ao contato com o vidro, reduzindo progressivamente a incorporação de fibrinogênio ao coágulo — o que compromete a qualidade do PRF.<a href="#ref1" class="ref">[1]</a></p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ MECANISMO ══ -->
+<section>
+  <div class="container">
+    <div class="section-label">Mecanismo de Ação</div>
+    <h2>Por que o PRF funciona: biologia em camadas</h2>
+
+    <p>O PRF atua em múltiplas frentes da cicatrização. A malha de fibrina retém plaquetas e leucócitos que liberam fatores de crescimento de forma <strong>gradual e sustentada — por até 7 dias</strong>, ao contrário dos concentrados convencionais que liberam tudo de uma vez.<a href="#ref10" class="ref">[10]</a><a href="#ref9" class="ref">[9]</a></p>
+
+    <div class="mechanism-grid">
+      <div class="mech-card">
+        <span class="mech-emoji">🔴</span>
+        <h4>PDGF — Recrutamento celular</h4>
+        <p>Fator de crescimento derivado de plaquetas. Atrai fibroblastos e células-tronco mesenquimais para o leito da ferida. Estimula proliferação e síntese de colágeno.<a href="#ref15" class="ref">[15]</a></p>
+      </div>
+      <div class="mech-card orange">
+        <span class="mech-emoji">🌱</span>
+        <h4>TGF-β — Maturação tecidual</h4>
+        <p>Fator transformador de crescimento. Regula a transição inflamação → proliferação → remodelagem. Estimula produção de matriz extracelular.<a href="#ref10" class="ref">[10]</a></p>
+      </div>
+      <div class="mech-card green">
+        <span class="mech-emoji">🩸</span>
+        <h4>VEGF — Angiogênese</h4>
+        <p>Fator de crescimento endotelial vascular. Induz formação de novos vasos sanguíneos — essencial em feridas crônicas isquêmicas e diabéticas.<a href="#ref8" class="ref">[8]</a><a href="#ref10" class="ref">[10]</a></p>
+      </div>
+      <div class="mech-card purple">
+        <span class="mech-emoji">🛡️</span>
+        <h4>Leucócitos — Controle infeccioso</h4>
+        <p>A variante L-PRF concentra leucócitos que conferem propriedades antimicrobianas e imunomoduladoras, reduzindo o risco de infecção local.<a href="#ref3" class="ref">[3]</a></p>
+      </div>
+    </div>
+
+    <div class="callout">
+      <strong>Detalhe fundamental:</strong> a liberação lenta e progressiva dos fatores de crescimento é uma vantagem central do PRF sobre o PRP. Enquanto o PRP libera fatores em bolus (ação rápida, curta), o PRF os disponibiliza ao longo de dias — mais próximo da fisiologia normal da cicatrização.<a href="#ref2" class="ref">[2]</a>
+    </div>
+
+    <h3 style="margin-top:40px;">Como o PRF atua em cada fase da cicatrização</h3>
+
+    <figure class="infographic-figure" style="margin-top:20px;">
+      <img src="img/prfnas4fases.png" alt="Infográfico: PRF nas 4 fases da cicatrização — hemostasia, inflamação, proliferação e remodelagem">
+      <figcaption>Infográfico 2 — Ação do PRF ao longo das quatro fases da cicatrização.</figcaption>
+    </figure>
+
+    <div style="margin-top:20px;">
+      <div class="phase-row">
+        <div class="phase-label">
+          <div class="phase-badge">HEMOSTASIA<br>Horas 0–24</div>
+        </div>
+        <div>
+          <p style="margin:0;"><strong>Ação do PRF:</strong> o próprio coágulo de fibrina age como barreira hemostática imediata.<a href="#ref1" class="ref">[1]</a> Protege o leito da ferida e inicia o recrutamento plaquetário.</p>
+        </div>
+      </div>
+      <div class="phase-row">
+        <div class="phase-label">
+          <div class="phase-badge orange">INFLAMAÇÃO<br>Dias 1–5</div>
+        </div>
+        <div>
+          <p style="margin:0;"><strong>Ação do PRF:</strong> leucócitos presentes no L-PRF modulam a resposta inflamatória. Citocinas como IL-1β, IL-6 e IL-4 são liberadas progressivamente<a href="#ref10" class="ref">[10]</a> — auxiliando na transição para a fase proliferativa, processo frequentemente bloqueado em feridas crônicas.</p>
+        </div>
+      </div>
+      <div class="phase-row">
+        <div class="phase-label">
+          <div class="phase-badge green">PROLIFERAÇÃO<br>Dias 5–21</div>
+        </div>
+        <div>
+          <p style="margin:0;"><strong>Ação do PRF:</strong> PDGF, EGF e IGF estimulam fibroblastos e queratinócitos.<a href="#ref15" class="ref">[15]</a> VEGF induz neoangiogênese.<a href="#ref6" class="ref">[6]</a> A matriz de fibrina serve de arcabouço para migração celular e formação do tecido de granulação.<a href="#ref1" class="ref">[1]</a></p>
+        </div>
+      </div>
+      <div class="phase-row">
+        <div class="phase-label">
+          <div class="phase-badge purple">REMODELAGEM<br>Semanas–meses</div>
+        </div>
+        <div>
+          <p style="margin:0;"><strong>Ação do PRF:</strong> TGF-β regula síntese e reorganização do colágeno.<a href="#ref10" class="ref">[10]</a> A matriz de fibrina é reabsorvida progressivamente, sem deixar corpos estranhos.<a href="#ref1" class="ref">[1]</a></p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ PRF vs PRP ══ -->
+<section>
+  <div class="container">
+    <div class="section-label">Comparativo</div>
+    <h2>PRF vs PRP: o que muda na prática</h2>
+
+    <p>O PRP (Plasma Rico em Plaquetas) foi o precursor.<a href="#ref1" class="ref">[1]</a> O PRF representa uma evolução de segunda geração que elimina os principais pontos críticos do PRP em ambiente clínico de feridas crônicas.<a href="#ref4" class="ref">[4]</a></p>
+
+    <figure class="infographic-figure">
+      <img src="img/prpprf.png" alt="Infográfico comparativo: PRF vs PRP — características, vantagens e diferenças clínicas">
+      <figcaption>Infográfico 3 — Comparativo PRF vs PRP: principais diferenças para a prática clínica.<a href="#ref1" class="ref">[1]</a><a href="#ref4" class="ref">[4]</a></figcaption>
+    </figure>
+
+    <table class="compare-table">
+      <thead>
+        <tr>
+          <th>Característica</th>
+          <th>PRP</th>
+          <th>PRF</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="feature-col">Anticoagulante</td>
+          <td><span class="cross">✗</span> Necessário (citrato)<a href="#ref1" class="ref">[1]</a></td>
+          <td><span class="check">✓</span> Não utilizado</td>
+        </tr>
+        <tr>
+          <td class="feature-col">Trombina bovina</td>
+          <td><span class="cross">✗</span> Necessária para gel<a href="#ref1" class="ref">[1]</a></td>
+          <td><span class="check">✓</span> Não necessária</td>
+        </tr>
+        <tr>
+          <td class="feature-col">Liberação de GF</td>
+          <td>Bolus (rápida e curta)</td>
+          <td>Lenta e sustentada (≥7 dias)<a href="#ref9" class="ref">[9]</a><a href="#ref10" class="ref">[10]</a></td>
+        </tr>
+        <tr>
+          <td class="feature-col">Consistência</td>
+          <td>Líquida (injetável)</td>
+          <td>Membrana/coágulo sólido</td>
+        </tr>
+        <tr>
+          <td class="feature-col">Leucócitos</td>
+          <td>Baixa concentração</td>
+          <td><span class="check">✓</span> Alta (L-PRF)<a href="#ref3" class="ref">[3]</a></td>
+        </tr>
+        <tr>
+          <td class="feature-col">Complexidade</td>
+          <td>Moderada (2 centrifugações)<a href="#ref1" class="ref">[1]</a></td>
+          <td><span class="check">✓</span> Simples (1 centrifugação)</td>
+        </tr>
+        <tr>
+          <td class="feature-col">Custo</td>
+          <td>Moderado</td>
+          <td><span class="check">✓</span> Baixo<a href="#ref4" class="ref">[4]</a></td>
+        </tr>
+        <tr>
+          <td class="feature-col">Aplicação em feridas</td>
+          <td>Spray / injeção</td>
+          <td>Membrana sobre o leito</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="callout callout-warn">
+      <strong>Nota clínica:</strong> o PRP ainda apresenta maior volume de evidências para algumas aplicações cutâneas específicas, pois sua consistência líquida facilita infiltração em feridas complexas.<a href="#ref15" class="ref">[15]</a> O PRF tem vantagem clara quando se deseja liberação prolongada de fatores de crescimento e efeito antimicrobiano (L-PRF).<a href="#ref3" class="ref">[3]</a>
+    </div>
+  </div>
+</section>
+
+<!-- ══ EVIDÊNCIAS ══ -->
+<section>
+  <div class="container">
+    <div class="section-label">Evidência Clínica</div>
+    <h2>O que os estudos mostram em feridas crônicas</h2>
+
+    <p>A maior parte da literatura sobre PRF provém de odontologia e cirurgia bucomaxilofacial.<a href="#ref1" class="ref">[1]</a> A expansão para feridas cutâneas crônicas é mais recente, mas os resultados são promissores.<a href="#ref4" class="ref">[4]</a><a href="#ref7" class="ref">[7]</a></p>
+
+    <div class="evidence-grid">
+      <div class="ev-card">
+        <div class="ev-type">Estudo Retrospectivo · 2021</div>
+        <h4>PRF como acelerador de fechamento<a href="#ref11" class="ref">[11]</a></h4>
+        <p>16 pacientes com feridas crônicas refratárias. Média de 4,37 aplicações de PRF por paciente.</p>
+        <div class="ev-result">✓ Fechamento completo em 62,5% dos casos; redução ≥50% em 25% adicionais.</div>
+      </div>
+      <div class="ev-card">
+        <div class="ev-type">ECR Prospectivo · 2024 (Pune, Índia)</div>
+        <h4>PRF + PRP vs. curativo convencional<a href="#ref5" class="ref">[5]</a></h4>
+        <p>60 pacientes randomizados. Avaliação de tecido de granulação, borda da ferida e drenagem.</p>
+        <div class="ev-result">✓ Grupo PRF+PRP apresentou cicatrização mais rápida e qualidade superior de tecido de granulação.</div>
+      </div>
+      <div class="ev-card">
+        <div class="ev-type">Coorte Prospectiva · 2017–2018</div>
+        <h4>L-PRF em úlceras refratárias mistas<a href="#ref10" class="ref">[10]</a></h4>
+        <p>Úlceras venosas, diabéticas e por pressão. Monitoramento de TGFβ-1, PDGF-AB e VEGF por 7 dias.</p>
+        <div class="ev-result">✓ Liberação sustentada de GFs por todo o período. Melhora significativa de parâmetros clínicos.</div>
+      </div>
+      <div class="ev-card">
+        <div class="ev-type">Revisão Sistemática · 2022</div>
+        <h4>PRF e CGF em úlceras cutâneas<a href="#ref7" class="ref">[7]</a></h4>
+        <p>Meta-análise de ECRs avaliando PRF e fatores de crescimento concentrados em úlceras crônicas.</p>
+        <div class="ev-result">✓ Redução significativa do tempo de cicatrização e da área de úlcera vs. tratamento padrão.</div>
+      </div>
+    </div>
+
+    <div class="callout">
+      <strong>Estado atual da evidência:</strong> estudos retrospectivos e séries de casos são favoráveis.<a href="#ref11" class="ref">[11]</a> ECRs de alta qualidade com amostras maiores ainda são necessários — especialmente segmentados por etiologia (úlcera venosa vs. diabética vs. por pressão).<a href="#ref5" class="ref">[5]</a> A ausência de padronização dos protocolos de centrifugação dificulta comparações entre estudos.<a href="#ref7" class="ref">[7]</a>
+    </div>
+  </div>
+</section>
+
+<!-- ══ APLICAÇÃO PRÁTICA ══ -->
+<section>
+  <div class="container">
+    <div class="section-label">Aplicação Clínica</div>
+    <h2>Como usar o PRF no manejo de feridas crônicas</h2>
+
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:24px;margin:28px 0;">
+      <div>
+        <h3>Indicações mais estudadas</h3>
+        <ul style="padding-left:18px;color:var(--text-body);line-height:2;">
+          <li>Úlceras de pé diabético (DFU)<a href="#ref8" class="ref">[8]</a></li>
+          <li>Úlceras venosas de perna<a href="#ref10" class="ref">[10]</a></li>
+          <li>Lesões por pressão refratárias<a href="#ref5" class="ref">[5]</a></li>
+          <li>Feridas pós-extrativas complexas<a href="#ref1" class="ref">[1]</a></li>
+          <li>Feridas cirúrgicas com cicatrização deficiente</li>
+          <li>Defeitos ósseos periapicais (odontologia)<a href="#ref1" class="ref">[1]</a></li>
+        </ul>
+      </div>
+      <div>
+        <h3>Contraindicações e limitações</h3>
+        <ul style="padding-left:18px;color:var(--text-body);line-height:2;">
+          <li>Trombocitopenia grave</li>
+          <li>Distúrbios da coagulação</li>
+          <li>Anemia significativa</li>
+          <li>Infecção ativa não controlada</li>
+          <li>Uso de anticoagulantes (precaução)</li>
+          <li>Feridas com biofilme estabelecido (exige desbridamento prévio)</li>
+        </ul>
+      </div>
+    </div>
+
+    <h3>Protocolo prático de aplicação em feridas</h3>
+    <div class="steps" style="margin-top:16px;">
+      <div class="step">
+        <div class="step-num">1</div>
+        <div class="step-content">
+          <h4>Preparo do leito da ferida</h4>
+          <p>Desbridamento mecânico ou enzimático previamente. Feridas com biofilme ou necrose devem ter o leito adequadamente preparado — o PRF potencializa tecido viável, não substitui o desbridamento.</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">2</div>
+        <div class="step-content">
+          <h4>Coleta e centrifugação à beira do leito</h4>
+          <p>Coletar sangue venoso e centrifugar imediatamente.<a href="#ref1" class="ref">[1]</a> O PRF deve ser obtido e aplicado em sequência — o intervalo não deve ultrapassar alguns minutos após a coleta.</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">3</div>
+        <div class="step-content">
+          <h4>Aplicação da membrana</h4>
+          <p>O coágulo é posicionado diretamente sobre o leito da ferida, cobrindo toda a superfície. Pode ser recortado para adaptar-se à geometria da lesão.<a href="#ref10" class="ref">[10]</a> Em cavidades, fragmentos de PRF podem ser introduzidos como "plug" biológico.<a href="#ref1" class="ref">[1]</a></p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">4</div>
+        <div class="step-content">
+          <h4>Cobertura secundária e reaplicação</h4>
+          <p>Cobrir com curativo secundário não aderente. A membrana é absorvida naturalmente. Reaplicações semanais são descritas nos protocolos clínicos<a href="#ref10" class="ref">[10]</a>, ajustadas à resposta individual da ferida.</p>
+        </div>
+      </div>
+    </div>
+
+    <figure>
+      <img src="img/prf-aplicacao-ferida.jpg" alt="Série fotográfica mostrando evolução de úlcera venosa tratada com L-PRF: do leito inicial ao fechamento completo em 7 semanas">
+      <figcaption>
+        Figura 2 — Evolução clínica de caso típico de úlcera venosa (UVL) tratada com membranas de L-PRF. (A) Coágulos L-PRF preparados e transformados em membrana. (B) Ferida inicial. (C) Após 3 semanas — 2 aplicações de L-PRF. (D) Após 4 semanas — 3 aplicações. (E) Após 6 semanas — 3 aplicações. (F) Fechamento completo após 7 semanas.
+        <span class="fig-source">Fonte: Pinto N, Ubilla M, Zamora Y, Rio V, Dohan Ehrenfest DM, Quirynen M. Leucocyte- and platelet-rich fibrin (L-PRF) as a regenerative medicine strategy for the treatment of refractory leg ulcers: a prospective cohort study. <em>Platelets</em>. 2018;29(1):1–8. doi: <a href="https://doi.org/10.1080/09537104.2017.1327654" target="_blank">10.1080/09537104.2017.1327654</a> [Ref. 10]</span>
+      </figcaption>
+    </figure>
+  </div>
+</section>
+
+<!-- ══ VARIANTES ══ -->
+<section>
+  <div class="container">
+    <div class="section-label">Evolução da Tecnologia</div>
+    <h2>Gerações e variantes do PRF</h2>
+
+    <p>Desde o protocolo original de Choukroun<a href="#ref2" class="ref">[2]</a>, diversas otimizações foram propostas para aumentar a concentração de células ou modular a liberação de fatores de crescimento.<a href="#ref4" class="ref">[4]</a></p>
+
+    <figure class="infographic-figure">
+      <img src="img/geracoesevariantes.png" alt="Infográfico: Gerações e variantes do PRF — PRF clássico, L-PRF, A-PRF e i-PRF">
+      <figcaption>Infográfico 4 — Gerações e variantes do PRF: características e diferenciais de cada protocolo.</figcaption>
+    </figure>
+
+    <div class="mechanism-grid" style="margin-top:24px;">
+      <div class="mech-card">
+        <span class="mech-emoji">🔬</span>
+        <h4>PRF (clássico)</h4>
+        <p>Protocolo original.<a href="#ref2" class="ref">[2]</a> 3.000 rpm, 10 minutos. Malha de fibrina densa. Base para a maioria dos estudos publicados.</p>
+      </div>
+      <div class="mech-card orange">
+        <span class="mech-emoji">⚪</span>
+        <h4>L-PRF (Leucocyte-PRF)</h4>
+        <p>Variante com alta concentração de leucócitos.<a href="#ref3" class="ref">[3]</a> Propriedades antimicrobianas mais pronunciadas — vantagem em feridas com risco de colonização bacteriana.</p>
+      </div>
+      <div class="mech-card green">
+        <span class="mech-emoji">💡</span>
+        <h4>A-PRF (Advanced PRF)</h4>
+        <p>Baixa velocidade (~200g, 8 min).<a href="#ref8" class="ref">[8]</a> Produz malha de fibrina mais porosa, com plaquetas distribuídas homogeneamente e liberação superior de fatores de crescimento.</p>
+      </div>
+      <div class="mech-card purple">
+        <span class="mech-emoji">💉</span>
+        <h4>i-PRF (injectable PRF)</h4>
+        <p>Versão líquida obtida por centrifugação mais breve. Permite aplicação por injeção — útil em feridas de difícil acesso ou associação com outros biomateriais.<a href="#ref4" class="ref">[4]</a></p>
+      </div>
+    </div>
+
+    <div class="callout callout-warn">
+      <strong>Atenção à padronização:</strong> a ausência de um protocolo universal de centrifugação é uma das maiores críticas na literatura.<a href="#ref7" class="ref">[7]</a> Velocidade, tempo, tipo de tubo e temperatura afetam diretamente a composição do PRF final — tornando a comparação entre estudos desafiadora.
+    </div>
+  </div>
+</section>
+
+<!-- ══ SÍNTESE ══ -->
+<section>
+  <div class="container">
+    <div class="section-label">Síntese Clínica</div>
+    <h2>O que fica: PRF no arsenal do cuidado de feridas</h2>
+
+    <p>O PRF representa uma abordagem biologicamente racional para o manejo de feridas crônicas. Ao reconstituir localmente um microambiente próximo ao da cicatrização fisiológica<a href="#ref1" class="ref">[1]</a>, pode romper o bloqueio inflamatório crônico que mantém muitas úlceras abertas por meses ou anos.<a href="#ref10" class="ref">[10]</a></p>
+
+    <div class="pullquote">
+      <p>"PRF não é um curativo — é um andaime biológico vivo, fabricado em minutos a partir do sangue do próprio paciente, sem custo de matéria-prima e com risco desprezível."</p>
+    </div>
+
+    <h3>Pontos fortes para a prática clínica</h3>
+    <ul style="padding-left:18px;margin-bottom:24px;line-height:2;">
+      <li><strong>Autólogo</strong> — sem risco de rejeição ou transmissão de doenças<a href="#ref1" class="ref">[1]</a></li>
+      <li><strong>Baixo custo</strong> — além da centrífuga, o material é o sangue do paciente<a href="#ref4" class="ref">[4]</a></li>
+      <li><strong>Liberação sustentada</strong> de fatores de crescimento por ≥7 dias<a href="#ref9" class="ref">[9]</a><a href="#ref10" class="ref">[10]</a></li>
+      <li><strong>Efeito imunomodulador</strong> via leucócitos (L-PRF)<a href="#ref3" class="ref">[3]</a></li>
+      <li><strong>Reabsorvível</strong> — não deixa corpo estranho<a href="#ref1" class="ref">[1]</a></li>
+      <li><strong>Aplicável à beira do leito</strong> — sem infraestrutura de laboratório<a href="#ref5" class="ref">[5]</a></li>
+    </ul>
+
+    <h3>Lacunas a considerar</h3>
+    <ul style="padding-left:18px;margin-bottom:24px;line-height:2;color:var(--text-muted);">
+      <li>ECRs de alta qualidade específicos para feridas cutâneas crônicas ainda são escassos<a href="#ref7" class="ref">[7]</a></li>
+      <li>Falta padronização de protocolo entre centros (velocidade, tempo, tubo)<a href="#ref7" class="ref">[7]</a></li>
+      <li>Efeito em feridas com biofilme é incerto sem desbridamento prévio</li>
+      <li>Frequência ideal de reaplicação não está estabelecida por tipo de ferida<a href="#ref5" class="ref">[5]</a></li>
+    </ul>
+
+    <div class="alert-box">
+      <span class="alert-icon">🎯</span>
+      <div class="alert-content">
+        <h4>Posição clínica atual</h4>
+        <p>O PRF é melhor posicionado como <strong>terapia adjuvante</strong> ao cuidado padrão de feridas — não como substituto de desbridamento, controle de carga bacteriana, terapia compressiva (em úlceras venosas) ou controle glicêmico.<a href="#ref10" class="ref">[10]</a> Sua maior utilidade está em feridas com leito viável que não avançam apesar do cuidado convencional adequado.<a href="#ref5" class="ref">[5]</a></p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ QUIZ DE FIXAÇÃO ══ -->
+<div class="quiz-section">
+  <div class="container">
+    <div class="section-label">Fixação de Conteúdo</div>
+    <h2>Quiz — Teste seu conhecimento sobre PRF</h2>
+    <p style="color:var(--text-muted);margin:8px 0 28px;">Selecione a alternativa correta. O gabarito e a explicação aparecem imediatamente após a sua resposta.</p>
+
+    <div class="quiz-score-bar">
+      <div>
+        <div class="score-display" id="scoreDisplay">0 / 8</div>
+        <div class="score-label">acertos até agora</div>
+      </div>
+      <button class="quiz-btn-reset" onclick="resetQuiz()">↺ Reiniciar quiz</button>
+    </div>
+
+    <!-- Q1 -->
+    <div class="quiz-item" id="qi0">
+      <div class="quiz-question"><span class="qnum">1</span>O PRF é classificado como qual geração de concentrado plaquetário?</div>
+      <div class="quiz-options">
+        <button class="quiz-option" onclick="answer(0,0,1)"><span class="opt-letter">A</span>Primeira geração</button>
+        <button class="quiz-option" onclick="answer(0,1,1)"><span class="opt-letter">B</span>Segunda geração</button>
+        <button class="quiz-option" onclick="answer(0,2,1)"><span class="opt-letter">C</span>Terceira geração</button>
+        <button class="quiz-option" onclick="answer(0,3,1)"><span class="opt-letter">D</span>Geração sintética</button>
+      </div>
+      <div class="quiz-feedback" id="qf0"></div>
+    </div>
+
+    <!-- Q2 -->
+    <div class="quiz-item" id="qi1">
+      <div class="quiz-question"><span class="qnum">2</span>Qual é a principal vantagem da liberação de fatores de crescimento pelo PRF em comparação ao PRP?</div>
+      <div class="quiz-options">
+        <button class="quiz-option" onclick="answer(1,0,1)"><span class="opt-letter">A</span>O PRF libera mais fatores no primeiro minuto de aplicação</button>
+        <button class="quiz-option" onclick="answer(1,1,1)"><span class="opt-letter">B</span>O PRF libera os fatores de crescimento de forma lenta e sustentada por até 7 dias</button>
+        <button class="quiz-option" onclick="answer(1,2,1)"><span class="opt-letter">C</span>O PRP não contém fatores de crescimento relevantes</button>
+        <button class="quiz-option" onclick="answer(1,3,1)"><span class="opt-letter">D</span>O PRF precisa de trombina bovina para ativar a liberação</button>
+      </div>
+      <div class="quiz-feedback" id="qf1"></div>
+    </div>
+
+    <!-- Q3 -->
+    <div class="quiz-item" id="qi2">
+      <div class="quiz-question"><span class="qnum">3</span>Durante o preparo do PRF, após a centrifugação o coágulo de fibrina fica localizado em qual camada do tubo?</div>
+      <div class="quiz-options">
+        <button class="quiz-option" onclick="answer(2,0,1)"><span class="opt-letter">A</span>Camada superior (plasma acelular)</button>
+        <button class="quiz-option" onclick="answer(2,1,1)"><span class="opt-letter">B</span>Camada inferior (hemácias)</button>
+        <button class="quiz-option" onclick="answer(2,2,1)"><span class="opt-letter">C</span>Camada intermediária (meio do tubo)</button>
+        <button class="quiz-option" onclick="answer(2,3,1)"><span class="opt-letter">D</span>Distribui-se uniformemente por todo o tubo</button>
+      </div>
+      <div class="quiz-feedback" id="qf2"></div>
+    </div>
+
+    <!-- Q4 -->
+    <div class="quiz-item" id="qi3">
+      <div class="quiz-question"><span class="qnum">4</span>Por que o tempo entre a coleta do sangue e a centrifugação é considerado crítico no preparo do PRF?</div>
+      <div class="quiz-options">
+        <button class="quiz-option" onclick="answer(3,0,1)"><span class="opt-letter">A</span>O sangue pode se contaminar com bactérias do ambiente</button>
+        <button class="quiz-option" onclick="answer(3,1,1)"><span class="opt-letter">B</span>A coagulação iniciada pelo contato com o vidro reduz a incorporação de fibrinogênio ao coágulo, comprometendo a qualidade do PRF</button>
+        <button class="quiz-option" onclick="answer(3,2,1)"><span class="opt-letter">C</span>Os fatores de crescimento se degradam rapidamente fora do organismo</button>
+        <button class="quiz-option" onclick="answer(3,3,1)"><span class="opt-letter">D</span>A temperatura ambiente inativa as plaquetas de forma irreversível</button>
+      </div>
+      <div class="quiz-feedback" id="qf3"></div>
+    </div>
+
+    <!-- Q5 -->
+    <div class="quiz-item" id="qi4">
+      <div class="quiz-question"><span class="qnum">5</span>Qual fator de crescimento presente no PRF é diretamente responsável por estimular a formação de novos vasos sanguíneos (angiogênese) no leito da ferida?</div>
+      <div class="quiz-options">
+        <button class="quiz-option" onclick="answer(4,0,1)"><span class="opt-letter">A</span>TGF-β (fator transformador de crescimento beta)</button>
+        <button class="quiz-option" onclick="answer(4,1,1)"><span class="opt-letter">B</span>PDGF (fator de crescimento derivado de plaquetas)</button>
+        <button class="quiz-option" onclick="answer(4,2,1)"><span class="opt-letter">C</span>VEGF (fator de crescimento endotelial vascular)</button>
+        <button class="quiz-option" onclick="answer(4,3,1)"><span class="opt-letter">D</span>IGF-1 (fator de crescimento insulínico tipo 1)</button>
+      </div>
+      <div class="quiz-feedback" id="qf4"></div>
+    </div>
+
+    <!-- Q6 -->
+    <div class="quiz-item" id="qi5">
+      <div class="quiz-question"><span class="qnum">6</span>A variante L-PRF (Leucocyte-PRF) se diferencia do PRF clássico principalmente por:</div>
+      <div class="quiz-options">
+        <button class="quiz-option" onclick="answer(5,0,1)"><span class="opt-letter">A</span>Ser produzida com anticoagulante para aumentar a concentração de plaquetas</button>
+        <button class="quiz-option" onclick="answer(5,1,1)"><span class="opt-letter">B</span>Conter alta concentração de leucócitos, conferindo propriedades antimicrobianas e imunomoduladoras</button>
+        <button class="quiz-option" onclick="answer(5,2,1)"><span class="opt-letter">C</span>Ser aplicada exclusivamente por injeção, e não como membrana</button>
+        <button class="quiz-option" onclick="answer(5,3,1)"><span class="opt-letter">D</span>Necessitar de centrifugação em velocidade mais alta do que o PRF clássico</button>
+      </div>
+      <div class="quiz-feedback" id="qf5"></div>
+    </div>
+
+    <!-- Q7 -->
+    <div class="quiz-item" id="qi6">
+      <div class="quiz-question"><span class="qnum">7</span>Qual é o posicionamento clínico mais adequado para o PRF no manejo de feridas crônicas, segundo as evidências atuais?</div>
+      <div class="quiz-options">
+        <button class="quiz-option" onclick="answer(6,0,1)"><span class="opt-letter">A</span>Substituto completo do desbridamento e dos curativos convencionais</button>
+        <button class="quiz-option" onclick="answer(6,1,1)"><span class="opt-letter">B</span>Terapia de primeira linha para qualquer tipo de ferida aguda</button>
+        <button class="quiz-option" onclick="answer(6,2,1)"><span class="opt-letter">C</span>Terapia adjuvante para feridas com leito viável que não avançam apesar do cuidado convencional adequado</button>
+        <button class="quiz-option" onclick="answer(6,3,1)"><span class="opt-letter">D</span>Indicado apenas em contexto cirúrgico hospitalar especializado</button>
+      </div>
+      <div class="quiz-feedback" id="qf6"></div>
+    </div>
+
+    <!-- Q8 -->
+    <div class="quiz-item" id="qi7">
+      <div class="quiz-question"><span class="qnum">8</span>Qual das seguintes afirmações sobre o preparo do PRF está INCORRETA?</div>
+      <div class="quiz-options">
+        <button class="quiz-option" onclick="answer(7,0,1)"><span class="opt-letter">A</span>Não são necessários anticoagulantes na coleta de sangue</button>
+        <button class="quiz-option" onclick="answer(7,1,1)"><span class="opt-letter">B</span>Após centrifugação formam-se três camadas distintas no tubo</button>
+        <button class="quiz-option" onclick="answer(7,2,1)"><span class="opt-letter">C</span>O PRF pode ser armazenado por até 48 horas sem perda de eficácia antes da aplicação</button>
+        <button class="quiz-option" onclick="answer(7,3,1)"><span class="opt-letter">D</span>O PRF deve ser aplicado imediatamente após formação para maximizar a liberação de fatores de crescimento</button>
+      </div>
+      <div class="quiz-feedback" id="qf7"></div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ══ QUESTÕES PARA REFLETIR ══ -->
+<section class="reflection-section">
+  <div class="container">
+    <div class="section-label">Para Refletir</div>
+    <h2>Questões abertas para aprofundamento</h2>
+    <p class="reflection-intro">Não há resposta única. Use estas questões para discussão em grupo, portfólio reflexivo ou estudo individual — elas conectam a ciência do PRF à prática real do cuidado de feridas crônicas.</p>
+
+    <div class="reflection-grid">
+
+      <div class="reflection-card">
+        <div class="r-num">01</div>
+        <p>Em um paciente com úlcera venosa refratária de 6 meses, leito com tecido de granulação pobre mas sem necrose ou infecção ativa, <strong>você indicaria PRF como terapia adjuvante?</strong> Quais fatores do histórico clínico e do leito da ferida influenciariam sua decisão?</p>
+        <p class="r-hint">Considere: preparo do leito, etiologia, uso de terapia compressiva, disponibilidade de centrífuga.</p>
+      </div>
+
+      <div class="reflection-card">
+        <div class="r-num">02</div>
+        <p>A liberação sustentada de fatores de crescimento pelo PRF é apontada como vantagem sobre o PRP. <strong>Por que essa característica é especialmente relevante em feridas crônicas</strong>, onde o ambiente local é desfavorável à cicatrização?</p>
+        <p class="r-hint">Pense no excesso de proteases, na fase inflamatória prolongada e na necessidade de estímulo contínuo para a neoangiogênese.</p>
+      </div>
+
+      <div class="reflection-card">
+        <div class="r-num">03</div>
+        <p>A falta de padronização dos protocolos de centrifugação é apontada como uma das principais limitações do PRF. <strong>Que impacto prático isso tem para profissionais que desejam implementar o PRF na sua unidade?</strong> Como você abordaria essa questão?</p>
+        <p class="r-hint">Reflita sobre: validação de protocolo local, escolha de equipamento, rastreabilidade dos resultados clínicos.</p>
+      </div>
+
+      <div class="reflection-card">
+        <div class="r-num">04</div>
+        <p>O PRF é obtido do próprio sangue do paciente, sem aditivos externos. <strong>Do ponto de vista ético e de acesso</strong>, quais são as implicações dessa característica autóloga — tanto positivas (segurança, custo) quanto potencialmente limitantes (necessidade de coleta, comorbidades)?</p>
+        <p class="r-hint">Considere pacientes com anemia, coagulopatias, idosos frágeis ou em contexto de atenção primária sem infraestrutura para centrifugação.</p>
+      </div>
+
+      <div class="reflection-card">
+        <div class="r-num">05</div>
+        <p>Os estudos sobre PRF em feridas cutâneas crônicas ainda são numericamente modestos e heterogêneos. <strong>Que tipo de ensaio clínico você desenharia</strong> para responder à pergunta: "O L-PRF reduz o tempo de fechamento de úlceras venosas refratárias quando adicionado ao curativo compressivo padrão?"</p>
+        <p class="r-hint">Pense em desfechos primários e secundários, tamanho amostral, cegamento, frequência de aplicação e tempo de seguimento.</p>
+      </div>
+
+      <div class="reflection-card">
+        <div class="r-num">06</div>
+        <p>A Figura 2 deste material mostra fechamento completo de uma úlcera venosa em 7 semanas com L-PRF. <strong>Que perguntas você faria antes de generalizar esse resultado</strong> para a sua população de pacientes? O que pode ser diferente no seu contexto?</p>
+        <p class="r-hint">Reflita sobre: características do paciente, nível de controle da hipertensão venosa, aderência à terapia compressiva, número de aplicações, operador.</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<script>
+  const answers = [1, 1, 2, 1, 2, 1, 2, 2]; // índices corretos (0-based) por questão
+  const feedbacks = [
+    {
+      c: "Correto! O PRF foi desenvolvido por Choukroun em 2001 e é classificado como concentrado plaquetário de <strong>segunda geração</strong> — superando as limitações do PRP (primeira geração) ao eliminar anticoagulantes e trombina bovina.",
+      w: "Incorreto. O PRF é a <strong>segunda geração</strong> de concentrados plaquetários. O PRP é a primeira geração. A segunda geração avança ao eliminar anticoagulantes e produtos externos do processo."
+    },
+    {
+      c: "Correto! A liberação <strong>lenta e sustentada por até 7 dias</strong> é a principal vantagem do PRF sobre o PRP. A malha de fibrina funciona como reservatório que entrega os fatores de crescimento progressivamente, mimetizando a fisiologia normal.",
+      w: "Incorreto. A grande vantagem do PRF não é velocidade — é exatamente o contrário: <strong>liberação lenta e sustentada por até 7 dias</strong>, enquanto o PRP libera tudo de uma vez (bolus), com efeito de curta duração."
+    },
+    {
+      c: "Correto! Após centrifugação, o tubo apresenta três camadas distintas: plasma acelular (PPP) no topo, o coágulo de fibrina com PRF no <strong>meio</strong>, e as hemácias na base. O PRF é coletado da fração intermediária.",
+      w: "Incorreto. O coágulo de fibrina rico em plaquetas (PRF) fica na <strong>camada intermediária</strong> — entre o plasma acelular (topo) e as hemácias (base). Essa separação é o resultado esperado após a centrifugação."
+    },
+    {
+      c: "Correto! Sem anticoagulante, o sangue começa a coagular imediatamente ao contato com o vidro do tubo. Quanto mais tempo passa antes da centrifugação, menos fibrinogênio é incorporado ao coágulo — <strong>comprometendo a estrutura e a qualidade do PRF</strong>.",
+      w: "Incorreto. O motivo crítico é biológico: o sangue sem anticoagulante começa a <strong>coagular ao contato com o vidro</strong>, reduzindo progressivamente a incorporação de fibrinogênio. Isso compromete a qualidade do PRF — daí a necessidade de centrifugar rapidamente."
+    },
+    {
+      c: "Correto! O <strong>VEGF (Vascular Endothelial Growth Factor)</strong> é o principal indutor de angiogênese presente no PRF. Ele estimula a proliferação de células endoteliais e a formação de novos vasos — essencial em feridas crônicas com isquemia relativa.",
+      w: "Incorreto. O fator responsável pela angiogênese é o <strong>VEGF</strong> (Vascular Endothelial Growth Factor). O TGF-β atua na maturação tecidual e colágeno; o PDGF no recrutamento celular; e o IGF-1 na proliferação geral."
+    },
+    {
+      c: "Correto! O L-PRF se distingue pela <strong>alta concentração de leucócitos</strong>, que conferem propriedades antimicrobianas (via defensinas e proteases) e imunomoduladoras. Isso é especialmente relevante em feridas crônicas com risco de colonização.",
+      w: "Incorreto. A principal diferença do L-PRF é a presença de <strong>leucócitos em alta concentração</strong>. Eles não são adicionados externamente — ficam retidos na malha de fibrina durante a centrifugação, conferindo propriedades antimicrobianas e imunomoduladoras."
+    },
+    {
+      c: "Correto! O posicionamento mais respaldado pela literatura atual é como <strong>terapia adjuvante</strong> — especialmente em feridas com leito viável que não progridem com o tratamento convencional adequado (desbridamento, compressão, controle da causa base).",
+      w: "Incorreto. O PRF não substitui o cuidado padrão. A evidência atual o posiciona como <strong>terapia adjuvante</strong> em feridas que não avançam apesar do tratamento convencional adequado — não como primeira linha nem como substituto de desbridamento."
+    },
+    {
+      c: "Correto! A afirmativa incorreta é a C. O PRF <strong>deve ser aplicado imediatamente após a formação</strong> — não pode ser armazenado por 48 horas. A malha de fibrina começa a se degradar e os fatores de crescimento a se dispersar logo após a centrifugação.",
+      w: "Incorreto. A alternativa C é a afirmação errada: o PRF <strong>não pode ser armazenado</strong> por 48 horas sem perda de eficácia. Estudos mostram que a membrana deve ser usada imediatamente para maximizar a liberação de fatores de crescimento."
+    }
+  ];
+
+  let scores = new Array(8).fill(null);
+
+  function answer(qi, selected, correct) {
+    if (scores[qi] !== null) return;
+
+    const item = document.getElementById('qi' + qi);
+    const fb   = document.getElementById('qf' + qi);
+    const btns = item.querySelectorAll('.quiz-option');
+
+    const isCorrect = (selected === correct);
+    scores[qi] = isCorrect ? 1 : 0;
+
+    btns.forEach((btn, i) => {
+      btn.disabled = true;
+      if (i === correct) btn.classList.add('show-ans');
+    });
+
+    if (isCorrect) {
+      btns[selected].classList.remove('show-ans');
+      btns[selected].classList.add('sel-correct');
+      item.classList.add('correct');
+      fb.innerHTML = '✅ ' + feedbacks[qi].c;
+      fb.classList.add('fb-correct');
+    } else {
+      btns[selected].classList.add('sel-wrong');
+      item.classList.add('wrong');
+      fb.innerHTML = '❌ ' + feedbacks[qi].w;
+      fb.classList.add('fb-wrong');
+    }
+    fb.classList.add('show');
+    updateScore();
+  }
+
+  function updateScore() {
+    const done    = scores.filter(s => s !== null).length;
+    const correct = scores.filter(s => s === 1).length;
+    document.getElementById('scoreDisplay').textContent = correct + ' / ' + done;
+  }
+
+  function resetQuiz() {
+    scores = new Array(8).fill(null);
+    document.getElementById('scoreDisplay').textContent = '0 / 8';
+    for (let qi = 0; qi < 8; qi++) {
+      const item = document.getElementById('qi' + qi);
+      const fb   = document.getElementById('qf' + qi);
+      item.classList.remove('correct', 'wrong');
+      item.querySelectorAll('.quiz-option').forEach(btn => {
+        btn.disabled = false;
+        btn.classList.remove('sel-correct', 'sel-wrong', 'show-ans');
+      });
+      fb.className = 'quiz-feedback';
+      fb.innerHTML = '';
+    }
+  }
+</script>
+
+<!-- ══ REFERÊNCIAS ══ -->
+<div class="refs">
+  <div class="container">
+    <h3>Referências</h3>
+    <ol>
+      <li id="ref1"><span class="ref-anchor">[1]</span>Naik B, Karunakar P, Jayadev M, Marshal VR. Role of Platelet rich fibrin in wound healing: A critical review. <em>J Conserv Dent</em>. 2013;16(4):284–93. doi: <a href="https://doi.org/10.4103/0972-0707.114344" target="_blank">10.4103/0972-0707.114344</a></li>
+      <li id="ref2"><span class="ref-anchor">[2]</span>Dohan DM, Choukroun J, Diss A et al. Platelet-rich fibrin (PRF): A second-generation platelet concentrate. Part I: Technological concepts and evolution. <em>Oral Surg Oral Med Oral Pathol Oral Radiol Endod</em>. 2006;101:e37–44.</li>
+      <li id="ref3"><span class="ref-anchor">[3]</span>Bielecki T, Dohan Ehrenfest DM, Everts PA, Wiczkowski A. The role of leukocytes from L-PRP/L-PRF in wound healing and immune defense: New perspectives. <em>Curr Pharm Biotechnol</em>. 2012;13:1153–62.</li>
+      <li id="ref4"><span class="ref-anchor">[4]</span>Vinaya Kumar R, Shubhashini N. Platelet rich fibrin: A new paradigm in periodontal regeneration. <em>Cell Tissue Bank</em>. 2012. [Revisão]</li>
+      <li id="ref5"><span class="ref-anchor">[5]</span>Gupta S, Zingade A, Baviskar M, Pingale SV. Efficacy of combined autologous PRP and PRF over standard dressing in chronic wounds: a prospective interventional study. <em>Cureus</em>. 2024;16(9):e70092. doi: <a href="https://doi.org/10.7759/cureus.70092" target="_blank">10.7759/cureus.70092</a></li>
+      <li id="ref6"><span class="ref-anchor">[6]</span>Roy S, Driggs J, Elgharably H et al. Platelet-rich fibrin matrix improves wound angiogenesis via inducing endothelial cell proliferation. <em>Wound Repair Regen</em>. 2011;19:753–66.</li>
+      <li id="ref7"><span class="ref-anchor">[7]</span>Chen J, Wan Y, Lin Y, Jiang H. PRF and concentrated growth factors as novel platelet concentrates for chronic hard-to-heal skin ulcers: systematic review and meta-analysis. <em>J Dermatolog Treat</em>. 2022;33(2):613–21.</li>
+      <li id="ref8"><span class="ref-anchor">[8]</span>Kartika RW, Alwi I, Suyatna FD et al. The role of VEGF, PDGF and IL-6 on diabetic foot ulcer after platelet-rich fibrin + hyaluronic therapy. <em>Heliyon</em>. 2021;7(9):e07934. doi: <a href="https://doi.org/10.1016/j.heliyon.2021.e07934" target="_blank">10.1016/j.heliyon.2021.e07934</a></li>
+      <li id="ref9"><span class="ref-anchor">[9]</span>Su CY, Kuo YP, Tseng YH, Su CH, Burnouf T. In vitro release of growth factors from platelet-rich fibrin (PRF): a proposal to optimize the clinical applications of PRF. <em>Oral Surg Oral Med Oral Pathol Oral Radiol Endod</em>. 2009;108:56–61.</li>
+      <li id="ref10"><span class="ref-anchor">[10]</span>Pinto N, Ubilla M, Zamora Y, Rio V, Dohan Ehrenfest DM, Quirynen M. Leucocyte- and platelet-rich fibrin (L-PRF) as a regenerative medicine strategy for the treatment of refractory leg ulcers: a prospective cohort study. <em>Platelets</em>. 2018;29(1):1–8. doi: <a href="https://doi.org/10.1080/09537104.2017.1327654" target="_blank">10.1080/09537104.2017.1327654</a> — <em>Fonte da Figura 2.</em></li>
+      <li id="ref11"><span class="ref-anchor">[11]</span>Bilgen F, Ural A, Bekerecioglu M. Platelet-rich fibrin: An effective chronic wound healing accelerator. <em>J Tissue Viability</em>. 2021;30(4):616–620. doi: <a href="https://doi.org/10.1016/j.jtv.2021.04.009" target="_blank">10.1016/j.jtv.2021.04.009</a></li>
+      <li id="ref12"><span class="ref-anchor">[12]</span>Napit IB, Shrestha D, Neupane K et al. Autologous blood products: L-PRF and PRP gel to promote cutaneous ulcer healing — a systematic review. <em>BMJ Open</em>. 2023;13(12):e073209. doi: <a href="https://doi.org/10.1136/bmjopen-2023-073209" target="_blank">10.1136/bmjopen-2023-073209</a></li>
+      <li id="ref15"><span class="ref-anchor">[15]</span>Wang Z, Feng C, Chang G, Liu H, Li S. The use of platelet-rich plasma in wound healing and vitiligo: A systematic review and meta-analysis. <em>Int Wound J</em>. Disponível em: <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC12692824/" target="_blank">PMC12692824</a></li>
+      <li id="refimg1"><span class="ref-anchor">[Img1]</span>PRF Canada. <em>The Benefits of Platelet-Rich Fibrin</em>. Disponível em: <a href="https://prfcanada.com/en/the-benefits-of-platelet-rich-fibrin-1708356454" target="_blank">https://prfcanada.com/en/the-benefits-of-platelet-rich-fibrin-1708356454</a>. Acesso em: maio 2026. — <em>Fonte da Figura 1.</em></li>
+    </ol>
+  </div>
+</div>
+
+<!-- ══ FOOTER ══ -->
+<footer class="institutional-footer">
+  <p>Infográfico elaborado pelos projetos Amor à Pele e PET-Saúde Digital G10 Feridas Crônicas, UFPel, em Maio de 2026.<br>
+  Baseado em: Naik et al. (2013) + fontes complementares PubMed/SciELO (2009–2024). Conteúdo para fins educacionais.</p>
+</footer>
+
+</body>
+</html>
