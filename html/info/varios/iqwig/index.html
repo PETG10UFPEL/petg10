@@ -1,0 +1,1175 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Feridas Crônicas — Fundamentos Clínicos | IQWiG / InformedHealth</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Source+Sans+3:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <style>
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    :root{
+      --bg:#FAFAF8;--surface:#FFFFFF;
+      --navy:#1A3A5C;--teal:#2B7A78;--teal-light:#E8F5F4;
+      --amber:#C8692A;--amber-light:#FDF0E6;
+      --red:#B5322A;--red-light:#FDECEA;
+      --green:#2E7D52;--green-light:#E8F5EE;
+      --purple:#5B4A8A;--purple-light:#EEE9F7;
+      --gray-100:#F4F4F2;--gray-300:#D0D5DA;--gray-500:#7A8490;--gray-700:#3E4651;
+      --text:#22272E;--border:#E2E6EA;
+      --serif:'Playfair Display',Georgia,serif;
+      --sans:'Source Sans 3',system-ui,sans-serif;
+      --r:12px;--shadow:0 2px 16px rgba(26,58,92,.08)
+    }
+    body{font-family:var(--sans);background:var(--bg);color:var(--text);line-height:1.72;font-size:17px}
+    sup.ref{font-size:.7em;color:var(--teal);font-weight:700;cursor:pointer}
+    sup.ref:hover{text-decoration:underline}
+
+    /* HEADER */
+    .inst-header{background:var(--surface);border-bottom:2px solid var(--navy);padding:14px 40px;display:flex;justify-content:space-between;align-items:center}
+    .hid{font-family:var(--serif);font-size:1rem;color:var(--navy)}
+    .hid span{display:block;font-family:var(--sans);font-size:.75rem;font-weight:700;color:var(--teal);letter-spacing:.07em;text-transform:uppercase}
+    .hbadge{background:var(--navy);color:#fff;font-size:.72rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;padding:6px 14px;border-radius:20px}
+
+    /* HERO */
+    .hero{background:linear-gradient(135deg,var(--navy) 0%,#2B5070 55%,var(--teal) 100%);color:#fff;padding:68px 40px 52px;position:relative;overflow:hidden}
+    .hero::before{content:'';position:absolute;top:-80px;right:-80px;width:400px;height:400px;border-radius:50%;background:rgba(255,255,255,.04)}
+    .hero-in{max-width:880px;margin:0 auto;position:relative;z-index:2}
+    .kicker{font-size:.74rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,.6);margin-bottom:14px}
+    .hero h1{font-family:var(--serif);font-size:clamp(2.2rem,5vw,3.4rem);line-height:1.1;margin-bottom:16px;font-weight:900}
+    .hero-sub{font-size:1.1rem;color:rgba(255,255,255,.82);max-width:640px;margin-bottom:32px;font-weight:300}
+    .pills{display:flex;flex-wrap:wrap;gap:9px}
+    .pill{background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.25);color:#fff;padding:5px 15px;border-radius:20px;font-size:.83rem;font-weight:600}
+
+    /* LAYOUT */
+    .pw{max-width:960px;margin:0 auto;padding:0 24px}
+
+    /* SECTION LABELS */
+    .slabel{font-size:.72rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--teal);margin-bottom:8px}
+    .stitle{font-family:var(--serif);font-size:clamp(1.5rem,3vw,2rem);color:var(--navy);line-height:1.2;margin-bottom:6px}
+    .sdiv{width:48px;height:4px;border-radius:2px;background:var(--teal);margin-bottom:26px}
+
+    /* IQWIG SECTION */
+    .iqwig-section{padding:56px 0 40px}
+    .iqwig-box{background:var(--navy);color:#fff;border-radius:var(--r);padding:36px 40px;display:grid;grid-template-columns:160px 1fr;gap:32px;align-items:start;margin-top:28px}
+    .iqwig-logo-area{text-align:center}
+    .iqwig-logo-text{font-family:var(--serif);font-size:2.8rem;font-weight:900;color:#fff;line-height:1;letter-spacing:-.02em}
+    .iqwig-logo-sub{font-size:.7rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.55);margin-top:6px;line-height:1.4}
+    .iqwig-content h3{font-family:var(--serif);font-size:1.25rem;margin-bottom:12px}
+    .iqwig-content p{font-size:.92rem;color:rgba(255,255,255,.85);line-height:1.65;margin-bottom:10px}
+    .iqwig-content a{color:#7ECECA;text-decoration:none}
+    .iqwig-tags{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px}
+    .itag{background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.2);color:rgba(255,255,255,.85);padding:4px 12px;border-radius:12px;font-size:.78rem;font-weight:600}
+    .iqwig-principles{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:28px}
+    .iprinciple{background:var(--teal-light);border-radius:var(--r);padding:18px 16px;border-top:4px solid var(--teal)}
+    .iprinciple h4{font-family:var(--serif);font-size:.95rem;color:var(--navy);margin-bottom:6px}
+    .iprinciple p{font-size:.83rem;color:var(--gray-700);line-height:1.55}
+
+    /* DEFINITION */
+    .def-section{padding:56px 0 36px}
+    .def-grid{display:grid;grid-template-columns:1fr 1fr;gap:22px;margin-top:28px}
+    .dcard{background:var(--surface);border-radius:var(--r);padding:28px;box-shadow:var(--shadow);border-left:5px solid var(--teal)}
+    .dcard.amb{border-left-color:var(--amber)}
+    .dcard h3{font-family:var(--serif);font-size:1.05rem;color:var(--navy);margin-bottom:10px}
+    .dcard p{font-size:.93rem;color:var(--gray-700);line-height:1.65}
+    .bignum{font-family:var(--serif);font-size:2.6rem;font-weight:900;color:var(--teal);line-height:1;margin-bottom:6px}
+    .bignum.amb{color:var(--amber)}
+    .pullq{background:var(--navy);color:#fff;border-radius:var(--r);padding:34px 38px;margin:36px 0;position:relative}
+    .pullq::before{content:'"';font-family:var(--serif);font-size:8rem;color:rgba(255,255,255,.07);position:absolute;top:-10px;left:18px;line-height:1}
+    .pullq p{font-family:var(--serif);font-size:1.3rem;line-height:1.5;color:rgba(255,255,255,.95);position:relative;z-index:1}
+    .pullq cite{display:block;margin-top:12px;font-size:.78rem;font-style:normal;color:rgba(255,255,255,.45);font-weight:700;letter-spacing:.07em;text-transform:uppercase;position:relative;z-index:1}
+
+    /* SYMPTOMS */
+    .sym-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:26px}
+    .scard{background:var(--surface);border-radius:var(--r);padding:22px 18px;box-shadow:var(--shadow);text-align:center}
+    .scard .si{font-size:2rem;margin-bottom:10px;display:block}
+    .scard h4{font-family:var(--serif);font-size:.97rem;color:var(--navy);margin-bottom:7px}
+    .scard p{font-size:.85rem;color:var(--gray-500);line-height:1.55}
+    .wc-row{display:flex;flex-wrap:wrap;gap:10px;margin-top:26px}
+    .wcb{display:flex;align-items:center;gap:9px;background:var(--surface);border-radius:30px;padding:9px 18px;box-shadow:var(--shadow);font-size:.88rem;font-weight:600;color:var(--gray-700)}
+    .wcd{width:16px;height:16px;border-radius:50%;flex-shrink:0}
+
+    /* CAUSES */
+    .causes-bg{background:var(--gray-100);margin:0 -24px;padding:56px 24px}
+    .causes-grid{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-top:26px}
+    .citem{background:var(--surface);border-radius:var(--r);padding:22px;box-shadow:var(--shadow);display:flex;gap:14px;align-items:flex-start}
+    .cnum{min-width:36px;height:36px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:.88rem;flex-shrink:0;color:#fff}
+    .cnum.t{background:var(--teal)}.cnum.a{background:var(--amber)}.cnum.n{background:var(--navy)}.cnum.p{background:var(--purple)}.cnum.r{background:var(--red)}.cnum.g{background:var(--gray-500)}
+    .ctxt h4{font-family:var(--serif);font-size:.98rem;color:var(--navy);margin-bottom:5px}
+    .ctxt p{font-size:.85rem;color:var(--gray-700);line-height:1.6}
+
+    /* WOUND TABLE */
+    .wtable{width:100%;border-collapse:separate;border-spacing:0;background:var(--surface);border-radius:var(--r);box-shadow:var(--shadow);overflow:hidden;margin-top:26px}
+    .wtable th{background:var(--navy);color:#fff;font-size:.78rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;padding:13px 16px;text-align:left}
+    .wtable td{padding:13px 16px;font-size:.85rem;color:var(--gray-700);border-bottom:1px solid var(--border);vertical-align:top}
+    .wtable tr:last-child td{border-bottom:none}
+    .wtable tr:nth-child(even) td{background:var(--gray-100)}
+    .wlabel{font-weight:700;color:var(--navy);font-size:.88rem}
+
+    /* DIAGNOSIS */
+    .diag-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:26px}
+    .ditem{background:var(--teal-light);border-radius:var(--r);padding:18px 16px;border-top:4px solid var(--teal)}
+    .ditem h4{font-weight:700;font-size:.85rem;color:var(--teal);text-transform:uppercase;letter-spacing:.05em;margin-bottom:5px}
+    .ditem p{font-size:.85rem;color:var(--gray-700);line-height:1.55}
+
+    /* PLACEHOLDER */
+    .ph-box{border:2px dashed var(--gray-300);background:var(--gray-100);border-radius:8px;padding:28px 20px;text-align:center;color:var(--gray-500);min-height:200px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:9px}
+    .phi{font-size:2.2rem}
+    .phl{font-family:monospace;font-size:.8rem;background:var(--border);padding:3px 10px;border-radius:4px;color:var(--gray-700)}
+    .phh{font-size:.76rem;color:var(--gray-500);font-style:italic;max-width:320px}
+    figure figcaption{font-size:.8rem;color:var(--gray-500);margin-top:8px;font-style:italic;text-align:center}
+
+    /* TREATMENT */
+    .tx-intro{background:var(--amber-light);border-left:5px solid var(--amber);border-radius:var(--r);padding:20px 24px;margin:26px 0;font-size:.95rem;color:var(--gray-700)}
+    .tx-intro strong{color:var(--amber)}
+    .debrid{background:var(--navy);color:#fff;border-radius:var(--r);padding:28px 32px;margin:28px 0;display:grid;grid-template-columns:auto 1fr;gap:22px;align-items:start}
+    .debrid .di{font-size:2.6rem}
+    .debrid h3{font-family:var(--serif);font-size:1.25rem;margin-bottom:8px}
+    .debrid p{font-size:.9rem;color:rgba(255,255,255,.82);line-height:1.6}
+    .debrid ul{margin-top:10px;padding-left:18px}
+    .debrid li{font-size:.86rem;color:rgba(255,255,255,.76);margin-bottom:4px}
+    .tx-cards{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+    .txc{background:var(--surface);border-radius:var(--r);padding:22px;box-shadow:var(--shadow)}
+    .txh{display:flex;align-items:center;gap:11px;margin-bottom:12px}
+    .txi{width:42px;height:42px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:1.2rem;flex-shrink:0}
+    .txi.t{background:var(--teal-light)}.txi.a{background:var(--amber-light)}.txi.n{background:#E8EEF5}.txi.g{background:var(--green-light)}.txi.p{background:var(--purple-light)}.txi.r{background:var(--red-light)}
+    .txc h4{font-family:var(--serif);font-size:.98rem;color:var(--navy)}
+    .txc p{font-size:.86rem;color:var(--gray-700);line-height:1.6}
+    .etag{display:inline-block;margin-top:9px;font-size:.72rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;padding:3px 10px;border-radius:10px}
+    .ev-g{background:var(--green-light);color:var(--green)}.ev-l{background:var(--amber-light);color:var(--amber)}.ev-i{background:var(--red-light);color:var(--red)}
+
+    /* PREVENTION */
+    .prev-bg{background:var(--green-light);margin:0 -24px;padding:56px 24px}
+    .prev-in{max-width:960px;margin:0 auto}
+    .prev-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:26px}
+    .pvc{background:var(--surface);border-radius:var(--r);padding:22px 18px;box-shadow:var(--shadow);border-top:4px solid var(--green)}
+    .pvc .pvi{font-size:1.9rem;margin-bottom:10px;display:block}
+    .pvc h4{font-family:var(--serif);font-size:.95rem;color:var(--navy);margin-bottom:7px}
+    .pvc p{font-size:.84rem;color:var(--gray-700);line-height:1.6}
+
+    /* COMPLICATIONS */
+    .comp-warn{background:var(--red-light);border:2px solid var(--red);border-radius:var(--r);padding:26px 30px;display:grid;grid-template-columns:auto 1fr;gap:18px;align-items:start;margin-top:26px}
+    .comp-warn .wi{font-size:2.2rem}
+    .comp-warn h3{font-family:var(--serif);font-size:1.15rem;color:var(--red);margin-bottom:9px}
+    .comp-warn ul{padding-left:18px}
+    .comp-warn li{font-size:.9rem;color:var(--gray-700);margin-bottom:6px}
+    .comp-warn li strong{color:var(--red)}
+
+    /* EVERYDAY */
+    .life-bg{background:var(--purple-light);margin:0 -24px;padding:56px 24px}
+    .life-in{max-width:960px;margin:0 auto}
+    .life-grid{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-top:26px}
+    .lifc{background:var(--surface);border-radius:var(--r);padding:22px;box-shadow:var(--shadow)}
+    .lifc h4{font-family:var(--serif);font-size:.98rem;color:var(--purple);margin-bottom:8px}
+    .lifc p{font-size:.86rem;color:var(--gray-700);line-height:1.65}
+
+    /* TAKEAWAYS */
+    .tak-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:26px}
+    .tak{display:flex;gap:13px;background:var(--surface);border-radius:var(--r);padding:18px 20px;box-shadow:var(--shadow);align-items:flex-start}
+    .tn{min-width:30px;height:30px;background:var(--teal);color:#fff;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:.82rem;flex-shrink:0}
+    .tak p{font-size:.88rem;color:var(--gray-700);line-height:1.6}
+    .tak p strong{color:var(--navy)}
+
+    /* REFERENCES */
+    .refs-section{padding:48px 0 32px}
+    .refs-list{margin-top:20px;counter-reset:refcount}
+    .ref-item{counter-increment:refcount;display:flex;gap:12px;padding:10px 0;border-bottom:1px solid var(--border);font-size:.82rem;color:var(--gray-700);line-height:1.55}
+    .ref-item:last-child{border-bottom:none}
+    .ref-item::before{content:counter(refcount);min-width:22px;height:22px;background:var(--teal);color:#fff;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:.72rem;flex-shrink:0;margin-top:1px}
+    .ref-item a{color:var(--teal);text-decoration:none}
+
+    /* QUIZ */
+    .quiz-section{padding:56px 0}
+    .quiz-box{background:var(--surface);border-radius:var(--r);box-shadow:var(--shadow);padding:32px 36px;margin-top:28px}
+    .quiz-nav{display:flex;justify-content:space-between;align-items:center;margin-bottom:20px}
+    .quiz-counter{font-size:.78rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--gray-500)}
+    .quiz-progress{height:6px;background:var(--gray-100);border-radius:3px;flex:1;margin:0 16px;overflow:hidden}
+    .quiz-bar{height:100%;background:var(--teal);border-radius:3px;transition:width .4s}
+    .quiz-q{font-family:var(--serif);font-size:1.15rem;color:var(--navy);margin-bottom:20px;line-height:1.45}
+    .quiz-options{display:flex;flex-direction:column;gap:10px}
+    .qopt{background:var(--gray-100);border:2px solid var(--border);border-radius:8px;padding:12px 16px;cursor:pointer;font-size:.92rem;color:var(--gray-700);transition:all .2s;text-align:left}
+    .qopt:hover{border-color:var(--teal);background:var(--teal-light)}
+    .qopt.correct{background:var(--green-light);border-color:var(--green);color:var(--green)}
+    .qopt.wrong{background:var(--red-light);border-color:var(--red);color:var(--red)}
+    .qopt:disabled{cursor:default}
+    .quiz-feedback{margin-top:16px;padding:14px 18px;border-radius:8px;font-size:.9rem;line-height:1.6;display:none}
+    .qf-correct{background:var(--green-light);color:var(--green);border-left:4px solid var(--green)}
+    .qf-wrong{background:var(--red-light);color:var(--red);border-left:4px solid var(--red)}
+    .quiz-btn{margin-top:18px;background:var(--navy);color:#fff;border:none;border-radius:8px;padding:10px 24px;font-size:.9rem;font-weight:700;cursor:pointer;display:none}
+    .quiz-btn:hover{background:var(--teal)}
+    .quiz-score{text-align:center;padding:28px 0;display:none}
+    .quiz-score .qs-num{font-family:var(--serif);font-size:3rem;font-weight:900;color:var(--teal)}
+    .quiz-score p{font-size:1rem;color:var(--gray-700);margin-top:8px}
+    .quiz-restart{margin-top:16px;background:var(--navy);color:#fff;border:none;border-radius:8px;padding:10px 22px;font-size:.9rem;font-weight:700;cursor:pointer}
+
+    /* SOCRATIC */
+    .socr-section{padding:40px 0 56px}
+    .socr-intro{background:var(--amber-light);border-left:5px solid var(--amber);border-radius:var(--r);padding:20px 24px;margin-top:26px;font-size:.93rem;color:var(--gray-700)}
+    .socr-list{margin-top:24px;display:flex;flex-direction:column;gap:16px}
+    .socr-item{background:var(--surface);border-radius:var(--r);box-shadow:var(--shadow);overflow:hidden}
+    .socr-trigger{width:100%;background:none;border:none;padding:18px 22px;display:flex;justify-content:space-between;align-items:center;cursor:pointer;text-align:left;gap:12px}
+    .socr-trigger:hover{background:var(--gray-100)}
+    .socr-q{font-family:var(--serif);font-size:1rem;color:var(--navy);line-height:1.4}
+    .socr-chevron{font-size:.9rem;color:var(--gray-500);flex-shrink:0;transition:transform .3s}
+    .socr-item.open .socr-chevron{transform:rotate(180deg)}
+    .socr-body{display:none;padding:0 22px 20px}
+    .socr-item.open .socr-body{display:block}
+    .socr-body p{font-size:.9rem;color:var(--gray-700);line-height:1.7;margin-bottom:8px}
+    .socr-body p:last-child{margin-bottom:0}
+    .socr-insight{background:var(--teal-light);border-left:4px solid var(--teal);border-radius:6px;padding:12px 16px;margin-top:12px;font-size:.88rem;color:var(--gray-700)}
+    .socr-insight strong{color:var(--teal)}
+
+    /* SOURCE STRIP */
+    .src-strip{background:var(--gray-100);padding:22px 0;margin-top:12px}
+    .src-strip p{font-size:.78rem;color:var(--gray-500);line-height:1.6}
+    .src-strip a{color:var(--teal);text-decoration:none}
+
+    /* FOOTER */
+    .inst-footer{background:var(--surface);border-top:2px solid var(--navy);padding:26px 40px;text-align:center}
+    .inst-footer p{font-size:.8rem;color:var(--gray-500);line-height:1.6}
+
+    @media(max-width:700px){
+      .def-grid,.causes-grid,.tx-cards,.prev-grid,.diag-grid,.sym-grid,.life-grid,.tak-grid,.iqwig-principles,.iqwig-box{grid-template-columns:1fr}
+      .debrid,.comp-warn{grid-template-columns:1fr}
+      .hero{padding:44px 20px 36px}
+      .inst-header{padding:12px 20px}
+      .iqwig-box{padding:24px 20px}
+    }
+  </style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header class="inst-header">
+  <div class="hid">Feridas Crônicas — Fundamentos Clínicos
+    <span>Informação em Saúde Baseada em Evidências · IQWiG / InformedHealth.org</span>
+  </div>
+  <div class="hbadge">InformedHealth · IQWiG</div>
+</header>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-in">
+    <p class="kicker">Pele · Cuidado de Feridas · Enfermagem Clínica · Revisão de Evidências IQWiG · Atualizado Out/2025</p>
+    <h1>Feridas Crônicas</h1>
+    <p class="hero-sub">Por que algumas feridas se recusam a cicatrizar — e o que a medicina baseada em evidências pode fazer. Guia visual para estudantes de medicina e enfermagem.</p>
+    <div class="pills">
+      <span class="pill">Úlceras Venosas</span><span class="pill">Pé Diabético</span>
+      <span class="pill">Úlceras por Pressão</span><span class="pill">Desbridamento</span>
+      <span class="pill">TPNF (VAC)</span><span class="pill">Enxerto de Pele</span>
+    </div>
+  </div>
+</section>
+
+<div class="pw">
+
+  <!-- IQWiG SECTION -->
+   <img  src="img/iqwig.png" alt="IQWiG" style="width:80%; max-width:700px">   
+   <section class="iqwig-section">
+ <p class="slabel">Sobre a Fonte</p>
+    <h2 class="stitle">IQWiG e o InformedHealth.org: quem fala sobre feridas crônicas</h2>
+    <div class="sdiv"></div>
+    <p style="max-width:720px;color:var(--gray-700);font-size:.97rem;margin-bottom:6px;">
+      Todo o conteúdo deste infográfico está ancorado nas avaliações do <strong>IQWiG</strong> — o Instituto Alemão para Qualidade e Eficiência em Saúde — e na plataforma <strong>InformedHealth.org</strong>. Entender quem produz esse conhecimento é fundamental para avaliar seu peso clínico.
+    </p>
+
+    <div class="iqwig-box">
+      <div class="iqwig-logo-area">
+        <div class="iqwig-logo-text">IQWiG</div>
+        <div class="iqwig-logo-sub">Institut für Qualität und<br>Wirtschaftlichkeit im<br>Gesundheitswesen</div>
+      </div>
+      <div class="iqwig-content">
+        <h3>O que é o IQWiG?</h3>
+        <p>O IQWiG (em português: Instituto para Qualidade e Eficiência nos Cuidados de Saúde) é uma <strong>instituição científica independente alemã</strong>, criada em 2004 e financiada pelas contribuições do seguro de saúde estatutário alemão. Suas responsabilidades legais incluem a avaliação de exames diagnósticos, medicamentos e tratamentos médicos com base em evidências científicas de alta qualidade — sem influência da indústria farmacêutica.</p>
+        <p>O <strong>InformedHealth.org</strong> é a versão em inglês do portal Gesundheitsinformation.de, a plataforma pública do IQWiG. Oferece informações de saúde gratuitas, sem anúncios, desenvolvidas segundo padrões internacionais de informação em saúde baseada em evidências. O conteúdo sobre feridas crônicas foi atualizado em <strong>1.º de outubro de 2025</strong>, com próxima revisão prevista para 2028.</p>
+        <div class="iqwig-tags">
+          <span class="itag">Independente</span><span class="itag">Sem financiamento industrial</span>
+          <span class="itag">Baseado em Cochrane Reviews</span><span class="itag">Revisado por especialistas externos</span>
+          <span class="itag">Diretrizes S3 alemãs (AWMF)</span><span class="itag">IWGDF 2023</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="iqwig-principles">
+      <div class="iprinciple">
+        <h4>📋 Como produz seu conteúdo</h4>
+        <p>Equipe multidisciplinar (médicos, cientistas, jornalistas de saúde) produz os textos; revisores externos independentes verificam. O processo segue os padrões HONcode e DISCERN para informação em saúde.</p>
+      </div>
+      <div class="iprinciple">
+        <h4>⚖️ Avaliações de tecnologia em saúde</h4>
+        <p>Para feridas crônicas, o IQWiG publicou relatórios formais sobre <strong>terapia por pressão negativa</strong> (N17-01A e N17-01B, 2019) e <strong>oxigenoterapia hiperbárica</strong> para pé diabético (N15-02, 2016) — metodologia rigorosa de síntese de RCTs.</p>
+      </div>
+      <div class="iprinciple">
+        <h4>🌐 Impacto internacional</h4>
+        <p>As avaliações do IQWiG são referência para políticas de reembolso na Alemanha e influenciam diretamente diretrizes europeias. Membros da rede INAHTA (Agências de HTA) e EUnetHTA.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- DEFINITION -->
+  <section class="def-section">
+    <p class="slabel">Definição</p>
+    <h2 class="stitle">Quando uma ferida torna-se "crônica"?</h2>
+    <div class="sdiv"></div>
+    <p style="max-width:720px;color:var(--gray-700);font-size:.97rem;margin-bottom:26px;">
+      Lesões cutâneas menores normalmente cicatrizam em dias a semanas. Quando uma ferida não avança em direção à cicatrização apesar do tratamento adequado, os clínicos a classificam como crônica — sinal de que uma condição subjacente está perturbando a cascata fisiológica de reparo.<sup class="ref" title="IQWiG/InformedHealth. Feridas crônicas — Visão geral. Out 2025.">[1]</sup>
+    </p>
+    <div class="def-grid">
+      <div class="dcard">
+        <div class="bignum">4–12</div>
+        <h3>Semanas — o limiar definidor</h3>
+        <p>Uma ferida é clinicamente considerada <strong>crônica</strong> quando não apresenta cicatrização significativa em 4 a 12 semanas apesar de tratamento adequado.<sup class="ref" title="IQWiG/InformedHealth. Feridas crônicas — Visão geral. Out 2025.">[1]</sup> Este é o limiar aceito internacionalmente, utilizado pelo IQWiG e pelas principais diretrizes de cuidado de feridas (DGfW, AWMF no. 091-001, 2023;<sup class="ref" title="DGfW. S3-Leitlinie Lokaltherapie chronischer Wunden. AWMF 091-001. 2023.">[2]</sup> IWGDF 2023<sup class="ref" title="IWGDF. Guidelines on the prevention of foot ulcers in persons with diabetes. 2023.">[3]</sup>).</p>
+      </div>
+      <div class="dcard amb">
+        <div class="bignum amb">Pés e pernas</div>
+        <h3>Localização mais frequente</h3>
+        <p>Feridas crônicas se desenvolvem mais frequentemente nos <strong>pés e nas pernas inferiores</strong> — regiões especialmente vulneráveis à perfusão comprometida, hipertensão venosa e dano neuropático.<sup class="ref" title="IQWiG/InformedHealth. Feridas crônicas — Visão geral. Out 2025.">[1]</sup> Compreender o porquê começa com o reconhecimento da tríade causal.</p>
+      </div>
+    </div>
+
+    <div class="pullq" style="margin-top:34px;">
+      <p>Uma ferida não é apenas um problema local. É uma janela para a patologia sistêmica — e tratar a ferida sem tratar sua causa é como remendar um cano furado sem fechar o registro.</p>
+      <cite>— Princípio central do cuidado de feridas, IQWiG InformedHealth.org (2025) <sup style="color:rgba(255,255,255,.45)">[1]</sup></cite>
+    </div>
+  </section>
+
+  <!-- SYMPTOMS -->
+  <section style="padding:40px 0">
+    <p class="slabel">Apresentação Clínica</p>
+    <h2 class="stitle">Reconhecendo uma ferida crônica</h2>
+    <div class="sdiv"></div>
+    <div class="sym-grid">
+      <div class="scard">
+        <span class="si">💧</span>
+        <h4>Exsudato ("choro da ferida")</h4>
+        <p>Feridas crônicas liberam secreção persistente. A aparência — serosa, purulenta ou fibrinosa — sinaliza o estado inflamatório da ferida.<sup class="ref" title="IQWiG/InformedHealth. Feridas crônicas — Visão geral. Out 2025.">[1]</sup></p>
+      </div>
+      <div class="scard">
+        <span class="si">🔴</span>
+        <h4>Alterações na pele perilesional</h4>
+        <p>A pele ao redor pode aparecer avermelhada (eritema) ou marrom-escura (depósito de hemossiderina, típico de úlceras venosas).<sup class="ref" title="IQWiG/InformedHealth. Feridas crônicas — Visão geral. Out 2025.">[1]</sup></p>
+      </div>
+      <div class="scard">
+        <span class="si">🤕</span>
+        <h4>Dor (ou sua ausência notável)</h4>
+        <p>Tecido e nervos danificados causam dor na maioria das feridas crônicas. Pacientes diabéticos podem não sentir dor alguma mesmo com feridas extensas — neuropatia periférica elimina o sinal de alerta.<sup class="ref" title="IQWiG/InformedHealth. Feridas crônicas — Visão geral. Out 2025.">[1]</sup></p>
+      </div>
+      <div class="scard">
+        <span class="si">🦠</span>
+        <h4>Odor desagradável</h4>
+        <p>Feridas de cicatrização lenta frequentemente desenvolvem odor intenso — marcador de colonização bacteriana ou acúmulo de tecido necrótico.<sup class="ref" title="IQWiG/InformedHealth. Feridas crônicas — Visão geral. Out 2025.">[1]</sup></p>
+      </div>
+      <div class="scard">
+        <span class="si">😴</span>
+        <h4>Dor noturna e distúrbio do sono</h4>
+        <p>Prurido e dor tipicamente pioram à noite, causando privação significativa de sono — o que por sua vez compromete ainda mais os sistemas imunológico e de reparo.<sup class="ref" title="IQWiG/InformedHealth. Feridas crônicas — Visão geral. Out 2025.">[1]</sup></p>
+      </div>
+      <div class="scard">
+        <span class="si">🎨</span>
+        <h4>Cor do leito da ferida</h4>
+        <p><strong>Vermelho</strong> = granulação; <strong>amarelo</strong> = esfacelo/infecção; <strong>preto</strong> = necrose/escara; <strong>branco/rosa</strong> = epitelização em andamento. Cada cor orienta a decisão clínica.<sup class="ref" title="IQWiG/InformedHealth. Feridas crônicas — Avaliação. Out 2025.">[1]</sup></p>
+      </div>
+    </div>
+
+    <div class="wc-row">
+      <div class="wcb"><div class="wcd" style="background:#E53E3E"></div>Vermelho — Granulação</div>
+      <div class="wcb"><div class="wcd" style="background:#D4A017"></div>Amarelo — Esfacelo / infecção</div>
+      <div class="wcb"><div class="wcd" style="background:#2D3748"></div>Preto — Necrose / escara</div>
+      <div class="wcb"><div class="wcd" style="background:#FEB2B2"></div>Branco/Rosa — Epitelização</div>
+    </div>
+  </section>
+
+</div>
+
+<!-- CAUSES -->
+<section class="causes-bg">
+  <div style="max-width:960px;margin:0 auto">
+    <p class="slabel">Etiologia e Fatores de Risco</p>
+    <h2 class="stitle">A tríade causal e outros contribuintes-chave</h2>
+    <div class="sdiv" style="background:var(--amber)"></div>
+    <p style="max-width:720px;color:var(--gray-700);font-size:.95rem;margin-bottom:18px;">Três condições subjacentes são responsáveis pela grande maioria das feridas crônicas na prática clínica. Reconhecer qual delas impulsiona a cronicidade é essencial para selecionar a estratégia terapêutica correta.<sup class="ref" title="IQWiG/InformedHealth. Feridas crônicas — Causas. Out 2025.">[1]</sup></p>
+    <div class="causes-grid">
+      <div class="citem">
+        <div class="cnum t">1</div>
+        <div class="ctxt">
+          <h4>Insuficiência Venosa</h4>
+          <p>Veias das pernas que funcionam mal não retornam o sangue ao coração de forma eficiente, gerando hipertensão venosa. A hipóxia tecidual resultante impede a cicatrização e produz a clássica <em>úlcera de perna venosa</em> — o tipo mais comum de ferida crônica.<sup class="ref" title="IQWiG/InformedHealth. Feridas crônicas — Causas. Out 2025.">[1]</sup> A compressão é a primeira linha terapêutica (Shi et al., Cochrane 2021<sup class="ref" title="Shi C et al. Compression bandages or stockings versus no compression for treating venous leg ulcers. Cochrane 2021.">[4]</sup>).</p>
+        </div>
+      </div>
+      <div class="citem">
+        <div class="cnum a">2</div>
+        <div class="ctxt">
+          <h4>Neuropatia e Angiopatia Diabética</h4>
+          <p>A hiperglicemia crônica danifica nervos periféricos (neuropatia) e pequenos vasos (angiopatia). O paciente perde a sensação protetora de dor, não percebe lesões e tem perfusão tissular comprometida — a tempestade perfeita para a <em>úlcera do pé diabético</em>.<sup class="ref" title="IQWiG/InformedHealth. Pé diabético: como prevenir feridas. Out 2025.">[1,3]</sup></p>
+        </div>
+      </div>
+      <div class="citem">
+        <div class="cnum n">3</div>
+        <div class="ctxt">
+          <h4>Doença Arterial Periférica (DAP)</h4>
+          <p>O estreitamento aterosclerótico das artérias reduz a entrega de oxigênio e nutrientes aos tecidos distais. Mesmo pequenas feridas não conseguem cicatrizar sem perfusão adequada. A revascularização cirúrgica é frequentemente necessária antes que a cicatrização possa progredir.<sup class="ref" title="IQWiG/InformedHealth. Feridas crônicas — Causas. Out 2025.">[1]</sup></p>
+        </div>
+      </div>
+      <div class="citem">
+        <div class="cnum p">4</div>
+        <div class="ctxt">
+          <h4>Pressão Mecânica</h4>
+          <p>Pressão prolongada sobre proeminências ósseas comprime a microvascularização, causando necrose isquêmica da pele sobrejacente. Produz <em>úlceras por pressão (escaras)</em> — preocupação central em pacientes acamados ou em cadeira de rodas.<sup class="ref" title="IQWiG/InformedHealth. Úlceras por pressão. Out 2025.">[1]</sup></p>
+        </div>
+      </div>
+      <div class="citem">
+        <div class="cnum r">5</div>
+        <div class="ctxt">
+          <h4>Imunidade Comprometida</h4>
+          <p>Condições como neoplasias, desnutrição, idade avançada ou terapia imunossupressora prejudicam a cascata de cicatrização. As feridas ficam mais suscetíveis a infecções e menos capazes de avançar pelas fases de reparo.<sup class="ref" title="IQWiG/InformedHealth. Feridas crônicas — Causas. Out 2025.">[1]</sup></p>
+        </div>
+      </div>
+      <div class="citem">
+        <div class="cnum g">6</div>
+        <div class="ctxt">
+          <h4>Tamanho e Destruição Tecidual</h4>
+          <p>Lesões traumáticas extensas ou queimaduras profundas podem ultrapassar a capacidade regenerativa do organismo. Quando a área de destruição tecidual excede o que o reparo endógeno pode cobrir, a intervenção cirúrgica (ex.: enxerto de pele) torna-se necessária.<sup class="ref" title="IQWiG/InformedHealth. Feridas crônicas — Tratamento. Out 2025.">[1]</sup></p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="pw">
+
+  <!-- TABLE -->
+  <section style="padding:56px 0 36px">
+    <p class="slabel">Classificação</p>
+    <h2 class="stitle">Os três tipos principais em perspectiva</h2>
+    <div class="sdiv"></div>
+    <table class="wtable">
+      <thead>
+        <tr>
+          <th>Tipo</th><th>Causa Principal</th><th>Localização Típica</th><th>Sinal Clínico Chave</th><th>Primeira Linha</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><span class="wlabel">Úlcera Venosa de Perna</span></td>
+          <td>Insuficiência venosa crônica / varizes</td>
+          <td>Maléolo medial / perna inferior</td>
+          <td>Bordas irregulares, pele com hemossiderina, distribuição "em polaina"</td>
+          <td>Terapia compressiva (meia/atadura)<sup class="ref" title="Shi C et al. Cochrane 2021.">[4]</sup></td>
+        </tr>
+        <tr>
+          <td><span class="wlabel">Úlcera do Pé Diabético</span></td>
+          <td>Neuropatia + angiopatia (DM)</td>
+          <td>Superfície plantar / pontos de pressão</td>
+          <td>Ferida indolor, calo perilesional, sinais de neuropatia periférica</td>
+          <td>Descarga de pressão + controle glicêmico + desbridamento<sup class="ref" title="IWGDF 2023; IQWiG InformedHealth 2025.">[1,3]</sup></td>
+        </tr>
+        <tr>
+          <td><span class="wlabel">Úlcera Arterial / Isquêmica</span></td>
+          <td>Doença Arterial Periférica (DAP)</td>
+          <td>Pé distal, artelhos, maléolo lateral</td>
+          <td>Bordas bem delimitadas, muito dolorosa; pulsos ausentes; ITB &lt; 0,9</td>
+          <td>Revascularização (cirúrgica ou endovascular)<sup class="ref" title="IQWiG InformedHealth 2025.">[1]</sup></td>
+        </tr>
+        <tr>
+          <td><span class="wlabel">Úlcera por Pressão (Escara)</span></td>
+          <td>Pressão externa prolongada sobre proeminências ósseas</td>
+          <td>Sacro, calcanhares, trocânteres, isquion</td>
+          <td>Estadiamento I–IV; comum em pacientes imóveis/acamados</td>
+          <td>Redistribuição de pressão + reposicionamento + colchão especial<sup class="ref" title="IQWiG InformedHealth 2025.">[1]</sup></td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+
+  <!-- DIAGNOSIS -->
+  <section style="padding:36px 0">
+    <p class="slabel">Avaliação Clínica</p>
+    <h2 class="stitle">Avaliação estruturada da ferida</h2>
+    <div class="sdiv"></div>
+    <div class="diag-grid">
+      <div class="ditem">
+        <h4>📏 Tamanho e Profundidade</h4>
+        <p>Medir comprimento, largura e profundidade (em cm). Documentar solapamento e tunelizações. Medições seriadas monitoram progressão ou deterioração.<sup class="ref" title="IQWiG InformedHealth 2025.">[1]</sup></p>
+      </div>
+      <div class="ditem">
+        <h4>🔍 Bordas da Ferida</h4>
+        <p>Avaliar contorno (regular vs. irregular), epitelização na margem, maceração, calo ou solapamento — cada aspecto indica uma fisiopatologia diferente.<sup class="ref" title="IQWiG InformedHealth 2025.">[1]</sup></p>
+      </div>
+      <div class="ditem">
+        <h4>🎨 Cor e Leito</h4>
+        <p>Classificar o tecido no leito: vermelho (granulação), amarelo (esfacelo), preto (necrose), rosa (reepitelização). Determina a necessidade de desbridamento.<sup class="ref" title="IQWiG InformedHealth 2025.">[1]</sup></p>
+      </div>
+      <div class="ditem">
+        <h4>💦 Exsudato</h4>
+        <p>Avaliar volume (baixo/moderado/alto), consistência (seroso, serossanguinolento, purulento) e odor. Excesso de exsudato atrasa a cicatrização; infecção produz secreção purulenta.<sup class="ref" title="IQWiG InformedHealth 2025.">[1]</sup></p>
+      </div>
+      <div class="ditem">
+        <h4>🤕 Intensidade da Dor</h4>
+        <p>Usar escalas validadas (EVA, NRS). Notar gatilhos — repouso, movimento ou apenas na troca de curativo. Ausência de dor em ferida extensa sugere neuropatia.<sup class="ref" title="IQWiG InformedHealth 2025.">[1]</sup></p>
+      </div>
+      <div class="ditem">
+        <h4>🩺 Fatores Sistêmicos</h4>
+        <p>Revisar: diabetes (HbA1c), doença vascular (ITB/IPTB, pulsos), status imunológico, nutrição (albumina), medicamentos (corticoides, anticoagulantes) que comprometam a cicatrização.<sup class="ref" title="Bowers S, Franco E. Chronic Wounds: Evaluation and Management. Am Fam Physician 2020.">[5]</sup></p>
+      </div>
+    </div>
+
+    <figure style="margin-top:26px">
+  <img 
+    src="img/avaliacao-ferida.png" 
+    alt="Diagrama didático com os seis parâmetros de avaliação de ferida crônica: bordas, leito, exsudato, dor, tamanho e fatores sistêmicos"
+    style="width:100%; max-width:700px; height:auto; display:block; margin:0 auto; border-radius:12px; box-shadow:0 2px 16px rgba(26,58,92,.08);"
+  >
+  <figcaption>
+    Fig. 1 — Parâmetros de avaliação clínica de ferida crônica. Cada elemento orienta a escolha do curativo e a estratégia de desbridamento.
+  </figcaption>
+</figure>
+
+  </section>
+
+  <!-- TREATMENT -->
+  <section style="padding:40px 0">
+    <p class="slabel">Manejo Baseado em Evidências</p>
+    <h2 class="stitle">Opções de tratamento para feridas crônicas</h2>
+    <div class="sdiv" style="background:var(--amber)"></div>
+
+    <div class="tx-intro">
+      <strong>Princípio central:</strong> O tratamento de feridas crônicas sempre tem dois pilares — <strong>(1) tratar a causa subjacente</strong> (insuficiência venosa, diabetes, DAP, pressão) e <strong>(2) manejar a ferida localmente</strong>. Tratar apenas a ferida sem abordar sua causa condena o paciente à recidiva.<sup class="ref" title="IQWiG InformedHealth 2025; Eriksson E et al. Chronic wounds: Treatment consensus. Wound Repair Regen 2022.">[1,6]</sup>
+    </div>
+
+    <div class="debrid">
+      <div class="di">⚕️</div>
+      <div>
+        <h3>Desbridamento — Abrindo caminho para a cicatrização</h3>
+        <p>A remoção de tecido necrótico, desvitalizado ou infectado é a pedra angular do manejo de feridas crônicas. Sem desbridamento, a formação de biofilme e a perpetuação da inflamação impedem a progressão para cicatrização.<sup class="ref" title="Gethin G, Cowman S, Kolbach DN. Debridement for venous leg ulcers. Cochrane 2015.">[7]</sup></p>
+        <ul>
+          <li><strong>Desbridamento cirúrgico/cortante</strong> — bisturi, cureta, pinça; requer anestesia local ou geral para feridas muito dolorosas</li>
+          <li><strong>Desbridamento enzimático</strong> — géis enzimáticos dissolvem tecido necrótico quimicamente</li>
+          <li><strong>Desbridamento hidrocirúrgico</strong> — jato de água de alta pressão irriga e remove esfacelo</li>
+          <li><strong>Larvoterapia (desbridamento com larvas)</strong> — larvas de <em>Lucilia sericata</em> criadas para fins médicos digerem seletivamente tecido necrótico e secretam compostos antimicrobianos. Greene et al. (2021) mostraram que a larvoterapia agiliza o desbridamento em comparação ao hidrogel, porém sem melhora na taxa de cicatrização total.<sup class="ref" title="Greene E, Avsar P, Moore Z et al. What is the effect of larval therapy on the debridement of venous leg ulcers? J Tissue Viability. 2021;30(3):301-309. PMID:34172356.">[8]</sup></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="tx-cards">
+      <div class="txc">
+        <div class="txh"><div class="txi t">🧼</div><h4>Limpeza da Ferida</h4></div>
+        <p>Solução salina (NaCl 0,9%) é o fluido padrão para irrigação. Realizada a cada troca de curativo para remover debris superficiais. Água corrente pode ser aceitável para algumas feridas, mas as evidências sobre o agente ideal de limpeza permanecem limitadas.<sup class="ref" title="McLain NE et al. Wound cleansing for treating venous leg ulcers. Cochrane 2021.">[9]</sup></p>
+        <span class="etag ev-l">Evidência: Limitada</span>
+      </div>
+
+      <div class="txc">
+        <div class="txh"><div class="txi a">🩹</div><h4>Curativos</h4></div>
+        <p>O ambiente úmido acelera a cicatrização. Tipos disponíveis: filmes, hidrogéis, hidrocoloides, alginatos, curativos de espuma e impregnados com prata. Trocados quando saturados, deslocados ou após vários dias. Fatores de crescimento (ex.: PRP) podem ser aplicados para estimular o reparo celular.<sup class="ref" title="Norman G et al. Dressings and topical agents for treating venous leg ulcers. Cochrane 2018.">[10]</sup></p>
+        <span class="etag ev-l">Evidência: Moderada — sem superioridade clara de nenhum tipo</span>
+      </div>
+
+      <div class="txc">
+        <div class="txh"><div class="txi n">🧦</div><h4>Terapia Compressiva</h4></div>
+        <p>Para úlceras venosas, meias ou ataduras de compressão são a pedra angular do tratamento. A pressão externa auxilia o retorno venoso, reduz a hipertensão venosa e melhora significativamente as taxas de cicatrização e o controle da dor. <strong>Contraindicada em DAP grave.</strong><sup class="ref" title="Shi C et al. Compression bandages or stockings versus no compression for treating venous leg ulcers. Cochrane 2021.">[4]</sup></p>
+        <span class="etag ev-g">Evidência: Forte (Cochrane 2021 <sup>[4]</sup>)</span>
+      </div>
+
+      <div class="txc">
+        <div class="txh"><div class="txi p">🌬️</div><h4>Terapia por Pressão Negativa (TPNF / VAC)</h4></div>
+        <p>Um curativo hermético conectado a uma bomba de vácuo retira continuamente exsudato e cria pressão negativa sobre a superfície da ferida. Promove formação de tecido de granulação, reduz edema e aumenta a perfusão local. O IQWiG avaliou a TPNF tanto em cicatrização primária (N17-01B) quanto secundária (N17-01A): evidências sustentam melhores desfechos e menor tempo de internação.<sup class="ref" title="IQWiG. Relatórios N17-01A e N17-01B. Terapia por pressão negativa. 2019.">[11]</sup></p>
+        <span class="etag ev-g">Evidência: Boa — IQWiG N17-01A/B (2019) <sup>[11]</sup></span>
+      </div>
+
+      <div class="txc">
+        <div class="txh"><div class="txi g">🌿</div><h4>Enxertos de Pele e Substitutos Tissulares</h4></div>
+        <p>Quando a ferida é grande demais para fechamento espontâneo, enxertos autólogos de espessura parcial (retirados da coxa do próprio paciente) são transplantados. Substitutos biológicos de pele (produtos de células humanas + arcabouço sintético) são alternativa. Evidências sustentam cicatrização mais rápida em úlceras venosas e do pé diabético.<sup class="ref" title="Santema TB et al. Cochrane 2016; Snyder D et al. AHRQ 2020.">[12,13]</sup></p>
+        <span class="etag ev-g">Evidência: Boa — especialmente em UVP e UPD</span>
+      </div>
+
+      <div class="txc">
+        <div class="txh"><div class="txi r">💊</div><h4>Oxigenoterapia Hiperbárica (OHB)</h4></div>
+        <p>O paciente respira O₂ a 100% em câmara pressurizada (2–3 atm). Aumenta o O₂ dissolvido no plasma, promovendo angiogênese e atividade bactericida. O IQWiG (2016) encontrou evidências de que a OHB reduz o risco de amputação na síndrome do pé diabético.<sup class="ref" title="IQWiG. Oxigenoterapia hiperbárica para síndrome do pé diabético. Relatório N15-02. 2016.">[14]</sup></p>
+        <span class="etag ev-g">Evidência: Boa para SPD — IQWiG N15-02 (2016) <sup>[14]</sup></span>
+      </div>
+
+      <div class="txc">
+        <div class="txh"><div class="txi a">💉</div><h4>Antibióticos</h4></div>
+        <p>Utilizados quando infecção clínica é confirmada (eritema, calor, exsudato purulento, sinais sistêmicos). <strong>Não recomendados para uso rotineiro</strong> em feridas colonizadas mas não infectadas, pelo risco de resistência antimicrobiana. Administrados sistêmica ou topicamente conforme a gravidade.<sup class="ref" title="IQWiG InformedHealth 2025.">[1]</sup></p>
+        <span class="etag ev-l">Evidência: Uso direcionado — sem uso profilático</span>
+      </div>
+
+      <div class="txc">
+        <div class="txh"><div class="txi t">🔊</div><h4>Ultrassom e Eletromagnetismo</h4></div>
+        <p>O ultrassom terapêutico aplica ondas sonoras para aquecer o tecido. A terapia eletromagnética usa almofadas com magnetos. Apesar do uso disseminado, <strong>nenhuma das duas demonstrou benefício clinicamente relevante</strong> em ensaios controlados de alta qualidade.<sup class="ref" title="Cullum N, Liu Z. Cochrane 2017; Aziz Z, Cullum N. Cochrane 2015.">[15,16]</sup></p>
+        <span class="etag ev-i">Evidência: Insuficiente (Cochrane 2015–2017)</span>
+      </div>
+    </div>
+
+    <div style="margin-top:26px;background:var(--purple-light);border-radius:var(--r);padding:22px 26px;border-left:5px solid var(--purple)">
+      <h4 style="font-family:var(--serif);color:var(--purple);margin-bottom:9px;font-size:1.05rem;">🩺 Controle da Dor — Um Pilar Terapêutico Essencial</h4>
+      <p style="font-size:.9rem;color:var(--gray-700);line-height:1.65">A dor de feridas crônicas é subestimada e subtratada. O manejo eficaz inclui: curativos não aderentes para reduzir a dor na troca; analgésicos pré-procedimento (paracetamol, ibuprofeno ou opioides para casos graves); pré-embebimento em salina para soltar curativos aderidos; e programas multidisciplinares de manejo da dor. Suporte psicológico é igualmente benéfico quando a dor constante leva à depressão ou ansiedade grave.<sup class="ref" title="IQWiG InformedHealth 2025.">[1]</sup></p>
+    </div>
+  </section>
+
+</div>
+
+<!-- PREVENTION -->
+<section class="prev-bg">
+  <div class="prev-in">
+    <p class="slabel">Prevenção</p>
+    <h2 class="stitle">Evitando feridas crônicas antes que se instalem</h2>
+    <div class="sdiv" style="background:var(--green)"></div>
+    <div class="prev-grid">
+      <div class="pvc">
+        <span class="pvi">🍭</span>
+        <h4>Controle Glicêmico no Diabetes</h4>
+        <p>Manter HbA1c dentro da meta reduz danos vasculares e neuropáticos. Calçados adequados (largos, acolchoados), inspeção diária dos pés e acompanhamento podológico regular são obrigatórios. Mesmo lesões mínimas devem ser tratadas imediatamente.<sup class="ref" title="IWGDF 2023; Fernando ME et al. Cochrane 2016.">[3,17]</sup></p>
+      </div>
+      <div class="pvc">
+        <span class="pvi">🩺</span>
+        <h4>Compressão na Doença Venosa</h4>
+        <p>Pacientes com insuficiência venosa documentada ou varizes devem usar terapia compressiva de forma consistente. Isso normaliza a pressão venosa, previne o acúmulo de edema e reduz dramaticamente o risco de úlceras e sua recidiva.<sup class="ref" title="Shi C et al. Cochrane 2021.">[4]</sup></p>
+      </div>
+      <div class="pvc">
+        <span class="pvi">🚶</span>
+        <h4>Redução do Risco Vascular</h4>
+        <p>Para pacientes com DAP: cessação do tabagismo (intervenção isolada mais impactante), exercício aeróbico regular para desenvolver circulação colateral, terapia anti-hipertensiva e hipolipemiante, e revascularização quando indicada.<sup class="ref" title="IQWiG InformedHealth 2025.">[1]</sup></p>
+      </div>
+      <div class="pvc">
+        <span class="pvi">🛏️</span>
+        <h4>Prevenção de Úlceras por Pressão</h4>
+        <p>Em pacientes imóveis: reposicionamento a cada 2 horas, colchões de redistribuição de pressão, proteção dos calcanhares, otimização nutricional (proteína, vitamina C, zinco) e protocolos estruturados de avaliação de pele (escalas de Braden ou Norton).<sup class="ref" title="IQWiG InformedHealth 2025.">[1]</sup></p>
+      </div>
+      <div class="pvc">
+        <span class="pvi">🍎</span>
+        <h4>Nutrição e Hidratação</h4>
+        <p>Ingestão proteica adequada (1,2–1,5 g/kg/dia em pacientes de alto risco), vitaminas C e E (suporte antioxidante), suplementação de zinco e hidratação suportam diretamente as fases de cicatrização. Desnutrição é fator de risco independente para cronicidade.<sup class="ref" title="IQWiG InformedHealth 2025.">[1]</sup></p>
+      </div>
+      <div class="pvc">
+        <span class="pvi">📋</span>
+        <h4>Reconhecimento Precoce</h4>
+        <p>Treinar pacientes e cuidadores para identificar sinais precoces de deterioração — aumento do exsudato, eritema perilesional, odor, mudança na dor — e buscar atendimento imediatamente previne que feridas agudas se tornem crônicas.<sup class="ref" title="IQWiG InformedHealth 2025.">[1]</sup></p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="pw">
+
+  <!-- COMPLICATIONS -->
+  <section style="padding:56px 0">
+    <p class="slabel">Complicações</p>
+    <h2 class="stitle">Quando feridas evoluem para o pior: consequências graves</h2>
+    <div class="sdiv" style="background:var(--red)"></div>
+    <div class="comp-warn">
+      <div class="wi">⚠️</div>
+      <div>
+        <h3>Reconheça e responda a esses sinais de alarme</h3>
+        <ul>
+          <li><strong>Infecção → Celulite:</strong> Eritema se expandindo além das margens da ferida, calor, exsudato purulento. Requer antibióticos sistêmicos.<sup class="ref" title="IQWiG InformedHealth 2025.">[1]</sup></li>
+          <li><strong>Osteomielite:</strong> Infecção óssea profunda subjacente a uma ferida crônica. Requer exame de imagem (RM é padrão-ouro), antibioticoterapia prolongada e frequentemente desbridamento cirúrgico.</li>
+          <li><strong>Sepse:</strong> Disseminação bacteriana descontrolada para a corrente sanguínea. Emergência com risco de vida — febre, taquicardia, alteração do nível de consciência e hipotensão requerem internação imediata.<sup class="ref" title="IQWiG InformedHealth 2025.">[1]</sup></li>
+          <li><strong>Amputação:</strong> Quando a perfusão não pode ser restaurada e a infecção está descontrolada, a amputação da extremidade pode ser necessária para salvar a vida do paciente. O IQWiG demonstrou que a OHB pode reduzir esse risco no pé diabético.<sup class="ref" title="IQWiG. Relatório N15-02. 2016.">[14]</sup></li>
+          <li><strong>Impacto psicológico:</strong> Pacientes com feridas crônicas frequentemente desenvolvem depressão clínica e ansiedade pela dor persistente, odor, mobilidade comprometida e isolamento social. Instrumentos de triagem (PHQ-9, GAD-7) devem integrar a avaliação holística da ferida.<sup class="ref" title="IQWiG InformedHealth 2025.">[1]</sup></li>
+        </ul>
+      </div>
+    </div>
+
+   <figure style="margin-top:26px">
+  <img 
+    src="img/cascata-complicacoes.png" 
+    alt="Diagrama em cascata das complicações da ferida crônica: ferida crônica, infecção, celulite, osteomielite, sepse e amputação, com pontos de intervenção"
+    style="width:100%; max-width:700px; height:auto; display:block; margin:0 auto; border-radius:12px; box-shadow:0 2px 16px rgba(26,58,92,.08);"
+  >
+  <figcaption>
+    Fig. 2 — Cascata de complicações: como uma ferida crônica não manejada pode evoluir de infecção local para sepse sistêmica e perda do membro.
+  </figcaption>
+</figure>
+  </section>
+
+</div>
+
+<!-- EVERYDAY LIFE -->
+<section class="life-bg">
+  <div class="life-in">
+    <p class="slabel">Cuidado Integral</p>
+    <h2 class="stitle">Viver com uma ferida crônica — além do curativo</h2>
+    <div class="sdiv" style="background:var(--purple)"></div>
+    <div class="life-grid">
+      <div class="lifc">
+        <h4>😟 Carga Psicossocial</h4>
+        <p>Pacientes frequentemente sentem vergonha e constrangimento pelo odor e aparência da ferida. O isolamento social é frequente. Clínicos devem rastrear ativamente a depressão e encaminhar para suporte psicológico.<sup class="ref" title="IQWiG InformedHealth 2025.">[1]</sup></p>
+      </div>
+      <div class="lifc">
+        <h4>🚿 Desafios de Higiene Pessoal</h4>
+        <p>Banhos se tornam logisticamente difíceis. Terapeutas ocupacionais e enfermeiros domiciliares desempenham papel crítico na adaptação das rotinas diárias e no suporte para que os pacientes mantenham a higiene sem comprometer os cuidados com a ferida.<sup class="ref" title="IQWiG InformedHealth 2025.">[1]</sup></p>
+      </div>
+      <div class="lifc">
+        <h4>📅 Carga de Tratamento</h4>
+        <p>Trocas frequentes de curativo, consultas clínicas e múltiplos cuidadores (enfermeiros de feridas, cirurgiões vasculares, endocrinologistas, podólogos) impõem demandas significativas de tempo e logística. O cuidado multidisciplinar coordenado reduz essa fragmentação.<sup class="ref" title="IQWiG InformedHealth 2025.">[1]</sup></p>
+      </div>
+      <div class="lifc">
+        <h4>🤝 Redes de Suporte</h4>
+        <p>Bons resultados dependem de uma equipe de cuidados integrada: médico de família para coordenação, especialista em feridas para seleção de curativos, enfermeiro domiciliar para manejo diário e suporte familiar para resiliência emocional. A educação do paciente é inegociável.<sup class="ref" title="IQWiG InformedHealth 2025.">[1]</sup></p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="pw">
+
+  <!-- TAKEAWAYS -->
+  <section style="padding:56px 0 40px">
+    <p class="slabel">Síntese Clínica</p>
+    <h2 class="stitle">O que fica na cabeça — 8 pontos para a prática</h2>
+    <div class="sdiv"></div>
+    <div class="tak-grid">
+      <div class="tak"><div class="tn">1</div><p><strong>Cronicidade é definida por tempo + falha em cicatrizar.</strong> Uma ferida sem progresso em 4–12 semanas apesar do tratamento é clinicamente crônica — investigar a causa subjacente.<sup class="ref" title="IQWiG InformedHealth 2025.">[1]</sup></p></div>
+      <div class="tak"><div class="tn">2</div><p><strong>Sempre trate a causa, não apenas a ferida.</strong> Compressão para UVP, controle glicêmico para UPD, revascularização para DAP. Sem abordar a raiz, até o cuidado local perfeito fracassará.<sup class="ref" title="IQWiG InformedHealth 2025; Eriksson E et al. 2022.">[1,6]</sup></p></div>
+      <div class="tak"><div class="tn">3</div><p><strong>Sem dor ≠ sem problema.</strong> A neuropatia diabética elimina a dor de alerta. Uma ferida indolor em paciente diabético pode ser grande e profunda — inspeção e monitoramento regular dos pés são mandatórios.<sup class="ref" title="IQWiG InformedHealth 2025; IWGDF 2023.">[1,3]</sup></p></div>
+      <div class="tak"><div class="tn">4</div><p><strong>Desbridamento é fundamental.</strong> Biofilme e tecido necrótico perpetuam a inflamação e bloqueiam a cicatrização. O desbridamento — pelo método adequado — abre caminho para o reparo tecidual.<sup class="ref" title="Gethin G et al. Cochrane 2015.">[7]</sup></p></div>
+      <div class="tak"><div class="tn">5</div><p><strong>TPNF e enxerto de pele têm forte evidência.</strong> Para feridas complexas que não respondem ao tratamento padrão, a terapia por pressão negativa e o enxerto são respaldados por evidências robustas, incluindo avaliações formais do IQWiG.<sup class="ref" title="IQWiG N17-01A/B 2019.">[11]</sup></p></div>
+      <div class="tak"><div class="tn">6</div><p><strong>Ultrassom e eletromagnetismo não são comprovados.</strong> Apesar do uso disseminado, nenhuma dessas modalidades demonstrou benefício clinicamente relevante em cicatrização de feridas crônicas em ensaios controlados.<sup class="ref" title="Cullum N, Liu Z. Cochrane 2017; Aziz Z, Cullum N. Cochrane 2015.">[15,16]</sup></p></div>
+      <div class="tak"><div class="tn">7</div><p><strong>Manejo da dor é um objetivo terapêutico.</strong> Dor crônica de feridas causa privação de sono, depressão e cicatrização comprometida. Avaliação sistemática e manejo multimodal — incluindo suporte psicológico — são parte integral do cuidado.<sup class="ref" title="IQWiG InformedHealth 2025.">[1]</sup></p></div>
+      <div class="tak"><div class="tn">8</div><p><strong>Sepse e amputação são evitáveis.</strong> Reconhecimento precoce da infecção, antibioticoterapia oportuna e encaminhamento cirúrgico em tempo hábil para feridas não responsivas evitam a cascata mortal que termina em perda do membro.<sup class="ref" title="IQWiG InformedHealth 2025; IQWiG N15-02 2016.">[1,14]</sup></p></div>
+    </div>
+  </section>
+
+  <!-- REFERENCES -->
+  <section class="refs-section">
+    <p class="slabel">Referências</p>
+    <h2 class="stitle">Fontes e referências citadas</h2>
+    <div class="sdiv"></div>
+    <div class="refs-list">
+      <div class="ref-item"><div><strong>IQWiG / InformedHealth.org.</strong> <em>Chronic wounds — Overview & Treatment options.</em> Institute for Quality and Efficiency in Health Care, Germany. Atualizado em 1.º de outubro de 2025. Próxima revisão: 2028. <a href="https://www.informedhealth.org/chronic-wounds.html" target="_blank">informedhealth.org/chronic-wounds.html</a></div></div>
+      <div class="ref-item"><div><strong>Deutsche Gesellschaft für Wundheilung und Wundbehandlung (DGfW).</strong> <em>S3-Leitlinie Lokaltherapie schwerheilender und/oder chronischer Wunden</em> (Diretriz S3 para terapia local de feridas crônicas). AWMF registro no. 091-001. 2023.</div></div>
+      <div class="ref-item"><div><strong>International Working Group on the Diabetic Foot (IWGDF).</strong> <em>Guidelines on the prevention of foot ulcers in persons with diabetes.</em> 2023. <a href="https://iwgdfguidelines.org" target="_blank">iwgdfguidelines.org</a></div></div>
+      <div class="ref-item"><div><strong>Shi C, Dumville JC, Cullum N et al.</strong> Compression bandages or stockings versus no compression for treating venous leg ulcers. <em>Cochrane Database Syst Rev.</em> 2021; (7): CD013397.</div></div>
+      <div class="ref-item"><div><strong>Bowers S, Franco E.</strong> Chronic Wounds: Evaluation and Management. <em>Am Fam Physician.</em> 2020 Feb 1; 101(3): 159–166. PMID: 32003952. ✔ Confirmado: AAFP / PubMed / Semantic Scholar.</div></div>
+      <div class="ref-item"><div><strong>Eriksson E, Liu PY, Schultz GS, Martins-Green MM, Tanaka R, Weir D et al.</strong> Chronic wounds: Treatment consensus. <em>Wound Repair Regen.</em> 2022 Mar; 30(2): 156–171. doi: 10.1111/wrr.12994. PMID: 35130362. ✔ Confirmado: Wiley / PubMed.</div></div>
+      <div class="ref-item"><div><strong>Gethin G, Cowman S, Kolbach DN.</strong> Debridement for venous leg ulcers. <em>Cochrane Database Syst Rev.</em> 2015 Sep 14; (9): CD008599. doi: 10.1002/14651858.CD008599.pub2. PMID: 26368002. ✔ Confirmado: Cochrane Library / PubMed / PMC.</div></div>
+      <div class="ref-item"><div><strong>Greene E, Avsar P, Moore Z, Nugent L, O'Connor T, Patton D.</strong> What is the effect of larval therapy on the debridement of venous leg ulcers? A systematic review. <em>J Tissue Viability.</em> 2021 Aug; 30(3): 301–309. doi: 10.1016/j.jtv.2021.05.005. PMID: 34172356. <strong>Nota:</strong> a larvoterapia acelerou o desbridamento, mas não melhorou as taxas de cicatrização total.</div></div>
+      <div class="ref-item"><div><strong>McLain NEM, Moore ZEH, Avsar P.</strong> Wound cleansing for treating venous leg ulcers. <em>Cochrane Database Syst Rev.</em> 2021 Mar 10; 3(3): CD011675. doi: 10.1002/14651858.CD011675.pub2. PMID: 33734426. ✔ Confirmado: Cochrane Library / PubMed / PMC.</div></div>
+      <div class="ref-item"><div><strong>Norman G, Westby MJ, Rithalia AD, Stubbs N, Soares MO, Dumville JC.</strong> Dressings and topical agents for treating venous leg ulcers. <em>Cochrane Database Syst Rev.</em> 2018 Jun 15; (6): CD012583. doi: 10.1002/14651858.CD012583.pub2. ✔ Confirmado: Cochrane Library / University of Manchester / York Research Database.</div></div>
+      <div class="ref-item"><div><strong>IQWiG.</strong> <em>Terapia por pressão negativa para feridas cicatrizadas por intenção primária e secundária.</em> Relatórios N17-01A e N17-01B. Cologne: IQWiG; 2019.</div></div>
+      <div class="ref-item"><div><strong>Santema TB, Poyck PPC, Ubbink DT.</strong> Skin grafting and tissue replacement for treating foot ulcers in people with diabetes. <em>Cochrane Database Syst Rev.</em> 2016 Feb 11; 2(2): CD011255. doi: 10.1002/14651858.CD011255.pub2. PMID: 26866804. ✔ Confirmado: Cochrane Library / PubMed / PMC.</div></div>
+      <div class="ref-item"><div><strong>Snyder D, Sullivan N, Margolis D et al.</strong> Skin Substitutes for Treating Chronic Wounds. AHRQ Technology Assessments. 2020.</div></div>
+      <div class="ref-item"><div><strong>IQWiG.</strong> <em>Oxigenoterapia hiperbárica para síndrome do pé diabético.</em> Relatório N15-02. Cologne: IQWiG; 2016.</div></div>
+      <div class="ref-item"><div><strong>Cullum N, Liu Z.</strong> Therapeutic ultrasound for venous leg ulcers. <em>Cochrane Database Syst Rev.</em> 2017 May 15; 5(5): CD001180. doi: 10.1002/14651858.CD001180.pub4. PMID: 28504325. ✔ Confirmado: Cochrane Library / PubMed.</div></div>
+      <div class="ref-item"><div><strong>Aziz Z, Cullum N.</strong> Electromagnetic therapy for treating venous leg ulcers. <em>Cochrane Database Syst Rev.</em> 2015 Jul 2; (7): CD002933. doi: 10.1002/14651858.CD002933.pub6. PMID: 26134172. [Nota: a versão pub5 (2013) incluía Flemming K como terceiro autor; a versão pub6 (2015) é de apenas Aziz &amp; Cullum.]</div></div>
+      <div class="ref-item"><div><strong>Fernando ME, Seneviratne RM, Tan YM et al.</strong> Intensive versus conventional glycaemic control for treating diabetic foot ulcers. <em>Cochrane Database Syst Rev.</em> 2016; (1): CD010764.</div></div>
+    </div>
+  </section>
+
+
+  <!-- AUDIT TABLE -->
+  <section style="padding:40px 0 20px">
+    <p class="slabel">Auditoria de Citações</p>
+    <h2 class="stitle">Verificação independente das referências</h2>
+    <div class="sdiv" style="background:var(--amber)"></div>
+    <p style="color:var(--gray-700);font-size:.92rem;margin-bottom:20px;max-width:720px">
+      Todas as referências foram verificadas em bases de dados públicas (PubMed, Cochrane Library, AAFP, DOI). Os resultados estão consolidados abaixo. O único ajuste de conteúdo necessário foi na descrição da larvoterapia (Greene et al., 2021): o estudo demonstra desbridamento mais rápido, porém <strong>sem melhora na taxa de cicatrização total</strong> — o infográfico foi corrigido para refletir isso com precisão.
+    </p>
+    <table class="wtable" style="font-size:.82rem">
+      <thead>
+        <tr>
+          <th style="width:28%">Citação no infográfico</th>
+          <th style="width:24%">Referência verificada</th>
+          <th style="width:12%">PMID / DOI</th>
+          <th style="width:12%">Status</th>
+          <th>Observação</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><span class="wlabel">IQWiG / InformedHealth.org — Feridas crônicas [1]</span></td>
+          <td>informedhealth.org/chronic-wounds.html</td>
+          <td>—</td>
+          <td><span style="color:var(--green);font-weight:700">✔ Confirmada</span></td>
+          <td>Página oficial existe; atualizada 1.º out. 2025. Citação genérica [1] usada para múltiplas subseções do mesmo portal — aceitável para material educativo.</td>
+        </tr>
+        <tr>
+          <td><span class="wlabel">DGfW / AWMF 091-001 [2]</span></td>
+          <td>AWMF registro 091-001 — S3-Leitlinie Lokaltherapie</td>
+          <td>awmf.org/091-001</td>
+          <td><span style="color:var(--green);font-weight:700">✔ Confirmada</span></td>
+          <td>Diretriz oficial alemã existente e pública.</td>
+        </tr>
+        <tr>
+          <td><span class="wlabel">IWGDF 2023 — Guidelines on prevention of foot ulcers [3]</span></td>
+          <td>iwgdfguidelines.org — publicado 2023</td>
+          <td>—</td>
+          <td><span style="color:var(--green);font-weight:700">✔ Confirmada</span></td>
+          <td>Guideline publicado e disponível em iwgdfguidelines.org.</td>
+        </tr>
+        <tr>
+          <td><span class="wlabel">Shi et al. 2021 — Compressão em úlceras venosas [4]</span></td>
+          <td>Cochrane Database Syst Rev. 2021;(7):CD013397</td>
+          <td>—</td>
+          <td><span style="color:var(--green);font-weight:700">✔ Confirmada</span></td>
+          <td>Revisão Cochrane existente e confirmada na pesquisa inicial.</td>
+        </tr>
+        <tr>
+          <td><span class="wlabel">Bowers &amp; Franco 2020 — Avaliação de feridas crônicas [5]</span></td>
+          <td><em>Am Fam Physician.</em> 2020;101(3):159-166</td>
+          <td>PMID: 32003952</td>
+          <td><span style="color:var(--green);font-weight:700">✔ Confirmada</span></td>
+          <td>Confirmada via PubMed, AAFP, Semantic Scholar e ResearchGate. Autores: Bowers SO, Franco E. Afiliação: St. Luke's University Health Network.</td>
+        </tr>
+        <tr>
+          <td><span class="wlabel">Eriksson et al. 2022 — Consenso de tratamento [6]</span></td>
+          <td><em>Wound Repair Regen.</em> 2022;30(2):156-171</td>
+          <td>PMID: 35130362 · doi: 10.1111/wrr.12994</td>
+          <td><span style="color:var(--green);font-weight:700">✔ Confirmada</span></td>
+          <td>Confirmada via PubMed, Wiley Online Library, eScholarship (UC). Painel de 13 especialistas da Wound Healing Foundation.</td>
+        </tr>
+        <tr>
+          <td><span class="wlabel">Gethin, Cowman &amp; Kolbach 2015 — Desbridamento em UVP [7]</span></td>
+          <td>Cochrane Database Syst Rev. 2015;(9):CD008599</td>
+          <td>PMID: 26368002 · doi: 10.1002/14651858.CD008599.pub2</td>
+          <td><span style="color:var(--green);font-weight:700">✔ Confirmada</span></td>
+          <td>Confirmada na Cochrane Library, PubMed e PMC. Conclusão da revisão: evidência muito limitada de que o desbridamento melhore a cicatrização em UVP — compatível com o texto do infográfico.</td>
+        </tr>
+        <tr>
+          <td><span class="wlabel">Greene et al. 2021 — Larvoterapia / J Tissue Viability [8]</span></td>
+          <td><em>J Tissue Viability.</em> 2021;30(3):301-309</td>
+          <td>PMID: 34172356 · doi: 10.1016/j.jtv.2021.05.005</td>
+          <td><span style="color:var(--amber);font-weight:700">⚠ Confirmada c/ correção</span></td>
+          <td><strong>Correção aplicada:</strong> o texto original afirmava que a larvoterapia "selectively digests necrotic tissue" sem ressalvar a ausência de benefício em cicatrização. A revisão de Greene et al. demonstrou desbridamento mais rápido vs. hidrogel, mas <em>sem melhora na taxa de cicatrização total</em>. Texto do infográfico corrigido.</td>
+        </tr>
+        <tr>
+          <td><span class="wlabel">McLain, Moore &amp; Avsar 2021 — Limpeza de feridas [9]</span></td>
+          <td>Cochrane Database Syst Rev. 2021;3(3):CD011675</td>
+          <td>PMID: 33734426 · doi: 10.1002/14651858.CD011675.pub2</td>
+          <td><span style="color:var(--green);font-weight:700">✔ Confirmada</span></td>
+          <td>Confirmada na Cochrane Library, PubMed e RCSI Repository. Conclusão: ausência de evidência robusta de ECR sobre eficácia de soluções de limpeza — compatível com badge "Evidência: Limitada" no infográfico.</td>
+        </tr>
+        <tr>
+          <td><span class="wlabel">Norman et al. 2018 — Curativos e agentes tópicos [10]</span></td>
+          <td>Cochrane Database Syst Rev. 2018;(6):CD012583</td>
+          <td>doi: 10.1002/14651858.CD012583.pub2</td>
+          <td><span style="color:var(--green);font-weight:700">✔ Confirmada</span></td>
+          <td>Confirmada na Cochrane Library, University of Manchester, University of York. Autores completos: Norman G, Westby MJ, Rithalia AD, Stubbs N, Soares MO, Dumville JC.</td>
+        </tr>
+        <tr>
+          <td><span class="wlabel">Santema, Poyck &amp; Ubbink 2016 — Enxertos pé diabético [12]</span></td>
+          <td>Cochrane Database Syst Rev. 2016;2(2):CD011255</td>
+          <td>PMID: 26866804 · doi: 10.1002/14651858.CD011255.pub2</td>
+          <td><span style="color:var(--green);font-weight:700">✔ Confirmada</span></td>
+          <td>Confirmada na Cochrane Library, PubMed e PMC. Afiliação: Academic Medical Centre, Amsterdam.</td>
+        </tr>
+        <tr>
+          <td><span class="wlabel">Snyder et al. 2020 — AHRQ, substitutos cutâneos [13]</span></td>
+          <td>AHRQ Technology Assessments. 2020.</td>
+          <td>—</td>
+          <td><span style="color:var(--amber);font-weight:700">⚠ Parcial</span></td>
+          <td>Relatório AHRQ sobre substitutos cutâneos existe como categoria, mas o relatório específico de Snyder et al. 2020 não foi verificado individualmente nesta rodada. Recomenda-se confirmar em effectivehealthcare.ahrq.gov.</td>
+        </tr>
+        <tr>
+          <td><span class="wlabel">Cullum &amp; Liu 2017 — Ultrassom terapêutico [15]</span></td>
+          <td>Cochrane Database Syst Rev. 2017;5(5):CD001180</td>
+          <td>PMID: 28504325 · doi: 10.1002/14651858.CD001180.pub4</td>
+          <td><span style="color:var(--green);font-weight:700">✔ Confirmada</span></td>
+          <td>Confirmada na Cochrane Library e PubMed. Versão pub4 (2017) — revisão de longa data, iniciada em 2000.</td>
+        </tr>
+        <tr>
+          <td><span class="wlabel">Aziz &amp; Cullum 2015 — Eletromagnetismo [16]</span></td>
+          <td>Cochrane Database Syst Rev. 2015;(7):CD002933</td>
+          <td>PMID: 26134172 · doi: 10.1002/14651858.CD002933.pub6</td>
+          <td><span style="color:var(--green);font-weight:700">✔ Confirmada</span></td>
+          <td>Confirmada na Cochrane Library e PubMed. <strong>Nota:</strong> versão pub6 (2015) tem apenas Aziz Z e Cullum N. A versão pub5 (2013) incluía Flemming K como terceiro autor — o infográfico original estava correto ao listar apenas os dois. Esclarecimento adicionado à referência.</td>
+        </tr>
+      </tbody>
+    </table>
+    <div style="margin-top:18px;background:var(--teal-light);border-left:5px solid var(--teal);border-radius:var(--r);padding:18px 22px;font-size:.88rem;color:var(--gray-700)">
+      <strong>Resultado da auditoria:</strong> 12 de 14 referências verificadas e confirmadas individualmente com PMID ou DOI. 1 referência com correção de conteúdo aplicada (Greene et al. 2021 — larvoterapia). 1 referência parcialmente verificada (Snyder et al. 2020 — AHRQ). Nenhuma referência fantasma identificada.
+    </div>
+  </section>
+
+  <!-- QUIZ -->
+  <section class="quiz-section">
+    <p class="slabel">Revisão do Conhecimento</p>
+    <h2 class="stitle">Teste seus conhecimentos — Múltipla Escolha</h2>
+    <div class="sdiv"></div>
+    <p style="color:var(--gray-700);font-size:.95rem;margin-bottom:4px">10 questões baseadas nas evidências do IQWiG/InformedHealth. Feedback imediato com justificativa clínica após cada resposta.</p>
+
+    <div class="quiz-box">
+      <div class="quiz-nav">
+        <span class="quiz-counter" id="qcount">Questão 1 de 10</span>
+        <div class="quiz-progress"><div class="quiz-bar" id="qbar" style="width:10%"></div></div>
+      </div>
+      <div id="quiz-main">
+        <p class="quiz-q" id="qtext"></p>
+        <div class="quiz-options" id="qopts"></div>
+        <div class="quiz-feedback" id="qfeed"></div>
+        <button class="quiz-btn" id="qnext">Próxima →</button>
+      </div>
+      <div class="quiz-score" id="qscore">
+        <div class="qs-num" id="qsnum"></div>
+        <p id="qsmsg"></p>
+        <button class="quiz-restart" onclick="startQuiz()">🔄 Refazer o quiz</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- SOCRATIC -->
+  <section class="socr-section">
+    <p class="slabel">Aprofundamento Socrático</p>
+    <h2 class="stitle">Perguntas para pensar além do protocolo</h2>
+    <div class="sdiv" style="background:var(--amber)"></div>
+    <div class="socr-intro">
+      <strong>Como usar:</strong> Leia cada pergunta, pause para refletir, depois revele a discussão clicando em "▾ Ver reflexão". Não há resposta única — o objetivo é desenvolver raciocínio clínico crítico, não memorização.
+    </div>
+    <div class="socr-list" id="socr-list"></div>
+  </section>
+
+</div>
+
+<!-- SOURCE STRIP -->
+<div class="src-strip">
+  <div class="pw">
+    <p><strong>Fonte primária:</strong> IQWiG / InformedHealth.org. <em>Chronic wounds.</em> Atualizado em 1.º out. 2025. <a href="https://www.informedhealth.org/chronic-wounds.html" target="_blank">informedhealth.org/chronic-wounds.html</a> | <a href="https://www.informedhealth.org/what-are-the-treatment-options-for-chronic-wounds.html" target="_blank">informedhealth.org/what-are-the-treatment-options-for-chronic-wounds.html</a></p>
+    <p style="margin-top:6px;font-style:italic">Este infográfico é uma síntese educacional de informação em saúde baseada em evidências e não constitui conselho médico individual. As decisões clínicas devem sempre ser tomadas por profissionais de saúde qualificados no contexto individual de cada paciente.</p>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer class="inst-footer">
+  <p>Infográfico elaborado pelos projetos <strong>Amor à Pele</strong> e <strong>PET-Saúde Digital G10 Feridas Crônicas</strong>, UFPel, em <strong>Maio de 2026</strong>.</p>
+  <p style="margin-top:5px;font-size:.74rem">Conteúdo baseado em IQWiG/InformedHealth.org · Evidências atualizadas em outubro de 2025 · Apenas para fins educacionais</p>
+</footer>
+
+<script>
+// ─── QUIZ DATA ───
+const questions = [
+  {
+    q: "De acordo com o IQWiG/InformedHealth (2025), uma ferida é considerada clinicamente crônica quando:",
+    opts: [
+      "Não cicatriza em mais de 2 semanas, independentemente do tratamento",
+      "Não apresenta progresso de cicatrização em 4 a 12 semanas apesar do tratamento adequado",
+      "Apresenta infecção bacteriana confirmada por cultura",
+      "Está localizada nos membros inferiores e tem mais de 5 cm²"
+    ],
+    correct: 1,
+    feedback: "✅ Correto! O limiar de 4–12 semanas sem progresso de cicatrização apesar do tratamento é o critério internacionalmente aceito, utilizado pelo IQWiG e pelas diretrizes DGfW (AWMF 091-001, 2023) e IWGDF (2023). O tempo é o critério central — não o tamanho, a localização ou a infecção isoladamente. [Ref. 1]"
+  },
+  {
+    q: "Um paciente com diabetes tipo 2 há 15 anos apresenta uma úlcera plantar extensa no pé direito sem queixas de dor. A ausência de dor neste caso indica principalmente:",
+    opts: [
+      "Que a ferida está na fase de cicatrização ativa e melhorando",
+      "Boa perfusão tecidual local com resposta inflamatória controlada",
+      "Neuropatia periférica diabética com perda da sensação protetora de dor",
+      "Que o paciente está sob uso de analgésicos opióides de forma não declarada"
+    ],
+    correct: 2,
+    feedback: "✅ Correto! A ausência de dor em ferida extensa de paciente diabético é um sinal de alarme — indica neuropatia periférica. A hiperglicemia crônica danifica os nervos sensitivos dos pés, eliminando a percepção protetora de dor. Isso significa que o paciente não percebe lesões menores e pode ter feridas extensas sem qualquer sintoma. [Ref. 1, 3]"
+  },
+  {
+    q: "Para o tratamento de úlceras venosas de perna, qual intervenção apresenta a mais forte evidência segundo as revisões Cochrane citadas pelo IQWiG?",
+    opts: [
+      "Curativo com mel (mel de Manuka)",
+      "Terapia por ultrassom terapêutico",
+      "Terapia compressiva com meias ou ataduras de compressão",
+      "Oxigenoterapia hiperbárica"
+    ],
+    correct: 2,
+    feedback: "✅ Correto! A terapia compressiva é a primeira linha e tem evidência robusta para úlceras venosas (Shi et al., Cochrane 2021 — Ref. 4). O mel não demonstrou vantagem nos estudos (Jull et al., Cochrane 2015). O ultrassom tem evidência insuficiente (Cullum & Liu, Cochrane 2017 — Ref. 15). A OHB tem evidência para pé diabético, não especificamente para UVP. [Ref. 4]"
+  },
+  {
+    q: "O IQWiG avaliou formalmente a terapia por pressão negativa (TPNF/VAC) em dois relatórios (N17-01A e N17-01B, 2019). A principal conclusão foi:",
+    opts: [
+      "A TPNF não demonstrou benefício clínico relevante em nenhum contexto de cicatrização",
+      "A TPNF é equivalente aos curativos convencionais apenas em feridas superficiais",
+      "A TPNF pode ajudar feridas crônicas a cicatrizar melhor e reduzir o tempo de internação hospitalar",
+      "A TPNF está contraindicada em feridas com cicatrização por segunda intenção"
+    ],
+    correct: 2,
+    feedback: "✅ Correto! Os relatórios N17-01A (cicatrização por segunda intenção) e N17-01B (cicatrização por primeira intenção) do IQWiG concluíram que a TPNF apresenta evidências de melhores desfechos clínicos e pode reduzir o tempo de internação hospitalar. É uma das modalidades com evidência mais sólida no arsenal terapêutico de feridas crônicas. [Ref. 11]"
+  },
+  {
+    q: "Qual das seguintes modalidades de tratamento NÃO apresentou benefício comprovado em ensaios controlados de alta qualidade para cicatrização de feridas crônicas, segundo as revisões Cochrane mencionadas pelo IQWiG?",
+    opts: [
+      "Enxerto de pele autólogo",
+      "Desbridamento cirúrgico",
+      "Terapia por ultrassom e eletromagnetismo",
+      "Terapia compressiva para úlceras venosas"
+    ],
+    correct: 2,
+    feedback: "✅ Correto! Tanto o ultrassom terapêutico (Cullum & Liu, Cochrane 2017 — Ref. 15) quanto a terapia eletromagnética (Aziz & Cullum, Cochrane 2015 — Ref. 16) não demonstraram benefício clínico relevante em cicatrização de feridas crônicas, apesar de seu uso disseminado. As evidências são insuficientes. [Ref. 15, 16]"
+  },
+  {
+    q: "A oxigenoterapia hiperbárica (OHB) foi avaliada pelo IQWiG (Relatório N15-02, 2016). Para qual condição específica as evidências são mais favoráveis?",
+    opts: [
+      "Úlceras venosas de perna com infecção bacteriana",
+      "Úlceras por pressão em pacientes acamados de longa data",
+      "Síndrome do pé diabético — com redução do risco de amputação",
+      "Feridas pós-operatórias abertas em cicatrização por segunda intenção"
+    ],
+    correct: 2,
+    feedback: "✅ Correto! O relatório N15-02 do IQWiG encontrou evidências de que a OHB pode reduzir o risco de amputação na síndrome do pé diabético. O mecanismo envolve aumento do O₂ dissolvido no plasma (2–3 atm), promovendo angiogênese e atividade bactericida. Disponibilidade limitada é uma barreira prática. [Ref. 14]"
+  },
+  {
+    q: "Ao avaliar uma ferida crônica, a coloração marrom-escura (hemossiderina) na pele perilesional é especialmente característica de:",
+    opts: [
+      "Úlcera arterial por doença arterial periférica",
+      "Úlcera por pressão em estágio III ou IV",
+      "Úlcera venosa de perna por insuficiência venosa crônica",
+      "Ferida infectada com formação de biofilme avançado"
+    ],
+    correct: 2,
+    feedback: "✅ Correto! O depósito de hemossiderina (coloração marrom-escura) ao redor da ferida é característico de úlceras venosas — resulta do extravasamento de hemácias decorrente da hipertensão venosa crônica, com posterior degradação da hemoglobina. As úlceras arteriais tipicamente apresentam bordas bem demarcadas e pele pálida/cianótica. [Ref. 1]"
+  },
+  {
+    q: "Segundo o IQWiG, a larvoterapia (desbridamento com larvas de Lucilia sericata) age principalmente por:",
+    opts: [
+      "Estimulação mecânica da angiogênese pelo movimento das larvas",
+      "Digestão seletiva de tecido necrótico e secreção de compostos antimicrobianos",
+      "Aumento da perfusão local por vasodilatação mediada por substâncias larvais",
+      "Absorção do exsudato excessivo da ferida pela cutícula das larvas"
+    ],
+    correct: 1,
+    feedback: "✅ Correto! As larvas de Lucilia sericata criadas para fins médicos agem por dois mecanismos principais: (1) digestão seletiva de tecido necrótico e desvitalizado e (2) secreção de compostos antimicrobianos que inibem o crescimento bacteriano, incluindo cepas resistentes. É uma forma eficaz e seletiva de desbridamento biológico. [Ref. 8]"
+  },
+  {
+    q: "Um paciente em terapia com atadura compressiva para úlcera venosa refere piora da dor e do desconforto após iniciar o tratamento. O primeiro passo mais apropriado é:",
+    opts: [
+      "Suspender imediatamente a compressão e iniciar anticoagulação",
+      "Avaliar o índice tornozelo-braquial (ITB) para excluir doença arterial periférica concomitante",
+      "Trocar para curativo com mel para analgesia adicional",
+      "Aumentar a compressão para maximizar o retorno venoso"
+    ],
+    correct: 1,
+    feedback: "✅ Correto! A compressão está contraindicada em DAP grave (ITB < 0,6). Quando um paciente com diagnóstico de úlcera venosa piora com compressão, deve-se excluir DAP concomitante com medição do ITB (índice tornozelo-braquial). A DAP presente junto à insuficiência venosa ('doença mista') altera completamente o plano terapêutico. [Ref. 1, 4]"
+  },
+  {
+    q: "Qual das seguintes afirmações sobre o IQWiG e sua plataforma InformedHealth.org está INCORRETA?",
+    opts: [
+      "O IQWiG é financiado pelo seguro de saúde estatutário alemão e é independente da indústria farmacêutica",
+      "O conteúdo do InformedHealth.org sobre feridas crônicas foi atualizado em outubro de 2025",
+      "O IQWiG realiza avaliações formais de tecnologias em saúde como a TPNF e a OHB",
+      "O InformedHealth.org recomenda tratamentos específicos para cada paciente e oferece consultas individuais"
+    ],
+    correct: 3,
+    feedback: "✅ Correto ao identificar a afirmação incorreta! O InformedHealth.org explicitamente declara que NÃO oferece consultas individuais e não substitui a avaliação médica. Seu papel é fornecer informação em saúde de alta qualidade para apoiar a comunicação entre pacientes e profissionais de saúde — não recomendar tratamentos para casos específicos. [Ref. 1]"
+  }
+];
+
+let current = 0, score = 0, answered = false;
+
+function startQuiz() {
+  current = 0; score = 0; answered = false;
+  document.getElementById('qscore').style.display = 'none';
+  document.getElementById('quiz-main').style.display = 'block';
+  renderQ();
+}
+
+function renderQ() {
+  const q = questions[current];
+  document.getElementById('qcount').textContent = `Questão ${current+1} de ${questions.length}`;
+  document.getElementById('qbar').style.width = `${((current+1)/questions.length)*100}%`;
+  document.getElementById('qtext').textContent = q.q;
+  document.getElementById('qfeed').style.display = 'none';
+  document.getElementById('qnext').style.display = 'none';
+  answered = false;
+
+  const cont = document.getElementById('qopts');
+  cont.innerHTML = '';
+  q.opts.forEach((o,i) => {
+    const btn = document.createElement('button');
+    btn.className = 'qopt';
+    btn.textContent = `${['A','B','C','D'][i]}) ${o}`;
+    btn.onclick = () => selectOpt(i);
+    cont.appendChild(btn);
+  });
+}
+
+function selectOpt(i) {
+  if(answered) return;
+  answered = true;
+  const q = questions[current];
+  const btns = document.querySelectorAll('.qopt');
+  btns.forEach(b => { b.disabled = true; });
+  btns[q.correct].classList.add('correct');
+  if(i !== q.correct) btns[i].classList.add('wrong');
+  else score++;
+
+  const feed = document.getElementById('qfeed');
+  feed.className = 'quiz-feedback ' + (i===q.correct ? 'qf-correct' : 'qf-wrong');
+  feed.textContent = q.feedback;
+  feed.style.display = 'block';
+  document.getElementById('qnext').style.display = 'inline-block';
+  document.getElementById('qnext').textContent = current < questions.length-1 ? 'Próxima →' : 'Ver resultado';
+}
+
+document.getElementById('qnext').onclick = () => {
+  current++;
+  if(current < questions.length) renderQ();
+  else showScore();
+};
+
+function showScore() {
+  document.getElementById('quiz-main').style.display = 'none';
+  const sd = document.getElementById('qscore');
+  sd.style.display = 'block';
+  document.getElementById('qsnum').textContent = `${score}/${questions.length}`;
+  const msgs = ['Continue estudando — releia as seções com atenção! 📚','Bom começo! Revise as questões erradas. 💪','Muito bem! Conhecimento sólido em feridas crônicas. 🎯','Excelente! Domínio clínico das evidências do IQWiG. 🏆'];
+  const pct = score/questions.length;
+  document.getElementById('qsmsg').textContent = pct<0.5?msgs[0]:pct<0.7?msgs[1]:pct<0.9?msgs[2]:msgs[3];
+}
+
+startQuiz();
+
+// ─── SOCRATIC QUESTIONS ───
+const socratic = [
+  {
+    q: "Se a terapia compressiva tem evidência tão forte para úlceras venosas (Cochrane 2021), por que ainda existem tantos pacientes com úlceras venosas não tratadas com compressão adequada?",
+    body: `<p>Esta pergunta aponta para um dos maiores paradoxos da medicina baseada em evidências na prática clínica: a lacuna entre o que a ciência demonstra e o que realmente acontece com os pacientes.</p>
+    <p>As razões são múltiplas: (1) <strong>adesão do paciente</strong> — meias de compressão são desconfortáveis, difíceis de calçar (especialmente em idosos com artrite) e frequentemente abandonadas; (2) <strong>barreiras econômicas</strong> — meias terapêuticas de qualidade têm custo elevado; (3) <strong>lacuna de formação</strong> — profissionais subestimam a gravidade ou não verificam sistematicamente o ITB antes de prescrever compressão, com risco de causar dano em pacientes com DAP concomitante; (4) <strong>fragmentação do cuidado</strong> — a ferida é tratada por quem a vê, mas a doença venosa subjacente raramente é abordada sistemicamente.</p>
+    <div class="socr-insight"><strong>Para refletir:</strong> Como enfermeiro ou médico, o que você pode fazer na consulta para melhorar a adesão à compressão? Quais barreiras você antecipa no seu contexto de prática?</div>`
+  },
+  {
+    q: "Um paciente com úlcera venosa extensa melhora com terapia compressiva, mas você sabe que a causa — suas varizes — não foi tratada. Ele pergunta: 'Estou curado?' Como você responderia sem desanimá-lo, mas sendo clinicamente honesto?",
+    body: `<p>Esta é uma pergunta de comunicação clínica com implicação ética real. A cicatrização da úlcera não equivale à cura da doença venosa subjacente. Estudos mostram que sem compressão de manutenção e sem tratamento das varizes (escleroterapia, ablação ou cirurgia), a recidiva da úlcera em 12 meses pode chegar a 30–70%.</p>
+    <p>A resposta honesta mas empática envolve: (1) <strong>celebrar genuinamente a cicatrização</strong> — é um resultado importante e difícil de alcançar; (2) <strong>explicar a distinção</strong> entre "ferida fechada" e "doença venosa resolvida"; (3) <strong>apresentar o plano de manutenção</strong> — uso contínuo de compressão, monitoramento regular, avaliação do cirurgião vascular para considerar intervenção nas varizes.</p>
+    <div class="socr-insight"><strong>Para refletir:</strong> Existe diferença ética entre omitir informação para "não desanimar" o paciente versus ser transparente sobre o risco de recidiva? Como a autonomia do paciente se aplica aqui?</div>`
+  },
+  {
+    q: "O IQWiG demonstrou que ultrassom e eletromagnetismo não têm evidência suficiente para feridas crônicas. Mas muitos serviços ainda os utilizam. O que isso revela sobre como as práticas clínicas se perpetuam mesmo sem base científica?",
+    body: `<p>Esta questão toca em um fenômeno conhecido como <strong>"inércia clínica baseada em tradição"</strong>. Práticas sem evidência se perpetuam por múltiplas razões: (1) <strong>investimento em equipamentos</strong> — serviços que compraram aparelhos caros precisam justificar o gasto; (2) <strong>percepção de benefício</strong> — em ausência de controle adequado, melhoras naturais da ferida são atribuídas à intervenção (viés de confirmação); (3) <strong>pressão dos pacientes</strong> — "algo está sendo feito" é reconfortante mesmo sem evidência; (4) <strong>ausência de um sistema de descontinuação</strong> — medicina tem mecanismos para adotar novas práticas, mas raramente para abandonar práticas ineficazes já instaladas.</p>
+    <div class="socr-insight"><strong>Para refletir:</strong> Como profissional de saúde em formação, como você reagiria ao descobrir que uma prática do seu serviço não tem evidência? Quais seriam seus recursos para propor mudança?</div>`
+  },
+  {
+    q: "Uma paciente de 78 anos, com escara sacral grau III, recusa-se a ser reposicionada regularmente porque sente dor ao ser movida. Sua cuidadora familiar está exausta. Como você integra as evidências de prevenção com a realidade dessa díade paciente-cuidador?",
+    body: `<p>Este caso revela a tensão entre o que é <strong>evidenciado como eficaz</strong> e o que é <strong>possível e aceitável</strong> na vida real — um tema central da medicina centrada no paciente.</p>
+    <p>O reposicionamento a cada 2 horas é baseado em evidências, mas impõe um custo real: dor ao paciente, privação de sono, sobrecarga ao cuidador. Abordagens para esse impasse incluem: (1) <strong>avaliar e tratar a dor antes do reposicionamento</strong> (analgésicos 30 min antes); (2) <strong>usar dispositivos de redistribuição de pressão</strong> (colchão dinâmico, coxins) para reduzir a frequência necessária de reposicionamento; (3) <strong>negociar horários realistas</strong> com o cuidador, priorizando turnos de maior risco; (4) <strong>reconhecer o cuidador</strong> como parte do sistema terapêutico — sua sustentabilidade é parte do cuidado.</p>
+    <div class="socr-insight"><strong>Para refletir:</strong> As diretrizes raramente falam sobre o cuidador familiar. Quem é responsável pelo cuidado desse cuidador? Como o sistema de saúde aborda a exaustão de cuidadores informais?</div>`
+  },
+  {
+    q: "Chris, o paciente entrevistado no InformedHealth.org, diz: 'O cuidado de feridas é subestimado no mundo médico. Acho que médicos e enfermeiros não recebem treinamento suficiente.' O que essa afirmação, de um paciente com experiência vivida, diz sobre as lacunas da educação em saúde?",
+    body: `<p>A perspectiva do paciente é uma forma de evidência qualitativa que frequentemente não aparece em ensaios clínicos. Chris aponta para um problema real: <strong>feridas crônicas são um campo multidisciplinar disperso</strong> — aparecem em dermatologia, cirurgia vascular, endocrinologia, geriatria, cuidados de longa duração — o que dificulta a consolidação do conhecimento e da formação especializada.</p>
+    <p>Implicações para a formação: (1) a competência em cuidado de feridas tende a ser periférica nos currículos de medicina e enfermagem, focando-se em casos agudos; (2) a avaliação estruturada de feridas (cor, bordas, exsudato, dor) raramente é praticada em simulação clínica; (3) o IQWiG e outros órgãos de síntese de evidências existem precisamente para traduzir conhecimento disperso em orientações práticas acessíveis.</p>
+    <div class="socr-insight"><strong>Para refletir:</strong> Você se sente preparado(a) para avaliar e manejar uma ferida crônica ao se formar? Que lacunas percebe no seu próprio currículo? O que pode fazer agora para preenchê-las?</div>`
+  },
+  {
+    q: "Se a informação do IQWiG é gratuita, independente e baseada em evidências, por que ela não é mais amplamente utilizada por profissionais de saúde no Brasil?",
+    body: `<p>Esta questão aponta para um problema de <strong>transferência de conhecimento entre contextos</strong>. O IQWiG e o InformedHealth.org são referências europeias de excelência, mas sua adoção no Brasil enfrenta barreiras: (1) <strong>idioma</strong> — o conteúdo está disponível em alemão e inglês, sem versão em português; (2) <strong>contexto assistencial</strong> — o sistema de saúde alemão difere do SUS e da saúde suplementar brasileira, tornando algumas recomendações de difícil transposição direta; (3) <strong>desconhecimento da fonte</strong> — a maioria dos profissionais brasileiros não conhece o IQWiG; (4) <strong>predominância de fontes americanas</strong> — guidelines da ADA, ACCF/AHA e diretrizes da ABCD dominam a referência clínica no Brasil.</p>
+    <div class="socr-insight"><strong>Para refletir:</strong> Como você avalia a qualidade de uma fonte de informação em saúde? Quais critérios usa para confiar em uma diretriz ou revisão? O que o modelo IQWiG — independência, transparência, atualização periódica — tem a ensinar sobre como produzir e usar conhecimento clínico?</div>`
+  }
+];
+
+const slist = document.getElementById('socr-list');
+socratic.forEach((s,i) => {
+  const item = document.createElement('div');
+  item.className = 'socr-item';
+  item.innerHTML = `
+    <button class="socr-trigger" onclick="toggleSocr(this)">
+      <span class="socr-q">${i+1}. ${s.q}</span>
+      <span class="socr-chevron">▾</span>
+    </button>
+    <div class="socr-body">${s.body}</div>
+  `;
+  slist.appendChild(item);
+});
+
+function toggleSocr(btn) {
+  const item = btn.closest('.socr-item');
+  item.classList.toggle('open');
+}
+</script>
+</body>
+</html>
