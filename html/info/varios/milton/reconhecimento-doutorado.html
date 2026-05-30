@@ -1,0 +1,941 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Reconhecimento de Doutorado Estrangeiro no Brasil</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --ink: #1a1a2e;
+      --ink-soft: #3d3d5c;
+      --ink-muted: #7a7a9a;
+      --paper: #faf9f6;
+      --paper-warm: #f4f1eb;
+      --accent: #2d5fa6;
+      --accent-light: #e8eef8;
+      --gold: #c47b2b;
+      --gold-light: #fef3e2;
+      --green: #2d7a56;
+      --green-light: #e6f4ee;
+      --red: #b83a3a;
+      --red-light: #faeaea;
+      --rule: #ddd8d0;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background: var(--paper);
+      color: var(--ink);
+      line-height: 1.7;
+      font-size: 16px;
+    }
+
+    /* ── HEADER ── */
+    .site-header {
+      background: var(--ink);
+      padding: 14px 40px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      border-bottom: 3px solid var(--gold);
+    }
+    .site-header .badge {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.7rem;
+      color: var(--gold);
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+    }
+    .site-header nav {
+      display: flex;
+      gap: 28px;
+    }
+    .site-header nav a {
+      color: rgba(255,255,255,0.6);
+      text-decoration: none;
+      font-size: 0.8rem;
+      letter-spacing: 0.06em;
+      transition: color 0.2s;
+    }
+    .site-header nav a:hover { color: #fff; }
+
+    /* ── HERO ── */
+    .hero {
+      background: var(--ink);
+      padding: 80px 40px 72px;
+      position: relative;
+      overflow: hidden;
+    }
+    .hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse at 70% 50%, rgba(45,95,166,0.18) 0%, transparent 65%);
+      pointer-events: none;
+    }
+    .hero-inner {
+      max-width: 820px;
+      margin: 0 auto;
+      position: relative;
+    }
+    .hero-label {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.68rem;
+      letter-spacing: 0.2em;
+      color: var(--gold);
+      text-transform: uppercase;
+      margin-bottom: 24px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .hero-label::before {
+      content: '';
+      display: inline-block;
+      width: 28px;
+      height: 1px;
+      background: var(--gold);
+    }
+    .hero h1 {
+      font-family: 'DM Serif Display', serif;
+      font-size: clamp(2.4rem, 5vw, 3.8rem);
+      color: #fff;
+      line-height: 1.12;
+      margin-bottom: 20px;
+      letter-spacing: -0.01em;
+    }
+    .hero h1 em {
+      font-style: italic;
+      color: #c5d8f5;
+    }
+    .hero-sub {
+      font-size: 1.05rem;
+      color: rgba(255,255,255,0.62);
+      max-width: 560px;
+      font-weight: 300;
+      margin-bottom: 40px;
+      line-height: 1.65;
+    }
+    .hero-meta {
+      display: flex;
+      gap: 32px;
+      border-top: 1px solid rgba(255,255,255,0.12);
+      padding-top: 24px;
+    }
+    .hero-meta-item { display: flex; flex-direction: column; gap: 4px; }
+    .hero-meta-item .label {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.6rem;
+      letter-spacing: 0.14em;
+      color: var(--gold);
+      text-transform: uppercase;
+    }
+    .hero-meta-item .value {
+      font-size: 0.85rem;
+      color: rgba(255,255,255,0.75);
+      font-weight: 400;
+    }
+
+    /* ── LAYOUT ── */
+    .container { max-width: 860px; margin: 0 auto; padding: 0 40px; }
+
+    /* ── INTRO ALERTA ── */
+    .alert-strip {
+      background: var(--gold-light);
+      border-left: 4px solid var(--gold);
+      padding: 20px 28px;
+      margin: 48px 0 0;
+      border-radius: 0 6px 6px 0;
+    }
+    .alert-strip strong { color: var(--gold); font-weight: 600; }
+    .alert-strip p { font-size: 0.92rem; color: var(--ink-soft); margin-top: 4px; }
+
+    /* ── SECTION ── */
+    section { padding: 56px 0 0; }
+    section:last-of-type { padding-bottom: 72px; }
+
+    .section-label {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.65rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 12px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .section-label::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: var(--rule);
+    }
+
+    h2 {
+      font-family: 'DM Serif Display', serif;
+      font-size: 1.9rem;
+      color: var(--ink);
+      margin-bottom: 20px;
+      line-height: 1.2;
+    }
+    h3 {
+      font-family: 'DM Serif Display', serif;
+      font-size: 1.2rem;
+      color: var(--ink);
+      margin: 28px 0 10px;
+    }
+    p { color: var(--ink-soft); margin-bottom: 16px; font-weight: 300; }
+    p strong { color: var(--ink); font-weight: 600; }
+
+    /* ── DIFERENÇA CHAVE ── */
+    .two-col {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+      margin: 28px 0;
+    }
+    .card {
+      background: #fff;
+      border: 1px solid var(--rule);
+      border-radius: 10px;
+      padding: 28px;
+      position: relative;
+    }
+    .card.negative { border-top: 3px solid var(--red); }
+    .card.positive { border-top: 3px solid var(--green); }
+    .card .card-tag {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.62rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      margin-bottom: 10px;
+    }
+    .card.negative .card-tag { color: var(--red); }
+    .card.positive .card-tag { color: var(--green); }
+    .card h4 {
+      font-family: 'DM Serif Display', serif;
+      font-size: 1.15rem;
+      margin-bottom: 10px;
+      color: var(--ink);
+    }
+    .card p { font-size: 0.88rem; margin-bottom: 0; }
+
+    /* ── PASSO A PASSO ── */
+    .steps { margin: 32px 0; }
+    .step {
+      display: flex;
+      gap: 20px;
+      margin-bottom: 4px;
+      position: relative;
+    }
+    .step:not(:last-child)::after {
+      content: '';
+      position: absolute;
+      left: 19px;
+      top: 44px;
+      bottom: -4px;
+      width: 2px;
+      background: var(--rule);
+    }
+    .step-num {
+      width: 40px;
+      height: 40px;
+      min-width: 40px;
+      border-radius: 50%;
+      background: var(--accent);
+      color: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'DM Mono', monospace;
+      font-size: 0.8rem;
+      font-weight: 500;
+      position: relative;
+      z-index: 1;
+    }
+    .step-body {
+      background: #fff;
+      border: 1px solid var(--rule);
+      border-radius: 8px;
+      padding: 20px 24px;
+      flex: 1;
+      margin-bottom: 12px;
+    }
+    .step-body h4 {
+      font-weight: 600;
+      font-size: 0.95rem;
+      color: var(--ink);
+      margin-bottom: 6px;
+    }
+    .step-body p { font-size: 0.88rem; margin-bottom: 0; }
+
+    /* ── DOCUMENTAÇÃO ── */
+    .doc-list {
+      background: #fff;
+      border: 1px solid var(--rule);
+      border-radius: 10px;
+      overflow: hidden;
+      margin: 24px 0;
+    }
+    .doc-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 16px;
+      padding: 16px 24px;
+      border-bottom: 1px solid var(--rule);
+      transition: background 0.15s;
+    }
+    .doc-item:last-child { border-bottom: none; }
+    .doc-item:hover { background: var(--paper-warm); }
+    .doc-num {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.7rem;
+      color: var(--accent);
+      min-width: 28px;
+      padding-top: 2px;
+    }
+    .doc-text { flex: 1; }
+    .doc-text strong { font-size: 0.9rem; display: block; margin-bottom: 2px; color: var(--ink); }
+    .doc-text span { font-size: 0.82rem; color: var(--ink-muted); }
+    .doc-tag {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.6rem;
+      letter-spacing: 0.1em;
+      padding: 3px 8px;
+      border-radius: 20px;
+      white-space: nowrap;
+      align-self: flex-start;
+      margin-top: 2px;
+    }
+    .doc-tag.obrig { background: var(--accent-light); color: var(--accent); }
+    .doc-tag.apostila { background: var(--gold-light); color: var(--gold); }
+
+    /* ── TRAMITAÇÃO SIMPLIFICADA ── */
+    .simplif-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+      margin: 24px 0;
+    }
+    .simplif-card {
+      background: var(--green-light);
+      border: 1px solid #b2d9c4;
+      border-radius: 10px;
+      padding: 24px;
+    }
+    .simplif-card .icon { font-size: 1.6rem; margin-bottom: 12px; }
+    .simplif-card h4 { font-weight: 600; font-size: 0.95rem; color: var(--green); margin-bottom: 8px; }
+    .simplif-card p { font-size: 0.86rem; margin-bottom: 0; color: var(--ink-soft); }
+    .simplif-card .detail {
+      margin-top: 10px;
+      padding-top: 10px;
+      border-top: 1px solid rgba(45,122,86,0.2);
+      font-size: 0.78rem;
+      color: var(--green);
+      font-family: 'DM Mono', monospace;
+    }
+
+    .no-simplif {
+      background: var(--red-light);
+      border: 1px solid #e4b3b3;
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-top: 16px;
+      font-size: 0.86rem;
+      color: var(--red);
+    }
+    .no-simplif strong { display: block; margin-bottom: 4px; font-weight: 600; }
+
+    /* ── PRAZO/CUSTO ── */
+    .stats-row {
+      display: flex;
+      gap: 20px;
+      margin: 28px 0;
+    }
+    .stat-box {
+      background: #fff;
+      border: 1px solid var(--rule);
+      border-radius: 10px;
+      padding: 28px;
+      flex: 1;
+      text-align: center;
+    }
+    .stat-box .num {
+      font-family: 'DM Serif Display', serif;
+      font-size: 2.8rem;
+      color: var(--accent);
+      line-height: 1;
+      margin-bottom: 6px;
+    }
+    .stat-box .unit {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.68rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--ink-muted);
+    }
+    .stat-box .desc {
+      margin-top: 8px;
+      font-size: 0.8rem;
+      color: var(--ink-soft);
+    }
+
+    /* ── CALLOUT ── */
+    .callout {
+      border-left: 4px solid var(--accent);
+      padding: 20px 28px;
+      background: var(--accent-light);
+      border-radius: 0 8px 8px 0;
+      margin: 28px 0;
+    }
+    .callout p { font-size: 0.92rem; color: var(--ink-soft); margin-bottom: 0; }
+    .callout strong { color: var(--accent); }
+
+    /* ── TABELA RESUMO ── */
+    .summary-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 28px 0;
+      background: #fff;
+      border-radius: 10px;
+      overflow: hidden;
+      border: 1px solid var(--rule);
+      font-size: 0.88rem;
+    }
+    .summary-table thead tr {
+      background: var(--ink);
+      color: #fff;
+    }
+    .summary-table th {
+      padding: 14px 20px;
+      text-align: left;
+      font-weight: 500;
+      font-size: 0.8rem;
+      letter-spacing: 0.04em;
+    }
+    .summary-table td {
+      padding: 14px 20px;
+      border-bottom: 1px solid var(--rule);
+      color: var(--ink-soft);
+      vertical-align: top;
+    }
+    .summary-table tr:last-child td { border-bottom: none; }
+    .summary-table tr:nth-child(even) { background: var(--paper); }
+    .summary-table td:first-child { font-weight: 600; color: var(--ink); font-size: 0.85rem; }
+    .check { color: var(--green); font-weight: 700; }
+    .cross { color: var(--red); font-weight: 700; }
+    .neutral { color: var(--gold); font-weight: 600; }
+
+    /* ── RESOLUÇÃO BOX ── */
+    .law-box {
+      background: var(--ink);
+      color: #fff;
+      border-radius: 12px;
+      padding: 36px;
+      margin: 32px 0;
+      position: relative;
+      overflow: hidden;
+    }
+    .law-box::before {
+      content: '§';
+      position: absolute;
+      right: 30px;
+      top: 10px;
+      font-family: 'DM Serif Display', serif;
+      font-size: 9rem;
+      color: rgba(255,255,255,0.04);
+      line-height: 1;
+      pointer-events: none;
+    }
+    .law-box .law-label {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.62rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 14px;
+    }
+    .law-box h3 {
+      color: #fff;
+      margin: 0 0 12px;
+      font-size: 1.1rem;
+    }
+    .law-box p {
+      color: rgba(255,255,255,0.65);
+      font-size: 0.88rem;
+      margin-bottom: 0;
+    }
+    .law-box ul {
+      margin: 14px 0 0 16px;
+    }
+    .law-box ul li {
+      color: rgba(255,255,255,0.65);
+      font-size: 0.86rem;
+      margin-bottom: 8px;
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      background: var(--ink);
+      color: rgba(255,255,255,0.45);
+      text-align: center;
+      padding: 36px 40px;
+      font-size: 0.78rem;
+      border-top: 3px solid var(--gold);
+      line-height: 1.8;
+    }
+    footer a { color: rgba(255,255,255,0.65); text-decoration: none; }
+    footer a:hover { color: #fff; }
+
+    /* ── DIVIDER ── */
+    hr.fancy {
+      border: none;
+      border-top: 1px solid var(--rule);
+      margin: 48px 0 0;
+    }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 680px) {
+      .hero { padding: 56px 24px 52px; }
+      .container { padding: 0 24px; }
+      .two-col, .simplif-grid, .stats-row { grid-template-columns: 1fr; }
+      .hero-meta { flex-direction: column; gap: 16px; }
+      .site-header { padding: 12px 20px; }
+      .site-header nav { display: none; }
+    }
+
+    /* ── SCROLL REVEAL ── */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(18px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    .reveal { animation: fadeUp 0.55s ease both; }
+    .reveal-1 { animation-delay: 0.1s; }
+    .reveal-2 { animation-delay: 0.2s; }
+    .reveal-3 { animation-delay: 0.3s; }
+    .reveal-4 { animation-delay: 0.4s; }
+  </style>
+</head>
+<body>
+
+  <!-- HEADER -->
+  <header class="site-header">
+    <span class="badge">Guia Prático · Diplomas Estrangeiros</span>
+    <nav>
+      <a href="#o-que-e">O que é</a>
+      <a href="#documentos">Documentos</a>
+      <a href="#simplificada">Tramitação</a>
+      <a href="#prazos">Prazos</a>
+      <a href="#resumo">Resumo</a>
+    </nav>
+  </header>
+
+  <!-- HERO -->
+  <div class="hero">
+    <div class="hero-inner">
+      <div class="hero-label reveal reveal-1">Resolução CNE/CES nº 2 · Dezembro de 2024</div>
+      <h1 class="reveal reveal-2">Reconhecimento de<br><em>Doutorado Estrangeiro</em><br>no Brasil</h1>
+      <p class="hero-sub reveal reveal-3">Um guia prático sobre o processo de reconhecimento de títulos de pós-graduação stricto sensu obtidos no exterior, com base na legislação vigente desde janeiro de 2025.</p>
+      <div class="hero-meta reveal reveal-4">
+        <div class="hero-meta-item">
+          <span class="label">Norma base</span>
+          <span class="value">Resolução CNE/CES 2/2024</span>
+        </div>
+        <div class="hero-meta-item">
+          <span class="label">Em vigor desde</span>
+          <span class="value">2 de janeiro de 2025</span>
+        </div>
+        <div class="hero-meta-item">
+          <span class="label">Portal oficial</span>
+          <span class="value">carolinabori.mec.gov.br</span>
+        </div>
+        <div class="hero-meta-item">
+          <span class="label">Prazo máximo</span>
+          <span class="value">180 dias (ou 90 simplificado)</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- CONTEÚDO -->
+  <div class="container">
+
+    <div class="alert-strip">
+      <strong>⚠️ Atenção terminológica</strong>
+      <p>O termo correto para pós-graduação é <strong>reconhecimento</strong> — não "revalidação". Revalidação aplica-se exclusivamente a diplomas de graduação. Essa distinção tem implicações práticas: o processo, as instituições competentes e os critérios de avaliação são diferentes.</p>
+    </div>
+
+    <!-- SEÇÃO 1: O QUE É -->
+    <section id="o-que-e">
+      <div class="section-label">Conceito</div>
+      <h2>O que é o reconhecimento?</h2>
+      <p>O reconhecimento é o ato pelo qual uma instituição de ensino superior brasileira <strong>declara equivalência</strong> de um título estrangeiro de mestrado ou doutorado aos concedidos no Brasil — tornando-o hábil para todos os fins legais: concursos públicos, docência em IES, progressões de carreira e exercício profissional que exijam o grau.</p>
+      <p>Sem esse processo, o diploma estrangeiro <strong>não tem validade jurídica no Brasil</strong>, independentemente do prestígio da universidade de origem.</p>
+
+      <div class="two-col">
+        <div class="card negative">
+          <div class="card-tag">Graduação</div>
+          <h4>Revalidação</h4>
+          <p>Somente universidades <strong>públicas</strong> podem revalidar. Processo avalia equivalência de grade curricular, carga horária e conteúdo. Diplomas de Medicina seguem rito especial (Revalida).</p>
+        </div>
+        <div class="card positive">
+          <div class="card-tag">Doutorado · Mestrado</div>
+          <h4>Reconhecimento</h4>
+          <p>Universidades <strong>públicas e privadas</strong> credenciadas podem reconhecer. Análise foca no mérito acadêmico: tese, pesquisa, banca, publicações — não apenas na grade.</p>
+        </div>
+      </div>
+
+      <div class="law-box">
+        <div class="law-label">Art. 1º · Resolução CNE/CES 2/2024</div>
+        <h3>Princípio da análise por mérito</h3>
+        <p>Os processos de revalidação e de reconhecimento devem ser fundamentados em análise relativa ao <strong>mérito e às condições acadêmicas do programa efetivamente cursado</strong> pelo interessado, levando-se em consideração diferenças existentes entre as formas de funcionamento dos sistemas educacionais, das instituições e dos cursos em países distintos.</p>
+      </div>
+    </section>
+
+    <hr class="fancy">
+
+    <!-- SEÇÃO 2: ONDE PEDIR -->
+    <section id="onde-pedir">
+      <div class="section-label">Passo 1</div>
+      <h2>Onde e como solicitar</h2>
+      <p>Todo o processo centraliza-se obrigatoriamente pelo <strong>Portal Carolina Bori</strong> (carolinabori.mec.gov.br). O requerente deve encontrar uma universidade brasileira com programa de doutorado <strong>na mesma área de conhecimento</strong> — conforme classificação CAPES — em nível equivalente ou superior.</p>
+
+      <div class="steps">
+        <div class="step">
+          <div class="step-num">01</div>
+          <div class="step-body">
+            <h4>Acessar o Portal Carolina Bori</h4>
+            <p>Cadastre-se em carolinabori.mec.gov.br e verifique quais universidades estão com vagas abertas na sua área de conhecimento. A lista é dinâmica — capacidade de atendimento varia por instituição.</p>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-num">02</div>
+          <div class="step-body">
+            <h4>Escolher a instituição reconhecedora</h4>
+            <p>Selecione uma única IES que tenha programa de pós-graduação stricto sensu avaliado pela CAPES na mesma área do seu doutorado estrangeiro. Tanto universidades públicas quanto privadas credenciadas são elegíveis.</p>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-num">03</div>
+          <div class="step-body">
+            <h4>Reunir e autenticar a documentação</h4>
+            <p>Providenciar apostilamento de Haia (ou autenticação consular) para os documentos principais. Documentos em inglês, francês ou espanhol normalmente dispensam tradução juramentada.</p>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-num">04</div>
+          <div class="step-body">
+            <h4>Protocolar o pedido</h4>
+            <p>Submeter a documentação conforme os procedimentos específicos da instituição escolhida. Após o protocolo, inicia-se a contagem do prazo máximo de 180 dias (ou 90 na tramitação simplificada).</p>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-num">05</div>
+          <div class="step-body">
+            <h4>Acompanhar a análise</h4>
+            <p>A instituição poderá solicitar informações complementares. Em caso de aprovação, o diploma é apostilado pela universidade reconhecedora. Em caso de indeferimento, a decisão deve ser fundamentada.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <hr class="fancy">
+
+    <!-- SEÇÃO 3: DOCUMENTOS -->
+    <section id="documentos">
+      <div class="section-label">Documentação</div>
+      <h2>Documentos exigidos</h2>
+      <p>A Resolução CNE/CES 2/2024 estabelece uma lista base de documentos. A instituição reconhecedora pode solicitar itens adicionais específicos, mas não pode exigir menos do que o previsto na norma.</p>
+
+      <div class="doc-list">
+        <div class="doc-item">
+          <span class="doc-num">I</span>
+          <div class="doc-text">
+            <strong>Cadastro e identificação</strong>
+            <span>Dados pessoais do requerente e, quando for o caso, informações sobre vinculação institucional no Brasil.</span>
+          </div>
+          <span class="doc-tag obrig">Obrigatório</span>
+        </div>
+        <div class="doc-item">
+          <span class="doc-num">II</span>
+          <div class="doc-text">
+            <strong>Cópia do diploma</strong>
+            <span>Diploma devidamente registrado pela instituição estrangeira, de acordo com a legislação vigente no país de origem.</span>
+          </div>
+          <span class="doc-tag apostila">Apostila/Consular</span>
+        </div>
+        <div class="doc-item">
+          <span class="doc-num">III</span>
+          <div class="doc-text">
+            <strong>Tese ou dissertação</strong>
+            <span>Exemplar completo com registro de aprovação da banca, em arquivo digital. Inclui: ata da defesa, data, título, aprovação e conceitos; currículos dos membros da banca e do orientador. Se não houver defesa pública, documento descrevendo o processo de avaliação da tese.</span>
+          </div>
+          <span class="doc-tag apostila">Apostila/Consular</span>
+        </div>
+        <div class="doc-item">
+          <span class="doc-num">IV</span>
+          <div class="doc-text">
+            <strong>Histórico escolar</strong>
+            <span>Disciplinas cursadas com períodos, carga horária total, frequência e resultados de avaliação.</span>
+          </div>
+          <span class="doc-tag apostila">Apostila/Consular</span>
+        </div>
+        <div class="doc-item">
+          <span class="doc-num">V</span>
+          <div class="doc-text">
+            <strong>Atividades de pesquisa e publicações</strong>
+            <span>Descrição das atividades de pesquisa, estágios e cópia ou link de trabalhos científicos decorrentes da tese (publicados em periódicos ou apresentados em congressos), com autoria, nome do periódico e data.</span>
+          </div>
+          <span class="doc-tag obrig">Obrigatório</span>
+        </div>
+        <div class="doc-item">
+          <span class="doc-num">VI</span>
+          <div class="doc-text">
+            <strong>Avaliação externa do programa</strong>
+            <span>Resultados de avaliação externa do curso ou programa na instituição estrangeira, quando houver, realizados por organismos públicos ou acreditadores reconhecidos no país de origem.</span>
+          </div>
+          <span class="doc-tag obrig">Se disponível</span>
+        </div>
+        <div class="doc-item">
+          <span class="doc-num">VII</span>
+          <div class="doc-text">
+            <strong>Comprovante de estada no exterior</strong>
+            <span>Documento que demonstre o período de permanência no país durante a realização do curso. Passaportes carimbados, visto de estudante, declaração da universidade e comprovantes de residência são exemplos aceitos.</span>
+          </div>
+          <span class="doc-tag apostila">Obrigatório</span>
+        </div>
+      </div>
+
+      <div class="callout">
+        <p><strong>Sobre tradução:</strong> a instituição reconhecedora pode solicitar tradução quando julgar necessário. No entanto, documentos em <strong>inglês, francês ou espanhol</strong> normalmente estão dispensados — por se tratarem de línguas francas do ambiente acadêmico internacional.</p>
+      </div>
+    </section>
+
+    <hr class="fancy">
+
+    <!-- SEÇÃO 4: TRAMITAÇÃO SIMPLIFICADA -->
+    <section id="simplificada">
+      <div class="section-label">Arts. 22 e 23</div>
+      <h2>Tramitação simplificada</h2>
+      <p>Em determinadas situações, a resolução prevê um rito acelerado — sem análise aprofundada de mérito — com prazo máximo reduzido a <strong>90 dias</strong>. A avaliação se restringe à verificação documental da diplomação.</p>
+
+      <div class="simplif-grid">
+        <div class="simplif-card">
+          <div class="icon">🎓</div>
+          <h4>Bolsa de agência governamental brasileira</h4>
+          <p>Quem realizou o doutorado com bolsa de agência governamental brasileira — como CAPES (Programa de Doutorado Pleno no Exterior, PDSE) ou CNPq — tem direito à tramitação simplificada.</p>
+          <div class="detail">Art. 22 · Resolução CNE/CES 2/2024</div>
+        </div>
+        <div class="simplif-card">
+          <div class="icon">🤝</div>
+          <h4>Acordos internacionais com avaliação prévia</h4>
+          <p>Cursos de pós-graduação estrangeiros listados ou admitidos em acordos internacionais que tenham passado por avaliação prévia aprovada pelo Brasil também seguem o rito simplificado.</p>
+          <div class="detail">Art. 23 · Resolução CNE/CES 2/2024</div>
+        </div>
+      </div>
+
+      <div class="no-simplif">
+        <strong>⛔ Não se aplica a tramitação simplificada quando:</strong>
+        O curso estrangeiro foi indicado em acordo de cooperação internacional mas <em>não passou por avaliação prévia</em> por organismo público brasileiro, ou <em>obteve resultado negativo</em> nessa avaliação — nesses casos, segue-se a tramitação ordinária completa (até 180 dias).
+      </div>
+
+      <div class="callout" style="margin-top: 24px;">
+        <p><strong>Como verificar:</strong> acesse o Portal Carolina Bori para consultar se a universidade estrangeira do seu caso aparece em algum acordo vigente. Caso o doutorado tenha sido financiado por CAPES ou CNPq, guarde o termo de concessão da bolsa — é o documento-chave para acionar o rito simplificado.</p>
+      </div>
+    </section>
+
+    <hr class="fancy">
+
+    <!-- SEÇÃO 5: PRAZOS E CUSTOS -->
+    <section id="prazos">
+      <div class="section-label">Prazos e custos</div>
+      <h2>Quanto tempo e quanto custa?</h2>
+
+      <div class="stats-row">
+        <div class="stat-box">
+          <div class="num">180</div>
+          <div class="unit">dias máximos</div>
+          <p class="desc">Tramitação ordinária, a contar do protocolo na universidade</p>
+        </div>
+        <div class="stat-box">
+          <div class="num">90</div>
+          <div class="unit">dias máximos</div>
+          <p class="desc">Tramitação simplificada (bolsa gov. ou acordo com avaliação)</p>
+        </div>
+        <div class="stat-box">
+          <div class="num">R$<br><span style="font-size:1.8rem">500–3k</span></div>
+          <div class="unit">taxa administrativa</div>
+          <p class="desc">Varia por instituição; definida e publicada por cada IES</p>
+        </div>
+      </div>
+
+      <p>Os prazos descontam os <strong>dias de recesso escolar</strong> da instituição reconhecedora. O processo deve ser admitido em <strong>fluxo contínuo</strong> — ou seja, a universidade não pode criar janelas periódicas de inscrição nem rejeitar o protocolo com base em calendário próprio.</p>
+
+      <div class="callout">
+        <p><strong>Brasil sem acordos de reconhecimento automático:</strong> o país não possui qualquer acordo bilateral ou multilateral que dispense o processo formal de reconhecimento com nenhuma nação. As regras são universais — independentemente de onde o doutorado foi realizado.</p>
+      </div>
+    </section>
+
+    <hr class="fancy">
+
+    <!-- SEÇÃO 6: ANÁLISE DE MÉRITO -->
+    <section>
+      <div class="section-label">Critérios de avaliação</div>
+      <h2>O que a universidade avalia?</h2>
+      <p>Diferentemente da revalidação de graduação — que analisa principalmente grade curricular e carga horária — o reconhecimento de doutorado foca no <strong>mérito intelectual da formação</strong>. A instituição brasileira examina:</p>
+
+      <div class="two-col" style="margin-top: 20px;">
+        <div class="card">
+          <div class="card-tag" style="color: var(--accent);">Aspectos formais</div>
+          <h4>Regularidade institucional</h4>
+          <p>Legalidade da instituição estrangeira, reconhecimento pelas autoridades educacionais do país de origem, regularidade do programa de pós-graduação.</p>
+        </div>
+        <div class="card">
+          <div class="card-tag" style="color: var(--accent);">Mérito acadêmico</div>
+          <h4>Qualidade da pesquisa</h4>
+          <p>A tese em si, a contribuição original ao conhecimento, a qualidade da banca examinadora, as publicações científicas geradas, o percurso de pesquisa do candidato.</p>
+        </div>
+      </div>
+
+      <p style="margin-top: 20px;">A resolução determina que a análise deve considerar as <strong>diferenças entre sistemas educacionais</strong> — a instituição reconhecedora não pode simplesmente aplicar os parâmetros do sistema brasileiro como molde rígido para avaliar formações obtidas em contextos institucionais e curriculares distintos.</p>
+    </section>
+
+    <hr class="fancy">
+
+    <!-- SEÇÃO 7: RESUMO COMPARATIVO -->
+    <section id="resumo">
+      <div class="section-label">Comparativo</div>
+      <h2>Reconhecimento vs. Revalidação — resumo</h2>
+
+      <table class="summary-table">
+        <thead>
+          <tr>
+            <th>Aspecto</th>
+            <th>Reconhecimento (Doutorado)</th>
+            <th>Revalidação (Graduação)</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Terminologia correta</td>
+            <td>Reconhecimento</td>
+            <td>Revalidação</td>
+          </tr>
+          <tr>
+            <td>Instituições competentes</td>
+            <td><span class="check">✓</span> Públicas e privadas credenciadas</td>
+            <td>Apenas universidades públicas</td>
+          </tr>
+          <tr>
+            <td>Foco da avaliação</td>
+            <td>Mérito acadêmico + pesquisa + tese</td>
+            <td>Equivalência curricular e carga horária</td>
+          </tr>
+          <tr>
+            <td>Exige tese/dissertação</td>
+            <td><span class="check">✓</span> Sim — central para a análise</td>
+            <td><span class="cross">✗</span> Não se aplica</td>
+          </tr>
+          <tr>
+            <td>Comprovante de estada</td>
+            <td><span class="check">✓</span> Exigido (Art. 20, VII)</td>
+            <td><span class="neutral">~</span> Regras distintas</td>
+          </tr>
+          <tr>
+            <td>Tramitação simplificada</td>
+            <td>Bolsa gov. brasileira ou acordo avaliado</td>
+            <td>Bolsa gov. brasileira ou Arcu-Sul/acordos bilaterais</td>
+          </tr>
+          <tr>
+            <td>Prazo máximo</td>
+            <td>180 dias (90 simplificado)</td>
+            <td>180 dias (90 simplificado)</td>
+          </tr>
+          <tr>
+            <td>Portal unificado</td>
+            <td><span class="check">✓</span> Carolina Bori</td>
+            <td><span class="check">✓</span> Carolina Bori</td>
+          </tr>
+          <tr>
+            <td>Medicina — rito especial</td>
+            <td><span class="neutral">—</span> Não se aplica</td>
+            <td><span class="check">✓</span> Revalida (INEP)</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <hr class="fancy">
+
+    <!-- SEÇÃO 8: CHECKLIST PRÁTICO -->
+    <section style="padding-bottom: 0;">
+      <div class="section-label">Checklist</div>
+      <h2>Antes de protocolar — o que verificar</h2>
+
+      <div class="doc-list" style="margin-bottom: 0;">
+        <div class="doc-item">
+          <span class="doc-num" style="color: var(--green);">☑</span>
+          <div class="doc-text">
+            <strong>Identificar área de conhecimento CAPES do doutorado</strong>
+            <span>A universidade reconhecedora precisa ter um programa avaliado na mesma área.</span>
+          </div>
+        </div>
+        <div class="doc-item">
+          <span class="doc-num" style="color: var(--green);">☑</span>
+          <div class="doc-text">
+            <strong>Verificar se houve bolsa CAPES ou CNPq</strong>
+            <span>Se sim, tramitação simplificada (90 dias) pode ser acionada — guarde o termo de concessão.</span>
+          </div>
+        </div>
+        <div class="doc-item">
+          <span class="doc-num" style="color: var(--green);">☑</span>
+          <div class="doc-text">
+            <strong>Providenciar Apostila de Haia (ou autenticação consular)</strong>
+            <span>Diploma, histórico e ata de defesa precisam de apostilamento se o país for signatário da Convenção de Haia.</span>
+          </div>
+        </div>
+        <div class="doc-item">
+          <span class="doc-num" style="color: var(--green);">☑</span>
+          <div class="doc-text">
+            <strong>Reunir comprovantes de permanência no exterior</strong>
+            <span>Passaporte com carimbos, visto de estudante, declaração da universidade, comprovante de residência — qualquer combinação que evidencie a estada física.</span>
+          </div>
+        </div>
+        <div class="doc-item">
+          <span class="doc-num" style="color: var(--green);">☑</span>
+          <div class="doc-text">
+            <strong>Organizar publicações e produções científicas</strong>
+            <span>Artigos publicados, apresentações em congressos, relatórios de pesquisa — reforçam a análise de mérito e são formalmente exigidos.</span>
+          </div>
+        </div>
+        <div class="doc-item">
+          <span class="doc-num" style="color: var(--green);">☑</span>
+          <div class="doc-text">
+            <strong>Consultar as regras específicas da IES escolhida</strong>
+            <span>Cada universidade pode ter procedimentos adicionais, formulários próprios e exigências complementares além da lista da resolução.</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </div><!-- /container -->
+
+  <!-- FOOTER -->
+  <footer>
+    <p>Guia elaborado com base na <strong>Resolução CNE/CES nº 2, de 19 de dezembro de 2024</strong> — vigente desde 2 de janeiro de 2025.</p>
+    <p style="margin-top: 6px;">Fonte oficial: <a href="https://carolinabori.mec.gov.br" target="_blank">Portal Carolina Bori · MEC</a> &nbsp;·&nbsp; Este documento tem caráter informativo e não substitui orientação jurídica especializada.</p>
+    <p style="margin-top: 6px; font-size: 0.72rem; opacity: 0.5;">Maio de 2025</p>
+  </footer>
+
+</body>
+</html>
