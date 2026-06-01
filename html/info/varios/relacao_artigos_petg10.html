@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Relação de Artigos e Autores — PETG10</title>
+    <style>
+        :root {
+            --fundo: #f6f8fb;
+            --cartao: #ffffff;
+            --texto: #1f2937;
+            --muted: #6b7280;
+            --linha: #e5e7eb;
+            --destaque: #0f766e;
+            --alerta: #9a3412;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            font-family: Arial, Helvetica, sans-serif;
+            background: var(--fundo);
+            color: var(--texto);
+            line-height: 1.5;
+        }
+
+        header {
+            background: #ffffff;
+            border-bottom: 1px solid var(--linha);
+            padding: 32px 20px;
+            text-align: center;
+        }
+
+        header h1 {
+            margin: 0 0 8px;
+            font-size: clamp(1.7rem, 4vw, 2.4rem);
+        }
+
+        header p {
+            margin: 0;
+            color: var(--muted);
+            font-size: 1rem;
+        }
+
+        main {
+            width: min(1000px, 94%);
+            margin: 28px auto 48px;
+        }
+
+        .resumo {
+            background: var(--cartao);
+            border: 1px solid var(--linha);
+            border-radius: 14px;
+            padding: 16px 20px;
+            margin-bottom: 20px;
+            color: var(--muted);
+        }
+
+        .lista {
+            display: grid;
+            gap: 12px;
+        }
+
+        .card {
+            display: grid;
+            grid-template-columns: 58px 1fr;
+            gap: 16px;
+            align-items: start;
+            background: var(--cartao);
+            border: 1px solid var(--linha);
+            border-radius: 14px;
+            padding: 16px;
+        }
+
+        .numero {
+            width: 46px;
+            height: 46px;
+            border-radius: 50%;
+            background: var(--destaque);
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+        }
+
+        h2 {
+            margin: 0 0 8px;
+            font-size: 1.05rem;
+        }
+
+        p {
+            margin: 0;
+        }
+
+        .autores strong {
+            color: var(--destaque);
+        }
+
+        .sem-autor {
+            color: var(--alerta);
+        }
+
+        footer {
+            text-align: center;
+            color: var(--muted);
+            font-size: 0.9rem;
+            padding: 24px 12px 40px;
+        }
+
+        @media (max-width: 640px) {
+            .card {
+                grid-template-columns: 1fr;
+            }
+
+            .numero {
+                width: 42px;
+                height: 42px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Relação de Artigos e Autores</h1>
+        <p>PETG10 — organização preliminar das produções</p>
+    </header>
+
+    <main>
+        <section class="resumo">
+            <strong>Total de itens:</strong> 28 artigos/produções.
+        </section>
+
+        <section class="lista" aria-label="Lista de artigos e autores">
+
+            <article class="card">
+                <div class="numero">01</div>
+                <div class="conteudo">
+                    <h2>Infográfico técnico</h2>
+                    <p class="autores"><strong>Autores:</strong> Danusa, Patrícia</p>
+                </div>
+            </article>
+            <article class="card">
+                <div class="numero">02</div>
+                <div class="conteudo">
+                    <h2>Mini-guia</h2>
+                    <p class="autores"><strong>Autores:</strong> Giovana, Patrícia</p>
+                </div>
+            </article>
+            <article class="card">
+                <div class="numero">03</div>
+                <div class="conteudo">
+                    <h2>Principais tipos F Crônicas</h2>
+                    <p class="autores"><strong>Autores:</strong> Leonardo</p>
+                </div>
+            </article>
+            <article class="card">
+                <div class="numero">04</div>
+                <div class="conteudo">
+                    <h2>Uso de tecnologias digitais e telemonitoramento em feridas crônicas: revisão da literatura</h2>
+                    <p class="sem-autor"><strong>Autores:</strong> (sem autor marcado)</p>
+                </div>
+            </article>
+            <article class="card">
+                <div class="numero">05</div>
+                <div class="conteudo">
+                    <h2>Como realizar o monitoramento de Feridas</h2>
+                    <p class="sem-autor"><strong>Autores:</strong> (sem autor marcado)</p>
+                </div>
+            </article>
+            <article class="card">
+                <div class="numero">06</div>
+                <div class="conteudo">
+                    <h2>Elaboração Site</h2>
+                    <p class="autores"><strong>Autores:</strong> Giovana</p>
+                </div>
+            </article>
+            <article class="card">
+                <div class="numero">07</div>
+                <div class="conteudo">
+                    <h2>Storytelling</h2>
+                    <p class="autores"><strong>Autores:</strong> Lucas</p>
+                </div>
+            </article>
+            <article class="card">
+                <div class="numero">08</div>
+                <div class="conteudo">
+                    <h2>Caso Clínico. Estudo de Caso</h2>
+                    <p class="autores"><strong>Autores:</strong> Lucas</p>
+                </div>
+            </article>
+            <article class="card">
+                <div class="numero">09</div>
+                <div class="conteudo">
+                    <h2>Caso Clínico 2. Estudo de Caso</h2>
+                    <p class="autores"><strong>Autores:</strong> Lucas</p>
+                </div>
+            </article>
+            <article class="card">
+                <div class="numero">10</div>
+                <div class="conteudo">
+                    <h2>Cuidados básicos com feridas crônicas na atenção primária à saúde: análise de recomendações oficiais</h2>
+                    <p class="sem-autor"><strong>Autores:</strong> (sem autor marcado)</p>
+                </div>
+            </article>
+            <article class="card">
+                <div class="numero">11</div>
+                <div class="conteudo">
+                    <h2>Elaboração do Protocolo Sistemas de Telemonitoramento</h2>
+                    <p class="autores"><strong>Autores:</strong> Leonardo, Yanka</p>
+                </div>
+            </article>
+            <article class="card">
+                <div class="numero">12</div>
+                <div class="conteudo">
+                    <h2>Elaboração dos Requisitos Sistemas de Telemonitoramento</h2>
+                    <p class="autores"><strong>Autores:</strong> Lucas</p>
+                </div>
+            </article>
+            <article class="card">
+                <div class="numero">13</div>
+                <div class="conteudo">
+                    <h2>Elaboração dos Fluxogramas Sistemas de Telemonitoramento</h2>
+                    <p class="sem-autor"><strong>Autores:</strong> (sem autor marcado)</p>
+                </div>
+            </article>
+            <article class="card">
+                <div class="numero">14</div>
+                <div class="conteudo">
+                    <h2>Elaboração de Atividades Lúdicas Ruas de Lazer</h2>
+                    <p class="autores"><strong>Autores:</strong> Danusa, Patrícia</p>
+                </div>
+            </article>
+            <article class="card">
+                <div class="numero">15</div>
+                <div class="conteudo">
+                    <h2>Participação de G10 no Ruas de Lazer</h2>
+                    <p class="autores"><strong>Autores:</strong> Giovana, Leonardo, Patrícia</p>
+                </div>
+            </article>
+            <article class="card">
+                <div class="numero">16</div>
+                <div class="conteudo">
+                    <h2>Ensina Feridas</h2>
+                    <p class="autores"><strong>Autores:</strong> Danusa, Patrícia</p>
+                </div>
+            </article>
+            <article class="card">
+                <div class="numero">17</div>
+                <div class="conteudo">
+                    <h2>Capacita Timers</h2>
+                    <p class="autores"><strong>Autores:</strong> Danusa, Leonardo, Yanka</p>
+                </div>
+            </article>
+            <article class="card">
+                <div class="numero">18</div>
+                <div class="conteudo">
+                    <h2>Sistemas Rotas</h2>
+                    <p class="autores"><strong>Autores:</strong> Yanka</p>
+                </div>
+            </article>
+            <article class="card">
+                <div class="numero">19</div>
+                <div class="conteudo">
+                    <h2>Embeddings Alimentos</h2>
+                    <p class="sem-autor"><strong>Autores:</strong> (sem autor marcado)</p>
+                </div>
+            </article>
+            <article class="card">
+                <div class="numero">20</div>
+                <div class="conteudo">
+                    <h2>Embeddings Feridas</h2>
+                    <p class="autores"><strong>Autores:</strong> Danusa, Giovana, Yanka</p>
+                </div>
+            </article>
+            <article class="card">
+                <div class="numero">21</div>
+                <div class="conteudo">
+                    <h2>Embeddings Guia</h2>
+                    <p class="autores"><strong>Autores:</strong> Lucas, Patrícia, Yanka</p>
+                </div>
+            </article>
+            <article class="card">
+                <div class="numero">22</div>
+                <div class="conteudo">
+                    <h2>Página E-projetos G10</h2>
+                    <p class="sem-autor"><strong>Autores:</strong> (sem autor marcado)</p>
+                </div>
+            </article>
+            <article class="card">
+                <div class="numero">23</div>
+                <div class="conteudo">
+                    <h2>Organização G10</h2>
+                    <p class="autores"><strong>Autores:</strong> Patrícia</p>
+                </div>
+            </article>
+            <article class="card">
+                <div class="numero">24</div>
+                <div class="conteudo">
+                    <h2>Organização e Relato das VDs</h2>
+                    <p class="autores"><strong>Autores:</strong> Lucas, Yanka</p>
+                </div>
+            </article>
+            <article class="card">
+                <div class="numero">25</div>
+                <div class="conteudo">
+                    <h2>Guarany x Evolução</h2>
+                    <p class="autores"><strong>Autores:</strong> Danusa, Patrícia</p>
+                </div>
+            </article>
+            <article class="card">
+                <div class="numero">26</div>
+                <div class="conteudo">
+                    <h2>Equação das Feridas</h2>
+                    <p class="autores"><strong>Autores:</strong> Leonardo, Lucas</p>
+                </div>
+            </article>
+            <article class="card">
+                <div class="numero">27</div>
+                <div class="conteudo">
+                    <h2>Gestão de estoques e entregas de material (feridas)</h2>
+                    <p class="autores"><strong>Autores:</strong> Danusa, Giovana, Patrícia</p>
+                </div>
+            </article>
+            <article class="card">
+                <div class="numero">28</div>
+                <div class="conteudo">
+                    <h2>JONAH embeddings</h2>
+                    <p class="autores"><strong>Autores:</strong> Danusa, Leonardo, Patrícia</p>
+                </div>
+            </article>
+        </section>
+    </main>
+
+    <footer>
+        Elaborado a partir da relação de artigos e autores do PETG10.
+    </footer>
+</body>
+</html>
