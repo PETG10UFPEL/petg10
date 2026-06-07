@@ -1,0 +1,1316 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>A Gramática Invisível do Silêncio — G10 PET-Saúde UFPel</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,600&family=Jost:wght@300;400;500;600&family=Noto+Serif+JP:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --ink:        #1b1b19;
+      --ink-mid:    #3a3a35;
+      --ink-soft:   #6b6b62;
+      --paper:      #faf9f5;
+      --cream:      #f2ede3;
+      --sage:       #3d6151;
+      --sage-lt:    #d8e8e0;
+      --rust:       #8c3d22;
+      --rust-lt:    #f4e0d8;
+      --gold:       #b8831e;
+      --gold-lt:    #fdf1d8;
+      --blue:       #23496a;
+      --blue-lt:    #d5e4f0;
+      --rule:       #d8d2c6;
+      --cite-bg:    #f0ede7;
+      --terra:      #5c3d1e;
+      --terra-lt:   #f5ebe0;
+      --afro:       #3d1a5c;
+      --afro-lt:    #ede0f5;
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      background: var(--paper);
+      color: var(--ink);
+      font-family: 'Jost', sans-serif;
+      font-weight: 300;
+      line-height: 1.8;
+      font-size: 16.5px;
+    }
+
+    /* ─── HEADER ─── */
+    .inst-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 14px 44px;
+      background: #fff;
+      border-bottom: 1px solid var(--rule);
+    }
+    .pub-label {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: .2em;
+      text-transform: uppercase;
+      color: var(--ink-soft);
+      line-height: 1.6;
+    }
+    .pub-label span { display: block; font-size: 12px; font-weight: 400; letter-spacing: .06em; color: var(--sage); margin-top: 2px; }
+    .inst-header img { max-height: 50px; object-fit: contain; }
+
+    /* ─── HERO ─── */
+    .hero {
+      background: var(--ink);
+      color: #fff;
+      padding: 80px 44px 68px;
+      position: relative;
+      overflow: hidden;
+    }
+    .hero::before {
+      content: '間';
+      position: absolute;
+      font-family: 'Noto Serif JP', serif;
+      font-size: 380px;
+      color: rgba(255,255,255,.035);
+      top: -60px; right: -30px;
+      line-height: 1;
+      pointer-events: none;
+    }
+    .hero-inner { max-width: 840px; position: relative; z-index: 1; }
+    .hero-kicker {
+      font-size: 10.5px;
+      font-weight: 600;
+      letter-spacing: .24em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 22px;
+    }
+    .hero h1 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(38px, 6vw, 68px);
+      font-weight: 500;
+      line-height: 1.07;
+      margin-bottom: 28px;
+    }
+    .hero h1 em { font-style: italic; color: var(--gold); }
+    .hero-lead {
+      font-size: 17.5px;
+      font-weight: 300;
+      color: rgba(255,255,255,.7);
+      max-width: 600px;
+      line-height: 1.7;
+      border-left: 3px solid var(--gold);
+      padding-left: 22px;
+    }
+    .hero-meta {
+      margin-top: 44px;
+      font-size: 12px;
+      color: rgba(255,255,255,.35);
+      letter-spacing: .06em;
+    }
+
+    /* ─── LAYOUT ─── */
+    .wrap { max-width: 900px; margin: 0 auto; padding: 0 30px; }
+    section { padding: 62px 0; border-bottom: 1px solid var(--rule); }
+    section:last-of-type { border-bottom: none; }
+
+    .sec-label {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: .28em;
+      text-transform: uppercase;
+      color: var(--ink-soft);
+      margin-bottom: 28px;
+    }
+    .sec-label::after { content: ''; flex: 1; height: 1px; background: var(--rule); }
+
+    h2 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(26px, 4vw, 42px);
+      font-weight: 500;
+      line-height: 1.16;
+      margin-bottom: 26px;
+    }
+    h2 em { font-style: italic; color: var(--sage); }
+    h3 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 21px;
+      font-weight: 600;
+      margin-bottom: 10px;
+      color: var(--ink-mid);
+    }
+    p { margin-bottom: 18px; color: var(--ink-mid); }
+    p:last-child { margin-bottom: 0; }
+    strong { font-weight: 600; color: var(--ink); }
+
+    /* ─── CITAÇÃO INLINE ─── */
+    .ref {
+      display: inline;
+      font-size: 11px;
+      font-weight: 600;
+      vertical-align: super;
+      line-height: 0;
+      background: var(--cite-bg);
+      color: var(--blue);
+      padding: 1px 5px;
+      border-radius: 3px;
+      margin-left: 2px;
+      white-space: nowrap;
+      font-family: 'Jost', sans-serif;
+    }
+
+    /* ─── PULL QUOTE ─── */
+    .pull {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(19px, 3vw, 28px);
+      font-style: italic;
+      font-weight: 400;
+      line-height: 1.48;
+      border-left: 4px solid var(--gold);
+      padding: 20px 28px;
+      margin: 38px 0;
+      background: var(--gold-lt);
+      border-radius: 0 6px 6px 0;
+      color: var(--ink);
+    }
+    .pull cite {
+      display: block;
+      font-family: 'Jost', sans-serif;
+      font-style: normal;
+      font-size: 12px;
+      font-weight: 500;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      color: var(--ink-soft);
+      margin-top: 14px;
+    }
+
+    /* ─── CALLOUT ─── */
+    .callout {
+      padding: 26px 30px;
+      border-radius: 8px;
+      margin: 30px 0;
+    }
+    .callout.sage { background: var(--sage-lt); border-left: 4px solid var(--sage); }
+    .callout.rust { background: var(--rust-lt); border-left: 4px solid var(--rust); }
+    .callout.blue { background: var(--blue-lt); border-left: 4px solid var(--blue); }
+    .callout.gold { background: var(--gold-lt); border-left: 4px solid var(--gold); }
+    .callout p { color: var(--ink-mid); margin-bottom: 10px; }
+    .callout p:last-child { margin-bottom: 0; }
+    .callout-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 15px;
+      font-weight: 600;
+      letter-spacing: .04em;
+      text-transform: uppercase;
+      color: var(--ink);
+      margin-bottom: 12px;
+    }
+
+    /* ─── STAT ROW ─── */
+    .stat-row {
+      display: flex;
+      gap: 22px;
+      margin: 36px 0;
+      flex-wrap: wrap;
+    }
+    .stat-box {
+      flex: 1;
+      min-width: 150px;
+      background: var(--cream);
+      border-radius: 8px;
+      padding: 26px 20px;
+      text-align: center;
+    }
+    .stat-box .num {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 52px;
+      font-weight: 600;
+      line-height: 1;
+      color: var(--sage);
+    }
+    .stat-box .lbl {
+      font-size: 12.5px;
+      font-weight: 500;
+      color: var(--ink-soft);
+      margin-top: 5px;
+      text-transform: uppercase;
+      letter-spacing: .08em;
+    }
+    .stat-box p {
+      font-size: 13.5px;
+      color: var(--ink-soft);
+      margin-top: 12px;
+      line-height: 1.55;
+    }
+
+    /* ─── MA BLOCK ─── */
+    .ma-block {
+      background: var(--ink);
+      color: #fff;
+      border-radius: 10px;
+      padding: 52px 36px;
+      text-align: center;
+      margin: 36px 0;
+      position: relative;
+      overflow: hidden;
+    }
+    .ma-block::before {
+      content: '間';
+      position: absolute;
+      font-family: 'Noto Serif JP', serif;
+      font-size: 260px;
+      color: rgba(255,255,255,.055);
+      top: -30px; right: 10px;
+      line-height: 1;
+      pointer-events: none;
+    }
+    .ma-kanji {
+      font-family: 'Noto Serif JP', serif;
+      font-size: 90px;
+      line-height: 1;
+      color: rgba(255,255,255,.12);
+      display: block;
+    }
+    .ma-romaji {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 52px;
+      font-style: italic;
+      color: var(--gold);
+      display: block;
+      margin-top: -18px;
+      position: relative;
+      z-index: 1;
+    }
+    .ma-def {
+      margin-top: 16px;
+      font-size: 15.5px;
+      color: rgba(255,255,255,.62);
+      max-width: 460px;
+      margin-left: auto;
+      margin-right: auto;
+      line-height: 1.65;
+      position: relative;
+      z-index: 1;
+    }
+
+    /* ─── CULTURE GRID ─── */
+    .culture-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+      gap: 18px;
+      margin: 30px 0;
+    }
+    .c-card {
+      background: #fff;
+      border: 1px solid var(--rule);
+      border-radius: 8px;
+      padding: 22px 20px;
+    }
+    .c-card .flag { font-size: 26px; margin-bottom: 10px; }
+    .c-card h4 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 18px;
+      font-weight: 600;
+      margin-bottom: 8px;
+    }
+    .c-card p { font-size: 14px; line-height: 1.65; color: var(--ink-soft); margin: 0; }
+    .c-card .badge {
+      display: inline-block;
+      margin-top: 10px;
+      font-size: 10.5px;
+      font-weight: 600;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      padding: 3px 10px;
+      border-radius: 20px;
+    }
+    .b-jp { background: #ede9f8; color: #4d32a0; }
+    .b-fi { background: #d8e7f6; color: #173f7a; }
+    .b-ap { background: #f8e9e2; color: #7a3418; }
+    .b-br { background: #fdf2df; color: #7a5218; }
+    .b-gua  { background: #f5ebe0; color: #5c3d1e; }
+    .b-afro { background: #ede0f5; color: #3d1a5c; }
+    .callout.terra { background: var(--terra-lt); border-left: 4px solid var(--terra); }
+    .callout.afro  { background: var(--afro-lt);  border-left: 4px solid var(--afro); }
+
+    /* ─── VÍDEO ─── */
+    .video-wrap {
+      margin: 32px 0;
+      border-radius: 8px;
+      overflow: hidden;
+      background: var(--ink);
+    }
+    .video-wrap iframe {
+      width: 100%; height: 340px;
+      border: none; display: block;
+    }
+    .video-caption {
+      padding: 12px 18px;
+      font-size: 13px;
+      color: rgba(255,255,255,.5);
+      font-style: italic;
+    }
+
+    /* ─── CONTRASTE CULTURAL ─── */
+    .contraste-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+      margin: 28px 0;
+    }
+    @media (max-width: 580px) { .contraste-grid { grid-template-columns: 1fr; } }
+    .contraste-card {
+      padding: 20px 18px;
+      border-radius: 8px;
+      border-top: 3px solid;
+    }
+    .contraste-card.lat { border-color: var(--gold); background: var(--gold-lt); }
+    .contraste-card.jp  { border-color: var(--blue); background: var(--blue-lt); }
+    .contraste-card h5 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 16px; font-weight: 600;
+      margin-bottom: 10px; color: var(--ink);
+    }
+    .contraste-card p { font-size: 13.5px; color: var(--ink-soft); line-height: 1.65; margin: 0; }
+
+    /* ─── TIPOLOGIA SILÊNCIO ─── */
+    .tipo-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 16px;
+      margin: 28px 0;
+    }
+    .tipo-card {
+      padding: 22px 20px;
+      border-radius: 8px;
+      border-top: 3px solid;
+    }
+    .tipo-card.t1 { border-color: var(--sage); background: var(--sage-lt); }
+    .tipo-card.t2 { border-color: var(--blue); background: var(--blue-lt); }
+    .tipo-card.t3 { border-color: var(--gold); background: var(--gold-lt); }
+    .tipo-card.t4 { border-color: var(--rust); background: var(--rust-lt); }
+    .tipo-card h4 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 17px;
+      font-weight: 600;
+      margin-bottom: 8px;
+      color: var(--ink);
+    }
+    .tipo-card p { font-size: 13.5px; color: var(--ink-soft); line-height: 1.6; margin: 0; }
+
+    /* ─── APPLY CARDS ─── */
+    .apply-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 18px;
+      margin: 30px 0;
+    }
+    .apply-card {
+      background: #fff;
+      border: 1px solid var(--rule);
+      border-radius: 8px;
+      padding: 26px 22px;
+    }
+    .apply-card .icon { font-size: 26px; margin-bottom: 13px; }
+    .apply-card h4 { font-family: 'Cormorant Garamond', serif; font-size: 18.5px; font-weight: 600; margin-bottom: 9px; }
+    .apply-card p { font-size: 14px; color: var(--ink-soft); line-height: 1.65; }
+    .apply-card.a1 { border-top: 3px solid var(--sage); }
+    .apply-card.a2 { border-top: 3px solid var(--gold); }
+    .apply-card.a3 { border-top: 3px solid var(--rust); }
+    .apply-card.a4 { border-top: 3px solid var(--blue); }
+
+    /* ─── FIGURES / PLACEHOLDERS ─── */
+    figure { margin: 36px 0; }
+    figure img { width: 100%; border-radius: 6px; display: block; }
+    figcaption {
+      font-size: 12.5px;
+      color: var(--ink-soft);
+      margin-top: 10px;
+      font-style: italic;
+      padding-left: 4px;
+      border-left: 2px solid var(--rule);
+    }
+    .ph {
+      border: 2px dashed var(--rule);
+      background: var(--cream);
+      border-radius: 8px;
+      padding: 36px 20px;
+      text-align: center;
+      color: var(--ink-soft);
+      min-height: 200px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+    }
+
+
+    /* ─── TWO COL ─── */
+    .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 44px; align-items: start; }
+    @media (max-width: 640px) { .two-col { grid-template-columns: 1fr; } }
+
+    /* ─── SYNTHESIS DARK ─── */
+    .dark-section {
+      background: var(--ink);
+      color: #fff;
+    }
+    .dark-section .sec-label { color: rgba(255,255,255,.35); }
+    .dark-section .sec-label::after { background: rgba(255,255,255,.12); }
+    .dark-section h2 { color: #fff; }
+    .dark-section h2 em { color: var(--gold); }
+    .dark-section p { color: rgba(255,255,255,.68); }
+    .dark-section strong { color: rgba(255,255,255,.92); }
+    .dark-section .pull { background: rgba(255,255,255,.06); border-left-color: var(--gold); color: rgba(255,255,255,.9); }
+    .dark-section .pull cite { color: rgba(255,255,255,.45); }
+    .dark-section .callout.gold { background: rgba(184,131,30,.12); border-left-color: var(--gold); }
+    .dark-section .callout p { color: rgba(255,255,255,.7); }
+    .dark-section .callout strong { color: var(--gold); }
+
+    /* ─── REFERÊNCIAS ─── */
+    .ref-list { font-size: 13px; color: var(--ink-soft); line-height: 2; }
+    .ref-list li { margin-bottom: 4px; list-style: none; padding-left: 1.4em; text-indent: -1.4em; }
+    .ref-num { font-weight: 600; color: var(--blue); margin-right: 6px; }
+
+    /* ─── FOOTER ─── */
+    footer.inst-footer {
+      background: #fff;
+      border-top: 1px solid var(--rule);
+      text-align: center;
+      padding: 28px 24px;
+      font-size: 12px;
+      color: var(--ink-soft);
+      line-height: 1.75;
+    }
+
+    @media (max-width: 580px) {
+      .hero { padding: 56px 22px 48px; }
+      .wrap { padding: 0 18px; }
+      .inst-header { padding: 12px 18px; }
+      .stat-row { flex-direction: column; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ── CABEÇALHO ── -->
+<header class="inst-header">
+  <div class="pub-label">
+    Infográfico Científico
+    <span>G10 – Telemonitoramento de Feridas Crônicas</span>
+  </div>
+  <img src="img/logos.png" alt="Logos Amor-à-Pele e PET-Saúde Digital – UFPel">
+</header>
+
+<!-- ── HERO ── -->
+<div class="hero">
+  <div class="hero-inner">
+    <p class="hero-kicker">Linguística · Culturas Indígenas e Afro-brasileiras · Comunicação em Saúde · Feridas Crônicas</p>
+    <h1>A Gramática <em>Invisível</em><br>do Silêncio</h1>
+    <p class="hero-lead">O silêncio não é ausência de comunicação — é uma de suas formas mais complexas. Do <em>ma</em> japonês ao <em>nhe'e</em> Guarani, do <em>Awo</em> do terreiro ao silêncio compassivo da clínica: aprender a lê-lo pode transformar o cuidado de pessoas com feridas crônicas.</p>
+    <p class="hero-meta">Texto-base: El Confidencial, 5 jun. 2026 · Literatura científica: PubMed, SciELO, Palliative Medicine, Patient Education and Counseling, UFSC, USP</p>
+  </div>
+</div>
+
+<!-- ══ PARTE I — A GRAMÁTICA CULTURAL ══ -->
+<div class="wrap">
+
+  <!-- SEÇÃO 1 – O PROBLEMA -->
+  <section>
+    <p class="sec-label">O problema que ninguém nomeia</p>
+    <h2>Dois segundos de desconforto.<br><em>Ou quinze segundos de escuta?</em></h2>
+
+    <div class="two-col">
+      <div>
+        <p>Um dos mal-entendidos culturais mais profundos e menos estudados é a relação que cada língua mantém com o silêncio. Estudos interculturais mostram que falantes de espanhol e português sentem desconforto após <strong>apenas 2 segundos de silêncio</strong> numa conversa, ao passo que finlandeses toleram pausas de até <strong>10 a 15 segundos</strong> sem qualquer estranhamento.<span class="ref">El Confidencial, 2026</span></p>
+        <p>Essa diferença não é trivial. Ela determina se um profissional de saúde sabe criar espaço para o paciente — ou se preenche ansiosamente cada pausa, perdendo o que aquele silêncio queria dizer. Em culturas mediterrâneas e latinas, o silêncio precisa ser <em>explicado e justificado</em>; a ausência de fala é lida como sinal de que "algo está errado".<span class="ref">El Confidencial, 2026</span></p>
+      </div>
+      <div>
+        <figure>
+          <img src="img/silencio-culturas.jpg" alt="Conversa entre duas pessoas em contexto nórdico — presença calma, postura aberta, silêncio partilhado" style="width:100%; border-radius:8px; display:block;">
+          <figcaption>Figura 1 — Culturas do silêncio: compartilhar a pausa é, em contextos nórdicos e japoneses, uma forma de respeito e escuta.</figcaption>
+        </figure>
+      </div>
+    </div>
+
+    <div class="stat-row">
+      <div class="stat-box">
+        <div class="num">2s</div>
+        <div class="lbl">Tolerância ao silêncio</div>
+        <p>Limiar de desconforto em conversas para falantes de português e espanhol — típico de culturas mediterrâneas e latinas</p>
+      </div>
+      <div class="stat-box">
+        <div class="num">15s</div>
+        <div class="lbl">Tolerância ao silêncio</div>
+        <p>Pausa natural e confortável para falantes de finlandês — o silêncio como escuta, não como falha comunicativa</p>
+      </div>
+      <div class="stat-box">
+        <div class="num">30%</div>
+        <div class="lbl">Do tempo de consulta</div>
+        <p>Proporção de silêncio em consultas médico-paciente no Japão, contra 8,2% nos EUA — médicos japoneses dedicam mais tempo ao exame físico e diagnóstico; americanos, à conversa social<span class="ref">Ohtaki et al., 2003 [15]</span></p>
+      </div>
+    </div>
+  </section>
+
+  <!-- SEÇÃO 2 – MA JAPONÊS -->
+  <section>
+    <p class="sec-label">O conceito-chave</p>
+    <h2>間 — <em>Ma</em>:<br>o silêncio que estrutura o sentido</h2>
+
+    <div class="ma-block">
+      <span class="ma-kanji">間</span>
+      <span class="ma-romaji">ma</span>
+      <p class="ma-def">O ideograma representa o sol (日) passando por um portal (門). Não é o vazio — é o intervalo ativo que confere sentido ao que está antes e depois.</p>
+    </div>
+
+    <p>Em japonês, <em>ma</em> (間) não encontra equivalente em nenhuma língua europeia. Não é apenas "pausa" — é a <strong>presença ativa do silêncio</strong>, um elemento que estrutura a música, a arquitetura, o teatro e a conversa cotidiana.<span class="ref">El Confidencial, 2026</span> Pesquisadores brasileiros descrevem o conceito como "um vazio que opera, um silêncio que fala" — um espaço intermediário entre dois elementos que não é ausência, mas possibilidade.<span class="ref">Okano, 2011; Choairy, 2020</span></p>
+
+    <p>Na conversa japonesa, interromper o silêncio do outro antes do tempo é descortesia: significa não ter escutado até o fim, não ter deixado as palavras chegarem ao destino. Para o budismo zen, o silêncio não é ausência — é plenitude. Falar em excesso é quase um defeito espiritual, sinal de que algo interno ainda não está quieto.<span class="ref">El Confidencial, 2026</span></p>
+
+    <div class="callout sage">
+      <div class="callout-title">🇯🇵 O humano como ser-de-intervalo</div>
+      <p>A palavra japonesa para "ser humano" é <strong>人間</strong> (<em>ningen</em>) — literalmente "pessoa + ma". O indivíduo é constituído desse intervalo, dessa pausa interior. Um sem <em>ma</em> seria alguém sem timing, sem sensibilidade — há um insulto japonês que significa exatamente isso: <em>ma ga nuketa</em> ("escapou o ma"). O silêncio não é o que falta ao humano: é parte do que o constitui.<span class="ref">Okano, 2011</span></p>
+    </div>
+
+    <figure>
+      <img src="img/ser-de-intervalo.jpg"
+           alt="Representação visual do conceito japonês de ningen — duas silhuetas humanas com o espaço entre elas como elemento constitutivo, ilustrando que o ser humano é pessoa mais intervalo"
+           style="width:100%; border-radius:8px; display:block;">
+      <figcaption>Figura 2 — 人間 (<em>ningen</em>): pessoa + intervalo. O silêncio não é o que falta ao humano — é parte do que o constitui. (Okano, 2011 [5])</figcaption>
+    </figure>
+
+    <figure>
+      <img src="img/ma-espaco.jpg" alt="Espaço arquitectónico japonês com vazio intencional — corredor ou jardim de pedras onde o espaço entre elementos é o sujeito" style="width:100%; border-radius:8px; display:block;">
+      <figcaption>Figura 3 — O espaço como sujeito: na arquitectura e no jardim japoneses, o vazio entre os elementos não é ausência — é o que organiza o sentido. Expressão visual do ma. (Okano, 2011 [5])</figcaption>
+    </figure>
+  </section>
+
+  <!-- SEÇÃO 3 – CULTURAS DO SILÊNCIO -->
+  <section>
+    <p class="sec-label">Atlas do silêncio</p>
+    <h2>Como o mundo cala —<br><em>e o que cada silêncio comunica</em></h2>
+
+    <p>O silêncio não tem um único significado. Seu sentido muda conforme quem cala, com quem, em que momento e dentro de qual gramática cultural. Para um negociador ocidental treinado em comunicação direta, as pausas do Sudeste Asiático — onde o silêncio é uma forma sofisticada de dizer "não" sem dizê-lo — são invisíveis até que se aprenda a lê-las.<span class="ref">El Confidencial, 2026</span></p>
+
+    <div class="culture-grid">
+      <div class="c-card">
+        <div class="flag">🇯🇵</div>
+        <h4>Japão</h4>
+        <p>O silêncio é respeito e atenção cuidadosa. Em consultas médicas, representa 30% do tempo de conversa (vs. 8,2% nos EUA) — médicos japoneses concentram-se no exame e diagnóstico; americanos, na conversa social e follow-up.<span class="ref">Ohtaki et al., 2003 [15]</span> Interromper a pausa do outro é descortesia — significa não ter escutado até o fim.<span class="ref">Petkova, 2015 [4]</span></p>
+        <span class="badge b-jp">Alta tolerância</span>
+      </div>
+      <div class="c-card">
+        <div class="flag">🇫🇮</div>
+        <h4>Finlândia</h4>
+        <p>"A palavra é prata, o silêncio é ouro" (<em>Puhuminen on hopeaa, vaikeneminen kultaa</em>). Num estudo empírico com 200 finlandeses e 200 búlgaros, as palavras mais usadas pelos finlandeses para se descreverem foram "silencioso", "calmo" e "tímido" — o silêncio é tanto hetero como auto-estereótipo na identidade finlandesa.<span class="ref">Petkova &amp; Lehtonen, 2005 via [4]</span> Carbaugh et al. (2006) definem-no como <em>"a Finnish natural way of being"</em>: estar só não é solidão — é recolhimento ao espaço escolhido pelo próprio.<span class="ref">[16]</span></p>
+        <span class="badge b-fi">10–15s confortáveis</span>
+      </div>
+      <div class="c-card">
+        <div class="flag">🏹</div>
+        <h4>Apaches Ocidentais</h4>
+        <p>Estudados por Keith Basso, o silêncio era a resposta apropriada em situações de incerteza: início de namoro, reencontros, luto. Falar nesses momentos era sinal de que não se compreendia a gravidade da situação.<span class="ref">El Confidencial, 2026 [8]</span></p>
+        <span class="badge b-ap">Silêncio como protocolo</span>
+      </div>
+      <div class="c-card">
+        <div class="flag">🌿</div>
+        <h4>Guarani — Sul do Brasil</h4>
+        <p>Para os Guarani Mbyá, o silêncio não é ausência de palavra — é o espaço interior onde a <em>palavra-alma</em> (<strong>nhe'e</strong>) se forma antes de ser pronunciada. Apenas a palavra nascida desse silêncio interior merece ser dita. O silêncio funciona também como invisibilidade estratégica: resistência silenciosa à exposição colonial.<span class="ref">Melo, UFSC, 2008 [13]; Chamorro, 2009 [14]</span></p>
+        <span class="badge b-gua">Silêncio como alma</span>
+      </div>
+      <div class="c-card">
+        <div class="flag">🥁</div>
+        <h4>Batuque, Umbanda e Quimbanda — RS</h4>
+        <p>Na cosmovisão iorubá do Batuque gaúcho, o silêncio tem nome: <strong>Awo</strong> — o segredo. A oralidade é sagrada; o desperdício de palavras é falha de caráter. O iniciado aprende antes de tudo a ouvir e a calar: "Quem fala muito, dá bom dia a cavalo." A iniciação inclui um período de silêncio absoluto — condição para renascer como instrumento do Orixá.<span class="ref">Historiando Axé, 2025 [17]</span></p>
+        <span class="badge b-afro">Silêncio como fundamento</span>
+      </div>
+      <div class="c-card">
+        <div class="flag">🇧🇷</div>
+        <h4>Brasil / Mediterrâneo</h4>
+        <p>Falar é relacionar-se; o silêncio precisa ser explicado. A pergunta inevitável quando alguém cala onde não é norma: <em>"o que foi?"</em>. A conversa sobre o tempo ou a comida não transmite informação — afirma que "estamos bem, somos isso".<span class="ref">El Confidencial, 2026 [8]</span></p>
+        <span class="badge b-br">~2s de tolerância</span>
+      </div>
+    </div>
+
+    <div class="pull">
+      "O silêncio não é a ausência de comunicação — é uma de suas formas mais complexas. Requer a mesma habilidade que o habla: saber cuándo, cómo, con quién y de qué manera."
+      <cite>— El Confidencial, Junho de 2026</cite>
+    </div>
+
+    <!-- CALLOUT GUARANI EXPANDIDO -->
+    <div class="callout terra">
+      <div class="callout-title">🌿 Nhe'e — a palavra-alma Guarani e o silêncio que a precede</div>
+      <p>Na cosmologia Guarani Mbyá, os termos <em>ñe'ë</em>, <em>ayvu</em> e <em>ã</em> — traduzidos como "palavra" — significam também alma, nome, vida, origem e personalidade, possuindo uma essência espiritual: para os Guarani, <strong>Deus é palavra</strong>.<span class="ref">Chamorro, 2009 [14]</span> Isso cria um paradoxo fascinante: um povo que valoriza profundamente o silêncio tem toda a sua cosmologia organizada em torno da palavra como princípio vital.</p>
+      <p>A resolução do paradoxo está no silêncio interior. O <em>nhe'e</em> não se pronuncia levianamente — apenas a palavra que nasce de dentro, do silêncio de si mesmo, merece ser dita. Falar sem esse silêncio preparatório é desperdiçar axé vital. A dissertação <em>Corpos que falam em silêncio: escola, corpo e tempo entre os Guarani</em> (Melo, UFSC, 2008)<span class="ref">[13]</span> documenta como o corpo Guarani comunica pelo silêncio o que a escola ocidental exige em palavras — e como esse choque produz incompreensão pedagógica profunda.</p>
+      <p>O silêncio Guarani tem ainda uma dimensão política: funciona como invisibilidade estratégica — recolher-se ao silêncio é proteger o que é sagrado de ser nomeado e, portanto, capturado.<span class="ref">Cadernos de Tradução, SciELO [13]</span></p>
+    </div>
+
+    <figure>
+      <img src="img/guarani-silencio.jpg"
+           alt="Comunidade Guarani Mbyá no sul do Brasil — espaço de convívio silencioso com pessoas em presença próxima sem fala, natureza integrada ao cotidiano"
+           style="width:100%; border-radius:8px; display:block;">
+      <figcaption>Figura 4 — Comunidade Guarani Mbyá: o silêncio como espaço onde a palavra-alma (<em>nhe'e</em>) se forma antes de ser pronunciada. (Melo, UFSC, 2008 [13])</figcaption>
+    </figure>
+
+    <!-- VÍDEO + CONTRASTE -->
+    <h3 style="margin-top:48px;">Ouça a diferença: o mesmo silêncio em duas gramáticas</h3>
+    <p>A professora Michiko Okano — autora do livro <em>Ma</em> citado neste infográfico — explica o conceito em vídeo produzido pela Japan House São Paulo. Abaixo do vídeo, um contraste textual entre a gramática japonesa e a gramática latina diante do mesmo silêncio clínico.</p>
+
+    <div class="video-wrap">
+      <iframe
+        src="https://www.youtube.com/embed/3jI1SFELIkk"
+        title="MA — Prof. Michiko Okano explica o conceito japonês de intervalo e silêncio. Japan House São Paulo, 2020."
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+        allowfullscreen>
+      </iframe>
+      <div class="video-caption">▶ <em>MA</em>, com Michiko Okano — Japan House São Paulo / #JHSPONLINE, 2020. A própria autora da referência [5] explica o conceito que estrutura a secção anterior.</div>
+    </div>
+
+    <div class="contraste-grid">
+      <div class="contraste-card lat">
+        <h5>🇧🇷 Gramática latina — o silêncio como ruptura</h5>
+        <p>Enfermeiro pergunta: "Como está a ferida?" Paciente cala por 3 segundos. Enfermeiro imediatamente: "Ainda dói muito? Vamos ver o que podemos fazer—" A pausa não chegou ao fim. O que o paciente queria dizer ficou por dizer. O profissional preencheu o espaço com ansiedade própria, não com escuta.</p>
+      </div>
+      <div class="contraste-card jp">
+        <h5>🇯🇵 Gramática japonesa — o silêncio como resposta</h5>
+        <p>Enfermeiro pergunta. Paciente cala. Enfermeiro aguarda — 5, 8, 10 segundos. O paciente respira fundo e diz algo que não diria sem aquele espaço. O silêncio não foi vazio: foi o tempo que a resposta verdadeira precisou para chegar à superfície. O enfermeiro ouviu mais do que perguntou.</p>
+      </div>
+    </div>
+
+    <div class="callout gold">
+      <div class="callout-title">🌐 O silêncio emocional — universal e anterior a qualquer cultura</div>
+      <p>Petkova (2015)<span class="ref">[4]</span> propõe uma terceira hipótese que une todas as tradições aqui apresentadas: o silêncio pode expressar sentimentos que são simultaneamente individuais e universais — <strong>empatia, compaixão, amor, dor, tristeza</strong> — e que não dependem de nenhuma cultura específica. O silêncio compassivo de Back et al. (2009), o <em>ma</em> japonês, o <em>nhe'e</em> Guarani e o <em>Awo</em> do terreiro convergem nesse ponto: há um silêncio humano que precede qualquer gramática cultural — e é precisamente esse o silêncio que cura.</p>
+    </div>
+  </section>
+
+  <!-- SEÇÃO AFRO-BRASILEIRA -->
+  <section>
+    <p class="sec-label">Silêncio de matriz africana — Pelotas e Rio Grande do Sul</p>
+    <h2>O <em>Awo</em> e o tambor:<br>silêncio sagrado no Batuque, Umbanda e Quimbanda</h2>
+
+    <p>As religiões de matriz africana praticadas em Pelotas — Batuque, Umbanda e Quimbanda — têm uma relação com o silêncio que não é paralela ao silêncio zen ou finlandês: é estruturalmente diferente e igualmente sofisticada. Aqui o silêncio é <strong>fundamento litúrgico</strong>, condição de iniciação e prática de cura — e o seu oposto não é o barulho, mas a palavra mal usada.</p>
+
+    <div class="callout afro">
+      <div class="callout-title">🥁 Awo — o segredo como silêncio sagrado</div>
+      <p>Na cosmovisão iorubá que fundamenta o Batuque gaúcho — <em>a expressão mais africana do complexo afro-religioso do Rio Grande do Sul, com liturgia em iorubá e orixás como entidades centrais</em><span class="ref">Giumbelli &amp; Almeida, Rev. Antropologia USP, 2021 [16b]</span> — o silêncio tem nome: <strong>Awo</strong>, o segredo. Dentro da dinâmica do terreiro, <em>a oralidade é sagrada e o desperdício de palavras é visto como uma falha de caráter e sabedoria</em>. O iniciado aprende, antes de tudo, a ouvir e a calar. Há um ditado nas casas de santo que resume essa ética: <strong>"Quem fala muito, dá bom dia a cavalo."</strong><span class="ref">Historiando Axé, 2025 [17]</span></p>
+      <p>O silêncio não é ausência de axé — é sua preservação. Verbalizar planos, conquistas ou fundamentos antes do tempo certo é um <em>erro litúrgico grave</em> que enfraquece a energia individual e a conexão com o próprio Orí (a cabeça espiritual). O treinamento ritualístico do silêncio visa garantir que a bússola moral e espiritual do indivíduo seja interna — não refém da validação externa.<span class="ref">[17]</span></p>
+    </div>
+
+    <div class="two-col" style="margin-top:28px;">
+      <div>
+        <h3>O silêncio absoluto na iniciação</h3>
+        <p>No rito de iniciação do Batuque e da Umbanda — a <em>feitura de santo</em> — o iniciado passa por um período de <strong>silêncio absoluto</strong>, isolamento e recolhimento. É uma morte simbólica: tudo que era antes precisa ser silenciado para que o novo possa nascer. O silêncio não é punição — é o útero onde o iniciado se refaz como instrumento do Orixá.<span class="ref">[18]</span></p>
+      </div>
+      <div>
+        <h3>O silêncio que cura no terreiro</h3>
+        <p>Ao final de cada cerimônia, <em>quando o silêncio volta a tomar conta do terreiro, a sensação é a de que ali, nesse espaço repleto de axé, entre os tambores e as oferendas, uma pequena parte de todos foi curada</em>.<span class="ref">UFRGS/Sextante, 2024 [19]</span> O silêncio na escuta do terreiro não é ausência — é preparo: <em>solo fértil onde a palavra encantada pode brotar</em>. O terreiro oferece há gerações o que a clínica ocidental hoje reconhece como silêncio terapêutico: presença plena, escuta sem julgamento, espaço para que o outro fale quando estiver pronto.<span class="ref">Projeto Aquilombamente, 2025 [20]</span></p>
+      </div>
+    </div>
+
+    <figure>
+      <img src="img/terreiro-silencio.jpg"
+           alt="Interior de terreiro de Batuque ou Umbanda no Rio Grande do Sul — espaço ritual após cerimônia, silêncio que retorna depois do tambor, atmosfera de recolhimento e axé"
+           style="width:100%; border-radius:8px; display:block;">
+      <figcaption>Figura 5 — O silêncio que retorna ao terreiro: após o tambor e o canto, a quietude é parte da cura. Batuque gaúcho, Rio Grande do Sul.</figcaption>
+    </figure>
+
+    <div class="pull">
+      "O silêncio na escuta não é ausência — é preparo, é solo fértil onde a palavra encantada pode brotar. O terreiro já é, há séculos, um espaço de cura."
+      <cite>— Projeto Aquilombamente. Ebó de Ofó: Escuta Terapêutica para Povo de Terreiro, 2025 [20]</cite>
+    </div>
+  </section>
+
+</div><!-- /wrap -->
+
+<!-- ══ PARTE II — O SILÊNCIO NA SAÚDE ══ -->
+<div class="wrap">
+
+  <!-- SEÇÃO 4 – LITERATURA CIENTÍFICA EM SAÚDE -->
+  <section>
+    <p class="sec-label">O que a ciência já sabe</p>
+    <h2>Silêncio na clínica:<br><em>da técnica ao ato de cuidar</em></h2>
+
+    <p>A literatura científica em enfermagem, medicina paliativa e psicoterapia converge numa conclusão: o silêncio não é o oposto da comunicação terapêutica — é uma de suas formas mais poderosas. Mas usá-lo bem exige habilidade deliberada, não apenas ausência de fala.</p>
+
+    <div class="callout blue">
+      <div class="callout-title">📖 Silêncio Intencional em Enfermagem</div>
+      <p>Artigo publicado na <em>Nursing Standard</em> (2016; PMID: 27794696)<span class="ref">Back et al., 2009 [1]</span> descreve o <strong>silêncio intencional</strong> como uma forma de presença terapêutica que demonstra compaixão e respeito. O silêncio intencional pode <em>(a)</em> fortalecer a relação terapêutica enfermeiro-paciente, <em>(b)</em> reduzir a labilidade emocional do paciente ao fazê-lo sentir-se escutado, e <em>(c)</em> apoiar o paciente na compreensão e reflexão sobre mudanças em sua saúde. Os autores alertam: ordenar ao profissional que "use o silêncio" como técnica comportamental gera uma nova dificuldade — o profissional fica visivelmente desconfortável, e essa atmosfera de estranhamento pesa sobre paciente e clínico. O silêncio eficaz nasce de uma qualidade de mente, não de um comportamento.</p>
+    </div>
+
+    <h3>Silêncio Compassivo: uma tipologia clínica</h3>
+
+    <p>Back et al. (2009)<span class="ref">J Palliat Med, 12(12):1113-7</span>, num artigo seminal no <em>Journal of Palliative Medicine</em>, propuseram a distinção entre tipos de silêncio clínico e introduziram o conceito de <strong>silêncio compassivo</strong> — derivado da prática contemplativa — como aquele que "afirma relacionamento e compreensão, e permite que a sabedoria mútua emerja". Os autores observam que o silêncio do clínico é em grande parte responsável pelo efeito que o silêncio produz no encontro. A capacidade de atenção genuína — dar atenção com o propósito de compreender o outro — é pré-requisito para que momentos de silêncio terapêutico se tornem possíveis.</p>
+
+    <div class="tipo-grid">
+      <div class="tipo-card t1">
+        <h4>Silêncio de reflexão</h4>
+        <p>Paciente processa informação ou emoção difícil. Interrompê-lo é perder o que está sendo elaborado internamente.<span class="ref">Back et al., 2009</span></p>
+      </div>
+      <div class="tipo-card t2">
+        <h4>Silêncio emocional de conexão (ECS)</h4>
+        <p>Pausa carregada de emoção partilhada entre clínico e paciente — marcador de presença e compreensão mútua.<span class="ref">Gramling et al., 2022</span></p>
+      </div>
+      <div class="tipo-card t3">
+        <h4>Silêncio convite (ICS)</h4>
+        <p>Pausa usada pelo clínico para abrir espaço ao paciente, sinalizar que há tempo e que ele pode continuar.<span class="ref">Gramling et al., 2022</span></p>
+      </div>
+      <div class="tipo-card t4">
+        <h4>Silêncio de resistência</h4>
+        <p>Paciente evita falar sobre algo — consciente ou inconscientemente. Deve ser percebido, não preenchido precipitadamente.<span class="ref">Back et al., 2009</span></p>
+      </div>
+    </div>
+
+    <h3>A meta-etnografia do cuidado: silêncio é habilidade, não vazio</h3>
+
+    <p>Bassett, Bingley & Brearley (2018)<span class="ref">Palliat Med, 32(1):185-194</span>, numa revisão meta-etnográfica publicada na <em>Palliative Medicine</em> envolvendo oito bases de dados interdisciplinares, concluíram que <strong>pesquisa e prática interdisciplinares internacionais endossam o valor do silêncio no cuidado clínico</strong>. A experiência de silêncio como elemento de cuidado foi encontrada em cuidados paliativos, cuidado espiritual, psicoterapia e aconselhamento — apoiando o reconhecimento do silêncio como habilidade e prática. Os autores ressaltam, porém, que o silêncio pode representar desafios para cuidadores, e que sua maior compreensão pode oferecer benefícios para a prática clínica.</p>
+
+    <div class="callout rust">
+      <div class="callout-title">🔬 Evidência quantitativa: silêncio melhora qualidade de vida</div>
+      <p>Gramling et al. (2022)<span class="ref">Patient Educ Couns, 105(7):2005-2011</span> audio-gravaram 226 consultas de cuidados paliativos em dois centros acadêmicos e identificaram 6.769 pausas de 2+ segundos. Entre elas, 328 (4,8%) foram classificadas como <strong>Silêncios Emocionais de Conexão (ECS)</strong> e 240 (3,5%) como Silêncios-Convite (ICS). O achado central: <strong>ECS mais precoce na consulta associou-se à melhora da qualidade de vida do paciente no dia seguinte</strong> (p = 0,01). Além disso, maior prevalência de ECS associou-se a decisões terapêuticas que priorizavam o conforto em detrimento de tratamentos mais agressivos — sugerindo que o silêncio compassivo facilita a tomada de decisão centrada no paciente.</p>
+    </div>
+
+    <h3>O silêncio nas quatro fases da relação enfermeiro-paciente</h3>
+
+    <p>Uma revisão narrativa publicada na <em>RIAGE – Revista Ibero-Americana de Gerontologia</em> (2025)<span class="ref">Franzoni et al., 2016 [10] — Peplau</span>, à luz da Teoria das Relações Interpessoais de Peplau, categorizou o papel do silêncio em quatro fases da relação terapêutica:</p>
+
+    <div class="callout sage">
+      <p><strong>Orientação:</strong> o silêncio prepara a comunicação oral, promovendo introspecção e confiança — base do vínculo inicial.</p>
+      <p><strong>Identificação:</strong> apoia a autonomia emocional do paciente, em consonância com a adaptação às suas necessidades subjetivas.</p>
+      <p><strong>Exploração:</strong> favorece a introspecção e a exploração de sentimentos complexos, refletindo a projeção de novos objetivos.</p>
+      <p><strong>Resolução:</strong> o silêncio proporciona serenidade e conforto, facilitando a aceitação da mudança e a autonomia no cuidado.</p>
+      <p style="margin-top:14px; font-size:13.5px;">Conclusão da revisão: <strong>o silêncio transcende a função técnica, sendo recurso multifacetado que contribui para a humanização do cuidado.</strong></p>
+    </div>
+
+    <figure>
+      <img src="img/peplau-fases.jpg"
+           alt="Diagrama das quatro fases da relação enfermeiro-paciente segundo Peplau — orientação, identificação, exploração e resolução — com o papel do silêncio em cada etapa"
+           style="width:100%; border-radius:8px; display:block;">
+      <figcaption>Figura 6 — As quatro fases da relação terapêutica de Peplau e o papel do silêncio em cada uma. (Franzoni et al., 2016 [10]; RIAGE, 2025)</figcaption>
+    </figure>
+
+    <h3>Conspiração do silêncio: o silêncio que adoece</h3>
+
+    <p>Nem todo silêncio clínico é terapêutico. A <strong>conspiração do silêncio</strong> — quando familiares solicitam que profissionais omitam informações de diagnóstico e prognóstico do paciente, como ato protetor — tem alta incidência em cuidados paliativos brasileiros.<span class="ref">Machado et al., 2019 – SciELO CR</span> Revisão integrativa na BVS (Machado et al., 2019) mostrou que pacientes envolvidos nessa dinâmica sentem-se <em>isolados, incompreendidos, enganados, ansiosos e deprimidos</em> — impedidos de encerrar assuntos importantes ou de se despedir. A comunicação ineficaz contribui diretamente para a falta de informação entre equipe, paciente e família. Há necessidade urgente de aprender a <em>ouvir</em> — não apenas falar.</p>
+
+    <figure>
+      <img src="img/silencio-clinico.jpg" alt="Profissional de saúde sentado junto ao doente em postura de escuta — corpo inclinado, sem falar, presença atenta" style="width:100%; border-radius:8px; display:block;">
+      <figcaption>Figura 7 — Silêncio clínico: a postura de escuta activa comunica presença e aceitação sem necessidade de palavras. (Back et al., 2009 [1])</figcaption>
+    </figure>
+  </section>
+
+  <!-- SEÇÃO 5 – FERIDAS CRÔNICAS -->
+  <section>
+    <p class="sec-label">Aplicação prática — G10 PET-Saúde UFPel</p>
+    <h2>O <em>ma</em> do curativo:<br>silêncio no cuidado de feridas crônicas</h2>
+
+    <p>O paciente com ferida crônica carrega um peso que vai muito além da lesão visível. Estudos brasileiros mostram que úlceras venosas, pé diabético e lesões por pressão causam <strong>dor crônica, alteração da imagem corporal, isolamento social, depressão e perda da autoestima</strong> — realidade psicoemocional que frequentemente fica silenciada nas consultas.<span class="ref">ver nota: referências não verificadas</span></p>
+
+    <p><p>A comunicação eficaz no manejo de feridas crônicas vai além do plano técnico: sem estratégias comunicativas adequadas surgem atrasos no tratamento, orientações inconsistentes e cuidado fragmentado.<span class="ref">Bassett et al., 2018 [3]</span> O silêncio <em>bem usado</em> — distinto do silêncio de evitação ou de ansiedade — é parte dessas estratégias.</p>
+
+    <p>Relato de experiência publicado na <em>ARACÊ</em> (2025)<span class="ref">Monterroso et al., 2025 [11]</span> com pessoa portadora de ferida crônica demonstrou que <strong>a linguagem corporal, o silêncio e a escuta ativa mostraram-se elementos centrais na construção de uma relação humanizada</strong>, destacando que o cuidar ultrapassa o verbal. O simples gesto silencioso da mão de uma estudante de enfermagem transmitiu empatia e segurança que palavras não alcançariam.</p>
+
+    <div class="apply-grid">
+      <div class="apply-card a1">
+        <div class="icon">🩹</div>
+        <h4>Durante o curativo</h4>
+        <p>O curativo é um momento fisicamente íntimo e frequentemente doloroso. Diretrizes de feridas (USP/EERP) orientam que <strong>os profissionais não devem assumir que a dor não existe pelo fato de o paciente não expressar ou não responder</strong>.<span class="ref">Ref. [9] — EERP-USP</span> O silêncio do paciente durante o procedimento pode ser sinal de dor não verbalizada, medo ou constrangimento. Respeitar essa pausa — sem preenchê-la automaticamente com orientações técnicas — cria espaço para que ele sinalize o que sente.</p>
+      </div>
+      <div class="apply-card a2">
+        <div class="icon">📱</div>
+        <h4>No telemonitoramento</h4>
+        <p>Na chamada de vídeo, o silêncio tende a ser interpretado como falha técnica. Mas muitas vezes é hesitação — o paciente a ponto de revelar uma dificuldade real (falta de insumos, dor não relatada, medo de amputação). Esperar 4 a 5 segundos antes de reformular a pergunta pode ser a diferença entre uma resposta superficial e uma informação clínica essencial.<span class="ref">Gramling et al., 2022 — adaptado</span> O silêncio-convite (ICS) é uma habilidade comunicativa treinável no contexto do telemonitoramento.</p>
+      </div>
+      <div class="apply-card a3">
+        <div class="icon">💬</div>
+        <h4>Na educação em saúde</h4>
+        <p>Ao orientar sobre autocuidado, use <strong>pausas deliberadas após informações-chave</strong> — o equivalente clínico do <em>ma</em> japonês. Deixar a informação "pousar" antes de continuar aumenta a assimilação. Perguntar "o que ficou de dúvida?" e então aguardar em silêncio — sem já responder — é mais eficaz do que cobrir o espaço com mais explicações.<span class="ref">Back et al., 2009 [1] — adaptado</span></p>
+      </div>
+      <div class="apply-card a4">
+        <div class="icon">🤝</div>
+        <h4>No vínculo longitudinal</h4>
+        <p>Feridas crônicas exigem tratamento prolongado. O vínculo terapêutico — construído também por presença silenciosa, por não julgar, por <em>estar junto na dor</em> sem pressa de resolvê-la — é fator determinante para adesão.<span class="ref">ver nota: referência não verificada</span> Saber calar ao lado de um paciente que chora durante um curativo é tão clínico quanto saber escolher a cobertura adequada. Estudos de enfermagem paliativa reforçam: <strong>o silêncio acompanhado é intimidade terapêutica — estar no mesmo lugar, na mesma emoção, sem palavras</strong>.<span class="ref">Bassett et al., 2018</span></p>
+      </div>
+    </div>
+
+    <figure>
+      <img src="img/teleconsulta.jpg" alt="Profissional de enfermagem em chamada de vídeo com doente — expressão atenta, postura de escuta, presença não apressada" style="width:100%; border-radius:8px; display:block;">
+      <figcaption>Figura 8 — Telemonitoramento: o silêncio intencional (ICS) é habilidade treinável mesmo à distância — esperar 4 a 5 segundos antes de reformular a pergunta pode revelar informação clínica essencial. (Gramling et al., 2022 [2])</figcaption>
+    </figure>
+
+    <div class="pull">
+      "A linguagem corporal, o silêncio e a escuta ativa mostraram-se elementos centrais na construção de uma relação humanizada, destacando que o cuidar ultrapassa o verbal."
+      <cite>— Monterroso L et al. ARACÊ, 2025;7(8):e7072 [11]</cite>
+    </div>
+
+    <h3 style="margin-top:40px;">O Ciclo de Gibbs no silêncio clínico</h3>
+    <p>O relato de Monterroso et al. (2025)<span class="ref">Monterroso et al., 2025 [11]</span> foi estruturado segundo o <strong>Ciclo de Gibbs (1988)</strong> — modelo de reflexão em seis etapas amplamente usado na formação em enfermagem para transformar experiência vivida em aprendizagem transferível. A figura abaixo aplica esse ciclo ao momento central do artigo: o gesto silencioso da estudante de enfermagem junto ao doente com ferida crónica.</p>
+
+    <figure>
+      <img src="img/gibbs-silencio.jpg"
+           alt="Diagrama circular do Ciclo de Gibbs aplicado ao caso do artigo ARACÊ 2025 — seis etapas de reflexão estruturada a partir do gesto silencioso de uma estudante de enfermagem junto a um doente com ferida crónica"
+           style="width:100%; border-radius:8px; display:block;">
+      <figcaption>Figura 9 — Ciclo de Gibbs (1988) aplicado ao relato de experiência de Monterroso et al. (ARACÊ, 2025 [11]): o gesto silencioso transformado em aprendizagem estruturada. Gibbs G. <em>Learning by Doing</em>. Oxford: Oxford Polytechnic; 1988.</figcaption>
+    </figure>
+  </section>
+
+</div><!-- /wrap -->
+
+<!-- ── SÍNTESE ── -->
+<div class="dark-section">
+  <div class="wrap">
+    <section>
+      <p class="sec-label">O que fica na cabeça</p>
+      <h2>A pausa que <em>completa</em> o cuidado</h2>
+
+      <p>Vivemos uma época que declarou guerra ao silêncio. Os telefones preenchem os intervalos, as cidades atingiram níveis de ruído inimagináveis para gerações anteriores.<span class="ref">El Confidencial, 2026</span> Nesse contexto, <strong>saber calar com intenção é quase uma forma de resistência</strong> — e, na clínica, uma competência que pode ser ensinada e praticada.</p>
+
+      <p>Para o cuidado de feridas crônicas — marcado por dor prolongada, vulnerabilidade emocional, alteração da imagem corporal e necessidade de vínculo duradouro — a gramática do silêncio é uma competência clínica tão relevante quanto o conhecimento sobre coberturas e protocolos. A evidência científica disponível é clara:<span class="ref">Back 2009; Gramling 2022; Bassett 2018; RIAGE 2025</span></p>
+
+      <div class="callout gold" style="margin: 28px 0;">
+        <p>① O silêncio intencional fortalece o vínculo terapêutico e reduz a labilidade emocional do paciente.</p>
+        <p>② Silêncios de conexão (ECS) mais precoces na consulta associam-se à melhora mensurável da qualidade de vida.</p>
+        <p>③ O silêncio é habilidade treinável — não comportamento passivo — e envolve qualidade de atenção, não apenas ausência de fala.</p>
+        <p>④ A conspiração do silêncio — o silêncio que oculta informação — é nociva e tem alta incidência no contexto brasileiro.</p>
+      </div>
+
+      <div class="pull">
+        "O actor japonês que domina o ma sabe que a pausa não interrompe o sentido: completa-o. O profissional de saúde que aprende isso sabe que o silêncio ao lado de um paciente com ferida crônica também não é vazio — é cuidado."
+        <cite>— Adaptado de El Confidencial, Junho de 2026</cite>
+      </div>
+
+      <p><strong>Para o G10:</strong> integrar o silêncio terapêutico como habilidade explícita na formação e nas teleconsultas do telemonitoramento pode melhorar adesão ao tratamento, fortalecer o vínculo e capturar informações clínicas que, sem esse espaço intencional, nunca seriam ditas.</p>
+    </section>
+  </div>
+</div>
+
+<!-- ── REFERÊNCIAS ── -->
+<div class="wrap">
+  <section>
+    <p class="sec-label">Referências</p>
+    <h3 style="font-size:16px; margin-bottom:6px; font-family:'Jost',sans-serif; font-weight:600; letter-spacing:.06em;">Literatura científica citada</h3>
+    <p style="font-size:13px; color:var(--ink-soft); margin-bottom:20px;">Todas as referências abaixo foram verificadas. Itens de base jornalística e institucional estão identificados como tal.</p>
+    <ul class="ref-list">
+
+      <li><span class="ref-num">[1]</span>
+        <strong>Back AL, Bauer-Wu SM, Rushton CH, Halifax J.</strong>
+        Compassionate silence in the patient-clinician encounter: a contemplative approach.
+        <em>Journal of Palliative Medicine</em>. 2009;12(12):1113–1117.
+        doi:<a href="https://doi.org/10.1089/jpm.2009.0175" style="color:var(--blue);">10.1089/jpm.2009.0175</a>
+        · PMID: 19698026
+      </li>
+
+      <li><span class="ref-num">[2]</span>
+        <strong>Gramling CJ, Durieux BN, Clarfeld LA, Javed A, Matt JE, Manukyan V, Braddish T, Wong A, Wills J, Hirsch L, Straton JR, Cheney N, Eppstein MJ, Rizzo DM, Gramling R.</strong>
+        Epidemiology of Connectional Silence in specialist serious illness conversations.
+        <em>Patient Education and Counseling</em>. 2022;105(7):2005–2011.
+        doi:<a href="https://doi.org/10.1016/j.pec.2021.10.032" style="color:var(--blue);">10.1016/j.pec.2021.10.032</a>
+        · PMID: 34799186
+      </li>
+
+      <li><span class="ref-num">[3]</span>
+        <strong>Bassett L, Bingley AF, Brearley SG.</strong>
+        Silence as an element of care: a meta-ethnographic review of professional caregivers' experience in clinical and pastoral settings.
+        <em>Palliative Medicine</em>. 2018;32(1):185–194.
+        doi:<a href="https://doi.org/10.1177/0269216317722444" style="color:var(--blue);">10.1177/0269216317722444</a>
+        · PMID: 28786322
+      </li>
+
+      <li><span class="ref-num">[4]</span>
+        <strong>Petkova DP.</strong>
+        Beyond silence: a cross-cultural comparison between Finnish 'quietude' and Japanese 'tranquility'.
+        <em>Eastern Academic Journal</em>. 2015;(4):1–14.
+        Disponível em: <a href="https://www.e-acadjournal.org/pdf/article_15132.pdf" style="color:var(--blue);">e-acadjournal.org</a>
+      </li>
+
+      <li><span class="ref-num">[5]</span>
+        <strong>Okano M.</strong>
+        <em>Ma: entre-espaço da arte e comunicação no Japão</em>.
+        São Paulo: Annablume; 2011. 222 p.
+        ISBN: 978-85-391-0436-9
+      </li>
+
+      <li><span class="ref-num">[6]</span>
+        <strong>Machado JC, Reis HFT, Sena ELS, Silva RS, Boery RNSO, Vilela ABA.</strong>
+        O fenômeno da conspiração do silêncio em pacientes em cuidados paliativos: uma revisão integrativa.
+        <em>Enfermería Actual de Costa Rica</em>. 2019;(36):92–103.
+        doi:<a href="https://doi.org/10.15517/revenf.v0i36.34235" style="color:var(--blue);">10.15517/revenf.v0i36.34235</a>
+        · ISSN: 1409-4568
+      </li>
+
+      <li><span class="ref-num">[7]</span>
+        <strong>Sapeta P, Simões A.</strong>
+        Silences in palliative care: the primacy of human presence.
+        <em>Hospice and Palliative Medicine International Journal</em>. 2018;2(3):161–164.
+        doi:<a href="https://doi.org/10.15406/hpmij.2018.02.00081" style="color:var(--blue);">10.15406/hpmij.2018.02.00081</a>
+        [Citado para: papel do silêncio em cuidados paliativos e tipologia de Back et al.]
+      </li>
+
+      <li><span class="ref-num">[8]</span>
+        <strong>Fonte jornalística.</strong>
+        Por qué en Finlandia aceptan en una charla silencios de 15 segundos (y nosotros sólo de 2).
+        <em>El Confidencial</em>. 5 jun. 2026.
+        Disponível em: <a href="https://www.elconfidencial.com/cultura/2026-06-05/silencio-culturas-significado-ma-japones-1hms_4367522/" style="color:var(--blue);">elconfidencial.com</a>
+        [Texto-base. Fonte jornalística de qualidade; dados interculturais apoiados por literatura académica.]
+      </li>
+
+      <li><span class="ref-num">[9]</span>
+        <strong>Nota institucional.</strong>
+        Diretrizes para avaliação e tratamento da dor em úlceras por pressão.
+        <em>Escola de Enfermagem de Ribeirão Preto – USP</em>. [s.d.]
+        Disponível em: <a href="http://eerp.usp.br/feridascronicas/diretriz_tratamento.html" style="color:var(--blue);">eerp.usp.br/feridascronicas</a>
+        [Recurso educacional institucional; não é publicação indexada.]
+      </li>
+
+      <li><span class="ref-num">[10]</span>
+        <strong>Franzoi MAH, Jesus CA, Pinho DLM, Kamada I, Reis PED.</strong>
+        Teoria das Relações Interpessoais de Peplau: uma avaliação baseada nos critérios de Fawcett.
+        <em>Revista de Enfermagem UFPE Online</em>. 2016;10(Supl. 4):3653–3661.
+        doi:<a href="https://doi.org/10.5205/reuol.9681-89824-1-ED.1004sup201617" style="color:var(--blue);">10.5205/reuol.9681-89824-1-ED.1004sup201617</a>
+        [Base teórica para categorização do silêncio nas fases de Peplau.]
+      </li>
+
+      <li><span class="ref-num">[11]</span>
+        <strong>Monterroso L, Silva M, Martins R, Pires SN, Costa S.</strong>
+        A importância da comunicação não verbal na prestação de cuidados: relato de experiência.
+        <em>ARACÊ</em>. 2025;7(8):e7072.
+        doi:<a href="https://doi.org/10.56238/arev7n8-023" style="color:var(--blue);">10.56238/arev7n8-023</a>
+        · Disponível em: <a href="https://periodicos.newsciencepubl.com/arace/article/view/7072" style="color:var(--blue);">periodicos.newsciencepubl.com</a>
+      </li>
+
+      <li><span class="ref-num">[12]</span>
+        <strong>Gibbs G.</strong>
+        <em>Learning by Doing: A Guide to Teaching and Learning Methods</em>.
+        Oxford: Oxford Polytechnic; 1988.
+        Disponível em: <a href="https://thoughtsmostlyaboutlearning.files.wordpress.com/2015/12/learning-by-doing-graham-gibbs.pdf" style="color:var(--blue);">thoughtsmostlyaboutlearning.files.wordpress.com</a>
+        [Base metodológica do relato de experiência — Ciclo de Reflexão de Gibbs]
+      </li>
+
+      <li><span class="ref-num">[13]</span>
+        <strong>Melo CR.</strong>
+        <em>Corpos que falam em silêncio: escola, corpo e tempo entre os Guarani</em>.
+        Dissertação de mestrado. Programa de Pós-Graduação em Antropologia Social, Universidade Federal de Santa Catarina, Florianópolis; 2008. 146p.
+        Disponível em: <a href="https://repositorio.ufsc.br/handle/123456789/91576" style="color:var(--blue);">repositorio.ufsc.br</a>
+      </li>
+
+      <li><span class="ref-num">[14]</span>
+        <strong>Chamorro G.</strong>
+        <em>Terra madura, Yvy Araguyje: fundamento da palavra Guarani</em>.
+        Dourados, MS: Ed. UFGD; 2009.
+        [Fonte para o conceito de ñe'ë / palavra-alma na cosmologia Guarani Mbyá]
+      </li>
+
+      <li><span class="ref-num">[15]</span>
+        <strong>Ohtaki S, Ohtaki T, Fetters MD.</strong>
+        Doctor-patient communication: a comparison of the USA and Japan.
+        <em>Family Practice</em>. 2003;20(3):276–282.
+        doi:<a href="https://doi.org/10.1093/fampra/cmg308" style="color:var(--blue);">10.1093/fampra/cmg308</a>
+        · PMID: 12738701
+        [Fonte primária dos dados 30% vs. 8,2% de silêncio em consultas médico-paciente — citado via Petkova, 2015]
+      </li>
+
+      <li><span class="ref-num">[16]</span>
+        <strong>Carbaugh D, Berry M, Nurmikari-Berry M.</strong>
+        Coding personhood through cultural terms and practices: silence and quietude as a 'natural way of being' in Finland.
+        <em>Journal of Language and Social Psychology</em>. 2006;25(3):203–220.
+        doi:<a href="https://doi.org/10.1177/0261927X06289422" style="color:var(--blue);">10.1177/0261927X06289422</a>
+      </li>
+
+      <li><span class="ref-num">[16b]</span>
+        <strong>Giumbelli EA, Almeida LO.</strong>
+        O enigma da Quimbanda: formas de existência e de exposição de uma modalidade religiosa afro-brasileira no Rio Grande do Sul.
+        <em>Revista de Antropologia</em>. 2021;64(2):e186652.
+        doi:<a href="https://doi.org/10.11606/2179-0892.ra.2021.186652" style="color:var(--blue);">10.11606/2179-0892.ra.2021.186652</a>
+      </li>
+
+      <li><span class="ref-num">[17]</span>
+        <strong>Historiando Axé.</strong>
+        O Poder do Silêncio: Por que o Segredo é Fundamento?
+        <em>Historiando Axé</em>. Dezembro de 2025.
+        Disponível em: <a href="https://historiandoaxe.com.br/2025/12/o-poder-do-silencio/" style="color:var(--blue);">historiandoaxe.com.br</a>
+        [Fonte para Awo e silêncio como fundamento litúrgico iorubá/Candomblé/Batuque]
+      </li>
+
+      <li><span class="ref-num">[18]</span>
+        <strong>Feitura de santo.</strong>
+        <em>Wikipédia — A Enciclopédia Livre</em>. [revisado 2026].
+        Disponível em: <a href="https://pt.wikipedia.org/wiki/Feitura_de_santo" style="color:var(--blue);">pt.wikipedia.org</a>
+        [Referência introdutória ao rito de iniciação e silêncio absoluto no Candomblé e Umbanda — complementar a fontes etnográficas]
+      </li>
+
+      <li><span class="ref-num">[19]</span>
+        <strong>UFRGS/Sextante.</strong>
+        Onde o axé faz morada: casas de religião no Rio Grande do Sul.
+        <em>Revista Sextante UFRGS</em>. Dezembro de 2024.
+        Disponível em: <a href="https://www.ufrgs.br/sextante/onde-o-axe-faz-morada/" style="color:var(--blue);">ufrgs.br/sextante</a>
+      </li>
+
+      <li><span class="ref-num">[20]</span>
+        <strong>Projeto Aquilombamente.</strong>
+        Ebó de Ofó: Escuta Terapêutica para Povo de Terreiro.
+        <em>Projeto Aquilombamente</em>. Junho de 2025.
+        Disponível em: <a href="https://projetoaquilombamente.com.br/ebo-de-ofo-escuta-terapeutica-para-povo-de-terreiro/" style="color:var(--blue);">projetoaquilombamente.com.br</a>
+        [Silêncio como prática terapêutica e escuta sagrada no terreiro]
+      </li>
+
+    </ul>
+  </section>
+</div>
+
+<!-- ── FILMES ── -->
+<div class="wrap">
+  <section>
+    <p class="sec-label">Para ver e sentir</p>
+    <h2>Dois filmes sobre o silêncio<br><em>que a literatura científica não consegue descrever</em></h2>
+    <p>Há dimensões do silêncio clínico que os artigos nomeiam mas não transmitem. Estes dois filmes habitam-nas.</p>
+
+    <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(280px,1fr)); gap:28px; margin-top:32px;">
+
+      <!-- WIT -->
+      <div style="background:#fff; border:1px solid var(--rule); border-radius:8px; overflow:hidden;">
+        <img src="img/poster-wit.jpg"
+             alt="Poster do filme Wit (2001), de Mike Nichols — Emma Thompson como professora internada com cancro terminal"
+             style="width:100%; display:block; aspect-ratio:2/3; object-fit:cover;">
+        <div style="padding:22px 20px;">
+          <p style="font-size:10.5px; font-weight:600; letter-spacing:.18em; text-transform:uppercase; color:var(--ink-soft); margin-bottom:6px;">Mike Nichols, 2001</p>
+          <h3 style="font-family:'Cormorant Garamond',serif; font-size:22px; font-weight:600; margin-bottom:10px;">Wit</h3>
+          <p style="font-size:14.5px; color:var(--ink-soft); line-height:1.65;">Conta a história de uma professora universitária de literatura (Emma Thompson) acometida por um câncer de ovário em estágio avançado. Profissional rígida, ela muda suas perspectivas e o modo como encara a vida ao descobrir a doença. O filme tem uma cena de silêncio partilhado entre ela e a enfermeira que é exactamente o que Back et al. (2009) descrevem como <em>silêncio compassivo</em> — presença sem palavras, como acto de cuidado. Vale só por essa cena.</p>
+          <p style="font-size:13px; color:var(--sage); margin-top:12px; font-weight:500;">→ Para discutir com estudantes de enfermagem: o que faz a enfermeira que o médico não faz?</p>
+        </div>
+      </div>
+
+      <!-- O FILHO -->
+      <div style="background:#fff; border:1px solid var(--rule); border-radius:8px; overflow:hidden;">
+        <img src="img/poster-filho.jpg"
+             alt="Poster do filme O Filho (2002), dos irmãos Dardenne — um carpinteiro e o rapaz que matou o seu filho"
+             style="width:100%; display:block; aspect-ratio:2/3; object-fit:cover;">
+        <div style="padding:22px 20px;">
+          <p style="font-size:10.5px; font-weight:600; letter-spacing:.18em; text-transform:uppercase; color:var(--ink-soft); margin-bottom:6px;">Jean-Pierre e Luc Dardenne, 2002</p>
+          <h3 style="font-family:'Cormorant Garamond',serif; font-size:22px; font-weight:600; margin-bottom:10px;">O Filho <span style="font-size:15px; font-style:italic; color:var(--ink-soft);">(Le Fils)</span></h3>
+          <p style="font-size:14.5px; color:var(--ink-soft); line-height:1.65;">Um carpinteiro e o rapaz que matou o seu filho. Quase nada é dito. Tudo está no corpo, na pausa, na respiração, na distância entre dois que partilham o mesmo espaço sem conseguirem ainda falar. Provavelmente o filme que mais se aproxima da gramática do silêncio descrita neste infográfico.</p>
+          <p style="font-size:13px; color:var(--sage); margin-top:12px; font-weight:500;">→ Para discutir: onde começa a linguagem quando as palavras não chegam?</p>
+        </div>
+      </div>
+
+    </div>
+  </section>
+</div>
+
+<!-- ── QUESTÕES ── -->
+<div class="wrap">
+  <section>
+    <p class="sec-label">Para fixar e refletir</p>
+
+    <div style="margin-bottom: 2.5rem;">
+      <h2 style="font-size: clamp(20px,3vw,30px); margin-bottom: 8px;">Parte I — <em>Compreensão</em></h2>
+      <p style="color: var(--ink-soft); font-size: 15px; margin-bottom: 0;">Clique em cada questão para revelar uma pista de onde buscar na memória.</p>
+    </div>
+
+    <div id="comp-qs" style="display:flex; flex-direction:column; gap:12px; margin-bottom:3rem;"></div>
+
+    <div style="border-top: 1px solid var(--rule); padding-top: 2.5rem; margin-bottom: 2rem;">
+      <h2 style="font-size: clamp(20px,3vw,30px); margin-bottom: 8px;">Parte II — <em>Para pensar</em></h2>
+      <p style="color: var(--ink-soft); font-size: 15px; margin-bottom: 0;">Não há resposta certa. Essas perguntas existem para incomodar um pouco.</p>
+    </div>
+
+    <div id="ref-qs" style="display:flex; flex-direction:column; gap:12px;"></div>
+  </section>
+</div>
+
+<style>
+  .q-card {
+    background: #fff;
+    border: 1px solid var(--rule);
+    border-radius: 8px;
+    padding: 18px 20px;
+    cursor: pointer;
+    transition: border-color .15s;
+  }
+  .q-card:hover { border-color: var(--ink-soft); }
+  .q-card.open  { border-color: var(--sage); }
+  .q-header { display: flex; align-items: flex-start; gap: 14px; }
+  .q-num {
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: .1em;
+    color: var(--ink-soft);
+    min-width: 22px;
+    padding-top: 3px;
+  }
+  .q-text {
+    font-size: 15.5px;
+    line-height: 1.6;
+    color: var(--ink);
+    flex: 1;
+    font-family: 'Jost', sans-serif;
+    font-weight: 400;
+  }
+  .q-chevron {
+    font-size: 13px;
+    color: var(--ink-soft);
+    margin-top: 4px;
+    transition: transform .2s;
+    flex-shrink: 0;
+    user-select: none;
+  }
+  .q-card.open .q-chevron { transform: rotate(180deg); }
+  .q-body {
+    display: none;
+    margin-top: 14px;
+    margin-left: 36px;
+    padding: 12px 16px;
+    background: var(--cream);
+    border-radius: 6px;
+    font-size: 14px;
+    line-height: 1.65;
+    color: var(--ink-soft);
+    font-style: italic;
+  }
+  .q-card.open .q-body { display: block; }
+  .q-body.reflect {
+    border-left: 3px solid var(--sage);
+    font-style: normal;
+    color: var(--ink-mid);
+  }
+</style>
+
+<script>
+(function(){
+  var comp = [
+    {
+      n:"01",
+      q:"O que é o conceito japonês de ma (間) e por que ele não tem equivalente exato em línguas europeias?",
+      hint:"Pense na diferença entre ausência de som e a presença ativa do silêncio — e no que o ideograma representa visualmente."
+    },
+    {
+      n:"02",
+      q:"Qual a diferença mensurável entre a tolerância ao silêncio de finlandeses e de falantes de português ou espanhol numa conversa?",
+      hint:"O infográfico apresenta dados em segundos e um provérbio finlandês que resume a filosofia por trás disso."
+    },
+    {
+      n:"03",
+      q:"O que Gramling et al. (2022) descobriram sobre o impacto do Silêncio Emocional de Conexão (ECS) na qualidade de vida de pacientes com câncer avançado?",
+      hint:"O estudo audio-gravou 226 consultas. Qual foi o achado estatístico sobre o momento em que o ECS ocorria?"
+    },
+    {
+      n:"04",
+      q:"O que distingue o silêncio intencional de simplesmente 'parar de falar', segundo Back et al. (2009) e a Nursing Standard (2016)?",
+      hint:"Os autores alertam para o risco de gerar 'atmosfera de estranhamento'. De onde vem um silêncio eficaz?"
+    },
+    {
+      n:"05",
+      q:"O que é a 'conspiração do silêncio' em cuidados paliativos e por que ela é nociva ao paciente?",
+      hint:"Quem pede esse silêncio? Com qual intenção? E qual o efeito real sobre quem está doente?"
+    },
+    {
+      n:"06",
+      q:"Bassett, Bingley & Brearley (2018) revisaram a literatura sobre silêncio no cuidado em oito bases interdisciplinares. Qual foi a conclusão central?",
+      hint:"A revisão encontrou evidências em cuidados paliativos, psicoterapia e cuidado espiritual. O que todas tinham em comum?"
+    },
+    {
+      n:"07",
+      q:"O que é o nhe'e na cosmologia Guarani Mbyá e qual o papel do silêncio na sua formação?",
+      hint:"O nhe'e é traduzido como 'palavra', mas significa também alma, vida, nome. Que relação tem com o silêncio interior antes da fala?"
+    },
+    {
+      n:"08",
+      q:"O que é o Awo no Batuque gaúcho e por que o silêncio é considerado um fundamento litúrgico — e não apenas uma prática comunicativa?",
+      hint:"O ditado 'Quem fala muito, dá bom dia a cavalo' resume uma lógica espiritual. O que o silêncio protege nesse contexto?"
+    }
+  ];
+
+  var refl = [
+    {
+      n:"01",
+      q:"Se durante um curativo você sentisse o impulso de falar para aliviar a tensão do paciente — como saberia se esse impulso estava servindo ao paciente ou a você mesmo?",
+      note:"Não há resposta esperada. Anote o que surgiu — mesmo que seja só uma dúvida ou desconforto."
+    },
+    {
+      n:"02",
+      q:"O texto mostra que culturas têm gramáticas do silêncio distintas. O que acontece quando o profissional e o paciente têm limiares de tolerância ao silêncio muito diferentes — e nenhum dos dois sabe disso?",
+      note:"Pense em situações reais que você já viveu ou testemunhou."
+    },
+    {
+      n:"03",
+      q:"A conspiração do silêncio é movida por amor e proteção — mas produz isolamento e sofrimento no paciente. O que esse paradoxo revela sobre como interpretamos o silêncio como forma de cuidar?",
+      note:"Não há resposta esperada. A tensão entre proteger e informar não se resolve facilmente."
+    },
+    {
+      n:"04",
+      q:"Se silêncios de conexão melhoram mensuravelmente a qualidade de vida (Gramling et al., 2022), por que essa habilidade ainda não é ensinada de forma explícita na formação em enfermagem? O que precisaria mudar?",
+      note:"Pense na estrutura da formação, no tempo das consultas, na cultura das equipes."
+    },
+    {
+      n:"05",
+      q:"No telemonitoramento de feridas crônicas, você está à distância — sem toque, sem cheiro, sem presença física. O que resta do cuidado quando o canal é apenas voz e imagem? Qual o papel do silêncio nesse espaço reduzido?",
+      note:"Não há resposta esperada. O próprio desconforto com a pergunta já é um dado clínico."
+    },
+    {
+      n:"06",
+      q:"O ma japonês sugere que o ser humano é constituído de intervalo — '人間', pessoa + pausa. Se o silêncio faz parte de quem somos, o que acontece com quem trabalha numa equipe que não deixa nunca ninguém calar?",
+      note:"Pense no efeito acumulado sobre o profissional — não só sobre o paciente."
+    },
+    {
+      n:"07",
+      q:"O silêncio Guarani protege a palavra-alma de ser pronunciada sem estar pronta. O silêncio do terreiro protege o axé de ser desperdiçado. Há algo nessa lógica que a clínica poderia aprender — sobre quando não falar é um acto de cuidado?",
+      note:"Não há resposta esperada. Pense no que se perde quando o profissional fala cedo demais."
+    },
+    {
+      n:"08",
+      q:"Você trabalha no sul do Brasil, onde habitam comunidades Guarani e onde o Batuque, a Umbanda e a Quimbanda têm presença forte. Um paciente do terreiro ou de aldeia Guarani está em silêncio durante o curativo. Como leria esse silêncio — e o que mudaria na sua abordagem?",
+      note:"O contexto cultural do paciente muda o que o silêncio significa. Essa leitura faz parte da competência clínica?"
+    }
+  ];
+
+  function buildCard(item, isRefl) {
+    var card = document.createElement('div');
+    card.className = 'q-card';
+
+    var hdr = document.createElement('div');
+    hdr.className = 'q-header';
+
+    var num = document.createElement('span');
+    num.className = 'q-num';
+    num.textContent = item.n;
+
+    var txt = document.createElement('p');
+    txt.className = 'q-text';
+    txt.textContent = item.q;
+
+    var chev = document.createElement('span');
+    chev.className = 'q-chevron';
+    chev.textContent = '▾';
+
+    hdr.appendChild(num);
+    hdr.appendChild(txt);
+    hdr.appendChild(chev);
+    card.appendChild(hdr);
+
+    var body = document.createElement('div');
+    body.className = isRefl ? 'q-body reflect' : 'q-body';
+    body.textContent = isRefl ? item.note : '💡 ' + item.hint;
+    card.appendChild(body);
+
+    card.addEventListener('click', function(){
+      card.classList.toggle('open');
+    });
+
+    return card;
+  }
+
+  comp.forEach(function(item){ document.getElementById('comp-qs').appendChild(buildCard(item, false)); });
+  refl.forEach(function(item){ document.getElementById('ref-qs').appendChild(buildCard(item, true)); });
+})();
+</script>
+
+<!-- ── RODAPÉ ── -->
+<footer class="inst-footer">
+  <p>Infográfico elaborado pelos projetos Amor à Pele e PET-Saúde Digital G10 Feridas Crônicas, UFPel, em Junho de 2026.</p>
+  <p style="margin-top:4px; font-size:11px;">Universidade Federal de Pelotas · Faculdade de Enfermagem · Telemonitoramento de Feridas Crônicas</p>
+</footer>
+
+</body>
+</html>
