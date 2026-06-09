@@ -1,0 +1,482 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Publicações G10 | PET-Saúde UFPel</title>
+  <style>
+    :root{
+      --bg:#f6f8fb; --card:#ffffff; --text:#0f172a; --muted:#475569; --border:#e2e8f0;
+      --blue:#3b82c4; --blue2:#1e3a8a; --orange:#d4653b; --soft:#eff6ff;
+      --shadow:0 10px 30px rgba(15,23,42,.08); --radius:14px;
+    }
+    *{box-sizing:border-box}
+    body{margin:0;font-family:system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,Cantarell,"Helvetica Neue",Arial,"Noto Sans",sans-serif;background:linear-gradient(180deg,rgba(59,130,196,.08),transparent 35%),linear-gradient(90deg,rgba(212,101,59,.06),transparent 45%),var(--bg);color:var(--text)}
+    .wrap{max-width:1180px;margin:0 auto;padding:24px}
+    header{display:flex;gap:18px;align-items:center;background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:18px;box-shadow:var(--shadow)}
+    .mark{width:92px;height:92px;border-radius:20px;display:grid;place-items:center;font-weight:900;color:#fff;font-size:1.15rem;background:linear-gradient(135deg,var(--blue),var(--orange));box-shadow:inset 0 0 0 1px rgba(255,255,255,.35)}
+    .hero-logo{width:180px;max-width:32vw;height:auto;border-radius:14px;display:block;box-shadow:0 8px 24px rgba(15,23,42,.10);border:1px solid var(--border)}
+    .title h1{margin:0;font-size:1.35rem;line-height:1.2} .title p{margin:.4rem 0 0;color:var(--muted)}
+    .badge{display:inline-flex;align-items:center;gap:8px;margin-top:10px;font-size:.9rem;color:#0b1220;padding:6px 10px;border-radius:999px;background:linear-gradient(90deg,rgba(59,130,196,.18),rgba(212,101,59,.18));border:1px solid rgba(59,130,196,.25);width:fit-content}
+
+    .featured-links{margin-top:18px;display:grid;grid-template-columns:1fr 1fr;gap:12px}
+    .featured-link{display:flex;align-items:center;gap:14px;text-decoration:none;color:var(--text);background:var(--card);border:1px solid var(--border);border-radius:var(--radius);box-shadow:var(--shadow);padding:15px 16px;position:relative;overflow:hidden;transition:transform .08s ease,border-color .2s ease,box-shadow .2s ease}
+    .featured-link:before{content:"";position:absolute;inset:-2px -2px auto -2px;height:4px;background:linear-gradient(90deg,var(--blue),var(--orange),var(--blue2));opacity:.95}
+    .featured-link:hover{transform:translateY(-1px);border-color:rgba(59,130,196,.45);box-shadow:0 14px 34px rgba(15,23,42,.11)}
+    .featured-link strong{display:block;font-size:1rem;line-height:1.2;margin-bottom:3px;color:#0f172a}
+    .featured-link span{display:block;color:var(--muted);font-size:.9rem;line-height:1.35}
+    .hero-logo-link{display:block;line-height:0;border-radius:14px;transition:transform .08s ease,box-shadow .2s ease}
+    .hero-logo-link:hover{transform:translateY(-1px)}
+    .stats{margin-top:18px;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px}
+    .stat{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);box-shadow:var(--shadow);padding:14px;position:relative;overflow:hidden}
+    .stat:before,.pub-card:before,.panel:before{content:"";position:absolute;inset:-2px -2px auto -2px;height:4px;background:linear-gradient(90deg,var(--blue),var(--orange),var(--blue2));opacity:.95}
+    .stat b{display:block;font-size:1.55rem;color:var(--blue2)} .stat span{color:var(--muted);font-size:.9rem}
+    .panel{margin-top:16px;background:var(--card);border:1px solid var(--border);border-radius:var(--radius);box-shadow:var(--shadow);padding:16px;position:relative;overflow:hidden}
+    .tools{display:grid;grid-template-columns:1.4fr .8fr .8fr auto;gap:10px;align-items:end;margin-top:8px}
+    label{display:block;font-size:.78rem;color:var(--muted);font-weight:700;text-transform:uppercase;letter-spacing:.04em;margin-bottom:4px}
+    input,select,button{width:100%;border:1px solid var(--border);border-radius:12px;background:#fff;color:var(--text);padding:10px 12px;font:inherit}
+    button{cursor:pointer;font-weight:700;background:linear-gradient(90deg,rgba(59,130,196,.16),rgba(212,101,59,.14));border-color:rgba(59,130,196,.25)}
+    .view-toggle{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px}
+    .view-toggle button{width:auto;padding:9px 12px}
+    .view-toggle button.active{border-color:rgba(59,130,196,.55);box-shadow:0 6px 18px rgba(59,130,196,.14)}
+    #count{margin-top:10px;color:var(--muted);font-size:.92rem}
+    .cards{margin-top:16px;display:grid;grid-template-columns:1fr;gap:14px}
+    .pub-card{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);box-shadow:var(--shadow);padding:16px;position:relative;overflow:hidden}
+    .pub-head{display:grid;grid-template-columns:auto 1fr;gap:12px;align-items:start;margin-top:4px}
+    .num{width:38px;height:38px;border-radius:12px;display:grid;place-items:center;background:rgba(59,130,196,.12);border:1px solid rgba(59,130,196,.25);color:var(--blue2);font-weight:900}
+    .pub-title h2{margin:0;font-size:1.05rem;line-height:1.3}
+    .meta{margin-top:7px}
+    .tag{display:inline-block;background:#dbe8fb;color:#1f3b63;padding:3px 8px;border-radius:999px;font-size:.78rem;font-weight:700;margin:2px 4px 2px 0}
+    .tag.small{font-size:.72rem}
+    .pub-grid{display:grid;grid-template-columns:.8fr 1.2fr;gap:12px;margin-top:14px}
+    h3{margin:0 0 7px;font-size:.82rem;text-transform:uppercase;letter-spacing:.04em;color:#1f3b63}
+    .chips{display:flex;flex-wrap:wrap;gap:6px}
+    .chip{display:inline-flex;align-items:center;border:1px solid var(--border);background:#fff;border-radius:999px;padding:5px 9px;font-size:.86rem;color:#334155}
+    .chip.resp{background:rgba(212,101,59,.10);border-color:rgba(212,101,59,.25);color:#7c2d12;font-weight:700}
+    .sintese,.obs{margin-top:14px;border-top:1px solid var(--border);padding-top:12px}
+    .line,.obs-line{margin:.35rem 0;color:#334155;line-height:1.5} .obs-line{color:#475569}
+    .dash{color:#94a3b8}
+    .table-wrap{display:none;margin-top:16px;overflow-x:auto;-webkit-overflow-scrolling:touch;border:1px solid var(--border);border-radius:var(--radius);background:#fff}
+    table{width:100%;min-width:1120px;border-collapse:collapse}
+    thead{background:#e3edf9} th{padding:12px;text-align:left;font-size:.86rem;color:#1f3b63;border-bottom:2px solid #c5d4e8;white-space:nowrap}
+    td{padding:12px;vertical-align:top;border-bottom:1px solid #e6ecf3;font-size:.88rem;line-height:1.45} .col-num{font-weight:800;color:#1f3b63;width:48px}
+    tr:hover td{background:#fafcff}
+    footer{margin:18px 0 6px;color:var(--muted);font-size:.85rem;text-align:center}
+    @media (max-width:900px){.featured-links{grid-template-columns:1fr}.stats{grid-template-columns:repeat(2,1fr)}.tools{grid-template-columns:1fr}.pub-grid{grid-template-columns:1fr}}
+    @media (max-width:640px){.wrap{padding:14px}header{align-items:flex-start;gap:12px}.hero-logo{width:115px;max-width:38vw;border-radius:12px}.mark{width:64px;height:64px;border-radius:16px}.title h1{font-size:1.1rem}.stats{grid-template-columns:1fr}}
+    @media print{body{background:#fff}.tools,.view-toggle{display:none}.pub-card,.panel,.stat,header{box-shadow:none}}
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <header>
+      <a class="hero-logo-link" href="https://wp.ufpel.edu.br/siiepe/" target="_blank" rel="noopener" aria-label="Abrir site da SIIEPE UFPel">
+        <img class="hero-logo" src="siiepe.jpg" alt="12ª SIIEPE UFPel 2026">
+      </a>
+      <div class="title">
+        <h1>Publicações</h1>
+        <p>PET-Saúde UFPel · Telemonitoramento de Feridas Crônicas · livros, capítulos e artigos em elaboração</p>
+      </div>
+    </header>
+
+    <section class="featured-links" aria-label="Links em destaque">
+      <a class="featured-link" href="https://wp.ufpel.edu.br/siiepe/" target="_blank" rel="noopener">
+        <div>
+          <strong>SIIEPE UFPel</strong>
+          <span>Acesse a página oficial da Semana Integrada de Inovação, Ensino, Pesquisa e Extensão.</span>
+        </div>
+      </a>
+
+      <a class="featured-link" href="resumo.pdf" target="_blank" rel="noopener">
+        <div>
+          <strong>Exemplo de estrutura &amp; organização de resumo</strong>
+          <span>Exemplo de estrutura &amp; organização de resumo, repassado pela profa. Adrize.</span>
+        </div>
+      </a>
+    </section>
+
+    <section class="stats" aria-label="Resumo das publicações">
+      <div class="stat"><b>10</b><span>publicações</span></div>
+      <div class="stat"><b>5</b><span>responsáveis</span></div>
+      <div class="stat"><b>16</b><span>autores citados</span></div>
+      <div class="stat"><b>5</b><span>tipos/modalidades</span></div>
+    </section>
+
+    <section class="panel">
+      <h2 style="margin:8px 0 4px;font-size:1.05rem">Consulta rápida</h2>
+      <p style="margin:0;color:var(--muted);font-size:.94rem">Filtre por palavra, responsável ou tipo. A visualização em cartões é melhor no celular; a tabela é boa para conferência.</p>
+      <div class="tools">
+        <div><label for="q">Buscar</label><input id="q" type="search" placeholder="Título, autor, método, observação..."></div>
+        <div><label for="resp">Responsável</label><select id="resp"><option value="">Todos</option><option value="giovana">Giovana</option><option value="laura">Laura</option><option value="leonardo">Leonardo</option><option value="leticia">Leticia</option><option value="patrícia">Patrícia</option></select></div>
+        <div><label for="tipo">Tipo</label><select id="tipo"><option value="">Todos</option><option value="cec">CEC</option><option value="ceg">CEG</option><option value="ceg via pet">CEG via PET</option><option value="cic">CIC</option><option value="revisão / cic">Revisão / CIC</option></select></div>
+        <div><label>&nbsp;</label><button id="clear">Limpar</button></div>
+      </div>
+      <div class="view-toggle" aria-label="Alternar visualização">
+        <button id="cardsBtn" class="active" type="button">Ver cartões</button>
+        <button id="tableBtn" type="button">Ver tabela</button>
+      </div>
+      <div id="count"></div>
+    </section>
+
+    <main id="cards" class="cards">
+      
+      <article class="pub-card" data-resp="laura leticia" data-tipo="cic" data-search="uso de tecnologias digitais e telemonitoramento em feridas crônicas: revisão da literatura cic laura leticia laura bruna leticia patrícia thaislan objetivo: identificar e analisar evidências sobre uso e efetividade de ferramentas de telemonitoramento remoto no manejo de feridas crônicas na atenção básica.
+método: revisão integrativa da literatura em bases de dados indexadas, incluindo artigos sobre acompanhamento remoto por imagem, apps de saúde digital e suporte interprofissional.
+resultados: mapeamento de desfechos como redução no tempo de cicatrização, diminuição de complicações/reinternações e satisfação dos usuários com a telessaúde.
+conclusão: a saúde digital é aliada na assistência a pacientes crônicos, fornecendo subsídios que validam a implementação de plataformas de telemonitoramento no sus. leticia: fazer breve revisão literária de tema de grande relevância.
+leticia: no momento, não apresenta.">
+        <div class="pub-head">
+          <div class="num">1</div>
+          <div class="pub-title">
+            <h2>Uso de tecnologias digitais e telemonitoramento em feridas crônicas: revisão da literatura</h2>
+            <div class="meta"><span class="tag">CIC</span></div>
+          </div>
+        </div>
+        <div class="pub-grid">
+          <section><h3>Responsável</h3><div class="chips"><span class="chip resp">Laura</span><span class="chip resp">Leticia</span></div></section>
+          <section><h3>Autores</h3><div class="chips"><span class="chip">Laura</span><span class="chip">Bruna</span><span class="chip">Leticia</span><span class="chip">Patrícia</span><span class="chip">Thaislan</span></div></section>
+        </div>
+        <section class="sintese"><h3>Síntese</h3><p class="line"><strong>OBJETIVO:</strong> Identificar e analisar evidências sobre uso e efetividade de ferramentas de telemonitoramento remoto no manejo de feridas crônicas na atenção básica.</p>
+<p class="line"><strong>MÉTODO:</strong> Revisão integrativa da literatura em bases de dados indexadas, incluindo artigos sobre acompanhamento remoto por imagem, apps de saúde digital e suporte interprofissional.</p>
+<p class="line"><strong>RESULTADOS:</strong> Mapeamento de desfechos como redução no tempo de cicatrização, diminuição de complicações/reinternações e satisfação dos usuários com a telessaúde.</p>
+<p class="line"><strong>CONCLUSÃO:</strong> A saúde digital é aliada na assistência a pacientes crônicos, fornecendo subsídios que validam a implementação de plataformas de telemonitoramento no SUS.</p></section>
+        <section class="obs"><h3>Observações</h3><p class="obs-line">Leticia: fazer breve revisão literária de tema de grande relevância.</p>
+<p class="obs-line">Leticia: no momento, não apresenta.</p></section>
+      </article>
+    
+      <article class="pub-card" data-resp="laura" data-tipo="cec" data-search="implementação de um modelo de telemonitoramento para feridas crônicas: relato de experiência cec laura laura bruna lilian alejandro gabi vivi objetivo: descrever a experiência prática de implantação e início das atividades de um ambulatório especializado em feridas crônicas em pelotas-rs.
+método: relato de experiência descritivo e institucional sobre as etapas de estruturação do serviço físico e vivência do cuidado às lesões por equipe interprofissional (medicina, enfermagem e engenharia de produção).
+resultados: abertura do espaço ambulatorial, padronização de condutas clínicas interprofissionais e fortalecimento do aprendizado prático dos estudantes, estabelecendo base para futuras etapas de telemonitoramento.
+conclusão: relevância de espaços focados na interprofissionalidade no sus para qualificar o tratamento de feridas crônicas e preparar a rede para ferramentas de saúde digital. —">
+        <div class="pub-head">
+          <div class="num">2</div>
+          <div class="pub-title">
+            <h2>Implementação de um modelo de Telemonitoramento para feridas crônicas: relato de experiência</h2>
+            <div class="meta"><span class="tag">CEC</span></div>
+          </div>
+        </div>
+        <div class="pub-grid">
+          <section><h3>Responsável</h3><div class="chips"><span class="chip resp">Laura</span></div></section>
+          <section><h3>Autores</h3><div class="chips"><span class="chip">Laura</span><span class="chip">Bruna</span><span class="chip">Lilian</span><span class="chip">Alejandro</span><span class="chip">Gabi</span><span class="chip">Vivi</span></div></section>
+        </div>
+        <section class="sintese"><h3>Síntese</h3><p class="line"><strong>OBJETIVO:</strong> Descrever a experiência prática de implantação e início das atividades de um ambulatório especializado em feridas crônicas em Pelotas-RS.</p>
+<p class="line"><strong>MÉTODO:</strong> Relato de experiência descritivo e institucional sobre as etapas de estruturação do serviço físico e vivência do cuidado às lesões por equipe interprofissional (medicina, enfermagem e engenharia de produção).</p>
+<p class="line"><strong>RESULTADOS:</strong> Abertura do espaço ambulatorial, padronização de condutas clínicas interprofissionais e fortalecimento do aprendizado prático dos estudantes, estabelecendo base para futuras etapas de telemonitoramento.</p>
+<p class="line"><strong>CONCLUSÃO:</strong> Relevância de espaços focados na interprofissionalidade no SUS para qualificar o tratamento de feridas crônicas e preparar a rede para ferramentas de saúde digital.</p></section>
+        <section class="obs"><h3>Observações</h3><span class="dash">—</span></section>
+      </article>
+    
+      <article class="pub-card" data-resp="leticia" data-tipo="revisão / cic" data-search="principais tipos de feridas crônicas revisão / cic leticia leticia patrícia thaislan lilian gabi adrize objetivo: apresentar os principais tipos de feridas crônicas.
+método: revisão bibliográfica baseada em artigos científicos, livros e diretrizes.
+resultados esperados: compreensão das características de cada ferida, fatores de risco, prevenção e cuidados.
+conclusão: destaque para a importância da atuação da enfermagem na avaliação e cuidados dos pacientes. leticia: no momento, não apresenta.">
+        <div class="pub-head">
+          <div class="num">3</div>
+          <div class="pub-title">
+            <h2>Principais tipos de Feridas Crônicas</h2>
+            <div class="meta"><span class="tag">Revisão / CIC</span></div>
+          </div>
+        </div>
+        <div class="pub-grid">
+          <section><h3>Responsável</h3><div class="chips"><span class="chip resp">Leticia</span></div></section>
+          <section><h3>Autores</h3><div class="chips"><span class="chip">Leticia</span><span class="chip">Patrícia</span><span class="chip">Thaislan</span><span class="chip">Lilian</span><span class="chip">Gabi</span><span class="chip">Adrize</span></div></section>
+        </div>
+        <section class="sintese"><h3>Síntese</h3><p class="line"><strong>OBJETIVO:</strong> Apresentar os principais tipos de feridas crônicas.</p>
+<p class="line"><strong>MÉTODO:</strong> Revisão bibliográfica baseada em artigos científicos, livros e diretrizes.</p>
+<p class="line"><strong>RESULTADOS ESPERADOS:</strong> Compreensão das características de cada ferida, fatores de risco, prevenção e cuidados.</p>
+<p class="line"><strong>CONCLUSÃO:</strong> Destaque para a importância da atuação da enfermagem na avaliação e cuidados dos pacientes.</p></section>
+        <section class="obs"><h3>Observações</h3><p class="obs-line">Leticia: no momento, não apresenta.</p></section>
+      </article>
+    
+      <article class="pub-card" data-resp="patrícia" data-tipo="cec" data-search="papel do enfermeiro no cuidado com lesões crônicas em um ambulatório de feridas no sul do brasil: relato de experiência cec patrícia patrícia leticia thaislan lilian adrize objetivo: relatar a experiência de acadêmicos de enfermagem no atendimento de pacientes com lesões crônicas em ambulatório recém-inaugurado no sul do brasil.
+método: relato de experiência.
+resultados/conclusão: demonstrar a importância do serviço para a comunidade e como ele auxilia na melhora da qualidade de vida dos pacientes. patrícia: gostaria de uma opinião para prosseguir com o tema.">
+        <div class="pub-head">
+          <div class="num">4</div>
+          <div class="pub-title">
+            <h2>Papel do Enfermeiro no cuidado com lesões crônicas em um ambulatório de feridas no Sul do Brasil: relato de experiência</h2>
+            <div class="meta"><span class="tag">CEC</span></div>
+          </div>
+        </div>
+        <div class="pub-grid">
+          <section><h3>Responsável</h3><div class="chips"><span class="chip resp">Patrícia</span></div></section>
+          <section><h3>Autores</h3><div class="chips"><span class="chip">Patrícia</span><span class="chip">Leticia</span><span class="chip">Thaislan</span><span class="chip">Lilian</span><span class="chip">Adrize</span></div></section>
+        </div>
+        <section class="sintese"><h3>Síntese</h3><p class="line"><strong>OBJETIVO:</strong> Relatar a experiência de acadêmicos de enfermagem no atendimento de pacientes com lesões crônicas em ambulatório recém-inaugurado no Sul do Brasil.</p>
+<p class="line"><strong>MÉTODO:</strong> Relato de experiência.</p>
+<p class="line"><strong>RESULTADOS/CONCLUSÃO:</strong> Demonstrar a importância do serviço para a comunidade e como ele auxilia na melhora da qualidade de vida dos pacientes.</p></section>
+        <section class="obs"><h3>Observações</h3><p class="obs-line">Patrícia: gostaria de uma opinião para prosseguir com o tema.</p></section>
+      </article>
+    
+      <article class="pub-card" data-resp="patrícia" data-tipo="cic" data-search="a utilização de inteligência artificial no cuidado de lesões crônicas: revisão literária cic patrícia patrícia danusa lyah lilian adrize alejandro objetivo: abordar o uso de inteligência artificial no cuidado de pacientes com lesões crônicas, desde a avaliação orientada pela ia até o tratamento indicado.
+método: revisão literária comparando diferentes tipos de ia aplicadas a feridas.
+conclusão: avaliar a eficácia ou não da ferramenta para avaliação das lesões. patrícia: gostaria de uma opinião para prosseguir com o tema.">
+        <div class="pub-head">
+          <div class="num">5</div>
+          <div class="pub-title">
+            <h2>A utilização de inteligência artificial no cuidado de lesões crônicas: revisão literária</h2>
+            <div class="meta"><span class="tag">CIC</span></div>
+          </div>
+        </div>
+        <div class="pub-grid">
+          <section><h3>Responsável</h3><div class="chips"><span class="chip resp">Patrícia</span></div></section>
+          <section><h3>Autores</h3><div class="chips"><span class="chip">Patrícia</span><span class="chip">Danusa</span><span class="chip">Lyah</span><span class="chip">Lilian</span><span class="chip">Adrize</span><span class="chip">Alejandro</span></div></section>
+        </div>
+        <section class="sintese"><h3>Síntese</h3><p class="line"><strong>OBJETIVO:</strong> Abordar o uso de inteligência artificial no cuidado de pacientes com lesões crônicas, desde a avaliação orientada pela IA até o tratamento indicado.</p>
+<p class="line"><strong>MÉTODO:</strong> Revisão literária comparando diferentes tipos de IA aplicadas a feridas.</p>
+<p class="line"><strong>CONCLUSÃO:</strong> Avaliar a eficácia ou não da ferramenta para avaliação das lesões.</p></section>
+        <section class="obs"><h3>Observações</h3><p class="obs-line">Patrícia: gostaria de uma opinião para prosseguir com o tema.</p></section>
+      </article>
+    
+      <article class="pub-card" data-resp="patrícia" data-tipo="ceg via pet" data-search="diferença no tratamento de pacientes com rede de apoio que auxilia no cuidado: relato de experiência ceg via pet patrícia patrícia danusa lyah alejandro gabi vivi objetivo: apresentar a diferença no processo de cicatrização em pacientes que possuem rede de apoio no cuidado.
+método: relato de experiência a partir de atendimento na ubs sansca (paciente com cisto piloidal pós-operatório).
+resultados: paciente com suporte adequado de cuidadores (curativos diários) cicatrizou em poucas semanas lesão que levaria meses — mesmo sendo grande e em local úmido com risco de contaminação.
+conclusão: a rede de apoio tem impacto direto e positivo na cicatrização. patrícia: gostaria de uma opinião para prosseguir com o tema.">
+        <div class="pub-head">
+          <div class="num">6</div>
+          <div class="pub-title">
+            <h2>Diferença no tratamento de pacientes com rede de apoio que auxilia no cuidado: relato de experiência</h2>
+            <div class="meta"><span class="tag">CEG via PET</span></div>
+          </div>
+        </div>
+        <div class="pub-grid">
+          <section><h3>Responsável</h3><div class="chips"><span class="chip resp">Patrícia</span></div></section>
+          <section><h3>Autores</h3><div class="chips"><span class="chip">Patrícia</span><span class="chip">Danusa</span><span class="chip">Lyah</span><span class="chip">Alejandro</span><span class="chip">Gabi</span><span class="chip">Vivi</span></div></section>
+        </div>
+        <section class="sintese"><h3>Síntese</h3><p class="line"><strong>OBJETIVO:</strong> Apresentar a diferença no processo de cicatrização em pacientes que possuem rede de apoio no cuidado.</p>
+<p class="line"><strong>MÉTODO:</strong> Relato de experiência a partir de atendimento na UBS Sansca (paciente com cisto piloidal pós-operatório).</p>
+<p class="line"><strong>RESULTADOS:</strong> Paciente com suporte adequado de cuidadores (curativos diários) cicatrizou em poucas semanas lesão que levaria meses — mesmo sendo grande e em local úmido com risco de contaminação.</p>
+<p class="line"><strong>CONCLUSÃO:</strong> A rede de apoio tem impacto direto e positivo na cicatrização.</p></section>
+        <section class="obs"><h3>Observações</h3><p class="obs-line">Patrícia: gostaria de uma opinião para prosseguir com o tema.</p></section>
+      </article>
+    
+      <article class="pub-card" data-resp="giovana" data-tipo="cec" data-search="feridas e cicatrização: resumo de conteúdo informativo no instagram cec giovana giovana patrícia yanka lilian vivi alejandro problema: falta de informações confiáveis e acessíveis sobre feridas e cicatrização para a população geral.
+método: elaboração e divulgação de conteúdos no instagram com linguagem simples e recursos visuais sobre conceitos de feridas, fatores que influenciam a cicatrização e cuidados básicos.
+resultados esperados: ampliar o conhecimento da população, promover educação em saúde e incentivar práticas adequadas de cuidado e prevenção de complicações. posts: patrícia, yanka e giovana.
+telemonitoramento: lucas, giovana e yanka.">
+        <div class="pub-head">
+          <div class="num">7</div>
+          <div class="pub-title">
+            <h2>Feridas e cicatrização: resumo de conteúdo informativo no Instagram</h2>
+            <div class="meta"><span class="tag">CEC</span></div>
+          </div>
+        </div>
+        <div class="pub-grid">
+          <section><h3>Responsável</h3><div class="chips"><span class="chip resp">Giovana</span></div></section>
+          <section><h3>Autores</h3><div class="chips"><span class="chip">Giovana</span><span class="chip">Patrícia</span><span class="chip">Yanka</span><span class="chip">Lilian</span><span class="chip">Vivi</span><span class="chip">Alejandro</span></div></section>
+        </div>
+        <section class="sintese"><h3>Síntese</h3><p class="line"><strong>PROBLEMA:</strong> Falta de informações confiáveis e acessíveis sobre feridas e cicatrização para a população geral.</p>
+<p class="line"><strong>MÉTODO:</strong> Elaboração e divulgação de conteúdos no Instagram com linguagem simples e recursos visuais sobre conceitos de feridas, fatores que influenciam a cicatrização e cuidados básicos.</p>
+<p class="line"><strong>RESULTADOS ESPERADOS:</strong> Ampliar o conhecimento da população, promover educação em saúde e incentivar práticas adequadas de cuidado e prevenção de complicações.</p></section>
+        <section class="obs"><h3>Observações</h3><p class="obs-line">Posts: Patrícia, Yanka e Giovana.</p>
+<p class="obs-line">Telemonitoramento: Lucas, Giovana e Yanka.</p></section>
+      </article>
+    
+      <article class="pub-card" data-resp="giovana" data-tipo="ceg" data-search="a atualização dos acadêmicos de enfermagem e medicina no telemonitoramento/telematriciamento de feridas ceg giovana giovana lucas yanka adrize gabi vivi problema: dificuldade de acompanhamento contínuo e especializado de pacientes com feridas.
+método: realização de telemonitoramento e telematriciamento por acadêmicos de enfermagem e medicina, sob supervisão de profissionais, utilizando ferramentas digitais para avaliação e acompanhamento.
+resultados esperados: melhorar a qualidade da assistência, favorecer a cicatrização, ampliar o acesso ao cuidado especializado e fortalecer a formação em saúde digital. posts: patrícia, yanka e giovana.
+telemonitoramento: lucas, giovana e yanka.">
+        <div class="pub-head">
+          <div class="num">8</div>
+          <div class="pub-title">
+            <h2>A atualização dos acadêmicos de enfermagem e medicina no telemonitoramento/telematriciamento de feridas</h2>
+            <div class="meta"><span class="tag">CEG</span></div>
+          </div>
+        </div>
+        <div class="pub-grid">
+          <section><h3>Responsável</h3><div class="chips"><span class="chip resp">Giovana</span></div></section>
+          <section><h3>Autores</h3><div class="chips"><span class="chip">Giovana</span><span class="chip">Lucas</span><span class="chip">Yanka</span><span class="chip">Adrize</span><span class="chip">Gabi</span><span class="chip">Vivi</span></div></section>
+        </div>
+        <section class="sintese"><h3>Síntese</h3><p class="line"><strong>PROBLEMA:</strong> Dificuldade de acompanhamento contínuo e especializado de pacientes com feridas.</p>
+<p class="line"><strong>MÉTODO:</strong> Realização de telemonitoramento e telematriciamento por acadêmicos de enfermagem e medicina, sob supervisão de profissionais, utilizando ferramentas digitais para avaliação e acompanhamento.</p>
+<p class="line"><strong>RESULTADOS ESPERADOS:</strong> Melhorar a qualidade da assistência, favorecer a cicatrização, ampliar o acesso ao cuidado especializado e fortalecer a formação em saúde digital.</p></section>
+        <section class="obs"><h3>Observações</h3><p class="obs-line">Posts: Patrícia, Yanka e Giovana.</p>
+<p class="obs-line">Telemonitoramento: Lucas, Giovana e Yanka.</p></section>
+      </article>
+    
+      <article class="pub-card" data-resp="leonardo" data-tipo="cec" data-search="impacto das publicações digitais em saúde: estudo de alcance em página do instagram cec leonardo leonardo danusa alejandro gabi lilian vivi objetivo: analisar o alcance das publicações de uma página de conteúdo em saúde no instagram, investigando seu potencial como ferramenta de divulgação científica e educação em saúde.
+método: análise quantitativa das métricas da plataforma (alcance, impressões, curtidas, compartilhamentos, comentários e salvamentos).
+resultados esperados: identificar os tipos de conteúdo com maior visibilidade e interação, contribuindo para a compreensão da efetividade das redes sociais na disseminação de informações em saúde. —">
+        <div class="pub-head">
+          <div class="num">9</div>
+          <div class="pub-title">
+            <h2>Impacto das Publicações Digitais em Saúde: estudo de alcance em página do Instagram</h2>
+            <div class="meta"><span class="tag">CEC</span></div>
+          </div>
+        </div>
+        <div class="pub-grid">
+          <section><h3>Responsável</h3><div class="chips"><span class="chip resp">Leonardo</span></div></section>
+          <section><h3>Autores</h3><div class="chips"><span class="chip">Leonardo</span><span class="chip">Danusa</span><span class="chip">Alejandro</span><span class="chip">Gabi</span><span class="chip">Lilian</span><span class="chip">Vivi</span></div></section>
+        </div>
+        <section class="sintese"><h3>Síntese</h3><p class="line"><strong>OBJETIVO:</strong> Analisar o alcance das publicações de uma página de conteúdo em saúde no Instagram, investigando seu potencial como ferramenta de divulgação científica e educação em saúde.</p>
+<p class="line"><strong>MÉTODO:</strong> Análise quantitativa das métricas da plataforma (alcance, impressões, curtidas, compartilhamentos, comentários e salvamentos).</p>
+<p class="line"><strong>RESULTADOS ESPERADOS:</strong> Identificar os tipos de conteúdo com maior visibilidade e interação, contribuindo para a compreensão da efetividade das redes sociais na disseminação de informações em saúde.</p></section>
+        <section class="obs"><h3>Observações</h3><span class="dash">—</span></section>
+      </article>
+    
+      <article class="pub-card" data-resp="leonardo" data-tipo="cec" data-search="caracterização dos atendimentos em ambulatório especializado em feridas crônicas: análise do primeiro mês em pelotas-rs cec leonardo leonardo bruna laura adrize alejandro vivi objetivo: descrever o perfil sociodemográfico, clínico e assistencial dos pacientes atendidos no primeiro mês de funcionamento do ambulatório de feridas crônicas em pelotas-rs.
+método: estudo observacional, descritivo e retrospectivo com análise de prontuários (sexo, idade, raça/cor, escolaridade, condições de saúde, tipo de ferida, número de retornos).
+resultados esperados: caracterizar a população atendida e fornecer subsídios para o planejamento e aprimoramento da assistência. necessita de cep.
+sugestão: transformar em relato de experiência.">
+        <div class="pub-head">
+          <div class="num">10</div>
+          <div class="pub-title">
+            <h2>Caracterização dos atendimentos em ambulatório especializado em feridas crônicas: análise do primeiro mês em Pelotas-RS</h2>
+            <div class="meta"><span class="tag">CEC</span></div>
+          </div>
+        </div>
+        <div class="pub-grid">
+          <section><h3>Responsável</h3><div class="chips"><span class="chip resp">Leonardo</span></div></section>
+          <section><h3>Autores</h3><div class="chips"><span class="chip">Leonardo</span><span class="chip">Bruna</span><span class="chip">Laura</span><span class="chip">Adrize</span><span class="chip">Alejandro</span><span class="chip">Vivi</span></div></section>
+        </div>
+        <section class="sintese"><h3>Síntese</h3><p class="line"><strong>OBJETIVO:</strong> Descrever o perfil sociodemográfico, clínico e assistencial dos pacientes atendidos no primeiro mês de funcionamento do ambulatório de feridas crônicas em Pelotas-RS.</p>
+<p class="line"><strong>MÉTODO:</strong> Estudo observacional, descritivo e retrospectivo com análise de prontuários (sexo, idade, raça/cor, escolaridade, condições de saúde, tipo de ferida, número de retornos).</p>
+<p class="line"><strong>RESULTADOS ESPERADOS:</strong> Caracterizar a população atendida e fornecer subsídios para o planejamento e aprimoramento da assistência.</p></section>
+        <section class="obs"><h3>Observações</h3><p class="obs-line">Necessita de CEP.</p>
+<p class="obs-line">Sugestão: transformar em relato de experiência.</p></section>
+      </article>
+    
+    </main>
+
+    <section id="tableWrap" class="table-wrap" aria-label="Tabela de publicações">
+      <table>
+        <thead>
+          <tr><th>Nº</th><th>Título / Tipo</th><th>Resp.</th><th>Todos os Autores</th><th>Síntese</th><th>Observações</th></tr>
+        </thead>
+        <tbody>
+          
+        <tr>
+          <td class="col-num">1</td>
+          <td><strong>Uso de tecnologias digitais e telemonitoramento em feridas crônicas: revisão da literatura</strong><br><span class="tag small">CIC</span></td>
+          <td>Laura<br>Leticia</td>
+          <td>Laura; Bruna; Leticia; Patrícia; Thaislan</td>
+          <td>OBJETIVO: Identificar e analisar evidências sobre uso e efetividade de ferramentas de telemonitoramento remoto no manejo de feridas crônicas na atenção básica.<br>MÉTODO: Revisão integrativa da literatura em bases de dados indexadas, incluindo artigos sobre acompanhamento remoto por imagem, apps de saúde digital e suporte interprofissional.<br>RESULTADOS: Mapeamento de desfechos como redução no tempo de cicatrização, diminuição de complicações/reinternações e satisfação dos usuários com a telessaúde.<br>CONCLUSÃO: A saúde digital é aliada na assistência a pacientes crônicos, fornecendo subsídios que validam a implementação de plataformas de telemonitoramento no SUS.</td>
+          <td>Leticia: fazer breve revisão literária de tema de grande relevância.<br>Leticia: no momento, não apresenta.</td>
+        </tr>
+    
+        <tr>
+          <td class="col-num">2</td>
+          <td><strong>Implementação de um modelo de Telemonitoramento para feridas crônicas: relato de experiência</strong><br><span class="tag small">CEC</span></td>
+          <td>Laura</td>
+          <td>Laura; Bruna; Lilian; Alejandro; Gabi; Vivi</td>
+          <td>OBJETIVO: Descrever a experiência prática de implantação e início das atividades de um ambulatório especializado em feridas crônicas em Pelotas-RS.<br>MÉTODO: Relato de experiência descritivo e institucional sobre as etapas de estruturação do serviço físico e vivência do cuidado às lesões por equipe interprofissional (medicina, enfermagem e engenharia de produção).<br>RESULTADOS: Abertura do espaço ambulatorial, padronização de condutas clínicas interprofissionais e fortalecimento do aprendizado prático dos estudantes, estabelecendo base para futuras etapas de telemonitoramento.<br>CONCLUSÃO: Relevância de espaços focados na interprofissionalidade no SUS para qualificar o tratamento de feridas crônicas e preparar a rede para ferramentas de saúde digital.</td>
+          <td>—</td>
+        </tr>
+    
+        <tr>
+          <td class="col-num">3</td>
+          <td><strong>Principais tipos de Feridas Crônicas</strong><br><span class="tag small">Revisão / CIC</span></td>
+          <td>Leticia</td>
+          <td>Leticia; Patrícia; Thaislan; Lilian; Gabi; Adrize</td>
+          <td>OBJETIVO: Apresentar os principais tipos de feridas crônicas.<br>MÉTODO: Revisão bibliográfica baseada em artigos científicos, livros e diretrizes.<br>RESULTADOS ESPERADOS: Compreensão das características de cada ferida, fatores de risco, prevenção e cuidados.<br>CONCLUSÃO: Destaque para a importância da atuação da enfermagem na avaliação e cuidados dos pacientes.</td>
+          <td>Leticia: no momento, não apresenta.</td>
+        </tr>
+    
+        <tr>
+          <td class="col-num">4</td>
+          <td><strong>Papel do Enfermeiro no cuidado com lesões crônicas em um ambulatório de feridas no Sul do Brasil: relato de experiência</strong><br><span class="tag small">CEC</span></td>
+          <td>Patrícia</td>
+          <td>Patrícia; Leticia; Thaislan; Lilian; Adrize</td>
+          <td>OBJETIVO: Relatar a experiência de acadêmicos de enfermagem no atendimento de pacientes com lesões crônicas em ambulatório recém-inaugurado no Sul do Brasil.<br>MÉTODO: Relato de experiência.<br>RESULTADOS/CONCLUSÃO: Demonstrar a importância do serviço para a comunidade e como ele auxilia na melhora da qualidade de vida dos pacientes.</td>
+          <td>Patrícia: gostaria de uma opinião para prosseguir com o tema.</td>
+        </tr>
+    
+        <tr>
+          <td class="col-num">5</td>
+          <td><strong>A utilização de inteligência artificial no cuidado de lesões crônicas: revisão literária</strong><br><span class="tag small">CIC</span></td>
+          <td>Patrícia</td>
+          <td>Patrícia; Danusa; Lyah; Lilian; Adrize; Alejandro</td>
+          <td>OBJETIVO: Abordar o uso de inteligência artificial no cuidado de pacientes com lesões crônicas, desde a avaliação orientada pela IA até o tratamento indicado.<br>MÉTODO: Revisão literária comparando diferentes tipos de IA aplicadas a feridas.<br>CONCLUSÃO: Avaliar a eficácia ou não da ferramenta para avaliação das lesões.</td>
+          <td>Patrícia: gostaria de uma opinião para prosseguir com o tema.</td>
+        </tr>
+    
+        <tr>
+          <td class="col-num">6</td>
+          <td><strong>Diferença no tratamento de pacientes com rede de apoio que auxilia no cuidado: relato de experiência</strong><br><span class="tag small">CEG via PET</span></td>
+          <td>Patrícia</td>
+          <td>Patrícia; Danusa; Lyah; Alejandro; Gabi; Vivi</td>
+          <td>OBJETIVO: Apresentar a diferença no processo de cicatrização em pacientes que possuem rede de apoio no cuidado.<br>MÉTODO: Relato de experiência a partir de atendimento na UBS Sansca (paciente com cisto piloidal pós-operatório).<br>RESULTADOS: Paciente com suporte adequado de cuidadores (curativos diários) cicatrizou em poucas semanas lesão que levaria meses — mesmo sendo grande e em local úmido com risco de contaminação.<br>CONCLUSÃO: A rede de apoio tem impacto direto e positivo na cicatrização.</td>
+          <td>Patrícia: gostaria de uma opinião para prosseguir com o tema.</td>
+        </tr>
+    
+        <tr>
+          <td class="col-num">7</td>
+          <td><strong>Feridas e cicatrização: resumo de conteúdo informativo no Instagram</strong><br><span class="tag small">CEC</span></td>
+          <td>Giovana</td>
+          <td>Giovana; Patrícia; Yanka; Lilian; Vivi; Alejandro</td>
+          <td>PROBLEMA: Falta de informações confiáveis e acessíveis sobre feridas e cicatrização para a população geral.<br>MÉTODO: Elaboração e divulgação de conteúdos no Instagram com linguagem simples e recursos visuais sobre conceitos de feridas, fatores que influenciam a cicatrização e cuidados básicos.<br>RESULTADOS ESPERADOS: Ampliar o conhecimento da população, promover educação em saúde e incentivar práticas adequadas de cuidado e prevenção de complicações.</td>
+          <td>Posts: Patrícia, Yanka e Giovana.<br>Telemonitoramento: Lucas, Giovana e Yanka.</td>
+        </tr>
+    
+        <tr>
+          <td class="col-num">8</td>
+          <td><strong>A atualização dos acadêmicos de enfermagem e medicina no telemonitoramento/telematriciamento de feridas</strong><br><span class="tag small">CEG</span></td>
+          <td>Giovana</td>
+          <td>Giovana; Lucas; Yanka; Adrize; Gabi; Vivi</td>
+          <td>PROBLEMA: Dificuldade de acompanhamento contínuo e especializado de pacientes com feridas.<br>MÉTODO: Realização de telemonitoramento e telematriciamento por acadêmicos de enfermagem e medicina, sob supervisão de profissionais, utilizando ferramentas digitais para avaliação e acompanhamento.<br>RESULTADOS ESPERADOS: Melhorar a qualidade da assistência, favorecer a cicatrização, ampliar o acesso ao cuidado especializado e fortalecer a formação em saúde digital.</td>
+          <td>Posts: Patrícia, Yanka e Giovana.<br>Telemonitoramento: Lucas, Giovana e Yanka.</td>
+        </tr>
+    
+        <tr>
+          <td class="col-num">9</td>
+          <td><strong>Impacto das Publicações Digitais em Saúde: estudo de alcance em página do Instagram</strong><br><span class="tag small">CEC</span></td>
+          <td>Leonardo</td>
+          <td>Leonardo; Danusa; Alejandro; Gabi; Lilian; Vivi</td>
+          <td>OBJETIVO: Analisar o alcance das publicações de uma página de conteúdo em saúde no Instagram, investigando seu potencial como ferramenta de divulgação científica e educação em saúde.<br>MÉTODO: Análise quantitativa das métricas da plataforma (alcance, impressões, curtidas, compartilhamentos, comentários e salvamentos).<br>RESULTADOS ESPERADOS: Identificar os tipos de conteúdo com maior visibilidade e interação, contribuindo para a compreensão da efetividade das redes sociais na disseminação de informações em saúde.</td>
+          <td>—</td>
+        </tr>
+    
+        <tr>
+          <td class="col-num">10</td>
+          <td><strong>Caracterização dos atendimentos em ambulatório especializado em feridas crônicas: análise do primeiro mês em Pelotas-RS</strong><br><span class="tag small">CEC</span></td>
+          <td>Leonardo</td>
+          <td>Leonardo; Bruna; Laura; Adrize; Alejandro; Vivi</td>
+          <td>OBJETIVO: Descrever o perfil sociodemográfico, clínico e assistencial dos pacientes atendidos no primeiro mês de funcionamento do ambulatório de feridas crônicas em Pelotas-RS.<br>MÉTODO: Estudo observacional, descritivo e retrospectivo com análise de prontuários (sexo, idade, raça/cor, escolaridade, condições de saúde, tipo de ferida, número de retornos).<br>RESULTADOS ESPERADOS: Caracterizar a população atendida e fornecer subsídios para o planejamento e aprimoramento da assistência.</td>
+          <td>Necessita de CEP.<br>Sugestão: transformar em relato de experiência.</td>
+        </tr>
+    
+        </tbody>
+      </table>
+    </section>
+
+    <footer>PET-Saúde UFPel · G10 Telemonitoramento de Feridas Crônicas</footer>
+  </div>
+
+  <script>
+    const q = document.getElementById('q');
+    const resp = document.getElementById('resp');
+    const tipo = document.getElementById('tipo');
+    const clear = document.getElementById('clear');
+    const count = document.getElementById('count');
+    const cards = Array.from(document.querySelectorAll('.pub-card'));
+    const tableRows = Array.from(document.querySelectorAll('tbody tr'));
+    const cardsBtn = document.getElementById('cardsBtn');
+    const tableBtn = document.getElementById('tableBtn');
+    const cardsBox = document.getElementById('cards');
+    const tableWrap = document.getElementById('tableWrap');
+
+    function normalize(s){ return (s || '').toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g,''); }
+    function applyFilters(){
+      const term = normalize(q.value);
+      const r = normalize(resp.value);
+      const t = normalize(tipo.value);
+      let visible = 0;
+      cards.forEach((card, i) => {
+        const okTerm = !term || normalize(card.dataset.search).includes(term);
+        const okResp = !r || normalize(card.dataset.resp).includes(r);
+        const okTipo = !t || normalize(card.dataset.tipo).includes(t);
+        const ok = okTerm && okResp && okTipo;
+        card.style.display = ok ? '' : 'none';
+        if (tableRows[i]) tableRows[i].style.display = ok ? '' : 'none';
+        if (ok) visible++;
+      });
+      count.textContent = visible + ' de ' + cards.length + ' publicações exibidas';
+    }
+    [q, resp, tipo].forEach(el => el.addEventListener('input', applyFilters));
+    clear.addEventListener('click', () => { q.value=''; resp.value=''; tipo.value=''; applyFilters(); });
+    cardsBtn.addEventListener('click', () => { cardsBox.style.display='grid'; tableWrap.style.display='none'; cardsBtn.classList.add('active'); tableBtn.classList.remove('active'); });
+    tableBtn.addEventListener('click', () => { cardsBox.style.display='none'; tableWrap.style.display='block'; tableBtn.classList.add('active'); cardsBtn.classList.remove('active'); });
+    applyFilters();
+  </script>
+</body>
+</html>
