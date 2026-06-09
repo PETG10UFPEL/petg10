@@ -1,0 +1,75 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 700 400" width="700" height="400">
+  <defs>
+    <linearGradient id="barGrad" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#2D7DD2"/>
+      <stop offset="100%" stop-color="#1A5FA8"/>
+    </linearGradient>
+  </defs>
+  <rect width="700" height="400" fill="#FAFAF8" rx="12"/>
+  <!-- Title -->
+  <text x="350" y="36" text-anchor="middle" font-family="'Segoe UI',Arial,sans-serif" font-size="16" font-weight="700" fill="#1A3A5C">Mediana de Scans Semanais por Mês</text>
+  <text x="350" y="56" text-anchor="middle" font-family="'Segoe UI',Arial,sans-serif" font-size="12" fill="#5A7A9A">Aderência sustentada ao longo de 6 meses (p = 0,12 — sem diferença significativa)</text>
+  <!-- Axes -->
+  <line x1="80" y1="320" x2="660" y2="320" stroke="#CDD5E0" stroke-width="2"/>
+  <line x1="80" y1="320" x2="80" y2="80" stroke="#CDD5E0" stroke-width="2"/>
+  <!-- Y grid lines and labels -->
+  <!-- 0 -->
+  <line x1="80" y1="320" x2="660" y2="320" stroke="#EEF1F5" stroke-width="1" stroke-dasharray="4,4"/>
+  <text x="68" y="324" text-anchor="end" font-family="'Segoe UI',Arial,sans-serif" font-size="11" fill="#7A90A8">0</text>
+  <!-- 2 -->
+  <line x1="80" y1="272" x2="660" y2="272" stroke="#EEF1F5" stroke-width="1" stroke-dasharray="4,4"/>
+  <text x="68" y="276" text-anchor="end" font-family="'Segoe UI',Arial,sans-serif" font-size="11" fill="#7A90A8">2</text>
+  <!-- 4 -->
+  <line x1="80" y1="224" x2="660" y2="224" stroke="#EEF1F5" stroke-width="1" stroke-dasharray="4,4"/>
+  <text x="68" y="228" text-anchor="end" font-family="'Segoe UI',Arial,sans-serif" font-size="11" fill="#7A90A8">4</text>
+  <!-- 6 -->
+  <line x1="80" y1="176" x2="660" y2="176" stroke="#EEF1F5" stroke-width="1" stroke-dasharray="4,4"/>
+  <text x="68" y="180" text-anchor="end" font-family="'Segoe UI',Arial,sans-serif" font-size="11" fill="#7A90A8">6</text>
+  <!-- 8 -->
+  <line x1="80" y1="128" x2="660" y2="128" stroke="#EEF1F5" stroke-width="1" stroke-dasharray="4,4"/>
+  <text x="68" y="132" text-anchor="end" font-family="'Segoe UI',Arial,sans-serif" font-size="11" fill="#7A90A8">8</text>
+  <!-- 10 -->
+  <line x1="80" y1="80" x2="660" y2="80" stroke="#EEF1F5" stroke-width="1" stroke-dasharray="4,4"/>
+  <text x="68" y="84" text-anchor="end" font-family="'Segoe UI',Arial,sans-serif" font-size="11" fill="#7A90A8">10</text>
+  <!-- Y axis label -->
+  <text x="20" y="200" text-anchor="middle" font-family="'Segoe UI',Arial,sans-serif" font-size="12" fill="#5A7A9A" transform="rotate(-90,20,200)">Scans por semana</text>
+  <!-- Bars: months 1-6, median ~6, scale: 0=320, 10=80, so 1unit=24px -->
+  <!-- Month 1: median ~6 -->
+  <rect x="115" y="176" width="60" height="144" fill="url(#barGrad)" rx="5" opacity="0.85"/>
+  <!-- IQR box -->
+  <rect x="135" y="152" width="20" height="60" fill="#5BA3E0" rx="3" opacity="0.5"/>
+  <line x1="145" y1="176" x2="145" y2="176" stroke="#1A3A5C" stroke-width="2"/>
+  <!-- Month 2: median ~6 -->
+  <rect x="210" y="176" width="60" height="144" fill="url(#barGrad)" rx="5" opacity="0.85"/>
+  <rect x="230" y="150" width="20" height="62" fill="#5BA3E0" rx="3" opacity="0.5"/>
+  <!-- Month 3: median ~6 -->
+  <rect x="305" y="176" width="60" height="144" fill="url(#barGrad)" rx="5" opacity="0.85"/>
+  <rect x="325" y="154" width="20" height="58" fill="#5BA3E0" rx="3" opacity="0.5"/>
+  <!-- Month 4: median ~6 -->
+  <rect x="400" y="176" width="60" height="144" fill="url(#barGrad)" rx="5" opacity="0.85"/>
+  <rect x="420" y="156" width="20" height="56" fill="#5BA3E0" rx="3" opacity="0.5"/>
+  <!-- Month 5: median ~6 -->
+  <rect x="495" y="176" width="60" height="144" fill="url(#barGrad)" rx="5" opacity="0.85"/>
+  <rect x="515" y="160" width="20" height="50" fill="#5BA3E0" rx="3" opacity="0.5"/>
+  <!-- Month 6: median ~6 -->
+  <rect x="575" y="176" width="60" height="144" fill="url(#barGrad)" rx="5" opacity="0.85"/>
+  <rect x="595" y="155" width="20" height="55" fill="#5BA3E0" rx="3" opacity="0.5"/>
+  <!-- X labels -->
+  <text x="145" y="338" text-anchor="middle" font-family="'Segoe UI',Arial,sans-serif" font-size="12" fill="#3A5A7A">Mês 1</text>
+  <text x="240" y="338" text-anchor="middle" font-family="'Segoe UI',Arial,sans-serif" font-size="12" fill="#3A5A7A">Mês 2</text>
+  <text x="335" y="338" text-anchor="middle" font-family="'Segoe UI',Arial,sans-serif" font-size="12" fill="#3A5A7A">Mês 3</text>
+  <text x="430" y="338" text-anchor="middle" font-family="'Segoe UI',Arial,sans-serif" font-size="12" fill="#3A5A7A">Mês 4</text>
+  <text x="525" y="338" text-anchor="middle" font-family="'Segoe UI',Arial,sans-serif" font-size="12" fill="#3A5A7A">Mês 5</text>
+  <text x="605" y="338" text-anchor="middle" font-family="'Segoe UI',Arial,sans-serif" font-size="12" fill="#3A5A7A">Mês 6</text>
+  <!-- Threshold line: 4 scans -->
+  <line x1="80" y1="224" x2="660" y2="224" stroke="#E84855" stroke-width="2" stroke-dasharray="6,4"/>
+  <text x="664" y="228" font-family="'Segoe UI',Arial,sans-serif" font-size="10" fill="#E84855">Mínimo (4×/sem)</text>
+  <!-- Legend -->
+  <rect x="200" y="370" width="14" height="14" fill="url(#barGrad)" rx="2"/>
+  <text x="218" y="381" font-family="'Segoe UI',Arial,sans-serif" font-size="11" fill="#3A5A7A">Mediana semanal</text>
+  <rect x="330" y="370" width="14" height="14" fill="#5BA3E0" rx="2" opacity="0.5"/>
+  <text x="348" y="381" font-family="'Segoe UI',Arial,sans-serif" font-size="11" fill="#3A5A7A">Intervalo interquartil</text>
+  <!-- NS badge -->
+  <rect x="580" y="90" width="62" height="26" fill="#F0F4F8" rx="6" stroke="#B0C0D0" stroke-width="1"/>
+  <text x="611" y="108" text-anchor="middle" font-family="'Segoe UI',Arial,sans-serif" font-size="11" fill="#5A7A9A" font-style="italic">n.s.</text>
+</svg>

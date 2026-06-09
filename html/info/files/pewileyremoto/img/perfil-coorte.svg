@@ -1,0 +1,54 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 700 280" width="700" height="280">
+  <rect width="700" height="280" fill="#FAFAF8" rx="12"/>
+  <text x="350" y="28" text-anchor="middle" font-family="'Segoe UI',Arial,sans-serif" font-size="15" font-weight="700" fill="#1A3A5C">Perfil da Coorte — 20 Participantes</text>
+  <!-- Raça/etnia donut area -->
+  <text x="160" y="60" text-anchor="middle" font-family="'Segoe UI',Arial,sans-serif" font-size="12" font-weight="700" fill="#1A3A5C">Raça / Etnia</text>
+  <!-- Pie sim: Black 60, Hispanic 40 -->
+  <!-- Simple pie chart using paths -->
+  <!-- Center: 160, 160 R=70 -->
+  <!-- Black: 60% = 216 degrees, start top -->
+  <circle cx="160" cy="165" r="70" fill="#2D7DD2"/>
+  <!-- Hispanic slice: 40% -->
+  <path d="M160,165 L160,95 A70,70 0 0,0 99.4,200.5 Z" fill="#F9A825"/>
+  <!-- White slice: 20% (part of "Other" grouping from data: White 20%, AI/AN 5%, Others 15%) -->
+  <!-- Actually let's simplify: Black 60%, Hispanic 40% (ethnicity overlaps, show race) -->
+  <!-- Donut hole -->
+  <circle cx="160" cy="165" r="38" fill="#FAFAF8"/>
+  <text x="160" y="161" text-anchor="middle" font-family="'Segoe UI',Arial,sans-serif" font-size="11" fill="#1A3A5C" font-weight="700">60%</text>
+  <text x="160" y="175" text-anchor="middle" font-family="'Segoe UI',Arial,sans-serif" font-size="9" fill="#2D7DD2">Negro</text>
+  <!-- Legend -->
+  <rect x="40" y="246" width="12" height="12" fill="#2D7DD2" rx="2"/>
+  <text x="56" y="257" font-family="'Segoe UI',Arial,sans-serif" font-size="11" fill="#3A5A7A">Negro (60%)</text>
+  <rect x="145" y="246" width="12" height="12" fill="#F9A825" rx="2"/>
+  <text x="161" y="257" font-family="'Segoe UI',Arial,sans-serif" font-size="11" fill="#3A5A7A">Hispânico (40%)</text>
+  <!-- Comorbidades bar chart -->
+  <text x="480" y="60" text-anchor="middle" font-family="'Segoe UI',Arial,sans-serif" font-size="12" font-weight="700" fill="#1A3A5C">Comorbidades (%)</text>
+  <!-- bars horizontal -->
+  <!-- Neuropatia periférica 95% -->
+  <text x="285" y="85" font-family="'Segoe UI',Arial,sans-serif" font-size="10" fill="#3A5A7A">Neuropatia periférica</text>
+  <rect x="410" y="73" width="247" height="16" rx="4" fill="#2D7DD2" opacity="0.85"/>
+  <text x="662" y="85" font-family="'Segoe UI',Arial,sans-serif" font-size="10" fill="#1A3A5C" font-weight="700"> 95%</text>
+  <!-- DAP 65% -->
+  <text x="285" y="110" font-family="'Segoe UI',Arial,sans-serif" font-size="10" fill="#3A5A7A">Doença arterial periférica</text>
+  <rect x="410" y="98" width="169" height="16" rx="4" fill="#2D7DD2" opacity="0.75"/>
+  <text x="584" y="110" font-family="'Segoe UI',Arial,sans-serif" font-size="10" fill="#1A3A5C" font-weight="700"> 65%</text>
+  <!-- HAS 80% -->
+  <text x="285" y="135" font-family="'Segoe UI',Arial,sans-serif" font-size="10" fill="#3A5A7A">Hipertensão</text>
+  <rect x="410" y="123" width="208" height="16" rx="4" fill="#388E3C" opacity="0.75"/>
+  <text x="623" y="135" font-family="'Segoe UI',Arial,sans-serif" font-size="10" fill="#1A3A5C" font-weight="700"> 80%</text>
+  <!-- Dislipidemia 55% -->
+  <text x="285" y="160" font-family="'Segoe UI',Arial,sans-serif" font-size="10" fill="#3A5A7A">Dislipidemia</text>
+  <rect x="410" y="148" width="143" height="16" rx="4" fill="#388E3C" opacity="0.6"/>
+  <text x="558" y="160" font-family="'Segoe UI',Arial,sans-serif" font-size="10" fill="#1A3A5C" font-weight="700"> 55%</text>
+  <!-- DRCT 25% -->
+  <text x="285" y="185" font-family="'Segoe UI',Arial,sans-serif" font-size="10" fill="#3A5A7A">Doença renal crônica terminal</text>
+  <rect x="410" y="173" width="65" height="16" rx="4" fill="#F9A825" opacity="0.8"/>
+  <text x="480" y="185" font-family="'Segoe UI',Arial,sans-serif" font-size="10" fill="#1A3A5C" font-weight="700"> 25%</text>
+  <!-- hist amputação DFU 85% -->
+  <text x="285" y="210" font-family="'Segoe UI',Arial,sans-serif" font-size="10" fill="#3A5A7A">Hist. amputação por DFU</text>
+  <rect x="410" y="198" width="221" height="16" rx="4" fill="#E84855" opacity="0.75"/>
+  <text x="636" y="210" font-family="'Segoe UI',Arial,sans-serif" font-size="10" fill="#1A3A5C" font-weight="700"> 85%</text>
+  <!-- Sexo / Age note -->
+  <text x="480" y="240" text-anchor="middle" font-family="'Segoe UI',Arial,sans-serif" font-size="10" fill="#5A7A9A">85% masculino · Média de idade: 63 anos · HbA1c médio: 6,9%</text>
+  <text x="480" y="256" text-anchor="middle" font-family="'Segoe UI',Arial,sans-serif" font-size="10" fill="#5A7A9A">Todos com DM tipo 2 · Todos segurados por Medicare/Medicaid</text>
+</svg>

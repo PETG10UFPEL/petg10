@@ -1,0 +1,504 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Alta Aderência ao Monitoramento Remoto em Pacientes com Risco de Úlcera Diabética</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;800&family=Source+Sans+3:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --azul:    #2D7DD2;
+      --azul-esc:#1A3A5C;
+      --verde:   #2E7D32;
+      --laranja: #E65100;
+      --vermelho:#C62828;
+      --cinza-cl:#F4F6F9;
+      --cinza-bd:#CDD5E0;
+      --texto:   #1C2B3A;
+      --subtexto:#4A6279;
+      --fundo:   #FAFAF8;
+    }
+
+    body {
+      font-family: 'Source Sans 3', sans-serif;
+      background: var(--fundo);
+      color: var(--texto);
+      font-size: 16px;
+      line-height: 1.65;
+    }
+
+    /* ── CABEÇALHO INSTITUCIONAL ── */
+    .institutional-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 14px 40px;
+      background: #fff;
+      border-bottom: 2px solid var(--azul);
+    }
+    .header-identity {
+      font-family: 'Playfair Display', serif;
+      font-size: 13px;
+      color: var(--subtexto);
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+    }
+    .header-identity strong { color: var(--azul); }
+    .header-logo img { max-height: 52px; }
+
+    /* ── HERO ── */
+    .hero {
+      background: linear-gradient(135deg, #0D2741 0%, #1A4A7A 60%, #2D7DD2 100%);
+      color: #fff;
+      padding: 64px 40px 48px;
+      text-align: center;
+    }
+    .hero-tag {
+      display: inline-block;
+      background: rgba(255,255,255,0.15);
+      border: 1px solid rgba(255,255,255,0.3);
+      color: #B8D9F8;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      padding: 4px 14px;
+      border-radius: 20px;
+      margin-bottom: 20px;
+    }
+    .hero h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(26px, 4vw, 42px);
+      line-height: 1.2;
+      max-width: 760px;
+      margin: 0 auto 18px;
+    }
+    .hero-sub {
+      font-size: 15px;
+      color: #A8C8EE;
+      max-width: 640px;
+      margin: 0 auto 32px;
+    }
+    .hero-meta {
+      display: flex;
+      justify-content: center;
+      gap: 32px;
+      flex-wrap: wrap;
+      font-size: 13px;
+      color: #8BBCE0;
+    }
+    .hero-meta span strong { color: #fff; }
+
+    /* ── LAYOUT ── */
+    main { max-width: 960px; margin: 0 auto; padding: 0 24px; }
+    section { margin: 52px 0; }
+    h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: 24px;
+      color: var(--azul-esc);
+      margin-bottom: 14px;
+      padding-bottom: 8px;
+      border-bottom: 3px solid var(--azul);
+      display: inline-block;
+    }
+    p { margin-bottom: 14px; color: var(--texto); }
+
+    /* ── DESTAQUE / CALLOUT ── */
+    .callout {
+      background: #EAF2FB;
+      border-left: 5px solid var(--azul);
+      border-radius: 0 8px 8px 0;
+      padding: 20px 24px;
+      margin: 24px 0;
+      font-size: 15px;
+      color: var(--azul-esc);
+    }
+    .callout strong { font-size: 18px; }
+
+    .callout-red {
+      background: #FFF0F0;
+      border-left-color: var(--vermelho);
+      color: #5A1A1A;
+    }
+    .callout-green {
+      background: #F0FAF0;
+      border-left-color: var(--verde);
+      color: #1A4A1A;
+    }
+    .callout-orange {
+      background: #FFF5E6;
+      border-left-color: var(--laranja);
+      color: #5A2A00;
+    }
+
+    /* ── STAT ROW ── */
+    .stat-row {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 18px;
+      margin: 28px 0;
+    }
+    .stat-card {
+      background: #fff;
+      border: 1px solid var(--cinza-bd);
+      border-radius: 12px;
+      padding: 24px 18px;
+      text-align: center;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.05);
+    }
+    .stat-card .num {
+      font-family: 'Playfair Display', serif;
+      font-size: 44px;
+      font-weight: 800;
+      line-height: 1;
+      margin-bottom: 6px;
+    }
+    .stat-card .label { font-size: 13px; color: var(--subtexto); font-weight: 600; }
+    .stat-card .sub   { font-size: 11px; color: #8AA0B8; margin-top: 4px; }
+    .num-azul    { color: var(--azul); }
+    .num-verde   { color: var(--verde); }
+    .num-laranja { color: #F57F17; }
+    .num-red     { color: var(--vermelho); }
+
+    /* ── FIGURE ── */
+    figure {
+      margin: 28px 0;
+      background: #fff;
+      border: 1px solid var(--cinza-bd);
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 2px 16px rgba(0,0,0,0.06);
+    }
+    figure img, figure svg { width: 100%; height: auto; display: block; }
+    figcaption {
+      padding: 12px 20px;
+      font-size: 12px;
+      color: var(--subtexto);
+      background: var(--cinza-cl);
+      border-top: 1px solid var(--cinza-bd);
+      font-style: italic;
+    }
+
+    /* ── TWO-COL ── */
+    .two-col {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+    }
+    @media (max-width: 640px) { .two-col { grid-template-columns: 1fr; } }
+
+    /* ── RESULTADO BOX ── */
+    .resultado-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 16px;
+      margin: 24px 0;
+    }
+    .resultado-item {
+      background: #fff;
+      border-radius: 10px;
+      padding: 18px;
+      border: 1px solid var(--cinza-bd);
+    }
+    .resultado-item .icon { font-size: 28px; margin-bottom: 8px; }
+    .resultado-item h3 { font-size: 14px; font-weight: 700; color: var(--azul-esc); margin-bottom: 6px; }
+    .resultado-item p { font-size: 13px; color: var(--subtexto); margin: 0; }
+
+    /* ── LIMITAÇÕES ── */
+    .limitacoes-list { list-style: none; padding: 0; }
+    .limitacoes-list li {
+      padding: 10px 14px 10px 42px;
+      margin-bottom: 8px;
+      background: var(--cinza-cl);
+      border-radius: 8px;
+      font-size: 14px;
+      color: var(--texto);
+      position: relative;
+    }
+    .limitacoes-list li::before {
+      content: "⚠";
+      position: absolute;
+      left: 14px;
+      color: #F9A825;
+    }
+
+    /* ── QUOTE ── */
+    blockquote {
+      font-family: 'Playfair Display', serif;
+      font-size: 20px;
+      color: var(--azul);
+      border-left: 4px solid var(--azul);
+      padding: 16px 28px;
+      margin: 32px 0;
+      font-style: italic;
+      background: #EAF2FB;
+      border-radius: 0 8px 8px 0;
+    }
+
+    /* ── FOOTER ── */
+    .institutional-footer {
+      background: #fff;
+      border-top: 1px solid var(--cinza-bd);
+      padding: 28px 40px;
+      text-align: center;
+      font-size: 12px;
+      color: #6A8AAA;
+      margin-top: 64px;
+    }
+    .institutional-footer .ref-list {
+      text-align: left;
+      max-width: 760px;
+      margin: 20px auto 0;
+      font-size: 11px;
+      color: #8AA0B8;
+      line-height: 1.7;
+    }
+  </style>
+</head>
+<body>
+
+<!-- CABEÇALHO INSTITUCIONAL -->
+<header class="institutional-header">
+  <div class="header-identity">
+    <strong>G10</strong> · Telemonitoramento de Feridas Crônicas · PET-Saúde Digital · UFPel
+  </div>
+  <div class="header-logo">
+    <img src="img/logo.svg" alt="G10 – PET-Saúde Digital UFPel">
+  </div>
+</header>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-tag">Estudo Clínico · International Wound Journal · 2026</div>
+  <h1>Pacientes de alto risco com pé diabético aderem plenamente ao monitoramento remoto de temperatura</h1>
+  <p class="hero-sub">
+    Um piloto de 6 meses no Bronx, Nova York, demonstrou que pessoas em comunidades diversas e com poucos recursos podem usar a tecnologia de forma consistente — abrindo caminho para prevenir amputações.
+  </p>
+  <div class="hero-meta">
+    <span><strong>Yang et al.</strong> · Albert Einstein College of Medicine</span>
+    <span>DOI: 10.1111/iwj.70967</span>
+    <span>Aceito: 25 mai. 2026</span>
+  </div>
+</div>
+
+<main>
+
+  <!-- O PROBLEMA -->
+  <section>
+    <h2>O problema que não pode esperar</h2>
+
+    <div class="callout callout-red">
+      <strong>A cada 20 segundos</strong>, uma amputação de membro inferior ocorre no mundo como complicação de úlcera diabética.
+    </div>
+
+    <p>
+      A úlcera diabética (DFU) é uma das complicações mais devastadoras do diabetes. Ela surge quando a neuropatia periférica rouba a sensibilidade protetora dos pés, deixando-os vulneráveis a traumas silenciosos. Uma vez instalada, a DFU tem taxa de recorrência em 3 anos de <strong>58%</strong> — comparável à recorrência de certos cânceres. A mortalidade em 5 anos pode atingir <strong>70%</strong>.
+    </p>
+    <p>
+      No Bronx — onde este estudo foi conduzido —, amputações abaixo do joelho ocorreram com mediana de 55 anos de idade, com casos tão jovens quanto 36 anos. Prevenção eficaz, acessível e que funcione em populações vulneráveis é uma urgência clínica.
+    </p>
+
+    <div class="stat-row">
+      <div class="stat-card">
+        <div class="num num-red">131M</div>
+        <div class="label">afetados globalmente</div>
+        <div class="sub">por complicações diabéticas de membros inferiores</div>
+      </div>
+      <div class="stat-card">
+        <div class="num num-red">58%</div>
+        <div class="label">recorrência em 3 anos</div>
+        <div class="sub">após primeira DFU</div>
+      </div>
+      <div class="stat-card">
+        <div class="num num-red">US$237bi</div>
+        <div class="label">gastos com diabetes (2017)</div>
+        <div class="sub">DFU é um dos principais vetores de custo</div>
+      </div>
+      <div class="stat-card">
+        <div class="num num-red">50–70%</div>
+        <div class="label">mortalidade em 5 anos</div>
+        <div class="sub">para pacientes com DFU grave</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- A TECNOLOGIA -->
+  <section>
+    <h2>A tecnologia: um tapete que "enxerga" a inflamação</h2>
+
+    <p>
+      O princípio é elegante: elevações de temperatura ≥4°F (2,2°C) em relação à linha de base refletem inflamação subclínica e frequentemente <em>precedem</em> o desenvolvimento da úlcera. O SmartMat da Podimetrics captura essa informação de forma simples.
+    </p>
+
+    <figure>
+      <img src="img/fluxo-monitoramento.svg" alt="Fluxo do monitoramento remoto de temperatura: paciente pisa no mat, dados transmitidos, análise de hotspot, alerta para enfermeira, escalonamento se necessário">
+      <figcaption>Figura 1 — Fluxo completo do monitoramento remoto de temperatura (RTM). O processo não exige acesso à internet ou inserção manual de dados.</figcaption>
+    </figure>
+
+    <div class="callout callout-orange">
+      O mat registra temperatura em <strong>6 pontos contralaterais</strong> plantares. Se ≥1 ponto supera 2,2°C acima da linha de base em <strong>2 medições consecutivas</strong>, um alerta ("hotspot") é gerado automaticamente para a equipe.
+    </div>
+
+    <p>
+      Diferente dos termômetros de infravermelho manuais — que exigem técnica e são difíceis de aplicar na sola do pé —, o tapete inteligente requer apenas <strong>20 segundos em pé</strong>, uma vez por dia. Não exige conectividade com internet. Os dados são transmitidos automaticamente e de forma segura.
+    </p>
+  </section>
+
+  <!-- O ESTUDO -->
+  <section>
+    <h2>O estudo: quem foram os participantes</h2>
+
+    <p>
+      Este estudo piloto prospectivo longitudinal acompanhou <strong>20 adultos com DM tipo 2</strong> e histórico de DFU nos últimos 24 meses, recrutados de uma clínica de podiatria do Montefiore Medical Center no Bronx. Todos eram ambulatoriais, com neuropatia periférica confirmada.
+    </p>
+
+    <figure>
+      <img src="img/perfil-coorte.svg" alt="Perfil da coorte: raça, comorbidades, características demográficas">
+      <figcaption>Figura 2 — Características da coorte. 100% dos participantes tinham DM tipo 2 e cobertura por Medicare ou Medicaid — refletindo a realidade socioeconômica do Bronx.</figcaption>
+    </figure>
+
+    <div class="callout">
+      <strong>Aderência</strong> foi definida como completar ao menos <strong>4 scans por semana</strong>. O seguimento durou <strong>6 meses</strong>.
+    </div>
+  </section>
+
+  <!-- RESULTADOS -->
+  <section>
+    <h2>Resultados: aderência surpreende pelo contexto</h2>
+
+    <div class="stat-row">
+      <div class="stat-card">
+        <div class="num num-verde">100%</div>
+        <div class="label">aderência ao critério</div>
+        <div class="sub">todos completadores atingiram ≥4 scans/sem</div>
+      </div>
+      <div class="stat-card">
+        <div class="num num-azul">6×</div>
+        <div class="label">scans/semana (média)</div>
+        <div class="sub">50% acima do mínimo exigido</div>
+      </div>
+      <div class="stat-card">
+        <div class="num num-laranja">6 meses</div>
+        <div class="label">sem declínio de aderência</div>
+        <div class="sub">p = 0,12 (Kruskal-Wallis)</div>
+      </div>
+      <div class="stat-card">
+        <div class="num num-verde">0</div>
+        <div class="label">amputações (LEA)</div>
+        <div class="sub">durante todo o período do estudo</div>
+      </div>
+    </div>
+
+    <figure>
+      <img src="img/grafico-aderencia.svg" alt="Gráfico de barras mostrando mediana de scans semanais por mês (meses 1 a 6), mantendo-se estável em torno de 6, com linha de corte em 4">
+      <figcaption>Figura 3 — Mediana de scans semanais por mês. A aderência permaneceu estável ao longo de todo o acompanhamento, sem queda significativa (p = 0,12). Barras menores representam IQR.</figcaption>
+    </figure>
+
+    <h2>O que o mat encontrou</h2>
+
+    <figure>
+      <img src="img/dados-chave.svg" alt="Painel com dados clínicos: 14 alertas de inflamação, 5 casos de DFU, 0 amputações">
+      <figcaption>Figura 4 — Dados clínicos do período de seguimento. Dois dos cinco casos de DFU plantar foram precedidos por hotspot detectado pelo mat, permitindo intervenção precoce.</figcaption>
+    </figure>
+
+    <div class="resultado-grid">
+      <div class="resultado-item">
+        <div class="icon">🌡️</div>
+        <h3>14 hotspots detectados</h3>
+        <p>Em 12 participantes (63%). Alta frequência de inflamação subclínica plantar.</p>
+      </div>
+      <div class="resultado-item">
+        <div class="icon">🩹</div>
+        <h3>5 casos de DFU</h3>
+        <p>2 detectados previamente pelo mat. 2 não tiveram inflamação prévia detectada. 1 surgiu fora do alcance do sensor.</p>
+      </div>
+      <div class="resultado-item">
+        <div class="icon">🏥</div>
+        <h3>6 hospitalizações</h3>
+        <p>Apenas 1 por DFU (osteomielite). Nenhuma amputação de membro inferior.</p>
+      </div>
+      <div class="resultado-item">
+        <div class="icon">😊</div>
+        <h3>Satisfação alta</h3>
+        <p>Todos os respondentes avaliaram o mat como "muito fácil" ou "fácil" de usar. 100% satisfeitos com o serviço.</p>
+      </div>
+    </div>
+
+    <blockquote>
+      "Pacientes de alto risco, de populações historicamente sub-atendidas, podem se engajar de forma altamente consistente com tecnologia de monitoramento remoto de temperatura."
+    </blockquote>
+  </section>
+
+  <!-- CONTEXTO COMPARATIVO -->
+  <section>
+    <h2>Contexto: o que estudos anteriores encontraram</h2>
+
+    <p>Os resultados deste piloto se alinham — e complementam — a literatura existente:</p>
+
+    <div class="two-col">
+      <div class="callout">
+        <strong>Rothenberg (VA Medical Center):</strong> 70% de engajamento total após 1 ano de monitoramento em veteranos.
+      </div>
+      <div class="callout">
+        <strong>Frykberg et al. (multicenter):</strong> 86% usaram o mat ≥3 dias/semana em 34 semanas. 88% consideraram fácil de usar.
+      </div>
+    </div>
+
+    <p>
+      O diferencial desta coorte é o contexto: população predominantemente negra e hispânica, de baixa renda, segurada por Medicare/Medicaid, proveniente de uma grande rede pública urbana. A aderência observada neste cenário <strong>estende a evidência para populações historicamente sub-representadas nos ensaios</strong>.
+    </p>
+
+    <div class="callout callout-green">
+      <strong>Implicação clínica:</strong> A tecnologia parece bem tolerada e integrável à rotina diária, independentemente do contexto socioeconômico — desde que haja suporte adequado (treinamento remoto, protocolo de reengajamento).
+    </div>
+  </section>
+
+  <!-- LIMITAÇÕES -->
+  <section>
+    <h2>Limitações do estudo</h2>
+    <ul class="limitacoes-list">
+      <li>Ausência de grupo controle — não é possível inferir eficácia causal do mat na prevenção de DFU.</li>
+      <li>Amostra pequena (n=20) — não dimensionada para detectar diferença em desfechos como amputação.</li>
+      <li>HbA1c basal baixa (6,9%) e alto uso de calçado terapêutico podem não refletir a população DFU mais ampla.</li>
+      <li>Aderência ao protocolo de descarga não foi sistematicamente avaliada.</li>
+      <li>O mat não cobre regiões não-plantares e não captura biomecânica, neuropatia motora ou pressão plantar pós-amputação digital.</li>
+      <li>Estudo conduzido por um único podólogo prescritor — pode não refletir cenários multi-profissional.</li>
+    </ul>
+  </section>
+
+  <!-- MENSAGEM FINAL -->
+  <section>
+    <h2>O que fica</h2>
+
+    <p>
+      O monitoramento remoto de temperatura plantar representa uma estratégia viável, bem tolerada e potencialmente de alto impacto para populações de alto risco com DFU. Os resultados deste piloto no Bronx — uma das regiões mais pobres dos EUA — indicam que a tecnologia transcende barreiras socioeconômicas quando adequadamente implementada.
+    </p>
+
+    <div class="callout callout-green">
+      <strong>Próximos passos necessários:</strong> ensaios controlados com maior poder, avaliação do impacto no estresse relacionado ao diabetes, investigação de fatores como aderência ao offloading e variabilidade da infraestrutura de cuidado.
+    </div>
+
+    <p>
+      Pacientes com DFU não estão "curados" — estão em remissão. Como no câncer, isso exige vigilância contínua. O mat inteligente pode ser um instrumento central nessa estratégia — mas precisa estar inserido em um cuidado coordenado, multidisciplinar e centrado no paciente.
+    </p>
+  </section>
+
+</main>
+
+<!-- RODAPÉ INSTITUCIONAL -->
+<footer class="institutional-footer">
+  <p>Infográfico elaborado pelos projetos Amor à Pele e PET-Saúde Digital G10 Feridas Crônicas, UFPel, em Junho de 2026.</p>
+  <div class="ref-list">
+    <strong>Referência principal:</strong><br>
+    Yang K, Rothenberg G, Rincon L, et al. High Adherence to Remote Monitoring Technology in Patients at Risk for Diabetic Foot Ulcer.
+    <em>International Wound Journal.</em> 2026;23:e70967. https://doi.org/10.1111/iwj.70967<br><br>
+    <strong>Fontes complementares consultadas:</strong><br>
+    Armstrong DG et al. Diabetic Foot Ulcers: A Review. <em>JAMA.</em> 2023. · Frykberg RG et al. Feasibility and Efficacy of a Smart Mat. <em>Diabetes Care.</em> 2017. · Rothenberg GM et al. Remote Temperature Monitoring. <em>Federal Practitioner.</em> 2020.
+  </div>
+</footer>
+
+</body>
+</html>

@@ -1,0 +1,56 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 700 260" width="700" height="260">
+  <rect width="700" height="260" fill="#FAFAF8" rx="12"/>
+  <text x="350" y="28" text-anchor="middle" font-family="'Segoe UI',Arial,sans-serif" font-size="15" font-weight="700" fill="#1A3A5C">Como Funciona o Monitoramento Remoto de Temperatura</text>
+  <!-- Steps -->
+  <!-- Step 1 -->
+  <rect x="20" y="50" width="110" height="80" rx="10" fill="#EAF2FB" stroke="#2D7DD2" stroke-width="2"/>
+  <text x="75" y="82" text-anchor="middle" font-family="'Segoe UI',Arial,sans-serif" font-size="28">🦶</text>
+  <text x="75" y="100" text-anchor="middle" font-family="'Segoe UI',Arial,sans-serif" font-size="10" font-weight="700" fill="#1A3A5C">Paciente</text>
+  <text x="75" y="114" text-anchor="middle" font-family="'Segoe UI',Arial,sans-serif" font-size="10" fill="#3A5A7A">pisa no mat</text>
+  <text x="75" y="126" text-anchor="middle" font-family="'Segoe UI',Arial,sans-serif" font-size="10" fill="#3A5A7A">por 20 segundos</text>
+  <text x="75" y="145" text-anchor="middle" font-family="'Segoe UI',Arial,sans-serif" font-size="9" fill="#5A7A9A">diariamente</text>
+  <!-- Arrow -->
+  <polygon points="145,90 165,80 165,100" fill="#2D7DD2"/>
+  <line x1="130" y1="90" x2="165" y2="90" stroke="#2D7DD2" stroke-width="2.5"/>
+  <!-- Step 2 -->
+  <rect x="170" y="50" width="110" height="80" rx="10" fill="#FFF8E1" stroke="#F9A825" stroke-width="2"/>
+  <text x="225" y="82" text-anchor="middle" font-family="'Segoe UI',Arial,sans-serif" font-size="28">📡</text>
+  <text x="225" y="100" text-anchor="middle" font-family="'Segoe UI',Arial,sans-serif" font-size="10" font-weight="700" fill="#1A3A5C">Transmissão</text>
+  <text x="225" y="114" text-anchor="middle" font-family="'Segoe UI',Arial,sans-serif" font-size="10" fill="#3A5A7A">automática</text>
+  <text x="225" y="126" text-anchor="middle" font-family="'Segoe UI',Arial,sans-serif" font-size="10" fill="#3A5A7A">sem internet</text>
+  <text x="225" y="145" text-anchor="middle" font-family="'Segoe UI',Arial,sans-serif" font-size="9" fill="#5A7A9A">6 pontos plantares</text>
+  <!-- Arrow -->
+  <polygon points="295,90 315,80 315,100" fill="#2D7DD2"/>
+  <line x1="280" y1="90" x2="315" y2="90" stroke="#2D7DD2" stroke-width="2.5"/>
+  <!-- Step 3 -->
+  <rect x="320" y="50" width="110" height="80" rx="10" fill="#E8F5E9" stroke="#388E3C" stroke-width="2"/>
+  <text x="375" y="82" text-anchor="middle" font-family="'Segoe UI',Arial,sans-serif" font-size="28">🔍</text>
+  <text x="375" y="100" text-anchor="middle" font-family="'Segoe UI',Arial,sans-serif" font-size="10" font-weight="700" fill="#1A3A5C">Análise</text>
+  <text x="375" y="114" text-anchor="middle" font-family="'Segoe UI',Arial,sans-serif" font-size="10" fill="#2E5A30">Detecção de</text>
+  <text x="375" y="126" text-anchor="middle" font-family="'Segoe UI',Arial,sans-serif" font-size="10" fill="#2E5A30">hotspot ≥2,2°C</text>
+  <text x="375" y="145" text-anchor="middle" font-family="'Segoe UI',Arial,sans-serif" font-size="9" fill="#5A7A9A">2 medições consecutivas</text>
+  <!-- Arrow -->
+  <polygon points="445,90 465,80 465,100" fill="#2D7DD2"/>
+  <line x1="430" y1="90" x2="465" y2="90" stroke="#2D7DD2" stroke-width="2.5"/>
+  <!-- Step 4 -->
+  <rect x="470" y="50" width="110" height="80" rx="10" fill="#FBE9E7" stroke="#D84315" stroke-width="2"/>
+  <text x="525" y="82" text-anchor="middle" font-family="'Segoe UI',Arial,sans-serif" font-size="28">📞</text>
+  <text x="525" y="100" text-anchor="middle" font-family="'Segoe UI',Arial,sans-serif" font-size="10" font-weight="700" fill="#1A3A5C">Alerta</text>
+  <text x="525" y="114" text-anchor="middle" font-family="'Segoe UI',Arial,sans-serif" font-size="10" fill="#6A2A10">Enfermeira</text>
+  <text x="525" y="126" text-anchor="middle" font-family="'Segoe UI',Arial,sans-serif" font-size="10" fill="#6A2A10">contata paciente</text>
+  <text x="525" y="145" text-anchor="middle" font-family="'Segoe UI',Arial,sans-serif" font-size="9" fill="#5A7A9A">protocolo de descarga</text>
+  <!-- Arrow -->
+  <polygon points="595,90 615,80 615,100" fill="#2D7DD2"/>
+  <line x1="580" y1="90" x2="615" y2="90" stroke="#2D7DD2" stroke-width="2.5"/>
+  <!-- Step 5 -->
+  <rect x="620" y="50" width="65" height="80" rx="10" fill="#F3E5F5" stroke="#8E24AA" stroke-width="2"/>
+  <text x="652" y="82" text-anchor="middle" font-family="'Segoe UI',Arial,sans-serif" font-size="24">🏥</text>
+  <text x="652" y="100" text-anchor="middle" font-family="'Segoe UI',Arial,sans-serif" font-size="9" font-weight="700" fill="#1A3A5C">Escalonamento</text>
+  <text x="652" y="113" text-anchor="middle" font-family="'Segoe UI',Arial,sans-serif" font-size="9" fill="#6A1B9A">se sintomas</text>
+  <text x="652" y="125" text-anchor="middle" font-family="'Segoe UI',Arial,sans-serif" font-size="9" fill="#6A1B9A">persistirem</text>
+  <!-- Bottom note -->
+  <rect x="100" y="160" width="500" height="60" rx="8" fill="#EAF2FB" stroke="#2D7DD2" stroke-width="1"/>
+  <text x="350" y="183" text-anchor="middle" font-family="'Segoe UI',Arial,sans-serif" font-size="12" font-weight="700" fill="#1A3A5C">Princípio-chave</text>
+  <text x="350" y="200" text-anchor="middle" font-family="'Segoe UI',Arial,sans-serif" font-size="11" fill="#2A4A6A">Temperatura aumentada ≥4°F (2,2°C) sinaliza inflamação subclínica — precede a úlcera.</text>
+  <text x="350" y="216" text-anchor="middle" font-family="'Segoe UI',Arial,sans-serif" font-size="11" fill="#2A4A6A">A intervenção precoce pode evitar a progressão para ferida aberta.</text>
+</svg>
