@@ -25,6 +25,10 @@
     .featured-link:hover{transform:translateY(-1px);border-color:rgba(59,130,196,.45);box-shadow:0 14px 34px rgba(15,23,42,.11)}
     .featured-link strong{display:block;font-size:1rem;line-height:1.2;margin-bottom:3px;color:#0f172a}
     .featured-link span{display:block;color:var(--muted);font-size:.9rem;line-height:1.35}
+    .featured-thumb{width:62px;height:42px;object-fit:cover;border-radius:10px;border:1px solid var(--border);box-shadow:0 6px 16px rgba(15,23,42,.10);flex:0 0 auto}
+    .pdf-icon{width:46px;height:54px;display:grid;place-items:end center;padding-bottom:7px;position:relative;flex:0 0 auto;border-radius:8px;background:linear-gradient(180deg,#fff,#fee2e2);border:1px solid #fecaca;color:#991b1b;font-size:.72rem;font-weight:900;letter-spacing:.04em;box-shadow:0 6px 16px rgba(15,23,42,.10)}
+    .pdf-icon:before{content:"";position:absolute;right:-1px;top:-1px;border-top:14px solid #fecaca;border-left:14px solid transparent;border-radius:0 8px 0 3px}
+    .pdf-icon:after{content:"";position:absolute;left:10px;right:10px;top:17px;height:3px;background:#ef4444;box-shadow:0 8px 0 rgba(239,68,68,.65)}
     .hero-logo-link{display:block;line-height:0;border-radius:14px;transition:transform .08s ease,box-shadow .2s ease}
     .hero-logo-link:hover{transform:translateY(-1px)}
     .stats{margin-top:18px;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px}
@@ -81,6 +85,7 @@
 
     <section class="featured-links" aria-label="Links em destaque">
       <a class="featured-link" href="https://wp.ufpel.edu.br/siiepe/" target="_blank" rel="noopener">
+        <img class="featured-thumb" src="siiepe.jpg" alt="12ª SIIEPE UFPel 2026">
         <div>
           <strong>SIIEPE UFPel</strong>
           <span>Acesse a página oficial da Semana Integrada de Inovação, Ensino, Pesquisa e Extensão.</span>
@@ -88,6 +93,7 @@
       </a>
 
       <a class="featured-link" href="resumo.pdf" target="_blank" rel="noopener">
+        <span class="pdf-icon" aria-hidden="true">PDF</span>
         <div>
           <strong>Exemplo de estrutura &amp; organização de resumo</strong>
           <span>Exemplo de estrutura &amp; organização de resumo, repassado pela profa. Adrize.</span>
