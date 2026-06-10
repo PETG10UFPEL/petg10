@@ -1,0 +1,44 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 700 320" width="700" height="320">
+  <rect width="700" height="320" fill="#FAFAF8" rx="12"/>
+  <text x="350" y="36" text-anchor="middle" font-family="'Segoe UI',Arial,sans-serif" font-size="16" font-weight="700" fill="#1A3A5C">Dados Principais do Estudo</text>
+  <!-- Card 1: Participants -->
+  <rect x="30" y="60" width="140" height="120" rx="12" fill="#EAF2FB" stroke="#2D7DD2" stroke-width="1.5"/>
+  <text x="100" y="110" text-anchor="middle" font-family="'Segoe UI',Arial,sans-serif" font-size="40" font-weight="800" fill="#2D7DD2">20</text>
+  <text x="100" y="132" text-anchor="middle" font-family="'Segoe UI',Arial,sans-serif" font-size="11" fill="#3A5A7A">participantes</text>
+  <text x="100" y="148" text-anchor="middle" font-family="'Segoe UI',Arial,sans-serif" font-size="10" fill="#6A8AAA">adultos com DM + hist. DFU</text>
+  <text x="100" y="166" text-anchor="middle" font-family="'Segoe UI',Arial,sans-serif" font-size="10" fill="#6A8AAA">Média 63 anos</text>
+  <!-- Card 2: Adherence -->
+  <rect x="190" y="60" width="140" height="120" rx="12" fill="#E8F5E9" stroke="#388E3C" stroke-width="1.5"/>
+  <text x="260" y="110" text-anchor="middle" font-family="'Segoe UI',Arial,sans-serif" font-size="40" font-weight="800" fill="#2E7D32">100%</text>
+  <text x="260" y="132" text-anchor="middle" font-family="'Segoe UI',Arial,sans-serif" font-size="11" fill="#2E5A30">aderência</text>
+  <text x="260" y="148" text-anchor="middle" font-family="'Segoe UI',Arial,sans-serif" font-size="10" fill="#4A7A4A">todos completadores</text>
+  <text x="260" y="166" text-anchor="middle" font-family="'Segoe UI',Arial,sans-serif" font-size="10" fill="#4A7A4A">atingiram ≥4 scans/sem</text>
+  <!-- Card 3: Scans/week -->
+  <rect x="350" y="60" width="140" height="120" rx="12" fill="#FFF8E1" stroke="#F9A825" stroke-width="1.5"/>
+  <text x="420" y="110" text-anchor="middle" font-family="'Segoe UI',Arial,sans-serif" font-size="40" font-weight="800" fill="#F57F17">6×</text>
+  <text x="420" y="132" text-anchor="middle" font-family="'Segoe UI',Arial,sans-serif" font-size="11" fill="#6A4A00">scans/semana</text>
+  <text x="420" y="148" text-anchor="middle" font-family="'Segoe UI',Arial,sans-serif" font-size="10" fill="#8A6A20">média — acima do mínimo</text>
+  <text x="420" y="166" text-anchor="middle" font-family="'Segoe UI',Arial,sans-serif" font-size="10" fill="#8A6A20">de 4 scans exigidos</text>
+  <!-- Card 4: Duration -->
+  <rect x="510" y="60" width="160" height="120" rx="12" fill="#FBE9E7" stroke="#D84315" stroke-width="1.5"/>
+  <text x="590" y="110" text-anchor="middle" font-family="'Segoe UI',Arial,sans-serif" font-size="40" font-weight="800" fill="#BF360C">6</text>
+  <text x="590" y="132" text-anchor="middle" font-family="'Segoe UI',Arial,sans-serif" font-size="11" fill="#6A2A10">meses de seguimento</text>
+  <text x="590" y="148" text-anchor="middle" font-family="'Segoe UI',Arial,sans-serif" font-size="10" fill="#8A4A30">aderência sustentada</text>
+  <text x="590" y="166" text-anchor="middle" font-family="'Segoe UI',Arial,sans-serif" font-size="10" fill="#8A4A30">sem declínio (p=0,12)</text>
+  <!-- Bottom row -->
+  <!-- Card 5: hotspots -->
+  <rect x="80" y="200" width="160" height="90" rx="10" fill="#F3E5F5" stroke="#8E24AA" stroke-width="1.5"/>
+  <text x="160" y="240" text-anchor="middle" font-family="'Segoe UI',Arial,sans-serif" font-size="28" font-weight="800" fill="#6A1B9A">14</text>
+  <text x="160" y="258" text-anchor="middle" font-family="'Segoe UI',Arial,sans-serif" font-size="10" fill="#6A1B9A">alertas de inflamação</text>
+  <text x="160" y="273" text-anchor="middle" font-family="'Segoe UI',Arial,sans-serif" font-size="10" fill="#9A5AAA">em 12 participantes (63%)</text>
+  <!-- Card 6: DFU events -->
+  <rect x="270" y="200" width="160" height="90" rx="10" fill="#FFEBEE" stroke="#C62828" stroke-width="1.5"/>
+  <text x="350" y="240" text-anchor="middle" font-family="'Segoe UI',Arial,sans-serif" font-size="28" font-weight="800" fill="#B71C1C">5</text>
+  <text x="350" y="258" text-anchor="middle" font-family="'Segoe UI',Arial,sans-serif" font-size="10" fill="#B71C1C">casos de DFU</text>
+  <text x="350" y="273" text-anchor="middle" font-family="'Segoe UI',Arial,sans-serif" font-size="10" fill="#C44A4A">2 detectados previamente pelo mat</text>
+  <!-- Card 7: amputation -->
+  <rect x="460" y="200" width="160" height="90" rx="10" fill="#E8F5E9" stroke="#2E7D32" stroke-width="1.5"/>
+  <text x="540" y="240" text-anchor="middle" font-family="'Segoe UI',Arial,sans-serif" font-size="28" font-weight="800" fill="#1B5E20">0</text>
+  <text x="540" y="258" text-anchor="middle" font-family="'Segoe UI',Arial,sans-serif" font-size="10" fill="#1B5E20">amputações</text>
+  <text x="540" y="273" text-anchor="middle" font-family="'Segoe UI',Arial,sans-serif" font-size="10" fill="#2E6E30">nenhuma LEA no período</text>
+</svg>
