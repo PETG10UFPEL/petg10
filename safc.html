@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>SAFC — Ambulatório de Feridas Crônicas</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Playfair+Display:wght@700&display=swap" rel="stylesheet"/>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --azul-profundo: #1a3a5c;
+      --azul-medio:    #2c5f8a;
+      --azul-claro:    #4a8db7;
+      --dourado:       #c8a84b;
+      --branco:        #ffffff;
+      --cinza-suave:   rgba(255,255,255,0.12);
+    }
+
+    body {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Inter', sans-serif;
+      background: linear-gradient(160deg, var(--azul-profundo) 0%, var(--azul-medio) 55%, var(--azul-claro) 100%);
+      padding: 2rem;
+    }
+
+    /* partículas decorativas */
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background:
+        radial-gradient(circle at 15% 25%, rgba(200,168,75,0.08) 0%, transparent 50%),
+        radial-gradient(circle at 85% 75%, rgba(74,141,183,0.15) 0%, transparent 50%);
+      pointer-events: none;
+    }
+
+    .card {
+      background: rgba(255,255,255,0.07);
+      backdrop-filter: blur(18px);
+      -webkit-backdrop-filter: blur(18px);
+      border: 1px solid rgba(255,255,255,0.18);
+      border-radius: 20px;
+      padding: 3rem 2.5rem 2.5rem;
+      max-width: 480px;
+      width: 100%;
+      text-align: center;
+      box-shadow: 0 24px 64px rgba(0,0,0,0.35);
+      animation: fadeUp 0.6s ease both;
+    }
+
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(24px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    /* logo / foto */
+    .logo-wrap {
+      width: 90px;
+      height: 90px;
+      border-radius: 50%;
+      margin: 0 auto 1.6rem;
+      overflow: hidden;
+      border: 3px solid var(--dourado);
+      box-shadow: 0 0 0 6px rgba(200,168,75,0.18);
+      background: #fff;
+    }
+
+    .logo-wrap img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    /* fallback SVG se não tiver imagem */
+    .logo-svg {
+      width: 100%;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: linear-gradient(135deg, #e8f4fc, #c8dff0);
+    }
+
+    h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.7rem;
+      font-weight: 700;
+      color: var(--branco);
+      line-height: 1.25;
+      margin-bottom: 0.5rem;
+      letter-spacing: -0.01em;
+    }
+
+    .subtitulo {
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.65);
+      margin-bottom: 1.4rem;
+    }
+
+    /* badges */
+    .badges {
+      display: flex;
+      gap: 0.5rem;
+      justify-content: center;
+      flex-wrap: wrap;
+      margin-bottom: 2rem;
+    }
+
+    .badge {
+      font-size: 0.7rem;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      padding: 0.3rem 0.75rem;
+      border-radius: 999px;
+      border: 1px solid rgba(255,255,255,0.25);
+      color: rgba(255,255,255,0.85);
+      background: rgba(255,255,255,0.08);
+    }
+
+    .badge.safc {
+      background: var(--dourado);
+      border-color: var(--dourado);
+      color: var(--azul-profundo);
+      font-weight: 700;
+    }
+
+    /* divisor */
+    .divider {
+      width: 48px;
+      height: 2px;
+      background: linear-gradient(90deg, transparent, var(--dourado), transparent);
+      margin: 0 auto 1.8rem;
+    }
+
+    /* botão principal */
+    .btn-acessar {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.6rem;
+      width: 100%;
+      padding: 1rem 1.5rem;
+      background: linear-gradient(135deg, var(--dourado) 0%, #e0b84e 100%);
+      color: var(--azul-profundo);
+      font-family: 'Inter', sans-serif;
+      font-size: 1rem;
+      font-weight: 700;
+      letter-spacing: 0.03em;
+      border: none;
+      border-radius: 12px;
+      cursor: pointer;
+      text-decoration: none;
+      box-shadow: 0 6px 24px rgba(200,168,75,0.4);
+      transition: transform 0.18s ease, box-shadow 0.18s ease, filter 0.18s ease;
+    }
+
+    .btn-acessar:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 10px 32px rgba(200,168,75,0.55);
+      filter: brightness(1.06);
+    }
+
+    .btn-acessar:active {
+      transform: translateY(0);
+      box-shadow: 0 4px 16px rgba(200,168,75,0.35);
+    }
+
+    .btn-acessar svg {
+      flex-shrink: 0;
+    }
+
+    /* rodapé */
+    .footer {
+      margin-top: 1.8rem;
+      font-size: 0.7rem;
+      color: rgba(255,255,255,0.38);
+      line-height: 1.6;
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .card { animation: none; }
+      .btn-acessar { transition: none; }
+    }
+
+    @media (max-width: 480px) {
+      body { padding: 1rem; }
+      .card { padding: 2rem 1.5rem; }
+      h1 { font-size: 1.45rem; }
+    }
+  </style>
+</head>
+<body>
+
+<div class="card">
+
+  <!-- Logo: troque o src pela sua imagem ou deixe o SVG fallback -->
+  <div class="logo-wrap">
+    <!-- Se tiver imagem local: <img src="img/logo.png" alt="SAFC"> -->
+    <!-- Se quiser incorporar a imagem da captura, substitua abaixo -->
+    <div class="logo-svg">
+      <svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="24" cy="24" r="22" fill="#2c5f8a" opacity="0.15"/>
+        <!-- cruz médica estilizada -->
+        <rect x="21" y="12" width="6" height="24" rx="3" fill="#2c5f8a"/>
+        <rect x="12" y="21" width="24" height="6" rx="3" fill="#2c5f8a"/>
+        <!-- coração pequeno -->
+        <path d="M24 34 C24 34 18 29 18 25 C18 22.8 19.8 21 22 21 C23 21 24 21.8 24 21.8 C24 21.8 25 21 26 21 C28.2 21 30 22.8 30 25 C30 29 24 34 24 34Z" fill="#c8a84b" opacity="0.85"/>
+      </svg>
+    </div>
+  </div>
+
+  <h1>Ambulatório de<br>Feridas Crônicas</h1>
+  <p class="subtitulo">Serviço de Atenção às Feridas Complexas · Secretaria de Saúde, Prefeitura Municipal de Pelotas/RS</p>
+
+  <div class="badges">
+    <span class="badge safc">SAFC</span>
+  </div>
+
+  <div class="divider"></div>
+
+  <a class="btn-acessar"
+     href="https://script.google.com/macros/s/AKfycbxvPzWPVUBS_MEG4SOfovUspUE1nWfLgw_gR-eGB1dcbRWAs63yGB1jRi9YfrM4FRVn/exec"
+     target="_blank"
+     rel="noopener noreferrer">
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M15 3h4a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-4"/>
+      <polyline points="10 17 15 12 10 7"/>
+      <line x1="15" y1="12" x2="3" y2="12"/>
+    </svg>
+    Acessar o Sistema SAFC
+  </a>
+
+  <p class="footer">
+    Acesso restrito à equipe autorizada.<br>
+    Projetos Amor à Pele e PET-Saúde G10 Feridas Crônicas / Universidade Federal de Pelotas UFPel
+  </p>
+
+</div>
+
+</body>
+</html>
