@@ -1,0 +1,50 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 700 280" width="700" height="280">
+  <rect width="700" height="280" fill="#FAFAF8" rx="12"/>
+  <text x="350" y="28" text-anchor="middle" font-family="'Segoe UI',Arial,sans-serif" font-size="15" font-weight="700" fill="#1A3A5C">Composição das Blendas de Óleos Essenciais (20% em relação à massa de PCL)</text>
+
+  <!-- Blenda 1: 7:3 cravo/canela -->
+  <rect x="30" y="50" width="195" height="180" rx="12" fill="#FFF8E1" stroke="#F9A825" stroke-width="2"/>
+  <text x="127" y="75" text-anchor="middle" font-family="'Segoe UI',Arial,sans-serif" font-size="12" font-weight="700" fill="#E65100">Blenda 1 — 7:3</text>
+  <text x="127" y="90" text-anchor="middle" font-family="'Segoe UI',Arial,sans-serif" font-size="10" fill="#6A3A00">cravo/canela</text>
+  <!-- Mini pie: cravo 70% laranja, canela 30% verde -->
+  <circle cx="127" cy="145" r="45" fill="#F9A825"/>
+  <path d="M127,145 L127,100 A45,45 0 0,0 88,168 Z" fill="#4CAF50"/>
+  <circle cx="127" cy="145" r="25" fill="#FFF8E1"/>
+  <text x="127" y="141" text-anchor="middle" font-family="'Segoe UI',Arial,sans-serif" font-size="9" fill="#E65100">0,14 mL</text>
+  <text x="127" y="152" text-anchor="middle" font-family="'Segoe UI',Arial,sans-serif" font-size="8" fill="#E65100">cravo</text>
+  <text x="70" y="200" text-anchor="middle" font-family="'Segoe UI',Arial,sans-serif" font-size="9" fill="#E65100">■ Cravo 70%</text>
+  <text x="165" y="200" text-anchor="middle" font-family="'Segoe UI',Arial,sans-serif" font-size="9" fill="#2E7D32">■ Canela 30%</text>
+  <text x="127" y="220" text-anchor="middle" font-family="'Segoe UI',Arial,sans-serif" font-size="9" fill="#5A5A5A">0,14 mL cravo + 0,06 mL canela</text>
+
+  <!-- Blenda 2: 1:1 -->
+  <rect x="252" y="50" width="195" height="180" rx="12" fill="#FFF3E0" stroke="#FB8C00" stroke-width="2"/>
+  <text x="349" y="75" text-anchor="middle" font-family="'Segoe UI',Arial,sans-serif" font-size="12" font-weight="700" fill="#E65100">Blenda 2 — 1:1</text>
+  <text x="349" y="90" text-anchor="middle" font-family="'Segoe UI',Arial,sans-serif" font-size="10" fill="#6A3A00">cravo/canela</text>
+  <!-- Half/half pie -->
+  <circle cx="349" cy="145" r="45" fill="#F9A825"/>
+  <path d="M349,145 L349,100 A45,45 0 0,0 304,145 Z" fill="#4CAF50"/>
+  <circle cx="349" cy="145" r="25" fill="#FFF3E0"/>
+  <text x="349" y="141" text-anchor="middle" font-family="'Segoe UI',Arial,sans-serif" font-size="9" fill="#E65100">50/50</text>
+  <text x="349" y="152" text-anchor="middle" font-family="'Segoe UI',Arial,sans-serif" font-size="8" fill="#555">vol.</text>
+  <text x="295" y="200" text-anchor="middle" font-family="'Segoe UI',Arial,sans-serif" font-size="9" fill="#E65100">■ Cravo 50%</text>
+  <text x="400" y="200" text-anchor="middle" font-family="'Segoe UI',Arial,sans-serif" font-size="9" fill="#2E7D32">■ Canela 50%</text>
+  <text x="349" y="220" text-anchor="middle" font-family="'Segoe UI',Arial,sans-serif" font-size="9" fill="#5A5A5A">0,1 mL cravo + 0,1 mL canela</text>
+
+  <!-- Blenda 3: 3:7 canela/cravo -->
+  <rect x="474" y="50" width="195" height="180" rx="12" fill="#E8F5E9" stroke="#388E3C" stroke-width="2"/>
+  <text x="571" y="75" text-anchor="middle" font-family="'Segoe UI',Arial,sans-serif" font-size="12" font-weight="700" fill="#1B5E20">Blenda 3 — 3:7</text>
+  <text x="571" y="90" text-anchor="middle" font-family="'Segoe UI',Arial,sans-serif" font-size="10" fill="#1B5E20">canela/cravo</text>
+  <!-- Pie: canela 70%, cravo 30% -->
+  <circle cx="571" cy="145" r="45" fill="#4CAF50"/>
+  <path d="M571,145 L571,100 A45,45 0 0,0 532,168 Z" fill="#F9A825"/>
+  <circle cx="571" cy="145" r="25" fill="#E8F5E9"/>
+  <text x="571" y="141" text-anchor="middle" font-family="'Segoe UI',Arial,sans-serif" font-size="9" fill="#2E7D32">0,14 mL</text>
+  <text x="571" y="152" text-anchor="middle" font-family="'Segoe UI',Arial,sans-serif" font-size="8" fill="#2E7D32">canela</text>
+  <text x="512" y="200" text-anchor="middle" font-family="'Segoe UI',Arial,sans-serif" font-size="9" fill="#E65100">■ Cravo 30%</text>
+  <text x="615" y="200" text-anchor="middle" font-family="'Segoe UI',Arial,sans-serif" font-size="9" fill="#2E7D32">■ Canela 70%</text>
+  <text x="571" y="220" text-anchor="middle" font-family="'Segoe UI',Arial,sans-serif" font-size="9" fill="#5A5A5A">0,06 mL cravo + 0,14 mL canela</text>
+
+  <!-- Label solvente -->
+  <rect x="200" y="245" width="300" height="22" fill="#EAF2FB" rx="6" stroke="#2D7DD2" stroke-width="1"/>
+  <text x="350" y="260" text-anchor="middle" font-family="'Segoe UI',Arial,sans-serif" font-size="10" fill="#1A3A5C">Solvente: Clorofórmio/Metanol 4:1 · Polímero: PCL 70.000 g/mol · 1g por ensaio</text>
+</svg>

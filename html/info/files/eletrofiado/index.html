@@ -3,23 +3,24 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Alta Aderência ao Monitoramento Remoto em Pacientes com Risco de Úlcera Diabética</title>
+  <title>Curativos Eletrofiados com Óleos de Cravo e Canela — Nanofibras PCL</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;800&family=Source+Sans+3:wght@300;400;600;700&display=swap" rel="stylesheet">
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
     :root {
-      --azul:    #2D7DD2;
-      --azul-esc:#1A3A5C;
-      --verde:   #2E7D32;
-      --laranja: #E65100;
-      --vermelho:#C62828;
-      --cinza-cl:#F4F6F9;
-      --cinza-bd:#CDD5E0;
-      --texto:   #1C2B3A;
-      --subtexto:#4A6279;
-      --fundo:   #FAFAF8;
+      --verde:    #2E7D32;
+      --verde-cl: #E8F5E9;
+      --laranja:  #E65100;
+      --laranja-cl:#FFF8E1;
+      --azul:     #1565C0;
+      --azul-cl:  #E3F2FD;
+      --texto:    #1C2B3A;
+      --subtexto: #4A6279;
+      --cinza-cl: #F4F6F9;
+      --cinza-bd: #CDD5E0;
+      --fundo:    #FAFAF8;
     }
 
     body {
@@ -30,37 +31,37 @@
       line-height: 1.65;
     }
 
-    /* ── CABEÇALHO INSTITUCIONAL ── */
+    /* ── HEADER ── */
     .institutional-header {
       display: flex;
       justify-content: space-between;
       align-items: center;
       padding: 14px 40px;
       background: #fff;
-      border-bottom: 2px solid var(--azul);
+      border-bottom: 3px solid var(--verde);
     }
     .header-identity {
       font-family: 'Playfair Display', serif;
-      font-size: 13px;
+      font-size: 12px;
       color: var(--subtexto);
       letter-spacing: 0.04em;
       text-transform: uppercase;
     }
-    .header-identity strong { color: var(--azul); }
+    .header-identity strong { color: var(--verde); }
     .header-logo img { max-height: 52px; }
 
     /* ── HERO ── */
     .hero {
-      background: linear-gradient(135deg, #0D2741 0%, #1A4A7A 60%, #2D7DD2 100%);
+      background: linear-gradient(135deg, #1B3A12 0%, #2E6B1A 55%, #43A047 100%);
       color: #fff;
-      padding: 64px 40px 48px;
+      padding: 60px 40px 44px;
       text-align: center;
     }
     .hero-tag {
       display: inline-block;
       background: rgba(255,255,255,0.15);
-      border: 1px solid rgba(255,255,255,0.3);
-      color: #B8D9F8;
+      border: 1px solid rgba(255,255,255,0.35);
+      color: #C8EAB8;
       font-size: 11px;
       font-weight: 700;
       letter-spacing: 0.1em;
@@ -71,97 +72,103 @@
     }
     .hero h1 {
       font-family: 'Playfair Display', serif;
-      font-size: clamp(26px, 4vw, 42px);
+      font-size: clamp(24px, 3.5vw, 40px);
       line-height: 1.2;
-      max-width: 760px;
+      max-width: 780px;
       margin: 0 auto 18px;
     }
     .hero-sub {
       font-size: 15px;
-      color: #A8C8EE;
-      max-width: 640px;
-      margin: 0 auto 32px;
+      color: #B0D8A0;
+      max-width: 660px;
+      margin: 0 auto 30px;
     }
     .hero-meta {
       display: flex;
       justify-content: center;
-      gap: 32px;
+      gap: 28px;
       flex-wrap: wrap;
       font-size: 13px;
-      color: #8BBCE0;
+      color: #8DC88D;
     }
     .hero-meta span strong { color: #fff; }
 
     /* ── LAYOUT ── */
-    main { max-width: 960px; margin: 0 auto; padding: 0 24px; }
+    main { max-width: 980px; margin: 0 auto; padding: 0 24px; }
     section { margin: 52px 0; }
+
     h2 {
       font-family: 'Playfair Display', serif;
-      font-size: 24px;
-      color: var(--azul-esc);
+      font-size: 23px;
+      color: #1A3A1A;
       margin-bottom: 14px;
       padding-bottom: 8px;
-      border-bottom: 3px solid var(--azul);
+      border-bottom: 3px solid var(--verde);
       display: inline-block;
     }
     p { margin-bottom: 14px; color: var(--texto); }
 
-    /* ── DESTAQUE / CALLOUT ── */
+    /* ── CALLOUTS ── */
     .callout {
-      background: #EAF2FB;
+      background: var(--azul-cl);
       border-left: 5px solid var(--azul);
       border-radius: 0 8px 8px 0;
-      padding: 20px 24px;
-      margin: 24px 0;
+      padding: 18px 24px;
+      margin: 22px 0;
       font-size: 15px;
-      color: var(--azul-esc);
+      color: #0D2B50;
     }
-    .callout strong { font-size: 18px; }
-
-    .callout-red {
-      background: #FFF0F0;
-      border-left-color: var(--vermelho);
-      color: #5A1A1A;
-    }
-    .callout-green {
-      background: #F0FAF0;
+    .callout-verde {
+      background: var(--verde-cl);
       border-left-color: var(--verde);
-      color: #1A4A1A;
+      color: #0A2A0A;
     }
-    .callout-orange {
-      background: #FFF5E6;
+    .callout-laranja {
+      background: var(--laranja-cl);
       border-left-color: var(--laranja);
-      color: #5A2A00;
+      color: #3A1A00;
+    }
+    .callout-destaque {
+      background: #1A3A1A;
+      color: #C8EAB8;
+      border-radius: 10px;
+      padding: 22px 28px;
+      margin: 28px 0;
+      font-size: 17px;
+      font-style: italic;
+      font-family: 'Playfair Display', serif;
+      line-height: 1.5;
+      border: none;
     }
 
-    /* ── STAT ROW ── */
+    /* ── STAT CARDS ── */
     .stat-row {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-      gap: 18px;
-      margin: 28px 0;
+      grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
+      gap: 16px;
+      margin: 24px 0;
     }
     .stat-card {
       background: #fff;
       border: 1px solid var(--cinza-bd);
       border-radius: 12px;
-      padding: 24px 18px;
+      padding: 22px 16px;
       text-align: center;
-      box-shadow: 0 2px 12px rgba(0,0,0,0.05);
+      box-shadow: 0 2px 10px rgba(0,0,0,0.05);
     }
     .stat-card .num {
       font-family: 'Playfair Display', serif;
-      font-size: 44px;
+      font-size: 40px;
       font-weight: 800;
       line-height: 1;
       margin-bottom: 6px;
     }
-    .stat-card .label { font-size: 13px; color: var(--subtexto); font-weight: 600; }
+    .stat-card .label { font-size: 12px; color: var(--subtexto); font-weight: 600; }
     .stat-card .sub   { font-size: 11px; color: #8AA0B8; margin-top: 4px; }
-    .num-azul    { color: var(--azul); }
     .num-verde   { color: var(--verde); }
-    .num-laranja { color: #F57F17; }
-    .num-red     { color: var(--vermelho); }
+    .num-laranja { color: var(--laranja); }
+    .num-azul    { color: var(--azul); }
+    .num-cinza   { color: #455A64; }
 
     /* ── FIGURE ── */
     figure {
@@ -172,7 +179,7 @@
       overflow: hidden;
       box-shadow: 0 2px 16px rgba(0,0,0,0.06);
     }
-    figure img, figure svg { width: 100%; height: auto; display: block; }
+    figure img { width: 100%; height: auto; display: block; }
     figcaption {
       padding: 12px 20px;
       font-size: 12px;
@@ -182,20 +189,43 @@
       font-style: italic;
     }
 
-    /* ── TWO-COL ── */
-    .two-col {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 24px;
+    /* ── STEPS ── */
+    .steps { display: flex; flex-direction: column; gap: 14px; margin: 22px 0; }
+    .step {
+      display: flex;
+      align-items: flex-start;
+      gap: 16px;
+      background: #fff;
+      border: 1px solid var(--cinza-bd);
+      border-radius: 10px;
+      padding: 16px 20px;
     }
+    .step-num {
+      min-width: 36px;
+      height: 36px;
+      background: var(--verde);
+      color: #fff;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+      font-size: 16px;
+      flex-shrink: 0;
+    }
+    .step-content h3 { font-size: 14px; font-weight: 700; color: #1A3A1A; margin-bottom: 4px; }
+    .step-content p  { font-size: 13px; color: var(--subtexto); margin: 0; }
+
+    /* ── TWO-COL ── */
+    .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 22px; }
     @media (max-width: 640px) { .two-col { grid-template-columns: 1fr; } }
 
-    /* ── RESULTADO BOX ── */
+    /* ── RESULTADO HIGHLIGHT ── */
     .resultado-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
       gap: 16px;
-      margin: 24px 0;
+      margin: 22px 0;
     }
     .resultado-item {
       background: #fff;
@@ -203,39 +233,52 @@
       padding: 18px;
       border: 1px solid var(--cinza-bd);
     }
-    .resultado-item .icon { font-size: 28px; margin-bottom: 8px; }
-    .resultado-item h3 { font-size: 14px; font-weight: 700; color: var(--azul-esc); margin-bottom: 6px; }
-    .resultado-item p { font-size: 13px; color: var(--subtexto); margin: 0; }
+    .resultado-item .icon { font-size: 26px; margin-bottom: 8px; }
+    .resultado-item h3 { font-size: 14px; font-weight: 700; color: #1A3A1A; margin-bottom: 6px; }
+    .resultado-item p  { font-size: 13px; color: var(--subtexto); margin: 0; }
+
+    /* ── TABELA ── */
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 20px 0;
+      background: #fff;
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 1px 8px rgba(0,0,0,0.06);
+    }
+    th {
+      background: #1A3A1A;
+      color: #C8EAB8;
+      padding: 12px 16px;
+      text-align: left;
+      font-size: 13px;
+      font-weight: 700;
+    }
+    td {
+      padding: 11px 16px;
+      font-size: 13px;
+      border-bottom: 1px solid #EEF1F5;
+    }
+    tr:last-child td { border-bottom: none; }
+    tr:nth-child(even) td { background: var(--cinza-cl); }
+    .td-destaque { font-weight: 700; color: var(--verde); }
 
     /* ── LIMITAÇÕES ── */
-    .limitacoes-list { list-style: none; padding: 0; }
-    .limitacoes-list li {
+    .limit-list { list-style: none; padding: 0; }
+    .limit-list li {
       padding: 10px 14px 10px 42px;
       margin-bottom: 8px;
       background: var(--cinza-cl);
       border-radius: 8px;
       font-size: 14px;
-      color: var(--texto);
       position: relative;
     }
-    .limitacoes-list li::before {
+    .limit-list li::before {
       content: "⚠";
       position: absolute;
       left: 14px;
       color: #F9A825;
-    }
-
-    /* ── QUOTE ── */
-    blockquote {
-      font-family: 'Playfair Display', serif;
-      font-size: 20px;
-      color: var(--azul);
-      border-left: 4px solid var(--azul);
-      padding: 16px 28px;
-      margin: 32px 0;
-      font-style: italic;
-      background: #EAF2FB;
-      border-radius: 0 8px 8px 0;
     }
 
     /* ── FOOTER ── */
@@ -248,13 +291,13 @@
       color: #6A8AAA;
       margin-top: 64px;
     }
-    .institutional-footer .ref-list {
+    .ref-list {
       text-align: left;
       max-width: 760px;
-      margin: 20px auto 0;
+      margin: 18px auto 0;
       font-size: 11px;
       color: #8AA0B8;
-      line-height: 1.7;
+      line-height: 1.8;
     }
   </style>
 </head>
@@ -266,21 +309,21 @@
     <strong>G10</strong> · Telemonitoramento de Feridas Crônicas · PET-Saúde Digital · UFPel
   </div>
   <div class="header-logo">
-    <img src="img/logo.svg" alt="G10 – PET-Saúde Digital UFPel">
+    <img src="img/logo.png" alt="G10 – PET-Saúde Digital UFPel">
   </div>
 </header>
 
 <!-- HERO -->
 <div class="hero">
-  <div class="hero-tag">Estudo Clínico · International Wound Journal · 2026</div>
-  <h1>Pacientes de alto risco com pé diabético aderem plenamente ao monitoramento remoto de temperatura</h1>
+  <div class="hero-tag">Artigo Científico · Rev. Observatorio de la Economia Latinoamericana · 2025</div>
+  <h1>Curativos de Nanofibras com Cravo e Canela: a natureza a serviço da cicatrização</h1>
   <p class="hero-sub">
-    Um piloto de 6 meses no Bronx, Nova York, demonstrou que pessoas em comunidades diversas e com poucos recursos podem usar a tecnologia de forma consistente — abrindo caminho para prevenir amputações.
+    Pesquisadores da UFAL desenvolveram curativos dérmicos eletrofiados incorporando óleos essenciais de origem agrícola com ação antimicrobiana — uma alternativa sustentável aos antibióticos convencionais.
   </p>
   <div class="hero-meta">
-    <span><strong>Yang et al.</strong> · Albert Einstein College of Medicine</span>
-    <span>DOI: 10.1111/iwj.70967</span>
-    <span>Aceito: 25 mai. 2026</span>
+    <span><strong>Lopes et al.</strong> · UFAL / IFPE / UFMG / UNIMA AFYA</span>
+    <span>DOI: 10.55905/oelv23n12-056</span>
+    <span>Publicado: Dez. 2025</span>
   </div>
 </div>
 
@@ -288,201 +331,230 @@
 
   <!-- O PROBLEMA -->
   <section>
-    <h2>O problema que não pode esperar</h2>
+    <h2>O problema: curativos sintéticos têm limites sérios</h2>
 
-    <div class="callout callout-red">
-      <strong>A cada 20 segundos</strong>, uma amputação de membro inferior ocorre no mundo como complicação de úlcera diabética.
+    <div class="callout callout-laranja">
+      <strong>Resistência bacteriana</strong> — casos de Staphylococcus aureus resistente à vancomicina e Pseudomonas aeruginosa resistente à ciprofloxacina tornam urgente o desenvolvimento de alternativas antimicrobianas naturais.
     </div>
 
     <p>
-      A úlcera diabética (DFU) é uma das complicações mais devastadoras do diabetes. Ela surge quando a neuropatia periférica rouba a sensibilidade protetora dos pés, deixando-os vulneráveis a traumas silenciosos. Uma vez instalada, a DFU tem taxa de recorrência em 3 anos de <strong>58%</strong> — comparável à recorrência de certos cânceres. A mortalidade em 5 anos pode atingir <strong>70%</strong>.
-    </p>
-    <p>
-      No Bronx — onde este estudo foi conduzido —, amputações abaixo do joelho ocorreram com mediana de 55 anos de idade, com casos tão jovens quanto 36 anos. Prevenção eficaz, acessível e que funcione em populações vulneráveis é uma urgência clínica.
+      Úlceras de pressão, escaras e feridas cutâneas crônicas afetam milhões de pessoas hospitalizadas ou em cuidado domiciliar. Os curativos disponíveis devem absorver exsudato, manter a ferida úmida, aliviar a dor e combater infecções — mas os polímeros sintéticos convencionais falham justamente na atividade antimicrobiana e na adesão celular, retardando a cicatrização.
     </p>
 
     <div class="stat-row">
       <div class="stat-card">
-        <div class="num num-red">131M</div>
-        <div class="label">afetados globalmente</div>
-        <div class="sub">por complicações diabéticas de membros inferiores</div>
+        <div class="num num-laranja">3</div>
+        <div class="label">grupos antimicrobianos</div>
+        <div class="sub">antibióticos · óleos essenciais · nanopartículas</div>
       </div>
       <div class="stat-card">
-        <div class="num num-red">58%</div>
-        <div class="label">recorrência em 3 anos</div>
-        <div class="sub">após primeira DFU</div>
+        <div class="num num-verde">PCL</div>
+        <div class="label">polímero base</div>
+        <div class="sub">biodegradável e biocompatível · 70.000 g/mol</div>
       </div>
       <div class="stat-card">
-        <div class="num num-red">US$237bi</div>
-        <div class="label">gastos com diabetes (2017)</div>
-        <div class="sub">DFU é um dos principais vetores de custo</div>
+        <div class="num num-azul">100 nm</div>
+        <div class="label">escala das nanofibras</div>
+        <div class="sub">produzidas por eletrofiação</div>
       </div>
       <div class="stat-card">
-        <div class="num num-red">50–70%</div>
-        <div class="label">mortalidade em 5 anos</div>
-        <div class="sub">para pacientes com DFU grave</div>
+        <div class="num num-cinza">20%</div>
+        <div class="label">concentração de óleos</div>
+        <div class="sub">em relação à massa de PCL por blenda</div>
       </div>
     </div>
+
+    <p>
+      A solução estudada combina o processo de <em>electrospinning</em> (eletrofiação) com óleos essenciais de <strong>cravo-da-índia</strong> e <strong>canela</strong> — dois produtos de origem agrícola com propriedades antimicrobianas, antioxidantes e cicatrizantes amplamente documentadas desde a Antiguidade.
+    </p>
   </section>
 
   <!-- A TECNOLOGIA -->
   <section>
-    <h2>A tecnologia: um tapete que "enxerga" a inflamação</h2>
+    <h2>A tecnologia: como a eletrofiação cria nanofibras</h2>
 
     <p>
-      O princípio é elegante: elevações de temperatura ≥4°F (2,2°C) em relação à linha de base refletem inflamação subclínica e frequentemente <em>precedem</em> o desenvolvimento da úlcera. O SmartMat da Podimetrics captura essa informação de forma simples.
+      A eletrofiação é um dos processos mais simples e versáteis para produzir fibras na escala de nanômetros. Um campo eletrostático de alta tensão força a solução polimérica a se estirar em filamentos finíssimos que se depositam num coletor rotativo, formando uma membrana porosa flexível.
     </p>
 
     <figure>
-      <img src="img/fluxo-monitoramento.svg" alt="Fluxo do monitoramento remoto de temperatura: paciente pisa no mat, dados transmitidos, análise de hotspot, alerta para enfermeira, escalonamento se necessário">
-      <figcaption>Figura 1 — Fluxo completo do monitoramento remoto de temperatura (RTM). O processo não exige acesso à internet ou inserção manual de dados.</figcaption>
+      <img src="img/eletrofiacao-processo.svg" alt="Diagrama do processo de eletrofiação: seringa com solução PCL + óleos, cone de Taylor, jato chicoteante e coletor rotativo formando nanofibras">
+      <figcaption>Figura 1 — Processo de eletrofiação utilizado no estudo. Voltagem: 17 kV. Distância agulha-coletor: 12 cm. Solvente: clorofórmio/metanol 4:1. Coletor rotativo com superfície de alumínio.</figcaption>
     </figure>
 
-    <div class="callout callout-orange">
-      O mat registra temperatura em <strong>6 pontos contralaterais</strong> plantares. Se ≥1 ponto supera 2,2°C acima da linha de base em <strong>2 medições consecutivas</strong>, um alerta ("hotspot") é gerado automaticamente para a equipe.
+    <div class="callout callout-verde">
+      <strong>Vantagens da estrutura nanofibrilar:</strong> alta relação área superficial/volume, porosidade ajustável, resistência mecânica superior e capacidade de transportar fármacos diretamente para o sítio da cicatrização.
+    </div>
+
+    <div class="steps">
+      <div class="step">
+        <div class="step-num">1</div>
+        <div class="step-content">
+          <h3>Formação do Cone de Taylor</h3>
+          <p>O campo eletrostático repele cargas na superfície da gota polimérica, deformando-a em formato cônico. Um cone bem formado garante nanofibras uniformes e sem grânulos.</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">2</div>
+        <div class="step-content">
+          <h3>Ejeção e Estiramento do Jato</h3>
+          <p>A repulsão supera a tensão superficial: um jato emerge e é continuamente estirado em diâmetros cada vez menores, num fenômeno de "chicoteamento" elástico.</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">3</div>
+        <div class="step-content">
+          <h3>Evaporação do Solvente</h3>
+          <p>O clorofórmio/metanol evapora rapidamente durante o trajeto do jato até o coletor (12 cm), solidificando as fibras antes da deposição.</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">4</div>
+        <div class="step-content">
+          <h3>Deposição e Formação da Membrana</h3>
+          <p>As nanofibras sólidas se depositam sobre o coletor rotativo de alumínio, formando uma membrana flexível pronta para uso como curativo dérmico.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- OS ÓLEOS ESSENCIAIS -->
+  <section>
+    <h2>Cravo e canela: farmácia da natureza</h2>
+
+    <figure>
+      <img src="img/propriedades-oleos.svg" alt="Propriedades terapêuticas dos óleos de cravo-da-índia e canela: antimicrobiano, hidratante, anti-inflamatório, antioxidante">
+      <figcaption>Figura 2 — Propriedades farmacológicas dos óleos essenciais utilizados. Ambos apresentam atividade antibacteriana contra patógenos comuns em feridas identificados por difusão em disco.</figcaption>
+    </figure>
+
+    <div class="two-col">
+      <div class="callout callout-laranja">
+        <strong>Cravo-da-índia (Eugenol):</strong> potente inibidor de P. aeruginosa, E. coli e K. pneumoniae. Reduz virulência de bactérias resistentes in vivo e apresenta ação antifúngica e antioxidante.
+      </div>
+      <div class="callout callout-verde">
+        <strong>Canela (Cinamaldeído):</strong> usado há milênios como conservante natural. Eficaz contra Gram-positivas e Gram-negativas. Propriedades cicatrizantes e anti-inflamatórias documentadas.
+      </div>
     </div>
 
     <p>
-      Diferente dos termômetros de infravermelho manuais — que exigem técnica e são difíceis de aplicar na sola do pé —, o tapete inteligente requer apenas <strong>20 segundos em pé</strong>, uma vez por dia. Não exige conectividade com internet. Os dados são transmitidos automaticamente e de forma segura.
+      A combinação dos dois óleos em <em>blenda</em> busca ampliar o espectro antimicrobiano e aumentar a estabilidade dos compostos ativos dentro da matriz de PCL — aproveitando possível efeito sinérgico entre eugenol e cinamaldeído.
     </p>
   </section>
 
-  <!-- O ESTUDO -->
+  <!-- METODOLOGIA -->
   <section>
-    <h2>O estudo: quem foram os participantes</h2>
-
-    <p>
-      Este estudo piloto prospectivo longitudinal acompanhou <strong>20 adultos com DM tipo 2</strong> e histórico de DFU nos últimos 24 meses, recrutados de uma clínica de podiatria do Montefiore Medical Center no Bronx. Todos eram ambulatoriais, com neuropatia periférica confirmada.
-    </p>
+    <h2>Como o estudo foi conduzido</h2>
 
     <figure>
-      <img src="img/perfil-coorte.svg" alt="Perfil da coorte: raça, comorbidades, características demográficas">
-      <figcaption>Figura 2 — Características da coorte. 100% dos participantes tinham DM tipo 2 e cobertura por Medicare ou Medicaid — refletindo a realidade socioeconômica do Bronx.</figcaption>
+      <img src="img/blendas-composicao.svg" alt="Composição das três blendas de óleos: 7:3, 1:1 e 3:7 de cravo/canela em volume, todas a 20% em relação à massa de PCL">
+      <figcaption>Figura 3 — Composição volumétrica das três blendas testadas. Todas as formulações usaram 20% de blenda em relação à massa de PCL (1g). Solvente: clorofórmio/metanol 4:1.</figcaption>
     </figure>
 
-    <div class="callout">
-      <strong>Aderência</strong> foi definida como completar ao menos <strong>4 scans por semana</strong>. O seguimento durou <strong>6 meses</strong>.
-    </div>
+    <p>
+      Foram preparadas quatro soluções ao total: uma de PCL puro (controle) e três com blendas de óleos nas proporções 7:3, 1:1 e 3:7 (cravo/canela em volume). Cada solução foi eletrofiada sob os mesmos parâmetros (17 kV, 12 cm), e as membranas resultantes foram analisadas por Microscopia Eletrônica de Varredura (MEV) para medir os diâmetros médios das nanofibras.
+    </p>
   </section>
 
   <!-- RESULTADOS -->
   <section>
-    <h2>Resultados: aderência surpreende pelo contexto</h2>
-
-    <div class="stat-row">
-      <div class="stat-card">
-        <div class="num num-verde">100%</div>
-        <div class="label">aderência ao critério</div>
-        <div class="sub">todos completadores atingiram ≥4 scans/sem</div>
-      </div>
-      <div class="stat-card">
-        <div class="num num-azul">6×</div>
-        <div class="label">scans/semana (média)</div>
-        <div class="sub">50% acima do mínimo exigido</div>
-      </div>
-      <div class="stat-card">
-        <div class="num num-laranja">6 meses</div>
-        <div class="label">sem declínio de aderência</div>
-        <div class="sub">p = 0,12 (Kruskal-Wallis)</div>
-      </div>
-      <div class="stat-card">
-        <div class="num num-verde">0</div>
-        <div class="label">amputações (LEA)</div>
-        <div class="sub">durante todo o período do estudo</div>
-      </div>
-    </div>
+    <h2>Resultados: a blenda aumenta o diâmetro, mas não a proporção</h2>
 
     <figure>
-      <img src="img/grafico-aderencia.svg" alt="Gráfico de barras mostrando mediana de scans semanais por mês (meses 1 a 6), mantendo-se estável em torno de 6, com linha de corte em 4">
-      <figcaption>Figura 3 — Mediana de scans semanais por mês. A aderência permaneceu estável ao longo de todo o acompanhamento, sem queda significativa (p = 0,12). Barras menores representam IQR.</figcaption>
+      <img src="img/grafico-diametros.svg" alt="Gráfico de barras com diâmetros médios: PCL puro 1025nm, blenda 7:3 = 1301nm, 1:1 = 1320nm, 3:7 = 1315nm. Aumento de 28% com adição de óleos.">
+      <figcaption>Figura 4 — Diâmetros médios das nanofibras obtidos por MEV. A adição de óleos essenciais aumentou o diâmetro em aproximadamente 28%, independentemente da proporção utilizada.</figcaption>
     </figure>
 
-    <h2>O que o mat encontrou</h2>
-
-    <figure>
-      <img src="img/dados-chave.svg" alt="Painel com dados clínicos: 14 alertas de inflamação, 5 casos de DFU, 0 amputações">
-      <figcaption>Figura 4 — Dados clínicos do período de seguimento. Dois dos cinco casos de DFU plantar foram precedidos por hotspot detectado pelo mat, permitindo intervenção precoce.</figcaption>
-    </figure>
+    <table>
+      <thead>
+        <tr>
+          <th>Formulação</th>
+          <th>Diâmetro médio (nm)</th>
+          <th>Variação vs. controle</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>PCL puro (controle)</td>
+          <td>1025 nm</td>
+          <td>—</td>
+        </tr>
+        <tr>
+          <td>PCL + Blenda cravo/canela 7:3</td>
+          <td class="td-destaque">1301 nm</td>
+          <td>+27% ⬆</td>
+        </tr>
+        <tr>
+          <td>PCL + Blenda cravo/canela 1:1</td>
+          <td class="td-destaque">1320 nm</td>
+          <td>+29% ⬆</td>
+        </tr>
+        <tr>
+          <td>PCL + Blenda canela/cravo 3:7</td>
+          <td class="td-destaque">1315 nm</td>
+          <td>+28% ⬆</td>
+        </tr>
+      </tbody>
+    </table>
 
     <div class="resultado-grid">
       <div class="resultado-item">
-        <div class="icon">🌡️</div>
-        <h3>14 hotspots detectados</h3>
-        <p>Em 12 participantes (63%). Alta frequência de inflamação subclínica plantar.</p>
+        <div class="icon">📏</div>
+        <h3>Aumento de 28% no diâmetro</h3>
+        <p>A adição de óleos essenciais altera a evaporação do solvente, aumentando a massa depositada por fibra — independente da proporção cravo/canela utilizada.</p>
       </div>
       <div class="resultado-item">
-        <div class="icon">🩹</div>
-        <h3>5 casos de DFU</h3>
-        <p>2 detectados previamente pelo mat. 2 não tiveram inflamação prévia detectada. 1 surgiu fora do alcance do sensor.</p>
+        <div class="icon">⚖️</div>
+        <h3>Proporção dos óleos: indiferente</h3>
+        <p>Os três diâmetros (1301, 1320 e 1315 nm) são estatisticamente equivalentes — a razão cravo/canela não impacta a morfologia das nanofibras.</p>
       </div>
       <div class="resultado-item">
-        <div class="icon">🏥</div>
-        <h3>6 hospitalizações</h3>
-        <p>Apenas 1 por DFU (osteomielite). Nenhuma amputação de membro inferior.</p>
+        <div class="icon">🧵</div>
+        <h3>Superfície mais suave ao toque</h3>
+        <p>Membranas com blenda apresentaram superfícies subjetivamente mais lisas que o PCL puro, mas com maior rugosidade nas micrografias MEV.</p>
       </div>
       <div class="resultado-item">
-        <div class="icon">😊</div>
-        <h3>Satisfação alta</h3>
-        <p>Todos os respondentes avaliaram o mat como "muito fácil" ou "fácil" de usar. 100% satisfeitos com o serviço.</p>
+        <div class="icon">🔬</div>
+        <h3>Rugosidade aumentada no MEV</h3>
+        <p>Com a adição da blenda, houve aumento perceptível na rugosidade das nanofibras em todas as proporções — favorável à adesão celular.</p>
       </div>
     </div>
 
-    <blockquote>
-      "Pacientes de alto risco, de populações historicamente sub-atendidas, podem se engajar de forma altamente consistente com tecnologia de monitoramento remoto de temperatura."
-    </blockquote>
+    <div class="callout-destaque">
+      "A eletrofiação mostrou-se eficiente para incorporar óleos essenciais com propriedades antimicrobianas comprovadas na matriz de PCL — abrindo caminho para curativos dérmicos de origem agrícola e sustentável."
+    </div>
   </section>
 
-  <!-- CONTEXTO COMPARATIVO -->
+  <!-- COMPARATIVO -->
   <section>
-    <h2>Contexto: o que estudos anteriores encontraram</h2>
+    <h2>Por que nanofibras? Vantagens sobre curativos convencionais</h2>
 
-    <p>Os resultados deste piloto se alinham — e complementam — a literatura existente:</p>
+    <figure>
+      <img src="img/vantagens-nanofibras.svg" alt="Tabela comparativa entre polímeros sintéticos convencionais e nanofibras PCL com óleos essenciais">
+      <figcaption>Figura 5 — Comparativo entre curativos poliméricos convencionais e nanofibras PCL + óleos essenciais. Principais vantagens: biocompatibilidade, atividade antimicrobiana natural e ausência de resistência cruzada.</figcaption>
+    </figure>
+  </section>
 
-    <div class="two-col">
-      <div class="callout">
-        <strong>Rothenberg (VA Medical Center):</strong> 70% de engajamento total após 1 ano de monitoramento em veteranos.
-      </div>
-      <div class="callout">
-        <strong>Frykberg et al. (multicenter):</strong> 86% usaram o mat ≥3 dias/semana em 34 semanas. 88% consideraram fácil de usar.
-      </div>
-    </div>
+  <!-- CONCLUSÃO -->
+  <section>
+    <h2>O que fica e o que vem a seguir</h2>
 
     <p>
-      O diferencial desta coorte é o contexto: população predominantemente negra e hispânica, de baixa renda, segurada por Medicare/Medicaid, proveniente de uma grande rede pública urbana. A aderência observada neste cenário <strong>estende a evidência para populações historicamente sub-representadas nos ensaios</strong>.
+      O estudo demonstrou a viabilidade técnica da produção de nanofibras de PCL incorporadas a blendas de óleos essenciais de cravo e canela. As membranas obtidas apresentam potencial considerável para aplicação em lesões cutâneas — com ação antimicrobiana, hidratante e anti-inflamatória simultâneas.
     </p>
 
-    <div class="callout callout-green">
-      <strong>Implicação clínica:</strong> A tecnologia parece bem tolerada e integrável à rotina diária, independentemente do contexto socioeconômico — desde que haja suporte adequado (treinamento remoto, protocolo de reengajamento).
+    <div class="callout callout-verde">
+      <strong>Próximo passo indispensável:</strong> testes biológicos in vitro e in vivo para validar a eficácia antimicrobiana e cicatrizante das nanofibras desenvolvidas antes de qualquer aplicação clínica.
     </div>
-  </section>
 
-  <!-- LIMITAÇÕES -->
-  <section>
-    <h2>Limitações do estudo</h2>
-    <ul class="limitacoes-list">
-      <li>Ausência de grupo controle — não é possível inferir eficácia causal do mat na prevenção de DFU.</li>
-      <li>Amostra pequena (n=20) — não dimensionada para detectar diferença em desfechos como amputação.</li>
-      <li>HbA1c basal baixa (6,9%) e alto uso de calçado terapêutico podem não refletir a população DFU mais ampla.</li>
-      <li>Aderência ao protocolo de descarga não foi sistematicamente avaliada.</li>
-      <li>O mat não cobre regiões não-plantares e não captura biomecânica, neuropatia motora ou pressão plantar pós-amputação digital.</li>
-      <li>Estudo conduzido por um único podólogo prescritor — pode não refletir cenários multi-profissional.</li>
+    <ul class="limit-list">
+      <li>Apenas diâmetro das nanofibras foi avaliado — propriedades mecânicas, permeabilidade e absorção de exsudato ainda não foram medidas.</li>
+      <li>Nenhum teste biológico (citotoxicidade, halo de inibição, cicatrização in vivo) foi realizado nesta fase.</li>
+      <li>A atividade antimicrobiana dos óleos após a eletrofiação não foi confirmada — o processo pode degradar compostos voláteis.</li>
+      <li>Estudo de estabilidade das nanofibras em condições de armazenamento e uso não foi conduzido.</li>
     </ul>
-  </section>
-
-  <!-- MENSAGEM FINAL -->
-  <section>
-    <h2>O que fica</h2>
 
     <p>
-      O monitoramento remoto de temperatura plantar representa uma estratégia viável, bem tolerada e potencialmente de alto impacto para populações de alto risco com DFU. Os resultados deste piloto no Bronx — uma das regiões mais pobres dos EUA — indicam que a tecnologia transcende barreiras socioeconômicas quando adequadamente implementada.
-    </p>
-
-    <div class="callout callout-green">
-      <strong>Próximos passos necessários:</strong> ensaios controlados com maior poder, avaliação do impacto no estresse relacionado ao diabetes, investigação de fatores como aderência ao offloading e variabilidade da infraestrutura de cuidado.
-    </div>
-
-    <p>
-      Pacientes com DFU não estão "curados" — estão em remissão. Como no câncer, isso exige vigilância contínua. O mat inteligente pode ser um instrumento central nessa estratégia — mas precisa estar inserido em um cuidado coordenado, multidisciplinar e centrado no paciente.
+      Apesar das limitações, o trabalho representa uma contribuição relevante à literatura de curativos bioativos sustentáveis — demonstrando que materiais de origem agrícola, como cravo e canela, podem ser integrados a processos biotecnológicos de ponta como a eletrofiação.
     </p>
   </section>
 
@@ -493,10 +565,12 @@
   <p>Infográfico elaborado pelos projetos Amor à Pele e PET-Saúde Digital G10 Feridas Crônicas, UFPel, em Junho de 2026.</p>
   <div class="ref-list">
     <strong>Referência principal:</strong><br>
-    Yang K, Rothenberg G, Rincon L, et al. High Adherence to Remote Monitoring Technology in Patients at Risk for Diabetic Foot Ulcer.
-    <em>International Wound Journal.</em> 2026;23:e70967. https://doi.org/10.1111/iwj.70967<br><br>
-    <strong>Fontes complementares consultadas:</strong><br>
-    Armstrong DG et al. Diabetic Foot Ulcers: A Review. <em>JAMA.</em> 2023. · Frykberg RG et al. Feasibility and Efficacy of a Smart Mat. <em>Diabetes Care.</em> 2017. · Rothenberg GM et al. Remote Temperature Monitoring. <em>Federal Practitioner.</em> 2020.
+    Lopes ACO, Souza AMS, Ribeiro ÊAN, et al. Análise do processo de obtenção de curativos eletrofiados (nanofibras) a partir de materiais sustentáveis de origem agrícola.
+    <em>Revista Observatorio de la Economia Latinoamericana.</em> 2025;23(12):1–18. DOI: 10.55905/oelv23n12-056<br><br>
+    <strong>Fontes complementares:</strong><br>
+    Bonakdar MA, Rodrigue D. Electrospinning: Processes, Structures, and Materials. <em>Macromol.</em> 2024. ·
+    Mele E. Electrospinning of Essential Oils. <em>Polymers.</em> 2020. ·
+    Zeng et al. Cinnamon and clove essential oil mix microencapsulated. <em>Food Chemistry.</em> 2025.
   </div>
 </footer>
 

@@ -1,0 +1,69 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 700 380" width="700" height="380">
+  <defs>
+    <linearGradient id="g1" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#7BAFD4"/><stop offset="100%" stop-color="#2D7DD2"/>
+    </linearGradient>
+    <linearGradient id="g2" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#F7B733"/><stop offset="100%" stop-color="#E57E00"/>
+    </linearGradient>
+    <linearGradient id="g3" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#F97B7B"/><stop offset="100%" stop-color="#C62828"/>
+    </linearGradient>
+    <linearGradient id="g4" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#81C784"/><stop offset="100%" stop-color="#2E7D32"/>
+    </linearGradient>
+  </defs>
+  <rect width="700" height="380" fill="#FAFAF8" rx="12"/>
+  <text x="350" y="30" text-anchor="middle" font-family="'Segoe UI',Arial,sans-serif" font-size="15" font-weight="700" fill="#1A3A5C">Diâmetro Médio das Nanofibras por Formulação</text>
+  <text x="350" y="48" text-anchor="middle" font-family="'Segoe UI',Arial,sans-serif" font-size="11" fill="#5A7A9A">Obtido por Microscopia Eletrônica de Varredura (MEV)</text>
+
+  <!-- Axes -->
+  <line x1="100" y1="300" x2="660" y2="300" stroke="#CDD5E0" stroke-width="2"/>
+  <line x1="100" y1="300" x2="100" y2="80" stroke="#CDD5E0" stroke-width="2"/>
+
+  <!-- Y grid: 0=300, 1500nm=80, so scale = 220/1500 = 0.1467 per nm -->
+  <!-- 500 nm = 300 - 73 = 227 -->
+  <!-- 1000 nm = 300 - 146 = 154 -->
+  <!-- 1500 nm = 300 - 220 = 80 -->
+  <line x1="100" y1="227" x2="660" y2="227" stroke="#EEF1F5" stroke-width="1" stroke-dasharray="4,4"/>
+  <text x="88" y="231" text-anchor="end" font-family="'Segoe UI',Arial,sans-serif" font-size="10" fill="#7A90A8">500</text>
+  <line x1="100" y1="154" x2="660" y2="154" stroke="#EEF1F5" stroke-width="1" stroke-dasharray="4,4"/>
+  <text x="88" y="158" text-anchor="end" font-family="'Segoe UI',Arial,sans-serif" font-size="10" fill="#7A90A8">1000</text>
+  <line x1="100" y1="80" x2="660" y2="80" stroke="#EEF1F5" stroke-width="1" stroke-dasharray="4,4"/>
+  <text x="88" y="84" text-anchor="end" font-family="'Segoe UI',Arial,sans-serif" font-size="10" fill="#7A90A8">1500</text>
+  <text x="50" y="195" text-anchor="middle" font-family="'Segoe UI',Arial,sans-serif" font-size="11" fill="#5A7A9A" transform="rotate(-90,50,195)">Diâmetro (nm)</text>
+
+  <!-- Bar 1: PCL puro 1025nm = 300 - (1025*0.1467) = 300-150.4 = 149.6 => height = 150.4 -->
+  <rect x="140" y="149" width="80" height="151" fill="url(#g1)" rx="5" opacity="0.9"/>
+  <text x="180" y="143" text-anchor="middle" font-family="'Segoe UI',Arial,sans-serif" font-size="12" font-weight="700" fill="#1A3A5C">1025 nm</text>
+  <text x="180" y="320" text-anchor="middle" font-family="'Segoe UI',Arial,sans-serif" font-size="10" fill="#3A5A7A">PCL puro</text>
+  <text x="180" y="333" text-anchor="middle" font-family="'Segoe UI',Arial,sans-serif" font-size="9" fill="#5A7A9A">(controle)</text>
+
+  <!-- Bar 2: 7:3 cravo/canela 1301nm => height = 190.8 => y = 300-190.8=109 -->
+  <rect x="260" y="109" width="80" height="191" fill="url(#g2)" rx="5" opacity="0.9"/>
+  <text x="300" y="103" text-anchor="middle" font-family="'Segoe UI',Arial,sans-serif" font-size="12" font-weight="700" fill="#1A3A5C">1301 nm</text>
+  <text x="300" y="320" text-anchor="middle" font-family="'Segoe UI',Arial,sans-serif" font-size="10" fill="#3A5A7A">7:3</text>
+  <text x="300" y="333" text-anchor="middle" font-family="'Segoe UI',Arial,sans-serif" font-size="9" fill="#5A7A9A">cravo/canela</text>
+
+  <!-- Bar 3: 1:1 1320nm => height = 193.6 => y = 300-193.6=106 -->
+  <rect x="380" y="106" width="80" height="194" fill="url(#g3)" rx="5" opacity="0.9"/>
+  <text x="420" y="100" text-anchor="middle" font-family="'Segoe UI',Arial,sans-serif" font-size="12" font-weight="700" fill="#1A3A5C">1320 nm</text>
+  <text x="420" y="320" text-anchor="middle" font-family="'Segoe UI',Arial,sans-serif" font-size="10" fill="#3A5A7A">1:1</text>
+  <text x="420" y="333" text-anchor="middle" font-family="'Segoe UI',Arial,sans-serif" font-size="9" fill="#5A7A9A">cravo/canela</text>
+
+  <!-- Bar 4: 3:7 1315nm => height=193 => y=107 -->
+  <rect x="500" y="107" width="80" height="193" fill="url(#g4)" rx="5" opacity="0.9"/>
+  <text x="540" y="101" text-anchor="middle" font-family="'Segoe UI',Arial,sans-serif" font-size="12" font-weight="700" fill="#1A3A5C">1315 nm</text>
+  <text x="540" y="320" text-anchor="middle" font-family="'Segoe UI',Arial,sans-serif" font-size="10" fill="#3A5A7A">3:7</text>
+  <text x="540" y="333" text-anchor="middle" font-family="'Segoe UI',Arial,sans-serif" font-size="9" fill="#5A7A9A">canela/cravo</text>
+
+  <!-- +28% arrow annotation -->
+  <line x1="180" y1="149" x2="300" y2="109" stroke="#E84855" stroke-width="1.5" stroke-dasharray="5,3"/>
+  <polygon points="295,105 307,112 301,118" fill="#E84855"/>
+  <rect x="195" y="95" width="70" height="20" fill="#FFEBEE" rx="4" stroke="#E84855" stroke-width="1"/>
+  <text x="230" y="109" text-anchor="middle" font-family="'Segoe UI',Arial,sans-serif" font-size="10" fill="#C62828" font-weight="700">+28% ⬆</text>
+
+  <!-- Nota sobre proporções -->
+  <rect x="240" y="350" width="300" height="22" fill="#E8F5E9" rx="6" stroke="#388E3C" stroke-width="1"/>
+  <text x="390" y="365" text-anchor="middle" font-family="'Segoe UI',Arial,sans-serif" font-size="10" fill="#2E5A30" font-weight="700">Proporção dos óleos NÃO influencia o diâmetro</text>
+</svg>

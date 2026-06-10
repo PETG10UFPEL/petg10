@@ -1,0 +1,61 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 300" width="720" height="300">
+  <rect width="720" height="300" fill="#FAFAF8" rx="12"/>
+  <text x="360" y="28" text-anchor="middle" font-family="'Segoe UI',Arial,sans-serif" font-size="15" font-weight="700" fill="#1A3A5C">Processo de Eletrofiação — Como se Formam as Nanofibras</text>
+
+  <!-- Seringa + solução -->
+  <rect x="30" y="90" width="90" height="36" rx="6" fill="#EAF2FB" stroke="#2D7DD2" stroke-width="2"/>
+  <rect x="118" y="100" width="30" height="16" rx="3" fill="#2D7DD2"/>
+  <text x="75" y="103" text-anchor="middle" font-family="'Segoe UI',Arial,sans-serif" font-size="10" font-weight="700" fill="#1A3A5C">Seringa</text>
+  <text x="75" y="118" text-anchor="middle" font-family="'Segoe UI',Arial,sans-serif" font-size="9" fill="#3A5A7A">PCL + óleos</text>
+  <text x="75" y="155" text-anchor="middle" font-family="'Segoe UI',Arial,sans-serif" font-size="9" fill="#5A7A9A">bomba de seringa</text>
+  <text x="75" y="166" text-anchor="middle" font-family="'Segoe UI',Arial,sans-serif" font-size="9" fill="#5A7A9A">taxa controlada</text>
+
+  <!-- Seta 1 -->
+  <line x1="150" y1="108" x2="185" y2="108" stroke="#2D7DD2" stroke-width="2"/>
+  <polygon points="185,103 195,108 185,113" fill="#2D7DD2"/>
+
+  <!-- Cone de Taylor -->
+  <polygon points="200,88 240,104 240,112 200,128" fill="#5BA3E0" opacity="0.7"/>
+  <circle cx="240" cy="108" r="10" fill="#2D7DD2" opacity="0.9"/>
+  <text x="210" y="150" text-anchor="middle" font-family="'Segoe UI',Arial,sans-serif" font-size="9" fill="#1A3A5C" font-weight="700">Cone de Taylor</text>
+  <text x="210" y="162" text-anchor="middle" font-family="'Segoe UI',Arial,sans-serif" font-size="9" fill="#5A7A9A">repulsão eletrostática</text>
+  <text x="210" y="173" text-anchor="middle" font-family="'Segoe UI',Arial,sans-serif" font-size="9" fill="#5A7A9A">supera tensão superficial</text>
+
+  <!-- Alta tensão indicação -->
+  <text x="220" y="80" text-anchor="middle" font-family="'Segoe UI',Arial,sans-serif" font-size="10" fill="#E84855" font-weight="700">⚡ 17 kV</text>
+
+  <!-- Jato chicoteante ondulado -->
+  <path d="M250,108 Q270,90 290,108 Q310,126 330,108 Q350,90 370,108 Q390,126 410,108 Q430,90 450,108" 
+        fill="none" stroke="#2D7DD2" stroke-width="3" stroke-linecap="round"/>
+  <text x="350" y="145" text-anchor="middle" font-family="'Segoe UI',Arial,sans-serif" font-size="9" fill="#1A3A5C" font-weight="700">Jato chicoteante</text>
+  <text x="350" y="157" text-anchor="middle" font-family="'Segoe UI',Arial,sans-serif" font-size="9" fill="#5A7A9A">solvente evapora</text>
+  <text x="350" y="168" text-anchor="middle" font-family="'Segoe UI',Arial,sans-serif" font-size="9" fill="#5A7A9A">fibras se estiram</text>
+  <text x="350" y="179" text-anchor="middle" font-family="'Segoe UI',Arial,sans-serif" font-size="9" fill="#5A7A9A">distância: 12 cm</text>
+
+  <!-- Coletor rotativo -->
+  <ellipse cx="570" cy="108" rx="20" ry="50" fill="#3A5A7A" opacity="0.15" stroke="#3A5A7A" stroke-width="2"/>
+  <ellipse cx="570" cy="108" rx="8" ry="50" fill="#2D7DD2" opacity="0.5"/>
+  <text x="570" y="188" text-anchor="middle" font-family="'Segoe UI',Arial,sans-serif" font-size="10" font-weight="700" fill="#1A3A5C">Coletor rotativo</text>
+  <text x="570" y="200" text-anchor="middle" font-family="'Segoe UI',Arial,sans-serif" font-size="9" fill="#5A7A9A">membrana de alumínio</text>
+
+  <!-- Seta final -->
+  <line x1="450" y1="108" x2="545" y2="108" stroke="#2D7DD2" stroke-width="2" stroke-dasharray="5,3"/>
+  <polygon points="545,103 555,108 545,113" fill="#2D7DD2"/>
+
+  <!-- Nanofibra resultado -->
+  <rect x="620" y="75" width="80" height="66" rx="8" fill="#E8F5E9" stroke="#388E3C" stroke-width="2"/>
+  <text x="660" y="98" text-anchor="middle" font-family="'Segoe UI',Arial,sans-serif" font-size="22">🧵</text>
+  <text x="660" y="116" text-anchor="middle" font-family="'Segoe UI',Arial,sans-serif" font-size="9" font-weight="700" fill="#1A3A5C">Nanofibra</text>
+  <text x="660" y="128" text-anchor="middle" font-family="'Segoe UI',Arial,sans-serif" font-size="9" fill="#2E5A30">PCL + óleos</text>
+  <text x="660" y="140" text-anchor="middle" font-family="'Segoe UI',Arial,sans-serif" font-size="9" fill="#2E5A30">≈ 1000–1320 nm</text>
+
+  <!-- Seta final 2 -->
+  <line x1="592" y1="108" x2="617" y2="108" stroke="#388E3C" stroke-width="2"/>
+  <polygon points="617,103 627,108 617,113" fill="#388E3C"/>
+
+  <!-- Box explicativo embaixo -->
+  <rect x="40" y="215" width="640" height="60" rx="8" fill="#EAF2FB" stroke="#2D7DD2" stroke-width="1"/>
+  <text x="360" y="236" text-anchor="middle" font-family="'Segoe UI',Arial,sans-serif" font-size="11" font-weight="700" fill="#1A3A5C">Princípio físico</text>
+  <text x="360" y="252" text-anchor="middle" font-family="'Segoe UI',Arial,sans-serif" font-size="10.5" fill="#2A4A6A">Campo eletrostático de 17 kV força a solução polimérica a se estirar em filamentos finíssimos.</text>
+  <text x="360" y="267" text-anchor="middle" font-family="'Segoe UI',Arial,sans-serif" font-size="10.5" fill="#2A4A6A">À medida que o solvente evapora, formam-se nanofibras sólidas depositadas no coletor rotativo.</text>
+</svg>

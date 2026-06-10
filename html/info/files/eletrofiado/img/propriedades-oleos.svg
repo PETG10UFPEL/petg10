@@ -1,0 +1,46 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 700 300" width="700" height="300">
+  <rect width="700" height="300" fill="#FAFAF8" rx="12"/>
+  <text x="350" y="28" text-anchor="middle" font-family="'Segoe UI',Arial,sans-serif" font-size="15" font-weight="700" fill="#1A3A5C">Por que Cravo e Canela? Propriedades Terapêuticas</text>
+
+  <!-- Left: Cravo -->
+  <rect x="30" y="48" width="290" height="220" rx="12" fill="#FFF8E1" stroke="#F9A825" stroke-width="2"/>
+  <text x="55" y="72" font-family="'Segoe UI',Arial,sans-serif" font-size="16">🌿</text>
+  <text x="80" y="73" font-family="'Segoe UI',Arial,sans-serif" font-size="13" font-weight="700" fill="#E65100">Óleo Essencial de Cravo-da-índia</text>
+  <text x="80" y="88" font-family="'Segoe UI',Arial,sans-serif" font-size="10" fill="#8A5A00">Principio ativo: Eugenol</text>
+
+  <rect x="50" y="98" width="250" height="22" rx="5" fill="#FFD54F" opacity="0.5"/>
+  <text x="65" y="113" font-family="'Segoe UI',Arial,sans-serif" font-size="11" fill="#5A3A00">🛡️  Antimicrobiano</text>
+  <text x="65" y="131" font-family="'Segoe UI',Arial,sans-serif" font-size="10" fill="#5A5A5A">Inibe: P. aeruginosa, E. coli, K. pneumoniae</text>
+
+  <rect x="50" y="140" width="250" height="22" rx="5" fill="#FFD54F" opacity="0.5"/>
+  <text x="65" y="155" font-family="'Segoe UI',Arial,sans-serif" font-size="11" fill="#5A3A00">💧 Hidratante e cicatrizante</text>
+
+  <rect x="50" y="168" width="250" height="22" rx="5" fill="#FFD54F" opacity="0.5"/>
+  <text x="65" y="183" font-family="'Segoe UI',Arial,sans-serif" font-size="11" fill="#5A3A00">🔥 Anti-inflamatório</text>
+
+  <rect x="50" y="196" width="250" height="22" rx="5" fill="#FFD54F" opacity="0.5"/>
+  <text x="65" y="211" font-family="'Segoe UI',Arial,sans-serif" font-size="11" fill="#5A3A00">⚗️  Antioxidante</text>
+
+  <text x="175" y="253" text-anchor="middle" font-family="'Segoe UI',Arial,sans-serif" font-size="10" fill="#8A5A00" font-style="italic">Reduz virulência de bactérias resistentes in vivo</text>
+
+  <!-- Right: Canela -->
+  <rect x="380" y="48" width="290" height="220" rx="12" fill="#E8F5E9" stroke="#388E3C" stroke-width="2"/>
+  <text x="405" y="72" font-family="'Segoe UI',Arial,sans-serif" font-size="16">🌿</text>
+  <text x="430" y="73" font-family="'Segoe UI',Arial,sans-serif" font-size="13" font-weight="700" fill="#1B5E20">Óleo Essencial de Canela</text>
+  <text x="430" y="88" font-family="'Segoe UI',Arial,sans-serif" font-size="10" fill="#2E5A30">Princípio ativo: Cinamaldeído</text>
+
+  <rect x="400" y="98" width="250" height="22" rx="5" fill="#A5D6A7" opacity="0.5"/>
+  <text x="415" y="113" font-family="'Segoe UI',Arial,sans-serif" font-size="11" fill="#1A3A1A">🛡️  Antimicrobiano</text>
+  <text x="415" y="131" font-family="'Segoe UI',Arial,sans-serif" font-size="10" fill="#5A5A5A">Inibe: P. aeruginosa, E. coli, K. pneumoniae</text>
+
+  <rect x="400" y="140" width="250" height="22" rx="5" fill="#A5D6A7" opacity="0.5"/>
+  <text x="415" y="155" font-family="'Segoe UI',Arial,sans-serif" font-size="11" fill="#1A3A1A">💧 Hidratante e cicatrizante</text>
+
+  <rect x="400" y="168" width="250" height="22" rx="5" fill="#A5D6A7" opacity="0.5"/>
+  <text x="415" y="183" font-family="'Segoe UI',Arial,sans-serif" font-size="11" fill="#1A3A1A">🔥 Anti-inflamatório</text>
+
+  <rect x="400" y="196" width="250" height="22" rx="5" fill="#A5D6A7" opacity="0.5"/>
+  <text x="415" y="211" font-family="'Segoe UI',Arial,sans-serif" font-size="11" fill="#1A3A1A">⚗️  Antioxidante (conservante natural)</text>
+
+  <text x="525" y="253" text-anchor="middle" font-family="'Segoe UI',Arial,sans-serif" font-size="10" fill="#2E5A30" font-style="italic">Eficaz contra bactérias Gram+ e Gram-</text>
+</svg>
