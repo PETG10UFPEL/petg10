@@ -1,0 +1,1135 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>A Internet da Vida — Fungos Micorrízicos Arbusculares</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=Source+Sans+3:wght@300;400;600;700&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --ink:        #1a1a2e;
+      --ink-mid:    #2d3748;
+      --ink-light:  #4a5568;
+      --cream:      #faf8f3;
+      --cream-dark: #f0ece0;
+      --moss:       #2d6a4f;
+      --moss-light: #40916c;
+      --moss-pale:  #d8f3dc;
+      --gold:       #b5860d;
+      --gold-pale:  #fef3cd;
+      --earth:      #6b4226;
+      --earth-pale: #f7ede2;
+      --slate:      #2d5f8a;
+      --slate-pale: #dbeafe;
+      --rule:       rgba(0,0,0,0.09);
+      --serif:      'Playfair Display', Georgia, serif;
+      --sans:       'Source Sans 3', system-ui, sans-serif;
+      --mono:       'DM Mono', monospace;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--cream);
+      color: var(--ink);
+      font-family: var(--sans);
+      font-size: 17px;
+      line-height: 1.75;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* HEADER */
+    .inst-header {
+      background: #fff;
+      border-bottom: 1px solid var(--rule);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 14px 40px;
+    }
+    .inst-header .pub-name {
+      font-family: var(--sans);
+      font-weight: 600;
+      font-size: 0.8rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--moss);
+    }
+    .inst-header img { max-height: 48px; object-fit: contain; }
+
+    /* HERO */
+    .hero {
+      background: linear-gradient(160deg, #0b2c1a 0%, #1b4332 55%, #2d6a4f 100%);
+      color: #fff;
+      padding: 80px 40px 64px;
+      position: relative;
+      overflow: hidden;
+    }
+    .hero::before {
+      content: '';
+      position: absolute; inset: 0;
+      background-image:
+        radial-gradient(ellipse 60% 50% at 80% 50%, rgba(64,145,108,0.25) 0%, transparent 70%),
+        radial-gradient(ellipse 40% 60% at 10% 80%, rgba(181,134,13,0.12) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    .hero-inner { max-width: 860px; margin: 0 auto; position: relative; }
+    .hero-eyebrow {
+      font-family: var(--mono);
+      font-size: 0.72rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: #74c69d;
+      margin-bottom: 20px;
+    }
+    .hero h1 {
+      font-family: var(--serif);
+      font-size: clamp(2.4rem, 5vw, 3.8rem);
+      line-height: 1.12;
+      font-weight: 900;
+      margin-bottom: 24px;
+      color: #fff;
+    }
+    .hero h1 em { color: #74c69d; font-style: normal; }
+    .hero-lead {
+      font-size: 1.18rem;
+      color: rgba(255,255,255,0.82);
+      max-width: 640px;
+      line-height: 1.7;
+      margin-bottom: 40px;
+    }
+    .hero-meta {
+      font-family: var(--mono);
+      font-size: 0.72rem;
+      color: rgba(255,255,255,0.45);
+      letter-spacing: 0.08em;
+    }
+    .hero-fig { margin: 48px auto 0; max-width: 860px; }
+    .hero-fig figure img {
+      width: 100%;
+      border-radius: 10px;
+      display: block;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.4);
+    }
+    .hero-fig figcaption {
+      font-size: 0.78rem;
+      color: rgba(255,255,255,0.5);
+      margin-top: 10px;
+      font-style: italic;
+      text-align: center;
+    }
+
+    /* LAYOUT GERAL */
+    main { max-width: 900px; margin: 0 auto; padding: 0 32px; }
+    section { padding: 64px 0; border-bottom: 1px solid var(--rule); }
+    section:last-child { border-bottom: none; }
+
+    .section-label {
+      font-family: var(--mono);
+      font-size: 0.68rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--moss);
+      margin-bottom: 14px;
+      display: block;
+    }
+    h2 {
+      font-family: var(--serif);
+      font-size: clamp(1.7rem, 3.5vw, 2.4rem);
+      font-weight: 700;
+      line-height: 1.22;
+      color: var(--ink);
+      margin-bottom: 20px;
+    }
+    h3 {
+      font-family: var(--serif);
+      font-size: 1.3rem;
+      font-weight: 700;
+      color: var(--ink);
+      margin-bottom: 10px;
+      margin-top: 32px;
+    }
+    p { margin-bottom: 18px; color: var(--ink-mid); }
+    p:last-child { margin-bottom: 0; }
+
+    /* STAT CARDS */
+    .stat-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+      gap: 20px;
+      margin: 40px 0;
+    }
+    .stat-card {
+      background: #fff;
+      border: 1px solid var(--rule);
+      border-radius: 12px;
+      padding: 28px 22px;
+      text-align: center;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.04);
+      position: relative;
+      overflow: hidden;
+    }
+    .stat-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 3px;
+      background: var(--accent, var(--moss));
+    }
+    .stat-card.gold { --accent: var(--gold); }
+    .stat-card.slate { --accent: var(--slate); }
+    .stat-card.earth { --accent: var(--earth); }
+    .stat-num {
+      font-family: var(--serif);
+      font-size: 2.3rem;
+      font-weight: 900;
+      line-height: 1;
+      color: var(--ink);
+      margin-bottom: 6px;
+    }
+    .stat-unit {
+      font-family: var(--mono);
+      font-size: 0.68rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--ink-light);
+      margin-bottom: 10px;
+    }
+    .stat-desc { font-size: 0.85rem; color: var(--ink-light); line-height: 1.45; margin: 0; }
+
+    /* PULLQUOTE */
+    .pullquote {
+      border-left: 4px solid var(--moss);
+      background: var(--moss-pale);
+      border-radius: 0 10px 10px 0;
+      padding: 24px 28px;
+      margin: 36px 0;
+    }
+    .pullquote p {
+      font-family: var(--serif);
+      font-size: 1.2rem;
+      font-style: italic;
+      color: var(--moss);
+      margin-bottom: 10px;
+      line-height: 1.55;
+    }
+    .pullquote cite {
+      font-size: 0.78rem;
+      font-family: var(--mono);
+      color: var(--ink-light);
+      font-style: normal;
+    }
+
+    /* CALLOUT */
+    .callout { border-radius: 12px; padding: 28px 32px; margin: 32px 0; }
+    .callout.gold  { background: var(--gold-pale);  border: 1px solid #f0c040; }
+    .callout.earth { background: var(--earth-pale); border: 1px solid #d4a574; }
+    .callout.slate { background: var(--slate-pale); border: 1px solid #93c5fd; }
+    .callout-title {
+      font-family: var(--mono);
+      font-size: 0.7rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      margin-bottom: 10px;
+      font-weight: 600;
+    }
+    .callout.gold  .callout-title { color: var(--gold); }
+    .callout.earth .callout-title { color: var(--earth); }
+    .callout.slate .callout-title { color: var(--slate); }
+    .callout p { font-size: 0.95rem; margin-bottom: 0; }
+
+    /* NOTA DE INTERPRETAÇÃO */
+    .nota-interpretacao {
+      font-size: 0.82rem;
+      color: var(--ink-light);
+      font-style: italic;
+      border-left: 2px solid #c9d3db;
+      padding-left: 12px;
+      margin: 6px 0 18px;
+      line-height: 1.5;
+    }
+
+    /* FIGURES */
+    figure { margin: 40px 0; }
+    figure img { width: 100%; border-radius: 10px; display: block; border: 1px solid var(--rule); }
+    figcaption {
+      font-size: 0.8rem;
+      color: var(--ink-light);
+      margin-top: 10px;
+      font-style: italic;
+      line-height: 1.5;
+    }
+    figcaption a { color: var(--moss-light); }
+
+    /* DOIS COLUNAS */
+    .two-col {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 40px;
+      align-items: start;
+    }
+    .two-col.img-right .col-text { order: 1; }
+    .two-col.img-right .col-img  { order: 2; }
+
+    /* MECANISMO */
+    .mechanism {
+      background: var(--cream-dark);
+      border-radius: 14px;
+      padding: 40px 36px;
+      margin: 40px 0;
+    }
+    .mechanism-title {
+      font-family: var(--serif);
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: var(--ink);
+      margin-bottom: 24px;
+      text-align: center;
+    }
+    .flow-steps {
+      display: flex;
+      align-items: flex-start;
+      gap: 0;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+    .flow-step {
+      flex: 1;
+      min-width: 130px;
+      max-width: 180px;
+      text-align: center;
+      position: relative;
+      padding: 0 8px;
+    }
+    .flow-step + .flow-step::before {
+      content: '→';
+      position: absolute;
+      left: -14px;
+      top: 24px;
+      font-size: 1.3rem;
+      color: var(--moss-light);
+    }
+    .flow-icon {
+      width: 52px; height: 52px;
+      border-radius: 50%;
+      background: var(--moss);
+      color: #fff;
+      font-size: 1.4rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 12px;
+    }
+    .flow-label { font-size: 0.82rem; font-weight: 600; color: var(--ink); margin-bottom: 4px; }
+    .flow-sub   { font-size: 0.74rem; color: var(--ink-light); line-height: 1.4; }
+
+    /* AMEAÇAS */
+    .threat-list { list-style: none; display: grid; gap: 16px; margin: 28px 0; }
+    .threat-list li {
+      display: flex;
+      gap: 16px;
+      align-items: flex-start;
+      background: #fff;
+      border: 1px solid var(--rule);
+      border-radius: 10px;
+      padding: 18px 20px;
+      box-shadow: 0 1px 6px rgba(0,0,0,0.04);
+    }
+    .threat-icon { font-size: 1.5rem; flex-shrink: 0; margin-top: 2px; }
+    .threat-text strong { display: block; font-weight: 700; color: var(--ink); margin-bottom: 3px; }
+    .threat-text span { font-size: 0.9rem; color: var(--ink-mid); }
+
+    /* BARRA COMPARATIVA */
+    .bar-compare { margin: 32px 0; display: grid; gap: 14px; }
+    .bar-row { display: grid; gap: 6px; }
+    .bar-row-label { font-size: 0.85rem; font-weight: 600; color: var(--ink); }
+    .bar-track {
+      background: var(--cream-dark);
+      border-radius: 6px;
+      height: 28px;
+      overflow: hidden;
+    }
+    .bar-fill {
+      height: 100%;
+      border-radius: 6px;
+      display: flex;
+      align-items: center;
+      padding-left: 12px;
+      font-family: var(--mono);
+      font-size: 0.72rem;
+      font-weight: 500;
+      color: #fff;
+    }
+    .bar-fill.wild { background: var(--moss); }
+    .bar-fill.crop { background: #e07b39; }
+
+    /* HOTSPOTS */
+    .map-section { background: var(--cream-dark); border-radius: 14px; padding: 36px; margin: 40px 0; }
+    .map-section h3 { margin-top: 0; }
+    .hotspots {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 16px;
+      margin-top: 24px;
+    }
+    .hotspot-card {
+      background: #fff;
+      border-radius: 10px;
+      padding: 18px 16px;
+      border: 1px solid var(--rule);
+    }
+    .hotspot-place  { font-weight: 700; font-size: 0.9rem; color: var(--ink); margin-bottom: 2px; }
+    .hotspot-location { font-size: 0.75rem; color: var(--ink-light); margin-bottom: 10px; }
+    .hotspot-value  { font-family: var(--mono); font-size: 1.1rem; color: var(--moss); font-weight: 600; }
+    .hotspot-unit   { font-size: 0.7rem; color: var(--ink-light); }
+
+    /* SYNTHESIS */
+    .synthesis {
+      background: linear-gradient(135deg, #0b2c1a 0%, #1b4332 100%);
+      border-radius: 16px;
+      padding: 52px 48px;
+      color: #fff;
+      margin: 0 0 64px;
+    }
+    .synthesis h2 { color: #74c69d; margin-bottom: 16px; }
+    .synthesis p  { color: rgba(255,255,255,0.82); }
+    .synthesis .big-line {
+      font-family: var(--serif);
+      font-size: clamp(1.4rem, 3vw, 2rem);
+      font-weight: 700;
+      color: #fff;
+      line-height: 1.3;
+      margin: 24px 0;
+      border-left: 4px solid #74c69d;
+      padding-left: 20px;
+    }
+
+    /* ===== QUESTÕES ===== */
+    .quiz-section {
+      background: #fff;
+      border-radius: 16px;
+      border: 1px solid var(--rule);
+      padding: 48px 44px;
+      margin-bottom: 64px;
+      box-shadow: 0 2px 20px rgba(0,0,0,0.04);
+    }
+    .quiz-section h2 {
+      margin-bottom: 8px;
+    }
+    .quiz-intro {
+      font-size: 0.95rem;
+      color: var(--ink-light);
+      margin-bottom: 36px;
+    }
+
+    /* questões de fixação */
+    .question-list { list-style: none; display: grid; gap: 22px; margin-bottom: 0; }
+    .question-item {
+      display: grid;
+      grid-template-columns: 28px 1fr;
+      gap: 14px;
+      align-items: start;
+    }
+    .q-number {
+      font-family: var(--mono);
+      font-size: 0.78rem;
+      color: #fff;
+      background: var(--moss);
+      border-radius: 50%;
+      width: 28px; height: 28px;
+      display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0;
+      font-weight: 600;
+      margin-top: 2px;
+    }
+    .q-number.reflect { background: var(--slate); }
+    .q-text {
+      font-size: 1rem;
+      color: var(--ink-mid);
+      line-height: 1.6;
+    }
+    .q-text strong { color: var(--ink); font-weight: 600; }
+
+    /* resposta oculta */
+    .q-answer {
+      grid-column: 2;
+      background: var(--moss-pale);
+      border-radius: 8px;
+      padding: 14px 18px;
+      font-size: 0.88rem;
+      color: var(--moss);
+      line-height: 1.55;
+      display: none;
+      margin-top: 8px;
+    }
+    .q-answer.visible { display: block; }
+    .q-toggle {
+      display: inline-block;
+      margin-top: 8px;
+      font-family: var(--mono);
+      font-size: 0.7rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--moss-light);
+      cursor: pointer;
+      border: 1px solid var(--moss-light);
+      border-radius: 4px;
+      padding: 3px 10px;
+      background: none;
+      transition: background 0.15s;
+    }
+    .q-toggle:hover { background: var(--moss-pale); }
+
+    /* questões reflexivas */
+    .reflect-divider {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      margin: 40px 0 32px;
+    }
+    .reflect-divider span {
+      font-family: var(--mono);
+      font-size: 0.68rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--slate);
+      white-space: nowrap;
+    }
+    .reflect-divider::before, .reflect-divider::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: var(--rule);
+    }
+    .reflect-intro {
+      font-size: 0.92rem;
+      color: var(--ink-light);
+      font-style: italic;
+      margin-bottom: 28px;
+      line-height: 1.6;
+    }
+
+    /* RODAPÉ */
+    footer.inst-footer {
+      background: #fff;
+      border-top: 1px solid var(--rule);
+      padding: 36px 40px;
+      font-size: 0.78rem;
+      color: var(--ink-light);
+      line-height: 1.7;
+    }
+    .refs-grid {
+      max-width: 860px;
+      margin: 0 auto 24px;
+      display: grid;
+      gap: 24px;
+    }
+    .refs-block p   { font-size: 0.75rem; color: var(--ink-light); margin-bottom: 5px; }
+    .refs-block strong { color: var(--ink); font-weight: 700; display: block; margin-bottom: 8px; font-size: 0.72rem; letter-spacing: 0.08em; text-transform: uppercase; }
+    .refs-block a   { color: var(--moss-light); }
+    .inst-sig { text-align: center; font-size: 0.76rem; color: var(--ink-light); border-top: 1px solid var(--rule); padding-top: 20px; max-width: 860px; margin: 0 auto; }
+
+    /* RESPONSIVE */
+    @media (max-width: 680px) {
+      .inst-header { padding: 12px 20px; }
+      .hero { padding: 52px 20px 48px; }
+      main { padding: 0 18px; }
+      .two-col { grid-template-columns: 1fr; }
+      .two-col.img-right .col-text, .two-col.img-right .col-img { order: unset; }
+      .flow-steps { flex-direction: column; align-items: center; }
+      .flow-step + .flow-step::before { display: none; }
+      .synthesis { padding: 36px 24px; }
+      .quiz-section { padding: 32px 20px; }
+      footer.inst-footer { padding: 28px 20px; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header class="inst-header">
+  <div class="pub-name">Ciência &amp; Território — UFPel</div>
+  <img src="img/logo.png" alt="Logo institucional UFPel" onerror="this.style.display='none'">
+</header>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-inner">
+    <p class="hero-eyebrow">Descoberta publicada em Science · Junho de 2026</p>
+    <h1>A <em>Internet</em> da Vida<br>está sob seus pés</h1>
+    <p class="hero-lead">
+      O maior mapeamento global já feito revela que os solos da Terra abrigam
+      <strong style="color:#74c69d">110 quadrilhões de quilômetros</strong> de redes fúngicas subterrâneas —
+      quase um bilhão de vezes a distância da Terra ao Sol. Elas sustentam
+      mais de 70% de todas as plantas do planeta. E estão ameaçadas.
+    </p>
+    <p class="hero-meta">Por Pippa Neill &amp; Patrick Barkham · The Guardian, 11 jun. 2026 &nbsp;|&nbsp; Estudo: Stewart et al., <em>Science</em> (2026)</p>
+  </div>
+  <div class="hero-fig">
+    <figure>
+      <img src="img/3103.avif" alt="Fotografia de fungos micorrízicos arbusculares no solo, com raízes laranjas e esporos visíveis">
+      <figcaption>Fungos micorrízicos arbusculares fotografados no solo. Esporos dourados visíveis a olho nu; as hifas, invisíveis, formam redes que percorrem o planeta inteiro. © The Guardian, 2026.</figcaption>
+    </figure>
+  </div>
+</div>
+
+<!-- MAIN -->
+<main>
+
+  <!-- 01 -->
+  <section>
+    <span class="section-label">01 — O que foi descoberto</span>
+    <h2>O primeiro mapa global de um mundo que nunca enxergamos</h2>
+
+    <p>
+      Durante 475 milhões de anos, antes mesmo das plantas colonizarem a terra firme,
+      uma rede silenciosa foi sendo tecida debaixo de nossos pés. São os
+      <strong>fungos micorrízicos arbusculares</strong> (FMA) — organismos que formam
+      tubos microscópicos chamados <strong>hifas</strong> e se entrelaçam com as raízes
+      de mais de 70% das espécies vegetais terrestres.
+    </p>
+    <p>
+      Apesar de sua importância vital, até hoje nenhum mapa global deles existia.
+      Isso mudou em junho de 2026, quando a equipe do
+      <strong>SPUN</strong> (Society for the Protection of Underground Networks)
+      publicou na revista <em>Science</em> o primeiro atlas global de FMA,
+      produzido com modelos de aprendizado de máquina treinados em
+      <strong>mais de 16.000 amostras de solo</strong> coletadas ao redor do mundo.
+    </p>
+
+    <div class="pullquote">
+      <p>"Pode haver até 10 metros de rede micorrízica em apenas uma colher de chá de solo."</p>
+      <cite>— Dr. Justin Stewart, autor principal do estudo, VU Amsterdam / SPUN</cite>
+    </div>
+
+    <div class="stat-grid">
+      <div class="stat-card">
+        <div class="stat-num">110</div>
+        <div class="stat-unit">quadrilhões de km</div>
+        <p class="stat-desc">Comprimento estimado total das redes de FMA nos solos do planeta¹</p>
+      </div>
+      <div class="stat-card gold">
+        <div class="stat-num">~750M×</div>
+        <div class="stat-unit">distância Terra–Sol</div>
+        <p class="stat-desc">Equivalência para tornar a magnitude compreensível¹</p>
+      </div>
+      <div class="stat-card slate">
+        <div class="stat-num">16.000+</div>
+        <div class="stat-unit">amostras de solo</div>
+        <p class="stat-desc">Base de dados usada para treinar os modelos de IA do estudo¹</p>
+      </div>
+      <div class="stat-card earth">
+        <div class="stat-num">475M</div>
+        <div class="stat-unit">anos de coevolução</div>
+        <p class="stat-desc">Tempo em que FMA e plantas coevoluem juntos na Terra¹</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 02 -->
+  <section>
+    <span class="section-label">02 — O que são esses fungos</span>
+    <h2>Uma aliança mais antiga que as florestas</h2>
+
+    <div class="two-col img-right">
+      <div class="col-text">
+        <p>
+          Os FMA não são os cogumelos visíveis no cotidiano. São organismos
+          microscópicos que vivem <em>dentro</em> e <em>ao redor</em> das raízes das
+          plantas, formando uma simbiose documentada há mais de 400 milhões de anos
+          — provavelmente anterior à própria colonização da terra pelas plantas vasculares.
+        </p>
+        <p>
+          Suas hifas — tubos com espessura de milésimos de milímetro —
+          ramificam-se pelo solo ampliando em centenas de vezes a superfície de
+          absorção das raízes, captando fósforo, nitrogênio e água que a raiz
+          sozinha não alcançaria.
+        </p>
+        <p>
+          Em troca, a planta transfere açúcares produzidos pela fotossíntese.
+          Parte desse carbono é usada pelo fungo para crescer; parte fica retida
+          nas profundezas do solo, fora do ciclo atmosférico.
+        </p>
+      </div>
+      <div class="col-img">
+        <figure>
+          <img src="img/hifas-microscopio.jpg" alt="Microscopia de hifas de fungo micorrízico arbuscular colonizando raízes de planta">
+          <figcaption>Hifas de FMA colonizando células radiculares. Foto: Rajarshi Rit / <a href="https://commons.wikimedia.org" target="_blank" rel="noopener">Wikimedia Commons</a>, <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank" rel="noopener">CC BY 4.0</a>.</figcaption>
+        </figure>
+      </div>
+    </div>
+
+    <div class="mechanism">
+      <p class="mechanism-title">O ciclo planta–fungo–solo: como funciona a troca</p>
+      <div class="flow-steps">
+        <div class="flow-step">
+          <div class="flow-icon">☀️</div>
+          <p class="flow-label">Fotossíntese</p>
+          <p class="flow-sub">A planta captura CO₂ da atmosfera e produz açúcares</p>
+        </div>
+        <div class="flow-step">
+          <div class="flow-icon">🌱</div>
+          <p class="flow-label">Transferência</p>
+          <p class="flow-sub">Até 20% do carbono fixado é direcionado às raízes e aos fungos</p>
+        </div>
+        <div class="flow-step">
+          <div class="flow-icon">🍄</div>
+          <p class="flow-label">Fungo recebe</p>
+          <p class="flow-sub">O FMA usa o carbono para crescer e expandir as hifas no solo</p>
+        </div>
+        <div class="flow-step">
+          <div class="flow-icon">💧</div>
+          <p class="flow-label">Planta recebe</p>
+          <p class="flow-sub">Nutrientes (P, N) e água chegam à raiz pela rede fúngica</p>
+        </div>
+        <div class="flow-step">
+          <div class="flow-icon">🌍</div>
+          <p class="flow-label">Solo retém</p>
+          <p class="flow-sub">Carbono é depositado em profundidade, longe da atmosfera</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="callout gold">
+      <p class="callout-title">📊 Dado complementar — carbono envolvido</p>
+      <p>
+        Estudo anterior (Hawkins et al., <em>Current Biology</em>, 2023²) estimou que
+        <strong>13,12 bilhões de toneladas de CO₂ equivalente</strong> fluem das plantas
+        para os fungos micorrízicos por ano — equivalente a cerca de
+        <strong>36% de todas as emissões globais anuais de combustíveis fósseis</strong>.
+        Isso torna o solo, sustentado por esses fungos, o
+        <strong>segundo maior reservatório de carbono do planeta</strong>, superado
+        apenas pelos oceanos.
+      </p>
+      <p class="nota-interpretacao">Nota: esta estimativa é de estudo independente do mapeamento de 2026; os valores são compatíveis mas produzidos por equipes e métodos distintos.</p>
+    </div>
+  </section>
+
+  <!-- 03 -->
+  <section>
+    <span class="section-label">03 — Onde estão as redes mais densas</span>
+    <h2>Campos e pastagens: os guardiões ocultos do subsolo</h2>
+
+    <p>
+      Um dos resultados mais surpreendentes do estudo foi identificar que os
+      ecossistemas com maior densidade de FMA não são as florestas tropicais,
+      mas as <strong>pastagens, campos úmidos e pradarias</strong> — ecossistemas
+      frequentemente negligenciados nas políticas de conservação.
+      Segundo o estudo, esses ambientes abrigam aproximadamente
+      <strong>40% de toda a biomassa de FMA do planeta</strong>¹.
+    </p>
+
+    <figure>
+      <img src="img/Fungus_globes-showcase_860.png" alt="Mapa mundial de densidade de redes de fungos micorrízicos arbusculares, com destaque para campos e pradarias">
+      <figcaption>Mapa de densidade de FMA (metros de hifas por cm³ de solo), produzido com dados de mais de 16.000 amostras. Regiões mais intensas correspondem a pastagens montanas e campos inundados. © The Guardian / SPUN, 2026¹.</figcaption>
+    </figure>
+
+    <div class="map-section">
+      <h3>Locais com maior densidade prevista de hifas</h3>
+      <p style="font-size:0.88rem; color:var(--ink-light); margin-bottom:0;">
+        Todos na categoria de pastagens montanas e campos inundados (top 1% global).
+        Valores obtidos dos modelos preditivos do estudo¹.
+      </p>
+      <div class="hotspots">
+        <div class="hotspot-card">
+          <p class="hotspot-place">Planalto Tibetano</p>
+          <p class="hotspot-location">China</p>
+          <p class="hotspot-value">11,40 <span class="hotspot-unit">m/cm³</span></p>
+        </div>
+        <div class="hotspot-card">
+          <p class="hotspot-place">Pradaria de Flint Hills</p>
+          <p class="hotspot-location">EUA (Kansas)</p>
+          <p class="hotspot-value">10,29 <span class="hotspot-unit">m/cm³</span></p>
+        </div>
+        <div class="hotspot-card">
+          <p class="hotspot-place">Pântanos do Sudd</p>
+          <p class="hotspot-location">Sudão do Sul</p>
+          <p class="hotspot-value">8,05 <span class="hotspot-unit">m/cm³</span></p>
+        </div>
+        <div class="hotspot-card">
+          <p class="hotspot-place">Everglades</p>
+          <p class="hotspot-location">EUA (Flórida)</p>
+          <p class="hotspot-value">Excepcionalmente alta¹</p>
+        </div>
+        <div class="hotspot-card">
+          <p class="hotspot-place">Cerrado Brasileiro</p>
+          <p class="hotspot-location">Brasil</p>
+          <p class="hotspot-value">&gt;45 spp./100m²³</p>
+        </div>
+        <div class="hotspot-card">
+          <p class="hotspot-place">Encostas de Simien</p>
+          <p class="hotspot-location">Etiópia</p>
+          <p class="hotspot-value">&gt;45 spp./100m²³</p>
+        </div>
+      </div>
+    </div>
+
+    <p>
+      O Cerrado brasileiro figura como um dos principais <em>hotspots</em> de
+      biodiversidade fúngica do mundo, com estimativa superior a 45 espécies de
+      FMA por 100 m² — dado proveniente do mapeamento de biodiversidade do SPUN
+      publicado em 2025³. É uma informação crítica: o Cerrado é um dos biomas
+      mais ameaçados e convertidos em agropecuária do Brasil.
+    </p>
+  </section>
+
+  <!-- 04 -->
+  <section>
+    <span class="section-label">04 — As ameaças</span>
+    <h2>O que estamos destruindo sem saber</h2>
+
+    <p>
+      O mesmo estudo que revelou a grandiosidade dessas redes documentou
+      a destruição em curso. A comparação entre solos agrícolas
+      e ecossistemas naturais é direta:
+    </p>
+
+    <div class="bar-compare">
+      <div class="bar-row">
+        <p class="bar-row-label">Ecossistemas naturais (campo, floresta, savana)</p>
+        <div class="bar-track">
+          <div class="bar-fill wild" style="width:100%">Densidade de referência</div>
+        </div>
+      </div>
+      <div class="bar-row">
+        <p class="bar-row-label">Lavouras agrícolas convencionais</p>
+        <div class="bar-track">
+          <div class="bar-fill crop" style="width:52.7%">−47,3% de densidade (média)¹</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="callout earth">
+      <p class="callout-title">⚠️ Dados do estudo — Science, 2026¹</p>
+      <p>
+        As densidades de redes fúngicas em lavouras são, em média,
+        <strong>47,3% menores</strong> do que em ecossistemas naturais equivalentes.
+        Pastagens naturais — com aproximadamente 40% da biomassa global de FMA —
+        estão sendo convertidas em lavouras <strong>quatro vezes mais rapidamente</strong>
+        do que florestas. E <strong>95% dos hotspots de biodiversidade fúngica
+        estão fora de áreas protegidas</strong>.
+      </p>
+    </div>
+
+    <ul class="threat-list">
+      <li>
+        <span class="threat-icon">🚜</span>
+        <div class="threat-text">
+          <strong>Aração e revolvimento do solo</strong>
+          <span>Rompe fisicamente as redes de hifas, que levam anos para se reconstituir. Nas palavras do Dr. Stewart: "você vai ao solo e literalmente o rasga"¹.</span>
+        </div>
+      </li>
+      <li>
+        <span class="threat-icon">🧪</span>
+        <div class="threat-text">
+          <strong>Fertilizantes sintéticos em excesso</strong>
+          <span>Quando nutrientes chegam abundantemente por via química, a planta reduz o investimento de carbono nos fungos — a simbiose é enfraquecida por falta de demanda¹.</span>
+        </div>
+      </li>
+      <li>
+        <span class="threat-icon">🌿</span>
+        <div class="threat-text">
+          <strong>Fungicidas</strong>
+          <span>Aplicados para controlar patógenos fúngicos nas lavouras, também afetam os fungos benéficos do solo sem distinção taxonômica¹.</span>
+        </div>
+      </li>
+      <li>
+        <span class="threat-icon">🏗️</span>
+        <div class="threat-text">
+          <strong>Desmatamento e impermeabilização do solo</strong>
+          <span>A conversão de vegetação nativa elimina os parceiros vegetais dos FMA, colapsando a rede pela base da simbiose.</span>
+        </div>
+      </li>
+    </ul>
+
+    <h3>O que se perde quando a rede se rompe</h3>
+    <p>
+      Os pesquisadores alertam que as consequências ultrapassam a produtividade
+      agrícola. Redes fúngicas mais esparsas reduzem a
+      <strong>capacidade do solo de reter carbono</strong>, a
+      <strong>disponibilização natural de nutrientes</strong> às plantas e a
+      <strong>filtragem de nitrogênio e fósforo</strong> antes que alcancem corpos d'água¹.
+    </p>
+
+    <div class="pullquote">
+      <p>"Se elas desaparecerem, muito mais produtos químicos vão parar nos rios e lagos."</p>
+      <cite>— Dra. Toby Kiers, autora sênior do estudo e diretora-executiva do SPUN¹</cite>
+    </div>
+  </section>
+
+  <!-- 05 -->
+  <section>
+    <span class="section-label">05 — O que isso significa para o futuro</span>
+    <h2>Um atlas para proteger o que não se vê</h2>
+
+    <p>
+      O objetivo central do estudo transcende o diagnóstico científico. Os dados serão
+      apresentados a governos na <strong>COP de Desertificação da ONU,
+      em agosto de 2026, na Mongólia</strong>, como instrumento para orientar
+      decisões de conservação e uso do solo¹.
+    </p>
+
+    <div class="two-col">
+      <div>
+        <h3>🌾 Para a agricultura</h3>
+        <p>
+          Os pesquisadores argumentam que colheitas atuais dependem
+          artificialmente de fertilizantes pesados. Proteger os fungos do solo
+          permitiria às plantas obter mais nutrientes de forma natural,
+          <strong>reduzindo gradualmente a dependência de insumos químicos</strong>,
+          enquanto os fungos transfeririam mais carbono para as camadas
+          profundas do solo¹.
+        </p>
+      </div>
+      <div>
+        <h3>🌡️ Para o clima</h3>
+        <p>
+          Com bilhões de toneladas de CO₂e passando pelos fungos anualmente²,
+          proteger essas redes figura como uma das estratégias de mitigação
+          climática mais subestimadas. Solos com fungos saudáveis tendem a
+          <strong>sequestrar mais carbono por períodos mais longos</strong>.
+        </p>
+      </div>
+    </div>
+
+    <div class="callout slate">
+      <p class="callout-title">🔬 Ferramenta de acesso público</p>
+      <p>
+        O SPUN lançou o <strong>Underground Atlas</strong>, plataforma interativa
+        que permite explorar padrões de biodiversidade fúngica em qualquer ponto
+        da Terra com resolução de 1 km. Os dados estão abertos a cientistas,
+        conservacionistas e formuladores de políticas públicas (<a href="https://www.spun.earth" target="_blank" rel="noopener" style="color:var(--slate);">spun.earth</a>)³.
+      </p>
+    </div>
+
+    <figure>
+      <img src="img/restauracao-solo-fungos.jpg" alt="Práticas agrícolas conservacionistas que preservam a saúde do solo">
+      <figcaption>Práticas como plantio direto e cobertura permanente do solo podem preservar ou restaurar as redes fúngicas em áreas agrícolas, com benefícios simultâneos para saúde das plantas e estoque de carbono. Foto: USDA NRCS South Dakota / <a href="https://commons.wikimedia.org" target="_blank" rel="noopener">Wikimedia Commons</a>, <a href="https://creativecommons.org/licenses/by-sa/2.0/" target="_blank" rel="noopener">CC BY-SA 2.0</a>.</figcaption>
+    </figure>
+
+    <div class="pullquote">
+      <p>"Há um grande movimento agora para restaurar não apenas as comunidades acima do solo — as plantas e os animais —, mas também as comunidades fúngicas subterrâneas. Esse conjunto de dados nos oferece parâmetros de referência para o que uma comunidade microbiana saudável pode ser."</p>
+      <cite>— Dra. Toby Kiers, SPUN¹</cite>
+    </div>
+  </section>
+
+  <!-- 06 SÍNTESE -->
+  <section style="border-bottom:none; padding-bottom:48px;">
+    <div class="synthesis">
+      <span class="section-label" style="color:#74c69d;">O que fica</span>
+      <h2>A vida tem uma infraestrutura. Ela está no solo.</h2>
+      <p>
+        Por 475 milhões de anos, a vida em terra firme dependeu de uma parceria invisível.
+        Os fungos micorrízicos arbusculares formam, por analogia, algo que funciona
+        como uma vasta rede de distribuição de recursos: descentralizada, resiliente,
+        construída ao longo de eras geológicas.
+      </p>
+      <p class="nota-interpretacao" style="color:rgba(255,255,255,0.5); border-left-color:rgba(255,255,255,0.2);">A expressão "internet da natureza" é uma analogia de divulgação científica, não uma afirmação técnica sobre as redes fúngicas.</p>
+      <p class="big-line">
+        110 quadrilhões de quilômetros. Quase um bilhão de vezes a distância
+        da Terra ao Sol. Tudo isso em cada colher de chá de solo saudável¹.
+      </p>
+      <p>
+        Agora, pela primeira vez, sabemos onde essa rede está mais densa, onde está mais
+        ameaçada — e o que acontece quando a perdemos. O mapa existe.
+        O que fazemos com ele é nossa escolha.
+      </p>
+    </div>
+  </section>
+
+</main>
+
+<!-- QUESTÕES DE FIXAÇÃO E REFLEXÃO -->
+<main>
+  <div class="quiz-section">
+
+    <span class="section-label">Verificação de compreensão</span>
+    <h2>O que você aprendeu?</h2>
+    <p class="quiz-intro">
+      Oito questões para confirmar a aquisição dos conceitos principais.
+      Clique em <em>ver resposta</em> após formular sua resposta.
+    </p>
+
+    <ol class="question-list">
+
+      <li class="question-item">
+        <span class="q-number">1</span>
+        <div>
+          <p class="q-text">O que são as <strong>hifas</strong> e qual é sua função nas redes de fungos micorrízicos arbusculares?</p>
+          <button class="q-toggle" onclick="toggleAnswer(this)">Ver resposta</button>
+          <div class="q-answer">Hifas são tubos microscópicos formados pelas células dos fungos. Nas redes de FMA, elas se ramificam pelo solo estendendo muito além das raízes da planta, captando fósforo, nitrogênio e água. São a estrutura física que realiza a troca de nutrientes e que, somadas, formam os 110 quadrilhões de quilômetros estimados no estudo.</div>
+        </div>
+      </li>
+
+      <li class="question-item">
+        <span class="q-number">2</span>
+        <div>
+          <p class="q-text">Qual é a troca realizada na simbiose entre planta e fungo micorrízico? O que cada parte oferece e o que cada parte recebe?</p>
+          <button class="q-toggle" onclick="toggleAnswer(this)">Ver resposta</button>
+          <div class="q-answer">A planta fornece açúcares ricos em carbono — produzidos pela fotossíntese a partir de CO₂ atmosférico. O fungo, em troca, fornece nutrientes minerais (principalmente fósforo e nitrogênio) e água, que suas hifas alcançam no solo com muito mais eficiência do que as raízes sozinhas.</div>
+        </div>
+      </li>
+
+      <li class="question-item">
+        <span class="q-number">3</span>
+        <div>
+          <p class="q-text">Por que o estudo de 2026 é considerado inédito? O que existia antes dele e o que ele acrescentou?</p>
+          <button class="q-toggle" onclick="toggleAnswer(this)">Ver resposta</button>
+          <div class="q-answer">Antes, não existia nenhum mapa global da distribuição e densidade de FMA. O estudo do SPUN, publicado na revista Science, produziu pela primeira vez esse atlas usando modelos de aprendizado de máquina treinados em mais de 16.000 amostras de solo coletadas ao redor do mundo — permitindo estimar onde essas redes são mais densas e onde estão mais ameaçadas.</div>
+        </div>
+      </li>
+
+      <li class="question-item">
+        <span class="q-number">4</span>
+        <div>
+          <p class="q-text">Qual tipo de ecossistema concentra a maior densidade de FMA, segundo o estudo? Isso confirma ou contraria a intuição comum?</p>
+          <button class="q-toggle" onclick="toggleAnswer(this)">Ver resposta</button>
+          <div class="q-answer">São as pastagens, campos úmidos e pradarias — e não as florestas tropicais, como seria intuitivo. Esses ambientes abrigam aproximadamente 40% da biomassa global de FMA. Esse resultado contraria a atenção desproporcional que as florestas recebem nas políticas de conservação.</div>
+        </div>
+      </li>
+
+      <li class="question-item">
+        <span class="q-number">5</span>
+        <div>
+          <p class="q-text">De que forma a <strong>aração convencional do solo</strong> prejudica as redes de FMA? Por que esse dano é difícil de reverter rapidamente?</p>
+          <button class="q-toggle" onclick="toggleAnswer(this)">Ver resposta</button>
+          <div class="q-answer">A aração rompe fisicamente as hifas, destruindo a estrutura da rede que levou anos para se formar. A reconstrução é lenta porque depende de recolonização das raízes pelos fungos e da expansão gradual das novas hifas — processo que pode levar anos e que exige parceiros vegetais presentes no solo.</div>
+        </div>
+      </li>
+
+      <li class="question-item">
+        <span class="q-number">6</span>
+        <div>
+          <p class="q-text">Qual a diferença percentual média na densidade de FMA entre solos agrícolas e ecossistemas naturais, segundo Stewart et al. (2026)?</p>
+          <button class="q-toggle" onclick="toggleAnswer(this)">Ver resposta</button>
+          <div class="q-answer">Os solos agrícolas apresentam, em média, 47,3% menos densidade de redes fúngicas do que ecossistemas naturais equivalentes — ou seja, aproximadamente metade da infraestrutura fúngica é perdida com a conversão para lavouras convencionais.</div>
+        </div>
+      </li>
+
+      <li class="question-item">
+        <span class="q-number">7</span>
+        <div>
+          <p class="q-text">Por que a degradação das redes de FMA pode afetar a <strong>qualidade dos rios e lagos</strong>, mesmo que esses corpos d'água estejam distantes do solo agrícola?</p>
+          <button class="q-toggle" onclick="toggleAnswer(this)">Ver resposta</button>
+          <div class="q-answer">As redes fúngicas ajudam a imobilizar e processar nutrientes como nitrogênio e fósforo no solo. Quando essas redes são destruídas, esses elementos não são retidos e passam a escoar pelo solo até alcançar rios e lagos, causando eutrofização e degradação da qualidade da água.</div>
+        </div>
+      </li>
+
+      <li class="question-item">
+        <span class="q-number">8</span>
+        <div>
+          <p class="q-text">O que é o <em>Underground Atlas</em> do SPUN e qual é seu objetivo prático além da ciência?</p>
+          <button class="q-toggle" onclick="toggleAnswer(this)">Ver resposta</button>
+          <div class="q-answer">É uma plataforma interativa de acesso público que permite visualizar a diversidade fúngica subterrânea em qualquer ponto da Terra com resolução de 1 km. Seu objetivo prático é fornecer dados para que governos, conservacionistas e formuladores de políticas públicas tomem decisões mais informadas sobre quais áreas priorizar para proteção e onde concentrar esforços de restauração do solo.</div>
+        </div>
+      </li>
+
+    </ol>
+
+    <!-- DIVISOR REFLEXÃO -->
+    <div class="reflect-divider"><span>Para ir além</span></div>
+
+    <p class="reflect-intro">
+      As questões a seguir não têm uma resposta única correta. Elas existem para
+      provocar o pensamento crítico sobre as implicações do que foi apresentado.
+    </p>
+
+    <ol class="question-list">
+
+      <li class="question-item">
+        <span class="q-number reflect">A</span>
+        <div>
+          <p class="q-text">Se as pastagens concentram 40% da biomassa global de FMA e estão entre os ecossistemas menos protegidos do planeta, <strong>o que isso diz sobre os critérios que usamos para definir o que merece conservação?</strong> Quais valores estão por trás dessas escolhas?</p>
+        </div>
+      </li>
+
+      <li class="question-item">
+        <span class="q-number reflect">B</span>
+        <div>
+          <p class="q-text">O uso de fertilizantes sintéticos enfraquece a simbiose planta–fungo porque a planta deixa de precisar do fungo. <strong>O que esse mecanismo revela sobre a relação entre dependência, cooperação e vulnerabilidade nos sistemas vivos</strong> — e possivelmente em sistemas humanos também?</p>
+        </div>
+      </li>
+
+      <li class="question-item">
+        <span class="q-number reflect">C</span>
+        <div>
+          <p class="q-text">Durante séculos, a biologia valorizou organismos visíveis — animais, árvores, flores. Os fungos do solo permaneceram ignorados por não serem observáveis a olho nu. <strong>O que isso nos diz sobre os limites do conhecimento construído apenas a partir do que conseguimos ver?</strong> Que outras realidades importantes podem estar sendo negligenciadas hoje?</p>
+        </div>
+      </li>
+
+      <li class="question-item">
+        <span class="q-number reflect">D</span>
+        <div>
+          <p class="q-text">O estudo será apresentado a governos na COP de Desertificação da ONU. <strong>Ter o mapa é condição suficiente para proteger as redes fúngicas?</strong> Que outros fatores — econômicos, políticos, culturais — determinam se um dado científico se converte em ação?</p>
+        </div>
+      </li>
+
+      <li class="question-item">
+        <span class="q-number reflect">E</span>
+        <div>
+          <p class="q-text">Os FMA evoluíram há 475 milhões de anos numa simbiose de troca mútua. Hoje, práticas agrícolas que rompem essa parceria são consideradas normais e economicamente racionais. <strong>De que ponto de vista essa racionalidade é válida, e de que ponto de vista ela é uma forma de irracionalidade?</strong></p>
+        </div>
+      </li>
+
+      <li class="question-item">
+        <span class="q-number reflect">F</span>
+        <div>
+          <p class="q-text">O infográfico usa a expressão "internet da natureza" como analogia para as redes fúngicas. <strong>Essa metáfora ajuda ou limita a compreensão do fenômeno?</strong> O que ela captura bem e o que ela deixa escapar sobre a natureza real das redes de FMA?</p>
+        </div>
+      </li>
+
+    </ol>
+
+  </div>
+</main>
+
+<!-- RODAPÉ -->
+<footer class="inst-footer">
+  <div class="refs-grid">
+
+    <div class="refs-block">
+      <strong>Fontes primárias — artigos científicos</strong>
+      <p>¹ STEWART, J. D. et al. Global density and biomass of arbuscular mycorrhizal fungal networks. <em>Science</em>, 2026. DOI: a confirmar após publicação definitiva.</p>
+      <p>² HAWKINS, H.-J. et al. Mycorrhizal mycelium as a global carbon pool. <em>Current Biology</em>, v. 33, n. 6, p. 1133–1144.e3, 2023. DOI: <a href="https://doi.org/10.1016/j.cub.2023.02.027" target="_blank" rel="noopener">10.1016/j.cub.2023.02.027</a>.</p>
+      <p>³ SPUN / STEWART, J. D. et al. Advancing knowledge on the biogeography of arbuscular mycorrhizal fungi to support Sustainable Development Goal 15: Life on Land. <em>FEMS Microbiology Letters</em>, 2025. DOI: <a href="https://doi.org/10.1093/femsle/fnaf055" target="_blank" rel="noopener">10.1093/femsle/fnaf055</a>.</p>
+      <p>⁴ BARCELÓ, M.; VAN BODEGOM, P. M.; SOUDZILOVSKAIA, N. A. Fine-resolution global maps of root biomass carbon colonized by arbuscular and ectomycorrhizal fungi. <em>Scientific Data</em>, v. 10, 2023. DOI: <a href="https://doi.org/10.1038/s41597-022-01913-2" target="_blank" rel="noopener">10.1038/s41597-022-01913-2</a>.</p>
+    </div>
+
+    <div class="refs-block">
+      <strong>Fonte jornalística</strong>
+      <p>NEILL, P.; BARKHAM, P. Subterranean fungi networks more than 100 quadrillion km in length, study finds. <em>The Guardian</em>, 11 jun. 2026. Disponível em: <a href="https://www.theguardian.com" target="_blank" rel="noopener">theguardian.com</a>.</p>
+    </div>
+
+    <div class="refs-block">
+      <strong>Plataforma institucional</strong>
+      <p>SPUN — Society for the Protection of Underground Networks. <em>Underground Atlas</em>. Disponível em: <a href="https://www.spun.earth" target="_blank" rel="noopener">spun.earth</a>. Acesso em: jun. 2026.</p>
+    </div>
+
+    <div class="refs-block">
+      <strong>Créditos de imagens</strong>
+      <p>Fotografia de abertura e mapa de densidade: © The Guardian / SPUN, 2026. Reprodução editorial.</p>
+      <p>Hifas em microscopia: Rajarshi Rit / Wikimedia Commons, <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank" rel="noopener">CC BY 4.0</a>.</p>
+      <p>Solo e práticas conservacionistas: USDA NRCS South Dakota / Wikimedia Commons, <a href="https://creativecommons.org/licenses/by-sa/2.0/" target="_blank" rel="noopener">CC BY-SA 2.0</a>.</p>
+    </div>
+
+  </div>
+  <div class="inst-sig">
+    Infográfico elaborado pelos projetos Amor à Pele e PET-Saúde Digital G10 Feridas Crônicas, UFPel, em Junho de 2026.
+  </div>
+</footer>
+
+<script>
+  function toggleAnswer(btn) {
+    const item = btn.closest('.question-item');
+    const answer = item.querySelector('.q-answer');
+    const visible = answer.classList.toggle('visible');
+    btn.textContent = visible ? 'Ocultar resposta' : 'Ver resposta';
+  }
+</script>
+
+</body>
+</html>
