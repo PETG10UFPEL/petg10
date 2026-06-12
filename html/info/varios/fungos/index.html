@@ -408,6 +408,187 @@
       padding-left: 20px;
     }
 
+    /* ===== ANALOGIAS ===== */
+    .analogy-section {
+      background: #fff;
+      border-radius: 16px;
+      border: 1px solid var(--rule);
+      padding: 52px 44px;
+      margin-bottom: 48px;
+      box-shadow: 0 2px 20px rgba(0,0,0,0.04);
+    }
+    .analogy-section > h2 { margin-bottom: 8px; }
+    .analogy-intro { font-size: 0.96rem; color: var(--ink-light); margin-bottom: 40px; line-height: 1.65; }
+    .analogy-note  { font-size: 0.8rem; font-style: italic; color: var(--ink-light); border-left: 2px solid #c9d3db; padding-left: 12px; margin: 0 0 40px; line-height: 1.5; }
+
+    /* Três colunas de rede */
+    .network-trio {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+      margin-bottom: 48px;
+    }
+    .net-card {
+      border-radius: 12px;
+      overflow: hidden;
+      border: 1px solid var(--rule);
+      display: flex;
+      flex-direction: column;
+    }
+    .net-card-head {
+      padding: 20px 20px 16px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      gap: 10px;
+    }
+    .net-card.fungi  .net-card-head { background: linear-gradient(135deg, #1b4332 0%, #2d6a4f 100%); }
+    .net-card.neuro  .net-card-head { background: linear-gradient(135deg, #1a2e4a 0%, #2d5f8a 100%); }
+    .net-card.ferida .net-card-head { background: linear-gradient(135deg, #4a1c0d 0%, #8b3a1a 100%); }
+    .net-card-icon { font-size: 2rem; }
+    .net-card-title {
+      font-family: var(--serif);
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: #fff;
+      line-height: 1.2;
+    }
+    .net-card-subtitle {
+      font-family: var(--mono);
+      font-size: 0.65rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.6);
+    }
+    .net-card figure { margin: 0; }
+    .net-card figure img { width: 100%; display: block; border-radius: 0; border: none; border-bottom: 1px solid var(--rule); max-height: 180px; object-fit: cover; }
+    .net-card-body { padding: 18px 18px 20px; flex: 1; }
+    .net-row {
+      display: flex;
+      gap: 8px;
+      align-items: flex-start;
+      padding: 7px 0;
+      border-bottom: 1px solid var(--rule);
+      font-size: 0.82rem;
+    }
+    .net-row:last-child { border-bottom: none; }
+    .net-row-label {
+      font-family: var(--mono);
+      font-size: 0.64rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--ink-light);
+      min-width: 72px;
+      flex-shrink: 0;
+      padding-top: 2px;
+    }
+    .net-row-val { color: var(--ink-mid); line-height: 1.45; }
+    .net-row-val strong { color: var(--ink); font-weight: 600; }
+
+    /* Três analogias narrativas */
+    .analogy-blocks { display: grid; gap: 28px; margin-bottom: 40px; }
+    .analogy-block {
+      display: grid;
+      grid-template-columns: 56px 1fr;
+      gap: 20px;
+      align-items: start;
+      background: var(--cream-dark);
+      border-radius: 12px;
+      padding: 24px 22px;
+    }
+    .analogy-num {
+      width: 48px; height: 48px;
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-family: var(--serif);
+      font-size: 1.3rem;
+      font-weight: 900;
+      color: #fff;
+      flex-shrink: 0;
+    }
+    .analogy-block:nth-child(1) .analogy-num { background: var(--moss); }
+    .analogy-block:nth-child(2) .analogy-num { background: var(--slate); }
+    .analogy-block:nth-child(3) .analogy-num { background: var(--earth); }
+    .analogy-block h3 { font-size: 1.05rem; margin-top: 0; margin-bottom: 8px; }
+    .analogy-block p  { font-size: 0.92rem; margin-bottom: 0; }
+
+    /* Tabela comparativa */
+    .analogy-table-wrap { overflow-x: auto; margin: 0; }
+    .analogy-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.85rem;
+    }
+    .analogy-table th {
+      font-family: var(--mono);
+      font-size: 0.68rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      padding: 12px 14px;
+      text-align: left;
+      border-bottom: 2px solid var(--rule);
+      white-space: nowrap;
+    }
+    .analogy-table th:first-child { color: var(--ink-light); }
+    .analogy-table th.col-fungi  { color: var(--moss); }
+    .analogy-table th.col-neuro  { color: var(--slate); }
+    .analogy-table th.col-ferida { color: var(--earth); }
+    .analogy-table td {
+      padding: 11px 14px;
+      border-bottom: 1px solid var(--rule);
+      color: var(--ink-mid);
+      vertical-align: top;
+      line-height: 1.45;
+    }
+    .analogy-table tr:last-child td { border-bottom: none; }
+    .analogy-table td:first-child {
+      font-weight: 700;
+      color: var(--ink);
+      white-space: nowrap;
+      font-size: 0.8rem;
+    }
+    .analogy-table tbody tr:nth-child(even) td { background: var(--cream-dark); }
+
+    /* Placeholder dentro de net-card */
+    .net-card .placeholder-box {
+      border: none;
+      background: rgba(0,0,0,0.06);
+      border-radius: 0;
+      padding: 28px 16px;
+      text-align: center;
+      color: rgba(255,255,255,0.6);
+      min-height: 140px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+    }
+    .net-card .placeholder-icon { font-size: 1.6rem; }
+    .net-card .placeholder-label {
+      font-family: var(--mono);
+      font-size: 0.68rem;
+      background: rgba(255,255,255,0.15);
+      padding: 3px 8px;
+      border-radius: 4px;
+      color: rgba(255,255,255,0.8);
+    }
+    .net-card .placeholder-hint {
+      font-size: 0.7rem;
+      color: rgba(255,255,255,0.5);
+      font-style: italic;
+      max-width: 200px;
+      line-height: 1.3;
+    }
+
+    @media (max-width: 780px) {
+      .network-trio { grid-template-columns: 1fr; }
+      .analogy-section { padding: 32px 20px; }
+      .analogy-block { grid-template-columns: 1fr; }
+      .analogy-num { width: 36px; height: 36px; font-size: 1rem; }
+    }
+
     /* ===== QUESTÕES ===== */
     .quiz-section {
       background: #fff;
@@ -941,6 +1122,198 @@
     </div>
   </section>
 
+</main>
+
+<!-- ANALOGIAS: TRÊS REDES -->
+<main>
+  <div class="analogy-section">
+
+    <span class="section-label">07 — Conexões com a prática clínica</span>
+    <h2>Três redes, uma lógica</h2>
+    <p class="analogy-intro">
+      A estrutura ramificada, a lógica de troca e o colapso pela ruptura da rede
+      não são exclusividades dos fungos. O mesmo padrão aparece no cérebro humano
+      e no leito de uma ferida crônica — mundos distantes que compartilham
+      uma arquitetura profundamente similar.
+    </p>
+    <p class="analogy-note">As analogias a seguir são de natureza conceitual e educativa. Não implicam equivalência biológica entre os sistemas — cada rede obedece a mecanismos moleculares e evolutivos distintos.</p>
+
+    <!-- TRÊS CARDS -->
+    <div class="network-trio">
+
+      <!-- FUNGI -->
+      <div class="net-card fungi">
+        <div class="net-card-head">
+          <span class="net-card-icon">🍄</span>
+          <p class="net-card-title">Rede de FMA</p>
+          <p class="net-card-subtitle">Solo · Ecossistema</p>
+        </div>
+        <figure>
+          <img src="img/hifas-microscopio.jpg" alt="Hifas de FMA em microscopia">
+        </figure>
+        <div class="net-card-body">
+          <div class="net-row"><span class="net-row-label">Estrutura</span><span class="net-row-val"><strong>Hifas</strong> — tubos ramificados no solo</span></div>
+          <div class="net-row"><span class="net-row-label">Função</span><span class="net-row-val">Troca de <strong>nutrientes e carbono</strong> entre planta e solo</span></div>
+          <div class="net-row"><span class="net-row-label">Parceiro</span><span class="net-row-val">Raiz da planta (simbiótico obrigatório)</span></div>
+          <div class="net-row"><span class="net-row-label">Colapso</span><span class="net-row-val">Aração, fungicidas, fertilizante excessivo</span></div>
+          <div class="net-row"><span class="net-row-label">Restauração</span><span class="net-row-val">Plantio direto, cobertura vegetal, inoculação</span></div>
+        </div>
+      </div>
+
+      <!-- NEURO -->
+      <div class="net-card neuro">
+        <div class="net-card-head">
+          <span class="net-card-icon">🧠</span>
+          <p class="net-card-title">Rede Neural</p>
+          <p class="net-card-subtitle">Córtex · Sistema Nervoso</p>
+        </div>
+        <figure style="margin:0;">
+          <img src="img/rede-neural.jpg" alt="Célula de Purkinje de camundongo marcada com Lucifer Yellow, evidenciando corpo celular e árvore dendrítica ramificada" style="border-radius:0; border:none; border-bottom:1px solid var(--rule); max-height:180px; object-fit:cover;">
+          <figcaption style="padding:8px 12px; font-size:0.72rem; background:#f8f9fb;">Célula de Purkinje de camundongo marcada com Lucifer Yellow, evidenciando corpo celular e árvore dendrítica ramificada. Imagem: Cell Centered Database / National Center for Microscopy and Imaging Research, UCSD, via <a href="https://commons.wikimedia.org/wiki/File:3_recon_512x512.jpg" target="_blank" rel="noopener">Wikimedia Commons</a>, <a href="https://creativecommons.org/licenses/by/3.0/" target="_blank" rel="noopener">CC BY 3.0</a>.</figcaption>
+        </figure>
+        <div class="net-card-body">
+          <div class="net-row"><span class="net-row-label">Estrutura</span><span class="net-row-val"><strong>Dendritos e axônios</strong> — ramificações neuronais</span></div>
+          <div class="net-row"><span class="net-row-label">Função</span><span class="net-row-val">Transmissão de <strong>sinais elétricos e químicos</strong></span></div>
+          <div class="net-row"><span class="net-row-label">Parceiro</span><span class="net-row-val">Célula glial (suporte, mielinização, nutrição)</span></div>
+          <div class="net-row"><span class="net-row-label">Colapso</span><span class="net-row-val">Isquemia, diabetes, degeneração axonal (neuropatia)</span></div>
+          <div class="net-row"><span class="net-row-label">Restauração</span><span class="net-row-val">Reabilitação, neuroplasticidade, controle glicêmico</span></div>
+        </div>
+      </div>
+
+      <!-- FERIDA -->
+      <div class="net-card ferida">
+        <div class="net-card-head">
+          <span class="net-card-icon">🩹</span>
+          <p class="net-card-title">Leito da Ferida</p>
+          <p class="net-card-subtitle">Pé Diabético · Ferida Crônica</p>
+        </div>
+        <figure style="margin:0;">
+          <img src="img/biofilme-ferida.jpg" alt="Microscopia de fluorescência de tecido de ferida crônica de pé diabético, evidenciando microcolônias bacterianas e matriz sugestiva de biofilme" style="border-radius:0; border:none; border-bottom:1px solid var(--rule); max-height:180px; object-fit:cover;">
+          <figcaption style="padding:8px 12px; font-size:0.72rem; background:#f8f9fb;">Microscopia de fluorescência de tecido de ferida crônica de pé diabético, evidenciando microcolônias bacterianas e matriz sugestiva de biofilme. Imagem adaptada da Figura 3(d) de Oates et al. (2014), <em>Journal of Diabetes Research</em>, artigo em acesso aberto sob licença Creative Commons Attribution.</figcaption>
+        </figure>
+        <div class="net-card-body">
+          <div class="net-row"><span class="net-row-label">Estrutura</span><span class="net-row-val"><strong>Biofilme + matriz de exsudato</strong> — rede microbiana</span></div>
+          <div class="net-row"><span class="net-row-label">Função</span><span class="net-row-val">Resposta inflamatória, reparação tecidual, defesa</span></div>
+          <div class="net-row"><span class="net-row-label">Parceiro</span><span class="net-row-val">Macrófago, fibroblasto, microbiota local</span></div>
+          <div class="net-row"><span class="net-row-label">Colapso</span><span class="net-row-val">Isquemia, neuropatia, infecção crônica por biofilme</span></div>
+          <div class="net-row"><span class="net-row-label">Restauração</span><span class="net-row-val">Desbridamento, cobertura adequada, controle da carga microbiana</span></div>
+        </div>
+      </div>
+
+    </div><!-- /network-trio -->
+
+    <!-- TRÊS ANALOGIAS NARRATIVAS -->
+    <div class="analogy-blocks">
+
+      <div class="analogy-block">
+        <div class="analogy-num">1</div>
+        <div>
+          <h3>A rede que nutre — e morre quando cortada do parceiro</h3>
+          <p>
+            O FMA leva fósforo à raiz; o dendrito leva sinal à célula eferente;
+            o capilar e o exsudato levam oxigênio e fatores de crescimento ao leito
+            da ferida. Em todos os casos, quando a rede perde o parceiro —
+            a planta hospedeira, a célula glial ou o suprimento vascular —
+            o tecido morre pela base, antes que qualquer sinal externo apareça.
+            A lesão visível é sempre o final de um colapso que começou na rede.
+          </p>
+        </div>
+      </div>
+
+      <div class="analogy-block">
+        <div class="analogy-num">2</div>
+        <div>
+          <h3>O colapso silencioso — isquemia como fio cortado</h3>
+          <p>
+            O excesso de fertilizante desconecta o fungo da planta porque elimina
+            a necessidade da troca — a planta para de investir no fungo.
+            Na neuropatia diabética, a hiperglicemia crônica degrada a bainha de
+            mielina e interrompe a condução axonal. Na úlcera do pé diabético,
+            a isquemia periférica impede que oxigênio e células reparadoras
+            alcancem o leito da ferida. Em todos os casos, o colapso precede
+            a lesão visível — e a janela de intervenção está nesse intervalo invisível.
+          </p>
+        </div>
+      </div>
+
+      <div class="analogy-block">
+        <div class="analogy-num">3</div>
+        <div>
+          <h3>Restauração é sempre reconstrução de rede</h3>
+          <p>
+            O plantio direto restaura as hifas ao não romper o solo.
+            A reabilitação neurológica reconecta circuitos via neuroplasticidade.
+            O desbridamento sistemático do biofilme — removendo a matriz de
+            exopolissacarídeos que protege as bactérias — reestabelece
+            as condições para que o leito da ferida responda novamente
+            ao processo fisiológico de cicatrização.
+            Curar é sempre reativar uma rede que foi interrompida.
+          </p>
+        </div>
+      </div>
+
+    </div><!-- /analogy-blocks -->
+
+    <!-- TABELA COMPARATIVA -->
+    <h3 style="margin-top:0; margin-bottom:20px;">Comparativo estrutural das três redes</h3>
+    <div class="analogy-table-wrap">
+      <table class="analogy-table">
+        <thead>
+          <tr>
+            <th>Dimensão</th>
+            <th class="col-fungi">🍄 Rede de FMA</th>
+            <th class="col-neuro">🧠 Rede Neural</th>
+            <th class="col-ferida">🩹 Leito da Ferida</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Estrutura filamentosa</td>
+            <td>Hifas (tubos fúngicos)</td>
+            <td>Axônios e dendritos</td>
+            <td>Fibrina, biofilme, vasos neoformados</td>
+          </tr>
+          <tr>
+            <td>O que transporta</td>
+            <td>Carbono, fósforo, água</td>
+            <td>Potencial de ação, neurotransmissores</td>
+            <td>Oxigênio, fatores de crescimento, células imunes</td>
+          </tr>
+          <tr>
+            <td>Parceiro essencial</td>
+            <td>Raiz da planta hospedeira</td>
+            <td>Célula glial (astócito, oligodendrócito)</td>
+            <td>Macrófago, fibroblasto, queratinócito</td>
+          </tr>
+          <tr>
+            <td>Causa principal de colapso</td>
+            <td>Aração, fungicidas, fertilizante excessivo</td>
+            <td>Isquemia, hiperglicemia, trauma axonal</td>
+            <td>Isquemia, biofilme crônico, neuropatia</td>
+          </tr>
+          <tr>
+            <td>Sinal de colapso</td>
+            <td>Baixa densidade de hifas no solo</td>
+            <td>Perda de sensibilidade, condução lentificada</td>
+            <td>Exsudato excessivo, ausência de granulação</td>
+          </tr>
+          <tr>
+            <td>Estratégia de restauração</td>
+            <td>Plantio direto, inoculação fúngica</td>
+            <td>Reabilitação, controle metabólico</td>
+            <td>Desbridamento, cobertura, controle glicêmico</td>
+          </tr>
+          <tr>
+            <td>A cura começa quando…</td>
+            <td>A planta volta a investir carbono no fungo</td>
+            <td>Novos brotos axonais alcançam o alvo</td>
+            <td>O leito da ferida responde com granulação ativa</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+  </div><!-- /analogy-section -->
 </main>
 
 <!-- QUESTÕES DE FIXAÇÃO E REFLEXÃO -->
