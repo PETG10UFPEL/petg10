@@ -408,6 +408,134 @@
       padding-left: 20px;
     }
 
+    /* ===== PERFIL PESQUISADORA ===== */
+    .profile-section {
+      background: linear-gradient(135deg, #0d1f14 0%, #1b3a28 100%);
+      border-radius: 16px;
+      overflow: hidden;
+      margin-bottom: 48px;
+      display: grid;
+      grid-template-columns: 280px 1fr;
+    }
+    .profile-img-col {
+      position: relative;
+      background: #0b2c1a;
+      min-height: 420px;
+    }
+    .profile-img-col img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: 70% 20%;
+      display: block;
+      opacity: 0.95;
+      border-radius: 0;
+      border: none;
+    }
+    .profile-img-col .img-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to right, transparent 60%, #1b3a28 100%);
+      pointer-events: none;
+    }
+    .profile-text-col {
+      padding: 44px 40px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      gap: 0;
+    }
+    .profile-eyebrow {
+      font-family: var(--mono);
+      font-size: 0.65rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: #74c69d;
+      margin-bottom: 12px;
+    }
+    .profile-name {
+      font-family: var(--serif);
+      font-size: 2rem;
+      font-weight: 900;
+      color: #fff;
+      line-height: 1.1;
+      margin-bottom: 4px;
+    }
+    .profile-title {
+      font-size: 0.88rem;
+      color: rgba(255,255,255,0.55);
+      margin-bottom: 24px;
+      font-style: italic;
+    }
+    .profile-bio {
+      font-size: 0.95rem;
+      color: rgba(255,255,255,0.82);
+      line-height: 1.7;
+      margin-bottom: 28px;
+    }
+    .profile-bio strong { color: #74c69d; font-weight: 600; }
+    .profile-awards {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      margin-bottom: 28px;
+    }
+    .profile-awards li {
+      display: flex;
+      gap: 10px;
+      align-items: flex-start;
+      font-size: 0.83rem;
+      color: rgba(255,255,255,0.7);
+      line-height: 1.4;
+    }
+    .award-year {
+      font-family: var(--mono);
+      font-size: 0.68rem;
+      color: #74c69d;
+      background: rgba(116,198,157,0.12);
+      padding: 2px 7px;
+      border-radius: 3px;
+      white-space: nowrap;
+      flex-shrink: 0;
+      margin-top: 1px;
+    }
+    .profile-quote {
+      border-left: 3px solid #74c69d;
+      padding-left: 16px;
+      margin-top: 4px;
+    }
+    .profile-quote p {
+      font-family: var(--serif);
+      font-size: 1rem;
+      font-style: italic;
+      color: rgba(255,255,255,0.88);
+      line-height: 1.55;
+      margin-bottom: 6px;
+    }
+    .profile-quote cite {
+      font-family: var(--mono);
+      font-size: 0.68rem;
+      color: rgba(255,255,255,0.4);
+      font-style: normal;
+    }
+    .profile-figcap {
+      font-size: 0.7rem;
+      color: rgba(255,255,255,0.3);
+      font-style: italic;
+      padding: 10px 16px;
+      background: rgba(0,0,0,0.2);
+      line-height: 1.4;
+    }
+    .profile-figcap a { color: rgba(255,255,255,0.4); }
+
+    @media (max-width: 780px) {
+      .profile-section { grid-template-columns: 1fr; }
+      .profile-img-col { min-height: 320px; }
+      .profile-img-col .img-overlay { background: linear-gradient(to bottom, transparent 50%, #1b3a28 100%); }
+      .profile-text-col { padding: 28px 22px; }
+    }
+
     /* ===== ANALOGIAS ===== */
     .analogy-section {
       background: #fff;
@@ -1097,6 +1225,56 @@
       <cite>— Dra. Toby Kiers, SPUN¹</cite>
     </div>
   </section>
+
+<!-- PERFIL: TOBY KIERS -->
+<main>
+  <div class="profile-section">
+
+    <!-- FOTO -->
+    <div class="profile-img-col">
+      <img src="img/toby-kiers.jpg" alt="Dra. Toby Kiers, bióloga evolutiva e cofundadora do SPUN">
+      <div class="img-overlay"></div>
+    </div>
+
+    <!-- TEXTO -->
+    <div class="profile-text-col">
+      <p class="profile-eyebrow">A cientista por trás do mapa</p>
+      <p class="profile-name">Toby Kiers</p>
+      <p class="profile-title">Bióloga evolutiva · Vrije Universiteit Amsterdam · Cofundadora do SPUN</p>
+
+      <p class="profile-bio">
+        Enquanto colegas voltavam os olhos para fauna e flora visíveis, Toby Kiers
+        decidiu estudar o que ninguém via: as negociações que acontecem debaixo da terra.
+        Ela foi a primeira a demonstrar que os fungos micorrízicos
+        <strong>se comportam como agentes econômicos</strong> — oferecem mais fósforo
+        às plantas que entregam mais açúcar, impõem "tarifas" e ajustam preços
+        conforme a oferta local de nutrientes. Um mercado sem cérebro,
+        operando há 475 milhões de anos.
+      </p>
+      <p class="profile-bio">
+        Em 2021, fundou o <strong>SPUN</strong> com uma missão simples e ambiciosa:
+        mapear o que nunca havia sido mapeado. O estudo de 2026 publicado na
+        <em>Science</em> é o resultado central desse esforço —
+        o primeiro atlas global de redes fúngicas subterrâneas,
+        construído com mais de 16.000 amostras de solo e modelos de inteligência artificial.
+      </p>
+
+      <ul class="profile-awards">
+        <li><span class="award-year">2023</span> Prêmio Spinoza — a mais alta distinção científica dos Países Baixos</li>
+        <li><span class="award-year">2024</span> MacArthur Fellowship ("Bolsa Gênio") — MacArthur Foundation, EUA</li>
+        <li><span class="award-year">2025</span> Climate Breakthrough Award — reconhecimento em inovação climática</li>
+        <li><span class="award-year">2026</span> Tyler Prize for Environmental Achievement — o "Nobel do meio ambiente"</li>
+      </ul>
+
+      <div class="profile-quote">
+        <p>"Pensamos nessas redes como um dos sistemas circulatórios da Terra. Mas as pessoas simplesmente não estão prestando atenção."</p>
+        <cite>— Toby Kiers, entrevista à Mongabay, fev. 2026</cite>
+      </div>
+    </div>
+
+  </div>
+  <p class="profile-figcap">Foto: colocar em <code style="font-size:0.68rem; background:rgba(255,255,255,0.08); padding:1px 5px; border-radius:3px;">img/toby-kiers.jpg</code> — sugestão: foto de Tomás Munita, disponível no site <a href="https://www.spun.earth" target="_blank" rel="noopener">spun.earth</a> ou via assessoria de imprensa da VU Amsterdam.</p>
+</main>
 
 <!-- ANALOGIAS: TRÊS REDES -->
 <main>
