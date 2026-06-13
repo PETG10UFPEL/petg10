@@ -865,6 +865,55 @@
     }
     .analogy-table tbody tr:nth-child(even) td { background: var(--cream-dark); }
 
+    /* Controle desktop/mobile das tabelas comparativas */
+    .analogy-table-desktop { display: block; }
+    .analogy-table-mobile  { display: none; }
+
+    /* Tabelas de 2 colunas no mobile */
+    .analogy-table-mobile {
+      display: none;
+      gap: 24px;
+      flex-direction: column;
+    }
+    .analogy-table-2col {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.85rem;
+      border-radius: 10px;
+      overflow: hidden;
+      border: 1px solid var(--rule);
+    }
+    .analogy-table-2col th {
+      font-family: var(--mono);
+      font-size: 0.68rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      padding: 11px 14px;
+      text-align: left;
+      border-bottom: 2px solid var(--rule);
+    }
+    .analogy-table-2col th:first-child { color: var(--ink-light); background: var(--cream-dark); }
+    .analogy-table-2col th.col-fungi  { color: var(--moss);  background: #edf7f1; }
+    .analogy-table-2col th.col-neuro  { color: var(--slate); background: #e8f1fa; }
+    .analogy-table-2col th.col-ferida { color: var(--earth); background: #faf0ea; }
+    .analogy-table-2col td {
+      padding: 10px 14px;
+      border-bottom: 1px solid var(--rule);
+      color: var(--ink-mid);
+      vertical-align: top;
+      line-height: 1.45;
+      font-size: 0.84rem;
+    }
+    .analogy-table-2col tr:last-child td { border-bottom: none; }
+    .analogy-table-2col td:first-child {
+      font-weight: 700;
+      color: var(--ink);
+      font-size: 0.78rem;
+      background: var(--cream-dark);
+      width: 42%;
+    }
+    .analogy-table-2col tbody tr:nth-child(even) td:last-child { background: #f7f8f9; }
+
     /* Placeholder dentro de net-card */
     .net-card .placeholder-box {
       border: none;
@@ -902,6 +951,9 @@
       .analogy-section { padding: 32px 20px; }
       .analogy-block { grid-template-columns: 1fr; }
       .analogy-num { width: 36px; height: 36px; font-size: 1rem; }
+      /* Troca tabela 4 colunas pelas 3 tabelas de 2 colunas */
+      .analogy-table-desktop { display: none; }
+      .analogy-table-mobile  { display: flex; }
     }
 
     /* ===== QUESTÕES ===== */
@@ -1683,7 +1735,9 @@
 
     <!-- TABELA COMPARATIVA -->
     <h3 style="margin-top:0; margin-bottom:20px;">Comparativo estrutural das três redes</h3>
-    <div class="analogy-table-wrap">
+
+    <!-- DESKTOP: tabela completa 4 colunas -->
+    <div class="analogy-table-wrap analogy-table-desktop">
       <table class="analogy-table">
         <thead>
           <tr>
@@ -1739,6 +1793,65 @@
         </tbody>
       </table>
     </div>
+
+    <!-- MOBILE: três tabelas de 2 colunas -->
+    <div class="analogy-table-mobile">
+
+      <table class="analogy-table analogy-table-2col">
+        <thead>
+          <tr>
+            <th>Dimensão</th>
+            <th class="col-fungi">🍄 Rede de FMA</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>Estrutura filamentosa</td><td>Hifas (tubos fúngicos)</td></tr>
+          <tr><td>O que transporta</td><td>Carbono, fósforo, água</td></tr>
+          <tr><td>Parceiro essencial</td><td>Raiz da planta hospedeira</td></tr>
+          <tr><td>Causa de colapso</td><td>Aração, fungicidas, fertilizante excessivo</td></tr>
+          <tr><td>Sinal de colapso</td><td>Baixa densidade de hifas no solo</td></tr>
+          <tr><td>Restauração</td><td>Plantio direto, inoculação fúngica</td></tr>
+          <tr><td>Cura começa quando…</td><td>A planta volta a investir carbono no fungo</td></tr>
+        </tbody>
+      </table>
+
+      <table class="analogy-table analogy-table-2col">
+        <thead>
+          <tr>
+            <th>Dimensão</th>
+            <th class="col-neuro">🧠 Rede Neural</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>Estrutura filamentosa</td><td>Axônios e dendritos</td></tr>
+          <tr><td>O que transporta</td><td>Potencial de ação, neurotransmissores</td></tr>
+          <tr><td>Parceiro essencial</td><td>Célula glial (astócito, oligodendrócito)</td></tr>
+          <tr><td>Causa de colapso</td><td>Isquemia, hiperglicemia, trauma axonal</td></tr>
+          <tr><td>Sinal de colapso</td><td>Perda de sensibilidade, condução lentificada</td></tr>
+          <tr><td>Restauração</td><td>Reabilitação, controle metabólico</td></tr>
+          <tr><td>Cura começa quando…</td><td>Novos brotos axonais alcançam o alvo</td></tr>
+        </tbody>
+      </table>
+
+      <table class="analogy-table analogy-table-2col">
+        <thead>
+          <tr>
+            <th>Dimensão</th>
+            <th class="col-ferida">🩹 Leito da Ferida</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>Estrutura filamentosa</td><td>Fibrina, biofilme, vasos neoformados</td></tr>
+          <tr><td>O que transporta</td><td>Oxigênio, fatores de crescimento, células imunes</td></tr>
+          <tr><td>Parceiro essencial</td><td>Macrófago, fibroblasto, queratinócito</td></tr>
+          <tr><td>Causa de colapso</td><td>Isquemia, biofilme crônico, neuropatia</td></tr>
+          <tr><td>Sinal de colapso</td><td>Exsudato excessivo, ausência de granulação</td></tr>
+          <tr><td>Restauração</td><td>Desbridamento, cobertura, controle glicêmico</td></tr>
+          <tr><td>Cura começa quando…</td><td>O leito da ferida responde com granulação ativa</td></tr>
+        </tbody>
+      </table>
+
+    </div><!-- /analogy-table-mobile -->
 
   </div><!-- /analogy-section -->
 </main>
