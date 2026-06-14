@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Diseñar el propio camino | Crandon & Keuro</title>
+  <style>
+    :root{
+      --fondo:#f7f1e8;
+      --tinta:#251b13;
+      --marron:#7a4e2b;
+      --cuero:#b36b38;
+      --arena:#ead8c2;
+      --verde:#314c3c;
+      --claro:#fffaf3;
+      --linea:rgba(37,27,19,.14);
+    }
+    *{box-sizing:border-box}
+    body{
+      margin:0;
+      font-family: Georgia, 'Times New Roman', serif;
+      color:var(--tinta);
+      background:
+        radial-gradient(circle at 20% 0%, rgba(179,107,56,.18), transparent 28%),
+        radial-gradient(circle at 95% 15%, rgba(49,76,60,.14), transparent 30%),
+        var(--fondo);
+      line-height:1.55;
+    }
+    .wrap{max-width:1180px;margin:auto;padding:34px 18px 56px}
+    header{
+      position:relative;
+      display:grid;
+      grid-template-columns:1.1fr .9fr;
+      gap:28px;
+      align-items:stretch;
+      background:linear-gradient(135deg,var(--claro),#f2dfc9);
+      border:1px solid var(--linea);
+      border-radius:28px;
+      overflow:hidden;
+      box-shadow:0 22px 60px rgba(60,36,18,.15);
+    }
+    .hero-text{padding:42px 38px 34px;z-index:2}
+    .brandline{display:flex;align-items:center;gap:14px;flex-wrap:wrap;margin-bottom:18px}
+    .logo-crandon{width:82px;height:82px;object-fit:contain;filter:drop-shadow(0 5px 10px rgba(0,0,0,.15))}
+    .eyebrow{
+      display:inline-block;
+      padding:8px 12px;
+      border:1px solid rgba(122,78,43,.35);
+      border-radius:999px;
+      color:var(--marron);
+      background:rgba(255,250,243,.7);
+      font-size:.82rem;
+      letter-spacing:.08em;
+      text-transform:uppercase;
+      font-weight:bold;
+    }
+    h1{
+      font-size:clamp(2.4rem,6vw,5rem);
+      line-height:.92;
+      margin:20px 0 18px;
+      letter-spacing:-.055em;
+    }
+    .lead{font-size:clamp(1.05rem,2vw,1.35rem);max-width:720px;margin:0;color:#4a3728}
+    .hero-img{min-height:440px;position:relative;overflow:hidden}
+    .hero-img img{width:100%;height:100%;object-fit:cover;display:block;filter:saturate(.94) contrast(1.02)}
+    .stamp{
+      position:absolute;right:24px;bottom:24px;
+      background:rgba(255,250,243,.86);backdrop-filter:blur(8px);
+      border:1px solid rgba(255,255,255,.5);
+      border-radius:18px;padding:14px 16px;max-width:270px;
+      box-shadow:0 10px 28px rgba(0,0,0,.16);
+      font-size:.94rem;
+    }
+    .grid{display:grid;grid-template-columns:repeat(12,1fr);gap:18px;margin-top:20px}
+    .card{
+      background:rgba(255,250,243,.82);
+      border:1px solid var(--linea);
+      border-radius:24px;
+      padding:24px;
+      box-shadow:0 14px 34px rgba(60,36,18,.08);
+    }
+    .span4{grid-column:span 4}.span5{grid-column:span 5}.span6{grid-column:span 6}.span7{grid-column:span 7}.span8{grid-column:span 8}.span12{grid-column:span 12}
+    h2{font-size:1.55rem;margin:0 0 12px;line-height:1.05;letter-spacing:-.025em;color:var(--verde)}
+    h3{margin:0 0 8px;font-size:1.08rem;color:var(--marron)}
+    p{margin:0 0 12px}.muted{color:#6c5848}.small{font-size:.92rem}
+    .num{font-size:3rem;line-height:.9;color:var(--cuero);font-weight:bold;letter-spacing:-.05em}
+    .pillrow{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px}
+    .pill{border:1px solid rgba(122,78,43,.25);background:#fff7ed;border-radius:999px;padding:7px 10px;font-size:.88rem;color:#54351d}
+    .timeline{position:relative;margin-top:16px;padding-left:22px}
+    .timeline:before{content:"";position:absolute;left:7px;top:5px;bottom:5px;width:2px;background:linear-gradient(var(--cuero),var(--verde))}
+    .step{position:relative;margin:0 0 18px;padding-left:12px}
+    .step:before{content:"";position:absolute;left:-20px;top:6px;width:12px;height:12px;border-radius:50%;background:var(--claro);border:3px solid var(--cuero)}
+    .photo-card{padding:0;overflow:hidden;min-height:100%}
+    .photo-card img{width:100%;height:100%;min-height:310px;object-fit:cover;display:block}
+    .quote{
+      font-size:1.55rem;line-height:1.22;color:#3d2b1c;
+      border-left:5px solid var(--cuero);padding-left:18px;margin:8px 0 0;
+    }
+    .diagram{display:grid;grid-template-columns:repeat(5,1fr);gap:10px;margin-top:18px}
+    .node{background:#fff7ed;border:1px solid rgba(122,78,43,.22);border-radius:18px;padding:16px 12px;text-align:center;min-height:120px;display:flex;flex-direction:column;justify-content:center}
+    .node b{display:block;color:var(--verde);font-size:1.02rem;margin-bottom:6px}.node span{font-size:.88rem;color:#6a4d39}
+    .band{
+      background:linear-gradient(135deg,#2f4839,#6c4428);
+      color:#fffaf3;
+      border-radius:26px;padding:30px;
+      display:grid;grid-template-columns:1fr 1fr;gap:24px;align-items:center;
+      box-shadow:0 18px 45px rgba(47,72,57,.22)
+    }
+    .band h2{color:#fffaf3}.band .pill{background:rgba(255,255,255,.1);border-color:rgba(255,255,255,.25);color:#fffaf3}
+
+    .reportaje-box{
+      margin-top:20px;
+      background:linear-gradient(135deg,#fffaf3,#f0dfcb);
+      border:2px solid rgba(122,78,43,.28);
+      border-radius:24px;
+      padding:22px 24px;
+      box-shadow:0 16px 34px rgba(60,36,18,.10);
+      display:grid;
+      grid-template-columns:1.2fr .8fr;
+      gap:18px;
+      align-items:center;
+    }
+    .reportaje-box h2{margin:0 0 8px;color:var(--marron)}
+    .reportaje-box p{margin:0;color:#4d3929}
+    .reportaje-badge{
+      display:inline-block;
+      margin-bottom:10px;
+      padding:7px 12px;
+      border-radius:999px;
+      background:rgba(49,76,60,.1);
+      color:var(--verde);
+      border:1px solid rgba(49,76,60,.18);
+      font-size:.82rem;
+      letter-spacing:.06em;
+      text-transform:uppercase;
+      font-weight:bold;
+    }
+    .btn-secondary{display:inline-block;margin-top:12px;padding:12px 16px;border-radius:999px;background:var(--cuero);color:#fffaf3;border:0;font-family:Arial,sans-serif;font-weight:700;letter-spacing:.02em}
+    .btn-company{display:inline-block;margin-top:10px;padding:12px 16px;border-radius:999px;background:var(--verde);color:#fffaf3;border:0;font-family:Arial,sans-serif;font-weight:700;letter-spacing:.02em}
+    .cta-stack{display:flex;flex-direction:column;align-items:flex-start;gap:8px}
+    .reportaje-link{font-size:.93rem;color:#6b5647;word-break:break-word}
+    .ref{font-size:.86rem;color:#6b5b4d;border-top:1px solid var(--linea);margin-top:24px;padding-top:16px}
+    a{color:var(--marron);font-weight:bold;text-decoration:none;border-bottom:1px solid rgba(122,78,43,.3)}
+    @media(max-width:850px){
+      header,.band,.reportaje-box{grid-template-columns:1fr}.hero-img{min-height:360px}.span4,.span5,.span6,.span7,.span8,.span12{grid-column:span 12}.diagram{grid-template-columns:1fr 1fr}.hero-text{padding:30px 24px}.wrap{padding:18px 12px 36px}
+    }
+    @media(max-width:520px){.diagram{grid-template-columns:1fr}.card{padding:20px}.stamp{position:static;border-radius:0;max-width:none}.hero-img{min-height:300px}.quote{font-size:1.25rem}}
+  </style>
+</head>
+<body>
+  <!--
+    Imágenes sugeridas para la carpeta /img:
+    1) img/karine-keuroglian-2026-3.jpeg
+       Fuente original: https://www.crandon.edu.uy/wp-content/uploads/2026/05/Karine-Keuroglian-2026-3-scaled.jpeg
+    2) img/karine-keuroglian-2026-2.jpeg
+       Fuente original: https://www.crandon.edu.uy/wp-content/uploads/2026/05/Karine-Keuroglian-2026-2-scaled.jpeg
+    3) img/karine-keuroglian-2026-1.jpeg
+       Fuente original: https://www.crandon.edu.uy/wp-content/uploads/2026/05/Karine-Keuroglian-2026-1-scaled.jpeg
+    4) Logo: img/crandon.png
+    5) Opcional: img/cartera-keuro-detalle.jpg, img/taller-cuero-uruguay.jpg, img/venecia-marroquineria.jpg
+  -->
+  <main class="wrap">
+    <header>
+      <section class="hero-text">
+        <div class="brandline">
+          <img class="logo-crandon" src="img/crandon.png" alt="Logo del Instituto Crandon" />
+          <span class="eyebrow">Instituto Crandon · Montevideo · Egresada 2017</span>
+        </div>
+        <h1>Diseñar el propio camino</h1>
+        <p class="lead">La historia de Kariné Keuroglian Koyounian y Keuro muestra algo clásico y poderoso: una buena formación no fabrica destinos; entrega herramientas, vínculos y carácter para construirlos.</p>
+        <div class="pillrow">
+          <span class="pill">Formación humana</span>
+          <span class="pill">Emprendimiento</span>
+          <span class="pill">Diseño</span>
+          <span class="pill">Comunidad Crandon</span>
+        </div>
+      </section>
+      <section class="hero-img">
+        <img src="img/karine-keuroglian-2026-3.jpeg" alt="Kariné Keuroglian en el Instituto Crandon" />
+        <div class="stamp"><strong>Keuro</strong><br/>Carteras y accesorios con estética, funcionalidad y memoria personal.</div>
+      </section>
+    </header>
+
+    <section class="reportaje-box" aria-label="Acceso al reportaje completo">
+      <div>
+        <span class="reportaje-badge">Lectura recomendada</span>
+        <h2>Leé el reportaje completo en la página original de Crandon</h2>
+        <p>Si querés conocer la nota entera, con el texto original, créditos y contexto institucional, entrá al reportaje publicado por Crandon. Vale la pena destacarlo para que más personas lleguen a la fuente y conozcan la historia completa.</p>
+      </div>
+      <div class="cta-stack">
+        <a class="btn-secondary" href="https://www.crandon.edu.uy/disenar-el-propio-camino-la-huella-de-crandon-en-la-propuesta-de-keuro/" target="_blank" rel="noopener">Ir al reportaje completo</a>
+        <p class="reportaje-link">Fuente original: Crandon</p>
+        <a class="btn-company" href="https://keuroleathers.com/" target="_blank" rel="noopener">Conocer Keuro Leathers</a>
+        <p class="reportaje-link">Tienda de la marca: keuroleathers.com</p>
+      </div>
+    </section>
+
+    <section class="grid">
+      <article class="card span4">
+        <div class="num">2017</div>
+        <h2>De las aulas al proyecto propio</h2>
+        <p>Kariné egresó de Crandon en la opción Social-Económica del Bachillerato Científico. La vocación por el diseño ya estaba ahí; la decisión inicial fue estudiar Dirección y Administración de Empresas.</p>
+        <p class="muted small">La base empresarial aparece como herramienta concreta: no alcanza con imaginar una marca; hay que administrarla.</p>
+      </article>
+
+      <article class="card span4">
+        <div class="num">2023</div>
+        <h2>Italia como detonante</h2>
+        <p>Un viaje familiar a Italia, marcado por el arte y la marroquinería de Venecia, terminó de encender la idea. Keuro nace de esa mezcla: sensibilidad estética, oficio y decisión.</p>
+        <p class="muted small">Vieja receta, siempre vigente: observar bien, trabajar mejor.</p>
+      </article>
+
+      <article class="card span4">
+        <div class="num">26</div>
+        <h2>Juventud con oficio</h2>
+        <p>A los 26 años, Kariné aparece en la nota como una emprendedora que no separa el presente del futuro: lo construye con disciplina, ahorro, aprendizaje y red.</p>
+        <p class="muted small">La épica moderna, pero sin humo: constancia primero, storytelling después.</p>
+      </article>
+
+      <article class="card span7">
+        <h2>El camino en cinco huellas</h2>
+        <div class="timeline">
+          <div class="step"><h3>1. Vocación</h3><p>El diseño de modas aparece como interés temprano y se mantiene como fuerza latente.</p></div>
+          <div class="step"><h3>2. Formación</h3><p>La Administración de Empresas le da estructura para manejar un proyecto propio.</p></div>
+          <div class="step"><h3>3. Experiencia</h3><p>El paso por una multinacional logística suma mundo laboral, disciplina y ahorro.</p></div>
+          <div class="step"><h3>4. Inspiración</h3><p>Venecia aporta la chispa estética: cuero, arte, tradición y oficio.</p></div>
+          <div class="step"><h3>5. Comunidad</h3><p>Un exalumno ayuda a conectar con un taller uruguayo; la madre se integra como socia y aporta visión contable y experiencia en moda.</p></div>
+        </div>
+      </article>
+
+      <figure class="card photo-card span5">
+        <img src="img/karine-keuroglian-2026-2.jpeg" alt="Kariné Keuroglian en espacios exteriores de Crandon" />
+      </figure>
+
+      <article class="card span6">
+        <h2>Keuro: nombre, memoria y marca</h2>
+        <p>El nombre dialoga con el apellido Keuroglian y con la palabra “cuero”. Esa cercanía sonora le da identidad, recordación y una capa poética: la marca queda pegada al material, pero también a la biografía.</p>
+        <div class="diagram">
+          <div class="node"><b>KEURO</b><span>apellido convertido en marca</span></div>
+          <div class="node"><b>CUERO</b><span>material, tradición y oficio</span></div>
+          <div class="node"><b>DISEÑO</b><span>estética cotidiana</span></div>
+          <div class="node"><b>USO</b><span>funcionalidad real</span></div>
+          <div class="node"><b>MEMORIA</b><span>historias personales</span></div>
+        </div>
+      </article>
+
+      <article class="card span6">
+        <h2>Crandon como capital invisible</h2>
+        <p>La materia no presenta a Crandon solo como edificio o etapa escolar. Lo muestra como red: amistades, docentes, valores, memoria institucional y pertenencia que acompaña incluso fuera del país.</p>
+        <p class="quote">La educación deja huella cuando sigue actuando después del egreso.</p>
+      </article>
+
+      <section class="band span12">
+        <div>
+          <h2>La riqueza de la historia está en la mezcla</h2>
+          <p>No es solamente una nota sobre carteras. Es una síntesis de educación, emprendimiento femenino, familia, fabricación local, memoria afectiva y diseño con identidad. Lo que antes se llamaba formar carácter; hoy, con PowerPoint, le dicen ecosistema.</p>
+        </div>
+        <div class="pillrow">
+          <span class="pill">Taller uruguayo</span>
+          <span class="pill">Alianza madre-hija</span>
+          <span class="pill">Colecciones narrativas</span>
+          <span class="pill">Anillo de egresada</span>
+          <span class="pill">Amigas de toda la vida</span>
+          <span class="pill">Valores aplicados a la empresa</span>
+        </div>
+      </section>
+
+      <figure class="card photo-card span5">
+        <img src="img/karine-keuroglian-2026-1.jpeg" alt="Retrato de Kariné Keuroglian en Crandon" />
+      </figure>
+
+      <article class="card span7">
+        <h2>Lectura para LinkedIn / página institucional</h2>
+        <p>Esta historia funciona muy bien como pieza institucional porque no fuerza una moraleja: la muestra. Kariné vuelve a Crandon no como nostalgia vacía, sino como prueba viva de que los vínculos escolares pueden transformarse en confianza, redes de producción y sentido de pertenencia.</p>
+        <p>La marca Keuro no aparece aislada; aparece como resultado de una trayectoria: vocación, formación, viaje, ahorro, taller local, apoyo familiar y comunidad. Ahí está el valor del relato.</p>
+        <div class="pillrow">
+          <span class="pill">Mensaje central: formar para decidir</span>
+          <span class="pill">Tono: cálido, elegante, emprendedor</span>
+          <span class="pill">Imagen: cuero, patios, memoria, oficio</span>
+        </div>
+      </article>
+
+      <article class="card span12">
+        <h2>Créditos y fuentes</h2>
+        <p class="small">Basado en la nota “Diseñar el propio camino: la huella de Crandon en la propuesta de Keuro”, publicada por el Instituto Crandon el 22 de mayo de 2026. Texto acreditado a Mag. Gabriela Cabrera Castromán e imágenes a Audiovisuales, según la publicación original.</p>
+        <p class="small">Fuente: https://www.crandon.edu.uy/disenar-el-propio-camino-la-huella-de-crandon-en-la-propuesta-de-keuro/</p>
+        <p class="small muted">Nota técnica: sustituir o descargar las imágenes sugeridas en la carpeta <strong>img/</strong>. Mantener créditos si se usan las fotografías originales.</p>
+      </article>
+    </section>
+  </main>
+</body>
+</html>
