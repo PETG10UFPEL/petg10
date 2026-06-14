@@ -137,12 +137,48 @@
     }
     .btn-secondary{display:inline-block;margin-top:12px;padding:12px 16px;border-radius:999px;background:var(--cuero);color:#fffaf3;border:0;font-family:Arial,sans-serif;font-weight:700;letter-spacing:.02em}
     .btn-company{display:inline-block;margin-top:10px;padding:12px 16px;border-radius:999px;background:var(--verde);color:#fffaf3;border:0;font-family:Arial,sans-serif;font-weight:700;letter-spacing:.02em}
+
+    .btn-instagram{display:inline-block;margin-top:10px;padding:12px 16px;border-radius:999px;background:#251b13;color:#fffaf3;border:0;font-family:Arial,sans-serif;font-weight:700;letter-spacing:.02em}
+    .instagram-card{
+      display:grid;
+      grid-template-columns:.72fr 1.28fr;
+      gap:18px;
+      align-items:stretch;
+      background:linear-gradient(135deg,#fffaf3,#f3e5d3);
+      border:1px solid rgba(122,78,43,.22);
+    }
+    .instagram-visual{
+      display:grid;
+      grid-template-rows:auto 1fr;
+      gap:12px;
+      align-items:stretch;
+    }
+    .keuro-logo{
+      width:100%;
+      max-width:210px;
+      aspect-ratio:1/1;
+      object-fit:contain;
+      background:#fff;
+      border:1px solid rgba(37,27,19,.08);
+      border-radius:18px;
+      padding:18px;
+      justify-self:center;
+    }
+    .ela-img{
+      width:100%;
+      min-height:320px;
+      height:100%;
+      object-fit:cover;
+      border-radius:20px;
+      border:1px solid rgba(37,27,19,.1);
+      box-shadow:0 12px 28px rgba(60,36,18,.12);
+    }
     .cta-stack{display:flex;flex-direction:column;align-items:flex-start;gap:8px}
     .reportaje-link{font-size:.93rem;color:#6b5647;word-break:break-word}
     .ref{font-size:.86rem;color:#6b5b4d;border-top:1px solid var(--linea);margin-top:24px;padding-top:16px}
     a{color:var(--marron);font-weight:bold;text-decoration:none;border-bottom:1px solid rgba(122,78,43,.3)}
     @media(max-width:850px){
-      header,.band,.reportaje-box{grid-template-columns:1fr}.hero-img{min-height:360px}.span4,.span5,.span6,.span7,.span8,.span12{grid-column:span 12}.diagram{grid-template-columns:1fr 1fr}.hero-text{padding:30px 24px}.wrap{padding:18px 12px 36px}
+      header,.band,.reportaje-box,.instagram-card{grid-template-columns:1fr}.hero-img{min-height:360px}.span4,.span5,.span6,.span7,.span8,.span12{grid-column:span 12}.diagram{grid-template-columns:1fr 1fr}.hero-text{padding:30px 24px}.wrap{padding:18px 12px 36px}
     }
     @media(max-width:520px){.diagram{grid-template-columns:1fr}.card{padding:20px}.stamp{position:static;border-radius:0;max-width:none}.hero-img{min-height:300px}.quote{font-size:1.25rem}}
   </style>
@@ -156,8 +192,10 @@
        Fuente original: https://www.crandon.edu.uy/wp-content/uploads/2026/05/Karine-Keuroglian-2026-2-scaled.jpeg
     3) img/karine-keuroglian-2026-1.jpeg
        Fuente original: https://www.crandon.edu.uy/wp-content/uploads/2026/05/Karine-Keuroglian-2026-1-scaled.jpeg
-    4) Logo: img/crandon.png
-    5) Opcional: img/cartera-keuro-detalle.jpg, img/taller-cuero-uruguay.jpg, img/venecia-marroquineria.jpg
+    4) Logo Crandon: img/crandon.png
+    5) Logo Keuro: img/keuro.png
+    6) Imagen de Kariné en Instagram/Keuro: img/ela.png
+    7) Opcional: img/cartera-keuro-detalle.jpg, img/taller-cuero-uruguay.jpg, img/venecia-marroquineria.jpg
   -->
   <main class="wrap">
     <header>
@@ -192,6 +230,8 @@
         <p class="reportaje-link">Fuente original: Crandon</p>
         <a class="btn-company" href="https://keuroleathers.com/" target="_blank" rel="noopener">Conocer Keuro Leathers</a>
         <p class="reportaje-link">Tienda de la marca: keuroleathers.com</p>
+        <a class="btn-instagram" href="https://www.instagram.com/keuroooo/" target="_blank" rel="noopener">Seguir Keuro en Instagram</a>
+        <p class="reportaje-link">Instagram: @keuroooo</p>
       </div>
     </section>
 
@@ -231,6 +271,25 @@
       <figure class="card photo-card span5">
         <img src="img/karine-keuroglian-2026-2.jpeg" alt="Kariné Keuroglian en espacios exteriores de Crandon" />
       </figure>
+
+      <article class="card span12 instagram-card">
+        <div class="instagram-visual">
+          <img class="keuro-logo" src="img/keuro.png" alt="Logo de Keuro Leathers" />
+          <img class="ela-img" src="img/ela.png" alt="Kariné en una imagen del Instagram de Keuro" />
+        </div>
+        <div>
+          <span class="reportaje-badge">Instagram de la marca</span>
+          <h2>Keuro también vive en imágenes</h2>
+          <p>Además de la tienda online, el Instagram de Keuro permite ver la marca en uso: productos, estilo, presencia visual y la propia Kariné vinculada al proyecto. Es un buen puente entre la historia del reportaje y la identidad pública de la empresa.</p>
+          <div class="pillrow">
+            <span class="pill">Logo Keuro</span>
+            <span class="pill">Instagram @keuroooo</span>
+            <span class="pill">Imagen de marca</span>
+            <span class="pill">Carteras y accesorios</span>
+          </div>
+          <a class="btn-instagram" href="https://www.instagram.com/keuroooo/" target="_blank" rel="noopener">Abrir Instagram de Keuro</a>
+        </div>
+      </article>
 
       <article class="card span6">
         <h2>Keuro: nombre, memoria y marca</h2>
@@ -284,6 +343,7 @@
         <h2>Créditos y fuentes</h2>
         <p class="small">Basado en la nota “Diseñar el propio camino: la huella de Crandon en la propuesta de Keuro”, publicada por el Instituto Crandon el 22 de mayo de 2026. Texto acreditado a Mag. Gabriela Cabrera Castromán e imágenes a Audiovisuales, según la publicación original.</p>
         <p class="small">Fuente: https://www.crandon.edu.uy/disenar-el-propio-camino-la-huella-de-crandon-en-la-propuesta-de-keuro/</p>
+        <p class="small">Fuente Instagram Keuro: https://www.instagram.com/keuroooo/</p>
         <p class="small muted">Nota técnica: sustituir o descargar las imágenes sugeridas en la carpeta <strong>img/</strong>. Mantener créditos si se usan las fotografías originales.</p>
       </article>
     </section>
