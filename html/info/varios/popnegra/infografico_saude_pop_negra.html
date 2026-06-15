@@ -1,0 +1,1146 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Boletim Epidemiológico · Saúde da População Negra · Pelotas 2025</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Source+Sans+3:wght@400;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@2.44.0/tabler-icons.min.css">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --ocre:    #C8873A;
+    --ocre-lt: #E8A060;
+    --ocre-dk: #9A6020;
+    --terra:   #8B3A1F;
+    --marrom:  #5A3020;
+    --marrom2: #432415;
+    --fundo:   #2E1A0E;
+    --fundo2:  #231209;
+    --creme:   #F5EDD6;
+    --creme2:  #C8A87A;
+    --verde:   #2D5A27;
+    --verde-lt:#6BAA5E;
+    --vinho:   #5C1B1B;
+  }
+
+  body {
+    font-family: 'Source Sans 3', system-ui, sans-serif;
+    background: var(--fundo);
+    color: var(--creme);
+    line-height: 1.6;
+  }
+
+  /* KENTE */
+  .kente {
+    height: 7px;
+    background: repeating-linear-gradient(90deg,
+      var(--ocre) 0 22px, var(--verde) 22px 44px,
+      var(--terra) 44px 66px, #7A5C1E 66px 88px);
+  }
+
+  /* HERO */
+  .hero {
+    background: var(--fundo);
+    padding: 3rem 2rem 2.5rem;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+    border-bottom: 4px solid var(--ocre);
+  }
+  .hero::before {
+    content: '';
+    position: absolute; inset: 0;
+    background: repeating-linear-gradient(60deg,
+      transparent, transparent 20px,
+      rgba(200,135,58,.04) 20px, rgba(200,135,58,.04) 21px);
+    pointer-events: none;
+  }
+  .hero-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    max-width: 900px;
+    margin: 0 auto 2rem;
+  }
+  .hero-logo {
+    width: 72px; height: 72px;
+    object-fit: contain;
+    border-radius: 50%;
+    border: 2px solid var(--ocre);
+    background: var(--marrom2);
+    padding: 6px;
+  }
+  .hero-badge {
+    background: var(--marrom2);
+    border: 1px solid var(--ocre);
+    border-radius: 8px;
+    padding: 0.5rem 1rem;
+    font-size: 11px;
+    color: var(--creme2);
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    text-align: right;
+    line-height: 1.5;
+  }
+  .hero-badge strong { color: var(--ocre); display: block; }
+  .hero-eyebrow {
+    font-size: 11px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--ocre);
+    margin-bottom: 0.75rem;
+  }
+  .hero-title {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-size: clamp(2rem, 5vw, 3.2rem);
+    font-weight: 900;
+    color: var(--creme);
+    line-height: 1.1;
+    margin-bottom: 0.5rem;
+  }
+  .hero-title span { color: var(--ocre); }
+  .hero-sub { font-size: 1rem; color: var(--creme2); margin-bottom: 2.5rem; }
+  .hero-stats {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    flex-wrap: wrap;
+    max-width: 700px;
+    margin: 0 auto;
+  }
+  .hero-stat {
+    background: var(--marrom2);
+    border: 1px solid rgba(200,135,58,.35);
+    border-radius: 10px;
+    padding: 1.1rem 1.4rem;
+    text-align: center;
+    min-width: 130px;
+    flex: 1;
+  }
+  .hero-stat-num {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-size: 2.1rem;
+    font-weight: 900;
+    color: var(--ocre);
+    display: block;
+    line-height: 1;
+  }
+  .hero-stat-label { font-size: 11px; color: var(--creme2); margin-top: 4px; display: block; }
+
+  /* BOX DOWNLOAD */
+  .download-box {
+    max-width: 900px;
+    margin: 2rem auto;
+    background: var(--marrom2);
+    border: 1px solid rgba(200,135,58,.4);
+    border-radius: 14px;
+    padding: 1.5rem 1.75rem;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    align-items: center;
+  }
+  .download-box-title {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-size: 1rem;
+    color: var(--ocre);
+    margin-bottom: 0.25rem;
+  }
+  .download-box-sub {
+    font-size: 12px;
+    color: var(--creme2);
+  }
+  .download-info { flex: 1; min-width: 180px; }
+  .download-links { display: flex; gap: 0.75rem; flex-wrap: wrap; }
+  .dl-btn {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    background: transparent;
+    border: 1px solid var(--ocre);
+    border-radius: 8px;
+    padding: 0.6rem 1rem;
+    color: var(--ocre);
+    text-decoration: none;
+    font-size: 13px;
+    font-weight: 600;
+    transition: background .2s, color .2s;
+    cursor: pointer;
+  }
+  .dl-btn:hover { background: var(--ocre); color: var(--fundo); }
+  .dl-btn i { font-size: 18px; }
+  .dl-thumb {
+    width: 56px;
+    height: 78px;
+    object-fit: cover;
+    border-radius: 6px;
+    border: 1px solid rgba(200,135,58,.4);
+    flex-shrink: 0;
+  }
+
+  /* SEÇÃO */
+  .section {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 2.25rem 2rem;
+    border-bottom: 1px solid var(--marrom);
+  }
+  .section-header {
+    display: flex;
+    align-items: center;
+    gap: 0.85rem;
+    margin-bottom: 1.5rem;
+  }
+  .section-icon {
+    width: 44px; height: 44px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 20px;
+    flex-shrink: 0;
+  }
+  .ic-terra  { background: rgba(200,135,58,.15); color: var(--ocre);    border: 1px solid rgba(200,135,58,.4); }
+  .ic-verde  { background: rgba(45,90,39,.2);    color: var(--verde-lt); border: 1px solid rgba(45,90,39,.5); }
+  .ic-verm   { background: rgba(139,58,31,.2);   color: #D4704A;         border: 1px solid rgba(139,58,31,.5); }
+  .ic-ocre   { background: rgba(122,92,30,.2);   color: #E8C06A;         border: 1px solid rgba(122,92,30,.5); }
+
+  .section-eyebrow {
+    font-size: 11px;
+    color: var(--creme2);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+  }
+  .section-title {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-size: 1.3rem;
+    font-weight: 700;
+    color: var(--creme);
+    margin: 2px 0 0;
+  }
+
+  /* MÉTRICAS */
+  .metrics-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 10px;
+    margin-bottom: 1.25rem;
+  }
+  .metric-card {
+    background: var(--marrom2);
+    border: 1px solid rgba(200,135,58,.2);
+    border-radius: 10px;
+    padding: 1rem 1.1rem;
+    text-align: center;
+  }
+  .metric-card.alert { border-color: rgba(139,58,31,.6); background: var(--marrom); }
+  .metric-num {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-size: 1.9rem;
+    font-weight: 900;
+    color: var(--ocre);
+    display: block;
+    line-height: 1;
+  }
+  .metric-card.alert .metric-num { color: #D4704A; }
+  .metric-label {
+    font-size: 13px;
+    color: var(--creme2);
+    margin-top: 5px;
+    line-height: 1.4;
+    display: block;
+  }
+
+  /* ALERTA */
+  .alerta {
+    background: var(--marrom);
+    border-left: 4px solid var(--ocre);
+    border-radius: 0 8px 8px 0;
+    padding: 0.9rem 1.1rem;
+    margin: 0.85rem 0;
+    font-size: 15px;
+    color: var(--creme);
+    line-height: 1.6;
+  }
+  .alerta strong { color: var(--ocre); }
+  .alerta.verde  { border-color: var(--verde-lt); }
+  .alerta.verm   { border-color: #D4704A; }
+
+  /* BARRAS COMPARATIVAS */
+  .compare-block { margin-bottom: 1rem; }
+  .compare-label {
+    display: flex;
+    justify-content: space-between;
+    font-size: 15px;
+    margin-bottom: 4px;
+  }
+  .lbl-br { color: var(--creme2); }
+  .lbl-ng { color: var(--ocre); font-weight: 600; }
+  .bar-bg {
+    height: 12px;
+    background: var(--marrom2);
+    border-radius: 6px;
+    overflow: hidden;
+    margin-bottom: 2px;
+  }
+  .bar-fill { height: 100%; border-radius: 6px; }
+  .bar-br  { background: #7A6048; }
+  .bar-ng  { background: var(--ocre); }
+  .bar-ng2 { background: #D4704A; }
+
+  /* TERMÔMETRO */
+  .termo-row {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    margin-bottom: 8px;
+  }
+  .termo-nome {
+    font-size: 14px;
+    color: var(--creme2);
+    width: 140px;
+    flex-shrink: 0;
+    line-height: 1.3;
+  }
+  .termo-bg {
+    flex: 1;
+    height: 28px;
+    background: var(--marrom2);
+    border-radius: 5px;
+    overflow: hidden;
+  }
+  .termo-fill {
+    height: 100%;
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+    padding-left: 8px;
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--fundo);
+    white-space: nowrap;
+  }
+  .t-br { background: #7A6048; }
+  .t-ng { background: var(--ocre); }
+
+  /* DONUT */
+  .donut-row {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+    flex-wrap: wrap;
+    margin-bottom: 1.25rem;
+  }
+  .legend-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 15px;
+    color: var(--creme2);
+    margin-bottom: 7px;
+  }
+  .legend-dot {
+    width: 11px; height: 11px;
+    border-radius: 50%;
+    flex-shrink: 0;
+  }
+  .legend-val { font-weight: 700; color: var(--creme); }
+
+  /* CHART WRAPPER */
+  .chart-wrap {
+    position: relative;
+    width: 100%;
+    height: 230px;
+    margin-bottom: 0.75rem;
+  }
+
+  /* QUIZ */
+  .quiz-section {
+    background: var(--fundo2);
+    padding: 2.5rem 2rem;
+  }
+  .quiz-inner { max-width: 900px; margin: 0 auto; }
+  .quiz-header { margin-bottom: 1.5rem; }
+  .quiz-title {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--ocre);
+    margin-bottom: 0.25rem;
+  }
+  .quiz-desc { font-size: 13px; color: var(--creme2); }
+
+  .quiz-progress {
+    display: flex;
+    gap: 5px;
+    margin-bottom: 1.5rem;
+  }
+  .pdot {
+    flex: 1;
+    height: 5px;
+    border-radius: 3px;
+    background: var(--marrom2);
+    transition: background .3s;
+  }
+  .pdot.done    { background: var(--ocre); }
+  .pdot.current { background: #E8C06A; }
+
+  .quiz-card {
+    background: var(--marrom2);
+    border: 1px solid rgba(200,135,58,.3);
+    border-radius: 12px;
+    padding: 1.5rem;
+  }
+  .quiz-num {
+    font-size: 11px;
+    color: var(--ocre);
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin-bottom: 0.5rem;
+  }
+  .quiz-q {
+    font-size: 1.05rem;
+    font-weight: 600;
+    color: var(--creme);
+    margin-bottom: 1.1rem;
+    line-height: 1.5;
+  }
+  .quiz-opts { display: flex; flex-direction: column; gap: 8px; }
+  .quiz-opt {
+    background: var(--fundo);
+    border: 1px solid rgba(200,135,58,.3);
+    border-radius: 8px;
+    padding: 0.75rem 1rem;
+    font-size: 15px;
+    color: var(--creme2);
+    cursor: pointer;
+    text-align: left;
+    font-family: inherit;
+    transition: all .18s;
+  }
+  .quiz-opt:hover:not(:disabled) {
+    border-color: var(--ocre);
+    color: var(--creme);
+    background: var(--marrom);
+  }
+  .quiz-opt.correct  { background: #1A2D1A; border-color: #6BAA5E; color: #A8D49A; }
+  .quiz-opt.wrong    { background: #2D1A10; border-color: var(--terra); color: #D4704A; }
+  .quiz-opt.show-ans { border-color: rgba(107,170,94,.3); color: var(--verde-lt); }
+
+  .quiz-fb {
+    margin-top: 1rem;
+    padding: 0.75rem 1rem;
+    border-radius: 8px;
+    font-size: 14px;
+    line-height: 1.6;
+    display: none;
+  }
+  .quiz-fb.show { display: block; }
+  .quiz-fb.ok  { background: #1A2D1A; color: #A8D49A; border: 1px solid rgba(107,170,94,.3); }
+  .quiz-fb.err { background: #2D1A10; color: #F5CDB8; border: 1px solid rgba(139,58,31,.4); }
+
+  .quiz-nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 1.25rem;
+  }
+  .quiz-score-lbl { font-size: 12px; color: var(--creme2); }
+  .quiz-next {
+    background: var(--ocre);
+    color: var(--fundo);
+    border: none;
+    border-radius: 7px;
+    padding: 0.55rem 1.4rem;
+    font-size: 13px;
+    font-weight: 700;
+    cursor: pointer;
+    display: none;
+    font-family: inherit;
+    transition: background .2s;
+  }
+  .quiz-next:hover { background: var(--ocre-lt); }
+  .quiz-next.show { display: inline-block; }
+
+  /* RESULTADO */
+  .result-box {
+    text-align: center;
+    padding: 2.5rem 1rem;
+    display: none;
+  }
+  .result-box.show { display: block; }
+  .result-emoji { font-size: 3.5rem; margin-bottom: 0.75rem; }
+  .result-title {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-size: 1.6rem;
+    color: var(--ocre);
+    margin-bottom: 0.4rem;
+  }
+  .result-sub { font-size: 13px; color: var(--creme2); margin-bottom: 1.5rem; }
+  .result-score {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-size: 3.5rem;
+    font-weight: 900;
+    color: var(--creme);
+  }
+  .result-score span { color: var(--ocre); font-size: 1.5rem; }
+  .restart-btn {
+    margin-top: 1.75rem;
+    background: transparent;
+    border: 1px solid var(--ocre);
+    color: var(--ocre);
+    border-radius: 7px;
+    padding: 0.6rem 1.6rem;
+    font-size: 13px;
+    cursor: pointer;
+    font-family: inherit;
+    transition: background .2s;
+  }
+  .restart-btn:hover { background: rgba(200,135,58,.15); }
+
+  /* RODAPÉ */
+  footer {
+    background: #0D0602;
+    padding: 2rem 2rem 1.75rem;
+    text-align: center;
+    font-size: 13px;
+    color: #7A6048;
+    line-height: 1.8;
+  }
+  footer strong { color: var(--creme2); }
+  .footer-logos {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 2rem;
+    flex-wrap: wrap;
+    margin-bottom: 1.25rem;
+    padding-bottom: 1.25rem;
+    border-bottom: 1px solid var(--marrom);
+  }
+  .footer-logo-img {
+    max-height: 56px;
+    object-fit: contain;
+    opacity: .85;
+    filter: brightness(1.1);
+  }
+
+  .legend-row {
+    display: flex;
+    gap: 16px;
+    flex-wrap: wrap;
+    margin-top: 6px;
+    font-size: 11px;
+    color: var(--creme2);
+  }
+  .legend-sq {
+    width: 10px; height: 10px;
+    border-radius: 2px;
+    display: inline-block;
+    margin-right: 4px;
+    vertical-align: middle;
+  }
+
+  @media (max-width: 600px) {
+    .hero-top { flex-direction: column; align-items: center; gap: 1rem; }
+    .hero-badge { text-align: center; }
+    .download-box { flex-direction: column; }
+    .donut-row { flex-direction: column; align-items: flex-start; }
+    .section { padding: 1.75rem 1rem; }
+    .hero-princesa { display: none; }
+  }
+</style>
+</head>
+<body>
+
+<!-- HERO -->
+<div class="hero" style="text-align:left; padding:0;">
+  <div style="display:flex; align-items:stretch; max-width:100%; min-height:360px;">
+
+    <!-- coluna texto -->
+    <div style="flex:1; padding:2.5rem 2rem 2rem; display:flex; flex-direction:column; justify-content:space-between;">
+      <div>
+        <div style="display:flex; align-items:center; gap:1rem; margin-bottom:1.5rem;">
+          <img src="img/logo.png" alt="Logo Prefeitura de Pelotas" class="hero-logo" style="flex-shrink:0;">
+          <div class="hero-badge" style="text-align:left;">
+            <strong>2ª Edição / 2025</strong>
+            Ano de referência 2024<br>Pelotas · RS
+          </div>
+        </div>
+        <div class="hero-eyebrow">Boletim Epidemiológico · Secretaria Municipal de Saúde</div>
+        <h1 class="hero-title" style="font-size:clamp(1.8rem,4vw,3rem);">Saúde da<br><span>População Negra</span></h1>
+        <p class="hero-sub" style="margin-bottom:1.5rem;">Dados epidemiológicos do município de Pelotas, Rio Grande do Sul</p>
+      </div>
+      <div class="hero-stats" style="justify-content:flex-start; flex-wrap:wrap;">
+        <div class="hero-stat">
+          <span class="hero-stat-num">325.685</span>
+          <span class="hero-stat-label">habitantes em Pelotas<br>(Censo IBGE 2022)</span>
+        </div>
+        <div class="hero-stat">
+          <span class="hero-stat-num">77.798</span>
+          <span class="hero-stat-label">pessoas negras<br>(pretas + pardas)</span>
+        </div>
+        <div class="hero-stat">
+          <span class="hero-stat-num">23,9%</span>
+          <span class="hero-stat-label">da população<br>é negra</span>
+        </div>
+        <div class="hero-stat">
+          <span class="hero-stat-num">4º</span>
+          <span class="hero-stat-label">município mais<br>populoso do RS</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- coluna imagem -->
+    <div style="width:280px; flex-shrink:0; overflow:hidden; border-left:3px solid var(--ocre);">
+      <img src="img/princesa.png"
+           alt="Ilustração de mulher negra com turbante segurando plantas, com a bandeira de Pelotas"
+           style="width:100%; height:100%; object-fit:cover; object-position:center top; display:block;">
+    </div>
+
+  </div>
+</div>
+
+
+<div style="max-width:900px;margin:2rem auto;padding:0 2rem;">
+  <div class="download-box">
+    <img src="img/capaboletim.png" alt="Capa do Boletim Epidemiológico" class="dl-thumb">
+    <div class="download-info">
+      <div class="download-box-title">📄 Documento Oficial</div>
+      <div class="download-box-sub">Boletim Epidemiológico · Saúde da População Negra<br>2ª Edição / 2025 · Pelotas RS</div>
+    </div>
+    <div class="download-links">
+      <a href="img/boletim_pop_negra_2025_versao_final.pdf" class="dl-btn" target="_blank">
+        <i class="ti ti-file-type-pdf"></i> Abrir PDF
+      </a>
+      <a href="img/boletim_pop_negra_2025_versao_final.pdf" class="dl-btn" download>
+        <i class="ti ti-download"></i> Baixar
+      </a>
+    </div>
+  </div>
+</div>
+
+<div class="kente"></div>
+
+<!-- SEÇÃO 1: DEMOGRAFIA -->
+<div class="section">
+  <div class="section-header">
+    <div class="section-icon ic-terra"><i class="ti ti-users"></i></div>
+    <div>
+      <div class="section-eyebrow">Perfil Demográfico · Censo IBGE 2022</div>
+      <h2 class="section-title">Quem somos em Pelotas</h2>
+    </div>
+  </div>
+
+  <div class="donut-row">
+    <svg viewBox="0 0 130 130" width="130" height="130" aria-label="Composição racial de Pelotas: 75,9% branca, 11,9% preta, 12% parda, menos de 1% outras" role="img">
+      <circle cx="65" cy="65" r="52" fill="none" stroke="#2D1A09" stroke-width="22"/>
+      <circle cx="65" cy="65" r="52" fill="none" stroke="#7A6048" stroke-width="22"
+        stroke-dasharray="326 0" stroke-dashoffset="0"/>
+      <circle cx="65" cy="65" r="52" fill="none" stroke="#C8873A" stroke-width="22"
+        stroke-dasharray="51 326" stroke-dashoffset="-245"/>
+      <circle cx="65" cy="65" r="52" fill="none" stroke="#8B3A1F" stroke-width="22"
+        stroke-dasharray="51 326" stroke-dashoffset="-296"/>
+      <text x="65" y="60" text-anchor="middle" font-size="15" font-weight="700" fill="#C8873A" font-family="Georgia,serif">23,9%</text>
+      <text x="65" y="75" text-anchor="middle" font-size="10" fill="#C8A87A" font-family="sans-serif">negra</text>
+    </svg>
+    <div>
+      <div class="legend-item"><span class="legend-dot" style="background:#7A6048"></span>Branca — <span class="legend-val">75,9%</span> &nbsp;(247.257)</div>
+      <div class="legend-item"><span class="legend-dot" style="background:#C8873A"></span>Parda — <span class="legend-val">12,0%</span> &nbsp;(38.891)</div>
+      <div class="legend-item"><span class="legend-dot" style="background:#8B3A1F"></span>Preta — <span class="legend-val">11,9%</span> &nbsp;(38.907)</div>
+      <div class="legend-item"><span class="legend-dot" style="background:#2D5A27"></span>Outras — <span class="legend-val">&lt;1%</span></div>
+    </div>
+  </div>
+
+  <div class="alerta">
+    Aproximadamente <strong>1 em cada 4 pelotenses</strong> é negro. Esse contingente de 77.798 pessoas evidencia a relevância desse recorte para políticas públicas orientadas à <strong>equidade racial</strong>.
+  </div>
+</div>
+
+<div class="kente"></div>
+
+<!-- SEÇÃO 2: NASCIMENTOS -->
+<div class="section">
+  <div class="section-header">
+    <div class="section-icon ic-verde"><i class="ti ti-baby-carriage"></i></div>
+    <div>
+      <div class="section-eyebrow">Nascimentos e Óbitos Infantis · 2024</div>
+      <h2 class="section-title">Vida que começa com desigualdade</h2>
+    </div>
+  </div>
+
+  <div class="metrics-grid">
+    <div class="metric-card">
+      <span class="metric-num">2.950</span>
+      <span class="metric-label">nascidos vivos em 2024</span>
+    </div>
+    <div class="metric-card">
+      <span class="metric-num">791</span>
+      <span class="metric-label">nascidos negros — 26,8% do total</span>
+    </div>
+    <div class="metric-card alert">
+      <span class="metric-num">18,1</span>
+      <span class="metric-label">taxa gravidez adolescente negra por 1.000</span>
+    </div>
+    <div class="metric-card">
+      <span class="metric-num">8,7</span>
+      <span class="metric-label">taxa gravidez adolescente branca por 1.000</span>
+    </div>
+  </div>
+
+  <div style="margin:1.25rem 0">
+    <div style="font-size:12px;color:var(--creme2);text-transform:uppercase;letter-spacing:1px;margin-bottom:.75rem">Pré-natal ≥7 consultas por raça materna</div>
+    <div class="compare-block">
+      <div class="compare-label"><span class="lbl-br">Brancas</span><span class="lbl-br">68,5%</span></div>
+      <div class="bar-bg"><div class="bar-fill bar-br" style="width:68.5%"></div></div>
+    </div>
+    <div class="compare-block">
+      <div class="compare-label"><span class="lbl-ng">Negras</span><span class="lbl-ng">67,4%</span></div>
+      <div class="bar-bg"><div class="bar-fill bar-ng" style="width:67.4%"></div></div>
+    </div>
+  </div>
+
+  <div class="alerta verm">
+    Entre mães adolescentes de <strong>10 a 14 anos</strong>, <strong>81,8% são negras</strong> (9 de 11 registros — 3 pretas e 6 pardas). Reflexo de desigualdades no acesso à educação, saúde sexual e planejamento reprodutivo.
+  </div>
+
+  <div class="alerta" style="margin-top:.75rem">
+    <strong>Óbitos infantis 2020–2024:</strong> negros são 23,9% da população, mas concentram <strong>40,9% dos óbitos infantis</strong> — quase o dobro do esperado pelo peso demográfico.
+  </div>
+</div>
+
+<div class="kente"></div>
+
+<!-- SEÇÃO 3: DCNT -->
+<div class="section">
+  <div class="section-header">
+    <div class="section-icon ic-verm"><i class="ti ti-heart-rate-monitor"></i></div>
+    <div>
+      <div class="section-eyebrow">Doenças Crônicas Não Transmissíveis · 2024</div>
+      <h2 class="section-title">O peso das doenças crônicas</h2>
+    </div>
+  </div>
+
+  <div class="metrics-grid">
+    <div class="metric-card alert">
+      <span class="metric-num">37,9%</span>
+      <span class="metric-label">dos óbitos cardiovasculares são negros (47 de 124)</span>
+    </div>
+    <div class="metric-card alert">
+      <span class="metric-num">24,5%</span>
+      <span class="metric-label">dos óbitos por diabetes são negros (14 de 57)</span>
+    </div>
+    <div class="metric-card">
+      <span class="metric-num">17,8%</span>
+      <span class="metric-label">dos óbitos por neoplasias são negros (57 de 320)</span>
+    </div>
+    <div class="metric-card">
+      <span class="metric-num">26,3%</span>
+      <span class="metric-label">dos óbitos respiratórios são negros (10 de 38)</span>
+    </div>
+  </div>
+
+  <div class="alerta">
+    Nas doenças <strong>cardiovasculares</strong>, a população negra — 23,9% da cidade — responde por <strong>37,9% dos óbitos</strong>: sobrerrepresentação de 14 pontos percentuais. DCNT relacionam-se diretamente a disparidades socioeconômicas e ao <strong>racismo estrutural</strong>.
+  </div>
+
+  <div style="margin-top:1.5rem">
+    <div style="font-size:12px;color:var(--creme2);text-transform:uppercase;letter-spacing:1px;margin-bottom:.5rem">Distribuição proporcional dos óbitos por causa · 2024</div>
+    <div class="chart-wrap">
+      <canvas id="obitosChart" role="img" aria-label="Comparação das causas de óbito entre brancos e negros em Pelotas 2024">Doenças circulatórias: brancos 20,5%, negros 19,9%. Neoplasias: brancos 20,7%, negros 18%. Respiratórias: brancos 12,9%, negros 8,3%. Endócrinas: brancos 6%, negros 7,4%. Causas inespecíficas: brancos 9,1%, negros 10%.</canvas>
+    </div>
+    <div class="legend-row">
+      <span><span class="legend-sq" style="background:#7A6048"></span>Branca</span>
+      <span><span class="legend-sq" style="background:#C8873A"></span>Negra</span>
+    </div>
+  </div>
+</div>
+
+<div class="kente"></div>
+
+<!-- SEÇÃO 4: TRANSMISSÍVEIS -->
+<div class="section">
+  <div class="section-header">
+    <div class="section-icon ic-ocre"><i class="ti ti-virus"></i></div>
+    <div>
+      <div class="section-eyebrow">Doenças Transmissíveis · 2024</div>
+      <h2 class="section-title">Infecções com marca racial</h2>
+    </div>
+  </div>
+
+  <div style="font-size:12px;color:var(--creme2);text-transform:uppercase;letter-spacing:1px;margin-bottom:.85rem">Tuberculose · Incidência por 100.000 hab.</div>
+  <div class="termo-row">
+    <div class="termo-nome">Branca</div>
+    <div class="termo-bg"><div class="termo-fill t-br" style="width:54%">67,9</div></div>
+  </div>
+  <div class="termo-row">
+    <div class="termo-nome">Negra</div>
+    <div class="termo-bg"><div class="termo-fill t-ng" style="width:100%">124,7</div></div>
+  </div>
+
+  <div class="alerta" style="margin-top:1rem">
+    A tuberculose atinge negros com incidência <strong>84% maior</strong> que brancos. Representando 23,9% da população, os negros concentram <strong>36% dos casos</strong> — 50% acima do esperado.
+  </div>
+
+  <div class="metrics-grid" style="margin-top:1.25rem">
+    <div class="metric-card">
+      <span class="metric-num">267</span>
+      <span class="metric-label">casos de TB · 97 negros (36,3%)</span>
+    </div>
+    <div class="metric-card">
+      <span class="metric-num">28,6%</span>
+      <span class="metric-label">dos casos de HIV/AIDS são negros</span>
+    </div>
+    <div class="metric-card">
+      <span class="metric-num">19,3%</span>
+      <span class="metric-label">dos casos de sífilis são negros</span>
+    </div>
+    <div class="metric-card">
+      <span class="metric-num">21,6%</span>
+      <span class="metric-label">das hepatites virais são negros</span>
+    </div>
+  </div>
+
+  <div style="margin-top:1.5rem">
+    <div style="font-size:12px;color:var(--creme2);text-transform:uppercase;letter-spacing:1px;margin-bottom:.5rem">Casos por doença transmissível · % negros vs % população</div>
+    <div class="chart-wrap" style="height:180px">
+      <canvas id="transChart" role="img" aria-label="Participação negra nos casos de doenças transmissíveis versus peso demográfico (23,9%)">TB: 36,3%; HIV/AIDS: 28,6%; Hepatites: 21,6%; Sífilis: 19,3%. Referência demográfica: 23,9%.</canvas>
+    </div>
+  </div>
+</div>
+
+<div class="kente"></div>
+
+<!-- SEÇÃO 5: VIOLÊNCIA -->
+<div class="section">
+  <div class="section-header">
+    <div class="section-icon ic-verm"><i class="ti ti-alert-triangle"></i></div>
+    <div>
+      <div class="section-eyebrow">Violências · 2018–2024</div>
+      <h2 class="section-title">Violência em crescimento</h2>
+    </div>
+  </div>
+
+  <div class="metrics-grid">
+    <div class="metric-card alert">
+      <span class="metric-num">+116%</span>
+      <span class="metric-label">crescimento das notificações 2018–2024</span>
+    </div>
+    <div class="metric-card">
+      <span class="metric-num">5.405</span>
+      <span class="metric-label">notificações totais no período</span>
+    </div>
+    <div class="metric-card">
+      <span class="metric-num">1.185</span>
+      <span class="metric-label">notificações em 2024</span>
+    </div>
+    <div class="metric-card">
+      <span class="metric-num">23,7%</span>
+      <span class="metric-label">das vítimas são negras (2024)</span>
+    </div>
+  </div>
+
+  <div class="alerta">
+    O salto de 548 (2018) para 1.185 (2024) reflete o esforço de <strong>qualificação dos registros</strong> pelo Núcleo de Violências da Vigilância Epidemiológica — combatendo a histórica subnotificação.
+  </div>
+</div>
+
+<div class="kente"></div>
+
+<!-- SEÇÃO 6: DEFICIÊNCIAS -->
+<div class="section">
+  <div class="section-header">
+    <div class="section-icon ic-verde"><i class="ti ti-accessible"></i></div>
+    <div>
+      <div class="section-eyebrow">Deficiências · Cadastro acumulado desde 2022</div>
+      <h2 class="section-title">Pessoas com deficiência</h2>
+    </div>
+  </div>
+
+  <div class="metrics-grid">
+    <div class="metric-card">
+      <span class="metric-num">599</span>
+      <span class="metric-label">pessoas cadastradas desde 2022</span>
+    </div>
+    <div class="metric-card">
+      <span class="metric-num">151</span>
+      <span class="metric-label">negras — 25,2% do cadastro</span>
+    </div>
+    <div class="metric-card">
+      <span class="metric-num">96</span>
+      <span class="metric-label">pretas (16%)</span>
+    </div>
+    <div class="metric-card">
+      <span class="metric-num">55</span>
+      <span class="metric-label">pardas (9%)</span>
+    </div>
+  </div>
+
+  <div class="alerta verde">
+    Com <strong>25,2% do cadastro</strong> (vs 23,9% na população geral), indica que as políticas de <strong>busca ativa estão alcançando a população negra de forma eficaz</strong>. O <strong>TEA</strong> é a deficiência mais frequente entre negros cadastrados.
+  </div>
+</div>
+
+<div class="kente"></div>
+
+<!-- QUIZ -->
+<div class="quiz-section">
+  <div class="quiz-inner">
+    <div class="quiz-header">
+      <img src="img/logo.png" alt="" style="width:44px;height:44px;object-fit:contain;border-radius:50%;border:1px solid rgba(200,135,58,.4);background:var(--marrom2);padding:4px;margin-bottom:1rem;display:block" onerror="this.style.display='none'">
+      <div class="quiz-title">Fixando conceitos</div>
+      <div class="quiz-desc">10 questões sobre saúde da população negra em Pelotas · Ano-base 2024</div>
+    </div>
+
+    <div class="quiz-progress" id="quizProgress"></div>
+
+    <div class="quiz-card" id="quizCard">
+      <div class="quiz-num"  id="qNum"></div>
+      <div class="quiz-q"   id="qText"></div>
+      <div class="quiz-opts" id="qOpts"></div>
+      <div class="quiz-fb"  id="qFeedback"></div>
+      <div class="quiz-nav">
+        <span class="quiz-score-lbl" id="qScoreLbl"></span>
+        <button class="quiz-next" id="qNext">Próxima →</button>
+      </div>
+    </div>
+
+    <div class="result-box" id="quizResult">
+      <div class="result-emoji" id="rEmoji"></div>
+      <div class="result-title" id="rTitle"></div>
+      <div class="result-sub"   id="rSub"></div>
+      <div class="result-score" id="rScore"></div>
+      <br>
+      <button class="restart-btn" onclick="startQuiz()">↺ Tentar novamente</button>
+    </div>
+  </div>
+</div>
+
+<!-- RODAPÉ -->
+<footer>
+  <div class="footer-logos">
+    <img src="img/dois.png" alt="Amor-à-Pele FE-UFPel e PET-Saúde UFPEL" class="footer-logo-img">
+  </div>
+  <strong>Elaboração</strong><br>
+  Secretaria Municipal de Saúde de Pelotas · Departamento de Vigilância Epidemiológica<br>
+  Rede de Atenção às Equidades (REQUI) · Observatório Municipal de Segurança Pública e Prevenção Social<br>
+  Prefeito: Fernando Marroni · Secretária: Angela Vitória Moreira · Coordenação: Naiana Alves Oliveira<br>
+  <br>
+  <strong>Colaboração</strong><br>
+  Projeto Amor-à-Pele · FE-UFPel &nbsp;|&nbsp; PET-Saúde · Informação e Saúde Digital · Telemonitoramento de Feridas Crônicas · UFPEL<br>
+  <br>
+  Fontes: SINAN · SIM · SINASC · Datasus · Censo IBGE 2022
+</footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.js"></script>
+<script>
+/* ── GRÁFICOS ── */
+Chart.defaults.color = '#C8A87A';
+Chart.defaults.font.family = "'Source Sans 3', system-ui, sans-serif";
+
+new Chart(document.getElementById('obitosChart'), {
+  type: 'bar',
+  data: {
+    labels: ['D. Circulatórias','Neoplasias','D. Respiratórias','D. Endócrinas','Causas inesp.'],
+    datasets: [
+      { label: 'Branca', data: [20.5,20.7,12.9,6.0,9.1],  backgroundColor: '#7A6048', borderRadius: 4 },
+      { label: 'Negra',  data: [19.9,18.0, 8.3,7.4,10.0], backgroundColor: '#C8873A', borderRadius: 4 }
+    ]
+  },
+  options: {
+    responsive: true,
+    maintainAspectRatio: false,
+    plugins: { legend: { display: false }, tooltip: { callbacks: { label: c => c.dataset.label + ': ' + c.parsed.y + '%' } } },
+    scales: {
+      x: { ticks: { color: '#C8A87A', font: { size: 10 }, maxRotation: 30, autoSkip: false }, grid: { color: 'rgba(61,30,15,.6)' } },
+      y: { ticks: { color: '#C8A87A', font: { size: 10 }, callback: v => v + '%' }, grid: { color: 'rgba(61,30,15,.6)' } }
+    }
+  }
+});
+
+new Chart(document.getElementById('transChart'), {
+  type: 'bar',
+  data: {
+    labels: ['Tuberculose','HIV/AIDS','Hepatites Virais','Sífilis Adquirida'],
+    datasets: [
+      {
+        label: '% negros nos casos',
+        data: [36.3, 28.6, 21.6, 19.3],
+        backgroundColor: ['#C8873A','#C8873A','#7A6048','#7A6048'],
+        borderRadius: 4
+      }
+    ]
+  },
+  options: {
+    indexAxis: 'y',
+    responsive: true,
+    maintainAspectRatio: false,
+    plugins: {
+      legend: { display: false },
+      tooltip: { callbacks: { label: c => c.parsed.x + '% dos casos são negros' } },
+      annotation: {}
+    },
+    scales: {
+      x: {
+        min: 0, max: 50,
+        ticks: { color: '#C8A87A', font: { size: 10 }, callback: v => v + '%' },
+        grid: { color: 'rgba(61,30,15,.6)' }
+      },
+      y: { ticks: { color: '#C8A87A', font: { size: 11 } }, grid: { display: false } }
+    }
+  }
+});
+
+/* ── QUIZ ── */
+const questions = [
+  {
+    q: "Qual percentual da população de Pelotas se autodeclara negra (preta + parda) segundo o Censo IBGE 2022?",
+    opts: ["12,0%","23,9%","35,2%","11,9%"], correct: 1,
+    fb: "Correto! 23,9% dos pelotenses se autodeclaram negros — 11,9% pretos e 12% pardos —, totalizando cerca de 77.798 pessoas."
+  },
+  {
+    q: "A taxa de gravidez na adolescência entre negras em Pelotas foi aproximadamente quantas vezes maior que entre brancas em 2024?",
+    opts: ["Igual","1,5 vez maior","2 vezes maior","3 vezes maior"], correct: 2,
+    fb: "Correto! A taxa foi de 18,1 por 1.000 entre negras e 8,7 por 1.000 entre brancas — praticamente o dobro."
+  },
+  {
+    q: "Qual percentual dos óbitos infantis em Pelotas (2020–2024) foi de crianças negras, sendo que negros são 23,9% da população?",
+    opts: ["23,9%","30,5%","40,9%","59,1%"], correct: 2,
+    fb: "Correto! Embora sejam 23,9% da população, crianças negras concentraram 40,9% dos óbitos infantis — quase o dobro do esperado."
+  },
+  {
+    q: "A incidência de tuberculose na população negra de Pelotas foi quanto maior que na branca?",
+    opts: ["20% maior","50% maior","84% maior","120% maior"], correct: 2,
+    fb: "Correto! 124,7 casos por 100.000 entre negros versus 67,9 entre brancos — diferença de 84%."
+  },
+  {
+    q: "Entre os óbitos por doenças do sistema circulatório em Pelotas em 2024, qual foi a participação da população negra?",
+    opts: ["17,8%","23,9%","30,2%","37,9%"], correct: 3,
+    fb: "Correto! 47 dos 124 óbitos cardiovasculares foram de pessoas negras (37,9%) — 14 pontos acima de sua presença demográfica."
+  },
+  {
+    q: "De 11 registros de nascimento entre mães adolescentes de 10 a 14 anos em 2024, quantos foram de mães negras?",
+    opts: ["3","6","9","11"], correct: 2,
+    fb: "Correto! 9 dos 11 registros (81,8%) foram de mães negras — 3 pretas e 6 pardas —, revelando grave vulnerabilidade social."
+  },
+  {
+    q: "Qual é a deficiência mais frequente entre pessoas negras no Banco de Dados Municipal de Pelotas?",
+    opts: ["Deficiência física","Deficiência auditiva","Transtorno do espectro autista (TEA)","Deficiência visual"], correct: 2,
+    fb: "Correto! O TEA (transtorno do espectro autista) é o tipo de deficiência mais frequente entre pessoas negras cadastradas desde 2022."
+  },
+  {
+    q: "Qual foi o crescimento das notificações de violência em Pelotas entre 2018 e 2024?",
+    opts: ["58%","84%","100%","116%"], correct: 3,
+    fb: "Correto! As notificações passaram de 548 em 2018 para 1.185 em 2024, crescimento de 116% — reflexo também da melhoria no registro."
+  },
+  {
+    q: "No acesso ao pré-natal com ≥7 consultas, qual foi a situação entre gestantes brancas e negras em Pelotas em 2024?",
+    opts: ["Brancas 68,5% e Negras 67,4%","Brancas 80% e Negras 50%","Brancas 72% e Negras 55%","Igual para ambas, 70%"], correct: 0,
+    fb: "Correto! Diferença mínima: 68,5% entre brancas e 67,4% entre negras — sem disparidade relevante no acesso ao pré-natal no município."
+  },
+  {
+    q: "Pelotas é o quantº município mais populoso do Rio Grande do Sul?",
+    opts: ["2º","3º","4º","5º"], correct: 2,
+    fb: "Correto! Com 325.685 habitantes (Censo 2022), Pelotas é o 4º município mais populoso do RS."
+  }
+];
+
+let cur = 0, score = 0, answered = false;
+
+function buildProg() {
+  const p = document.getElementById('quizProgress');
+  p.innerHTML = '';
+  questions.forEach((_, i) => {
+    const d = document.createElement('div');
+    d.className = 'pdot' + (i < cur ? ' done' : i === cur ? ' current' : '');
+    p.appendChild(d);
+  });
+}
+
+function loadQ() {
+  answered = false;
+  const q = questions[cur];
+  document.getElementById('qNum').textContent  = `Questão ${cur+1} de ${questions.length}`;
+  document.getElementById('qText').textContent = q.q;
+  document.getElementById('qScoreLbl').textContent = `Acertos: ${score}/${cur}`;
+  const fb = document.getElementById('qFeedback');
+  fb.className = 'quiz-fb';
+  fb.textContent = '';
+  document.getElementById('qNext').className = 'quiz-next';
+
+  const opts = document.getElementById('qOpts');
+  opts.innerHTML = '';
+  q.opts.forEach((o, i) => {
+    const b = document.createElement('button');
+    b.className = 'quiz-opt';
+    b.textContent = o;
+    b.onclick = () => answer(i);
+    opts.appendChild(b);
+  });
+  buildProg();
+}
+
+function answer(idx) {
+  if (answered) return;
+  answered = true;
+  const q = questions[cur];
+  const opts = document.querySelectorAll('.quiz-opt');
+  const fb   = document.getElementById('qFeedback');
+  const btn  = document.getElementById('qNext');
+  opts.forEach(b => b.disabled = true);
+
+  if (idx === q.correct) {
+    score++;
+    opts[idx].classList.add('correct');
+    fb.className = 'quiz-fb show ok';
+    fb.textContent = '✓ ' + q.fb;
+  } else {
+    opts[idx].classList.add('wrong');
+    opts[q.correct].classList.add('show-ans');
+    fb.className = 'quiz-fb show err';
+    fb.textContent = '✗ ' + q.fb;
+  }
+
+  document.getElementById('qScoreLbl').textContent = `Acertos: ${score}/${cur+1}`;
+  btn.className = 'quiz-next show';
+  btn.textContent = cur < questions.length - 1 ? 'Próxima →' : 'Ver resultado';
+}
+
+document.getElementById('qNext').onclick = () => {
+  cur++;
+  if (cur < questions.length) { loadQ(); }
+  else { showResult(); }
+};
+
+function showResult() {
+  document.getElementById('quizCard').style.display    = 'none';
+  document.getElementById('quizProgress').style.display = 'none';
+  const r = document.getElementById('quizResult');
+  r.className = 'result-box show';
+  const pct = Math.round((score / questions.length) * 100);
+  let emoji, title, sub;
+  if (pct >= 90) { emoji='🌟'; title='Excelente!'; sub='Domínio avançado dos dados sobre saúde da população negra em Pelotas.'; }
+  else if (pct >= 70) { emoji='👏'; title='Muito bem!'; sub='Boa compreensão do boletim. Revise os pontos que errou.'; }
+  else if (pct >= 50) { emoji='📖'; title='Bom esforço!'; sub='Vale reler as seções sobre tuberculose, mortalidade infantil e DCNT.'; }
+  else { emoji='🔄'; title='Continue estudando!'; sub='Os dados são fundamentais para combater as iniquidades raciais em saúde.'; }
+  document.getElementById('rEmoji').textContent = emoji;
+  document.getElementById('rTitle').textContent = title;
+  document.getElementById('rSub').textContent   = sub;
+  document.getElementById('rScore').innerHTML   = `${score}<span>/${questions.length}</span>`;
+}
+
+function startQuiz() {
+  cur = 0; score = 0; answered = false;
+  document.getElementById('quizCard').style.display    = 'block';
+  document.getElementById('quizProgress').style.display = 'flex';
+  document.getElementById('quizResult').className = 'result-box';
+  loadQ();
+}
+
+startQuiz();
+</script>
+</body>
+</html>
