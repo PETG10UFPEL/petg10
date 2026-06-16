@@ -1,0 +1,1134 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Leo e a Terapia Génica para Pele de Mariposa</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=Source+Sans+3:ital,wght@0,300;0,400;0,600;0,700;1,400&family=Source+Serif+4:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --cream: #FAF8F4;
+      --white: #FFFFFF;
+      --ink: #1A1A2E;
+      --ink-light: #3D3D5C;
+      --slate: #2D5F8A;
+      --slate-light: #4A82B0;
+      --slate-pale: #EBF3FA;
+      --amber: #C97A2A;
+      --amber-pale: #FEF3E2;
+      --teal: #2A7A6B;
+      --teal-pale: #E2F5F1;
+      --rose: #B54A4A;
+      --rose-pale: #FAEAEA;
+      --border: #E0DDD8;
+      --shadow: rgba(26,26,46,0.07);
+    }
+
+    html { font-size: 16px; scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Source Sans 3', sans-serif;
+      background: var(--cream);
+      color: var(--ink);
+      line-height: 1.7;
+    }
+
+    /* ── INSTITUTIONAL HEADER ── */
+    .institutional-header {
+      background: var(--white);
+      border-bottom: 1px solid var(--border);
+      padding: 14px 40px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .header-tag {
+      font-family: 'Source Sans 3', sans-serif;
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--slate);
+    }
+    .header-logo img {
+      max-height: 52px;
+      display: block;
+    }
+    .header-logo-placeholder {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      color: var(--slate);
+      border: 1.5px solid var(--slate-light);
+      border-radius: 6px;
+      padding: 6px 14px;
+    }
+
+    /* ── HERO ── */
+    .hero {
+      background: linear-gradient(135deg, #0E2A47 0%, #163B5E 50%, #1B4F72 100%);
+      color: #fff;
+      padding: 72px 40px 60px;
+      position: relative;
+      overflow: hidden;
+    }
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: -80px; right: -80px;
+      width: 420px; height: 420px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.04);
+      pointer-events: none;
+    }
+    .hero::after {
+      content: '';
+      position: absolute;
+      bottom: -60px; left: -60px;
+      width: 300px; height: 300px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.03);
+      pointer-events: none;
+    }
+    .hero-inner {
+      max-width: 820px;
+      margin: 0 auto;
+      position: relative;
+      z-index: 1;
+    }
+    .hero-label {
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: #7EC8E3;
+      margin-bottom: 18px;
+    }
+    .hero h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2rem, 5vw, 3.1rem);
+      font-weight: 900;
+      line-height: 1.15;
+      margin-bottom: 22px;
+      color: #fff;
+    }
+    .hero h1 span { color: #7EC8E3; }
+    .hero-sub {
+      font-size: 1.05rem;
+      color: rgba(255,255,255,0.82);
+      max-width: 620px;
+      margin-bottom: 36px;
+      font-weight: 300;
+    }
+    .hero-stats {
+      display: flex;
+      gap: 32px;
+      flex-wrap: wrap;
+    }
+
+    /* Hero two-column grid */
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1fr 340px;
+      gap: 40px;
+      align-items: center;
+    }
+    .hero-photo {
+      position: relative;
+    }
+    .hero-photo img {
+      width: 100%;
+      max-width: 340px;
+      border-radius: 12px;
+      display: block;
+      object-fit: cover;
+      aspect-ratio: 3/4;
+      border: 3px solid rgba(255,255,255,0.15);
+      box-shadow: 0 8px 32px rgba(0,0,0,0.35);
+    }
+    .hero-photo-caption {
+      margin-top: 8px;
+      font-size: 0.72rem;
+      color: rgba(255,255,255,0.55);
+      text-align: center;
+      line-height: 1.4;
+    }
+    .hero-photo-caption a {
+      color: rgba(255,255,255,0.65);
+    }
+    @media (max-width: 700px) {
+      .hero-grid {
+        grid-template-columns: 1fr;
+      }
+      .hero-photo {
+        order: -1;
+        text-align: center;
+      }
+      .hero-photo img {
+        max-width: 220px;
+        margin: 0 auto;
+        aspect-ratio: 3/4;
+      }
+    }
+    .hero-stat {
+      text-align: center;
+    }
+    .hero-stat .num {
+      font-family: 'Playfair Display', serif;
+      font-size: 2.2rem;
+      font-weight: 900;
+      color: #7EC8E3;
+      line-height: 1;
+    }
+    .hero-stat .lbl {
+      font-size: 0.75rem;
+      color: rgba(255,255,255,0.65);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      margin-top: 4px;
+    }
+
+    /* ── MAIN CONTENT ── */
+    main { max-width: 860px; margin: 0 auto; padding: 0 24px 60px; }
+
+    /* ── SECTION STYLES ── */
+    section { margin-top: 56px; }
+    .section-label {
+      font-size: 0.68rem;
+      font-weight: 700;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--slate);
+      margin-bottom: 8px;
+    }
+    h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.5rem, 3.5vw, 2rem);
+      font-weight: 700;
+      color: var(--ink);
+      margin-bottom: 20px;
+      line-height: 1.25;
+    }
+    h3 {
+      font-family: 'Source Serif 4', serif;
+      font-size: 1.12rem;
+      font-weight: 600;
+      color: var(--ink);
+      margin-bottom: 10px;
+    }
+    p {
+      color: var(--ink-light);
+      margin-bottom: 16px;
+      font-size: 0.97rem;
+    }
+    p:last-child { margin-bottom: 0; }
+
+    /* ── DIVIDER ── */
+    .divider {
+      border: none;
+      border-top: 1px solid var(--border);
+      margin: 48px 0 0;
+    }
+
+    /* ── PULL QUOTE ── */
+    .pull-quote {
+      border-left: 4px solid var(--slate);
+      background: var(--slate-pale);
+      padding: 20px 24px;
+      border-radius: 0 8px 8px 0;
+      margin: 28px 0;
+    }
+    .pull-quote p {
+      font-family: 'Source Serif 4', serif;
+      font-size: 1.08rem;
+      font-style: italic;
+      color: var(--ink);
+      margin: 0;
+    }
+    .pull-quote cite {
+      display: block;
+      margin-top: 8px;
+      font-size: 0.78rem;
+      font-style: normal;
+      font-weight: 600;
+      color: var(--slate);
+    }
+
+    /* ── CALLOUT BOX ── */
+    .callout {
+      border-radius: 10px;
+      padding: 22px 26px;
+      margin: 24px 0;
+    }
+    .callout.amber { background: var(--amber-pale); border-left: 4px solid var(--amber); }
+    .callout.teal  { background: var(--teal-pale);  border-left: 4px solid var(--teal);  }
+    .callout.rose  { background: var(--rose-pale);  border-left: 4px solid var(--rose);  }
+    .callout .callout-title {
+      font-weight: 700;
+      font-size: 0.8rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      margin-bottom: 8px;
+    }
+    .callout.amber .callout-title { color: var(--amber); }
+    .callout.teal  .callout-title { color: var(--teal); }
+    .callout.rose  .callout-title { color: var(--rose); }
+    .callout p { margin: 0; font-size: 0.93rem; }
+
+    /* ── MECHANISM DIAGRAM ── */
+    .mechanism-card {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 32px 28px;
+      margin: 28px 0;
+      box-shadow: 0 2px 12px var(--shadow);
+    }
+    .mechanism-steps {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 20px;
+      margin-top: 24px;
+    }
+    .mech-step {
+      text-align: center;
+      position: relative;
+    }
+    .mech-icon {
+      width: 60px; height: 60px;
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      margin: 0 auto 12px;
+      font-size: 1.6rem;
+    }
+    .mech-step h4 {
+      font-family: 'Source Sans 3', sans-serif;
+      font-size: 0.82rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      margin-bottom: 6px;
+    }
+    .mech-step p { font-size: 0.83rem; color: var(--ink-light); margin: 0; }
+
+    /* ── DATA BARS ── */
+    .data-card {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 28px;
+      margin: 24px 0;
+      box-shadow: 0 2px 12px var(--shadow);
+    }
+    .bar-row {
+      margin-bottom: 20px;
+    }
+    .bar-label {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 6px;
+    }
+    .bar-label span:first-child { font-size: 0.88rem; font-weight: 600; color: var(--ink); }
+    .bar-label span:last-child { font-size: 0.88rem; color: var(--ink-light); }
+    .bar-track {
+      height: 10px;
+      background: var(--border);
+      border-radius: 6px;
+      overflow: hidden;
+    }
+    .bar-fill {
+      height: 100%;
+      border-radius: 6px;
+      transition: width 0.8s ease;
+    }
+    .bar-fill.blue { background: var(--slate); }
+    .bar-fill.gray { background: #aab0b8; }
+
+    /* ── TIMELINE ── */
+    .timeline {
+      position: relative;
+      padding-left: 28px;
+      margin-top: 24px;
+    }
+    .timeline::before {
+      content: '';
+      position: absolute;
+      left: 7px; top: 8px; bottom: 8px;
+      width: 2px;
+      background: linear-gradient(to bottom, var(--slate), var(--teal));
+      border-radius: 2px;
+    }
+    .timeline-item {
+      position: relative;
+      margin-bottom: 28px;
+    }
+    .timeline-item:last-child { margin-bottom: 0; }
+    .timeline-dot {
+      position: absolute;
+      left: -25px; top: 4px;
+      width: 16px; height: 16px;
+      border-radius: 50%;
+      border: 3px solid var(--white);
+      box-shadow: 0 0 0 2px var(--slate);
+    }
+    .timeline-dot.active {
+      background: var(--slate);
+      box-shadow: 0 0 0 2px var(--slate), 0 0 0 5px rgba(45,95,138,0.2);
+    }
+    .timeline-dot.done  { background: var(--teal); box-shadow: 0 0 0 2px var(--teal); }
+    .timeline-dot.pending { background: #c4cdd8; box-shadow: 0 0 0 2px #c4cdd8; }
+    .timeline-date {
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--slate);
+      margin-bottom: 3px;
+    }
+    .timeline-item h4 {
+      font-family: 'Source Sans 3', sans-serif;
+      font-size: 0.93rem;
+      font-weight: 700;
+      color: var(--ink);
+      margin-bottom: 4px;
+    }
+    .timeline-item p { font-size: 0.85rem; margin: 0; color: var(--ink-light); }
+
+    /* ── IMAGE PLACEHOLDER ── */
+    .img-placeholder .placeholder-box {
+      border: 2px dashed #b0b8c1;
+      background: #f4f6f8;
+      border-radius: 10px;
+      padding: 32px 24px;
+      text-align: center;
+      color: #6c757d;
+      min-height: 240px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+    }
+    .placeholder-icon { font-size: 2rem; }
+    .placeholder-label {
+      font-family: monospace;
+      font-size: 0.82rem;
+      background: #e9ecef;
+      padding: 4px 10px;
+      border-radius: 4px;
+      color: #343a40;
+    }
+    .placeholder-hint {
+      font-size: 0.78rem;
+      color: #868e96;
+      font-style: italic;
+      max-width: 340px;
+    }
+    figure { margin: 24px 0; }
+    figcaption {
+      margin-top: 10px;
+      font-size: 0.79rem;
+      color: #6c757d;
+      font-style: italic;
+      text-align: center;
+    }
+
+    /* ── TWO-COL GRID ── */
+    .two-col {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+      margin-top: 24px;
+    }
+    @media (max-width: 640px) {
+      .two-col { grid-template-columns: 1fr; }
+      .hero { padding: 48px 20px 44px; }
+      .hero-stats { gap: 20px; }
+      .institutional-header { padding: 12px 20px; }
+      main { padding: 0 16px 48px; }
+    }
+
+    /* ── STAT CARDS ── */
+    .stat-card {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 22px 20px;
+      text-align: center;
+      box-shadow: 0 2px 8px var(--shadow);
+    }
+    .stat-big {
+      font-family: 'Playfair Display', serif;
+      font-size: 2.4rem;
+      font-weight: 900;
+      line-height: 1;
+      margin-bottom: 6px;
+    }
+    .stat-desc { font-size: 0.82rem; color: var(--ink-light); line-height: 1.4; }
+
+    /* ── FOOTER ── */
+    footer.institutional-footer {
+      background: var(--white);
+      border-top: 1px solid var(--border);
+      padding: 28px 40px;
+      text-align: center;
+    }
+    footer.institutional-footer p {
+      font-size: 0.78rem;
+      color: #888;
+      margin: 0;
+    }
+    .refs {
+      margin-top: 48px;
+      padding-top: 24px;
+      border-top: 1px solid var(--border);
+    }
+    .refs h3 {
+      font-size: 0.78rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--slate);
+      margin-bottom: 12px;
+    }
+    .refs ol {
+      padding-left: 18px;
+    }
+    .refs li {
+      font-size: 0.76rem;
+      color: #888;
+      margin-bottom: 6px;
+      line-height: 1.5;
+    }
+    .refs a { color: var(--slate-light); text-decoration: none; }
+
+    /* ── BADGE ── */
+    .badge {
+      display: inline-block;
+      font-size: 0.68rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      padding: 3px 9px;
+      border-radius: 20px;
+      margin-right: 6px;
+    }
+    .badge.blue { background: var(--slate-pale); color: var(--slate); }
+    .badge.amber { background: var(--amber-pale); color: var(--amber); }
+    .badge.teal { background: var(--teal-pale); color: var(--teal); }
+
+    /* ── GENE DELIVERY SVG DIAGRAM (inline) ── */
+    .diagram-wrap {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 28px 20px 16px;
+      box-shadow: 0 2px 12px var(--shadow);
+      margin: 28px 0;
+      overflow: hidden;
+    }
+    .diagram-title {
+      font-size: 0.78rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--slate);
+      text-align: center;
+      margin-bottom: 18px;
+    }
+
+    /* wound healing comparison bar */
+    .comparison-row { display: flex; gap: 24px; flex-wrap: wrap; align-items: flex-end; justify-content: center; margin-top: 8px; }
+    .bar-chart-col { text-align: center; width: 120px; }
+    .bar-chart-col .bar-outer {
+      width: 60px;
+      margin: 0 auto 8px;
+      background: #eef2f6;
+      border-radius: 6px 6px 0 0;
+      height: 160px;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      overflow: hidden;
+    }
+    .bar-chart-col .bar-inner {
+      border-radius: 6px 6px 0 0;
+      transition: height 0.8s ease;
+    }
+    .bar-chart-col .bar-pct {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.5rem;
+      font-weight: 900;
+    }
+    .bar-chart-col .bar-text { font-size: 0.78rem; color: var(--ink-light); line-height: 1.3; margin-top: 4px; }
+    .chart-note { font-size: 0.73rem; color: #999; text-align: center; margin-top: 12px; font-style: italic; }
+  </style>
+</head>
+<body>
+
+<!-- INSTITUTIONAL HEADER -->
+<header class="institutional-header">
+  <div class="header-tag">PET-Saúde Digital G10 · Feridas Crônicas · UFPel</div>
+  <div class="header-logo">
+    <img src="img/logos-g10-ufpel.png" alt="Logos Amor-à-Pele e PET-Saúde Digital G10 – UFPel" style="max-height:52px; display:block;">
+  </div>
+</header>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-inner hero-grid">
+    <div class="hero-text">
+      <div class="hero-label">Terapia Génica · Epidermólise Bolhosa Distrófica · Caso Clínico</div>
+      <h1>Leo e a <span>pele de mariposa</span>:<br>quando a genética encontra a cura</h1>
+      <p class="hero-sub">
+        Por quase 12 anos, Leo Gutiérrez viveu com uma ferida de mais de 100 cm² aberta no peito.
+        Dois meses após iniciar Vyjuvek — a primeira terapia génica tópica aprovada para epidermólise bolhosa distrófica —
+        a lesão começou a fechar pela primeira vez.
+      </p>
+      <div class="hero-stats">
+        <div class="hero-stat">
+          <div class="num">11</div>
+          <div class="lbl">Anos com ferida aberta</div>
+        </div>
+        <div class="hero-stat">
+          <div class="num">100+</div>
+          <div class="lbl">cm² de lesão no tórax</div>
+        </div>
+        <div class="hero-stat">
+          <div class="num">67%</div>
+          <div class="lbl">Cicatrização completa em 6 meses (GEM-3)</div>
+        </div>
+        <div class="hero-stat">
+          <div class="num">300+</div>
+          <div class="lbl">Pacientes diagnosticados na Espanha</div>
+        </div>
+      </div>
+    </div>
+    <div class="hero-photo">
+      <img src="img/leo.jpeg" alt="Leo Gutiérrez, 12 anos, com epidermólise bolhosa distrófica, com curativos nos braços e mãos" />
+      <p class="hero-photo-caption">Leo Gutiérrez, 12 anos.<br>Fonte: família / <a href="https://pieldemariposa.es" target="_blank">pieldemariposa.es</a></p>
+    </div>
+  </div>
+</div>
+
+<main>
+
+  <!-- SECTION 1: A DOENÇA -->
+  <section>
+    <div class="section-label">O problema genético</div>
+    <h2>O que é a pele de mariposa?</h2>
+
+    <p>
+      A epidermólise bolhosa distrófica (EBD) é uma doença rara, hereditária e devastadora,
+      causada por mutações no gene <strong>COL7A1</strong>, responsável pela produção do
+      <strong>colágeno tipo VII (C7)</strong> — a proteína que age como "cola" entre a epiderme
+      e a derme, formando as chamadas fibrillas de ancoragem.
+    </p>
+    <p>
+      Sem esse "pegamento", a pele rasga ao mínimo toque: surgem bolhas, feridas crónicas,
+      infecções, cicatrizes contraturantes e comprometimento progressivo de mobilidade.
+      Na variante recessiva grave (EBDR), há ausência quase completa do C7, levando a lesões
+      espontâneas generalizadas desde o nascimento.
+    </p>
+
+    <div class="callout rose">
+      <div class="callout-title">⚠ Impacto clínico</div>
+      <p>
+        A EBD afeta pele e mucosas. Estima-se prevalência de 2–6 casos por milhão de nascidos vivos.
+        Cada ferida aberta consome energia metabólica — proteínas, ferro, reservas calóricas —,
+        compromete o crescimento e o sono, e aumenta o risco de carcinoma espinocelular cutâneo
+        na vida adulta.
+      </p>
+    </div>
+
+    <div class="mechanism-card">
+      <div class="diagram-title">Fisiopatologia: por que a pele rompe?</div>
+      <div class="mechanism-steps">
+        <div class="mech-step">
+          <div class="mech-icon" style="background:#FEF3E2;">🧬</div>
+          <h4 style="color:var(--amber);">Mutação</h4>
+          <p>Alteração no gene COL7A1 (cromossoma 3) impede a síntese normal do colágeno VII</p>
+        </div>
+        <div class="mech-step">
+          <div class="mech-icon" style="background:#FAEAEA;">🔗</div>
+          <h4 style="color:var(--rose);">Sem âncora</h4>
+          <p>Fibrillas de ancoragem ausentes ou disfuncionais na junção dermo-epidérmica</p>
+        </div>
+        <div class="mech-step">
+          <div class="mech-icon" style="background:#EBF3FA;">💧</div>
+          <h4 style="color:var(--slate);">Bolhas</h4>
+          <p>Qualquer fricção separa epiderme da derme → bolhas subepidérmicas e erosões</p>
+        </div>
+        <div class="mech-step">
+          <div class="mech-icon" style="background:#E2F5F1;">🩹</div>
+          <h4 style="color:var(--teal);">Feridas crónicas</h4>
+          <p>Lesões de difícil cicatrização, com risco de infeção, dor crónica e perda funcional</p>
+        </div>
+      </div>
+    </div>
+
+    <figure>
+      <img src="img/derme-epiderme-diagrama.png" alt="Diagrama de Epidermólise Bolhosa Distrófica: separação abaixo da membrana basal por ausência de colágeno VII" style="width:100%; border-radius:8px; display:block;">
+      <figcaption>Figura 1 — Diagrama de Epidermólise Bolhosa Distrófica (EBD): na EBD, a separação da epiderme e da derme ocorre abaixo da membrana basal, porque o colágeno VII — proteína que forma as fibrilhas de ancoragem responsáveis por ligar a membrana basal à derme — está ausente ou disfuncional por mutação no gene <em>COL7A1</em>. Sem esse "cimento" estrutural, a pele se desfaz ao mínimo toque. Reproduzido de: EuroGCT/EuroStemCell. <em>Epidermólise Bolhosa: como as terapias génica e celular podem ajudar?</em> Ilustração 4 — Diagrama de EB Distrófica. Disponível em: <a href="https://www.eurogct.org/pt-pt/epidermolysisbullosa" target="_blank">eurogct.org</a>.</figcaption>
+    </figure>
+  </section>
+
+  <hr class="divider">
+
+  <!-- SECTION 2: O CASO DE LEO -->
+  <section>
+    <div class="section-label">O caso clínico</div>
+    <h2>Leo Gutiérrez: 12 anos de luta tornados esperança</h2>
+
+    <p>
+      Leo é um menino sevillano de 12 anos acompanhado desde o nascimento pelo
+      Dr. José Bernabéu, responsável pela dermatologia pediátrica do
+      <strong>Hospital Virgen del Rocío</strong> (Sevilha, Espanha). Desde os primeiros meses de vida,
+      apresentava lesões extensas. A ferida mais grave — localizada no tórax,
+      de axila a axila — permaneceu aberta por <strong>11 anos consecutivos</strong>,
+      ultrapassando 100 cm².
+    </p>
+
+    <div class="pull-quote">
+      <p>"É algo inaudito, milagroso, por assim dizer. Como se fossem gotinhas de ouro."</p>
+      <cite>— Lidia Soria, mãe de Leo, ao El Confidencial (junho 2026)</cite>
+    </div>
+
+    <p>
+      A rotina de Leo incluía curativos diários de uma hora pela manhã e até duas horas
+      à tarde. Cada herida aberta representava risco de infeção, dor, prurido e exsudato
+      constante. A família lutou por acesso à terapia génica junto ao Parlamento Europeu
+      — uma batalha de anos que se tornou símbolo da desigualdade de acesso a medicamentos
+      inovadores em doenças raras.
+    </p>
+
+    <div class="callout teal">
+      <div class="callout-title">📍 Contexto de acesso — Espanha</div>
+      <p>
+        O Vyjuvek não dispõe ainda de financiamento homogéneo no Sistema Nacional de Saúde espanhol.
+        Leo foi um dos primeiros tratados via acesso especial regional.
+        Andaluzia e Canárias aprovaram financiamento por critério médico; Castilla y León aprovou um caso.
+        O local de residência determina, presentemente, quem pode ou não receber o tratamento.
+      </p>
+    </div>
+
+    <figure>
+      <img src="img/leo-antes-tratamento.jpg" alt="Leo Gutiérrez momentos antes de receber a primeira dose de Vyjuvek, Hospital Virgen del Rocío, Sevilha" style="width:100%; border-radius:8px; display:block;">
+      <figcaption>Figura 2 — Leo minutos antes de receber a primeira dose de Vyjuvek no Hospital Virgen del Rocío, Sevilha. Fonte: Asociación DEBRA España (<a href="https://pieldemariposa.es" target="_blank">pieldemariposa.es</a>) / El Confidencial.</figcaption>
+    </figure>
+  </section>
+
+  <hr class="divider">
+
+  <!-- SECTION 3: A TERAPIA GÉNICA -->
+  <section>
+    <div class="section-label">O mecanismo terapêutico</div>
+    <h2>Vyjuvek: como um vírus "bom" reprograma a pele</h2>
+
+    <p>
+      <strong>Vyjuvek</strong> (beremagene geperpavec, B-VEC; Krystal Biotech) é a primeira
+      terapia génica tópica e reaplicável aprovada para a EBD.
+      Utiliza um <strong>vírus herpes simples tipo 1 (HSV-1) modificado e inativado</strong>
+      como vetor para transportar duas cópias funcionais do gene <em>COL7A1</em>
+      diretamente às células da pele lesionada.
+    </p>
+    <p>
+      Ao contrário de terapias génicas injetáveis, o Vyjuvek é aplicado <strong>topicamente</strong>
+      — em formato de gel, em gotas espaçadas ~1 cm sobre a ferida — uma vez por semana.
+      Não requer punção. O vírus vetor, ao entrar nas células cutâneas, entrega a cópia
+      genética funcional, permitindo que as próprias células do paciente produzam o C7 em falta.
+    </p>
+
+    <div class="diagram-wrap">
+      <div class="diagram-title">Mecanismo de ação do Vyjuvek (B-VEC)</div>
+      <svg viewBox="0 0 760 220" xmlns="http://www.w3.org/2000/svg" style="width:100%;max-width:760px;display:block;margin:0 auto;">
+        <!-- Background layers -->
+        <rect x="0" y="140" width="760" height="80" rx="0" fill="#E8EFF6" />
+        <rect x="0" y="175" width="760" height="45" rx="0" fill="#D5E6F5" />
+        <text x="10" y="163" font-family="Source Sans 3, sans-serif" font-size="9" fill="#5580A0" font-weight="700" text-transform="uppercase">EPIDERME</text>
+        <text x="10" y="196" font-family="Source Sans 3, sans-serif" font-size="9" fill="#3A6285" font-weight="700">DERME</text>
+
+        <!-- Step 1: Gel application -->
+        <g transform="translate(40, 10)">
+          <circle cx="60" cy="50" r="38" fill="#FEF3E2" stroke="#C97A2A" stroke-width="1.5"/>
+          <text x="60" y="46" text-anchor="middle" font-size="22" font-family="serif">💊</text>
+          <text x="60" y="63" text-anchor="middle" font-family="Source Sans 3,sans-serif" font-size="8.5" font-weight="700" fill="#C97A2A">GEL TÓPICO</text>
+          <text x="60" y="105" text-anchor="middle" font-family="Source Sans 3,sans-serif" font-size="8" fill="#555">Vyjuvek aplicado</text>
+          <text x="60" y="116" text-anchor="middle" font-family="Source Sans 3,sans-serif" font-size="8" fill="#555">1×/semana sobre</text>
+          <text x="60" y="127" text-anchor="middle" font-family="Source Sans 3,sans-serif" font-size="8" fill="#555">a ferida</text>
+        </g>
+
+        <!-- Arrow 1 -->
+        <path d="M138 60 L178 60" stroke="#2D5F8A" stroke-width="2" marker-end="url(#arr)"/>
+        <defs>
+          <marker id="arr" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
+            <path d="M0,0 L0,6 L8,3 z" fill="#2D5F8A"/>
+          </marker>
+        </defs>
+
+        <!-- Step 2: HSV-1 vector -->
+        <g transform="translate(180, 10)">
+          <circle cx="60" cy="50" r="38" fill="#EBF3FA" stroke="#2D5F8A" stroke-width="1.5"/>
+          <text x="60" y="46" text-anchor="middle" font-size="22">🦠</text>
+          <text x="60" y="62" text-anchor="middle" font-family="Source Sans 3,sans-serif" font-size="8.5" font-weight="700" fill="#2D5F8A">HSV-1 VETOR</text>
+          <text x="60" y="105" text-anchor="middle" font-family="Source Sans 3,sans-serif" font-size="8" fill="#555">Vírus modificado</text>
+          <text x="60" y="116" text-anchor="middle" font-family="Source Sans 3,sans-serif" font-size="8" fill="#555">carrega 2 cópias</text>
+          <text x="60" y="127" text-anchor="middle" font-family="Source Sans 3,sans-serif" font-size="8" fill="#555">do gene COL7A1</text>
+        </g>
+
+        <!-- Arrow 2 -->
+        <path d="M278 60 L318 60" stroke="#2D5F8A" stroke-width="2" marker-end="url(#arr)"/>
+
+        <!-- Step 3: Gene delivery -->
+        <g transform="translate(320, 10)">
+          <circle cx="60" cy="50" r="38" fill="#E2F5F1" stroke="#2A7A6B" stroke-width="1.5"/>
+          <text x="60" y="46" text-anchor="middle" font-size="22">🧬</text>
+          <text x="60" y="62" text-anchor="middle" font-family="Source Sans 3,sans-serif" font-size="8.5" font-weight="700" fill="#2A7A6B">COL7A1 ENTREGUE</text>
+          <text x="60" y="105" text-anchor="middle" font-family="Source Sans 3,sans-serif" font-size="8" fill="#555">Células cutâneas</text>
+          <text x="60" y="116" text-anchor="middle" font-family="Source Sans 3,sans-serif" font-size="8" fill="#555">recebem o gene</text>
+          <text x="60" y="127" text-anchor="middle" font-family="Source Sans 3,sans-serif" font-size="8" fill="#555">funcional</text>
+        </g>
+
+        <!-- Arrow 3 -->
+        <path d="M418 60 L458 60" stroke="#2D5F8A" stroke-width="2" marker-end="url(#arr)"/>
+
+        <!-- Step 4: C7 production -->
+        <g transform="translate(460, 10)">
+          <circle cx="60" cy="50" r="38" fill="#EEF8EE" stroke="#3A8A3A" stroke-width="1.5"/>
+          <text x="60" y="46" text-anchor="middle" font-size="22">🔗</text>
+          <text x="60" y="62" text-anchor="middle" font-family="Source Sans 3,sans-serif" font-size="8.5" font-weight="700" fill="#3A8A3A">C7 PRODUZIDO</text>
+          <text x="60" y="105" text-anchor="middle" font-family="Source Sans 3,sans-serif" font-size="8" fill="#555">Colágeno VII</text>
+          <text x="60" y="116" text-anchor="middle" font-family="Source Sans 3,sans-serif" font-size="8" fill="#555">restaura fibrillas</text>
+          <text x="60" y="127" text-anchor="middle" font-family="Source Sans 3,sans-serif" font-size="8" fill="#555">de ancoragem</text>
+        </g>
+
+        <!-- Arrow 4 -->
+        <path d="M558 60 L598 60" stroke="#2D5F8A" stroke-width="2" marker-end="url(#arr)"/>
+
+        <!-- Step 5: Wound healing -->
+        <g transform="translate(600, 10)">
+          <circle cx="60" cy="50" r="38" fill="#F0FFF0" stroke="#1a7a1a" stroke-width="2"/>
+          <text x="60" y="46" text-anchor="middle" font-size="22">✨</text>
+          <text x="60" y="62" text-anchor="middle" font-family="Source Sans 3,sans-serif" font-size="8.5" font-weight="700" fill="#1a7a1a">CICATRIZAÇÃO</text>
+          <text x="60" y="105" text-anchor="middle" font-family="Source Sans 3,sans-serif" font-size="8" fill="#555">Feridas fecham,</text>
+          <text x="60" y="116" text-anchor="middle" font-family="Source Sans 3,sans-serif" font-size="8" fill="#555">pele saudável</text>
+          <text x="60" y="127" text-anchor="middle" font-family="Source Sans 3,sans-serif" font-size="8" fill="#555">emerge</text>
+        </g>
+      </svg>
+      <p class="chart-note">O HSV-1 modificado não provoca doença — atua exclusivamente como veículo de entrega génica às células cutâneas.</p>
+    </div>
+
+    <div class="callout amber">
+      <div class="callout-title">⚙ Protocolo clínico</div>
+      <p>
+        O gel é preparado em vial e aplicado em pequenas gotas sobre a ferida, espaçadas ~1 cm,
+        sem necessidade de injeção. Após a aplicação, cobre-se com apósitos especiais por 24 horas
+        (para que a pele absorva o medicamento, não o curativo). A seguir, o protocolo de curativos
+        diários é mantido — mas com duração progressivamente menor à medida que as feridas reduzem.
+      </p>
+    </div>
+  </section>
+
+  <hr class="divider">
+
+  <!-- SECTION 4: EVIDÊNCIA CLÍNICA -->
+  <section>
+    <div class="section-label">Evidência científica</div>
+    <h2>Ensaio GEM-3: os números que mudaram tudo</h2>
+
+    <p>
+      O ensaio fase 3 <strong>GEM-3</strong> (NCT04491604), publicado no
+      <em>New England Journal of Medicine</em> em dezembro de 2022,
+      foi um estudo aleatorizado, duplamente cego, controlado por placebo, intraindividual:
+      cada paciente tinha feridas comparáveis tratadas com B-VEC ou placebo, em paralelo.
+      Participaram 31 doentes com idades entre 1 e 44 anos.
+    </p>
+
+    <div class="diagram-wrap">
+      <div class="diagram-title">Cicatrização completa: B-VEC vs. Placebo (GEM-3, NEJM 2022)</div>
+      <div class="comparison-row">
+        <div class="bar-chart-col">
+          <div class="bar-outer">
+            <div class="bar-inner" style="height:107px; background: var(--slate);"></div>
+          </div>
+          <div class="bar-pct" style="color:var(--slate);">67%</div>
+          <div class="bar-text"><strong>B-VEC</strong><br>6 meses</div>
+        </div>
+        <div class="bar-chart-col">
+          <div class="bar-outer">
+            <div class="bar-inner" style="height:35px; background: #aab0b8;"></div>
+          </div>
+          <div class="bar-pct" style="color:#888;">22%</div>
+          <div class="bar-text"><strong>Placebo</strong><br>6 meses</div>
+        </div>
+        <div class="bar-chart-col">
+          <div class="bar-outer">
+            <div class="bar-inner" style="height:113px; background: var(--teal);"></div>
+          </div>
+          <div class="bar-pct" style="color:var(--teal);">71%</div>
+          <div class="bar-text"><strong>B-VEC</strong><br>3 meses</div>
+        </div>
+        <div class="bar-chart-col">
+          <div class="bar-outer">
+            <div class="bar-inner" style="height:32px; background: #aab0b8;"></div>
+          </div>
+          <div class="bar-pct" style="color:#888;">20%</div>
+          <div class="bar-text"><strong>Placebo</strong><br>3 meses</div>
+        </div>
+      </div>
+      <p class="chart-note">Diferença absoluta a 6 meses: 45,8 pontos percentuais (IC 95%: 23,6–68,0; p=0,002). Fonte: Guide et al., NEJM 2022; NCT04491604.</p>
+    </div>
+
+    <div class="callout teal">
+      <div class="callout-title">📋 Aprovações regulatórias</div>
+      <p>
+        <span class="badge blue">FDA</span> Aprovado em maio de 2023 nos EUA para pacientes ≥6 meses (RDEB e DDEB).<br>
+        <span class="badge teal">EMA</span> Aprovação pela Comissão Europeia em abril de 2025 para doentes com mutação COL7A1, desde o nascimento.<br>
+        <span class="badge amber">Japão</span> Em revisão pela PMDA; decisão prevista para o 2.º semestre de 2025.
+      </p>
+    </div>
+
+    <div class="callout amber">
+      <div class="callout-title">⚠ Limitações do ensaio vs. caso real de Leo</div>
+      <p>
+        No GEM-3, as feridas tratadas tinham tamanho máximo de <strong>50 cm²</strong>.
+        A ferida principal de Leo ultrapassava <strong>100 cm²</strong> — o dobro —
+        tornando o seu caso clinicamente além dos critérios de inclusão dos ensaios.
+        Ainda assim, a resposta observada nos primeiros dois meses é, nas palavras do Dr. Bernabéu,
+        "a primeira vez em todos estes anos que vemos aquela lesão a reduzir-se de forma significativa".
+      </p>
+    </div>
+  </section>
+
+  <hr class="divider">
+
+  <!-- SECTION 5: RESULTADOS PARA LEO -->
+  <section>
+    <div class="section-label">Resposta clínica — caso Leo</div>
+    <h2>Dois meses de tratamento: o que mudou na vida de Leo</h2>
+
+    <div class="two-col">
+      <div class="stat-card">
+        <div class="stat-big" style="color:var(--teal);">−25 min</div>
+        <div class="stat-desc">Redução média na duração dos curativos matinais<br>(de ~60 para ~45 min)</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-big" style="color:var(--slate);">−50%</div>
+        <div class="stat-desc">Tempo nos curativos da tarde<br>(de ~2h para ~1h)</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-big" style="color:var(--teal);">100 cm²</div>
+        <div class="stat-desc">Ferida torácica que começou a dividir-se ao centro após a 7.ª dose</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-big" style="color:var(--amber);">6+</div>
+        <div class="stat-desc">Novos pacientes em preparação para tratamento no Virgen del Rocío</div>
+      </div>
+    </div>
+
+    <p style="margin-top:28px;">
+      Além da redução de feridas, o Dr. Bernabéu destaca um efeito sistémico indireto fundamental:
+      ao cessar o esforço metabólico de tentar cicatrizar feridas crónicas extensas,
+      o organismo pode redirecionar recursos para <strong>crescimento, recuperação de massa muscular
+      e melhoria do estado nutricional</strong> — proteínas, ferro, marcadores inflamatórios.
+      Este efeito é ainda mais relevante em crianças pequenas e recém-nascidos.
+    </p>
+
+    <div class="pull-quote">
+      <p>"Se pararmos isso, começamos a melhorar todos esses parâmetros de proteínas, de ferro,
+      que vão permitir que ele se desenvolva melhor. Se o Leo é importante, com 12 anos, imaginem um recém-nascido."</p>
+      <cite>— Dr. José Bernabéu, Dermatologia Pediátrica, Hospital Virgen del Rocío</cite>
+    </div>
+
+
+  </section>
+
+  <hr class="divider">
+
+  <!-- SECTION 6: TIMELINE -->
+  <section>
+    <div class="section-label">Linha do tempo</div>
+    <h2>Da mutação ao tratamento: uma jornada de doze anos</h2>
+
+    <div class="timeline">
+      <div class="timeline-item">
+        <div class="timeline-dot done"></div>
+        <div class="timeline-date">2014</div>
+        <h4>Nascimento de Leo</h4>
+        <p>Leo nasce em Sevilha com lesões extensas já presentes. Acompanhamento iniciado com o Dr. Bernabéu desde o primeiro dia de vida.</p>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-dot done"></div>
+        <div class="timeline-date">2015 — infância</div>
+        <h4>Ferida torácica estabelece-se como crónica</h4>
+        <p>A lesão de mais de 100 cm² no peito permanece aberta, tornando-se parte inevitável da rotina diária: curativos, dor, vigilância de infeções.</p>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-dot done"></div>
+        <div class="timeline-date">Dez 2021 — Jun 2022</div>
+        <h4>Ensaio GEM-3 completo; resultados publicados no NEJM</h4>
+        <p>67% de cicatrização completa com B-VEC vs. 22% com placebo a 6 meses. Base científica para submissão regulatória.</p>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-dot done"></div>
+        <div class="timeline-date">Maio 2023</div>
+        <h4>Aprovação FDA (EUA)</h4>
+        <p>Vyjuvek torna-se o primeiro medicamento aprovado nos EUA para EBD, incluindo variantes recessiva e dominante.</p>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-dot done"></div>
+        <div class="timeline-date">Abril 2025</div>
+        <h4>Aprovação pela Comissão Europeia</h4>
+        <p>Vyjuvek aprovado na Europa para doentes com mutação COL7A1, desde o nascimento. A Espanha recebe o medicamento, mas aguarda financiamento nacional homogéneo.</p>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-dot done"></div>
+        <div class="timeline-date">Fevereiro — Abril 2026</div>
+        <h4>Leo inicia tratamento em Sevilha</h4>
+        <p>Andaluzia aprova acesso especial. Leo recebe a primeira dose no Hospital Virgen del Rocío — um dos primeiros pacientes tratados em Espanha com financiamento regional.</p>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-dot active"></div>
+        <div class="timeline-date">Junho 2026 — agora</div>
+        <h4>Ferida histórica começa a fechar</h4>
+        <p>Após 7 doses semanais, a lesão torácica de 11 anos divide-se ao centro e mostra zonas de pele sã. Curativos mais curtos, menos infeções. Seis novos pacientes em preparação para tratamento no mesmo hospital.</p>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-dot pending"></div>
+        <div class="timeline-date">Em curso</div>
+        <h4>Decisão do Ministério da Saúde espanhol</h4>
+        <p>Aguarda-se financiamento nacional para garantir acesso equitativo a todos os ~300 pacientes diagnosticados em Espanha com EBD, independentemente da comunidade autónoma.</p>
+      </div>
+    </div>
+  </section>
+
+  <hr class="divider">
+
+  <!-- SECTION 7: RELEVÂNCIA PARA FERIDAS CRÓNICAS -->
+  <section>
+    <div class="section-label">Perspetiva clínica — Feridas Crónicas</div>
+    <h2>Por que este caso importa para o cuidado de feridas</h2>
+
+    <p>
+      A epidermólise bolhosa distrófica representa um modelo extremo de ferida crónica
+      geneticamente determinada. O caso de Leo ilustra princípios fundamentais da
+      ciência das feridas que se aplicam a cenários mais prevalentes:
+    </p>
+
+    <div class="mechanism-card">
+      <div class="mechanism-steps">
+        <div class="mech-step">
+          <div class="mech-icon" style="background:#EBF3FA;">🔬</div>
+          <h4 style="color:var(--slate);">Causa raiz</h4>
+          <p>Feridas crónicas só fecham sustentavelmente quando o fator causal é endereçado. Na EBD, é genético; nas feridas do diabetes, é metabólico-vascular.</p>
+        </div>
+        <div class="mech-step">
+          <div class="mech-icon" style="background:#FEF3E2;">🧮</div>
+          <h4 style="color:var(--amber);">Custo metabólico</h4>
+          <p>Feridas extensas consomem proteínas, ferro e calorias. O estado nutricional do paciente é inseparável da cicatrização.</p>
+        </div>
+        <div class="mech-step">
+          <div class="mech-icon" style="background:#E2F5F1;">📏</div>
+          <h4 style="color:var(--teal);">Monitorização</h4>
+          <p>A equipa do Virgen del Rocío usa câmeras termográficas para mapear feridas e detetar infeção precoce — tecnologia transferível ao telemonitoramento.</p>
+        </div>
+        <div class="mech-step">
+          <div class="mech-icon" style="background:#FAEAEA;">💙</div>
+          <h4 style="color:var(--rose);">Qualidade de vida</h4>
+          <p>Reduzir o tempo de curativos diários é tão relevante quanto reduzir a área da ferida. O cuidado centrado na pessoa inclui a agenda e o projeto de vida.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="callout teal">
+      <div class="callout-title">🌐 Telemonitoramento de Feridas e Vyjuvek</div>
+      <p>
+        O protocolo de administração do Vyjuvek exige avaliação semanal da ferida,
+        documentação fotográfica e identificação de sinais de infeção antes de cada dose.
+        Este fluxo é um modelo natural para plataformas de telemonitoramento de feridas crónicas:
+        imagens captadas por cuidadores, análise remota por especialistas, decisão clínica à distância.
+        Tecnologias como as câmeras termográficas já integram o protocolo da equipa de Sevilha.
+      </p>
+    </div>
+
+    <figure>
+      <img src="img/termografia-ferida.jpg" alt="Avaliação termográfica de perfusão cutânea: mãos e pés de paciente com fenômeno de Raynaud vs. sujeito saudável, com gradiente de temperatura em cores" style="width:100%; border-radius:8px; display:block;">
+      <figcaption>Figura 4 — Avaliação termográfica de perfusão cutânea: fotografia clínica e imagem infravermelha de mãos e pés de um paciente com fenômeno de Raynaud (esquerda) comparado a sujeito saudável (direita). Tons púrpura/azul indicam temperatura mais baixa; amarelo/branco indicam temperatura mais alta. O paciente com Raynaud apresentou temperatura significativamente inferior e maior variabilidade térmica, evidenciada por intervalos de confiança mais amplos. A mesma lógica se aplica ao monitoramento de feridas na EBD: gradientes de temperatura elevados na periwound orientam a decisão de tratar ou postergar a dose de Vyjuvek. Fonte: Ramirez-GarciaLuna JL, et al. <em>Infrared Thermography in Wound Care, Surgery, and Sports Medicine: A Review</em>. Front. Physiol. 2022;13:838528. Fig. 4. doi: <a href="https://doi.org/10.3389/fphys.2022.838528" target="_blank">10.3389/fphys.2022.838528</a>. Licença CC BY.</figcaption>
+    </figure>
+  </section>
+
+  <hr class="divider">
+
+  <!-- SYNTHESIS -->
+  <section>
+    <div class="section-label">Síntese</div>
+    <h2>O que fica — e o que ainda falta</h2>
+
+    <p>
+      O Vyjuvek não cura a epidermólise bolhosa distrófica. Não elimina a mutação no COL7A1.
+      Não dispensa os curativos diários. Mas, pela primeira vez na história da doença,
+      oferece uma via biológica real para que feridas crónicas de décadas comecem a fechar.
+    </p>
+    <p>
+      Para Leo, isso tem o rosto de uma camiseta limpa, de sentir o vento sem dor,
+      de curativos que duram menos tempo. Para a ciência das feridas, representa
+      a prova de conceito de que a terapia génica tópica e reaplicável é segura, eficaz
+      e clinicamente viável — abrindo precedente para outras dermatoses genéticas
+      e, a prazo, para abordagens moleculares em feridas de causa adquirida.
+    </p>
+
+    <div class="pull-quote">
+      <p>"Que possa prescindir desse apósito no peito, que não lhe sujem as camisolas,
+      que possa sentir esse ar — como ele diz que quer sentir o ar sem que lhe doa —
+      isso seria milagroso."</p>
+      <cite>— Lidia Soria, mãe de Leo</cite>
+    </div>
+
+    <div class="callout rose">
+      <div class="callout-title">⚡ O desafio que persiste</div>
+      <p>
+        Em Espanha, mais de 300 pacientes com EBD distrófica aguardam uma decisão nacional
+        de financiamento. O local de residência não deveria ser o fator que determina
+        quem tem acesso a um tratamento que pode mudar radicalmente a qualidade de vida.
+        A equidade no acesso a terapias inovadoras para doenças raras é um desafio ético
+        e político — não apenas científico.
+      </p>
+    </div>
+  </section>
+
+  <!-- REFERENCES -->
+  <div class="refs">
+    <h3>Fontes e Referências</h3>
+    <ol>
+      <li>GUIDE, S. V. et al. Trial of beremagene geperpavec (B-VEC) for dystrophic epidermolysis bullosa. <em>New England Journal of Medicine</em>, v. 387, n. 24, p. 2211–2219, dez. 2022. DOI: <a href="https://doi.org/10.1056/NEJMoa2206663" target="_blank">10.1056/NEJMoa2206663</a>.</li>
+
+      <li>UNITED STATES FOOD AND DRUG ADMINISTRATION (FDA). <em>FDA approves beremagene geperpavec-svdt (Vyjuvek) for dystrophic epidermolysis bullosa</em>. Silver Spring: FDA, 19 maio 2023. Disponível em: <a href="https://www.fda.gov/drugs/drug-approvals-and-databases/drug-trials-snapshots-vyjuvek" target="_blank">fda.gov</a>. Acesso em: 15 jun. 2026.</li>
+
+      <li>EUROPEAN MEDICINES AGENCY (EMA). <em>Vyjuvek (beremagene geperpavec): EPAR — Product information</em>. Amsterdam: EMA, 2025. Autorização de introdução no mercado n. EU/1/25/1937. Disponível em: <a href="https://www.ema.europa.eu/en/medicines/human/EPAR/vyjuvek" target="_blank">ema.europa.eu</a>. Acesso em: 15 jun. 2026.</li>
+
+      <li>SÁNCHEZ BECERRIL, F. Leo empieza a cerrar heridas por la terapia génica para su piel de mariposa: "Quiere sentir el aire sin que le duela". <em>El Confidencial</em>, Madrid, 14 jun. 2026. Disponível em: <a href="https://www.elconfidencial.com/salud/2026-06-14/la-herida-que-leo-tenia-abierta-desde-hace-11-anos_4371865" target="_blank">elconfidencial.com</a>. Acesso em: 15 jun. 2026.</li>
+
+      <li>SUGARMAN, J. L. et al. Revolutionary breakthrough: FDA approves Vyjuvek, the first topical gene therapy for dystrophic epidermolysis bullosa. <em>Dermatology and Therapy</em>, v. 13, n. 12, p. 3027–3040, dez. 2023. DOI: <a href="https://doi.org/10.1007/s13555-023-01044-1" target="_blank">10.1007/s13555-023-01044-1</a>. PMC: PMC10718329.</li>
+
+      <li>EUROGCT / EUROSTEMCELL. Epidermólise Bolhosa: como as terapias génica e celular podem ajudar? [<em>Ilustração 4 — Diagrama de EB Distrófica</em>]. Edinburgh: EuroStemCell, [s.d.]. Disponível em: <a href="https://www.eurogct.org/pt-pt/epidermolysisbullosa" target="_blank">eurogct.org/pt-pt/epidermolysisbullosa</a>. Acesso em: 15 jun. 2026. [Figura 1 deste infográfico]</li>
+
+      <li>RAMIREZ-GARCIALUNA, J. L. et al. Infrared thermography in wound care, surgery, and sports medicine: a review. <em>Frontiers in Physiology</em>, v. 13, p. 838528, mar. 2022. DOI: <a href="https://doi.org/10.3389/fphys.2022.838528" target="_blank">10.3389/fphys.2022.838528</a>. Licença CC BY. [Figura 4 deste infográfico]</li>
+
+      <li>ASOCIACIÓN DEBRA ESPAÑA — PIEL DE MARIPOSA. <em>Epidermólisis bullosa: información para pacientes y familias</em>. Madrid: DEBRA España, [s.d.]. Disponível em: <a href="https://pieldemariposa.es" target="_blank">pieldemariposa.es</a>. Acesso em: 15 jun. 2026.</li>
+    </ol>
+  </div>
+
+</main>
+
+<!-- INSTITUTIONAL FOOTER -->
+<footer class="institutional-footer">
+  <p>Infográfico elaborado pelos projetos Amor à Pele e PET-Saúde Digital G10 Feridas Crônicas, UFPel, em Junho de 2026.</p>
+</footer>
+
+</body>
+</html>
