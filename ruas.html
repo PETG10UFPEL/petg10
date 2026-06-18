@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ruas de Lazer UFPel — Sistema de Contagem</title>
+  <style>
+    :root {
+      --azul: #0b459b;
+      --azul2: #2458e6;
+      --verde: #1f9d55;
+      --fundo: #10264a;
+      --texto: #0d2b55;
+    }
+    body {
+      margin: 0;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: Arial, sans-serif;
+      background: radial-gradient(circle at top left, rgba(36,88,230,.45), transparent 32%), linear-gradient(180deg, #10264a, #0e1b2f);
+      color: white;
+      padding: 18px;
+      box-sizing: border-box;
+    }
+    .card {
+      width: 100%;
+      max-width: 440px;
+      background: rgba(245,247,251,.98);
+      color: var(--texto);
+      border-radius: 22px;
+      padding: 24px;
+      box-shadow: 0 18px 42px rgba(0,0,0,.32);
+      text-align: center;
+    }
+    .logo {
+      width: 88px;
+      height: 88px;
+      border-radius: 22px;
+      object-fit: cover;
+      box-shadow: 0 8px 18px rgba(0,0,0,.25);
+      margin-bottom: 14px;
+    }
+    h1 {
+      margin: 4px 0 6px 0;
+      font-size: 24px;
+      color: var(--azul);
+    }
+    p {
+      line-height: 1.45;
+      margin: 8px 0;
+    }
+    .muted {
+      color: #5d6a82;
+      font-size: 14px;
+    }
+    button {
+      width: 100%;
+      margin-top: 16px;
+      padding: 15px;
+      border: 0;
+      border-radius: 14px;
+      font-size: 16px;
+      font-weight: 700;
+      color: white;
+      background: linear-gradient(135deg, var(--azul2), #1643c5);
+      cursor: pointer;
+      box-shadow: 0 10px 20px rgba(36,88,230,.25);
+    }
+    .secondary {
+      background: linear-gradient(135deg, var(--verde), #157a3f);
+    }
+    code {
+      display: block;
+      margin-top: 12px;
+      padding: 10px;
+      border-radius: 10px;
+      background: #eef2ff;
+      color: #19316f;
+      font-size: 12px;
+      word-break: break-all;
+      text-align: left;
+    }
+  </style>
+</head>
+<body>
+  <main class="card">
+    <img class="logo" src="data:image/jpeg;base64,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" alt="Logo Ruas de Lazer">
+    <h1>Sistema de Contagem</h1>
+    <p><strong>Ruas de Lazer UFPel</strong></p>
+    <p class="muted">Página fixa de acesso. O botão abaixo abre a implantação atual do aplicativo.</p>
+
+    <button onclick="abrirSistema()">Abrir sistema</button>
+    <button class="secondary" onclick="recarregarPagina()">Recarregar esta página</button>
+
+    <p class="muted" id="aviso">Redirecionamento automático em alguns segundos...</p>
+    <code id="linkAtual"></code>
+  </main>
+
+  <script>
+    // Troque apenas este link quando houver uma nova implantação do Apps Script.
+    const APP_URL = 'https://script.google.com/macros/s/AKfycbwO5CUXwho6Y0Wg1c60kcojHcVgxD7fgu4QltLv8ObBHJ1KyEAP65jzH0Y8OveN2c3REA/exec';
+
+    function urlComCacheBuster() {
+      if (!APP_URL || APP_URL.includes('COLE_AQUI')) {
+        return '';
+      }
+      const separador = APP_URL.includes('?') ? '&' : '?';
+      return APP_URL + separador + 'v=' + Date.now();
+    }
+
+    function abrirSistema() {
+      const destino = urlComCacheBuster();
+      if (!destino) {
+        alert('Configure a constante APP_URL no arquivo HTML antes de publicar.');
+        return;
+      }
+      window.location.href = destino;
+    }
+
+    function recarregarPagina() {
+      window.location.href = window.location.pathname + '?v=' + Date.now();
+    }
+
+    document.getElementById('linkAtual').textContent = APP_URL;
+
+    setTimeout(() => {
+      if (APP_URL && !APP_URL.includes('COLE_AQUI')) {
+        abrirSistema();
+      } else {
+        document.getElementById('aviso').textContent = 'Configure o APP_URL antes de publicar no GitHub.';
+      }
+    }, 3500);
+  </script>
+</body>
+</html>
