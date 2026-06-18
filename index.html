@@ -204,7 +204,11 @@ img {
             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"/><path d="M19 10v2a7 7 0 0 1-14 0v-2"/><line x1="12" y1="19" x2="12" y2="23"/><line x1="8" y1="23" x2="16" y2="23"/></svg>
             Registrar por Voz
           </a>
-          <a class="btn primary" href="javascript:void(0)" onclick="alternarTabela()" style="cursor:pointer;">Consultar</a>
+          <a class="btn primary" href="javascript:void(0)" onclick="alternarTabela()" style="cursor:pointer;">Consultar</a><br>
+X (Presença), H (feriado/ dispensa / ponto facultativo), F (Falta), XR (presença que recupera falta), A (Atestado)<br>
+Presença = Soma(XR) - Soma (Faltas). <br>
+Se Presença >0, há créditos de presença.<br>
+Se Presença <0, há débitos de presença (precisa recuperar faltas)
         </div>
 
         <div id="espelho-leitura" style="display:none;margin-top:15px;width:100%;overflow:hidden;border-radius:8px;border:1px solid #e0e0e0;">
