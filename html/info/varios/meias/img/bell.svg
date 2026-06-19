@@ -1,147 +1,227 @@
-<svg viewBox="0 0 700 340" xmlns="http://www.w3.org/2000/svg" font-family="Georgia, 'Times New Roman', serif">
-
-  <!-- Background -->
-  <rect width="700" height="340" fill="#ffffff"/>
+<svg viewBox="0 0 700 360" xmlns="http://www.w3.org/2000/svg" font-family="Georgia, 'Times New Roman', serif">
+  <rect width="700" height="360" fill="#ffffff"/>
 
   <!-- ── HEADER ── -->
-  <text x="350" y="38" font-size="26" font-weight="700" fill="#1a1a1a" text-anchor="middle" letter-spacing="0.5">John Bell &amp; Croyden</text>
-  <!-- ampersand decorative already in text above -->
+  <text x="350" y="36" font-size="26" font-weight="700" fill="#1a1a1a" text-anchor="middle">John Bell &amp; Croyden</text>
+  <text x="350" y="57" font-size="13" font-weight="700" fill="#1a1a1a" text-anchor="middle" letter-spacing="3" font-family="Arial, sans-serif">EST 1798</text>
+  <line x1="306" y1="62" x2="394" y2="62" stroke="#CC0000" stroke-width="2.5"/>
 
-  <!-- EST 1798 with red underline -->
-  <text x="350" y="60" font-size="13" font-weight="700" fill="#1a1a1a" text-anchor="middle" letter-spacing="3" font-family="'Arial', sans-serif">EST 1798</text>
-  <line x1="305" y1="64" x2="395" y2="64" stroke="#CC0000" stroke-width="2.5"/>
+  <!-- ── SIZE GUIDE ── -->
+  <rect x="0" y="76" width="700" height="1" fill="#e0e0e0"/>
+  <text x="18" y="96" font-size="13" font-weight="700" fill="#2a2a2a" font-family="Arial, sans-serif">SIZE GUIDE</text>
+  <rect x="0" y="103" width="700" height="1" fill="#e0e0e0"/>
 
-  <!-- ── SIZE GUIDE label ── -->
-  <rect x="0" y="78" width="700" height="1" fill="#e0e0e0"/>
-  <text x="20" y="100" font-size="13" font-weight="700" fill="#2a2a2a" font-family="Arial, sans-serif" letter-spacing="0.3">SIZE GUIDE</text>
-  <rect x="0" y="106" width="700" height="1" fill="#e0e0e0"/>
+  <!-- ══════════════════════════════════════
+       LEG — anatomicamente credível
+       Referência: perna direita, vista frontal
+       Origem g em (20, 108), altura total ~220px
+       ══════════════════════════════════════ -->
+  <g transform="translate(20, 108)">
 
-  <!-- ── LEG ILLUSTRATION (simplified schematic) ── -->
-  <!-- Leg outline -->
-  <g transform="translate(18, 115)">
-    <!-- Boot/shoe -->
-    <ellipse cx="28" cy="195" rx="22" ry="8" fill="#d0d0d0" stroke="#888" stroke-width="1"/>
-    <!-- Lower leg -->
-    <path d="M14,185 Q10,150 12,110 Q14,85 20,70 Q24,58 28,52 Q32,58 36,70 Q42,85 44,110 Q46,150 42,185 Z" fill="#c8c8c8" stroke="#888" stroke-width="1"/>
-    <!-- Knee -->
-    <ellipse cx="28" cy="100" rx="18" ry="14" fill="#b8b8b8" stroke="#888" stroke-width="1"/>
-    <!-- Upper leg / thigh -->
-    <path d="M16,92 Q12,70 14,45 Q16,28 22,18 Q25,12 28,10 Q31,12 34,18 Q40,28 42,45 Q44,70 40,92 Z" fill="#c8c8c8" stroke="#888" stroke-width="1"/>
-    <!-- Stocking top band -->
-    <rect x="13" y="8" width="30" height="6" rx="3" fill="#888"/>
+    <!-- COXA (thigh) — larga em cima, afunila até o joelho -->
+    <!-- lado esquerdo da coxa: entra por dentro -->
+    <!-- lado direito: curvatura externa -->
+    <path d="
+      M 28, 0
+      C 14,-2  4, 8   6, 30
+      C  8, 52  8, 72  10, 88
+      C 11, 96  12,100  14,104
+      C 16,108  19,110  22,112
+      L 38,112
+      C 41,110  44,108  46,104
+      C 48,100  49, 96  50, 88
+      C 52, 72  52, 52  54, 30
+      C 56,  8  46,-2  28, 0
+      Z"
+      fill="#D4A574" stroke="#B8895A" stroke-width="1.2"/>
 
-    <!-- Measurement dots and labels -->
-    <!-- A - Hip area (top) -->
-    <circle cx="6" cy="11" r="7" fill="#2ecc71" stroke="white" stroke-width="1.5"/>
-    <text x="6" y="15" font-size="9" font-weight="700" fill="white" text-anchor="middle" font-family="Arial">A</text>
-    <line x1="13" y1="11" x2="28" y2="11" stroke="#2ecc71" stroke-width="1" stroke-dasharray="2,2"/>
+    <!-- Sombra interna coxa (lado medial escurecido) -->
+    <path d="M 28,0 C 18,0 10,10 10,30 C 10,55 12,75 14,92 C 16,98 18,105 22,112 L 28,112 Z"
+      fill="#C49060" opacity="0.4"/>
 
-    <!-- B - Thigh/calf (mid) -->
-    <circle cx="6" cy="75" r="7" fill="#2ecc71" stroke="white" stroke-width="1.5"/>
-    <text x="6" y="79" font-size="9" font-weight="700" fill="white" text-anchor="middle" font-family="Arial">B</text>
-    <line x1="13" y1="75" x2="28" y2="75" stroke="#2ecc71" stroke-width="1" stroke-dasharray="2,2"/>
+    <!-- JOELHO — oval achatado, ligeiramente mais largo que perna -->
+    <ellipse cx="30" cy="120" rx="22" ry="13"
+      fill="#C9A06A" stroke="#B8895A" stroke-width="1.2"/>
+    <!-- Detalhe patela (sombra suave) -->
+    <ellipse cx="30" cy="119" rx="11" ry="8" fill="#B8895A" opacity="0.2"/>
 
-    <!-- C - Ankle -->
-    <circle cx="6" cy="148" r="7" fill="#2ecc71" stroke="white" stroke-width="1.5"/>
-    <text x="6" y="152" font-size="9" font-weight="700" fill="white" text-anchor="middle" font-family="Arial">C</text>
-    <line x1="13" y1="148" x2="28" y2="148" stroke="#2ecc71" stroke-width="1" stroke-dasharray="2,2"/>
+    <!-- PANTURRILHA + TÍBIA -->
+    <!-- Panturrilha: larga em cima (~130), afunila forte até tornozelo (~185) -->
+    <path d="
+      M 12,130
+      C  9,140   8,155   9,165
+      C 10,172  11,178  13,184
+      C 15,190  18,194  20,197
+      L 40,197
+      C 42,194  45,190  47,184
+      C 49,178  50,172  51,165
+      C 52,155  51,140  48,130
+      C 44,125  38,122  30,122
+      C 22,122  16,125  12,130
+      Z"
+      fill="#D4A574" stroke="#B8895A" stroke-width="1.2"/>
 
-    <!-- D - Foot -->
-    <circle cx="6" cy="188" r="7" fill="#2ecc71" stroke="white" stroke-width="1.5"/>
-    <text x="6" y="192" font-size="9" font-weight="700" fill="white" text-anchor="middle" font-family="Arial">D</text>
-    <line x1="13" y1="188" x2="28" y2="188" stroke="#2ecc71" stroke-width="1" stroke-dasharray="2,2"/>
+    <!-- Sombra tíbia (borda anterior mais clara, lateral mais escura) -->
+    <path d="M 12,130 C 9,145 8,162 9,173 C 11,183 15,191 20,197 L 26,197 C 20,190 17,182 16,172 C 14,158 14,143 16,132 Z"
+      fill="#C49060" opacity="0.35"/>
+    <!-- Músculo gastrocnêmio (bojo posterior — sugerido por highlight) -->
+    <ellipse cx="38" cy="152" rx="8" ry="18" fill="#E0B888" opacity="0.45"/>
 
-    <!-- Hip label -->
-    <text x="28" y="6" font-size="8" fill="#555" text-anchor="middle" font-family="Arial">Hip</text>
+    <!-- TORNOZELO — estreito, cilíndrico -->
+    <path d="
+      M 20,197
+      C 18,200  17,204  17,208
+      L 43,208
+      C 43,204  42,200  40,197
+      Z"
+      fill="#C9A06A" stroke="#B8895A" stroke-width="1"/>
 
-    <!-- Red arrow pointing to B -->
-    <polygon points="52,72 65,68 65,78" fill="#CC0000"/>
-    <line x1="52" y1="75" x2="45" y2="75" stroke="#CC0000" stroke-width="2"/>
+    <!-- PÉ — vista de frente, levemente inclinado para direita -->
+    <!-- calcanhar -->
+    <ellipse cx="30" cy="220" rx="15" ry="9" fill="#C9A06A" stroke="#B8895A" stroke-width="1"/>
+    <!-- dorso do pé -->
+    <path d="M 17,214 C 15,218 14,224 16,228 C 20,234 26,237 36,236 C 46,235 52,230 54,224 C 56,218 54,213 50,210 L 43,208 C 43,212 41,215 38,216 C 34,217 24,216 20,214 Z"
+      fill="#C9A06A" stroke="#B8895A" stroke-width="1"/>
+    <!-- dedos (sugeridos) -->
+    <ellipse cx="22" cy="234" rx="5"  ry="3.5" fill="#B8895A" opacity="0.5"/>
+    <ellipse cx="30" cy="237" rx="5"  ry="3.5" fill="#B8895A" opacity="0.5"/>
+    <ellipse cx="38" cy="236" rx="5"  ry="3.5" fill="#B8895A" opacity="0.5"/>
+    <ellipse cx="46" cy="232" rx="4.5" ry="3"  fill="#B8895A" opacity="0.5"/>
+    <ellipse cx="52" cy="227" rx="4"  ry="2.8" fill="#B8895A" opacity="0.5"/>
+
+    <!-- MEIA DE COMPRESSÃO (overlay semitransparente) -->
+    <!-- cobre da coxa até tornozelo -->
+    <path d="
+      M 28, 0
+      C 14,-2  4, 8   6, 30
+      C  8, 52  8, 72  10, 88
+      C 11, 96  12,100  14,104
+      C 16,108  19,110  22,112
+      L 38,112
+      C 41,110  44,108  46,104
+      C 48,100  49, 96  50, 88
+      C 52, 72  52, 52  54, 30
+      C 56,  8  46,-2  28, 0 Z"
+      fill="#1B4E6B" opacity="0.18"/>
+    <path d="
+      M 12,130 C 9,140 8,155 9,165 C 10,172 11,178 13,184 C 15,190 18,194 20,197
+      L 40,197 C 42,194 45,190 47,184 C 49,178 50,172 51,165 C 52,155 51,140 48,130
+      C 44,125 38,122 30,122 C 22,122 16,125 12,130 Z"
+      fill="#1B4E6B" opacity="0.18"/>
+    <!-- banda superior da meia -->
+    <rect x="6" y="0" width="48" height="7" rx="3.5" fill="#1B4E6B" opacity="0.55"/>
+
+    <!-- "Hip" label acima -->
+    <text x="30" y="-6" font-size="8.5" fill="#555" text-anchor="middle" font-family="Arial, sans-serif">Hip</text>
+
+    <!-- ── MARCADORES A B C D ── -->
+    <!-- col de pontos à esquerda: x=−14 -->
+
+    <!-- A — topo da coxa / quadril -->
+    <circle cx="-14" cy="4"   r="8" fill="#27AE60" stroke="white" stroke-width="1.5"/>
+    <text x="-14" y="8"  font-size="9.5" font-weight="700" fill="white" text-anchor="middle" font-family="Arial">A</text>
+    <line x1="-6" y1="4"  x2="10" y2="4"  stroke="#27AE60" stroke-width="1.2" stroke-dasharray="3,2"/>
+
+    <!-- B — panturrilha (bojo máximo, ~145) -->
+    <circle cx="-14" cy="145" r="8" fill="#27AE60" stroke="white" stroke-width="1.5"/>
+    <text x="-14" y="149" font-size="9.5" font-weight="700" fill="white" text-anchor="middle" font-family="Arial">B</text>
+    <line x1="-6" y1="145" x2="10" y2="145" stroke="#27AE60" stroke-width="1.2" stroke-dasharray="3,2"/>
+
+    <!-- Seta vermelha apontando para B -->
+    <line x1="68" y1="145" x2="56" y2="145" stroke="#CC0000" stroke-width="2.2"/>
+    <polygon points="56,141 48,145 56,149" fill="#CC0000"/>
+
+    <!-- C — tornozelo (~202) -->
+    <circle cx="-14" cy="202" r="8" fill="#27AE60" stroke="white" stroke-width="1.5"/>
+    <text x="-14" y="206" font-size="9.5" font-weight="700" fill="white" text-anchor="middle" font-family="Arial">C</text>
+    <line x1="-6" y1="202" x2="15" y2="202" stroke="#27AE60" stroke-width="1.2" stroke-dasharray="3,2"/>
+
+    <!-- D — pé (~226) -->
+    <circle cx="-14" cy="226" r="8" fill="#27AE60" stroke="white" stroke-width="1.5"/>
+    <text x="-14" y="230" font-size="9.5" font-weight="700" fill="white" text-anchor="middle" font-family="Arial">D</text>
+    <line x1="-6" y1="226" x2="15" y2="226" stroke="#27AE60" stroke-width="1.2" stroke-dasharray="3,2"/>
+
   </g>
 
-  <!-- ── TABLE ── -->
+  <!-- ══════════════════════════════
+       TABELA
+       ══════════════════════════════ -->
   <g font-family="Arial, sans-serif" font-size="11">
 
-    <!-- Column positions: Size=90, S=185, M=280, L=375, XL=470, XXL=570 -->
-    <!-- Header row -->
-    <rect x="82" y="115" width="600" height="26" fill="#f5f5f5"/>
-    <text x="108" y="132" font-size="11" font-weight="700" fill="#1a1a1a">Size</text>
-    <text x="200" y="132" font-size="11" font-weight="700" fill="#1a1a1a" text-anchor="middle">S</text>
-    <text x="295" y="132" font-size="11" font-weight="700" fill="#1a1a1a" text-anchor="middle">M</text>
-    <text x="390" y="132" font-size="11" font-weight="700" fill="#1a1a1a" text-anchor="middle">L</text>
-    <text x="490" y="132" font-size="11" font-weight="700" fill="#1a1a1a" text-anchor="middle">XL</text>
-    <text x="590" y="132" font-size="11" font-weight="700" fill="#1a1a1a" text-anchor="middle">XXL</text>
+    <!-- Cabeçalho -->
+    <rect x="98" y="112" width="588" height="26" fill="#f5f5f5"/>
+    <line x1="98"  y1="112" x2="686" y2="112" stroke="#ddd" stroke-width="1"/>
+    <line x1="98"  y1="138" x2="686" y2="138" stroke="#ddd" stroke-width="1"/>
+    <text x="122" y="129" font-size="11" font-weight="700" fill="#1a1a1a">Size</text>
+    <text x="210" y="129" font-size="11" font-weight="700" fill="#1a1a1a" text-anchor="middle">S</text>
+    <text x="308" y="129" font-size="11" font-weight="700" fill="#1a1a1a" text-anchor="middle">M</text>
+    <text x="406" y="129" font-size="11" font-weight="700" fill="#1a1a1a" text-anchor="middle">L</text>
+    <text x="506" y="129" font-size="11" font-weight="700" fill="#1a1a1a" text-anchor="middle">XL</text>
+    <text x="604" y="129" font-size="11" font-weight="700" fill="#1a1a1a" text-anchor="middle">XXL</text>
 
-    <!-- Row dividers -->
-    <line x1="82" y1="141" x2="682" y2="141" stroke="#e0e0e0" stroke-width="1"/>
-    <line x1="82" y1="167" x2="682" y2="167" stroke="#e0e0e0" stroke-width="1"/>
-    <line x1="82" y1="193" x2="682" y2="193" stroke="#e0e0e0" stroke-width="1"/>
-    <line x1="82" y1="219" x2="682" y2="219" stroke="#e0e0e0" stroke-width="1"/>
-    <line x1="82" y1="245" x2="682" y2="245" stroke="#e0e0e0" stroke-width="1"/>
-    <line x1="82" y1="115" x2="682" y2="115" stroke="#e0e0e0" stroke-width="1"/>
-    <line x1="82" y1="115" x2="82"  y2="313" stroke="#e0e0e0" stroke-width="1"/>
-    <line x1="682" y1="115" x2="682" y2="313" stroke="#e0e0e0" stroke-width="1"/>
-    <line x1="82" y1="313" x2="682" y2="313" stroke="#e0e0e0" stroke-width="1"/>
-    <!-- vertical col dividers -->
-    <line x1="155" y1="115" x2="155" y2="313" stroke="#e0e0e0" stroke-width="1"/>
-    <line x1="250" y1="115" x2="250" y2="313" stroke="#e0e0e0" stroke-width="1"/>
-    <line x1="345" y1="115" x2="345" y2="313" stroke="#e0e0e0" stroke-width="1"/>
-    <line x1="440" y1="115" x2="440" y2="313" stroke="#e0e0e0" stroke-width="1"/>
-    <line x1="540" y1="115" x2="540" y2="313" stroke="#e0e0e0" stroke-width="1"/>
+    <!-- Linhas verticais -->
+    <line x1="98"  y1="112" x2="98"  y2="318" stroke="#ddd" stroke-width="1"/>
+    <line x1="160" y1="112" x2="160" y2="318" stroke="#ddd" stroke-width="1"/>
+    <line x1="258" y1="112" x2="258" y2="318" stroke="#ddd" stroke-width="1"/>
+    <line x1="356" y1="112" x2="356" y2="318" stroke="#ddd" stroke-width="1"/>
+    <line x1="454" y1="112" x2="454" y2="318" stroke="#ddd" stroke-width="1"/>
+    <line x1="554" y1="112" x2="554" y2="318" stroke="#ddd" stroke-width="1"/>
+    <line x1="686" y1="112" x2="686" y2="318" stroke="#ddd" stroke-width="1"/>
+    <line x1="98"  y1="318" x2="686" y2="318" stroke="#ddd" stroke-width="1"/>
 
-    <!-- ROW: Hip -->
-    <rect x="82" y="141" width="600" height="26" fill="#fafafa"/>
-    <text x="108" y="158" font-size="11" fill="#1a1a1a">Hip</text>
-    <text x="200" y="158" font-size="10.5" fill="#333" text-anchor="middle">Up to 107cm</text>
-    <text x="295" y="158" font-size="10.5" fill="#333" text-anchor="middle">107–112cm</text>
-    <text x="390" y="158" font-size="10.5" fill="#333" text-anchor="middle">112–122cm</text>
-    <text x="490" y="158" font-size="10.5" fill="#333" text-anchor="middle">122–132cm</text>
-    <text x="590" y="158" font-size="10.5" fill="#888" text-anchor="middle">N/A</text>
+    <!-- Hip -->
+    <rect x="98" y="138" width="588" height="36" fill="#fafafa"/>
+    <line x1="98" y1="174" x2="686" y2="174" stroke="#eee" stroke-width="1"/>
+    <text x="122" y="160" font-size="11" fill="#1a1a1a">Hip</text>
+    <text x="210" y="160" font-size="10.5" fill="#333" text-anchor="middle">Up to 107cm</text>
+    <text x="308" y="160" font-size="10.5" fill="#333" text-anchor="middle">107–112cm</text>
+    <text x="406" y="160" font-size="10.5" fill="#333" text-anchor="middle">112–122cm</text>
+    <text x="506" y="160" font-size="10.5" fill="#333" text-anchor="middle">122–132cm</text>
+    <text x="604" y="160" font-size="10.5" fill="#999" text-anchor="middle">N/A</text>
 
-    <!-- ROW: A -->
-    <rect x="82" y="167" width="600" height="26" fill="#fff"/>
-    <text x="108" y="184" font-size="11" fill="#1a1a1a">A</text>
-    <text x="200" y="184" font-size="10.5" fill="#333" text-anchor="middle">40.5–53.0cm</text>
-    <text x="295" y="184" font-size="10.5" fill="#333" text-anchor="middle">43.0–55.0cm</text>
-    <text x="390" y="184" font-size="10.5" fill="#333" text-anchor="middle">48.0–60.5cm</text>
-    <text x="490" y="184" font-size="10.5" fill="#333" text-anchor="middle">53.0–66.0cm</text>
-    <text x="590" y="184" font-size="10.5" fill="#888" text-anchor="middle">N/A</text>
+    <!-- A -->
+    <rect x="98" y="174" width="588" height="36" fill="#fff"/>
+    <line x1="98" y1="210" x2="686" y2="210" stroke="#eee" stroke-width="1"/>
+    <text x="122" y="196" font-size="11" fill="#1a1a1a">A</text>
+    <text x="210" y="196" font-size="10.5" fill="#333" text-anchor="middle">40.5–53.0cm</text>
+    <text x="308" y="196" font-size="10.5" fill="#333" text-anchor="middle">43.0–55.0cm</text>
+    <text x="406" y="196" font-size="10.5" fill="#333" text-anchor="middle">48.0–60.5cm</text>
+    <text x="506" y="196" font-size="10.5" fill="#333" text-anchor="middle">53.0–66.0cm</text>
+    <text x="604" y="196" font-size="10.5" fill="#999" text-anchor="middle">N/A</text>
 
-    <!-- ROW: B — highlighted (red arrow points here) -->
-    <rect x="82" y="193" width="600" height="26" fill="#fff8f8"/>
-    <text x="108" y="210" font-size="11" fill="#1a1a1a">B</text>
-    <text x="200" y="210" font-size="10.5" fill="#333" text-anchor="middle">30.5–37.5cm</text>
-    <text x="295" y="210" font-size="10.5" fill="#333" text-anchor="middle">33.0–40.0cm</text>
-    <text x="390" y="210" font-size="10.5" fill="#333" text-anchor="middle">35.5–43.0cm</text>
-    <text x="490" y="210" font-size="10.5" fill="#333" text-anchor="middle">38.0–46.0cm</text>
-    <text x="590" y="210" font-size="10.5" fill="#333" text-anchor="middle">40.0–49.0cm</text>
+    <!-- B — highlighted -->
+    <rect x="98" y="210" width="588" height="36" fill="#FFF3E0"/>
+    <line x1="98" y1="246" x2="686" y2="246" stroke="#eee" stroke-width="1"/>
+    <text x="122" y="232" font-size="11" font-weight="700" fill="#C2410C">B</text>
+    <text x="210" y="232" font-size="10.5" fill="#333" text-anchor="middle">30.5–37.5cm</text>
+    <text x="308" y="232" font-size="10.5" fill="#333" text-anchor="middle">33.0–40.0cm</text>
+    <text x="406" y="232" font-size="10.5" fill="#333" text-anchor="middle">35.5–43.0cm</text>
+    <text x="506" y="232" font-size="10.5" fill="#333" text-anchor="middle">38.0–46.0cm</text>
+    <text x="604" y="232" font-size="10.5" fill="#333" text-anchor="middle">40.0–49.0cm</text>
 
-    <!-- ROW: C -->
-    <rect x="82" y="219" width="600" height="26" fill="#fff"/>
-    <text x="108" y="236" font-size="11" fill="#1a1a1a">C</text>
-    <text x="200" y="236" font-size="10.5" fill="#333" text-anchor="middle">19.5–25.5cm</text>
-    <text x="295" y="236" font-size="10.5" fill="#333" text-anchor="middle">21.5–27.5cm</text>
-    <text x="390" y="236" font-size="10.5" fill="#333" text-anchor="middle">22.5–29.5cm</text>
-    <text x="490" y="236" font-size="10.5" fill="#333" text-anchor="middle">23.0–32.0cm</text>
-    <text x="590" y="236" font-size="10.5" fill="#333" text-anchor="middle">23.5–34.0cm</text>
+    <!-- C -->
+    <rect x="98" y="246" width="588" height="36" fill="#fff"/>
+    <line x1="98" y1="282" x2="686" y2="282" stroke="#eee" stroke-width="1"/>
+    <text x="122" y="268" font-size="11" fill="#1a1a1a">C</text>
+    <text x="210" y="268" font-size="10.5" fill="#333" text-anchor="middle">19.5–25.5cm</text>
+    <text x="308" y="268" font-size="10.5" fill="#333" text-anchor="middle">21.5–27.5cm</text>
+    <text x="406" y="268" font-size="10.5" fill="#333" text-anchor="middle">22.5–29.5cm</text>
+    <text x="506" y="268" font-size="10.5" fill="#333" text-anchor="middle">23.0–32.0cm</text>
+    <text x="604" y="268" font-size="10.5" fill="#333" text-anchor="middle">23.5–34.0cm</text>
 
-    <!-- ROW: D -->
-    <rect x="82" y="245" width="600" height="26" fill="#fafafa"/>
-    <text x="108" y="262" font-size="11" fill="#1a1a1a">D</text>
-    <text x="200" y="262" font-size="10.5" fill="#333" text-anchor="middle">20.5–24.0cm</text>
-    <text x="295" y="262" font-size="10.5" fill="#333" text-anchor="middle">23.0–26.0cm</text>
-    <text x="390" y="262" font-size="10.5" fill="#333" text-anchor="middle">25.5–29.5cm</text>
-    <text x="490" y="262" font-size="10.5" fill="#333" text-anchor="middle">26.5–32.5cm</text>
-    <text x="590" y="262" font-size="10.5" fill="#333" text-anchor="middle">26.5–32.5cm</text>
-
-    <!-- Empty rows to fill bottom of table -->
-    <rect x="82" y="271" width="600" height="21" fill="#fff"/>
-    <rect x="82" y="292" width="600" height="21" fill="#fafafa"/>
+    <!-- D -->
+    <rect x="98" y="282" width="588" height="36" fill="#fafafa"/>
+    <text x="122" y="304" font-size="11" fill="#1a1a1a">D</text>
+    <text x="210" y="304" font-size="10.5" fill="#333" text-anchor="middle">20.5–24.0cm</text>
+    <text x="308" y="304" font-size="10.5" fill="#333" text-anchor="middle">23.0–26.0cm</text>
+    <text x="406" y="304" font-size="10.5" fill="#333" text-anchor="middle">25.5–29.5cm</text>
+    <text x="506" y="304" font-size="10.5" fill="#333" text-anchor="middle">26.5–32.5cm</text>
+    <text x="604" y="304" font-size="10.5" fill="#333" text-anchor="middle">26.5–32.5cm</text>
 
   </g>
 
-  <!-- ── CAPTION / SOURCE ── -->
-  <text x="350" y="327" font-size="8.5" fill="#888" text-anchor="middle" font-family="Arial, sans-serif">
+  <!-- Fonte -->
+  <text x="350" y="342" font-size="8.5" fill="#aaa" text-anchor="middle" font-family="Arial, sans-serif">
     Fonte: johnbellcroyden.co.uk · Est. 1798, Wigmore Street, Londres
   </text>
 
