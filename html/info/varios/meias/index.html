@@ -279,6 +279,136 @@
     }
     .synthesis li::marker { color: var(--navy); font-weight: 700; }
 
+    /* ─── QUIZ DE FIXAÇÃO ─── */
+    .quiz-section {
+      margin-top: 56px;
+    }
+    .quiz-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 18px;
+      margin-top: 24px;
+    }
+    @media (max-width: 680px) { .quiz-grid { grid-template-columns: 1fr; } }
+    .quiz-card {
+      background: #fff;
+      border: 1.5px solid var(--border);
+      border-radius: 14px;
+      padding: 20px 22px;
+      position: relative;
+    }
+    .quiz-card .q-num {
+      display: inline-block;
+      background: var(--navy);
+      color: #fff;
+      font-size: 0.7rem;
+      font-weight: 700;
+      border-radius: 20px;
+      padding: 2px 10px;
+      margin-bottom: 10px;
+      letter-spacing: 0.08em;
+    }
+    .quiz-card .q-text {
+      font-size: 0.93rem;
+      font-weight: 600;
+      color: var(--slate);
+      margin-bottom: 14px;
+      line-height: 1.5;
+    }
+    .quiz-card .options label {
+      display: flex;
+      align-items: flex-start;
+      gap: 8px;
+      font-size: 0.86rem;
+      color: var(--slate);
+      cursor: pointer;
+      padding: 6px 8px;
+      border-radius: 6px;
+      transition: background 0.15s;
+      margin-bottom: 4px;
+      line-height: 1.4;
+    }
+    .quiz-card .options label:hover { background: #F0F7FF; }
+    .quiz-card .options input[type="radio"] { margin-top: 2px; flex-shrink: 0; accent-color: var(--navy); }
+    .quiz-feedback {
+      display: none;
+      margin-top: 12px;
+      padding: 10px 14px;
+      border-radius: 8px;
+      font-size: 0.84rem;
+      line-height: 1.5;
+    }
+    .quiz-feedback.correct { background: #DCFCE7; color: #166534; border: 1px solid #86EFAC; }
+    .quiz-feedback.wrong   { background: #FEE2E2; color: #991B1B; border: 1px solid #FCA5A5; }
+    .quiz-btn {
+      margin-top: 14px;
+      background: var(--navy);
+      color: #fff;
+      border: none;
+      border-radius: 8px;
+      padding: 7px 18px;
+      font-size: 0.82rem;
+      font-weight: 600;
+      cursor: pointer;
+      font-family: inherit;
+    }
+    .quiz-btn:hover { background: var(--blue); }
+    .quiz-score-bar {
+      margin-top: 22px;
+      background: #EFF6FF;
+      border: 1px solid #BFDBFE;
+      border-radius: 12px;
+      padding: 16px 22px;
+      display: flex;
+      align-items: center;
+      gap: 18px;
+      flex-wrap: wrap;
+    }
+    .quiz-score-bar span { font-size: 0.9rem; color: var(--navy); font-weight: 600; }
+    #score-display { font-family: 'Playfair Display', serif; font-size: 1.5rem; color: var(--navy); }
+
+    /* ─── PERGUNTAS REFLEXIVAS ─── */
+    .reflection-section {
+      margin-top: 52px;
+      background: linear-gradient(135deg, #1B4E6B 0%, #1A7A6E 100%);
+      border-radius: 18px;
+      padding: 38px 40px;
+      color: #fff;
+    }
+    .reflection-section .section-tag { color: #6EE7B7; margin-bottom: 6px; }
+    .reflection-section h2 { color: #fff; margin-bottom: 8px; }
+    .reflection-section .intro-text {
+      font-size: 0.93rem;
+      color: rgba(255,255,255,0.75);
+      margin-bottom: 28px;
+    }
+    .reflection-list { list-style: none; padding: 0; }
+    .reflection-list li {
+      display: flex;
+      gap: 16px;
+      padding: 18px 0;
+      border-bottom: 1px solid rgba(255,255,255,0.12);
+      align-items: flex-start;
+    }
+    .reflection-list li:last-child { border-bottom: none; padding-bottom: 0; }
+    .reflection-num {
+      flex-shrink: 0;
+      width: 32px; height: 32px;
+      background: rgba(255,255,255,0.15);
+      border: 1px solid rgba(255,255,255,0.3);
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-family: 'Playfair Display', serif;
+      font-size: 0.95rem;
+      font-weight: 700;
+      color: #6EE7B7;
+    }
+    .reflection-q {
+      font-size: 0.97rem;
+      line-height: 1.65;
+      color: rgba(255,255,255,0.92);
+    }
+
     /* ─── REFERENCES ─── */
     .references {
       margin-top: 48px;
@@ -350,6 +480,34 @@
 </div>
 
 <main>
+
+  <!-- JOHN BELL & CROYDEN: referência histórica -->
+  <section style="margin-top: 40px;">
+    <div class="section-tag">Referência histórica · Est. 1798</div>
+    <h2>Quando a farmácia mais antiga de Londres ainda vende meias de compressão</h2>
+    <p>
+      A John Bell &amp; Croyden, fundada em 1798 em Wigmore Street, Londres, é considerada a farmácia especializada em produtos médicos mais antiga ainda em atividade no Reino Unido. Mais de dois séculos depois de sua fundação, a casa comercializa meias de compressão graduada em múltiplas classes e tamanhos — e ilustra, de forma concreta, como a variedade de medidas e pressões reflete uma tradição clínica consolidada: cada medida corporal (quadril, coxa, panturrilha, tornozelo) corresponde a uma faixa de compressão distinta, exigindo avaliação individualizada antes da dispensação.
+    </p>
+    <figure>
+      <img src="img/bell.png" alt="Guia de medidas de meias de compressão da John Bell & Croyden, farmácia londrina fundada em 1798, mostrando as faixas de tamanho por segmento da perna" loading="lazy" style="max-height: 420px; width: auto; display: block; margin: 0 auto;">
+      <figcaption>
+        <strong>Figura 0.</strong> Guia de tamanhos de meias de compressão da John Bell &amp; Croyden (Est. 1798), Wigmore Street, Londres — uma das farmácias médicas mais antigas do mundo ainda em operação. O guia evidencia que a escolha correta da meia não depende apenas da classe de pressão, mas também da medida precisa de quatro pontos anatômicos da perna (quadril, coxa, panturrilha e tornozelo), reforçando que prescrição e dispensação exigem avaliação individualizada. Mais informações e catálogo de compressão disponíveis em: <a href="https://johnbellcroyden.co.uk/" target="_blank" rel="noopener" style="color: var(--blue); font-weight: 600;">johnbellcroyden.co.uk</a>
+      </figcaption>
+    </figure>
+  </section>
+
+  <!-- QUADRO COMPARATIVO: mmHg no cotidiano -->
+  <section>
+    <div class="section-tag">Antes de tudo · Para estudantes</div>
+    <h2>mmHg: o que esse número realmente significa?</h2>
+    <p>
+      Antes de falar em "40 mmHg de compressão", é preciso que esse número deixe de ser abstrato. O milímetro de mercúrio (mmHg) é uma unidade de pressão — a mesma usada para medir pressão arterial, pressão de perfusão ocular e, sim, meias de compressão. O quadro abaixo ancora cada faixa terapêutica em algo que você já conhece da vida cotidiana ou da clínica, para que a prescrição tenha dimensão física real.
+    </p>
+    <figure>
+      <img src="img/pressao-cotidiano.png" alt="Quadro comparativo de pressões em mmHg: da pressão atmosférica à pressão das meias de compressão, com referências do cotidiano" loading="lazy">
+      <figcaption><strong>Figura 0b.</strong> Escala comparativa de pressões em mmHg. As faixas terapêuticas das meias de compressão (18–70 mmHg) representam entre 2% e 9% da pressão atmosférica, e estão muito abaixo dos valores de oclusão arterial usados na aferição da pressão. As comparações com objetos do cotidiano (palma da mão, copo d'água, garrafa PET) ajudam a dar dimensão física concreta a cada classe de compressão. Conversão: 1 cmH₂O ≈ 0,735 mmHg; 1 mmHg ≈ 133 Pa.</figcaption>
+    </figure>
+  </section>
 
   <!-- SECTION 1: O problema -->
   <section class="lead">
@@ -494,6 +652,129 @@
     </ol>
   </section>
 
+  <!-- QUIZ DE FIXAÇÃO -->
+  <section class="quiz-section">
+    <div class="section-tag">Fixação de conteúdo</div>
+    <h2>Teste o que você aprendeu</h2>
+    <p>Responda às questões abaixo com base no que foi apresentado no infográfico. Clique em "Verificar" após escolher sua resposta.</p>
+
+    <div class="quiz-grid">
+
+      <div class="quiz-card" id="q1">
+        <div class="q-num">QUESTÃO 1</div>
+        <div class="q-text">Uma meia "Classe 2 britânica" (BSI 6612) e uma "Classe 2 europeia" (RAL-GZ 387) entregam a mesma pressão no tornozelo?</div>
+        <div class="options">
+          <label><input type="radio" name="q1" value="a"> Sim, ambas entregam 23–32 mmHg</label>
+          <label><input type="radio" name="q1" value="b"> Não — a britânica entrega 18–24 mmHg e a europeia 23–32 mmHg</label>
+          <label><input type="radio" name="q1" value="c"> Sim, pois as normas foram harmonizadas em 2018</label>
+          <label><input type="radio" name="q1" value="d"> Não — a europeia entrega menos pressão que a britânica</label>
+        </div>
+        <button class="quiz-btn" onclick="checkQ('q1','b','A BSI 6612 e a RAL-GZ 387 usam os mesmos nomes de classe, mas para faixas de pressão diferentes. A "Classe 2" britânica (18–24 mmHg) é menos compressiva do que a "Classe 2" europeia (23–32 mmHg) — a diferença pode chegar a 10 mmHg.')">Verificar</button>
+        <div class="quiz-feedback" id="q1-fb"></div>
+      </div>
+
+      <div class="quiz-card" id="q2">
+        <div class="q-num">QUESTÃO 2</div>
+        <div class="q-text">Qual é o princípio biomecânico que torna a meia de compressão eficaz no retorno venoso?</div>
+        <div class="options">
+          <label><input type="radio" name="q2" value="a"> Pressão uniforme da coxa ao tornozelo</label>
+          <label><input type="radio" name="q2" value="b"> Pressão máxima na coxa, decrescendo ao tornozelo</label>
+          <label><input type="radio" name="q2" value="c"> Gradiente decrescente: pressão máxima no tornozelo, menor na coxa</label>
+          <label><input type="radio" name="q2" value="d"> Pressão alta apenas na panturrilha para ativar a bomba muscular</label>
+        </div>
+        <button class="quiz-btn" onclick="checkQ('q2','c','O gradiente decrescente — com pressão máxima no tornozelo (onde a hipertensão venosa hidrostática é maior) diminuindo em direção à coxa — cria um diferencial que "empurra" o sangue venoso de volta ao coração.')">Verificar</button>
+        <div class="quiz-feedback" id="q2-fb"></div>
+      </div>
+
+      <div class="quiz-card" id="q3">
+        <div class="q-num">QUESTÃO 3</div>
+        <div class="q-text">Qual valor de ABPI contraindica absolutamente a compressão de alta pressão?</div>
+        <div class="options">
+          <label><input type="radio" name="q3" value="a"> ABPI &gt; 0,8</label>
+          <label><input type="radio" name="q3" value="b"> ABPI entre 0,6 e 0,8</label>
+          <label><input type="radio" name="q3" value="c"> ABPI &lt; 0,6</label>
+          <label><input type="radio" name="q3" value="d"> ABPI entre 0,8 e 1,0</label>
+        </div>
+        <button class="quiz-btn" onclick="checkQ('q3','c','ABPI abaixo de 0,6 indica doença arterial periférica grave. Aplicar compressão forte nessa condição pode causar isquemia tecidual e agravar a lesão. O Doppler é obrigatório antes de prescrever classes 3 ou 4.')">Verificar</button>
+        <div class="quiz-feedback" id="q3-fb"></div>
+      </div>
+
+      <div class="quiz-card" id="q4">
+        <div class="q-num">QUESTÃO 4</div>
+        <div class="q-text">Segundo o estudo de Milic et al. (2023), qual foi a taxa de recorrência de úlcera venosa em 10 anos com compressão leve de 18–25 mmHg?</div>
+        <div class="options">
+          <label><input type="radio" name="q4" value="a"> 24,5%</label>
+          <label><input type="radio" name="q4" value="b"> 66,9%</label>
+          <label><input type="radio" name="q4" value="c"> 96%</label>
+          <label><input type="radio" name="q4" value="d"> 48%</label>
+        </div>
+        <button class="quiz-btn" onclick="checkQ('q4','c','Com compressão leve (18–25 mmHg, equivalente à Classe 1 BSI), a taxa de recorrência chegou a 96% em 10 anos. Com compressão forte de 35–50 mmHg, esse número caiu para 24,5% — uma das evidências mais contundentes da relação dose-resposta.')">Verificar</button>
+        <div class="quiz-feedback" id="q4-fb"></div>
+      </div>
+
+      <div class="quiz-card" id="q5">
+        <div class="q-num">QUESTÃO 5</div>
+        <div class="q-text">Para uma úlcera venosa ativa (CEAP C6), qual é a pressão mínima recomendada no tornozelo para otimizar a cicatrização?</div>
+        <div class="options">
+          <label><input type="radio" name="q5" value="a"> 18 mmHg</label>
+          <label><input type="radio" name="q5" value="b"> 25 mmHg</label>
+          <label><input type="radio" name="q5" value="c"> 32 mmHg</label>
+          <label><input type="radio" name="q5" value="d"> 40 mmHg</label>
+        </div>
+        <button class="quiz-btn" onclick="checkQ('q5','d','A pressão efetiva de pelo menos 40 mmHg no tornozelo é o patamar aceito para cicatrização de úlceras venosas ativas, conforme o National Wound Care Strategy Programme (2023) e a revisão Cochrane de O\'Meara et al. (2012).')">Verificar</button>
+        <div class="quiz-feedback" id="q5-fb"></div>
+      </div>
+
+      <div class="quiz-card" id="q6">
+        <div class="q-num">QUESTÃO 6</div>
+        <div class="q-text">O que ocorre na fisiopatologia da insuficiência venosa crônica que leva à formação da úlcera?</div>
+        <div class="options">
+          <label><input type="radio" name="q6" value="a"> Aumento do fluxo arterial, gerando hiperperfusão tecidual</label>
+          <label><input type="radio" name="q6" value="b"> Falência das válvulas venosas → refluxo → hipertensão venosa → extravasamento capilar → ulceração</label>
+          <label><input type="radio" name="q6" value="c"> Obstrução arterial que impede a nutrição do tecido</label>
+          <label><input type="radio" name="q6" value="d"> Edema linfático primário sem relação com o sistema venoso</label>
+        </div>
+        <button class="quiz-btn" onclick="checkQ('q6','b','Válvulas incompetentes permitem o refluxo venoso, elevando a pressão hidrostática nos capilares do tornozelo. Esse extravasamento de proteínas e células inflamatórias para o interstício compromete a nutrição tecidual, resultando em edema, lipodermatoesclerose e ulceração.')">Verificar</button>
+        <div class="quiz-feedback" id="q6-fb"></div>
+      </div>
+
+    </div>
+
+    <div class="quiz-score-bar">
+      <span>Pontuação: <span id="score-display">—</span></span>
+      <span id="score-msg" style="font-weight:400; font-size:0.85rem; color: var(--muted);"></span>
+    </div>
+  </section>
+
+  <!-- PERGUNTAS REFLEXIVAS -->
+  <section class="reflection-section">
+    <div class="section-tag">Para pensar além</div>
+    <h2>Cinco perguntas que valem a conversa</h2>
+    <p class="intro-text">Não há resposta única para estas questões — elas existem para abrir o raciocínio clínico, não para fechá-lo.</p>
+    <ul class="reflection-list">
+      <li>
+        <div class="reflection-num">1</div>
+        <div class="reflection-q">Se dois pacientes têm úlcera venosa ativa no mesmo estágio CEAP, mas um deles tem ABPI de 0,7 e o outro de 0,9 — em que medida a "mesma doença" justifica o "mesmo tratamento"? O que muda na sua tomada de decisão ao prescrever compressão para cada um deles?</div>
+      </li>
+      <li>
+        <div class="reflection-num">2</div>
+        <div class="reflection-q">Um paciente usa há dois anos uma meia "Classe 2" prescrita por outro profissional, sem que o padrão (BSI ou RAL) tenha sido especificado. A úlcera não cicatrizou. Antes de trocar o curativo, o que você investigaria na meia — e por quê esse dado pode ser mais relevante do que o produto usado no leito da ferida?</div>
+      </li>
+      <li>
+        <div class="reflection-num">3</div>
+        <div class="reflection-q">Os dados de Milic et al. mostram que compressão insuficiente leva a 96% de recorrência em 10 anos. No entanto, a revisão Cochrane aponta que adesão ao uso diário supera a diferença entre classes. Como você conciliaria esses dois achados ao orientar um paciente que diz que a meia "aperta demais" e ameaça abandoná-la?</div>
+      </li>
+      <li>
+        <div class="reflection-num">4</div>
+        <div class="reflection-q">A John Bell &amp; Croyden existe desde 1798 e ainda vende meias de compressão com guia de medidas por quatro pontos anatômicos. Isso sugere que a variabilidade corporal entre pacientes é reconhecida há mais de dois séculos como determinante da eficácia do tratamento. Por que, então, ainda é comum encontrar prescrições que indicam apenas "meia de compressão Classe 2" sem especificar medidas, padrão ou fabricante?</div>
+      </li>
+      <li>
+        <div class="reflection-num">5</div>
+        <div class="reflection-q">A hipertensão venosa é causada por pressão — e tratada com pressão. Há algo paradoxal nisso? O que esse aparente paradoxo revela sobre a diferença entre a causa de uma doença e o mecanismo de sua reversão, e como esse raciocínio se aplica a outros tratamentos que você conhece?</div>
+      </li>
+    </ul>
+  </section>
+
   <!-- REFERENCES -->
   <div class="references">
     <h3>Referências</h3>
@@ -518,5 +799,32 @@
   <p style="margin-top:4px; font-size:0.72rem;">Conteúdo de caráter educativo. Não substitui avaliação clínica individualizada.</p>
 </footer>
 
+<script>
+  const scores = {};
+
+  function checkQ(qId, correct, explanation) {
+    const selected = document.querySelector(`input[name="${qId}"]:checked`);
+    const fb = document.getElementById(`${qId}-fb`);
+    if (!selected) { fb.style.display='block'; fb.className='quiz-feedback wrong'; fb.textContent='Selecione uma alternativa antes de verificar.'; return; }
+    const isCorrect = selected.value === correct;
+    fb.style.display = 'block';
+    fb.className = 'quiz-feedback ' + (isCorrect ? 'correct' : 'wrong');
+    fb.innerHTML = (isCorrect ? '✅ <strong>Correto!</strong> ' : '❌ <strong>Não exatamente.</strong> ') + explanation;
+    // disable inputs after answer
+    document.querySelectorAll(`input[name="${qId}"]`).forEach(i => i.disabled = true);
+    document.querySelector(`#${qId} .quiz-btn`).disabled = true;
+    document.querySelector(`#${qId} .quiz-btn`).style.opacity = '0.4';
+    scores[qId] = isCorrect;
+    updateScore();
+  }
+
+  function updateScore() {
+    const total = Object.keys(scores).length;
+    const hits = Object.values(scores).filter(Boolean).length;
+    document.getElementById('score-display').textContent = `${hits} / ${total}`;
+    const msgs = ['Continue tentando!', 'Bom início!', 'Indo bem!', 'Muito bom!', 'Excelente!', 'Perfeito! 🎉', 'Nota máxima! 🏆'];
+    document.getElementById('score-msg').textContent = total === 6 ? msgs[hits] : `(${6 - total} questão(ões) ainda não respondida(s))`;
+  }
+</script>
 </body>
 </html>
