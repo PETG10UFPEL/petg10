@@ -1,0 +1,71 @@
+<svg viewBox="0 0 580 260" xmlns="http://www.w3.org/2000/svg" font-family="'Segoe UI', Arial, sans-serif">
+  <rect width="580" height="260" fill="#F8FAFC" rx="12"/>
+  <text x="290" y="26" font-size="13" font-weight="700" fill="#1B4E6B" text-anchor="middle">A lógica por trás da dose de pressão</text>
+
+  <!-- Arrow connector -->
+  <defs>
+    <marker id="arr" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#94A3B8"/>
+    </marker>
+  </defs>
+
+  <!-- Box 1: Venous disease -->
+  <rect x="15" y="45" width="115" height="90" rx="10" fill="#DBEAFE" stroke="#93C5FD" stroke-width="1.5"/>
+  <text x="72" y="68" font-size="22" text-anchor="middle">🫀</text>
+  <text x="72" y="86" font-size="9.5" font-weight="700" fill="#1E40AF" text-anchor="middle">Insuficiência</text>
+  <text x="72" y="99" font-size="9.5" font-weight="700" fill="#1E40AF" text-anchor="middle">Venosa Crônica</text>
+  <text x="72" y="116" font-size="8.5" fill="#3B82F6" text-anchor="middle">válvulas incompetentes</text>
+  <text x="72" y="128" font-size="8.5" fill="#3B82F6" text-anchor="middle">→ refluxo venoso</text>
+
+  <line x1="130" y1="90" x2="150" y2="90" stroke="#94A3B8" stroke-width="2" marker-end="url(#arr)"/>
+
+  <!-- Box 2: Venous hypertension -->
+  <rect x="152" y="45" width="115" height="90" rx="10" fill="#FEE2E2" stroke="#FCA5A5" stroke-width="1.5"/>
+  <text x="209" y="68" font-size="22" text-anchor="middle">📈</text>
+  <text x="209" y="86" font-size="9.5" font-weight="700" fill="#991B1B" text-anchor="middle">Hipertensão</text>
+  <text x="209" y="99" font-size="9.5" font-weight="700" fill="#991B1B" text-anchor="middle">Venosa</text>
+  <text x="209" y="116" font-size="8.5" fill="#DC2626" text-anchor="middle">pressão elevada</text>
+  <text x="209" y="128" font-size="8.5" fill="#DC2626" text-anchor="middle">nos capilares</text>
+
+  <line x1="267" y1="90" x2="287" y2="90" stroke="#94A3B8" stroke-width="2" marker-end="url(#arr)"/>
+
+  <!-- Box 3: Edema + lesion -->
+  <rect x="289" y="45" width="115" height="90" rx="10" fill="#FEF3C7" stroke="#FCD34D" stroke-width="1.5"/>
+  <text x="346" y="68" font-size="22" text-anchor="middle">🦵</text>
+  <text x="346" y="86" font-size="9.5" font-weight="700" fill="#92400E" text-anchor="middle">Edema +</text>
+  <text x="346" y="99" font-size="9.5" font-weight="700" fill="#92400E" text-anchor="middle">Lesão Tecidual</text>
+  <text x="346" y="116" font-size="8.5" fill="#B45309" text-anchor="middle">extravasamento</text>
+  <text x="346" y="128" font-size="8.5" fill="#B45309" text-anchor="middle">→ úlcera</text>
+
+  <line x1="404" y1="90" x2="424" y2="90" stroke="#94A3B8" stroke-width="2" marker-end="url(#arr)"/>
+
+  <!-- Box 4: Compression -->
+  <rect x="426" y="45" width="135" height="90" rx="10" fill="#DCFCE7" stroke="#86EFAC" stroke-width="1.5"/>
+  <text x="493" y="68" font-size="22" text-anchor="middle">🧦</text>
+  <text x="493" y="86" font-size="9.5" font-weight="700" fill="#166534" text-anchor="middle">Compressão</text>
+  <text x="493" y="99" font-size="9.5" font-weight="700" fill="#166534" text-anchor="middle">Graduada</text>
+  <text x="493" y="116" font-size="8.5" fill="#15803D" text-anchor="middle">contrabalança a</text>
+  <text x="493" y="128" font-size="8.5" fill="#15803D" text-anchor="middle">pressão venosa</text>
+
+  <!-- Why different pressures -->
+  <text x="290" y="168" font-size="12" font-weight="700" fill="#1B4E6B" text-anchor="middle">Por que a pressão prescrita varia de paciente para paciente?</text>
+
+  <!-- Three factor boxes -->
+  <rect x="15" y="182" width="168" height="65" rx="8" fill="#EFF6FF" stroke="#BFDBFE" stroke-width="1"/>
+  <text x="99" y="200" font-size="10" font-weight="700" fill="#1D4ED8" text-anchor="middle">🩺 Severidade clínica</text>
+  <text x="99" y="215" font-size="8.5" fill="#334155" text-anchor="middle">CEAP C3: 18–25 mmHg</text>
+  <text x="99" y="228" font-size="8.5" fill="#334155" text-anchor="middle">CEAP C5/C6: ≥40 mmHg</text>
+  <text x="99" y="241" font-size="8.5" fill="#64748B" text-anchor="middle">quanto maior o dano, mais pressão</text>
+
+  <rect x="203" y="182" width="168" height="65" rx="8" fill="#FFF7ED" stroke="#FED7AA" stroke-width="1"/>
+  <text x="287" y="200" font-size="10" font-weight="700" fill="#C2410C" text-anchor="middle">🫀 Status arterial (ABPI)</text>
+  <text x="287" y="215" font-size="8.5" fill="#334155" text-anchor="middle">ABPI &gt; 0.8: compressão plena</text>
+  <text x="287" y="228" font-size="8.5" fill="#334155" text-anchor="middle">ABPI 0.6–0.8: compressão reduzida</text>
+  <text x="287" y="241" font-size="8.5" fill="#64748B" text-anchor="middle">doença arterial limita a dose</text>
+
+  <rect x="391" y="182" width="168" height="65" rx="8" fill="#F0FDF4" stroke="#BBF7D0" stroke-width="1"/>
+  <text x="475" y="200" font-size="10" font-weight="700" fill="#15803D" text-anchor="middle">🙋 Tolerância / adesão</text>
+  <text x="475" y="215" font-size="8.5" fill="#334155" text-anchor="middle">Pressão ideal não usada =</text>
+  <text x="475" y="228" font-size="8.5" fill="#334155" text-anchor="middle">pior que pressão menor usada</text>
+  <text x="475" y="241" font-size="8.5" fill="#64748B" text-anchor="middle">adesão supera a classe perfeita</text>
+</svg>

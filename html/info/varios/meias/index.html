@@ -1,0 +1,522 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pressão em Meias de Compressão — Úlceras Venosas</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;800&family=Source+Sans+3:ital,wght@0,300;0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --navy: #1B4E6B;
+      --blue: #2D6FA3;
+      --sky: #5BA4D4;
+      --green: #0F5132;
+      --mint: #D1FAE5;
+      --cream: #FAFAF8;
+      --slate: #334155;
+      --muted: #64748B;
+      --border: #E2E8F0;
+      --warn: #C2410C;
+      --warn-bg: #FFF7ED;
+      --warn-border: #FED7AA;
+    }
+
+    body {
+      font-family: 'Source Sans 3', sans-serif;
+      background: var(--cream);
+      color: var(--slate);
+      line-height: 1.65;
+    }
+
+    /* ─── HEADER ─── */
+    .institutional-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 14px 36px;
+      background: #fff;
+      border-bottom: 1px solid var(--border);
+    }
+    .header-publication {
+      font-family: 'Playfair Display', serif;
+      font-size: 0.95rem;
+      color: var(--navy);
+      font-weight: 700;
+      letter-spacing: 0.03em;
+      opacity: 0.75;
+    }
+    .institutional-header img {
+      max-height: 52px;
+    }
+
+    /* ─── HERO ─── */
+    .hero {
+      background: linear-gradient(135deg, var(--navy) 0%, #1E6B8A 50%, #1A7A6E 100%);
+      color: #fff;
+      padding: 60px 40px 50px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .hero::before {
+      content: '';
+      position: absolute; inset: 0;
+      background: radial-gradient(ellipse at 80% 20%, rgba(255,255,255,0.06) 0%, transparent 60%);
+      pointer-events: none;
+    }
+    .hero-tag {
+      display: inline-block;
+      background: rgba(255,255,255,0.15);
+      border: 1px solid rgba(255,255,255,0.3);
+      border-radius: 30px;
+      font-size: 0.78rem;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      padding: 4px 16px;
+      margin-bottom: 20px;
+      color: #A7F3D0;
+    }
+    .hero h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.9rem, 4vw, 3rem);
+      font-weight: 800;
+      line-height: 1.2;
+      margin-bottom: 18px;
+      max-width: 780px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .hero h1 em {
+      font-style: normal;
+      color: #6EE7B7;
+    }
+    .hero-subtitle {
+      font-size: 1.05rem;
+      color: rgba(255,255,255,0.82);
+      max-width: 620px;
+      margin: 0 auto 28px;
+    }
+    .hero-stat-row {
+      display: flex;
+      justify-content: center;
+      gap: 28px;
+      flex-wrap: wrap;
+      margin-top: 32px;
+    }
+    .hero-stat {
+      background: rgba(255,255,255,0.12);
+      border: 1px solid rgba(255,255,255,0.22);
+      border-radius: 12px;
+      padding: 16px 24px;
+      text-align: center;
+      min-width: 155px;
+    }
+    .hero-stat .num {
+      font-family: 'Playfair Display', serif;
+      font-size: 2rem;
+      font-weight: 800;
+      color: #6EE7B7;
+      display: block;
+    }
+    .hero-stat .label {
+      font-size: 0.78rem;
+      color: rgba(255,255,255,0.75);
+      margin-top: 2px;
+    }
+
+    /* ─── MAIN ─── */
+    main { max-width: 980px; margin: 0 auto; padding: 0 24px 60px; }
+
+    section { margin-top: 56px; }
+    section + section { padding-top: 12px; }
+
+    .section-tag {
+      font-size: 0.7rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.14em;
+      color: var(--blue);
+      margin-bottom: 6px;
+    }
+    h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.35rem, 2.5vw, 1.85rem);
+      color: var(--navy);
+      font-weight: 700;
+      line-height: 1.25;
+      margin-bottom: 16px;
+    }
+    p { margin-bottom: 14px; font-size: 0.97rem; }
+    p:last-child { margin-bottom: 0; }
+
+    /* ─── PULL QUOTE ─── */
+    .pull-quote {
+      border-left: 4px solid var(--sky);
+      background: #EFF6FF;
+      border-radius: 0 10px 10px 0;
+      padding: 18px 24px;
+      margin: 24px 0;
+      font-size: 1.08rem;
+      font-weight: 600;
+      color: var(--navy);
+      line-height: 1.5;
+    }
+    .pull-quote cite {
+      display: block;
+      font-size: 0.8rem;
+      font-weight: 400;
+      color: var(--muted);
+      font-style: normal;
+      margin-top: 8px;
+    }
+
+    /* ─── CALLOUT ─── */
+    .callout {
+      background: var(--warn-bg);
+      border: 1px solid var(--warn-border);
+      border-radius: 10px;
+      padding: 16px 20px;
+      margin: 22px 0;
+      display: flex;
+      gap: 12px;
+      align-items: flex-start;
+    }
+    .callout .icon { font-size: 1.4rem; flex-shrink: 0; margin-top: 2px; }
+    .callout strong { color: var(--warn); }
+
+    /* ─── FIGURE ─── */
+    figure {
+      margin: 30px 0;
+      background: #fff;
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      overflow: hidden;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.05);
+    }
+    figure img, figure object, figure svg {
+      width: 100%;
+      display: block;
+    }
+    figcaption {
+      padding: 12px 18px;
+      font-size: 0.82rem;
+      color: var(--muted);
+      background: #F8FAFC;
+      border-top: 1px solid var(--border);
+      line-height: 1.5;
+    }
+    figcaption strong { color: var(--navy); }
+
+    /* ─── TWO COLUMNS ─── */
+    .two-col {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+      margin-top: 24px;
+    }
+    @media (max-width: 680px) { .two-col { grid-template-columns: 1fr; } }
+
+    /* ─── CARD ─── */
+    .card {
+      background: #fff;
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 22px 24px;
+      box-shadow: 0 1px 6px rgba(0,0,0,0.04);
+    }
+    .card h3 {
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--navy);
+      margin-bottom: 10px;
+    }
+    .card p, .card li { font-size: 0.9rem; color: var(--slate); }
+    .card ul { padding-left: 18px; }
+    .card li { margin-bottom: 5px; }
+
+    /* ─── HIGHLIGHT NUMBERS ─── */
+    .num-row {
+      display: flex;
+      gap: 18px;
+      margin: 28px 0;
+      flex-wrap: wrap;
+    }
+    .num-box {
+      flex: 1;
+      min-width: 130px;
+      background: #fff;
+      border: 1.5px solid var(--border);
+      border-radius: 12px;
+      padding: 16px 12px;
+      text-align: center;
+    }
+    .num-box .n {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.8rem;
+      font-weight: 800;
+      color: var(--navy);
+      line-height: 1;
+    }
+    .num-box .u { font-size: 0.75rem; color: var(--muted); margin-top: 4px; }
+
+    /* ─── SYNTHESIS ─── */
+    .synthesis {
+      background: linear-gradient(135deg, #F0F7FF 0%, #E8F5F0 100%);
+      border: 1px solid #C7E0F4;
+      border-radius: 16px;
+      padding: 32px 36px;
+    }
+    .synthesis h2 { margin-bottom: 20px; }
+    .synthesis ol { padding-left: 22px; }
+    .synthesis li {
+      margin-bottom: 12px;
+      font-size: 0.97rem;
+      line-height: 1.6;
+    }
+    .synthesis li::marker { color: var(--navy); font-weight: 700; }
+
+    /* ─── REFERENCES ─── */
+    .references {
+      margin-top: 48px;
+      padding: 24px 28px;
+      background: #F1F5F9;
+      border-radius: 12px;
+    }
+    .references h3 {
+      font-size: 0.85rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--navy);
+      margin-bottom: 12px;
+    }
+    .references ol { padding-left: 20px; }
+    .references li {
+      font-size: 0.8rem;
+      color: var(--muted);
+      margin-bottom: 5px;
+      line-height: 1.5;
+    }
+
+    /* ─── FOOTER ─── */
+    .institutional-footer {
+      border-top: 1px solid var(--border);
+      background: #fff;
+      padding: 20px 36px;
+      text-align: center;
+      font-size: 0.78rem;
+      color: var(--muted);
+      line-height: 1.6;
+    }
+  </style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header class="institutional-header">
+  <div class="header-publication">Infográfico Científico · Feridas Crônicas</div>
+  <img src="img/logo.png" alt="Logos Amor-à-Pele e PET-Saúde Digital – UFPel">
+</header>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-tag">Terapia de Compressão · Evidências 2024</div>
+  <h1>Por que as meias de compressão têm <em>pressões diferentes?</em></h1>
+  <p class="hero-subtitle">
+    A dose de pressão não é arbitrária — ela segue a fisiologia venosa, o dano tecidual e o status arterial de cada paciente com úlcera venosa.
+  </p>
+  <div class="hero-stat-row">
+    <div class="hero-stat">
+      <span class="num">40 mmHg</span>
+      <span class="label">pressão mínima recomendada<br>para cicatrização de úlcera</span>
+    </div>
+    <div class="hero-stat">
+      <span class="num">~1%</span>
+      <span class="label">dos adultos terão<br>úlcera venosa na vida</span>
+    </div>
+    <div class="hero-stat">
+      <span class="num">96%</span>
+      <span class="label">recorrência em 10 anos<br>com compressão insuficiente</span>
+    </div>
+    <div class="hero-stat">
+      <span class="num">24,5%</span>
+      <span class="label">recorrência com<br>compressão adequada</span>
+    </div>
+  </div>
+</div>
+
+<main>
+
+  <!-- SECTION 1: O problema -->
+  <section class="lead">
+    <div class="section-tag">O problema central</div>
+    <h2>Pressão "de meia" não é uma coisa só</h2>
+    <p>
+      Ao prescrever ou orientar o uso de meias de compressão para úlceras venosas, profissionais frequentemente se deparam com dois sistemas de classificação diferentes — o padrão britânico (BSI 6612) e o europeu/alemão (RAL-GZ 387) — que usam os mesmos nomes de "classe" para valores de pressão completamente distintos.
+    </p>
+    <p>
+      Isso gera confusão na prática: uma meia "Classe 2 britânica" entrega 18–24 mmHg, enquanto uma "Classe 2 europeia" entrega 23–32 mmHg. Prescrever sem especificar o padrão pode resultar em compressão insuficiente ou excessiva — com consequências clínicas reais.
+    </p>
+
+    <div class="callout">
+      <div class="icon">⚠️</div>
+      <div>
+        <strong>Atenção clínica:</strong> "Classe 2" não é universal. Sempre verifique o padrão adotado pelo fabricante (BSI ou RAL) antes de prescrever ou educar o paciente. A diferença pode chegar a 10 mmHg entre sistemas.
+      </div>
+    </div>
+
+    <figure>
+      <img src="img/tabela-classificacao.svg" alt="Tabela comparativa das classificações BSI britânica versus europeia RAL para meias de compressão" loading="lazy">
+      <figcaption><strong>Figura 1.</strong> Comparação entre padrões de classificação de meias de compressão. A mesma "classe" corresponde a valores de mmHg diferentes conforme o sistema adotado. Fonte: BSI 6612 e RAL-GZ 387.</figcaption>
+    </figure>
+  </section>
+
+  <!-- SECTION 2: Fisiopatologia -->
+  <section class="concept">
+    <div class="section-tag">Fisiopatologia</div>
+    <h2>A úlcera venosa é consequência de pressão — e precisa de pressão para curar</h2>
+    <p>
+      A insuficiência venosa crônica (IVC) ocorre quando as válvulas venosas perdem função, permitindo refluxo de sangue. Isso eleva a pressão hidrostática nos capilares do tornozelo — a chamada <strong>hipertensão venosa</strong>. O extravasamento de proteínas e células inflamatórias para o espaço intersticial compromete a nutrição tecidual, resultando em edema persistente, lipodermatoesclerose e, eventualmente, ulceração.
+    </p>
+    <p>
+      A compressão graduada age diretamente sobre esse mecanismo: ela aumenta a pressão tecidual extravascular, reduz o calibre das veias superficiais, melhora a função da bomba muscular da panturrilha e facilita o retorno venoso — revertendo a fisiopatologia central da úlcera.
+    </p>
+
+    <figure>
+      <img src="img/logica-pressao.png" alt="Diagrama mostrando cadeia fisiopatológica da úlcera venosa e como a compressão intervém" loading="lazy">
+      <figcaption><strong>Figura 2.</strong> Cadeia fisiopatológica da úlcera venosa e os três fatores que determinam a dose de pressão prescrita. Adaptado de Krizanova et al. (2024) e Wounds International (2023).</figcaption>
+    </figure>
+  </section>
+
+  <!-- SECTION 3: Gradiente -->
+  <section class="how">
+    <div class="section-tag">Mecanismo de ação</div>
+    <h2>O gradiente decrescente: mais pressão embaixo, menos em cima</h2>
+    <p>
+      A eficácia da meia de compressão depende não apenas do valor de pressão, mas da sua distribuição ao longo da perna. O princípio biomecânico é o <strong>gradiente decrescente</strong>: a pressão máxima é exercida no tornozelo (onde a pressão venosa hidrostática é maior) e diminui progressivamente em direção à coxa.
+    </p>
+    <p>
+      Esse gradiente cria um diferencial de pressão que "empurra" o sangue venoso de volta ao coração, mimetizando e potencializando o trabalho da bomba muscular. Uma meia sem esse gradiente — ou com gradiente invertido — pode agravar o retorno venoso em vez de facilitá-lo.
+    </p>
+
+    <div class="pull-quote">
+      A pressão efetiva no tornozelo de pelo menos 40 mmHg é o patamar aceito para otimizar a cicatrização de úlceras venosas ativas.
+      <cite>National Wound Care Strategy Programme, 2023; O'Meara et al., 2012 (Cochrane Review)</cite>
+    </div>
+
+    <figure>
+      <img src="img/gradiente-pressao.png" alt="Ilustração do gradiente de pressão decrescente em meia de compressão na perna" loading="lazy">
+      <figcaption><strong>Figura 3.</strong> Representação do gradiente terapêutico de pressão: máximo no tornozelo (40–50 mmHg) e decrescente em direção à coxa (~18 mmHg). O diferencial de pressão facilita o retorno venoso e reduz a hipertensão capilar.</figcaption>
+    </figure>
+  </section>
+
+  <!-- SECTION 4: Evidência -->
+  <section class="implications">
+    <div class="section-tag">Evidência clínica</div>
+    <h2>Mais pressão, menos recorrência — mas com limites</h2>
+    <p>
+      Um estudo prospectivo randomizado de Milic et al. (2023), com 477 pacientes e seguimento de 10 anos, demonstrou de forma contundente a relação dose-resposta entre pressão de compressão e recorrência de úlcera venosa.
+    </p>
+
+    <figure>
+      <img src="img/grafico-recorrencia.svg" alt="Gráfico de barras mostrando taxas de recorrência de úlcera venosa em 10 anos por faixa de compressão" loading="lazy">
+      <figcaption><strong>Figura 4.</strong> Taxa de recorrência de úlcera venosa em 10 anos por faixa de compressão. A compressão forte (35–50 mmHg) reduziu a recorrência de 96% para 24,5%. Fonte: Milic et al., Phlebology 2023.</figcaption>
+    </figure>
+
+    <div class="two-col">
+      <div class="card">
+        <h3>🎯 Compressão para cicatrização</h3>
+        <ul>
+          <li>Úlcera ativa (CEAP C6): ≥ 40 mmHg no tornozelo</li>
+          <li>Sistemas multicamadas ou meia classe 3 RAL (34–46 mmHg) são preferidos</li>
+          <li>Pressão acima de 45 mmHg associada a maior proporção de cicatrização em 24 semanas</li>
+          <li>Compressão multicamadas e meia única de alta compressão têm eficácia clínica similar</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h3>🔄 Compressão para prevenção de recorrência</h3>
+        <ul>
+          <li>Úlcera cicatrizada (CEAP C5): meia classe 2 ou 3</li>
+          <li>Revisão Cochrane (2024): evidência ainda incerta sobre a classe ideal</li>
+          <li>Adesão ao uso diário supera a diferença entre classes em termos de resultado</li>
+          <li>Paciente não-aderente tem risco de recorrência significativamente maior (p ≤ 0,0001)</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTION 5: Limites -->
+  <section>
+    <div class="section-tag">Quando a pressão é contraindicada</div>
+    <h2>Alta pressão pode ser perigosa sem avaliação arterial</h2>
+    <p>
+      A doença arterial periférica coexiste em uma parcela dos pacientes com úlceras venosas. Aplicar compressão forte em um membro com fluxo arterial comprometido pode causar isquemia tecidual e agravar — ou mesmo criar — uma lesão.
+    </p>
+
+    <div class="num-row">
+      <div class="num-box">
+        <div class="n">&gt; 0,8</div>
+        <div class="u">ABPI — compressão<br>plena indicada</div>
+      </div>
+      <div class="num-box">
+        <div class="n">0,6–0,8</div>
+        <div class="u">ABPI — compressão<br>reduzida (com cautela)</div>
+      </div>
+      <div class="num-box">
+        <div class="n">&lt; 0,6</div>
+        <div class="u">ABPI — compressão<br><strong>contraindicada</strong></div>
+      </div>
+      <div class="num-box">
+        <div class="n">Doppler</div>
+        <div class="u">obrigatório antes de<br>prescrever classe 3 ou 4</div>
+      </div>
+    </div>
+
+    <p>
+      A avaliação com Doppler portátil para obter o <strong>índice tornozelo-braquial (ABPI)</strong> é um passo inegociável antes de prescrever compressão de alta pressão. Sem esse dado, o profissional não tem como distinguir uma úlcera puramente venosa de uma úlcera mista — que exige abordagem completamente diferente.
+    </p>
+  </section>
+
+  <!-- SECTION 6: Síntese -->
+  <section class="synthesis">
+    <div class="section-tag">O que fica na cabeça</div>
+    <h2>Cinco pontos para a prática clínica</h2>
+    <ol>
+      <li><strong>A pressão certa depende do estágio clínico</strong> (classificação CEAP): úlcera ativa exige ≥ 40 mmHg; prevenção de recorrência pode ser feita com 23–32 mmHg (RAL Classe 2).</li>
+      <li><strong>"Classe 2" não é universal</strong>: sempre especifique se o padrão é britânico (BSI, menor pressão) ou europeu/alemão (RAL, maior pressão) ao prescrever ou orientar o paciente.</li>
+      <li><strong>O gradiente é tão importante quanto o valor absoluto</strong>: a pressão máxima deve estar no tornozelo, decrescendo em direção à coxa — isso é o que move o sangue venoso de volta.</li>
+      <li><strong>Faça o Doppler antes da classe alta</strong>: ABPI &lt; 0,6 contraindica compressão; entre 0,6 e 0,8, reduza a pressão e monitore.</li>
+      <li><strong>Adesão supera perfeição de classe</strong>: um paciente que usa diariamente uma meia de pressão moderada tem melhores desfechos do que aquele que não tolera a meia de alta pressão e a abandona.</li>
+    </ol>
+  </section>
+
+  <!-- REFERENCES -->
+  <div class="references">
+    <h3>Referências</h3>
+    <ol>
+      <li>Krizanova K et al. Chronic venous insufficiency and venous leg ulcers: Aetiology, on the pathophysiology-based treatment. <em>Int Wound J.</em> 2024; 21:e14405.</li>
+      <li>de Moraes Silva MA et al. Compression for preventing recurrence of venous ulcers. <em>Cochrane Database Syst Rev.</em> 2024, Issue 3: CD002303.</li>
+      <li>Milic D et al. The influence of different sub-bandage pressure values in the prevention of recurrence of venous ulceration — a ten-year follow-up. <em>Phlebology.</em> 2023; 38: 458-465.</li>
+      <li>O'Meara S et al. Compression for venous leg ulcers. <em>Cochrane Database Syst Rev.</em> 2012; 11: CD000265.</li>
+      <li>National Wound Care Strategy Programme. Recommendations for Leg Ulcers. 2023. NHS England.</li>
+      <li>Wounds International. Compression Therapy — Clinical Guidelines. 2023. woundsinternational.com</li>
+      <li>Clarke-Moloney M et al. Randomised controlled trial comparing European standard class 1 to class 2 compression stockings for ulcer recurrence and patient compliance. <em>Int Wound J.</em> 2014; 11: 404-8.</li>
+      <li>BSI 6612:2018 — Specification for graduated compression hosiery. British Standards Institution.</li>
+      <li>RAL-GZ 387:2008 — Medical compression hosiery. RAL Deutsches Institut für Gütesicherung und Kennzeichnung.</li>
+    </ol>
+  </div>
+
+</main>
+
+<!-- FOOTER -->
+<footer class="institutional-footer">
+  <p>Infográfico elaborado pelos projetos Amor à Pele e PET-Saúde Digital G10 Feridas Crônicas, UFPel, em Junho de 2026.</p>
+  <p style="margin-top:4px; font-size:0.72rem;">Conteúdo de caráter educativo. Não substitui avaliação clínica individualizada.</p>
+</footer>
+
+</body>
+</html>

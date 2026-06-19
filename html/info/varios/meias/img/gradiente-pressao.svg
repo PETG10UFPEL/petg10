@@ -1,0 +1,100 @@
+<svg viewBox="0 0 560 320" xmlns="http://www.w3.org/2000/svg" font-family="'Segoe UI', Arial, sans-serif">
+  <!-- Background -->
+  <rect width="560" height="320" fill="#F0F7FF" rx="12"/>
+
+  <!-- Title -->
+  <text x="280" y="30" font-size="14" font-weight="700" fill="#1B4E6B" text-anchor="middle">Gradiente de Pressão Terapêutica na Perna</text>
+
+  <!-- Leg silhouette -->
+  <path d="M 160 290 C 145 290 130 260 128 200 C 126 155 130 110 140 80 C 148 58 162 52 175 52 C 188 52 202 58 210 80 C 220 110 224 155 222 200 C 220 260 205 290 190 290 Z" fill="#F4C7A8" stroke="#D4956A" stroke-width="1.5"/>
+  <!-- Knee hint -->
+  <ellipse cx="175" cy="175" rx="36" ry="22" fill="#F0B898" opacity="0.6"/>
+
+  <!-- Stocking overlay with gradient colors -->
+  <!-- High pressure zone (ankle) -->
+  <path d="M 140 265 C 138 258 136 248 135 238 C 147 242 203 242 215 238 C 214 248 212 258 210 265 Z" fill="#1B4E6B" opacity="0.75" rx="4"/>
+  <!-- Mid-lower leg -->
+  <path d="M 135 238 C 133 218 131 198 130 178 C 143 183 207 183 220 178 C 219 198 217 218 215 238 Z" fill="#2D6FA3" opacity="0.68"/>
+  <!-- Mid leg -->
+  <path d="M 130 178 C 129 155 130 135 132 115 C 146 120 204 120 218 115 C 220 135 221 155 220 178 Z" fill="#3A8BC2" opacity="0.60"/>
+  <!-- Upper leg / knee -->
+  <path d="M 132 115 C 135 98 140 82 148 70 C 160 60 190 60 202 70 C 210 82 215 98 218 115 Z" fill="#5BA4D4" opacity="0.50"/>
+
+  <!-- Pressure arrows (left side) -->
+  <!-- Ankle arrow (biggest) -->
+  <line x1="110" y1="252" x2="137" y2="252" stroke="#1B4E6B" stroke-width="3" marker-end="url(#arrowBlue)"/>
+  <text x="108" y="248" font-size="12" font-weight="700" fill="#1B4E6B" text-anchor="end">40–50 mmHg</text>
+  <text x="108" y="260" font-size="9" fill="#4A6B80" text-anchor="end">tornozelo</text>
+
+  <!-- Lower leg -->
+  <line x1="110" y1="210" x2="133" y2="210" stroke="#2D6FA3" stroke-width="2.5" marker-end="url(#arrowBlue2)"/>
+  <text x="108" y="206" font-size="11" font-weight="700" fill="#2D6FA3" text-anchor="end">35–40 mmHg</text>
+  <text x="108" y="218" font-size="9" fill="#4A6B80" text-anchor="end">perna inferior</text>
+
+  <!-- Mid leg -->
+  <line x1="110" y1="155" x2="131" y2="155" stroke="#3A8BC2" stroke-width="2" marker-end="url(#arrowBlue3)"/>
+  <text x="108" y="151" font-size="10" font-weight="700" fill="#3A8BC2" text-anchor="end">25–30 mmHg</text>
+  <text x="108" y="163" font-size="9" fill="#4A6B80" text-anchor="end">panturrilha</text>
+
+  <!-- Upper leg -->
+  <line x1="110" y1="95" x2="138" y2="95" stroke="#5BA4D4" stroke-width="1.5" marker-end="url(#arrowBlue4)"/>
+  <text x="108" y="91" font-size="10" font-weight="700" fill="#5BA4D4" text-anchor="end">~18 mmHg</text>
+  <text x="108" y="103" font-size="9" fill="#4A6B80" text-anchor="end">coxa</text>
+
+  <!-- Right side: Blood flow arrow upward -->
+  <defs>
+    <marker id="arrowBlue" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
+      <path d="M0,0 L8,3 L0,6 Z" fill="#1B4E6B"/>
+    </marker>
+    <marker id="arrowBlue2" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
+      <path d="M0,0 L8,3 L0,6 Z" fill="#2D6FA3"/>
+    </marker>
+    <marker id="arrowBlue3" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
+      <path d="M0,0 L8,3 L0,6 Z" fill="#3A8BC2"/>
+    </marker>
+    <marker id="arrowBlue4" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
+      <path d="M0,0 L8,3 L0,6 Z" fill="#5BA4D4"/>
+    </marker>
+    <marker id="arrowUp" markerWidth="8" markerHeight="8" refX="3" refY="0" orient="auto">
+      <path d="M0,8 L3,0 L6,8 Z" fill="#0F5132"/>
+    </marker>
+  </defs>
+
+  <!-- Venous return arrow -->
+  <line x1="240" y1="280" x2="240" y2="68" stroke="#0F5132" stroke-width="3" stroke-dasharray="5,3" marker-end="url(#arrowUp)"/>
+  <text x="258" y="185" font-size="10" fill="#0F5132" font-weight="600" transform="rotate(-90,258,185)">Retorno venoso facilitado ↑</text>
+
+  <!-- Pressure bar / legend -->
+  <rect x="310" y="60" width="22" height="220" rx="4" fill="url(#pressGrad)"/>
+  <defs>
+    <linearGradient id="pressGrad" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#5BA4D4"/>
+      <stop offset="50%" stop-color="#2D6FA3"/>
+      <stop offset="100%" stop-color="#1B4E6B"/>
+    </linearGradient>
+  </defs>
+  <text x="336" y="73" font-size="9" fill="#5BA4D4" font-weight="600">menor</text>
+  <text x="336" y="178" font-size="9" fill="#2D6FA3" font-weight="600">gradual</text>
+  <text x="336" y="285" font-size="9" fill="#1B4E6B" font-weight="600">maior</text>
+  <text x="322" y="300" font-size="10" font-weight="700" fill="#1B4E6B" text-anchor="middle">PRESSÃO</text>
+
+  <!-- Explanation box -->
+  <rect x="370" y="60" width="175" height="220" rx="10" fill="#FFFFFF" stroke="#CBD5E1" stroke-width="1"/>
+  <text x="457" y="82" font-size="11" font-weight="700" fill="#1B4E6B" text-anchor="middle">Como funciona</text>
+  <line x1="385" y1="88" x2="530" y2="88" stroke="#E2E8F0" stroke-width="1"/>
+
+  <text x="380" y="106" font-size="9.5" fill="#334155">🔵 Pressão <tspan font-weight="700">máxima</tspan> no</text>
+  <text x="380" y="119" font-size="9.5" fill="#334155">tornozelo impede refluxo</text>
+
+  <text x="380" y="140" font-size="9.5" fill="#334155">📐 Gradiente <tspan font-weight="700">decrescente</tspan></text>
+  <text x="380" y="153" font-size="9.5" fill="#334155">para cima "empurra" o</text>
+  <text x="380" y="166" font-size="9.5" fill="#334155">sangue venoso de volta</text>
+
+  <text x="380" y="187" font-size="9.5" fill="#334155">🩸 Reduz a <tspan font-weight="700">hipertensão</tspan></text>
+  <text x="380" y="200" font-size="9.5" fill="#334155">venosa responsável</text>
+  <text x="380" y="213" font-size="9.5" fill="#334155">pela úlcera</text>
+
+  <text x="380" y="234" font-size="9.5" fill="#334155">💊 Pressão muito baixa</text>
+  <text x="380" y="247" font-size="9.5" fill="#334155">= ineficaz; muito alta</text>
+  <text x="380" y="260" font-size="9.5" fill="#334155">= risco isquêmico</text>
+</svg>

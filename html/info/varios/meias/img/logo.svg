@@ -1,0 +1,20 @@
+<svg viewBox="0 0 420 60" xmlns="http://www.w3.org/2000/svg" font-family="'Segoe UI', Arial, sans-serif">
+  <!-- Amor à Pele badge -->
+  <rect x="0" y="4" width="190" height="52" rx="8" fill="#1B4E6B"/>
+  <circle cx="28" cy="30" r="14" fill="#E8F4FD" opacity="0.2"/>
+  <text x="28" y="35" font-size="18" text-anchor="middle" fill="#FFFFFF">🩹</text>
+  <text x="100" y="23" font-size="11" font-weight="700" fill="#FFFFFF" text-anchor="middle" letter-spacing="0.5">AMOR À PELE</text>
+  <text x="100" y="37" font-size="8.5" fill="#B8D9EF" text-anchor="middle">Feridas Crônicas · UFPel</text>
+  <text x="100" y="50" font-size="7.5" fill="#7FB8D8" text-anchor="middle">FE – Universidade Federal de Pelotas</text>
+
+  <!-- Divider -->
+  <rect x="196" y="10" width="1.5" height="40" fill="#CBD5E1" rx="1"/>
+
+  <!-- PET-Saúde Digital badge -->
+  <rect x="203" y="4" width="217" height="52" rx="8" fill="#0F5132"/>
+  <circle cx="226" cy="30" r="14" fill="#D1FAE5" opacity="0.2"/>
+  <text x="226" y="35" font-size="18" text-anchor="middle" fill="#FFFFFF">🌿</text>
+  <text x="312" y="21" font-size="10" font-weight="700" fill="#FFFFFF" text-anchor="middle" letter-spacing="0.4">PET-SAÚDE DIGITAL</text>
+  <text x="312" y="34" font-size="8" fill="#A7F3D0" text-anchor="middle">Informação e Saúde Digital</text>
+  <text x="312" y="46" font-size="7.5" fill="#6EE7B7" text-anchor="middle">Telemonitoramento · UFPel</text>
+</svg>
