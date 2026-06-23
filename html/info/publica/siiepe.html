@@ -1083,9 +1083,19 @@ conclusão: a vivência em serviço aproxima a universidade das necessidades rea
       const status = btn.dataset.status;
       row.querySelectorAll('.status-btn').forEach(b => b.className='status-btn');
       btn.classList.add('active-'+status);
-      await sbFetch('/rest/v1/pub_status?pub_id=eq.'+id, 'DELETE');
-      await sbFetch('/rest/v1/pub_status', 'POST', {pub_id: id, status});
-      updateSummary();
+      const opts = {
+        method: 'POST',
+        headers: {
+          'apikey': SB_KEY,
+          'Authorization': 'Bearer '+SB_KEY,
+          'Content-Type': 'application/json',
+          'Prefer': 'resolution=merge-duplicates'
+        },
+        body: JSON.stringify({pub_id: id, status})
+      };
+      await fetch(SB_URL+'/rest/v1/pub_status', opts);
+      const data = await sbFetch('/rest/v1/pub_status?select=*');
+      updateSummary(data);
     }
 
     function applyStatusToCard(pubId, status){
