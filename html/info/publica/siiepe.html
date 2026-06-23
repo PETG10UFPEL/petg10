@@ -217,14 +217,14 @@
 
     <section class="panel" style="margin-top:14px">
       <h2 style="margin:8px 0 6px;font-size:1rem">Painel de status · clique para atualizar</h2>
-      <p style="margin:0 0 10px;color:var(--muted);font-size:.88rem">O status é salvo no seu navegador. Compartilhe o arquivo atualizado com o grupo para sincronizar.</p>
-      <div class="status-legend">
+            <div class="status-legend">
         <span><span class="status-dot dot-nao"></span> Não iniciado</span>
         <span><span class="status-dot dot-andamento"></span> Em andamento</span>
         <span><span class="status-dot dot-revisao"></span> Em revisão</span>
         <span><span class="status-dot dot-enviado"></span> Enviado</span>
       </div>
       <div id="status-summary" style="margin-top:10px;font-size:.85rem;color:var(--muted)"></div>
+      <p style="margin:6px 0 0;color:var(--muted);font-size:.8rem">Os comentários são em tempo real para todos. O status de cada artigo fica registrado localmente no seu navegador.</p>
     </section>
 
     <section class="panel">
@@ -1075,51 +1075,44 @@ conclusão: a vivência em serviço aproxima a universidade das necessidades rea
     applyFilters();
 
     // ── STATUS LOGIC ──
-    const STATUS_KEY = 'g10_siiepe_status';
-    function loadStatus(){
-      try{ return JSON.parse(localStorage.getItem(STATUS_KEY)||'{}'); }catch(e){ return {}; }
-    }
-    function saveStatus(d){ localStorage.setItem(STATUS_KEY, JSON.stringify(d)); }
-
-    function setStatus(btn){
+    // ── STATUS VIA SUPABASE (tempo real) ──
+    async function setStatus(btn){
       const row = btn.closest('.status-row');
       const card = btn.closest('.pub-card');
-      const id = card.dataset.pubId;
+      const id = parseInt(card.dataset.pubId);
       const status = btn.dataset.status;
-      row.querySelectorAll('.status-btn').forEach(b => {
-        b.className = 'status-btn';
-      });
+      row.querySelectorAll('.status-btn').forEach(b => b.className='status-btn');
       btn.classList.add('active-'+status);
-      const d = loadStatus(); d[id] = status; saveStatus(d);
+      await sbFetch('/rest/v1/pub_status?pub_id=eq.'+id, 'DELETE');
+      await sbFetch('/rest/v1/pub_status', 'POST', {pub_id: id, status});
       updateSummary();
     }
 
-    function restoreStatuses(){
-      const d = loadStatus();
-      document.querySelectorAll('.pub-card').forEach(card => {
-        const id = card.dataset.pubId;
-        if(d[id]){
-          const btn = card.querySelector(`.status-btn[data-status="${d[id]}"]`);
-          if(btn){ btn.className='status-btn active-'+d[id]; }
-        }
-      });
+    function applyStatusToCard(pubId, status){
+      const card = document.querySelector('.pub-card[data-pub-id="'+pubId+'"]');
+      if(!card) return;
+      card.querySelectorAll('.status-btn').forEach(b => b.className='status-btn');
+      const btn = card.querySelector('.status-btn[data-status="'+status+'"]');
+      if(btn) btn.classList.add('active-'+status);
     }
 
-    function updateSummary(){
-      const d = loadStatus();
-      const counts = {nao:0,andamento:0,revisao:0,enviado:0,sem:0};
-      document.querySelectorAll('.pub-card').forEach(card => {
-        const s = d[card.dataset.pubId];
-        if(s && counts[s]!==undefined) counts[s]++;
-        else counts.sem++;
-      });
-      const total = 11;
+    async function restoreStatuses(){
+      const data = await sbFetch('/rest/v1/pub_status?select=*');
+      if(!Array.isArray(data)) return;
+      data.forEach(row => applyStatusToCard(row.pub_id, row.status));
+      updateSummary(data);
+    }
+
+    function updateSummary(data){
+      if(!data) return;
+      const counts = {nao:0,andamento:0,revisao:0,enviado:0};
+      data.forEach(r => { if(counts[r.status]!==undefined) counts[r.status]++; });
+      const sem = 11 - data.length;
       const el = document.getElementById('status-summary');
-      el.innerHTML = `<strong>${counts.enviado}</strong> enviados · <strong>${counts.revisao}</strong> em revisão · <strong>${counts.andamento}</strong> em andamento · <strong>${counts.nao+counts.sem}</strong> não iniciados — de ${total} publicações`;
+      el.innerHTML = '<strong>'+counts.enviado+'</strong> enviados · <strong>'+counts.revisao+'</strong> em revisão · <strong>'+counts.andamento+'</strong> em andamento · <strong>'+(counts.nao+sem)+'</strong> não iniciados — de 11 publicações';
     }
 
     restoreStatuses();
-    updateSummary();
 
     // ── COMENTÁRIOS VIA SUPABASE (tempo real) ──
     const SB_URL = 'https://oqrvxefxfiieausrguvl.supabase.co';
@@ -1194,7 +1187,7 @@ conclusão: a vivência em serviço aproxima a universidade das necessidades rea
     loadAllComments();
 
     // Atualiza automaticamente a cada 30 segundos
-    setInterval(loadAllComments, 30000);
+    setInterval(()=>{ loadAllComments(); restoreStatuses(); }, 30000);
   </script>
 </body>
 </html>
