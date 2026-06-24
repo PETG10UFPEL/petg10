@@ -182,30 +182,55 @@
     <section style="margin-top:14px">
       <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:8px;gap:12px;flex-wrap:wrap">
         <h2 style="margin:0;font-size:1rem;font-weight:700;color:var(--blue2)">🗺️ Mapa de autores e artigos</h2>
-        <span style="font-size:.78rem;color:var(--muted)">Clique na figura para ampliar</span>
+        <span style="font-size:.78rem;color:var(--muted)">Toque na figura para ampliar</span>
       </div>
-      <div style="cursor:zoom-in;display:inline-block;border:1px solid var(--border);border-radius:10px;overflow:hidden;box-shadow:var(--shadow);transition:box-shadow .2s;max-width:340px;width:100%"
-           onclick="document.getElementById('mapa-lightbox').style.display='flex'"
+      <div style="cursor:zoom-in;display:inline-block;border:1px solid var(--border);border-radius:10px;overflow:hidden;box-shadow:var(--shadow);transition:box-shadow .2s;max-width:320px;width:100%"
+           onclick="abrirMapa()"
            onmouseover="this.style.boxShadow='0 4px 18px rgba(0,0,0,.18)'"
            onmouseout="this.style.boxShadow='var(--shadow)'">
-        <img src="img/mapa-siiepe-g10.svg" alt="Mapa de autores e artigos SIIEPE G10 UFPel"
-             style="width:100%;display:block;pointer-events:none">
+        <object data="img/mapa-siiepe-g10.svg" type="image/svg+xml"
+                style="width:100%;display:block;pointer-events:none;min-height:160px"
+                aria-label="Mapa de autores e artigos SIIEPE G10 UFPel"></object>
       </div>
     </section>
 
     <!-- LIGHTBOX -->
     <div id="mapa-lightbox"
-         style="display:none;position:fixed;inset:0;z-index:9999;background:rgba(0,0,0,.82);align-items:center;justify-content:center;padding:20px"
-         onclick="this.style.display='none'">
-      <div style="position:relative;max-width:min(960px,95vw);width:100%" onclick="event.stopPropagation()">
-        <img src="img/mapa-siiepe-g10.svg" alt="Mapa de autores e artigos SIIEPE G10 UFPel — tamanho completo"
-             style="width:100%;border-radius:12px;box-shadow:0 8px 40px rgba(0,0,0,.5);display:block">
+         style="display:none;position:fixed;inset:0;z-index:9999;background:#111;overflow-y:auto;-webkit-overflow-scrolling:touch"
+         onclick="fecharMapa(event)">
+      <div style="min-height:100%;display:flex;flex-direction:column;align-items:center;justify-content:flex-start;padding:48px 12px 24px">
         <button onclick="document.getElementById('mapa-lightbox').style.display='none'"
-                style="position:absolute;top:-14px;right:-14px;width:36px;height:36px;border-radius:50%;border:none;background:#fff;font-size:1.1rem;cursor:pointer;box-shadow:0 2px 8px rgba(0,0,0,.25);display:flex;align-items:center;justify-content:center;line-height:1"
+                style="position:fixed;top:12px;right:12px;width:40px;height:40px;border-radius:50%;border:none;background:#fff;font-size:1.2rem;cursor:pointer;box-shadow:0 2px 10px rgba(0,0,0,.4);display:flex;align-items:center;justify-content:center;z-index:10000;line-height:1"
                 aria-label="Fechar">✕</button>
-        <p style="text-align:center;color:rgba(255,255,255,.6);font-size:.75rem;margin-top:10px">Clique fora da imagem ou no ✕ para fechar</p>
+        <div style="width:100%;max-width:700px;background:#fff;border-radius:14px;overflow:hidden;box-shadow:0 8px 40px rgba(0,0,0,.6)" onclick="event.stopPropagation()">
+          <object data="img/mapa-siiepe-g10.svg" type="image/svg+xml"
+                  style="width:100%;display:block;min-height:500px"
+                  aria-label="Mapa de autores e artigos SIIEPE G10 UFPel — tamanho completo"></object>
+        </div>
+        <p style="color:rgba(255,255,255,.5);font-size:.75rem;margin-top:14px;text-align:center">Toque fora da imagem ou no ✕ para fechar</p>
       </div>
     </div>
+
+    <script>
+    function abrirMapa(){
+      var lb=document.getElementById('mapa-lightbox');
+      lb.style.display='block';
+      lb.scrollTop=0;
+      document.body.style.overflow='hidden';
+    }
+    function fecharMapa(e){
+      if(e.target===document.getElementById('mapa-lightbox')){
+        document.getElementById('mapa-lightbox').style.display='none';
+        document.body.style.overflow='';
+      }
+    }
+    document.addEventListener('keydown',function(e){
+      if(e.key==='Escape'){
+        document.getElementById('mapa-lightbox').style.display='none';
+        document.body.style.overflow='';
+      }
+    });
+    </script>
 
     <!-- PAINEL DE CRONOGRAMA -->
     <section class="crono" aria-label="Cronograma de entregas">
