@@ -184,30 +184,28 @@
         <h2 style="margin:0;font-size:1rem;font-weight:700;color:var(--blue2)">🗺️ Mapa de autores e artigos</h2>
         <span style="font-size:.78rem;color:var(--muted)">Toque na figura para ampliar</span>
       </div>
-      <div style="cursor:zoom-in;display:inline-block;border:1px solid var(--border);border-radius:10px;overflow:hidden;box-shadow:var(--shadow);transition:box-shadow .2s;max-width:320px;width:100%"
+      <div style="cursor:zoom-in;display:inline-block;border:1px solid var(--border);border-radius:10px;overflow:hidden;box-shadow:var(--shadow);transition:box-shadow .2s;max-width:320px;width:100%;background:#fff"
            onclick="abrirMapa()"
            onmouseover="this.style.boxShadow='0 4px 18px rgba(0,0,0,.18)'"
            onmouseout="this.style.boxShadow='var(--shadow)'">
-        <object data="img/mapa-siiepe-g10.svg" type="image/svg+xml"
-                style="width:100%;display:block;pointer-events:none;min-height:160px"
-                aria-label="Mapa de autores e artigos SIIEPE G10 UFPel"></object>
+        <img src="img/mapa-siiepe-g10.svg" alt="Mapa de autores e artigos SIIEPE G10 UFPel"
+             style="width:100%;display:block;pointer-events:none">
       </div>
     </section>
 
     <!-- LIGHTBOX -->
     <div id="mapa-lightbox"
-         style="display:none;position:fixed;inset:0;z-index:9999;background:#111;overflow-y:auto;-webkit-overflow-scrolling:touch"
+         style="display:none;position:fixed;inset:0;z-index:9999;background:rgba(0,0,0,.88);overflow-y:auto;-webkit-overflow-scrolling:touch"
          onclick="fecharMapa(event)">
-      <div style="min-height:100%;display:flex;flex-direction:column;align-items:center;justify-content:flex-start;padding:48px 12px 24px">
-        <button onclick="document.getElementById('mapa-lightbox').style.display='none'"
-                style="position:fixed;top:12px;right:12px;width:40px;height:40px;border-radius:50%;border:none;background:#fff;font-size:1.2rem;cursor:pointer;box-shadow:0 2px 10px rgba(0,0,0,.4);display:flex;align-items:center;justify-content:center;z-index:10000;line-height:1"
+      <div style="min-height:100%;display:flex;flex-direction:column;align-items:center;justify-content:flex-start;padding:52px 12px 32px">
+        <button onclick="document.getElementById('mapa-lightbox').style.display='none';document.body.style.overflow=''"
+                style="position:fixed;top:10px;right:10px;width:40px;height:40px;border-radius:50%;border:2px solid #fff;background:#222;color:#fff;font-size:1.1rem;cursor:pointer;box-shadow:0 2px 10px rgba(0,0,0,.5);display:flex;align-items:center;justify-content:center;z-index:10000;line-height:1"
                 aria-label="Fechar">✕</button>
-        <div style="width:100%;max-width:700px;background:#fff;border-radius:14px;overflow:hidden;box-shadow:0 8px 40px rgba(0,0,0,.6)" onclick="event.stopPropagation()">
-          <object data="img/mapa-siiepe-g10.svg" type="image/svg+xml"
-                  style="width:100%;display:block;min-height:500px"
-                  aria-label="Mapa de autores e artigos SIIEPE G10 UFPel — tamanho completo"></object>
+        <div style="width:100%;max-width:720px;background:#fff;border-radius:14px;overflow:hidden;box-shadow:0 8px 40px rgba(0,0,0,.6)" onclick="event.stopPropagation()">
+          <img src="img/mapa-siiepe-g10.svg" alt="Mapa de autores e artigos SIIEPE G10 UFPel — tamanho completo"
+               style="width:100%;display:block">
         </div>
-        <p style="color:rgba(255,255,255,.5);font-size:.75rem;margin-top:14px;text-align:center">Toque fora da imagem ou no ✕ para fechar</p>
+        <p style="color:rgba(255,255,255,.45);font-size:.75rem;margin-top:12px;text-align:center">Toque fora da imagem ou no ✕ para fechar</p>
       </div>
     </div>
 
@@ -219,9 +217,11 @@
       document.body.style.overflow='hidden';
     }
     function fecharMapa(e){
-      if(e.target===document.getElementById('mapa-lightbox')){
-        document.getElementById('mapa-lightbox').style.display='none';
-        document.body.style.overflow='';
+      if(e.target===document.getElementById('mapa-lightbox')||e.target.closest('#mapa-lightbox')===document.getElementById('mapa-lightbox')){
+        if(!e.target.closest('div[onclick]')||e.target===document.getElementById('mapa-lightbox')){
+          document.getElementById('mapa-lightbox').style.display='none';
+          document.body.style.overflow='';
+        }
       }
     }
     document.addEventListener('keydown',function(e){
