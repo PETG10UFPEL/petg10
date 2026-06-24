@@ -280,6 +280,13 @@
         <span><span class="status-dot dot-enviado"></span> Enviado</span>
       </div>
       <div id="status-summary" style="margin-top:10px;font-size:.85rem;color:var(--muted)"></div>
+      <div style="margin-top:10px;display:flex;gap:8px;flex-wrap:wrap" id="status-filter-btns">
+        <button onclick="filtrarStatus('')"    id="sf-todos"     class="sf-btn sf-ativo"     style="padding:5px 14px;border-radius:999px;border:1px solid #ccc;background:#f1f5f9;font-size:.8rem;cursor:pointer;font-weight:700">Todos</button>
+        <button onclick="filtrarStatus('nao')"       id="sf-nao"       class="sf-btn" style="padding:5px 14px;border-radius:999px;border:1px solid #fca5a5;background:#fee2e2;color:#991b1b;font-size:.8rem;cursor:pointer;font-weight:600">Não iniciado</button>
+        <button onclick="filtrarStatus('andamento')" id="sf-andamento" class="sf-btn" style="padding:5px 14px;border-radius:999px;border:1px solid #fcd34d;background:#fef3c7;color:#92400e;font-size:.8rem;cursor:pointer;font-weight:600">Em andamento</button>
+        <button onclick="filtrarStatus('revisao')"   id="sf-revisao"   class="sf-btn" style="padding:5px 14px;border-radius:999px;border:1px solid #93c5fd;background:#dbeafe;color:#1e40af;font-size:.8rem;cursor:pointer;font-weight:600">Em revisão</button>
+        <button onclick="filtrarStatus('enviado')"   id="sf-enviado"   class="sf-btn" style="padding:5px 14px;border-radius:999px;border:1px solid #86efac;background:#dcfce7;color:#166534;font-size:.8rem;cursor:pointer;font-weight:600">Enviado</button>
+      </div>
       <p style="margin:6px 0 0;color:var(--muted);font-size:.8rem">Os comentários são em tempo real para todos. O status de cada artigo fica registrado localmente no seu navegador.</p>
     </section>
 
@@ -1245,6 +1252,45 @@ conclusão: a vivência em serviço aproxima a universidade das necessidades rea
         for(let fase=1; fase<=3; fase++){
           renderComments(pubId, fase, grouped[pubId+'-'+fase]||[]);
         }
+      }
+    }
+
+    // ── FILTRO POR STATUS ──
+    let statusFiltroAtivo = '';
+    function filtrarStatus(status){
+      statusFiltroAtivo = status;
+      // highlight do botão ativo
+      document.querySelectorAll('.sf-btn').forEach(b => {
+        b.style.outline = 'none';
+        b.style.boxShadow = 'none';
+      });
+      const id = status === '' ? 'sf-todos' : 'sf-'+status;
+      const ativo = document.getElementById(id);
+      if(ativo){ ativo.style.outline = '2px solid #1f3b63'; ativo.style.boxShadow = '0 0 0 3px rgba(31,59,99,.15)'; }
+      // mostrar/ocultar cards
+      const cards = document.querySelectorAll('.pub-card');
+      let visible = 0;
+      cards.forEach(card => {
+        if(!status){
+          card.style.display = '';
+          visible++;
+        } else {
+          const btn = card.querySelector('.status-btn.active-'+status);
+          const mostrar = !!btn;
+          card.style.display = mostrar ? '' : 'none';
+          if(mostrar) visible++;
+        }
+      });
+      // atualizar contador
+      const count = document.getElementById('count');
+      if(count) count.textContent = visible + ' de ' + cards.length + ' publicações exibidas';
+      // sincronizar com tabela
+      const tableRows = document.querySelectorAll('#tableBody tr');
+      if(tableRows.length){
+        let ri = 0;
+        cards.forEach((card,i) => {
+          if(tableRows[i]) tableRows[i].style.display = card.style.display;
+        });
       }
     }
 
