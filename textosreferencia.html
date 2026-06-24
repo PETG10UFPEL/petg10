@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<!-- saved from url=(0054)https://petg10ufpel.github.io/petg10/infograficos.html -->
+<html lang="pt-BR"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>PET-Saúde UFPel | G10 – Textos Referência </title>
+
+  <style>
+    :root{
+      --bg:#eefbf7;           /* fundo mais verde/teal (diferente do azul dos sistemas) */
+      --card:#ffffff;
+      --text:#0f172a;
+      --muted:#475569;
+      --border:#e2e8f0;
+
+      /* paleta nova (teal/verde) */
+      --teal:#0ea5a4;
+      --teal2:#0f766e;
+      --lime:#22c55e;
+
+      --shadow: 0 10px 30px rgba(15, 23, 42, .08);
+      --radius: 14px;
+    }
+    *{box-sizing:border-box}
+    body{
+      margin:0;
+      font-family: system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, "Helvetica Neue", Arial, sans-serif;
+      background: linear-gradient(180deg, rgba(14,165,164,.12), transparent 40%), var(--bg);
+      color:var(--text);
+    }
+    .wrap{max-width:1100px;margin:40px auto;padding:24px}
+
+    header{
+      background:var(--card);
+      border:1px solid var(--border);
+      border-radius:var(--radius);
+      padding:20px;
+      box-shadow:var(--shadow);
+    }
+
+    .head{
+      display:flex;
+      gap:18px;
+      align-items:center;
+    }
+    .head img{
+      width:120px;
+      height:120px;
+      object-fit:contain;
+      border-radius:12px;
+      flex:0 0 auto;
+    }
+    .title h1{margin:0;font-size:1.35rem;line-height:1.2}
+    .title p{margin:.5rem 0 0;color:var(--muted);font-size:1rem}
+
+    /* 3 colunas (cresce/encolhe) */
+    .grid{
+      margin-top:16px;
+      display:grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap:12px;
+    }
+    @media (max-width: 900px){
+      .grid{grid-template-columns: 1fr;}
+      .wrap{margin:20px auto}
+      .head img{width:92px;height:92px}
+    }
+
+    .card{
+      background:#fff;
+      border:1px solid var(--border);
+      border-radius:14px;
+      padding:14px;
+      position:relative;
+      overflow:hidden;
+    }
+    .card::before{
+      content:"";
+      position:absolute;
+      inset:-2px -2px auto -2px;
+      height:4px;
+      background: linear-gradient(90deg, var(--teal), var(--lime), var(--teal2));
+      opacity:.95;
+    }
+    .card h2{
+      margin:10px 0 6px;
+      font-size:1.02rem;
+      line-height:1.25;
+    }
+    .card p{margin:0 0 12px;color:var(--muted);font-size:.95rem}
+
+    a.btn{
+      display:inline-flex;
+      width:100%;
+      align-items:center;
+      justify-content:center;
+      padding:10px 12px;
+      border-radius:12px;
+      border:1px solid rgba(14,165,164,.28);
+      text-decoration:none;
+      color:var(--text);
+      background: linear-gradient(90deg, rgba(14,165,164,.14), rgba(34,197,94,.10));
+      font-weight:800;
+      transition: transform .06s ease, box-shadow .2s ease, border-color .2s ease;
+    }
+    a.btn:hover{
+      transform: translateY(-1px);
+      border-color: rgba(14,165,164,.45);
+      box-shadow: 0 10px 25px rgba(15,23,42,.10);
+    }
+
+    /* “em breve” sem cara de link quebrado */
+    .soon{
+      display:inline-flex;
+      width:100%;
+      align-items:center;
+      justify-content:center;
+      padding:10px 12px;
+      border-radius:12px;
+      border:1px dashed rgba(15,118,110,.30);
+      background: rgba(14,165,164,.06);
+      color: rgba(15,118,110,.90);
+      font-weight:800;
+      cursor: default;
+      user-select:none;
+    }
+  
+    .searchbar{margin-top:18px;display:grid;gap:10px;}
+    .searchbox{display:flex;align-items:center;gap:10px;background:#fff;border:1px solid var(--border);border-radius:12px;padding:10px 12px;}
+    .searchbox input{width:100%;border:none;outline:none;font-size:1rem;background:transparent;color:var(--text);}
+    .searchmeta{color:var(--muted);font-size:.95rem;min-height:1.2em;}
+    .hidden-by-search{display:none !important;}
+
+</style>
+</head>
+
+<body>
+  <div class="wrap">
+    <header>
+      <div class="head">
+        <img src="img/logo2.jpeg" alt="PET-Saúde UFPel – G10">
+        <div class="title">
+          <h1><a href="index.html" style="text-decoration: none; color: inherit;"> PET-Saúde UFPel – Informação e Saúde Digital</a></h1>
+          <p><strong>G10</strong> · Telemonitoramento de Feridas Crônicas · Textos Referência</p>
+        </div>
+      </div>
+
+      
+      <div class="searchbar">
+        <label class="searchbox">
+          🔎 <input type="search" id="busca" placeholder="Buscar texto referência..." />
+        </label>
+        <div class="searchmeta" id="meta"></div>
+      </div>
+<div class="grid grid-busca">
+
+          <div class="card item" data-search="Luz contra as bactérias: como o azul de metileno pode salvar feridas infectadas. Um estudo clínico mostra que a Terapia Fotodinâmica com Azul de Metileno (MB-PDT) curou feridas com bactérias multirresistentes em todos os 5 pacientes tratados — sem dor, sem efeitos adversos e com excelente resultado estético.">
+          <p>Luz contra as bactérias: como o azul de metileno pode salvar feridas infectadas. Um estudo clínico mostra que a Terapia Fotodinâmica com Azul de Metileno (MB-PDT) curou feridas com bactérias multirresistentes em todos os 5 pacientes tratados — sem dor, sem efeitos adversos e com excelente resultado estético.</p>
+           <a class="btn" href="html/info/paper/pdtferidas/" target="_blank" rel="noopener">Luz contra as bactérias</a>
+        </div>
+ <div class="card item" data-search="avaliação de lesões em pessoas com diferentes tonalidades de pele">
+             <p>A avaliação de lesões em pessoas com diferentes tonalidades de pele exige mais do que observar “vermelhidão”: exige competência clínica, linguagem precisa e atenção à equidade. O material discute como escalas, imagens didáticas, algoritmos e práticas diagnósticas ainda podem reproduzir vieses, dificultando a identificação precoce de lesões por pressão, alterações de cor, temperatura, dor, sensibilidade e consistência em peles negras e pardas. A proposta central é ampliar a avaliação dermatológica — combinando anamnese, inspeção, palpação, tecnologias de apoio e educação permanente — para reduzir iniquidades, melhorar a prevenção e garantir cuidado seguro para todos os tons de pele. </p> <a class="btn" href="html/info/files/aulatonspelemariahelena.pdf" target="_blank" rel="noopener"> Avaliação Lesões </a>
+        </div>
+<div class="card item" data-search="uia aborda a avaliação e prevenção de feridas em pessoas de pele preta, destacando que a prática clínica não pode depender apenas da “vermelhidão” como sinal de alerta"><p> O guia aborda a avaliação e prevenção de feridas em pessoas de pele preta, destacando que a prática clínica não pode depender apenas da “vermelhidão” como sinal de alerta. Em peles negras, lesões por pressão, alterações inflamatórias, isquemia, infecção e danos teciduais podem aparecer como escurecimento, brilho, rigidez, tons arroxeados, acinzentados ou acastanhados, além de mudanças de temperatura, dor, sensibilidade e consistência. A proposta é qualificar a Enfermagem para uma avaliação mais completa — com boa iluminação, inspeção comparativa, palpação, escuta do paciente, registro fotográfico e linguagem adequada — promovendo um cuidado mais seguro, técnico, humanizado e antirracista. </p><a class="btn" href="html/info/files/guiaorientacaoavaliaprevencaopessoaspelepreta.pdf" target="_blank" rel="noopener"> Guia Prevençoes Pele Preta </a>
+        </div>
+  </div>
+<div class="grid grid-busca">
+          <div class="card item" data-search="O estudo apresenta uma experiência piloto de monitoramento remoto da temperatura dos pés em pessoas com diabetes e alto risco para úlcera do pé diabético. Os participantes usaram uma esteira inteligente por 20 segundos ao dia, com envio automático dos dados para acompanhamento clínico; a adesão foi alta e sustentada ao longo de seis meses, mesmo em uma população diversa e com restrições socioeconômicas.">
+          <p>O estudo apresenta uma experiência piloto de monitoramento remoto da temperatura dos pés em pessoas com diabetes e alto risco para úlcera do pé diabético. Os participantes usaram uma esteira inteligente por 20 segundos ao dia, com envio automático dos dados para acompanhamento clínico; a adesão foi alta e sustentada ao longo de seis meses, mesmo em uma população diversa e com restrições socioeconômicas. A tecnologia identificou episódios de inflamação subclínica antes de algumas lesões, permitindo contato da equipe, orientação de redução de carga e vigilância precoce. Embora o estudo seja pequeno e sem grupo controle — portanto, sem provar eficácia definitiva — ele reforça o potencial do telemonitoramento como ferramenta prática de prevenção, especialmente para pacientes em “remissão” de úlcera diabética, nos quais o risco continua batendo à porta.</p>
+           <a class="btn" href="https://onlinelibrary.wiley.com/doi/epdf/10.1111/iwj.70967" target="_blank" rel="noopener"> Monitoramento remoto da temperatura dos pés em pessoas com diabetes</a>
+           <a class="btn" href="html/info/files/pewileyremoto/" target="_blank" rel="noopener"> Infográfico resumo em português</a>
+        </div>
+
+        <div class="card item" data-search="Proposta que faz interface entre saúde, materiais sustentáveis e inovação tecnológica: o desenvolvimento de curativos dérmicos eletrofiados, em forma de nanofibras de PCL, incorporando óleos essenciais de cravo-da-índia e canela">
+          <p>O artigo apresenta uma proposta que faz interface entre saúde, materiais sustentáveis e inovação tecnológica: o desenvolvimento de curativos dérmicos eletrofiados, em forma de nanofibras de PCL, incorporando óleos essenciais de cravo-da-índia e canela. A pesquisa mostra que a eletrofiação foi eficiente para produzir membranas com potencial aplicação em lesões cutâneas, explorando propriedades antimicrobianas de origem agrícola. Embora ainda sejam necessários testes biológicos para validar sua eficácia clínica, o estudo abre uma frente promissora para curativos bioativos, sustentáveis e voltados à cicatrização de feridas.</p>
+           <a class="btn" href="https://ojs.observatoriolatinoamericano.com/ojs/index.php/olel/article/view/12573/7837" target="_blank" rel="noopener">Curativos Dérmicos Eletrofiados</a>
+  <a class="btn" href="html/info/files/eletrofiado/" target="_blank" rel="noopener">Infográfico sobre curativos dérmicos eletrofiados</a>
+            </div>
+
+  <div class="card item" data-search="Ondas de choque no tratamento do pé diabético. Úlceras do pé diabético estão entre as complicações mais graves do diabetes, com risco elevado de infecção, amputação e perda de qualidade de vida."> <p>Ondas de choque no tratamento do pé diabético. Úlceras do pé diabético estão entre as complicações mais graves do diabetes, com risco elevado de infecção, amputação e perda de qualidade de vida. Uma revisão sistemática e meta-análise publicada em 2025 reuniu 8 ensaios clínicos, com 672 pacientes, e mostrou que a terapia por ondas de choque extracorpóreas aumenta em quase três vezes a chance de cicatrização completa quando associada ao cuidado padrão.<br> A técnica é não invasiva, ambulatorial e usa pulsos mecânicos de alta energia para estimular respostas celulares profundas: formação de novos vasos, redução da inflamação, reorganização do colágeno e ativação da cicatrização. Na prática, não substitui o curativo, o controle glicêmico, o debridamento ou o cuidado clínico tradicional; entra como reforço quando a ferida não fecha.<br> O mais importante: a evidência aponta que a ESWT pode representar uma alternativa concreta para evitar amputações, reduzir sofrimento e qualificar o cuidado em feridas crônicas. Não é milagre — ainda bem, porque milagre não entra em protocolo —, mas é ciência aplicada onde ela mais importa: no pé do paciente, no ambulatório e na vida real..</p>
+           <a class="btn" href="html/info/varios/peondaschoque" target="_blank" rel="noopener"> Pé Diabético - Ondas de Choque</a>
+        </div> 
+        </div>
+<!--
+<div class="grid grid-busca">
+          <div class="card item" data-search="Pitágoras além do Teorema · Abril 2026. A vigência do filósofo e sua influência no cuidado de feridas crônicas">
+          <p>Há uma ideia antiga — e ainda válida — de Pitágoras de Samos: saúde não é só ausência de doença, é equilíbrio. O infográfico faz a ponte entre essa harmonia corpo–alma e as feridas crônicas; a lesão não é apenas cutânea, mas reflexo de um desajuste físico, emocional e social. Depressão, isolamento e perda de propósito não são detalhe — impactam diretamente a cicatrização.
+<br>Na prática, isso sustenta uma visão de cuidado integral: tratar feridas crônicas exige mais do que técnica, exige vínculo e adesão. O suporte emocional deixa de ser “extra” e vira fator terapêutico. Em bom português: curativo bem feito sem cuidado humano é meia-sola. Projetos como Amor à Pele e G10 PET Feridas Crônicas acertam ao levar essa filosofia à ação — e quem ganha é o paciente.</p> <a class="btn" href="html/info/varios/pit/indexpit.html" target="_blank" rel="noopener"> Pitágoras, o Corpo & Alma</a>
+        </div>
+       <div class="card item" data-search="A história de Maria é a de uma mulher de 68 anos que passou a vida inteira em pé — na roça, no fogão, na criação da neta Lúcia — e desenvolveu uma úlcera venosa crônica de 5,5 cm que ficou aberta por dois anos antes de qualquer atendimento especializado. Foi a neta quem a levou ao posto.">
+          <p>A história de Maria é a de uma mulher de 68 anos que passou a vida inteira em pé — na roça, no fogão, na criação da neta Lúcia — e desenvolveu uma úlcera venosa crônica de 5,5 cm que ficou aberta por dois anos antes de qualquer atendimento especializado. Foi a neta quem a levou ao posto. A narrativa acompanha sete momentos da jornada clínica, cada um aberto com um trecho de Maria, Maria de Milton Nascimento e Fernando Brant: o diagnóstico de insuficiência venosa grave (CEAP C6), a resistência de Maria à terapia compressiva, a recaída na semana oito por causa de uma semana de chuva e estrada afundada, e a decisão da equipe de adaptar o protocolo ao território real — não o contrário.<br> Depois de 28 semanas, a ferida fechou. Um dado para não esquecer: 76% das úlceras venosas cicatrizadas recorrem no primeiro ano sem seguimento contínuo. A cicatrização de Maria não é o fim — é o começo de um programa de compressão diária, retornos bimestrais e vigilância permanente. </p>
+           <a class="btn" href="html/info/varios/maria/" target="_blank" rel="noopener"> Maria, Maria </a>
+            </div>
+<div class="card item" data-search="Tomada de Decisão Clínica · IA · Intuição · Visão Sistêmica. A intuição que a IA não tem — e o sistema que ela não vê">
+          <p>O infográfico articula a lógica da emergência aplicada à saúde ao integrar três dimensões centrais da decisão clínica contemporânea: dados, julgamento humano e visão sistêmica. A IA aparece como ferramenta capaz de processar grandes volumes de informação e identificar padrões ao longo do tempo, mas o diagrama evidencia que esses dados só ganham sentido quando inseridos nas interações entre níveis — da célula ao sistema de cuidado — onde ocorre a verdadeira integração clínica.<br>A mensagem central é direta: a cicatrização não é produzida por algoritmos nem por intervenções isoladas, mas emerge de um sistema organizado. Assim, a IA informa, mas não decide — cabe ao profissional interpretar, contextualizar e agir sobre o sistema. Em bom português: dado sem julgamento é ruído; sistema sem leitura é erro.</p>
+           <a class="btn" href="html/info/varios/intuicao/index.html" target="_blank" rel="noopener"> Intuição - IA - Sistemas</a>
+        </div> -->
+        </div>
+
+
+
+
+<script>
+const input = document.getElementById('busca');
+const meta = document.getElementById('meta');
+const items = document.querySelectorAll('.item');
+const grids = document.querySelectorAll('.grid-busca');
+
+function norm(t){return t.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,'');}
+
+input.addEventListener('input',()=>{
+  let q = norm(input.value);
+  let count=0;
+  items.forEach(i=>{
+    let txt = norm(i.dataset.search);
+    let ok = txt.includes(q);
+    i.classList.toggle('hidden-by-search', !ok);
+    if(ok) count++;
+  });
+  grids.forEach(g=>{
+    let any=[...g.querySelectorAll('.item')].some(i=>!i.classList.contains('hidden-by-search'));
+    g.classList.toggle('hidden-by-search', !any);
+  });
+  meta.textContent = q ? count+" resultado(s)" : count+" texto(s) referência(s)";
+});
+input.dispatchEvent(new Event('input'));
+</script>
+
+</body></html>
