@@ -1,0 +1,209 @@
+<svg width="100%" viewBox="0 0 680 1100" role="img" xmlns="http://www.w3.org/2000/svg">
+<title>Mapa de artigos SIIEPE G10 — PET-Saúde UFPel</title>
+<desc>5 clusters por líder: Leticia (teal), Laura (azul), Patrícia (coral), Giovana (verde), Leonardo (roxo). Cada cluster mostra os artigos do líder e seus coautores.</desc>
+
+<defs>
+  <marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse">
+    <path d="M2 1L8 5L2 9" fill="none" stroke="context-stroke" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+  </marker>
+  <style>
+    text { font-family: Arial, Helvetica, sans-serif; fill: #1a1a1a; }
+    .th  { font-size: 14px; font-weight: 600; }
+    .ts  { font-size: 12px; font-weight: 400; }
+    .muted { fill: #555555; }
+    /* Cores dos clusters */
+    .teal-fill   { fill: #1D9E75; }
+    .teal-light  { fill: #E1F5EE; stroke: #1D9E75; }
+    .teal-text   { fill: #085041; }
+    .blue-fill   { fill: #378ADD; }
+    .blue-light  { fill: #E6F1FB; stroke: #378ADD; }
+    .blue-text   { fill: #0C447C; }
+    .coral-fill  { fill: #D85A30; }
+    .coral-light { fill: #FAECE7; stroke: #D85A30; }
+    .coral-text  { fill: #712B13; }
+    .green-fill  { fill: #639922; }
+    .green-light { fill: #EAF3DE; stroke: #639922; }
+    .green-text  { fill: #27500A; }
+    .purple-fill { fill: #7F77DD; }
+    .purple-light{ fill: #EEEDFE; stroke: #7F77DD; }
+    .purple-text { fill: #3C3489; }
+    .edge        { stroke: #aaaaaa; stroke-width: 0.8; fill: none; }
+    .sep         { stroke: #cccccc; stroke-width: 0.5; stroke-dasharray: 4 4; fill: none; }
+    .legend-box  { fill: none; stroke: #cccccc; stroke-width: 0.6; }
+    .footer      { fill: #888888; }
+  </style>
+</defs>
+
+<!-- TÍTULO -->
+<text class="th" x="340" y="26" text-anchor="middle">Mapa de publicações · SIIEPE 2026 · G10 PET-Saúde UFPel</text>
+
+<!-- ══ CLUSTER LETICIA ══ -->
+<circle cx="170" cy="100" r="28" class="teal-fill"/>
+<text class="th teal-text" x="170" y="96"  text-anchor="middle" dominant-baseline="central" fill="#E1F5EE">Leticia</text>
+<text class="ts teal-text" x="170" y="112" text-anchor="middle" dominant-baseline="central" fill="#E1F5EE">líder</text>
+
+<line class="edge" x1="144" y1="108" x2="62"  y2="172"/>
+<line class="edge" x1="170" y1="128" x2="170" y2="172"/>
+<line class="edge" x1="196" y1="108" x2="278" y2="172"/>
+
+<!-- A1 -->
+<rect x="10"  y="172" width="104" height="44" rx="6" class="teal-light" stroke-width="0.8"/>
+<text class="th teal-text" x="62"  y="188" text-anchor="middle" dominant-baseline="central">A1 · CIC</text>
+<text class="ts teal-text" x="62"  y="204" text-anchor="middle" dominant-baseline="central">Tecnologias digitais</text>
+<text class="ts muted" x="62"  y="228" text-anchor="middle">Laura · Bruna · Patrícia</text>
+<text class="ts muted" x="62"  y="241" text-anchor="middle">Thaislan · Adrize</text>
+
+<!-- A3 -->
+<rect x="118" y="172" width="104" height="44" rx="6" class="teal-light" stroke-width="0.8"/>
+<text class="th teal-text" x="170" y="188" text-anchor="middle" dominant-baseline="central">A3 · Rev/CIC</text>
+<text class="ts teal-text" x="170" y="204" text-anchor="middle" dominant-baseline="central">Tipos de feridas</text>
+<text class="ts muted" x="170" y="228" text-anchor="middle">Patrícia · Thaislan</text>
+<text class="ts muted" x="170" y="241" text-anchor="middle">Lilian · Gabi · Adrize</text>
+
+<!-- A11 -->
+<rect x="226" y="172" width="104" height="44" rx="6" class="teal-light" stroke-width="0.8"/>
+<text class="th teal-text" x="278" y="188" text-anchor="middle" dominant-baseline="central">A11 · CEG/PET</text>
+<text class="ts teal-text" x="278" y="204" text-anchor="middle" dominant-baseline="central">PET-Saúde acadêmica</text>
+<text class="ts muted" x="278" y="228" text-anchor="middle">Viviane · Lilian</text>
+<text class="ts muted" x="278" y="241" text-anchor="middle">Thaislan · Adrize</text>
+
+<!-- ══ CLUSTER LAURA ══ -->
+<circle cx="510" cy="100" r="28" class="blue-fill"/>
+<text class="th" x="510" y="96"  text-anchor="middle" dominant-baseline="central" fill="#E6F1FB">Laura</text>
+<text class="ts" x="510" y="112" text-anchor="middle" dominant-baseline="central" fill="#E6F1FB">líder</text>
+
+<line class="edge" x1="484" y1="108" x2="402" y2="172"/>
+<line class="edge" x1="536" y1="108" x2="566" y2="172"/>
+
+<!-- A1 colíder -->
+<rect x="350" y="172" width="104" height="44" rx="6" class="blue-light" stroke-width="0.8"/>
+<text class="th blue-text" x="402" y="188" text-anchor="middle" dominant-baseline="central">A1 · CIC</text>
+<text class="ts blue-text" x="402" y="204" text-anchor="middle" dominant-baseline="central">colíder c/ Leticia</text>
+<text class="ts muted" x="402" y="228" text-anchor="middle">Bruna · Leticia · Patrícia</text>
+<text class="ts muted" x="402" y="241" text-anchor="middle">Thaislan · Adrize</text>
+
+<!-- A2 -->
+<rect x="514" y="172" width="152" height="44" rx="6" class="blue-light" stroke-width="0.8"/>
+<text class="th blue-text" x="590" y="188" text-anchor="middle" dominant-baseline="central">A2 · CEC</text>
+<text class="ts blue-text" x="590" y="204" text-anchor="middle" dominant-baseline="central">Implementação telemon.</text>
+<text class="ts muted" x="590" y="228" text-anchor="middle">Bruna · Lilian · Alejandro</text>
+<text class="ts muted" x="590" y="241" text-anchor="middle">Gabi · Vivi</text>
+
+<!-- SEPARADOR 1 -->
+<line class="sep" x1="40" y1="268" x2="640" y2="268"/>
+
+<!-- ══ CLUSTER PATRÍCIA ══ -->
+<circle cx="170" cy="340" r="28" class="coral-fill"/>
+<text class="th" x="170" y="336" text-anchor="middle" dominant-baseline="central" fill="#FAECE7">Patrícia</text>
+<text class="ts" x="170" y="352" text-anchor="middle" dominant-baseline="central" fill="#FAECE7">líder</text>
+
+<line class="edge" x1="144" y1="348" x2="62"  y2="410"/>
+<line class="edge" x1="170" y1="368" x2="170" y2="410"/>
+<line class="edge" x1="196" y1="348" x2="286" y2="410"/>
+
+<!-- A4 -->
+<rect x="10"  y="410" width="104" height="44" rx="6" class="coral-light" stroke-width="0.8"/>
+<text class="th coral-text" x="62"  y="426" text-anchor="middle" dominant-baseline="central">A4 · CEC</text>
+<text class="ts coral-text" x="62"  y="442" text-anchor="middle" dominant-baseline="central">Papel do enfermeiro</text>
+<text class="ts muted" x="62"  y="466" text-anchor="middle">Leticia · Thaislan</text>
+<text class="ts muted" x="62"  y="479" text-anchor="middle">Lilian · Adrize</text>
+
+<!-- A5 -->
+<rect x="118" y="410" width="104" height="44" rx="6" class="coral-light" stroke-width="0.8"/>
+<text class="th coral-text" x="170" y="426" text-anchor="middle" dominant-baseline="central">A5 · CIC</text>
+<text class="ts coral-text" x="170" y="442" text-anchor="middle" dominant-baseline="central">IA em lesões crônicas</text>
+<text class="ts muted" x="170" y="466" text-anchor="middle">Danusa · Lyah · Lilian</text>
+<text class="ts muted" x="170" y="479" text-anchor="middle">Adrize · Alejandro</text>
+
+<!-- A6 -->
+<rect x="234" y="410" width="104" height="44" rx="6" class="coral-light" stroke-width="0.8"/>
+<text class="th coral-text" x="286" y="426" text-anchor="middle" dominant-baseline="central">A6 · CEG/PET</text>
+<text class="ts coral-text" x="286" y="442" text-anchor="middle" dominant-baseline="central">Rede de apoio</text>
+<text class="ts muted" x="286" y="466" text-anchor="middle">Danusa · Lyah · Alejandro</text>
+<text class="ts muted" x="286" y="479" text-anchor="middle">Gabi · Vivi</text>
+
+<!-- ══ CLUSTER GIOVANA ══ -->
+<circle cx="510" cy="340" r="28" class="green-fill"/>
+<text class="th" x="510" y="336" text-anchor="middle" dominant-baseline="central" fill="#EAF3DE">Giovana</text>
+<text class="ts" x="510" y="352" text-anchor="middle" dominant-baseline="central" fill="#EAF3DE">líder</text>
+
+<line class="edge" x1="484" y1="348" x2="404" y2="410"/>
+<line class="edge" x1="536" y1="348" x2="590" y2="410"/>
+
+<!-- A7 -->
+<rect x="352" y="410" width="104" height="44" rx="6" class="green-light" stroke-width="0.8"/>
+<text class="th green-text" x="404" y="426" text-anchor="middle" dominant-baseline="central">A7 · CEC</text>
+<text class="ts green-text" x="404" y="442" text-anchor="middle" dominant-baseline="central">Feridas Instagram</text>
+<text class="ts muted" x="404" y="466" text-anchor="middle">Patrícia · Yanka · Lilian</text>
+<text class="ts muted" x="404" y="479" text-anchor="middle">Vivi · Alejandro</text>
+
+<!-- A8 -->
+<rect x="508" y="410" width="152" height="44" rx="6" class="green-light" stroke-width="0.8"/>
+<text class="th green-text" x="584" y="426" text-anchor="middle" dominant-baseline="central">A8 · CEG</text>
+<text class="ts green-text" x="584" y="442" text-anchor="middle" dominant-baseline="central">Atualização acadêmica</text>
+<text class="ts muted" x="584" y="466" text-anchor="middle">Lucas · Yanka · Adrize</text>
+<text class="ts muted" x="584" y="479" text-anchor="middle">Gabi · Vivi</text>
+
+<!-- SEPARADOR 2 -->
+<line class="sep" x1="40" y1="504" x2="640" y2="504"/>
+
+<!-- ══ CLUSTER LEONARDO ══ -->
+<circle cx="340" cy="570" r="28" class="purple-fill"/>
+<text class="th" x="340" y="566" text-anchor="middle" dominant-baseline="central" fill="#EEEDFE">Leonardo</text>
+<text class="ts" x="340" y="582" text-anchor="middle" dominant-baseline="central" fill="#EEEDFE">líder</text>
+
+<line class="edge" x1="314" y1="578" x2="224" y2="636"/>
+<line class="edge" x1="366" y1="578" x2="456" y2="636"/>
+
+<!-- A9 -->
+<rect x="168" y="636" width="112" height="44" rx="6" class="purple-light" stroke-width="0.8"/>
+<text class="th purple-text" x="224" y="652" text-anchor="middle" dominant-baseline="central">A9 · CEC</text>
+<text class="ts purple-text" x="224" y="668" text-anchor="middle" dominant-baseline="central">Publicações digitais</text>
+<text class="ts muted" x="224" y="692" text-anchor="middle">Danusa · Alejandro · Gabi</text>
+<text class="ts muted" x="224" y="705" text-anchor="middle">Lilian · Vivi</text>
+
+<!-- A10 -->
+<rect x="400" y="636" width="112" height="44" rx="6" class="purple-light" stroke-width="0.8"/>
+<text class="th purple-text" x="456" y="652" text-anchor="middle" dominant-baseline="central">A10 · CIC</text>
+<text class="ts purple-text" x="456" y="668" text-anchor="middle" dominant-baseline="central">Caracterização atend.</text>
+<text class="ts muted" x="456" y="692" text-anchor="middle">Danusa · Alejandro · Gabi</text>
+<text class="ts muted" x="456" y="705" text-anchor="middle">Lilian · Vivi</text>
+
+<!-- ══ LEGENDA ══ -->
+<line x1="40" y1="730" x2="640" y2="730" stroke="#cccccc" stroke-width="0.5" fill="none"/>
+<rect x="40" y="738" width="600" height="158" rx="8" class="legend-box"/>
+<text class="th" x="340" y="756" text-anchor="middle">Legenda</text>
+
+<!-- Coluna esquerda: líderes -->
+<text class="ts muted" x="56"  y="778">Líderes de artigo</text>
+<circle cx="64" cy="796" r="6" class="teal-fill"/>
+<text class="ts" x="78" y="800">Leticia — A1, A3, A11</text>
+<circle cx="64" cy="816" r="6" class="blue-fill"/>
+<text class="ts" x="78" y="820">Laura — A1 (colíder), A2</text>
+<circle cx="64" cy="836" r="6" class="coral-fill"/>
+<text class="ts" x="78" y="840">Patrícia — A4, A5, A6</text>
+<circle cx="64" cy="856" r="6" class="green-fill"/>
+<text class="ts" x="78" y="860">Giovana — A7, A8</text>
+<circle cx="64" cy="876" r="6" class="purple-fill"/>
+<text class="ts" x="78" y="880">Leonardo — A9, A10</text>
+
+<!-- Coluna central: tipos -->
+<text class="ts muted" x="270" y="778">Tipos de congresso</text>
+<text class="ts" x="270" y="798">CIC — Iniciação Científica</text>
+<text class="ts" x="270" y="816">CEC — Extensão e Cultura</text>
+<text class="ts" x="270" y="834">CEG — Ensino de Graduação</text>
+<text class="ts" x="270" y="852">CEG/PET — modalidade PET-Saúde</text>
+<text class="ts" x="270" y="870">Rev/CIC — revisão de literatura</text>
+
+<!-- Coluna direita: transversais -->
+<text class="ts muted" x="490" y="778">Coautores transversais</text>
+<text class="ts" x="490" y="798">Adrize — A1 A3 A4 A5 A8</text>
+<text class="ts" x="490" y="816">Alejandro — A2 A5 A6 A7 A9 A10</text>
+<text class="ts" x="490" y="834">Lilian — A2 A3 A4 A5 A7 A9 A10</text>
+<text class="ts" x="490" y="852">Gabi — A2 A3 A7 A8 A9 A10</text>
+<text class="ts" x="490" y="870">Vivi — A2 A6 A7 A8 A9 A10</text>
+
+<!-- RODAPÉ -->
+<text class="ts footer" x="340" y="918" text-anchor="middle">Fonte: petg10ufpel.github.io/petg10 · PET-Saúde Digital UFPel 2026</text>
+
+</svg>
