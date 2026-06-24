@@ -212,8 +212,8 @@ Se Presença <0, há débitos de presença (precisa recuperar faltas)
         </div>
 
         <div id="espelho-leitura" style="display:none;margin-top:15px;width:100%;overflow:hidden;border-radius:8px;border:1px solid #e0e0e0;">
-          <iframe id="iframe-presenca-1" data-src="https://docs.google.com/spreadsheets/d/e/2PACX-1vSixdUd4okC_REPTEYSNJgQqU_YRzTEo-lpkcAn3_BZe8nb3TUAkxTuDafqn4tntIcmepNq2vsgQ__V/pubhtml?gid=1992212771&single=true" width="100%" height="320" style="border:none;" frameborder="0"></iframe>
-          <iframe id="iframe-presenca-2" data-src="https://docs.google.com/spreadsheets/d/e/2PACX-1vSixdUd4okC_REPTEYSNJgQqU_YRzTEo-lpkcAn3_BZe8nb3TUAkxTuDafqn4tntIcmepNq2vsgQ__V/pubhtml?gid=284097088&single=true" width="100%" height="350" style="border:none;margin-top:8px;" frameborder="0"></iframe>
+          <iframe src="https://docs.google.com/spreadsheets/d/e/2PACX-1vSixdUd4okC_REPTEYSNJgQqU_YRzTEo-lpkcAn3_BZe8nb3TUAkxTuDafqn4tntIcmepNq2vsgQ__V/pubhtml?gid=1992212771&single=true" width="100%" height="320" style="border:none;" frameborder="0"></iframe>
+          <iframe src="https://docs.google.com/spreadsheets/d/e/2PACX-1vSixdUd4okC_REPTEYSNJgQqU_YRzTEo-lpkcAn3_BZe8nb3TUAkxTuDafqn4tntIcmepNq2vsgQ__V/pubhtml?gid=284097088&single=true" width="100%" height="350" style="border:none;margin-top:8px;" frameborder="0"></iframe>
         </div>
 </div>
 
@@ -574,15 +574,7 @@ Se Presença <0, há débitos de presença (precisa recuperar faltas)
 <script>
 function alternarTabela() {
   var x = document.getElementById("espelho-leitura");
-  var abrir = x.style.display === "none";
-  x.style.display = abrir ? "block" : "none";
-  if (abrir) {
-    // Recarrega os iframes a cada abertura para mostrar dados atualizados
-    ['iframe-presenca-1','iframe-presenca-2'].forEach(function(id) {
-      var f = document.getElementById(id);
-      if (f) f.src = f.dataset.src + '&t=' + Date.now();
-    });
-  }
+  x.style.display = (x.style.display === "none") ? "block" : "none";
 }
 </script>
 
