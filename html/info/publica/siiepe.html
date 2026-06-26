@@ -1,0 +1,1717 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<link rel="icon" href="data:,">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Publicações G10 | PET-Saúde UFPel</title>
+  <style>
+    :root{
+      --bg:#f6f8fb; --card:#ffffff; --text:#0f172a; --muted:#475569; --border:#e2e8f0;
+      --blue:#3b82c4; --blue2:#1e3a8a; --orange:#d4653b; --soft:#eff6ff;
+      --shadow:0 10px 30px rgba(15,23,42,.08); --radius:14px;
+    }
+    *{box-sizing:border-box}
+    body{margin:0;font-family:system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,Cantarell,"Helvetica Neue",Arial,"Noto Sans",sans-serif;background:linear-gradient(180deg,rgba(59,130,196,.08),transparent 35%),linear-gradient(90deg,rgba(212,101,59,.06),transparent 45%),var(--bg);color:var(--text)}
+    .wrap{max-width:1180px;margin:0 auto;padding:24px}
+    header{display:flex;gap:18px;align-items:center;background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:18px;box-shadow:var(--shadow)}
+    .mark{width:92px;height:92px;border-radius:20px;display:grid;place-items:center;font-weight:900;color:#fff;font-size:1.15rem;background:linear-gradient(135deg,var(--blue),var(--orange));box-shadow:inset 0 0 0 1px rgba(255,255,255,.35)}
+    .hero-logo{width:180px;max-width:32vw;height:auto;border-radius:14px;display:block;box-shadow:0 8px 24px rgba(15,23,42,.10);border:1px solid var(--border)}
+    .title h1{margin:0;font-size:1.35rem;line-height:1.2} .title p{margin:.4rem 0 0;color:var(--muted)}
+    .badge{display:inline-flex;align-items:center;gap:8px;margin-top:10px;font-size:.9rem;color:#0b1220;padding:6px 10px;border-radius:999px;background:linear-gradient(90deg,rgba(59,130,196,.18),rgba(212,101,59,.18));border:1px solid rgba(59,130,196,.25);width:fit-content}
+
+    .featured-links{margin-top:18px;display:grid;grid-template-columns:1fr 1fr;gap:12px}
+    .featured-link{display:flex;align-items:center;gap:14px;text-decoration:none;color:var(--text);background:var(--card);border:1px solid var(--border);border-radius:var(--radius);box-shadow:var(--shadow);padding:15px 16px;position:relative;overflow:hidden;transition:transform .08s ease,border-color .2s ease,box-shadow .2s ease}
+    .featured-link:before{content:"";position:absolute;inset:-2px -2px auto -2px;height:4px;background:linear-gradient(90deg,var(--blue),var(--orange),var(--blue2));opacity:.95}
+    .featured-link:hover{transform:translateY(-1px);border-color:rgba(59,130,196,.45);box-shadow:0 14px 34px rgba(15,23,42,.11)}
+    .featured-link strong{display:block;font-size:1rem;line-height:1.2;margin-bottom:3px;color:#0f172a}
+    .featured-link span{display:block;color:var(--muted);font-size:.9rem;line-height:1.35}
+    .featured-thumb{width:62px;height:42px;object-fit:cover;border-radius:10px;border:1px solid var(--border);box-shadow:0 6px 16px rgba(15,23,42,.10);flex:0 0 auto}
+    .pdf-icon{width:46px;height:54px;display:grid;place-items:end center;padding-bottom:7px;position:relative;flex:0 0 auto;border-radius:8px;background:linear-gradient(180deg,#fff,#fee2e2);border:1px solid #fecaca;color:#991b1b;font-size:.72rem;font-weight:900;letter-spacing:.04em;box-shadow:0 6px 16px rgba(15,23,42,.10)}
+    .pdf-icon:before{content:"";position:absolute;right:-1px;top:-1px;border-top:14px solid #fecaca;border-left:14px solid transparent;border-radius:0 8px 0 3px}
+    .pdf-icon:after{content:"";position:absolute;left:10px;right:10px;top:17px;height:3px;background:#ef4444;box-shadow:0 8px 0 rgba(239,68,68,.65)}
+    .hero-logo-link{display:block;line-height:0;border-radius:14px;transition:transform .08s ease,box-shadow .2s ease}
+    .hero-logo-link:hover{transform:translateY(-1px)}
+    .stats{margin-top:18px;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px}
+    .stat{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);box-shadow:var(--shadow);padding:14px;position:relative;overflow:hidden}
+    .stat:before,.pub-card:before,.panel:before{content:"";position:absolute;inset:-2px -2px auto -2px;height:4px;background:linear-gradient(90deg,var(--blue),var(--orange),var(--blue2));opacity:.95}
+    .stat b{display:block;font-size:1.55rem;color:var(--blue2)} .stat span{color:var(--muted);font-size:.9rem}
+    .panel{margin-top:16px;background:var(--card);border:1px solid var(--border);border-radius:var(--radius);box-shadow:var(--shadow);padding:16px;position:relative;overflow:hidden}
+    .tools{display:grid;grid-template-columns:1.4fr .8fr .8fr auto;gap:10px;align-items:end;margin-top:8px}
+    label{display:block;font-size:.78rem;color:var(--muted);font-weight:700;text-transform:uppercase;letter-spacing:.04em;margin-bottom:4px}
+    input,select,button{width:100%;border:1px solid var(--border);border-radius:12px;background:#fff;color:var(--text);padding:10px 12px;font:inherit}
+    button{cursor:pointer;font-weight:700;background:linear-gradient(90deg,rgba(59,130,196,.16),rgba(212,101,59,.14));border-color:rgba(59,130,196,.25)}
+    .view-toggle{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px}
+    .view-toggle button{width:auto;padding:9px 12px}
+    .view-toggle button.active{border-color:rgba(59,130,196,.55);box-shadow:0 6px 18px rgba(59,130,196,.14)}
+    #count{margin-top:10px;color:var(--muted);font-size:.92rem}
+    .cards{margin-top:16px;display:grid;grid-template-columns:1fr;gap:14px}
+    .pub-card{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);box-shadow:var(--shadow);padding:16px;position:relative;overflow:hidden}
+    .pub-head{display:grid;grid-template-columns:auto 1fr;gap:12px;align-items:start;margin-top:4px}
+    .num{width:38px;height:38px;border-radius:12px;display:grid;place-items:center;background:rgba(59,130,196,.12);border:1px solid rgba(59,130,196,.25);color:var(--blue2);font-weight:900}
+    .pub-title h2{margin:0;font-size:1.05rem;line-height:1.3}
+    .meta{margin-top:7px}
+    .tag{display:inline-block;background:#dbe8fb;color:#1f3b63;padding:3px 8px;border-radius:999px;font-size:.78rem;font-weight:700;margin:2px 4px 2px 0}
+    .tag.small{font-size:.72rem}
+    .pub-grid{display:grid;grid-template-columns:.8fr 1.2fr;gap:12px;margin-top:14px}
+    h3{margin:0 0 7px;font-size:.82rem;text-transform:uppercase;letter-spacing:.04em;color:#1f3b63}
+    .chips{display:flex;flex-wrap:wrap;gap:6px}
+    .chip{display:inline-flex;align-items:center;border:1px solid var(--border);background:#fff;border-radius:999px;padding:5px 9px;font-size:.86rem;color:#334155}
+    .chip.resp{background:rgba(212,101,59,.10);border-color:rgba(212,101,59,.25);color:#7c2d12;font-weight:700}
+    .sintese,.obs{margin-top:14px;border-top:1px solid var(--border);padding-top:12px}
+    .line,.obs-line{margin:.35rem 0;color:#334155;line-height:1.5} .obs-line{color:#475569}
+    .dash{color:#94a3b8}
+    .table-wrap{display:none;margin-top:16px;overflow-x:auto;-webkit-overflow-scrolling:touch;border:1px solid var(--border);border-radius:var(--radius);background:#fff}
+    table{width:100%;min-width:1120px;border-collapse:collapse}
+    thead{background:#e3edf9} th{padding:12px;text-align:left;font-size:.86rem;color:#1f3b63;border-bottom:2px solid #c5d4e8;white-space:nowrap}
+    td{padding:12px;vertical-align:top;border-bottom:1px solid #e6ecf3;font-size:.88rem;line-height:1.45} .col-num{font-weight:800;color:#1f3b63;width:48px}
+    tr:hover td{background:#fafcff}
+    footer{margin:18px 0 6px;color:var(--muted);font-size:.85rem;text-align:center}
+    @media (max-width:900px){.featured-links{grid-template-columns:1fr}.stats{grid-template-columns:repeat(2,1fr)}.tools{grid-template-columns:1fr}.pub-grid{grid-template-columns:1fr}}
+    @media (max-width:640px){.wrap{padding:14px}header{align-items:flex-start;gap:12px}.hero-logo{width:115px;max-width:38vw;border-radius:12px}.mark{width:64px;height:64px;border-radius:16px}.title h1{font-size:1.1rem}.stats{grid-template-columns:1fr}}
+    @media print{body{background:#fff}.tools,.view-toggle{display:none}.pub-card,.panel,.stat,header{box-shadow:none}}
+
+    /* ── CRONOGRAMA ── */
+    .crono{margin-top:18px;background:var(--card);border:1px solid var(--border);border-radius:var(--radius);box-shadow:var(--shadow);padding:18px 20px;position:relative;overflow:hidden}
+    .crono:before{content:"";position:absolute;inset:-2px -2px auto -2px;height:4px;background:linear-gradient(90deg,var(--blue),var(--orange),var(--blue2));opacity:.95}
+    .crono-title{margin:0 0 14px;font-size:1rem;font-weight:700;color:var(--blue2);display:flex;align-items:center;gap:8px}
+    .crono-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+    .fase{border-radius:12px;border:1px solid var(--border);padding:14px 15px;position:relative;overflow:hidden}
+    .fase-1{background:rgba(59,130,196,.07);border-color:rgba(59,130,196,.28)}
+    .fase-2{background:rgba(212,101,59,.07);border-color:rgba(212,101,59,.28)}
+    .fase-3{background:rgba(30,58,138,.07);border-color:rgba(30,58,138,.28)}
+    .fase-num{font-size:.7rem;font-weight:800;text-transform:uppercase;letter-spacing:.07em;margin-bottom:4px}
+    .fase-1 .fase-num{color:var(--blue)}
+    .fase-2 .fase-num{color:var(--orange)}
+    .fase-3 .fase-num{color:var(--blue2)}
+    .fase-datas{font-size:.78rem;font-weight:700;color:var(--text);margin-bottom:8px}
+    .fase-meta{font-size:.82rem;color:var(--muted);line-height:1.45;margin:0}
+    .fase-meta li{margin:.2rem 0}
+    .fase-entrega{display:inline-block;margin-top:8px;font-size:.74rem;font-weight:700;padding:3px 9px;border-radius:999px}
+    .fase-1 .fase-entrega{background:rgba(59,130,196,.15);color:#1e3a8a}
+    .fase-2 .fase-entrega{background:rgba(212,101,59,.15);color:#7c2d12}
+    .fase-3 .fase-entrega{background:rgba(30,58,138,.15);color:#1e3a8a}
+    .fase-ativa{box-shadow:0 0 0 2px rgba(59,130,196,.45)}
+
+    /* ── STATUS BADGE ── */
+    .status-row{display:flex;align-items:center;gap:8px;margin-top:10px;flex-wrap:wrap}
+    .status-btn{display:inline-flex;align-items:center;gap:5px;border:1px solid var(--border);border-radius:999px;padding:4px 11px;font-size:.78rem;font-weight:700;cursor:pointer;background:#fff;color:var(--muted);transition:all .15s ease;white-space:nowrap}
+    .status-btn:hover{border-color:rgba(59,130,196,.4);background:rgba(59,130,196,.06)}
+    .status-btn.active-nao{background:#fee2e2;border-color:#fca5a5;color:#991b1b}
+    .status-btn.active-andamento{background:#fef3c7;border-color:#fcd34d;color:#92400e}
+    .status-btn.active-revisao{background:#dbeafe;border-color:#93c5fd;color:#1e40af}
+    .status-btn.active-enviado{background:#dcfce7;border-color:#86efac;color:#166534}
+    .status-dot{width:8px;height:8px;border-radius:50%;flex:0 0 auto}
+    .dot-nao{background:#ef4444}
+    .dot-andamento{background:#f59e0b}
+    .dot-revisao{background:#3b82f6}
+    .dot-enviado{background:#22c55e}
+
+    /* mini legenda no painel de status geral */
+    .status-legend{display:flex;gap:14px;flex-wrap:wrap;margin-top:12px;font-size:.8rem;color:var(--muted)}
+    .status-legend span{display:flex;align-items:center;gap:5px}
+
+    @media (max-width:760px){.crono-grid{grid-template-columns:1fr}}
+
+    /* ── COMENTÁRIOS POR FASE ── */
+    .comentarios{margin-top:14px;border-top:1px solid var(--border);padding-top:12px}
+    .comentarios h3{margin:0 0 10px}
+    .fases-comentarios{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+    .fase-comment{border-radius:10px;padding:10px 12px;border:1px solid}
+    .fase-comment.f1{background:rgba(59,130,196,.06);border-color:rgba(59,130,196,.22)}
+    .fase-comment.f2{background:rgba(212,101,59,.06);border-color:rgba(212,101,59,.22)}
+    .fase-comment.f3{background:rgba(30,58,138,.06);border-color:rgba(30,58,138,.22)}
+    .fase-comment-label{font-size:.7rem;font-weight:800;text-transform:uppercase;letter-spacing:.06em;margin-bottom:6px}
+    .f1 .fase-comment-label{color:var(--blue)}
+    .f2 .fase-comment-label{color:var(--orange)}
+    .f3 .fase-comment-label{color:var(--blue2)}
+    .fase-comment-entries{min-height:28px;margin-bottom:6px;font-size:.82rem;color:#334155;line-height:1.5}
+    .fase-comment-entries em{color:var(--muted);font-style:italic;font-size:.8rem}
+    .comment-entry{margin:.25rem 0;padding:.25rem 0;border-bottom:1px solid rgba(0,0,0,.06)}
+    .comment-entry:last-child{border-bottom:none}
+    .comment-author{font-weight:700;font-size:.76rem;color:#1e3a8a}
+    .comment-text{display:block;color:#334155}
+    .comment-time{font-size:.7rem;color:var(--muted)}
+    .fase-comment-form{display:flex;gap:6px;align-items:center;flex-wrap:wrap}
+    .fase-comment-form input[type=text]{flex:1;min-width:0;padding:5px 9px;font-size:.82rem;border-radius:8px;border:1px solid var(--border);background:#fff;color:var(--text)}
+    .fase-comment-form select{padding:5px 8px;font-size:.82rem;border-radius:8px;border:1px solid var(--border);background:#fff;color:var(--text);width:auto}
+    .fase-comment-form button{padding:5px 12px;font-size:.78rem;font-weight:700;border-radius:8px;cursor:pointer;white-space:nowrap;width:auto;border:1px solid rgba(59,130,196,.35);background:rgba(59,130,196,.12);color:#1e3a8a}
+    .fase-comment-form button:hover{background:rgba(59,130,196,.22)}
+    @media(max-width:760px){.fases-comentarios{grid-template-columns:1fr}}
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <header>
+      <a class="hero-logo-link" href="https://wp.ufpel.edu.br/siiepe/" target="_blank" rel="noopener" aria-label="Abrir site da SIIEPE UFPel">
+        <img class="hero-logo" src="siiepe.jpg" alt="12ª SIIEPE UFPel 2026">
+      </a>
+      <div class="title">
+        <h1>Publicações</h1>
+        <p>PET-Saúde UFPel · Telemonitoramento de Feridas Crônicas · livros, capítulos e artigos em elaboração</p>
+      </div>
+    </header>
+
+    <section class="featured-links" aria-label="Links em destaque">
+      <a class="featured-link" href="https://wp.ufpel.edu.br/siiepe/" target="_blank" rel="noopener">
+        <img class="featured-thumb" src="siiepe.jpg" alt="12ª SIIEPE UFPel 2026">
+        <div>
+          <strong>SIIEPE UFPel</strong>
+          <span>Acesse a página oficial da Semana Integrada de Inovação, Ensino, Pesquisa e Extensão.</span>
+        </div>
+      </a>
+
+      <a class="featured-link" href="resumo.pdf" target="_blank" rel="noopener">
+        <span class="pdf-icon" aria-hidden="true">PDF</span>
+        <div>
+          <strong>Exemplo de estrutura &amp; organização de resumo</strong>
+          <span>Exemplo de estrutura &amp; organização de resumo, repassado pela profa. Adrize.</span>
+        </div>
+      </a>
+    </section>
+
+    <section class="stats" aria-label="Resumo das publicações">
+      <div class="stat"><b>13</b><span>publicações</span></div>
+      <div class="stat"><b>6</b><span>responsáveis</span></div>
+      <div class="stat"><b>17</b><span>autores citados</span></div>
+      <div class="stat"><b>5</b><span>tipos/modalidades</span></div>
+    </section>
+
+
+    <!-- MAPA DE AUTORES -->
+    <section style="margin-top:14px">
+      <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:8px;gap:12px;flex-wrap:wrap">
+        <h2 style="margin:0;font-size:1rem;font-weight:700;color:var(--blue2)">🗺️ Mapa de autores e artigos</h2>
+        <span style="font-size:.78rem;color:var(--muted)">Toque na figura para ampliar</span>
+      </div>
+      <div style="cursor:zoom-in;display:inline-block;border:1px solid var(--border);border-radius:10px;overflow:hidden;box-shadow:var(--shadow);transition:box-shadow .2s;max-width:320px;width:100%;background:#fff"
+           onclick="abrirMapa()"
+           onmouseover="this.style.boxShadow='0 4px 18px rgba(0,0,0,.18)'"
+           onmouseout="this.style.boxShadow='var(--shadow)'">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 700 520" style="width:100%;display:block;pointer-events:none" font-family="system-ui,sans-serif">
+  <defs>
+    <linearGradient id="hdr" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#3b82c4"/>
+      <stop offset="100%" stop-color="#1e3a8a"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Fundo -->
+  <rect width="700" height="520" rx="14" fill="#f6f8fb"/>
+
+  <!-- Cabeçalho -->
+  <rect width="700" height="52" rx="14" fill="url(#hdr)"/>
+  <rect y="38" width="700" height="14" fill="url(#hdr)"/>
+  <text x="350" y="33" text-anchor="middle" fill="#fff" font-size="15" font-weight="700">Mapa de Autores e Artigos · SIIEPE G10 UFPel 2026</text>
+
+  <!-- Legenda tipos -->
+  <rect x="16" y="62" width="668" height="22" rx="6" fill="#e3edf9"/>
+  <text x="24" y="77" font-size="10" fill="#1f3b63" font-weight="700">CIC</text>
+  <rect x="46" y="66" width="28" height="10" rx="3" fill="#3b82c4" opacity=".7"/>
+  <text x="80" y="77" font-size="10" fill="#1f3b63" font-weight="700">CEC</text>
+  <rect x="102" y="66" width="28" height="10" rx="3" fill="#d4653b" opacity=".7"/>
+  <text x="136" y="77" font-size="10" fill="#1f3b63" font-weight="700">CEG</text>
+  <rect x="158" y="66" width="28" height="10" rx="3" fill="#1e3a8a" opacity=".7"/>
+  <text x="192" y="77" font-size="10" fill="#1f3b63" font-weight="700">CEG via PET</text>
+  <rect x="248" y="66" width="28" height="10" rx="3" fill="#7c3aed" opacity=".6"/>
+  <text x="282" y="77" font-size="10" fill="#1f3b63" font-weight="700">Revisão/CIC</text>
+  <rect x="350" y="66" width="28" height="10" rx="3" fill="#059669" opacity=".6"/>
+
+  <!-- ── RESPONSÁVEIS (círculos centrais) ── -->
+  <!-- Laura -->
+  <circle cx="140" cy="200" r="32" fill="#3b82c4" opacity=".92"/>
+  <text x="140" y="196" text-anchor="middle" fill="#fff" font-size="11" font-weight="800">Laura</text>
+  <text x="140" y="210" text-anchor="middle" fill="#dbeafe" font-size="9">arts. 1,2</text>
+
+  <!-- Letícia -->
+  <circle cx="280" cy="160" r="32" fill="#3b82c4" opacity=".82"/>
+  <text x="280" y="156" text-anchor="middle" fill="#fff" font-size="11" font-weight="800">Letícia</text>
+  <text x="280" y="170" text-anchor="middle" fill="#dbeafe" font-size="9">arts. 3,4,11</text>
+
+  <!-- Giovana -->
+  <circle cx="420" cy="190" r="32" fill="#d4653b" opacity=".88"/>
+  <text x="420" y="186" text-anchor="middle" fill="#fff" font-size="11" font-weight="800">Giovana</text>
+  <text x="420" y="200" text-anchor="middle" fill="#fff" font-size="9" opacity=".85">arts. 5,6,7,8</text>
+
+  <!-- Leonardo -->
+  <circle cx="555" cy="165" r="32" fill="#1e3a8a" opacity=".88"/>
+  <text x="555" y="161" text-anchor="middle" fill="#fff" font-size="11" font-weight="800">Leonardo</text>
+  <text x="555" y="175" text-anchor="middle" fill="#c7d2fe" font-size="9">arts. 9,10</text>
+
+  <!-- Danusa (nova!) -->
+  <circle cx="350" cy="310" r="32" fill="#059669" opacity=".88"/>
+  <text x="350" y="306" text-anchor="middle" fill="#fff" font-size="11" font-weight="800">Danusa</text>
+  <text x="350" y="320" text-anchor="middle" fill="#d1fae5" font-size="9">arts. 12,13</text>
+
+  <!-- ── ARTIGOS (retângulos) ── -->
+  <!-- Art 1 -->
+  <rect x="10" y="270" width="115" height="36" rx="8" fill="#3b82c4" opacity=".18" stroke="#3b82c4" stroke-width="1"/>
+  <line x1="140" y1="232" x2="68" y2="270" stroke="#3b82c4" stroke-width="1" stroke-dasharray="4,3" opacity=".5"/>
+  <text x="68" y="285" text-anchor="middle" fill="#1e3a8a" font-size="9" font-weight="700">1 · CIC</text>
+  <text x="68" y="298" text-anchor="middle" fill="#334155" font-size="8">Tecnologias digitais</text>
+
+  <!-- Art 2 -->
+  <rect x="10" y="330" width="115" height="36" rx="8" fill="#3b82c4" opacity=".13" stroke="#3b82c4" stroke-width="1"/>
+  <line x1="140" y1="232" x2="68" y2="330" stroke="#3b82c4" stroke-width="1" stroke-dasharray="4,3" opacity=".5"/>
+  <text x="68" y="345" text-anchor="middle" fill="#1e3a8a" font-size="9" font-weight="700">2 · CEC</text>
+  <text x="68" y="358" text-anchor="middle" fill="#334155" font-size="8">Telemonitoramento</text>
+
+  <!-- Art 3 -->
+  <rect x="175" y="250" width="115" height="36" rx="8" fill="#3b82c4" opacity=".13" stroke="#3b82c4" stroke-width="1"/>
+  <line x1="280" y1="192" x2="233" y2="250" stroke="#3b82c4" stroke-width="1" stroke-dasharray="4,3" opacity=".5"/>
+  <text x="233" y="265" text-anchor="middle" fill="#1e3a8a" font-size="9" font-weight="700">3 · Rev/CIC</text>
+  <text x="233" y="278" text-anchor="middle" fill="#334155" font-size="8">Feridas crônicas</text>
+
+  <!-- Art 4 -->
+  <rect x="175" y="310" width="115" height="36" rx="8" fill="#1e3a8a" opacity=".10" stroke="#1e3a8a" stroke-width="1"/>
+  <line x1="280" y1="192" x2="233" y2="310" stroke="#1e3a8a" stroke-width="1" stroke-dasharray="4,3" opacity=".4"/>
+  <text x="233" y="325" text-anchor="middle" fill="#1e3a8a" font-size="9" font-weight="700">4 · CEG via PET</text>
+  <text x="233" y="338" text-anchor="middle" fill="#334155" font-size="8">Telessaúde</text>
+
+  <!-- Art 11 -->
+  <rect x="175" y="370" width="115" height="36" rx="8" fill="#1e3a8a" opacity=".10" stroke="#1e3a8a" stroke-width="1"/>
+  <line x1="280" y1="192" x2="233" y2="370" stroke="#1e3a8a" stroke-width="1" stroke-dasharray="4,3" opacity=".4"/>
+  <text x="233" y="385" text-anchor="middle" fill="#1e3a8a" font-size="9" font-weight="700">11 · CEG</text>
+  <text x="233" y="398" text-anchor="middle" fill="#334155" font-size="8">PET-Saúde formação</text>
+
+  <!-- Art 5 -->
+  <rect x="360" y="255" width="115" height="36" rx="8" fill="#d4653b" opacity=".13" stroke="#d4653b" stroke-width="1"/>
+  <line x1="420" y1="222" x2="418" y2="255" stroke="#d4653b" stroke-width="1" stroke-dasharray="4,3" opacity=".5"/>
+  <text x="418" y="270" text-anchor="middle" fill="#7c2d12" font-size="9" font-weight="700">5 · CEC</text>
+  <text x="418" y="283" text-anchor="middle" fill="#334155" font-size="8">Educação paciente</text>
+
+  <!-- Art 6 -->
+  <rect x="485" y="255" width="115" height="36" rx="8" fill="#d4653b" opacity=".10" stroke="#d4653b" stroke-width="1"/>
+  <line x1="420" y1="222" x2="543" y2="255" stroke="#d4653b" stroke-width="1" stroke-dasharray="4,3" opacity=".5"/>
+  <text x="543" y="270" text-anchor="middle" fill="#7c2d12" font-size="9" font-weight="700">6 · CEC</text>
+  <text x="543" y="283" text-anchor="middle" fill="#334155" font-size="8">Avaliação feridas</text>
+
+  <!-- Art 7 -->
+  <rect x="360" y="315" width="115" height="36" rx="8" fill="#d4653b" opacity=".10" stroke="#d4653b" stroke-width="1"/>
+  <line x1="420" y1="222" x2="418" y2="315" stroke="#d4653b" stroke-width="1" stroke-dasharray="4,3" opacity=".5"/>
+  <text x="418" y="330" text-anchor="middle" fill="#7c2d12" font-size="9" font-weight="700">7 · CEC</text>
+  <text x="418" y="343" text-anchor="middle" fill="#334155" font-size="8">Instagram feridas</text>
+
+  <!-- Art 8 -->
+  <rect x="485" y="315" width="115" height="36" rx="8" fill="#d4653b" opacity=".08" stroke="#d4653b" stroke-width="1"/>
+  <line x1="420" y1="222" x2="543" y2="315" stroke="#d4653b" stroke-width="1" stroke-dasharray="4,3" opacity=".5"/>
+  <text x="543" y="330" text-anchor="middle" fill="#7c2d12" font-size="9" font-weight="700">8 · CEG</text>
+  <text x="543" y="343" text-anchor="middle" fill="#334155" font-size="8">Telematriciamento</text>
+
+  <!-- Art 9 -->
+  <rect x="570" y="220" width="115" height="36" rx="8" fill="#1e3a8a" opacity=".10" stroke="#1e3a8a" stroke-width="1"/>
+  <line x1="555" y1="197" x2="628" y2="220" stroke="#1e3a8a" stroke-width="1" stroke-dasharray="4,3" opacity=".4"/>
+  <text x="628" y="235" text-anchor="middle" fill="#1e3a8a" font-size="9" font-weight="700">9 · CEC</text>
+  <text x="628" y="248" text-anchor="middle" fill="#334155" font-size="8">Instagram alcance</text>
+
+  <!-- Art 10 -->
+  <rect x="570" y="275" width="115" height="36" rx="8" fill="#1e3a8a" opacity=".08" stroke="#1e3a8a" stroke-width="1"/>
+  <line x1="555" y1="197" x2="628" y2="275" stroke="#1e3a8a" stroke-width="1" stroke-dasharray="4,3" opacity=".4"/>
+  <text x="628" y="290" text-anchor="middle" fill="#1e3a8a" font-size="9" font-weight="700">10 · CEC</text>
+  <text x="628" y="303" text-anchor="middle" fill="#334155" font-size="8">Ambulatório</text>
+
+  <!-- Art 12 (Danusa) -->
+  <rect x="220" y="395" width="115" height="36" rx="8" fill="#059669" opacity=".12" stroke="#059669" stroke-width="1"/>
+  <line x1="350" y1="342" x2="278" y2="395" stroke="#059669" stroke-width="1" stroke-dasharray="4,3" opacity=".5"/>
+  <text x="278" y="410" text-anchor="middle" fill="#065f46" font-size="9" font-weight="700">12 · CIC</text>
+  <text x="278" y="423" text-anchor="middle" fill="#334155" font-size="8">Eng. Produção</text>
+
+  <!-- Art 13 (Danusa) -->
+  <rect x="365" y="395" width="115" height="36" rx="8" fill="#059669" opacity=".10" stroke="#059669" stroke-width="1"/>
+  <line x1="350" y1="342" x2="423" y2="395" stroke="#059669" stroke-width="1" stroke-dasharray="4,3" opacity=".5"/>
+  <text x="423" y="410" text-anchor="middle" fill="#065f46" font-size="9" font-weight="700">13 · CIC</text>
+  <text x="423" y="423" text-anchor="middle" fill="#334155" font-size="8">Integração cursos</text>
+
+  <!-- Rodapé -->
+  <text x="350" y="510" text-anchor="middle" fill="#94a3b8" font-size="9">13 publicações · 6 responsáveis · PET-Saúde UFPel G10 · 2026</text>
+</svg>
+      </div>
+    </section>
+
+    <!-- LIGHTBOX -->
+    <div id="mapa-lightbox"
+         style="display:none;position:fixed;inset:0;z-index:9999;background:rgba(0,0,0,.88);overflow-y:auto;-webkit-overflow-scrolling:touch"
+         onclick="fecharMapa(event)">
+      <div style="min-height:100%;display:flex;flex-direction:column;align-items:center;justify-content:flex-start;padding:52px 12px 32px">
+        <button onclick="document.getElementById('mapa-lightbox').style.display='none';document.body.style.overflow=''"
+                style="position:fixed;top:10px;right:10px;width:40px;height:40px;border-radius:50%;border:2px solid #fff;background:#222;color:#fff;font-size:1.1rem;cursor:pointer;box-shadow:0 2px 10px rgba(0,0,0,.5);display:flex;align-items:center;justify-content:center;z-index:10000;line-height:1"
+                aria-label="Fechar">✕</button>
+        <div style="width:100%;max-width:720px;background:#fff;border-radius:14px;overflow:hidden;box-shadow:0 8px 40px rgba(0,0,0,.6)" onclick="event.stopPropagation()">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 700 520" style="width:100%;display:block" font-family="system-ui,sans-serif">
+  <defs>
+    <linearGradient id="hdr" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#3b82c4"/>
+      <stop offset="100%" stop-color="#1e3a8a"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Fundo -->
+  <rect width="700" height="520" rx="14" fill="#f6f8fb"/>
+
+  <!-- Cabeçalho -->
+  <rect width="700" height="52" rx="14" fill="url(#hdr)"/>
+  <rect y="38" width="700" height="14" fill="url(#hdr)"/>
+  <text x="350" y="33" text-anchor="middle" fill="#fff" font-size="15" font-weight="700">Mapa de Autores e Artigos · SIIEPE G10 UFPel 2026</text>
+
+  <!-- Legenda tipos -->
+  <rect x="16" y="62" width="668" height="22" rx="6" fill="#e3edf9"/>
+  <text x="24" y="77" font-size="10" fill="#1f3b63" font-weight="700">CIC</text>
+  <rect x="46" y="66" width="28" height="10" rx="3" fill="#3b82c4" opacity=".7"/>
+  <text x="80" y="77" font-size="10" fill="#1f3b63" font-weight="700">CEC</text>
+  <rect x="102" y="66" width="28" height="10" rx="3" fill="#d4653b" opacity=".7"/>
+  <text x="136" y="77" font-size="10" fill="#1f3b63" font-weight="700">CEG</text>
+  <rect x="158" y="66" width="28" height="10" rx="3" fill="#1e3a8a" opacity=".7"/>
+  <text x="192" y="77" font-size="10" fill="#1f3b63" font-weight="700">CEG via PET</text>
+  <rect x="248" y="66" width="28" height="10" rx="3" fill="#7c3aed" opacity=".6"/>
+  <text x="282" y="77" font-size="10" fill="#1f3b63" font-weight="700">Revisão/CIC</text>
+  <rect x="350" y="66" width="28" height="10" rx="3" fill="#059669" opacity=".6"/>
+
+  <!-- ── RESPONSÁVEIS (círculos centrais) ── -->
+  <!-- Laura -->
+  <circle cx="140" cy="200" r="32" fill="#3b82c4" opacity=".92"/>
+  <text x="140" y="196" text-anchor="middle" fill="#fff" font-size="11" font-weight="800">Laura</text>
+  <text x="140" y="210" text-anchor="middle" fill="#dbeafe" font-size="9">arts. 1,2</text>
+
+  <!-- Letícia -->
+  <circle cx="280" cy="160" r="32" fill="#3b82c4" opacity=".82"/>
+  <text x="280" y="156" text-anchor="middle" fill="#fff" font-size="11" font-weight="800">Letícia</text>
+  <text x="280" y="170" text-anchor="middle" fill="#dbeafe" font-size="9">arts. 3,4,11</text>
+
+  <!-- Giovana -->
+  <circle cx="420" cy="190" r="32" fill="#d4653b" opacity=".88"/>
+  <text x="420" y="186" text-anchor="middle" fill="#fff" font-size="11" font-weight="800">Giovana</text>
+  <text x="420" y="200" text-anchor="middle" fill="#fff" font-size="9" opacity=".85">arts. 5,6,7,8</text>
+
+  <!-- Leonardo -->
+  <circle cx="555" cy="165" r="32" fill="#1e3a8a" opacity=".88"/>
+  <text x="555" y="161" text-anchor="middle" fill="#fff" font-size="11" font-weight="800">Leonardo</text>
+  <text x="555" y="175" text-anchor="middle" fill="#c7d2fe" font-size="9">arts. 9,10</text>
+
+  <!-- Danusa (nova!) -->
+  <circle cx="350" cy="310" r="32" fill="#059669" opacity=".88"/>
+  <text x="350" y="306" text-anchor="middle" fill="#fff" font-size="11" font-weight="800">Danusa</text>
+  <text x="350" y="320" text-anchor="middle" fill="#d1fae5" font-size="9">arts. 12,13</text>
+
+  <!-- ── ARTIGOS (retângulos) ── -->
+  <!-- Art 1 -->
+  <rect x="10" y="270" width="115" height="36" rx="8" fill="#3b82c4" opacity=".18" stroke="#3b82c4" stroke-width="1"/>
+  <line x1="140" y1="232" x2="68" y2="270" stroke="#3b82c4" stroke-width="1" stroke-dasharray="4,3" opacity=".5"/>
+  <text x="68" y="285" text-anchor="middle" fill="#1e3a8a" font-size="9" font-weight="700">1 · CIC</text>
+  <text x="68" y="298" text-anchor="middle" fill="#334155" font-size="8">Tecnologias digitais</text>
+
+  <!-- Art 2 -->
+  <rect x="10" y="330" width="115" height="36" rx="8" fill="#3b82c4" opacity=".13" stroke="#3b82c4" stroke-width="1"/>
+  <line x1="140" y1="232" x2="68" y2="330" stroke="#3b82c4" stroke-width="1" stroke-dasharray="4,3" opacity=".5"/>
+  <text x="68" y="345" text-anchor="middle" fill="#1e3a8a" font-size="9" font-weight="700">2 · CEC</text>
+  <text x="68" y="358" text-anchor="middle" fill="#334155" font-size="8">Telemonitoramento</text>
+
+  <!-- Art 3 -->
+  <rect x="175" y="250" width="115" height="36" rx="8" fill="#3b82c4" opacity=".13" stroke="#3b82c4" stroke-width="1"/>
+  <line x1="280" y1="192" x2="233" y2="250" stroke="#3b82c4" stroke-width="1" stroke-dasharray="4,3" opacity=".5"/>
+  <text x="233" y="265" text-anchor="middle" fill="#1e3a8a" font-size="9" font-weight="700">3 · Rev/CIC</text>
+  <text x="233" y="278" text-anchor="middle" fill="#334155" font-size="8">Feridas crônicas</text>
+
+  <!-- Art 4 -->
+  <rect x="175" y="310" width="115" height="36" rx="8" fill="#1e3a8a" opacity=".10" stroke="#1e3a8a" stroke-width="1"/>
+  <line x1="280" y1="192" x2="233" y2="310" stroke="#1e3a8a" stroke-width="1" stroke-dasharray="4,3" opacity=".4"/>
+  <text x="233" y="325" text-anchor="middle" fill="#1e3a8a" font-size="9" font-weight="700">4 · CEG via PET</text>
+  <text x="233" y="338" text-anchor="middle" fill="#334155" font-size="8">Telessaúde</text>
+
+  <!-- Art 11 -->
+  <rect x="175" y="370" width="115" height="36" rx="8" fill="#1e3a8a" opacity=".10" stroke="#1e3a8a" stroke-width="1"/>
+  <line x1="280" y1="192" x2="233" y2="370" stroke="#1e3a8a" stroke-width="1" stroke-dasharray="4,3" opacity=".4"/>
+  <text x="233" y="385" text-anchor="middle" fill="#1e3a8a" font-size="9" font-weight="700">11 · CEG</text>
+  <text x="233" y="398" text-anchor="middle" fill="#334155" font-size="8">PET-Saúde formação</text>
+
+  <!-- Art 5 -->
+  <rect x="360" y="255" width="115" height="36" rx="8" fill="#d4653b" opacity=".13" stroke="#d4653b" stroke-width="1"/>
+  <line x1="420" y1="222" x2="418" y2="255" stroke="#d4653b" stroke-width="1" stroke-dasharray="4,3" opacity=".5"/>
+  <text x="418" y="270" text-anchor="middle" fill="#7c2d12" font-size="9" font-weight="700">5 · CEC</text>
+  <text x="418" y="283" text-anchor="middle" fill="#334155" font-size="8">Educação paciente</text>
+
+  <!-- Art 6 -->
+  <rect x="485" y="255" width="115" height="36" rx="8" fill="#d4653b" opacity=".10" stroke="#d4653b" stroke-width="1"/>
+  <line x1="420" y1="222" x2="543" y2="255" stroke="#d4653b" stroke-width="1" stroke-dasharray="4,3" opacity=".5"/>
+  <text x="543" y="270" text-anchor="middle" fill="#7c2d12" font-size="9" font-weight="700">6 · CEC</text>
+  <text x="543" y="283" text-anchor="middle" fill="#334155" font-size="8">Avaliação feridas</text>
+
+  <!-- Art 7 -->
+  <rect x="360" y="315" width="115" height="36" rx="8" fill="#d4653b" opacity=".10" stroke="#d4653b" stroke-width="1"/>
+  <line x1="420" y1="222" x2="418" y2="315" stroke="#d4653b" stroke-width="1" stroke-dasharray="4,3" opacity=".5"/>
+  <text x="418" y="330" text-anchor="middle" fill="#7c2d12" font-size="9" font-weight="700">7 · CEC</text>
+  <text x="418" y="343" text-anchor="middle" fill="#334155" font-size="8">Instagram feridas</text>
+
+  <!-- Art 8 -->
+  <rect x="485" y="315" width="115" height="36" rx="8" fill="#d4653b" opacity=".08" stroke="#d4653b" stroke-width="1"/>
+  <line x1="420" y1="222" x2="543" y2="315" stroke="#d4653b" stroke-width="1" stroke-dasharray="4,3" opacity=".5"/>
+  <text x="543" y="330" text-anchor="middle" fill="#7c2d12" font-size="9" font-weight="700">8 · CEG</text>
+  <text x="543" y="343" text-anchor="middle" fill="#334155" font-size="8">Telematriciamento</text>
+
+  <!-- Art 9 -->
+  <rect x="570" y="220" width="115" height="36" rx="8" fill="#1e3a8a" opacity=".10" stroke="#1e3a8a" stroke-width="1"/>
+  <line x1="555" y1="197" x2="628" y2="220" stroke="#1e3a8a" stroke-width="1" stroke-dasharray="4,3" opacity=".4"/>
+  <text x="628" y="235" text-anchor="middle" fill="#1e3a8a" font-size="9" font-weight="700">9 · CEC</text>
+  <text x="628" y="248" text-anchor="middle" fill="#334155" font-size="8">Instagram alcance</text>
+
+  <!-- Art 10 -->
+  <rect x="570" y="275" width="115" height="36" rx="8" fill="#1e3a8a" opacity=".08" stroke="#1e3a8a" stroke-width="1"/>
+  <line x1="555" y1="197" x2="628" y2="275" stroke="#1e3a8a" stroke-width="1" stroke-dasharray="4,3" opacity=".4"/>
+  <text x="628" y="290" text-anchor="middle" fill="#1e3a8a" font-size="9" font-weight="700">10 · CEC</text>
+  <text x="628" y="303" text-anchor="middle" fill="#334155" font-size="8">Ambulatório</text>
+
+  <!-- Art 12 (Danusa) -->
+  <rect x="220" y="395" width="115" height="36" rx="8" fill="#059669" opacity=".12" stroke="#059669" stroke-width="1"/>
+  <line x1="350" y1="342" x2="278" y2="395" stroke="#059669" stroke-width="1" stroke-dasharray="4,3" opacity=".5"/>
+  <text x="278" y="410" text-anchor="middle" fill="#065f46" font-size="9" font-weight="700">12 · CIC</text>
+  <text x="278" y="423" text-anchor="middle" fill="#334155" font-size="8">Eng. Produção</text>
+
+  <!-- Art 13 (Danusa) -->
+  <rect x="365" y="395" width="115" height="36" rx="8" fill="#059669" opacity=".10" stroke="#059669" stroke-width="1"/>
+  <line x1="350" y1="342" x2="423" y2="395" stroke="#059669" stroke-width="1" stroke-dasharray="4,3" opacity=".5"/>
+  <text x="423" y="410" text-anchor="middle" fill="#065f46" font-size="9" font-weight="700">13 · CIC</text>
+  <text x="423" y="423" text-anchor="middle" fill="#334155" font-size="8">Integração cursos</text>
+
+  <!-- Rodapé -->
+  <text x="350" y="510" text-anchor="middle" fill="#94a3b8" font-size="9">13 publicações · 6 responsáveis · PET-Saúde UFPel G10 · 2026</text>
+</svg>
+        </div>
+        <p style="color:rgba(255,255,255,.45);font-size:.75rem;margin-top:12px;text-align:center">Toque fora da imagem ou no ✕ para fechar</p>
+      </div>
+    </div>
+
+    <script>
+    function abrirMapa(){
+      var lb=document.getElementById('mapa-lightbox');
+      lb.style.display='block';
+      lb.scrollTop=0;
+      document.body.style.overflow='hidden';
+    }
+    function fecharMapa(e){
+      if(e.target===document.getElementById('mapa-lightbox')||e.target.closest('#mapa-lightbox')===document.getElementById('mapa-lightbox')){
+        if(!e.target.closest('div[onclick]')||e.target===document.getElementById('mapa-lightbox')){
+          document.getElementById('mapa-lightbox').style.display='none';
+          document.body.style.overflow='';
+        }
+      }
+    }
+    document.addEventListener('keydown',function(e){
+      if(e.key==='Escape'){
+        document.getElementById('mapa-lightbox').style.display='none';
+        document.body.style.overflow='';
+      }
+    });
+    </script>
+
+    <!-- PAINEL DE CRONOGRAMA -->
+    <section class="crono" aria-label="Cronograma de entregas">
+      <h2 class="crono-title">&#128197; Cronograma · 3 semanas para publicar</h2>
+      <div class="crono-grid">
+        <div class="fase fase-1 fase-ativa">
+          <div class="fase-num">Fase 1</div>
+          <div class="fase-datas">24 – 29 de junho</div>
+          <ul class="fase-meta">
+            <li>Rascunho estruturado em tópicos</li>
+            <li>Seções: Intro · Objetivo · Método · Resultados · Conclusão</li>
+            <li>Lista de autores confirmada</li>
+            <li>Cada coautor preenche sua parte</li>
+          </ul>
+          <span class="fase-entrega">Entrega: Google Doc / Word</span>
+        </div>
+        <div class="fase fase-2">
+          <div class="fase-num">Fase 2</div>
+          <div class="fase-datas">30 de junho – 7 de julho</div>
+          <ul class="fase-meta">
+            <li>Texto corrido nas 4 páginas</li>
+            <li>Revisão pelos coautores</li>
+            <li>Revisão pelo professor/professora</li>
+            <li>Versão "quase final" aprovada</li>
+          </ul>
+          <span class="fase-entrega">Entrega: versão revisada</span>
+        </div>
+        <div class="fase fase-3">
+          <div class="fase-num">Fase 3</div>
+          <div class="fase-datas">7 – 14 de julho</div>
+          <ul class="fase-meta">
+            <li>Formatação conforme normas SIIEPE</li>
+            <li>Leitura final e correções mínimas</li>
+            <li>Submissão no sistema da UFPel</li>
+          </ul>
+          <span class="fase-entrega">Entrega: submetido</span>
+        </div>
+      </div>
+    </section>
+
+    <section class="panel" style="margin-top:14px">
+      <h2 style="margin:8px 0 6px;font-size:1rem">Painel de status · clique para atualizar</h2>
+            <div class="status-legend">
+        <span><span class="status-dot dot-nao"></span> Não iniciado</span>
+        <span><span class="status-dot dot-andamento"></span> Em andamento</span>
+        <span><span class="status-dot dot-revisao"></span> Em revisão</span>
+        <span><span class="status-dot dot-enviado"></span> Enviado</span>
+      </div>
+      <div id="status-summary" style="margin-top:10px;font-size:.85rem;color:var(--muted)"></div>
+      <div style="margin-top:10px;display:flex;gap:8px;flex-wrap:wrap" id="status-filter-btns">
+        <button onclick="filtrarStatus('')"    id="sf-todos"     class="sf-btn sf-ativo"     style="padding:5px 14px;border-radius:999px;border:1px solid #ccc;background:#f1f5f9;font-size:.8rem;cursor:pointer;font-weight:700">Todos</button>
+        <button onclick="filtrarStatus('nao')"       id="sf-nao"       class="sf-btn" style="padding:5px 14px;border-radius:999px;border:1px solid #fca5a5;background:#fee2e2;color:#991b1b;font-size:.8rem;cursor:pointer;font-weight:600">Não iniciado</button>
+        <button onclick="filtrarStatus('andamento')" id="sf-andamento" class="sf-btn" style="padding:5px 14px;border-radius:999px;border:1px solid #fcd34d;background:#fef3c7;color:#92400e;font-size:.8rem;cursor:pointer;font-weight:600">Em andamento</button>
+        <button onclick="filtrarStatus('revisao')"   id="sf-revisao"   class="sf-btn" style="padding:5px 14px;border-radius:999px;border:1px solid #93c5fd;background:#dbeafe;color:#1e40af;font-size:.8rem;cursor:pointer;font-weight:600">Em revisão</button>
+        <button onclick="filtrarStatus('enviado')"   id="sf-enviado"   class="sf-btn" style="padding:5px 14px;border-radius:999px;border:1px solid #86efac;background:#dcfce7;color:#166534;font-size:.8rem;cursor:pointer;font-weight:600">Enviado</button>
+      </div>
+      <p style="margin:6px 0 0;color:var(--muted);font-size:.8rem">Os comentários são em tempo real para todos. O status de cada artigo fica registrado localmente no seu navegador.</p>
+    </section>
+
+    <section class="panel">
+      <h2 style="margin:8px 0 4px;font-size:1.05rem">Consulta rápida</h2>
+      <p style="margin:0;color:var(--muted);font-size:.94rem">Filtre por palavra, responsável ou tipo. A visualização em cartões é melhor no celular; a tabela é boa para conferência.</p>
+      <div class="tools">
+        <div><label for="q">Buscar</label><input id="q" type="search" placeholder="Título, autor, método, observação..."></div>
+        <div><label for="resp">Responsável</label><select id="resp"><option value="">Todos</option><option value="giovana">Giovana</option><option value="laura">Laura</option><option value="leonardo">Leonardo</option><option value="leticia">Leticia</option><option value="patrícia">Patrícia</option><option value="danusa">Danusa</option></select></div>
+        <div><label for="tipo">Tipo</label><select id="tipo"><option value="">Todos</option><option value="cec">CEC</option><option value="ceg">CEG</option><option value="ceg via pet">CEG via PET</option><option value="cic">CIC</option><option value="revisão / cic">Revisão / CIC</option></select></div>
+        <div><label>&nbsp;</label><button id="clear">Limpar</button></div>
+      </div>
+      <div class="view-toggle" aria-label="Alternar visualização">
+        <button id="cardsBtn" class="active" type="button">Ver cartões</button>
+        <button id="tableBtn" type="button">Ver tabela</button>
+      </div>
+      <div id="count"></div>
+    </section>
+
+    <main id="cards" class="cards">
+      
+      <article class="pub-card" data-pub-id="1" data-resp="laura leticia" data-tipo="cic" data-search="uso de tecnologias digitais e telemonitoramento em feridas crônicas: revisão da literatura cic laura leticia laura bruna leticia patrícia thaislan adrize objetivo: identificar e analisar evidências sobre uso e efetividade de ferramentas de telemonitoramento remoto no manejo de feridas crônicas na atenção básica.
+método: revisão integrativa da literatura em bases de dados indexadas, incluindo artigos sobre acompanhamento remoto por imagem, apps de saúde digital e suporte interprofissional.
+resultados: mapeamento de desfechos como redução no tempo de cicatrização, diminuição de complicações/reinternações e satisfação dos usuários com a telessaúde.
+conclusão: a saúde digital é aliada na assistência a pacientes crônicos, fornecendo subsídios que validam a implementação de plataformas de telemonitoramento no sus. leticia: fazer breve revisão literária de tema de grande relevância.
+leticia: no momento, não apresenta.">
+        <div class="pub-head">
+          <div class="num">1</div>
+          <div class="pub-title">
+            <h2>Uso de tecnologias digitais e telemonitoramento em feridas crônicas: revisão da literatura</h2>
+            <div class="meta"><span class="tag">CIC</span></div>
+          </div>
+        </div>
+
+        <div class="status-row" role="group" aria-label="Status do artigo">
+          <button class="status-btn" data-status="nao" onclick="setStatus(this)"><span class="status-dot dot-nao"></span>Não iniciado</button>
+          <button class="status-btn" data-status="andamento" onclick="setStatus(this)"><span class="status-dot dot-andamento"></span>Em andamento</button>
+          <button class="status-btn" data-status="revisao" onclick="setStatus(this)"><span class="status-dot dot-revisao"></span>Em revisão</button>
+          <button class="status-btn" data-status="enviado" onclick="setStatus(this)"><span class="status-dot dot-enviado"></span>Enviado</button>
+        </div>
+        <div class="pub-grid">
+          <section><h3>Responsável</h3><div class="chips"><span class="chip resp">Laura</span><span class="chip resp">Leticia</span></div></section>
+          <section><h3>Autores</h3><div class="chips"><span class="chip">Laura</span><span class="chip">Bruna</span><span class="chip">Leticia</span><span class="chip">Patrícia</span><span class="chip">Thaislan</span><span class="chip">Adrize</span></div></section>
+        </div>
+        <section class="sintese"><h3>Síntese</h3><p class="line"><strong>OBJETIVO:</strong> Identificar e analisar evidências sobre uso e efetividade de ferramentas de telemonitoramento remoto no manejo de feridas crônicas na atenção básica.</p>
+<p class="line"><strong>MÉTODO:</strong> Revisão integrativa da literatura em bases de dados indexadas, incluindo artigos sobre acompanhamento remoto por imagem, apps de saúde digital e suporte interprofissional.</p>
+<p class="line"><strong>RESULTADOS:</strong> Mapeamento de desfechos como redução no tempo de cicatrização, diminuição de complicações/reinternações e satisfação dos usuários com a telessaúde.</p>
+<p class="line"><strong>CONCLUSÃO:</strong> A saúde digital é aliada na assistência a pacientes crônicos, fornecendo subsídios que validam a implementação de plataformas de telemonitoramento no SUS.</p></section>
+        <section class="obs"><h3>Observações</h3><p class="obs-line">Leticia: fazer breve revisão literária de tema de grande relevância.</p>
+<p class="obs-line">Leticia: no momento, não apresenta.</p></section>
+
+        <section class="comentarios">
+          <h3>Comentários por fase</h3>
+          <div class="fases-comentarios">
+            <div class="fase-comment f1">
+              <div class="fase-comment-label">Fase 1 · 24–29 jun</div>
+              <div class="fase-comment-entries" id="comments-1-1"><em>Nenhum comentário ainda.</em></div>
+              <div class="fase-comment-form">
+                <select id="author-1-1"><option value="">Quem sou</option><option>Laura</option><option>Letícia</option><option>Giovana</option><option>Patrícia</option><option>Leonardo</option><option>Adrize</option><option>Alejandro</option><option>Bruna</option><option>Danusa</option><option>Gabi</option><option>Lilian</option><option>Lucas</option><option>Lyah</option><option>Thaislan</option><option>Viviane</option><option>Yanka</option></select>
+                <input type="text" id="input-1-1" placeholder="Comentar sobre a Fase 1…" maxlength="280">
+                <button onclick="addComment(1,1)">Salvar</button>
+              </div>
+            </div>
+            <div class="fase-comment f2">
+              <div class="fase-comment-label">Fase 2 · 30 jun–7 jul</div>
+              <div class="fase-comment-entries" id="comments-1-2"><em>Nenhum comentário ainda.</em></div>
+              <div class="fase-comment-form">
+                <select id="author-1-2"><option value="">Quem sou</option><option>Laura</option><option>Letícia</option><option>Giovana</option><option>Patrícia</option><option>Leonardo</option><option>Adrize</option><option>Alejandro</option><option>Bruna</option><option>Danusa</option><option>Gabi</option><option>Lilian</option><option>Lucas</option><option>Lyah</option><option>Thaislan</option><option>Viviane</option><option>Yanka</option></select>
+                <input type="text" id="input-1-2" placeholder="Comentar sobre a Fase 2…" maxlength="280">
+                <button onclick="addComment(1,2)">Salvar</button>
+              </div>
+            </div>
+            <div class="fase-comment f3">
+              <div class="fase-comment-label">Fase 3 · 7–14 jul</div>
+              <div class="fase-comment-entries" id="comments-1-3"><em>Nenhum comentário ainda.</em></div>
+              <div class="fase-comment-form">
+                <select id="author-1-3"><option value="">Quem sou</option><option>Laura</option><option>Letícia</option><option>Giovana</option><option>Patrícia</option><option>Leonardo</option><option>Adrize</option><option>Alejandro</option><option>Bruna</option><option>Danusa</option><option>Gabi</option><option>Lilian</option><option>Lucas</option><option>Lyah</option><option>Thaislan</option><option>Viviane</option><option>Yanka</option></select>
+                <input type="text" id="input-1-3" placeholder="Comentar sobre a Fase 3…" maxlength="280">
+                <button onclick="addComment(1,3)">Salvar</button>
+              </div>
+            </div>
+          </div>
+        </section>
+      </article>
+    
+      <article class="pub-card" data-pub-id="2" data-resp="laura" data-tipo="cec" data-search="implementação de um modelo de telemonitoramento para feridas crônicas: relato de experiência cec laura laura bruna lilian alejandro gabi vivi objetivo: descrever a experiência prática de implantação e início das atividades de um ambulatório especializado em feridas crônicas em pelotas-rs.
+método: relato de experiência descritivo e institucional sobre as etapas de estruturação do serviço físico e vivência do cuidado às lesões por equipe interprofissional (medicina, enfermagem e engenharia de produção).
+resultados: abertura do espaço ambulatorial, padronização de condutas clínicas interprofissionais e fortalecimento do aprendizado prático dos estudantes, estabelecendo base para futuras etapas de telemonitoramento.
+conclusão: relevância de espaços focados na interprofissionalidade no sus para qualificar o tratamento de feridas crônicas e preparar a rede para ferramentas de saúde digital. —">
+        <div class="pub-head">
+          <div class="num">2</div>
+          <div class="pub-title">
+            <h2>Implementação de um modelo de Telemonitoramento para feridas crônicas: relato de experiência</h2>
+            <div class="meta"><span class="tag">CEC</span></div>
+          </div>
+        </div>
+
+        <div class="status-row" role="group" aria-label="Status do artigo">
+          <button class="status-btn" data-status="nao" onclick="setStatus(this)"><span class="status-dot dot-nao"></span>Não iniciado</button>
+          <button class="status-btn" data-status="andamento" onclick="setStatus(this)"><span class="status-dot dot-andamento"></span>Em andamento</button>
+          <button class="status-btn" data-status="revisao" onclick="setStatus(this)"><span class="status-dot dot-revisao"></span>Em revisão</button>
+          <button class="status-btn" data-status="enviado" onclick="setStatus(this)"><span class="status-dot dot-enviado"></span>Enviado</button>
+        </div>
+        <div class="pub-grid">
+          <section><h3>Responsável</h3><div class="chips"><span class="chip resp">Laura</span></div></section>
+          <section><h3>Autores</h3><div class="chips"><span class="chip">Laura</span><span class="chip">Bruna</span><span class="chip">Lilian</span><span class="chip">Alejandro</span><span class="chip">Gabi</span><span class="chip">Vivi</span></div></section>
+        </div>
+        <section class="sintese"><h3>Síntese</h3><p class="line"><strong>OBJETIVO:</strong> Descrever a experiência prática de implantação e início das atividades de um ambulatório especializado em feridas crônicas em Pelotas-RS.</p>
+<p class="line"><strong>MÉTODO:</strong> Relato de experiência descritivo e institucional sobre as etapas de estruturação do serviço físico e vivência do cuidado às lesões por equipe interprofissional (medicina, enfermagem e engenharia de produção).</p>
+<p class="line"><strong>RESULTADOS:</strong> Abertura do espaço ambulatorial, padronização de condutas clínicas interprofissionais e fortalecimento do aprendizado prático dos estudantes, estabelecendo base para futuras etapas de telemonitoramento.</p>
+<p class="line"><strong>CONCLUSÃO:</strong> Relevância de espaços focados na interprofissionalidade no SUS para qualificar o tratamento de feridas crônicas e preparar a rede para ferramentas de saúde digital.</p></section>
+        <section class="obs"><h3>Observações</h3><span class="dash">—</span></section>
+
+        <section class="comentarios">
+          <h3>Comentários por fase</h3>
+          <div class="fases-comentarios">
+            <div class="fase-comment f1">
+              <div class="fase-comment-label">Fase 1 · 24–29 jun</div>
+              <div class="fase-comment-entries" id="comments-2-1"><em>Nenhum comentário ainda.</em></div>
+              <div class="fase-comment-form">
+                <select id="author-2-1"><option value="">Quem sou</option><option>Laura</option><option>Letícia</option><option>Giovana</option><option>Patrícia</option><option>Leonardo</option><option>Adrize</option><option>Alejandro</option><option>Bruna</option><option>Danusa</option><option>Gabi</option><option>Lilian</option><option>Lucas</option><option>Lyah</option><option>Thaislan</option><option>Viviane</option><option>Yanka</option></select>
+                <input type="text" id="input-2-1" placeholder="Comentar sobre a Fase 1…" maxlength="280">
+                <button onclick="addComment(2,1)">Salvar</button>
+              </div>
+            </div>
+            <div class="fase-comment f2">
+              <div class="fase-comment-label">Fase 2 · 30 jun–7 jul</div>
+              <div class="fase-comment-entries" id="comments-2-2"><em>Nenhum comentário ainda.</em></div>
+              <div class="fase-comment-form">
+                <select id="author-2-2"><option value="">Quem sou</option><option>Laura</option><option>Letícia</option><option>Giovana</option><option>Patrícia</option><option>Leonardo</option><option>Adrize</option><option>Alejandro</option><option>Bruna</option><option>Danusa</option><option>Gabi</option><option>Lilian</option><option>Lucas</option><option>Lyah</option><option>Thaislan</option><option>Viviane</option><option>Yanka</option></select>
+                <input type="text" id="input-2-2" placeholder="Comentar sobre a Fase 2…" maxlength="280">
+                <button onclick="addComment(2,2)">Salvar</button>
+              </div>
+            </div>
+            <div class="fase-comment f3">
+              <div class="fase-comment-label">Fase 3 · 7–14 jul</div>
+              <div class="fase-comment-entries" id="comments-2-3"><em>Nenhum comentário ainda.</em></div>
+              <div class="fase-comment-form">
+                <select id="author-2-3"><option value="">Quem sou</option><option>Laura</option><option>Letícia</option><option>Giovana</option><option>Patrícia</option><option>Leonardo</option><option>Adrize</option><option>Alejandro</option><option>Bruna</option><option>Danusa</option><option>Gabi</option><option>Lilian</option><option>Lucas</option><option>Lyah</option><option>Thaislan</option><option>Viviane</option><option>Yanka</option></select>
+                <input type="text" id="input-2-3" placeholder="Comentar sobre a Fase 3…" maxlength="280">
+                <button onclick="addComment(2,3)">Salvar</button>
+              </div>
+            </div>
+          </div>
+        </section>
+      </article>
+    
+      <article class="pub-card" data-pub-id="3" data-resp="leticia" data-tipo="revisão / cic" data-search="principais tipos de feridas crônicas revisão / cic leticia leticia patrícia thaislan lilian gabi adrize objetivo: apresentar os principais tipos de feridas crônicas.
+método: revisão bibliográfica baseada em artigos científicos, livros e diretrizes.
+resultados esperados: compreensão das características de cada ferida, fatores de risco, prevenção e cuidados.
+conclusão: destaque para a importância da atuação da enfermagem na avaliação e cuidados dos pacientes. leticia: no momento, não apresenta.">
+        <div class="pub-head">
+          <div class="num">3</div>
+          <div class="pub-title">
+            <h2>Principais tipos de Feridas Crônicas</h2>
+            <div class="meta"><span class="tag">Revisão / CIC</span></div>
+          </div>
+        </div>
+
+        <div class="status-row" role="group" aria-label="Status do artigo">
+          <button class="status-btn" data-status="nao" onclick="setStatus(this)"><span class="status-dot dot-nao"></span>Não iniciado</button>
+          <button class="status-btn" data-status="andamento" onclick="setStatus(this)"><span class="status-dot dot-andamento"></span>Em andamento</button>
+          <button class="status-btn" data-status="revisao" onclick="setStatus(this)"><span class="status-dot dot-revisao"></span>Em revisão</button>
+          <button class="status-btn" data-status="enviado" onclick="setStatus(this)"><span class="status-dot dot-enviado"></span>Enviado</button>
+        </div>
+        <div class="pub-grid">
+          <section><h3>Responsável</h3><div class="chips"><span class="chip resp">Leticia</span></div></section>
+          <section><h3>Autores</h3><div class="chips"><span class="chip">Leticia</span><span class="chip">Patrícia</span><span class="chip">Thaislan</span><span class="chip">Lilian</span><span class="chip">Gabi</span><span class="chip">Adrize</span></div></section>
+        </div>
+        <section class="sintese"><h3>Síntese</h3><p class="line"><strong>OBJETIVO:</strong> Apresentar os principais tipos de feridas crônicas.</p>
+<p class="line"><strong>MÉTODO:</strong> Revisão bibliográfica baseada em artigos científicos, livros e diretrizes.</p>
+<p class="line"><strong>RESULTADOS ESPERADOS:</strong> Compreensão das características de cada ferida, fatores de risco, prevenção e cuidados.</p>
+<p class="line"><strong>CONCLUSÃO:</strong> Destaque para a importância da atuação da enfermagem na avaliação e cuidados dos pacientes.</p></section>
+        <section class="obs"><h3>Observações</h3><p class="obs-line">Leticia: no momento, não apresenta.</p></section>
+
+        <section class="comentarios">
+          <h3>Comentários por fase</h3>
+          <div class="fases-comentarios">
+            <div class="fase-comment f1">
+              <div class="fase-comment-label">Fase 1 · 24–29 jun</div>
+              <div class="fase-comment-entries" id="comments-3-1"><em>Nenhum comentário ainda.</em></div>
+              <div class="fase-comment-form">
+                <select id="author-3-1"><option value="">Quem sou</option><option>Laura</option><option>Letícia</option><option>Giovana</option><option>Patrícia</option><option>Leonardo</option><option>Adrize</option><option>Alejandro</option><option>Bruna</option><option>Danusa</option><option>Gabi</option><option>Lilian</option><option>Lucas</option><option>Lyah</option><option>Thaislan</option><option>Viviane</option><option>Yanka</option></select>
+                <input type="text" id="input-3-1" placeholder="Comentar sobre a Fase 1…" maxlength="280">
+                <button onclick="addComment(3,1)">Salvar</button>
+              </div>
+            </div>
+            <div class="fase-comment f2">
+              <div class="fase-comment-label">Fase 2 · 30 jun–7 jul</div>
+              <div class="fase-comment-entries" id="comments-3-2"><em>Nenhum comentário ainda.</em></div>
+              <div class="fase-comment-form">
+                <select id="author-3-2"><option value="">Quem sou</option><option>Laura</option><option>Letícia</option><option>Giovana</option><option>Patrícia</option><option>Leonardo</option><option>Adrize</option><option>Alejandro</option><option>Bruna</option><option>Danusa</option><option>Gabi</option><option>Lilian</option><option>Lucas</option><option>Lyah</option><option>Thaislan</option><option>Viviane</option><option>Yanka</option></select>
+                <input type="text" id="input-3-2" placeholder="Comentar sobre a Fase 2…" maxlength="280">
+                <button onclick="addComment(3,2)">Salvar</button>
+              </div>
+            </div>
+            <div class="fase-comment f3">
+              <div class="fase-comment-label">Fase 3 · 7–14 jul</div>
+              <div class="fase-comment-entries" id="comments-3-3"><em>Nenhum comentário ainda.</em></div>
+              <div class="fase-comment-form">
+                <select id="author-3-3"><option value="">Quem sou</option><option>Laura</option><option>Letícia</option><option>Giovana</option><option>Patrícia</option><option>Leonardo</option><option>Adrize</option><option>Alejandro</option><option>Bruna</option><option>Danusa</option><option>Gabi</option><option>Lilian</option><option>Lucas</option><option>Lyah</option><option>Thaislan</option><option>Viviane</option><option>Yanka</option></select>
+                <input type="text" id="input-3-3" placeholder="Comentar sobre a Fase 3…" maxlength="280">
+                <button onclick="addComment(3,3)">Salvar</button>
+              </div>
+            </div>
+          </div>
+        </section>
+      </article>
+    
+      <article class="pub-card" data-pub-id="4" data-resp="patrícia" data-tipo="cec" data-search="papel do enfermeiro no cuidado com lesões crônicas em um ambulatório de feridas no sul do brasil: relato de experiência cec patrícia patrícia leticia thaislan lilian adrize objetivo: relatar a experiência de acadêmicos de enfermagem no atendimento de pacientes com lesões crônicas em ambulatório recém-inaugurado no sul do brasil.
+método: relato de experiência.
+resultados/conclusão: demonstrar a importância do serviço para a comunidade e como ele auxilia na melhora da qualidade de vida dos pacientes. patrícia: gostaria de uma opinião para prosseguir com o tema.">
+        <div class="pub-head">
+          <div class="num">4</div>
+          <div class="pub-title">
+            <h2>Papel do Enfermeiro no cuidado com lesões crônicas em um ambulatório de feridas no Sul do Brasil: relato de experiência</h2>
+            <div class="meta"><span class="tag">CEC</span></div>
+          </div>
+        </div>
+
+        <div class="status-row" role="group" aria-label="Status do artigo">
+          <button class="status-btn" data-status="nao" onclick="setStatus(this)"><span class="status-dot dot-nao"></span>Não iniciado</button>
+          <button class="status-btn" data-status="andamento" onclick="setStatus(this)"><span class="status-dot dot-andamento"></span>Em andamento</button>
+          <button class="status-btn" data-status="revisao" onclick="setStatus(this)"><span class="status-dot dot-revisao"></span>Em revisão</button>
+          <button class="status-btn" data-status="enviado" onclick="setStatus(this)"><span class="status-dot dot-enviado"></span>Enviado</button>
+        </div>
+        <div class="pub-grid">
+          <section><h3>Responsável</h3><div class="chips"><span class="chip resp">Patrícia</span></div></section>
+          <section><h3>Autores</h3><div class="chips"><span class="chip">Patrícia</span><span class="chip">Leticia</span><span class="chip">Thaislan</span><span class="chip">Lilian</span><span class="chip">Adrize</span></div></section>
+        </div>
+        <section class="sintese"><h3>Síntese</h3><p class="line"><strong>OBJETIVO:</strong> Relatar a experiência de acadêmicos de enfermagem no atendimento de pacientes com lesões crônicas em ambulatório recém-inaugurado no Sul do Brasil.</p>
+<p class="line"><strong>MÉTODO:</strong> Relato de experiência.</p>
+<p class="line"><strong>RESULTADOS/CONCLUSÃO:</strong> Demonstrar a importância do serviço para a comunidade e como ele auxilia na melhora da qualidade de vida dos pacientes.</p></section>
+        <section class="obs"><h3>Observações</h3><p class="obs-line">Patrícia: gostaria de uma opinião para prosseguir com o tema.</p></section>
+
+        <section class="comentarios">
+          <h3>Comentários por fase</h3>
+          <div class="fases-comentarios">
+            <div class="fase-comment f1">
+              <div class="fase-comment-label">Fase 1 · 24–29 jun</div>
+              <div class="fase-comment-entries" id="comments-4-1"><em>Nenhum comentário ainda.</em></div>
+              <div class="fase-comment-form">
+                <select id="author-4-1"><option value="">Quem sou</option><option>Laura</option><option>Letícia</option><option>Giovana</option><option>Patrícia</option><option>Leonardo</option><option>Adrize</option><option>Alejandro</option><option>Bruna</option><option>Danusa</option><option>Gabi</option><option>Lilian</option><option>Lucas</option><option>Lyah</option><option>Thaislan</option><option>Viviane</option><option>Yanka</option></select>
+                <input type="text" id="input-4-1" placeholder="Comentar sobre a Fase 1…" maxlength="280">
+                <button onclick="addComment(4,1)">Salvar</button>
+              </div>
+            </div>
+            <div class="fase-comment f2">
+              <div class="fase-comment-label">Fase 2 · 30 jun–7 jul</div>
+              <div class="fase-comment-entries" id="comments-4-2"><em>Nenhum comentário ainda.</em></div>
+              <div class="fase-comment-form">
+                <select id="author-4-2"><option value="">Quem sou</option><option>Laura</option><option>Letícia</option><option>Giovana</option><option>Patrícia</option><option>Leonardo</option><option>Adrize</option><option>Alejandro</option><option>Bruna</option><option>Danusa</option><option>Gabi</option><option>Lilian</option><option>Lucas</option><option>Lyah</option><option>Thaislan</option><option>Viviane</option><option>Yanka</option></select>
+                <input type="text" id="input-4-2" placeholder="Comentar sobre a Fase 2…" maxlength="280">
+                <button onclick="addComment(4,2)">Salvar</button>
+              </div>
+            </div>
+            <div class="fase-comment f3">
+              <div class="fase-comment-label">Fase 3 · 7–14 jul</div>
+              <div class="fase-comment-entries" id="comments-4-3"><em>Nenhum comentário ainda.</em></div>
+              <div class="fase-comment-form">
+                <select id="author-4-3"><option value="">Quem sou</option><option>Laura</option><option>Letícia</option><option>Giovana</option><option>Patrícia</option><option>Leonardo</option><option>Adrize</option><option>Alejandro</option><option>Bruna</option><option>Danusa</option><option>Gabi</option><option>Lilian</option><option>Lucas</option><option>Lyah</option><option>Thaislan</option><option>Viviane</option><option>Yanka</option></select>
+                <input type="text" id="input-4-3" placeholder="Comentar sobre a Fase 3…" maxlength="280">
+                <button onclick="addComment(4,3)">Salvar</button>
+              </div>
+            </div>
+          </div>
+        </section>
+      </article>
+    
+      <article class="pub-card" data-pub-id="5" data-resp="patrícia" data-tipo="cic" data-search="a utilização de inteligência artificial no cuidado de lesões crônicas: revisão literária cic patrícia patrícia danusa lyah lilian adrize alejandro objetivo: abordar o uso de inteligência artificial no cuidado de pacientes com lesões crônicas, desde a avaliação orientada pela ia até o tratamento indicado.
+método: revisão literária comparando diferentes tipos de ia aplicadas a feridas.
+conclusão: avaliar a eficácia ou não da ferramenta para avaliação das lesões. patrícia: gostaria de uma opinião para prosseguir com o tema.">
+        <div class="pub-head">
+          <div class="num">5</div>
+          <div class="pub-title">
+            <h2>A utilização de inteligência artificial no cuidado de lesões crônicas: revisão literária</h2>
+            <div class="meta"><span class="tag">CIC</span></div>
+          </div>
+        </div>
+
+        <div class="status-row" role="group" aria-label="Status do artigo">
+          <button class="status-btn" data-status="nao" onclick="setStatus(this)"><span class="status-dot dot-nao"></span>Não iniciado</button>
+          <button class="status-btn" data-status="andamento" onclick="setStatus(this)"><span class="status-dot dot-andamento"></span>Em andamento</button>
+          <button class="status-btn" data-status="revisao" onclick="setStatus(this)"><span class="status-dot dot-revisao"></span>Em revisão</button>
+          <button class="status-btn" data-status="enviado" onclick="setStatus(this)"><span class="status-dot dot-enviado"></span>Enviado</button>
+        </div>
+        <div class="pub-grid">
+          <section><h3>Responsável</h3><div class="chips"><span class="chip resp">Patrícia</span></div></section>
+          <section><h3>Autores</h3><div class="chips"><span class="chip">Patrícia</span><span class="chip">Danusa</span><span class="chip">Lyah</span><span class="chip">Lilian</span><span class="chip">Adrize</span><span class="chip">Alejandro</span></div></section>
+        </div>
+        <section class="sintese"><h3>Síntese</h3><p class="line"><strong>OBJETIVO:</strong> Abordar o uso de inteligência artificial no cuidado de pacientes com lesões crônicas, desde a avaliação orientada pela IA até o tratamento indicado.</p>
+<p class="line"><strong>MÉTODO:</strong> Revisão literária comparando diferentes tipos de IA aplicadas a feridas.</p>
+<p class="line"><strong>CONCLUSÃO:</strong> Avaliar a eficácia ou não da ferramenta para avaliação das lesões.</p></section>
+        <section class="obs"><h3>Observações</h3><p class="obs-line">Patrícia: gostaria de uma opinião para prosseguir com o tema.</p></section>
+
+        <section class="comentarios">
+          <h3>Comentários por fase</h3>
+          <div class="fases-comentarios">
+            <div class="fase-comment f1">
+              <div class="fase-comment-label">Fase 1 · 24–29 jun</div>
+              <div class="fase-comment-entries" id="comments-5-1"><em>Nenhum comentário ainda.</em></div>
+              <div class="fase-comment-form">
+                <select id="author-5-1"><option value="">Quem sou</option><option>Laura</option><option>Letícia</option><option>Giovana</option><option>Patrícia</option><option>Leonardo</option><option>Adrize</option><option>Alejandro</option><option>Bruna</option><option>Danusa</option><option>Gabi</option><option>Lilian</option><option>Lucas</option><option>Lyah</option><option>Thaislan</option><option>Viviane</option><option>Yanka</option></select>
+                <input type="text" id="input-5-1" placeholder="Comentar sobre a Fase 1…" maxlength="280">
+                <button onclick="addComment(5,1)">Salvar</button>
+              </div>
+            </div>
+            <div class="fase-comment f2">
+              <div class="fase-comment-label">Fase 2 · 30 jun–7 jul</div>
+              <div class="fase-comment-entries" id="comments-5-2"><em>Nenhum comentário ainda.</em></div>
+              <div class="fase-comment-form">
+                <select id="author-5-2"><option value="">Quem sou</option><option>Laura</option><option>Letícia</option><option>Giovana</option><option>Patrícia</option><option>Leonardo</option><option>Adrize</option><option>Alejandro</option><option>Bruna</option><option>Danusa</option><option>Gabi</option><option>Lilian</option><option>Lucas</option><option>Lyah</option><option>Thaislan</option><option>Viviane</option><option>Yanka</option></select>
+                <input type="text" id="input-5-2" placeholder="Comentar sobre a Fase 2…" maxlength="280">
+                <button onclick="addComment(5,2)">Salvar</button>
+              </div>
+            </div>
+            <div class="fase-comment f3">
+              <div class="fase-comment-label">Fase 3 · 7–14 jul</div>
+              <div class="fase-comment-entries" id="comments-5-3"><em>Nenhum comentário ainda.</em></div>
+              <div class="fase-comment-form">
+                <select id="author-5-3"><option value="">Quem sou</option><option>Laura</option><option>Letícia</option><option>Giovana</option><option>Patrícia</option><option>Leonardo</option><option>Adrize</option><option>Alejandro</option><option>Bruna</option><option>Danusa</option><option>Gabi</option><option>Lilian</option><option>Lucas</option><option>Lyah</option><option>Thaislan</option><option>Viviane</option><option>Yanka</option></select>
+                <input type="text" id="input-5-3" placeholder="Comentar sobre a Fase 3…" maxlength="280">
+                <button onclick="addComment(5,3)">Salvar</button>
+              </div>
+            </div>
+          </div>
+        </section>
+      </article>
+    
+      <article class="pub-card" data-pub-id="6" data-resp="patrícia" data-tipo="ceg via pet" data-search="diferença no tratamento de pacientes com rede de apoio que auxilia no cuidado: relato de experiência ceg via pet patrícia patrícia danusa lyah alejandro gabi vivi objetivo: apresentar a diferença no processo de cicatrização em pacientes que possuem rede de apoio no cuidado.
+método: relato de experiência a partir de atendimento na ubs sansca (paciente com cisto piloidal pós-operatório).
+resultados: paciente com suporte adequado de cuidadores (curativos diários) cicatrizou em poucas semanas lesão que levaria meses — mesmo sendo grande e em local úmido com risco de contaminação.
+conclusão: a rede de apoio tem impacto direto e positivo na cicatrização. patrícia: gostaria de uma opinião para prosseguir com o tema.">
+        <div class="pub-head">
+          <div class="num">6</div>
+          <div class="pub-title">
+            <h2>Diferença no tratamento de pacientes com rede de apoio que auxilia no cuidado: relato de experiência</h2>
+            <div class="meta"><span class="tag">CEG via PET</span></div>
+          </div>
+        </div>
+
+        <div class="status-row" role="group" aria-label="Status do artigo">
+          <button class="status-btn" data-status="nao" onclick="setStatus(this)"><span class="status-dot dot-nao"></span>Não iniciado</button>
+          <button class="status-btn" data-status="andamento" onclick="setStatus(this)"><span class="status-dot dot-andamento"></span>Em andamento</button>
+          <button class="status-btn" data-status="revisao" onclick="setStatus(this)"><span class="status-dot dot-revisao"></span>Em revisão</button>
+          <button class="status-btn" data-status="enviado" onclick="setStatus(this)"><span class="status-dot dot-enviado"></span>Enviado</button>
+        </div>
+        <div class="pub-grid">
+          <section><h3>Responsável</h3><div class="chips"><span class="chip resp">Patrícia</span></div></section>
+          <section><h3>Autores</h3><div class="chips"><span class="chip">Patrícia</span><span class="chip">Danusa</span><span class="chip">Lyah</span><span class="chip">Alejandro</span><span class="chip">Gabi</span><span class="chip">Vivi</span></div></section>
+        </div>
+        <section class="sintese"><h3>Síntese</h3><p class="line"><strong>OBJETIVO:</strong> Apresentar a diferença no processo de cicatrização em pacientes que possuem rede de apoio no cuidado.</p>
+<p class="line"><strong>MÉTODO:</strong> Relato de experiência a partir de atendimento na UBS Sansca (paciente com cisto piloidal pós-operatório).</p>
+<p class="line"><strong>RESULTADOS:</strong> Paciente com suporte adequado de cuidadores (curativos diários) cicatrizou em poucas semanas lesão que levaria meses — mesmo sendo grande e em local úmido com risco de contaminação.</p>
+<p class="line"><strong>CONCLUSÃO:</strong> A rede de apoio tem impacto direto e positivo na cicatrização.</p></section>
+        <section class="obs"><h3>Observações</h3><p class="obs-line">Patrícia: gostaria de uma opinião para prosseguir com o tema.</p></section>
+
+        <section class="comentarios">
+          <h3>Comentários por fase</h3>
+          <div class="fases-comentarios">
+            <div class="fase-comment f1">
+              <div class="fase-comment-label">Fase 1 · 24–29 jun</div>
+              <div class="fase-comment-entries" id="comments-6-1"><em>Nenhum comentário ainda.</em></div>
+              <div class="fase-comment-form">
+                <select id="author-6-1"><option value="">Quem sou</option><option>Laura</option><option>Letícia</option><option>Giovana</option><option>Patrícia</option><option>Leonardo</option><option>Adrize</option><option>Alejandro</option><option>Bruna</option><option>Danusa</option><option>Gabi</option><option>Lilian</option><option>Lucas</option><option>Lyah</option><option>Thaislan</option><option>Viviane</option><option>Yanka</option></select>
+                <input type="text" id="input-6-1" placeholder="Comentar sobre a Fase 1…" maxlength="280">
+                <button onclick="addComment(6,1)">Salvar</button>
+              </div>
+            </div>
+            <div class="fase-comment f2">
+              <div class="fase-comment-label">Fase 2 · 30 jun–7 jul</div>
+              <div class="fase-comment-entries" id="comments-6-2"><em>Nenhum comentário ainda.</em></div>
+              <div class="fase-comment-form">
+                <select id="author-6-2"><option value="">Quem sou</option><option>Laura</option><option>Letícia</option><option>Giovana</option><option>Patrícia</option><option>Leonardo</option><option>Adrize</option><option>Alejandro</option><option>Bruna</option><option>Danusa</option><option>Gabi</option><option>Lilian</option><option>Lucas</option><option>Lyah</option><option>Thaislan</option><option>Viviane</option><option>Yanka</option></select>
+                <input type="text" id="input-6-2" placeholder="Comentar sobre a Fase 2…" maxlength="280">
+                <button onclick="addComment(6,2)">Salvar</button>
+              </div>
+            </div>
+            <div class="fase-comment f3">
+              <div class="fase-comment-label">Fase 3 · 7–14 jul</div>
+              <div class="fase-comment-entries" id="comments-6-3"><em>Nenhum comentário ainda.</em></div>
+              <div class="fase-comment-form">
+                <select id="author-6-3"><option value="">Quem sou</option><option>Laura</option><option>Letícia</option><option>Giovana</option><option>Patrícia</option><option>Leonardo</option><option>Adrize</option><option>Alejandro</option><option>Bruna</option><option>Danusa</option><option>Gabi</option><option>Lilian</option><option>Lucas</option><option>Lyah</option><option>Thaislan</option><option>Viviane</option><option>Yanka</option></select>
+                <input type="text" id="input-6-3" placeholder="Comentar sobre a Fase 3…" maxlength="280">
+                <button onclick="addComment(6,3)">Salvar</button>
+              </div>
+            </div>
+          </div>
+        </section>
+      </article>
+    
+      <article class="pub-card" data-pub-id="7" data-resp="giovana" data-tipo="cec" data-search="feridas e cicatrização: resumo de conteúdo informativo no instagram cec giovana giovana patrícia yanka lilian vivi alejandro problema: falta de informações confiáveis e acessíveis sobre feridas e cicatrização para a população geral.
+método: elaboração e divulgação de conteúdos no instagram com linguagem simples e recursos visuais sobre conceitos de feridas, fatores que influenciam a cicatrização e cuidados básicos.
+resultados esperados: ampliar o conhecimento da população, promover educação em saúde e incentivar práticas adequadas de cuidado e prevenção de complicações. posts: patrícia, yanka e giovana.
+telemonitoramento: lucas, giovana e yanka.">
+        <div class="pub-head">
+          <div class="num">7</div>
+          <div class="pub-title">
+            <h2>Feridas e cicatrização: resumo de conteúdo informativo no Instagram</h2>
+            <div class="meta"><span class="tag">CEC</span></div>
+          </div>
+        </div>
+
+        <div class="status-row" role="group" aria-label="Status do artigo">
+          <button class="status-btn" data-status="nao" onclick="setStatus(this)"><span class="status-dot dot-nao"></span>Não iniciado</button>
+          <button class="status-btn" data-status="andamento" onclick="setStatus(this)"><span class="status-dot dot-andamento"></span>Em andamento</button>
+          <button class="status-btn" data-status="revisao" onclick="setStatus(this)"><span class="status-dot dot-revisao"></span>Em revisão</button>
+          <button class="status-btn" data-status="enviado" onclick="setStatus(this)"><span class="status-dot dot-enviado"></span>Enviado</button>
+        </div>
+        <div class="pub-grid">
+          <section><h3>Responsável</h3><div class="chips"><span class="chip resp">Giovana</span></div></section>
+          <section><h3>Autores</h3><div class="chips"><span class="chip">Giovana</span><span class="chip">Patrícia</span><span class="chip">Yanka</span><span class="chip">Lilian</span><span class="chip">Vivi</span><span class="chip">Alejandro</span></div></section>
+        </div>
+        <section class="sintese"><h3>Síntese</h3><p class="line"><strong>PROBLEMA:</strong> Falta de informações confiáveis e acessíveis sobre feridas e cicatrização para a população geral.</p>
+<p class="line"><strong>MÉTODO:</strong> Elaboração e divulgação de conteúdos no Instagram com linguagem simples e recursos visuais sobre conceitos de feridas, fatores que influenciam a cicatrização e cuidados básicos.</p>
+<p class="line"><strong>RESULTADOS ESPERADOS:</strong> Ampliar o conhecimento da população, promover educação em saúde e incentivar práticas adequadas de cuidado e prevenção de complicações.</p></section>
+        <section class="obs"><h3>Observações</h3><p class="obs-line">Posts: Patrícia, Yanka e Giovana.</p>
+<p class="obs-line">Telemonitoramento: Lucas, Giovana e Yanka.</p></section>
+
+        <section class="comentarios">
+          <h3>Comentários por fase</h3>
+          <div class="fases-comentarios">
+            <div class="fase-comment f1">
+              <div class="fase-comment-label">Fase 1 · 24–29 jun</div>
+              <div class="fase-comment-entries" id="comments-7-1"><em>Nenhum comentário ainda.</em></div>
+              <div class="fase-comment-form">
+                <select id="author-7-1"><option value="">Quem sou</option><option>Laura</option><option>Letícia</option><option>Giovana</option><option>Patrícia</option><option>Leonardo</option><option>Adrize</option><option>Alejandro</option><option>Bruna</option><option>Danusa</option><option>Gabi</option><option>Lilian</option><option>Lucas</option><option>Lyah</option><option>Thaislan</option><option>Viviane</option><option>Yanka</option></select>
+                <input type="text" id="input-7-1" placeholder="Comentar sobre a Fase 1…" maxlength="280">
+                <button onclick="addComment(7,1)">Salvar</button>
+              </div>
+            </div>
+            <div class="fase-comment f2">
+              <div class="fase-comment-label">Fase 2 · 30 jun–7 jul</div>
+              <div class="fase-comment-entries" id="comments-7-2"><em>Nenhum comentário ainda.</em></div>
+              <div class="fase-comment-form">
+                <select id="author-7-2"><option value="">Quem sou</option><option>Laura</option><option>Letícia</option><option>Giovana</option><option>Patrícia</option><option>Leonardo</option><option>Adrize</option><option>Alejandro</option><option>Bruna</option><option>Danusa</option><option>Gabi</option><option>Lilian</option><option>Lucas</option><option>Lyah</option><option>Thaislan</option><option>Viviane</option><option>Yanka</option></select>
+                <input type="text" id="input-7-2" placeholder="Comentar sobre a Fase 2…" maxlength="280">
+                <button onclick="addComment(7,2)">Salvar</button>
+              </div>
+            </div>
+            <div class="fase-comment f3">
+              <div class="fase-comment-label">Fase 3 · 7–14 jul</div>
+              <div class="fase-comment-entries" id="comments-7-3"><em>Nenhum comentário ainda.</em></div>
+              <div class="fase-comment-form">
+                <select id="author-7-3"><option value="">Quem sou</option><option>Laura</option><option>Letícia</option><option>Giovana</option><option>Patrícia</option><option>Leonardo</option><option>Adrize</option><option>Alejandro</option><option>Bruna</option><option>Danusa</option><option>Gabi</option><option>Lilian</option><option>Lucas</option><option>Lyah</option><option>Thaislan</option><option>Viviane</option><option>Yanka</option></select>
+                <input type="text" id="input-7-3" placeholder="Comentar sobre a Fase 3…" maxlength="280">
+                <button onclick="addComment(7,3)">Salvar</button>
+              </div>
+            </div>
+          </div>
+        </section>
+      </article>
+    
+      <article class="pub-card" data-pub-id="8" data-resp="giovana" data-tipo="ceg" data-search="a atuação dos acadêmicos de enfermagem e medicina no telemonitoramento/telematriciamento de feridas ceg giovana giovana lucas yanka adrize gabi vivi problema: dificuldade de acompanhamento contínuo e especializado de pacientes com feridas.
+método: realização de telemonitoramento e telematriciamento por acadêmicos de enfermagem e medicina, sob supervisão de profissionais, utilizando ferramentas digitais para avaliação e acompanhamento.
+resultados esperados: melhorar a qualidade da assistência, favorecer a cicatrização, ampliar o acesso ao cuidado especializado e fortalecer a formação em saúde digital. posts: patrícia, yanka e giovana.
+telemonitoramento: lucas, giovana e yanka.">
+        <div class="pub-head">
+          <div class="num">8</div>
+          <div class="pub-title">
+            <h2>A atualização dos acadêmicos de enfermagem e medicina no telemonitoramento/telematriciamento de feridas</h2>
+            <div class="meta"><span class="tag">CEG</span></div>
+          </div>
+        </div>
+
+        <div class="status-row" role="group" aria-label="Status do artigo">
+          <button class="status-btn" data-status="nao" onclick="setStatus(this)"><span class="status-dot dot-nao"></span>Não iniciado</button>
+          <button class="status-btn" data-status="andamento" onclick="setStatus(this)"><span class="status-dot dot-andamento"></span>Em andamento</button>
+          <button class="status-btn" data-status="revisao" onclick="setStatus(this)"><span class="status-dot dot-revisao"></span>Em revisão</button>
+          <button class="status-btn" data-status="enviado" onclick="setStatus(this)"><span class="status-dot dot-enviado"></span>Enviado</button>
+        </div>
+        <div class="pub-grid">
+          <section><h3>Responsável</h3><div class="chips"><span class="chip resp">Giovana</span></div></section>
+          <section><h3>Autores</h3><div class="chips"><span class="chip">Giovana</span><span class="chip">Lucas</span><span class="chip">Yanka</span><span class="chip">Adrize</span><span class="chip">Gabi</span><span class="chip">Vivi</span></div></section>
+        </div>
+        <section class="sintese"><h3>Síntese</h3><p class="line"><strong>PROBLEMA:</strong> Dificuldade de acompanhamento contínuo e especializado de pacientes com feridas.</p>
+<p class="line"><strong>MÉTODO:</strong> Realização de telemonitoramento e telematriciamento por acadêmicos de enfermagem e medicina, sob supervisão de profissionais, utilizando ferramentas digitais para avaliação e acompanhamento.</p>
+<p class="line"><strong>RESULTADOS ESPERADOS:</strong> Melhorar a qualidade da assistência, favorecer a cicatrização, ampliar o acesso ao cuidado especializado e fortalecer a formação em saúde digital.</p></section>
+        <section class="obs"><h3>Observações</h3><p class="obs-line">Posts: Patrícia, Yanka e Giovana.</p>
+<p class="obs-line">Telemonitoramento: Lucas, Giovana e Yanka.</p></section>
+
+        <section class="comentarios">
+          <h3>Comentários por fase</h3>
+          <div class="fases-comentarios">
+            <div class="fase-comment f1">
+              <div class="fase-comment-label">Fase 1 · 24–29 jun</div>
+              <div class="fase-comment-entries" id="comments-8-1"><em>Nenhum comentário ainda.</em></div>
+              <div class="fase-comment-form">
+                <select id="author-8-1"><option value="">Quem sou</option><option>Laura</option><option>Letícia</option><option>Giovana</option><option>Patrícia</option><option>Leonardo</option><option>Adrize</option><option>Alejandro</option><option>Bruna</option><option>Danusa</option><option>Gabi</option><option>Lilian</option><option>Lucas</option><option>Lyah</option><option>Thaislan</option><option>Viviane</option><option>Yanka</option></select>
+                <input type="text" id="input-8-1" placeholder="Comentar sobre a Fase 1…" maxlength="280">
+                <button onclick="addComment(8,1)">Salvar</button>
+              </div>
+            </div>
+            <div class="fase-comment f2">
+              <div class="fase-comment-label">Fase 2 · 30 jun–7 jul</div>
+              <div class="fase-comment-entries" id="comments-8-2"><em>Nenhum comentário ainda.</em></div>
+              <div class="fase-comment-form">
+                <select id="author-8-2"><option value="">Quem sou</option><option>Laura</option><option>Letícia</option><option>Giovana</option><option>Patrícia</option><option>Leonardo</option><option>Adrize</option><option>Alejandro</option><option>Bruna</option><option>Danusa</option><option>Gabi</option><option>Lilian</option><option>Lucas</option><option>Lyah</option><option>Thaislan</option><option>Viviane</option><option>Yanka</option></select>
+                <input type="text" id="input-8-2" placeholder="Comentar sobre a Fase 2…" maxlength="280">
+                <button onclick="addComment(8,2)">Salvar</button>
+              </div>
+            </div>
+            <div class="fase-comment f3">
+              <div class="fase-comment-label">Fase 3 · 7–14 jul</div>
+              <div class="fase-comment-entries" id="comments-8-3"><em>Nenhum comentário ainda.</em></div>
+              <div class="fase-comment-form">
+                <select id="author-8-3"><option value="">Quem sou</option><option>Laura</option><option>Letícia</option><option>Giovana</option><option>Patrícia</option><option>Leonardo</option><option>Adrize</option><option>Alejandro</option><option>Bruna</option><option>Danusa</option><option>Gabi</option><option>Lilian</option><option>Lucas</option><option>Lyah</option><option>Thaislan</option><option>Viviane</option><option>Yanka</option></select>
+                <input type="text" id="input-8-3" placeholder="Comentar sobre a Fase 3…" maxlength="280">
+                <button onclick="addComment(8,3)">Salvar</button>
+              </div>
+            </div>
+          </div>
+        </section>
+      </article>
+    
+      <article class="pub-card" data-pub-id="9" data-resp="leonardo" data-tipo="cec" data-search="impacto das publicações digitais em saúde: estudo de alcance em página do instagram cec leonardo leonardo danusa alejandro gabi lilian vivi objetivo: analisar o alcance das publicações de uma página de conteúdo em saúde no instagram, investigando seu potencial como ferramenta de divulgação científica e educação em saúde.
+método: análise quantitativa das métricas da plataforma (alcance, impressões, curtidas, compartilhamentos, comentários e salvamentos).
+resultados esperados: identificar os tipos de conteúdo com maior visibilidade e interação, contribuindo para a compreensão da efetividade das redes sociais na disseminação de informações em saúde. —">
+        <div class="pub-head">
+          <div class="num">9</div>
+          <div class="pub-title">
+            <h2>Impacto das Publicações Digitais em Saúde: estudo de alcance em página do Instagram</h2>
+            <div class="meta"><span class="tag">CEC</span></div>
+          </div>
+        </div>
+
+        <div class="status-row" role="group" aria-label="Status do artigo">
+          <button class="status-btn" data-status="nao" onclick="setStatus(this)"><span class="status-dot dot-nao"></span>Não iniciado</button>
+          <button class="status-btn" data-status="andamento" onclick="setStatus(this)"><span class="status-dot dot-andamento"></span>Em andamento</button>
+          <button class="status-btn" data-status="revisao" onclick="setStatus(this)"><span class="status-dot dot-revisao"></span>Em revisão</button>
+          <button class="status-btn" data-status="enviado" onclick="setStatus(this)"><span class="status-dot dot-enviado"></span>Enviado</button>
+        </div>
+        <div class="pub-grid">
+          <section><h3>Responsável</h3><div class="chips"><span class="chip resp">Leonardo</span></div></section>
+          <section><h3>Autores</h3><div class="chips"><span class="chip">Leonardo</span><span class="chip">Danusa</span><span class="chip">Alejandro</span><span class="chip">Gabi</span><span class="chip">Lilian</span><span class="chip">Vivi</span></div></section>
+        </div>
+        <section class="sintese"><h3>Síntese</h3><p class="line"><strong>OBJETIVO:</strong> Analisar o alcance das publicações de uma página de conteúdo em saúde no Instagram, investigando seu potencial como ferramenta de divulgação científica e educação em saúde.</p>
+<p class="line"><strong>MÉTODO:</strong> Análise quantitativa das métricas da plataforma (alcance, impressões, curtidas, compartilhamentos, comentários e salvamentos).</p>
+<p class="line"><strong>RESULTADOS ESPERADOS:</strong> Identificar os tipos de conteúdo com maior visibilidade e interação, contribuindo para a compreensão da efetividade das redes sociais na disseminação de informações em saúde.</p></section>
+        <section class="obs"><h3>Observações</h3><span class="dash">—</span></section>
+
+        <section class="comentarios">
+          <h3>Comentários por fase</h3>
+          <div class="fases-comentarios">
+            <div class="fase-comment f1">
+              <div class="fase-comment-label">Fase 1 · 24–29 jun</div>
+              <div class="fase-comment-entries" id="comments-9-1"><em>Nenhum comentário ainda.</em></div>
+              <div class="fase-comment-form">
+                <select id="author-9-1"><option value="">Quem sou</option><option>Laura</option><option>Letícia</option><option>Giovana</option><option>Patrícia</option><option>Leonardo</option><option>Adrize</option><option>Alejandro</option><option>Bruna</option><option>Danusa</option><option>Gabi</option><option>Lilian</option><option>Lucas</option><option>Lyah</option><option>Thaislan</option><option>Viviane</option><option>Yanka</option></select>
+                <input type="text" id="input-9-1" placeholder="Comentar sobre a Fase 1…" maxlength="280">
+                <button onclick="addComment(9,1)">Salvar</button>
+              </div>
+            </div>
+            <div class="fase-comment f2">
+              <div class="fase-comment-label">Fase 2 · 30 jun–7 jul</div>
+              <div class="fase-comment-entries" id="comments-9-2"><em>Nenhum comentário ainda.</em></div>
+              <div class="fase-comment-form">
+                <select id="author-9-2"><option value="">Quem sou</option><option>Laura</option><option>Letícia</option><option>Giovana</option><option>Patrícia</option><option>Leonardo</option><option>Adrize</option><option>Alejandro</option><option>Bruna</option><option>Danusa</option><option>Gabi</option><option>Lilian</option><option>Lucas</option><option>Lyah</option><option>Thaislan</option><option>Viviane</option><option>Yanka</option></select>
+                <input type="text" id="input-9-2" placeholder="Comentar sobre a Fase 2…" maxlength="280">
+                <button onclick="addComment(9,2)">Salvar</button>
+              </div>
+            </div>
+            <div class="fase-comment f3">
+              <div class="fase-comment-label">Fase 3 · 7–14 jul</div>
+              <div class="fase-comment-entries" id="comments-9-3"><em>Nenhum comentário ainda.</em></div>
+              <div class="fase-comment-form">
+                <select id="author-9-3"><option value="">Quem sou</option><option>Laura</option><option>Letícia</option><option>Giovana</option><option>Patrícia</option><option>Leonardo</option><option>Adrize</option><option>Alejandro</option><option>Bruna</option><option>Danusa</option><option>Gabi</option><option>Lilian</option><option>Lucas</option><option>Lyah</option><option>Thaislan</option><option>Viviane</option><option>Yanka</option></select>
+                <input type="text" id="input-9-3" placeholder="Comentar sobre a Fase 3…" maxlength="280">
+                <button onclick="addComment(9,3)">Salvar</button>
+              </div>
+            </div>
+          </div>
+        </section>
+      </article>
+    
+      <article class="pub-card" data-pub-id="10" data-resp="leonardo" data-tipo="cec" data-search="caracterização dos atendimentos em ambulatório especializado em feridas crônicas: análise do primeiro mês em pelotas-rs cec leonardo leonardo bruna laura adrize alejandro vivi objetivo: descrever o perfil sociodemográfico, clínico e assistencial dos pacientes atendidos no primeiro mês de funcionamento do ambulatório de feridas crônicas em pelotas-rs.
+método: estudo observacional, descritivo e retrospectivo com análise de prontuários (sexo, idade, raça/cor, escolaridade, condições de saúde, tipo de ferida, número de retornos).
+resultados esperados: caracterizar a população atendida e fornecer subsídios para o planejamento e aprimoramento da assistência. necessita de cep.
+sugestão: transformar em relato de experiência.">
+        <div class="pub-head">
+          <div class="num">10</div>
+          <div class="pub-title">
+            <h2>Caracterização dos atendimentos em ambulatório especializado em feridas crônicas: análise do primeiro mês em Pelotas-RS</h2>
+            <div class="meta"><span class="tag">CEC</span></div>
+          </div>
+        </div>
+
+        <div class="status-row" role="group" aria-label="Status do artigo">
+          <button class="status-btn" data-status="nao" onclick="setStatus(this)"><span class="status-dot dot-nao"></span>Não iniciado</button>
+          <button class="status-btn" data-status="andamento" onclick="setStatus(this)"><span class="status-dot dot-andamento"></span>Em andamento</button>
+          <button class="status-btn" data-status="revisao" onclick="setStatus(this)"><span class="status-dot dot-revisao"></span>Em revisão</button>
+          <button class="status-btn" data-status="enviado" onclick="setStatus(this)"><span class="status-dot dot-enviado"></span>Enviado</button>
+        </div>
+        <div class="pub-grid">
+          <section><h3>Responsável</h3><div class="chips"><span class="chip resp">Leonardo</span></div></section>
+          <section><h3>Autores</h3><div class="chips"><span class="chip">Leonardo</span><span class="chip">Bruna</span><span class="chip">Laura</span><span class="chip">Adrize</span><span class="chip">Alejandro</span><span class="chip">Vivi</span></div></section>
+        </div>
+        <section class="sintese"><h3>Síntese</h3><p class="line"><strong>OBJETIVO:</strong> Descrever o perfil sociodemográfico, clínico e assistencial dos pacientes atendidos no primeiro mês de funcionamento do ambulatório de feridas crônicas em Pelotas-RS.</p>
+<p class="line"><strong>MÉTODO:</strong> Estudo observacional, descritivo e retrospectivo com análise de prontuários (sexo, idade, raça/cor, escolaridade, condições de saúde, tipo de ferida, número de retornos).</p>
+<p class="line"><strong>RESULTADOS ESPERADOS:</strong> Caracterizar a população atendida e fornecer subsídios para o planejamento e aprimoramento da assistência.</p></section>
+        <section class="obs"><h3>Observações</h3><p class="obs-line">Necessita de CEP.</p>
+<p class="obs-line">Sugestão: transformar em relato de experiência.</p></section>
+
+        <section class="comentarios">
+          <h3>Comentários por fase</h3>
+          <div class="fases-comentarios">
+            <div class="fase-comment f1">
+              <div class="fase-comment-label">Fase 1 · 24–29 jun</div>
+              <div class="fase-comment-entries" id="comments-10-1"><em>Nenhum comentário ainda.</em></div>
+              <div class="fase-comment-form">
+                <select id="author-10-1"><option value="">Quem sou</option><option>Laura</option><option>Letícia</option><option>Giovana</option><option>Patrícia</option><option>Leonardo</option><option>Adrize</option><option>Alejandro</option><option>Bruna</option><option>Danusa</option><option>Gabi</option><option>Lilian</option><option>Lucas</option><option>Lyah</option><option>Thaislan</option><option>Viviane</option><option>Yanka</option></select>
+                <input type="text" id="input-10-1" placeholder="Comentar sobre a Fase 1…" maxlength="280">
+                <button onclick="addComment(10,1)">Salvar</button>
+              </div>
+            </div>
+            <div class="fase-comment f2">
+              <div class="fase-comment-label">Fase 2 · 30 jun–7 jul</div>
+              <div class="fase-comment-entries" id="comments-10-2"><em>Nenhum comentário ainda.</em></div>
+              <div class="fase-comment-form">
+                <select id="author-10-2"><option value="">Quem sou</option><option>Laura</option><option>Letícia</option><option>Giovana</option><option>Patrícia</option><option>Leonardo</option><option>Adrize</option><option>Alejandro</option><option>Bruna</option><option>Danusa</option><option>Gabi</option><option>Lilian</option><option>Lucas</option><option>Lyah</option><option>Thaislan</option><option>Viviane</option><option>Yanka</option></select>
+                <input type="text" id="input-10-2" placeholder="Comentar sobre a Fase 2…" maxlength="280">
+                <button onclick="addComment(10,2)">Salvar</button>
+              </div>
+            </div>
+            <div class="fase-comment f3">
+              <div class="fase-comment-label">Fase 3 · 7–14 jul</div>
+              <div class="fase-comment-entries" id="comments-10-3"><em>Nenhum comentário ainda.</em></div>
+              <div class="fase-comment-form">
+                <select id="author-10-3"><option value="">Quem sou</option><option>Laura</option><option>Letícia</option><option>Giovana</option><option>Patrícia</option><option>Leonardo</option><option>Adrize</option><option>Alejandro</option><option>Bruna</option><option>Danusa</option><option>Gabi</option><option>Lilian</option><option>Lucas</option><option>Lyah</option><option>Thaislan</option><option>Viviane</option><option>Yanka</option></select>
+                <input type="text" id="input-10-3" placeholder="Comentar sobre a Fase 3…" maxlength="280">
+                <button onclick="addComment(10,3)">Salvar</button>
+              </div>
+            </div>
+          </div>
+        </section>
+      </article>
+    
+      <article class="pub-card" data-pub-id="11" data-resp="leticia" data-tipo="ceg" data-search="pet-saúde e formação acadêmica: contribuições da vivência prática em um centro especializado no cuidado de feridas crônicas ceg letícia leticia patrícia thaislan adrize lilian viviane objetivo: relatar as contribuições da vivência prática de estudantes vinculados ao pet-saúde em um centro especializado no cuidado de feridas crônicas para a formação acadêmica e interprofissional.
+método: relato de experiência descritivo, baseado na participação discente em atividades supervisionadas de atendimento, discussão de casos, organização de fluxos, registros e acompanhamento do cuidado a pessoas com feridas crônicas.
+resultados esperados: evidenciar o fortalecimento de competências clínicas, comunicação interprofissional, compreensão da rede sus, segurança no cuidado e articulação ensino-serviço, qualificando a formação acadêmica e a assistência prestada.
+conclusão: a vivência em serviço aproxima a universidade das necessidades reais da população e consolida o pet-saúde como estratégia de aprendizagem, responsabilidade sanitária e cuidado integral.">
+        <div class="pub-head">
+          <div class="num">11</div>
+          <div class="pub-title">
+            <h2>PET-Saúde e formação acadêmica: contribuições da vivência prática em um centro especializado no cuidado de feridas crônicas</h2>
+            <div class="meta"><span class="tag">CEG</span></div>
+          </div>
+        </div>
+
+        <div class="status-row" role="group" aria-label="Status do artigo">
+          <button class="status-btn" data-status="nao" onclick="setStatus(this)"><span class="status-dot dot-nao"></span>Não iniciado</button>
+          <button class="status-btn" data-status="andamento" onclick="setStatus(this)"><span class="status-dot dot-andamento"></span>Em andamento</button>
+          <button class="status-btn" data-status="revisao" onclick="setStatus(this)"><span class="status-dot dot-revisao"></span>Em revisão</button>
+          <button class="status-btn" data-status="enviado" onclick="setStatus(this)"><span class="status-dot dot-enviado"></span>Enviado</button>
+        </div>
+        <div class="pub-grid">
+          <section><h3>Responsável</h3><div class="chips"><span class="chip resp">Letícia</span></div></section>
+          <section><h3>Autores</h3><div class="chips"><span class="chip">Letícia</span><span class="chip">Patrícia</span><span class="chip">Thaislan</span><span class="chip">Adrize</span><span class="chip">Lilian</span><span class="chip">Viviane</span></div></section>
+        </div>
+        <section class="sintese"><h3>Síntese</h3><p class="line"><strong>OBJETIVO:</strong> Relatar as contribuições da vivência prática de estudantes vinculados ao PET-Saúde em um centro especializado no cuidado de feridas crônicas para a formação acadêmica e interprofissional.</p>
+<p class="line"><strong>MÉTODO:</strong> Relato de experiência descritivo, baseado na participação discente em atividades supervisionadas de atendimento, discussão de casos, organização de fluxos, registros e acompanhamento do cuidado a pessoas com feridas crônicas.</p>
+<p class="line"><strong>RESULTADOS ESPERADOS:</strong> Evidenciar o fortalecimento de competências clínicas, comunicação interprofissional, compreensão da rede SUS, segurança no cuidado e articulação ensino-serviço, qualificando a formação acadêmica e a assistência prestada.</p>
+<p class="line"><strong>CONCLUSÃO:</strong> A vivência em serviço aproxima a universidade das necessidades reais da população e consolida o PET-Saúde como estratégia de aprendizagem, responsabilidade sanitária e cuidado integral.</p></section>
+        <section class="obs"><h3>Observações</h3><span class="dash">—</span></section>
+
+        <section class="comentarios">
+          <h3>Comentários por fase</h3>
+          <div class="fases-comentarios">
+            <div class="fase-comment f1">
+              <div class="fase-comment-label">Fase 1 · 24–29 jun</div>
+              <div class="fase-comment-entries" id="comments-11-1"><em>Nenhum comentário ainda.</em></div>
+              <div class="fase-comment-form">
+                <select id="author-11-1"><option value="">Quem sou</option><option>Laura</option><option>Letícia</option><option>Giovana</option><option>Patrícia</option><option>Leonardo</option><option>Adrize</option><option>Alejandro</option><option>Bruna</option><option>Danusa</option><option>Gabi</option><option>Lilian</option><option>Lucas</option><option>Lyah</option><option>Thaislan</option><option>Viviane</option><option>Yanka</option></select>
+                <input type="text" id="input-11-1" placeholder="Comentar sobre a Fase 1…" maxlength="280">
+                <button onclick="addComment(11,1)">Salvar</button>
+              </div>
+            </div>
+            <div class="fase-comment f2">
+              <div class="fase-comment-label">Fase 2 · 30 jun–7 jul</div>
+              <div class="fase-comment-entries" id="comments-11-2"><em>Nenhum comentário ainda.</em></div>
+              <div class="fase-comment-form">
+                <select id="author-11-2"><option value="">Quem sou</option><option>Laura</option><option>Letícia</option><option>Giovana</option><option>Patrícia</option><option>Leonardo</option><option>Adrize</option><option>Alejandro</option><option>Bruna</option><option>Danusa</option><option>Gabi</option><option>Lilian</option><option>Lucas</option><option>Lyah</option><option>Thaislan</option><option>Viviane</option><option>Yanka</option></select>
+                <input type="text" id="input-11-2" placeholder="Comentar sobre a Fase 2…" maxlength="280">
+                <button onclick="addComment(11,2)">Salvar</button>
+              </div>
+            </div>
+            <div class="fase-comment f3">
+              <div class="fase-comment-label">Fase 3 · 7–14 jul</div>
+              <div class="fase-comment-entries" id="comments-11-3"><em>Nenhum comentário ainda.</em></div>
+              <div class="fase-comment-form">
+                <select id="author-11-3"><option value="">Quem sou</option><option>Laura</option><option>Letícia</option><option>Giovana</option><option>Patrícia</option><option>Leonardo</option><option>Adrize</option><option>Alejandro</option><option>Bruna</option><option>Danusa</option><option>Gabi</option><option>Lilian</option><option>Lucas</option><option>Lyah</option><option>Thaislan</option><option>Viviane</option><option>Yanka</option></select>
+                <input type="text" id="input-11-3" placeholder="Comentar sobre a Fase 3…" maxlength="280">
+                <button onclick="addComment(11,3)">Salvar</button>
+              </div>
+            </div>
+          </div>
+        </section>
+      </article>
+    
+
+      <article class="pub-card" data-pub-id="12" data-resp="danusa" data-tipo="cic" data-search="a engenharia de producao no pet-saude cic danusa danusa lyah patricia adrize alejandro gestao de processos padronizacao qualidade materiais educativos interprofissionalidade">
+        <div class="pub-head">
+          <div class="num">12</div>
+          <div class="pub-title">
+            <h2>A Engenharia de Produção no PET-Saúde</h2>
+            <div class="meta"><span class="tag">CIC</span></div>
+          </div>
+        </div>
+
+        <div class="status-row" role="group" aria-label="Status do artigo">
+          <button class="status-btn" data-status="nao" onclick="setStatus(this)"><span class="status-dot dot-nao"></span>Não iniciado</button>
+          <button class="status-btn" data-status="andamento" onclick="setStatus(this)"><span class="status-dot dot-andamento"></span>Em andamento</button>
+          <button class="status-btn" data-status="revisao" onclick="setStatus(this)"><span class="status-dot dot-revisao"></span>Em revisão</button>
+          <button class="status-btn" data-status="enviado" onclick="setStatus(this)"><span class="status-dot dot-enviado"></span>Enviado</button>
+        </div>
+        <div class="pub-grid">
+          <section><h3>Responsável</h3><div class="chips"><span class="chip resp">Danusa</span></div></section>
+          <section><h3>Autores</h3><div class="chips"><span class="chip">Danusa</span><span class="chip">Lyah</span><span class="chip">Patrícia</span><span class="chip">Adrize</span><span class="chip">Alejandro</span></div></section>
+        </div>
+        <section class="sintese"><h3>Síntese</h3>
+<p class="line"><strong>OBJETIVO:</strong> Descrever como a Engenharia de Produção contribui para a área da saúde por meio da gestão de processos, padronização, qualidade, gestão do conhecimento e desenvolvimento de materiais educativos no contexto do PET-Saúde UFPel.</p>
+<p class="line"><strong>MÉTODO:</strong> Relato de experiência descritivo, baseado na participação de acadêmico de Engenharia de Produção nas atividades do grupo G10, incluindo elaboração de protocolos, fluxogramas, materiais educativos e indicadores de qualidade.</p>
+<p class="line"><strong>RESULTADOS:</strong> Evidenciar a contribuição prática da Engenharia de Produção na organização e melhoria dos processos de cuidado em saúde, fortalecendo a interprofissionalidade.</p>
+<p class="line"><strong>CONCLUSÃO:</strong> A inserção da Engenharia de Produção em equipes de saúde amplia a capacidade de sistematizar, padronizar e otimizar processos, qualificando a assistência e a gestão do cuidado.</p></section>
+        <section class="obs"><h3>Observações</h3><span class="dash">—</span></section>
+
+        <section class="comentarios">
+          <h3>Comentários por fase</h3>
+          <div class="fases-comentarios">
+            <div class="fase-comment f1">
+              <div class="fase-comment-label">Fase 1 · 24–29 jun</div>
+              <div class="fase-comment-entries" id="comments-12-1"><em>Nenhum comentário ainda.</em></div>
+              <div class="fase-comment-form">
+                <select id="author-12-1"><option value="">Quem sou</option><option>Laura</option><option>Letícia</option><option>Giovana</option><option>Patrícia</option><option>Leonardo</option><option>Adrize</option><option>Alejandro</option><option>Bruna</option><option>Danusa</option><option>Gabi</option><option>Lilian</option><option>Lucas</option><option>Lyah</option><option>Thaislan</option><option>Viviane</option><option>Yanka</option></select>
+                <input type="text" id="input-12-1" placeholder="Comentar sobre a Fase 1…" maxlength="280">
+                <button onclick="addComment(12,1)">Salvar</button>
+              </div>
+            </div>
+            <div class="fase-comment f2">
+              <div class="fase-comment-label">Fase 2 · 30 jun–7 jul</div>
+              <div class="fase-comment-entries" id="comments-12-2"><em>Nenhum comentário ainda.</em></div>
+              <div class="fase-comment-form">
+                <select id="author-12-2"><option value="">Quem sou</option><option>Laura</option><option>Letícia</option><option>Giovana</option><option>Patrícia</option><option>Leonardo</option><option>Adrize</option><option>Alejandro</option><option>Bruna</option><option>Danusa</option><option>Gabi</option><option>Lilian</option><option>Lucas</option><option>Lyah</option><option>Thaislan</option><option>Viviane</option><option>Yanka</option></select>
+                <input type="text" id="input-12-2" placeholder="Comentar sobre a Fase 2…" maxlength="280">
+                <button onclick="addComment(12,2)">Salvar</button>
+              </div>
+            </div>
+            <div class="fase-comment f3">
+              <div class="fase-comment-label">Fase 3 · 7–14 jul</div>
+              <div class="fase-comment-entries" id="comments-12-3"><em>Nenhum comentário ainda.</em></div>
+              <div class="fase-comment-form">
+                <select id="author-12-3"><option value="">Quem sou</option><option>Laura</option><option>Letícia</option><option>Giovana</option><option>Patrícia</option><option>Leonardo</option><option>Adrize</option><option>Alejandro</option><option>Bruna</option><option>Danusa</option><option>Gabi</option><option>Lilian</option><option>Lucas</option><option>Lyah</option><option>Thaislan</option><option>Viviane</option><option>Yanka</option></select>
+                <input type="text" id="input-12-3" placeholder="Comentar sobre a Fase 3…" maxlength="280">
+                <button onclick="addComment(12,3)">Salvar</button>
+              </div>
+            </div>
+          </div>
+        </section>
+      </article>
+    
+
+      <article class="pub-card" data-pub-id="13" data-resp="danusa" data-tipo="cic" data-search="a integracao entre diferentes cursos no pet-saude cic danusa danusa lyah patricia adrize leonardo interdisciplinaridade interprofissionalidade sus formacao academica">
+        <div class="pub-head">
+          <div class="num">13</div>
+          <div class="pub-title">
+            <h2>A Integração entre Diferentes Cursos no PET-Saúde</h2>
+            <div class="meta"><span class="tag">CIC</span></div>
+          </div>
+        </div>
+
+        <div class="status-row" role="group" aria-label="Status do artigo">
+          <button class="status-btn" data-status="nao" onclick="setStatus(this)"><span class="status-dot dot-nao"></span>Não iniciado</button>
+          <button class="status-btn" data-status="andamento" onclick="setStatus(this)"><span class="status-dot dot-andamento"></span>Em andamento</button>
+          <button class="status-btn" data-status="revisao" onclick="setStatus(this)"><span class="status-dot dot-revisao"></span>Em revisão</button>
+          <button class="status-btn" data-status="enviado" onclick="setStatus(this)"><span class="status-dot dot-enviado"></span>Enviado</button>
+        </div>
+        <div class="pub-grid">
+          <section><h3>Responsável</h3><div class="chips"><span class="chip resp">Danusa</span></div></section>
+          <section><h3>Autores</h3><div class="chips"><span class="chip">Danusa</span><span class="chip">Lyah</span><span class="chip">Patrícia</span><span class="chip">Adrize</span><span class="chip">Leonardo</span></div></section>
+        </div>
+        <section class="sintese"><h3>Síntese</h3>
+<p class="line"><strong>OBJETIVO:</strong> Explorar a importância da interdisciplinaridade, mostrando como estudantes de diferentes áreas trabalham em conjunto no PET-Saúde e os benefícios dessa integração para a formação acadêmica e para o SUS.</p>
+<p class="line"><strong>MÉTODO:</strong> Relato de experiência coletivo, com base nas atividades interprofissionais desenvolvidas no G10, envolvendo estudantes de enfermagem, medicina e engenharia de produção em práticas conjuntas de cuidado, pesquisa e extensão.</p>
+<p class="line"><strong>RESULTADOS:</strong> Demonstrar que a integração entre cursos fortalece competências colaborativas, amplia a visão sistêmica dos estudantes e qualifica a atenção prestada à população.</p>
+<p class="line"><strong>CONCLUSÃO:</strong> A interprofissionalidade vivenciada no PET-Saúde é estratégia formativa essencial para a consolidação do SUS, promovendo cuidado integral e formação acadêmica comprometida com a realidade social.</p></section>
+        <section class="obs"><h3>Observações</h3><span class="dash">—</span></section>
+
+        <section class="comentarios">
+          <h3>Comentários por fase</h3>
+          <div class="fases-comentarios">
+            <div class="fase-comment f1">
+              <div class="fase-comment-label">Fase 1 · 24–29 jun</div>
+              <div class="fase-comment-entries" id="comments-13-1"><em>Nenhum comentário ainda.</em></div>
+              <div class="fase-comment-form">
+                <select id="author-13-1"><option value="">Quem sou</option><option>Laura</option><option>Letícia</option><option>Giovana</option><option>Patrícia</option><option>Leonardo</option><option>Adrize</option><option>Alejandro</option><option>Bruna</option><option>Danusa</option><option>Gabi</option><option>Lilian</option><option>Lucas</option><option>Lyah</option><option>Thaislan</option><option>Viviane</option><option>Yanka</option></select>
+                <input type="text" id="input-13-1" placeholder="Comentar sobre a Fase 1…" maxlength="280">
+                <button onclick="addComment(13,1)">Salvar</button>
+              </div>
+            </div>
+            <div class="fase-comment f2">
+              <div class="fase-comment-label">Fase 2 · 30 jun–7 jul</div>
+              <div class="fase-comment-entries" id="comments-13-2"><em>Nenhum comentário ainda.</em></div>
+              <div class="fase-comment-form">
+                <select id="author-13-2"><option value="">Quem sou</option><option>Laura</option><option>Letícia</option><option>Giovana</option><option>Patrícia</option><option>Leonardo</option><option>Adrize</option><option>Alejandro</option><option>Bruna</option><option>Danusa</option><option>Gabi</option><option>Lilian</option><option>Lucas</option><option>Lyah</option><option>Thaislan</option><option>Viviane</option><option>Yanka</option></select>
+                <input type="text" id="input-13-2" placeholder="Comentar sobre a Fase 2…" maxlength="280">
+                <button onclick="addComment(13,2)">Salvar</button>
+              </div>
+            </div>
+            <div class="fase-comment f3">
+              <div class="fase-comment-label">Fase 3 · 7–14 jul</div>
+              <div class="fase-comment-entries" id="comments-13-3"><em>Nenhum comentário ainda.</em></div>
+              <div class="fase-comment-form">
+                <select id="author-13-3"><option value="">Quem sou</option><option>Laura</option><option>Letícia</option><option>Giovana</option><option>Patrícia</option><option>Leonardo</option><option>Adrize</option><option>Alejandro</option><option>Bruna</option><option>Danusa</option><option>Gabi</option><option>Lilian</option><option>Lucas</option><option>Lyah</option><option>Thaislan</option><option>Viviane</option><option>Yanka</option></select>
+                <input type="text" id="input-13-3" placeholder="Comentar sobre a Fase 3…" maxlength="280">
+                <button onclick="addComment(13,3)">Salvar</button>
+              </div>
+            </div>
+          </div>
+        </section>
+      </article>
+    </main>
+
+    <section id="tableWrap" class="table-wrap" aria-label="Tabela de publicações">
+      <table>
+        <thead>
+          <tr><th>Nº</th><th>Título / Tipo</th><th>Resp.</th><th>Todos os Autores</th><th>Síntese</th><th>Observações</th></tr>
+        </thead>
+        <tbody>
+          
+        <tr>
+          <td class="col-num">1</td>
+          <td><strong>Uso de tecnologias digitais e telemonitoramento em feridas crônicas: revisão da literatura</strong><br><span class="tag small">CIC</span></td>
+          <td>Laura<br>Leticia</td>
+          <td>Laura; Bruna; Leticia; Patrícia; Thaislan; Adrize</td>
+          <td>OBJETIVO: Identificar e analisar evidências sobre uso e efetividade de ferramentas de telemonitoramento remoto no manejo de feridas crônicas na atenção básica.<br>MÉTODO: Revisão integrativa da literatura em bases de dados indexadas, incluindo artigos sobre acompanhamento remoto por imagem, apps de saúde digital e suporte interprofissional.<br>RESULTADOS: Mapeamento de desfechos como redução no tempo de cicatrização, diminuição de complicações/reinternações e satisfação dos usuários com a telessaúde.<br>CONCLUSÃO: A saúde digital é aliada na assistência a pacientes crônicos, fornecendo subsídios que validam a implementação de plataformas de telemonitoramento no SUS.</td>
+          <td>Leticia: fazer breve revisão literária de tema de grande relevância.<br>Leticia: no momento, não apresenta.</td>
+        </tr>
+    
+        <tr>
+          <td class="col-num">2</td>
+          <td><strong>Implementação de um modelo de Telemonitoramento para feridas crônicas: relato de experiência</strong><br><span class="tag small">CEC</span></td>
+          <td>Laura</td>
+          <td>Laura; Bruna; Lilian; Alejandro; Gabi; Vivi</td>
+          <td>OBJETIVO: Descrever a experiência prática de implantação e início das atividades de um ambulatório especializado em feridas crônicas em Pelotas-RS.<br>MÉTODO: Relato de experiência descritivo e institucional sobre as etapas de estruturação do serviço físico e vivência do cuidado às lesões por equipe interprofissional (medicina, enfermagem e engenharia de produção).<br>RESULTADOS: Abertura do espaço ambulatorial, padronização de condutas clínicas interprofissionais e fortalecimento do aprendizado prático dos estudantes, estabelecendo base para futuras etapas de telemonitoramento.<br>CONCLUSÃO: Relevância de espaços focados na interprofissionalidade no SUS para qualificar o tratamento de feridas crônicas e preparar a rede para ferramentas de saúde digital.</td>
+          <td>—</td>
+        </tr>
+    
+        <tr>
+          <td class="col-num">3</td>
+          <td><strong>Principais tipos de Feridas Crônicas</strong><br><span class="tag small">Revisão / CIC</span></td>
+          <td>Leticia</td>
+          <td>Leticia; Patrícia; Thaislan; Lilian; Gabi; Adrize</td>
+          <td>OBJETIVO: Apresentar os principais tipos de feridas crônicas.<br>MÉTODO: Revisão bibliográfica baseada em artigos científicos, livros e diretrizes.<br>RESULTADOS ESPERADOS: Compreensão das características de cada ferida, fatores de risco, prevenção e cuidados.<br>CONCLUSÃO: Destaque para a importância da atuação da enfermagem na avaliação e cuidados dos pacientes.</td>
+          <td>Leticia: no momento, não apresenta.</td>
+        </tr>
+    
+        <tr>
+          <td class="col-num">4</td>
+          <td><strong>Papel do Enfermeiro no cuidado com lesões crônicas em um ambulatório de feridas no Sul do Brasil: relato de experiência</strong><br><span class="tag small">CEC</span></td>
+          <td>Patrícia</td>
+          <td>Patrícia; Leticia; Thaislan; Lilian; Adrize</td>
+          <td>OBJETIVO: Relatar a experiência de acadêmicos de enfermagem no atendimento de pacientes com lesões crônicas em ambulatório recém-inaugurado no Sul do Brasil.<br>MÉTODO: Relato de experiência.<br>RESULTADOS/CONCLUSÃO: Demonstrar a importância do serviço para a comunidade e como ele auxilia na melhora da qualidade de vida dos pacientes.</td>
+          <td>Patrícia: gostaria de uma opinião para prosseguir com o tema.</td>
+        </tr>
+    
+        <tr>
+          <td class="col-num">5</td>
+          <td><strong>A utilização de inteligência artificial no cuidado de lesões crônicas: revisão literária</strong><br><span class="tag small">CIC</span></td>
+          <td>Patrícia</td>
+          <td>Patrícia; Danusa; Lyah; Lilian; Adrize; Alejandro</td>
+          <td>OBJETIVO: Abordar o uso de inteligência artificial no cuidado de pacientes com lesões crônicas, desde a avaliação orientada pela IA até o tratamento indicado.<br>MÉTODO: Revisão literária comparando diferentes tipos de IA aplicadas a feridas.<br>CONCLUSÃO: Avaliar a eficácia ou não da ferramenta para avaliação das lesões.</td>
+          <td>Patrícia: gostaria de uma opinião para prosseguir com o tema.</td>
+        </tr>
+    
+        <tr>
+          <td class="col-num">6</td>
+          <td><strong>Diferença no tratamento de pacientes com rede de apoio que auxilia no cuidado: relato de experiência</strong><br><span class="tag small">CEG via PET</span></td>
+          <td>Patrícia</td>
+          <td>Patrícia; Danusa; Lyah; Alejandro; Gabi; Vivi</td>
+          <td>OBJETIVO: Apresentar a diferença no processo de cicatrização em pacientes que possuem rede de apoio no cuidado.<br>MÉTODO: Relato de experiência a partir de atendimento na UBS Sansca (paciente com cisto piloidal pós-operatório).<br>RESULTADOS: Paciente com suporte adequado de cuidadores (curativos diários) cicatrizou em poucas semanas lesão que levaria meses — mesmo sendo grande e em local úmido com risco de contaminação.<br>CONCLUSÃO: A rede de apoio tem impacto direto e positivo na cicatrização.</td>
+          <td>Patrícia: gostaria de uma opinião para prosseguir com o tema.</td>
+        </tr>
+    
+        <tr>
+          <td class="col-num">7</td>
+          <td><strong>Feridas e cicatrização: resumo de conteúdo informativo no Instagram</strong><br><span class="tag small">CEC</span></td>
+          <td>Giovana</td>
+          <td>Giovana; Patrícia; Yanka; Lilian; Vivi; Alejandro</td>
+          <td>PROBLEMA: Falta de informações confiáveis e acessíveis sobre feridas e cicatrização para a população geral.<br>MÉTODO: Elaboração e divulgação de conteúdos no Instagram com linguagem simples e recursos visuais sobre conceitos de feridas, fatores que influenciam a cicatrização e cuidados básicos.<br>RESULTADOS ESPERADOS: Ampliar o conhecimento da população, promover educação em saúde e incentivar práticas adequadas de cuidado e prevenção de complicações.</td>
+          <td>Posts: Patrícia, Yanka e Giovana.<br>Telemonitoramento: Lucas, Giovana e Yanka.</td>
+        </tr>
+    
+        <tr>
+          <td class="col-num">8</td>
+          <td><strong>A atualização dos acadêmicos de enfermagem e medicina no telemonitoramento/telematriciamento de feridas</strong><br><span class="tag small">CEG</span></td>
+          <td>Giovana</td>
+          <td>Giovana; Lucas; Yanka; Adrize; Gabi; Vivi</td>
+          <td>PROBLEMA: Dificuldade de acompanhamento contínuo e especializado de pacientes com feridas.<br>MÉTODO: Realização de telemonitoramento e telematriciamento por acadêmicos de enfermagem e medicina, sob supervisão de profissionais, utilizando ferramentas digitais para avaliação e acompanhamento.<br>RESULTADOS ESPERADOS: Melhorar a qualidade da assistência, favorecer a cicatrização, ampliar o acesso ao cuidado especializado e fortalecer a formação em saúde digital.</td>
+          <td>Posts: Patrícia, Yanka e Giovana.<br>Telemonitoramento: Lucas, Giovana e Yanka.</td>
+        </tr>
+    
+        <tr>
+          <td class="col-num">9</td>
+          <td><strong>Impacto das Publicações Digitais em Saúde: estudo de alcance em página do Instagram</strong><br><span class="tag small">CEC</span></td>
+          <td>Leonardo</td>
+          <td>Leonardo; Danusa; Alejandro; Gabi; Lilian; Vivi</td>
+          <td>OBJETIVO: Analisar o alcance das publicações de uma página de conteúdo em saúde no Instagram, investigando seu potencial como ferramenta de divulgação científica e educação em saúde.<br>MÉTODO: Análise quantitativa das métricas da plataforma (alcance, impressões, curtidas, compartilhamentos, comentários e salvamentos).<br>RESULTADOS ESPERADOS: Identificar os tipos de conteúdo com maior visibilidade e interação, contribuindo para a compreensão da efetividade das redes sociais na disseminação de informações em saúde.</td>
+          <td>—</td>
+        </tr>
+    
+        <tr>
+          <td class="col-num">10</td>
+          <td><strong>Caracterização dos atendimentos em ambulatório especializado em feridas crônicas: análise do primeiro mês em Pelotas-RS</strong><br><span class="tag small">CEC</span></td>
+          <td>Leonardo</td>
+          <td>Leonardo; Bruna; Laura; Adrize; Alejandro; Vivi</td>
+          <td>OBJETIVO: Descrever o perfil sociodemográfico, clínico e assistencial dos pacientes atendidos no primeiro mês de funcionamento do ambulatório de feridas crônicas em Pelotas-RS.<br>MÉTODO: Estudo observacional, descritivo e retrospectivo com análise de prontuários (sexo, idade, raça/cor, escolaridade, condições de saúde, tipo de ferida, número de retornos).<br>RESULTADOS ESPERADOS: Caracterizar a população atendida e fornecer subsídios para o planejamento e aprimoramento da assistência.</td>
+          <td>Necessita de CEP.<br>Sugestão: transformar em relato de experiência.</td>
+        </tr>
+    
+        <tr>
+          <td class="col-num">11</td>
+          <td><strong>PET-Saúde e formação acadêmica: contribuições da vivência prática em um centro especializado no cuidado de feridas crônicas</strong><br><span class="tag small">CEG</span></td>
+          <td>Letícia</td>
+          <td>Letícia; Patrícia; Thaislan; Adrize; Lilian; Viviane</td>
+          <td>OBJETIVO: Relatar as contribuições da vivência prática de estudantes vinculados ao PET-Saúde em um centro especializado no cuidado de feridas crônicas para a formação acadêmica e interprofissional.<br>MÉTODO: Relato de experiência descritivo, baseado na participação discente em atividades supervisionadas de atendimento, discussão de casos, organização de fluxos, registros e acompanhamento do cuidado a pessoas com feridas crônicas.<br>RESULTADOS ESPERADOS: Evidenciar o fortalecimento de competências clínicas, comunicação interprofissional, compreensão da rede SUS, segurança no cuidado e articulação ensino-serviço, qualificando a formação acadêmica e a assistência prestada.<br>CONCLUSÃO: A vivência em serviço aproxima a universidade das necessidades reais da população e consolida o PET-Saúde como estratégia de aprendizagem, responsabilidade sanitária e cuidado integral.</td>
+          <td>—</td>
+        </tr>
+    
+
+        <tr>
+          <td class="col-num">12</td>
+          <td><strong>A Engenharia de Produção no PET-Saúde</strong><br><span class="tag small">CIC</span></td>
+          <td>Danusa</td>
+          <td>Danusa; Lyah; Patrícia; Adrize; Alejandro</td>
+          <td>OBJETIVO: Descrever como a Engenharia de Produção contribui para a área da saúde por meio da gestão de processos, padronização, qualidade, gestão do conhecimento e desenvolvimento de materiais educativos no contexto do PET-Saúde UFPel.<br>MÉTODO: Relato de experiência descritivo, baseado na participação de acadêmico de Engenharia de Produção nas atividades do grupo G10, incluindo elaboração de protocolos, fluxogramas, materiais educativos e indicadores de qualidade.<br>RESULTADOS ESPERADOS: Evidenciar a contribuição prática da Engenharia de Produção na organização e melhoria dos processos de cuidado em saúde, fortalecendo a interprofissionalidade.<br>CONCLUSÃO: A inserção da Engenharia de Produção em equipes de saúde amplia a capacidade de sistematizar, padronizar e otimizar processos, qualificando a assistência e a gestão do cuidado.</td>
+          <td>—</td>
+        </tr>
+    
+        <tr>
+          <td class="col-num">13</td>
+          <td><strong>A Integração entre Diferentes Cursos no PET-Saúde</strong><br><span class="tag small">CIC</span></td>
+          <td>Danusa</td>
+          <td>Danusa; Lyah; Patrícia; Adrize; Leonardo</td>
+          <td>OBJETIVO: Explorar a importância da interdisciplinaridade, mostrando como estudantes de diferentes áreas trabalham em conjunto no PET-Saúde e os benefícios dessa integração para a formação acadêmica e para o SUS.<br>MÉTODO: Relato de experiência coletivo, com base nas atividades interprofissionais desenvolvidas no G10, envolvendo estudantes de enfermagem, medicina e engenharia de produção em práticas conjuntas de cuidado, pesquisa e extensão.<br>RESULTADOS ESPERADOS: Demonstrar que a integração entre cursos fortalece competências colaborativas, amplia a visão sistêmica dos estudantes e qualifica a atenção prestada à população.<br>CONCLUSÃO: A interprofissionalidade vivenciada no PET-Saúde é estratégia formativa essencial para a consolidação do SUS, promovendo cuidado integral e formação acadêmica comprometida com a realidade social.</td>
+          <td>—</td>
+        </tr>
+    
+        </tbody>
+      </table>
+    </section>
+
+    <footer>PET-Saúde UFPel · G10 Telemonitoramento de Feridas Crônicas</footer>
+  </div>
+
+  <script>
+    const q = document.getElementById('q');
+    const resp = document.getElementById('resp');
+    const tipo = document.getElementById('tipo');
+    const clear = document.getElementById('clear');
+    const count = document.getElementById('count');
+    const cards = Array.from(document.querySelectorAll('.pub-card'));
+    const tableRows = Array.from(document.querySelectorAll('tbody tr'));
+    const cardsBtn = document.getElementById('cardsBtn');
+    const tableBtn = document.getElementById('tableBtn');
+    const cardsBox = document.getElementById('cards');
+    const tableWrap = document.getElementById('tableWrap');
+
+    function normalize(s){ return (s || '').toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g,''); }
+    function applyFilters(){
+      const term = normalize(q.value);
+      const r = normalize(resp.value);
+      const t = normalize(tipo.value);
+      let visible = 0;
+      cards.forEach((card, i) => {
+        const okTerm = !term || normalize(card.dataset.search).includes(term);
+        const okResp = !r || normalize(card.dataset.resp).includes(r);
+        const okTipo = !t || normalize(card.dataset.tipo).includes(t);
+        const ok = okTerm && okResp && okTipo;
+        card.style.display = ok ? '' : 'none';
+        if (tableRows[i]) tableRows[i].style.display = ok ? '' : 'none';
+        if (ok) visible++;
+      });
+      count.textContent = visible + ' de ' + cards.length + ' publicações exibidas';
+    }
+    [q, resp, tipo].forEach(el => el.addEventListener('input', applyFilters));
+    clear.addEventListener('click', () => { q.value=''; resp.value=''; tipo.value=''; applyFilters(); });
+    cardsBtn.addEventListener('click', () => { cardsBox.style.display='grid'; tableWrap.style.display='none'; cardsBtn.classList.add('active'); tableBtn.classList.remove('active'); });
+    tableBtn.addEventListener('click', () => { cardsBox.style.display='none'; tableWrap.style.display='block'; tableBtn.classList.add('active'); cardsBtn.classList.remove('active'); });
+    applyFilters();
+
+    // ── STATUS LOGIC ──
+    // ── STATUS VIA SUPABASE (tempo real) ──
+    async function setStatus(btn){
+      const row = btn.closest('.status-row');
+      const card = btn.closest('.pub-card');
+      const id = parseInt(card.dataset.pubId);
+      const status = btn.dataset.status;
+      row.querySelectorAll('.status-btn').forEach(b => b.className='status-btn');
+      btn.classList.add('active-'+status);
+      const opts = {
+        method: 'POST',
+        headers: {
+          'apikey': SB_KEY,
+          'Authorization': 'Bearer '+SB_KEY,
+          'Content-Type': 'application/json',
+          'Prefer': 'resolution=merge-duplicates'
+        },
+        body: JSON.stringify({pub_id: id, status})
+      };
+      await fetch(SB_URL+'/rest/v1/pub_status', opts);
+      const data = await sbFetch('/rest/v1/pub_status?select=*');
+      updateSummary(data);
+    }
+
+    function applyStatusToCard(pubId, status){
+      const card = document.querySelector('.pub-card[data-pub-id="'+pubId+'"]');
+      if(!card) return;
+      card.querySelectorAll('.status-btn').forEach(b => b.className='status-btn');
+      const btn = card.querySelector('.status-btn[data-status="'+status+'"]');
+      if(btn) btn.classList.add('active-'+status);
+    }
+
+    async function restoreStatuses(){
+      const data = await sbFetch('/rest/v1/pub_status?select=*');
+      if(!Array.isArray(data)) return;
+      data.forEach(row => applyStatusToCard(row.pub_id, row.status));
+      updateSummary(data);
+    }
+
+    function updateSummary(data){
+      if(!data) return;
+      const counts = {nao:0,andamento:0,revisao:0,enviado:0};
+      data.forEach(r => { if(counts[r.status]!==undefined) counts[r.status]++; });
+      const sem = 13 - data.length;
+      const el = document.getElementById('status-summary');
+      el.innerHTML = '<strong>'+counts.enviado+'</strong> enviados · <strong>'+counts.revisao+'</strong> em revisão · <strong>'+counts.andamento+'</strong> em andamento · <strong>'+(counts.nao+sem)+'</strong> não iniciados — de 13 publicações';
+    }
+
+    // ── COMENTÁRIOS VIA SUPABASE (tempo real) ──
+    const SB_URL = 'https://oqrvxefxfiieausrguvl.supabase.co';
+    const SB_KEY = 'sb_publishable_9Z9Oa_7c9o_VagCBTq3DvA_XNK6hEra';
+
+    async function sbFetch(path, method='GET', body=null){
+      const opts = {
+        method,
+        headers: {
+          'apikey': SB_KEY,
+          'Authorization': 'Bearer '+SB_KEY,
+          'Content-Type': 'application/json',
+          'Prefer': method==='POST' ? 'return=representation' : ''
+        }
+      };
+      if(body) opts.body = JSON.stringify(body);
+      const r = await fetch(SB_URL+path, opts);
+      return r.json();
+    }
+
+    async function addComment(pubId, fase){
+      const authorEl = document.getElementById('author-'+pubId+'-'+fase);
+      const input    = document.getElementById('input-'+pubId+'-'+fase);
+      const author   = authorEl.value.trim();
+      const text     = input.value.trim();
+      if(!author){ alert('Selecione seu nome antes de comentar.'); return; }
+      if(!text) return;
+      const btn = input.closest('.fase-comment-form').querySelector('button');
+      btn.disabled = true;
+      btn.textContent = '…';
+      await sbFetch('/rest/v1/comentarios', 'POST', {pub_id: pubId, fase, author, text});
+      input.value = '';
+      btn.disabled = false;
+      btn.textContent = 'Salvar';
+      await loadComments(pubId, fase);
+    }
+
+    function renderComments(pubId, fase, entries){
+      const el = document.getElementById('comments-'+pubId+'-'+fase);
+      if(!entries || entries.length === 0){
+        el.innerHTML = '<em>Nenhum comentário ainda.</em>';
+        return;
+      }
+      el.innerHTML = entries.map(e => {
+        const d = new Date(e.created_at);
+        const dateStr = d.toLocaleDateString('pt-BR',{day:'2-digit',month:'2-digit'}) + ' ' + d.toLocaleTimeString('pt-BR',{hour:'2-digit',minute:'2-digit'});
+        return '<div class="comment-entry"><span class="comment-author">'+e.author+'</span> <span class="comment-time">'+dateStr+'</span><span class="comment-text">'+e.text+'</span></div>';
+      }).join('');
+    }
+
+    async function loadComments(pubId, fase){
+      const data = await sbFetch('/rest/v1/comentarios?pub_id=eq.'+pubId+'&fase=eq.'+fase+'&order=created_at.asc&select=*');
+      renderComments(pubId, fase, data);
+    }
+
+    async function loadAllComments(){
+      const data = await sbFetch('/rest/v1/comentarios?order=created_at.asc&select=*');
+      if(!Array.isArray(data)) return;
+      const grouped = {};
+      data.forEach(e => {
+        const k = e.pub_id+'-'+e.fase;
+        if(!grouped[k]) grouped[k] = [];
+        grouped[k].push(e);
+      });
+      for(let pubId=1; pubId<=13; pubId++){
+        for(let fase=1; fase<=3; fase++){
+          renderComments(pubId, fase, grouped[pubId+'-'+fase]||[]);
+        }
+      }
+    }
+
+    // ── FILTRO POR STATUS ──
+    let statusFiltroAtivo = '';
+    function filtrarStatus(status){
+      statusFiltroAtivo = status;
+      // highlight do botão ativo
+      document.querySelectorAll('.sf-btn').forEach(b => {
+        b.style.outline = 'none';
+        b.style.boxShadow = 'none';
+      });
+      const id = status === '' ? 'sf-todos' : 'sf-'+status;
+      const ativo = document.getElementById(id);
+      if(ativo){ ativo.style.outline = '2px solid #1f3b63'; ativo.style.boxShadow = '0 0 0 3px rgba(31,59,99,.15)'; }
+      // mostrar/ocultar cards
+      const cards = document.querySelectorAll('.pub-card');
+      let visible = 0;
+      cards.forEach(card => {
+        if(!status){
+          card.style.display = '';
+          visible++;
+        } else {
+          const btn = card.querySelector('.status-btn.active-'+status);
+          const mostrar = !!btn;
+          card.style.display = mostrar ? '' : 'none';
+          if(mostrar) visible++;
+        }
+      });
+      // atualizar contador
+      const count = document.getElementById('count');
+      if(count) count.textContent = visible + ' de ' + cards.length + ' publicações exibidas';
+      // sincronizar com tabela
+      const tableRows = document.querySelectorAll('#tableBody tr');
+      if(tableRows.length){
+        let ri = 0;
+        cards.forEach((card,i) => {
+          if(tableRows[i]) tableRows[i].style.display = card.style.display;
+        });
+      }
+    }
+
+    // Aguarda DOM estável e carrega tudo
+    window.addEventListener('DOMContentLoaded', ()=>{
+      restoreStatuses();
+      loadAllComments();
+    });
+
+    // Atualiza automaticamente a cada 30 segundos
+    setInterval(()=>{ loadAllComments(); restoreStatuses(); }, 30000);
+  </script>
+</body>
+</html>
