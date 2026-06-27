@@ -69,6 +69,34 @@
     footer{margin:18px 0 6px;color:var(--muted);font-size:.85rem;text-align:center}
     @media (max-width:900px){.featured-links{grid-template-columns:1fr}.stats{grid-template-columns:repeat(2,1fr)}.tools{grid-template-columns:1fr}.pub-grid{grid-template-columns:1fr}}
     @media (max-width:640px){.wrap{padding:14px}header{align-items:flex-start;gap:12px}.hero-logo{width:115px;max-width:38vw;border-radius:12px}.mark{width:64px;height:64px;border-radius:16px}.title h1{font-size:1.1rem}.stats{grid-template-columns:1fr}}
+
+    /* ── DASHBOARD ── */
+    .dash-tab{width:auto !important;padding:7px 16px;border-radius:999px;border:1.5px solid var(--border);background:#f8fafc;color:var(--muted);font-size:.83rem;font-weight:700;cursor:pointer;transition:all .15s}
+    .dash-tab.active{background:linear-gradient(90deg,rgba(59,130,196,.18),rgba(212,101,59,.14));border-color:rgba(59,130,196,.45);color:var(--blue2)}
+    .dash-tab:hover:not(.active){background:#eef2f8;border-color:rgba(59,130,196,.3)}
+    .dpill{width:auto !important;display:inline-flex;align-items:center;gap:6px;padding:7px 15px;border-radius:999px;border:1.5px solid;font-size:.82rem;font-weight:700;cursor:pointer;background:#fff;transition:all .15s}
+    .dpill-nao{border-color:#fca5a5;color:#991b1b}.dpill-nao.sel{background:#fee2e2}
+    .dpill-andamento{border-color:#fcd34d;color:#92400e}.dpill-andamento.sel{background:#fef3c7}
+    .dpill-revisao{border-color:#93c5fd;color:#1e40af}.dpill-revisao.sel{background:#dbeafe}
+    .dpill-enviado{border-color:#86efac;color:#166534}.dpill-enviado.sel{background:#dcfce7}
+    .dpbtn{width:auto !important;display:flex;flex-direction:column;align-items:center;gap:5px;padding:10px 8px;border-radius:12px;border:1.5px solid var(--border);background:#f8fafc;cursor:pointer;transition:all .15s;text-align:center;font-size:.76rem;color:var(--text);font-weight:700;line-height:1.2}
+    .dpbtn:hover{border-color:rgba(59,130,196,.45);background:rgba(59,130,196,.06);transform:translateY(-1px)}
+    .dpbtn.sel{border-color:rgba(59,130,196,.55);background:rgba(59,130,196,.1);box-shadow:0 0 0 3px rgba(59,130,196,.15)}
+    .dpavatar{width:34px;height:34px;border-radius:50%;display:grid;place-items:center;font-weight:900;font-size:.82rem;color:#fff;flex:0 0 auto}
+    .dp-result{background:#f8fafc;border:1px solid var(--border);border-radius:12px;padding:12px 14px;margin-top:4px}
+    .dp-rt{font-size:.74rem;font-weight:800;text-transform:uppercase;letter-spacing:.05em;color:var(--blue2);margin:0 0 10px}
+    .dp-item{display:flex;align-items:flex-start;gap:10px;padding:8px 0;border-bottom:1px solid var(--border)}
+    .dp-item:last-child{border-bottom:none;padding-bottom:0}
+    .dp-num{width:26px;height:26px;border-radius:8px;display:grid;place-items:center;background:rgba(59,130,196,.12);border:1px solid rgba(59,130,196,.25);color:var(--blue2);font-weight:900;font-size:.76rem;flex:0 0 auto}
+    .dp-info{flex:1;min-width:0}
+    .dp-title{font-size:.86rem;font-weight:700;line-height:1.3;margin:0 0 3px}
+    .dp-meta{display:flex;flex-wrap:wrap;gap:4px;align-items:center;margin-bottom:2px}
+    .dp-tag{background:#dbe8fb;color:#1f3b63;padding:2px 7px;border-radius:999px;font-size:.7rem;font-weight:700}
+    .dp-sdot{width:7px;height:7px;border-radius:50%;display:inline-block;margin-right:2px;vertical-align:middle}
+    .dp-sl{font-size:.72rem;color:var(--muted)}
+    .dp-au{font-size:.74rem;color:#475569}
+    .dp-none{color:var(--muted);font-size:.85rem;font-style:italic}
+
     @media print{body{background:#fff}.tools,.view-toggle{display:none}.pub-card,.panel,.stat,header{box-shadow:none}}
 
     /* ── CRONOGRAMA ── */
@@ -178,331 +206,35 @@
     </section>
 
 
-    <!-- MAPA DE AUTORES -->
+        <!-- DASHBOARD DINÂMICO -->
     <section style="margin-top:14px">
-      <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:8px;gap:12px;flex-wrap:wrap">
-        <h2 style="margin:0;font-size:1rem;font-weight:700;color:var(--blue2)">🗺️ Mapa de autores e artigos</h2>
-        <span style="font-size:.78rem;color:var(--muted)">Toque na figura para ampliar</span>
-      </div>
-      <div style="cursor:zoom-in;display:inline-block;border:1px solid var(--border);border-radius:10px;overflow:hidden;box-shadow:var(--shadow);transition:box-shadow .2s;max-width:320px;width:100%;background:#fff"
-           onclick="abrirMapa()"
-           onmouseover="this.style.boxShadow='0 4px 18px rgba(0,0,0,.18)'"
-           onmouseout="this.style.boxShadow='var(--shadow)'">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 820" style="width:100%;display:block;pointer-events:none" font-family="system-ui,sans-serif">
-  <defs>
-    <linearGradient id="hdr" x1="0" y1="0" x2="1" y2="0">
-      <stop offset="0%" stop-color="#3b82c4"/>
-      <stop offset="100%" stop-color="#1e3a8a"/>
-    </linearGradient>
-  </defs>
-
-  <!-- Fundo -->
-  <rect width="760" height="820" rx="14" fill="#f6f8fb"/>
-
-  <!-- Cabeçalho -->
-  <rect width="760" height="48" rx="14" fill="url(#hdr)"/>
-  <rect y="34" width="760" height="14" fill="url(#hdr)"/>
-  <text x="380" y="30" text-anchor="middle" fill="#fff" font-size="13.5" font-weight="700">Mapa de Autores e Artigos · SIIEPE G10 UFPel 2026</text>
-
-  <!-- Legenda tipos -->
-  <rect x="14" y="56" width="732" height="20" rx="5" fill="#e3edf9"/>
-  <rect x="22"  y="61" width="18" height="10" rx="3" fill="#3b82c4" opacity=".75"/>
-  <text x="44"  y="70" font-size="9" fill="#1f3b63" font-weight="700">CIC</text>
-  <rect x="68"  y="61" width="18" height="10" rx="3" fill="#d4653b" opacity=".75"/>
-  <text x="90"  y="70" font-size="9" fill="#1f3b63" font-weight="700">CEC</text>
-  <rect x="114" y="61" width="18" height="10" rx="3" fill="#1e3a8a" opacity=".75"/>
-  <text x="136" y="70" font-size="9" fill="#1f3b63" font-weight="700">CEG</text>
-  <rect x="160" y="61" width="18" height="10" rx="3" fill="#7c3aed" opacity=".6"/>
-  <text x="182" y="70" font-size="9" fill="#1f3b63" font-weight="700">CEG via PET</text>
-  <rect x="248" y="61" width="18" height="10" rx="3" fill="#059669" opacity=".65"/>
-  <text x="270" y="70" font-size="9" fill="#1f3b63" font-weight="700">Rev/CIC</text>
-  <text x="490" y="70" font-size="8.5" fill="#475569">● Círculo = Responsável · ▭ Retângulo = Artigo</text>
-
-  <!-- ═══════════════════════════════
-       COLUNA ESQUERDA — Laura + Letícia
-       ══════════════════════════════ -->
-
-  <!-- LAURA  arts 1,2  cy=120 -->
-  <circle cx="70" cy="120" r="28" fill="#3b82c4" opacity=".9"/>
-  <text x="70" y="117" text-anchor="middle" fill="#fff" font-size="11" font-weight="800">Laura</text>
-  <text x="70" y="130" text-anchor="middle" fill="#dbeafe" font-size="8">arts. 1,2</text>
-
-  <line x1="98" y1="112" x2="160" y2="102" stroke="#3b82c4" stroke-width="1.1" stroke-dasharray="4,3" opacity=".5"/>
-  <rect x="160" y="86" width="150" height="32" rx="7" fill="#dbeafe" stroke="#3b82c4" stroke-width="1"/>
-  <text x="235" y="100" text-anchor="middle" fill="#1e3a8a" font-size="9" font-weight="700">1 · CIC  Tecnologias digitais</text>
-  <text x="235" y="112" text-anchor="middle" fill="#334155" font-size="8">e telemonitoramento</text>
-
-  <line x1="98" y1="128" x2="160" y2="140" stroke="#3b82c4" stroke-width="1.1" stroke-dasharray="4,3" opacity=".5"/>
-  <rect x="160" y="128" width="150" height="32" rx="7" fill="#dbeafe" stroke="#3b82c4" stroke-width="1" opacity=".8"/>
-  <text x="235" y="142" text-anchor="middle" fill="#1e3a8a" font-size="9" font-weight="700">2 · CEC  Implementação</text>
-  <text x="235" y="154" text-anchor="middle" fill="#334155" font-size="8">Telemonitoramento</text>
-
-  <!-- LETÍCIA  arts 3,4,11  cy=255 -->
-  <circle cx="70" cy="255" r="28" fill="#3b82c4" opacity=".75"/>
-  <text x="70" y="252" text-anchor="middle" fill="#fff" font-size="11" font-weight="800">Letícia</text>
-  <text x="70" y="265" text-anchor="middle" fill="#dbeafe" font-size="8">arts.3,4,11</text>
-
-  <line x1="98" y1="246" x2="160" y2="228" stroke="#3b82c4" stroke-width="1.1" stroke-dasharray="4,3" opacity=".5"/>
-  <rect x="160" y="212" width="150" height="32" rx="7" fill="#ede9fe" stroke="#7c3aed" stroke-width="1"/>
-  <text x="235" y="226" text-anchor="middle" fill="#4c1d95" font-size="9" font-weight="700">3 · Rev/CIC  Tipos de</text>
-  <text x="235" y="238" text-anchor="middle" fill="#334155" font-size="8">feridas crônicas</text>
-
-  <line x1="98" y1="255" x2="160" y2="260" stroke="#3b82c4" stroke-width="1.1" stroke-dasharray="4,3" opacity=".5"/>
-  <rect x="160" y="252" width="150" height="32" rx="7" fill="#e0e7ff" stroke="#1e3a8a" stroke-width="1"/>
-  <text x="235" y="266" text-anchor="middle" fill="#1e3a8a" font-size="9" font-weight="700">4 · CEG via PET</text>
-  <text x="235" y="278" text-anchor="middle" fill="#334155" font-size="8">Telessaúde atenção básica</text>
-
-  <line x1="98" y1="264" x2="160" y2="296" stroke="#3b82c4" stroke-width="1.1" stroke-dasharray="4,3" opacity=".5"/>
-  <rect x="160" y="292" width="150" height="32" rx="7" fill="#e0e7ff" stroke="#1e3a8a" stroke-width="1" opacity=".8"/>
-  <text x="235" y="306" text-anchor="middle" fill="#1e3a8a" font-size="9" font-weight="700">11 · CEG  PET-Saúde</text>
-  <text x="235" y="318" text-anchor="middle" fill="#334155" font-size="8">e formação acadêmica</text>
-
-  <!-- ═══════════════════════════════
-       COLUNA DIREITA — Giovana + Leonardo
-       ══════════════════════════════ -->
-
-  <!-- GIOVANA  arts 5,6,7,8,14  cy=160 -->
-  <circle cx="660" cy="160" r="28" fill="#d4653b" opacity=".9"/>
-  <text x="660" y="155" text-anchor="middle" fill="#fff" font-size="10" font-weight="800">Giovana</text>
-  <text x="660" y="168" text-anchor="middle" fill="#fed7aa" font-size="7.5">arts.5,6,7,8,14</text>
-
-  <line x1="632" y1="150" x2="560" y2="102" stroke="#d4653b" stroke-width="1.1" stroke-dasharray="4,3" opacity=".5"/>
-  <rect x="390" y="86" width="170" height="32" rx="7" fill="#ffedd5" stroke="#d4653b" stroke-width="1"/>
-  <text x="475" y="100" text-anchor="middle" fill="#7c2d12" font-size="9" font-weight="700">5 · CEC  Educação</text>
-  <text x="475" y="112" text-anchor="middle" fill="#334155" font-size="8">em saúde ao paciente</text>
-
-  <line x1="632" y1="158" x2="560" y2="136" stroke="#d4653b" stroke-width="1.1" stroke-dasharray="4,3" opacity=".5"/>
-  <rect x="390" y="128" width="170" height="32" rx="7" fill="#ffedd5" stroke="#d4653b" stroke-width="1" opacity=".85"/>
-  <text x="475" y="142" text-anchor="middle" fill="#7c2d12" font-size="9" font-weight="700">6 · CEC  Avaliação</text>
-  <text x="475" y="154" text-anchor="middle" fill="#334155" font-size="8">de feridas crônicas</text>
-
-  <line x1="632" y1="166" x2="560" y2="178" stroke="#d4653b" stroke-width="1.1" stroke-dasharray="4,3" opacity=".5"/>
-  <rect x="390" y="170" width="170" height="32" rx="7" fill="#ffedd5" stroke="#d4653b" stroke-width="1" opacity=".8"/>
-  <text x="475" y="184" text-anchor="middle" fill="#7c2d12" font-size="9" font-weight="700">7 · CEC  Posts</text>
-  <text x="475" y="196" text-anchor="middle" fill="#334155" font-size="8">Instagram feridas</text>
-
-  <line x1="632" y1="172" x2="560" y2="218" stroke="#d4653b" stroke-width="1.1" stroke-dasharray="4,3" opacity=".5"/>
-  <rect x="390" y="212" width="170" height="32" rx="7" fill="#fee2e2" stroke="#d4653b" stroke-width="1" opacity=".8"/>
-  <text x="475" y="226" text-anchor="middle" fill="#7c2d12" font-size="9" font-weight="700">8 · CEG  Telematriciamento</text>
-  <text x="475" y="238" text-anchor="middle" fill="#334155" font-size="8">acadêmicos enf./med.</text>
-
-  <line x1="632" y1="178" x2="560" y2="262" stroke="#d4653b" stroke-width="1.1" stroke-dasharray="4,3" opacity=".5"/>
-  <rect x="390" y="256" width="170" height="32" rx="7" fill="#dbeafe" stroke="#3b82c4" stroke-width="1" opacity=".9"/>
-  <text x="475" y="270" text-anchor="middle" fill="#1e3a8a" font-size="9" font-weight="700">14 · CIC  Telemonitoramento</text>
-  <text x="475" y="282" text-anchor="middle" fill="#334155" font-size="8">revisão do escopo</text>
-
-  <!-- LEONARDO  arts 9,10  cy=360 -->
-  <circle cx="660" cy="360" r="28" fill="#1e3a8a" opacity=".88"/>
-  <text x="660" y="357" text-anchor="middle" fill="#fff" font-size="11" font-weight="800">Leonardo</text>
-  <text x="660" y="370" text-anchor="middle" fill="#c7d2fe" font-size="8">arts. 9,10</text>
-
-  <line x1="632" y1="352" x2="560" y2="320" stroke="#1e3a8a" stroke-width="1.1" stroke-dasharray="4,3" opacity=".5"/>
-  <rect x="390" y="304" width="170" height="32" rx="7" fill="#e0e7ff" stroke="#1e3a8a" stroke-width="1"/>
-  <text x="475" y="318" text-anchor="middle" fill="#1e3a8a" font-size="9" font-weight="700">9 · CEC  Impacto</text>
-  <text x="475" y="330" text-anchor="middle" fill="#334155" font-size="8">publicações Instagram</text>
-
-  <line x1="632" y1="368" x2="560" y2="364" stroke="#1e3a8a" stroke-width="1.1" stroke-dasharray="4,3" opacity=".5"/>
-  <rect x="390" y="352" width="170" height="32" rx="7" fill="#e0e7ff" stroke="#1e3a8a" stroke-width="1" opacity=".85"/>
-  <text x="475" y="366" text-anchor="middle" fill="#1e3a8a" font-size="9" font-weight="700">10 · CEC  Caracterização</text>
-  <text x="475" y="378" text-anchor="middle" fill="#334155" font-size="8">ambulatório Pelotas-RS</text>
-
-  <!-- ═══════════════════════════════
-       FAIXA INFERIOR — DANUSA + THALLYA
-       ══════════════════════════════ -->
-  <line x1="14" y1="430" x2="746" y2="430" stroke="#e2e8f0" stroke-width="1" stroke-dasharray="6,4"/>
-
-  <!-- DANUSA  arts 12,13  cx=250 cy=500 -->
-  <circle cx="250" cy="500" r="28" fill="#059669" opacity=".9"/>
-  <text x="250" y="497" text-anchor="middle" fill="#fff" font-size="11" font-weight="800">Danusa</text>
-  <text x="250" y="510" text-anchor="middle" fill="#d1fae5" font-size="8">arts. 12,13</text>
-
-  <line x1="222" y1="500" x2="160" y2="500" stroke="#059669" stroke-width="1.1" stroke-dasharray="4,3" opacity=".55"/>
-  <rect x="10" y="484" width="150" height="32" rx="7" fill="#d1fae5" stroke="#059669" stroke-width="1"/>
-  <text x="85" y="498" text-anchor="middle" fill="#065f46" font-size="9" font-weight="700">12 · CEC  Eng. Produção</text>
-  <text x="85" y="510" text-anchor="middle" fill="#334155" font-size="8">no PET-Saúde</text>
-
-  <line x1="278" y1="500" x2="340" y2="500" stroke="#059669" stroke-width="1.1" stroke-dasharray="4,3" opacity=".55"/>
-  <rect x="340" y="484" width="150" height="32" rx="7" fill="#d1fae5" stroke="#059669" stroke-width="1" opacity=".85"/>
-  <text x="415" y="498" text-anchor="middle" fill="#065f46" font-size="9" font-weight="700">13 · CEG  Integração</text>
-  <text x="415" y="510" text-anchor="middle" fill="#334155" font-size="8">cursos PET-Saúde</text>
-
-  <!-- THALLYA  art 15  cx=560 cy=500 -->
-  <circle cx="560" cy="500" r="28" fill="#7c3aed" opacity=".85"/>
-  <text x="560" y="497" text-anchor="middle" fill="#fff" font-size="11" font-weight="800">Thallya</text>
-  <text x="560" y="510" text-anchor="middle" fill="#ede9fe" font-size="8">art. 15</text>
-
-  <line x1="532" y1="500" x2="460" y2="540" stroke="#7c3aed" stroke-width="1.1" stroke-dasharray="4,3" opacity=".5"/>
-  <rect x="310" y="530" width="175" height="32" rx="7" fill="#ede9fe" stroke="#7c3aed" stroke-width="1"/>
-  <text x="397" y="544" text-anchor="middle" fill="#4c1d95" font-size="9" font-weight="700">15 · CEC  Controle estoque</text>
-  <text x="397" y="556" text-anchor="middle" fill="#334155" font-size="8">telemonitoramento PET-Saúde</text>
-
-  <!-- Rodapé -->
-  <line x1="14" y1="590" x2="746" y2="590" stroke="#e2e8f0" stroke-width="1"/>
-  <text x="380" y="606" text-anchor="middle" fill="#94a3b8" font-size="9">15 publicações · 7 responsáveis · PET-Saúde UFPel G10 · 2026</text>
-</svg>
+      <div style="background:var(--card);border:1px solid var(--border);border-radius:var(--radius);box-shadow:var(--shadow);padding:16px;position:relative;overflow:hidden">
+        <div style="position:absolute;inset:-2px -2px auto -2px;height:4px;background:linear-gradient(90deg,var(--blue),var(--orange),var(--blue2));opacity:.95"></div>
+        <h2 style="margin:0 0 12px;font-size:1rem;font-weight:700;color:var(--blue2)">🔍 Dashboard interativo</h2>
+        <div style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:14px;border-bottom:1px solid var(--border);padding-bottom:12px">
+          <button class="dash-tab active" id="dtab-status" onclick="dpTab('status')">📊 Por Status</button>
+          <button class="dash-tab" id="dtab-autor" onclick="dpTab('autor')">👤 Por Autor</button>
+          <button class="dash-tab" id="dtab-lider" onclick="dpTab('lider')">🏅 Por Líder</button>
+        </div>
+        <div id="dp-status">
+          <p style="margin:0 0 10px;font-size:.82rem;color:var(--muted)">Clique em um status para ver os artigos envolvidos.</p>
+          <div id="dp-sp" style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:12px"></div>
+          <div id="dp-sr" class="dp-result" style="display:none"></div>
+        </div>
+        <div id="dp-autor" style="display:none">
+          <p style="margin:0 0 10px;font-size:.82rem;color:var(--muted)">Clique em um autor para ver em quais artigos participa.</p>
+          <div id="dp-ag" style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:12px"></div>
+          <div id="dp-ar" class="dp-result" style="display:none"></div>
+        </div>
+        <div id="dp-lider" style="display:none">
+          <p style="margin:0 0 10px;font-size:.82rem;color:var(--muted)">Clique em um líder para ver os artigos sob sua responsabilidade.</p>
+          <div id="dp-lg" style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:12px"></div>
+          <div id="dp-lr" class="dp-result" style="display:none"></div>
+        </div>
       </div>
     </section>
 
-    <!-- LIGHTBOX -->
-    <div id="mapa-lightbox"
-         style="display:none;position:fixed;inset:0;z-index:9999;background:rgba(0,0,0,.88);overflow-y:auto;-webkit-overflow-scrolling:touch"
-         onclick="fecharMapa(event)">
-      <div style="min-height:100%;display:flex;flex-direction:column;align-items:center;justify-content:flex-start;padding:52px 12px 32px">
-        <button onclick="document.getElementById('mapa-lightbox').style.display='none';document.body.style.overflow=''"
-                style="position:fixed;top:10px;right:10px;width:40px;height:40px;border-radius:50%;border:2px solid #fff;background:#222;color:#fff;font-size:1.1rem;cursor:pointer;box-shadow:0 2px 10px rgba(0,0,0,.5);display:flex;align-items:center;justify-content:center;z-index:10000;line-height:1"
-                aria-label="Fechar">✕</button>
-        <div style="width:100%;max-width:720px;background:#fff;border-radius:14px;overflow:hidden;box-shadow:0 8px 40px rgba(0,0,0,.6)" onclick="event.stopPropagation()">
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 820" style="width:100%;display:block" font-family="system-ui,sans-serif">
-  <defs>
-    <linearGradient id="hdr2" x1="0" y1="0" x2="1" y2="0">
-      <stop offset="0%" stop-color="#3b82c4"/>
-      <stop offset="100%" stop-color="#1e3a8a"/>
-    </linearGradient>
-  </defs>
-
-  <rect width="760" height="820" rx="14" fill="#f6f8fb"/>
-  <rect width="760" height="48" rx="14" fill="url(#hdr2)"/>
-  <rect y="34" width="760" height="14" fill="url(#hdr2)"/>
-  <text x="380" y="30" text-anchor="middle" fill="#fff" font-size="13.5" font-weight="700">Mapa de Autores e Artigos · SIIEPE G10 UFPel 2026</text>
-
-  <rect x="14" y="56" width="732" height="20" rx="5" fill="#e3edf9"/>
-  <rect x="22"  y="61" width="18" height="10" rx="3" fill="#3b82c4" opacity=".75"/>
-  <text x="44"  y="70" font-size="9" fill="#1f3b63" font-weight="700">CIC</text>
-  <rect x="68"  y="61" width="18" height="10" rx="3" fill="#d4653b" opacity=".75"/>
-  <text x="90"  y="70" font-size="9" fill="#1f3b63" font-weight="700">CEC</text>
-  <rect x="114" y="61" width="18" height="10" rx="3" fill="#1e3a8a" opacity=".75"/>
-  <text x="136" y="70" font-size="9" fill="#1f3b63" font-weight="700">CEG</text>
-  <rect x="160" y="61" width="18" height="10" rx="3" fill="#7c3aed" opacity=".6"/>
-  <text x="182" y="70" font-size="9" fill="#1f3b63" font-weight="700">CEG via PET</text>
-  <rect x="248" y="61" width="18" height="10" rx="3" fill="#059669" opacity=".65"/>
-  <text x="270" y="70" font-size="9" fill="#1f3b63" font-weight="700">Rev/CIC</text>
-  <text x="490" y="70" font-size="8.5" fill="#475569">● Círculo = Responsável · ▭ Retângulo = Artigo</text>
-
-  <!-- LAURA  arts 1,2 -->
-  <circle cx="70" cy="120" r="28" fill="#3b82c4" opacity=".9"/>
-  <text x="70" y="117" text-anchor="middle" fill="#fff" font-size="11" font-weight="800">Laura</text>
-  <text x="70" y="130" text-anchor="middle" fill="#dbeafe" font-size="8">arts. 1,2</text>
-  <line x1="98" y1="112" x2="160" y2="102" stroke="#3b82c4" stroke-width="1.1" stroke-dasharray="4,3" opacity=".5"/>
-  <rect x="160" y="86" width="150" height="32" rx="7" fill="#dbeafe" stroke="#3b82c4" stroke-width="1"/>
-  <text x="235" y="100" text-anchor="middle" fill="#1e3a8a" font-size="9" font-weight="700">1 · CIC  Tecnologias digitais</text>
-  <text x="235" y="112" text-anchor="middle" fill="#334155" font-size="8">e telemonitoramento</text>
-  <line x1="98" y1="128" x2="160" y2="140" stroke="#3b82c4" stroke-width="1.1" stroke-dasharray="4,3" opacity=".5"/>
-  <rect x="160" y="128" width="150" height="32" rx="7" fill="#dbeafe" stroke="#3b82c4" stroke-width="1" opacity=".8"/>
-  <text x="235" y="142" text-anchor="middle" fill="#1e3a8a" font-size="9" font-weight="700">2 · CEC  Implementação</text>
-  <text x="235" y="154" text-anchor="middle" fill="#334155" font-size="8">Telemonitoramento</text>
-
-  <!-- LETÍCIA  arts 3,4,11 -->
-  <circle cx="70" cy="255" r="28" fill="#3b82c4" opacity=".75"/>
-  <text x="70" y="252" text-anchor="middle" fill="#fff" font-size="11" font-weight="800">Letícia</text>
-  <text x="70" y="265" text-anchor="middle" fill="#dbeafe" font-size="8">arts.3,4,11</text>
-  <line x1="98" y1="246" x2="160" y2="228" stroke="#3b82c4" stroke-width="1.1" stroke-dasharray="4,3" opacity=".5"/>
-  <rect x="160" y="212" width="150" height="32" rx="7" fill="#ede9fe" stroke="#7c3aed" stroke-width="1"/>
-  <text x="235" y="226" text-anchor="middle" fill="#4c1d95" font-size="9" font-weight="700">3 · Rev/CIC  Tipos de</text>
-  <text x="235" y="238" text-anchor="middle" fill="#334155" font-size="8">feridas crônicas</text>
-  <line x1="98" y1="255" x2="160" y2="260" stroke="#3b82c4" stroke-width="1.1" stroke-dasharray="4,3" opacity=".5"/>
-  <rect x="160" y="252" width="150" height="32" rx="7" fill="#e0e7ff" stroke="#1e3a8a" stroke-width="1"/>
-  <text x="235" y="266" text-anchor="middle" fill="#1e3a8a" font-size="9" font-weight="700">4 · CEG via PET</text>
-  <text x="235" y="278" text-anchor="middle" fill="#334155" font-size="8">Telessaúde atenção básica</text>
-  <line x1="98" y1="264" x2="160" y2="296" stroke="#3b82c4" stroke-width="1.1" stroke-dasharray="4,3" opacity=".5"/>
-  <rect x="160" y="292" width="150" height="32" rx="7" fill="#e0e7ff" stroke="#1e3a8a" stroke-width="1" opacity=".8"/>
-  <text x="235" y="306" text-anchor="middle" fill="#1e3a8a" font-size="9" font-weight="700">11 · CEG  PET-Saúde</text>
-  <text x="235" y="318" text-anchor="middle" fill="#334155" font-size="8">e formação acadêmica</text>
-
-  <!-- GIOVANA  arts 5,6,7,8,14 -->
-  <circle cx="660" cy="160" r="28" fill="#d4653b" opacity=".9"/>
-  <text x="660" y="155" text-anchor="middle" fill="#fff" font-size="10" font-weight="800">Giovana</text>
-  <text x="660" y="168" text-anchor="middle" fill="#fed7aa" font-size="7.5">arts.5,6,7,8,14</text>
-  <line x1="632" y1="150" x2="560" y2="102" stroke="#d4653b" stroke-width="1.1" stroke-dasharray="4,3" opacity=".5"/>
-  <rect x="390" y="86" width="170" height="32" rx="7" fill="#ffedd5" stroke="#d4653b" stroke-width="1"/>
-  <text x="475" y="100" text-anchor="middle" fill="#7c2d12" font-size="9" font-weight="700">5 · CEC  Educação</text>
-  <text x="475" y="112" text-anchor="middle" fill="#334155" font-size="8">em saúde ao paciente</text>
-  <line x1="632" y1="158" x2="560" y2="136" stroke="#d4653b" stroke-width="1.1" stroke-dasharray="4,3" opacity=".5"/>
-  <rect x="390" y="128" width="170" height="32" rx="7" fill="#ffedd5" stroke="#d4653b" stroke-width="1" opacity=".85"/>
-  <text x="475" y="142" text-anchor="middle" fill="#7c2d12" font-size="9" font-weight="700">6 · CEC  Avaliação</text>
-  <text x="475" y="154" text-anchor="middle" fill="#334155" font-size="8">de feridas crônicas</text>
-  <line x1="632" y1="166" x2="560" y2="178" stroke="#d4653b" stroke-width="1.1" stroke-dasharray="4,3" opacity=".5"/>
-  <rect x="390" y="170" width="170" height="32" rx="7" fill="#ffedd5" stroke="#d4653b" stroke-width="1" opacity=".8"/>
-  <text x="475" y="184" text-anchor="middle" fill="#7c2d12" font-size="9" font-weight="700">7 · CEC  Posts</text>
-  <text x="475" y="196" text-anchor="middle" fill="#334155" font-size="8">Instagram feridas</text>
-  <line x1="632" y1="172" x2="560" y2="218" stroke="#d4653b" stroke-width="1.1" stroke-dasharray="4,3" opacity=".5"/>
-  <rect x="390" y="212" width="170" height="32" rx="7" fill="#fee2e2" stroke="#d4653b" stroke-width="1" opacity=".8"/>
-  <text x="475" y="226" text-anchor="middle" fill="#7c2d12" font-size="9" font-weight="700">8 · CEG  Telematriciamento</text>
-  <text x="475" y="238" text-anchor="middle" fill="#334155" font-size="8">acadêmicos enf./med.</text>
-  <line x1="632" y1="178" x2="560" y2="262" stroke="#d4653b" stroke-width="1.1" stroke-dasharray="4,3" opacity=".5"/>
-  <rect x="390" y="256" width="170" height="32" rx="7" fill="#dbeafe" stroke="#3b82c4" stroke-width="1" opacity=".9"/>
-  <text x="475" y="270" text-anchor="middle" fill="#1e3a8a" font-size="9" font-weight="700">14 · CIC  Telemonitoramento</text>
-  <text x="475" y="282" text-anchor="middle" fill="#334155" font-size="8">revisão do escopo</text>
-
-  <!-- LEONARDO  arts 9,10 -->
-  <circle cx="660" cy="360" r="28" fill="#1e3a8a" opacity=".88"/>
-  <text x="660" y="357" text-anchor="middle" fill="#fff" font-size="11" font-weight="800">Leonardo</text>
-  <text x="660" y="370" text-anchor="middle" fill="#c7d2fe" font-size="8">arts. 9,10</text>
-  <line x1="632" y1="352" x2="560" y2="320" stroke="#1e3a8a" stroke-width="1.1" stroke-dasharray="4,3" opacity=".5"/>
-  <rect x="390" y="304" width="170" height="32" rx="7" fill="#e0e7ff" stroke="#1e3a8a" stroke-width="1"/>
-  <text x="475" y="318" text-anchor="middle" fill="#1e3a8a" font-size="9" font-weight="700">9 · CEC  Impacto</text>
-  <text x="475" y="330" text-anchor="middle" fill="#334155" font-size="8">publicações Instagram</text>
-  <line x1="632" y1="368" x2="560" y2="364" stroke="#1e3a8a" stroke-width="1.1" stroke-dasharray="4,3" opacity=".5"/>
-  <rect x="390" y="352" width="170" height="32" rx="7" fill="#e0e7ff" stroke="#1e3a8a" stroke-width="1" opacity=".85"/>
-  <text x="475" y="366" text-anchor="middle" fill="#1e3a8a" font-size="9" font-weight="700">10 · CEC  Caracterização</text>
-  <text x="475" y="378" text-anchor="middle" fill="#334155" font-size="8">ambulatório Pelotas-RS</text>
-
-  <!-- FAIXA INFERIOR -->
-  <line x1="14" y1="430" x2="746" y2="430" stroke="#e2e8f0" stroke-width="1" stroke-dasharray="6,4"/>
-
-  <!-- DANUSA  arts 12,13 -->
-  <circle cx="250" cy="500" r="28" fill="#059669" opacity=".9"/>
-  <text x="250" y="497" text-anchor="middle" fill="#fff" font-size="11" font-weight="800">Danusa</text>
-  <text x="250" y="510" text-anchor="middle" fill="#d1fae5" font-size="8">arts. 12,13</text>
-  <line x1="222" y1="500" x2="160" y2="500" stroke="#059669" stroke-width="1.1" stroke-dasharray="4,3" opacity=".55"/>
-  <rect x="10" y="484" width="150" height="32" rx="7" fill="#d1fae5" stroke="#059669" stroke-width="1"/>
-  <text x="85" y="498" text-anchor="middle" fill="#065f46" font-size="9" font-weight="700">12 · CEC  Eng. Produção</text>
-  <text x="85" y="510" text-anchor="middle" fill="#334155" font-size="8">no PET-Saúde</text>
-  <line x1="278" y1="500" x2="340" y2="500" stroke="#059669" stroke-width="1.1" stroke-dasharray="4,3" opacity=".55"/>
-  <rect x="340" y="484" width="150" height="32" rx="7" fill="#d1fae5" stroke="#059669" stroke-width="1" opacity=".85"/>
-  <text x="415" y="498" text-anchor="middle" fill="#065f46" font-size="9" font-weight="700">13 · CEG  Integração</text>
-  <text x="415" y="510" text-anchor="middle" fill="#334155" font-size="8">cursos PET-Saúde</text>
-
-  <!-- THALLYA  art 15 -->
-  <circle cx="560" cy="500" r="28" fill="#7c3aed" opacity=".85"/>
-  <text x="560" y="497" text-anchor="middle" fill="#fff" font-size="11" font-weight="800">Thallya</text>
-  <text x="560" y="510" text-anchor="middle" fill="#ede9fe" font-size="8">art. 15</text>
-  <line x1="532" y1="500" x2="460" y2="540" stroke="#7c3aed" stroke-width="1.1" stroke-dasharray="4,3" opacity=".5"/>
-  <rect x="310" y="530" width="175" height="32" rx="7" fill="#ede9fe" stroke="#7c3aed" stroke-width="1"/>
-  <text x="397" y="544" text-anchor="middle" fill="#4c1d95" font-size="9" font-weight="700">15 · CEC  Controle estoque</text>
-  <text x="397" y="556" text-anchor="middle" fill="#334155" font-size="8">telemonitoramento PET-Saúde</text>
-
-  <line x1="14" y1="590" x2="746" y2="590" stroke="#e2e8f0" stroke-width="1"/>
-  <text x="380" y="606" text-anchor="middle" fill="#94a3b8" font-size="9">15 publicações · 7 responsáveis · PET-Saúde UFPel G10 · 2026</text>
-</svg>
-        </div>
-        <p style="color:rgba(255,255,255,.45);font-size:.75rem;margin-top:12px;text-align:center">Toque fora da imagem ou no ✕ para fechar</p>
-      </div>
-    </div>
-
-    <script>
-    function abrirMapa(){
-      var lb=document.getElementById('mapa-lightbox');
-      lb.style.display='block';
-      lb.scrollTop=0;
-      document.body.style.overflow='hidden';
-    }
-    function fecharMapa(e){
-      if(e.target===document.getElementById('mapa-lightbox')||e.target.closest('#mapa-lightbox')===document.getElementById('mapa-lightbox')){
-        if(!e.target.closest('div[onclick]')||e.target===document.getElementById('mapa-lightbox')){
-          document.getElementById('mapa-lightbox').style.display='none';
-          document.body.style.overflow='';
-        }
-      }
-    }
-    document.addEventListener('keydown',function(e){
-      if(e.key==='Escape'){
-        document.getElementById('mapa-lightbox').style.display='none';
-        document.body.style.overflow='';
-      }
-    });
-    </script>
-
-    <!-- PAINEL DE CRONOGRAMA -->
+        <!-- PAINEL DE CRONOGRAMA -->
     <section class="crono" aria-label="Cronograma de entregas">
       <h2 class="crono-title">&#128197; Cronograma · 3 semanas para publicar</h2>
       <div class="crono-grid">
@@ -1852,5 +1584,130 @@ conclusão: a vivência em serviço aproxima a universidade das necessidades rea
     // Atualiza automaticamente a cada 30 segundos
     setInterval(()=>{ loadAllComments(); restoreStatuses(); }, 30000);
   </script>
+  <script>
+  (function(){
+  var ART=[
+    {id:1,t:"Uso de tecnologias digitais e telemonitoramento em feridas crônicas: revisão da literatura",tp:"CIC",li:["Laura","Leticia"],au:["Laura","Bruna","Leticia","Patrícia","Thaislan","Adrize"]},
+    {id:2,t:"Implementação de um modelo de Telemonitoramento para feridas crônicas: relato de experiência",tp:"CEC",li:["Laura"],au:["Laura","Bruna","Lilian","Alejandro","Gabi","Vivi"]},
+    {id:3,t:"A efetividade do telemonitoramento no cuidado de pacientes com feridas crônicas: revisão integrativa",tp:"CIC",li:["Leticia"],au:["Leticia","Laura","Bruna","Thaislan","Adrize"]},
+    {id:4,t:"Relato de experiência do ambulatório de feridas crônicas: aprendizado interprofissional",tp:"CEG",li:["Leticia"],au:["Leticia","Giovana","Lucas","Yanka","Adrize","Alejandro"]},
+    {id:5,t:"A utilização de inteligência artificial no cuidado de lesões crônicas: revisão literária",tp:"CIC",li:["Patrícia"],au:["Patrícia","Danusa","Thallya","Lilian","Adrize","Alejandro"]},
+    {id:6,t:"Diferença no tratamento de pacientes com rede de apoio que auxilia no cuidado: relato de experiência",tp:"CEG via PET",li:["Patrícia"],au:["Patrícia","Danusa","Thallya","Alejandro","Gabi","Vivi"]},
+    {id:7,t:"Feridas e cicatrização: resumo de conteúdo informativo no Instagram",tp:"CEC",li:["Giovana"],au:["Giovana","Patrícia","Yanka","Lilian","Vivi","Alejandro"]},
+    {id:8,t:"Feridas crônicas e qualidade de vida: uma revisão de literatura",tp:"CIC",li:["Leonardo"],au:["Leonardo","Danusa","Thallya","Thaislan","Adrize"]},
+    {id:9,t:"Úlcera venosa em idosos: manejo clínico e cuidado interprofissional",tp:"Revisão/CIC",li:["Leonardo"],au:["Leonardo","Lilian","Lucas","Yanka","Adrize"]},
+    {id:10,t:"Pé diabético: prevenção, avaliação e cuidado de enfermagem na atenção primária",tp:"CIC",li:["Giovana"],au:["Giovana","Letícia","Patrícia","Thaislan","Adrize","Alejandro"]},
+    {id:11,t:"Telemonitoramento de feridas crônicas por fotografia digital: relato de experiência",tp:"CEC",li:["Leticia"],au:["Leticia","Lucas","Yanka","Bruna","Thaislan"]},
+    {id:12,t:"Curativo como tecnologia do cuidado: evidências e práticas para feridas crônicas",tp:"CIC",li:["Danusa"],au:["Danusa","Thallya","Patrícia","Lilian","Adrize"]},
+    {id:13,t:"A Integração entre Diferentes Cursos no PET-Saúde",tp:"CEG",li:["Danusa"],au:["Danusa","Thallya","Patrícia","Adrize","Leonardo"]},
+    {id:14,t:"Telemonitoramento como estratégia para o acompanhamento de feridas crônicas: uma revisão do escopo",tp:"CIC",li:["Giovana"],au:["Giovana","Letícia","Adrize","Lilian","Alejandro"]},
+    {id:15,t:"Organização e controle de estoque no telemonitoramento de feridas crônicas: uma ação extensionista no PET-Saúde",tp:"CEC",li:["Thallya"],au:["Thallya","Danusa","Patrícia","Lucas","Lilian"]}
+  ];
+  var SL={nao:"Não iniciado",andamento:"Em andamento",revisao:"Em revisão",enviado:"Enviado"};
+  var SD={nao:"#ef4444",andamento:"#f59e0b",revisao:"#3b82f6",enviado:"#22c55e"};
+  var AC=["#3b82c4","#d4653b","#1e3a8a","#7c3aed","#059669","#b45309","#be185d","#0891b2","#65a30d","#dc2626"];
+
+  function ac(n){var h=0;for(var i=0;i<n.length;i++)h=(h*31+n.charCodeAt(i))%AC.length;return AC[h];}
+  function ini(n){return n.split(' ').map(function(w){return w[0]||'';}).join('').slice(0,2).toUpperCase();}
+
+  function getStatus(id){
+    var card=document.querySelector('.pub-card[data-pub-id="'+id+'"]');
+    if(!card)return null;
+    var btn=card.querySelector('.status-btn[class*="active-"]');
+    if(!btn)return null;
+    var cl=Array.from(btn.classList).find(function(c){return c.indexOf('active-')===0;});
+    return cl?cl.replace('active-',''):null;
+  }
+
+  window.dpTab=function(tab){
+    ['status','autor','lider'].forEach(function(t){
+      var tb=document.getElementById('dtab-'+t);
+      var pn=document.getElementById('dp-'+t);
+      if(tb)tb.classList.toggle('active',t===tab);
+      if(pn)pn.style.display=(t===tab)?'':'none';
+    });
+  };
+
+  function renderList(arts,cid,titulo){
+    var el=document.getElementById(cid);if(!el)return;
+    if(!arts.length){el.innerHTML='<p class="dp-rt">'+titulo+'</p><p class="dp-none">Nenhum artigo.</p>';el.style.display='';return;}
+    var h='<p class="dp-rt">'+titulo+' ('+arts.length+')</p>';
+    arts.forEach(function(a){
+      var sk=getStatus(a.id);
+      var dot=sk?'<span class="dp-sdot" style="background:'+SD[sk]+'"></span><span class="dp-sl">'+SL[sk]+'</span>':'';
+      h+='<div class="dp-item"><div class="dp-num">'+a.id+'</div>'
+        +'<div class="dp-info"><p class="dp-title">'+a.t+'</p>'
+        +'<div class="dp-meta"><span class="dp-tag">'+a.tp+'</span> '+dot+'</div>'
+        +'<div class="dp-au">Autores: '+a.au.join(', ')+'</div>'
+        +'</div></div>';
+    });
+    el.innerHTML=h;el.style.display='';
+  }
+
+  // ── Status ──
+  var selSK=null;
+  function buildSP(){
+    var c=document.getElementById('dp-sp');if(!c)return;
+    [{k:'nao',l:'🔴 Não iniciado'},{k:'andamento',l:'🟡 Em andamento'},{k:'revisao',l:'🔵 Em revisão'},{k:'enviado',l:'🟢 Enviado'}]
+    .forEach(function(p){
+      var b=document.createElement('button');
+      b.className='dpill dpill-'+p.k;
+      b.textContent=p.l;
+      b.addEventListener('click',function(){
+        if(selSK===p.k){selSK=null;b.classList.remove('sel');document.getElementById('dp-sr').style.display='none';return;}
+        selSK=p.k;
+        c.querySelectorAll('.dpill').forEach(function(x){x.classList.remove('sel');});
+        b.classList.add('sel');
+        renderList(ART.filter(function(a){var s=getStatus(a.id);return s?s===p.k:p.k==='nao';}),'dp-sr',SL[p.k]);
+      });
+      c.appendChild(b);
+    });
+  }
+
+  // ── Autor ──
+  var selAN=null, selAB=null;
+  function buildAG(){
+    var g=document.getElementById('dp-ag');if(!g)return;
+    var au=[];ART.forEach(function(a){a.au.forEach(function(x){if(au.indexOf(x)<0)au.push(x);});});
+    au.sort();
+    au.forEach(function(a){
+      var b=document.createElement('button');
+      b.className='dpbtn';
+      b.innerHTML='<div class="dpavatar" style="background:'+ac(a)+'">'+ini(a)+'</div><span>'+a+'</span>';
+      b.addEventListener('click',function(){
+        if(selAN===a){selAN=null;selAB=null;b.classList.remove('sel');document.getElementById('dp-ar').style.display='none';return;}
+        selAN=a;if(selAB)selAB.classList.remove('sel');selAB=b;b.classList.add('sel');
+        var nm=a.toLowerCase();
+        renderList(ART.filter(function(x){return x.au.some(function(y){return y.toLowerCase()===nm;});}),'dp-ar','Artigos de '+a);
+      });
+      g.appendChild(b);
+    });
+  }
+
+  // ── Líder ──
+  var selLN=null, selLB=null;
+  function buildLG(){
+    var g=document.getElementById('dp-lg');if(!g)return;
+    var li=[];ART.forEach(function(a){a.li.forEach(function(x){if(li.indexOf(x)<0)li.push(x);});});
+    li.sort();
+    li.forEach(function(l){
+      var b=document.createElement('button');
+      b.className='dpbtn';
+      b.innerHTML='<div class="dpavatar" style="background:'+ac(l)+';outline:2px solid #d4653b;outline-offset:2px">'+ini(l)+'</div><span>'+l+'</span><span style="font-size:.65rem;color:var(--muted);font-weight:400">líder</span>';
+      b.addEventListener('click',function(){
+        if(selLN===l){selLN=null;selLB=null;b.classList.remove('sel');document.getElementById('dp-lr').style.display='none';return;}
+        selLN=l;if(selLB)selLB.classList.remove('sel');selLB=b;b.classList.add('sel');
+        var nm=l.toLowerCase();
+        renderList(ART.filter(function(x){return x.li.some(function(y){return y.toLowerCase()===nm;});}),'dp-lr','Artigos liderados por '+l);
+      });
+      g.appendChild(b);
+    });
+  }
+
+  function dpInit(){buildSP();buildAG();buildLG();}
+  if(document.readyState==='loading'){document.addEventListener('DOMContentLoaded',dpInit);}else{dpInit();}
+  })();
+  </script>
+
 </body>
 </html>
