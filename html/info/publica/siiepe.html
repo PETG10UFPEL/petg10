@@ -79,7 +79,9 @@
     .dpill-andamento{border-color:#fcd34d;color:#92400e}.dpill-andamento.sel{background:#fef3c7}
     .dpill-revisao{border-color:#93c5fd;color:#1e40af}.dpill-revisao.sel{background:#dbeafe}
     .dpill-enviado{border-color:#86efac;color:#166534}.dpill-enviado.sel{background:#dcfce7}
-    .dpbtn{width:auto !important;display:flex;flex-direction:column;align-items:center;gap:5px;padding:10px 8px;border-radius:12px;border:1.5px solid var(--border);background:#f8fafc;cursor:pointer;transition:all .15s;text-align:center;font-size:.76rem;color:var(--text);font-weight:700;line-height:1.2}
+    .dp-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-bottom:4px}
+    @media(max-width:640px){.dp-grid{grid-template-columns:repeat(2,1fr)}}
+    .dpbtn{width:100% !important;display:flex;flex-direction:column;align-items:center;gap:5px;padding:10px 8px;border-radius:12px;border:1.5px solid var(--border);background:#f8fafc;cursor:pointer;transition:all .15s;text-align:center;font-size:.76rem;color:var(--text);font-weight:700;line-height:1.2}
     .dpbtn:hover{border-color:rgba(59,130,196,.45);background:rgba(59,130,196,.06);transform:translateY(-1px)}
     .dpbtn.sel{border-color:rgba(59,130,196,.55);background:rgba(59,130,196,.1);box-shadow:0 0 0 3px rgba(59,130,196,.15)}
     .dpavatar{width:34px;height:34px;border-radius:50%;display:grid;place-items:center;font-weight:900;font-size:.82rem;color:#fff;flex:0 0 auto}
@@ -223,12 +225,12 @@
         </div>
         <div id="dp-autor" style="display:none">
           <p style="margin:0 0 10px;font-size:.82rem;color:var(--muted)">Clique em um autor para ver em quais artigos participa.</p>
-          <div id="dp-ag" style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:12px"></div>
+          <div id="dp-ag" class="dp-grid"></div>
           <div id="dp-ar" class="dp-result" style="display:none"></div>
         </div>
         <div id="dp-lider" style="display:none">
           <p style="margin:0 0 10px;font-size:.82rem;color:var(--muted)">Clique em um líder para ver os artigos sob sua responsabilidade.</p>
-          <div id="dp-lg" style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:12px"></div>
+          <div id="dp-lg" class="dp-grid"></div>
           <div id="dp-lr" class="dp-result" style="display:none"></div>
         </div>
       </div>
@@ -1638,7 +1640,7 @@ conclusão: a vivência em serviço aproxima a universidade das necessidades rea
       h+='<div class="dp-item"><div class="dp-num">'+a.id+'</div>'
         +'<div class="dp-info"><p class="dp-title">'+a.t+'</p>'
         +'<div class="dp-meta"><span class="dp-tag">'+a.tp+'</span> '+dot+'</div>'
-        +'<div class="dp-au">Autores: '+a.au.join(', ')+'</div>'
+        +'<div class="dp-au">Autores: '+a.au.map(function(nm){var isLi=a.li.some(function(l){return l.toLowerCase()===nm.toLowerCase();});return isLi?'<strong style="color:#d4653b">'+nm+'</strong> <span style="font-size:.68rem;background:rgba(212,101,59,.14);border:1px solid rgba(212,101,59,.35);color:#7c2d12;border-radius:999px;padding:1px 6px;font-weight:700;">líder</span>':nm;}).join(', ')+'</div>'
         +'</div></div>';
     });
     el.innerHTML=h;el.style.display='';
