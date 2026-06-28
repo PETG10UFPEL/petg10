@@ -1,0 +1,455 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Quando o oceano sangra devagar — Cold Blob, AMOC e a úlcera mista</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Source+Sans+3:wght@300;400;600&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --bg: #FAFAF8; --bg-alt: #F2EFE9; --bg-dark: #1C2B3A;
+      --ocean: #1A5276; --venous: #6E2C2C; --arterial: #1A4A6B; --mixed: #2E6B5E;
+      --text: #0E0E0E; --soft: #2C2C2C; --muted: #7A7A7A; --divider: #D8D3CB;
+      --h-ocean: #D6E8F7; --h-venous: #F7E0DC; --h-arterial: #D0E8F7; --h-mixed: #D6EDE7;
+    }
+    body { background: var(--bg); color: var(--text); font-family: 'Source Sans 3', sans-serif; font-size: 18px; line-height: 1.78; }
+
+    /* HEADER */
+    .institutional-header {
+      background: #fff; border-bottom: 1px solid var(--divider);
+      padding: 14px 40px; display: flex; justify-content: space-between; align-items: center;
+    }
+    .header-identity { font-size: 12px; color: var(--muted); letter-spacing: 0.05em; text-transform: uppercase; }
+
+    /* HERO */
+    .hero {
+      background: var(--bg-dark); color: #fff;
+      padding: 84px 40px 72px; text-align: center; position: relative; overflow: hidden;
+    }
+    .hero::before {
+      content: ''; position: absolute; inset: 0; pointer-events: none;
+      background: radial-gradient(ellipse at 25% 65%, rgba(26,82,118,0.55) 0%, transparent 58%),
+                  radial-gradient(ellipse at 78% 28%, rgba(110,44,44,0.3) 0%, transparent 52%);
+    }
+    .hero-tag {
+      display: inline-block; font-size: 11px; font-weight: 600; letter-spacing: 0.13em;
+      text-transform: uppercase; color: #A8CCEC; border: 1px solid rgba(168,204,236,0.35);
+      border-radius: 20px; padding: 4px 14px; margin-bottom: 30px;
+    }
+    .hero h1 { font-family: 'Playfair Display', serif; font-size: clamp(2rem,5vw,3.4rem); font-weight: 700; line-height: 1.2; max-width: 840px; margin: 0 auto 18px; }
+    .hero h1 em { color: #A8CCEC; font-style: italic; }
+    .hero-sub { font-size: 1.05rem; color: rgba(255,255,255,0.68); max-width: 620px; margin: 0 auto; font-weight: 300; }
+
+    /* LAYOUT */
+    main { max-width: 860px; margin: 0 auto; padding: 0 24px 80px; }
+    section { padding: 58px 0; border-bottom: 1px solid var(--divider); }
+    section:last-child { border-bottom: none; }
+
+    h2 { font-family: 'Playfair Display', serif; font-size: 1.85rem; font-weight: 700; margin-bottom: 20px; line-height: 1.25; color: var(--ocean); }
+    h2.venous { color: var(--venous); } h2.mixed { color: var(--mixed); } h2.quiz { color: #4A235A; }
+    h3 { font-size: 0.9rem; font-weight: 600; letter-spacing: 0.09em; text-transform: uppercase; color: var(--muted); margin-bottom: 8px; }
+    p { color: var(--soft); margin-bottom: 16px; } p:last-child { margin-bottom: 0; }
+    strong { color: var(--text); font-weight: 600; }
+    sup a { color: var(--ocean); font-size: 0.78em; text-decoration: none; }
+    sup a:hover { text-decoration: underline; }
+
+    /* PULLQUOTE */
+    .pq { border-left: 4px solid var(--ocean); margin: 34px 0; padding: 18px 26px; background: var(--h-ocean); border-radius: 0 8px 8px 0; }
+    .pq.mixed { border-color: var(--mixed); background: var(--h-mixed); }
+    .pq p { font-family: 'Playfair Display', serif; font-size: 1.12rem; font-style: italic; color: var(--text); margin: 0; line-height: 1.55; }
+
+    /* CALLOUT DARK */
+    .callout-dark { background: var(--bg-dark); color: #fff; border-radius: 14px; padding: 36px 38px; margin: 34px 0; }
+    .callout-dark .num { font-family: 'Playfair Display', serif; font-size: 2.8rem; font-weight: 700; color: #A8CCEC; line-height: 1; margin-bottom: 6px; }
+    .callout-dark p { color: rgba(255,255,255,0.78); font-size: 0.95rem; }
+
+    /* LEAD BAND */
+    .lead-band { background: var(--bg-alt); border-radius: 12px; padding: 32px 38px; margin: 38px 0; }
+    .lead-band p { font-family: 'Playfair Display', serif; font-size: 1.18rem; line-height: 1.65; color: var(--text); font-style: italic; margin: 0; }
+
+    /* PARADOX BLOCK */
+    .paradox {
+      background: var(--bg-dark); border-radius: 14px; padding: 38px 34px; margin: 38px 0;
+    }
+    .paradox-label { font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; color: #A8CCEC; font-weight: 600; margin-bottom: 16px; }
+    .paradox-headline { font-family: 'Playfair Display', serif; font-size: 1.22rem; color: #fff; line-height: 1.65; font-style: italic; margin-bottom: 26px; }
+    .paradox-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 14px; margin-bottom: 20px; }
+    @media(max-width:640px){ .paradox-grid { grid-template-columns: 1fr; } }
+    .paradox-card { border-radius: 10px; padding: 16px; }
+    .paradox-card .tag { font-size: 0.75rem; font-weight: 600; letter-spacing: 0.07em; text-transform: uppercase; margin-bottom: 8px; }
+    .paradox-card p { font-size: 0.86rem; line-height: 1.6; color: rgba(255,255,255,0.78); margin: 0; }
+    .pcard-v { background: rgba(241,148,138,0.12); border: 1px solid rgba(241,148,138,0.35); }
+    .pcard-v .tag { color: #F1948A; }
+    .pcard-a { background: rgba(133,193,233,0.12); border: 1px solid rgba(133,193,233,0.35); }
+    .pcard-a .tag { color: #85C1E9; }
+    .pcard-m { background: rgba(163,228,215,0.1); border: 1px solid rgba(163,228,215,0.3); }
+    .pcard-m .tag { color: #A3E4D7; }
+    .paradox-note { font-size: 0.8rem; color: rgba(255,255,255,0.42); font-style: italic; border-top: 1px solid rgba(255,255,255,0.1); padding-top: 14px; line-height: 1.6; }
+
+    /* ANALOGY TABLE */
+    .atab { width: 100%; border-collapse: collapse; margin: 34px 0; font-size: 0.94rem; }
+    .atab th { padding: 13px 16px; text-align: left; font-size: 0.78rem; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; }
+    .atab th:nth-child(1) { background: var(--mixed); color: #fff; border-radius: 8px 0 0 0; }
+    .atab th:nth-child(2) { background: var(--ocean); color: #fff; border-radius: 0 8px 0 0; }
+    .atab td { padding: 13px 16px; vertical-align: top; line-height: 1.5; color: var(--soft); border-bottom: 1px solid var(--divider); }
+    .atab td:nth-child(1) { background: #F5FDFB; }
+    .atab td:nth-child(2) { background: #F0F6FC; }
+    .atab tr:last-child td:nth-child(1) { border-radius: 0 0 0 8px; }
+    .atab tr:last-child td:nth-child(2) { border-radius: 0 0 8px 0; }
+
+    /* TWO COL */
+    .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin: 28px 0; }
+    @media(max-width:600px){ .two-col { grid-template-columns: 1fr; } }
+    .card { border-radius: 10px; padding: 24px 22px; }
+    .card h4 { font-family: 'Playfair Display', serif; font-size: 1rem; font-weight: 700; margin-bottom: 8px; }
+    .card p { font-size: 0.9rem; color: var(--soft); }
+    .card.mixed { background: var(--h-mixed); border: 1px solid #B2DFDB; }
+    .card.mixed h4 { color: var(--mixed); }
+    .card.ocean { background: var(--h-ocean); border: 1px solid #AACCE8; }
+    .card.ocean h4 { color: var(--ocean); }
+
+    /* TIPPING BAR */
+    .tipping { background: linear-gradient(90deg, #1A5276 0%, #6E2C2C 100%); border-radius: 10px; padding: 26px 30px; color: #fff; margin: 32px 0; }
+    .tipping h4 { font-family: 'Playfair Display', serif; font-size: 1.1rem; margin-bottom: 8px; }
+    .tipping p { color: rgba(255,255,255,0.82); font-size: 0.92rem; }
+
+    /* FIGURE / PLACEHOLDER */
+    figure { margin: 34px 0; }
+    figcaption { font-size: 0.8rem; color: var(--muted); margin-top: 10px; font-style: italic; line-height: 1.5; }
+    .img-placeholder .placeholder-box {
+      border: 2px dashed #b0b8c1; background: #f4f6f8; border-radius: 8px;
+      padding: 34px 24px; text-align: center; color: #6c757d;
+      min-height: 240px; display: flex; flex-direction: column;
+      align-items: center; justify-content: center; gap: 10px;
+    }
+    .placeholder-icon { font-size: 2rem; }
+    .placeholder-label { font-family: monospace; font-size: 0.82rem; background: #e9ecef; padding: 4px 10px; border-radius: 4px; color: #343a40; }
+    .placeholder-hint { font-size: 0.78rem; color: #555; font-style: normal; max-width: 520px; text-align: left; background: #e9ecef; border-radius: 6px; padding: 12px 14px; line-height: 1.6; }
+
+    /* QUIZ */
+    .quiz-section { background: #F9F4FF; border: 1px solid #D7BDE2; border-radius: 14px; padding: 36px 38px; margin: 38px 0; }
+    .quiz-section h2 { color: #4A235A; font-size: 1.5rem; margin-bottom: 8px; }
+    .quiz-section .quiz-intro { color: var(--soft); font-size: 0.95rem; margin-bottom: 28px; font-style: italic; }
+    .question-block { margin-bottom: 28px; padding-bottom: 28px; border-bottom: 1px solid #D7BDE2; }
+    .question-block:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
+    .question-num { font-size: 0.75rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: #7D3C98; margin-bottom: 6px; }
+    .question-text { font-family: 'Playfair Display', serif; font-size: 1.05rem; color: var(--text); line-height: 1.55; margin-bottom: 10px; font-weight: 400; }
+    .question-hint { font-size: 0.85rem; color: #6C3483; font-style: italic; padding: 10px 14px; background: rgba(125,60,152,0.07); border-radius: 6px; border-left: 3px solid #7D3C98; }
+
+    /* REFS */
+    .refs h2 { font-family: 'Playfair Display', serif; font-size: 1.1rem; color: var(--muted); margin-bottom: 20px; }
+    .refs ol { padding-left: 22px; }
+    .refs li { font-size: 0.85rem; color: var(--soft); margin-bottom: 14px; line-height: 1.7; }
+    .refs a { color: var(--ocean); text-decoration: none; }
+    .refs a:hover { text-decoration: underline; }
+
+    /* FOOTER */
+    .institutional-footer { background: #fff; border-top: 1px solid var(--divider); padding: 26px 40px; text-align: center; }
+    .institutional-footer p { font-size: 12px; color: var(--muted); margin: 0; }
+
+    @media(max-width:600px){ .hero { padding: 56px 20px 48px; } main { padding: 0 16px 60px; } .institutional-header { padding: 12px 20px; } }
+  </style>
+</head>
+<body>
+
+<!-- HEADER INSTITUCIONAL -->
+<header class="institutional-header">
+  <div class="header-identity">G10 Feridas Crônicas · PET-Saúde Digital · UFPel</div>
+  <img src="img/logo.png" alt="Logo G10 Feridas Crônicas — PET-Saúde UFPel" style="max-height:52px; width:auto; display:block;">
+</header>
+
+<!-- HERO -->
+<div id="paradoxo-central" class="hero">
+  <!-- PROMPT IMAGEM — Capa (img/capa.png)
+       "A split scientific illustration, cinematic dark background.
+        Left panel: aerial view of the North Atlantic Ocean. The entire ocean surface glows
+        in deep warm indigo-gold tones — except one cold anomalous oval region south of
+        Greenland, rendered in icy electric blue (the Cold Blob). A semi-transparent ribbon
+        of the AMOC current flows northward in warm amber at the surface, then curves down
+        and returns south as a cold deep current in pale blue.
+        Right panel: medical anatomical cross-section of a human lower leg with a mixed
+        venous-arterial ulcer. The wound border glows warm — deep red-orange thermal tones,
+        venous stasis visible. The wound bed at the center is cold, pale, cyanotic, ischemic.
+        Connecting both panels: the phrase 'the surface conceals the depth' in small elegant
+        serif typography, white on dark. Color palette: deep navy background, warm amber-gold
+        and cold electric blue. Style: Nature Medicine editorial cover art, dramatic
+        chiaroscuro lighting, anatomical precision."
+  -->
+  <div style="position:relative; z-index:1;">
+    <div class="hero-tag">Analogia Científica · Feridas Crônicas &amp; Oceanografia</div>
+    <h1>Quando o oceano <em>sangra devagar</em></h1>
+    <p class="hero-sub">Cold Blob, AMOC e a úlcera mista — o que o Atlântico Norte revela sobre o paradoxo quente/frio nas feridas crônicas de membros inferiores</p>
+  </div>
+</div>
+
+<main>
+
+  <!-- 1. ABERTURA -->
+  <section>
+    <h3>A pergunta que une dois mundos</h3>
+    <h2>Uma superfície que mente</h2>
+    <div class="lead-band">
+      <p>Há um paradoxo no Atlântico Norte: enquanto o resto dos oceanos aquece, uma região ao sul da Groenlândia esfria. Há um paradoxo análogo na clínica de feridas crônicas: a lesão de etiologia mista pode apresentar borda quente pela inflamação venosa e, ao mesmo tempo, leito isquêmico real quando há comprometimento arterial associado. Em ambos os casos, o que se vê na superfície não revela — e às vezes oculta — o processo que corre nas profundezas.</p>
+    </div>
+
+    <!-- PROMPT IMAGEM — Capa (img/capa.png)
+         "A split scientific illustration, cinematic dark background.
+          Left panel: aerial view of the North Atlantic Ocean — warm indigo-gold tones
+          everywhere except a cold electric-blue oval south of Greenland (the Cold Blob).
+          The AMOC current flows as a warm amber ribbon northward at surface, sinking and
+          returning south as a cold pale-blue deep current.
+          Right panel: anatomical cross-section of a lower leg with a mixed venous-arterial
+          ulcer — warm orange-red wound border (venous inflammation) contrasting with a cold,
+          pale, ischemic wound bed (arterial insufficiency). Central phrase: 'the surface
+          conceals the depth'. Style: Nature Medicine editorial cover art, dark background,
+          chiaroscuro lighting, anatomical precision."
+    -->
+    <figure style="margin: 36px 0;">
+      <img src="img/capa.png"
+           alt="Ilustração editorial dividida: à esquerda, Cold Blob no Atlântico Norte; à direita, corte anatômico de úlcera mista venosa-arterial — a superfície oculta a profundidade"
+           style="width:100%; border-radius:12px; display:block;">
+      <figcaption style="font-size:0.8rem; color:var(--muted); margin-top:10px; font-style:italic; line-height:1.5;">
+        Figura de abertura — A superfície oculta a profundidade: à esquerda, a Cold Blob no Atlântico subpolar; à direita, o paradoxo térmico da úlcera mista venosa-arterial. Em ambos os sistemas, o sinal visível na superfície é o índice de uma circulação que falhou nas profundezas.
+      </figcaption>
+    </figure>
+
+    <p>Esta peça propõe uma analogia entre a <strong>Cold Blob do Atlântico Norte</strong> e a <strong>úlcera de perna</strong> — especialmente a <strong>úlcera mista</strong>, de etiologia venosa e arterial concomitante — para iluminar, por contraste e semelhança, o papel central da circulação e da temperatura na manutenção de sistemas vivos e planetários.</p>
+    <p><i>A analogia foi inspirada a partir da compreensão de uma observação sobre feridas crônicas mistas (venosa e arterial) da <strong>Profª Drª Adrize Rutz Porto</strong> — Professora da Faculdade de Enfermagem da UFPel, coordenadora do projeto Amor-à-Pele e do PET-Saúde Digital, Editora-chefe da Journal of Nursing and Health (JONAH) e líder do Núcleo de Estudos em Práticas de Saúde e Enfermagem (NEPEn).<sup><a href="#ref1">[1]</a></sup></i></p>
+  </section>
+
+  <!-- 2. COLD BLOB -->
+  <section>
+    <h3>Parte I — Oceanografia</h3>
+    <h2>O lugar onde o oceano para de aquecer</h2>
+    <p>Desde o século XIX, os oceanos da Terra aqueceram em média. Exceto por uma região: o Atlântico subpolar, ao sul da Groenlândia e da Islândia. Ali, a temperatura <strong>caiu cerca de 1°C</strong> — um comportamento que desafiou décadas de modelos climáticos e que foi chamado de <em>Cold Blob</em> ou <em>North Atlantic Warming Hole</em>.</p>
+    <div class="pq">
+      <p>"O resfriamento não vem da superfície. Vem das profundezas — de uma corrente que perdeu a força de entregar calor."</p>
+    </div>
+    <p>Um estudo publicado no <em>Geophysical Research Letters</em> em 2026, liderado por Stefan Rahmstorf (Instituto de Potsdam), encerrou o debate sobre a causa: trata-se de um fenômeno <strong>oceânico profundo</strong>, não atmosférico. A queda no conteúdo de calor foi detectada nos primeiros 1.000 metros de profundidade — exatamente onde atua a AMOC.<sup><a href="#ref2">[2]</a></sup></p>
+
+    <!-- PROMPT IMAGEM — Figura 1 (img/cold-blob-mapa.jpg)
+         "Scientific map of the North Atlantic Ocean showing sea surface temperature anomalies
+          from 1955 to 2024. Most of the ocean is colored in warm orange-red tones indicating
+          warming. A distinct cold blue region sits south of Greenland and Iceland — the
+          'Cold Blob' or North Atlantic Warming Hole. Clean editorial cartography style,
+          dark navy background, subtle latitude/longitude grid, white coastlines, colorbar
+          legend at bottom. Style: Nature Climate Change journal figure."
+    -->
+    <figure>
+      <img src="img/cold-blob-mapa.jpg" alt="Mapa de anomalias de temperatura da superfície oceânica mostrando a Cold Blob ao sul da Groenlândia" style="width:100%; border-radius:10px; display:block;">
+      <figcaption>Figura 1 — Mapa de anomalias de temperatura da superfície oceânica (1955–2024). O único ponto que esfriou enquanto o restante do planeta aquecia. <em>Referência visual: Rahmstorf et al., Geophysical Research Letters, 2026.</em><sup><a href="#ref2">[2]</a></sup></figcaption>
+    </figure>
+
+    <div class="callout-dark">
+      <div class="num">1.000 m</div>
+      <p>A queda no conteúdo de calor foi detectada nos <em>primeiros 1.000 metros de profundidade</em> — exatamente onde a AMOC atua. Isso tornou insustentável a hipótese de que a causa estava na superfície. O mesmo princípio vale clinicamente: o sinal visível na pele raramente é a causa — é o índice de algo mais profundo.<sup><a href="#ref2">[2]</a></sup></p>
+    </div>
+  </section>
+
+  <!-- 3. AMOC -->
+  <section>
+    <h3>O Sistema Circulatório do Planeta</h3>
+    <h2>A AMOC: a corrente que aquece um continente</h2>
+    <p>A <strong>Circulação Meridional de Retorno do Atlântico</strong> (AMOC) é uma rede de correntes oceânicas que funciona como esteira transportadora: leva água quente superficial dos trópicos para o norte e retorna água fria e densa pelo fundo. É graças a ela que Londres, na mesma latitude que Quebec, tem apenas 3 dias de geada por ano — contra 99 no Canadá.<sup><a href="#ref3">[3]</a></sup></p>
+
+    <!-- PROMPT IMAGEM — Figura 2 (img/amoc-diagrama.png)
+         "Scientific diagram of the Atlantic Meridional Overturning Circulation (AMOC).
+          Show warm surface water flowing northward in orange-red, cooling near Greenland
+          and sinking as dense cold water in blue, then returning southward at depth.
+          Label key regions: tropics, North Atlantic, Greenland, sinking zone.
+          Clean editorial style, dark ocean background, white labels, arrows showing
+          flow direction. Style: Nature or IPCC report illustration."
+    -->
+    <figure>
+      <img src="img/amoc-diagrama.png" alt="Diagrama esquemático da AMOC mostrando circulação de água quente para o norte e retorno frio pelas profundezas" style="width:100%; border-radius:10px; display:block;">
+      <figcaption>Figura 2 — Diagrama esquemático da AMOC: transporte de calor superficial (laranja) para o norte e retorno de água fria pelas profundezas (azul). Quando esse ciclo enfraquece, o Atlântico subpolar esfria — surgindo a Cold Blob.</figcaption>
+    </figure>
+
+    <p>Quando a AMOC enfraquece, menos calor chega ao Atlântico Norte. A Cold Blob não é um mistério independente: é a <em>impressão digital</em> de uma corrente que perdeu força. As projeções de Rahmstorf et al. indicam que a AMOC pode perder entre <strong>43% e 59% de sua força até 2100</strong> — valores 60% acima das estimativas anteriores.<sup><a href="#ref2">[2]</a></sup></p>
+  </section>
+
+  <!-- 4. ULCERA DE PERNA -->
+  <section>
+    <h3>Parte II — Clínica de Feridas</h3>
+    <h2 class="venous">Úlceras de perna: três etiologias, uma superfície enganosa</h2>
+
+    <p>As úlceras crônicas de membros inferiores têm etiologias distintas — e confundi-las tem consequências graves. As úlceras venosas representam aproximadamente <strong>80–85% dos casos</strong>; as arteriais, 5–10%; e as mistas, a fração restante — mas clinicamente desafiadora e de crescente relevância diagnóstica.<sup><a href="#ref4">[4]</a></sup></p>
+
+    <!-- PARADOX BLOCK — REVISADO CONFORME PROFÃ ADRIZE RUTZ PORTO -->
+    <div class="paradox">
+      <p class="paradox-label">O paradoxo temperatura/circulação — revisão clínica</p>
+      <p class="paradox-headline">
+        "A úlcera venosa pura <span style="color:#F1948A;">inflama e aquece</span> a superfície por estase —<br>
+        a arterial <span style="color:#85C1E9;">esfria e isquemia</span> por falta de aporte —<br>
+        e a mista pode apresentar <span style="color:#A3E4D7;">os dois sinais ao mesmo tempo</span>."
+      </p>
+      <div class="paradox-grid">
+        <div class="paradox-card pcard-v">
+          <p class="tag">🔥 Venosa Pura</p>
+          <p>A lesão e a pele perilesional apresentam-se <strong style="color:#fff;">quentes, edemaciadas, ruborizadas</strong>. A hipertensão venosa crônica gera inflamação por estase: fibrinogênio extravasa, hemácias depositam-se, inflamação crônica aquece a borda.<br><br>O sangue arterial chega — o problema é que <em>não consegue retornar</em> pela veia. Frio palpável <strong style="color:#fff;">não é o padrão</strong> desta etiologia isolada.<sup><a href="#ref4" style="color:#F1948A;">[4]</a></sup></p>
+        </div>
+        <div class="paradox-card pcard-a">
+          <p class="tag">❄️ Arterial Pura</p>
+          <p>Pele <strong style="color:#fff;">fria, atrófica, cianótica</strong>. Pulsos diminuídos ou ausentes. Dor intensa ao elevar a perna. A artéria obstruída (aterosclerose, DAP) <em>não entrega oxigênio</em> — o tecido isquemia, necrosa e esfria de fato.<br><br>Aqui o frio é sinal diagnóstico real. Extremidade fria com alteração de pulsos: investigar componente arterial imediatamente.<sup><a href="#ref5" style="color:#85C1E9;">[5]</a></sup></p>
+        </div>
+        <div class="paradox-card pcard-m">
+          <p class="tag">🌡️ Mista (ITB &lt; 0,9)</p>
+          <p>Coexistência de insuficiência <em>venosa e arterial</em>. Edema e calor inflamatório perilesional do componente venoso convivem com isquemia real do componente arterial.<br><br>Estudo de 2025 encontrou etiologia mista em <strong style="color:#fff;">25,5% dos casos</strong> de úlcera de perna.<sup><a href="#ref6" style="color:#A3E4D7;">[6]</a></sup> Aqui a compressão terapêutica — central no tratamento venoso — pode ser contraindicada ou requer ajuste rigoroso pelo ITB.<sup><a href="#ref7" style="color:#A3E4D7;">[7]</a></sup></p>
+        </div>
+      </div>
+      <p class="paradox-note">⚠️ <strong style="color:rgba(255,255,255,0.65);">Nota clínica (Profª Drª Adrize Rutz Porto, UFPel, 2026):</strong> Extremidade fria, pulsos diminuídos, necrose seca e dor ao elevar a perna não são sinais de úlcera venosa pura — são indicação de investigar componente arterial. A inflamação superficial pode mascarar isquemia mais profunda. O ITB é mandatório nesse raciocínio diagnóstico.</p>
+    </div>
+
+    <p>O que torna a úlcera mista o caso mais análogo à Cold Blob é exatamente esse duplo movimento: <strong>o sinal quente de superfície (inflamação venosa) coexiste com o processo frio profundo (isquemia arterial)</strong> — assim como o Atlântico subpolar esfria abaixo enquanto a atmosfera ao redor aquece.</p>
+
+    <!-- PROMPT IMAGEM — Figura 3 (img/paradoxo-termico-ulcera-mista.png)
+         "Medical scientific illustration showing a cross-section of a mixed venous-arterial
+          leg ulcer. Left panel: infrared thermography view — warm orange-red tones at the
+          wound border (venous inflammation, edema, stasis). Right panel: same wound in
+          anatomical cross-section — central pale, cold, ischemic wound bed due to arterial
+          insufficiency, fibrotic microvasculature, no oxygen delivery at the base.
+          A gradient arrow runs from hot (border) to cold (center). Dual pathology visible:
+          venous stasis on one side, arterial occlusion on the other. Clean editorial
+          anatomical style, dark background, no text labels. Style: Nature Medicine cover art."
+    -->
+    <figure>
+      <img src="img/paradoxo-termico-ulcera-mista.png" alt="Paradoxo térmico da úlcera mista: borda quente por inflamação venosa e leito frio por isquemia arterial" style="width:100%; border-radius:10px; display:block;">
+      <figcaption>Figura 3 — O paradoxo térmico da úlcera mista: calor inflamatório na borda (componente venoso) e isquemia fria no leito (componente arterial). A termografia clínica pode revelar essa dissociação — que é o paralelo mais preciso com a Cold Blob oceânica.</figcaption>
+    </figure>
+
+    <p>Há ainda uma dimensão térmica com implicação direta no cuidado: independentemente da etiologia, <strong>o leito que perdeu temperatura leva 30 a 40 minutos para retornar aos 37°C fisiológicos</strong> após a limpeza, e até 3 a 4 horas para recuperar a velocidade normal de mitose celular.<sup><a href="#ref8">[8]</a></sup> O uso de solução salina aquecida durante o curativo não é conforto — é biologia celular.</p>
+  </section>
+
+  <!-- 5. A ANALOGIA -->
+  <section>
+    <h3>A Ponte Entre os Dois Mundos</h3>
+    <h2 class="mixed">O diagnóstico pelo sinal de superfície — oceânico e clínico</h2>
+
+    <div class="lead-band">
+      <p>Assim como o clínico experiente usa a temperatura, a coloração e os pulsos da extremidade afetada para inferir o estado da circulação profunda, os cientistas usam a Cold Blob como impressão digital da AMOC — uma corrente invisível cujos efeitos se manifestam na superfície. Em ambos os casos, o sinal de superfície é o índice, não a doença.</p>
+    </div>
+
+    <table class="atab">
+      <thead>
+        <tr>
+          <th>🩺 Úlcera de perna (mista)</th>
+          <th>🌊 Cold Blob / AMOC</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td>Insuficiência venosa crônica (estase, retorno comprometido)</td><td>Enfraquecimento da AMOC (transporte de calor reduzido)</td></tr>
+        <tr><td>Insuficiência arterial periférica (aporte de O₂ reduzido)</td><td>Aquecimento global que derrete a Groenlândia (água doce desestabiliza a AMOC)</td></tr>
+        <tr><td>Borda quente (inflamação) + leito isquêmico (frio real)</td><td>Atmosfera aquecendo + Atlântico subpolar esfriando</td></tr>
+        <tr><td>ITB: índice que revela o estado arterial oculto</td><td>Temperatura da Cold Blob: fingerprint do estado da AMOC</td></tr>
+        <tr><td>Lipodermatosclerose, edema, pulsos alterados (sinais precoces)</td><td>Sinais de alerta precoce do tipping point da AMOC</td></tr>
+        <tr><td>Compressão contraindicada na isquemia grave (ITB &lt; 0,5)</td><td>Redução de emissões: tratar a causa, não o sintoma superficial</td></tr>
+        <tr><td>Necrose, gangrena, amputação (ponto de não retorno)</td><td>Colapso irreversível da AMOC</td></tr>
+        <tr><td>Diagnóstico correto evita conduta catastrófica</td><td>Monitoramento da AMOC orienta políticas climáticas</td></tr>
+      </tbody>
+    </table>
+
+    <div class="two-col">
+      <div class="card mixed">
+        <h4>Na clínica</h4>
+        <p>Confundir úlcera mista com venosa pura e aplicar compressão intensa pode resultar em isquemia crítica — uma conduta com consequências potencialmente catastróficas.<sup><a href="#ref9">[9]</a></sup> O sinal de superfície (borda quente) pode ocultar a isquemia arterial profunda.</p>
+      </div>
+      <div class="card ocean">
+        <h4>No oceano</h4>
+        <p>Tratar apenas o sintoma climático visível (temperatura superficial) sem entender a AMOC seria como tratar apenas a borda da ferida. O processo determinante está nas profundezas — e sem monitorá-lo, qualquer intervenção é insuficiente.<sup><a href="#ref2">[2]</a></sup></p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 6. TIPPING POINT -->
+  <section>
+    <h3>O Ponto de Não Retorno</h3>
+    <h2>Quando o sistema não consegue mais se recuperar</h2>
+
+    <div class="tipping">
+      <h4>Projeção AMOC para 2100</h4>
+      <p>A força da AMOC pode reduzir-se entre <span style="font-weight:600; color:#fff;">43% e 59%</span> até o fim do século — valores 60% acima das estimativas anteriores. O equivalente clínico: isquemia crítica com ITB &lt;&nbsp;0,5, múltiplas úlceras ativas e indicação de revascularização.<sup><a href="#ref2">[2]</a></sup></p>
+    </div>
+
+    <p>Em ambos os sistemas, os <strong>sinais precoces de alerta</strong> são mais úteis do que esperar o desfecho catastrófico. Na úlcera mista: pulsos alterados, ITB limítrofe, necrose incipiente. Na AMOC: variações de salinidade, dados paleoclimáticos, e a própria Cold Blob — que Rahmstorf descreve como o sinal de um sistema que se aproxima de um ponto de inflexão.<sup><a href="#ref2">[2]</a></sup></p>
+
+    <p>Em ambos os casos, a <strong>intervenção precoce e baseada no diagnóstico correto</strong> é o que separa um desfecho gerenciável de um irreversível.</p>
+  </section>
+
+  <!-- 7. QUIZ SOCRÁTICO -->
+  <section>
+    <div class="quiz-section">
+      <h3>Fixação de Conhecimento</h3>
+      <h2 class="quiz" style="color:#4A235A;">Perguntas para pensar</h2>
+      <p class="quiz-intro">As questões abaixo são socráticas: não pedem uma resposta única correta, mas provocam o raciocínio por analogia e diagnóstico diferencial. Use-as individualmente ou em discussão de grupo.</p>
+
+      <div class="question-block">
+        <p class="question-num">Questão 1 — Analogia direta</p>
+        <p class="question-text">A Cold Blob esfria enquanto o Atlântico ao redor aquece. Na clínica de feridas, qual tipo de úlcera apresenta um paradoxo análogo — e por quê esse paralelo é mais preciso com a úlcera mista do que com a venosa pura?</p>
+        <p class="question-hint">💡 Pense: na úlcera venosa pura, a lesão e a pele perilesional estão quentes. Onde está o "frio" que a analogia com a Cold Blob precisa? Há frio de fato, ou apenas hipóxia relativa?</p>
+      </div>
+
+      <div class="question-block">
+        <p class="question-num">Questão 2 — Diagnóstico pelo índice</p>
+        <p class="question-text">Na oceanografia, a temperatura da Cold Blob é usada como "impressão digital" do estado da AMOC — uma corrente que não vemos diretamente. Na clínica, qual exame simples funciona como esse índice diagnóstico para revelar o componente arterial oculto numa úlcera de perna?</p>
+        <p class="question-hint">💡 Pense: o ITB (Índice Tornozelo-Braço) é ao clínico o que a temperatura da Cold Blob é ao oceanógrafo — um número de superfície que revela o estado de uma circulação profunda.</p>
+      </div>
+
+      <div class="question-block">
+        <p class="question-num">Questão 3 — Consequência de diagnóstico errado</p>
+        <p class="question-text">Imagine que um profissional avalia uma úlcera de perna, encontra borda quente e edema, e conclui ser venosa pura, prescrevendo compressão intensa. Qual o risco se houver componente arterial não detectado? Qual seria o equivalente oceânico de "tratar o sintoma sem entender o sistema"?</p>
+        <p class="question-hint">💡 Compressão em isquemia crítica (ITB &lt; 0,5) pode evoluir para gangrena. No clima: focar apenas em temperatura superficial sem monitorar a AMOC seria análogo.</p>
+      </div>
+
+      <div class="question-block">
+        <p class="question-num">Questão 4 — Tipping point</p>
+        <p class="question-text">Tanto a AMOC quanto uma úlcera mista grave têm um "ponto de não retorno". Como você descreveria esse ponto em cada sistema? O que o monitoramento precoce — do ITB ou da Cold Blob — tem em comum como estratégia de prevenção?</p>
+        <p class="question-hint">💡 Na ferida: necrose extensa, amputação. No oceano: colapso da AMOC com queda de até 15°C em regiões do hemisfério norte. Ambos são evitáveis com detecção precoce do sinal profundo.</p>
+      </div>
+
+      <div class="question-block">
+        <p class="question-num">Questão 5 — Limite da analogia</p>
+        <p class="question-text">Toda analogia tem limites. Na úlcera venosa pura, o mecanismo é de <em>retorno</em> comprometido (centrípeto). Na AMOC, é de <em>transporte de calor para frente</em> (centrífugo). Esse limite invalida a analogia — ou a enriquece? Como você usaria esse contraste para aprofundar a compreensão dos dois sistemas?</p>
+        <p class="question-hint">💡 Limites de analogias são tão didáticos quanto suas semelhanças. A diferença entre retorno venoso e transporte de calor oceânico pode ser usada para discutir as funções distintas de veias e artérias no sistema circulatório.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 8. SÍNTESE -->
+  <section>
+    <h3>O que fica</h3>
+    <h2 class="mixed">A superfície sempre mente. A profundidade não.</h2>
+    <p>A analogia entre a Cold Blob e a úlcera de perna — em especial a úlcera mista — aponta para um princípio diagnóstico universal: <strong>quando a superfície foge do padrão esperado, procure onde a circulação foi comprometida</strong>.</p>
+    <p>Na ferida crônica, o leito hipóxico e a extremidade isquêmica são a cicatriz de um sistema vascular que há muito sinalizava: válvulas incompetentes, artérias obstruídas, ITB em queda. No oceano, a Cold Blob é a cicatriz de uma corrente que há um século sinaliza o mesmo — com dados de temperatura desde 1870, satélites desde 1993, e testemunhos de gelo por milênios.</p>
+    <div class="pq mixed">
+      <p>"Tratar o sintoma sem entender o sistema é sempre insuficiente — seja na perna de um paciente com úlcera mista, seja no Atlântico Norte."</p>
+    </div>
+  </section>
+
+  <!-- REFERÊNCIAS -->
+  <section class="refs">
+    <h2>Referências</h2>
+    <ol>
+      <li id="ref1">PORTO, A. R. Perfil acadêmico. <em>Universidade Federal de Pelotas</em>, Pelotas, [s. d.]. Disponível em: &lt;<a href="https://institucional.ufpel.edu.br/servidores/id/2858" target="_blank">https://institucional.ufpel.edu.br/servidores/id/2858</a>&gt;. Acesso em: 28 jun. 2026.</li>
+      <li id="ref2">RAHMSTORF, S. et al. Multidecadal Atlantic "Warming Hole" Heat Content Variations Are Caused by Ocean Heat Transport, Not by Surface Fluxes. <em>Geophysical Research Letters</em>, v. 53, n. 10, e2025GL118383, 28 maio 2026. DOI: 10.1029/2025GL118383. Disponível em: &lt;<a href="https://doi.org/10.1029/2025GL118383" target="_blank">https://doi.org/10.1029/2025GL118383</a>&gt;. Acesso em: 28 jun. 2026.</li>
+      <li id="ref3">SMART, A.; VENNER, C. A complete guide to the Atlantic Meridional Overturning Circulation (AMOC). <em>Probable Futures</em>, 28 abr. 2026. Disponível em: &lt;<a href="https://probablefutures.org/perspective/a-complete-guide-to-the-atlantic-meridional-overturning-circulation-amoc/" target="_blank">https://probablefutures.org/perspective/...</a>&gt;. Acesso em: 28 jun. 2026.</li>
+      <li id="ref4">SANARMED. Úlceras venosas: o que são e os aspectos clínicos. <em>Sanarmed</em>, 2024. Disponível em: &lt;<a href="https://sanarmed.com/ulceras-venosas-o-que-sao-e-as-aspectos-clinicos-colunistas/" target="_blank">https://sanarmed.com/ulceras-venosas-o-que-sao-e-as-aspectos-clinicos-colunistas/</a>&gt;. Acesso em: 28 jun. 2026.</li>
+      <li id="ref5">IACV. Úlcera arterial: o que é, causas e tratamento. <em>IACV</em>, 2024. Disponível em: &lt;<a href="https://iacv.med.br/ulcera-arterial-o-que-e-causas-e-tratamento/" target="_blank">https://iacv.med.br/ulcera-arterial-o-que-e-causas-e-tratamento/</a>&gt;. Acesso em: 28 jun. 2026.</li>
+      <li id="ref6">ANDRADE, I. et al. Correlação entre ITB e tempo de cicatrização de úlceras de perna. <em>Revista de Enfermagem Referência</em>, Série VI, n. 4, 2025. Disponível em: &lt;<a href="https://revistas.rcaap.pt/referencia/article/download/41357/30350/210810" target="_blank">https://revistas.rcaap.pt/referencia/article/download/41357/30350/210810</a>&gt;. Acesso em: 28 jun. 2026.</li>
+      <li id="ref7">SOCIEDADE BRASILEIRA DE DERMATOLOGIA. Consenso sobre diagnóstico e tratamento das úlceras crônicas de perna. <em>Anais Brasileiros de Dermatologia</em>, 2020. Disponível em: &lt;<a href="https://www.anaisdedermatologia.org.br/pt-consenso-sobre-diagnostico-e-tratamento-articulo-S266627522030312X" target="_blank">https://www.anaisdedermatologia.org.br/...</a>&gt;. Acesso em: 28 jun. 2026.</li>
+      <li id="ref8">BLANES, J. I. et al. Diretrizes para o Tratamento da Úlcera Venosa. <em>Enfermería Global</em>, n. 20, 2010. Disponível em: &lt;<a href="https://scielo.isciii.es/pdf/eg/n20/pt_revision2.pdf" target="_blank">https://scielo.isciii.es/pdf/eg/n20/pt_revision2.pdf</a>&gt;. Acesso em: 28 jun. 2026.</li>
+      <li id="ref9">INSTITUTO MEXICANO DE FLEBOLOGÍA. Úlceras venosas y arteriales: diagnóstico diferencial e ITB como imperativo de seguridad. 2025. Disponível em: &lt;<a href="https://flebo.mx/ulceras-venosas-y-arteriales/" target="_blank">https://flebo.mx/ulceras-venosas-y-arteriales/</a>&gt;. Acesso em: 28 jun. 2026.</li>
+      <li id="ref10">TELESSAÚDERS-UFRGS. Como diferenciar a etiologia das úlceras crônicas dos membros inferiores. <em>TelessaúdeRS-UFRGS</em>, 2022. Disponível em: &lt;<a href="https://www.ufrgs.br/telessauders/perguntas/como-diferenciar-etiologia-das-ulceras-cronicas-dos-membros-inferiores/" target="_blank">https://www.ufrgs.br/telessauders/...</a>&gt;. Acesso em: 28 jun. 2026.</li>
+      <li id="ref11">REALCLIMATE. High-resolution 'fingerprint' images reveal a weakening AMOC. <em>RealClimate</em>, out. 2025. Disponível em: &lt;<a href="https://www.realclimate.org/index.php/archives/2025/10/high-resolution-fingerprint-images-reveal-a-weakening-atlantic-ocean-circulation-amoc/" target="_blank">https://www.realclimate.org/...</a>&gt;. Acesso em: 28 jun. 2026.</li>
+    </ol>
+  </section>
+
+</main>
+
+<footer class="institutional-footer">
+  <p>Infográfico elaborado pelos projetos Amor à Pele e PET-Saúde Digital G10 Feridas Crônicas, UFPel, em Junho de 2026. Revisão clínica: Profª Drª Adrize Rutz Porto, FE-UFPel.</p>
+</footer>
+
+</body>
+</html>
