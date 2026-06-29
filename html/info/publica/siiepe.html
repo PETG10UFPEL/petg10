@@ -201,10 +201,10 @@
     </section>
 
     <section class="stats" aria-label="Resumo das publicações">
-      <div class="stat"><b>15</b><span>publicações</span></div>
-      <div class="stat"><b>7</b><span>responsáveis</span></div>
-      <div class="stat"><b>18</b><span>autores citados</span></div>
-      <div class="stat"><b>5</b><span>tipos/modalidades</span></div>
+      <div class="stat"><b id="stat-pub">15</b><span>publicações</span></div>
+      <div class="stat"><b id="stat-resp">7</b><span>responsáveis</span></div>
+      <div class="stat"><b id="stat-au">–</b><span>autores citados</span></div>
+      <div class="stat"><b id="stat-tp">–</b><span>tipos/modalidades</span></div>
     </section>
 
 
@@ -1605,6 +1605,16 @@ conclusão: a vivência em serviço aproxima a universidade das necessidades rea
     {id:14,t:"Telemonitoramento como estratégia para o acompanhamento de feridas crônicas: uma revisão do escopo",tp:"CIC",li:["Giovana"],au:["Giovana","Letícia","Adrize","Lilian","Alejandro"]},
     {id:15,t:"Organização e controle de estoque no telemonitoramento de feridas crônicas: uma ação extensionista no PET-Saúde",tp:"CEC",li:["Thallya"],au:["Thallya","Danusa","Patrícia","Lucas","Lilian"]}
   ];
+  // ── Stats dinâmicos ──
+  (function(){
+    var auSet=new Set(), tpSet=new Set();
+    ART.forEach(function(a){ a.au.forEach(function(n){ auSet.add(n); }); tpSet.add(a.tp); });
+    var el;
+    el=document.getElementById("stat-pub");  if(el) el.textContent=ART.length;
+    el=document.getElementById("stat-au");   if(el) el.textContent=auSet.size;
+    el=document.getElementById("stat-tp");   if(el) el.textContent=tpSet.size;
+  })();
+
   var SL={nao:"Não iniciado",andamento:"Em andamento",revisao:"Em revisão",enviado:"Enviado"};
   var SD={nao:"#ef4444",andamento:"#f59e0b",revisao:"#3b82f6",enviado:"#22c55e"};
   var AC=["#3b82c4","#d4653b","#1e3a8a","#7c3aed","#059669","#b45309","#be185d","#0891b2","#65a30d","#dc2626"];
