@@ -1,0 +1,643 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Vacina pan-sarbecovírus desenhada por IA: o que os estudantes de saúde precisam saber</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700;800&family=Source+Sans+3:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#FAFAF8;
+    --slate:#2D5F8A;
+    --slate-dark:#1F4361;
+    --teal:#2A9D8F;
+    --teal-dark:#1F7268;
+    --amber:#E9C46A;
+    --orange:#E76F51;
+    --ink:#22303C;
+    --ink-soft:#4B5A66;
+    --line:#E1E6E9;
+    --card:#FFFFFF;
+  }
+  *{box-sizing:border-box;}
+  body{
+    margin:0;
+    background:var(--bg);
+    color:var(--ink);
+    font-family:'Source Sans 3',sans-serif;
+    line-height:1.65;
+  }
+  h1,h2,h3{font-family:'Playfair Display',serif; color:var(--slate-dark); margin:0 0 .5em;}
+  h2{font-size:1.7rem; border-left:5px solid var(--teal); padding-left:14px;}
+  h3{font-size:1.2rem;}
+  p{margin:0 0 1em;}
+  a{color:var(--slate);}
+  main{max-width:920px; margin:0 auto; padding:0 20px;}
+  section{margin:56px 0;}
+
+  /* ===== Header institucional ===== */
+  .institutional-header{
+    display:flex; justify-content:space-between; align-items:center;
+    padding:14px 24px; background:#fff; border-bottom:1px solid var(--line);
+    position:sticky; top:0; z-index:10;
+  }
+  .header-identity{font-family:'Playfair Display',serif; font-weight:700; color:var(--slate-dark); font-size:1.05rem;}
+  .header-identity span{color:var(--teal-dark); font-weight:600; font-size:.78rem; display:block; font-family:'Source Sans 3',sans-serif; letter-spacing:.03em;}
+
+  /* ===== Hero ===== */
+  .hero{
+    background:linear-gradient(135deg,var(--slate-dark),var(--slate));
+    color:#fff; padding:56px 24px 64px; text-align:left;
+  }
+  .hero-inner{max-width:920px; margin:0 auto;}
+  .hero .kicker{
+    text-transform:uppercase; letter-spacing:.12em; font-size:.78rem; font-weight:700;
+    color:var(--amber); margin-bottom:14px;
+  }
+  .hero h1{color:#fff; font-size:2.1rem; line-height:1.25; max-width:760px;}
+  .hero .subt{color:#DCE6EE; font-size:1.08rem; max-width:680px; margin-top:14px;}
+
+  /* ===== Ficha do artigo ===== */
+  .article-card{
+    display:flex; flex-wrap:wrap; gap:10px; align-items:center;
+    background:var(--card); border:1px solid var(--line); border-radius:12px;
+    padding:18px 20px; margin-top:-36px; box-shadow:0 8px 24px rgba(31,67,97,.12);
+    position:relative; z-index:2;
+  }
+  .badge{
+    padding:5px 12px; border-radius:999px; font-size:.78rem; font-weight:700; color:#fff;
+  }
+  .badge-tipo{background:var(--orange);}
+  .badge-evidencia{background:var(--orange);}
+  .badge-ano{background:var(--slate);}
+  .article-ref{margin:0; width:100%; color:var(--ink-soft); font-size:.92rem; padding-top:6px; border-top:1px dashed var(--line); margin-top:8px;}
+
+  /* ===== Figuras com <img> real + fallback ===== */
+  figure.figura{margin:24px 0;}
+  figure.figura img{width:100%; display:block; border-radius:10px; border:1px solid var(--line); background:#f4f6f8;}
+  figure.logo-img{margin:0;}
+  figure.logo-img img{max-height:52px; width:auto; border-radius:0; border:none; background:none;}
+  .placeholder-box{
+    border:2px dashed #b0b8c1; background:#f4f6f8; border-radius:10px;
+    padding:32px 24px; text-align:center; color:#6c757d;
+    display:flex; flex-direction:column; align-items:center; justify-content:center; gap:8px;
+  }
+  .placeholder-icon{font-size:2rem;}
+  .placeholder-label{font-family:monospace; font-size:.85rem; background:#e9ecef; padding:4px 10px; border-radius:4px; color:#343a40;}
+  .placeholder-hint{font-size:.82rem; color:#868e96; font-style:italic; max-width:420px;}
+  figcaption{font-size:.85rem; color:var(--ink-soft); text-align:center; margin-top:8px;}
+  .logo-placeholder-box{min-height:44px; padding:8px 16px;}
+  .logo-placeholder-box .placeholder-label{font-size:.68rem;}
+
+  /* ===== Reflexão (perguntas abertas) ===== */
+  .reflexao{
+    border-left:4px solid var(--slate); background:#EEF3F8; border-radius:0 10px 10px 0;
+    padding:20px 22px; display:flex; gap:16px; margin:24px 0;
+  }
+  .reflexao .box-icon{color:var(--slate-dark);}
+  .reflexao h3{font-size:1.05rem; margin-bottom:6px; color:var(--slate-dark);}
+  .reflexao p{margin:0; color:var(--ink-soft);}
+
+  /* ===== Citações no texto ===== */
+  .cite{font-size:.78em; color:var(--teal-dark); font-weight:700; text-decoration:none; vertical-align:super; margin-left:1px;}
+  .cite:hover{text-decoration:underline;}
+  .refs li{scroll-margin-top:80px;}
+  .refs li:target{background:#FCF7EA; border-radius:6px; padding:4px 8px; margin-left:-8px;}
+
+  /* ===== Caixas didáticas ===== */
+  .box-importa, .analogia, .box-limitacoes{
+    border-left:4px solid var(--teal); background:#F1F8F7; border-radius:0 10px 10px 0;
+    padding:20px 22px; display:flex; gap:16px;
+  }
+  .box-limitacoes{border-left-color:var(--orange); background:#FDF2EE;}
+  .box-icon, .analogia-icon{font-size:1.6rem; line-height:1;}
+  .analogia{border-left-color:var(--amber); background:#FCF7EA;}
+  .analogia-label{font-weight:700; color:#8a6d1f; margin-bottom:6px;}
+
+  /* ===== Glossário ===== */
+  .glossario-item{
+    background:var(--card); border:1px solid var(--line); border-radius:10px;
+    padding:4px 18px; margin-bottom:10px;
+  }
+  .glossario-termo{cursor:pointer; font-weight:600; color:var(--slate-dark); padding:12px 0;}
+  .glossario-def{padding:0 0 14px; color:var(--ink-soft); font-size:.95rem;}
+  .glossario-def p{margin:0 0 8px;}
+  .alerta-termo{
+    background:#FFF4E5; border:1px solid #F1C77A; border-radius:8px; padding:10px 14px;
+    font-size:.88rem; color:#7A5200; margin-top:8px;
+  }
+
+  /* ===== Quiz ===== */
+  .quiz-box{background:var(--card); border:1px solid var(--line); border-radius:12px; padding:22px; margin-bottom:16px;}
+  .quiz-pergunta{font-weight:600; margin-bottom:12px;}
+  .quiz-alt{
+    display:block; width:100%; text-align:left; padding:11px 14px; margin-bottom:8px;
+    border:1px solid var(--line); border-radius:8px; background:#fff; cursor:pointer;
+    font-family:inherit; font-size:.95rem; color:var(--ink);
+  }
+  .quiz-alt:hover{border-color:var(--teal);}
+  .quiz-alt.correta{background:#E5F4F1; border-color:var(--teal-dark);}
+  .quiz-alt.errada{background:#FBE9E5; border-color:var(--orange);}
+  .quiz-feedback{margin-top:10px; padding:10px 14px; border-radius:8px; font-size:.9rem; display:none;}
+  .quiz-feedback.show{display:block;}
+  .quiz-feedback.ok{background:#E5F4F1; color:#1F7268;}
+  .quiz-feedback.fail{background:#FBE9E5; color:#B5432A;}
+  #quiz-score{
+    text-align:center; font-weight:700; padding:16px; border-radius:10px;
+    background:var(--slate-dark); color:#fff; display:none;
+  }
+
+  /* ===== Timeline ===== */
+  .timeline{display:flex; gap:0; overflow-x:auto; padding:24px 4px 12px; scroll-snap-type:x proximity;}
+  .timeline-item{
+    flex:0 0 200px; scroll-snap-align:start; position:relative; padding:0 16px 0 0;
+  }
+  .timeline-dot{width:14px; height:14px; border-radius:50%; background:var(--teal); margin-bottom:10px;}
+  .timeline-item::after{
+    content:""; position:absolute; top:6px; left:14px; right:-16px; height:2px; background:var(--line);
+  }
+  .timeline-item:last-child::after{display:none;}
+  .timeline-date{display:block; font-weight:700; color:var(--slate-dark); font-size:.85rem;}
+  .timeline-content p{font-size:.88rem; color:var(--ink-soft); margin-top:4px;}
+
+  /* ===== Infográfico ===== */
+  .infografico-grid{
+    display:grid; grid-template-columns:repeat(auto-fit,minmax(150px,1fr)); gap:14px;
+  }
+  .info-card{
+    background:var(--card); border:1px solid var(--line); border-radius:12px;
+    padding:20px 14px; text-align:center; display:flex; flex-direction:column; gap:4px;
+  }
+  .info-icon{font-size:1.6rem;}
+  .info-numero{font-family:'Playfair Display',serif; font-size:1.7rem; font-weight:800; color:var(--teal-dark);}
+  .info-label{font-size:.82rem; color:var(--ink-soft);}
+
+  /* ===== Referências ===== */
+  .refs{font-size:.92rem;}
+  .refs li{margin-bottom:10px;}
+
+  /* ===== Rodapé institucional ===== */
+  .institutional-footer{
+    background:#F3F4F2; border-top:1px solid var(--line); padding:28px 20px; text-align:center;
+  }
+  .institutional-footer p{margin:0; font-size:.8rem; color:#5a6570;}
+
+  @media (max-width:768px){
+    .hero h1{font-size:1.6rem;}
+    .article-card{margin-top:-24px;}
+    section{margin:40px 0;}
+  }
+</style>
+</head>
+<body>
+
+<header class="institutional-header">
+  <div class="header-identity">Infográfico Científico<span>Educação em Saúde Baseada em Evidências</span></div>
+  <figure class="figura logo-img" id="fig-logo">
+    <img src="img/logo-institucional.png" alt="Logo institucional" onerror="handleImgErr(this,'img/logo-institucional.png','')">
+  </figure>
+</header>
+
+<div class="hero">
+  <div class="hero-inner">
+    <div class="kicker">Vacinologia · Inteligência Artificial · Preparação Pandêmica</div>
+    <h1>Uma vacina desenhada por inteligência artificial tenta antecipar a próxima pandemia — antes que ela comece</h1>
+    <p class="subt">Pesquisadores de Cambridge testaram em humanos, pela primeira vez, um antígeno vacinal inteiramente concebido por computador para proteger contra toda a família dos sarbecovírus — não apenas contra uma cepa isolada.</p>
+  </div>
+</div>
+
+<main>
+
+  <div class="article-card">
+    <span class="badge badge-tipo">Ensaio Clínico Fase I</span>
+    <span class="badge badge-evidencia">Nível de Evidência: III (aberto, sem grupo controle)</span>
+    <span class="badge badge-ano">2026</span>
+    <p class="article-ref">Munro A.P.S. et al. — <em>Journal of Infection</em>, 2026 <a href="#ref1" class="cite">[1]</a> · ISRCTN87813400. Adaptado a partir da reportagem original: Romero, S., <em>El Confidencial</em>, 11/07/2026 <a href="#ref4" class="cite">[4]</a>.</p>
+  </div>
+
+  <section>
+    <h2>A pergunta que os pesquisadores fizeram</h2>
+    <p>Historicamente, a vacinologia reage: um vírus novo surge, causa uma epidemia, e só então uma vacina é desenhada especificamente contra ele. Foi assim com o SARS-CoV-2 em 2020. A pergunta deste estudo foi diferente: <strong>é possível desenhar, hoje, uma vacina que proteja contra vírus que ainda nem apareceram em humanos?</strong> <a href="#ref2" class="cite">[2]</a></p>
+    <p>A equipe da Universidade de Cambridge e da empresa derivada (spin-out) DIOSynVax, fundada em 2017 com apoio da Cambridge Enterprise <a href="#ref2" class="cite">[2]</a>, mirou um alvo específico: os <strong>sarbecovírus</strong>, subgênero de coronavírus que inclui o SARS-CoV-1 (2003), o SARS-CoV-2 (causador da covid-19) e diversos coronavírus de morcego já identificados por programas de vigilância genômica, mas que ainda não infectam humanos <a href="#ref1" class="cite">[1]</a>.</p>
+
+    <figure class="figura">
+      <img src="img/equipe-pesquisa.jpg" alt="Equipe de pesquisa da Universidade de Cambridge e DIOSynVax em laboratório" onerror="handleImgErr(this,'img/equipe-pesquisa.jpg','Equipe multidisciplinar em laboratório de biologia computacional: pesquisadores, pós-doutorandos e técnicos analisando sequências genéticas virais em telas de computador')">
+      <figcaption>Figura 1a — O grupo por trás do desenho computacional do antígeno: biologia computacional, virologia e imunologia trabalhando lado a lado. Professor Jonathan Heeney e a equipe da DIOSynVax. Foto: Lloyd Mann, Universidade de Cambridge.</figcaption>
+    </figure>
+
+    <figure class="figura">
+      <img src="img/arvore-sarbecovirus.png" alt="Árvore filogenética do subgênero Sarbecovirus" onerror="handleImgErr(this,'img/arvore-sarbecovirus.png','Árvore filogenética simplificada do subgênero Sarbecovirus, destacando SARS-CoV-1, SARS-CoV-2 e coronavírus de morcego relacionados')">
+      <figcaption>Figura 1 — A família dos sarbecovírus: parentes próximos que compartilham regiões genéticas conservadas.</figcaption>
+    </figure>
+
+    <div class="reflexao">
+      <div class="box-icon">🤔</div>
+      <div>
+        <h3>Antes de continuar</h3>
+        <p>Se a IA "já sabe" quais traços genéticos os sarbecovírus compartilham, por que ainda seria necessário testar essa vacina em animais e depois em humanos, em vez de distribuí-la diretamente? O que exatamente uma simulação computacional <em>não</em> consegue prever sozinha?</p>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <h2>O que eles fizeram: da simulação computacional ao braço do voluntário</h2>
+    <p>Em vez de partir de uma cepa viral já conhecida, a equipe alimentou um sistema de aprendizado de máquina com <strong>todas as sequências genéticas de sarbecovírus disponíveis</strong>, coletadas por redes de vigilância viral ao redor do mundo <a href="#ref2" class="cite">[2]</a>. O algoritmo comparou essas sequências e identificou quais regiões se repetem em toda a família viral — os chamados <strong>epítopos conservados</strong>, concentrados sobretudo no domínio de ligação ao receptor (RBD) da proteína spike <a href="#ref1" class="cite">[1]</a>.</p>
+    <p>A partir disso, os cientistas desenharam um antígeno sintético batizado <strong>pEVAC-PS</strong> (tecnologia DIOSynVax), formulado como <strong>vacina de DNA plasmidial</strong> <a href="#ref1" class="cite">[1]</a>. A escolha do DNA não é incidental: ela confere termoestabilidade ao produto, dispensando parte da cadeia de frio — um ponto relevante para países com infraestrutura logística limitada <a href="#ref1" class="cite">[1]</a>.</p>
+
+    <div class="box-importa">
+      <div class="box-icon">💡</div>
+      <div>
+        <h3>Por que isso importa para você?</h3>
+        <p>Quando um paciente perguntar "essa vacina de IA já existe, por que ainda não tomo ela?", você vai entender que há uma diferença enorme entre <em>prova de conceito segura em Fase I</em> e <em>vacina pronta para uso público</em>. Saber explicar essa distinção com precisão — sem alarmismo nem promessas exageradas — é parte do seu papel na comunicação de risco em saúde.</p>
+      </div>
+    </div>
+
+    <h3>Desenho do estudo</h3>
+    <p>Trata-se de um <strong>ensaio clínico Fase I, aberto (open-label), de escalonamento de dose</strong>, sem grupo placebo. Entre dezembro de 2021 e setembro de 2023, 39 voluntários saudáveis, entre 18 e 50 anos — todos já com 2 ou 3 doses prévias de vacina contra covid-19 —, foram recrutados sequencialmente no centro de pesquisa clínica do NIHR em Southampton e, a partir de abril de 2023, também no NIHR de Cambridge (Addenbrooke's Hospital) <a href="#ref1" class="cite">[1]</a>.</p>
+    <p>Cada participante recebeu duas doses (no dia 0 e no dia 28), em um de quatro níveis crescentes: <strong>0,2 mg, 0,4 mg, 0,8 mg ou 1,2 mg</strong>. A aplicação foi feita por via <strong>intradérmica sem agulha</strong>, usando o dispositivo a jato PharmaJet Tropis — um microjato de fluido que atravessa a pele <a href="#ref1" class="cite">[1]</a>.</p>
+
+    <figure class="figura">
+      <img src="img/dispositivo-needle-free.jpg" alt="Aplicação de vacina com injetor a jato sem agulha" onerror="handleImgErr(this,'img/dispositivo-needle-free.jpg','Profissional de saúde aplicando vacina com injetor a jato sem agulha no braço de um voluntário, ambiente clínico')">
+      <figcaption>Figura 2 — Administração intradérmica sem agulha: o dispositivo PharmaJet Tropis usado no ensaio.</figcaption>
+    </figure>
+
+    <div class="analogia">
+      <div class="analogia-icon">🧩</div>
+      <div>
+        <div class="analogia-label">Pensa assim</div>
+        <p>Imagine desenhar um retrato-falado que não copia o rosto de uma única pessoa, mas captura os traços que várias pessoas de uma mesma família têm em comum — o formato do nariz, a distância entre os olhos. Com esse retrato, você reconheceria qualquer parente daquela família, mesmo um que nunca tivesse visto antes. É essencialmente isso que o algoritmo fez com a "família" dos sarbecovírus: identificou os traços genéticos compartilhados para treinar o sistema imune a reconhecer qualquer membro dela.</p>
+      </div>
+    </div>
+
+    <div class="reflexao">
+      <div class="box-icon">🤔</div>
+      <div>
+        <h3>Antes de continuar</h3>
+        <p>O estudo escolheu recrutar voluntários que já tinham tomado 2 ou 3 doses de vacina contra covid-19. Se você estivesse desenhando este protocolo, veria alguma vantagem prática nessa escolha — mesmo sabendo que ela dificultaria medir o efeito da nova vacina? Pense em questões éticas e logísticas de um ensaio Fase I.</p>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <h2>O que descobriram</h2>
+    <p>Os desfechos primários deste tipo de estudo Fase I são <strong>segurança e reatogenicidade</strong> — não eficácia clínica. Nesse quesito, os resultados foram consistentes: a vacina foi <strong>bem tolerada em todos os quatro níveis de dose</strong>, sem eventos adversos graves relacionados, sem sinal de piora dos efeitos colaterais com o aumento da dose, e com menos reações solicitadas após a segunda aplicação <a href="#ref1" class="cite">[1]</a>.</p>
+    <p>Como desfecho secundário, a equipe avaliou a <strong>imunogenicidade humoral</strong> no dia 56 (28 dias após a segunda dose), medindo anticorpos contra o RBD do SARS-CoV-1, do SARS-CoV-2 e do próprio antígeno vacinal (PanSarbeco RBD). Os voluntários desenvolveram anticorpos direcionados a regiões conservadas entre os sarbecovírus — incluindo uma região que corresponde ao sítio reconhecido pelo anticorpo monoclonal amplamente neutralizante <strong>S309</strong> <a href="#ref1" class="cite">[1]</a>. Isso é exatamente o que o desenho computacional da vacina pretendia provocar <a href="#ref3" class="cite">[3]</a>.</p>
+    <p>Ainda assim, os próprios autores classificam a resposta imune como <strong>modesta</strong> <a href="#ref1" class="cite">[1]</a> — um resultado importante para o estudante interpretar com cautela, sem inflar a conclusão.</p>
+
+    <div class="reflexao">
+      <div class="box-icon">🤔</div>
+      <div>
+        <h3>Antes de continuar</h3>
+        <p>A vacina gerou anticorpos contra uma região reconhecida pelo S309 — um anticorpo já usado na clínica. Isso, por si só, garante que a vacina vai proteger contra infecção? Que outro tipo de dado (além de nível de anticorpos) você pediria antes de afirmar que há proteção real?</p>
+      </div>
+    </div>
+
+    <div class="infografico-grid">
+      <div class="info-card">
+        <span class="info-icon">👥</span>
+        <span class="info-numero">39</span>
+        <span class="info-label">voluntários saudáveis (18–50 anos)</span>
+      </div>
+      <div class="info-card">
+        <span class="info-icon">💉</span>
+        <span class="info-numero">4</span>
+        <span class="info-label">níveis de dose testados (0,2 a 1,2 mg)</span>
+      </div>
+      <div class="info-card">
+        <span class="info-icon">📅</span>
+        <span class="info-numero">2</span>
+        <span class="info-label">doses por voluntário — dias 0 e 28</span>
+      </div>
+      <div class="info-card">
+        <span class="info-icon">🛡️</span>
+        <span class="info-numero">0</span>
+        <span class="info-label">eventos adversos graves relacionados</span>
+      </div>
+      <div class="info-card">
+        <span class="info-icon">🦠</span>
+        <span class="info-numero">3</span>
+        <span class="info-label">alvos com resposta: SARS-CoV-2, SARS-CoV-1 e CoV de morcego</span>
+      </div>
+      <div class="info-card">
+        <span class="info-icon">🔬</span>
+        <span class="info-numero">Fase 2</span>
+        <span class="info-label">planejada, em população mais ampla e diversa</span>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <h2>Glossário interativo</h2>
+    <p>Clique em cada termo para expandir a explicação.</p>
+
+    <details class="glossario-item">
+      <summary class="glossario-termo">Sarbecovírus</summary>
+      <div class="glossario-def">
+        <p><strong>Em outras palavras:</strong> é o "sobrenome de família" de um grupo de coronavírus que inclui o SARS-CoV-1, o SARS-CoV-2 e vários coronavírus encontrados em morcegos.</p>
+        <p><strong>Exemplo clínico:</strong> quando você lê "vigilância de sarbecovírus em morcegos", entenda: monitoramento de vírus parentes do SARS-CoV-2 que ainda podem sofrer <em>spillover</em> (salto) para humanos.</p>
+      </div>
+    </details>
+
+    <details class="glossario-item">
+      <summary class="glossario-termo">"Superantígeno" (termo jornalístico) ⚠️</summary>
+      <div class="glossario-def">
+        <p><strong>Em outras palavras:</strong> nas reportagens, "superantígeno" é usado para descrever um antígeno sintético otimizado por computador para cobrir características comuns de toda uma família viral.</p>
+        <div class="alerta-termo">⚠️ <strong>Atenção, futuro(a) profissional:</strong> não confunda com o conceito imunológico clássico de <em>superantígeno</em> (como as toxinas estafilocócicas TSST-1), que provocam ativação policlonal maciça de linfócitos T e estão associadas a quadros como a síndrome do choque tóxico. São usos completamente diferentes da mesma palavra — o contexto é que diferencia.</div>
+      </div>
+    </details>
+
+    <details class="glossario-item">
+      <summary class="glossario-termo">Domínio de ligação ao receptor (RBD)</summary>
+      <div class="glossario-def">
+        <p><strong>Em outras palavras:</strong> é a "chave" na superfície do vírus (parte da proteína spike) que encaixa no receptor da célula humana (ACE2) para permitir a infecção.</p>
+        <p><strong>Exemplo clínico:</strong> a maioria das vacinas contra covid-19 e os anticorpos monoclonais terapêuticos miram justamente essa região.</p>
+      </div>
+    </details>
+
+    <details class="glossario-item">
+      <summary class="glossario-termo">Epítopo conservado</summary>
+      <div class="glossario-def">
+        <p><strong>Em outras palavras:</strong> é a parte do vírus que muda pouco entre variantes e entre espécies diferentes da mesma família — por isso é um alvo mais "estável" para o sistema imune.</p>
+      </div>
+    </details>
+
+    <details class="glossario-item">
+      <summary class="glossario-termo">Vacina de DNA plasmidial</summary>
+      <div class="glossario-def">
+        <p><strong>Em outras palavras:</strong> em vez de injetar a proteína viral pronta ou um mRNA, injeta-se um pequeno círculo de DNA (plasmídeo) com as instruções para a própria célula produzir o antígeno.</p>
+        <p><strong>Exemplo clínico:</strong> vantagem prática: costuma ser mais estável em temperatura ambiente do que vacinas de mRNA, facilitando o transporte em locais sem boa cadeia de frio.</p>
+      </div>
+    </details>
+
+    <details class="glossario-item">
+      <summary class="glossario-termo">Administração intradérmica sem agulha (jet injector)</summary>
+      <div class="glossario-def">
+        <p><strong>Em outras palavras:</strong> um dispositivo dispara um microjato de líquido sob pressão que atravessa a pele, entregando a vacina na derme sem perfurar com agulha.</p>
+        <p><strong>Exemplo clínico:</strong> reduz o medo de agulha e o descarte de material perfurocortante — relevante para campanhas de vacinação em massa.</p>
+      </div>
+    </details>
+
+    <details class="glossario-item">
+      <summary class="glossario-termo">Imunogenicidade</summary>
+      <div class="glossario-def">
+        <p><strong>Em outras palavras:</strong> é a capacidade de uma vacina de provocar uma resposta do sistema imunológico (produção de anticorpos, ativação de células T), medida em laboratório.</p>
+        <p><strong>Importante:</strong> imunogenicidade não é o mesmo que eficácia clínica — provar que o corpo reage não é o mesmo que provar que a pessoa fica protegida contra a doença.</p>
+      </div>
+    </details>
+
+    <details class="glossario-item">
+      <summary class="glossario-termo">Reatogenicidade</summary>
+      <div class="glossario-def">
+        <p><strong>Em outras palavras:</strong> conjunto de reações esperadas e observáveis logo após a vacinação — dor no local, febre, mal-estar — monitoradas ativamente (solicitadas) por um período definido (aqui, 7 dias).</p>
+      </div>
+    </details>
+
+    <details class="glossario-item">
+      <summary class="glossario-termo">Viés de imunidade prévia (imprinting)</summary>
+      <div class="glossario-def">
+        <p><strong>Em outras palavras:</strong> quando os voluntários já chegam ao estudo com defesas altas — por vacinação anterior ou infecção natural —, fica mais difícil medir quanto exatamente a nova vacina experimental está acrescentando.</p>
+        <p><strong>Exemplo clínico:</strong> foi exatamente o que aconteceu neste ensaio, conduzido durante ondas de infecção por Ômicron.</p>
+      </div>
+    </details>
+
+    <details class="glossario-item">
+      <summary class="glossario-termo">Anticorpo neutralizante de amplo espectro (ex.: S309)</summary>
+      <div class="glossario-def">
+        <p><strong>Em outras palavras:</strong> um anticorpo monoclonal capaz de reconhecer e neutralizar múltiplas variantes ou espécies virais relacionadas, por mirar uma região conservada.</p>
+        <p><strong>Exemplo clínico:</strong> o S309 deu origem ao anticorpo terapêutico sotrovimabe, usado contra covid-19.</p>
+      </div>
+    </details>
+
+    <details class="glossario-item">
+      <summary class="glossario-termo">Zoonose / spillover</summary>
+      <div class="glossario-def">
+        <p><strong>Em outras palavras:</strong> o salto de um patógeno de uma espécie animal para humanos — foi assim que o SARS-CoV-2 provavelmente surgiu.</p>
+      </div>
+    </details>
+
+    <details class="glossario-item">
+      <summary class="glossario-termo">Ensaio clínico Fase I, aberto, com escalonamento de dose</summary>
+      <div class="glossario-def">
+        <p><strong>Em outras palavras:</strong> primeira etapa de testes em humanos, sem grupo placebo (todos sabem o que estão recebendo), em que a dose aumenta gradualmente entre grupos para avaliar segurança antes de tudo.</p>
+      </div>
+    </details>
+  </section>
+
+  <section>
+    <h2>Limitações do estudo</h2>
+    <div class="box-limitacoes">
+      <div class="box-icon">⚠️</div>
+      <div>
+        <p><strong>Amostra pequena e desenho sem controle:</strong> 39 voluntários, ensaio aberto, sem grupo placebo — adequado para avaliar segurança, mas insuficiente para provar eficácia clínica <a href="#ref1" class="cite">[1]</a>.</p>
+        <p><strong>Imunidade prévia heterogênea:</strong> o recrutamento ocorreu durante ondas de Ômicron, com voluntários já vacinados; isso introduziu viés difícil de controlar e pode ter mascarado o real potencial imunogênico do antígeno <a href="#ref1" class="cite">[1]</a>.</p>
+        <p><strong>Viés metodológico na leitura dos anticorpos:</strong> a técnica de microarray de peptídeos usada detecta principalmente epítopos lineares, podendo subestimar respostas contra epítopos conformacionais — potencialmente relevantes para neutralização real <a href="#ref1" class="cite">[1]</a>.</p>
+        <p><strong>Resultado de imunogenicidade "modesto":</strong> os próprios autores reconhecem que os dados ainda não sustentam atividade neutralizante ampla e robusta — este é um estudo de viabilidade, não de eficácia <a href="#ref1" class="cite">[1]</a>, <a href="#ref5" class="cite">[5]</a>.</p>
+      </div>
+    </div>
+
+    <div class="reflexao">
+      <div class="box-icon">🤔</div>
+      <div>
+        <h3>Antes de continuar</h3>
+        <p>Sabendo dessas limitações, como você responderia a um colega que dissesse "essa vacina de IA já é mais eficaz que as vacinas tradicionais"? O que, exatamente, nos dados apresentados sustenta — e o que não sustenta — essa afirmação?</p>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <h2>Quiz de fixação</h2>
+    <div id="quiz-container"></div>
+    <div id="quiz-score"></div>
+  </section>
+
+  <section>
+    <h2>Linha do tempo do estudo</h2>
+    <div class="timeline">
+      <div class="timeline-item">
+        <div class="timeline-dot"></div>
+        <div class="timeline-content">
+          <span class="timeline-date">Dez 2021</span>
+          <p>Início do recrutamento no NIHR Southampton Clinical Research Facility.</p>
+        </div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-dot"></div>
+        <div class="timeline-content">
+          <span class="timeline-date">2021–2023</span>
+          <p>Escalonamento sequencial de dose: 0,2 → 0,4 → 0,8 → 1,2 mg, aplicadas nos dias 0 e 28 de cada voluntário.</p>
+        </div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-dot"></div>
+        <div class="timeline-content">
+          <span class="timeline-date">Abr 2023</span>
+          <p>Ampliação do recrutamento para o NIHR Cambridge CRF (Addenbrooke's Hospital).</p>
+        </div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-dot"></div>
+        <div class="timeline-content">
+          <span class="timeline-date">Set 2023</span>
+          <p>Encerramento da vacinação — total de 39 voluntários incluídos.</p>
+        </div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-dot"></div>
+        <div class="timeline-content">
+          <span class="timeline-date">Dia 56</span>
+          <p>Avaliação do desfecho primário de imunogenicidade (28 dias após a 2ª dose).</p>
+        </div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-dot"></div>
+        <div class="timeline-content">
+          <span class="timeline-date">2026</span>
+          <p>Publicação no <em>Journal of Infection</em> e anúncio de Fase 2 planejada.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <h2>Resumo visual</h2>
+    <p>A vacina faz parte de um pipeline mais amplo da DIOSynVax, que já desenvolve candidatos semelhantes para gripe sazonal e pandêmica (H5N1) e para vírus hemorrágicos do grupo Ebola, com financiamento predominante da Innovate UK <a href="#ref2" class="cite">[2]</a>.</p>
+    <figure class="figura">
+      <img src="img/diagrama-superantigeno.png" alt="Diagrama do desenho computacional do antígeno pEVAC-PS" onerror="handleImgErr(this,'img/diagrama-superantigeno.png','Diagrama esquemático: sequências genéticas de vários sarbecovírus entrando em um algoritmo de IA, que gera um antígeno único destacando as regiões conservadas do RBD, o qual treina o sistema imune a reconhecer múltiplos vírus da família')">
+      <figcaption>Figura 3 — Do dado genômico ao antígeno sintético: a lógica do desenho computacional do pEVAC-PS.</figcaption>
+    </figure>
+  </section>
+
+  <section>
+    <h2>Para se aprofundar</h2>
+    <ul class="refs">
+      <li id="ref1">[1] Munro A.P.S. et al. <em>A phase I, needle free, dose escalation clinical trial of pEVAC-PS, a candidate pan-Sarbecovirus vaccine.</em> Journal of Infection, 2026. DOI: <a href="https://doi.org/10.1016/j.jinf.2026.106759" target="_blank" rel="noopener">10.1016/j.jinf.2026.106759</a> · Registro: ISRCTN87813400. Artigo primário, fonte de todos os dados de metodologia e resultados citados.</li>
+      <li id="ref2">[2] University of Cambridge / EurekAlert. <em>New 'universal vaccine' technology could protect us from future virus outbreaks.</em> <a href="https://www.eurekalert.org/news-releases/1130939" target="_blank" rel="noopener">eurekalert.org</a></li>
+      <li id="ref3">[3] NIHR Cambridge Clinical Research Facility. <em>New 'universal vaccine' technology could protect from future virus outbreaks.</em> <a href="https://www.cambridgecrf.nihr.ac.uk/2026/06/17/new-universal-vaccine-technology-could-protect-from-future-virus-outbreaks/" target="_blank" rel="noopener">cambridgecrf.nihr.ac.uk</a></li>
+      <li id="ref4">[4] Romero, S. <em>Una vacuna creada por inteligencia artificial abre la puerta a prevenir futuras pandemias.</em> El Confidencial, 11/07/2026. <a href="https://www.elconfidencial.com/salud/2026-07-11/ia-salud-pandemia-vacunas-virus_4385989/" target="_blank" rel="noopener">elconfidencial.com</a>. Reportagem original que motivou este material.</li>
+      <li id="ref5">[5] pharmaphorum. <em>First human trial backs AI-designed 'universal' vaccine.</em> <a href="https://pharmaphorum.com/news/first-human-trial-backs-ai-designed-universal-vaccine" target="_blank" rel="noopener">pharmaphorum.com</a></li>
+    </ul>
+  </section>
+
+</main>
+
+<footer class="institutional-footer">
+  <p>Infográfico elaborado para fins didáticos, com base em artigo científico revisado por pares, em Julho de 2026.</p>
+</footer>
+
+<script>
+// Fallback elegante quando a imagem referenciada em img/ ainda não existe no disco
+function handleImgErr(imgEl, path, hint){
+  imgEl.onerror = null;
+  imgEl.style.display = 'none';
+  const box = document.createElement('div');
+  box.className = 'placeholder-box' + (imgEl.closest('.logo-img') ? ' logo-placeholder-box' : '');
+  let html = '<span class="placeholder-icon">🖼</span><p class="placeholder-label">' + path + '</p>';
+  if (hint) html += '<p class="placeholder-hint">' + hint + '</p>';
+  box.innerHTML = html;
+  imgEl.parentElement.insertBefore(box, imgEl);
+}
+
+const quiz = [
+  {
+    pergunta: "1. Qual é o principal diferencial da vacina pEVAC-PS em relação a uma vacina tradicional contra covid-19?",
+    alternativas: [
+      "A) Ela usa o vírus vivo atenuado",
+      "B) O antígeno foi desenhado por IA para cobrir toda a família dos sarbecovírus, não apenas uma cepa",
+      "C) Ela é administrada por via oral",
+      "D) Ela substitui a necessidade de qualquer dose de reforço"
+    ],
+    correta: 1,
+    explicacao: "O antígeno pEVAC-PS foi projetado computacionalmente a partir de sequências de toda a família dos sarbecovírus, buscando proteção ampla — inclusive contra vírus de morcego ainda não circulantes em humanos."
+  },
+  {
+    pergunta: "2. Por que os autores descrevem a interpretação da imunogenicidade como difícil e influenciada por viés?",
+    alternativas: [
+      "A) Porque a amostra era completamente livre de exposição prévia ao vírus",
+      "B) Porque o estudo não mediu anticorpos",
+      "C) Porque os voluntários já tinham imunidade prévia alta e heterogênea, por vacinação e por infecções durante ondas de Ômicron",
+      "D) Porque o desfecho de segurança não foi avaliado"
+    ],
+    correta: 2,
+    explicacao: "O recrutamento ocorreu em plena circulação de Ômicron, com voluntários já vacinados contra covid-19 — isso elevou e diversificou a imunidade de base, dificultando isolar o efeito real da vacina experimental."
+  },
+  {
+    pergunta: "3. Qual foi o desfecho primário avaliado neste ensaio clínico de Fase I?",
+    alternativas: [
+      "A) Eficácia clínica contra covid-19 grave",
+      "B) Custo de produção em larga escala",
+      "C) Segurança e reatogenicidade",
+      "D) Duração da imunidade ao longo de 5 anos"
+    ],
+    correta: 2,
+    explicacao: "Ensaios Fase I priorizam segurança e reatogenicidade. A imunogenicidade foi um desfecho secundário — e eficácia clínica sequer foi avaliada nesta etapa."
+  },
+  {
+    pergunta: "4. O termo popular \"superantígeno\", usado nas reportagens sobre essa vacina, se refere a:",
+    alternativas: [
+      "A) O mesmo conceito imunológico clássico de toxina superantigênica bacteriana (como a TSST-1)",
+      "B) Um antígeno sintético otimizado por computador para cobrir traços comuns de uma família viral inteira",
+      "C) Um composto que causa ativação policlonal maciça de linfócitos T",
+      "D) Um tipo de adjuvante lipídico usado em vacinas de mRNA"
+    ],
+    correta: 1,
+    explicacao: "É um uso jornalístico da palavra, sem relação com o superantígeno imunológico clássico. Confundir os dois conceitos é um erro comum — e importante de evitar na prática clínica."
+  }
+];
+
+let score = 0;
+let answered = 0;
+const container = document.getElementById('quiz-container');
+
+quiz.forEach((q, qi) => {
+  const box = document.createElement('div');
+  box.className = 'quiz-box';
+  const p = document.createElement('p');
+  p.className = 'quiz-pergunta';
+  p.textContent = q.pergunta;
+  box.appendChild(p);
+
+  const feedback = document.createElement('div');
+  feedback.className = 'quiz-feedback';
+
+  q.alternativas.forEach((alt, ai) => {
+    const btn = document.createElement('button');
+    btn.className = 'quiz-alt';
+    btn.textContent = alt;
+    btn.onclick = () => {
+      if (box.dataset.answered) return;
+      box.dataset.answered = "true";
+      answered++;
+      const buttons = box.querySelectorAll('.quiz-alt');
+      buttons[q.correta].classList.add('correta');
+      if (ai === q.correta) {
+        score++;
+        feedback.classList.add('ok');
+        feedback.textContent = "✅ Correto! " + q.explicacao;
+      } else {
+        btn.classList.add('errada');
+        feedback.classList.add('fail');
+        feedback.textContent = "❌ Ops! " + q.explicacao;
+      }
+      feedback.classList.add('show');
+      if (answered === quiz.length) {
+        const scoreBox = document.getElementById('quiz-score');
+        scoreBox.style.display = 'block';
+        let msg = "Você acertou " + score + " de " + quiz.length + ". ";
+        msg += score === quiz.length ? "Excelente! Domínio completo do tema. 🎓" :
+               score >= quiz.length/2 ? "Bom trabalho — revise os pontos que errou no glossário acima. 📚" :
+               "Vale revisar as seções acima com calma — a base está toda no texto. 💪";
+        scoreBox.textContent = msg;
+      }
+    };
+    box.appendChild(btn);
+  });
+
+  box.appendChild(feedback);
+  container.appendChild(box);
+});
+</script>
+
+</body>
+</html>
