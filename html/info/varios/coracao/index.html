@@ -383,7 +383,94 @@
     color:#6b6459;
   }
 
-  /* PLACEHOLDER (unused here, kept per skill spec) */
+  /* SKIN / AMOR-À-PELE BOX */
+  .skin-box{
+    background: var(--bg-panel);
+    border:1px solid var(--teal);
+    border-left:4px solid var(--teal);
+    padding:40px 40px 36px;
+    margin:36px 0 0;
+  }
+  .badge-amor{
+    display:inline-flex;
+    align-items:center;
+    gap:8px;
+    background:var(--teal);
+    color:#fff;
+    font-family:'IBM Plex Mono', monospace;
+    font-size:0.7rem;
+    text-transform:uppercase;
+    letter-spacing:0.07em;
+    padding:6px 14px;
+    border-radius:20px;
+    margin-bottom:22px;
+  }
+  .badge-amor::before{ content:"✽"; }
+  .skin-box h2{ margin-top:0; }
+  .factor-grid{
+    display:grid;
+    grid-template-columns:repeat(4, 1fr);
+    gap:16px;
+    margin:30px 0;
+  }
+  .factor-card{
+    background:var(--teal-soft);
+    border:1px solid var(--line);
+    padding:18px 16px;
+  }
+  .factor-card .f-num{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:0.72rem;
+    color:var(--teal);
+    margin-bottom:8px;
+  }
+  .factor-card h4{
+    font-family:'Fraunces', serif;
+    font-size:0.98rem;
+    margin:0 0 6px;
+    font-weight:600;
+    color:var(--ink);
+  }
+  .factor-card p{
+    font-size:0.84rem;
+    color:var(--ink-soft);
+    margin:0;
+  }
+  .care-list{
+    list-style:none;
+    padding:0;
+    margin:28px 0 6px;
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:12px;
+  }
+  .care-list li{
+    background:#fff;
+    border:1px solid var(--line);
+    padding:14px 16px 14px 42px;
+    position:relative;
+    font-size:0.92rem;
+    line-height:1.4;
+  }
+  .care-list li::before{
+    content:"✓";
+    position:absolute;
+    left:14px;
+    top:13px;
+    color:var(--teal);
+    font-weight:700;
+    font-size:0.95rem;
+  }
+  .care-title{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:0.76rem;
+    text-transform:uppercase;
+    letter-spacing:0.08em;
+    color:var(--teal);
+    margin:34px 0 4px;
+  }
+
+  /* PLACEHOLDER (per skill spec) */
   .img-placeholder .placeholder-box {
     border: 2px dashed #b0b8c1;
     background: #f4f6f8;
@@ -423,10 +510,14 @@
     .polymer-grid{ grid-template-columns:1fr 1fr; }
     .two-col{ grid-template-columns:1fr; }
     .synthesis-box{ padding:34px 24px; }
+    .skin-box{ padding:28px 22px; }
+    .factor-grid{ grid-template-columns:1fr 1fr; }
+    .care-list{ grid-template-columns:1fr; }
   }
   @media (max-width:480px){
     .mechanism{ grid-template-columns:1fr; }
     .polymer-grid{ grid-template-columns:1fr; }
+    .factor-grid{ grid-template-columns:1fr; }
   }
 </style>
 </head>
@@ -564,6 +655,64 @@
       </figure>
     </section>
 
+    <!-- SKIN / VIA CUTÂNEA -->
+    <section class="skin">
+      <div class="skin-box">
+        <span class="badge-amor">Nota Amor-à-Pele</span>
+        <h2>E pela pele, o plástico também pode entrar?</h2>
+        <p class="lede">O estudo do <em>European Heart Journal</em> investigou principalmente a via respiratória. Mas a pele — o maior órgão do corpo, e o campo de trabalho diário do nosso projeto — também é uma possível porta de entrada para partículas plásticas muito pequenas.</p>
+
+        <p>Micro e nanoplásticos presentes na poeira do ambiente, em tecidos sintéticos, cosméticos e produtos de higiene podem ficar depositados sobre a superfície da pele. Dali, podem entrar em contato com estruturas como poros, folículos pilosos e glândulas — as pequenas "portas" naturais da pele.</p>
+
+        <p>Em pele <strong>saudável e íntegra</strong>, essa camada funciona como uma barreira eficiente, dificultando bastante essa entrada. O problema aparece quando essa proteção está comprometida: pele ressecada, irritada, inflamada ou com fissuras e feridas oferece menos resistência, o que pode facilitar a penetração dessas partículas.</p>
+
+        <div class="callout teal">
+          "A pele íntegra é uma das primeiras e mais importantes barreiras de proteção do corpo — cuidar dela é também cuidar da porta de entrada para o que vem de fora."
+        </div>
+
+      <figure class="full-bleed">
+  <img src="img/pele-mnp-barreira.png" alt="Ilustração mostrando a diferença entre pele íntegra e pele lesionada frente à penetração de micro e nanoplásticos">
+  <figcaption><strong>Como o plástico pode entrar pela pele.</strong> Em pele íntegra, a barreira dificulta a entrada de partículas; em pele lesionada ou ressecada, a proteção é reduzida.</figcaption>
+</figure>
+
+        <p style="margin-top:28px;">A absorção pela pele não é automática — ela depende de alguns fatores:</p>
+
+        <div class="factor-grid">
+          <div class="factor-card">
+            <div class="f-num">01</div>
+            <h4>Tamanho da partícula</h4>
+            <p>Quanto menor, maior a chance de atravessar a barreira cutânea.</p>
+          </div>
+          <div class="factor-card">
+            <div class="f-num">02</div>
+            <h4>Tempo de contato</h4>
+            <p>Exposições prolongadas ou repetidas aumentam o risco.</p>
+          </div>
+          <div class="factor-card">
+            <div class="f-num">03</div>
+            <h4>Condição da pele</h4>
+            <p>Pele íntegra protege; pele lesionada ou inflamada facilita a entrada.</p>
+          </div>
+          <div class="factor-card">
+            <div class="f-num">04</div>
+            <h4>Substâncias associadas</h4>
+            <p>Aditivos químicos ligados ao plástico podem agravar a irritação local.</p>
+          </div>
+        </div>
+
+        <div class="care-title">Cuidados que ajudam a proteger essa barreira</div>
+        <ul class="care-list">
+          <li>Manter a pele limpa e bem hidratada</li>
+          <li>Evitar contato prolongado com poeira e resíduos plásticos</li>
+          <li>Usar cosméticos e produtos de higiene adequados ao seu tipo de pele</li>
+          <li>Proteger áreas com irritação, fissuras ou feridas</li>
+          <li>Procurar orientação profissional diante de lesões persistentes</li>
+        </ul>
+
+        <p style="font-size:0.78rem; color:var(--ink-soft); margin-top:26px; max-width:100%;">Fontes: McLean P, Christopher EA, Sleeuwenhoek A, Lofty M, Dixon K, Galea KS. "Dermal exposure, review of current knowledge on the uptake of micro- and nano-plastics." <em>Microplastics and Nanoplastics</em>, 2025. <a href="https://doi.org/10.1186/s43591-025-00163-4" target="_blank" rel="noopener">doi.org/10.1186/s43591-025-00163-4</a> · Menichetti A, Mordini D, Montalti M. "Penetration of Microplastics and Nanoparticles Through Skin: Effects of Size, Shape, and Surface Chemistry." <em>Journal of Xenobiotics</em>, 2024;15(1):6. <a href="https://doi.org/10.3390/jox15010006" target="_blank" rel="noopener">doi.org/10.3390/jox15010006</a></p>
+      </div>
+    </section>
+
     <!-- IMPLICATIONS -->
     <section class="implications">
       <div class="kicker">Por que isso importa</div>
@@ -638,6 +787,8 @@
       <li>Paolisso P, Scisciola L, Belmonte M, Scarsini R, Galli V, Gallinoro E, <em>et al.</em> Micro- and nano-plastics in the coronary circulation and air pollution exposure in ischaemic heart disease presentation. <em>European Heart Journal</em> 2026;00:1–17. <a href="https://doi.org/10.1093/eurheartj/ehag447" target="_blank" rel="noopener">doi.org/10.1093/eurheartj/ehag447</a></li>
       <li>Avramow M. Microplásticos en el corazón: un estudio detectó partículas en las arterias de pacientes que sufrieron infartos. <em>La Nación</em>, 20 jul. 2026.</li>
       <li>Marfella R, Prattichizzo F, Sardu C, <em>et al.</em> Microplastics and nanoplastics in atheromas and cardiovascular events. <em>N Engl J Med</em> 2024;390:900–10.</li>
+      <li>McLean P, Christopher EA, Sleeuwenhoek A, Lofty M, Dixon K, Galea KS. Dermal exposure, review of current knowledge on the uptake of micro- and nano-plastics. <em>Microplastics and Nanoplastics</em> 2025. <a href="https://doi.org/10.1186/s43591-025-00163-4" target="_blank" rel="noopener">doi.org/10.1186/s43591-025-00163-4</a></li>
+      <li>Menichetti A, Mordini D, Montalti M. Penetration of Microplastics and Nanoparticles Through Skin: Effects of Size, Shape, and Surface Chemistry. <em>Journal of Xenobiotics</em> 2024;15(1):6. <a href="https://doi.org/10.3390/jox15010006" target="_blank" rel="noopener">doi.org/10.3390/jox15010006</a></li>
     </ol>
   </footer>
 
