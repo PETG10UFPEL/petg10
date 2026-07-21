@@ -1,0 +1,642 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Plástico no Coração — Micro e nanoplásticos nas artérias coronárias</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,500&family=Public+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg: #F6F4EF;
+    --bg-panel: #FFFFFF;
+    --ink: #1E1B18;
+    --ink-soft: #55504A;
+    --crimson: #9C3B36;
+    --crimson-deep: #6E2A26;
+    --teal: #285C63;
+    --teal-soft: #E4EEEC;
+    --crimson-soft: #F3E3E0;
+    --line: #E1DACD;
+    --gold: #C79A46;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    background:var(--bg);
+    color:var(--ink);
+    font-family:'Public Sans', sans-serif;
+    line-height:1.65;
+    -webkit-font-smoothing:antialiased;
+  }
+  h1,h2,h3,.display{
+    font-family:'Fraunces', serif;
+    font-weight:600;
+    letter-spacing:-0.01em;
+    color:var(--ink);
+  }
+  .mono{ font-family:'IBM Plex Mono', monospace; letter-spacing:0.02em; }
+  img{ max-width:100%; display:block; }
+  a{ color:var(--crimson-deep); }
+
+  /* HEADER */
+  .institutional-header{
+    background:#fff;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:16px 40px;
+    border-bottom:1px solid var(--line);
+    position:sticky;
+    top:0;
+    z-index:50;
+  }
+  .header-identity{
+    font-family:'Fraunces', serif;
+    font-size:0.95rem;
+    font-weight:600;
+    color:var(--crimson-deep);
+    letter-spacing:0.02em;
+    text-transform:uppercase;
+  }
+  .header-identity span{
+    display:block;
+    font-family:'Public Sans', sans-serif;
+    text-transform:none;
+    font-weight:400;
+    font-size:0.72rem;
+    color:var(--ink-soft);
+    letter-spacing:0.01em;
+    margin-top:2px;
+  }
+  .institutional-header img{ max-height:52px; width:auto; }
+
+  /* HERO */
+  .hero{
+    position:relative;
+    background: linear-gradient(180deg, #FBF9F5 0%, var(--bg) 100%);
+    padding: 84px 40px 60px;
+    overflow:hidden;
+    border-bottom:1px solid var(--line);
+  }
+  .hero-pulse{
+    position:absolute;
+    left:0; right:0; bottom:18px;
+    width:100%;
+    opacity:0.5;
+    pointer-events:none;
+  }
+  .hero-inner{
+    max-width:920px;
+    margin:0 auto;
+    position:relative;
+    z-index:2;
+  }
+  .eyebrow{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:0.78rem;
+    text-transform:uppercase;
+    letter-spacing:0.12em;
+    color:var(--crimson);
+    display:flex;
+    align-items:center;
+    gap:10px;
+    margin-bottom:22px;
+  }
+  .eyebrow::before{
+    content:"";
+    width:26px; height:1px;
+    background:var(--crimson);
+  }
+  h1.title{
+    font-size: clamp(2.4rem, 5vw, 3.7rem);
+    line-height:1.04;
+    margin:0 0 22px;
+  }
+  h1.title em{
+    font-style:italic;
+    color:var(--crimson-deep);
+  }
+  .subtitle{
+    font-size:1.18rem;
+    color:var(--ink-soft);
+    max-width:640px;
+    margin:0 0 36px;
+    font-weight:400;
+  }
+  .hero-meta{
+    display:flex;
+    gap:28px;
+    flex-wrap:wrap;
+    font-family:'IBM Plex Mono', monospace;
+    font-size:0.78rem;
+    color:var(--ink-soft);
+    border-top:1px solid var(--line);
+    padding-top:18px;
+  }
+  .hero-meta strong{ color:var(--ink); font-weight:600; }
+
+  /* MAIN LAYOUT */
+  main{ max-width:920px; margin:0 auto; padding:0 40px; }
+  section{ padding:72px 0; border-bottom:1px solid var(--line); }
+  section:last-of-type{ border-bottom:none; }
+  section .kicker{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:0.76rem;
+    text-transform:uppercase;
+    letter-spacing:0.1em;
+    color:var(--teal);
+    margin-bottom:12px;
+  }
+  section h2{
+    font-size: clamp(1.7rem, 3vw, 2.3rem);
+    margin:0 0 26px;
+    max-width:720px;
+  }
+  section p{
+    font-size:1.05rem;
+    color:var(--ink);
+    max-width:700px;
+    margin:0 0 20px;
+  }
+  section p.lede{
+    font-size:1.24rem;
+    font-family:'Fraunces', serif;
+    font-weight:500;
+    line-height:1.5;
+    color:var(--ink);
+  }
+
+  /* STAT STRIP */
+  .stat-strip{
+    display:grid;
+    grid-template-columns:repeat(3, 1fr);
+    gap:1px;
+    background:var(--line);
+    border:1px solid var(--line);
+    margin:36px 0 8px;
+  }
+  .stat-cell{
+    background:var(--bg-panel);
+    padding:26px 22px;
+    text-align:left;
+  }
+  .stat-cell .num{
+    font-family:'Fraunces', serif;
+    font-size:2.6rem;
+    font-weight:600;
+    color:var(--crimson-deep);
+    line-height:1;
+  }
+  .stat-cell.teal .num{ color:var(--teal); }
+  .stat-cell .lbl{
+    font-size:0.85rem;
+    color:var(--ink-soft);
+    margin-top:8px;
+  }
+
+  /* FIGURES */
+  figure{
+    margin: 34px 0 8px;
+    background:var(--bg-panel);
+    border:1px solid var(--line);
+    padding:14px;
+  }
+  figure img{ width:100%; height:auto; }
+  figcaption{
+    font-size:0.86rem;
+    color:var(--ink-soft);
+    padding:14px 6px 4px;
+    border-top:1px solid var(--line);
+    margin-top:10px;
+  }
+  figcaption strong{ color:var(--ink); }
+  figure.full-bleed{
+    max-width:920px;
+  }
+
+  /* CALLOUT / PULL QUOTE */
+  .callout{
+    background: var(--crimson-soft);
+    border-left:3px solid var(--crimson-deep);
+    padding:26px 30px;
+    margin:32px 0;
+    font-family:'Fraunces', serif;
+    font-style:italic;
+    font-size:1.18rem;
+    line-height:1.55;
+    color:var(--crimson-deep);
+  }
+  .callout cite{
+    display:block;
+    font-family:'Public Sans', sans-serif;
+    font-style:normal;
+    font-size:0.85rem;
+    color:var(--ink-soft);
+    margin-top:14px;
+  }
+  .callout.teal{
+    background:var(--teal-soft);
+    border-left-color:var(--teal);
+    color:var(--teal);
+  }
+
+  /* MECHANISM STEPS */
+  .mechanism{
+    display:grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap:18px;
+    margin:36px 0;
+  }
+  .mech-step{
+    background:var(--bg-panel);
+    border:1px solid var(--line);
+    padding:20px 16px;
+    position:relative;
+  }
+  .mech-step .step-num{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:0.75rem;
+    color:var(--crimson);
+    margin-bottom:10px;
+  }
+  .mech-step h3{
+    font-size:1.02rem;
+    margin:0 0 8px;
+  }
+  .mech-step p{
+    font-size:0.88rem;
+    color:var(--ink-soft);
+    margin:0;
+  }
+  .mech-arrow{
+    display:none;
+  }
+
+  /* POLYMER LIST */
+  .polymer-grid{
+    display:grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap:14px;
+    margin:30px 0;
+  }
+  .polymer-chip{
+    border:1px solid var(--line);
+    background:var(--bg-panel);
+    padding:14px 16px;
+    display:flex;
+    justify-content:space-between;
+    align-items:baseline;
+  }
+  .polymer-chip .p-name{ font-size:0.92rem; font-weight:600; }
+  .polymer-chip .p-pct{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:0.85rem;
+    color:var(--crimson-deep);
+  }
+
+  /* TWO COLUMN */
+  .two-col{
+    display:grid;
+    grid-template-columns: 1.1fr 0.9fr;
+    gap:40px;
+    align-items:start;
+  }
+  .two-col figure{ margin-top:0; }
+
+  /* DATA TABLE */
+  table.data-table{
+    width:100%;
+    border-collapse:collapse;
+    margin:30px 0;
+    font-size:0.92rem;
+  }
+  table.data-table th, table.data-table td{
+    padding:12px 14px;
+    border-bottom:1px solid var(--line);
+    text-align:left;
+  }
+  table.data-table th{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:0.72rem;
+    text-transform:uppercase;
+    letter-spacing:0.06em;
+    color:var(--ink-soft);
+    font-weight:500;
+  }
+  table.data-table td.num{ font-family:'IBM Plex Mono', monospace; color:var(--crimson-deep); }
+
+  /* SYNTHESIS */
+  .synthesis-box{
+    background: var(--ink);
+    color:#F6F4EF;
+    padding:48px 44px;
+    margin-top:10px;
+  }
+  .synthesis-box h2{ color:#F6F4EF; }
+  .synthesis-box p{ color:#D8D3C9; max-width:100%; }
+  .synthesis-box .takeaway{
+    font-family:'Fraunces', serif;
+    font-size:1.3rem;
+    font-style:italic;
+    color:#fff;
+    border-left:3px solid var(--gold);
+    padding-left:20px;
+    margin:26px 0;
+  }
+  .limits{
+    margin-top:28px;
+    padding-top:24px;
+    border-top:1px solid rgba(255,255,255,0.15);
+    font-size:0.88rem;
+    color:#B9B2A5;
+  }
+
+  /* FOOTER REFERENCES */
+  footer.refs{
+    max-width:920px;
+    margin:0 auto;
+    padding:50px 40px 30px;
+  }
+  footer.refs h3{
+    font-size:1rem;
+    margin-bottom:16px;
+  }
+  footer.refs ol{
+    padding-left:20px;
+    font-size:0.86rem;
+    color:var(--ink-soft);
+  }
+  footer.refs li{ margin-bottom:8px; }
+
+  .institutional-footer{
+    background:#F1EEE7;
+    border-top:1px solid var(--line);
+    padding:28px 20px;
+    text-align:center;
+  }
+  .institutional-footer p{
+    margin:0;
+    font-size:12.5px;
+    color:#6b6459;
+  }
+
+  /* PLACEHOLDER (unused here, kept per skill spec) */
+  .img-placeholder .placeholder-box {
+    border: 2px dashed #b0b8c1;
+    background: #f4f6f8;
+    border-radius: 8px;
+    padding: 32px 24px;
+    text-align: center;
+    color: #6c757d;
+    min-height: 220px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+  }
+  .placeholder-icon { font-size: 2rem; }
+  .placeholder-label {
+    font-family: monospace;
+    font-size: 0.85rem;
+    background: #e9ecef;
+    padding: 4px 10px;
+    border-radius: 4px;
+    color: #343a40;
+  }
+  .placeholder-hint {
+    font-size: 0.8rem;
+    color: #868e96;
+    font-style: italic;
+    max-width: 340px;
+  }
+
+  @media (max-width: 760px){
+    .institutional-header{ padding:14px 20px; }
+    .hero{ padding:56px 20px 40px; }
+    main{ padding:0 20px; }
+    .stat-strip{ grid-template-columns:1fr; }
+    .mechanism{ grid-template-columns:1fr 1fr; }
+    .polymer-grid{ grid-template-columns:1fr 1fr; }
+    .two-col{ grid-template-columns:1fr; }
+    .synthesis-box{ padding:34px 24px; }
+  }
+  @media (max-width:480px){
+    .mechanism{ grid-template-columns:1fr; }
+    .polymer-grid{ grid-template-columns:1fr; }
+  }
+</style>
+</head>
+<body>
+
+  <header class="institutional-header">
+    <div class="header-identity">Radar Científico G10
+      <span>Feridas Crônicas &amp; Saúde Ambiental — UFPel</span>
+    </div>
+    <img src="img/logos-header.png" alt="Logos Amor-à-Pele, PET-Saúde Digital e UFPel">
+  </header>
+
+  <section class="hero">
+    <svg class="hero-pulse" viewBox="0 0 1000 60" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+      <polyline points="0,30 120,30 150,10 180,50 210,30 260,30 290,5 320,55 350,30 1000,30"
+        fill="none" stroke="#9C3B36" stroke-width="1.4" opacity="0.55"/>
+    </svg>
+    <div class="hero-inner">
+      <div class="eyebrow">Cardiologia · Exposoma · European Heart Journal, 2026</div>
+      <h1 class="title">Plástico <em>dentro</em> do coração.</h1>
+      <p class="subtitle">Um estudo com pacientes de angioplastia encontrou micro e nanoplásticos no sangue coronário de <strong>84,2%</strong> das pessoas que sofreram infarto agudo — quase o triplo da taxa observada em quem tinha artérias normais.</p>
+      <div class="hero-meta">
+        <div><strong>61</strong> pacientes · 3 centros na Itália</div>
+        <div><strong>2</strong> métodos analíticos cruzados (Py-GC/MS + LDIR)</div>
+        <div><strong>Fev–Abr/2025</strong> período de coleta</div>
+      </div>
+    </div>
+  </section>
+
+  <main>
+
+    <!-- LEAD -->
+    <section class="lead">
+      <div class="kicker">A descoberta</div>
+      <h2>Quanto mais grave o quadro cardíaco, mais plástico no sangue que irriga o coração.</h2>
+      <p class="lede">Pesquisadores da Universidade de Campania e de outras cinco instituições italianas coletaram sangue diretamente das artérias coronárias de 61 pacientes durante cateterismo — e não apenas do braço, como em estudos anteriores.</p>
+      <p>O resultado, publicado no <em>European Heart Journal</em>, mostrou um gradiente claro: partículas plásticas apareceram em 84,2% dos pacientes com infarto agudo (STEMI), em 40% dos pacientes com doença coronária crônica e em 31,8% das pessoas com artérias completamente normais.</p>
+
+      <div class="stat-strip">
+        <div class="stat-cell">
+          <div class="num">84,2%</div>
+          <div class="lbl">Pacientes com infarto agudo (STEMI) com MNPs detectados no sangue coronário</div>
+        </div>
+        <div class="stat-cell teal">
+          <div class="num">40%</div>
+          <div class="lbl">Pacientes com doença coronária crônica (CCS) com MNPs detectados</div>
+        </div>
+        <div class="stat-cell">
+          <div class="num">31,8%</div>
+          <div class="lbl">Controles com artérias normais que também tinham MNPs</div>
+        </div>
+      </div>
+
+      <figure class="full-bleed">
+        <img src="img/graphical-abstract.png" alt="Resumo gráfico do estudo mostrando os três grupos de pacientes, o método de coleta de sangue coronário e periférico, a detecção de microplásticos e a associação com tabagismo e poluição por PM2,5">
+        <figcaption><strong>Resumo gráfico do estudo.</strong> Estrutura da pesquisa: população estudada, coleta de sangue arterial periférico e coronário, análise por espectrometria de massas e infravermelho a laser, e cruzamento com exposição a poluentes do ar. Fonte: Paolisso <em>et al.</em>, <em>European Heart Journal</em> (2026).</figcaption>
+      </figure>
+    </section>
+
+    <!-- CONCEPT -->
+    <section class="concept">
+      <div class="kicker">O que foi medido</div>
+      <h2>Sangue coletado direto de dentro da artéria entupida.</h2>
+      <p>Em vez de medir plástico apenas no sangue periférico (do braço), a equipe coletou amostras em pontos estratégicos durante o próprio procedimento de desobstrução da artéria: antes da lesão, depois da lesão, e no sangue periférico de cada paciente. Isso permitiu comparar, pela primeira vez de forma direta, a concentração de plástico exatamente no local do evento cardíaco.</p>
+
+      <div class="two-col">
+        <div>
+          <p>Nos pacientes com infarto, o tubo coletado <strong>mais próximo da obstrução</strong> (Tubo B) apresentou a maior concentração de micro e nanoplásticos — mais alta até do que o sangue periférico do mesmo paciente. Nos grupos sem infarto agudo, essa diferença entre pontos de coleta não apareceu.</p>
+          <p>O plástico mais encontrado foi o <strong>polietileno (PE)</strong>, presente em 97% dos pacientes com partículas detectáveis — o polímero mais produzido no mundo, usado em embalagens, garrafas e uma infinidade de objetos do dia a dia.</p>
+        </div>
+        <figure>
+          <img src="img/figura1-populacao-amostragem.png" alt="Diagrama da população do estudo e da estratégia de coleta de sangue arterial periférico e coronário durante a angiografia">
+          <figcaption><strong>Figura 1.</strong> Estratégia de amostragem: sangue foi coletado no acesso arterial (A), antes (B) e depois (C) da desobstrução da artéria, em cada um dos três grupos de pacientes.</figcaption>
+        </figure>
+      </div>
+
+      <p>Ao todo, foram testados 11 tipos de polímero. Seis deles apareceram nas amostras — e o número de tipos diferentes de plástico por paciente também seguiu o gradiente de gravidade: mediana de 3 tipos nos pacientes com infarto, contra no máximo 2 tipos nos outros grupos.</p>
+
+      <div class="polymer-grid">
+        <div class="polymer-chip"><span class="p-name">Polietileno (PE)</span><span class="p-pct">97%</span></div>
+        <div class="polymer-chip"><span class="p-name">PET</span><span class="p-pct">STEMI 57,9%</span></div>
+        <div class="polymer-chip"><span class="p-name">PVC</span><span class="p-pct">STEMI 47,4%</span></div>
+        <div class="polymer-chip"><span class="p-name">Polipropileno (PP)</span><span class="p-pct">STEMI 31,6%</span></div>
+        <div class="polymer-chip"><span class="p-name">Poliestireno (PS)</span><span class="p-pct">só em STEMI</span></div>
+        <div class="polymer-chip"><span class="p-name">Nylon 66</span><span class="p-pct">STEMI 26,3%</span></div>
+      </div>
+
+      <figure class="full-bleed">
+        <img src="img/figura2-deteccao-quantificacao-mnp.png" alt="Gráficos mostrando a proporção de pacientes com microplásticos detectados e a concentração em microgramas por mililitro em cada grupo e ponto de coleta">
+        <figcaption><strong>Figura 2.</strong> Detecção (topo) e concentração (embaixo) de micro e nanoplásticos em cada grupo e em cada ponto de coleta de sangue — Tubo A (periférico), B (antes da lesão) e C (depois da lesão/stent).</figcaption>
+      </figure>
+    </section>
+
+    <!-- MECHANISM / HOW -->
+    <section class="how">
+      <div class="kicker">O caminho até o coração</div>
+      <h2>Como um pedaço de plástico microscópico chega à artéria coronária.</h2>
+      <p>O estudo não prova esse caminho passo a passo, mas reúne evidências consistentes com a hipótese de que a inalação — pela respiração ou pelo cigarro — é a principal porta de entrada.</p>
+
+      <div class="mechanism">
+        <div class="mech-step">
+          <div class="step-num">01</div>
+          <h3>Fragmentação ambiental</h3>
+          <p>Garrafas, embalagens e resíduos plásticos se degradam ao sol, no vento e na água, formando partículas cada vez menores.</p>
+        </div>
+        <div class="mech-step">
+          <div class="step-num">02</div>
+          <h3>Inalação e ingestão</h3>
+          <p>As partículas ficam suspensas no ar (inclusive como PM2,5) e são inaladas; outra parte é ingerida via água, alimentos e sal.</p>
+        </div>
+        <div class="mech-step">
+          <div class="step-num">03</div>
+          <h3>Corrente sanguínea</h3>
+          <p>Fumar parece facilitar a passagem: rompe a barreira epitelial das vias respiratórias, favorecendo a entrada de partículas no sangue.</p>
+        </div>
+        <div class="mech-step">
+          <div class="step-num">04</div>
+          <h3>Depósito na artéria</h3>
+          <p>Em modelos animais, as partículas geram inflamação e estresse oxidativo — processos ligados à instabilidade da placa que causa o infarto.</p>
+        </div>
+      </div>
+
+      <p>Essa cadeia de eventos ganha força estatística nos próprios dados do estudo: cigarro e poluição por PM2,5 apareceram lado a lado com a presença de plástico no sangue.</p>
+
+      <figure class="full-bleed">
+        <img src="img/figura6-tabagismo-pm25.png" alt="Gráficos de barras mostrando a proporção de pacientes com microplásticos detectados de acordo com o hábito de fumar e a exposição crônica a PM2,5">
+        <figcaption><strong>Figura 6.</strong> Presença de MNPs de acordo com tabagismo e exposição crônica a PM2,5. Entre os pacientes que fumavam <em>e</em> viviam expostos a PM2,5 acima de 15 µg/m³, 100% tinham plástico detectável no sangue.</figcaption>
+      </figure>
+    </section>
+
+    <!-- IMPLICATIONS -->
+    <section class="implications">
+      <div class="kicker">Por que isso importa</div>
+      <h2>O plástico aparece ao lado de marcadores de inflamação mais altos.</h2>
+      <p>Pacientes com infarto agudo tinham níveis significativamente mais altos de duas moléculas inflamatórias — IL-6 e TNF-α — sobretudo no sangue coletado direto da coronária. E dentro de cada grupo, quem tinha microplástico detectável apresentava esses marcadores ainda mais elevados do que quem não tinha.</p>
+
+      <div class="two-col">
+        <figure>
+          <img src="img/figura3-biomarcadores-inflamatorios.png" alt="Gráficos comparando concentração de microplásticos, IL-6 e TNF-alfa entre os grupos STEMI, CCS e controles, em diferentes pontos de coleta">
+          <figcaption><strong>Figura 3.</strong> Concentração de MNPs, IL-6 e TNF-α por grupo e local de coleta. Os três sobem juntos nos pacientes com infarto.</figcaption>
+        </figure>
+        <div>
+          <p>Isso não prova que o plástico <em>causa</em> a inflamação — pode ser o contrário, ou os dois podem ter uma origem comum. Mas o padrão é consistente com o que já se via em laboratório: em células e animais, micro e nanoplásticos provocam inflamação, estresse oxidativo e disfunção do revestimento interno dos vasos sanguíneos.</p>
+          <p>Na análise estatística que tenta isolar o fator mais decisivo entre todos os avaliados, um resultado se destacou:</p>
+        </div>
+      </div>
+
+      <div class="callout">
+        “Ter histórico de fumo foi o único preditor independente da presença de microplásticos no sangue coronário — risco quase seis vezes maior do que em quem nunca fumou.”
+        <cite>Achado do estudo — razão de chance (OR) 5,69; IC 95% 1,33–26,63; p = 0,023</cite>
+      </div>
+
+      <p>Os próprios autores e o cardiologista argentino Iñaki Álvarez Amuchástegui, que comentou a pesquisa para a imprensa, fazem uma ressalva importante:</p>
+
+      <div class="callout teal">
+        “Em humanos, a evidência ainda é principalmente observacional. Podemos estabelecer associação, mas não causalidade — poderia haver fatores de confusão, como tabagismo ou contaminação ambiental.”
+        <cite>Iñaki Álvarez Amuchástegui, cardiologista, Hospital Britânico (Sociedade Argentina de Cardiologia)</cite>
+      </div>
+    </section>
+
+    <!-- DATA SUMMARY -->
+    <section class="example">
+      <div class="kicker">Os números, lado a lado</div>
+      <h2>O que os dados mostram, resumido.</h2>
+      <table class="data-table">
+        <thead>
+          <tr><th>Indicador</th><th>Valor</th><th>Grupo / condição</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Pacientes com MNPs detectados</td><td class="num">84,2%</td><td>Infarto agudo (STEMI)</td></tr>
+          <tr><td>Pacientes com MNPs detectados</td><td class="num">40%</td><td>Doença coronária crônica (CCS)</td></tr>
+          <tr><td>Pacientes com MNPs detectados</td><td class="num">31,8%</td><td>Controles, artérias normais</td></tr>
+          <tr><td>Diversidade de polímeros por paciente</td><td class="num">3 (2–4)</td><td>Mediana em pacientes STEMI</td></tr>
+          <tr><td>Polímero mais frequente</td><td class="num">97%</td><td>Polietileno (PE)</td></tr>
+          <tr><td>MNPs em fumantes + PM2,5 &gt; 15 µg/m³</td><td class="num">100%</td><td>Todos os pacientes com os dois fatores</td></tr>
+          <tr><td>Preditor independente de MNP</td><td class="num">OR 5,69</td><td>Histórico de tabagismo</td></tr>
+          <tr><td>MNP como preditor de doença obstrutiva</td><td class="num">OR 4,48</td><td>Ajustado por sexo e dislipidemia</td></tr>
+        </tbody>
+      </table>
+      <p style="font-size:0.82rem; color:var(--ink-soft);">Fonte: Paolisso P, Scisciola L, Belmonte M, <em>et al.</em> “Micro- and nano-plastics in the coronary circulation and air pollution exposure in ischaemic heart disease presentation.” <em>European Heart Journal</em>, 2026. DOI: 10.1093/eurheartj/ehag447.</p>
+    </section>
+
+    <!-- SYNTHESIS -->
+    <section class="synthesis" style="border-bottom:none; padding-bottom:0;">
+      <div class="synthesis-box">
+        <div class="kicker" style="color:#C79A46;">O que fica</div>
+        <h2>Plástico é um fator ambiental emergente para o coração — não uma causa comprovada.</h2>
+        <p>O estudo é o primeiro a comparar diretamente a carga de micro e nanoplásticos no sangue coronário ao longo de todo o espectro da doença arterial coronariana, do infarto agudo ao coração saudável. O padrão encontrado — mais plástico, mais tipos de polímero e mais inflamação exatamente nos casos mais graves — reforça a hipótese de que a poluição plástica pertence à lista de fatores de risco cardiovascular que ainda estamos aprendendo a medir.</p>
+        <div class="takeaway">“Estes achados representam um chamado à ação para reduzir a exposição aos micro e nanoplásticos.”</div>
+        <p>Reduzir exposição significa, na prática, agir sobre os dois fatores que o próprio estudo aponta como mais associados: parar de fumar e diminuir a exposição crônica a PM2,5 — a poluição fina do ar que, segundo os autores, pode funcionar como veículo de transporte para essas partículas plásticas até os pulmões e daí para o sangue.</p>
+        <div class="limits">
+          <strong>Limitações a considerar:</strong> amostra pequena (61 pacientes, 3 centros na Itália); desenho transversal, que não permite provar causa e efeito; pacientes com infarto sem supradesnivelamento (não-STEMI) foram excluídos; a exposição a plástico por alimentação e água não foi medida diretamente. Os próprios autores classificam os achados como exploratórios e geradores de hipótese, não conclusivos.
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="refs">
+    <h3>Fontes consultadas</h3>
+    <ol>
+      <li>Paolisso P, Scisciola L, Belmonte M, Scarsini R, Galli V, Gallinoro E, <em>et al.</em> Micro- and nano-plastics in the coronary circulation and air pollution exposure in ischaemic heart disease presentation. <em>European Heart Journal</em> 2026;00:1–17. <a href="https://doi.org/10.1093/eurheartj/ehag447" target="_blank" rel="noopener">doi.org/10.1093/eurheartj/ehag447</a></li>
+      <li>Avramow M. Microplásticos en el corazón: un estudio detectó partículas en las arterias de pacientes que sufrieron infartos. <em>La Nación</em>, 20 jul. 2026.</li>
+      <li>Marfella R, Prattichizzo F, Sardu C, <em>et al.</em> Microplastics and nanoplastics in atheromas and cardiovascular events. <em>N Engl J Med</em> 2024;390:900–10.</li>
+    </ol>
+  </footer>
+
+  <footer class="institutional-footer">
+    <p>Infográfico elaborado pelos projetos Amor à Pele e PET-Saúde Digital G10 Feridas Crônicas, UFPel, em Julho de 2026.</p>
+  </footer>
+
+</body>
+</html>
