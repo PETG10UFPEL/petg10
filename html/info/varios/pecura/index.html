@@ -1,0 +1,813 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>O mundo terá uma cura para a diabetes? E o que já funciona hoje, no pé diabético</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300..800&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg: #F4F7F5;
+    --bg-card: #EAF0EC;
+    --ink: #16231F;
+    --ink-soft: #45564F;
+    --teal: #0E6E5C;
+    --teal-deep: #0A4A3D;
+    --amber: #C9860B;
+    --rose: #A8433A;
+    --line: #D3DFD8;
+    --paper: #FFFFFF;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    background:var(--bg);
+    color:var(--ink);
+    font-family:'Inter', sans-serif;
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+  }
+  h1,h2,h3{
+    font-family:'Fraunces', serif;
+    font-weight:600;
+    letter-spacing:-0.01em;
+    margin:0;
+  }
+  .mono{font-family:'IBM Plex Mono', monospace;}
+  a{color:var(--teal-deep);}
+
+  /* ---------- HEADER ---------- */
+  header.institutional-header{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:16px 6vw;
+    background:var(--paper);
+    border-bottom:1px solid var(--line);
+    position:sticky;
+    top:0;
+    z-index:50;
+  }
+  .header-identity{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:0.78rem;
+    letter-spacing:0.12em;
+    text-transform:uppercase;
+    color:var(--ink-soft);
+  }
+  .header-identity strong{color:var(--teal-deep);}
+
+  main{max-width:1040px; margin:0 auto; padding:0 6vw;}
+
+  /* ---------- HERO ---------- */
+  .hero{
+    padding:64px 0 40px;
+    text-align:left;
+  }
+  .eyebrow{
+    display:inline-flex;
+    align-items:center;
+    gap:8px;
+    font-family:'IBM Plex Mono', monospace;
+    font-size:0.75rem;
+    letter-spacing:0.14em;
+    text-transform:uppercase;
+    color:var(--teal-deep);
+    background:rgba(14,110,92,0.08);
+    padding:6px 12px;
+    border-radius:100px;
+    margin-bottom:22px;
+  }
+  .eyebrow::before{content:"●"; color:var(--amber); font-size:0.6rem;}
+  .hero h1{
+    font-size:clamp(2.2rem, 5vw, 3.6rem);
+    line-height:1.08;
+    max-width:16ch;
+  }
+  .hero .sub{
+    margin-top:22px;
+    font-size:1.15rem;
+    color:var(--ink-soft);
+    max-width:56ch;
+  }
+
+  /* ---------- VERDICT PANEL (signature element) ---------- */
+  .verdict{
+    display:grid;
+    grid-template-columns:repeat(3, 1fr);
+    gap:1px;
+    background:var(--line);
+    border:1px solid var(--line);
+    border-radius:14px;
+    overflow:hidden;
+    margin:48px 0 20px;
+  }
+  .verdict > div{
+    background:var(--paper);
+    padding:28px 24px;
+    display:flex;
+    flex-direction:column;
+    gap:10px;
+  }
+  .verdict .tag{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:0.7rem;
+    letter-spacing:0.12em;
+    text-transform:uppercase;
+  }
+  .verdict .big{
+    font-family:'Fraunces', serif;
+    font-size:2.1rem;
+    font-weight:600;
+  }
+  .verdict .desc{font-size:0.92rem; color:var(--ink-soft);}
+  .verdict .yes .tag{color:var(--teal);}
+  .verdict .yes .big{color:var(--teal-deep);}
+  .verdict .no .tag{color:var(--rose);}
+  .verdict .no .big{color:var(--rose);}
+  .verdict .time .tag{color:var(--amber);}
+  .verdict .time .big{color:#8a6106;}
+
+  /* gauge under verdict */
+  .gauge-wrap{margin:10px 0 56px; padding:28px; background:var(--paper); border:1px solid var(--line); border-radius:14px;}
+  .gauge-label-row{display:flex; justify-content:space-between; font-family:'IBM Plex Mono',monospace; font-size:0.72rem; color:var(--ink-soft); text-transform:uppercase; letter-spacing:0.08em; margin-top:6px;}
+  .gauge-caption{text-align:center; font-size:0.85rem; color:var(--ink-soft); margin-top:14px;}
+
+  /* ---------- SECTIONS ---------- */
+  section{padding:56px 0; border-top:1px solid var(--line);}
+  section.lead-block{border-top:none; padding-top:0;}
+  .kicker{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:0.75rem;
+    letter-spacing:0.14em;
+    text-transform:uppercase;
+    color:var(--teal-deep);
+    margin-bottom:10px;
+    display:block;
+  }
+  h2{font-size:clamp(1.6rem, 3vw, 2.15rem); max-width:22ch; margin-bottom:20px;}
+  .grid-2{display:grid; grid-template-columns:1.1fr 1fr; gap:44px; align-items:center;}
+  .grid-2.reverse{grid-template-columns:1fr 1.1fr;}
+  .grid-2.reverse .text-col{order:2;}
+  p{color:var(--ink); font-size:1.02rem;}
+  .lead p{font-size:1.15rem; color:var(--ink-soft);}
+
+  .pull{
+    font-family:'Fraunces', serif;
+    font-size:1.5rem;
+    font-weight:500;
+    color:var(--teal-deep);
+    border-left:3px solid var(--teal);
+    padding:4px 0 4px 22px;
+    margin:28px 0;
+  }
+
+  /* figures / placeholders */
+  figure{margin:0;}
+  figure img{width:100%; display:block; border-radius:10px;}
+  figcaption{font-size:0.85rem; color:var(--ink-soft); margin-top:10px; line-height:1.4;}
+  .img-placeholder .placeholder-box{
+    border:2px dashed #b7c6bd;
+    background:#EEF3F0;
+    border-radius:10px;
+    padding:32px 24px;
+    text-align:center;
+    color:var(--ink-soft);
+    min-height:220px;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+    gap:8px;
+  }
+  .placeholder-icon{font-size:2rem;}
+  .placeholder-label{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:0.8rem;
+    background:#dfe8e2;
+    padding:4px 10px;
+    border-radius:4px;
+    color:var(--ink);
+  }
+  .placeholder-hint{font-size:0.8rem; color:var(--ink-soft); font-style:italic; max-width:340px;}
+
+  /* mechanism steps */
+  .steps{display:flex; flex-direction:column; gap:0; margin-top:28px;}
+  .step{display:grid; grid-template-columns:64px 1fr; gap:18px; padding:18px 0; border-bottom:1px solid var(--line);}
+  .step:last-child{border-bottom:none;}
+  .step .num{font-family:'Fraunces', serif; font-size:1.6rem; color:var(--teal); font-weight:600;}
+  .step h3{font-size:1.05rem; margin-bottom:6px;}
+  .step p{font-size:0.95rem; color:var(--ink-soft); margin:0;}
+
+  /* callout numbers */
+  .stat-row{display:grid; grid-template-columns:repeat(3,1fr); gap:20px; margin-top:32px;}
+  .stat{background:var(--bg-card); border-radius:12px; padding:22px;}
+  .stat .num{font-family:'Fraunces', serif; font-size:2.3rem; color:var(--teal-deep); font-weight:600; line-height:1;}
+  .stat .label{font-size:0.85rem; color:var(--ink-soft); margin-top:8px;}
+
+  /* limitations list */
+  .caveats{list-style:none; margin:24px 0 0; padding:0; display:flex; flex-direction:column; gap:16px;}
+  .caveats li{
+    display:grid; grid-template-columns:28px 1fr; gap:14px;
+    background:var(--paper); border:1px solid var(--line); border-radius:10px; padding:18px 20px;
+  }
+  .caveats li::before{content:"!"; font-family:'Fraunces',serif; font-weight:700; color:var(--rose); font-size:1.2rem;}
+  .caveats li p{margin:0; font-size:0.95rem;}
+  .caveats li strong{color:var(--rose);}
+
+  /* global panorama table */
+  .trial-table{width:100%; border-collapse:collapse; margin-top:28px; font-size:0.92rem;}
+  .trial-table th{
+    text-align:left; font-family:'IBM Plex Mono',monospace; font-size:0.72rem; text-transform:uppercase;
+    letter-spacing:0.06em; color:var(--ink-soft); padding:10px 14px; border-bottom:2px solid var(--line);
+  }
+  .trial-table td{padding:14px; border-bottom:1px solid var(--line); vertical-align:top;}
+  .trial-table tr:last-child td{border-bottom:none;}
+  .trial-table td.where{font-weight:600; color:var(--teal-deep); white-space:nowrap;}
+
+  /* timeline (quanto tempo) */
+  .timeline{position:relative; margin:44px 0 10px; padding-left:26px;}
+  .timeline::before{content:""; position:absolute; left:6px; top:6px; bottom:6px; width:2px; background:var(--line);}
+  .tl-item{position:relative; padding-bottom:36px;}
+  .tl-item:last-child{padding-bottom:0;}
+  .tl-item::before{
+    content:""; position:absolute; left:-26px; top:4px; width:14px; height:14px; border-radius:50%;
+    background:var(--paper); border:3px solid var(--teal);
+  }
+  .tl-item.future::before{border-color:var(--amber);}
+  .tl-item .when{font-family:'IBM Plex Mono',monospace; font-size:0.78rem; color:var(--ink-soft); text-transform:uppercase; letter-spacing:0.06em;}
+  .tl-item h3{font-size:1.1rem; margin:6px 0 8px;}
+  .tl-item p{margin:0; color:var(--ink-soft); font-size:0.95rem;}
+
+  /* synthesis */
+  .synthesis{
+    background:var(--teal-deep);
+    color:#EFF6F2;
+    border-radius:18px;
+    padding:48px 40px;
+    margin:56px 0 40px;
+  }
+  .synthesis .kicker{color:#9FD6C4;}
+  .synthesis h2{color:#FFFFFF;}
+  .synthesis p{color:#D9EDE5; font-size:1.08rem;}
+  .synthesis .pull{color:#FFFFFF; border-color:var(--amber); font-size:1.3rem;}
+
+  footer.institutional-footer{
+    background:var(--paper);
+    border-top:1px solid var(--line);
+    padding:26px 6vw 40px;
+    text-align:center;
+  }
+  footer.institutional-footer p{
+    font-size:0.8rem; color:var(--ink-soft); max-width:720px; margin:6px auto 0;
+  }
+  .sources{
+    max-width:1040px; margin:0 auto; padding:40px 6vw 10px;
+    font-size:0.82rem; color:var(--ink-soft);
+  }
+  .sources h3{font-size:0.9rem; font-family:'IBM Plex Mono',monospace; text-transform:uppercase; letter-spacing:0.08em; color:var(--ink); margin-bottom:12px;}
+  .sources ol{padding-left:18px; margin:0;}
+  .sources li{margin-bottom:6px;}
+  .sources a{word-break:break-word;}
+
+  /* citations */
+  sup.cite{margin-left:2px; font-size:0.7em;}
+  sup.cite a{
+    color:var(--teal-deep); text-decoration:none; font-weight:700;
+    background:rgba(14,110,92,0.1); padding:1px 5px; border-radius:5px;
+  }
+  sup.cite a:hover{background:rgba(14,110,92,0.22);}
+
+  /* tier chart — pé diabético */
+  .tier-chart{margin:36px 0; display:flex; flex-direction:column; gap:22px;}
+  .tier{display:grid; grid-template-columns:190px 1fr; gap:16px; align-items:start;}
+  .tier .tier-label{font-size:0.88rem; font-weight:600; text-align:right; color:var(--ink-soft); padding-top:2px;}
+  .tier .tier-track{background:var(--bg-card); border-radius:7px; overflow:hidden; height:12px; width:100%;}
+  .tier .tier-fill{height:100%; border-radius:7px;}
+  .tier1 .tier-fill{width:28%; background:#8B9E96;}
+  .tier2 .tier-fill{width:48%; background:#4C8C79;}
+  .tier3 .tier-fill{width:68%; background:var(--teal);}
+  .tier4 .tier-fill{width:92%; background:var(--teal-deep);}
+  .tier .tier-desc{font-size:0.92rem; color:var(--ink); margin-top:10px; line-height:1.5;}
+  .tier-note{font-size:0.82rem; color:var(--ink-soft); margin-top:6px;}
+
+  .combo-callout{
+    background:var(--bg-card); border-radius:12px; padding:24px 26px; margin-top:24px;
+    border-left:4px solid var(--amber);
+  }
+  .combo-callout p{margin:0; font-size:0.98rem;}
+
+  /* perguntas de fixação */
+  .quiz-list{display:flex; flex-direction:column; gap:12px; margin-top:28px;}
+  .quiz-item{
+    background:var(--paper); border:1px solid var(--line); border-radius:10px; overflow:hidden;
+  }
+  .quiz-item summary{
+    cursor:pointer; padding:18px 22px; font-family:'Fraunces',serif; font-weight:600; font-size:1.02rem;
+    color:var(--ink); list-style:none; display:flex; align-items:baseline; gap:12px;
+  }
+  .quiz-item summary::-webkit-details-marker{display:none;}
+  .quiz-item summary::before{
+    content:"?"; flex-shrink:0; width:24px; height:24px; border-radius:50%; background:var(--teal);
+    color:#fff; font-family:'IBM Plex Mono',monospace; font-size:0.8rem; font-weight:700;
+    display:flex; align-items:center; justify-content:center; margin-top:2px;
+  }
+  .quiz-item[open] summary::before{background:var(--amber); content:"✓";}
+  .quiz-answer{padding:0 22px 20px 58px; font-size:0.95rem; color:var(--ink-soft); border-top:1px dashed var(--line); margin-top:0; padding-top:14px;}
+
+  /* perguntas socráticas */
+  .socratic-list{display:flex; flex-direction:column; gap:0; margin-top:28px;}
+  .socratic-item{
+    padding:22px 0; border-bottom:1px solid var(--line); display:grid; grid-template-columns:44px 1fr; gap:16px;
+  }
+  .socratic-item:last-child{border-bottom:none;}
+  .socratic-item .qmark{
+    font-family:'Fraunces',serif; font-size:1.8rem; color:var(--rose); font-weight:600; line-height:1;
+  }
+  .socratic-item p{margin:0; font-size:1.05rem; color:var(--ink); font-style:italic;}
+
+  /* pesquisadores */
+  .researcher-grid{display:grid; grid-template-columns:repeat(3, 1fr); gap:20px; margin-top:28px;}
+  .researcher-card{
+    background:var(--paper); border:1px solid var(--line); border-radius:12px; padding:24px;
+    display:flex; flex-direction:column; gap:12px;
+  }
+  .researcher-card .r-name{font-family:'Fraunces',serif; font-size:1.12rem; font-weight:600; color:var(--teal-deep); line-height:1.3;}
+  .researcher-card .r-role{
+    font-family:'IBM Plex Mono',monospace; font-size:0.7rem; text-transform:uppercase;
+    letter-spacing:0.06em; color:var(--ink-soft);
+  }
+  .researcher-card ul{margin:0; padding-left:18px; font-size:0.88rem; color:var(--ink); display:flex; flex-direction:column; gap:7px;}
+  .researcher-card .r-sources{
+    font-size:0.76rem; color:var(--ink-soft); border-top:1px dashed var(--line); padding-top:12px; margin-top:2px;
+    display:flex; flex-direction:column; gap:4px;
+  }
+  .researcher-card .r-sources a{color:var(--teal-deep); text-decoration:none; border-bottom:1px dotted var(--teal-deep);}
+  .researcher-card .r-sources a:hover{background:rgba(14,110,92,0.08);}
+
+  @media (max-width:760px){
+    .researcher-grid{grid-template-columns:1fr;}
+    .tier{grid-template-columns:1fr;}
+    .tier .tier-label{text-align:left;}
+    .grid-2, .grid-2.reverse{grid-template-columns:1fr;}
+    .grid-2.reverse .text-col{order:0;}
+    .verdict{grid-template-columns:1fr;}
+    .stat-row{grid-template-columns:1fr;}
+  }
+</style>
+</head>
+<body>
+
+<header class="institutional-header">
+  <div class="header-identity">Painel científico <strong>· Terapia celular</strong></div>
+  <img src="img/logo.png" alt="Logos Amor-à-Pele e PET-Saúde Digital G10 Feridas Crônicas – UFPel" style="max-height:44px;" onerror="this.style.display='none'; this.nextElementSibling.style.display='inline';">
+  <div class="header-identity" style="text-align:right; display:none;">Julho de 2026</div>
+</header>
+
+<main>
+
+  <section class="hero lead-block">
+    <span class="eyebrow">Checagem científica</span>
+    <h1>O mundo terá uma cura para a diabetes?</h1>
+    <p class="sub">Não é só a China. Equipes na China, nos Estados Unidos, no Brasil e na Suécia perseguem, cada uma à sua maneira, o mesmo objetivo: fazer o corpo voltar a produzir sua própria insulina<sup class="cite"><a href="#ref6">6</a></sup><sup class="cite"><a href="#ref9">9</a></sup>. Nenhuma chegou a um tratamento pronto para todo mundo — mas juntas, elas desenham o mapa de um caminho que já é real. Depois, vamos usar o pé diabético como exemplo do que a "terapia celular" já faz hoje, fora do laboratório.</p>
+
+    <div class="verdict">
+      <div class="yes">
+        <span class="tag">Sim</span>
+        <span class="big">Para alguns pacientes, hoje</span>
+        <span class="desc">Existem casos documentados e publicados de pessoas que pararam de precisar de insulina após terapias celulares<sup class="cite"><a href="#ref1">1</a></sup><sup class="cite"><a href="#ref6">6</a></sup>.</span>
+      </div>
+      <div class="no">
+        <span class="tag">Não</span>
+        <span class="big">Não existe cura universal</span>
+        <span class="desc">Nenhuma dessas terapias está aprovada para o público em geral. São ensaios clínicos, com dezenas de pacientes no máximo<sup class="cite"><a href="#ref9">9</a></sup>.</span>
+      </div>
+      <div class="time">
+        <span class="tag">Quanto tempo</span>
+        <span class="big">Anos — depende da terapia</span>
+        <span class="desc">Terapias com células de doador já avançam para fase 3<sup class="cite"><a href="#ref8">8</a></sup><sup class="cite"><a href="#ref9">9</a></sup>. Versões personalizadas e sem imunossupressão ainda estão em estágio bem inicial<sup class="cite"><a href="#ref9">9</a></sup>.</span>
+      </div>
+    </div>
+
+    <div class="gauge-wrap">
+      <svg viewBox="0 0 700 210" width="100%" height="auto" role="img" aria-label="Medidor comparando o estágio de duas abordagens diferentes de terapia celular para diabetes">
+        <defs>
+          <linearGradient id="gaugeGrad" x1="0" y1="0" x2="1" y2="0">
+            <stop offset="0%" stop-color="#A8433A"/>
+            <stop offset="50%" stop-color="#C9860B"/>
+            <stop offset="100%" stop-color="#0E6E5C"/>
+          </linearGradient>
+        </defs>
+        <rect x="20" y="86" width="660" height="18" rx="9" fill="#E3E9E5"/>
+        <rect x="20" y="86" width="480" height="18" rx="9" fill="url(#gaugeGrad)"/>
+        <circle cx="172" cy="95" r="11" fill="#FFFFFF" stroke="#0A4A3D" stroke-width="3"/>
+        <circle cx="430" cy="95" r="11" fill="#FFFFFF" stroke="#0A4A3D" stroke-width="3"/>
+        <text x="172" y="55" text-anchor="middle" font-family="Fraunces, serif" font-size="15" fill="#16231F" font-weight="600">China (personalizada)</text>
+        <text x="172" y="140" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="11" fill="#45564F">1–3 pacientes · fase 1</text>
+        <text x="430" y="55" text-anchor="middle" font-family="Fraunces, serif" font-size="15" fill="#16231F" font-weight="600">Vertex, EUA (doador)</text>
+        <text x="430" y="140" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="11" fill="#45564F">dezenas · fase 3</text>
+      </svg>
+      <div class="gauge-label-row">
+        <span>Prova de conceito em laboratório</span>
+        <span>Ensaios clínicos em expansão</span>
+        <span>Aprovação regulatória</span>
+        <span>Tratamento acessível ao público</span>
+      </div>
+      <p class="gauge-caption">A régua acima compara duas frentes da mesma corrida: a abordagem personalizada e autóloga (como a chinesa) e a abordagem com células de doador padronizadas (como a da Vertex, já em fase 3 desde novembro de 2024)<sup class="cite"><a href="#ref8">8</a></sup><sup class="cite"><a href="#ref9">9</a></sup>. Uma régua histórica ajuda a calibrar a expectativa: o primeiro medicamento dessa categoria — feito com ilhotas de doadores falecidos, não com células-tronco — levou décadas de pesquisa até ser aprovado nos EUA<sup class="cite"><a href="#ref10">10</a></sup>.</p>
+    </div>
+  </section>
+
+  <section id="experimento">
+    <span class="kicker">O caso mais citado</span>
+    <h2>Gordura virou célula-tronco. Célula-tronco virou insulina.</h2>
+    <div class="grid-2">
+      <div class="text-col">
+        <p>Entre os experimentos em andamento pelo mundo, o mais divulgado saiu da China. A equipe do Hospital Tianjin First Central, em parceria com a Universidade de Pequim, pegou células de gordura de uma paciente de 25 anos — que tinha diabetes tipo 1 havia 11 anos — e as reprogramou quimicamente até virarem células-tronco pluripotentes<sup class="cite"><a href="#ref1">1</a></sup><sup class="cite"><a href="#ref2">2</a></sup>. A partir delas, cultivaram cerca de 1,5 milhão de ilhotas produtoras de insulina.</p>
+        <p class="pull">Em junho de 2023, essas células foram implantadas sob o músculo abdominal da paciente, numa cirurgia minimamente invasiva de meia hora<sup class="cite"><a href="#ref1">1</a></sup>.</p>
+        <p>Setenta e cinco dias depois, ela parou de precisar de insulina externa<sup class="cite"><a href="#ref1">1</a></sup><sup class="cite"><a href="#ref3">3</a></sup><sup class="cite"><a href="#ref5">5</a></sup>. Passou a controlar o próprio açúcar no sangue naturalmente — algo que, para quem convive com diabetes tipo 1, é o resultado que se busca a vida inteira. Resultados semelhantes, com abordagens diferentes, também foram relatados nos Estados Unidos, no Brasil e na Suécia<sup class="cite"><a href="#ref6">6</a></sup><sup class="cite"><a href="#ref9">9</a></sup> — veja o panorama mais adiante.</p>
+      </div>
+      <figure class="img-placeholder" data-img-path="img/celula-reprogramacao.jpg">
+        <img src="img/celula-reprogramacao.jpg" alt="Ilustração da reprogramação química de uma célula de gordura em célula-tronco pluripotente" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+        <div class="placeholder-box" style="display:none;">
+          <span class="placeholder-icon">🖼</span>
+          <p class="placeholder-label">[ Coloque aqui: img/celula-reprogramacao.jpg ]</p>
+          <p class="placeholder-hint">Prompt sugerido no relatório de imagens, ao final da página</p>
+        </div>
+        <figcaption>Figura 1 — Células adiposas da própria paciente foram revertidas a um estado pluripotente por meio de moléculas químicas, sem uso de vírus ou genes estranhos<sup class="cite"><a href="#ref1">1</a></sup>.</figcaption>
+      </figure>
+    </div>
+
+    <div class="stat-row">
+      <div class="stat">
+        <div class="num">75 dias</div>
+        <div class="label">até a paciente parar de precisar de insulina<sup class="cite"><a href="#ref1">1</a></sup></div>
+      </div>
+      <div class="stat">
+        <div class="num">98%</div>
+        <div class="label">do tempo com glicemia na faixa saudável, após 4 meses<sup class="cite"><a href="#ref1">1</a></sup></div>
+      </div>
+      <div class="stat">
+        <div class="num">+1 ano</div>
+        <div class="label">de acompanhamento sem nenhuma injeção de insulina<sup class="cite"><a href="#ref1">1</a></sup></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="mecanismo">
+    <span class="kicker">Como funciona</span>
+    <h2>O mecanismo, passo a passo</h2>
+    <div class="grid-2 reverse">
+      <figure class="img-placeholder" data-img-path="img/transplante-abdominal.jpg">
+        <img src="img/transplante-abdominal.jpg" alt="Diagrama do implante de ilhotas sob a bainha do músculo reto do abdômen" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+        <div class="placeholder-box" style="display:none;">
+          <span class="placeholder-icon">🖼</span>
+          <p class="placeholder-label">[ Coloque aqui: img/transplante-abdominal.jpg ]</p>
+          <p class="placeholder-hint">Prompt sugerido no relatório de imagens, ao final da página</p>
+        </div>
+        <figcaption>Figura 2 — As ilhotas foram injetadas sob a bainha do músculo reto do abdômen, e não no fígado, local tradicional dos transplantes de ilhotas. Isso permite monitorar o enxerto por imagem e removê-lo, se necessário<sup class="cite"><a href="#ref1">1</a></sup>.</figcaption>
+      </figure>
+      <div class="text-col steps">
+        <div class="step">
+          <span class="num">01</span>
+          <div><h3>Coleta</h3><p>Células de gordura são retiradas da própria paciente — o material de partida é dela mesma.</p></div>
+        </div>
+        <div class="step">
+          <span class="num">02</span>
+          <div><h3>Reprogramação química</h3><p>Pequenas moléculas (não vírus, não genes externos) revertem essas células a um estado pluripotente — a técnica chamada CiPSC.</p></div>
+        </div>
+        <div class="step">
+          <span class="num">03</span>
+          <div><h3>Diferenciação</h3><p>Em laboratório, as células-tronco são induzidas a formar aglomerados de ilhotas produtoras de insulina, imitando as ilhotas pancreáticas.</p></div>
+        </div>
+        <div class="step">
+          <span class="num">04</span>
+          <div><h3>Transplante</h3><p>As ilhotas são injetadas sob o músculo abdominal, guiadas por ultrassom — um procedimento de cerca de 30 minutos.</p></div>
+        </div>
+        <div class="step">
+          <span class="num">05</span>
+          <div><h3>Enxerto e produção</h3><p>As células criam sua própria vascularização e passam a responder à glicose, secretando insulina de forma natural.</p></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="ressalvas">
+    <span class="kicker">O que ainda falta</span>
+    <h2>Por que ainda não é uma cura, no sentido pleno</h2>
+    <ul class="caveats">
+      <li><p><strong>É um estudo de caso, não um tratamento.</strong> Só 1 a 3 pacientes participam do ensaio chinês (ChiCTR2300072200), ainda em fase 1 — a fase mais inicial e mais cautelosa de testes em humanos<sup class="cite"><a href="#ref1">1</a></sup><sup class="cite"><a href="#ref4">4</a></sup>.</p></li>
+      <li><p><strong>A paciente já tomava imunossupressores</strong> por causa de um transplante de fígado anterior. Isso ajudou a evitar rejeição das novas células — mas também significa que ainda não se sabe se o método funciona sem essa proteção extra, já que o diabetes tipo 1 é uma doença autoimune que pode atacar as novas ilhotas também<sup class="cite"><a href="#ref1">1</a></sup><sup class="cite"><a href="#ref4">4</a></sup>.</p></li>
+      <li><p><strong>Falta tempo de acompanhamento.</strong> Um ano de resultados é animador, mas é preciso observar vários anos para confirmar que o efeito realmente dura<sup class="cite"><a href="#ref4">4</a></sup>.</p></li>
+      <li><p><strong>Escala e custo são o próximo obstáculo, em qualquer país.</strong> Produzir células personalizadas para cada paciente, uma a uma, é caro e demorado — muito diferente de fabricar um medicamento em massa<sup class="cite"><a href="#ref7">7</a></sup><sup class="cite"><a href="#ref8">8</a></sup><sup class="cite"><a href="#ref10">10</a></sup>.</p></li>
+    </ul>
+  </section>
+
+  <section id="panorama">
+    <span class="kicker">Não é só a China</span>
+    <h2>Uma corrida científica global</h2>
+    <div class="grid-2">
+      <div class="text-col">
+        <p>A equipe chinesa não trabalha sozinha. Vários grupos ao redor do mundo perseguem versões diferentes da mesma ideia: substituir as células que o diabetes destrói<sup class="cite"><a href="#ref6">6</a></sup><sup class="cite"><a href="#ref7">7</a></sup>.</p>
+      </div>
+      <figure class="img-placeholder" data-img-path="img/mapa-mundial-ensaios.png">
+        <img src="img/mapa-mundial-ensaios.png" alt="Mapa mundial destacando China, Estados Unidos, Brasil e Suécia como focos de pesquisa em terapia celular para diabetes" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+        <div class="placeholder-box" style="display:none;">
+          <span class="placeholder-icon">🖼</span>
+          <p class="placeholder-label">[ Coloque aqui: img/mapa-mundial-ensaios.png ]</p>
+          <p class="placeholder-hint">Prompt sugerido no relatório de imagens, ao final da página</p>
+        </div>
+        <figcaption>Figura 3 — Focos ativos de pesquisa em terapia celular para diabetes tipo 1: China, Estados Unidos, Brasil e Suécia<sup class="cite"><a href="#ref6">6</a></sup><sup class="cite"><a href="#ref9">9</a></sup>.</figcaption>
+      </figure>
+    </div>
+    <table class="trial-table">
+      <thead>
+        <tr><th>Onde</th><th>Abordagem</th><th>Estágio (2026)</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="where">China</td>
+          <td>Células da própria pessoa (CiPSC), sem doador, injetadas no abdômen</td>
+          <td>Fase 1 — 1 a 3 pacientes, resultados de 1 ano publicados<sup class="cite"><a href="#ref1">1</a></sup></td>
+        </tr>
+        <tr>
+          <td class="where">EUA — Vertex</td>
+          <td>Ilhotas de células-tronco de doador (VX-880), com imunossupressão</td>
+          <td>Avançou para fase 3 em novembro de 2024 — a mais próxima de um tratamento aprovado<sup class="cite"><a href="#ref8">8</a></sup><sup class="cite"><a href="#ref9">9</a></sup></td>
+        </tr>
+        <tr>
+          <td class="where">Brasil</td>
+          <td>Infusão de células-tronco em 21 adultos com diabetes tipo 1</td>
+          <td>Concluído — maioria ficou sem insulina por cerca de 3,5 anos, um paciente por 8 anos<sup class="cite"><a href="#ref6">6</a></sup></td>
+        </tr>
+        <tr>
+          <td class="where">Suécia — Uppsala</td>
+          <td>Ilhotas de doador geneticamente modificadas para escapar do sistema imune, sem imunossupressores</td>
+          <td>Um único paciente, 14 meses de acompanhamento — prova de conceito inicial<sup class="cite"><a href="#ref9">9</a></sup></td>
+        </tr>
+        <tr>
+          <td class="where">EUA — Universidade de Chicago</td>
+          <td>Ilhotas de doador com imunossupressor experimental menos tóxico (tegoprubart)</td>
+          <td>12 pacientes; até 2026, todos estavam livres de insulina, embora 5 tenham precisado de um segundo transplante para chegar lá<sup class="cite"><a href="#ref9">9</a></sup></td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+
+  <section id="pesquisadores">
+    <span class="kicker">Quem está por trás da pesquisa</span>
+    <h2>Três trajetórias, um mesmo objetivo</h2>
+    <p>Por trás de cada linha da tabela acima existe gente com uma história. Três exemplos ajudam a entender de onde vem essa corrida.</p>
+
+    <div class="researcher-grid">
+      <div class="researcher-card">
+        <div>
+          <div class="r-name">Deng Hongkui (邓宏魁)</div>
+          <div class="r-role">Universidade de Pequim · Changping Laboratory</div>
+        </div>
+        <ul>
+          <li>PhD pela UCLA (1995); trabalhou de 1998 a 2001 como diretor de pesquisa da ViaCell, empresa de células-tronco em Boston, antes de voltar à China.</li>
+          <li>Em 2017, ele e um colaborador usaram CRISPR pela primeira vez do mundo num paciente humano — um caso de HIV e leucemia, publicado no <em>New England Journal of Medicine</em>.</li>
+          <li>Criou a técnica de reprogramação química (CiPSC) usada no caso de diabetes, o mesmo trabalho que lhe rendeu o Future Science Prize de 2024, considerado o "Nobel chinês".</li>
+        </ul>
+        <div class="r-sources">
+          <span>Fontes:</span>
+          <a href="https://en.wikipedia.org/wiki/Deng_Hongkui" target="_blank" rel="noopener">Wikipedia — Deng Hongkui</a>
+          <a href="http://www.futureprize.org/en/laureates/detail/87.html" target="_blank" rel="noopener">Future Science Prize — perfil do laureado</a>
+        </div>
+      </div>
+
+      <div class="researcher-card">
+        <div>
+          <div class="r-name">Wang Shusen (王树森)</div>
+          <div class="r-role">Hospital Tianjin First Central · Universidade Nankai</div>
+        </div>
+        <ul>
+          <li>Doutorado em 2006 com foco em xenotransplante e transplante de ilhotas; fez pós-doutorado nos EUA (University of Illinois em Chicago e Northwestern) especificamente em transplante de ilhotas.</li>
+          <li>Em 2015, liderou a equipe que realizou o primeiro transplante de ilhotas do mundo em uma criança após transplante de fígado.</li>
+          <li>Já realizou mais de 80 transplantes clínicos de ilhotas e lidera o primeiro "Centro de Compartilhamento de Ilhotas Humanas" da China, que já forneceu ilhotas para mais de 30 instituições no país.</li>
+        </ul>
+        <div class="r-sources">
+          <span>Fontes:</span>
+          <a href="https://medical.nankai.edu.cn/2023/0406/c6621a508542/page.htm" target="_blank" rel="noopener">Universidade Nankai — perfil acadêmico</a>
+          <a href="https://en.nankai.edu.cn/2024/1023/c22796a553698/page.htm" target="_blank" rel="noopener">Universidade Nankai — notícia do estudo</a>
+        </div>
+      </div>
+
+      <div class="researcher-card">
+        <div>
+          <div class="r-name">Doug Melton</div>
+          <div class="r-role">Vertex Pharmaceuticals · ex-Harvard Stem Cell Institute</div>
+        </div>
+        <ul>
+          <li>Era biólogo do desenvolvimento, estudando rãs e sapos em Harvard, até 1991 — quando seu filho de 6 meses foi diagnosticado com diabetes tipo 1. Mudou de área de pesquisa por causa disso.</li>
+          <li>Anos depois, sua filha também desenvolveu diabetes tipo 1, tornando a missão ainda mais pessoal.</li>
+          <li>Fundou a empresa Semma Therapeutics — nome que combina os nomes dos dois filhos, Sam e Emma — comprada pela Vertex em 2019 e que deu origem à terapia VX-880, hoje em fase 3.</li>
+          <li>Em 2022, deixou Harvard para trabalhar diretamente na Vertex, dizendo querer estar "onde a pesquisa realmente vira tratamento".</li>
+        </ul>
+        <div class="r-sources">
+          <span>Fontes:</span>
+          <a href="https://news.harvard.edu/gazette/story/2025/06/sons-diabetes-diagnosis-sent-scientist-on-quest-for-cure/" target="_blank" rel="noopener">Harvard Gazette — perfil e trajetória</a>
+          <a href="https://www.statnews.com/2022/04/05/douglas-melton-noted-stem-cell-researcher-leaves-harvard-for-vertex-to-create-diabetes-treatments/" target="_blank" rel="noopener">STAT News — saída para a Vertex</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="tempo">
+    <span class="kicker">Quanto tempo pode demorar</span>
+    <h2>Do laboratório até o consultório</h2>
+    <div class="timeline">
+      <div class="tl-item">
+        <span class="when">2024 — hoje</span>
+        <h3>Prova de conceito</h3>
+        <p>Casos isolados na China, no Brasil e na Suécia mostram que o princípio funciona biologicamente: é possível reverter o diabetes tipo 1 com células cultivadas em laboratório<sup class="cite"><a href="#ref1">1</a></sup><sup class="cite"><a href="#ref6">6</a></sup>.</p>
+      </div>
+      <div class="tl-item">
+        <span class="when">2025 – 2028 (estimado)</span>
+        <h3>Ensaios maiores, público restrito</h3>
+        <p>Terapias com células de doador — como a da Vertex, já em fase 3 — podem chegar a uma aprovação regulatória para um grupo específico: pessoas com hipoglicemias graves e risco de vida, que hoje já recebem transplantes de ilhotas de doadores falecidos<sup class="cite"><a href="#ref8">8</a></sup><sup class="cite"><a href="#ref9">9</a></sup><sup class="cite"><a href="#ref10">10</a></sup>.</p>
+      </div>
+      <div class="tl-item future">
+        <span class="when">2030 em diante (estimado)</span>
+        <h3>Escala e produção em massa</h3>
+        <p>Para que a versão "personalizada", como a chinesa, chegue a mais pessoas, será preciso resolver fabricação em larga escala, redução de custo e tempo de produção — ou migrar para células de doador padronizadas, mais fáceis de produzir em série<sup class="cite"><a href="#ref7">7</a></sup><sup class="cite"><a href="#ref10">10</a></sup>.</p>
+      </div>
+      <div class="tl-item future">
+        <span class="when">Horizonte incerto</span>
+        <h3>Fim da imunossupressão</h3>
+        <p>O objetivo final — células que se escondem do sistema imune sem remédios — ainda está em estágio de paciente único, na Suécia. É a etapa mais distante e mais decisiva para tornar o tratamento seguro em massa<sup class="cite"><a href="#ref9">9</a></sup>.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="pe-diabetico">
+    <span class="kicker">Estudo de caso — o presente, não o futuro</span>
+    <h2>Enquanto isso, no pé diabético: a terapia celular já está em uso</h2>
+    <div class="grid-2">
+      <div class="text-col">
+        <p>Se a cura sistêmica da diabetes ainda é uma promessa de anos, vale olhar para uma complicação da própria doença em que abordagens celulares e biológicas <em>já</em> fazem parte do cuidado clínico hoje: o pé diabético.</p>
+        <p>O pé diabético é uma ferida crônica que surge da combinação entre neuropatia (perda de sensibilidade), má circulação e infecção — e é a principal causa de amputação não traumática no mundo. O cuidado padrão isolado (debridamento, controle de infecção e da glicemia) cura apenas 24% dos casos em 12 semanas e 31% em 20 semanas<sup class="cite"><a href="#ref12">12</a></sup>. É exatamente essa lacuna que fatores de crescimento, plasma rico em plaquetas e células-tronco vêm tentando fechar — com resultados que já aparecem em dezenas de ensaios clínicos randomizados.</p>
+      </div>
+      <figure class="img-placeholder" data-img-path="img/pe-diabetico-anatomia.jpg">
+        <img src="img/pe-diabetico-anatomia.jpg" alt="Ilustração educativa do pé mostrando as zonas de risco: neuropatia, má circulação e área de pressão" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+        <div class="placeholder-box" style="display:none;">
+          <span class="placeholder-icon">🖼</span>
+          <p class="placeholder-label">[ Coloque aqui: img/pe-diabetico-anatomia.jpg ]</p>
+          <p class="placeholder-hint">Prompt sugerido no relatório de imagens, ao final da página</p>
+        </div>
+        <figcaption>Figura 4 — O pé diabético combina três fatores de risco: perda de sensibilidade (neuropatia), má circulação (isquemia) e maior suscetibilidade a infecções<sup class="cite"><a href="#ref16">16</a></sup>.</figcaption>
+      </figure>
+    </div>
+
+    <h3 style="font-family:'Fraunces',serif; font-size:1.25rem; margin-top:40px;">O que a evidência diz que funciona melhor</h3>
+    <p>Meta-análises em rede — que comparam várias terapias ao mesmo tempo, mesmo sem estudos que as comparem diretamente — permitem ranquear o que realmente ajuda a cicatrizar, reduzir amputações e encurtar o tempo de tratamento<sup class="cite"><a href="#ref11">11</a></sup><sup class="cite"><a href="#ref12">12</a></sup><sup class="cite"><a href="#ref13">13</a></sup>.</p>
+
+    <div class="tier-chart">
+      <div class="tier tier1">
+        <span class="tier-label">Cuidado padrão isolado</span>
+        <div>
+          <div class="tier-track"><div class="tier-fill"></div></div>
+          <p class="tier-desc">Base: debridamento + infecção + glicemia — a referência de comparação<sup class="cite"><a href="#ref12">12</a></sup></p>
+        </div>
+      </div>
+      <div class="tier tier2">
+        <span class="tier-label">Descarga de peso (offloading)</span>
+        <div>
+          <div class="tier-track"><div class="tier-fill"></div></div>
+          <p class="tier-desc">A intervenção isolada mais recomendada — bota de gesso não removível como 1ª escolha<sup class="cite"><a href="#ref16">16</a></sup></p>
+        </div>
+      </div>
+      <div class="tier tier3">
+        <span class="tier-label">NPWT (pressão negativa)</span>
+        <div>
+          <div class="tier-track"><div class="tier-fill"></div></div>
+          <p class="tier-desc">Acelera o fechamento e reduz a área da ferida, com boa relação custo-benefício<sup class="cite"><a href="#ref18">18</a></sup></p>
+        </div>
+      </div>
+      <div class="tier tier4">
+        <span class="tier-label">Terapias celulares e biológicas</span>
+        <div>
+          <div class="tier-track"><div class="tier-fill"></div></div>
+          <p class="tier-desc">Células-tronco, PRP, membrana amniótica e fatores de crescimento — as mais bem ranqueadas em cicatrização e redução de amputação<sup class="cite"><a href="#ref11">11</a></sup><sup class="cite"><a href="#ref12">12</a></sup></p>
+        </div>
+      </div>
+    </div>
+    <p class="tier-note">Camadas construídas a partir de rankings SUCRA de meta-análises em rede recentes<sup class="cite"><a href="#ref11">11</a></sup><sup class="cite"><a href="#ref12">12</a></sup><sup class="cite"><a href="#ref13">13</a></sup> — a barra mais longa indica maior probabilidade de ser a melhor opção entre as comparadas, não uma escala numérica única.</p>
+
+    <ul class="caveats" style="margin-top:32px;">
+      <li><p><strong>Células-tronco (MSC):</strong> entre as intervenções mais eficazes para cicatrização completa e redução do risco de amputação em várias meta-análises em rede<sup class="cite"><a href="#ref11">11</a></sup><sup class="cite"><a href="#ref12">12</a></sup>.</p></li>
+      <li><p><strong>Plasma rico em plaquetas (PRP):</strong> reduz amputação e efeitos adversos, com custo mais baixo e maior acesso que terapias com células-tronco<sup class="cite"><a href="#ref11">11</a></sup><sup class="cite"><a href="#ref17">17</a></sup>.</p></li>
+      <li><p><strong>Fator de crescimento epidérmico (EGF):</strong> o fator de crescimento isolado mais bem ranqueado para taxa e tempo de cicatrização<sup class="cite"><a href="#ref17">17</a></sup>.</p></li>
+      <li><p><strong>Membrana amniótica:</strong> supera o cuidado padrão de forma significativa, com efeito anti-inflamatório e pró-regenerativo<sup class="cite"><a href="#ref12">12</a></sup>.</p></li>
+      <li><p><strong>Oxigenoterapia hiperbárica (HBOT) e ondas de choque (ESWT):</strong> mais úteis em feridas isquêmicas e em tratamentos que passam de 12 semanas<sup class="cite"><a href="#ref11">11</a></sup><sup class="cite"><a href="#ref14">14</a></sup><sup class="cite"><a href="#ref15">15</a></sup>.</p></li>
+    </ul>
+
+    <div class="combo-callout">
+      <p><strong>O achado mais consistente:</strong> combinações superam terapias isoladas. NPWT associado a PRP ou a debridamento por ultrassom supera cada técnica sozinha em cicatrização, redução de área, tempo de tratamento e efeitos adversos<sup class="cite"><a href="#ref12">12</a></sup><sup class="cite"><a href="#ref14">14</a></sup>. Na prática clínica, a melhor resposta não vem de uma "bala de prata", mas de somar abordagens de acordo com o tipo de ferida.</p>
+    </div>
+  </section>
+
+  <section class="lead">
+    <div class="synthesis">
+      <span class="kicker">Síntese</span>
+      <h2>O que fica, no fim das contas</h2>
+      <p class="pull">A cura sistêmica da diabetes ainda não chegou — mas o pé diabético mostra que a terapia celular, na prática, já ajuda gente a não perder um pé, hoje.</p>
+      <p>O caminho até uma cura universal para o diabetes tipo 1 é longo — envolve anos de testes, milhares de pacientes, aprovação regulatória e, principalmente, uma forma de produzir células em escala e sem imunossupressão<sup class="cite"><a href="#ref9">9</a></sup><sup class="cite"><a href="#ref10">10</a></sup>. Mas o pé diabético prova que essa mesma família de ideias — células-tronco, fatores de crescimento, plasma rico em plaquetas — já deixou o laboratório e está, agora, mudando desfechos clínicos concretos<sup class="cite"><a href="#ref11">11</a></sup><sup class="cite"><a href="#ref12">12</a></sup>. É esse o motivo de tanto entusiasmo com a China, os EUA, o Brasil e a Suécia — e também o motivo de tanta cautela com o prazo.</p>
+    </div>
+  </section>
+  <section id="fixacao">
+    <span class="kicker">Para checar o que ficou</span>
+    <h2>Perguntas de fixação</h2>
+    <p>Clique em cada pergunta para ver a resposta.</p>
+    <div class="quiz-list">
+      <details class="quiz-item">
+        <summary>Por que a paciente chinesa não pode ser chamada de "curada", no sentido pleno, mesmo já sem usar insulina há mais de um ano?</summary>
+        <p class="quiz-answer">Porque é o resultado de apenas 1 paciente dentro de um ensaio clínico de fase 1 (com 3 no total); ela já tomava imunossupressores por outro motivo (um transplante de fígado anterior), o que ajuda a explicar por que o corpo não rejeitou as novas células; e ainda falta tempo de acompanhamento para confirmar que o efeito é duradouro.</p>
+      </details>
+      <details class="quiz-item">
+        <summary>Qual a diferença essencial entre a abordagem chinesa e a da Vertex (EUA)?</summary>
+        <p class="quiz-answer">A chinesa usa células da própria pessoa (autóloga, via reprogramação química — CiPSC), sem depender de doador. A da Vertex usa células de doador padronizadas, com imunossupressão, e já avançou para a fase 3 dos ensaios clínicos — um estágio mais adiantado, mas menos personalizado.</p>
+      </details>
+      <details class="quiz-item">
+        <summary>Por que o cuidado padrão, sozinho, não é suficiente para tratar o pé diabético?</summary>
+        <p class="quiz-answer">Porque cura completamente só 24% dos casos em 12 semanas e 31% em 20 semanas. É essa lacuna que abre espaço para terapias adjuvantes como descarga de peso, NPWT, PRP, células-tronco e fatores de crescimento.</p>
+      </details>
+      <details class="quiz-item">
+        <summary>Qual é considerada a intervenção isolada mais importante no tratamento do pé diabético, segundo as diretrizes internacionais (IWGDF)?</summary>
+        <p class="quiz-answer">A descarga de peso (offloading) — em especial o uso de uma bota de gesso de contato total não removível, indicada como primeira escolha para úlceras plantares neuropáticas.</p>
+      </details>
+      <details class="quiz-item">
+        <summary>O que a pesquisa mostra sobre combinar terapias no pé diabético, em vez de usar apenas uma?</summary>
+        <p class="quiz-answer">Combinações — como pressão negativa (NPWT) associada a plasma rico em plaquetas ou a debridamento por ultrassom — tendem a superar cada técnica isolada em cicatrização, redução de área da ferida, tempo de tratamento e efeitos adversos.</p>
+      </details>
+    </div>
+  </section>
+
+  <section id="socraticas">
+    <span class="kicker">Para pensar além do texto</span>
+    <h2>Perguntas socráticas</h2>
+    <p>Sem resposta certa única — são para provocar reflexão, não para decorar.</p>
+    <div class="socratic-list">
+      <div class="socratic-item">
+        <span class="qmark">?</span>
+        <p>Se uma terapia funciona perfeitamente em 1 paciente, mas ainda não sabemos se funciona em 1.000, o que realmente significa dizer que ela "funciona"?</p>
+      </div>
+      <div class="socratic-item">
+        <span class="qmark">?</span>
+        <p>A paciente chinesa só não rejeitou as novas células porque já tomava imunossupressores por um motivo completamente diferente (um transplante de fígado). Isso muda o valor científico do resultado? Por quê?</p>
+      </div>
+      <div class="socratic-item">
+        <span class="qmark">?</span>
+        <p>Por que uma complicação "menos badalada" como o pé diabético já incorpora terapias celulares na prática clínica, enquanto a cura sistêmica do diabetes tipo 1 ainda está em fase 1? O que isso revela sobre como a ciência chega ao paciente?</p>
+      </div>
+      <div class="socratic-item">
+        <span class="qmark">?</span>
+        <p>Se uma terapia com células de doador (mais fácil de escalar) chegar ao mercado antes de uma terapia personalizada com as próprias células (potencialmente mais segura, mas mais cara), o que se ganha e o que se perde nessa escolha — em termos de acesso, custo e equidade?</p>
+      </div>
+      <div class="socratic-item">
+        <span class="qmark">?</span>
+        <p>O que a distância entre "resultado clínico real, publicado" e "tratamento disponível para qualquer pessoa" revela sobre a diferença entre ciência e política de saúde pública?</p>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<div class="sources">
+  <h3>Referências citadas no texto</h3>
+  <p style="margin:0 0 16px; font-style:italic;">Cura da diabetes tipo 1 — o caso chinês e o panorama global</p>
+  <ol>
+    <li id="ref1">Wang, S. et al. "Transplantation of chemically induced pluripotent stem-cell-derived islets under abdominal anterior rectus sheath in a type 1 diabetes patient." <em>Cell</em>, 2024.</li>
+    <li id="ref2">Xinhua — "Type 1 diabetes patient functionally cured via chemically induced stem cell-islets", 26 set. 2024.</li>
+    <li id="ref3">South China Morning Post — "Chinese woman finds type 1 diabetes reversed after stem cell transplant in world first", 30 set. 2024.</li>
+    <li id="ref4">Medical News Today — "Stem-cell therapy reverses type 1 diabetes in groundbreaking case study", 4 out. 2024.</li>
+    <li id="ref5">ScienceAlert — "World First: Stem Cells Reverse Type 1 Diabetes in Clinical Trial", 9 out. 2024.</li>
+    <li id="ref6">PMC — "World's first: stem cell therapy reverses diabetes" (artigo de revisão, PMC11662597), 2024.</li>
+    <li id="ref7">Nature Medicine — "Stem cell therapies for diabetes", jun. 2025.</li>
+    <li id="ref8">MDPI Cells — "Stem Cell-Derived Beta-Cell Therapies: Encapsulation Advances and Immunological Hurdles in Diabetes Treatment", jan. 2026.</li>
+    <li id="ref9">Medscape — "Efforts Address Immune Suppression in Islet Cell Transplants", jul. 2026.</li>
+    <li id="ref10">PMC — "The future of islet transplantation beyond the BLA approval: challenges and opportunities".</li>
+  </ol>
+  <p style="margin:24px 0 16px; font-style:italic;">Pé diabético — tratamentos e eficácia comparada</p>
+  <ol start="11">
+    <li id="ref11">Hu, X. et al. "Comparison of the efficacy of 12 interventions in the treatment of diabetic foot ulcers: a network meta-analysis." <em>PeerJ</em>, 2025.</li>
+    <li id="ref12">Frontiers in Endocrinology — "Effects of different treatment measures on the efficacy of diabetic foot ulcers: a network meta-analysis", set. 2024.</li>
+    <li id="ref13">Frontiers in Bioengineering and Biotechnology — "Comparative efficacy of advanced therapeutic modalities for diabetic foot ulcers: a systematic review and meta-analysis", abr. 2026.</li>
+    <li id="ref14">Frontiers in Endocrinology — "Effects of non-pharmacological interventions on ulcer healing in patients with diabetic foot: a network meta-analysis", mar. 2026.</li>
+    <li id="ref15">BMC Nursing — "Comparative efficacy and safety of non-pharmacological nursing interventions for diabetic foot ulcers", nov. 2025.</li>
+    <li id="ref16">International Working Group on the Diabetic Foot (IWGDF) — "2023 Guideline on offloading interventions to promote healing of foot ulcers in persons with diabetes".</li>
+    <li id="ref17">Frontiers in Endocrinology — "Comparison of the efficacy and safety of different growth factors in the treatment of diabetic foot ulcers: an updated network meta-analysis", jun. 2025.</li>
+    <li id="ref18">MDPI Journal of Clinical Medicine — "Comparative Efficacy of Negative Pressure Wound Therapy and Conventional Treatments in the Management of Diabetic Foot Ulcers", nov. 2025.</li>
+  </ol>
+</div>
+
+<footer class="institutional-footer">
+  <p>Infográfico elaborado pelos projetos Amor à Pele e PET-Saúde Digital G10 Feridas Crônicas, UFPel, em Julho de 2026.</p>
+  <p>Conteúdo informativo, produzido a partir de fontes científicas e jornalísticas públicas — não substitui orientação médica individual.</p>
+</footer>
+
+</body>
+</html>
