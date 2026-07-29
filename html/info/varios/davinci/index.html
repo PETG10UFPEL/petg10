@@ -187,6 +187,10 @@
   .triad-center{grid-column:1/-1;text-align:center;margin-top:4px;color:var(--ink-soft);font-size:.9rem;font-style:italic;}
 
   /* COST BOX */
+  .cite{font-size:.72em;color:var(--blue);text-decoration:none;font-weight:700;white-space:nowrap;}
+  .cite:hover{text-decoration:underline;}
+  .cite-line{font-size:.75rem;color:var(--ink-soft);margin-top:12px;font-style:italic;}
+  .ref-list li:target{background:#FDF3E9;border-radius:6px;padding:8px 10px 8px 34px;margin-left:-10px;}
   .cost-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:16px;margin-top:24px;}
   .cost-card{background:var(--dark-panel);color:#fff;border-radius:10px;padding:20px;}
   .cost-card .val{font-family:'Playfair Display',serif;font-size:1.5rem;font-weight:700;color:#E3B873;}
@@ -329,7 +333,7 @@
     <div class="two-col">
       <div>
         <p>A tecnologia por trás do da Vinci nasceu de pesquisas do <strong>SRI International</strong> (Stanford Research Institute), financiadas em parte pelo Exército e pela DARPA dos Estados Unidos, que buscavam desenvolver <em>telecirurgia</em> — a possibilidade de um cirurgião operar um paciente remotamente, inclusive em campos de batalha.</p>
-        <p>Em <strong>1995</strong>, a tecnologia foi licenciada e deu origem à empresa <strong>Intuitive Surgical</strong>. Cinco anos depois, em <strong>2000</strong>, o primeiro sistema da Vinci recebeu aprovação da FDA para uso cirúrgico geral — o marco que inaugura a era da cirurgia robótica assistida comercialmente disponível.</p>
+        <p>Em <strong>1995</strong>, a tecnologia foi licenciada e deu origem à empresa <strong>Intuitive Surgical</strong>. Cinco anos depois, em <strong>2000</strong>, o primeiro sistema da Vinci recebeu aprovação da FDA para uso cirúrgico geral — o marco que inaugura a era da cirurgia robótica assistida comercialmente disponível.<a href="#ref1" class="cite">[1]</a><a href="#ref2" class="cite">[2]</a></p>
       </div>
       <figure class="img-placeholder" data-img-path="img/origem-intuitive-timeline.jpg">
         <img src="img/origem-intuitive-timeline.jpg" alt="Primeiro sistema da Vinci, anos 2000" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
@@ -356,37 +360,37 @@
         <div class="t-dot"></div>
         <div class="t-year">2000</div>
         <div class="t-title">da Vinci Standard (1ª geração)</div>
-        <div class="t-desc">Primeiro sistema aprovado pela FDA. Provou o conceito: visão 3D, instrumentos articulados (EndoWrist) e filtragem de tremor eram viáveis na prática cirúrgica.</div>
+        <div class="t-desc">Primeiro sistema aprovado pela FDA. Provou o conceito: visão 3D, instrumentos articulados (EndoWrist) e filtragem de tremor eram viáveis na prática cirúrgica.<a href="#ref1" class="cite">[1]</a><a href="#ref4" class="cite">[4]</a></div>
       </div>
       <div class="t-item">
         <div class="t-dot"></div>
         <div class="t-year">2006</div>
         <div class="t-title">da Vinci S (2ª geração)</div>
-        <div class="t-desc">Levou a tecnologia ao cenário global, com melhorias em ergonomia e instrumentos, ampliando a adoção internacional.</div>
+        <div class="t-desc">Levou a tecnologia ao cenário global, com melhorias em ergonomia e instrumentos, ampliando a adoção internacional.<a href="#ref1" class="cite">[1]</a></div>
       </div>
       <div class="t-item">
         <div class="t-dot"></div>
         <div class="t-year">2009–2013</div>
         <div class="t-title">da Vinci Si (3ª geração)</div>
-        <div class="t-desc">Foco em treinamento e experiência do cirurgião — console dual para ensino, alta definição 3D. Tornou-se o sistema mais difundido no Brasil na década de 2010 (ex.: INCA, 2012).</div>
+        <div class="t-desc">Foco em treinamento e experiência do cirurgião — console dual para ensino, alta definição 3D. Tornou-se o sistema mais difundido no Brasil na década de 2010 (ex.: INCA, 2012).<a href="#ref6" class="cite">[6]</a><a href="#ref7" class="cite">[7]</a></div>
       </div>
       <div class="t-item highlight">
         <div class="t-dot"></div>
         <div class="t-year">2014</div>
         <div class="t-title">da Vinci X e Xi (4ª geração)</div>
-        <div class="t-desc">Redesenho completo do carrinho do paciente: de coluna central para arquitetura em "lança" (boom-mounted), permitindo cirurgia multiquadrante sem redocking repetido. É hoje o sistema mais usado no mundo.</div>
+        <div class="t-desc">Redesenho completo do carrinho do paciente: de coluna central para arquitetura em "lança" (boom-mounted), permitindo cirurgia multiquadrante sem redocking repetido. É hoje o sistema mais usado no mundo.<a href="#ref3" class="cite">[3]</a><a href="#ref6" class="cite">[6]</a></div>
       </div>
       <div class="t-item">
         <div class="t-dot"></div>
         <div class="t-year">2014–2018</div>
         <div class="t-title">da Vinci SP — Single Port</div>
-        <div class="t-desc">Um único braço com câmera e três instrumentos articulados saindo de uma incisão de ~25mm. Pensado para espaços anatômicos estreitos (próstata, cabeça e pescoço, cirurgia transanal).</div>
+        <div class="t-desc">Um único braço com câmera e três instrumentos articulados saindo de uma incisão de ~25mm. Pensado para espaços anatômicos estreitos (próstata, cabeça e pescoço, cirurgia transanal).<a href="#ref2" class="cite">[2]</a><a href="#ref5" class="cite">[5]</a></div>
       </div>
       <div class="t-item highlight">
         <div class="t-dot"></div>
         <div class="t-year">2024–2025</div>
         <div class="t-title">da Vinci 5 (5ª geração)</div>
-        <div class="t-desc">Mais de 10.000x a capacidade de processamento do Xi e tecnologia inédita de <em>Force Feedback</em> — o cirurgião volta a "sentir" resistência dos tecidos, algo ausente desde o início da robótica cirúrgica.</div>
+        <div class="t-desc">Mais de 10.000x a capacidade de processamento do Xi e tecnologia inédita de <em>Force Feedback</em> — o cirurgião volta a "sentir" resistência dos tecidos, algo ausente desde o início da robótica cirúrgica.<a href="#ref1" class="cite">[1]</a><a href="#ref21" class="cite">[21]</a></div>
       </div>
     </div>
 
@@ -408,6 +412,7 @@
           <li>Coluna central única, braços paralelos — configuração rígida, exigia reposicionamento manual complexo.</li>
           <li>Uso majoritariamente urológico no início (prostatectomia radical).</li>
         </ul>
+        <p class="cite-line">Fontes: <a href="#ref1" class="cite">[1]</a> <a href="#ref2" class="cite">[2]</a> <a href="#ref4" class="cite">[4]</a></p>
       </div>
       <div class="tab-panel" id="tab-si">
         <div class="tab-meta">2009–2013 · 3ª geração</div>
@@ -418,6 +423,7 @@
           <li>Exoesqueleto baseado em coluna vertical volumosa; colisões externas entre braços eram comuns em cirurgias multiquadrante.</li>
           <li>Foi o modelo adquirido pelo INCA em 2012, marco da cirurgia robótica no SUS.</li>
         </ul>
+        <p class="cite-line">Fontes: <a href="#ref4" class="cite">[4]</a> <a href="#ref6" class="cite">[6]</a> <a href="#ref7" class="cite">[7]</a></p>
       </div>
       <div class="tab-panel" id="tab-xi">
         <div class="tab-meta">2014 · 4ª geração</div>
@@ -429,6 +435,7 @@
           <li>Imagem por fluorescência <strong>Firefly</strong> para visualizar vasos, ductos biliares e perfusão tecidual em tempo real.</li>
           <li>Hoje é o sistema multiporta mais usado no mundo e o mais comum no Brasil.</li>
         </ul>
+        <p class="cite-line">Fontes: <a href="#ref3" class="cite">[3]</a> <a href="#ref6" class="cite">[6]</a> <a href="#ref11" class="cite">[11]</a></p>
       </div>
       <div class="tab-panel" id="tab-sp">
         <div class="tab-meta">2018 (EUA) / 2024 (Europa) · Single Port</div>
@@ -439,6 +446,7 @@
           <li>Indicado para próstata, cirurgia transanal colorretal, cabeça e pescoço (TORS) e tórax.</li>
           <li>Elimina colisões externas entre braços por usar apenas um.</li>
         </ul>
+        <p class="cite-line">Fontes: <a href="#ref2" class="cite">[2]</a> <a href="#ref5" class="cite">[5]</a></p>
       </div>
       <div class="tab-panel" id="tab-dv5">
         <div class="tab-meta">2024–2025 · 5ª geração</div>
@@ -449,6 +457,7 @@
           <li>Ergonomia aprimorada no console em relação a todas as gerações anteriores.</li>
           <li>Ainda em fase inicial de disseminação global; representa a fronteira atual da engenharia clínica em robótica cirúrgica.</li>
         </ul>
+        <p class="cite-line">Fontes: <a href="#ref1" class="cite">[1]</a> <a href="#ref20" class="cite">[20]</a> <a href="#ref21" class="cite">[21]</a></p>
       </div>
     </div>
   </div>
@@ -459,7 +468,7 @@
   <div class="wrap">
     <div class="section-label">Mecanismo</div>
     <h2>Três componentes, uma mesma cirurgia</h2>
-    <p class="kicker">É importante frisar: o da Vinci <strong>não opera de forma autônoma</strong>. Ele reproduz, com precisão ampliada e sem tremor, os movimentos das mãos do cirurgião — o robô é uma extensão do gesto humano, não um substituto da decisão clínica.</p>
+    <p class="kicker">É importante frisar: o da Vinci <strong>não opera de forma autônoma</strong>. Ele reproduz, com precisão ampliada e sem tremor, os movimentos das mãos do cirurgião — o robô é uma extensão do gesto humano, não um substituto da decisão clínica.<a href="#ref1" class="cite">[1]</a><a href="#ref3" class="cite">[3]</a></p>
 
     <div class="grid-3">
       <div class="card">
@@ -502,7 +511,7 @@
   <div class="wrap">
     <div class="section-label">Vantagem clínica</div>
     <h2>O que muda de fato na mesa de cirurgia</h2>
-    <p class="kicker">Comparada à cirurgia aberta e à laparoscopia convencional, a plataforma robótica reorganiza a relação entre visão, precisão e esforço físico do cirurgião.</p>
+    <p class="kicker">Comparada à cirurgia aberta e à laparoscopia convencional, a plataforma robótica reorganiza a relação entre visão, precisão e esforço físico do cirurgião. Um estudo randomizado brasileiro de custo-efetividade, conduzido em oito tipos de cirurgia oncológica no ICESP/HCFMUSP, ajuda a colocar essa comparação em números reais.<a href="#ref9" class="cite">[9]</a></p>
 
     <table>
       <thead>
@@ -519,7 +528,7 @@
     </table>
 
     <div class="callout moss">
-      <strong>Mas atenção ao viés de entusiasmo:</strong> revisões da literatura brasileira (Redalyc, 2024; CONITEC) mostram que, para diversos procedimentos, as taxas de complicação, tempo de internação e infecção são <em>estatisticamente semelhantes</em> entre robótica e laparoscopia. O real diferencial muitas vezes está na <strong>redução da taxa de conversão para cirurgia aberta</strong> em casos complexos — não em uma superioridade universal. Avaliar tecnologia em saúde exige ler evidência, não apenas folhetos do fabricante.
+      <strong>Mas atenção ao viés de entusiasmo:</strong> revisões da literatura brasileira (Redalyc, 2024<a href="#ref7" class="cite">[7]</a>; CONITEC, citado em<a href="#ref11" class="cite">[11]</a>) mostram que, para diversos procedimentos, as taxas de complicação, tempo de internação e infecção são <em>estatisticamente semelhantes</em> entre robótica e laparoscopia. O real diferencial muitas vezes está na <strong>redução da taxa de conversão para cirurgia aberta</strong> em casos complexos — não em uma superioridade universal. Avaliar tecnologia em saúde exige ler evidência, não apenas folhetos do fabricante.
     </div>
   </div>
 </section>
@@ -552,7 +561,7 @@
     <div class="two-col" style="margin-top:40px;">
       <div>
         <h3 style="font-size:1.3rem;">Quanto custa manter um da Vinci funcionando?</h3>
-        <p>No Brasil, o contrato de manutenção anual de um sistema Xi gira em torno de <strong>R$ 800 mil a R$ 1,5 milhão</strong> — obrigatório e, na maioria dos casos, atrelado ao próprio fabricante, o que gera dependência tecnológica (o chamado <em>vendor lock-in</em>). Some-se a isso o custo dos instrumentais descartáveis, que têm um número limitado de usos por segurança e rastreabilidade.</p>
+        <p>No Brasil, o contrato de manutenção anual de um sistema Xi gira em torno de <strong>R$ 800 mil a R$ 1,5 milhão</strong> — obrigatório e, na maioria dos casos, atrelado ao próprio fabricante, o que gera dependência tecnológica (o chamado <em>vendor lock-in</em>). Some-se a isso o custo dos instrumentais descartáveis, que têm um número limitado de usos por segurança e rastreabilidade.<a href="#ref8" class="cite">[8]</a><a href="#ref11" class="cite">[11]</a></p>
       </div>
       <div class="cost-grid">
         <div class="cost-card"><div class="val">R$ 10–14 mi</div><div class="lbl">Aquisição do sistema (Xi)</div></div>
@@ -561,9 +570,10 @@
         <div class="cost-card"><div class="val">Classe III</div><div class="lbl">Classificação de risco ANVISA</div></div>
       </div>
     </div>
+    <p class="cite-line">Fontes dos valores: <a href="#ref8" class="cite">[8]</a> <a href="#ref11" class="cite">[11]</a></p>
 
     <div class="callout blue" style="margin-top:32px;">
-      <strong>Regulação tripartite no Brasil:</strong> ANVISA regula o equipamento (RDC 751/2022, Classe III — alto risco), o CFM regula a prática médica (Resolução 2.311/2022, exigindo RQE específico, mínimo de 20h em simulador e 10 cirurgias supervisionadas) e a ANS regula a cobertura pelos planos de saúde (obrigatória para prostatectomia robótica desde abril de 2026).
+      <strong>Regulação tripartite no Brasil:</strong> ANVISA regula o equipamento (RDC 751/2022, Classe III — alto risco), o CFM regula a prática médica (Resolução 2.311/2022, exigindo RQE específico, mínimo de 20h em simulador e 10 cirurgias supervisionadas) e a ANS regula a cobertura pelos planos de saúde (obrigatória para prostatectomia robótica desde abril de 2026).<a href="#ref11" class="cite">[11]</a>
     </div>
   </div>
 </section>
@@ -573,7 +583,7 @@
   <div class="wrap">
     <div class="section-label">No centro da assistência</div>
     <h2>A enfermagem perioperatória: a competência que sustenta a cirurgia robótica</h2>
-    <p class="kicker">Estudos da SOBECC (Associação Brasileira de Enfermeiros de Centro Cirúrgico) mostram que a atuação de enfermagem em cirurgia robótica se concentra principalmente nas fases pré e intraoperatória — mas se estende por todo o ciclo do cuidado.</p>
+    <p class="kicker">Estudos da SOBECC (Associação Brasileira de Enfermeiros de Centro Cirúrgico) mostram que a atuação de enfermagem em cirurgia robótica se concentra principalmente nas fases pré e intraoperatória — mas se estende por todo o ciclo do cuidado.<a href="#ref13" class="cite">[13]</a></p>
 
     <div class="two-col">
       <figure class="img-placeholder" data-img-path="img/enfermagem-preparo-robo.jpg">
@@ -586,7 +596,7 @@
         <figcaption>O draping do sistema da Vinci: uma das etapas exclusivas da enfermagem em cirurgia robótica.</figcaption>
       </figure>
       <div>
-        <p>O checklist validado pela SOBECC organiza as atribuições da equipe de enfermagem em três etapas — <strong>Sign In, Time Out e Sign Out</strong> — adaptando o protocolo de cirurgia segura da OMS especificamente para procedimentos robô-assistidos, incluindo itens exclusivos como especificação da plataforma robótica e lado da mesa em que o robô será alocado.</p>
+        <p>O checklist validado pela SOBECC organiza as atribuições da equipe de enfermagem em três etapas — <strong>Sign In, Time Out e Sign Out</strong> — adaptando o protocolo de cirurgia segura da OMS especificamente para procedimentos robô-assistidos, incluindo itens exclusivos como especificação da plataforma robótica e lado da mesa em que o robô será alocado.<a href="#ref17" class="cite">[17]</a></p>
       </div>
     </div>
 
@@ -599,6 +609,7 @@
           <li>Reserva de hemoderivados e vaga de UTI, quando indicado</li>
           <li>Ligar e testar o sistema da Vinci, conferindo cabos e componentes</li>
         </ul>
+        <p class="cite-line">Fonte: <a href="#ref16" class="cite">[16]</a></p>
       </div>
       <div class="step intra">
         <span class="phase">Intraoperatório</span>
@@ -610,6 +621,7 @@
           <li>Registro de tempos de uso das pinças robóticas (vida útil limitada)</li>
           <li>Suporte em falhas do sistema, com registro fotográfico do evento</li>
         </ul>
+        <p class="cite-line">Fontes: <a href="#ref16" class="cite">[16]</a> <a href="#ref17" class="cite">[17]</a></p>
       </div>
       <div class="step pos">
         <span class="phase">Pós-operatório</span>
@@ -620,11 +632,12 @@
           <li>Encaminhamento à recuperação anestésica ou UTI</li>
           <li>Desligamento e limpeza do sistema robótico</li>
         </ul>
+        <p class="cite-line">Fonte: <a href="#ref16" class="cite">[16]</a></p>
       </div>
     </div>
 
     <div class="callout" style="margin-top:36px;">
-      <strong>Competências emergentes:</strong> uma revisão scoping (2025) identificou quatro grupos de competências do enfermeiro perioperatório em cirurgia robótica: <em>cuidado especializado, segurança, aprendizagem profissional e gestão/liderança</em>. Isso mostra que o papel de enfermagem nesse contexto vai muito além de "auxiliar" — envolve gestão de tecnologia, protocolo e formação de equipe.
+      <strong>Competências emergentes:</strong> uma revisão scoping (2025) identificou quatro grupos de competências do enfermeiro perioperatório em cirurgia robótica: <em>cuidado especializado, segurança, aprendizagem profissional e gestão/liderança</em>. Isso mostra que o papel de enfermagem nesse contexto vai muito além de "auxiliar" — envolve gestão de tecnologia, protocolo e formação de equipe.<a href="#ref14" class="cite">[14]</a><a href="#ref15" class="cite">[15]</a>
     </div>
   </div>
 </section>
@@ -639,8 +652,8 @@
     <div class="two-col">
       <div>
         <h3 style="font-size:1.25rem;">O caso INCA: pioneirismo no SUS</h3>
-        <p>Em 2012, o Instituto Nacional de Câncer (INCA) adquiriu o primeiro da Vinci Si dedicado ao Sistema Único de Saúde, após um estudo de viabilidade de dois anos e meio conduzido com a COPPE/UFRJ. Até 2022, mais de 2.000 procedimentos robóticos haviam sido realizados pelo SUS na instituição.</p>
-        <p>Mas a pesquisa acadêmica sobre o caso (Redalyc, 2024) revela um ponto crítico: <strong>a incorporação tecnológica muitas vezes carece de critérios claros de custo-efetividade</strong>, sendo influenciada por pressão política e relação com fornecedores — um alerta para quem vai gerir tecnologia em saúde pública no futuro.</p>
+        <p>Em 2012, o Instituto Nacional de Câncer (INCA) adquiriu o primeiro da Vinci Si dedicado ao Sistema Único de Saúde, após um estudo de viabilidade de dois anos e meio conduzido com a COPPE/UFRJ. Até 2022, mais de 2.000 procedimentos robóticos haviam sido realizados pelo SUS na instituição.<a href="#ref7" class="cite">[7]</a><a href="#ref8" class="cite">[8]</a><a href="#ref11" class="cite">[11]</a></p>
+        <p>Mas a pesquisa acadêmica sobre o caso (Redalyc, 2024) revela um ponto crítico: <strong>a incorporação tecnológica muitas vezes carece de critérios claros de custo-efetividade</strong>, sendo influenciada por pressão política e relação com fornecedores — um alerta para quem vai gerir tecnologia em saúde pública no futuro.<a href="#ref7" class="cite">[7]</a></p>
       </div>
       <figure class="img-placeholder" data-img-path="img/centro-cirurgico-sus-robo.jpg">
         <img src="img/centro-cirurgico-sus-robo.jpg" alt="Centro cirúrgico com sistema da Vinci em hospital público" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
@@ -649,7 +662,7 @@
           <p class="placeholder-label">[ Coloque aqui: img/centro-cirurgico-sus-robo.jpg ]</p>
           <p class="placeholder-hint">Sala de centro cirúrgico com sistema da Vinci em hospital público brasileiro</p>
         </div>
-        <figcaption>A expansão da cirurgia robótica em hospitais filantrópicos e públicos no Nordeste do Brasil (2024-2025).</figcaption>
+        <figcaption>A expansão da cirurgia robótica em hospitais filantrópicos e públicos no Nordeste do Brasil (2024-2025).<a href="#ref12" class="cite">[12]</a></figcaption>
       </figure>
     </div>
 
@@ -657,22 +670,22 @@
       <div class="card">
         <span class="icon">📊</span>
         <h4>CONITEC e custo-efetividade</h4>
-        <p>Para prostatectomia radical, o CONITEC projetou economia de até R$ 52,9 milhões em 5 anos no SUS, por redução de complicações e reinternações — dado que embasou a incorporação seletiva da tecnologia.</p>
+        <p>Para prostatectomia radical, o CONITEC projetou economia de até R$ 52,9 milhões em 5 anos no SUS, por redução de complicações e reinternações — dado que embasou a incorporação seletiva da tecnologia.<a href="#ref11" class="cite">[11]</a></p>
       </div>
       <div class="card">
         <span class="icon">⚖️</span>
         <h4>Equidade e desigualdade estrutural</h4>
-        <p>Custos elevados de aquisição, manutenção e treinamento concentram a tecnologia em grandes centros urbanos, ampliando a disparidade de acesso entre regiões do Brasil — tensão direta com o ODS 10 (Redução das Desigualdades).</p>
+        <p>Custos elevados de aquisição, manutenção e treinamento concentram a tecnologia em grandes centros urbanos, ampliando a disparidade de acesso entre regiões do Brasil — tensão direta com o ODS 10 (Redução das Desigualdades).<a href="#ref10" class="cite">[10]</a></p>
       </div>
       <div class="card">
         <span class="icon">🏥</span>
         <h4>Modelos alternativos de financiamento</h4>
-        <p>Hospitais filantrópicos (como o Napoleão Laureano, na Paraíba) vêm destinando parte majoritária das cirurgias robóticas a pacientes SUS via convênios e doações — um caminho paralelo à compra direta pelo poder público.</p>
+        <p>Hospitais filantrópicos (como o Napoleão Laureano, na Paraíba) vêm destinando parte majoritária das cirurgias robóticas a pacientes SUS via convênios e doações — um caminho paralelo à compra direta pelo poder público.<a href="#ref12" class="cite">[12]</a></p>
       </div>
     </div>
 
     <div class="callout moss" style="margin-top:32px;">
-      <strong>Pergunta de gestão que fica no ar:</strong> se a evidência de custo-benefício ainda é "inconclusiva" para muitos procedimentos (como aponta a revisão da UFFS, 2026), qual deve ser o critério para decidir onde investir em cirurgia robótica dentro de um sistema de saúde com recursos finitos? Esse é exatamente o tipo de decisão que profissionais de engenharia clínica, gestão em saúde e enfermagem gerencial vão precisar tomar ao longo da carreira.
+      <strong>Pergunta de gestão que fica no ar:</strong> se a evidência de custo-benefício ainda é "inconclusiva" para muitos procedimentos (como aponta a revisão da UFFS, 2026<a href="#ref10" class="cite">[10]</a>), qual deve ser o critério para decidir onde investir em cirurgia robótica dentro de um sistema de saúde com recursos finitos? Esse é exatamente o tipo de decisão que profissionais de engenharia clínica, gestão em saúde e enfermagem gerencial vão precisar tomar ao longo da carreira.
     </div>
   </div>
 </section>
@@ -687,8 +700,8 @@
     <div class="two-col">
       <div>
         <h3 style="font-size:1.25rem;">O fim de duas décadas de monopólio</h3>
-        <p>Por mais de 20 anos, o da Vinci foi a única opção de robótica para tecidos moles nos EUA. Isso mudou em dezembro de 2025: em um intervalo de 13 dias, o FDA liberou o <strong>Hugo RAS</strong> (Medtronic) e o <strong>Versius Plus</strong> (CMR Surgical) — sistemas com arquitetura modular, braços independentes e menor ocupação de sala, pensados para viabilizar robótica em hospitais menores. A Johnson & Johnson prepara o <strong>Ottava</strong> para submissão à FDA em 2026. A expectativa da literatura é que essa concorrência reduza em 30–50% os custos de aquisição e manutenção nos próximos anos.</p>
-        <p>Uma revisão sistemática (NPJ Digital Medicine, 2024, citada em Sossego Health) analisou 49 robôs cirúrgicos aprovados pela FDA entre 2015–2023: <strong>86% operam ainda no nível 1</strong> de autonomia — o cirurgião controla cada movimento, o robô apenas amplifica e estabiliza. Tarefas autônomas (nível 2, como sutura automatizada) já existem em cerca de 23% das aplicações estudadas; autonomia condicional (nível 3) segue restrita a modelos pré-clínicos e animais.</p>
+        <p>Por mais de 20 anos, o da Vinci foi a única opção de robótica para tecidos moles nos EUA. Isso mudou em dezembro de 2025: em um intervalo de 13 dias, o FDA liberou o <strong>Hugo RAS</strong> (Medtronic) e o <strong>Versius Plus</strong> (CMR Surgical) — sistemas com arquitetura modular, braços independentes e menor ocupação de sala, pensados para viabilizar robótica em hospitais menores. A Johnson & Johnson prepara o <strong>Ottava</strong> para submissão à FDA em 2026.<a href="#ref18" class="cite">[18]</a> A expectativa da literatura é que essa concorrência reduza em 30–50% os custos de aquisição e manutenção nos próximos anos.<a href="#ref19" class="cite">[19]</a></p>
+        <p>Uma revisão sistemática (NPJ Digital Medicine, 2024, citada em Sossego Health<a href="#ref18" class="cite">[18]</a>) analisou 49 robôs cirúrgicos aprovados pela FDA entre 2015–2023: <strong>86% operam ainda no nível 1</strong> de autonomia — o cirurgião controla cada movimento, o robô apenas amplifica e estabiliza. Tarefas autônomas (nível 2, como sutura automatizada) já existem em cerca de 23% das aplicações estudadas; autonomia condicional (nível 3) segue restrita a modelos pré-clínicos e animais.<a href="#ref19" class="cite">[19]</a></p>
       </div>
       <figure class="img-placeholder" data-img-path="img/ia-camadas-autonomia-cirurgica.png">
         <img src="img/ia-camadas-autonomia-cirurgica.png" alt="Diagrama das camadas de IA e níveis de autonomia em cirurgia robótica" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
@@ -697,7 +710,7 @@
           <p class="placeholder-label">[ Coloque aqui: img/ia-camadas-autonomia-cirurgica.png ]</p>
           <p class="placeholder-hint">Diagrama/infográfico mostrando os níveis de autonomia cirúrgica (nível 1 assistência → nível 2 automação de tarefa → nível 3 autonomia condicional) ou as 5 camadas de IA da Intuitive (dados → insights → orientação intraoperatória → destreza aumentada → autonomia supervisionada)</p>
         </div>
-        <figcaption>Da assistência à autonomia supervisionada: como a IA está sendo incorporada camada por camada, sem remover o cirurgião do controle.</figcaption>
+        <figcaption>Da assistência à autonomia supervisionada: como a IA está sendo incorporada camada por camada, sem remover o cirurgião do controle.<a href="#ref20" class="cite">[20]</a></figcaption>
       </figure>
     </div>
 
@@ -705,22 +718,22 @@
       <div class="card">
         <span class="icon">🧠</span>
         <h4>IA como "pilha de capacidades"</h4>
-        <p>Em julho de 2026, a Intuitive apresentou publicamente seu framework de IA em cinco camadas — de dados padronizados a "autonomia supervisionada" — construído sobre um conjunto de mais de 20 milhões de procedimentos da Vinci já realizados no mundo.</p>
+        <p>Em julho de 2026, a Intuitive apresentou publicamente seu framework de IA em cinco camadas — de dados padronizados a "autonomia supervisionada" — construído sobre um conjunto de mais de 20 milhões de procedimentos da Vinci já realizados no mundo.<a href="#ref20" class="cite">[20]</a></p>
       </div>
       <div class="card">
         <span class="icon">🛰️</span>
         <h4>Telecirurgia via 5G</h4>
-        <p>Redes 5G reduziram a latência a níveis clinicamente aceitáveis. Estudos de 2024–2025 já documentaram prostatectomias robóticas realizadas remotamente, a distâncias intercontinentais — e a Intuitive demonstrou telecirurgia ao vivo com Force Feedback compartilhado em julho de 2026.</p>
+        <p>Redes 5G reduziram a latência a níveis clinicamente aceitáveis. Estudos de 2024–2025 já documentaram prostatectomias robóticas realizadas remotamente, a distâncias intercontinentais — e a Intuitive demonstrou telecirurgia ao vivo com Force Feedback compartilhado em julho de 2026.<a href="#ref19" class="cite">[19]</a><a href="#ref20" class="cite">[20]</a></p>
       </div>
       <div class="card">
         <span class="icon">❤️</span>
         <h4>Novas indicações clínicas</h4>
-        <p>Em janeiro de 2026, o da Vinci 5 recebeu aprovação da FDA para procedimentos cardíacos selecionados assistidos por toracoscopia — ampliando o uso do sistema para além da urologia e da cirurgia geral, que historicamente concentravam a maior parte dos procedimentos.</p>
+        <p>Em janeiro de 2026, o da Vinci 5 recebeu aprovação da FDA para procedimentos cardíacos selecionados assistidos por toracoscopia — ampliando o uso do sistema para além da urologia e da cirurgia geral, que historicamente concentravam a maior parte dos procedimentos.<a href="#ref21" class="cite">[21]</a></p>
       </div>
     </div>
 
     <div class="callout" style="margin-top:32px;">
-      <strong>Um alerta importante para quem está aprendendo agora:</strong> nenhuma dessas novidades significa que o robô "opera sozinho". Mesmo o marco de 2022 — em que um sistema autônomo realizou anastomoses intestinais em modelos suínos com mais consistência que cirurgiões experientes — permanece em fase pré-clínica. A própria Intuitive é explícita: sua visão de "autonomia supervisionada" não é sobre remover o cirurgião, mas sobre estender sua capacidade preservando controle e responsabilidade humana. Para enfermagem, medicina e engenharia clínica, isso significa um futuro de <em>mais</em> dados, <em>mais</em> protocolos de segurança e <em>mais</em> necessidade de supervisão qualificada — não menos profissionais na sala.
+      <strong>Um alerta importante para quem está aprendendo agora:</strong> nenhuma dessas novidades significa que o robô "opera sozinho". Mesmo o marco de 2022 — em que um sistema autônomo realizou anastomoses intestinais em modelos suínos com mais consistência que cirurgiões experientes — permanece em fase pré-clínica.<a href="#ref19" class="cite">[19]</a> A própria Intuitive é explícita: sua visão de "autonomia supervisionada" não é sobre remover o cirurgião, mas sobre estender sua capacidade preservando controle e responsabilidade humana.<a href="#ref20" class="cite">[20]</a> Para enfermagem, medicina e engenharia clínica, isso significa um futuro de <em>mais</em> dados, <em>mais</em> protocolos de segurança e <em>mais</em> necessidade de supervisão qualificada — não menos profissionais na sala.
     </div>
   </div>
 </section>
@@ -770,27 +783,27 @@
     <div class="section-label">Fontes consultadas e revisadas</div>
     <h2 style="font-size:1.6rem;">Referências</h2>
     <ol class="ref-list">
-      <li>Intuitive Surgical. <em>Company History</em>. Disponível em: <a href="https://www.intuitive.com/en-us/about-us/company/history" target="_blank">intuitive.com/en-us/about-us/company/history</a>.</li>
-      <li>Intuitive Surgical. <em>The evolution of da Vinci systems</em>. Disponível em: <a href="https://www.intuitive.com/en-gb/healthcare-professionals/surgeons/urology/the-evolution-of-da-vinci-systems" target="_blank">intuitive.com/en-gb — evolution of da Vinci systems</a>.</li>
-      <li>Intuitive Surgical. <em>Da Vinci Xi Robotic Surgical System</em>. Disponível em: <a href="https://www.intuitive.com/en-us/products-and-services/da-vinci/xi" target="_blank">intuitive.com/en-us/products-and-services/da-vinci/xi</a>.</li>
-      <li>Head & Neck Robotic Surgery. <em>da Vinci Robotic Surgery System — generations overview</em>. Disponível em: <a href="https://headneckroboticsurgery.com/robotic-surgery-system/" target="_blank">headneckroboticsurgery.com/robotic-surgery-system</a>.</li>
-      <li>Head & Neck Robotic Surgery. <em>Overview of da Vinci SP: Milestones and Achievements</em>. Disponível em: <a href="https://headneckroboticsurgery.com/da-vinci-sp/" target="_blank">headneckroboticsurgery.com/da-vinci-sp</a>.</li>
-      <li>Aspectos técnicos essenciais em cirurgia robótica colorretal: dominando as plataformas Da Vinci Si e Xi. <em>Revista do Colégio Brasileiro de Cirurgiões</em>. Disponível em: <a href="https://www.scielo.br/j/rcbc/a/WHXvJwjmDvQ6XMCXy4VKvQQ/?lang=pt" target="_blank">scielo.br/j/rcbc</a>.</li>
-      <li>MARTINS, C. H. F. <em>A Cirurgia Robótica nas Organizações Públicas de Saúde: o caso INCA</em>. Redalyc. Disponível em: <a href="https://www.redalyc.org/journal/3515/351557812006/html/" target="_blank">redalyc.org/journal/3515/351557812006</a>.</li>
-      <li>Contrato nº 065/2022. Prestação de serviço de manutenção do Sistema de Cirurgia Robótica Da Vinci. <em>INCA — Instituto Nacional de Câncer</em>. Disponível em: <a href="https://www.inca.gov.br/contratos/contrato-no-065-2022" target="_blank">inca.gov.br/contratos/contrato-no-065-2022</a>.</li>
-      <li>Promoção de ATS pelo Ministério da Saúde — estudo randomizado de custo-efetividade da cirurgia robótica em oncologia. <em>Jornal de Assistência Farmacêutica e Farmacoeconomia</em>. Disponível em: <a href="https://ojs.jaff.org.br/ojs/index.php/jaff/article/view/851" target="_blank">ojs.jaff.org.br</a>.</li>
-      <li>Cirurgia Robótica: Análise acerca da Viabilidade Econômica e Social no Contexto Brasileiro. <em>Congresso Internacional de Políticas Públicas de Saúde — CIPPS</em>. Disponível em: <a href="https://portaleventos.uffs.edu.br/index.php/CIPPS/article/view/25759" target="_blank">portaleventos.uffs.edu.br/CIPPS/25759</a>.</li>
-      <li>Cirurgia Robótica no Brasil: 417% de Crescimento e o Papel do Engenheiro Biomédico. <em>Engenharia Biomédica</em>. Disponível em: <a href="https://engenhariabiomedica.com/artigos/cirurgia-robotica-brasil" target="_blank">engenhariabiomedica.com/artigos/cirurgia-robotica-brasil</a>.</li>
-      <li>Robôs cirúrgicos chegam ao SUS da Paraíba. <em>Polêmica Paraíba</em>. Disponível em: <a href="https://www.polemicaparaiba.com.br/saude/ciencia/avanco-na-medicina-tecnologia-de-ponta-chega-a-saude-publica-da-paraiba-e-robo-opera-no-laureano-entenda-como/" target="_blank">polemicaparaiba.com.br</a>.</li>
-      <li>Papel do enfermeiro em cirurgias robóticas no período perioperatório. <em>Revista Acadêmica Online</em>. Disponível em: <a href="https://www.revistaacademicaonline.com/index.php/rao/article/view/433" target="_blank">revistaacademicaonline.com/rao/433</a>.</li>
-      <li>A atuação da enfermagem na cirurgia robótica: um relato de experiência. <em>REVISA</em>. Disponível em: <a href="https://rdcsa.emnuvens.com.br/revista/article/view/536" target="_blank">rdcsa.emnuvens.com.br/revista/536</a>.</li>
-      <li>Competências do enfermeiro perioperatório em cirurgia robótica: uma revisão scoping. <em>Revista de Investigação & Inovação em Saúde</em>. Disponível em: <a href="https://riis.essnortecvp.pt/index.php/RIIS/article/view/454" target="_blank">riis.essnortecvp.pt/RIIS/454</a>.</li>
-      <li>Cartilha Educativa — Orientações para Enfermeiros Iniciantes em Cirurgia Robótica. <em>SOBECC / az-associa.com.br</em>. Disponível em: <a href="https://az-associa.com.br/sobecc/documentos/cod_17_cartilha_educativa_de_orientacoes_para_enfermeiros_iniciantes_em_cirurgia_robotica.pdf" target="_blank">az-associa.com.br — Cartilha SOBECC</a>.</li>
-      <li>Checklist de atribuições da equipe de enfermagem em cirurgias robóticas. <em>Revista SOBECC</em>. Disponível em: <a href="https://revista.sobecc.org.br/sobecc/article/view/933" target="_blank">revista.sobecc.org.br/sobecc/933</a>.</li>
-      <li>HANSEN, L. O. Hugo e Versius Plus: novos robôs cirúrgicos desafiam o domínio do Da Vinci. <em>Sossego Health</em>. Disponível em: <a href="https://sossego.health/robotica-em-saude/hugo-versius-plus-roboica-cirurgica-fda-2025/" target="_blank">sossego.health — Hugo e Versius Plus</a>.</li>
-      <li>GARMATZ, A. C.; SANTOS, J. R. A.; ZORTÉA, I.; BOBROWSKI, A. S. Impacto Econômico da Cirurgia Robótica e das Novas Tecnologias Operatórias. DOI: <a href="https://doi.org/10.59290/1700261295" target="_blank">10.59290/1700261295</a>.</li>
-      <li>Intuitive Surgical, Inc. Intuitive Shares Vision for an AI-Enabled Future of Healthcare. <em>GlobeNewswire</em>, 23 jul. 2026. Disponível em: <a href="https://www.globenewswire.com/news-release/2026/07/23/3332221/7637/en/Intuitive-Shares-Vision-for-an-AI-Enabled-Future-of-Healthcare.html" target="_blank">globenewswire.com — Intuitive AI Vision</a>.</li>
-      <li>HAMILTON, D. FDA aprova Da Vinci 5 para procedimentos de cirurgia cardíaca. <em>Securities.io</em>. Disponível em: <a href="https://www.securities.io/pt/intuitive-surgical-autonomous-robotics-fda/" target="_blank">securities.io/pt — Da Vinci 5 cirurgia cardíaca</a>.</li>
+      <li id="ref1">Intuitive Surgical. <em>Company History</em>. Disponível em: <a href="https://www.intuitive.com/en-us/about-us/company/history" target="_blank">intuitive.com/en-us/about-us/company/history</a>.</li>
+      <li id="ref2">Intuitive Surgical. <em>The evolution of da Vinci systems</em>. Disponível em: <a href="https://www.intuitive.com/en-gb/healthcare-professionals/surgeons/urology/the-evolution-of-da-vinci-systems" target="_blank">intuitive.com/en-gb — evolution of da Vinci systems</a>.</li>
+      <li id="ref3">Intuitive Surgical. <em>Da Vinci Xi Robotic Surgical System</em>. Disponível em: <a href="https://www.intuitive.com/en-us/products-and-services/da-vinci/xi" target="_blank">intuitive.com/en-us/products-and-services/da-vinci/xi</a>.</li>
+      <li id="ref4">Head & Neck Robotic Surgery. <em>da Vinci Robotic Surgery System — generations overview</em>. Disponível em: <a href="https://headneckroboticsurgery.com/robotic-surgery-system/" target="_blank">headneckroboticsurgery.com/robotic-surgery-system</a>.</li>
+      <li id="ref5">Head & Neck Robotic Surgery. <em>Overview of da Vinci SP: Milestones and Achievements</em>. Disponível em: <a href="https://headneckroboticsurgery.com/da-vinci-sp/" target="_blank">headneckroboticsurgery.com/da-vinci-sp</a>.</li>
+      <li id="ref6">Aspectos técnicos essenciais em cirurgia robótica colorretal: dominando as plataformas Da Vinci Si e Xi. <em>Revista do Colégio Brasileiro de Cirurgiões</em>. Disponível em: <a href="https://www.scielo.br/j/rcbc/a/WHXvJwjmDvQ6XMCXy4VKvQQ/?lang=pt" target="_blank">scielo.br/j/rcbc</a>.</li>
+      <li id="ref7">MARTINS, C. H. F. <em>A Cirurgia Robótica nas Organizações Públicas de Saúde: o caso INCA</em>. Redalyc. Disponível em: <a href="https://www.redalyc.org/journal/3515/351557812006/html/" target="_blank">redalyc.org/journal/3515/351557812006</a>.</li>
+      <li id="ref8">Contrato nº 065/2022. Prestação de serviço de manutenção do Sistema de Cirurgia Robótica Da Vinci. <em>INCA — Instituto Nacional de Câncer</em>. Disponível em: <a href="https://www.inca.gov.br/contratos/contrato-no-065-2022" target="_blank">inca.gov.br/contratos/contrato-no-065-2022</a>.</li>
+      <li id="ref9">Promoção de ATS pelo Ministério da Saúde — estudo randomizado de custo-efetividade da cirurgia robótica em oncologia. <em>Jornal de Assistência Farmacêutica e Farmacoeconomia</em>. Disponível em: <a href="https://ojs.jaff.org.br/ojs/index.php/jaff/article/view/851" target="_blank">ojs.jaff.org.br</a>.</li>
+      <li id="ref10">Cirurgia Robótica: Análise acerca da Viabilidade Econômica e Social no Contexto Brasileiro. <em>Congresso Internacional de Políticas Públicas de Saúde — CIPPS</em>. Disponível em: <a href="https://portaleventos.uffs.edu.br/index.php/CIPPS/article/view/25759" target="_blank">portaleventos.uffs.edu.br/CIPPS/25759</a>.</li>
+      <li id="ref11">Cirurgia Robótica no Brasil: 417% de Crescimento e o Papel do Engenheiro Biomédico. <em>Engenharia Biomédica</em>. Disponível em: <a href="https://engenhariabiomedica.com/artigos/cirurgia-robotica-brasil" target="_blank">engenhariabiomedica.com/artigos/cirurgia-robotica-brasil</a>.</li>
+      <li id="ref12">Robôs cirúrgicos chegam ao SUS da Paraíba. <em>Polêmica Paraíba</em>. Disponível em: <a href="https://www.polemicaparaiba.com.br/saude/ciencia/avanco-na-medicina-tecnologia-de-ponta-chega-a-saude-publica-da-paraiba-e-robo-opera-no-laureano-entenda-como/" target="_blank">polemicaparaiba.com.br</a>.</li>
+      <li id="ref13">Papel do enfermeiro em cirurgias robóticas no período perioperatório. <em>Revista Acadêmica Online</em>. Disponível em: <a href="https://www.revistaacademicaonline.com/index.php/rao/article/view/433" target="_blank">revistaacademicaonline.com/rao/433</a>.</li>
+      <li id="ref14">A atuação da enfermagem na cirurgia robótica: um relato de experiência. <em>REVISA</em>. Disponível em: <a href="https://rdcsa.emnuvens.com.br/revista/article/view/536" target="_blank">rdcsa.emnuvens.com.br/revista/536</a>.</li>
+      <li id="ref15">Competências do enfermeiro perioperatório em cirurgia robótica: uma revisão scoping. <em>Revista de Investigação & Inovação em Saúde</em>. Disponível em: <a href="https://riis.essnortecvp.pt/index.php/RIIS/article/view/454" target="_blank">riis.essnortecvp.pt/RIIS/454</a>.</li>
+      <li id="ref16">Cartilha Educativa — Orientações para Enfermeiros Iniciantes em Cirurgia Robótica. <em>SOBECC / az-associa.com.br</em>. Disponível em: <a href="https://az-associa.com.br/sobecc/documentos/cod_17_cartilha_educativa_de_orientacoes_para_enfermeiros_iniciantes_em_cirurgia_robotica.pdf" target="_blank">az-associa.com.br — Cartilha SOBECC</a>.</li>
+      <li id="ref17">Checklist de atribuições da equipe de enfermagem em cirurgias robóticas. <em>Revista SOBECC</em>. Disponível em: <a href="https://revista.sobecc.org.br/sobecc/article/view/933" target="_blank">revista.sobecc.org.br/sobecc/933</a>.</li>
+      <li id="ref18">HANSEN, L. O. Hugo e Versius Plus: novos robôs cirúrgicos desafiam o domínio do Da Vinci. <em>Sossego Health</em>. Disponível em: <a href="https://sossego.health/robotica-em-saude/hugo-versius-plus-roboica-cirurgica-fda-2025/" target="_blank">sossego.health — Hugo e Versius Plus</a>.</li>
+      <li id="ref19">GARMATZ, A. C.; SANTOS, J. R. A.; ZORTÉA, I.; BOBROWSKI, A. S. Impacto Econômico da Cirurgia Robótica e das Novas Tecnologias Operatórias. DOI: <a href="https://doi.org/10.59290/1700261295" target="_blank">10.59290/1700261295</a>.</li>
+      <li id="ref20">Intuitive Surgical, Inc. Intuitive Shares Vision for an AI-Enabled Future of Healthcare. <em>GlobeNewswire</em>, 23 jul. 2026. Disponível em: <a href="https://www.globenewswire.com/news-release/2026/07/23/3332221/7637/en/Intuitive-Shares-Vision-for-an-AI-Enabled-Future-of-Healthcare.html" target="_blank">globenewswire.com — Intuitive AI Vision</a>.</li>
+      <li id="ref21">HAMILTON, D. FDA aprova Da Vinci 5 para procedimentos de cirurgia cardíaca. <em>Securities.io</em>. Disponível em: <a href="https://www.securities.io/pt/intuitive-surgical-autonomous-robotics-fda/" target="_blank">securities.io/pt — Da Vinci 5 cirurgia cardíaca</a>.</li>
     </ol>
     <p style="font-size:.78rem;color:var(--ink-soft);margin-top:20px;">Todas as fontes acima foram consultadas via busca ativa na web no momento da elaboração deste material e revisadas quanto à consistência das informações apresentadas. Dados de custo em reais (R$) refletem valores reportados nas fontes citadas e podem variar por negociação, câmbio e período.</p>
   </div>
