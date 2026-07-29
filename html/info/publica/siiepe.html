@@ -1,0 +1,367 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<link rel="icon" href="data:,">
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Publicações G10 · SIIEPE | PET-Saúde UFPel</title>
+<style>
+  :root{
+    --bg:#f6f8fb; --card:#ffffff; --text:#0f172a; --muted:#5b6b82; --border:#e2e8f0;
+    --blue:#3b82c4; --blue2:#1e3a8a; --orange:#d4653b; --soft:#eff6ff;
+    --shadow:0 10px 30px rgba(15,23,42,.07); --radius:16px;
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{margin:0;font-family:system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,Cantarell,"Helvetica Neue",Arial,"Noto Sans",sans-serif;
+    background:
+      radial-gradient(900px 420px at 8% -10%, rgba(59,130,196,.10), transparent 60%),
+      radial-gradient(700px 380px at 100% 0%, rgba(212,101,59,.08), transparent 55%),
+      var(--bg);
+    color:var(--text)}
+  .wrap{max-width:1080px;margin:0 auto;padding:22px 20px 60px}
+
+  header{display:flex;gap:18px;align-items:center;background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:18px;box-shadow:var(--shadow)}
+  .hero-logo-link{display:block;line-height:0;border-radius:14px;transition:transform .1s ease}
+  .hero-logo-link:hover{transform:translateY(-1px)}
+  .hero-logo{width:150px;max-width:30vw;height:auto;border-radius:14px;display:block;box-shadow:0 8px 20px rgba(15,23,42,.10);border:1px solid var(--border)}
+  .title h1{margin:0;font-size:1.4rem;line-height:1.2;letter-spacing:-.01em}
+  .title p{margin:.45rem 0 0;color:var(--muted);font-size:.95rem}
+  .eyebrow{display:inline-flex;align-items:center;gap:7px;margin-bottom:8px;font-size:.72rem;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:var(--blue2)}
+  .eyebrow .dot{width:6px;height:6px;border-radius:50%;background:linear-gradient(90deg,var(--blue),var(--orange))}
+
+  .links{margin-top:16px;display:grid;grid-template-columns:1fr 1fr;gap:12px}
+  .link-card{display:flex;align-items:center;gap:14px;text-decoration:none;color:var(--text);background:var(--card);border:1px solid var(--border);border-radius:var(--radius);box-shadow:var(--shadow);padding:14px 16px;position:relative;overflow:hidden;transition:transform .08s ease,box-shadow .2s ease}
+  .link-card:before{content:"";position:absolute;inset:-2px -2px auto -2px;height:4px;background:linear-gradient(90deg,var(--blue),var(--orange),var(--blue2))}
+  .link-card:hover{transform:translateY(-2px);box-shadow:0 16px 34px rgba(15,23,42,.12)}
+  .link-card strong{display:block;font-size:.98rem;margin-bottom:2px}
+  .link-card span{display:block;color:var(--muted);font-size:.86rem;line-height:1.35}
+  .thumb{width:56px;height:40px;object-fit:cover;border-radius:9px;border:1px solid var(--border);flex:0 0 auto}
+  .pdf-badge{width:44px;height:52px;display:grid;place-items:end center;padding-bottom:6px;position:relative;flex:0 0 auto;border-radius:8px;background:linear-gradient(180deg,#fff,#fee2e2);border:1px solid #fecaca;color:#991b1b;font-size:.68rem;font-weight:900;letter-spacing:.03em}
+  .pdf-badge:before{content:"";position:absolute;right:-1px;top:-1px;border-top:13px solid #fecaca;border-left:13px solid transparent;border-radius:0 8px 0 3px}
+
+  .stats{margin-top:14px;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px}
+  .stat{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);box-shadow:var(--shadow);padding:16px;position:relative;overflow:hidden;cursor:pointer;transition:transform .1s ease,box-shadow .15s ease}
+  .stat:hover{transform:translateY(-2px);box-shadow:0 16px 30px rgba(15,23,42,.10)}
+  .stat:before{content:"";position:absolute;inset:-2px -2px auto -2px;height:4px;background:linear-gradient(90deg,var(--blue),var(--orange),var(--blue2))}
+  .stat b{display:block;font-size:1.7rem;color:var(--blue2);line-height:1}
+  .stat span{color:var(--muted);font-size:.84rem}
+  .stat small{display:block;margin-top:6px;font-size:.72rem;color:var(--orange);font-weight:700}
+
+  .detail{margin-top:12px;background:var(--card);border:1px solid var(--border);border-radius:var(--radius);box-shadow:var(--shadow);padding:16px 18px;display:none}
+  .detail.open{display:block}
+  .detail h3{margin:0 0 10px;font-size:.85rem;text-transform:uppercase;letter-spacing:.05em;color:var(--blue2)}
+  .plist{display:flex;flex-wrap:wrap;gap:8px}
+  .pchip{display:inline-flex;align-items:center;gap:6px;border:1px solid var(--border);background:#f8fafc;border-radius:999px;padding:6px 12px;font-size:.85rem;cursor:pointer;transition:all .12s ease}
+  .pchip:hover{border-color:rgba(59,130,196,.5);background:rgba(59,130,196,.08)}
+  .pchip b{color:var(--blue2)}
+  .taglist{display:flex;flex-wrap:wrap;gap:8px}
+  .tagchip{display:inline-flex;align-items:center;gap:6px;border-radius:999px;padding:6px 12px;font-size:.85rem;font-weight:700;background:#dbe8fb;color:#1f3b63}
+  .tagchip b{font-weight:900}
+
+  .panel{margin-top:16px;background:var(--card);border:1px solid var(--border);border-radius:var(--radius);box-shadow:var(--shadow);padding:18px;position:relative;overflow:hidden}
+  .panel:before{content:"";position:absolute;inset:-2px -2px auto -2px;height:4px;background:linear-gradient(90deg,var(--blue),var(--orange),var(--blue2))}
+  .panel h2{margin:0 0 5px;font-size:1.08rem}
+  .panel > p.hint{margin:0 0 14px;color:var(--muted);font-size:.9rem}
+
+  .searchbox{position:relative}
+  .searchbox input{width:100%;border:1.5px solid var(--border);border-radius:14px;background:#fff;color:var(--text);padding:14px 44px 14px 16px;font:inherit;font-size:1rem}
+  .searchbox input:focus{outline:none;border-color:rgba(59,130,196,.55);box-shadow:0 0 0 4px rgba(59,130,196,.12)}
+  .searchbox .clearx{position:absolute;right:8px;top:50%;transform:translateY(-50%);width:30px;height:30px;border-radius:50%;border:none;background:#eef2f8;color:var(--muted);cursor:pointer;font-size:.9rem;display:none}
+  .quicklist{margin-top:10px;display:flex;flex-wrap:wrap;gap:7px}
+  .quicklist button{border:1px solid var(--border);background:#f8fafc;border-radius:999px;padding:5px 12px;font-size:.78rem;color:var(--muted);cursor:pointer;font-weight:600}
+  .quicklist button:hover{border-color:rgba(59,130,196,.5);color:var(--blue2)}
+  .quicklabel{margin-top:12px;font-size:.7rem;font-weight:800;text-transform:uppercase;letter-spacing:.06em;color:var(--muted)}
+  .quicklist.tipo button{background:#dbe8fb;border-color:#c7dafc;color:#1f3b63;font-weight:700}
+  .quicklist.tipo button:hover{border-color:var(--blue);background:#cfe1fb}
+
+  .profile{margin-top:16px;border-radius:14px;padding:16px 18px;background:linear-gradient(135deg,#eff6ff 0%,#fdf4ef 100%);border:1px solid rgba(59,130,196,.25);display:none}
+  .profile.open{display:block}
+  .profile h3{margin:0 0 12px;font-size:1.05rem;color:var(--blue2);display:flex;align-items:center;gap:8px}
+  .profile-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-bottom:6px}
+  .pf-stat{background:#fff;border:1px solid var(--border);border-radius:10px;padding:10px 12px;text-align:center}
+  .pf-stat b{display:block;font-size:1.3rem;color:var(--orange)}
+  .pf-stat span{font-size:.72rem;color:var(--muted);text-transform:uppercase;letter-spacing:.04em;font-weight:700}
+  .pf-section{margin-top:12px}
+  .pf-section h4{margin:0 0 6px;font-size:.76rem;text-transform:uppercase;letter-spacing:.05em;color:#7c2d12}
+  .pf-empty{color:var(--muted);font-size:.85rem;font-style:italic}
+  .pf-art{display:flex;gap:10px;align-items:flex-start;padding:6px 0;font-size:.88rem}
+  .pf-art .n{flex:0 0 auto;width:24px;height:24px;border-radius:7px;background:rgba(59,130,196,.14);color:var(--blue2);font-weight:800;font-size:.72rem;display:grid;place-items:center}
+
+  #count{margin-top:14px;color:var(--muted);font-size:.87rem}
+  .cards{margin-top:12px;display:grid;grid-template-columns:1fr;gap:12px}
+  .pub{background:var(--card);border:1px solid var(--border);border-radius:14px;box-shadow:var(--shadow);padding:15px 17px;position:relative;overflow:hidden;display:grid;grid-template-columns:auto 1fr;gap:14px}
+  .pub .n{width:34px;height:34px;border-radius:10px;display:grid;place-items:center;background:rgba(59,130,196,.12);border:1px solid rgba(59,130,196,.25);color:var(--blue2);font-weight:900;font-size:.85rem;flex:0 0 auto}
+  .pub h3{margin:0 0 8px;font-size:1rem;line-height:1.35}
+  .pub .row{display:flex;flex-wrap:wrap;gap:6px;align-items:center;font-size:.82rem}
+  .pub .row + .row{margin-top:7px}
+  .k{color:var(--muted);font-weight:700;font-size:.72rem;text-transform:uppercase;letter-spacing:.04em;margin-right:2px}
+  .chip{display:inline-flex;border:1px solid var(--border);background:#fff;border-radius:999px;padding:3px 10px;font-size:.8rem;color:#334155}
+  .chip.resp{background:rgba(212,101,59,.10);border-color:rgba(212,101,59,.25);color:#7c2d12;font-weight:700}
+  .chip.apres{background:rgba(59,130,196,.10);border-color:rgba(59,130,196,.3);color:#1e3a8a;font-weight:700}
+  .chip.tipo{background:#dbe8fb;border-color:#c7dafc;color:#1f3b63;font-weight:800}
+  .chip.hit{outline:2px solid var(--orange);outline-offset:1px}
+
+  footer{margin:26px 0 6px;color:var(--muted);font-size:.84rem;text-align:center}
+
+  @media (max-width:760px){
+    .links,.profile-grid{grid-template-columns:1fr}
+    .stats{grid-template-columns:repeat(2,1fr)}
+  }
+  @media (max-width:520px){
+    header{align-items:flex-start}
+    .hero-logo{width:100px}
+    .title h1{font-size:1.15rem}
+    .stats{grid-template-columns:1fr}
+    .pub{grid-template-columns:1fr}
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header>
+    <a class="hero-logo-link" href="https://wp.ufpel.edu.br/siiepe/" target="_blank" rel="noopener" aria-label="Abrir site da SIIEPE UFPel">
+      <img class="hero-logo" src="siiepe.jpg" alt="12ª SIIEPE UFPel 2026">
+    </a>
+    <div class="title">
+      <div class="eyebrow"><span class="dot"></span> PET-Saúde UFPel · G10</div>
+      <h1>Publicações para o CIEP / SIIEPE</h1>
+      <p>Telemonitoramento de Feridas Crônicas — panorama e consulta rápida dos trabalhos que serão publicados.</p>
+    </div>
+  </header>
+
+  <section class="links" aria-label="Links em destaque">
+    <a class="link-card" href="https://wp.ufpel.edu.br/siiepe/" target="_blank" rel="noopener">
+      <img class="thumb" src="siiepe.jpg" alt="12ª SIIEPE UFPel 2026">
+      <div>
+        <strong>SIIEPE UFPel</strong>
+        <span>Acesse a página oficial da Semana Integrada de Inovação, Ensino, Pesquisa e Extensão.</span>
+      </div>
+    </a>
+    <a class="link-card" href="resumo.pdf" target="_blank" rel="noopener">
+      <span class="pdf-badge" aria-hidden="true">PDF</span>
+      <div>
+        <strong>Exemplo de estrutura &amp; organização de resumo</strong>
+        <span>Modelo repassado pela profa. Adrize.</span>
+      </div>
+    </a>
+  </section>
+
+  <!-- ESTATÍSTICAS -->
+  <section class="stats" aria-label="Estatísticas gerais">
+    <div class="stat" id="stat-pub"><b id="n-pub">–</b><span>publicações</span><small>ver lista completa ↓</small></div>
+    <div class="stat" id="stat-resp"><b id="n-resp">–</b><span>responsáveis</span><small>ver quem são ↓</small></div>
+    <div class="stat" id="stat-au"><b id="n-au">–</b><span>autores citados</span><small>ver participação ↓</small></div>
+    <div class="stat" id="stat-tp"><b id="n-tp">–</b><span>tipos de evento</span><small>ver distribuição ↓</small></div>
+  </section>
+
+  <div class="detail" id="detail-pub">
+    <h3>Todas as publicações (15)</h3>
+    <div class="plist" id="list-pub"></div>
+  </div>
+  <div class="detail" id="detail-resp">
+    <h3>Responsáveis por publicações</h3>
+    <div class="plist" id="list-resp"></div>
+  </div>
+  <div class="detail" id="detail-au">
+    <h3>Autores citados e nº de artigos em que participam</h3>
+    <div class="plist" id="list-au"></div>
+  </div>
+  <div class="detail" id="detail-tp">
+    <h3>Tipo de evento / congresso (CIEP-SIIEPE)</h3>
+    <p style="margin:-4px 0 10px;color:var(--muted);font-size:.85rem">Cada publicação está vinculada a um tipo específico de congresso/evento dentro do CIEP-SIIEPE, conforme informado na planilha.</p>
+    <div class="taglist" id="list-tp"></div>
+  </div>
+
+  <!-- CONSULTA -->
+  <section class="panel">
+    <h2>🔍 Consulta rápida</h2>
+    <p class="hint">Digite um nome para ver em quais artigos ele aparece como <strong>autor(a)</strong>, <strong>apresentador(a)</strong> ou <strong>responsável</strong> — ou digite uma palavra do título para filtrar os trabalhos.</p>
+    <div class="searchbox">
+      <input id="q" type="search" placeholder="Ex.: Danusa, telemonitoramento, feridas..." autocomplete="off">
+      <button class="clearx" id="clearx" aria-label="Limpar busca">✕</button>
+    </div>
+    <div class="quicklabel">Autores</div>
+    <div class="quicklist" id="quicklist"></div>
+    <div class="quicklabel">Tipo de evento</div>
+    <div class="quicklist tipo" id="quicklist-tipo"></div>
+
+    <div class="profile" id="profile">
+      <h3 id="profile-name">—</h3>
+      <div class="profile-grid">
+        <div class="pf-stat"><b id="pf-au-n">0</b><span>como autor(a)</span></div>
+        <div class="pf-stat"><b id="pf-ap-n">0</b><span>como apresentador(a)</span></div>
+        <div class="pf-stat"><b id="pf-re-n">0</b><span>como responsável</span></div>
+      </div>
+      <div class="pf-section"><h4>Autor(a) em</h4><div id="pf-au"></div></div>
+      <div class="pf-section"><h4>Apresenta</h4><div id="pf-ap"></div></div>
+      <div class="pf-section"><h4>Responsável por</h4><div id="pf-re"></div></div>
+    </div>
+
+    <div id="count"></div>
+    <main class="cards" id="cards"></main>
+  </section>
+
+  <footer>PET-Saúde UFPel · G10 Telemonitoramento de Feridas Crônicas · Publicações CIEP/SIIEPE</footer>
+</div>
+
+<script>
+// ── DADOS (fonte única: planilha de publicações a serem submetidas) ──
+const ART = [
+  {id:1, tipo:"CIC", resp:"Laura", apres:"Laura", titulo:"Telemonitoramento remoto no manejo de feridas crônicas na atenção básica: uma revisão integrativa", au:["Laura","Bruna","Letícia","Patrícia","Thaislan","Adrize"]},
+  {id:2, tipo:"CEC", resp:"Bruna", apres:"Bruna", titulo:"Identificação de sinais de alarme para infecção em feridas crônicas: revisão literária", au:["Bruna","Laura","Lilian","Alejandro","Gabriela","Viviane"]},
+  {id:3, tipo:"Revisão / CIC", resp:"Letícia", apres:"Letícia", titulo:"Principais tipos de feridas crônicas", au:["Letícia","Patrícia","Thaislan","Lilian","Gabriela","Adrize"]},
+  {id:4, tipo:"CEC", resp:"Patrícia", apres:"Patrícia", titulo:"Papel do enfermeiro no cuidado com lesões crônicas em um ambulatório de feridas no Sul do Brasil: relato de experiência", au:["Patrícia","Letícia","Thaislan","Lilian","Adrize"]},
+  {id:5, tipo:"CIC", resp:"Patrícia", apres:"Patrícia", titulo:"A utilização de inteligência artificial no cuidado de lesões crônicas: revisão literária", au:["Patrícia","Danusa","Thallya","Lilian","Adrize","Alejandro"]},
+  {id:6, tipo:"CEG via PET", resp:"Patrícia", apres:"Patrícia", titulo:"Diferença no tratamento de pacientes com rede de apoio que auxilia no cuidado: relato de experiência", au:["Patrícia","Danusa","Thallya","Alejandro","Gabriela","Viviane"]},
+  {id:7, tipo:"CEC", resp:"Giovana", apres:"Yanka", titulo:"Feridas e cicatrização: resumo de conteúdo informativo no Instagram", au:["Giovana","Patrícia","Yanka","Lilian","Viviane","Alejandro"]},
+  {id:8, tipo:"CEG", resp:"Giovana", apres:"Lucas", titulo:"A atualização dos acadêmicos de enfermagem e medicina no telemonitoramento/telematriciamento de feridas", au:["Giovana","Lucas","Yanka","Adrize","Gabriela","Viviane"]},
+  {id:9, tipo:"CEC", resp:"Leonardo", apres:"Leonardo", titulo:"Impacto das publicações digitais em saúde: estudo de alcance em página do Instagram", au:["Leonardo","Danusa","Alejandro","Gabriela","Lilian","Viviane"]},
+  {id:10, tipo:"CEG", resp:"Letícia", apres:"Letícia", titulo:"PET-Saúde e formação acadêmica: contribuições da vivência prática em um centro especializado no cuidado de feridas crônicas", au:["Letícia","Patrícia","Thaislan","Adrize","Lilian","Viviane"]},
+  {id:11, tipo:"CEC", resp:"Danusa", apres:"Danusa", titulo:"A Engenharia de Produção no PET-Saúde", au:["Danusa","Thallya","Patrícia","Adrize","Alejandro"]},
+  {id:12, tipo:"CEG", resp:"Danusa", apres:"Danusa", titulo:"A Integração entre Diferentes Cursos no PET-Saúde", au:["Danusa","Thallya","Patrícia","Adrize","Leonardo"]},
+  {id:13, tipo:"CIC", resp:"Giovana", apres:"Giovana", titulo:"Telemonitoramento como estratégia para o acompanhamento de feridas crônicas: uma revisão do escopo", au:["Giovana","Letícia","Adrize","Lilian","Alejandro"]},
+  {id:14, tipo:"CEC", resp:"Thallya", apres:"Lyah", titulo:"Organização e controle de estoque no telemonitoramento de feridas crônicas: uma ação extensionista no PET-Saúde", au:["Thallya","Danusa","Patrícia","Lucas","Lilian","Alejandro"]},
+  {id:15, tipo:"CEC", resp:"Thaislan", apres:"Thaislan", titulo:"Tecnologias para o tratamento de feridas e a tomada de decisão clínica do enfermeiro: relato de experiência", au:["Thaislan","Lilian","Alejandro"]}
+];
+
+function norm(s){ return (s||"").toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g,""); }
+
+// ── construir estruturas derivadas ──
+const respSet = new Set(ART.map(a=>a.resp));
+const respArts = {}; ART.forEach(a=>{ (respArts[a.resp] = respArts[a.resp]||[]).push(a); });
+
+const auCount = {}; ART.forEach(a=> a.au.forEach(n=> auCount[n] = (auCount[n]||0)+1 ));
+const auNames = Object.keys(auCount).sort((a,b)=> auCount[b]-auCount[a] || a.localeCompare(b,'pt'));
+
+const tipoCount = {}; ART.forEach(a=> tipoCount[a.tipo] = (tipoCount[a.tipo]||0)+1 );
+
+// pessoa -> {au:[...], apres:[...], resp:[...]}
+const allPeople = new Set([...auNames, ...respSet, ...ART.map(a=>a.apres)]);
+function personProfile(name){
+  const nm = norm(name);
+  return {
+    au: ART.filter(a=> a.au.some(x=>norm(x)===nm)),
+    apres: ART.filter(a=> norm(a.apres)===nm),
+    resp: ART.filter(a=> norm(a.resp)===nm)
+  };
+}
+
+// ── preencher números dos cartões de estatística ──
+document.getElementById('n-pub').textContent = ART.length;
+document.getElementById('n-resp').textContent = respSet.size;
+document.getElementById('n-au').textContent = auNames.length;
+document.getElementById('n-tp').textContent = Object.keys(tipoCount).length;
+
+// ── listas expansíveis dos stats ──
+function toggleDetail(id){
+  document.querySelectorAll('.detail').forEach(d=>{ if(d.id!==id) d.classList.remove('open'); });
+  document.getElementById(id).classList.toggle('open');
+}
+document.getElementById('stat-pub').addEventListener('click', ()=>toggleDetail('detail-pub'));
+document.getElementById('stat-resp').addEventListener('click', ()=>toggleDetail('detail-resp'));
+document.getElementById('stat-au').addEventListener('click', ()=>toggleDetail('detail-au'));
+document.getElementById('stat-tp').addEventListener('click', ()=>toggleDetail('detail-tp'));
+
+// lista de publicações
+document.getElementById('list-pub').innerHTML = ART.map(a=>
+  `<span class="pchip" onclick="runSearch('${a.titulo.replace(/'/g,"\\'")}')"><b>${a.id}.</b> ${a.titulo} <span class="tagchip" title="Tipo de evento" style="margin-left:4px;padding:2px 8px;font-size:.72rem">${a.tipo}</span></span>`
+).join('');
+
+// lista de responsáveis
+document.getElementById('list-resp').innerHTML = [...respSet].sort((a,b)=>a.localeCompare(b,'pt')).map(n=>
+  `<span class="pchip" onclick="runSearch('${n}')">${n} <b>(${respArts[n].length})</b></span>`
+).join('');
+
+// lista de autores + contagem
+document.getElementById('list-au').innerHTML = auNames.map(n=>
+  `<span class="pchip" onclick="runSearch('${n}')">${n} <b>(${auCount[n]})</b></span>`
+).join('');
+
+// modalidades
+document.getElementById('list-tp').innerHTML = Object.keys(tipoCount).sort().map(t=>
+  `<span class="tagchip" style="cursor:pointer" onclick="runSearch('${t}')">${t} <b>${tipoCount[t]}</b></span>`
+).join('');
+
+// chips rápidos acima da busca (todos os autores)
+document.getElementById('quicklist').innerHTML = auNames.map(n=>
+  `<button onclick="runSearch('${n}')">${n} <span style="opacity:.55">(${auCount[n]})</span></button>`
+).join('');
+
+// chips rápidos de tipo de evento
+document.getElementById('quicklist-tipo').innerHTML = Object.keys(tipoCount).sort().map(t=>
+  `<button onclick="runSearch('${t}')">${t} <span style="opacity:.6">(${tipoCount[t]})</span></button>`
+).join('');
+
+// ── busca / renderização ──
+const q = document.getElementById('q');
+const clearx = document.getElementById('clearx');
+const cardsBox = document.getElementById('cards');
+const countEl = document.getElementById('count');
+const profileBox = document.getElementById('profile');
+
+function highlightChip(cls, value, term){
+  const hit = term && norm(value).includes(term);
+  return `<span class="chip ${cls}${hit?' hit':''}">${value}</span>`;
+}
+
+function renderCards(term){
+  const nTerm = norm(term);
+  let visible = 0;
+  const html = ART.map(a=>{
+    const hay = norm([a.titulo, a.tipo, a.resp, a.apres, ...a.au].join(' '));
+    if(nTerm && !hay.includes(nTerm)) return '';
+    visible++;
+    return `<article class="pub">
+      <div class="n">${a.id}</div>
+      <div>
+        <h3>${a.titulo}</h3>
+        <div class="row"><span class="k">Tipo de evento</span> ${highlightChip('tipo', a.tipo, nTerm)}</div>
+        <div class="row"><span class="k">Responsável</span> ${highlightChip('resp', a.resp, nTerm)}
+          <span class="k" style="margin-left:8px">Apresenta</span> ${highlightChip('apres', a.apres, nTerm)}</div>
+        <div class="row"><span class="k">Autores</span> ${a.au.map(n=>highlightChip('', n, nTerm)).join(' ')}</div>
+      </div>
+    </article>`;
+  }).join('');
+  cardsBox.innerHTML = html;
+  countEl.textContent = visible + ' de ' + ART.length + ' publicações exibidas';
+}
+
+function renderProfile(term){
+  const match = [...allPeople].find(n => norm(n) === norm(term));
+  if(!match){ profileBox.classList.remove('open'); return; }
+  const p = personProfile(match);
+  document.getElementById('profile-name').textContent = '👤 ' + match;
+  document.getElementById('pf-au-n').textContent = p.au.length;
+  document.getElementById('pf-ap-n').textContent = p.apres.length;
+  document.getElementById('pf-re-n').textContent = p.resp.length;
+  function list(arr){
+    if(!arr.length) return '<div class="pf-empty">Nenhum artigo.</div>';
+    return arr.map(a=>`<div class="pf-art"><span class="n">${a.id}</span><span>${a.titulo} <span class="tagchip" title="Tipo de evento" style="font-size:.68rem;padding:1px 7px;margin-left:4px">${a.tipo}</span></span></div>`).join('');
+  }
+  document.getElementById('pf-au').innerHTML = list(p.au);
+  document.getElementById('pf-ap').innerHTML = list(p.apres);
+  document.getElementById('pf-re').innerHTML = list(p.resp);
+  profileBox.classList.add('open');
+}
+
+function applySearch(){
+  const term = q.value.trim();
+  clearx.style.display = term ? 'block' : 'none';
+  renderProfile(term);
+  renderCards(term);
+}
+window.runSearch = function(term){
+  q.value = term;
+  applySearch();
+  document.querySelector('.panel').scrollIntoView({behavior:'smooth', block:'start'});
+};
+
+q.addEventListener('input', applySearch);
+clearx.addEventListener('click', ()=>{ q.value=''; applySearch(); q.focus(); });
+
+applySearch();
+</script>
+</body>
+</html>
