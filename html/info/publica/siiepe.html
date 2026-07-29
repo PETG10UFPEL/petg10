@@ -74,6 +74,8 @@
   .quicklabel{margin-top:12px;font-size:.7rem;font-weight:800;text-transform:uppercase;letter-spacing:.06em;color:var(--muted)}
   .quicklist.tipo button{background:#dbe8fb;border-color:#c7dafc;color:#1f3b63;font-weight:700}
   .quicklist.tipo button:hover{border-color:var(--blue);background:#cfe1fb}
+  .quicklist.apres button{background:rgba(212,101,59,.10);border-color:rgba(212,101,59,.28);color:#7c2d12;font-weight:700}
+  .quicklist.apres button:hover{border-color:var(--orange);background:rgba(212,101,59,.18)}
 
   .profile{margin-top:16px;border-radius:14px;padding:16px 18px;background:linear-gradient(135deg,#eff6ff 0%,#fdf4ef 100%);border:1px solid rgba(59,130,196,.25);display:none}
   .profile.open{display:block}
@@ -182,6 +184,8 @@
       <input id="q" type="search" placeholder="Ex.: Danusa, telemonitoramento, feridas..." autocomplete="off">
       <button class="clearx" id="clearx" aria-label="Limpar busca">✕</button>
     </div>
+    <div class="quicklabel">Apresentadores</div>
+    <div class="quicklist apres" id="quicklist-apres"></div>
     <div class="quicklabel">Autores</div>
     <div class="quicklist" id="quicklist"></div>
     <div class="quicklabel">Tipo de evento</div>
@@ -235,6 +239,9 @@ const respArts = {}; ART.forEach(a=>{ (respArts[a.resp] = respArts[a.resp]||[]).
 const auCount = {}; ART.forEach(a=> a.au.forEach(n=> auCount[n] = (auCount[n]||0)+1 ));
 const auNames = Object.keys(auCount).sort((a,b)=> auCount[b]-auCount[a] || a.localeCompare(b,'pt'));
 
+const apresCount = {}; ART.forEach(a=> apresCount[a.apres] = (apresCount[a.apres]||0)+1 );
+const apresNames = Object.keys(apresCount).sort((a,b)=> apresCount[b]-apresCount[a] || a.localeCompare(b,'pt'));
+
 const tipoCount = {}; ART.forEach(a=> tipoCount[a.tipo] = (tipoCount[a.tipo]||0)+1 );
 
 // pessoa -> {au:[...], apres:[...], resp:[...]}
@@ -282,6 +289,11 @@ document.getElementById('list-au').innerHTML = auNames.map(n=>
 // modalidades
 document.getElementById('list-tp').innerHTML = Object.keys(tipoCount).sort().map(t=>
   `<span class="tagchip" style="cursor:pointer" onclick="runSearch('${t}')">${t} <b>${tipoCount[t]}</b></span>`
+).join('');
+
+// chips rápidos acima da busca (todos os apresentadores)
+document.getElementById('quicklist-apres').innerHTML = apresNames.map(n=>
+  `<button onclick="runSearch('${n}')">${n} <span style="opacity:.6">(${apresCount[n]})</span></button>`
 ).join('');
 
 // chips rápidos acima da busca (todos os autores)
