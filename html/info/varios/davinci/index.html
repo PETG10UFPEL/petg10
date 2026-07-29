@@ -1,0 +1,1020 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Da Vinci: Engenharia, Enfermagem e o Futuro da Cirurgia</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,400;8..60,600;8..60,700&family=Playfair+Display:wght@600;700;800&family=Source+Sans+3:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#FAFAF8;
+    --bg-alt:#F1F5F8;
+    --ink:#1E2A32;
+    --ink-soft:#4B5A63;
+    --blue:#2D5F8A;
+    --blue-deep:#1D3E5C;
+    --terracota:#C25B3A;
+    --moss:#3D6B4F;
+    --gold:#B8863B;
+    --card-border:#DCE3E8;
+    --dark-panel:#16232D;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    background:var(--bg);
+    color:var(--ink);
+    font-family:'Source Sans 3', sans-serif;
+    line-height:1.65;
+    font-size:17px;
+  }
+  h1,h2,h3,h4{
+    font-family:'Playfair Display', serif;
+    color:var(--blue-deep);
+    line-height:1.2;
+    margin:0 0 .5em 0;
+  }
+  .serif{font-family:'Source Serif 4', serif;}
+  a{color:var(--blue);}
+  img{max-width:100%;display:block;border-radius:6px;}
+  .wrap{max-width:1040px;margin:0 auto;padding:0 24px;}
+
+  /* HEADER */
+  header.institutional-header{
+    display:flex;justify-content:space-between;align-items:center;
+    background:#fff;border-bottom:1px solid var(--card-border);
+    padding:14px 32px;position:sticky;top:0;z-index:50;
+  }
+  .header-identity{
+    font-family:'Playfair Display', serif;font-weight:700;font-size:1.05rem;color:var(--blue-deep);
+    letter-spacing:.02em;
+  }
+  .header-identity span{color:var(--terracota);}
+  .header-tag{font-size:.72rem;color:var(--ink-soft);font-weight:500;letter-spacing:.04em;text-transform:uppercase;margin-top:2px;}
+
+  /* HERO */
+  .hero{
+    background:linear-gradient(160deg, var(--dark-panel) 0%, #22384a 60%, var(--blue-deep) 100%);
+    color:#F4F7FA;padding:80px 24px 64px;position:relative;overflow:hidden;
+  }
+  .hero::after{
+    content:"";position:absolute;right:-120px;top:-120px;width:420px;height:420px;
+    border-radius:50%;background:radial-gradient(circle, rgba(184,134,59,.25), transparent 70%);
+  }
+  .hero-inner{max-width:880px;margin:0 auto;position:relative;z-index:2;}
+  .eyebrow{
+    display:inline-block;font-size:.78rem;letter-spacing:.12em;text-transform:uppercase;
+    color:#E3B873;font-weight:600;margin-bottom:18px;border:1px solid rgba(227,184,115,.4);
+    padding:5px 14px;border-radius:999px;
+  }
+  .hero h1{color:#fff;font-size:2.7rem;max-width:760px;}
+  .hero p.lead-sub{color:#C9D6DF;font-size:1.15rem;max-width:640px;margin-top:16px;font-family:'Source Serif 4',serif;}
+  .hero-stats{display:flex;flex-wrap:wrap;gap:28px;margin-top:40px;}
+  .hero-stat{border-left:2px solid rgba(227,184,115,.5);padding-left:14px;min-width:150px;}
+  .hero-stat .num{font-family:'Playfair Display',serif;font-size:1.8rem;color:#fff;font-weight:700;}
+  .hero-stat .lbl{font-size:.82rem;color:#B7C4CD;}
+
+  main{padding-bottom:20px;}
+  section{padding:64px 0;}
+  section.alt{background:var(--bg-alt);}
+  .section-label{
+    font-size:.78rem;letter-spacing:.1em;text-transform:uppercase;color:var(--terracota);
+    font-weight:700;margin-bottom:10px;
+  }
+  section h2{font-size:2rem;max-width:700px;}
+  .kicker{color:var(--ink-soft);font-size:1.08rem;max-width:680px;font-family:'Source Serif 4',serif;margin-bottom:36px;}
+
+  /* PULL QUOTE / CALLOUT */
+  .callout{
+    background:#FDF3E9;border-left:4px solid var(--gold);
+    padding:22px 26px;border-radius:6px;font-family:'Source Serif 4',serif;
+    font-size:1.08rem;color:var(--ink);margin:28px 0;
+  }
+  .callout.blue{background:#EAF1F7;border-left-color:var(--blue);}
+  .callout.moss{background:#EBF3ED;border-left-color:var(--moss);}
+  .callout strong{color:var(--blue-deep);}
+
+  /* GRID LAYOUT TEXT+IMG */
+  .two-col{display:grid;grid-template-columns:1.1fr .9fr;gap:44px;align-items:center;}
+  @media (max-width:800px){.two-col{grid-template-columns:1fr;}}
+
+  /* IMAGE PLACEHOLDER */
+  figure{margin:0;}
+  figure.img-placeholder img{width:100%;border-radius:10px;display:block;}
+  figure.img-placeholder .placeholder-box{
+    border:2px dashed #b0b8c1;background:#f4f6f8;border-radius:10px;padding:32px 22px;
+    text-align:center;color:#6c757d;min-height:220px;display:flex;flex-direction:column;
+    align-items:center;justify-content:center;gap:8px;
+  }
+  .placeholder-icon{font-size:2rem;}
+  .placeholder-label{font-family:monospace;font-size:.8rem;background:#e9ecef;padding:4px 10px;border-radius:4px;color:#343a40;}
+  .placeholder-hint{font-size:.78rem;color:#868e96;font-style:italic;max-width:320px;}
+  figcaption{font-size:.85rem;color:var(--ink-soft);margin-top:8px;font-style:italic;}
+
+  /* TIMELINE */
+  .timeline{position:relative;margin-top:40px;}
+  .timeline::before{
+    content:"";position:absolute;left:20px;top:0;bottom:0;width:2px;background:var(--card-border);
+  }
+  .t-item{position:relative;padding-left:56px;margin-bottom:34px;}
+  .t-dot{
+    position:absolute;left:11px;top:4px;width:20px;height:20px;border-radius:50%;
+    background:var(--blue);border:4px solid var(--bg);box-shadow:0 0 0 2px var(--blue);
+  }
+  .t-item.highlight .t-dot{background:var(--terracota);box-shadow:0 0 0 2px var(--terracota);}
+  .t-year{font-family:'Playfair Display',serif;font-weight:700;color:var(--blue-deep);font-size:1.15rem;}
+  .t-title{font-weight:600;color:var(--ink);}
+  .t-desc{color:var(--ink-soft);font-size:.96rem;margin-top:4px;}
+
+  /* MODEL CARDS / TABS */
+  .tabs{display:flex;flex-wrap:wrap;gap:8px;margin:28px 0 0;}
+  .tab-btn{
+    background:#fff;border:1px solid var(--card-border);color:var(--ink-soft);
+    padding:9px 18px;border-radius:999px;cursor:pointer;font-size:.9rem;font-weight:600;
+    transition:.15s;font-family:'Source Sans 3',sans-serif;
+  }
+  .tab-btn.active{background:var(--blue);color:#fff;border-color:var(--blue);}
+  .tab-panels{margin-top:22px;}
+  .tab-panel{display:none;background:#fff;border:1px solid var(--card-border);border-radius:10px;padding:26px 28px;}
+  .tab-panel.active{display:block;}
+  .tab-panel h3{margin-bottom:4px;font-size:1.35rem;}
+  .tab-meta{color:var(--terracota);font-size:.85rem;font-weight:700;letter-spacing:.03em;text-transform:uppercase;margin-bottom:14px;}
+  .tab-panel ul{padding-left:20px;margin:12px 0;}
+  .tab-panel li{margin-bottom:6px;color:var(--ink-soft);}
+
+  /* CARDS GRID */
+  .grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;margin-top:28px;}
+  @media (max-width:800px){.grid-3{grid-template-columns:1fr;}}
+  .card{background:#fff;border:1px solid var(--card-border);border-radius:10px;padding:22px;}
+  .card .icon{font-size:1.7rem;margin-bottom:10px;display:block;}
+  .card h4{font-size:1.05rem;margin-bottom:8px;color:var(--blue-deep);}
+  .card p{font-size:.93rem;color:var(--ink-soft);margin:0;}
+
+  /* COMPARISON TABLE */
+  table{width:100%;border-collapse:collapse;margin-top:24px;background:#fff;border-radius:8px;overflow:hidden;}
+  th,td{padding:12px 14px;text-align:left;border-bottom:1px solid var(--card-border);font-size:.92rem;}
+  thead th{background:var(--blue-deep);color:#fff;font-weight:600;}
+  tbody tr:nth-child(even){background:#F7FAFB;}
+  tbody td:first-child{font-weight:600;color:var(--blue-deep);}
+
+  /* PROCESS / PERIOPERATORY STEPS */
+  .steps{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:28px;}
+  @media (max-width:800px){.steps{grid-template-columns:1fr;}}
+  .step{background:#fff;border-radius:10px;border:1px solid var(--card-border);padding:20px;position:relative;}
+  .step .phase{
+    display:inline-block;font-size:.72rem;text-transform:uppercase;letter-spacing:.08em;
+    font-weight:700;color:#fff;background:var(--moss);padding:4px 10px;border-radius:4px;margin-bottom:12px;
+  }
+  .step.pre .phase{background:var(--blue);}
+  .step.intra .phase{background:var(--terracota);}
+  .step.pos .phase{background:var(--moss);}
+  .step ul{padding-left:18px;margin:8px 0 0;font-size:.9rem;color:var(--ink-soft);}
+  .step li{margin-bottom:6px;}
+
+  /* ENGENHARIA CLINICA DIAGRAM */
+  .triangle-diagram{display:flex;justify-content:center;margin:36px 0;}
+  .triad{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;max-width:760px;width:100%;}
+  .triad-item{
+    background:#fff;border:2px solid var(--card-border);border-radius:12px;text-align:center;
+    padding:24px 14px;position:relative;
+  }
+  .triad-item .t-icon{font-size:2rem;}
+  .triad-item h4{margin:10px 0 4px;font-size:1rem;}
+  .triad-item p{font-size:.82rem;color:var(--ink-soft);margin:0;}
+  .triad-center{grid-column:1/-1;text-align:center;margin-top:4px;color:var(--ink-soft);font-size:.9rem;font-style:italic;}
+
+  /* COST BOX */
+  .cite{font-size:.72em;color:var(--blue);text-decoration:none;font-weight:700;white-space:nowrap;}
+  .cite:hover{text-decoration:underline;}
+  .cite-line{font-size:.75rem;color:var(--ink-soft);margin-top:12px;font-style:italic;}
+  .ref-list li:target{background:#FDF3E9;border-radius:6px;padding:8px 10px 8px 34px;margin-left:-10px;}
+  .cost-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:16px;margin-top:24px;}
+  .video-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:26px;margin-top:32px;}
+  @media (max-width:800px){.video-grid{grid-template-columns:1fr;}}
+  .video-card{background:#fff;border:1px solid var(--card-border);border-radius:12px;overflow:hidden;}
+  .video-embed{position:relative;width:100%;padding-top:56.25%;background:#0a1218;}
+  .video-embed iframe{position:absolute;top:0;left:0;width:100%;height:100%;border:0;}
+  .video-info{padding:16px 18px;}
+  .video-info h4{font-size:.98rem;margin:0 0 4px;color:var(--blue-deep);}
+  .video-info p{font-size:.85rem;color:var(--ink-soft);margin:0;}
+  .video-tag{display:inline-block;font-size:.68rem;text-transform:uppercase;letter-spacing:.06em;font-weight:700;color:var(--terracota);margin-bottom:6px;}
+  .cost-card{background:var(--dark-panel);color:#fff;border-radius:10px;padding:20px;}
+  .cost-card .val{font-family:'Playfair Display',serif;font-size:1.5rem;font-weight:700;color:#E3B873;}
+  .cost-card .lbl{font-size:.82rem;color:#C9D6DF;margin-top:4px;}
+
+  /* SOCRATIC QUESTIONS */
+  .socratic-box{
+    background:var(--dark-panel);color:#F4F7FA;border-radius:14px;padding:40px 36px;margin-top:32px;
+  }
+  .socratic-box h3{color:#fff;font-size:1.3rem;}
+  .socratic-list{list-style:none;padding:0;margin:24px 0 0;display:grid;gap:18px;}
+  .socratic-list li{
+    background:rgba(255,255,255,.06);border-left:3px solid var(--gold);padding:16px 18px;
+    border-radius:6px;font-family:'Source Serif 4',serif;font-size:1.02rem;
+  }
+  .socratic-list li span.tag{
+    display:block;font-family:'Source Sans 3',sans-serif;font-size:.7rem;text-transform:uppercase;
+    letter-spacing:.08em;color:#E3B873;font-weight:700;margin-bottom:6px;
+  }
+
+  /* QUIZ */
+  .quiz-card{
+    background:#fff;border:1px solid var(--card-border);border-radius:12px;padding:26px 28px;margin-top:22px;
+  }
+  .quiz-q{font-weight:600;color:var(--blue-deep);margin-bottom:14px;font-size:1.02rem;}
+  .quiz-opts{display:grid;gap:10px;}
+  .quiz-opt{
+    text-align:left;background:var(--bg-alt);border:1px solid var(--card-border);border-radius:8px;
+    padding:12px 16px;cursor:pointer;font-size:.94rem;color:var(--ink);font-family:'Source Sans 3',sans-serif;
+    transition:.15s;
+  }
+  .quiz-opt:hover{border-color:var(--blue);}
+  .quiz-opt.correct{background:#E4F2E7;border-color:var(--moss);color:#20452c;font-weight:600;}
+  .quiz-opt.wrong{background:#F9E5DE;border-color:var(--terracota);color:#7a2c14;}
+  .quiz-feedback{margin-top:14px;font-size:.9rem;color:var(--ink-soft);min-height:20px;font-style:italic;}
+  .quiz-progress{font-size:.82rem;color:var(--ink-soft);margin-bottom:18px;}
+  .quiz-score{
+    display:none;text-align:center;padding:24px;background:var(--bg-alt);border-radius:10px;margin-top:18px;
+  }
+  .quiz-score h4{font-size:1.3rem;}
+  .quiz-reset{
+    margin-top:12px;background:var(--blue);color:#fff;border:none;padding:10px 22px;border-radius:999px;
+    cursor:pointer;font-weight:600;font-size:.88rem;
+  }
+
+  /* REFERENCES */
+  footer#refs{background:var(--bg-alt);padding:56px 0;border-top:1px solid var(--card-border);}
+  .ref-list{list-style:none;padding:0;counter-reset:refcounter;margin-top:24px;}
+  .ref-list li{
+    counter-increment:refcounter;position:relative;padding-left:34px;margin-bottom:14px;
+    font-size:.87rem;color:var(--ink-soft);line-height:1.5;
+  }
+  .ref-list li::before{
+    content:counter(refcounter);position:absolute;left:0;top:0;
+    background:var(--blue);color:#fff;width:22px;height:22px;border-radius:50%;
+    display:flex;align-items:center;justify-content:center;font-size:.72rem;font-weight:700;
+  }
+  .ref-list a{word-break:break-word;}
+
+  footer.institutional-footer{
+    background:#fff;border-top:1px solid var(--card-border);padding:28px 24px;text-align:center;
+  }
+  footer.institutional-footer p{font-size:.8rem;color:var(--ink-soft);margin:0;}
+
+  .divider-icon{text-align:center;color:var(--card-border);font-size:1.2rem;margin:8px 0 0;}
+  .badge-row{display:flex;flex-wrap:wrap;gap:10px;margin-top:18px;}
+  .badge{
+    background:#fff;border:1px solid var(--card-border);border-radius:999px;padding:6px 14px;
+    font-size:.8rem;color:var(--ink-soft);font-weight:600;
+  }
+</style>
+</head>
+<body>
+
+<header class="institutional-header">
+  <div>
+    <div class="header-identity">Da Vinci <span>&</span> Engenharia Clínica</div>
+    <div class="header-tag">Material didático · Enfermagem · Medicina · Engenharia</div>
+  </div>
+  <img src="img/logo.png" alt="Logos Amor-à-Pele (FE-UFPel) e PET-Saúde Digital G10 Feridas Crônicas UFPel" style="max-height:52px;">
+</header>
+
+<div class="hero">
+  <div class="wrap hero-inner">
+    <span class="eyebrow">Tecnologia em saúde · Cirurgia robótica</span>
+    <h1>A máquina que amplia as mãos — e o que ela exige de quem cuida</h1>
+    <p class="lead-sub">Como o sistema cirúrgico da Vinci nasceu, evoluiu através de sete gerações e transformou o centro cirúrgico em um espaço onde engenharia, enfermagem e medicina precisam falar a mesma língua.</p>
+    <div class="hero-stats">
+      <div class="hero-stat"><div class="num">1995</div><div class="lbl">Fundação da Intuitive Surgical</div></div>
+      <div class="hero-stat"><div class="num">7</div><div class="lbl">Gerações de sistemas da Vinci</div></div>
+      <div class="hero-stat"><div class="num">~160</div><div class="lbl">Unidades instaladas no Brasil</div></div>
+      <div class="hero-stat"><div class="num">R$ 10-14 mi</div><div class="lbl">Custo médio de aquisição (Xi)</div></div>
+    </div>
+  </div>
+</div>
+
+<main>
+
+<!-- ================= ENGENHARIA CLÍNICA — CONCEITO ================= -->
+<section>
+  <div class="wrap">
+    <div class="section-label">Antes de tudo, um conceito</div>
+    <h2>O que é engenharia clínica — e por que ela é a espinha dorsal desta história</h2>
+    <p class="kicker">Um robô cirúrgico não é só uma máquina em uma sala de operação. É um sistema vivo, sustentado por três formações que raramente aprendem juntas na graduação, mas que precisam operar como uma só equipe todos os dias.</p>
+
+    <div class="triangle-diagram">
+      <div class="triad">
+        <div class="triad-item">
+          <div class="t-icon">🩺</div>
+          <h4>Medicina</h4>
+          <p>Decide a indicação cirúrgica, opera o console e responde clinicamente pelo paciente.</p>
+        </div>
+        <div class="triad-item">
+          <div class="t-icon">🧑‍⚕️</div>
+          <h4>Enfermagem</h4>
+          <p>Prepara, monta, protege e acompanha o paciente e o sistema em todas as fases do perioperatório.</p>
+        </div>
+        <div class="triad-item">
+          <div class="t-icon">⚙️</div>
+          <h4>Engenharia clínica</h4>
+          <p>Garante que o equipamento funcione com segurança, disponibilidade e conformidade regulatória.</p>
+        </div>
+        <p class="triad-center">A <strong>engenharia clínica</strong> (ou engenharia biomédica hospitalar) é a área responsável por gerenciar o ciclo de vida completo de tecnologias médicas de alta complexidade — da compra à manutenção, da calibração ao descarte — e é o elo que conecta esses três mundos.</p>
+      </div>
+    </div>
+
+    <div class="callout blue">
+      <strong>Por que isso importa para quem estuda enfermagem, medicina ou engenharia:</strong> a cirurgia robótica só existe porque essas três áreas compartilham responsabilidade sobre o mesmo equipamento. Um erro de manutenção vira risco clínico; uma falha de protocolo de enfermagem vira problema técnico; uma decisão de engenharia mal informada vira barreira de acesso à saúde. Entender essa interdependência é o primeiro passo para pensar em <em>tecnologia em saúde</em> de forma sistêmica — não fragmentada por profissão.
+    </div>
+  </div>
+</section>
+
+<!-- ================= COMO SURGIU ================= -->
+<section class="alt">
+  <div class="wrap">
+    <div class="section-label">Origem</div>
+    <h2>De projeto militar a padrão-ouro da cirurgia minimamente invasiva</h2>
+    <p class="kicker">O nome "da Vinci" é uma homenagem a Leonardo da Vinci — não por acaso: o mesmo espírito de observação anatômica precisa e engenharia aplicada ao corpo humano.</p>
+
+    <div class="two-col">
+      <div>
+        <p>A tecnologia por trás do da Vinci nasceu de pesquisas do <strong>SRI International</strong> (Stanford Research Institute), financiadas em parte pelo Exército e pela DARPA dos Estados Unidos, que buscavam desenvolver <em>telecirurgia</em> — a possibilidade de um cirurgião operar um paciente remotamente, inclusive em campos de batalha.</p>
+        <p>Em <strong>1995</strong>, a tecnologia foi licenciada e deu origem à empresa <strong>Intuitive Surgical</strong>. Cinco anos depois, em <strong>2000</strong>, o primeiro sistema da Vinci recebeu aprovação da FDA para uso cirúrgico geral — o marco que inaugura a era da cirurgia robótica assistida comercialmente disponível.<a href="#ref1" class="cite">[1]</a><a href="#ref2" class="cite">[2]</a></p>
+      </div>
+      <figure class="img-placeholder" data-img-path="img/origem-intuitive-timeline.jpg">
+        <img src="img/origem-intuitive-timeline.jpg" alt="Primeiro sistema da Vinci, anos 2000" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+        <div class="placeholder-box" style="display:none;">
+          <span class="placeholder-icon">🖼</span>
+          <p class="placeholder-label">[ Coloque aqui: img/origem-intuitive-timeline.jpg ]</p>
+          <p class="placeholder-hint">Foto histórica do primeiro sistema da Vinci ou do console original (anos 2000)</p>
+        </div>
+        <figcaption>O primeiro sistema da Vinci: da pesquisa militar de telecirurgia ao centro cirúrgico civil.</figcaption>
+      </figure>
+    </div>
+  </div>
+</section>
+
+<!-- ================= EVOLUÇÃO DOS MODELOS ================= -->
+<section>
+  <div class="wrap">
+    <div class="section-label">Sete gerações</div>
+    <h2>Os modelos da Vinci: uma linha do tempo de decisões de engenharia</h2>
+    <p class="kicker">Cada geração resolveu um problema real da anterior. Entender essa progressão ajuda a enxergar o robô não como "uma máquina", mas como uma sequência de escolhas de design guiadas por limitações clínicas.</p>
+
+    <div class="timeline">
+      <div class="t-item">
+        <div class="t-dot"></div>
+        <div class="t-year">2000</div>
+        <div class="t-title">da Vinci Standard (1ª geração)</div>
+        <div class="t-desc">Primeiro sistema aprovado pela FDA. Provou o conceito: visão 3D, instrumentos articulados (EndoWrist) e filtragem de tremor eram viáveis na prática cirúrgica.<a href="#ref1" class="cite">[1]</a><a href="#ref4" class="cite">[4]</a></div>
+      </div>
+      <div class="t-item">
+        <div class="t-dot"></div>
+        <div class="t-year">2006</div>
+        <div class="t-title">da Vinci S (2ª geração)</div>
+        <div class="t-desc">Levou a tecnologia ao cenário global, com melhorias em ergonomia e instrumentos, ampliando a adoção internacional.<a href="#ref1" class="cite">[1]</a></div>
+      </div>
+      <div class="t-item">
+        <div class="t-dot"></div>
+        <div class="t-year">2009–2013</div>
+        <div class="t-title">da Vinci Si (3ª geração)</div>
+        <div class="t-desc">Foco em treinamento e experiência do cirurgião — console dual para ensino, alta definição 3D. Tornou-se o sistema mais difundido no Brasil na década de 2010 (ex.: INCA, 2012).<a href="#ref6" class="cite">[6]</a><a href="#ref7" class="cite">[7]</a></div>
+      </div>
+      <div class="t-item highlight">
+        <div class="t-dot"></div>
+        <div class="t-year">2014</div>
+        <div class="t-title">da Vinci X e Xi (4ª geração)</div>
+        <div class="t-desc">Redesenho completo do carrinho do paciente: de coluna central para arquitetura em "lança" (boom-mounted), permitindo cirurgia multiquadrante sem redocking repetido. É hoje o sistema mais usado no mundo.<a href="#ref3" class="cite">[3]</a><a href="#ref6" class="cite">[6]</a></div>
+      </div>
+      <div class="t-item">
+        <div class="t-dot"></div>
+        <div class="t-year">2014–2018</div>
+        <div class="t-title">da Vinci SP — Single Port</div>
+        <div class="t-desc">Um único braço com câmera e três instrumentos articulados saindo de uma incisão de ~25mm. Pensado para espaços anatômicos estreitos (próstata, cabeça e pescoço, cirurgia transanal).<a href="#ref2" class="cite">[2]</a><a href="#ref5" class="cite">[5]</a></div>
+      </div>
+      <div class="t-item highlight">
+        <div class="t-dot"></div>
+        <div class="t-year">2024–2025</div>
+        <div class="t-title">da Vinci 5 (5ª geração)</div>
+        <div class="t-desc">Mais de 10.000x a capacidade de processamento do Xi e tecnologia inédita de <em>Force Feedback</em> — o cirurgião volta a "sentir" resistência dos tecidos, algo ausente desde o início da robótica cirúrgica.<a href="#ref1" class="cite">[1]</a><a href="#ref21" class="cite">[21]</a></div>
+      </div>
+    </div>
+
+    <h3 style="margin-top:52px;">Compare os modelos em detalhe</h3>
+    <div class="tabs" id="modelTabs">
+      <button class="tab-btn active" data-tab="standard">Standard</button>
+      <button class="tab-btn" data-tab="si">Si</button>
+      <button class="tab-btn" data-tab="xi">Xi</button>
+      <button class="tab-btn" data-tab="sp">SP</button>
+      <button class="tab-btn" data-tab="dv5">da Vinci 5</button>
+    </div>
+    <div class="tab-panels">
+      <div class="tab-panel active" id="tab-standard">
+        <div class="tab-meta">2000 · 1ª geração</div>
+        <h3>da Vinci Standard</h3>
+        <ul>
+          <li>Primeira plataforma comercial de cirurgia robótica assistida.</li>
+          <li>Introduziu visão 3D estereoscópica e instrumentos EndoWrist com "punho" articulado.</li>
+          <li>Coluna central única, braços paralelos — configuração rígida, exigia reposicionamento manual complexo.</li>
+          <li>Uso majoritariamente urológico no início (prostatectomia radical).</li>
+        </ul>
+        <p class="cite-line">Fontes: <a href="#ref1" class="cite">[1]</a> <a href="#ref2" class="cite">[2]</a> <a href="#ref4" class="cite">[4]</a></p>
+      </div>
+      <div class="tab-panel" id="tab-si">
+        <div class="tab-meta">2009–2013 · 3ª geração</div>
+        <h3>da Vinci Si</h3>
+        <ul>
+          <li>Console dual (dois cirurgiões podem visualizar/operar simultaneamente) — voltado ao ensino.</li>
+          <li>Endoscópio de 12mm com invólucro descartável específico.</li>
+          <li>Exoesqueleto baseado em coluna vertical volumosa; colisões externas entre braços eram comuns em cirurgias multiquadrante.</li>
+          <li>Foi o modelo adquirido pelo INCA em 2012, marco da cirurgia robótica no SUS.</li>
+        </ul>
+        <p class="cite-line">Fontes: <a href="#ref4" class="cite">[4]</a> <a href="#ref6" class="cite">[6]</a> <a href="#ref7" class="cite">[7]</a></p>
+      </div>
+      <div class="tab-panel" id="tab-xi">
+        <div class="tab-meta">2014 · 4ª geração</div>
+        <h3>da Vinci Xi</h3>
+        <ul>
+          <li>Arquitetura em lança (<em>boom-mounted</em>): braços mais finos, acoplamento angular, menos colisões externas.</li>
+          <li>Endoscópio de 8mm, mais fino e sem invólucro, podendo ser trocado entre qualquer um dos 4 braços.</li>
+          <li>Permite <em>docking</em> único para cirurgia em múltiplos quadrantes abdominais — grande ganho em colorretal.</li>
+          <li>Imagem por fluorescência <strong>Firefly</strong> para visualizar vasos, ductos biliares e perfusão tecidual em tempo real.</li>
+          <li>Hoje é o sistema multiporta mais usado no mundo e o mais comum no Brasil.</li>
+        </ul>
+        <p class="cite-line">Fontes: <a href="#ref3" class="cite">[3]</a> <a href="#ref6" class="cite">[6]</a> <a href="#ref11" class="cite">[11]</a></p>
+      </div>
+      <div class="tab-panel" id="tab-sp">
+        <div class="tab-meta">2018 (EUA) / 2024 (Europa) · Single Port</div>
+        <h3>da Vinci SP</h3>
+        <ul>
+          <li>Um único braço robótico entrega câmera + 3 instrumentos por uma porta de ~25mm.</li>
+          <li>Instrumentos com "punho e cotovelo" alcançam maior amplitude de movimento que a mão humana, permitindo triangulação dentro de espaços estreitos.</li>
+          <li>Indicado para próstata, cirurgia transanal colorretal, cabeça e pescoço (TORS) e tórax.</li>
+          <li>Elimina colisões externas entre braços por usar apenas um.</li>
+        </ul>
+        <p class="cite-line">Fontes: <a href="#ref2" class="cite">[2]</a> <a href="#ref5" class="cite">[5]</a></p>
+      </div>
+      <div class="tab-panel" id="tab-dv5">
+        <div class="tab-meta">2024–2025 · 5ª geração</div>
+        <h3>da Vinci 5</h3>
+        <ul>
+          <li><strong>Force Feedback:</strong> primeira vez que o cirurgião recebe retorno tátil (resistência dos tecidos) em tempo real.</li>
+          <li>Mais de 10.000x a capacidade computacional do Xi — abre espaço para análise de dados intraoperatórios e integração com IA.</li>
+          <li>Ergonomia aprimorada no console em relação a todas as gerações anteriores.</li>
+          <li>Ainda em fase inicial de disseminação global; representa a fronteira atual da engenharia clínica em robótica cirúrgica.</li>
+        </ul>
+        <p class="cite-line">Fontes: <a href="#ref1" class="cite">[1]</a> <a href="#ref20" class="cite">[20]</a> <a href="#ref21" class="cite">[21]</a></p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= COMO FUNCIONA ================= -->
+<section class="alt">
+  <div class="wrap">
+    <div class="section-label">Mecanismo</div>
+    <h2>Três componentes, uma mesma cirurgia</h2>
+    <p class="kicker">É importante frisar: o da Vinci <strong>não opera de forma autônoma</strong>. Ele reproduz, com precisão ampliada e sem tremor, os movimentos das mãos do cirurgião — o robô é uma extensão do gesto humano, não um substituto da decisão clínica.<a href="#ref1" class="cite">[1]</a><a href="#ref3" class="cite">[3]</a></p>
+
+    <div class="grid-3">
+      <div class="card">
+        <span class="icon">🎮</span>
+        <h4>Console do cirurgião</h4>
+        <p>Onde o cirurgião senta, visualiza a imagem 3D em alta definição e movimenta os controles manuais que traduzem seus gestos para os braços robóticos, com filtragem de tremor e escala de movimento ajustável.</p>
+      </div>
+      <div class="card">
+        <span class="icon">🦾</span>
+        <h4>Carrinho do paciente</h4>
+        <p>Contém os braços robóticos acoplados (docking) ao paciente, que sustentam os instrumentos EndoWrist e o endoscópio. É aqui que a arquitetura mudou de coluna central (Si) para lança (Xi).</p>
+      </div>
+      <div class="card">
+        <span class="icon">📺</span>
+        <h4>Torre de visão/imagem</h4>
+        <p>Processa o sinal de vídeo 3D, gerencia iluminação, insuflação de CO₂ e recursos de imagem avançada (como fluorescência Firefly), e é o ponto de referência para a equipe de enfermagem em sala.</p>
+      </div>
+    </div>
+
+    <div class="two-col" style="margin-top:44px;">
+      <figure class="img-placeholder" data-img-path="img/instrumentos-endowrist.jpg">
+        <img src="img/instrumentos-endowrist.jpg" alt="Instrumentos EndoWrist articulados" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+        <div class="placeholder-box" style="display:none;">
+          <span class="placeholder-icon">🖼</span>
+          <p class="placeholder-label">[ Coloque aqui: img/instrumentos-endowrist.jpg ]</p>
+          <p class="placeholder-hint">Close-up dos instrumentos EndoWrist articulados, mostrando o "punho" robótico</p>
+        </div>
+        <figcaption>Instrumentos EndoWrist: sete graus de liberdade, superando a amplitude do punho humano.</figcaption>
+      </figure>
+      <div>
+        <h3 style="font-size:1.3rem;">O que faz o EndoWrist diferente de um instrumento laparoscópico comum?</h3>
+        <p>Instrumentos laparoscópicos convencionais são hastes rígidas: perdem articulação e "triangulação" ao entrar por uma única incisão. Os instrumentos EndoWrist têm punho e, nas versões mais recentes, cotovelo articulado — reproduzindo (e superando) a amplitude de movimento da mão humana dentro do corpo do paciente, mesmo através de portas de poucos milímetros.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= VÍDEOS: O DA VINCI EM AÇÃO ================= -->
+<section>
+  <div class="wrap">
+    <div class="section-label">Ver para entender</div>
+    <h2>O da Vinci em ação</h2>
+    <p class="kicker">Nada substitui ver o sistema funcionando de verdade — o console, os braços, a visão 3D e a equipe ao redor da mesa. Selecionamos vídeos oficiais e de profissionais que mostram exatamente o que foi descrito nas seções acima.</p>
+
+    <div class="video-grid">
+      <div class="video-card">
+        <div class="video-embed">
+          <iframe src="https://www.youtube.com/embed/MxIuOdny2cs" title="Introducing da Vinci 5" allowfullscreen loading="lazy"></iframe>
+        </div>
+        <div class="video-info">
+          <span class="video-tag">Oficial · Intuitive · EN</span>
+          <h4>Apresentando o da Vinci 5</h4>
+          <p>Cirurgiões e engenheiros da Intuitive explicam os 150+ avanços de design da 5ª geração, incluindo o Force Feedback.<a href="#ref22" class="cite">[22]</a></p>
+        </div>
+      </div>
+
+      <div class="video-card">
+        <div class="video-embed">
+          <iframe src="https://www.youtube.com/embed/30gYP6RUDbE" title="Como funciona a cirurgia robótica" allowfullscreen loading="lazy"></iframe>
+        </div>
+        <div class="video-info">
+          <span class="video-tag">Cirurgião brasileiro · PT-BR</span>
+          <h4>Como funciona a cirurgia robótica, explicado por um cirurgião</h4>
+          <p>Demonstração direta na sala: os 4 braços, o console, a fonte de energia — em linguagem simples, ótimo primeiro contato.<a href="#ref25" class="cite">[25]</a></p>
+        </div>
+      </div>
+
+      <div class="video-card">
+        <div class="video-embed">
+          <iframe src="https://www.youtube.com/embed/_aJhNXXWmq0" title="Robotic Surgery Unlocks a New Era of Medicine" allowfullscreen loading="lazy"></iframe>
+        </div>
+        <div class="video-info">
+          <span class="video-tag">Documentário · Freethink × Intuitive · EN</span>
+          <h4>Robotic Surgery Unlocks a New Era of Medicine</h4>
+          <p>A engenharia por trás da visão 3D, do Firefly e dos instrumentos EndoWrist, contada por quem projeta o sistema.<a href="#ref23" class="cite">[23]</a></p>
+        </div>
+      </div>
+
+      <div class="video-card">
+        <div class="video-embed">
+          <iframe src="https://www.youtube.com/embed/-YmWeA-Tijo" title="Einstein no SUS: tecnologia robótica" allowfullscreen loading="lazy"></iframe>
+        </div>
+        <div class="video-info">
+          <span class="video-tag">SUS · Hospital Einstein · PT-BR</span>
+          <h4>Einstein no SUS: tecnologia robótica a favor da precisão cirúrgica</h4>
+          <p>Mostra a cirurgia robótica dentro de um hospital 100% SUS, incluindo o treinamento de enfermeiros, médicos e técnicos — conecta diretamente com a seção de acesso e gestão em saúde.<a href="#ref24" class="cite">[24]</a></p>
+        </div>
+      </div>
+    </div>
+
+    <div class="callout" style="margin-top:32px;">
+      <strong>Dica de uso em sala de aula:</strong> assista ao vídeo em português do Dr. Marcelo Vieira antes de ler a seção "Como funciona" — e volte ao vídeo do da Vinci 5 depois de ler sobre "O futuro". Ver o mesmo conteúdo em dois momentos diferentes ajuda a fixar o vocabulário técnico.
+    </div>
+  </div>
+</section>
+
+<!-- ================= DIFERENCIAIS NA CIRURGIA ================= -->
+<section class="alt">
+  <div class="wrap">
+    <div class="section-label">Vantagem clínica</div>
+    <h2>O que muda de fato na mesa de cirurgia</h2>
+    <p class="kicker">Comparada à cirurgia aberta e à laparoscopia convencional, a plataforma robótica reorganiza a relação entre visão, precisão e esforço físico do cirurgião. Um estudo randomizado brasileiro de custo-efetividade, conduzido em oito tipos de cirurgia oncológica no ICESP/HCFMUSP, ajuda a colocar essa comparação em números reais.<a href="#ref9" class="cite">[9]</a></p>
+
+    <table>
+      <thead>
+        <tr><th>Aspecto</th><th>Cirurgia aberta</th><th>Laparoscopia convencional</th><th>Cirurgia robótica (da Vinci)</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>Visão</td><td>Direta, 2D, campo amplo</td><td>2D, monitor, câmera fixa</td><td>3D em alta definição, com ampliação de até 10x</td></tr>
+        <tr><td>Instrumentos</td><td>Manuais, sem restrição</td><td>Rígidos, sem articulação</td><td>Articulados (EndoWrist), maior amplitude que a mão</td></tr>
+        <tr><td>Tremor</td><td>Presente</td><td>Presente, amplificado pela alavanca</td><td>Filtrado eletronicamente</td></tr>
+        <tr><td>Ergonomia do cirurgião</td><td>Fadiga postural alta</td><td>Fadiga alta (postura em pé, instrumentos longos)</td><td>Cirurgião sentado, postura controlada</td></tr>
+        <tr><td>Incisões</td><td>Grande incisão única</td><td>Múltiplas incisões pequenas</td><td>Múltiplas incisões pequenas ou porta única (SP)</td></tr>
+        <tr><td>Tempo de internação (evidência variável por procedimento)</td><td>Maior</td><td>Intermediário</td><td>Frequentemente menor, especialmente em cirurgias complexas</td></tr>
+      </tbody>
+    </table>
+
+    <div class="callout moss">
+      <strong>Mas atenção ao viés de entusiasmo:</strong> revisões da literatura brasileira (Redalyc, 2024<a href="#ref7" class="cite">[7]</a>; CONITEC, citado em<a href="#ref11" class="cite">[11]</a>) mostram que, para diversos procedimentos, as taxas de complicação, tempo de internação e infecção são <em>estatisticamente semelhantes</em> entre robótica e laparoscopia. O real diferencial muitas vezes está na <strong>redução da taxa de conversão para cirurgia aberta</strong> em casos complexos — não em uma superioridade universal. Avaliar tecnologia em saúde exige ler evidência, não apenas folhetos do fabricante.
+    </div>
+  </div>
+</section>
+
+<!-- ================= MANUTENÇÃO E ENGENHARIA CLÍNICA ================= -->
+<section>
+  <div class="wrap">
+    <div class="section-label">Bastidores</div>
+    <h2>Manutenção: o trabalho invisível que mantém o robô seguro</h2>
+    <p class="kicker">Um sistema de R$ 10 a 14 milhões não sobrevive sem uma estrutura robusta de engenharia clínica. É aqui que a formação em engenharia biomédica se torna estratégica dentro do hospital.</p>
+
+    <div class="grid-3">
+      <div class="card">
+        <span class="icon">🧰</span>
+        <h4>Qualificação (IQ/OQ/PQ)</h4>
+        <p>Instalação, operação e desempenho do equipamento são validados formalmente antes e durante o uso clínico, seguindo normas ISO 13485 e RDC 751/2022 da ANVISA.</p>
+      </div>
+      <div class="card">
+        <span class="icon">📡</span>
+        <h4>Manutenção preditiva</h4>
+        <p>Monitoramento de desgaste (especialmente dos instrumentos, que têm número limitado de usos) e planejamento de paradas programadas, muitas vezes com sensores IoT hospitalares.</p>
+      </div>
+      <div class="card">
+        <span class="icon">🚨</span>
+        <h4>Suporte intraoperatório</h4>
+        <p>Em falhas durante o procedimento, o engenheiro clínico (ou o suporte técnico do fabricante) precisa resolver o problema em tempo real, com registro documentado do evento.</p>
+      </div>
+    </div>
+
+    <div class="two-col" style="margin-top:40px;">
+      <div>
+        <h3 style="font-size:1.3rem;">Quanto custa manter um da Vinci funcionando?</h3>
+        <p>No Brasil, o contrato de manutenção anual de um sistema Xi gira em torno de <strong>R$ 800 mil a R$ 1,5 milhão</strong> — obrigatório e, na maioria dos casos, atrelado ao próprio fabricante, o que gera dependência tecnológica (o chamado <em>vendor lock-in</em>). Some-se a isso o custo dos instrumentais descartáveis, que têm um número limitado de usos por segurança e rastreabilidade.<a href="#ref8" class="cite">[8]</a><a href="#ref11" class="cite">[11]</a></p>
+      </div>
+      <div class="cost-grid">
+        <div class="cost-card"><div class="val">R$ 10–14 mi</div><div class="lbl">Aquisição do sistema (Xi)</div></div>
+        <div class="cost-card"><div class="val">R$ 800 mil/ano</div><div class="lbl">Contrato de manutenção</div></div>
+        <div class="cost-card"><div class="val">R$ 9–15 mil</div><div class="lbl">Insumos por procedimento</div></div>
+        <div class="cost-card"><div class="val">Classe III</div><div class="lbl">Classificação de risco ANVISA</div></div>
+      </div>
+    </div>
+    <p class="cite-line">Fontes dos valores: <a href="#ref8" class="cite">[8]</a> <a href="#ref11" class="cite">[11]</a></p>
+
+    <div class="callout blue" style="margin-top:32px;">
+      <strong>Regulação tripartite no Brasil:</strong> ANVISA regula o equipamento (RDC 751/2022, Classe III — alto risco), o CFM regula a prática médica (Resolução 2.311/2022, exigindo RQE específico, mínimo de 20h em simulador e 10 cirurgias supervisionadas) e a ANS regula a cobertura pelos planos de saúde (obrigatória para prostatectomia robótica desde abril de 2026).<a href="#ref11" class="cite">[11]</a>
+    </div>
+  </div>
+</section>
+
+<!-- ================= ENFERMAGEM ================= -->
+<section class="alt">
+  <div class="wrap">
+    <div class="section-label">No centro da assistência</div>
+    <h2>A enfermagem perioperatória: a competência que sustenta a cirurgia robótica</h2>
+    <p class="kicker">Estudos da SOBECC (Associação Brasileira de Enfermeiros de Centro Cirúrgico) mostram que a atuação de enfermagem em cirurgia robótica se concentra principalmente nas fases pré e intraoperatória — mas se estende por todo o ciclo do cuidado.<a href="#ref13" class="cite">[13]</a></p>
+
+    <div class="two-col">
+      <figure class="img-placeholder" data-img-path="img/enfermagem-preparo-robo.jpg">
+        <img src="img/enfermagem-preparo-robo.jpg" alt="Enfermagem preparando o sistema da Vinci" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+        <div class="placeholder-box" style="display:none;">
+          <span class="placeholder-icon">🖼</span>
+          <p class="placeholder-label">[ Coloque aqui: img/enfermagem-preparo-robo.jpg ]</p>
+          <p class="placeholder-hint">Enfermeiro(a) realizando o draping (encapamento) dos braços do carrinho do paciente</p>
+        </div>
+        <figcaption>O draping do sistema da Vinci: uma das etapas exclusivas da enfermagem em cirurgia robótica.</figcaption>
+      </figure>
+      <div>
+        <p>O checklist validado pela SOBECC organiza as atribuições da equipe de enfermagem em três etapas — <strong>Sign In, Time Out e Sign Out</strong> — adaptando o protocolo de cirurgia segura da OMS especificamente para procedimentos robô-assistidos, incluindo itens exclusivos como especificação da plataforma robótica e lado da mesa em que o robô será alocado.<a href="#ref17" class="cite">[17]</a></p>
+      </div>
+    </div>
+
+    <div class="steps">
+      <div class="step pre">
+        <span class="phase">Pré-operatório</span>
+        <ul>
+          <li>Anamnese e avaliação do paciente</li>
+          <li>Checagem e dupla conferência de instrumentais robóticos e órteses/próteses</li>
+          <li>Reserva de hemoderivados e vaga de UTI, quando indicado</li>
+          <li>Ligar e testar o sistema da Vinci, conferindo cabos e componentes</li>
+        </ul>
+        <p class="cite-line">Fonte: <a href="#ref16" class="cite">[16]</a></p>
+      </div>
+      <div class="step intra">
+        <span class="phase">Intraoperatório</span>
+        <ul>
+          <li>Draping (encapamento) do carrinho do paciente com capas específicas</li>
+          <li>Posicionamento cirúrgico e proteção de proeminências ósseas</li>
+          <li><em>Time out</em> com toda a equipe antes da incisão</li>
+          <li>Docking (acoplamento) e acompanhamento contínuo do procedimento</li>
+          <li>Registro de tempos de uso das pinças robóticas (vida útil limitada)</li>
+          <li>Suporte em falhas do sistema, com registro fotográfico do evento</li>
+        </ul>
+        <p class="cite-line">Fontes: <a href="#ref16" class="cite">[16]</a> <a href="#ref17" class="cite">[17]</a></p>
+      </div>
+      <div class="step pos">
+        <span class="phase">Pós-operatório</span>
+        <ul>
+          <li>Undocking (desacoplamento) e retirada das capas protetoras</li>
+          <li>Conferência de óticas e pinças com dupla checagem junto à CME</li>
+          <li>Auxílio na extubação e reposicionamento seguro do paciente</li>
+          <li>Encaminhamento à recuperação anestésica ou UTI</li>
+          <li>Desligamento e limpeza do sistema robótico</li>
+        </ul>
+        <p class="cite-line">Fonte: <a href="#ref16" class="cite">[16]</a></p>
+      </div>
+    </div>
+
+    <div class="callout" style="margin-top:36px;">
+      <strong>Competências emergentes:</strong> uma revisão scoping (2025) identificou quatro grupos de competências do enfermeiro perioperatório em cirurgia robótica: <em>cuidado especializado, segurança, aprendizagem profissional e gestão/liderança</em>. Isso mostra que o papel de enfermagem nesse contexto vai muito além de "auxiliar" — envolve gestão de tecnologia, protocolo e formação de equipe.<a href="#ref14" class="cite">[14]</a><a href="#ref15" class="cite">[15]</a>
+    </div>
+  </div>
+</section>
+
+<!-- ================= ACESSO E GESTÃO ESTRATÉGICA ================= -->
+<section>
+  <div class="wrap">
+    <div class="section-label">Saúde pública e gestão</div>
+    <h2>Acesso à cirurgia robótica como questão de gestão estratégica em saúde</h2>
+    <p class="kicker">Ter a melhor tecnologia disponível não resolve, sozinho, o problema de acesso equitativo. O caso brasileiro mostra como decisões técnicas, políticas e econômicas se entrelaçam.</p>
+
+    <div class="two-col">
+      <div>
+        <h3 style="font-size:1.25rem;">O caso INCA: pioneirismo no SUS</h3>
+        <p>Em 2012, o Instituto Nacional de Câncer (INCA) adquiriu o primeiro da Vinci Si dedicado ao Sistema Único de Saúde, após um estudo de viabilidade de dois anos e meio conduzido com a COPPE/UFRJ. Até 2022, mais de 2.000 procedimentos robóticos haviam sido realizados pelo SUS na instituição.<a href="#ref7" class="cite">[7]</a><a href="#ref8" class="cite">[8]</a><a href="#ref11" class="cite">[11]</a></p>
+        <p>Mas a pesquisa acadêmica sobre o caso (Redalyc, 2024) revela um ponto crítico: <strong>a incorporação tecnológica muitas vezes carece de critérios claros de custo-efetividade</strong>, sendo influenciada por pressão política e relação com fornecedores — um alerta para quem vai gerir tecnologia em saúde pública no futuro.<a href="#ref7" class="cite">[7]</a></p>
+      </div>
+      <figure class="img-placeholder" data-img-path="img/centro-cirurgico-sus-robo.jpg">
+        <img src="img/centro-cirurgico-sus-robo.jpg" alt="Centro cirúrgico com sistema da Vinci em hospital público" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+        <div class="placeholder-box" style="display:none;">
+          <span class="placeholder-icon">🖼</span>
+          <p class="placeholder-label">[ Coloque aqui: img/centro-cirurgico-sus-robo.jpg ]</p>
+          <p class="placeholder-hint">Sala de centro cirúrgico com sistema da Vinci em hospital público brasileiro</p>
+        </div>
+        <figcaption>A expansão da cirurgia robótica em hospitais filantrópicos e públicos no Nordeste do Brasil (2024-2025).<a href="#ref12" class="cite">[12]</a></figcaption>
+      </figure>
+    </div>
+
+    <div class="grid-3" style="margin-top:12px;">
+      <div class="card">
+        <span class="icon">📊</span>
+        <h4>CONITEC e custo-efetividade</h4>
+        <p>Para prostatectomia radical, o CONITEC projetou economia de até R$ 52,9 milhões em 5 anos no SUS, por redução de complicações e reinternações — dado que embasou a incorporação seletiva da tecnologia.<a href="#ref11" class="cite">[11]</a></p>
+      </div>
+      <div class="card">
+        <span class="icon">⚖️</span>
+        <h4>Equidade e desigualdade estrutural</h4>
+        <p>Custos elevados de aquisição, manutenção e treinamento concentram a tecnologia em grandes centros urbanos, ampliando a disparidade de acesso entre regiões do Brasil — tensão direta com o ODS 10 (Redução das Desigualdades).<a href="#ref10" class="cite">[10]</a></p>
+      </div>
+      <div class="card">
+        <span class="icon">🏥</span>
+        <h4>Modelos alternativos de financiamento</h4>
+        <p>Hospitais filantrópicos (como o Napoleão Laureano, na Paraíba) vêm destinando parte majoritária das cirurgias robóticas a pacientes SUS via convênios e doações — um caminho paralelo à compra direta pelo poder público.<a href="#ref12" class="cite">[12]</a></p>
+      </div>
+    </div>
+
+    <div class="callout moss" style="margin-top:32px;">
+      <strong>Pergunta de gestão que fica no ar:</strong> se a evidência de custo-benefício ainda é "inconclusiva" para muitos procedimentos (como aponta a revisão da UFFS, 2026<a href="#ref10" class="cite">[10]</a>), qual deve ser o critério para decidir onde investir em cirurgia robótica dentro de um sistema de saúde com recursos finitos? Esse é exatamente o tipo de decisão que profissionais de engenharia clínica, gestão em saúde e enfermagem gerencial vão precisar tomar ao longo da carreira.
+    </div>
+  </div>
+</section>
+
+<!-- ================= FUTURO: IA E AUTONOMIA ================= -->
+<section class="alt">
+  <div class="wrap">
+    <div class="section-label">O que vem a seguir</div>
+    <h2>O futuro: inteligência artificial, autonomia supervisionada e o fim do monopólio</h2>
+    <p class="kicker">Duas mudanças estão redesenhando o campo neste exato momento (2025–2026): a entrada de concorrentes reais ao da Vinci e a integração progressiva de inteligência artificial ao fluxo cirúrgico.</p>
+
+    <div class="two-col">
+      <div>
+        <h3 style="font-size:1.25rem;">O fim de duas décadas de monopólio</h3>
+        <p>Por mais de 20 anos, o da Vinci foi a única opção de robótica para tecidos moles nos EUA. Isso mudou em dezembro de 2025: em um intervalo de 13 dias, o FDA liberou o <strong>Hugo RAS</strong> (Medtronic) e o <strong>Versius Plus</strong> (CMR Surgical) — sistemas com arquitetura modular, braços independentes e menor ocupação de sala, pensados para viabilizar robótica em hospitais menores. A Johnson & Johnson prepara o <strong>Ottava</strong> para submissão à FDA em 2026.<a href="#ref18" class="cite">[18]</a> A expectativa da literatura é que essa concorrência reduza em 30–50% os custos de aquisição e manutenção nos próximos anos.<a href="#ref19" class="cite">[19]</a></p>
+        <p>Uma revisão sistemática (NPJ Digital Medicine, 2024, citada em Sossego Health<a href="#ref18" class="cite">[18]</a>) analisou 49 robôs cirúrgicos aprovados pela FDA entre 2015–2023: <strong>86% operam ainda no nível 1</strong> de autonomia — o cirurgião controla cada movimento, o robô apenas amplifica e estabiliza. Tarefas autônomas (nível 2, como sutura automatizada) já existem em cerca de 23% das aplicações estudadas; autonomia condicional (nível 3) segue restrita a modelos pré-clínicos e animais.<a href="#ref19" class="cite">[19]</a></p>
+      </div>
+      <figure class="img-placeholder" data-img-path="img/ia-camadas-autonomia-cirurgica.png">
+        <img src="img/ia-camadas-autonomia-cirurgica.png" alt="Diagrama das camadas de IA e níveis de autonomia em cirurgia robótica" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+        <div class="placeholder-box" style="display:none;">
+          <span class="placeholder-icon">🖼</span>
+          <p class="placeholder-label">[ Coloque aqui: img/ia-camadas-autonomia-cirurgica.png ]</p>
+          <p class="placeholder-hint">Diagrama/infográfico mostrando os níveis de autonomia cirúrgica (nível 1 assistência → nível 2 automação de tarefa → nível 3 autonomia condicional) ou as 5 camadas de IA da Intuitive (dados → insights → orientação intraoperatória → destreza aumentada → autonomia supervisionada)</p>
+        </div>
+        <figcaption>Da assistência à autonomia supervisionada: como a IA está sendo incorporada camada por camada, sem remover o cirurgião do controle.<a href="#ref20" class="cite">[20]</a></figcaption>
+      </figure>
+    </div>
+
+    <div class="grid-3" style="margin-top:8px;">
+      <div class="card">
+        <span class="icon">🧠</span>
+        <h4>IA como "pilha de capacidades"</h4>
+        <p>Em julho de 2026, a Intuitive apresentou publicamente seu framework de IA em cinco camadas — de dados padronizados a "autonomia supervisionada" — construído sobre um conjunto de mais de 20 milhões de procedimentos da Vinci já realizados no mundo.<a href="#ref20" class="cite">[20]</a></p>
+      </div>
+      <div class="card">
+        <span class="icon">🛰️</span>
+        <h4>Telecirurgia via 5G</h4>
+        <p>Redes 5G reduziram a latência a níveis clinicamente aceitáveis. Estudos de 2024–2025 já documentaram prostatectomias robóticas realizadas remotamente, a distâncias intercontinentais — e a Intuitive demonstrou telecirurgia ao vivo com Force Feedback compartilhado em julho de 2026.<a href="#ref19" class="cite">[19]</a><a href="#ref20" class="cite">[20]</a></p>
+      </div>
+      <div class="card">
+        <span class="icon">❤️</span>
+        <h4>Novas indicações clínicas</h4>
+        <p>Em janeiro de 2026, o da Vinci 5 recebeu aprovação da FDA para procedimentos cardíacos selecionados assistidos por toracoscopia — ampliando o uso do sistema para além da urologia e da cirurgia geral, que historicamente concentravam a maior parte dos procedimentos.<a href="#ref21" class="cite">[21]</a></p>
+      </div>
+    </div>
+
+    <div class="callout" style="margin-top:32px;">
+      <strong>Um alerta importante para quem está aprendendo agora:</strong> nenhuma dessas novidades significa que o robô "opera sozinho". Mesmo o marco de 2022 — em que um sistema autônomo realizou anastomoses intestinais em modelos suínos com mais consistência que cirurgiões experientes — permanece em fase pré-clínica.<a href="#ref19" class="cite">[19]</a> A própria Intuitive é explícita: sua visão de "autonomia supervisionada" não é sobre remover o cirurgião, mas sobre estender sua capacidade preservando controle e responsabilidade humana.<a href="#ref20" class="cite">[20]</a> Para enfermagem, medicina e engenharia clínica, isso significa um futuro de <em>mais</em> dados, <em>mais</em> protocolos de segurança e <em>mais</em> necessidade de supervisão qualificada — não menos profissionais na sala.
+    </div>
+  </div>
+</section>
+
+<!-- ================= QUESTÕES PARA REFLETIR ================= -->
+<section>
+  <div class="wrap">
+    <div class="section-label">Para pensar, não para decorar</div>
+    <h2>Questões para refletir</h2>
+    <p class="kicker">Não há resposta "certa" pronta para estas questões — o objetivo é abrir a discussão em sala de aula ou em grupo de estudo, cruzando as três áreas de formação.</p>
+
+    <div class="socratic-box">
+      <h3>Reflita antes de responder</h3>
+      <ul class="socratic-list">
+        <li><span class="tag">Engenharia × Ética</span>Se um sistema de R$ 12 milhões só é sustentável em grandes centros urbanos, a inovação tecnológica em saúde está, por definição, fadada a ampliar desigualdades — ou existe um caminho de engenharia (leasing, plataformas mais simples, manutenção compartilhada) que rompa esse padrão?</li>
+        <li><span class="tag">Enfermagem × Autonomia</span>Se a enfermagem hoje assume competências de gestão de tecnologia, segurança e liderança em cirurgia robótica, isso deveria mudar a forma como currículos de graduação em enfermagem tratam (ou não tratam) tecnologia e engenharia clínica?</li>
+        <li><span class="tag">Medicina × Dependência tecnológica</span>O "Force Feedback" do da Vinci 5 devolve ao cirurgião uma sensação que a robótica havia eliminado desde o início. O que isso revela sobre os trade-offs que toda inovação tecnológica em cirurgia carrega — o que se ganha sempre custa algo, mesmo que não apareça de imediato?</li>
+        <li><span class="tag">Gestão em saúde</span>O CONITEC calcula economia futura ao SUS com base em menos reinternações e complicações. Mas esse cálculo geralmente ignora custos de treinamento, obsolescência tecnológica e dependência de um único fabricante. Como avaliar "custo-efetividade" de forma mais conceitual -abrangente?</li>
+        <li><span class="tag">Interprofissionalidade</span>Em quantos momentos deste infográfico uma falha em uma área (engenharia, enfermagem ou gestão) se transforma automaticamente em risco para as outras duas? O que isso sugere sobre como deveríamos formar esses três profissionais — juntos ou separados?</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ================= QUIZ ================= -->
+<section class="alt">
+  <div class="wrap">
+    <div class="section-label">Fixação</div>
+    <h2>Teste o que você reteve</h2>
+    <p class="kicker">Cinco perguntas objetivas para checar os conceitos-chave antes de seguir para as referências.</p>
+
+    <div class="quiz-progress" id="quizProgress">Pergunta 1 de 5</div>
+    <div class="quiz-card" id="quizContainer"></div>
+    <div class="quiz-score" id="quizScore">
+      <h4 id="scoreText"></h4>
+      <p id="scoreMsg" style="color:var(--ink-soft);"></p>
+      <button class="quiz-reset" onclick="restartQuiz()">Refazer quiz</button>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<!-- ================= REFERÊNCIAS ================= -->
+<footer id="refs">
+  <div class="wrap">
+    <div class="section-label">Fontes consultadas e revisadas</div>
+    <h2 style="font-size:1.6rem;">Referências</h2>
+    <ol class="ref-list">
+      <li id="ref1">Intuitive Surgical. <em>Company History</em>. Disponível em: <a href="https://www.intuitive.com/en-us/about-us/company/history" target="_blank">intuitive.com/en-us/about-us/company/history</a>.</li>
+      <li id="ref2">Intuitive Surgical. <em>The evolution of da Vinci systems</em>. Disponível em: <a href="https://www.intuitive.com/en-gb/healthcare-professionals/surgeons/urology/the-evolution-of-da-vinci-systems" target="_blank">intuitive.com/en-gb — evolution of da Vinci systems</a>.</li>
+      <li id="ref3">Intuitive Surgical. <em>Da Vinci Xi Robotic Surgical System</em>. Disponível em: <a href="https://www.intuitive.com/en-us/products-and-services/da-vinci/xi" target="_blank">intuitive.com/en-us/products-and-services/da-vinci/xi</a>.</li>
+      <li id="ref4">Head & Neck Robotic Surgery. <em>da Vinci Robotic Surgery System — generations overview</em>. Disponível em: <a href="https://headneckroboticsurgery.com/robotic-surgery-system/" target="_blank">headneckroboticsurgery.com/robotic-surgery-system</a>.</li>
+      <li id="ref5">Head & Neck Robotic Surgery. <em>Overview of da Vinci SP: Milestones and Achievements</em>. Disponível em: <a href="https://headneckroboticsurgery.com/da-vinci-sp/" target="_blank">headneckroboticsurgery.com/da-vinci-sp</a>.</li>
+      <li id="ref6">Aspectos técnicos essenciais em cirurgia robótica colorretal: dominando as plataformas Da Vinci Si e Xi. <em>Revista do Colégio Brasileiro de Cirurgiões</em>. Disponível em: <a href="https://www.scielo.br/j/rcbc/a/WHXvJwjmDvQ6XMCXy4VKvQQ/?lang=pt" target="_blank">scielo.br/j/rcbc</a>.</li>
+      <li id="ref7">MARTINS, C. H. F. <em>A Cirurgia Robótica nas Organizações Públicas de Saúde: o caso INCA</em>. Redalyc. Disponível em: <a href="https://www.redalyc.org/journal/3515/351557812006/html/" target="_blank">redalyc.org/journal/3515/351557812006</a>.</li>
+      <li id="ref8">Contrato nº 065/2022. Prestação de serviço de manutenção do Sistema de Cirurgia Robótica Da Vinci. <em>INCA — Instituto Nacional de Câncer</em>. Disponível em: <a href="https://www.inca.gov.br/contratos/contrato-no-065-2022" target="_blank">inca.gov.br/contratos/contrato-no-065-2022</a>.</li>
+      <li id="ref9">Promoção de ATS pelo Ministério da Saúde — estudo randomizado de custo-efetividade da cirurgia robótica em oncologia. <em>Jornal de Assistência Farmacêutica e Farmacoeconomia</em>. Disponível em: <a href="https://ojs.jaff.org.br/ojs/index.php/jaff/article/view/851" target="_blank">ojs.jaff.org.br</a>.</li>
+      <li id="ref10">Cirurgia Robótica: Análise acerca da Viabilidade Econômica e Social no Contexto Brasileiro. <em>Congresso Internacional de Políticas Públicas de Saúde — CIPPS</em>. Disponível em: <a href="https://portaleventos.uffs.edu.br/index.php/CIPPS/article/view/25759" target="_blank">portaleventos.uffs.edu.br/CIPPS/25759</a>.</li>
+      <li id="ref11">Cirurgia Robótica no Brasil: 417% de Crescimento e o Papel do Engenheiro Biomédico. <em>Engenharia Biomédica</em>. Disponível em: <a href="https://engenhariabiomedica.com/artigos/cirurgia-robotica-brasil" target="_blank">engenhariabiomedica.com/artigos/cirurgia-robotica-brasil</a>.</li>
+      <li id="ref12">Robôs cirúrgicos chegam ao SUS da Paraíba. <em>Polêmica Paraíba</em>. Disponível em: <a href="https://www.polemicaparaiba.com.br/saude/ciencia/avanco-na-medicina-tecnologia-de-ponta-chega-a-saude-publica-da-paraiba-e-robo-opera-no-laureano-entenda-como/" target="_blank">polemicaparaiba.com.br</a>.</li>
+      <li id="ref13">Papel do enfermeiro em cirurgias robóticas no período perioperatório. <em>Revista Acadêmica Online</em>. Disponível em: <a href="https://www.revistaacademicaonline.com/index.php/rao/article/view/433" target="_blank">revistaacademicaonline.com/rao/433</a>.</li>
+      <li id="ref14">A atuação da enfermagem na cirurgia robótica: um relato de experiência. <em>REVISA</em>. Disponível em: <a href="https://rdcsa.emnuvens.com.br/revista/article/view/536" target="_blank">rdcsa.emnuvens.com.br/revista/536</a>.</li>
+      <li id="ref15">Competências do enfermeiro perioperatório em cirurgia robótica: uma revisão scoping. <em>Revista de Investigação & Inovação em Saúde</em>. Disponível em: <a href="https://riis.essnortecvp.pt/index.php/RIIS/article/view/454" target="_blank">riis.essnortecvp.pt/RIIS/454</a>.</li>
+      <li id="ref16">Cartilha Educativa — Orientações para Enfermeiros Iniciantes em Cirurgia Robótica. <em>SOBECC / az-associa.com.br</em>. Disponível em: <a href="https://az-associa.com.br/sobecc/documentos/cod_17_cartilha_educativa_de_orientacoes_para_enfermeiros_iniciantes_em_cirurgia_robotica.pdf" target="_blank">az-associa.com.br — Cartilha SOBECC</a>.</li>
+      <li id="ref17">Checklist de atribuições da equipe de enfermagem em cirurgias robóticas. <em>Revista SOBECC</em>. Disponível em: <a href="https://revista.sobecc.org.br/sobecc/article/view/933" target="_blank">revista.sobecc.org.br/sobecc/933</a>.</li>
+      <li id="ref18">HANSEN, L. O. Hugo e Versius Plus: novos robôs cirúrgicos desafiam o domínio do Da Vinci. <em>Sossego Health</em>. Disponível em: <a href="https://sossego.health/robotica-em-saude/hugo-versius-plus-roboica-cirurgica-fda-2025/" target="_blank">sossego.health — Hugo e Versius Plus</a>.</li>
+      <li id="ref19">GARMATZ, A. C.; SANTOS, J. R. A.; ZORTÉA, I.; BOBROWSKI, A. S. Impacto Econômico da Cirurgia Robótica e das Novas Tecnologias Operatórias. DOI: <a href="https://doi.org/10.59290/1700261295" target="_blank">10.59290/1700261295</a>.</li>
+      <li id="ref20">Intuitive Surgical, Inc. Intuitive Shares Vision for an AI-Enabled Future of Healthcare. <em>GlobeNewswire</em>, 23 jul. 2026. Disponível em: <a href="https://www.globenewswire.com/news-release/2026/07/23/3332221/7637/en/Intuitive-Shares-Vision-for-an-AI-Enabled-Future-of-Healthcare.html" target="_blank">globenewswire.com — Intuitive AI Vision</a>.</li>
+      <li id="ref21">HAMILTON, D. FDA aprova Da Vinci 5 para procedimentos de cirurgia cardíaca. <em>Securities.io</em>. Disponível em: <a href="https://www.securities.io/pt/intuitive-surgical-autonomous-robotics-fda/" target="_blank">securities.io/pt — Da Vinci 5 cirurgia cardíaca</a>.</li>
+      <li id="ref22">INTUITIVE. <em>Introducing da Vinci 5: our most advanced and integrated robotic system—ever</em> [vídeo]. YouTube, 2024. Disponível em: <a href="https://www.youtube.com/watch?v=MxIuOdny2cs" target="_blank">youtube.com/watch?v=MxIuOdny2cs</a>.</li>
+      <li id="ref23">FREETHINK (em parceria com Intuitive). <em>Robotic Surgery Unlocks a New Era of Medicine</em> [vídeo]. YouTube. Disponível em: <a href="https://www.youtube.com/watch?v=_aJhNXXWmq0" target="_blank">youtube.com/watch?v=_aJhNXXWmq0</a>.</li>
+      <li id="ref24">HOSPITAL ISRAELITA ALBERT EINSTEIN. <em>Einstein no SUS: tecnologia robótica a favor da precisão cirúrgica</em> [vídeo]. YouTube, 2026. Disponível em: <a href="https://www.youtube.com/watch?v=-YmWeA-Tijo" target="_blank">youtube.com/watch?v=-YmWeA-Tijo</a>.</li>
+      <li id="ref25">VIEIRA, M. <em>Como funciona a cirurgia robótica?? Te mostro nesse vídeo</em> [vídeo]. YouTube. Disponível em: <a href="https://www.youtube.com/watch?v=30gYP6RUDbE" target="_blank">youtube.com/watch?v=30gYP6RUDbE</a>.</li>
+    </ol>
+    <p style="font-size:.78rem;color:var(--ink-soft);margin-top:20px;">Todas as fontes acima foram consultadas via busca ativa na web no momento da elaboração deste material e revisadas quanto à consistência das informações apresentadas. Dados de custo em reais (R$) refletem valores reportados nas fontes citadas e podem variar por negociação, câmbio e período.</p>
+  </div>
+</footer>
+
+<footer class="institutional-footer">
+  <p>Infográfico elaborado pelos projetos Amor à Pele e PET-Saúde Digital G10 Feridas Crônicas, UFPel, em Julho de 2026.</p>
+</footer>
+
+<script>
+// ---------- TABS ----------
+document.querySelectorAll('#modelTabs .tab-btn').forEach(btn=>{
+  btn.addEventListener('click', ()=>{
+    document.querySelectorAll('#modelTabs .tab-btn').forEach(b=>b.classList.remove('active'));
+    document.querySelectorAll('.tab-panel').forEach(p=>p.classList.remove('active'));
+    btn.classList.add('active');
+    document.getElementById('tab-'+btn.dataset.tab).classList.add('active');
+  });
+});
+
+// ---------- QUIZ ----------
+const quizData = [
+  {
+    q: "O que caracteriza a principal mudança de arquitetura entre o da Vinci Si e o da Vinci Xi?",
+    opts: [
+      "A troca da coluna central por uma arquitetura em lança (boom-mounted), reduzindo colisões externas",
+      "A adição de força tátil (Force Feedback) ao console",
+      "A redução do sistema para um único braço robótico (porta única)"
+    ],
+    correct: 0,
+    fb: "Certo: a arquitetura em lança do Xi permitiu docking mais flexível e cirurgia multiquadrante — o Force Feedback só chegou no da Vinci 5, e a porta única é característica do SP."
+  },
+  {
+    q: "Qual destas afirmações sobre o da Vinci é PRECISA?",
+    opts: [
+      "O robô opera de forma autônoma em partes do procedimento, sem intervenção do cirurgião",
+      "O robô reproduz os movimentos das mãos do cirurgião, filtrando tremor e ampliando precisão",
+      "O robô substitui completamente a necessidade de uma equipe de enfermagem em sala"
+    ],
+    correct: 1,
+    fb: "Exatamente: o da Vinci não é autônomo — é um sistema de teleoperação que reproduz o gesto do cirurgião com precisão ampliada. A enfermagem permanece essencial em todas as fases."
+  },
+  {
+    q: "Na etapa intraoperatória, qual atividade é uma atribuição específica da enfermagem em cirurgia robótica (além das cirurgias convencionais)?",
+    opts: [
+      "Realizar apenas a anestesia geral do paciente",
+      "Fazer o draping (encapamento) do carrinho do paciente e registrar o tempo de uso das pinças robóticas",
+      "Decidir a indicação cirúrgica do paciente"
+    ],
+    correct: 1,
+    fb: "Isso mesmo: o draping do sistema robótico e o controle de vida útil das pinças (que têm número limitado de usos) são tarefas específicas da enfermagem em cirurgia robótica."
+  },
+  {
+    q: "Segundo o caso do INCA, qual foi um dos principais obstáculos identificados para a difusão da cirurgia robótica no SUS?",
+    opts: [
+      "A falta de consenso sobre a relação custo-efetividade e critérios claros de incorporação tecnológica",
+      "A recusa dos cirurgiões em aprender a nova tecnologia",
+      "A proibição legal de robôs cirúrgicos em hospitais públicos"
+    ],
+    correct: 0,
+    fb: "Correto: o estudo de caso do INCA (Redalyc) aponta justamente a falta de critérios objetivos de custo-efetividade e a influência de fatores políticos na decisão de incorporação — não uma barreira legal ou de recusa profissional."
+  },
+  {
+    q: "O que é engenharia clínica, no contexto deste infográfico?",
+    opts: [
+      "A especialidade médica responsável por realizar a cirurgia robótica",
+      "A área da enfermagem responsável pelo preparo do paciente",
+      "A área responsável por gerenciar o ciclo de vida de tecnologias médicas — aquisição, manutenção, calibração e conformidade regulatória"
+    ],
+    correct: 2,
+    fb: "Isso mesmo: a engenharia clínica (ou biomédica hospitalar) é o elo técnico entre medicina e enfermagem, garantindo que a tecnologia funcione com segurança e disponibilidade."
+  }
+];
+
+let currentQ = 0;
+let score = 0;
+let answered = false;
+
+function renderQuiz(){
+  const c = document.getElementById('quizContainer');
+  const item = quizData[currentQ];
+  document.getElementById('quizProgress').textContent = `Pergunta ${currentQ+1} de ${quizData.length}`;
+  answered = false;
+  c.innerHTML = `
+    <div class="quiz-q">${item.q}</div>
+    <div class="quiz-opts">
+      ${item.opts.map((o,i)=>`<button class="quiz-opt" data-i="${i}">${o}</button>`).join('')}
+    </div>
+    <div class="quiz-feedback" id="quizFeedback"></div>
+  `;
+  document.querySelectorAll('.quiz-opt').forEach(btn=>{
+    btn.addEventListener('click', ()=>{
+      if(answered) return;
+      answered = true;
+      const i = parseInt(btn.dataset.i);
+      const opts = document.querySelectorAll('.quiz-opt');
+      if(i === item.correct){
+        btn.classList.add('correct');
+        score++;
+      } else {
+        btn.classList.add('wrong');
+        opts[item.correct].classList.add('correct');
+      }
+      document.getElementById('quizFeedback').textContent = item.fb;
+      setTimeout(()=>{
+        currentQ++;
+        if(currentQ < quizData.length){
+          renderQuiz();
+        } else {
+          showScore();
+        }
+      }, 2200);
+    });
+  });
+}
+
+function showScore(){
+  document.getElementById('quizContainer').style.display='none';
+  document.getElementById('quizProgress').style.display='none';
+  const box = document.getElementById('quizScore');
+  box.style.display='block';
+  document.getElementById('scoreText').textContent = `Você acertou ${score} de ${quizData.length}`;
+  let msg = "";
+  if(score === quizData.length) msg = "Domínio completo dos conceitos apresentados — pronto(a) para discutir os casos em grupo.";
+  else if(score >= quizData.length - 1) msg = "Muito bom! Revise o item que faltou e siga para a discussão em grupo.";
+  else msg = "Vale revisar as seções acima antes de seguir para as perguntas socráticas em grupo.";
+  document.getElementById('scoreMsg').textContent = msg;
+}
+
+function restartQuiz(){
+  currentQ = 0; score = 0;
+  document.getElementById('quizContainer').style.display='block';
+  document.getElementById('quizProgress').style.display='block';
+  document.getElementById('quizScore').style.display='none';
+  renderQuiz();
+}
+
+renderQuiz();
+</script>
+
+</body>
+</html>
