@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Alejandro Martins Rodriguez — Defesa de Memorial</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,450;0,9..144,600;0,9..144,700;1,9..144,500&family=Public+Sans:wght@300;400;500;600;700;800&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --navy-950:#0A1F3A;
+  --gold:#B8862E;
+  --gold-light:#D9AF66;
+  --gold-pale:#EAD9B4;
+  --line-navy:rgba(255,255,255,0.14);
+}
+*{box-sizing:border-box;}
+body{
+  margin:0;
+  font-family:'Public Sans',sans-serif;
+  background:var(--navy-950);
+  color:#fff;
+  min-height:100vh;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  padding:3rem 1.2rem;
+}
+.wrap{max-width:680px;width:100%;}
+.logos{display:flex;gap:1.4rem;margin-bottom:2rem;flex-wrap:wrap;}
+.logos img{height:44px;filter:brightness(1.05);}
+.eyebrow{
+  font-family:'IBM Plex Mono',monospace;font-size:0.72rem;text-transform:uppercase;
+  letter-spacing:0.08em;color:var(--gold-light);margin-bottom:0.8rem;
+}
+h1{
+  font-family:'Fraunces',serif;font-weight:600;letter-spacing:-0.01em;
+  font-size:clamp(1.9rem,5vw,2.6rem);margin:0 0 0.2rem;
+}
+h1 em{font-style:italic;color:var(--gold-light);display:block;}
+.sub{color:rgba(255,255,255,0.72);font-size:1rem;line-height:1.6;max-width:56ch;margin:1rem 0 2.2rem;}
+.meta{display:flex;flex-wrap:wrap;gap:1.6rem;margin-bottom:2.6rem;padding-bottom:2rem;border-bottom:1px solid var(--line-navy);}
+.meta div{font-size:0.7rem;font-family:'IBM Plex Mono',monospace;text-transform:uppercase;letter-spacing:0.04em;color:var(--gold-light);}
+.meta strong{display:block;font-family:'Public Sans',sans-serif;text-transform:none;letter-spacing:0;color:#fff;font-size:0.95rem;font-weight:600;margin-top:0.3rem;}
+
+.section-label{
+  font-family:'IBM Plex Mono',monospace;font-size:0.68rem;text-transform:uppercase;
+  letter-spacing:0.06em;color:rgba(255,255,255,0.5);margin:0 0 0.9rem;
+}
+
+/* Links principais */
+.links{display:grid;gap:0.7rem;margin-bottom:2.6rem;}
+.link-card{
+  display:flex;align-items:center;justify-content:space-between;gap:1rem;
+  background:rgba(255,255,255,0.05);border:1px solid var(--line-navy);border-radius:10px;
+  padding:1.1rem 1.3rem;text-decoration:none;color:#fff;transition:all .15s ease;
+}
+.link-card:hover{background:rgba(255,255,255,0.09);border-color:var(--gold-light);}
+.link-card .label{font-weight:600;font-size:1rem;}
+.link-card .hint{font-size:0.78rem;color:rgba(255,255,255,0.55);margin-top:0.15rem;}
+.link-card .arrow{color:var(--gold-light);font-size:1.2rem;flex-shrink:0;}
+.link-card.disabled{opacity:0.4;pointer-events:none;}
+
+/* Banca */
+.banca-grid{display:grid;gap:0.7rem;grid-template-columns:1fr 1fr;}
+.banca-card{background:rgba(255,255,255,0.04);border:1px solid var(--line-navy);border-radius:10px;padding:1rem 1.1rem;}
+.banca-card .role{font-family:'IBM Plex Mono',monospace;font-size:0.62rem;text-transform:uppercase;letter-spacing:0.05em;color:var(--gold-light);margin-bottom:0.4rem;}
+.banca-card h4{font-family:'Fraunces',serif;font-weight:600;font-size:0.95rem;margin:0 0 0.25rem;color:#fff;}
+.banca-card .inst{font-size:0.76rem;color:rgba(255,255,255,0.6);line-height:1.4;}
+
+footer{margin-top:2.6rem;padding-top:1.6rem;border-top:1px solid var(--line-navy);font-size:0.72rem;font-family:'IBM Plex Mono',monospace;color:rgba(255,255,255,0.4);}
+
+@media (max-width:520px){
+  .banca-grid{grid-template-columns:1fr;}
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <div class="logos">
+    <img src="img/logo-ufpel.png" alt="Universidade Federal de Pelotas">
+    <img src="img/logo-centro-engenharias.png" alt="Centro de Engenharias UFPel">
+  </div>
+
+  <div class="eyebrow">Defesa de Memorial · Promoção à Classe de Professor Titular</div>
+  <h1>Alejandro Martins Rodriguez</h1>
+  <p class="sub">Links de acesso para a defesa pública do memorial acadêmico, perante a banca examinadora.</p>
+
+  <div class="meta">
+    <div>Data<strong id="m-data">07 de agosto de 2026</strong></div>
+    <div>Processo<strong id="m-processo">23110.017596/2026-82</strong></div>
+    <div>Unidade<strong id="m-unidade">Centro de Engenharias — CEng</strong></div>
+  </div>
+
+  <div class="section-label">Acesso rápido</div>
+  <div class="links" id="links">
+    <a class="link-card" id="link-apresentacao" href="#" target="_blank" rel="noopener">
+      <div>
+        <div class="label">Memorial - Apresentação</div>
+        <div class="hint">Link para a apresentação</div>
+      </div>
+      <span class="arrow">→</span>
+    </a>
+    <a class="link-card" id="link-webconf" href="#" target="_blank" rel="noopener">
+      <div>
+        <div class="label">Sala de webconferência</div>
+        <div class="hint">Acesso remoto via sistema da UFPel</div>
+      </div>
+      <span class="arrow">→</span>
+    </a>
+    <a class="link-card" id="link-ufpel" href="#" target="_blank" rel="noopener">
+      <div>
+        <div class="label">Página institucional (UFPel)</div>
+        <div class="hint">Perfil docente — com link para o Currículo Lattes</div>
+      </div>
+      <span class="arrow">→</span>
+    </a>
+    <a class="link-card" id="link-sala" href="#" target="_blank" rel="noopener">
+      <div>
+        <div class="label">Sala da defesa</div>
+        <div class="hint">Local físico: COTADA306A - andar A3 no elevador</div>
+      </div>
+      <span class="arrow">→</span>
+    </a>
+  </div>
+
+  <div class="section-label">Banca examinadora</div>
+  <div class="banca-grid">
+    <div class="banca-card">
+      <div class="role">Presidente da Banca</div>
+      <h4>Gilson Simões Porciúncula</h4>
+      <div class="inst">Doutorado em Engenharia Mecânica, UFSC — Centro de Engenharias, UFPel</div>
+    </div>
+    <div class="banca-card">
+      <div class="role">Membro Externo</div>
+      <h4>Antônio Domingues Brasil</h4>
+      <div class="inst">Doutorado em Engenharia Mecânica, UFSC — Escola de Engenharia, FURG</div>
+    </div>
+    <div class="banca-card">
+      <div class="role">Membro Externo</div>
+      <h4>Cristine Machado Schwanke</h4>
+      <div class="inst">Doutorado em Eng. de Minas, Metalúrgica e de Materiais, UFRGS — UNIPAMPA, Campus Bagé</div>
+    </div>
+    <div class="banca-card">
+      <div class="role">Membro Externo</div>
+      <h4>Maria de Nazaré Maciel Uesugi</h4>
+      <div class="inst">Doutorado em Engenharia Florestal, UFPR — Instituto Ciberespacial, UFRA</div>
+    </div>
+  </div>
+
+  <footer>Alejandro Martins Rodriguez · SIAPE 1806731 · Pelotas, 2026</footer>
+</div>
+
+<script src="links.js"></script>
+<script>
+// Usa o objeto LINKS definido em links.js (arquivo que você edita).
+(function(){
+  const map = (typeof LINKS !== 'undefined') ? LINKS : {};
+
+  const wire = (id, key) => {
+    const el = document.getElementById(id);
+    if (map[key]) {
+      el.href = map[key];
+      el.classList.remove('disabled');
+    } else {
+      el.classList.add('disabled');
+    }
+  };
+  wire('link-sala', 'sala');
+  wire('link-apresentacao', 'apresentacao');
+  wire('link-webconf', 'webconferencia');
+  wire('link-ufpel', 'ufpel');
+
+  if (map.data) document.getElementById('m-data').textContent = map.data;
+  if (map.processo) document.getElementById('m-processo').textContent = map.processo;
+  if (map.unidade) document.getElementById('m-unidade').textContent = map.unidade;
+})();
+</script>
+</body>
+</html>
