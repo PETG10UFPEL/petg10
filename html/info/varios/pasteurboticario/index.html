@@ -394,7 +394,64 @@
   .role-card h4{font-size:1rem; margin-bottom:6px;}
   .role-card p{font-size:.88rem; color:var(--ink-soft); margin:0;}
 
-  /* perguntas de fixação (accordion nativo) */
+  .quinoa-photo{
+    margin-top:24px;
+    max-height:340px;
+    overflow:hidden;
+  }
+  .quinoa-photo img{width:100%; height:340px; object-fit:cover; object-position:center 35%;}
+  .quinoa-photo figcaption{padding-left:0;}
+
+  /* quinoa history */
+  .quinoa-timeline{
+    display:flex;
+    flex-wrap:wrap;
+    gap:0;
+    margin-top:28px;
+    border-top:1px solid var(--line);
+    border-bottom:1px solid var(--line);
+  }
+  .quinoa-timeline .tl-item{
+    flex:1 1 200px;
+    padding:18px 20px 18px 0;
+    border-right:1px solid var(--line);
+  }
+  .quinoa-timeline .tl-item:last-child{border-right:none;}
+  .quinoa-timeline .tl-date{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:.74rem;
+    font-weight:600;
+    color:var(--quinoa);
+    display:block;
+    margin-bottom:6px;
+  }
+  .quinoa-timeline .tl-text{font-size:.86rem; color:var(--ink-soft); margin:0;}
+
+  .compound-panel{
+    background:var(--paper);
+    border:1px solid var(--line);
+    padding:20px 22px;
+    margin-top:24px;
+  }
+  .compound-panel h4{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:.72rem;
+    letter-spacing:.08em;
+    text-transform:uppercase;
+    color:var(--ink-soft);
+    font-weight:600;
+    margin:0 0 14px;
+  }
+  .compound-chips{display:flex; flex-wrap:wrap; gap:8px;}
+  .compound-chip{
+    font-size:.82rem;
+    padding:5px 12px;
+    border-radius:20px;
+    background:var(--sage-lt);
+    color:var(--sage);
+    font-weight:600;
+  }
+
   .quiz-block{margin-top:26px; display:flex; flex-direction:column; gap:10px;}
   .quiz-item{
     background:var(--paper);
@@ -673,6 +730,62 @@
               <p class="placeholder-hint">Ilustração didática: corte transversal da pele (epiderme, derme), destacando onde atuam desmogleína-1, filagrina e as enzimas antioxidantes citadas no estudo.</p>
             </div>
           </figure>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= QUINOA — HISTÓRIA ================= -->
+  <section>
+    <div class="wrap reveal">
+      <div class="eyebrow">Conhecendo o ingrediente</div>
+      <h2 class="head">Antes do laboratório, 5 mil anos de história andina</h2>
+      <p class="lede">O bioativo testado no estudo não nasceu em 2026 — ele parte de uma planta domesticada muito antes do Império Inca, e que sobreviveu a séculos de tentativa de apagamento.</p>
+
+      <figure class="paper-fig quinoa-photo">
+        <img class="fallback-img" src="img/quinoa-planta-andes.jpg" alt="Planta de quinoa (Chenopodium quinoa) em campo de cultivo andino, com suas características panículas coloridas">
+        <div class="placeholder-box" style="display:none;">
+          <span class="placeholder-icon">🌾</span>
+          <p class="placeholder-label">img/quinoa-planta-andes.jpg</p>
+          <p class="placeholder-hint">Foto (ou foto-ilustração) da planta Chenopodium quinoa em campo de cultivo andino, panículas em tons de vermelho/dourado/verde, luz natural.</p>
+        </div>
+        <figcaption><i>Chenopodium quinoa</i> em campo de cultivo — a mesma espécie domesticada há milênios nos Andes é hoje fonte do bioativo estudado.</figcaption>
+      </figure>
+
+      <div class="quinoa-timeline">
+        <div class="tl-item">
+          <span class="tl-date">~5.000–7.000 anos atrás</span>
+          <p class="tl-text"><i>Chenopodium quinoa</i> é domesticada por povos andinos perto do Lago Titicaca (atuais Bolívia/Peru) — muito antes de existir o Império Inca.</p>
+        </div>
+        <div class="tl-item">
+          <span class="tl-date">Império Inca (séc. XV–XVI)</span>
+          <p class="tl-text">Os incas chamavam a quinoa de <i>chisiya mama</i> — "grão-mãe", em quéchua — um alimento básico e culturalmente valorizado nos Andes.</p>
+        </div>
+        <div class="tl-item">
+          <span class="tl-date">Colonização espanhola</span>
+          <p class="tl-text">Os colonizadores impuseram tributos pagos só em trigo ou cevada, forçando o abandono de cultivos andinos — o cultivo de quinoa caiu drasticamente, mas nunca desapareceu.</p>
+        </div>
+        <div class="tl-item">
+          <span class="tl-date">2013 · ONU</span>
+          <p class="tl-text">A FAO declara o Ano Internacional da Quinoa, reconhecendo seu papel na segurança alimentar mundial.</p>
+        </div>
+        <div class="tl-item">
+          <span class="tl-date">2026 · este estudo</span>
+          <p class="tl-text">Um derivado esterificado da quinoa é testado com proteômica de ponta e inteligência artificial — a mesma planta, sob uma lente totalmente nova.</p>
+        </div>
+      </div>
+
+      <p style="margin-top:22px;">Não é só simbolismo: quimicamente, a quinoa é incomum. É um <b>pseudocereal</b> (semente de uma planta de folha larga, não uma gramínea) naturalmente livre de glúten e com um perfil proteico raro entre alimentos vegetais. O artigo original destaca que o bioéster usado no estudo é <b>rico em ácidos graxos essenciais — sobretudo linoleico e oleico — e em compostos fenólicos</b>, com atividade descrita na literatura como capaz de modular a diferenciação de queratinócitos, reforçar a barreira epidérmica e inibir a atividade de colagenase.</p>
+
+      <div class="compound-panel">
+        <h4>Por que a química da quinoa interessa à pele</h4>
+        <div class="compound-chips">
+          <span class="compound-chip">Ácido linoleico</span>
+          <span class="compound-chip">Ácido oleico</span>
+          <span class="compound-chip">Compostos fenólicos</span>
+          <span class="compound-chip">Ação antioxidante</span>
+          <span class="compound-chip">Modulação de queratinócitos</span>
+          <span class="compound-chip">Inibição de colagenase</span>
         </div>
       </div>
     </div>
