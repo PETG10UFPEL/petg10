@@ -1,0 +1,1059 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Quinoa bioéster: a pele mais jovem, vista pelas proteínas</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Public+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:        #F7F3E8;
+    --bg-deep:   #EEE6CF;
+    --paper:     #FFFDF7;
+    --ink:       #23261E;
+    --ink-soft:  #52584A;
+    --quinoa:    #9A7B1E;
+    --quinoa-lt: #E7D6A2;
+    --sage:      #4F6B45;
+    --sage-lt:   #DCE6D3;
+    --rose:      #A85C4C;
+    --rose-lt:   #EED9D0;
+    --science:   #2C4356;
+    --science-lt:#D9E1E6;
+    --line:      #DAD0B4;
+    --shadow: 0 1px 0 rgba(35,38,30,0.06);
+    --radius: 3px;
+  }
+
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    background:var(--bg);
+    color:var(--ink);
+    font-family:'Public Sans', sans-serif;
+    font-size:17px;
+    line-height:1.62;
+    -webkit-font-smoothing:antialiased;
+  }
+  h1,h2,h3,h4{
+    font-family:'Fraunces', serif;
+    font-weight:600;
+    line-height:1.12;
+    margin:0 0 .5em 0;
+    letter-spacing:-.01em;
+  }
+  p{margin:0 0 1em 0;}
+  a{color:var(--science);}
+  img{max-width:100%;display:block;}
+  .wrap{max-width:920px;margin:0 auto;padding:0 28px;}
+  .eyebrow{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:.72rem;
+    letter-spacing:.14em;
+    text-transform:uppercase;
+    color:var(--quinoa);
+    font-weight:600;
+    margin-bottom:.85em;
+    display:flex; align-items:center; gap:10px;
+  }
+  .eyebrow::before{content:"";width:22px;height:1px;background:var(--quinoa);display:inline-block;}
+
+  /* ---------- HEADER ---------- */
+  .institutional-header{
+    background:var(--paper);
+    border-bottom:1px solid var(--line);
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:14px 28px;
+    position:sticky; top:0; z-index:20;
+  }
+  .header-identity{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:.72rem;
+    letter-spacing:.08em;
+    text-transform:uppercase;
+    color:var(--ink-soft);
+  }
+  .institutional-header img{max-height:44px;width:auto;}
+
+  /* ---------- HERO ---------- */
+  .hero{
+    padding:64px 0 40px;
+    border-bottom:1px solid var(--line);
+  }
+  .hero .tag-row{display:flex; gap:8px; flex-wrap:wrap; margin-bottom:22px;}
+  .country-chip{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:.7rem; letter-spacing:.06em;
+    padding:4px 10px; border-radius:20px;
+    border:1px solid var(--line);
+    background:var(--paper);
+    color:var(--ink-soft);
+    display:inline-flex; align-items:center; gap:6px;
+  }
+  .country-chip i{width:8px;height:8px;border-radius:50%;display:inline-block;}
+  .hero h1{
+    font-size:clamp(2.1rem, 4.6vw, 3.35rem);
+    max-width:15ch;
+  }
+  .hero h1 em{font-style:italic; color:var(--quinoa);}
+  .hero .sub{
+    font-size:1.12rem;
+    color:var(--ink-soft);
+    max-width:56ch;
+    margin-top:14px;
+  }
+  .stat-strip{
+    margin-top:40px;
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    border-top:1px solid var(--line);
+  }
+  .stat-strip .stat{
+    padding:20px 18px 8px 0;
+    border-right:1px solid var(--line);
+  }
+  .stat-strip .stat:last-child{border-right:none;}
+  .stat b{
+    font-family:'Fraunces', serif;
+    font-size:2.05rem;
+    font-weight:600;
+    display:block;
+    color:var(--ink);
+  }
+  .stat span{
+    font-size:.82rem;
+    color:var(--ink-soft);
+  }
+
+  /* ---------- SECTIONS ---------- */
+  main{padding:6px 0 10px;}
+  section{padding:52px 0;}
+  section + section{border-top:1px solid var(--line);}
+  section.tint{background:var(--bg-deep);}
+  section.tint .wrap{border-top:none;}
+  h2.head{
+    font-size:clamp(1.5rem,3vw,2.05rem);
+    max-width:22ch;
+  }
+  .lede{
+    font-size:1.08rem;
+    color:var(--ink-soft);
+    max-width:64ch;
+  }
+  .two-col{
+    display:grid;
+    grid-template-columns:1.05fr .95fr;
+    gap:40px;
+    align-items:start;
+  }
+  .two-col.rev{grid-template-columns:.95fr 1.05fr;}
+  .two-col.rev .figure-block{order:-1;}
+
+  /* pull quote / callout */
+  .callout{
+    background:var(--paper);
+    border-left:3px solid var(--quinoa);
+    padding:20px 24px;
+    margin:22px 0;
+    border-radius:0 var(--radius) var(--radius) 0;
+  }
+  .callout p{margin:0;}
+  .callout .k{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:.72rem;
+    letter-spacing:.08em;
+    text-transform:uppercase;
+    color:var(--quinoa);
+    display:block;
+    margin-bottom:6px;
+  }
+  .callout.science{border-left-color:var(--science);}
+  .callout.science .k{color:var(--science);}
+  .callout.sage{border-left-color:var(--sage);}
+  .callout.sage .k{color:var(--sage);}
+
+  /* figures */
+  figure{margin:0;}
+  figure.paper-fig{
+    background:var(--paper);
+    border:1px solid var(--line);
+    padding:10px;
+  }
+  figure.paper-fig img{border:1px solid var(--line);}
+  figcaption{
+    font-size:.82rem;
+    color:var(--ink-soft);
+    padding:12px 6px 4px;
+    line-height:1.5;
+  }
+  figcaption b{color:var(--ink);}
+
+  figure.paper-fig img{width:100%; height:auto; display:block;}
+  .img-placeholder .placeholder-box{
+    border:1.5px dashed #b9ad86;
+    background:var(--bg-deep);
+    border-radius:var(--radius);
+    padding:30px 20px;
+    text-align:center;
+    color:var(--ink-soft);
+    min-height:200px;
+    display:flex; flex-direction:column; align-items:center; justify-content:center; gap:8px;
+  }
+  .placeholder-icon{font-size:1.8rem; opacity:.55;}
+  .placeholder-label{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:.76rem;
+    background:var(--paper);
+    border:1px solid var(--line);
+    padding:4px 10px;
+    border-radius:4px;
+    color:var(--ink);
+  }
+  .placeholder-hint{
+    font-size:.78rem;
+    font-style:italic;
+    max-width:340px;
+  }
+
+  /* biomarker tags — signature element */
+  .protein-grid{
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    gap:14px;
+    margin-top:28px;
+  }
+  .tag-card{
+    background:var(--paper);
+    border:1px solid var(--line);
+    padding:16px 16px 14px;
+    position:relative;
+  }
+  .tag-card::before{
+    content:"";
+    position:absolute; left:0; top:0; bottom:0; width:4px;
+  }
+  .tag-card.up::before{background:var(--sage);}
+  .tag-card.down::before{background:var(--rose);}
+  .tag-head{display:flex; justify-content:space-between; align-items:flex-start; gap:10px;}
+  .tag-code{
+    font-family:'IBM Plex Mono', monospace;
+    font-weight:600;
+    font-size:.95rem;
+    letter-spacing:.02em;
+  }
+  .tag-uniprot{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:.68rem;
+    color:var(--ink-soft);
+  }
+  .tag-dir{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:.68rem;
+    padding:2px 7px;
+    border-radius:10px;
+    white-space:nowrap;
+  }
+  .tag-card.up .tag-dir{background:var(--sage-lt); color:var(--sage);}
+  .tag-card.down .tag-dir{background:var(--rose-lt); color:var(--rose);}
+  .tag-name{font-size:.95rem; font-weight:600; margin:8px 0 2px;}
+  .tag-note{font-size:.86rem; color:var(--ink-soft); margin:0;}
+  .protein-group-label{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:.72rem;
+    letter-spacing:.1em;
+    text-transform:uppercase;
+    color:var(--ink-soft);
+    margin:26px 0 4px;
+  }
+  .protein-group-label:first-child{margin-top:0;}
+
+  /* numbers block */
+  .big-numbers{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:1px;
+    background:var(--line);
+    margin-top:28px;
+    border:1px solid var(--line);
+  }
+  .big-numbers .bn{
+    background:var(--paper);
+    padding:26px 22px;
+  }
+  .big-numbers .bn b{
+    font-family:'Fraunces',serif;
+    font-size:2.3rem;
+    font-weight:600;
+    display:block;
+  }
+  .big-numbers .bn span{font-size:.85rem; color:var(--ink-soft);}
+
+  /* ML explainer steps */
+  .steps{counter-reset:step; margin-top:28px;}
+  .step{
+    display:grid;
+    grid-template-columns:52px 1fr;
+    gap:16px;
+    padding:18px 0;
+    border-top:1px solid var(--line);
+  }
+  .step:last-child{border-bottom:1px solid var(--line);}
+  .step .num{
+    counter-increment:step;
+    font-family:'Fraunces',serif;
+    font-size:1.5rem;
+    color:var(--quinoa);
+  }
+  .step .num::before{content:"0" counter(step);}
+  .step h4{font-size:1.02rem; margin-bottom:4px;}
+  .step p{margin:0; color:var(--ink-soft); font-size:.95rem;}
+
+  /* boxplot summary bars (illustrative, css-built) */
+  .age-compare{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:20px;
+    margin-top:24px;
+  }
+  .age-panel{
+    background:var(--paper);
+    border:1px solid var(--line);
+    padding:18px 18px 20px;
+  }
+  .age-panel h4{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:.78rem;
+    letter-spacing:.06em;
+    text-transform:uppercase;
+    color:var(--ink-soft);
+    margin-bottom:14px;
+    font-weight:600;
+  }
+  .bar-row{display:flex; align-items:center; gap:10px; margin-bottom:10px;}
+  .bar-label{font-size:.78rem; width:78px; color:var(--ink-soft); flex-shrink:0;}
+  .bar-track{flex:1; background:var(--bg-deep); height:20px; position:relative;}
+  .bar-fill{height:100%; }
+  .bar-fill.quinoa-bar{background:var(--sage);}
+  .bar-fill.vehicle-bar{background:#B7AE8C;}
+  .bar-val{font-family:'IBM Plex Mono', monospace; font-size:.78rem; width:40px; text-align:right;}
+  .age-panel .pval{
+    margin-top:10px;
+    font-size:.8rem;
+    color:var(--ink-soft);
+  }
+  .age-panel .pval b{color:var(--ink); font-family:'IBM Plex Mono', monospace;}
+
+  /* comparison table */
+  table.benchmark{
+    width:100%;
+    border-collapse:collapse;
+    margin-top:24px;
+    font-size:.92rem;
+  }
+  table.benchmark th, table.benchmark td{
+    text-align:left;
+    padding:11px 10px;
+    border-bottom:1px solid var(--line);
+  }
+  table.benchmark th{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:.7rem;
+    letter-spacing:.06em;
+    text-transform:uppercase;
+    color:var(--ink-soft);
+    font-weight:600;
+  }
+  table.benchmark td.n{font-family:'IBM Plex Mono', monospace;}
+
+  /* implicações cards */
+  .role-grid{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:16px;
+    margin-top:26px;
+  }
+  .role-card{
+    background:var(--paper);
+    border:1px solid var(--line);
+    padding:18px 16px;
+  }
+  .role-card .role-tag{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:.68rem;
+    letter-spacing:.06em;
+    text-transform:uppercase;
+    color:var(--science);
+    display:block;
+    margin-bottom:8px;
+  }
+  .role-card h4{font-size:1rem; margin-bottom:6px;}
+  .role-card p{font-size:.88rem; color:var(--ink-soft); margin:0;}
+
+  /* perguntas de fixação (accordion nativo) */
+  .quiz-block{margin-top:26px; display:flex; flex-direction:column; gap:10px;}
+  .quiz-item{
+    background:var(--paper);
+    border:1px solid var(--line);
+  }
+  .quiz-item summary{
+    cursor:pointer;
+    list-style:none;
+    padding:16px 18px;
+    display:flex;
+    align-items:flex-start;
+    gap:12px;
+    font-weight:600;
+    font-size:.97rem;
+  }
+  .quiz-item summary::-webkit-details-marker{display:none;}
+  .quiz-item summary .q-mark{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:.72rem;
+    color:var(--science);
+    background:var(--science-lt);
+    border-radius:50%;
+    width:20px; height:20px;
+    flex:0 0 auto;
+    display:flex; align-items:center; justify-content:center;
+    margin-top:2px;
+  }
+  .quiz-item summary::after{
+    content:"+";
+    margin-left:auto;
+    font-family:'Fraunces',serif;
+    font-size:1.2rem;
+    color:var(--ink-soft);
+    flex:0 0 auto;
+  }
+  .quiz-item[open] summary::after{content:"–";}
+  .quiz-item .a{
+    padding:0 18px 18px 50px;
+    font-size:.92rem;
+    color:var(--ink-soft);
+  }
+  .quiz-item .a b{color:var(--ink);}
+
+  /* questões para pensar */
+  .think-block{
+    margin-top:26px;
+    display:flex;
+    flex-direction:column;
+    gap:16px;
+  }
+  .think-item{
+    padding:18px 20px;
+    background:var(--bg-deep);
+    border-left:3px solid var(--rose);
+  }
+  .think-item p{margin:0; font-size:.98rem; font-style:italic; color:var(--ink);}
+
+  .limit-list{list-style:none; margin:24px 0 0; padding:0;}
+  .limit-list li{
+    display:flex;
+    align-items:flex-start;
+    gap:12px;
+    padding:16px 0;
+    border-top:1px solid var(--line);
+  }
+  .limit-list li:last-child{border-bottom:1px solid var(--line);}
+  .limit-list li .mark{
+    flex:0 0 auto;
+    color:var(--rose);
+    font-weight:600;
+    line-height:1.62;
+  }
+  .limit-list li .txt{
+    flex:1 1 auto;
+    min-width:0;
+    font-size:.95rem;
+    color:var(--ink-soft);
+  }
+  .limit-list li b{color:var(--ink);}
+
+  /* collaboration map section */
+  .collab-block{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:32px;
+    margin-top:28px;
+    align-items:center;
+  }
+  .institution-list{list-style:none; margin:0; padding:0;}
+  .institution-list li{
+    padding:14px 0;
+    border-top:1px solid var(--line);
+    display:grid;
+    grid-template-columns:44px 1fr;
+    gap:12px;
+  }
+  .institution-list li:last-child{border-bottom:1px solid var(--line);}
+  .flag-mini{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:.66rem;
+    font-weight:600;
+    color:#fff;
+    background:var(--ink-soft);
+    border-radius:3px;
+    height:22px;
+    display:flex; align-items:center; justify-content:center;
+  }
+  .flag-mini.br{background:linear-gradient(135deg,#4F6B45,#7A9A3E);}
+  .flag-mini.uy{background:linear-gradient(135deg,#2C4356,#5A87A6);}
+  .flag-mini.us{background:linear-gradient(135deg,#A85C4C,#C98872);}
+  .institution-list .inst-name{font-weight:600; font-size:.94rem;}
+  .institution-list .inst-role{font-size:.83rem; color:var(--ink-soft); margin-top:2px;}
+
+  /* synthesis */
+  .synthesis-box{
+    background:var(--science);
+    color:#F4F0E2;
+    padding:44px 40px;
+    border-radius:var(--radius);
+    margin-top:10px;
+  }
+  .synthesis-box .eyebrow{color:#C9D6DE;}
+  .synthesis-box .eyebrow::before{background:#C9D6DE;}
+  .synthesis-box h2{color:#fff;}
+  .synthesis-box p{color:#DCE3E7; max-width:62ch;}
+
+  /* references */
+  .ref-list{
+    font-size:.84rem;
+    color:var(--ink-soft);
+    line-height:1.7;
+  }
+  .ref-list a{color:var(--ink-soft); text-decoration:underline;}
+
+  /* footer */
+  .institutional-footer{
+    background:var(--paper);
+    border-top:1px solid var(--line);
+    text-align:center;
+    padding:30px 20px;
+  }
+  .institutional-footer p{
+    margin:0;
+    font-size:.8rem;
+    color:var(--ink-soft);
+  }
+
+  /* reveal animation */
+  .reveal{opacity:0; transform:translateY(14px); transition:opacity .6s ease, transform .6s ease;}
+  .reveal.show{opacity:1; transform:none;}
+  @media (prefers-reduced-motion: reduce){
+    .reveal{opacity:1; transform:none; transition:none;}
+    html{scroll-behavior:auto;}
+  }
+
+  /* responsive */
+  @media (max-width:760px){
+    .stat-strip{grid-template-columns:repeat(2,1fr);}
+    .stat-strip .stat:nth-child(2){border-right:none;}
+    .two-col, .two-col.rev{grid-template-columns:1fr;}
+    .two-col.rev .figure-block{order:0;}
+    .protein-grid{grid-template-columns:1fr;}
+    .big-numbers{grid-template-columns:1fr;}
+    .age-compare{grid-template-columns:1fr;}
+    .role-grid{grid-template-columns:1fr;}
+    .collab-block{grid-template-columns:1fr;}
+    .synthesis-box{padding:32px 24px;}
+  }
+</style>
+</head>
+<body>
+
+  <header class="institutional-header">
+    <div class="header-identity">Amor à Pele · PET-Saúde Digital G10 — UFPel</div>
+    <img src="img/logo-amor-a-pele-pet-saude.png" alt="Logos dos projetos Amor à Pele e PET-Saúde Digital G10 Feridas Crônicas – UFPel">
+  </header>
+
+  <main>
+
+  <!-- ================= HERO ================= -->
+  <section class="hero">
+    <div class="wrap">
+      <div class="tag-row">
+        <span class="country-chip"><i style="background:#4F6B45"></i>Fiocruz Paraná — Brasil</span>
+        <span class="country-chip"><i style="background:#2C4356"></i>Institut Pasteur Montevideo — Uruguai</span>
+        <span class="country-chip"><i style="background:#A85C4C"></i>UC San Diego — EUA</span>
+      </div>
+      <div class="eyebrow">Communications Biology · Nature Portfolio · 2026</div>
+      <h1>A pele conta sua idade — e a <em>quinoa</em> pode reescrever a resposta</h1>
+      <p class="sub">Um estudo brasileiro-uruguaio usou espectrometria de massas e aprendizado de máquina para "ler" milhares de proteínas da pele humana e mostrar que um bioativo derivado da quinoa desloca esse perfil molecular na direção de uma pele mais jovem.</p>
+
+      <div class="stat-strip">
+        <div class="stat"><b>61</b><span>mulheres, uma para cada idade entre 20 e 80 anos</span></div>
+        <div class="stat"><b>244</b><span>amostras de pele coletadas (2 antebraços × antes/depois)</span></div>
+        <div class="stat"><b>30</b><span>dias de aplicação tópica diária</span></div>
+        <div class="stat"><b>2.906</b><span>proteínas identificadas por espectrometria de massas</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= CONTEXTO ================= -->
+  <section>
+    <div class="wrap reveal">
+      <div class="two-col">
+        <div>
+          <div class="eyebrow">O problema</div>
+          <h2 class="head">A pele envelhece por dois caminhos — e nem sempre dá para ver</h2>
+          <p class="lede">O envelhecimento intrínseco (genético, metabólico) reduz a produção de colágeno e a atividade dos fibroblastos. Já os fatores extrínsecos — sobretudo a radiação UV — aceleram esse processo, gerando espécies reativas de oxigênio (ROS) e ativando enzimas que degradam a matriz extracelular.</p>
+          <p>O resultado clínico é conhecido: perda de elasticidade, flacidez, rugas e uma barreira cutânea mais frágil. O que normalmente <b>não</b> se vê é a camada molecular por trás disso — e é justamente aí que entra a proteômica: o mapeamento de todas as proteínas presentes em um tecido, em um dado momento.</p>
+        </div>
+        <div class="figure-block">
+          <figure class="paper-fig">
+            <img src="img/corte-transversal-pele-camadas.png" alt="Corte transversal da pele mostrando epiderme e derme, com destaque para desmogleína-1, filagrina e enzimas antioxidantes" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+            <div class="placeholder-box" style="display:none;">
+              <span class="placeholder-icon">🖼</span>
+              <p class="placeholder-label">img/corte-transversal-pele-camadas.png</p>
+              <p class="placeholder-hint">Ilustração didática: corte transversal da pele (epiderme, derme), destacando onde atuam desmogleína-1, filagrina e as enzimas antioxidantes citadas no estudo.</p>
+            </div>
+          </figure>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= PERGUNTA + COLABORAÇÃO ================= -->
+  <section class="tint">
+    <div class="wrap reveal">
+      <div class="eyebrow">A pergunta de pesquisa</div>
+      <h2 class="head">Dá para medir o "rejuvenescimento" sem depender da opinião do pesquisador?</h2>
+      <p class="lede">Estudos de proteômica costumam listar proteínas que "aumentaram" ou "diminuíram" — mas essa escolha pode ser enviesada por quem já espera encontrar sinais de melhora. A equipe propôs uma alternativa: treinar um modelo de <b>aprendizado de máquina</b> para prever a idade biológica da pele a partir do seu perfil proteico, e usar esse modelo, de forma cega, para testar se o bioéster de quinoa desloca a pele tratada para um perfil mais "jovem".</p>
+
+      <div class="callout">
+        <span class="k">Pesquisa conjunta Brasil–Uruguai</span>
+        <p>A análise estatística refinada (comparação pareada) foi conduzida com o módulo <i>Pairwise Comparer</i> do <b>PatternLab for Proteomics</b>, ferramenta desenvolvida no Instituto Carlos Chagas (Fiocruz, Paraná, Brasil) em colaboração com a <b>Unidade de Bioquímica Analítica e Proteômica</b> do Institut Pasteur de Montevidéu e do Instituto Clemente Estable (Uruguai) — parceria que também recebeu financiamento do FOCEM, o Fundo para a Convergência Estrutural do Mercosul.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= DESENHO DO ESTUDO ================= -->
+  <section>
+    <div class="wrap reveal">
+      <div class="eyebrow">Desenho experimental</div>
+      <h2 class="head">Cada participante foi seu próprio controle</h2>
+      <div class="two-col rev">
+        <div class="figure-block">
+          <figure class="paper-fig">
+            <img src="img/fig1-fluxo-coleta-amostras.jpg" alt="Fluxo de coleta de amostras: pré-tratamento, 30 dias de aplicação, pós-tratamento, preparo e espectrometria de massas" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+            <div class="placeholder-box" style="display:none;">
+              <span class="placeholder-icon">🖼</span>
+              <p class="placeholder-label">img/fig1-fluxo-coleta-amostras.jpg</p>
+              <p class="placeholder-hint">Figura 1 do artigo (BioRender): fluxo de coleta — amostra pré-tratamento, 30 dias de aplicação (bioéster x veículo), amostra pós-tratamento, preparo (lise, extração, digestão) e espectrometria em Orbitrap Lumos.</p>
+            </div>
+            <figcaption><b>Fig. 1 (artigo original).</b> Fluxo de geração de dados: coleta em 61 voluntárias, tratamento de 30 dias, preparo das amostras e identificação por espectrometria de massas + PatternLab for Proteomics.</figcaption>
+          </figure>
+        </div>
+        <div>
+          <p>Cada uma das 61 mulheres recebeu o bioéster de quinoa em um antebraço e o veículo (sem o ativo) no antebraço oposto, aplicados duas vezes ao dia. A escolha de qual lado recebia o quê seguiu uma regra sistemática (idades ímpares e pares alternavam o lado), e nem participante nem avaliador sabiam qual formulação estava em qual braço — <b>estudo cego</b>.</p>
+          <p>Essa estratégia de <b>desenho pareado intraindividual</b> é o que permite comparar cada pessoa consigo mesma, reduzindo o ruído da enorme variabilidade biológica entre indivíduos — essencial num estudo com uma faixa etária tão ampla (20 a 80 anos).</p>
+          <div class="callout sage">
+            <span class="k">Por que isso importa para a prática clínica</span>
+            <p>O desenho pareado é o mesmo princípio usado em ensaios de curativos e coberturas para feridas crônicas quando se compara tratamento e controle no mesmo paciente: controla variáveis individuais (idade, genética, hábitos) que, de outra forma, se misturariam ao efeito real da intervenção.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= NÚMEROS DA PROTEÔMICA ================= -->
+  <section class="tint">
+    <div class="wrap reveal">
+      <div class="eyebrow">Escala do experimento</div>
+      <h2 class="head">O maior mapa proteômico de pele já produzido</h2>
+      <p class="lede">Todas as 244 amostras foram analisadas em duplicata técnica, gerando 488 arquivos brutos de espectrometria de massas.</p>
+      <div class="big-numbers">
+        <div class="bn"><b>45,7 milhões</b><span>espectros de massa em tandem adquiridos</span></div>
+        <div class="bn"><b>5,1 milhões</b><span>espectros com identificação confiável</span></div>
+        <div class="bn"><b>40.592</b><span>peptídeos mapeados</span></div>
+      </div>
+      <p style="margin-top:18px; color:var(--ink-soft); font-size:.92rem;">Segundo os autores, este é, até onde se sabe, <b>o maior conjunto de dados proteômicos de pele já produzido</b> — uma escala só viável com pipelines computacionais robustos, como o PatternLab for Proteomics.</p>
+    </div>
+  </section>
+
+  <!-- ================= PROTEÍNAS-CHAVE ================= -->
+  <section>
+    <div class="wrap reveal">
+      <div class="eyebrow">O que mudou, molécula por molécula</div>
+      <h2 class="head">Quatro famílias de proteínas contam a história da pele mais resiliente</h2>
+      <p class="lede">Todas as proteínas abaixo foram identificadas em ambos os antebraços de pelo menos 30 participantes, com alterações estatisticamente significativas (p &lt; 0,05) no antebraço tratado com bioéster de quinoa, em comparação ao veículo.</p>
+
+      <div class="protein-group-label">Barreira cutânea &amp; coesão estrutural</div>
+      <div class="protein-grid">
+        <div class="tag-card up">
+          <div class="tag-head"><span class="tag-code">DSG1</span><span class="tag-dir">↑ aumentada</span></div>
+          <div class="tag-uniprot">Desmogleína-1 · UniProt Q02413</div>
+          <p class="tag-name">Adesão entre queratinócitos</p>
+          <p class="tag-note">Componente de desmossomos; mais DSG1 sugere maior firmeza e resistência mecânica da epiderme.</p>
+        </div>
+        <div class="tag-card up">
+          <div class="tag-head"><span class="tag-code">DSC1</span><span class="tag-dir">↑ aumentada</span></div>
+          <div class="tag-uniprot">Desmocolina-1 · UniProt Q08554</div>
+          <p class="tag-name">Adesão entre queratinócitos</p>
+          <p class="tag-note">Atua junto à DSG1 nos desmossomos, reforçando a coesão que o envelhecimento tende a afrouxar.</p>
+        </div>
+        <div class="tag-card up">
+          <div class="tag-head"><span class="tag-code">FLG</span><span class="tag-dir">↑ aumentada</span></div>
+          <div class="tag-uniprot">Filagrina · UniProt P20930</div>
+          <p class="tag-name">Diferenciação e hidratação</p>
+          <p class="tag-note">Essencial na formação do estrato córneo; sua degradação gera os "fatores naturais de hidratação" da pele.</p>
+        </div>
+      </div>
+
+      <div class="protein-group-label">Defesa antioxidante</div>
+      <div class="protein-grid">
+        <div class="tag-card up">
+          <div class="tag-head"><span class="tag-code">SOD1</span><span class="tag-dir">↑ aumentada</span></div>
+          <div class="tag-uniprot">Superóxido dismutase [Cu-Zn] · P00441</div>
+          <p class="tag-name">Neutraliza radicais livres</p>
+          <p class="tag-note">Converte radicais superóxido em peróxido de hidrogênio e oxigênio, reduzindo dano oxidativo.</p>
+        </div>
+        <div class="tag-card up">
+          <div class="tag-head"><span class="tag-code">GLRX</span><span class="tag-dir">↑ aumentada</span></div>
+          <div class="tag-uniprot">Glutarredoxina-1 · P35754</div>
+          <p class="tag-name">Equilíbrio redox celular</p>
+          <p class="tag-note">Ajuda a manter proteínas em seu estado redox funcional, protegendo a célula do estresse oxidativo.</p>
+        </div>
+        <div class="tag-card down">
+          <div class="tag-head"><span class="tag-code">S100-A14</span><span class="tag-dir">↓ reduzida</span></div>
+          <div class="tag-uniprot">Proteína S100-A14</div>
+          <p class="tag-name">Marcador de estresse oxidativo</p>
+          <p class="tag-note">Sua queda sugere menos estresse oxidativo — o oposto do que os autores observaram em pele facial cronicamente exposta ao sol em estudo anterior.</p>
+        </div>
+      </div>
+
+      <div class="protein-group-label">Regulação de proteases &amp; defesa imune</div>
+      <div class="protein-grid">
+        <div class="tag-card up">
+          <div class="tag-head"><span class="tag-code">SERPINB3/B7</span><span class="tag-dir">↑ aumentada</span></div>
+          <div class="tag-uniprot">Serpina B3 (P29508) · Serpina B7 (O75635)</div>
+          <p class="tag-name">Controle da renovação da pele</p>
+          <p class="tag-note">Inibidoras de protease que equilibram degradação e renovação, protegendo colágeno e elastina.</p>
+        </div>
+        <div class="tag-card up">
+          <div class="tag-head"><span class="tag-code">DCD</span><span class="tag-dir">↑ aumentada</span></div>
+          <div class="tag-uniprot">Dermcidina · UniProt P81605</div>
+          <p class="tag-name">Peptídeo antimicrobiano do suor</p>
+          <p class="tag-note">Reforça a defesa inata da pele, reduzindo o risco de infecções que agravam a inflamação e o envelhecimento.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= MACHINE LEARNING ================= -->
+  <section class="tint">
+    <div class="wrap reveal">
+      <div class="eyebrow">A ferramenta computacional</div>
+      <h2 class="head">Como ensinar um algoritmo a "adivinhar" a idade da pele</h2>
+      <p class="lede">Em vez de escolher manualmente quais proteínas seriam sinal de "pele jovem", os autores treinaram um modelo de <b>Regressão por Vetores de Suporte (SVR)</b> — uma técnica de aprendizado de máquina — para aprender esse padrão sozinho, a partir dos dados.</p>
+
+      <div class="steps">
+        <div class="step">
+          <div class="num"></div>
+          <div>
+            <h4>Normalizar os dados</h4>
+            <p>Os valores de abundância de cada proteína são reescalados para uma faixa comparável (0–1), garantindo que nenhuma proteína domine o modelo só por ter números maiores.</p>
+          </div>
+        </div>
+        <div class="step">
+          <div class="num"></div>
+          <div>
+            <h4>Selecionar as proteínas mais informativas (RFE)</h4>
+            <p>A Eliminação Recursiva de Atributos remove, passo a passo, as proteínas que menos contribuem para prever a idade — sobra um conjunto mínimo, mas relevante.</p>
+          </div>
+        </div>
+        <div class="step">
+          <div class="num"></div>
+          <div>
+            <h4>Treinar com um "kernel" linear, por simplicidade</h4>
+            <p>Entre opções mais complexas, os autores escolheram o modelo mais simples que explicasse os dados — a chamada navalha de Occam — reduzindo o risco de "decorar" ruído em vez de aprender um padrão biológico real.</p>
+          </div>
+        </div>
+        <div class="step">
+          <div class="num"></div>
+          <div>
+            <h4>Validar deixando uma idade de fora (Leave-Age-Out)</h4>
+            <p>Para cada teste, o modelo é treinado sem nenhuma amostra de uma determinada idade, e depois tenta prever exatamente essa idade — simulando prever a idade de alguém "nunca visto" antes.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="two-col" style="margin-top:36px;">
+        <div class="figure-block">
+          <figure class="paper-fig">
+            <img src="img/fig2-pipeline-svr-rfe.jpg" alt="Diagrama do pipeline SVR com RFE, do treino nas amostras pré-tratamento até a predição da idade proteômica" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+            <div class="placeholder-box" style="display:none;">
+              <span class="placeholder-icon">🖼</span>
+              <p class="placeholder-label">img/fig2-pipeline-svr-rfe.jpg</p>
+              <p class="placeholder-hint">Figura 2 do artigo: diagrama do pipeline SVR + RFE, do treino nas amostras pré-tratamento até a predição da idade proteômica pós-tratamento.</p>
+            </div>
+            <figcaption><b>Fig. 2 (artigo original).</b> Workflow do SVR: normalização, RFE, treino e predição da idade proteômica.</figcaption>
+          </figure>
+        </div>
+        <div class="figure-block">
+          <figure class="paper-fig">
+            <img src="img/fig3-scatter-idade-predita.png" alt="Dispersão entre idade cronológica e idade proteômica predita, com linha de referência y=x" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+            <div class="placeholder-box" style="display:none;">
+              <span class="placeholder-icon">🖼</span>
+              <p class="placeholder-label">img/fig3-scatter-idade-predita.png</p>
+              <p class="placeholder-hint">Figura 3 do artigo: dispersão idade cronológica × idade proteômica predita, com linha de referência y=x (predição perfeita).</p>
+            </div>
+            <figcaption><b>Fig. 3 (artigo original).</b> Validação Leave-Age-Out: <b>MAE = 7,17 anos</b>, <b>R² = 0,74</b> — o proteoma da pele carrega informação suficiente para estimar a idade cronológica.</figcaption>
+          </figure>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= RESULTADO CENTRAL ================= -->
+  <section>
+    <div class="wrap reveal">
+      <div class="eyebrow">O resultado central</div>
+      <h2 class="head">A pele tratada com quinoa "pareceu" molecularmente mais jovem</h2>
+      <p class="lede">Com o modelo já validado, os pesquisadores o aplicaram às amostras pós-tratamento — que o modelo nunca tinha visto — comparando a idade proteômica predita entre o antebraço com bioéster de quinoa e o antebraço com veículo.</p>
+
+      <figure class="paper-fig figure-block" style="margin-top:24px;">
+        <img src="img/fig4-boxplot-idade-proteomica.png" alt="Boxplots comparando idade proteômica predita entre bioéster de quinoa e veículo, estratificados por faixa etária" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+        <div class="placeholder-box" style="display:none;">
+          <span class="placeholder-icon">🖼</span>
+          <p class="placeholder-label">img/fig4-boxplot-idade-proteomica.png</p>
+          <p class="placeholder-hint">Figura 4 do artigo: boxplots comparando idade proteômica predita (bioéster de quinoa x veículo), estratificados em participantes &lt;50 anos (n=30) e ≥50 anos (n=31).</p>
+        </div>
+        <figcaption><b>Fig. 4 (artigo original).</b> Idade proteômica predita por grupo de tratamento e faixa etária. Teste de Wilcoxon pareado.</figcaption>
+      </figure>
+
+      <div class="age-compare">
+        <div class="age-panel">
+          <h4>Participantes &lt; 50 anos (n=30)</h4>
+          <div class="bar-row">
+            <span class="bar-label">Quinoa</span>
+            <div class="bar-track"><div class="bar-fill quinoa-bar" style="width:54%"></div></div>
+            <span class="bar-val">42a</span>
+          </div>
+          <div class="bar-row">
+            <span class="bar-label">Veículo</span>
+            <div class="bar-track"><div class="bar-fill vehicle-bar" style="width:66%"></div></div>
+            <span class="bar-val">51a</span>
+          </div>
+          <p class="pval">Diferença mediana: <b>11 anos</b> · p = 0,14 (não significativo)</p>
+        </div>
+        <div class="age-panel">
+          <h4>Participantes ≥ 50 anos (n=31)</h4>
+          <div class="bar-row">
+            <span class="bar-label">Quinoa</span>
+            <div class="bar-track"><div class="bar-fill quinoa-bar" style="width:68%"></div></div>
+            <span class="bar-val">61a</span>
+          </div>
+          <div class="bar-row">
+            <span class="bar-label">Veículo</span>
+            <div class="bar-track"><div class="bar-fill vehicle-bar" style="width:86%"></div></div>
+            <span class="bar-val">77a</span>
+          </div>
+          <p class="pval">Diferença mediana: <b>16 anos</b> · p &lt; 0,01 (estatisticamente significativo)</p>
+        </div>
+      </div>
+      <p style="font-size:.82rem; color:var(--ink-soft); margin-top:14px;">Barras ilustrativas construídas a partir das medianas relatadas no artigo (não são o boxplot original — use a Fig. 4 para os dados completos, incluindo quartis e outliers).</p>
+
+      <div class="callout science" style="margin-top:28px;">
+        <span class="k">O que esse número NÃO significa</span>
+        <p>Os próprios autores fazem questão de destacar: essas diferenças <b>não devem ser lidas como "anos biológicos" reais</b>. Elas refletem um deslocamento direcional e consistente do perfil proteômico — um efeito mensurável, mas relativo, sujeito ao chamado <i>domain shift</i> (o modelo foi treinado só com pele não tratada).</p>
+      </div>
+
+      <div class="callout sage">
+        <span class="k">Achado complementar — hidratação</span>
+        <p>Medida por bioimpedância, a hidratação da pele melhorou <b>111% a mais</b> no grupo quinoa (Δ = 1,14 u.a.) do que no veículo (Δ = 0,54 u.a.), embora sem significância estatística isolada (p = 0,17) — um sinal que caminha na mesma direção dos achados moleculares.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= COMPARATIVO ================= -->
+  <section class="tint">
+    <div class="wrap reveal">
+      <div class="eyebrow">Colocando em perspectiva</div>
+      <h2 class="head">Como esse efeito se compara a outras estratégias anti-idade?</h2>
+      <p class="lede">Métodos diferentes de medir envelhecimento — parâmetros clínicos, relógios epigenéticos, perfis proteômicos — são como réguas diferentes: úteis, mas nem sempre diretamente comparáveis entre si.</p>
+      <table class="benchmark">
+        <thead>
+          <tr><th>Estratégia</th><th>Via de ação</th><th>Efeito relatado na literatura</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Vitamina C tópica</td><td class="n">Antioxidante</td><td>~10–15% de melhora em parâmetros de envelhecimento cutâneo</td></tr>
+          <tr><td>Tretinoína tópica</td><td class="n">Remodelação de colágeno</td><td>Restauração de colágeno em pele fotolesada</td></tr>
+          <tr><td>Metformina (sistêmica)</td><td class="n">Relógio epigenético</td><td>~2–3 anos de desaceleração da idade biológica</td></tr>
+          <tr><td>Bioéster de quinoa (este estudo)</td><td class="n">Multi-alvo (barreira, antioxidante, protease)</td><td>Deslocamento proteômico de 11–16 anos, mais pronunciado em ≥ 50 anos</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- ================= IMPLICAÇÕES ================= -->
+  <section>
+    <div class="wrap reveal">
+      <div class="eyebrow">Por que isso interessa a quem cuida da pele</div>
+      <h2 class="head">Da bancada de proteômica para a prática em saúde</h2>
+      <div class="role-grid">
+        <div class="role-card">
+          <span class="role-tag">Enfermagem</span>
+          <h4>Avaliação objetiva de coberturas e cosméticos</h4>
+          <p>O mesmo raciocínio de comparação pareada (mesmo indivíduo, dois tratamentos) é aplicável ao avaliar curativos, hidratantes de barreira e protocolos de prevenção de lesões de pele em pacientes idosos.</p>
+        </div>
+        <div class="role-card">
+          <span class="role-tag">Medicina</span>
+          <h4>Biomarcadores em vez de "achismo" clínico</h4>
+          <p>Usar um preditor treinado por machine learning, e não a escolha manual de proteínas "favoritas", reduz o viés de confirmação — um princípio útil também na avaliação de qualquer terapia.</p>
+        </div>
+        <div class="role-card">
+          <span class="role-tag">Engenharia</span>
+          <h4>Pipelines de dados em escala biológica</h4>
+          <p>45,7 milhões de espectros processados exigem infraestrutura computacional robusta (PatternLab, Python/scikit-learn) — um exemplo real de engenharia de dados aplicada à saúde.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= LIMITAÇÕES ================= -->
+  <section class="tint">
+    <div class="wrap reveal">
+      <div class="eyebrow">Ciência honesta</div>
+      <h2 class="head">O que este estudo ainda não pode afirmar</h2>
+      <ul class="limit-list">
+        <li><span class="mark">—</span><div class="txt"><b>Um participante por idade.</b> Uma única pessoa de 42 anos não representa toda a variabilidade biológica das pessoas de 42 anos.</div></li>
+        <li><span class="mark">—</span><div class="txt"><b>População pouco diversa.</b> Todas as voluntárias eram mulheres da mesma cidade, com fototipos de pele semelhantes (II a IV) — os autores recomendam expandir para diferentes etnias, regiões e fototipos.</div></li>
+        <li><span class="mark">—</span><div class="txt"><b>Números não são "anos biológicos".</b> As diferenças de 11 e 16 anos são um sinal direcional, não uma medida calibrada de idade real.</div></li>
+        <li><span class="mark">—</span><div class="txt"><b>Sem corte de validação independente.</b> O modelo foi treinado e testado em amostras dos mesmos indivíduos (antes/depois) — ideal para captar o efeito do tratamento, mas não para virar um "relógio" proteômico generalizável.</div></li>
+        <li><span class="mark">—</span><div class="txt"><b>Conflito de interesse declarado.</b> Nove dos quinze autores são funcionários do Grupo Boticário, empresa que desenvolve cosméticos — os autores afirmam que isso não influenciou desenho, análise ou interpretação, e o dado está declarado com transparência no artigo.</div></li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- ================= COLABORAÇÃO ================= -->
+  <section>
+    <div class="wrap reveal">
+      <div class="eyebrow">Uma ciência sem fronteiras</div>
+      <h2 class="head">Do Mercosul ao laboratório: uma rede Brasil–Uruguai</h2>
+      <div class="collab-block">
+        <figure class="paper-fig figure-block">
+          <img src="img/instituicoes-colaboracao-br-uy-eua.png" alt="Mapa esquemático da colaboração científica entre Brasil, Uruguai e EUA, com os logotipos das instituições envolvidas" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+          <div class="placeholder-box" style="display:none;">
+            <span class="placeholder-icon">🗺</span>
+            <p class="placeholder-label">img/instituicoes-colaboracao-br-uy-eua.png</p>
+            <p class="placeholder-hint">Uma única peça: mapa esquemático da América do Sul (Curitiba/PR ↔ Montevidéu) com os logotipos oficiais de Fiocruz/Instituto Carlos Chagas, Institut Pasteur Montevideo/IIBCE, Universidade Positivo, Grupo Boticário e UC San Diego dispostos ao redor — montada manualmente a partir dos logos oficiais de cada instituição (não gerada por IA, para evitar distorções).</p>
+          </div>
+          <figcaption>Monte com um mapa-base simples (pode ser gerado por IA) e os logos oficiais baixados dos respectivos sites institucionais, compostos em um editor como Canva, Figma ou PowerPoint.</figcaption>
+        </figure>
+        <ul class="institution-list">
+          <li>
+            <span class="flag-mini br">BR</span>
+            <div>
+              <div class="inst-name">Instituto Carlos Chagas — Fiocruz, Paraná</div>
+              <div class="inst-role">Laboratório de Proteômica Estrutural e Computacional; desenvolvimento do PatternLab for Proteomics.</div>
+            </div>
+          </li>
+          <li>
+            <span class="flag-mini uy">UY</span>
+            <div>
+              <div class="inst-name">Institut Pasteur de Montevidéu &amp; Instituto Clemente Estable</div>
+              <div class="inst-role">Unidade de Bioquímica Analítica e Proteômica, parceira na análise diferencial dos dados.</div>
+            </div>
+          </li>
+          <li>
+            <span class="flag-mini br">BR</span>
+            <div>
+              <div class="inst-name">Grupo Boticário &amp; Universidade Positivo — Paraná</div>
+              <div class="inst-role">Formulação do bioéster de quinoa, desenho experimental e coordenação do estudo clínico.</div>
+            </div>
+          </li>
+          <li>
+            <span class="flag-mini us">US</span>
+            <div>
+              <div class="inst-name">University of California, San Diego</div>
+              <div class="inst-role">ISSCOR Center — colaboração adicional em pesquisa espacial de células-tronco aplicada ao grupo.</div>
+            </div>
+          </li>
+        </ul>
+      </div>
+      <p style="margin-top:22px; color:var(--ink-soft); font-size:.92rem;">O financiamento reuniu agências dos dois países e do bloco regional: CNPq, CAPES, Fundação Araucária (Brasil), o FOCEM — Fundo para a Convergência Estrutural do Mercosul — e uma bolsa de colaboração internacional do CNPq, evidenciando como a ciência básica em proteômica se apoia em cooperação Sul-Sul.</p>
+    </div>
+  </section>
+
+  <!-- ================= PERGUNTAS ================= -->
+  <section>
+    <div class="wrap reveal">
+      <div class="eyebrow">Antes de seguir em frente</div>
+      <h2 class="head">Você entendeu o essencial?</h2>
+      <p class="lede">Clique em cada pergunta para conferir sua resposta.</p>
+
+      <div class="quiz-block">
+        <details class="quiz-item">
+          <summary><span class="q-mark">?</span>Por que aplicar o bioéster em um antebraço e o veículo no outro, na mesma pessoa, em vez de comparar dois grupos diferentes de mulheres?</summary>
+          <div class="a">Porque cada pessoa vira o próprio controle. Esse <b>desenho pareado</b> elimina boa parte do ruído causado por diferenças individuais (genética, hábitos, idade) — a mesma lógica usada, por exemplo, ao comparar dois curativos no mesmo paciente.</div>
+        </details>
+        <details class="quiz-item">
+          <summary><span class="q-mark">?</span>O que o modelo de machine learning (SVR) foi treinado para prever, exatamente?</summary>
+          <div class="a">A <b>idade cronológica</b> a partir do perfil de proteínas da pele — usando apenas amostras não tratadas. Só depois de validado, o modelo foi aplicado às amostras tratadas para verificar se a "idade prevista" mudava com o tratamento.</div>
+        </details>
+        <details class="quiz-item">
+          <summary><span class="q-mark">?</span>Por que o efeito foi estatisticamente significativo (p&lt;0,01) nas participantes com 50 anos ou mais, mas não nas mais jovens (p=0,14)?</summary>
+          <div class="a">Os dados sugerem um efeito mais pronunciado em peles mais velhas — possivelmente porque há mais dano acumulado para "corrigir". Mas atenção: <b>ausência de significância estatística não é o mesmo que ausência de efeito</b> — pode ser também que a variabilidade entre as participantes mais jovens tenha dificultado detectar a diferença.</div>
+        </details>
+      </div>
+
+      <h3 style="margin-top:44px; font-size:1.15rem;">Para pensar além do artigo</h3>
+      <p class="lede">Sem resposta certa — o objetivo é exercitar o olhar crítico sobre a ciência que chega até você.</p>
+      <div class="think-block">
+        <div class="think-item"><p>Todas as participantes eram mulheres da mesma cidade, com fototipos de pele semelhantes. Você esperaria os mesmos resultados em homens, em outras etnias ou em climas muito diferentes? O que seria preciso testar antes de assumir que sim?</p></div>
+        <div class="think-item"><p>O estudo colheu amostras do <b>antebraço</b>, não do rosto. Um efeito comprovado ali garante o mesmo efeito na pele facial — mais fina, mais exposta ao sol, com biologia diferente? O que você exigiria como evidência antes de fazer essa extrapolação?</p></div>
+        <div class="think-item"><p>Nove dos quinze autores trabalham na empresa que desenvolve o produto estudado. Isso, por si só, invalida os resultados? O que muda quando esse conflito de interesse é declarado com transparência — como aconteceu aqui — em vez de omitido?</p></div>
+        <div class="think-item"><p>Se um modelo de IA como esse "relógio proteômico" um dia chegar à prática clínica, que cuidados um profissional de saúde deveria ter antes de usar esse número para orientar uma decisão sobre um paciente real?</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= SÍNTESE FINAL ================= -->
+  <section class="tint">
+    <div class="wrap reveal">
+      <div class="synthesis-box">
+        <div class="eyebrow">O que fica</div>
+        <h2>Um novo tipo de régua para medir "rejuvenescimento"</h2>
+        <p>Em vez de confiar apenas na opinião de especialistas sobre quais proteínas "deveriam" mudar, este estudo propõe um caminho quantitativo e replicável: treinar um modelo de aprendizado de máquina para prever idade a partir do proteoma, e usá-lo — de forma cega — para testar se um tratamento desloca a pele para um perfil molecular mais jovem. O bioéster de quinoa passou nesse teste, com efeito mais marcado em mulheres a partir dos 50 anos, e abre caminho para que outras formulações cosmecêuticas sejam avaliadas com o mesmo rigor.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= REFERÊNCIAS ================= -->
+  <section>
+    <div class="wrap reveal ref-list">
+      <div class="eyebrow">Fonte e dados abertos</div>
+      <p>Camillo-Andrade, A.C., Sales, L.A., Catarino, C.M. <i>et al.</i> Quinoa bioester application shifts human skin proteome toward molecular profiles associated with younger age. <i>Communications Biology</i> 9, 775 (2026). <a href="https://doi.org/10.1038/s42003-026-10006-4" target="_blank">doi.org/10.1038/s42003-026-10006-4</a></p>
+      <p>Dados de espectrometria de massas depositados no ProteomeXchange/PRIDE, identificador <a href="https://www.ebi.ac.uk/pride/archive/projects/PXD062216" target="_blank">PXD062216</a>. Código do pipeline SVR disponível em <a href="https://github.com/marlondms/AI-ON-SKIN/" target="_blank">github.com/marlondms/AI-ON-SKIN</a>, arquivado no Zenodo. Estudo clínico registrado no REBEC sob o nº <a href="https://ensaiosclinicos.gov.br/rg/RBR-9bhczry" target="_blank">RBR-9bhczry</a>. Estudo aprovado pelo Comitê de Ética em Pesquisa do Instituto Oswaldo Cruz/Fiocruz (CAAE 38352020.8.0000.5248).</p>
+    </div>
+  </section>
+
+  </main>
+
+  <footer class="institutional-footer">
+    <p>Infográfico elaborado pelos projetos Amor à Pele e PET-Saúde Digital G10 Feridas Crônicas, UFPel, em Agosto de 2026.</p>
+  </footer>
+
+  <script>
+    var els = document.querySelectorAll('.reveal');
+    if('IntersectionObserver' in window){
+      var io = new IntersectionObserver(function(entries){
+        entries.forEach(function(e){
+          if(e.isIntersecting){ e.target.classList.add('show'); io.unobserve(e.target); }
+        });
+      }, {threshold:.08});
+      els.forEach(function(el){ io.observe(el); });
+    } else {
+      els.forEach(function(el){ el.classList.add('show'); });
+    }
+  </script>
+
+</body>
+</html>
