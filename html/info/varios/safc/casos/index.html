@@ -1,0 +1,657 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Linfedema: da célula à cicatriz — relato de caso do Ambulatório de Feridas Complexas</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,500&family=Source+Sans+3:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg: #FAF7F1;
+    --bg-deep: #F1ECE2;
+    --ink: #22262A;
+    --ink-soft: #565C55;
+    --teal: #1F5D62;
+    --teal-deep: #143E42;
+    --teal-tint: #E4EEEC;
+    --sienna: #A8532E;
+    --sienna-tint: #F4E6DC;
+    --line: #D8D0C0;
+    --white: #FFFFFF;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    background:var(--bg);
+    color:var(--ink);
+    font-family:'Source Sans 3', sans-serif;
+    font-size:17px;
+    line-height:1.65;
+    -webkit-font-smoothing:antialiased;
+  }
+  h1,h2,h3,h4{
+    font-family:'Fraunces', serif;
+    font-weight:600;
+    color:var(--teal-deep);
+    line-height:1.15;
+    margin:0 0 0.5em 0;
+  }
+  a{color:var(--teal);}
+  .mono{font-family:'JetBrains Mono', monospace;}
+  sup.cite{
+    font-size:0.72em; font-weight:600; margin-left:2px;
+    background:var(--teal-tint); padding:1px 6px; border-radius:8px;
+    font-family:'JetBrains Mono',monospace; white-space:nowrap;
+  }
+  sup.cite a{color:var(--teal); text-decoration:none;}
+  sup.cite a:not(:last-child)::after{content:","; color:var(--teal); margin-right:1px;}
+  sup.cite:hover{background:var(--teal);}
+  sup.cite:hover a{color:var(--white);}
+
+  /* ---------- HEADER ---------- */
+  .institutional-header{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:16px 6vw;
+    background:var(--white);
+    border-bottom:1px solid var(--line);
+    position:sticky;
+    top:0;
+    z-index:50;
+  }
+  .header-identity{
+    font-family:'JetBrains Mono', monospace;
+    font-size:12.5px;
+    letter-spacing:0.06em;
+    text-transform:uppercase;
+    color:var(--ink-soft);
+    line-height:1.4;
+  }
+  .header-identity strong{color:var(--teal-deep);}
+  .institutional-header img{max-height:48px; display:block;}
+
+  main{max-width:920px; margin:0 auto; padding:0 6vw;}
+  section{padding:64px 0;}
+  section + section{border-top:1px solid var(--line);}
+
+  /* ---------- VESSEL DIVIDER (signature motif) ---------- */
+  .vessel{
+    display:flex; align-items:center; gap:10px;
+    margin:0 0 28px 0;
+  }
+  .vessel-line{flex:1; height:2px; background:linear-gradient(90deg, var(--teal) 0%, transparent 100%);}
+  .vessel-node{width:9px; height:9px; border-radius:50%; background:var(--teal); flex-shrink:0;}
+  .eyebrow{
+    font-family:'JetBrains Mono', monospace;
+    font-size:12.5px;
+    letter-spacing:0.08em;
+    text-transform:uppercase;
+    color:var(--teal);
+    font-weight:500;
+    white-space:nowrap;
+  }
+
+  /* ---------- HERO ---------- */
+  .hero{
+    padding:56px 0 48px 0;
+    border-top:none !important;
+  }
+  .hero-kicker{
+    font-family:'JetBrains Mono', monospace;
+    font-size:13px;
+    letter-spacing:0.08em;
+    text-transform:uppercase;
+    color:var(--sienna);
+    margin-bottom:18px;
+  }
+  .hero h1{
+    font-size:clamp(2.1rem, 4.6vw, 3.4rem);
+    max-width:14ch;
+  }
+  .hero .lede{
+    font-size:1.18rem;
+    color:var(--ink-soft);
+    max-width:60ch;
+    margin-top:20px;
+  }
+  .hero-figure{
+    margin-top:40px;
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:16px;
+  }
+  .hero-figure figure{margin:0;}
+  .hero-figure img{width:100%; height:340px; object-fit:cover; border-radius:4px; display:block; background:var(--bg-deep);}
+  .hero-figure figcaption{
+    font-size:13px; color:var(--ink-soft); margin-top:8px; font-style:italic;
+  }
+  .tag-antes, .tag-depois{
+    display:inline-block; font-family:'JetBrains Mono',monospace; font-size:11px;
+    letter-spacing:0.06em; text-transform:uppercase; padding:3px 9px; border-radius:20px;
+    margin-bottom:8px; font-style:normal;
+  }
+  .tag-antes{background:var(--sienna-tint); color:var(--sienna);}
+  .tag-depois{background:var(--teal-tint); color:var(--teal-deep);}
+
+  /* ---------- BODY TEXT ---------- */
+  p{margin:0 0 1.1em 0;}
+  .lead-text{font-size:1.12rem; color:var(--ink);}
+  .two-col{display:grid; grid-template-columns:1.1fr 0.9fr; gap:40px; align-items:start;}
+  ul, ol{padding-left:1.2em; margin:0 0 1.1em 0;}
+  li{margin-bottom:0.5em;}
+
+  .callout{
+    background:var(--teal-tint);
+    border-left:3px solid var(--teal);
+    padding:20px 24px;
+    border-radius:2px;
+    margin:24px 0;
+  }
+  .callout p:last-child{margin-bottom:0;}
+  .callout.sienna{background:var(--sienna-tint); border-left-color:var(--sienna);}
+
+  .pull-quote{
+    font-family:'Fraunces', serif;
+    font-style:italic;
+    font-weight:500;
+    font-size:1.5rem;
+    color:var(--teal-deep);
+    line-height:1.4;
+    margin:32px 0;
+    padding-left:24px;
+    border-left:3px solid var(--sienna);
+  }
+
+  /* ---------- FIGURES ---------- */
+  figure{margin:28px 0;}
+  figure img{width:100%; display:block; border-radius:4px; background:var(--bg-deep);}
+  figcaption{font-size:13.5px; color:var(--ink-soft); margin-top:10px; line-height:1.5;}
+  figcaption .fig-num{font-family:'JetBrains Mono',monospace; color:var(--teal); font-weight:500;}
+  .photo-credit{
+    font-family:'JetBrains Mono',monospace; font-size:11.5px; color:var(--ink-soft);
+    text-align:right; margin-top:-8px; margin-bottom:8px; letter-spacing:0.01em;
+  }
+  .safc-badge{
+    display:flex; align-items:center; gap:16px;
+    background:var(--white); border:1px solid var(--line); border-radius:8px;
+    padding:16px 20px; margin:24px 0 32px 0; max-width:460px;
+  }
+  .safc-badge img{width:64px; height:64px; object-fit:contain; flex-shrink:0; border-radius:0; background:transparent;}
+  .safc-badge p{
+    margin:0; font-size:12.5px; line-height:1.5; color:var(--ink-soft);
+  }
+  .safc-badge p strong{color:var(--teal-deep); font-family:'JetBrains Mono',monospace; font-size:13px; letter-spacing:0.03em;}
+
+  /* elegant fallback when illustrative image file not yet placed */
+  .img-missing img{display:none;}
+  .img-missing{
+    position:relative;
+    min-height:260px;
+    border-radius:4px;
+    background:
+      repeating-linear-gradient(135deg, var(--bg-deep), var(--bg-deep) 10px, #E9E2D2 10px, #E9E2D2 20px);
+    border:1px solid var(--line);
+    display:flex;
+  }
+  .img-missing::after{
+    content: attr(data-fallback);
+    margin:auto;
+    max-width:70%;
+    text-align:center;
+    font-family:'JetBrains Mono',monospace;
+    font-size:12px;
+    color:var(--ink-soft);
+    background:rgba(250,247,241,0.92);
+    padding:14px 18px;
+    border-radius:4px;
+    border:1px dashed var(--line);
+  }
+
+  /* ---------- STAGE TABLE (ISL) ---------- */
+  .stage-grid{display:grid; grid-template-columns:repeat(4,1fr); gap:3px; background:var(--line); border-radius:6px; overflow:hidden; margin:28px 0;}
+  .stage-cell{background:var(--teal-deep); color:var(--white); padding:22px 18px;}
+  .stage-cell .stage-label{font-family:'JetBrains Mono',monospace; font-size:13px; letter-spacing:0.06em; text-transform:uppercase; color:#9FD4CC; font-weight:600;}
+  .stage-cell .stage-title{font-family:'Fraunces',serif; font-weight:600; font-size:1.2rem; margin:6px 0 12px 0; color:#FFFFFF; line-height:1.2;}
+  .stage-cell p{font-size:15px; line-height:1.5; margin:0; color:#EAF3F1;}
+  @media(max-width:760px){.stage-grid{grid-template-columns:1fr 1fr;}}
+  @media(max-width:480px){.stage-grid{grid-template-columns:1fr;}}
+
+  /* ---------- MECHANISM CYCLE ---------- */
+  .cycle{
+    display:flex; flex-wrap:wrap; gap:10px; align-items:center; justify-content:center;
+    margin:32px 0; padding:28px; background:var(--white); border:1px solid var(--line); border-radius:6px;
+  }
+  .cycle-step{
+    flex:1 1 150px; text-align:center; padding:14px 10px;
+  }
+  .cycle-step .n{font-family:'JetBrains Mono',monospace; font-size:11px; color:var(--sienna); display:block; margin-bottom:6px;}
+  .cycle-step .t{font-family:'Fraunces',serif; font-weight:600; font-size:1rem; color:var(--teal-deep); margin-bottom:4px;}
+  .cycle-step .d{font-size:12.5px; color:var(--ink-soft); line-height:1.4;}
+  .cycle-arrow{color:var(--teal); font-size:1.3rem; flex:0 0 auto;}
+
+  /* ---------- CASE TIMELINE ---------- */
+  .timeline{
+    position:relative;
+    margin:40px 0 20px 0;
+    padding-left:28px;
+  }
+  .timeline::before{
+    content:'';
+    position:absolute; left:8px; top:6px; bottom:6px; width:2px;
+    background:linear-gradient(180deg, var(--sienna), var(--teal));
+  }
+  .timeline-item{position:relative; padding-bottom:36px;}
+  .timeline-item:last-child{padding-bottom:0;}
+  .timeline-item::before{
+    content:''; position:absolute; left:-28px; top:4px; width:12px; height:12px; border-radius:50%;
+    background:var(--white); border:3px solid var(--teal);
+  }
+  .timeline-item .t-label{font-family:'JetBrains Mono',monospace; font-size:12px; color:var(--sienna); text-transform:uppercase; letter-spacing:0.05em;}
+  .timeline-item h4{margin:4px 0 6px 0; font-size:1.15rem;}
+  .timeline-item p{color:var(--ink-soft); font-size:15px;}
+
+  .case-figures{
+    display:grid; grid-template-columns:1fr 1fr; gap:18px; margin:36px 0;
+  }
+  .case-figures figure{margin:0;}
+  .case-figures img{width:100%; height:380px; object-fit:cover; border-radius:4px; background:var(--bg-deep);}
+  .case-figures.single{grid-template-columns:1fr; max-width:440px;}
+  @media(max-width:640px){.case-figures{grid-template-columns:1fr;} .hero-figure{grid-template-columns:1fr;}}
+
+  /* ---------- RECOMMENDATION CARDS ---------- */
+  .rec-grid{display:grid; grid-template-columns:1fr 1fr; gap:18px; margin:28px 0;}
+  .rec-card{background:var(--white); border:1px solid var(--line); border-radius:6px; padding:22px;}
+  .rec-card .rc-label{font-family:'JetBrains Mono',monospace; font-size:11.5px; color:var(--teal); text-transform:uppercase; letter-spacing:0.05em;}
+  .rec-card h4{margin:6px 0 8px 0; font-size:1.08rem;}
+  .rec-card p{font-size:14.5px; color:var(--ink-soft); margin:0;}
+  @media(max-width:640px){.rec-grid{grid-template-columns:1fr;}}
+
+  /* ---------- SYNTHESIS ---------- */
+  .synthesis{
+    background:var(--teal-deep); color:#F1ECE2; border-radius:8px; padding:44px 40px; margin:20px 0;
+  }
+  .synthesis h2{color:#FFFFFF;}
+  .synthesis p{color:#DCE6E4;}
+  .synthesis .pull-quote{color:#FFFFFF; border-left-color:var(--sienna);}
+
+  /* ---------- REFERENCES ---------- */
+  .refs{font-size:13.5px; color:var(--ink-soft); line-height:1.7;}
+  .refs ol{padding-left:1.4em;}
+  .refs li{margin-bottom:0.7em;}
+  .refs a{color:var(--teal); word-break:break-all;}
+  .refs a:hover{text-decoration:none;}
+  .disclosure{
+    font-size:13px; color:var(--ink-soft); background:var(--bg-deep); border-radius:4px; padding:16px 20px; margin-top:24px;
+  }
+
+  /* ---------- IMAGE MANIFEST TABLE ---------- */
+  table.manifest{width:100%; border-collapse:collapse; font-size:13.5px; margin:20px 0;}
+  table.manifest th{
+    font-family:'JetBrains Mono',monospace; font-size:11.5px; text-transform:uppercase; letter-spacing:0.04em;
+    text-align:left; color:var(--white); background:var(--teal-deep); padding:10px 12px;
+  }
+  table.manifest td{padding:10px 12px; border-bottom:1px solid var(--line); vertical-align:top; color:var(--ink-soft);}
+  table.manifest td.fname{font-family:'JetBrains Mono',monospace; color:var(--teal-deep); font-size:12.5px;}
+
+  /* ---------- FOOTER ---------- */
+  .institutional-footer{
+    background:var(--bg-deep); border-top:1px solid var(--line); text-align:center;
+    padding:28px 6vw; margin-top:20px;
+  }
+  .institutional-footer p{font-size:12.5px; color:var(--ink-soft); margin:0;}
+</style>
+</head>
+<body>
+
+<header class="institutional-header">
+  <div class="header-identity"><strong>Amor-à-Pele</strong> · PET-Saúde Digital G10 · UFPel<br>Ambulatório de Feridas Complexas — Prefeitura Municipal de Pelotas</div>
+  <img src="img/logo.all.jpg" alt="Logos Amor-à-Pele, PET-Saúde Digital G10 — UFPel — e Ambulatório de Feridas Complexas da Prefeitura Municipal de Pelotas" onerror="this.style.display='none'">
+</header>
+
+<main>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-kicker">Relato de caso #0001· Material didático para graduação em Enfermagem e Medicina</div>
+    <h1>Linfedema: quando a pele guarda dez anos de história</h1>
+    <p class="lede">Um caso acompanhado pelo Ambulatório de Feridas Complexas mostra o que acontece quando o sistema linfático perde a capacidade de drenar — e o que a terapia descongestiva consegue reverter, mesmo depois de uma década de evolução. Este material combina a fisiopatologia celular do linfedema com a prática clínica registrada em imagem, semana a semana.</p>
+
+    <div class="hero-figure">
+      <figure>
+        <span class="tag-antes">Antes · quadro de base</span>
+        <img src="img/linfedema-mmii-hiperceratose-antes-01.png" alt="Perna com linfedema crônico em estágio avançado, pele com hiperceratose e papilomatose intensas, fissuras profundas em todo o segmento distal">
+        <figcaption>Membro inferior antes do início do protocolo intensivo: hiperceratose e papilomatose extensas, com fissuras profundas — achados típicos de linfedema de longa evolução.</figcaption>
+      </figure>
+      <figure>
+        <span class="tag-depois">Após 3 semanas de tratamento</span>
+        <img src="img/linfedema-mmii-evolucao-apos-3-semanas.png" alt="Mesmo membro após três semanas de terapia complexa descongestiva, com pele mais amolecida, redução de fissuras e da espessura das placas hiperceratósicas">
+        <figcaption>Após três semanas de cuidados com a pele, drenagem linfática manual e compressão: amolecimento das placas, redução das fissuras e melhora visível da textura cutânea.</figcaption>
+      </figure>
+    </div>
+    <p class="photo-credit">© Imagens: Ambulatório de Feridas Complexas da Prefeitura Municipal de Pelotas — uso educacional autorizado.</p>
+  </section>
+
+  <!-- O QUE É -->
+  <section id="conceito">
+    <div class="vessel"><span class="eyebrow">01 — O conceito</span><span class="vessel-line"></span><span class="vessel-node"></span></div>
+    <h2>O que é o linfedema</h2>
+    <div class="two-col">
+      <div>
+        <p class="lead-text">O linfedema é o acúmulo crônico e progressivo de fluido rico em proteínas no interstício, causado pela incapacidade do sistema linfático de transportar a carga de linfa que o corpo produz<sup class="cite"><a href="#ref1">1</a></sup>. Não é "só inchaço": é uma insuficiência de baixo débito do sistema linfático — a capacidade de transporte cai abaixo do volume que precisa ser drenado, e o excesso se acumula nos tecidos<sup class="cite"><a href="#ref2">2</a></sup>.</p>
+        <p>Classifica-se em dois grandes grupos. O <strong>linfedema primário</strong> decorre de displasia congênita dos vasos linfáticos, é raro e costuma se manifestar nos membros inferiores. O <strong>linfedema secundário</strong> — a grande maioria dos casos, especialmente no Brasil — resulta de obstrução ou destruição adquirida do sistema linfático: cirurgia oncológica com esvaziamento de linfonodos, radioterapia, infecções de repetição (erisipela, celulite), insuficiência venosa crônica não tratada, obesidade e, em regiões endêmicas, filariose linfática<sup class="cite"><a href="#ref9">9</a></sup>.</p>
+      </div>
+      <div class="callout">
+        <p><strong>Por que isso importa na prática</strong></p>
+        <p>Estima-se prevalência de 1,3% a 1,5% na população geral, com cerca de 90% dos casos acometendo membros inferiores<sup class="cite"><a href="#ref10">10</a></sup>. Como até 80% da capacidade de drenagem linfática pode estar comprometida antes de o edema se tornar clinicamente evidente<sup class="cite"><a href="#ref10">10</a></sup>, o diagnóstico costuma chegar tarde — quando a pele já mudou de textura.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- POR QUE ACONTECE - CELULAR -->
+  <section id="mecanismo">
+    <div class="vessel"><span class="eyebrow">02 — Em nível celular</span><span class="vessel-line"></span><span class="vessel-node"></span></div>
+    <h2>Por que a pele endurece: o ciclo inflamatório que sustenta o linfedema</h2>
+    <p class="lead-text">A lesão de um vaso linfático não basta, sozinha, para produzir a pele que vemos nos casos de longa data. O que transforma um edema em linfedema estabelecido é um ciclo vicioso celular que se autoalimenta.</p>
+
+    <div class="cycle">
+      <div class="cycle-step">
+        <span class="n">01</span>
+        <div class="t">Estase linfática</div>
+        <div class="d">Fluido rico em proteínas se acumula no interstício após a lesão ou obstrução do vaso linfático.</div>
+      </div>
+      <div class="cycle-arrow">→</div>
+      <div class="cycle-step">
+        <span class="n">02</span>
+        <div class="t">Inflamação crônica</div>
+        <div class="d">Macrófagos e linfócitos T CD4⁺ (subtipo Th2) infiltram a derme e liberam IL-4, IL-13 e TGF-β1.<sup class="cite"><a href="#ref3">3</a></sup></div>
+      </div>
+      <div class="cycle-arrow">→</div>
+      <div class="cycle-step">
+        <span class="n">03</span>
+        <div class="t">Fibrose</div>
+        <div class="d">TGF-β1 ativa fibroblastos, que depositam colágeno e bloqueiam a degradação da matriz extracelular.<sup class="cite"><a href="#ref3">3</a></sup></div>
+      </div>
+      <div class="cycle-arrow">→</div>
+      <div class="cycle-step">
+        <span class="n">04</span>
+        <div class="t">Deposição adiposa</div>
+        <div class="d">Sinalização pró-inflamatória induz hipertrofia de adipócitos, aumentando o volume do membro.<sup class="cite"><a href="#ref3">3</a></sup></div>
+      </div>
+      <div class="cycle-arrow">↻</div>
+      <div class="cycle-step">
+        <span class="n">05</span>
+        <div class="t">Falência linfática</div>
+        <div class="d">A fibrose perilinfática comprime os vasos remanescentes, reduzindo ainda mais o transporte — fechando o ciclo.<sup class="cite"><a href="#ref4">4</a></sup></div>
+      </div>
+    </div>
+
+    <figure>
+      <img src="img/ciclo-celular-fibrose-linfedema.jpg" alt="Diagrama científico do ciclo celular do linfedema mostrando estase linfática, infiltração de macrófagos e linfócitos T CD4 Th2, liberação de IL-4 IL-13 e TGF-beta1, ativação de fibroblastos e deposição de colágeno, hipertrofia de adipócitos e fibrose perilinfática fechando o ciclo vicioso" onerror="this.parentElement.classList.add('img-missing')" data-fallback="Figura reservada: img/ciclo-celular-fibrose-linfedema.jpg — coloque a ilustração nesta pasta (ver prompt sugerido na resposta do chat)">
+      <figcaption><span class="fig-num">Fig. 1</span> — O ciclo celular do linfedema: da estase à fibrose perilinfática, um circuito que se autoalimenta enquanto não é interrompido pelo tratamento.</figcaption>
+    </figure>
+
+    <p>Histologicamente, o que se vê nas biópsias de pele com linfedema avançado confirma essa cascata: hiperplasia epidérmica com <strong>hiperceratose, acantose e papilomatose</strong> (as projeções verrucosas visíveis na pele), fibrose dérmica com espessamento dos feixes de colágeno, e fibrose perilinfática desorganizando a matriz ao redor dos vasos e adipócitos<sup class="cite"><a href="#ref1">1</a></sup>. Nos vasos coletores, o padrão evolui de ectasia (dilatação inicial) para contração (hiperplasia de músculo liso) e, por fim, esclerose — com oclusão completa do lúmen linfático<sup class="cite"><a href="#ref4">4</a></sup>.</p>
+
+    <div class="pull-quote">A lesão inicial pode ser pontual — uma cirurgia, uma infecção. Mas quem sustenta a doença ao longo dos anos é o próprio sistema imunológico, preso em um ciclo de inflamação e fibrose que se retroalimenta.</div>
+
+    <h3>Os estágios clínicos (Sociedade Internacional de Linfologia)</h3>
+    <p>A classificação da ISL orienta prognóstico e conduta terapêutica. Um mesmo membro pode apresentar mais de um estágio simultaneamente, refletindo territórios linfáticos diferentes.</p>
+    <div class="stage-grid">
+      <div class="stage-cell"><span class="stage-label">Estágio 0</span><div class="stage-title">Latente</div><p>Transporte linfático já comprometido, sem edema clinicamente evidente. Pode durar meses ou anos.</p></div>
+      <div class="stage-cell"><span class="stage-label">Estágio I</span><div class="stage-title">Reversível</div><p>Edema depressível (cacifo positivo), rico em proteína, que melhora com elevação do membro.</p></div>
+      <div class="stage-cell"><span class="stage-label">Estágio II</span><div class="stage-title">Espontaneamente irreversível</div><p>Fibrose e deposição de gordura já instaladas; elevar o membro deixa de reduzir o edema; o cacifo fica difícil de obter.</p></div>
+      <div class="stage-cell"><span class="stage-label">Estágio III</span><div class="stage-title">Elefantíase linfostática</div><p>Hiperceratose, papilomatose, espessamento cutâneo intenso e dobras profundas — o quadro compatível com o caso deste relato.</p></div>
+    </div>
+  </section>
+
+  <!-- ONDE OCORRE - ANATOMIA -->
+  <section id="anatomia">
+    <div class="vessel"><span class="eyebrow">03 — Onde acontece</span><span class="vessel-line"></span><span class="vessel-node"></span></div>
+    <h2>A anatomia por trás do edema</h2>
+    <div class="two-col">
+      <div>
+        <p>O sistema linfático é formado por capilares iniciais (que captam o excesso de fluido intersticial), vasos coletores com válvulas unidirecionais, troncos linfáticos e linfonodos. Duas redes — superficial e profunda — se comunicam por vasos perfurantes que atravessam a fáscia, mantendo o equilíbrio hídrico dos tecidos e a vigilância imunológica<sup class="cite"><a href="#ref1">1</a></sup>.</p>
+        <p>Quando essa rede é interrompida — por ressecção cirúrgica de linfonodos, fibrose pós-radioterapia, trauma, infecção de repetição ou displasia congênita — o segmento distal ao bloqueio perde capacidade de drenagem. Nos membros inferiores, isso costuma começar no tornozelo e no dorso do pé (como no caso deste relato) e progride proximalmente se não tratado<sup class="cite"><a href="#ref9">9</a></sup>.</p>
+      </div>
+      <div class="callout sienna">
+        <p><strong>Nem todo edema de perna é linfedema</strong></p>
+        <p>Diagnósticos diferenciais incluem insuficiência venosa crônica, insuficiência cardíaca, lipedema, trombose venosa profunda e mixedema. A avaliação clínica cuidadosa — história, inspeção da pele, sinal de Stemmer — é o primeiro passo antes de indicar terapia descongestiva<sup class="cite"><a href="#ref9">9</a></sup>.</p>
+      </div>
+    </div>
+    <figure>
+      <img src="img/anatomia-sistema-linfatico-mmii.jpg" alt="Ilustração anatômica científica do sistema linfático do membro inferior mostrando capilares linfáticos iniciais, vasos coletores com válvulas, linfonodos poplíteos e inguinais, e a rede linfática superficial e profunda" onerror="this.parentElement.classList.add('img-missing')" data-fallback="Figura reservada: img/anatomia-sistema-linfatico-mmii.jpg — coloque a ilustração nesta pasta (ver prompt sugerido na resposta do chat)">
+      <figcaption><span class="fig-num">Fig. 2</span> — Rede linfática do membro inferior: capilares iniciais, vasos coletores valvulados e cadeias ganglionares poplítea e inguinal.</figcaption>
+    </figure>
+  </section>
+
+  <!-- COMO É TRATADO -->
+  <section id="tratamento">
+    <div class="vessel"><span class="eyebrow">04 — Como se trata</span><span class="vessel-line"></span><span class="vessel-node"></span></div>
+    <h2>Terapia Complexa Descongestiva: o padrão-ouro</h2>
+    <p class="lead-text">Não existe cura para o linfedema estabelecido — mas existe controle eficaz. Revisões sistemáticas publicadas em periódicos brasileiros (Fisioterapia Pesquisa, Jornal Vascular Brasileiro) confirmam a Terapia Complexa Descongestiva (TCD) como a abordagem conservadora mais efetiva, tanto em membros superiores quanto inferiores<sup class="cite"><a href="#ref5">5</a><a href="#ref6">6</a><a href="#ref7">7</a></sup>.</p>
+
+    <p>A TCD organiza-se em duas fases<sup class="cite"><a href="#ref7">7</a></sup>:</p>
+    <ol>
+      <li><strong>Fase intensiva (redução):</strong> sessões diárias, de quatro a seis semanas, combinando os quatro componentes abaixo, com objetivo de reduzir o máximo possível o volume do membro.</li>
+      <li><strong>Fase de manutenção:</strong> uso de malhas/braçadeiras de compressão elástica, exercícios e cuidados com a pele para conservar o resultado obtido — em geral, por toda a vida.</li>
+    </ol>
+
+    <div class="rec-grid">
+      <div class="rec-card">
+        <span class="rc-label">Componente 1</span>
+        <h4>Cuidados com a pele</h4>
+        <p>Higiene rigorosa, hidratação diária e prevenção de fissuras — a porta de entrada mais comum para celulite e erisipela em pele com hiperceratose.</p>
+      </div>
+      <div class="rec-card">
+        <span class="rc-label">Componente 2</span>
+        <h4>Drenagem linfática manual</h4>
+        <p>Técnica manual suave que estimula vias linfáticas colaterais e redireciona o fluxo para territórios com drenagem preservada.</p>
+      </div>
+      <div class="rec-card">
+        <span class="rc-label">Componente 3</span>
+        <h4>Enfaixamento compressivo</h4>
+        <p>Bandagens de baixa elasticidade, em múltiplas camadas — considerado o componente mais determinante para a redução volumétrica.</p>
+      </div>
+      <div class="rec-card">
+        <span class="rc-label">Componente 4</span>
+        <h4>Exercícios terapêuticos</h4>
+        <p>Realizados sob a bandagem, a contração muscular funciona como bomba, favorecendo o retorno linfático.</p>
+      </div>
+    </div>
+
+    <figure>
+      <img src="img/tcd-quatro-componentes-esquema.jpg" alt="Infográfico esquemático mostrando os quatro componentes da Terapia Complexa Descongestiva: cuidados com a pele, drenagem linfática manual, enfaixamento compressivo multicamadas e exercícios terapêuticos sob a bandagem" onerror="this.parentElement.classList.add('img-missing')" data-fallback="Figura reservada: img/tcd-quatro-componentes-esquema.jpg — coloque a ilustração nesta pasta (ver prompt sugerido na resposta do chat)">
+      <figcaption><span class="fig-num">Fig. 3</span> — Os quatro pilares da Terapia Complexa Descongestiva, aplicados de forma combinada na fase intensiva.</figcaption>
+    </figure>
+
+    <div class="callout">
+      <p>Nos casos com pele já hiperceratósica e papilomatosa — como o deste relato — o cuidado com a pele deixa de ser coadjuvante e se torna prioridade clínica: fissuras profundas em placas hiperceratósicas são via de entrada para infecção de tecidos já comprometidos pela fibrose, criando risco real de sepse em pacientes acompanhados por décadas.</p>
+    </div>
+
+    <p>Técnicas adjuvantes à compressão convencional — como a bandagem elástica neuromuscular (kinesio taping) e a compressão pneumática intermitente — vêm sendo estudadas como alternativa para pacientes que não toleram o enfaixamento tradicional, especialmente em linfedema secundário ao câncer de mama. As revisões sistemáticas disponíveis ainda são majoritariamente baseadas em estudos de caso, com evidência insuficiente para indicar qual técnica é superior ao enfaixamento clássico<sup class="cite"><a href="#ref8">8</a></sup>.</p>
+  </section>
+
+  <!-- P&D -->
+  <section id="ped">
+    <div class="vessel"><span class="eyebrow">05 — Pesquisa e desenvolvimento</span><span class="vessel-line"></span><span class="vessel-node"></span></div>
+    <h2>Como está a doença no mundo: o que a pesquisa está fazendo além da TCD</h2>
+    <p class="lead-text">A TCD continua sendo a base do tratamento, mas o campo do linfedema está em movimento em três frentes: controle da causa global mais antiga (filariose), cirurgia que restaura fisiologia (não só reduz volume) e farmacologia dirigida ao próprio ciclo celular descrito na seção 2.</p>
+
+    <div class="two-col">
+      <div>
+        <h3 style="font-size:1.1rem;">O panorama global</h3>
+        <p>No mundo, a maior causa histórica de linfedema — e da forma mais grave, a elefantíase — é a <strong>filariose linfática</strong>, doença tropical negligenciada transmitida por mosquitos. Desde o ano 2000, o Programa Global da OMS para eliminação da filariose linfática já distribuiu mais de 10 bilhões de tratamentos em 71 países. Em 2024, o Brasil e o Timor-Leste estiveram entre os países mais recentemente validados pela OMS como tendo eliminado a filariose linfática como problema de saúde pública<sup class="cite"><a href="#ref11">11</a></sup>.</p>
+        <p>É por isso que, no contexto brasileiro atual — como no caso deste relato — a esmagadora maioria dos linfedemas encontrados em ambulatório não é de causa parasitária, e sim <strong>secundária</strong>: pós-oncológica, venosa, infecciosa de repetição ou associada à obesidade.</p>
+      </div>
+      <div>
+        <h3 style="font-size:1.1rem;">Cirurgia fisiológica</h3>
+        <p>Para casos que não respondem satisfatoriamente à TCD isolada, duas técnicas de supermicrocirurgia vêm ganhando espaço internacionalmente<sup class="cite"><a href="#ref12">12</a><a href="#ref13">13</a></sup>:</p>
+        <ul style="font-size:15px;">
+          <li><strong>Anastomose linfaticovenosa (LVA):</strong> conecta vasos linfáticos funcionantes diretamente a pequenas veias, indicada principalmente em estágios iniciais.</li>
+          <li><strong>Transferência de linfonodo vascularizado (VLNT):</strong> transplanta linfonodos saudáveis para a área afetada, mais indicada em estágios avançados; meta-análises mostram redução média de cerca de 30–40% do volume do membro.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="callout sienna">
+      <p><strong>O que está em fase de pesquisa</strong></p>
+      <p>Estudos recentes investigam anticorpos neutralizantes contra IL-4 e IL-13 (mirando diretamente a via Th2 descrita na seção 2), inibidores de TGF-β1 para reduzir fibrose, terapias com VEGF-C para estimular a regeneração de vasos linfáticos, e até agonistas do receptor de GLP-1, associados em um estudo recente a até 86% de redução no risco de linfedema após esvaziamento axilar por câncer de mama. Até o momento, porém, nenhum agente farmacológico tem eficácia comprovada em ensaios robustos para o tratamento do linfedema já estabelecido — a TCD segue sendo a base do cuidado<sup class="cite"><a href="#ref13">13</a></sup>.</p>
+    </div>
+  </section>
+
+  <!-- RELATO DE CASO -->
+  <section id="caso">
+    <div class="vessel"><span class="eyebrow">06 — Relato de caso</span><span class="vessel-line"></span><span class="vessel-node"></span></div>
+    <h2>Do ambulatório: dez anos de acompanhamento, três semanas de virada</h2>
+    <p class="lead-text">Este caso foi compartilhado pela coordenação do <strong>Ambulatório de Feridas Complexas da Prefeitura Municipal de Pelotas</strong>, sob responsabilidade da enfermeira <strong>Lilian Rubira</strong>, como exemplo do que a parceria entre extensão universitária e assistência municipal pode produzir quando o cuidado é continuado.</p>
+
+    <div class="safc-badge">
+      <img src="img/safc.png" alt="Logo do SAFC — Serviço de Atenção às Feridas Complexas, Secretaria Municipal de Saúde, Prefeitura Municipal de Pelotas/RS">
+      <p><strong>SAFC</strong> — Serviço de Atenção às Feridas Complexas<br>Secretaria Municipal de Saúde · Prefeitura Municipal de Pelotas/RS</p>
+    </div>
+
+    <div class="timeline">
+      <div class="timeline-item">
+        <span class="t-label">Há cerca de 10 anos</span>
+        <h4>Início do quadro e primeiros acompanhamentos</h4>
+        <p>Paciente em seguimento de longa data por linfedema crônico de membro inferior, com progressão para alterações cutâneas características de estágio III: hiperceratose e papilomatose extensas, fissuras profundas e espessamento acentuado da pele — o peso de uma doença tratada, mas nunca definitivamente resolvida, é também um peso emocional: a perda de esperança de melhora é um achado clínico tão real quanto o edema.</p>
+      </div>
+      <div class="timeline-item">
+        <span class="t-label">Registro fotográfico inicial</span>
+        <h4>Quadro de base documentado pelo Ambulatório</h4>
+        <p>As imagens que abrem este material mostram o estado do membro no início do protocolo atual: pele em placas hiperceratósicas espessas, sulcos profundos entre as placas e alteração de coloração compatível com estase crônica — o retrato clínico do ciclo celular descrito na seção 2.</p>
+      </div>
+      <div class="timeline-item">
+        <span class="t-label">3 semanas de terapia intensiva</span>
+        <h4>Cuidados com a pele, compressão e acompanhamento contínuo</h4>
+        <p>Após três semanas de conduta ativa do Ambulatório — com ênfase em hidratação, higiene rigorosa da pele e compressão — o mesmo membro já mostra amolecimento visível das placas hiperceratósicas, redução da profundidade das fissuras e melhora da textura geral da pele.</p>
+      </div>
+    </div>
+
+    <div class="case-figures">
+      <figure>
+        <span class="tag-antes">Antes</span>
+        <img src="img/linfedema-mmii-hiperceratose-antes-02.png" alt="Vista do dorso do pé e tornozelo com linfedema crônico em estágio avançado, pele espessada com hiperceratose e fissuras">
+        <figcaption><span class="fig-num">Fig. 4</span> — Dorso do pé e tornozelo: transição entre a pele com hiperceratose intensa e a pele com aspecto mais preservado — limite típico de progressão distal-proximal do linfedema.</figcaption>
+      </figure>
+      <figure>
+        <span class="tag-depois">3 semanas depois</span>
+        <img src="img/linfedema-mmii-evolucao-apos-3-semanas.png" alt="Membro inferior após três semanas de terapia complexa descongestiva mostrando pele mais amolecida e fissuras reduzidas">
+        <figcaption><span class="fig-num">Fig. 5</span> — Evolução após três semanas: resposta clínica visível mesmo em um quadro de uma década de evolução, reforçando que fibrose estabelecida ainda responde a cuidado consistente.</figcaption>
+      </figure>
+    </div>
+    <p class="photo-credit">© Imagens: Ambulatório de Feridas Complexas da Prefeitura Municipal de Pelotas — uso educacional autorizado.</p>
+
+    <div class="pull-quote">Uma década de doença não significa uma década sem resposta possível. O que este caso ensina é que a pele fibrótica ainda "escuta" o tratamento — só precisa de constância.</div>
+
+    <p>Do ponto de vista didático, este caso ilustra um princípio central da abordagem de feridas complexas: a distância entre o que a literatura descreve como mecanismo celular e o que se vê à beira do leito não é tão grande quanto parece. A hiperceratose e a papilomatose registradas nas fotos são, literalmente, o retrato clínico da fibrose dérmica e da hiperplasia epidérmica descritas na seção sobre mecanismo celular — e a melhora em três semanas é o retrato clínico de uma fase intensiva de TCD bem conduzida.</p>
+  </section>
+
+  <!-- PERGUNTAS PARA REFLETIR -->
+  <section id="perguntas">
+    <div class="vessel"><span class="eyebrow">07 — Para refletir</span><span class="vessel-line"></span><span class="vessel-node"></span></div>
+    <h2>Perguntas para fixar o conceito</h2>
+    <p class="lead-text">Antes de seguir para as recomendações práticas, vale parar no caso e pensar — sozinho ou em grupo — nas perguntas abaixo. Elas não têm uma única resposta certa; servem para testar se os mecanismos das seções 1 e 2 realmente fazem sentido diante do que as fotos mostram.</p>
+    <div class="rec-grid">
+      <div class="rec-card">
+        <span class="rc-label">Pergunta 1</span>
+        <h4>Por que dez anos sem grande evolução e apenas três semanas para uma mudança visível?</h4>
+        <p>O que muda, do ponto de vista celular, entre "conviver" com o linfedema e entrar ativamente em uma fase intensiva de TCD? A fibrose já formada precisa ser desfeita para haver melhora, ou o alvo do tratamento é outra coisa?</p>
+      </div>
+      <div class="rec-card">
+        <span class="rc-label">Pergunta 2</span>
+        <h4>A pele hiperceratósica é causa ou consequência?</h4>
+        <p>Reveja o ciclo da Fig. 1. A hiperceratose e a papilomatose são o motor do linfedema ou o resultado visível de um processo que já vem de mais profundo?</p>
+      </div>
+      <div class="rec-card">
+        <span class="rc-label">Pergunta 3</span>
+        <h4>Se a compressão é o componente mais determinante da TCD, por que não bastaria apenas comprimir?</h4>
+        <p>Pense no papel específico de cada um dos quatro componentes — o que aconteceria se apenas a bandagem fosse usada, sem cuidado com a pele nem exercício?</p>
+      </div>
+      <div class="rec-card">
+        <span class="rc-label">Pergunta 4</span>
+        <h4>Por que a maioria dos casos de linfedema atendidos hoje no Brasil não é causada por filariose?</h4>
+        <p>O que mudou epidemiologicamente no país nas últimas décadas — e o que isso implica para o perfil de paciente que a equipe de enfermagem e medicina vai encontrar no ambulatório?</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- RECOMENDAÇÕES -->
+  <section id="recomendacoes">
+    <div class="vessel"><span class="eyebrow">08 — Para a prática</span><span class="vessel-line"></span><span class="vessel-node"></span></div>
+    <h2>Recomendações gerais para a equipe de enfermagem e medicina</h2>
+    <div class="rec-grid">
+      <div class="rec-card">
+        <span class="rc-label">Triagem</span>
+        <h4>Suspeitar antes do edema óbvio</h4>
+        <p>Até 80% da capacidade de drenagem pode estar comprometida antes do edema ser clinicamente evidente. Investigar fatores de risco (cirurgia oncológica, radioterapia, erisipela de repetição) mesmo sem inchaço visível.</p>
+      </div>
+      <div class="rec-card">
+        <span class="rc-label">Pele</span>
+        <h4>Tratar a pele como órgão de risco</h4>
+        <p>Em estágios avançados, fissuras em placas hiperceratósicas são a principal porta de entrada para infecção. Hidratação e higiene diárias não são cuidado estético — são prevenção de sepse.</p>
+      </div>
+      <div class="rec-card">
+        <span class="rc-label">Adesão</span>
+        <h4>Tratamento é vitalício, não um ciclo</h4>
+        <p>Sem manutenção contínua (malha de compressão, exercícios, autocuidado), o volume tende a retornar. Educar o paciente para a cronicidade evita frustração e abandono terapêutico.</p>
+      </div>
+      <div class="rec-card">
+        <span class="rc-label">Escuta</span>
+        <h4>Acolher a dimensão psicossocial</h4>
+        <p>Estigma, dor crônica e limitação funcional acompanham o linfedema avançado. Um paciente que perdeu esperança precisa ver evolução documentada — como neste caso — para reengajar no cuidado.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- SÍNTESE -->
+  <section id="sintese">
+    <div class="synthesis">
+      <div class="vessel"><span class="eyebrow" style="color:#9FD4CC;">Síntese</span><span class="vessel-line" style="background:linear-gradient(90deg,#9FD4CC,transparent);"></span><span class="vessel-node" style="background:#9FD4CC;"></span></div>
+      <h2>O que fica desta leitura</h2>
+      <p>O linfedema não é um inchaço estático: é um ciclo celular ativo de estase, inflamação e fibrose que, sem interrupção, redesenha a pele. Entender esse mecanismo — do CD4⁺ Th2 ao TGF-β1, do fibroblasto ativado à papilomatose visível — é o que transforma a Terapia Complexa Descongestiva de "protocolo de compressão" em intervenção biologicamente racional.</p>
+      <div class="pull-quote">O caso deste relato prova, em três semanas de fotografia clínica, o que a fisiopatologia já explicava: interromper o ciclo, mesmo tarde, ainda produz resultado.</div>
+      <p>Para quem se forma em Enfermagem ou Medicina, o aprendizado que este Ambulatório oferece vai além da técnica: é a evidência de que cuidado continuado — extensão universitária, ambulatório e paciente, juntos — devolve não apenas volume ao membro, mas esperança à pessoa.</p>
+    </div>
+  </section>
+
+  <!-- REFERÊNCIAS -->
+  <section id="referencias">
+    <div class="vessel"><span class="eyebrow">Referências</span><span class="vessel-line"></span><span class="vessel-node"></span></div>
+    <h3>Fontes científicas citadas no texto</h3>
+    <div class="refs">
+      <ol>
+        <li id="ref1">Tripathi M, Markan A, Gurnani B. Lymphedema. In: StatPearls [Internet]. Treasure Island: StatPearls Publishing; 2025. Disponível em: <a href="https://www.ncbi.nlm.nih.gov/books/NBK537239/" target="_blank" rel="noopener">https://www.ncbi.nlm.nih.gov/books/NBK537239/</a></li>
+        <li id="ref2">International Society of Lymphology. The Diagnosis and Treatment of Peripheral Lymphedema: 2023 Consensus Document of the International Society of Lymphology. Lymphology. Disponível em: <a href="https://www.isl.arizona.edu/" target="_blank" rel="noopener">https://www.isl.arizona.edu/</a></li>
+        <li id="ref3">Current Understanding of Pathological Mechanisms of Lymphedema. PMC. Disponível em: <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC9051876/" target="_blank" rel="noopener">https://pmc.ncbi.nlm.nih.gov/articles/PMC9051876/</a></li>
+        <li id="ref4">Lymphatic Collecting Vessels in Health and Disease: A Review of Histopathological Modifications in Lymphedema. PMC. Disponível em: <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC9603277/" target="_blank" rel="noopener">https://pmc.ncbi.nlm.nih.gov/articles/PMC9603277/</a></li>
+        <li id="ref5">Paz IA, Fréz AR, Schiessl L, Ribeiro LG, Preis C, Guérios L. Terapia complexa descongestiva no tratamento intensivo do linfedema: revisão sistemática. Fisioter Pesqui. 2016;23(3):311-7. Disponível em: <a href="https://www.scielo.br/j/fp/a/LDR87gS5ScxxXGKbGzSVRqn/" target="_blank" rel="noopener">https://www.scielo.br/j/fp/a/LDR87gS5ScxxXGKbGzSVRqn/</a></li>
+        <li id="ref6">Eficácia da terapia complexa descongestiva para linfedema nos membros inferiores: revisão sistemática. J Vasc Bras. Disponível em: <a href="https://www.jvascbras.org/article/doi/10.1590/1677-5449.190074" target="_blank" rel="noopener">https://www.jvascbras.org/article/doi/10.1590/1677-5449.190074</a></li>
+        <li id="ref7">Conservative treatment of lymphedema: the state of the art. J Vasc Bras. Disponível em: <a href="https://www.scielo.br/j/jvb/a/qDV4DYGdFrqqNhRxhTSRxbb/" target="_blank" rel="noopener">https://www.scielo.br/j/jvb/a/qDV4DYGdFrqqNhRxhTSRxbb/</a></li>
+        <li id="ref8">Weimer Cendron S, Laureano Paiva L, Darski C, Colla C. Fisioterapia Complexa Descongestiva Associada a Terapias de Compressão no Tratamento do Linfedema Secundário ao Câncer de Mama: uma Revisão Sistemática. Rev Bras Cancerol. 2015;61(1):49-58.</li>
+        <li id="ref9">Manuais MSD, edição para profissionais. Linfedema. Disponível em: <a href="https://www.msdmanuals.com/pt/profissional/" target="_blank" rel="noopener">https://www.msdmanuals.com/pt/profissional/</a></li>
+        <li id="ref10">Comissão Nacional de Incorporação de Tecnologias no SUS (CONITEC). Meias elásticas de compressão para o tratamento do linfedema de membros inferiores. Relatório nº 590, 2021.</li>
+        <li id="ref11">World Health Organization. Global programme to eliminate lymphatic filariasis: progress report, 2024. Weekly Epidemiological Record. Disponível em: <a href="https://www.who.int/publications/i/item/who-wer10040-439-449" target="_blank" rel="noopener">https://www.who.int/publications/i/item/who-wer10040-439-449</a></li>
+        <li id="ref12">Advances in surgical management of chronic lymphedema: current strategies and future directions. Medical Oncology, 2025. Disponível em: <a href="https://link.springer.com/article/10.1007/s12032-024-02576-2" target="_blank" rel="noopener">https://link.springer.com/article/10.1007/s12032-024-02576-2</a></li>
+        <li id="ref13">International Strategies for Lymphedema Management. Current Physical Medicine and Rehabilitation Reports, 2025. Disponível em: <a href="https://link.springer.com/article/10.1007/s40141-025-00514-5" target="_blank" rel="noopener">https://link.springer.com/article/10.1007/s40141-025-00514-5</a></li>
+      </ol>
+    </div>
+
+    <h3 style="margin-top:36px;">Crédito institucional</h3>
+    <div class="refs">
+      <p style="margin:0;">Projetos Amor-à-Pele e do PET-Saúde Digital — telemonitoramento de pessoas com feridas crônicas, coordenados pela profa. <a href="https://institucional.ufpel.edu.br/servidores/id/2858" target="_blank" rel="noopener">Adrize Rutz Porto</a>, <a href="https://wp.ufpel.edu.br/fen/" target="_blank" rel="noopener">FEn-UFPel</a>, em parceria com o Ambulatório de Feridas Complexas da Prefeitura Municipal de Pelotas, coordenado pela Enf. Lilian Rubira.</p>
+    </div>
+  </section>
+
+</main>
+
+<footer class="institutional-footer">
+  <p>Infográfico elaborado pelos projetos Amor à Pele e PET-Saúde Digital G10 Feridas Crônicas (UFPel), em parceria com o Ambulatório de Feridas Complexas da Prefeitura Municipal de Pelotas, em Agosto de 2026.</p>
+</footer>
+
+</body>
+</html>
