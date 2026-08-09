@@ -217,8 +217,6 @@
   .stage-cell .stage-label{font-family:'JetBrains Mono',monospace; font-size:13px; letter-spacing:0.06em; text-transform:uppercase; color:#9FD4CC; font-weight:600;}
   .stage-cell .stage-title{font-family:'Fraunces',serif; font-weight:600; font-size:1.2rem; margin:6px 0 12px 0; color:#FFFFFF; line-height:1.2;}
   .stage-cell p{font-size:15px; line-height:1.5; margin:0; color:#EAF3F1;}
-  @media(max-width:760px){.stage-grid{grid-template-columns:1fr 1fr;}}
-  @media(max-width:480px){.stage-grid{grid-template-columns:1fr;}}
 
   /* ---------- MECHANISM CYCLE ---------- */
   .cycle{
@@ -260,7 +258,6 @@
   .case-figures figure{margin:0;}
   .case-figures img{width:100%; height:380px; object-fit:cover; border-radius:4px; background:var(--bg-deep);}
   .case-figures.single{grid-template-columns:1fr; max-width:440px;}
-  @media(max-width:640px){.case-figures{grid-template-columns:1fr;} .hero-figure{grid-template-columns:1fr;}}
 
   /* ---------- RECOMMENDATION CARDS ---------- */
   .rec-grid{display:grid; grid-template-columns:1fr 1fr; gap:18px; margin:28px 0;}
@@ -268,7 +265,6 @@
   .rec-card .rc-label{font-family:'JetBrains Mono',monospace; font-size:11.5px; color:var(--teal); text-transform:uppercase; letter-spacing:0.05em;}
   .rec-card h4{margin:6px 0 8px 0; font-size:1.08rem;}
   .rec-card p{font-size:14.5px; color:var(--ink-soft); margin:0;}
-  @media(max-width:640px){.rec-grid{grid-template-columns:1fr;}}
 
   /* ---------- SYNTHESIS ---------- */
   .synthesis{
@@ -303,6 +299,41 @@
     padding:28px 6vw; margin-top:20px;
   }
   .institutional-footer p{font-size:12.5px; color:var(--ink-soft); margin:0;}
+
+  /* ---------- RESPONSIVE (MOBILE) ----------
+     Regra geral: uma coluna no celular, exceto onde o layout é
+     explicitamente comparativo (antes/depois), que mantém 2 colunas
+     até 480px e só empilha em telas muito estreitas. */
+  @media(max-width:760px){
+    body{font-size:16px;}
+    section{padding:44px 0;}
+    .hero{padding:36px 0 28px 0;}
+    .synthesis{padding:32px 24px;}
+
+    /* colunas de texto+destaque: sempre 1 coluna no celular */
+    .two-col{grid-template-columns:1fr; gap:24px;}
+
+    /* cartões de recomendação/perguntas: sempre 1 coluna no celular */
+    .rec-grid{grid-template-columns:1fr;}
+
+    /* estágios ISL: mantém 2x2 até telas bem estreitas */
+    .stage-grid{grid-template-columns:1fr 1fr;}
+
+    .pull-quote{font-size:1.25rem; padding-left:18px;}
+  }
+
+  @media(max-width:520px){
+    /* fotos antes/depois: comparação continua lado a lado até aqui; */
+    /* abaixo disso, uma coluna estreita deixa de comunicar comparação */
+    .hero-figure{grid-template-columns:1fr;}
+    .hero-figure img{height:260px;}
+    .case-figures{grid-template-columns:1fr;}
+    .case-figures img{height:280px;}
+    .stage-grid{grid-template-columns:1fr;}
+    .safc-badge{flex-direction:column; align-items:flex-start; text-align:left;}
+    .cycle{padding:20px 16px;}
+    table.manifest{font-size:12px;}
+  }
 </style>
 </head>
 <body>
@@ -316,7 +347,7 @@
 
   <!-- HERO -->
   <section class="hero">
-    <div class="hero-kicker">Relato de caso #0001· Material didático para graduação em Enfermagem e Medicina</div>
+    <div class="hero-kicker">Relato de caso · Material didático para graduação em Enfermagem e Medicina</div>
     <h1>Linfedema: quando a pele guarda dez anos de história</h1>
     <p class="lede">Um caso acompanhado pelo Ambulatório de Feridas Complexas mostra o que acontece quando o sistema linfático perde a capacidade de drenar — e o que a terapia descongestiva consegue reverter, mesmo depois de uma década de evolução. Este material combina a fisiopatologia celular do linfedema com a prática clínica registrada em imagem, semana a semana.</p>
 
@@ -643,7 +674,8 @@
 
     <h3 style="margin-top:36px;">Crédito institucional</h3>
     <div class="refs">
-      <p style="margin:0;">Projetos Amor-à-Pele e do PET-Saúde Digital — telemonitoramento de pessoas com feridas crônicas, coordenados pela profa. <a href="https://institucional.ufpel.edu.br/servidores/id/2858" target="_blank" rel="noopener">Adrize Rutz Porto</a>, <a href="https://wp.ufpel.edu.br/fen/" target="_blank" rel="noopener">FEn-UFPel</a>, em parceria com o Ambulatório de Feridas Complexas da Prefeitura Municipal de Pelotas, coordenado pela Enf. Lilian Rubira.</p>
+      <p style="margin:0;">Porto AR. Perfil institucional. Universidade Federal de Pelotas (UFPel). Professora Associada, coordenadora do projeto de extensão Amor-à-Pele e do PET-Saúde Digital — telemonitoramento de pessoas com feridas crônicas, em parceria com o Ambulatório de Feridas Complexas da Prefeitura Municipal de Pelotas. Disponível em: <a href="https://institucional.ufpel.edu.br/servidores/id/2858" target="_blank" rel="noopener">https://institucional.ufpel.edu.br/servidores/id/2858</a></p>
+      <p style="margin:8px 0 0 0; font-size:12.5px;">Este item documenta a coordenação institucional do projeto e não é citado como fonte de uma afirmação científica específica no texto — por isso aparece separado da lista numerada acima.</p>
     </div>
   </section>
 
