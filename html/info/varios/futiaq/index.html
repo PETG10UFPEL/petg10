@@ -3,1074 +3,410 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Além da IA — o que vem por trás do radar (e o que pode significar para feridas crônicas)</title>
+<title>Por dentro do laboratório computacional: como a IA e a física quântica acharam um remédio para feridas diabéticas</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Source+Sans+3:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
   :root{
-    --bg: #FAFAF6;
-    --bg-alt: #F1F3EF;
-    --ink: #182233;
-    --ink-soft: #454F5E;
-    --blue: #2C5F8D;
-    --blue-deep: #1E4463;
-    --moss: #3F6E52;
-    --gold: #B9822A;
-    --gold-bg: #FBF1DE;
-    --gold-line: #DDBD82;
-    --line: #E1E1D8;
-    --card: #FFFFFF;
-    --radius: 14px;
+    --bg:#FAFAF6; --bg-alt:#F1F3EF; --ink:#182233; --ink-soft:#454F5E;
+    --blue:#2C5F8D; --blue-deep:#1E4463; --moss:#3F6E52;
+    --gold:#B9822A; --gold-bg:#FBF1DE; --gold-line:#DDBD82;
+    --line:#E1E1D8; --card:#FFFFFF; --radius:14px;
   }
-
   *{box-sizing:border-box;}
   html{scroll-behavior:smooth;}
-  body{
-    margin:0;
-    background:var(--bg);
-    color:var(--ink);
-    font-family:'Source Sans 3', sans-serif;
-    font-size:17px;
-    line-height:1.65;
-    -webkit-font-smoothing:antialiased;
-  }
-  h1,h2,h3{
-    font-family:'Fraunces', serif;
-    color:var(--ink);
-    line-height:1.15;
-    margin:0;
-  }
+  body{margin:0; background:var(--bg); color:var(--ink); font-family:'Source Sans 3',sans-serif; font-size:17px; line-height:1.65; -webkit-font-smoothing:antialiased;}
+  h1,h2,h3{font-family:'Fraunces',serif; color:var(--ink); line-height:1.15; margin:0;}
   a{color:var(--blue-deep);}
   p{margin:0 0 1em 0;}
-  .mono{font-family:'IBM Plex Mono', monospace;}
+  .mono{font-family:'IBM Plex Mono',monospace;}
 
-  /* HEADER INSTITUCIONAL */
-  .institutional-header{
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
-    padding:16px 6vw;
-    background:#fff;
-    border-bottom:1px solid var(--line);
-    position:sticky;
-    top:0;
-    z-index:20;
-  }
-  .header-identity{
-    font-family:'IBM Plex Mono', monospace;
-    font-size:.75rem;
-    letter-spacing:.08em;
-    text-transform:uppercase;
-    color:var(--ink-soft);
-  }
+  .institutional-header{display:flex; justify-content:space-between; align-items:center; padding:16px 6vw; background:#fff; border-bottom:1px solid var(--line); position:sticky; top:0; z-index:20;}
+  .header-identity{font-family:'IBM Plex Mono',monospace; font-size:.75rem; letter-spacing:.08em; text-transform:uppercase; color:var(--ink-soft);}
   .institutional-header img{max-height:48px; display:block;}
 
-  /* HERO */
-  .hero{
-    padding:9vw 6vw 6vw;
-    max-width:920px;
-    margin:0 auto;
-  }
-  .eyebrow{
-    font-family:'IBM Plex Mono', monospace;
-    font-size:.78rem;
-    letter-spacing:.12em;
-    text-transform:uppercase;
-    color:var(--blue);
-    display:flex;
-    align-items:center;
-    gap:10px;
-    margin-bottom:22px;
-  }
-  .eyebrow::before{
-    content:"";
-    width:26px;height:1px;background:var(--blue);
-    display:inline-block;
-  }
-  .hero h1{
-    font-size:clamp(2.1rem, 5vw, 3.4rem);
-    font-weight:600;
-    letter-spacing:-.01em;
-  }
-  .hero .subtitle{
-    margin-top:22px;
-    font-size:1.18rem;
-    color:var(--ink-soft);
-    max-width:640px;
-    font-weight:400;
-  }
-  .hero-meta{
-    margin-top:34px;
-    display:flex;
-    gap:28px;
-    flex-wrap:wrap;
-    font-size:.85rem;
-    color:var(--ink-soft);
-    font-family:'IBM Plex Mono', monospace;
-  }
+  .hero{padding:9vw 6vw 6vw; max-width:920px; margin:0 auto;}
+  .eyebrow{font-family:'IBM Plex Mono',monospace; font-size:.78rem; letter-spacing:.12em; text-transform:uppercase; color:var(--blue); display:flex; align-items:center; gap:10px; margin-bottom:22px;}
+  .eyebrow::before{content:""; width:26px; height:1px; background:var(--blue); display:inline-block;}
+  .hero h1{font-size:clamp(2rem,4.6vw,3.1rem); font-weight:600; letter-spacing:-.01em;}
+  .hero .subtitle{margin-top:22px; font-size:1.14rem; color:var(--ink-soft); max-width:660px; font-weight:400;}
+  .hero-meta{margin-top:30px; display:flex; gap:24px; flex-wrap:wrap; font-size:.83rem; color:var(--ink-soft); font-family:'IBM Plex Mono',monospace;}
+  .source-card{margin:34px 0 0 0; background:var(--card); border:1px solid var(--line); border-radius:var(--radius); padding:18px; max-width:640px;}
+  .source-card img{width:100%; height:auto; border-radius:8px; border:1px solid var(--line); display:block;}
+  .source-card figcaption{margin-top:14px; font-size:.86rem; color:var(--ink-soft); line-height:1.55;}
 
-  /* SECTIONS */
   main{max-width:920px; margin:0 auto; padding:0 6vw 4vw;}
-  section{padding:52px 0; border-top:1px solid var(--line);}
+  section{padding:50px 0; border-top:1px solid var(--line);}
   section:first-child{border-top:none;}
+  .section-num{font-family:'IBM Plex Mono',monospace; font-size:.78rem; color:var(--blue); letter-spacing:.1em; margin-bottom:10px; display:block;}
+  section h2{font-size:clamp(1.4rem,2.9vw,1.95rem); font-weight:600; max-width:660px; margin-bottom:20px;}
+  section .lede{font-size:1.08rem; color:var(--ink-soft); max-width:660px; margin-bottom:22px;}
 
-  .section-num{
-    font-family:'IBM Plex Mono', monospace;
-    font-size:.78rem;
-    color:var(--blue);
-    letter-spacing:.1em;
-    margin-bottom:10px;
-    display:block;
-  }
-  section h2{
-    font-size:clamp(1.5rem, 3.2vw, 2.1rem);
-    font-weight:600;
-    max-width:640px;
-    margin-bottom:22px;
-  }
-  section .lede{
-    font-size:1.12rem;
-    color:var(--ink-soft);
-    max-width:640px;
-    margin-bottom:24px;
-  }
+  .two-col{display:grid; grid-template-columns:1.1fr .9fr; gap:38px; align-items:start;}
+  @media (max-width:760px){.two-col{grid-template-columns:1fr;}}
 
-  .two-col{
-    display:grid;
-    grid-template-columns: 1.15fr .85fr;
-    gap:40px;
-    align-items:start;
-  }
-  @media (max-width: 760px){
-    .two-col{grid-template-columns:1fr;}
-  }
-
-  sup.cite{
-    font-family:'IBM Plex Mono', monospace;
-    font-size:.7em;
-    color:var(--blue-deep);
-    cursor:default;
-  }
+  sup.cite{font-family:'IBM Plex Mono',monospace; font-size:.7em; color:var(--blue-deep); cursor:default;}
   sup.cite a{color:inherit; text-decoration:none;}
   sup.cite a:hover{text-decoration:underline;}
 
-  /* FIGURE / IMAGE PLACEHOLDER */
   figure{margin:0 0 12px 0;}
-  .img-placeholder .placeholder-box{
-    border:2px dashed #C6CBBE;
-    background:var(--bg-alt);
-    border-radius:var(--radius);
-    padding:28px 20px;
-    text-align:center;
-    color:#6B7566;
-    min-height:200px;
-    display:flex;
-    flex-direction:column;
-    align-items:center;
-    justify-content:center;
-    gap:8px;
-  }
-  .placeholder-icon{font-size:1.8rem;}
-  .placeholder-label{
-    font-family:'IBM Plex Mono', monospace;
-    font-size:.78rem;
-    background:#fff;
-    border:1px solid var(--line);
-    padding:4px 10px;
-    border-radius:5px;
-    color:#3B4430;
-  }
-  .placeholder-hint{
-    font-size:.8rem;
-    color:#828C79;
-    font-style:italic;
-    max-width:320px;
-  }
-  /* Imagem real: tag <img> existe sempre no HTML, apontando para img/.
-     Fica oculta por padrão; se o arquivo carregar com sucesso, ela aparece
-     e o placeholder correspondente é escondido automaticamente. */
-  .real-photo{
-    display:none;
-    width:100%;
-    height:auto;
-    border-radius:var(--radius);
-    margin-bottom:10px;
-  }
+  .img-placeholder .placeholder-box{border:2px dashed #C6CBBE; background:var(--bg-alt); border-radius:var(--radius); padding:26px 20px; text-align:center; color:#6B7566; min-height:190px; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:8px;}
+  .placeholder-icon{font-size:1.7rem;}
+  .placeholder-label{font-family:'IBM Plex Mono',monospace; font-size:.76rem; background:#fff; border:1px solid var(--line); padding:4px 10px; border-radius:5px; color:#3B4430;}
+  .placeholder-hint{font-size:.79rem; color:#828C79; font-style:italic; max-width:320px;}
+  .real-photo{display:none; width:100%; height:auto; border-radius:var(--radius); margin-bottom:10px;}
+  .real-fig{margin:0 0 12px 0;}
+  .real-fig img{width:100%; height:auto; border-radius:var(--radius); border:1px solid var(--line); display:block; margin-bottom:10px;}
   .real-photo.is-visible{display:block;}
-  figcaption{
-    font-size:.85rem;
-    color:var(--ink-soft);
-    margin-top:10px;
-    line-height:1.5;
-  }
+  figcaption{font-size:.84rem; color:var(--ink-soft); margin-top:10px; line-height:1.5;}
 
-  /* PULL STAT */
-  .stat-row{
-    display:flex;
-    gap:28px;
-    flex-wrap:wrap;
-    margin:26px 0;
-  }
-  .stat{
-    background:var(--card);
-    border:1px solid var(--line);
-    border-radius:var(--radius);
-    padding:18px 20px;
-    flex:1 1 190px;
-  }
-  .stat .num{
-    font-family:'Fraunces', serif;
-    font-size:1.9rem;
-    font-weight:600;
-    color:var(--blue-deep);
-    display:block;
-  }
-  .stat .label{
-    font-size:.86rem;
-    color:var(--ink-soft);
-    margin-top:4px;
-  }
+  .stat-row{display:flex; gap:24px; flex-wrap:wrap; margin:24px 0;}
+  .stat{background:var(--card); border:1px solid var(--line); border-radius:var(--radius); padding:16px 18px; flex:1 1 170px;}
+  .stat .num{font-family:'Fraunces',serif; font-size:1.7rem; font-weight:600; color:var(--blue-deep); display:block;}
+  .stat .label{font-size:.83rem; color:var(--ink-soft); margin-top:4px;}
 
-  /* TIMELINE */
-  .timeline{
-    border-left:2px solid var(--gold-line);
-    margin:24px 0 10px 6px;
-    padding-left:24px;
-  }
-  .timeline-item{
-    position:relative;
-    padding-bottom:22px;
-  }
-  .timeline-item::before{
-    content:"";
-    position:absolute;
-    left:-30px;
-    top:5px;
-    width:9px;height:9px;
-    background:var(--gold);
-    border-radius:50%;
-  }
-  .timeline-item .t-year{
-    font-family:'IBM Plex Mono', monospace;
-    font-size:.78rem;
-    color:var(--gold);
-    font-weight:600;
-  }
-  .timeline-item p{margin-top:4px; font-size:.97rem;}
+  /* PIPELINE FUNNEL STEPS */
+  .funnel{display:flex; flex-direction:column; gap:0; margin:28px 0;}
+  .funnel-step{background:var(--card); border:1px solid var(--line); border-radius:10px; padding:14px 18px; display:flex; align-items:center; gap:14px; position:relative;}
+  .funnel-step + .funnel-step{margin-top:22px;}
+  .funnel-step::before{content:"↓"; position:absolute; top:-22px; left:24px; color:var(--blue); font-size:1.1rem;}
+  .funnel-step .f-n{font-family:'IBM Plex Mono',monospace; font-size:.72rem; color:#fff; background:var(--blue); border-radius:20px; padding:3px 10px; flex-shrink:0;}
+  .funnel-step .f-body strong{display:block; font-size:.98rem;}
+  .funnel-step .f-body span{font-size:.86rem; color:var(--ink-soft);}
 
-  /* CALLOUT QUADRO — computador tolerante a falhas */
-  .quadro{
-    background:var(--gold-bg);
-    border:1px solid var(--gold-line);
-    border-left:5px solid var(--gold);
-    border-radius:10px;
-    padding:30px 32px;
-    margin:34px 0;
-  }
-  .quadro-tag{
-    font-family:'IBM Plex Mono', monospace;
-    font-size:.72rem;
-    letter-spacing:.1em;
-    text-transform:uppercase;
-    color:var(--gold);
-    font-weight:600;
-    display:flex;
-    align-items:center;
-    gap:8px;
-    margin-bottom:12px;
-  }
+  /* METHOD CARDS (docking / MD / QC) */
+  .method-grid{display:grid; grid-template-columns:1fr; gap:16px; margin:26px 0;}
+  .method-card{background:var(--card); border:1px solid var(--line); border-left:4px solid var(--blue); border-radius:10px; padding:20px 22px;}
+  .method-card h4{font-family:'Fraunces',serif; font-size:1.12rem; margin-bottom:6px;}
+  .method-card .tools{font-family:'IBM Plex Mono',monospace; font-size:.74rem; color:var(--blue-deep); background:#EEF3F8; display:inline-block; padding:3px 9px; border-radius:5px; margin-bottom:10px;}
+  .method-card p{font-size:.94rem; margin-bottom:0;}
+  .method-card.md{border-left-color:var(--moss);}
+  .method-card.md .tools{color:#2C4E33; background:#EAF3EB;}
+  .method-card.qc{border-left-color:var(--gold);}
+  .method-card.qc .tools{color:#7A5716; background:#FBF1DE;}
+
+  /* QUADRO explicativo (dourado) */
+  .quadro{background:var(--gold-bg); border:1px solid var(--gold-line); border-left:5px solid var(--gold); border-radius:10px; padding:28px 30px; margin:32px 0;}
+  .quadro-tag{font-family:'IBM Plex Mono',monospace; font-size:.72rem; letter-spacing:.1em; text-transform:uppercase; color:var(--gold); font-weight:600; display:flex; align-items:center; gap:8px; margin-bottom:12px;}
   .quadro-tag::before{content:"▣";}
-  .quadro h3{
-    font-size:1.28rem;
-    margin-bottom:14px;
-    color:#5A400F;
-  }
-  .quadro p{font-size:.98rem;}
-  .quadro .qcols{
-    display:grid;
-    grid-template-columns:1fr 1fr;
-    gap:18px;
-    margin-top:18px;
-  }
-  @media (max-width:600px){.quadro .qcols{grid-template-columns:1fr;}}
-  .quadro .qcard{
-    background:#fff;
-    border:1px solid var(--gold-line);
-    border-radius:8px;
-    padding:14px 16px;
-  }
-  .quadro .qcard h4{
-    font-family:'IBM Plex Mono', monospace;
-    font-size:.78rem;
-    text-transform:uppercase;
-    letter-spacing:.05em;
-    color:var(--gold);
-    margin:0 0 6px 0;
-  }
-  .quadro .qcard p{font-size:.9rem; margin:0;}
-  .quadro figure{margin-top:20px;}
+  .quadro h3{font-size:1.22rem; margin-bottom:12px; color:#5A400F;}
+  .quadro p{font-size:.96rem;}
 
-  /* COMPARISON BLOCK (China/EUA/Europa) */
-  .compare-grid{
-    display:grid;
-    grid-template-columns:repeat(3,1fr);
-    gap:16px;
-    margin:26px 0;
-  }
-  @media (max-width:700px){.compare-grid{grid-template-columns:1fr;}}
-  .compare-card{
-    background:var(--card);
-    border:1px solid var(--line);
-    border-radius:var(--radius);
-    padding:20px;
-  }
-  .compare-card .flag{font-size:1.4rem;}
-  .compare-card h4{
-    font-family:'Fraunces', serif;
-    font-size:1.05rem;
-    margin:8px 0 8px 0;
-  }
-  .compare-card p{font-size:.9rem; color:var(--ink-soft); margin:0;}
+  /* DATA TABLE */
+  .data-table{width:100%; border-collapse:collapse; margin:20px 0; font-size:.88rem;}
+  .data-table th, .data-table td{border:1px solid var(--line); padding:8px 10px; text-align:left;}
+  .data-table th{background:var(--bg-alt); font-family:'IBM Plex Mono',monospace; font-size:.76rem; text-transform:uppercase; letter-spacing:.02em;}
+  .data-table td.num{font-family:'IBM Plex Mono',monospace;}
+  .data-table tr.highlight td{background:#EAF3EB; font-weight:600;}
 
-  /* SYNTHESIS / FINAL SECTION highlight */
-  .final-section{
-    background:linear-gradient(180deg, #F4F8F3 0%, #FAFAF6 100%);
-    border-top:1px solid var(--line);
-    border-bottom:1px solid var(--line);
-  }
-  .final-section .section-num{color:var(--moss);}
-  .analogy-frame{
-    border:1px solid #CBD9C7;
-    border-radius:var(--radius);
-    padding:26px 28px;
-    background:#fff;
-    margin-top:20px;
-  }
-  .analogy-step{
-    display:grid;
-    grid-template-columns:120px 1fr;
-    gap:16px;
-    padding:14px 0;
-    border-bottom:1px solid var(--bg-alt);
-  }
-  .analogy-step:last-child{border-bottom:none;}
-  .analogy-step .step-label{
-    font-family:'IBM Plex Mono', monospace;
-    font-size:.72rem;
-    text-transform:uppercase;
-    letter-spacing:.06em;
-    color:var(--moss);
-    font-weight:600;
-  }
-  .analogy-step p{font-size:.95rem; margin:0;}
-  .analogy-step.limit .step-label{color:#A15A2E;}
+  /* PROMPT EXAMPLE BOX */
+  .prompt-box{background:#12181F; color:#DCE3E8; border-radius:10px; padding:20px 22px; font-family:'IBM Plex Mono',monospace; font-size:.82rem; line-height:1.7; margin:20px 0; overflow-x:auto;}
+  .prompt-box .p-label{color:#7FB0DE; font-weight:600;}
+  .prompt-box .p-out{color:#8FCB9B;}
 
-  .synthesis-quote{
-    font-family:'Fraunces', serif;
-    font-size:1.4rem;
-    font-weight:500;
-    color:var(--ink);
-    max-width:680px;
-    margin:30px auto 0;
-    text-align:center;
-    line-height:1.4;
-  }
+  /* EFFICIENCY BARS */
+  .eff-bars{margin:24px 0;}
+  .eff-row{margin-bottom:18px;}
+  .eff-row .eff-label{font-size:.9rem; margin-bottom:6px; display:flex; justify-content:space-between;}
+  .eff-track{background:var(--bg-alt); border-radius:6px; height:22px; overflow:hidden;}
+  .eff-fill{height:100%; border-radius:6px 0 0 6px; display:flex; align-items:center; padding-left:10px; font-family:'IBM Plex Mono',monospace; font-size:.72rem; color:#fff;}
+  .eff-fill.conv{background:#B25A47; width:100%;}
+  .eff-fill.aicc{background:var(--moss); width:32%;}
 
-  /* SEÇÃO BRASIL — caixa com fundo verde-claro */
-  .brasil-section{
-    background:#EAF4E7;
-    border-top:1px solid var(--line);
-    border-bottom:1px solid var(--line);
-  }
+  .synthesis-quote{font-family:'Fraunces',serif; font-size:1.32rem; font-weight:500; color:var(--ink); max-width:680px; margin:30px auto 0; text-align:center; line-height:1.4;}
 
-  /* CENÁRIO PROSPECTIVO (hipotético) */
-  .scenario-box{
-    margin-top:44px;
-    background:#fff;
-    border:1.5px dashed #9FB89F;
-    border-radius:16px;
-    padding:32px 34px;
-  }
-  .scenario-tag{
-    display:inline-block;
-    font-family:'IBM Plex Mono', monospace;
-    font-size:.7rem;
-    letter-spacing:.03em;
-    text-transform:uppercase;
-    color:#5A7A5D;
-    background:#EEF4EC;
-    border:1px solid #CBDDC8;
-    border-radius:20px;
-    padding:5px 12px;
-    margin-bottom:16px;
-    line-height:1.4;
-  }
-  .scenario-box h3{
-    font-size:1.3rem;
-    margin-bottom:12px;
-  }
-  .scenario-box > p{font-size:.98rem; color:var(--ink-soft);}
-
-  .scenario-timeline{
-    margin:24px 0 8px 0;
-    border-left:2px solid #CBDDC8;
-    padding-left:0;
-  }
-  .scenario-step{
-    position:relative;
-    padding:14px 0 14px 26px;
-    border-bottom:1px solid var(--bg-alt);
-  }
-  .scenario-step:last-child{border-bottom:none;}
-  .scenario-step::before{
-    content:"";
-    position:absolute;
-    left:-6px;
-    top:20px;
-    width:9px;height:9px;
-    border-radius:50%;
-    background:var(--moss);
-  }
-  .scenario-step.gap::before{background:#B9822A;}
-  .scenario-step.future::before{background:var(--blue);}
-  .scenario-step .s-year{
-    font-family:'IBM Plex Mono', monospace;
-    font-size:.76rem;
-    font-weight:600;
-    color:var(--moss);
-    text-transform:uppercase;
-    letter-spacing:.04em;
-  }
-  .scenario-step.gap .s-year{color:#B9822A;}
-  .scenario-step.future .s-year{color:var(--blue-deep);}
-  .scenario-step p{margin:6px 0 0 0; font-size:.95rem;}
-
-  .scenario-caveat{
-    margin-top:18px;
-    font-size:.86rem;
-    color:#7A8371;
-    font-style:italic;
-    border-top:1px solid var(--bg-alt);
-    padding-top:16px;
-  }
-  .scenario-box figure{margin-top:22px;}
-
-  /* QUIZ / VERIFICAÇÃO DE COMPREENSÃO */
-  .quiz-section{
-    background:var(--bg-alt);
-    border-top:1px solid var(--line);
-    border-bottom:1px solid var(--line);
-    padding:52px 6vw;
-  }
-  .quiz-wrap{max-width:820px; margin:0 auto;}
-  .quiz-card{
-    background:var(--card);
-    border:1px solid var(--line);
-    border-radius:var(--radius);
-    padding:22px 24px;
-    margin-bottom:16px;
-  }
-  .quiz-card .q-num{
-    font-family:'IBM Plex Mono', monospace;
-    font-size:.75rem;
-    color:var(--moss);
-    letter-spacing:.06em;
-    text-transform:uppercase;
-    margin-bottom:8px;
-    display:block;
-  }
-  .quiz-card .q-prompt{
-    font-size:1.02rem;
-    font-weight:600;
-    margin-bottom:14px;
-  }
-  .quiz-card .q-options{display:flex; flex-direction:column; gap:8px;}
-  .quiz-opt{
-    text-align:left;
-    background:#fff;
-    border:1px solid var(--line);
-    border-radius:8px;
-    padding:10px 14px;
-    font-family:'Source Sans 3', sans-serif;
-    font-size:.94rem;
-    color:var(--ink);
-    cursor:pointer;
-    transition:border-color .15s ease, background .15s ease;
-  }
-  .quiz-opt:hover{border-color:var(--moss);}
-  .quiz-opt.correct{background:#EAF3EB; border-color:var(--moss); font-weight:600;}
-  .quiz-opt.incorrect{background:#FAECEA; border-color:#C1594A;}
-  .quiz-opt[disabled]{cursor:default;}
-  .q-feedback{
-    margin-top:12px;
-    font-size:.9rem;
-    padding:12px 14px;
-    border-radius:8px;
-    display:none;
-  }
-  .q-feedback.show{display:block;}
-  .q-feedback.ok{background:#EAF3EB; color:#2C4E33; border:1px solid #BFDCC3;}
-  .q-feedback.no{background:#FAECEA; color:#7A3126; border:1px solid #E8C3BC;}
-  .quiz-score{
-    font-family:'IBM Plex Mono', monospace;
-    font-size:.85rem;
-    color:var(--ink-soft);
-    margin-top:6px;
-    text-align:right;
-  }
-
-  .reflect-block{margin-top:36px;}
-  .reflect-block h3{
-    font-family:'Fraunces', serif;
-    font-size:1.2rem;
-    margin-bottom:16px;
-  }
-  .reflect-q{
-    background:#fff;
-    border:1px solid #CBD9C7;
-    border-left:4px solid var(--moss);
-    border-radius:8px;
-    padding:16px 18px;
-    margin-bottom:14px;
-  }
-  .reflect-tag{
-    font-family:'IBM Plex Mono', monospace;
-    font-size:.72rem;
-    text-transform:uppercase;
-    letter-spacing:.06em;
-    color:var(--moss);
-    font-weight:600;
-  }
-  .reflect-q p{margin:8px 0 0 0; font-size:.96rem;}
-
-  /* REFERENCES */
-  .references{
-    padding:56px 6vw 30px;
-    max-width:920px;
-    margin:0 auto;
-    border-top:1px solid var(--line);
-  }
-  .references h2{
-    font-size:1.3rem;
-    margin-bottom:20px;
-  }
-  .references ol{
-    padding-left:22px;
-    columns:1;
-  }
-  .references li{
-    font-size:.86rem;
-    color:var(--ink-soft);
-    margin-bottom:12px;
-    line-height:1.55;
-    word-break:break-word;
-  }
+  .references{padding:52px 6vw 30px; max-width:920px; margin:0 auto; border-top:1px solid var(--line);}
+  .references h2{font-size:1.25rem; margin-bottom:18px;}
+  .references ol{padding-left:22px;}
+  .references li{font-size:.85rem; color:var(--ink-soft); margin-bottom:11px; line-height:1.55; word-break:break-word;}
   .references li a{color:var(--blue-deep);}
-  .references .ref-id{
-    font-family:'IBM Plex Mono', monospace;
-    color:var(--ink);
-  }
+  .references .ref-id{font-family:'IBM Plex Mono',monospace; color:var(--ink);}
 
-  /* IMAGE REPORT TABLE (visible in-page too, optional aid) */
-  .img-report{
-    max-width:920px;
-    margin:0 auto;
-    padding:0 6vw 60px;
-  }
-  .img-report table{
-    width:100%;
-    border-collapse:collapse;
-    font-size:.82rem;
-    margin-top:16px;
-  }
-  .img-report th, .img-report td{
-    border:1px solid var(--line);
-    padding:8px 10px;
-    text-align:left;
-    vertical-align:top;
-  }
-  .img-report th{background:var(--bg-alt); font-family:'IBM Plex Mono', monospace; font-size:.75rem;}
-
-  /* INSTITUTIONAL FOOTER */
-  .institutional-footer{
-    background:var(--bg-alt);
-    border-top:1px solid var(--line);
-    padding:26px 6vw;
-    text-align:center;
-  }
-  .institutional-footer p{
-    font-size:.8rem;
-    color:var(--ink-soft);
-    margin:0;
-  }
+  .institutional-footer{background:var(--bg-alt); border-top:1px solid var(--line); padding:24px 6vw; text-align:center;}
+  .institutional-footer p{font-size:.8rem; color:var(--ink-soft); margin:0;}
 </style>
 </head>
 <body>
 
-  <!-- CABEÇALHO INSTITUCIONAL -->
   <header class="institutional-header">
     <div class="header-identity">G10 — Telemonitoramento de Feridas Crônicas · UFPel</div>
     <img src="img/logo.png" alt="Logos dos projetos Amor à Pele e PET-Saúde Digital G10 Feridas Crônicas – UFPel">
   </header>
 
-  <!-- HERO -->
   <div class="hero">
-    <span class="eyebrow">Prospecção tecnológica · Agosto de 2026</span>
-    <h1>Além da IA: os meteoros tecnológicos fora do radar — e o que podem significar para a cura de feridas crônicas</h1>
-    <p class="subtitle">DNA que vira HD, computadores que pensam em qubits, uma corrida global entre EUA, China, Europa e o Brasil tentando entrar no jogo. No fim, a pergunta que interessa à nossa turma: isso chega até o curativo?</p>
+    <span class="eyebrow">Por dentro do método · Agosto de 2026</span>
+    <h1>Como a IA e a física quântica encontraram um remédio para feridas diabéticas dentro de um computador</h1>
+    <p class="subtitle">Não foi mágica, nem um único algoritmo genial: foi uma cascata de quatro técnicas diferentes, cada uma filtrando o trabalho da anterior — da leitura automática de milhares de artigos até um cálculo de elétrons tão preciso que decidiu qual molécula ia para o teste de bancada.</p>
     <div class="hero-meta">
-      <span>6 seções</span>
-      <span>Estudantes de Enfermagem, Medicina e Engenharia</span>
-      <span>Fontes citadas ao final</span>
+      <span>Baseado no material suplementar do artigo</span>
+      <span>Zhang et al., ACS Nano Medicine, 2026</span>
+      <span>NUS — National University of Singapore</span>
     </div>
+
+    <figure class="source-card">
+      <img src="img/artigo-acs-capa.png" alt="Página do artigo na ACS Nano Medicine: Quantitative Computational Validation of Nanoscale Interactions between Drug Molecules and Diabetic Wound-Related Proteins for Drug Discovery, Zhang et al., 2 de março de 2026">
+      <figcaption>A fonte primária deste infográfico: o artigo publicado na <em>ACS Nano Medicine</em> (vol. 1, edição 5, p. 1263–1277) que rastreou quase 9 mil proteínas ligadas a feridas diabéticas por química quântica e apontou o ácido fólico como candidato — depois confirmado em laboratório.<sup class="cite"><a href="#ref1">1</a></sup></figcaption>
+    </figure>
   </div>
 
   <main>
 
-    <!-- SEÇÃO 1 — ABERTURA / METÁFORA -->
+    <!-- 01 — VISÃO GERAL DO FUNIL -->
     <section>
-      <span class="section-num">01 — O panorama</span>
-      <h2>A maratona em que ninguém está olhando para o corredor certo</h2>
-      <div class="two-col">
-        <div>
-          <p class="lede">Em março de 2026, na Maratona de Los Angeles, um professor substituto de 36 anos ultrapassou o líder da prova nos últimos metros — a diferença final foi de 0,01 segundo.<sup class="cite"><a href="#ref1">1</a></sup> A cena virou metáfora para o momento tecnológico atual: toda a atenção está na IA, mas outros "corredores" avançam por fora do radar — e podem, com um sprint final, mudar tudo antes dela.</p>
-          <p>Dois desses corredores aceleraram muito em 2026: o armazenamento de dados em <strong>DNA</strong> e a <strong>computação quântica</strong>. Ambos nasceram como hipóteses teóricas décadas atrás (1964 e anos 1980, respectivamente) e hoje já concentram apostas bilionárias de mercado.<sup class="cite"><a href="#ref1">1</a></sup></p>
-        </div>
-        <figure class="img-placeholder" data-img-path="img/maratona-metafora.jpg">
-          <img class="real-photo" src="img/maratona-metafora.jpg" alt="Foto de linha de chegada de maratona, dois corredores emparelhados no instante da ultrapassagem" onload="this.classList.add('is-visible'); this.nextElementSibling.style.display='none';" onerror="this.remove();">
-          <div class="placeholder-box">
-            <span class="placeholder-icon">🖼</span>
-            <p class="placeholder-label">img/maratona-metafora.jpg</p>
-            <p class="placeholder-hint">Foto de linha de chegada de maratona, dois corredores emparelhados no instante da ultrapassagem, ângulo frontal baixo, luz natural de fim de manhã.</p>
-          </div>
-          <figcaption>A imagem da virada nos últimos metros de uma corrida ilustra bem o momento: tecnologias "atrasadas" podem ultrapassar a favorita na reta final.</figcaption>
-        </figure>
-      </div>
-    </section>
+      <span class="section-num">01 — O funil, do começo ao fim</span>
+      <h2>De quase 3 mil fármacos a um só candidato — em quatro filtros</h2>
+      <p class="lede">O pipeline inteiro é um funil: cada etapa reduz o número de candidatos, mas aumenta a precisão do cálculo. É assim que se torna viável testar quase 9 mil proteínas sem precisar de laboratório físico em cada uma delas.<sup class="cite"><a href="#ref1">1</a></sup></p>
 
-    <!-- SEÇÃO 2 — DNA STORAGE -->
-    <section>
-      <span class="section-num">02 — Armazenamento em DNA</span>
-      <h2>Um grama de DNA guarda o equivalente a toda a internet audiovisual do mundo</h2>
-      <p class="lede">A ideia é de 1964 (o físico russo Mikhail Neiman) e o primeiro experimento real veio só em 1987, quando Joe Davis codificou uma runa dentro do DNA de uma bactéria.<sup class="cite"><a href="#ref1">1</a></sup> Hoje isso é indústria de verdade.</p>
-
-      <div class="stat-row">
-        <div class="stat">
-          <span class="num">215 mil TB</span>
-          <span class="label">capacidade teórica de armazenamento por grama de DNA<sup class="cite"><a href="#ref1">1</a></sup></span>
-        </div>
-        <div class="stat">
-          <span class="num">US$ 155 mi</span>
-          <span class="label">capital semente da Atlas Data Storage (spin-off da Twist Bioscience, com Jeff Bezos entre investidores)<sup class="cite"><a href="#ref1">1</a></sup></span>
-        </div>
-        <div class="stat">
-          <span class="num">150 anos</span>
-          <span class="label">retenção de dados prometida pelos cartões de DNA da Biomemory<sup class="cite"><a href="#ref3">3</a></sup></span>
-        </div>
-      </div>
-
-      <div class="two-col">
-        <figure class="img-placeholder" data-img-path="img/dna-armazenamento-dados.png">
-          <img class="real-photo" src="img/dna-armazenamento-dados.png" alt="Diagrama de arquivo binário sendo convertido em sequência de DNA" onload="this.classList.add('is-visible'); this.nextElementSibling.style.display='none';" onerror="this.remove();">
-          <div class="placeholder-box">
-            <span class="placeholder-icon">🖼</span>
-            <p class="placeholder-label">img/dna-armazenamento-dados.png</p>
-            <p class="placeholder-hint">Diagrama esquemático mostrando um arquivo digital binário (0s e 1s) sendo convertido em uma fita de dupla hélice de DNA com as quatro bases (A, C, G, T) coloridas, estilo infográfico limpo, fundo transparente.</p>
-          </div>
-          <figcaption>Fig. 1 — Do bit à base nitrogenada: como um arquivo digital é codificado em sequência de DNA.</figcaption>
-        </figure>
-        <div>
-          <p>Em 2026 o campo saiu do laboratório para o mercado: a <strong>Atlas Data Storage</strong> fechou parceria com a fabricante de chips belga imec para escalar a produção em silício<sup class="cite"><a href="#ref2">2</a></sup> e foi convidada a apresentar sua tecnologia no simpósio da TSMC.<sup class="cite"><a href="#ref4">4</a></sup> Já a francesa <strong>Biomemory</strong> comprou os ativos da histórica Catalog Technologies e promete lançar a primeira solução comercial de armazenamento em DNA para data centers ainda no segundo semestre de 2026.<sup class="cite"><a href="#ref3">3</a></sup></p>
-          <p>Por que importa: uma vez "escrito", o DNA não consome eletricidade para se manter estável — ao contrário de HDs e fitas magnéticas, que precisam de energia e migração periódica de dados.<sup class="cite"><a href="#ref1">1</a></sup></p>
-        </div>
-      </div>
-    </section>
-
-    <!-- SEÇÃO 3 — COMPUTAÇÃO QUÂNTICA -->
-    <section>
-      <span class="section-num">03 — Computação quântica</span>
-      <h2>Da teoria de Feynman ao maior IPO da história do setor</h2>
-      <div class="two-col">
-        <div>
-          <p class="lede">Proposta como possibilidade teórica por Richard Feynman nos anos 1980, a computação quântica usa <strong>qubits</strong> — que, graças à superposição, podem representar múltiplos estados ao mesmo tempo, e podem se entrelaçar entre si, permitindo processar certos problemas em paralelo.<sup class="cite"><a href="#ref1">1</a></sup></p>
-          <p>Isso a torna especialmente promissora para simular moléculas e materiais — inclusive proteínas e fármacos, como veremos na seção final.</p>
-        </div>
-        <figure class="img-placeholder" data-img-path="img/qubit-superposicao.png">
-          <img class="real-photo" src="img/qubit-superposicao.png" alt="Esfera de Bloch representando um qubit em superposição" onload="this.classList.add('is-visible'); this.nextElementSibling.style.display='none';" onerror="this.remove();">
-          <div class="placeholder-box">
-            <span class="placeholder-icon">🖼</span>
-            <p class="placeholder-label">img/qubit-superposicao.png</p>
-            <p class="placeholder-hint">Ilustração vetorial de uma esfera de Bloch (esfera translúcida azul com eixos), representando um qubit em superposição entre os estados 0 e 1, estilo científico minimalista, fundo transparente.</p>
-          </div>
-          <figcaption>Fig. 2 — Enquanto um bit clássico é 0 ou 1, um qubit pode existir em superposição dos dois estados simultaneamente.</figcaption>
-        </figure>
-      </div>
-
-      <div class="timeline">
-        <div class="timeline-item">
-          <span class="t-year">Maio 2026</span>
-          <p>Governo dos EUA investe mais de US$ 2 bilhões em participações acionárias em nove empresas de computação quântica, via duas ordens executivas.<sup class="cite"><a href="#ref1">1</a></sup></p>
-        </div>
-        <div class="timeline-item">
-          <span class="t-year">4 de junho de 2026</span>
-          <p>A Quantinuum estreia na Nasdaq com valuation entre US$ 15,7 e 17,6 bilhões — a maior oferta pública da história do setor quântico.<sup class="cite"><a href="#ref5">5</a></sup><sup class="cite"><a href="#ref6">6</a></sup></p>
-        </div>
-        <div class="timeline-item">
-          <span class="t-year">22 de junho de 2026</span>
-          <p>Trump assina a Ordem Executiva 14413, "Ushering in the Next Frontier of Quantum Innovation", criando um esforço nacional para computação quântica aplicada à ciência.<sup class="cite"><a href="#ref7">7</a></sup></p>
-        </div>
-      </div>
-
-      <!-- QUADRO: computador tolerante a falhas -->
-      <div class="quadro">
-        <span class="quadro-tag">Quadro explicativo</span>
-        <h3>O que é um computador quântico tolerante a falhas?</h3>
-        <p>Qubits são extremamente sensíveis: vibração, calor residual ou até um raio cósmico corrompem sua informação — fenômeno chamado <strong>decoerência</strong>. Os computadores quânticos de hoje (chamados <span class="mono">NISQ</span> — "noisy intermediate-scale quantum") acumulam erro rápido demais para cálculos longos.</p>
-        <p>Um computador <strong>tolerante a falhas</strong> é capaz de <strong>detectar e corrigir esses erros automaticamente</strong>, em tempo real, durante o próprio cálculo — usando dezenas ou centenas de qubits físicos redundantes para formar um único "qubit lógico" mais robusto.</p>
-        <div class="qcols">
-          <div class="qcard">
-            <h4>Por que ainda não existe</h4>
-            <p>Exige correção de erro quântico em escala — algo tecnicamente equivalente a construir um HD perfeito sem nunca poder "olhar" diretamente o dado sem destruí-lo.</p>
-          </div>
-          <div class="qcard">
-            <h4>Quando chega</h4>
-            <p>A IBM revisou sua estimativa interna de 2032 para 2030, e mais recentemente para 2029 — o gargalo central de toda a corrida quântica global.<sup class="cite"><a href="#ref16">16</a></sup></p>
-          </div>
-        </div>
-        <figure>
-          <div class="img-placeholder" data-img-path="img/correcao-erro-quantico.png">
-            <img class="real-photo" src="img/correcao-erro-quantico.png" alt="Diagrama de qubits físicos formando um qubit lógico protegido por correção de erro" onload="this.classList.add('is-visible'); this.nextElementSibling.style.display='none';" onerror="this.remove();">
-            <div class="placeholder-box">
-              <span class="placeholder-icon">🖼</span>
-              <p class="placeholder-label">img/correcao-erro-quantico.png</p>
-              <p class="placeholder-hint">Diagrama esquemático mostrando um "qubit lógico" formado por um cluster de vários qubits físicos menores dispostos em grade, com um pequeno ícone de "escudo" central simbolizando a correção de erro, paleta em dourado e azul-marinho.</p>
-            </div>
-            <figcaption>Fig. 3 — Vários qubits físicos redundantes (pontos) formam um único qubit lógico protegido contra erro.</figcaption>
-          </div>
-        </figure>
-      </div>
-    </section>
-
-    <!-- SEÇÃO 4 — CORRIDA GLOBAL -->
-    <section>
-      <span class="section-num">04 — A corrida global</span>
-      <h2>Não é EUA contra China — é uma corrida em três frentes</h2>
-      <p class="lede">O quadro é mais tripolar do que parece à primeira vista: cada bloco lidera em uma frente diferente.</p>
-
-      <div class="compare-grid">
-        <div class="compare-card">
-          <span class="flag">🇺🇸</span>
-          <h4>Estados Unidos</h4>
-          <p>Lidera em capital privado e maturidade de hardware (IBM, Google). Investiu US$ 2 bi em participações estatais em 9 empresas quânticas e viu a maior IPO do setor (Quantinuum).<sup class="cite"><a href="#ref1">1</a></sup><sup class="cite"><a href="#ref7">7</a></sup></p>
-        </div>
-        <div class="compare-card">
-          <span class="flag">🇨🇳</span>
-          <h4>China</h4>
-          <p>Elegeu a quântica prioridade do 15º Plano Quinquenal, com fundo estatal de ~US$ 17,5 bi. Lidera em infraestrutura de comunicação quântica segura (12 mil km de rede, satélites Micius).<sup class="cite"><a href="#ref8">8</a></sup><sup class="cite"><a href="#ref11">11</a></sup></p>
-        </div>
-        <div class="compare-card">
-          <span class="flag">🇪🇺</span>
-          <h4>Europa</h4>
-          <p>Lidera hoje em armazenamento comercial em DNA (Biomemory, França; imec, Bélgica) e investe pesado via programas como o ProQure (Reino Unido, ~£2 bi).<sup class="cite"><a href="#ref2">2</a></sup><sup class="cite"><a href="#ref3">3</a></sup></p>
-        </div>
-      </div>
-
-      <figure class="img-placeholder" data-img-path="img/investimento-quantico-comparativo.png">
-        <img class="real-photo" src="img/investimento-quantico-comparativo.png" alt="Gráfico de barras comparando investimento em computação quântica entre EUA, China e Europa" onload="this.classList.add('is-visible'); this.nextElementSibling.style.display='none';" onerror="this.remove();">
+      <figure class="img-placeholder" data-img-path="img/pipeline-geral-funil.png">
+        <img class="real-photo" src="img/pipeline-geral-funil.png" alt="Diagrama de funil mostrando as quatro etapas do pipeline computacional, do universo de fármacos até o candidato final" onload="this.classList.add('is-visible'); this.nextElementSibling.style.display='none';" onerror="this.remove();">
         <div class="placeholder-box">
           <span class="placeholder-icon">🖼</span>
-          <p class="placeholder-label">img/investimento-quantico-comparativo.png</p>
-          <p class="placeholder-hint">Gráfico de barras horizontais comparando investimento acumulado em computação quântica em 2026 (EUA, China, Europa/Reino Unido), com valores aproximados em bilhões de dólares, paleta azul-marinho e dourado, estilo editorial limpo (sem 3D).</p>
+          <p class="placeholder-label">img/pipeline-geral-funil.png</p>
+          <p class="placeholder-hint">Diagrama de funil vertical, estilo infográfico editorial, fundo transparente. Do topo (mais largo) até a base (mais estreita), cinco faixas horizontais empilhadas, cada uma mais estreita que a anterior: "2.989 fármacos × 8.739 proteínas" (cinza-claro) → "Mineração por IA/LLM" (azul-petróleo) → "Clustering quimioinformático" (verde-musgo) → "35 fármacos × 50 proteínas selecionados" (dourado) → "Docking → Dinâmica Molecular → Química Quântica" (azul-marinho escuro) → base estreita "Ácido fólico" (destacado em dourado brilhante, com uma pequena coroa ou estrela). Setas finas verticais conectando cada faixa, números grandes e legíveis em cada uma, tipografia técnica monoespaçada.</p>
         </div>
-        <figcaption>Fig. 4 — Estimativas de investimento público+privado em quântica por bloco em 2026. Nota: analistas independentes questionam a precisão das cifras chinesas amplamente citadas (podem estar superestimadas em até 3×).<sup class="cite"><a href="#ref9">9</a></sup></figcaption>
+        <figcaption>Fig. 1 — O funil completo: de um universo de quase 26 milhões de pares fármaco-proteína a um único candidato validado em laboratório.</figcaption>
       </figure>
 
-      <p style="font-size:.92rem; color:var(--ink-soft);">Um detalhe curioso: depois de fecharem seus laboratórios quânticos entre 2023-2024, Alibaba, Baidu, Tencent e Huawei voltaram a investir pesado em 2026, com rodadas de financiamento privado batendo recordes internos — ainda que em volume absoluto menor que o americano.<sup class="cite"><a href="#ref10">10</a></sup></p>
+      <div class="funnel">
+        <div class="funnel-step">
+          <span class="f-n">Ponto de partida</span>
+          <div class="f-body"><strong>2.989 fármacos × 8.739 proteínas</strong><span>Universo bruto mapeado a partir de bases como PubMed, DrugBank, ChEMBL e UniProt<sup class="cite"><a href="#ref1">1</a></sup></span></div>
+        </div>
+        <div class="funnel-step">
+          <span class="f-n">Filtro 1</span>
+          <div class="f-body"><strong>Mineração de literatura por IA (LLM)</strong><span>Modelos de linguagem leem os artigos e classificam a relação fármaco-proteína como ativadora ou inibidora</span></div>
+        </div>
+        <div class="funnel-step">
+          <span class="f-n">Filtro 2</span>
+          <div class="f-body"><strong>Clustering quimioinformático com "greedy coverage"</strong><span>Reduz o universo para os 35 fármacos e 50 proteínas mais representativos, sem perder diversidade estrutural</span></div>
+        </div>
+        <div class="funnel-step">
+          <span class="f-n">Filtro 3</span>
+          <div class="f-body"><strong>Cascata docking → dinâmica molecular → química quântica</strong><span>Cada estágio é mais lento e mais preciso que o anterior, refinando a lista até restarem os cálculos mais confiáveis</span></div>
+        </div>
+        <div class="funnel-step">
+          <span class="f-n">Resultado</span>
+          <div class="f-body"><strong>Ácido fólico — energia de interação −78,1 kcal/mol</strong><span>Validado depois em ensaio de laboratório (scratch assay) em células humanas</span></div>
+        </div>
+      </div>
     </section>
 
-    <!-- SEÇÃO 5 — BRASIL -->
-    <section class="brasil-section" style="margin:0 -6vw; padding:52px 6vw;">
-      <span class="section-num" style="color:var(--moss);">05 — E o Brasil?</span>
-      <h2>Fora da escala global, mas dentro do jogo</h2>
+    <!-- 02 — MINERAÇÃO POR IA -->
+    <section>
+      <span class="section-num">02 — Filtro 1: fazendo a IA ler a literatura por você</span>
+      <h2>Modelos de linguagem como "leitores automáticos" de evidência científica</h2>
       <div class="two-col">
         <div>
-          <p class="lede">O Brasil não compete em volume com EUA, China ou Europa — mas está construindo nichos de competência em vez de ficar de fora.</p>
-          <ul style="padding-left:20px; font-size:.97rem;">
-            <li style="margin-bottom:10px;">O MCTI lançou em junho/2026 o Projeto Residência em Tecnologias Quânticas: R$ 20 milhões, 156 bolsas, ~500 profissionais formados em 6 cidades.<sup class="cite"><a href="#ref12">12</a></sup></li>
-            <li style="margin-bottom:10px;">Em João Pessoa (PB), o CIQuanta vai abrigar os dois primeiros computadores quânticos operacionais da América Latina (20 e 100 qubits), em parceria com o Suzhou Quantum Center (China).<sup class="cite"><a href="#ref13">13</a></sup></li>
-            <li style="margin-bottom:10px;">Desde janeiro/2026, pesquisadores do CBPF usam o computador quântico da IBM via nuvem, em parceria com a ExxonMobil, para algoritmos aplicados à indústria do petróleo.<sup class="cite"><a href="#ref14">14</a></sup></li>
-            <li>Bradesco e Itaú já integram a rede global de computação quântica da IBM, segundo o presidente da IBM Brasil (jul/2026).<sup class="cite"><a href="#ref15">15</a></sup></li>
+          <p class="lede">Os pesquisadores usaram quatro modelos de linguagem — GPT-3.5-Turbo, GPT-4, LLaMA2-Chat-13B e PMC-LLaMA-13B (este último treinado especificamente em literatura biomédica) — para fazer duas tarefas específicas em cada artigo científico:<sup class="cite"><a href="#ref1">1</a></sup></p>
+          <ul style="padding-left:20px; font-size:.95rem;">
+            <li style="margin-bottom:8px;"><strong>DisProtRD</strong> — dado uma proteína e um trecho de texto, decidir se aquela proteína está aumentada ou diminuída em pacientes com pé diabético, comparado a tecido saudável.</li>
+            <li><strong>ProtDrugRD</strong> — dado um fármaco e uma proteína, decidir se o fármaco ativa ou desativa aquela proteína, segundo o que o artigo relata.</li>
           </ul>
         </div>
-        <figure class="img-placeholder" data-img-path="img/ciquanta-paraiba.jpg">
-          <img class="real-photo" src="img/ciquanta-paraiba.jpg" alt="Fachada do centro de computação quântica CIQuanta em João Pessoa, PB" onload="this.classList.add('is-visible'); this.nextElementSibling.style.display='none';" onerror="this.remove();">
+        <figure class="img-placeholder" data-img-path="img/llm-mining-arquitetura.png">
+          <img class="real-photo" src="img/llm-mining-arquitetura.png" alt="Diagrama da arquitetura de prompt usada para mineração de literatura com LLM" onload="this.classList.add('is-visible'); this.nextElementSibling.style.display='none';" onerror="this.remove();">
           <div class="placeholder-box">
             <span class="placeholder-icon">🖼</span>
-            <p class="placeholder-label">img/ciquanta-paraiba.jpg</p>
-            <p class="placeholder-hint">Foto de fachada ou obra do Centro Internacional de Computação Quântica da Paraíba (CIQuanta), em João Pessoa — arquitetura institucional moderna, luz de dia, se disponível; alternativa: mapa estilizado do Brasil destacando João Pessoa/PB, Campinas/SP e Campina Grande/PB.</p>
+            <p class="placeholder-label">img/llm-mining-arquitetura.png</p>
+            <p class="placeholder-hint">Diagrama de fluxo horizontal simples, três caixas conectadas por setas: caixa 1 "Definição da tarefa" (ícone de lupa), caixa 2 "Exemplos few-shot" (ícone de três cartões empilhados), caixa 3 "Texto de entrada" (ícone de documento) — as três convergindo para uma caixa final maior "Tupla de saída (proteína, fármaco, sinal +1/−1)" em dourado. Estilo minimalista, linhas finas, paleta azul-petróleo e cinza, fundo transparente.</p>
           </div>
-          <figcaption>Fig. 5 — João Pessoa (PB) sediará os dois primeiros computadores quânticos operacionais da América Latina.</figcaption>
+          <figcaption>Fig. 2 — Cada prompt combina definição da tarefa, exemplos de treino e o texto novo a analisar.</figcaption>
         </figure>
       </div>
-      <p class="synthesis-quote" style="font-size:1.1rem; margin-top:10px; text-align:left; color:var(--ink-soft); font-family:'Source Sans 3', sans-serif; font-style:italic;">"As pessoas contempladas por essa residência não podem se tornar meras usuárias de tecnologias desenvolvidas em outros países." — análise no MIT Technology Review Brasil sobre a estratégia nacional.<sup class="cite"><a href="#ref15">15</a></sup></p>
+
+      <p>Para cada tarefa, o prompt segue uma estrutura fixa: <strong>definição da tarefa</strong> + <strong>exemplos "few-shot"</strong> (casos já resolvidos, mostrados como modelo) + <strong>o texto novo</strong> a ser analisado. Um passo intermediário de "extração de evidência" seleciona só as frases relevantes do artigo — e os autores destacam que essa seleção feita pela IA é mais precisa do que simplesmente buscar duas palavras-chave na mesma frase por expressão regular.<sup class="cite"><a href="#ref1">1</a></sup></p>
+
+      <div class="prompt-box">
+<span class="p-label"># Exemplo real de prompt (Task ProtDrugRD)</span>
+
+Texto: "Curcumin was observed to inhibit H2O2-induced
+pyroptosis... curcumin improved HUVEC function by
+restoring αvβ3 and reducing endothelin-1 expression."
+Proteína: Endothelin-1
+Fármaco: Curcumin
+
+<span class="p-out">Saída do modelo: "...reduzindo a expressão de
+endothelin-1." → inferência: 'deactivate' (o
+fármaco desativa a proteína)</span>
+      </div>
     </section>
 
-    <!-- SEÇÃO 6 — PROSPECÇÃO FERIDAS CRÔNICAS -->
-    <section class="final-section" style="margin:0 -6vw; padding:52px 6vw;">
-      <span class="section-num">06 — Prospecção: e a cura de feridas crônicas?</span>
-      <h2>O que essas tecnologias podem significar para o que a gente trata todo dia</h2>
-      <p class="lede">Aqui a analogia precisa ser rigorosa: achado real, mecanismo, ponte lógica — e um limite explícito de onde a especulação para.</p>
-
+    <!-- 03 — CLUSTERING -->
+    <section>
+      <span class="section-num">03 — Filtro 2: reduzindo o universo sem perder diversidade</span>
+      <h2>Clustering quimioinformático: como escolher 35 fármacos que representem quase 3 mil</h2>
       <div class="two-col">
-        <figure class="img-placeholder" data-img-path="img/simulacao-molecular-ferida.png">
-          <img class="real-photo" src="img/simulacao-molecular-ferida.png" alt="Simulação de molécula de fármaco encaixada em proteína-alvo relacionada à cicatrização" onload="this.classList.add('is-visible'); this.nextElementSibling.style.display='none';" onerror="this.remove();">
-          <div class="placeholder-box">
-            <span class="placeholder-icon">🖼</span>
-            <p class="placeholder-label">img/simulacao-molecular-ferida.png</p>
-            <p class="placeholder-hint">Ilustração científica mostrando uma molécula de fármaco (representação em bastão/esfera) se encaixando no sítio ativo de uma proteína alvo (fator de crescimento de fibroblastos), com linhas de energia de ligação sobrepostas em estilo de simulação computacional, paleta azul e verde-musgo, fundo branco.</p>
-          </div>
-          <figcaption>Fig. 6 — Simulação de interação fármaco-proteína: o tipo de cálculo que a computação quântica promete tornar mais preciso e rápido.</figcaption>
+        <figure class="real-fig">
+          <img src="img/figura-s6-clustering-pca.png" alt="Gráfico real de clustering PCA dos fármacos, com o cluster do ácido fólico destacado em preto — Figura S6 do material suplementar">
+          <figcaption>Fig. 3 — Figura S6 do material suplementar: clustering real por PCA. Cada ponto é um fármaco; os pontos pretos (Cluster 1) marcam o grupo do ácido fólico (DB00158) entre outros candidatos selecionados pela IA.<sup class="cite"><a href="#ref1">1</a></sup></figcaption>
         </figure>
         <div>
-          <p><strong>Achado:</strong> um estudo de março de 2026 na <em>ACS Nano Medicine</em> usou simulação de química quântica para rastrear 2.989 fármacos contra 8.739 proteínas ligadas a feridas diabéticas crônicas. O ácido fólico surgiu como o melhor candidato — energia de interação de −78,1 kcal/mol com o fator de crescimento de fibroblastos — e testes de laboratório confirmaram: 134,9% de aceleração no fechamento da ferida versus controle (p&lt;0,001).<sup class="cite"><a href="#ref17">17</a></sup></p>
+          <p><strong>O problema:</strong> testar quimicamente 2.989 fármacos contra 8.739 proteínas seria computacionalmente inviável — são quase 26 milhões de combinações.</p>
+          <p><strong>A solução:</strong> os pesquisadores usaram cinco técnicas diferentes de redução de dimensionalidade — MDS, t-SNE, UMAP, PCA e embedding espectral — para agrupar os fármacos por semelhança estrutural, testando de 2 a 9 grupos em cada técnica.<sup class="cite"><a href="#ref1">1</a></sup></p>
+          <p>Depois aplicaram <strong>"cobertura gulosa" (greedy coverage)</strong>: um algoritmo que escolhe o menor número possível de representantes capaz de cobrir toda a diversidade estrutural do conjunto original — como escolher poucas cidades-amostra que ainda representem toda a variedade climática de um país.</p>
+        </div>
+      </div>
+      <p style="font-size:.92rem; color:var(--ink-soft);">Resultado desse filtro: de quase 3 mil fármacos, restaram <strong>35 candidatos e 50 proteínas-chave</strong> — o suficiente para justificar o custo computacional bem mais alto da próxima etapa.<sup class="cite"><a href="#ref1">1</a></sup></p>
+    </section>
+
+    <!-- 04 — CASCATA DOCKING/MD/QC -->
+    <section>
+      <span class="section-num">04 — Filtro 3: a cascata física — do rápido e aproximado ao lento e exato</span>
+      <h2>Docking, dinâmica molecular e química quântica: três câmeras com zoom cada vez maior</h2>
+      <p class="lede">Essa é a etapa mais cara computacionalmente — e por isso só chega até aqui quem sobreviveu aos dois filtros anteriores. As três técnicas não competem entre si: cada uma refina o resultado da anterior.</p>
+
+      <figure class="img-placeholder" data-img-path="img/docking-md-qc-cascata.png">
+        <img class="real-photo" src="img/docking-md-qc-cascata.png" alt="Diagrama de três estágios mostrando docking, dinâmica molecular e química quântica em zoom crescente" onload="this.classList.add('is-visible'); this.nextElementSibling.style.display='none';" onerror="this.remove();">
+        <div class="placeholder-box">
+          <span class="placeholder-icon">🖼</span>
+          <p class="placeholder-label">img/docking-md-qc-cascata.png</p>
+          <p class="placeholder-hint">Ilustração em três painéis horizontais lado a lado, conectados por setas finas, representando um "zoom" cada vez mais próximo na mesma interação fármaco-proteína. Painel 1, rotulado "Docking — rápido/aproximado": uma molécula pequena (estilo bastão-e-esfera, cores CPK) encaixando em um bolso raso de uma forma azul-petróleo sólida e simplificada representando a proteína — sem detalhe de superfície, estilo esquemático rápido. Painel 2, rotulado "Dinâmica Molecular — médio/dinâmico": a mesma cena, mas agora a proteína é uma fita helicoidal detalhada em verde-musgo, com linhas de movimento sutis e onduladas ao redor sugerindo vibração ao longo do tempo, e um pequeno relógio ou contador "25-100 ns" no canto. Painel 3, rotulado "Química Quântica — lento/exato": zoom extremo apenas na região de contato entre um único átomo do fármaco e um resíduo da proteína, mostrando nuvens eletrônicas coloridas em gradiente azul-vermelho ao redor dos núcleos atômicos, com uma pequena marcação "ponto crítico de ligação" e um valor de energia em kcal/mol. Setas finas conectando os três painéis da esquerda para a direita, cada seta rotulada com o nível de precisão crescente ("aproximado" → "dinâmico" → "exato"). Paleta consistente com o restante do infográfico: azul-petróleo, verde-musgo, dourado, fundo branco ou transparente, tipografia técnica pequena e legível nos rótulos. Sem gráficos de barra ou elementos de comparação temporal — o foco é exclusivamente na mudança de escala/precisão entre os três métodos, não em duração.</p>
+        </div>
+        <figcaption>Fig. 4 — Cada estágio "zoom" na interação fármaco-proteína com mais precisão — e mais custo computacional. Não há figura equivalente pronta no artigo original para este conceito específico; esta é uma ilustração a ser comissionada com base na descrição acima.</figcaption>
+      </figure>
+
+      <div class="method-grid">
+        <div class="method-card">
+          <h4>1. Docking molecular</h4>
+          <span class="tools">ProteinsPlus · DoGSite3 · JAMDA</span>
+          <p>Primeiro filtro físico: identifica os "bolsos" (pockets) da proteína onde um fármaco poderia se encaixar (DoGSite3) e testa diferentes poses de encaixe (JAMDA), selecionando as 10 melhores poses por par fármaco-proteína. É rápido, mas trata a proteína como praticamente rígida — uma aproximação grosseira.<sup class="cite"><a href="#ref1">1</a></sup></p>
+        </div>
+        <div class="method-card md">
+          <h4>2. Dinâmica Molecular (MD)</h4>
+          <span class="tools">GROMACS 2023 · Amber99SB-ildn · TIP3P</span>
+          <p>Simula o comportamento do complexo fármaco-proteína <em>ao longo do tempo</em> — 25 nanossegundos de simulação (estendida a 100 ns quando necessário), em ambiente aquoso com temperatura (303 K) e pressão fisiológicas controladas. Isso captura flexibilidade que o docking estático não vê. Os pesquisadores checaram a estabilidade via RMSD (desvio da posição média) antes de aceitar o resultado como "equilibrado".<sup class="cite"><a href="#ref1">1</a></sup></p>
+        </div>
+        <div class="method-card qc">
+          <h4>3. Química Quântica (QC)</h4>
+          <span class="tools">ORCA 5.0.4 · Gaussian 16 · Multiwfn</span>
+          <p>A etapa mais precisa e mais cara: calcula a energia de ligação a partir do comportamento real dos elétrons na região de contato — não uma aproximação, mas a física quântica da ligação química em si. Só uma pequena "esfera" de átomos ao redor do ponto de contato entra no cálculo (íons a 6 Å, resíduos a 2,5–3,5 Å do fármaco), porque calcular a proteína inteira nesse nível seria computacionalmente inviável.<sup class="cite"><a href="#ref1">1</a></sup></p>
         </div>
       </div>
 
-      <div class="analogy-frame">
-        <div class="analogy-step">
-          <span class="step-label">Mecanismo</span>
-          <p>Simulações quânticas calculam com precisão a energia de ligação entre fármaco e proteína-alvo — algo que métodos clássicos aproximam, mas que a mecânica quântica descreve com exatidão, porque a ligação química é, na origem, um fenômeno de elétrons e orbitais.<sup class="cite"><a href="#ref18">18</a></sup></p>
-        </div>
-        <div class="analogy-step">
-          <span class="step-label">Ponte</span>
-          <p>A cicatrização — inflamação, angiogênese, remodelamento — depende de dezenas de proteínas-alvo (fatores de crescimento, citocinas, metaloproteinases) hoje testadas por tentativa e erro. O mesmo pipeline do estudo do ACS reduziu o ciclo "da literatura ao experimento" em mais de 70%<sup class="cite"><a href="#ref17">17</a></sup> — o que pode acelerar a descoberta de terapias específicas para úlceras venosas, diabéticas ou por pressão, indo além do reposicionamento de fármacos já existentes.</p>
-        </div>
-        <div class="analogy-step limit">
-          <span class="step-label">Limite</span>
-          <p>O estudo do ACS rodou em simulador clássico "emprestando" lógica quântica — não em hardware quântico real de larga escala. Uma revisão de abril/2026 é direta: computação quântica pura ainda é "geradora de hipóteses", não ferramenta clinicamente validada — depende de computadores tolerantes a falhas, que a própria IBM projeta só para 2029-2030 (ver Quadro na Seção 03).<sup class="cite"><a href="#ref19">19</a></sup></p>
-        </div>
+      <figure class="real-fig">
+        <img src="img/figura-s11-estabilidade-md.png" alt="Gráficos reais de RMSD, mapa de distância e estrutura secundária do complexo ácido fólico-FGF ao longo de 100 ns de simulação — Figura S11 do material suplementar">
+        <figcaption>Fig. 4b — Figura S11 do material suplementar: prova de que o encaixe do ácido fólico com o FGF se manteve estável ao longo de 100 nanossegundos de simulação (RMSD estabilizado, contatos persistentes, estrutura secundária consistente).<sup class="cite"><a href="#ref1">1</a></sup></figcaption>
+      </figure>
+
+      <div class="quadro">
+        <span class="quadro-tag">Quadro explicativo</span>
+        <h3>Por que corrigir o "erro da régua"? (BSSE)</h3>
+        <p>Quando dois pedaços de molécula são calculados juntos, cada um "empresta" um pouco da precisão matemática do outro — como se a régua usada para medir a distância entre dois objetos mudasse de tamanho dependendo se eles estão juntos ou separados. Esse artefato numérico se chama <strong>erro de superposição de base (BSSE)</strong>, e os pesquisadores o corrigiram com a técnica de <em>counterpoise correction</em>: recalculam a energia de cada fragmento isolado usando o mesmo "conjunto de réguas" (base) do sistema completo, e subtraem essa diferença do resultado bruto.<sup class="cite"><a href="#ref1">1</a></sup></p>
+        <p style="margin-bottom:0;">No caso do ácido fólico com o fator de crescimento de fibroblastos, a energia bruta foi de <strong>−80,71 kcal/mol</strong>; depois da correção de BSSE (+2,58 kcal/mol), o valor final publicado foi <strong>−78,13 kcal/mol</strong> — o número que aparece no resumo do artigo.<sup class="cite"><a href="#ref1">1</a></sup></p>
       </div>
 
-      <p class="synthesis-quote">O link entre computação quântica e cura de feridas crônicas é real e promissor — mas hoje é P&amp;D em estágio inicial, não algo que muda o curativo de amanhã.</p>
+      <h3 style="font-size:1.1rem; margin-bottom:12px;">O que os elétrons revelam ponto a ponto</h3>
+      <p style="font-size:.95rem;">Com uma ferramenta chamada Multiwfn, os pesquisadores localizaram os <strong>pontos críticos de ligação (BCP)</strong> — os pontos exatos onde a nuvem eletrônica de duas moléculas se encontra — e mediram a força de cada contato individual entre o ácido fólico e a proteína:<sup class="cite"><a href="#ref1">1</a></sup></p>
 
-      <div class="scenario-box">
-        <span class="scenario-tag">Cenário prospectivo — hipotético, construído a partir dos mecanismos reais descritos acima, não um caso clínico real nem uma previsão oficial</span>
-        <h3>Como isso poderia chegar, na prática, a uma paciente do SUS</h3>
-        <p>Para tornar tudo isso concreto, vale imaginar uma cadeia de eventos plausível — apoiada só nos mecanismos já citados, sem inventar nenhuma tecnologia nova.</p>
+      <table class="data-table">
+        <thead><tr><th>Contato químico</th><th>Densidade eletrônica</th><th>Energia de ligação</th></tr></thead>
+        <tbody>
+          <tr class="highlight"><td>Ligante-O ··· Glutamina (mais forte)</td><td class="num">0,0488</td><td class="num">−10,15 kcal/mol</td></tr>
+          <tr><td>Ligante-N/H ··· Glutamato</td><td class="num">0,0293</td><td class="num">−5,80 kcal/mol</td></tr>
+          <tr><td>Ligante-O ··· Lisina (contato 1)</td><td class="num">0,0231</td><td class="num">−4,41 kcal/mol</td></tr>
+          <tr><td>Ligante-O ··· Lisina (contato 2)</td><td class="num">0,0230</td><td class="num">−4,38 kcal/mol</td></tr>
+          <tr><td>Ligante-H ··· Glutamato (mais fraco)</td><td class="num">0,0060</td><td class="num">−0,61 kcal/mol</td></tr>
+        </tbody>
+      </table>
+      <p style="font-size:.88rem; color:var(--ink-soft);">É essa soma de contatos individuais — alguns fortes, outros fracos — que constrói a energia total de ligação. O contato mais forte, com uma glutamina, sozinho já responde por boa parte da estabilidade do encaixe.<sup class="cite"><a href="#ref1">1</a></sup></p>
+    </section>
 
-        <div class="scenario-timeline">
-          <div class="scenario-step">
-            <span class="s-year">Hoje</span>
-            <p><strong>Dona Marlene, 68 anos</strong>, trata há três anos uma úlcera venosa recorrente numa UBS do interior, dentro de um protocolo de telemonitoramento como o do G10: fotos padronizadas da ferida, medidas de área e sinais de infecção registrados a cada visita.<sup class="cite"><a href="#ref17">17</a></sup></p>
-          </div>
-          <div class="scenario-step">
-            <span class="s-year">Insumo</span>
-            <p>Esses dados — de Dona Marlene e de milhares de outros pacientes SUS acompanhados da mesma forma — alimentam bancos de proteínas e biomarcadores associados a feridas crônicas, o mesmo tipo de base usada no estudo do ACS Nano Medicine (8.739 proteínas-alvo mapeadas).<sup class="cite"><a href="#ref17">17</a></sup></p>
-          </div>
-          <div class="scenario-step">
-            <span class="s-year">Simulação</span>
-            <p>Pesquisadores rodam simulações de química quântica cruzando milhares de fármacos já aprovados (ou moléculas candidatas) contra essas proteínas, buscando os que mais se ligam fortemente aos alvos ligados à cicatrização — como o ácido fólico fez no estudo original, mas agora testando variações específicas para o perfil de feridas mais comuns na população SUS.<sup class="cite"><a href="#ref18">18</a></sup></p>
-          </div>
-          <div class="scenario-step gap">
-            <span class="s-year">2029–2030</span>
-            <p>Só quando computadores <strong>tolerantes a falhas</strong> estiverem operacionais (ver Quadro, Seção 03) essas simulações ganham a precisão necessária para apontar candidatos com segurança clínica — hoje esse é exatamente o gargalo que separa a simulação promissora do medicamento aprovado.<sup class="cite"><a href="#ref16">16</a></sup></p>
-          </div>
-          <div class="scenario-step future">
-            <span class="s-year">Um futuro possível</span>
-            <p>Se a cadeia acima se confirmar, uma pomada ou gel tópico — desenvolvido a partir desse candidato validado — poderia entrar no protocolo padrão do SUS para úlceras venosas refratárias. Na consulta, a enfermeira aplicaria o curativo já sabendo, por dados de simulação acumulados, que aquela molécula tem a maior chance de acelerar o fechamento da ferida de Dona Marlene — não por tentativa e erro, mas por cálculo.</p>
-          </div>
+    <!-- 05 — AI-CC SCORE -->
+    <section>
+      <span class="section-num">05 — Filtro 4: unindo dois idiomas diferentes num só placar</span>
+      <h2>Como comparar "a literatura disse que sim" com "a física calculou −78 kcal/mol"?</h2>
+      <div class="two-col">
+        <div>
+          <p class="lede">Aqui está um problema de engenharia sutil: o módulo de IA devolve apenas um <strong>sinal</strong> (+1 ou −1, "ativa" ou "desativa"), enquanto a química quântica devolve uma <strong>magnitude contínua</strong> em kcal/mol. São duas linguagens diferentes — uma discreta, outra numérica — que não podem ser somadas diretamente.<sup class="cite"><a href="#ref1">1</a></sup></p>
+          <p>A solução: normalizar as energias de interação com uma transformação <span class="mono">SoftMax</span> (que compara cada par relativamente a todos os outros pares calculados) seguida de um <span class="mono">−log10()</span>, de forma que interações mais fortes recebam pontuações positivas maiores.</p>
         </div>
-
-        <p class="scenario-caveat">Nada disso está garantido: pode não funcionar em humanos como funcionou in vitro, pode esbarrar em custo de produção, ou levar mais tempo que o previsto para chegar ao SUS. A cadeia serve para mostrar <em>por onde</em> o caminho passaria — não <em>quando</em> exatamente ele chega.</p>
-
-        <figure class="img-placeholder" data-img-path="img/cenario-sus-2032.png">
-          <img class="real-photo" src="img/cenario-sus-2032.png" alt="Cena ilustrativa de atendimento em UBS do SUS com tecnologia de telemonitoramento de feridas" onload="this.classList.add('is-visible'); this.nextElementSibling.style.display='none';" onerror="this.remove();">
-          <div class="placeholder-box">
-            <span class="placeholder-icon">🖼</span>
-            <p class="placeholder-label">img/cenario-sus-2032.png</p>
-            <p class="placeholder-hint">Ilustração digital editorial, estilo realista mas acolhedor (não futurista/sci-fi), mostrando o interior simples de uma Unidade Básica de Saúde brasileira: uma enfermeira de jaleco aplicando um curativo na perna de uma paciente idosa sentada em uma maca, ambos em ambiente claro e humano. Sobre uma mesa ao lado, um tablet exibe discretamente um gráfico simples de acompanhamento da ferida ao longo do tempo (não um holograma, não interface futurista exagerada — algo parecido com um aplicativo de saúde real). Paleta suave em tons de azul-petróleo, verde-musgo e branco quente, luz natural entrando por uma janela lateral, composição horizontal, sensação de cuidado humano com apoio discreto de tecnologia, sem elementos futuristas exagerados como hologramas ou robôs.</p>
-          </div>
-          <figcaption>Fig. 7 — O cenário de 2032 não é sobre robôs cuidando de feridas: é sobre uma enfermeira com mais informação na mão, apoiada por décadas de simulação acumulada.</figcaption>
+        <figure class="real-fig">
+          <img src="img/figura-s13-acido-folico-3d.png" alt="Estrutura 3D do ácido fólico com potencial eletrostático (azul) e score terapêutico 1,00 — recorte da Figura S13 do material suplementar">
+          <figcaption>Fig. 5 — Recorte da Figura S13: a estrutura real do ácido fólico (DB00158) com potencial eletrostático em azul e o score terapêutico final = 1,00 — o mais alto entre todos os candidatos.<sup class="cite"><a href="#ref1">1</a></sup></figcaption>
         </figure>
       </div>
+
+      <p>Os pesos atribuídos revelam a filosofia do método: pares com evidência <strong>compartilhada</strong> (literatura + física concordando) recebem peso 5; pares com evidência <strong>só de literatura</strong> recebem peso 35 (mais informativo, mas menos rigoroso); pares com evidência <strong>só de física</strong> recebem peso 0,5 (rigoroso, mas isolado). Os autores testaram variações desses pesos e confirmaram que o candidato no topo — ácido fólico — não mudava.<sup class="cite"><a href="#ref1">1</a></sup></p>
+
+      <div class="stat-row">
+        <div class="stat"><span class="num">1º lugar</span><span class="label">Ácido fólico — score terapêutico mais alto</span></div>
+        <div class="stat"><span class="num">Top 5 terapêutico</span><span class="label">Dominado por análogos de folato: ácido folínico, aminopterina, tetrahidrofolato, metotrexato</span></div>
+        <div class="stat"><span class="num">Top 5 anti-terapêutico</span><span class="label">Lobeglitazona liderou o lado oposto do ranking</span></div>
+      </div>
+    </section>
+
+    <!-- 06 — VALIDAÇÃO EM LABORATÓRIO -->
+    <section>
+      <span class="section-num">06 — A prova real: o computador bateu com a bancada?</span>
+      <h2>Ensaio de "risco na monocamada" (scratch assay): o teste que decide se a simulação valeu</h2>
+      <div class="two-col">
+        <figure class="real-fig">
+          <img src="img/figura-s20-scratch-assay.png" alt="Ilustração real do protocolo de scratch assay: monocamada de células, criação do risco e observação da cicatrização — Figura S20 do material suplementar">
+          <figcaption>Fig. 6 — Figura S20 do material suplementar, a ilustração oficial do protocolo usado pelos autores: monocamada de células → risco (gap) → observação da cicatrização após o intervalo de tempo.<sup class="cite"><a href="#ref1">1</a></sup></figcaption>
+        </figure>
+        <div>
+          <p>O candidato apontado pela simulação foi testado de verdade: uma camada uniforme de células humanas (fibroblastos dérmicos — HDF — e queratinócitos — HaCaT) recebe um "risco" padronizado, e os pesquisadores fotografam a região a cada 24-96 horas para medir quanto da área aberta já foi recoberta por células migrando das bordas.<sup class="cite"><a href="#ref1">1</a></sup></p>
+          <p>Sete fármacos foram testados lado a lado com um grupo sem tratamento (controle): ácido fólico, ácido cólico, mupirocina, piridoxal fosfato, metformina, sinvastatina e aciclovir.</p>
+        </div>
+      </div>
+
+      <table class="data-table">
+        <thead><tr><th>Dia</th><th>Sem tratamento</th><th>Ácido fólico</th></tr></thead>
+        <tbody>
+          <tr><td>Dia 1</td><td class="num">27,9% fechado</td><td class="num highlight">47,5% fechado</td></tr>
+          <tr><td>Dia 2</td><td class="num">52,0% fechado</td><td class="num highlight">86,9% fechado</td></tr>
+          <tr class="highlight"><td>Dia 3</td><td class="num">69,7% fechado</td><td class="num">99,9% fechado</td></tr>
+        </tbody>
+      </table>
+      <p style="font-size:.88rem; color:var(--ink-soft);">Dados de fibroblastos dérmicos (HDF), Tabela S12 do material suplementar. As diferenças foram estatisticamente significativas em todos os pontos de checagem (múltiplos asteriscos nas figuras originais, indicando p&lt;0,05 até p&lt;0,0001).<sup class="cite"><a href="#ref1">1</a></sup></p>
+    </section>
+
+    <!-- 07 — EFICIÊNCIA -->
+    <section>
+      <span class="section-num">07 — O ganho real: quanto tempo esse pipeline economiza</span>
+      <h2>De 16-28 semanas para 5-7 semanas — sem pular etapas biológicas</h2>
+      <p class="lede">O ganho não vem de "pular" a parte biológica (cultivo de células ainda leva o mesmo tempo que sempre levou), mas de comprimir drasticamente a parte que hoje é feita manualmente ou por tentativa-e-erro.<sup class="cite"><a href="#ref1">1</a></sup></p>
+
+      <figure class="img-placeholder" data-img-path="img/eficiencia-tempo-grafico.png">
+        <img class="real-photo" src="img/eficiencia-tempo-grafico.png" alt="Gráfico de barras comparando o tempo total do fluxo de trabalho convencional versus o pipeline com IA e química computacional" onload="this.classList.add('is-visible'); this.nextElementSibling.style.display='none';" onerror="this.remove();">
+        <div class="placeholder-box">
+          <span class="placeholder-icon">🖼</span>
+          <p class="placeholder-label">img/eficiencia-tempo-grafico.png</p>
+          <p class="placeholder-hint">Gráfico de barras horizontais, estilo editorial, fundo branco. Duas barras principais: a primeira, mais longa, rotulada "Fluxo convencional — 16 a 28+ semanas", em tom terracota; a segunda, bem mais curta, rotulada "Fluxo com IA + química computacional — 5 a 7 semanas", em verde-musgo. Cada barra subdividida internamente em três segmentos menores com bordas finas, representando as etapas "Triagem de literatura", "Geração de hipótese/simulação" e "Validação em células" — visualmente proporcionais ao tempo de cada etapa. Rótulo final destacado acima do gráfico: "Redução de 65-75% no tempo total". Tipografia técnica pequena nas legendas.</p>
+        </div>
+        <figcaption>Fig. 7 — A compressão de tempo acontece nas etapas de literatura e simulação; o cultivo celular continua no seu próprio ritmo biológico.</figcaption>
+      </figure>
+
+      <div class="eff-bars">
+        <div class="eff-row">
+          <div class="eff-label"><span>Fluxo convencional</span><span class="mono">16–28+ semanas</span></div>
+          <div class="eff-track"><div class="eff-fill conv">triagem manual + simulação limitada + validação ampla</div></div>
+        </div>
+        <div class="eff-row">
+          <div class="eff-label"><span>Fluxo com IA + química computacional</span><span class="mono">5–7 semanas</span></div>
+          <div class="eff-track"><div class="eff-fill aicc">triagem por IA + simulação paralela em GPU/CPU + validação focada</div></div>
+        </div>
+      </div>
+
+      <p style="font-size:.9rem; color:var(--ink-soft);">A aceleração veio de rodar as simulações em paralelo em infraestrutura de supercomputação — cerca de 24 GPUs A100 no NSCC de Singapura e 12 GPUs A40 na própria universidade, além de até 640 núcleos de CPU dedicados aos cálculos de química quântica. O cultivo celular (3-7 dias só para as células ficarem prontas para o ensaio) continua sendo o mesmo, biologicamente — é o único estágio que a tecnologia não consegue comprimir.<sup class="cite"><a href="#ref1">1</a></sup></p>
+
+      <p class="synthesis-quote">Nenhuma das quatro técnicas sozinha teria chegado ao ácido fólico com essa confiança — foi a combinação de IA, estatística, física e biologia experimental, cada uma corrigindo o ponto cego da anterior.</p>
     </section>
 
   </main>
 
-  <!-- VERIFICAÇÃO DE COMPREENSÃO -->
-  <section class="quiz-section">
-    <div class="quiz-wrap">
-      <span class="section-num" style="color:var(--moss);">07 — Antes de fechar</span>
-      <h2>Testando o que ficou</h2>
-      <p class="lede">Cinco perguntas objetivas para checar os fatos, e duas perguntas abertas — sem resposta pronta — para pensar como isso se conecta com a prática de vocês.</p>
-
-      <div id="quiz-app"></div>
-
-      <div class="reflect-block">
-        <h3>Para pensar em grupo</h3>
-        <div class="reflect-q">
-          <span class="reflect-tag">Questão 1</span>
-          <p>O estudo do ácido fólico em feridas diabéticas usou simulação quântica <em>rodada em simulador clássico</em>, não em hardware quântico real — e mesmo assim chegou a um resultado experimentalmente confirmado. Se a promessa de "chegar mais rápido a candidatos melhores" já se sustenta mesmo sem computador tolerante a falhas, o que exatamente muda quando essa tecnologia amadurecer? O que hoje é gargalo — precisão, escala, tempo, custo — e qual desses gargalos afeta mais uma pesquisa como a do G10?</p>
-        </div>
-        <div class="reflect-q">
-          <span class="reflect-tag">Questão 2</span>
-          <p>O Brasil optou por formar pessoas e construir nichos (residência em tecnologias quânticas, CIQuanta) em vez de tentar competir em volume de investimento com EUA e China. Pensando na área de vocês — telemonitoramento de feridas crônicas — que tipo de "nicho" um grupo de pesquisa brasileiro conseguiria ocupar com mais realismo diante dessas tecnologias emergentes: gerar dados clínicos de qualidade para alimentar esses modelos, aplicar achados já validados lá fora, ou outra coisa? Por quê?</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- REFERÊNCIAS -->
   <section class="references">
     <h2>Referências</h2>
     <ol>
-      <li id="ref1"><span class="ref-id">[1]</span> Campanario, S. "Más allá de la IA: meteoritos tecnológicos de alto impacto que merodean por fuera del radar." <em>La Nación</em>, 23 ago. 2026. <a href="https://www.lanacion.com.ar/economia/mas-alla-de-la-ia-meteoritos-tecnologicos-de-alto-impacto-que-merodean-por-fuera-del-radar-nid23082026/" target="_blank" rel="noopener">lanacion.com.ar</a></li>
-      <li id="ref2"><span class="ref-id">[2]</span> "Nanoelectronics Firm Imec Takes Stake in Twist Spinout Atlas Data Storage." <em>GenomeWeb</em>, 5 mar. 2026. <a href="https://www.genomeweb.com/business-news/nanoelectronics-firm-imec-takes-stake-twist-spinout-atlas-data-storage" target="_blank" rel="noopener">genomeweb.com</a></li>
-      <li id="ref3"><span class="ref-id">[3]</span> "DNA data storage startup Biomemory acquires Catalog Technologies, plans data center deployment in H2 2026." <em>Data Center Dynamics</em>, 22 jul. 2026. <a href="https://www.datacenterdynamics.com/en/news/dna-data-storage-startup-biomemory-acquires-catalog-technologies-plans-data-center-deployment-in-h2-2026/" target="_blank" rel="noopener">datacenterdynamics.com</a></li>
-      <li id="ref4"><span class="ref-id">[4]</span> "Atlas Data Storage Selected to Present at TSMC Technology Symposium." <em>PR Newswire</em>, 20 abr. 2026. <a href="https://www.prnewswire.com/news-releases/atlas-data-storage-selected-to-present-at-tsmc-technology-symposium-302746453.html" target="_blank" rel="noopener">prnewswire.com</a></li>
-      <li id="ref5"><span class="ref-id">[5]</span> Palmer, A.; Subin, S. "Quantinuum stock opens at $68 per share after IPO." <em>CNBC</em>, 4 jun. 2026. <a href="https://www.cnbc.com/2026/06/04/quantinuum-qnt-stock-first-trade-ipo.html" target="_blank" rel="noopener">cnbc.com</a></li>
-      <li id="ref6"><span class="ref-id">[6]</span> "Honeywell's Quantinuum valued at $17.6 billion as shares rise in Nasdaq debut." <em>Reuters/Investing.com</em>, 4 jun. 2026. <a href="https://www.investing.com/news/stock-market-news/honeywells-quantinuum-heads-for-nasdaq-debut-as-quantum-computing-gains-momentum-4726269" target="_blank" rel="noopener">investing.com</a></li>
-      <li id="ref7"><span class="ref-id">[7]</span> "Ushering in the Next Frontier of Quantum Innovation." Executive Order 14413. <em>The White House</em>, 22 jun. 2026. <a href="https://www.whitehouse.gov/presidential-actions/2026/06/ushering-in-the-next-frontier-of-quantum-innovation/" target="_blank" rel="noopener">whitehouse.gov</a></li>
-      <li id="ref8"><span class="ref-id">[8]</span> Ottinger, L. "China's Quantum Flywheel." <em>ChinaTalk</em>, 12 ago. 2026. <a href="https://www.chinatalk.media/p/chinas-quantum-flywheel" target="_blank" rel="noopener">chinatalk.media</a></li>
-      <li id="ref9"><span class="ref-id">[9]</span> Ivezic, M. "The $15.3 Billion Number That Everyone Cites and Nobody Can [Verify]." <em>PostQuantum.com</em>, 3 abr. 2026. <a href="https://postquantum.com/china-quantum-ambition/china-quantum-investment-unknowable/" target="_blank" rel="noopener">postquantum.com</a></li>
-      <li id="ref10"><span class="ref-id">[10]</span> "China's Quantum Tech Sector Sees Capital Surge as State Funds and Startups Accelerate Growth." <em>ChinaTechNews.com</em>, 8 ago. 2026. <a href="https://www.chinatechnews.com/2026/08/09/126918-chinas-quantum-tech-sector-sees-capital-surge-as-state-funds-and-startups-accelerate-growth" target="_blank" rel="noopener">chinatechnews.com</a></li>
-      <li id="ref11"><span class="ref-id">[11]</span> "China's Quantum Sector Sees Investment Surge as Larger Funding Rounds Return." <em>The Quantum Insider</em>, 6 abr. 2026. <a href="https://thequantuminsider.com/2026/04/06/chinas-quantum-sector-sees-investment-surge-as-larger-funding-rounds-return/" target="_blank" rel="noopener">thequantuminsider.com</a></li>
-      <li id="ref12"><span class="ref-id">[12]</span> "MCTI lança programa de residência em tecnologias quânticas." <em>Ministério da Ciência, Tecnologia e Inovação</em>, 19 jun. 2026. <a href="https://www.gov.br/mcti/pt-br/acompanhe-o-mcti/noticias/2026/06/mcti-lanca-programa-de-residencia-em-tecnologias-quanticas-para-formar-especialistas-e-impulsionar-deeptechs-brasileiras" target="_blank" rel="noopener">gov.br/mcti</a></li>
-      <li id="ref13"><span class="ref-id">[13]</span> "Centro na Paraíba vai receber primeiros computadores quânticos operacionais do País." <em>MCTI</em>, 30 mar. 2026. <a href="https://www.gov.br/mcti/pt-br/acompanhe-o-mcti/noticias/2026/03/centro-na-paraiba-vai-receber-primeiros-computadores-quanticos-operacionais-do-pais" target="_blank" rel="noopener">gov.br/mcti</a></li>
-      <li id="ref14"><span class="ref-id">[14]</span> "Acordo internacional por computador quântico busca solucionar algoritmos aplicáveis à indústria do petróleo." <em>MCTI</em>, 27 jan. 2026. <a href="https://www.gov.br/mcti/pt-br/acompanhe-o-mcti/noticias/2026/01/acordo-internacional-por-computador-quantico-busca-solucionar-algoritmos-aplicaveis-a-industria-do-petroleo" target="_blank" rel="noopener">gov.br/mcti</a></li>
-      <li id="ref15"><span class="ref-id">[15]</span> Guimarães, R. "Brasil entra na corrida quântica." <em>MIT Technology Review Brasil</em>, 26 jun. 2026. <a href="https://mittechreview.com.br/brasil-corrida-quantica-formacao-especialistas/" target="_blank" rel="noopener">mittechreview.com.br</a></li>
-      <li id="ref16"><span class="ref-id">[16]</span> "'Computação quântica já chegou ao Brasil', diz presidente da IBM Brasil." <em>Folha de S.Paulo — Painel S.A.</em>, 15 jul. 2026. <a href="https://www1.folha.uol.com.br/colunas/painelsa/2026/07/computacao-quantica-ja-chegou-no-brasil-diz-presidente-da-ibm-brasil.shtml" target="_blank" rel="noopener">folha.uol.com.br</a></li>
-      <li id="ref17"><span class="ref-id">[17]</span> "Quantitative Computational Validation of Nanoscale Interactions between Drug Molecules and Diabetic Wound-Related Proteins for Drug Discovery." <em>ACS Nano Medicine</em>, 2 mar. 2026. <a href="https://pubs.acs.org/doi/abs/10.1021/acsnanomed.5c00180" target="_blank" rel="noopener">pubs.acs.org</a></li>
-      <li id="ref18"><span class="ref-id">[18]</span> "Quantum-machine-assisted drug discovery." <em>npj Drug Discovery / Nature</em>, 7 jan. 2026. <a href="https://www.nature.com/articles/s44386-025-00033-2" target="_blank" rel="noopener">nature.com</a></li>
-      <li id="ref19"><span class="ref-id">[19]</span> Niazi, S. K. "Quantum Computing and Quantum Technologies in Drug Discovery and Therapy." <em>Dove Medical Press</em>, 30 abr. 2026. <a href="https://www.dovepress.com/quantum-computing-and-quantum-technologies-in-drug-discovery-and-thera-peer-reviewed-fulltext-article-DDDT" target="_blank" rel="noopener">dovepress.com</a></li>
+      <li id="ref1"><span class="ref-id">[1]</span> Zhang, Z.; Qin, Y.; Muthuramalingam, R. P. K.; Ding, Y.; Chng, W. H.; Liu, J.; Wu, J.; Yeow, C.-H.; Kan, M.-Y.; Pastorin, G. "Quantitative Computational Validation of Nanoscale Interactions between Drug Molecules and Diabetic Wound-Related Proteins for Drug Discovery." <em>ACS Nano Medicine</em>, publicado em 2 mar. 2026. DOI: <a href="https://doi.org/10.1021/acsnanomed.5c00180" target="_blank" rel="noopener">10.1021/acsnanomed.5c00180</a>. Artigo e material suplementar (Supporting Information, PDF) fornecidos diretamente pelo usuário como fonte primária deste infográfico.</li>
     </ol>
+    <p style="font-size:.82rem; color:var(--ink-soft); margin-top:16px;">Todos os números, protocolos, tabelas e citações de energia deste infográfico vêm exclusivamente do material suplementar do artigo acima (Supporting Methods S1–S5, Tabelas S1–S14, Equações S1–S3). Nenhum dado foi extrapolado ou inventado.</p>
   </section>
 
-  <!-- RODAPÉ INSTITUCIONAL -->
   <footer class="institutional-footer">
     <p>Infográfico elaborado pelos projetos Amor à Pele e PET-Saúde Digital G10 Feridas Crônicas, UFPel, em Agosto de 2026.</p>
   </footer>
-
-  <script>
-    var quizData = [
-      {
-        prompt: "Por que o armazenamento de dados em DNA é considerado energeticamente vantajoso frente a HDs e fitas magnéticas?",
-        options: [
-          "Porque o DNA processa dados mais rápido que um chip de silício",
-          "Porque, uma vez 'escrito', o DNA não consome eletricidade para manter a informação estável",
-          "Porque o DNA é imune a qualquer tipo de degradação química"
-        ],
-        correct: 1,
-        feedback: "O DNA guarda a informação de forma estável sem gasto contínuo de energia — diferente de mídias magnéticas, que precisam de energia e migração periódica."
-      },
-      {
-        prompt: "O que faz um computador quântico ser chamado de 'tolerante a falhas'?",
-        options: [
-          "Ele nunca comete erro de cálculo, por design físico",
-          "Ele detecta e corrige erros automaticamente durante o cálculo, usando qubits físicos redundantes agrupados em um qubit lógico",
-          "Ele funciona mesmo sem refrigeração criogênica"
-        ],
-        correct: 1,
-        feedback: "A tolerância a falhas vem da correção de erro quântico: vários qubits físicos redundantes formam um qubit lógico mais estável."
-      },
-      {
-        prompt: "Qual das afirmações resume melhor a corrida global em tecnologia quântica hoje?",
-        options: [
-          "É uma disputa exclusiva entre Estados Unidos e China",
-          "É uma corrida tripolar, com EUA, China e Europa liderando frentes diferentes (hardware/capital, infraestrutura de comunicação, e armazenamento em DNA, respectivamente)",
-          "A Europa está fora dessa disputa"
-        ],
-        correct: 1,
-        feedback: "Cada bloco lidera uma frente distinta — não é uma disputa de dois lados só."
-      },
-      {
-        prompt: "No estudo da ACS Nano Medicine sobre feridas diabéticas, qual foi o papel da simulação de química quântica?",
-        options: [
-          "Substituir totalmente os testes de laboratório",
-          "Calcular com precisão a energia de ligação entre candidatos a fármaco e proteínas-alvo, filtrando os melhores candidatos antes do teste experimental",
-          "Gerar imagens de microscopia da ferida"
-        ],
-        correct: 1,
-        feedback: "A simulação quântica ajudou a ranquear candidatos por energia de interação — o ácido fólico venceu essa triagem e depois foi confirmado em ensaio de laboratório (scratch assay)."
-      },
-      {
-        prompt: "Qual é, segundo o texto, o principal motivo para tratar a computação quântica aplicada à cicatrização como 'promissora, mas ainda inicial'?",
-        options: [
-          "Porque nenhum estudo relevante foi publicado até agora",
-          "Porque a maior parte dos resultados hoje depende de simuladores clássicos e a aplicação clínica exige computadores tolerantes a falhas, ainda projetados para 2029-2030",
-          "Porque a mecânica quântica não tem relação nenhuma com ligações moleculares"
-        ],
-        correct: 1,
-        feedback: "O gargalo é o hardware: sem tolerância a falhas em escala, a precisão necessária para decisões clínicas ainda não é garantida de forma consistente."
-      }
-    ];
-
-    var app = document.getElementById('quiz-app');
-    var score = 0;
-    var answered = 0;
-
-    quizData.forEach(function(q, qi){
-      var card = document.createElement('div');
-      card.className = 'quiz-card';
-
-      var num = document.createElement('span');
-      num.className = 'q-num';
-      num.textContent = 'Pergunta ' + (qi+1) + ' de ' + quizData.length;
-      card.appendChild(num);
-
-      var prompt = document.createElement('p');
-      prompt.className = 'q-prompt';
-      prompt.textContent = q.prompt;
-      card.appendChild(prompt);
-
-      var optsWrap = document.createElement('div');
-      optsWrap.className = 'q-options';
-
-      var feedback = document.createElement('div');
-      feedback.className = 'q-feedback';
-      feedback.textContent = q.feedback;
-
-      q.options.forEach(function(optText, oi){
-        var btn = document.createElement('button');
-        btn.type = 'button';
-        btn.className = 'quiz-opt';
-        btn.textContent = optText;
-        btn.addEventListener('click', function(){
-          if (btn.disabled) return;
-          var allBtns = optsWrap.querySelectorAll('.quiz-opt');
-          allBtns.forEach(function(b){ b.disabled = true; });
-
-          if (oi === q.correct) {
-            btn.classList.add('correct');
-            feedback.classList.add('show','ok');
-            score++;
-          } else {
-            btn.classList.add('incorrect');
-            allBtns[q.correct].classList.add('correct');
-            feedback.classList.add('show','no');
-          }
-          answered++;
-          updateScore();
-        });
-        optsWrap.appendChild(btn);
-      });
-
-      card.appendChild(optsWrap);
-      card.appendChild(feedback);
-      app.appendChild(card);
-    });
-
-    var scoreLine = document.createElement('div');
-    scoreLine.className = 'quiz-score';
-    app.appendChild(scoreLine);
-
-    function updateScore(){
-      scoreLine.textContent = answered === quizData.length
-        ? 'Resultado final: ' + score + ' de ' + quizData.length + ' corretas'
-        : score + ' de ' + answered + ' respondidas até agora';
-    }
-  </script>
 
 </body>
 </html>
