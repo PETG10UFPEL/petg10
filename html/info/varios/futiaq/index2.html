@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Por dentro do laboratório computacional: como a IA e a física quântica acharam um remédio para feridas diabéticas</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Source+Sans+3:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#FAFAF6; --bg-alt:#F1F3EF; --ink:#182233; --ink-soft:#454F5E;
+    --blue:#2C5F8D; --blue-deep:#1E4463; --moss:#3F6E52;
+    --gold:#B9822A; --gold-bg:#FBF1DE; --gold-line:#DDBD82;
+    --line:#E1E1D8; --card:#FFFFFF; --radius:14px;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{margin:0; background:var(--bg); color:var(--ink); font-family:'Source Sans 3',sans-serif; font-size:17px; line-height:1.65; -webkit-font-smoothing:antialiased;}
+  h1,h2,h3{font-family:'Fraunces',serif; color:var(--ink); line-height:1.15; margin:0;}
+  a{color:var(--blue-deep);}
+  p{margin:0 0 1em 0;}
+  .mono{font-family:'IBM Plex Mono',monospace;}
+
+  .institutional-header{display:flex; justify-content:space-between; align-items:center; padding:16px 6vw; background:#fff; border-bottom:1px solid var(--line); position:sticky; top:0; z-index:20;}
+  .header-identity{font-family:'IBM Plex Mono',monospace; font-size:.75rem; letter-spacing:.08em; text-transform:uppercase; color:var(--ink-soft);}
+  .institutional-header img{max-height:48px; display:block;}
+
+  .hero{padding:9vw 6vw 6vw; max-width:920px; margin:0 auto;}
+  .eyebrow{font-family:'IBM Plex Mono',monospace; font-size:.78rem; letter-spacing:.12em; text-transform:uppercase; color:var(--blue); display:flex; align-items:center; gap:10px; margin-bottom:22px;}
+  .eyebrow::before{content:""; width:26px; height:1px; background:var(--blue); display:inline-block;}
+  .hero h1{font-size:clamp(2rem,4.6vw,3.1rem); font-weight:600; letter-spacing:-.01em;}
+  .hero .subtitle{margin-top:22px; font-size:1.14rem; color:var(--ink-soft); max-width:660px; font-weight:400;}
+  .hero-meta{margin-top:30px; display:flex; gap:24px; flex-wrap:wrap; font-size:.83rem; color:var(--ink-soft); font-family:'IBM Plex Mono',monospace;}
+  .source-card{margin:34px 0 0 0; background:var(--card); border:1px solid var(--line); border-radius:var(--radius); padding:18px; max-width:640px;}
+  .source-card img{width:100%; height:auto; border-radius:8px; border:1px solid var(--line); display:block;}
+  .source-card figcaption{margin-top:14px; font-size:.86rem; color:var(--ink-soft); line-height:1.55;}
+
+  main{max-width:920px; margin:0 auto; padding:0 6vw 4vw;}
+  section{padding:50px 0; border-top:1px solid var(--line);}
+  section:first-child{border-top:none;}
+  .section-num{font-family:'IBM Plex Mono',monospace; font-size:.78rem; color:var(--blue); letter-spacing:.1em; margin-bottom:10px; display:block;}
+  section h2{font-size:clamp(1.4rem,2.9vw,1.95rem); font-weight:600; max-width:660px; margin-bottom:20px;}
+  section .lede{font-size:1.08rem; color:var(--ink-soft); max-width:660px; margin-bottom:22px;}
+
+  .two-col{display:grid; grid-template-columns:1.1fr .9fr; gap:38px; align-items:start;}
+  @media (max-width:760px){.two-col{grid-template-columns:1fr;}}
+
+  sup.cite{font-family:'IBM Plex Mono',monospace; font-size:.7em; color:var(--blue-deep); cursor:default;}
+  sup.cite a{color:inherit; text-decoration:none;}
+  sup.cite a:hover{text-decoration:underline;}
+
+  figure{margin:0 0 12px 0;}
+  .img-placeholder .placeholder-box{border:2px dashed #C6CBBE; background:var(--bg-alt); border-radius:var(--radius); padding:26px 20px; text-align:center; color:#6B7566; min-height:190px; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:8px;}
+  .placeholder-icon{font-size:1.7rem;}
+  .placeholder-label{font-family:'IBM Plex Mono',monospace; font-size:.76rem; background:#fff; border:1px solid var(--line); padding:4px 10px; border-radius:5px; color:#3B4430;}
+  .placeholder-hint{font-size:.79rem; color:#828C79; font-style:italic; max-width:320px;}
+  .real-photo{display:none; width:100%; height:auto; border-radius:var(--radius); margin-bottom:10px;}
+  .real-fig{margin:0 0 12px 0;}
+  .real-fig img{width:100%; height:auto; border-radius:var(--radius); border:1px solid var(--line); display:block; margin-bottom:10px;}
+  .real-photo.is-visible{display:block;}
+  figcaption{font-size:.84rem; color:var(--ink-soft); margin-top:10px; line-height:1.5;}
+
+  .stat-row{display:flex; gap:24px; flex-wrap:wrap; margin:24px 0;}
+  .stat{background:var(--card); border:1px solid var(--line); border-radius:var(--radius); padding:16px 18px; flex:1 1 170px;}
+  .stat .num{font-family:'Fraunces',serif; font-size:1.7rem; font-weight:600; color:var(--blue-deep); display:block;}
+  .stat .label{font-size:.83rem; color:var(--ink-soft); margin-top:4px;}
+
+  /* PIPELINE FUNNEL STEPS */
+  .funnel{display:flex; flex-direction:column; gap:0; margin:28px 0;}
+  .funnel-step{background:var(--card); border:1px solid var(--line); border-radius:10px; padding:14px 18px; display:flex; align-items:center; gap:14px; position:relative;}
+  .funnel-step + .funnel-step{margin-top:22px;}
+  .funnel-step::before{content:"↓"; position:absolute; top:-22px; left:24px; color:var(--blue); font-size:1.1rem;}
+  .funnel-step .f-n{font-family:'IBM Plex Mono',monospace; font-size:.72rem; color:#fff; background:var(--blue); border-radius:20px; padding:3px 10px; flex-shrink:0;}
+  .funnel-step .f-body strong{display:block; font-size:.98rem;}
+  .funnel-step .f-body span{font-size:.86rem; color:var(--ink-soft);}
+
+  /* METHOD CARDS (docking / MD / QC) */
+  .method-grid{display:grid; grid-template-columns:1fr; gap:16px; margin:26px 0;}
+  .method-card{background:var(--card); border:1px solid var(--line); border-left:4px solid var(--blue); border-radius:10px; padding:20px 22px;}
+  .method-card h4{font-family:'Fraunces',serif; font-size:1.12rem; margin-bottom:6px;}
+  .method-card .tools{font-family:'IBM Plex Mono',monospace; font-size:.74rem; color:var(--blue-deep); background:#EEF3F8; display:inline-block; padding:3px 9px; border-radius:5px; margin-bottom:10px;}
+  .method-card p{font-size:.94rem; margin-bottom:0;}
+  .method-card.md{border-left-color:var(--moss);}
+  .method-card.md .tools{color:#2C4E33; background:#EAF3EB;}
+  .method-card.qc{border-left-color:var(--gold);}
+  .method-card.qc .tools{color:#7A5716; background:#FBF1DE;}
+
+  /* QUADRO explicativo (dourado) */
+  .quadro{background:var(--gold-bg); border:1px solid var(--gold-line); border-left:5px solid var(--gold); border-radius:10px; padding:28px 30px; margin:32px 0;}
+  .quadro-tag{font-family:'IBM Plex Mono',monospace; font-size:.72rem; letter-spacing:.1em; text-transform:uppercase; color:var(--gold); font-weight:600; display:flex; align-items:center; gap:8px; margin-bottom:12px;}
+  .quadro-tag::before{content:"▣";}
+  .quadro h3{font-size:1.22rem; margin-bottom:12px; color:#5A400F;}
+  .quadro p{font-size:.96rem;}
+
+  /* DATA TABLE */
+  .data-table{width:100%; border-collapse:collapse; margin:20px 0; font-size:.88rem;}
+  .data-table th, .data-table td{border:1px solid var(--line); padding:8px 10px; text-align:left;}
+  .data-table th{background:var(--bg-alt); font-family:'IBM Plex Mono',monospace; font-size:.76rem; text-transform:uppercase; letter-spacing:.02em;}
+  .data-table td.num{font-family:'IBM Plex Mono',monospace;}
+  .data-table tr.highlight td{background:#EAF3EB; font-weight:600;}
+
+  /* PROMPT EXAMPLE BOX */
+  .prompt-box{background:#12181F; color:#DCE3E8; border-radius:10px; padding:20px 22px; font-family:'IBM Plex Mono',monospace; font-size:.82rem; line-height:1.7; margin:20px 0; overflow-x:auto;}
+  .prompt-box .p-label{color:#7FB0DE; font-weight:600;}
+  .prompt-box .p-out{color:#8FCB9B;}
+
+  /* EFFICIENCY BARS */
+  .eff-bars{margin:24px 0;}
+  .eff-row{margin-bottom:18px;}
+  .eff-row .eff-label{font-size:.9rem; margin-bottom:6px; display:flex; justify-content:space-between;}
+  .eff-track{background:var(--bg-alt); border-radius:6px; height:22px; overflow:hidden;}
+  .eff-fill{height:100%; border-radius:6px 0 0 6px; display:flex; align-items:center; padding-left:10px; font-family:'IBM Plex Mono',monospace; font-size:.72rem; color:#fff;}
+  .eff-fill.conv{background:#B25A47; width:100%;}
+  .eff-fill.aicc{background:var(--moss); width:32%;}
+
+  .synthesis-quote{font-family:'Fraunces',serif; font-size:1.32rem; font-weight:500; color:var(--ink); max-width:680px; margin:30px auto 0; text-align:center; line-height:1.4;}
+
+  .references{padding:52px 6vw 30px; max-width:920px; margin:0 auto; border-top:1px solid var(--line);}
+  .references h2{font-size:1.25rem; margin-bottom:18px;}
+  .references ol{padding-left:22px;}
+  .references li{font-size:.85rem; color:var(--ink-soft); margin-bottom:11px; line-height:1.55; word-break:break-word;}
+  .references li a{color:var(--blue-deep);}
+  .references .ref-id{font-family:'IBM Plex Mono',monospace; color:var(--ink);}
+
+  .institutional-footer{background:var(--bg-alt); border-top:1px solid var(--line); padding:24px 6vw; text-align:center;}
+  .institutional-footer p{font-size:.8rem; color:var(--ink-soft); margin:0;}
+</style>
+</head>
+<body>
+
+  <header class="institutional-header">
+    <div class="header-identity">G10 — Telemonitoramento de Feridas Crônicas · UFPel</div>
+    <img src="img/logo.png" alt="Logos dos projetos Amor à Pele e PET-Saúde Digital G10 Feridas Crônicas – UFPel">
+  </header>
+
+  <div class="hero">
+    <span class="eyebrow">Por dentro do método · Agosto de 2026</span>
+    <h1>Como a IA e a física quântica encontraram um remédio para feridas diabéticas dentro de um computador</h1>
+    <p class="subtitle">Não foi mágica, nem um único algoritmo genial: foi uma cascata de quatro técnicas diferentes, cada uma filtrando o trabalho da anterior — da leitura automática de milhares de artigos até um cálculo de elétrons tão preciso que decidiu qual molécula ia para o teste de bancada.</p>
+    <div class="hero-meta">
+      <span>Baseado no material suplementar do artigo</span>
+      <span>Zhang et al., ACS Nano Medicine, 2026</span>
+      <span>NUS — National University of Singapore</span>
+    </div>
+
+    <figure class="source-card">
+      <img src="img/artigo-acs-capa.png" alt="Página do artigo na ACS Nano Medicine: Quantitative Computational Validation of Nanoscale Interactions between Drug Molecules and Diabetic Wound-Related Proteins for Drug Discovery, Zhang et al., 2 de março de 2026">
+      <figcaption>A fonte primária deste infográfico: o artigo publicado na <em>ACS Nano Medicine</em> (vol. 1, edição 5, p. 1263–1277) que rastreou quase 9 mil proteínas ligadas a feridas diabéticas por química quântica e apontou o ácido fólico como candidato — depois confirmado em laboratório.<sup class="cite"><a href="#ref1">1</a></sup></figcaption>
+    </figure>
+  </div>
+
+  <main>
+
+    <!-- 01 — VISÃO GERAL DO FUNIL -->
+    <section>
+      <span class="section-num">01 — O funil, do começo ao fim</span>
+      <h2>De quase 3 mil fármacos a um só candidato — em quatro filtros</h2>
+      <p class="lede">O pipeline inteiro é um funil: cada etapa reduz o número de candidatos, mas aumenta a precisão do cálculo. É assim que se torna viável testar quase 9 mil proteínas sem precisar de laboratório físico em cada uma delas.<sup class="cite"><a href="#ref1">1</a></sup></p>
+
+      <figure class="img-placeholder" data-img-path="img/pipeline-geral-funil.png">
+        <img class="real-photo" src="img/pipeline-geral-funil.png" alt="Diagrama de funil mostrando as quatro etapas do pipeline computacional, do universo de fármacos até o candidato final" onload="this.classList.add('is-visible'); this.nextElementSibling.style.display='none';" onerror="this.remove();">
+        <div class="placeholder-box">
+          <span class="placeholder-icon">🖼</span>
+          <p class="placeholder-label">img/pipeline-geral-funil.png</p>
+          <p class="placeholder-hint">Diagrama de funil vertical, estilo infográfico editorial, fundo transparente. Do topo (mais largo) até a base (mais estreita), cinco faixas horizontais empilhadas, cada uma mais estreita que a anterior: "2.989 fármacos × 8.739 proteínas" (cinza-claro) → "Mineração por IA/LLM" (azul-petróleo) → "Clustering quimioinformático" (verde-musgo) → "35 fármacos × 50 proteínas selecionados" (dourado) → "Docking → Dinâmica Molecular → Química Quântica" (azul-marinho escuro) → base estreita "Ácido fólico" (destacado em dourado brilhante, com uma pequena coroa ou estrela). Setas finas verticais conectando cada faixa, números grandes e legíveis em cada uma, tipografia técnica monoespaçada.</p>
+        </div>
+        <figcaption>Fig. 1 — O funil completo: de um universo de quase 26 milhões de pares fármaco-proteína a um único candidato validado em laboratório.</figcaption>
+      </figure>
+
+      <div class="funnel">
+        <div class="funnel-step">
+          <span class="f-n">Ponto de partida</span>
+          <div class="f-body"><strong>2.989 fármacos × 8.739 proteínas</strong><span>Universo bruto mapeado a partir de bases como PubMed, DrugBank, ChEMBL e UniProt<sup class="cite"><a href="#ref1">1</a></sup></span></div>
+        </div>
+        <div class="funnel-step">
+          <span class="f-n">Filtro 1</span>
+          <div class="f-body"><strong>Mineração de literatura por IA (LLM)</strong><span>Modelos de linguagem leem os artigos e classificam a relação fármaco-proteína como ativadora ou inibidora</span></div>
+        </div>
+        <div class="funnel-step">
+          <span class="f-n">Filtro 2</span>
+          <div class="f-body"><strong>Clustering quimioinformático com "greedy coverage"</strong><span>Reduz o universo para os 35 fármacos e 50 proteínas mais representativos, sem perder diversidade estrutural</span></div>
+        </div>
+        <div class="funnel-step">
+          <span class="f-n">Filtro 3</span>
+          <div class="f-body"><strong>Cascata docking → dinâmica molecular → química quântica</strong><span>Cada estágio é mais lento e mais preciso que o anterior, refinando a lista até restarem os cálculos mais confiáveis</span></div>
+        </div>
+        <div class="funnel-step">
+          <span class="f-n">Resultado</span>
+          <div class="f-body"><strong>Ácido fólico — energia de interação −78,1 kcal/mol</strong><span>Validado depois em ensaio de laboratório (scratch assay) em células humanas</span></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 02 — MINERAÇÃO POR IA -->
+    <section>
+      <span class="section-num">02 — Filtro 1: fazendo a IA ler a literatura por você</span>
+      <h2>Modelos de linguagem como "leitores automáticos" de evidência científica</h2>
+      <div class="two-col">
+        <div>
+          <p class="lede">Os pesquisadores usaram quatro modelos de linguagem — GPT-3.5-Turbo, GPT-4, LLaMA2-Chat-13B e PMC-LLaMA-13B (este último treinado especificamente em literatura biomédica) — para fazer duas tarefas específicas em cada artigo científico:<sup class="cite"><a href="#ref1">1</a></sup></p>
+          <ul style="padding-left:20px; font-size:.95rem;">
+            <li style="margin-bottom:8px;"><strong>DisProtRD</strong> — dado uma proteína e um trecho de texto, decidir se aquela proteína está aumentada ou diminuída em pacientes com pé diabético, comparado a tecido saudável.</li>
+            <li><strong>ProtDrugRD</strong> — dado um fármaco e uma proteína, decidir se o fármaco ativa ou desativa aquela proteína, segundo o que o artigo relata.</li>
+          </ul>
+        </div>
+        <figure class="img-placeholder" data-img-path="img/llm-mining-arquitetura.png">
+          <img class="real-photo" src="img/llm-mining-arquitetura.png" alt="Diagrama da arquitetura de prompt usada para mineração de literatura com LLM" onload="this.classList.add('is-visible'); this.nextElementSibling.style.display='none';" onerror="this.remove();">
+          <div class="placeholder-box">
+            <span class="placeholder-icon">🖼</span>
+            <p class="placeholder-label">img/llm-mining-arquitetura.png</p>
+            <p class="placeholder-hint">Diagrama de fluxo horizontal simples, três caixas conectadas por setas: caixa 1 "Definição da tarefa" (ícone de lupa), caixa 2 "Exemplos few-shot" (ícone de três cartões empilhados), caixa 3 "Texto de entrada" (ícone de documento) — as três convergindo para uma caixa final maior "Tupla de saída (proteína, fármaco, sinal +1/−1)" em dourado. Estilo minimalista, linhas finas, paleta azul-petróleo e cinza, fundo transparente.</p>
+          </div>
+          <figcaption>Fig. 2 — Cada prompt combina definição da tarefa, exemplos de treino e o texto novo a analisar.</figcaption>
+        </figure>
+      </div>
+
+      <p>Para cada tarefa, o prompt segue uma estrutura fixa: <strong>definição da tarefa</strong> + <strong>exemplos "few-shot"</strong> (casos já resolvidos, mostrados como modelo) + <strong>o texto novo</strong> a ser analisado. Um passo intermediário de "extração de evidência" seleciona só as frases relevantes do artigo — e os autores destacam que essa seleção feita pela IA é mais precisa do que simplesmente buscar duas palavras-chave na mesma frase por expressão regular.<sup class="cite"><a href="#ref1">1</a></sup></p>
+
+      <div class="prompt-box">
+<span class="p-label"># Exemplo real de prompt (Task ProtDrugRD)</span>
+
+Texto: "Curcumin was observed to inhibit H2O2-induced
+pyroptosis... curcumin improved HUVEC function by
+restoring αvβ3 and reducing endothelin-1 expression."
+Proteína: Endothelin-1
+Fármaco: Curcumin
+
+<span class="p-out">Saída do modelo: "...reduzindo a expressão de
+endothelin-1." → inferência: 'deactivate' (o
+fármaco desativa a proteína)</span>
+      </div>
+    </section>
+
+    <!-- 03 — CLUSTERING -->
+    <section>
+      <span class="section-num">03 — Filtro 2: reduzindo o universo sem perder diversidade</span>
+      <h2>Clustering quimioinformático: como escolher 35 fármacos que representem quase 3 mil</h2>
+      <div class="two-col">
+        <figure class="real-fig">
+          <img src="img/figura-s6-clustering-pca.png" alt="Gráfico real de clustering PCA dos fármacos, com o cluster do ácido fólico destacado em preto — Figura S6 do material suplementar">
+          <figcaption>Fig. 3 — Figura S6 do material suplementar: clustering real por PCA. Cada ponto é um fármaco; os pontos pretos (Cluster 1) marcam o grupo do ácido fólico (DB00158) entre outros candidatos selecionados pela IA.<sup class="cite"><a href="#ref1">1</a></sup></figcaption>
+        </figure>
+        <div>
+          <p><strong>O problema:</strong> testar quimicamente 2.989 fármacos contra 8.739 proteínas seria computacionalmente inviável — são quase 26 milhões de combinações.</p>
+          <p><strong>A solução:</strong> os pesquisadores usaram cinco técnicas diferentes de redução de dimensionalidade — MDS, t-SNE, UMAP, PCA e embedding espectral — para agrupar os fármacos por semelhança estrutural, testando de 2 a 9 grupos em cada técnica.<sup class="cite"><a href="#ref1">1</a></sup></p>
+          <p>Depois aplicaram <strong>"cobertura gulosa" (greedy coverage)</strong>: um algoritmo que escolhe o menor número possível de representantes capaz de cobrir toda a diversidade estrutural do conjunto original — como escolher poucas cidades-amostra que ainda representem toda a variedade climática de um país.</p>
+        </div>
+      </div>
+      <p style="font-size:.92rem; color:var(--ink-soft);">Resultado desse filtro: de quase 3 mil fármacos, restaram <strong>35 candidatos e 50 proteínas-chave</strong> — o suficiente para justificar o custo computacional bem mais alto da próxima etapa.<sup class="cite"><a href="#ref1">1</a></sup></p>
+    </section>
+
+    <!-- 04 — CASCATA DOCKING/MD/QC -->
+    <section>
+      <span class="section-num">04 — Filtro 3: a cascata física — do rápido e aproximado ao lento e exato</span>
+      <h2>Docking, dinâmica molecular e química quântica: três câmeras com zoom cada vez maior</h2>
+      <p class="lede">Essa é a etapa mais cara computacionalmente — e por isso só chega até aqui quem sobreviveu aos dois filtros anteriores. As três técnicas não competem entre si: cada uma refina o resultado da anterior.</p>
+
+      <figure class="img-placeholder" data-img-path="img/docking-md-qc-cascata.png">
+        <img class="real-photo" src="img/docking-md-qc-cascata.png" alt="Diagrama de três estágios mostrando docking, dinâmica molecular e química quântica em zoom crescente" onload="this.classList.add('is-visible'); this.nextElementSibling.style.display='none';" onerror="this.remove();">
+        <div class="placeholder-box">
+          <span class="placeholder-icon">🖼</span>
+          <p class="placeholder-label">img/docking-md-qc-cascata.png</p>
+          <p class="placeholder-hint">Ilustração em três painéis horizontais lado a lado, conectados por setas finas, representando um "zoom" cada vez mais próximo na mesma interação fármaco-proteína. Painel 1, rotulado "Docking — rápido/aproximado": uma molécula pequena (estilo bastão-e-esfera, cores CPK) encaixando em um bolso raso de uma forma azul-petróleo sólida e simplificada representando a proteína — sem detalhe de superfície, estilo esquemático rápido. Painel 2, rotulado "Dinâmica Molecular — médio/dinâmico": a mesma cena, mas agora a proteína é uma fita helicoidal detalhada em verde-musgo, com linhas de movimento sutis e onduladas ao redor sugerindo vibração ao longo do tempo, e um pequeno relógio ou contador "25-100 ns" no canto. Painel 3, rotulado "Química Quântica — lento/exato": zoom extremo apenas na região de contato entre um único átomo do fármaco e um resíduo da proteína, mostrando nuvens eletrônicas coloridas em gradiente azul-vermelho ao redor dos núcleos atômicos, com uma pequena marcação "ponto crítico de ligação" e um valor de energia em kcal/mol. Abaixo de cada painel, uma barra de progresso crescente indicando o custo computacional relativo (curta/dourada → média/dourada → longa/dourada). Setas finas conectando os três painéis da esquerda para a direita. Paleta consistente com o restante do infográfico: azul-petróleo, verde-musgo, dourado, fundo branco ou transparente, tipografia técnica pequena e legível nos rótulos.</p>
+        </div>
+        <figcaption>Fig. 4 — Cada estágio "zoom" na interação fármaco-proteína com mais precisão — e mais custo computacional. Não há figura equivalente pronta no artigo original para este conceito específico; esta é uma ilustração a ser comissionada com base na descrição acima.</figcaption>
+      </figure>
+
+      <div class="method-grid">
+        <div class="method-card">
+          <h4>1. Docking molecular</h4>
+          <span class="tools">ProteinsPlus · DoGSite3 · JAMDA</span>
+          <p>Primeiro filtro físico: identifica os "bolsos" (pockets) da proteína onde um fármaco poderia se encaixar (DoGSite3) e testa diferentes poses de encaixe (JAMDA), selecionando as 10 melhores poses por par fármaco-proteína. É rápido, mas trata a proteína como praticamente rígida — uma aproximação grosseira.<sup class="cite"><a href="#ref1">1</a></sup></p>
+        </div>
+        <div class="method-card md">
+          <h4>2. Dinâmica Molecular (MD)</h4>
+          <span class="tools">GROMACS 2023 · Amber99SB-ildn · TIP3P</span>
+          <p>Simula o comportamento do complexo fármaco-proteína <em>ao longo do tempo</em> — 25 nanossegundos de simulação (estendida a 100 ns quando necessário), em ambiente aquoso com temperatura (303 K) e pressão fisiológicas controladas. Isso captura flexibilidade que o docking estático não vê. Os pesquisadores checaram a estabilidade via RMSD (desvio da posição média) antes de aceitar o resultado como "equilibrado".<sup class="cite"><a href="#ref1">1</a></sup></p>
+        </div>
+        <div class="method-card qc">
+          <h4>3. Química Quântica (QC)</h4>
+          <span class="tools">ORCA 5.0.4 · Gaussian 16 · Multiwfn</span>
+          <p>A etapa mais precisa e mais cara: calcula a energia de ligação a partir do comportamento real dos elétrons na região de contato — não uma aproximação, mas a física quântica da ligação química em si. Só uma pequena "esfera" de átomos ao redor do ponto de contato entra no cálculo (íons a 6 Å, resíduos a 2,5–3,5 Å do fármaco), porque calcular a proteína inteira nesse nível seria computacionalmente inviável.<sup class="cite"><a href="#ref1">1</a></sup></p>
+        </div>
+      </div>
+
+      <figure class="real-fig">
+        <img src="img/figura-s11-estabilidade-md.png" alt="Gráficos reais de RMSD, mapa de distância e estrutura secundária do complexo ácido fólico-FGF ao longo de 100 ns de simulação — Figura S11 do material suplementar">
+        <figcaption>Fig. 4b — Figura S11 do material suplementar: prova de que o encaixe do ácido fólico com o FGF se manteve estável ao longo de 100 nanossegundos de simulação (RMSD estabilizado, contatos persistentes, estrutura secundária consistente).<sup class="cite"><a href="#ref1">1</a></sup></figcaption>
+      </figure>
+
+      <div class="quadro">
+        <span class="quadro-tag">Quadro explicativo</span>
+        <h3>Por que corrigir o "erro da régua"? (BSSE)</h3>
+        <p>Quando dois pedaços de molécula são calculados juntos, cada um "empresta" um pouco da precisão matemática do outro — como se a régua usada para medir a distância entre dois objetos mudasse de tamanho dependendo se eles estão juntos ou separados. Esse artefato numérico se chama <strong>erro de superposição de base (BSSE)</strong>, e os pesquisadores o corrigiram com a técnica de <em>counterpoise correction</em>: recalculam a energia de cada fragmento isolado usando o mesmo "conjunto de réguas" (base) do sistema completo, e subtraem essa diferença do resultado bruto.<sup class="cite"><a href="#ref1">1</a></sup></p>
+        <p style="margin-bottom:0;">No caso do ácido fólico com o fator de crescimento de fibroblastos, a energia bruta foi de <strong>−80,71 kcal/mol</strong>; depois da correção de BSSE (+2,58 kcal/mol), o valor final publicado foi <strong>−78,13 kcal/mol</strong> — o número que aparece no resumo do artigo.<sup class="cite"><a href="#ref1">1</a></sup></p>
+      </div>
+
+      <h3 style="font-size:1.1rem; margin-bottom:12px;">O que os elétrons revelam ponto a ponto</h3>
+      <p style="font-size:.95rem;">Com uma ferramenta chamada Multiwfn, os pesquisadores localizaram os <strong>pontos críticos de ligação (BCP)</strong> — os pontos exatos onde a nuvem eletrônica de duas moléculas se encontra — e mediram a força de cada contato individual entre o ácido fólico e a proteína:<sup class="cite"><a href="#ref1">1</a></sup></p>
+
+      <table class="data-table">
+        <thead><tr><th>Contato químico</th><th>Densidade eletrônica</th><th>Energia de ligação</th></tr></thead>
+        <tbody>
+          <tr class="highlight"><td>Ligante-O ··· Glutamina (mais forte)</td><td class="num">0,0488</td><td class="num">−10,15 kcal/mol</td></tr>
+          <tr><td>Ligante-N/H ··· Glutamato</td><td class="num">0,0293</td><td class="num">−5,80 kcal/mol</td></tr>
+          <tr><td>Ligante-O ··· Lisina (contato 1)</td><td class="num">0,0231</td><td class="num">−4,41 kcal/mol</td></tr>
+          <tr><td>Ligante-O ··· Lisina (contato 2)</td><td class="num">0,0230</td><td class="num">−4,38 kcal/mol</td></tr>
+          <tr><td>Ligante-H ··· Glutamato (mais fraco)</td><td class="num">0,0060</td><td class="num">−0,61 kcal/mol</td></tr>
+        </tbody>
+      </table>
+      <p style="font-size:.88rem; color:var(--ink-soft);">É essa soma de contatos individuais — alguns fortes, outros fracos — que constrói a energia total de ligação. O contato mais forte, com uma glutamina, sozinho já responde por boa parte da estabilidade do encaixe.<sup class="cite"><a href="#ref1">1</a></sup></p>
+    </section>
+
+    <!-- 05 — AI-CC SCORE -->
+    <section>
+      <span class="section-num">05 — Filtro 4: unindo dois idiomas diferentes num só placar</span>
+      <h2>Como comparar "a literatura disse que sim" com "a física calculou −78 kcal/mol"?</h2>
+      <div class="two-col">
+        <div>
+          <p class="lede">Aqui está um problema de engenharia sutil: o módulo de IA devolve apenas um <strong>sinal</strong> (+1 ou −1, "ativa" ou "desativa"), enquanto a química quântica devolve uma <strong>magnitude contínua</strong> em kcal/mol. São duas linguagens diferentes — uma discreta, outra numérica — que não podem ser somadas diretamente.<sup class="cite"><a href="#ref1">1</a></sup></p>
+          <p>A solução: normalizar as energias de interação com uma transformação <span class="mono">SoftMax</span> (que compara cada par relativamente a todos os outros pares calculados) seguida de um <span class="mono">−log10()</span>, de forma que interações mais fortes recebam pontuações positivas maiores.</p>
+        </div>
+        <figure class="real-fig">
+          <img src="img/figura-s13-acido-folico-3d.png" alt="Estrutura 3D do ácido fólico com potencial eletrostático (azul) e score terapêutico 1,00 — recorte da Figura S13 do material suplementar">
+          <figcaption>Fig. 5 — Recorte da Figura S13: a estrutura real do ácido fólico (DB00158) com potencial eletrostático em azul e o score terapêutico final = 1,00 — o mais alto entre todos os candidatos.<sup class="cite"><a href="#ref1">1</a></sup></figcaption>
+        </figure>
+      </div>
+
+      <p>Os pesos atribuídos revelam a filosofia do método: pares com evidência <strong>compartilhada</strong> (literatura + física concordando) recebem peso 5; pares com evidência <strong>só de literatura</strong> recebem peso 35 (mais informativo, mas menos rigoroso); pares com evidência <strong>só de física</strong> recebem peso 0,5 (rigoroso, mas isolado). Os autores testaram variações desses pesos e confirmaram que o candidato no topo — ácido fólico — não mudava.<sup class="cite"><a href="#ref1">1</a></sup></p>
+
+      <div class="stat-row">
+        <div class="stat"><span class="num">1º lugar</span><span class="label">Ácido fólico — score terapêutico mais alto</span></div>
+        <div class="stat"><span class="num">Top 5 terapêutico</span><span class="label">Dominado por análogos de folato: ácido folínico, aminopterina, tetrahidrofolato, metotrexato</span></div>
+        <div class="stat"><span class="num">Top 5 anti-terapêutico</span><span class="label">Lobeglitazona liderou o lado oposto do ranking</span></div>
+      </div>
+    </section>
+
+    <!-- 06 — VALIDAÇÃO EM LABORATÓRIO -->
+    <section>
+      <span class="section-num">06 — A prova real: o computador bateu com a bancada?</span>
+      <h2>Ensaio de "risco na monocamada" (scratch assay): o teste que decide se a simulação valeu</h2>
+      <div class="two-col">
+        <figure class="real-fig">
+          <img src="img/figura-s20-scratch-assay.png" alt="Ilustração real do protocolo de scratch assay: monocamada de células, criação do risco e observação da cicatrização — Figura S20 do material suplementar">
+          <figcaption>Fig. 6 — Figura S20 do material suplementar, a ilustração oficial do protocolo usado pelos autores: monocamada de células → risco (gap) → observação da cicatrização após o intervalo de tempo.<sup class="cite"><a href="#ref1">1</a></sup></figcaption>
+        </figure>
+        <div>
+          <p>O candidato apontado pela simulação foi testado de verdade: uma camada uniforme de células humanas (fibroblastos dérmicos — HDF — e queratinócitos — HaCaT) recebe um "risco" padronizado, e os pesquisadores fotografam a região a cada 24-96 horas para medir quanto da área aberta já foi recoberta por células migrando das bordas.<sup class="cite"><a href="#ref1">1</a></sup></p>
+          <p>Sete fármacos foram testados lado a lado com um grupo sem tratamento (controle): ácido fólico, ácido cólico, mupirocina, piridoxal fosfato, metformina, sinvastatina e aciclovir.</p>
+        </div>
+      </div>
+
+      <table class="data-table">
+        <thead><tr><th>Dia</th><th>Sem tratamento</th><th>Ácido fólico</th></tr></thead>
+        <tbody>
+          <tr><td>Dia 1</td><td class="num">27,9% fechado</td><td class="num highlight">47,5% fechado</td></tr>
+          <tr><td>Dia 2</td><td class="num">52,0% fechado</td><td class="num highlight">86,9% fechado</td></tr>
+          <tr class="highlight"><td>Dia 3</td><td class="num">69,7% fechado</td><td class="num">99,9% fechado</td></tr>
+        </tbody>
+      </table>
+      <p style="font-size:.88rem; color:var(--ink-soft);">Dados de fibroblastos dérmicos (HDF), Tabela S12 do material suplementar. As diferenças foram estatisticamente significativas em todos os pontos de checagem (múltiplos asteriscos nas figuras originais, indicando p&lt;0,05 até p&lt;0,0001).<sup class="cite"><a href="#ref1">1</a></sup></p>
+    </section>
+
+    <!-- 07 — EFICIÊNCIA -->
+    <section>
+      <span class="section-num">07 — O ganho real: quanto tempo esse pipeline economiza</span>
+      <h2>De 16-28 semanas para 5-7 semanas — sem pular etapas biológicas</h2>
+      <p class="lede">O ganho não vem de "pular" a parte biológica (cultivo de células ainda leva o mesmo tempo que sempre levou), mas de comprimir drasticamente a parte que hoje é feita manualmente ou por tentativa-e-erro.<sup class="cite"><a href="#ref1">1</a></sup></p>
+
+      <figure class="img-placeholder" data-img-path="img/eficiencia-tempo-grafico.png">
+        <img class="real-photo" src="img/eficiencia-tempo-grafico.png" alt="Gráfico de barras comparando o tempo total do fluxo de trabalho convencional versus o pipeline com IA e química computacional" onload="this.classList.add('is-visible'); this.nextElementSibling.style.display='none';" onerror="this.remove();">
+        <div class="placeholder-box">
+          <span class="placeholder-icon">🖼</span>
+          <p class="placeholder-label">img/eficiencia-tempo-grafico.png</p>
+          <p class="placeholder-hint">Gráfico de barras horizontais, estilo editorial, fundo branco. Duas barras principais: a primeira, mais longa, rotulada "Fluxo convencional — 16 a 28+ semanas", em tom terracota; a segunda, bem mais curta, rotulada "Fluxo com IA + química computacional — 5 a 7 semanas", em verde-musgo. Cada barra subdividida internamente em três segmentos menores com bordas finas, representando as etapas "Triagem de literatura", "Geração de hipótese/simulação" e "Validação em células" — visualmente proporcionais ao tempo de cada etapa. Rótulo final destacado acima do gráfico: "Redução de 65-75% no tempo total". Tipografia técnica pequena nas legendas.</p>
+        </div>
+        <figcaption>Fig. 7 — A compressão de tempo acontece nas etapas de literatura e simulação; o cultivo celular continua no seu próprio ritmo biológico.</figcaption>
+      </figure>
+
+      <div class="eff-bars">
+        <div class="eff-row">
+          <div class="eff-label"><span>Fluxo convencional</span><span class="mono">16–28+ semanas</span></div>
+          <div class="eff-track"><div class="eff-fill conv">triagem manual + simulação limitada + validação ampla</div></div>
+        </div>
+        <div class="eff-row">
+          <div class="eff-label"><span>Fluxo com IA + química computacional</span><span class="mono">5–7 semanas</span></div>
+          <div class="eff-track"><div class="eff-fill aicc">triagem por IA + simulação paralela em GPU/CPU + validação focada</div></div>
+        </div>
+      </div>
+
+      <p style="font-size:.9rem; color:var(--ink-soft);">A aceleração veio de rodar as simulações em paralelo em infraestrutura de supercomputação — cerca de 24 GPUs A100 no NSCC de Singapura e 12 GPUs A40 na própria universidade, além de até 640 núcleos de CPU dedicados aos cálculos de química quântica. O cultivo celular (3-7 dias só para as células ficarem prontas para o ensaio) continua sendo o mesmo, biologicamente — é o único estágio que a tecnologia não consegue comprimir.<sup class="cite"><a href="#ref1">1</a></sup></p>
+
+      <p class="synthesis-quote">Nenhuma das quatro técnicas sozinha teria chegado ao ácido fólico com essa confiança — foi a combinação de IA, estatística, física e biologia experimental, cada uma corrigindo o ponto cego da anterior.</p>
+    </section>
+
+  </main>
+
+  <section class="references">
+    <h2>Referências</h2>
+    <ol>
+      <li id="ref1"><span class="ref-id">[1]</span> Zhang, Z.; Qin, Y.; Muthuramalingam, R. P. K.; Ding, Y.; Chng, W. H.; Liu, J.; Wu, J.; Yeow, C.-H.; Kan, M.-Y.; Pastorin, G. "Quantitative Computational Validation of Nanoscale Interactions between Drug Molecules and Diabetic Wound-Related Proteins for Drug Discovery." <em>ACS Nano Medicine</em>, publicado em 2 mar. 2026. DOI: <a href="https://doi.org/10.1021/acsnanomed.5c00180" target="_blank" rel="noopener">10.1021/acsnanomed.5c00180</a>. Artigo e material suplementar (Supporting Information, PDF) fornecidos diretamente pelo usuário como fonte primária deste infográfico.</li>
+    </ol>
+    <p style="font-size:.82rem; color:var(--ink-soft); margin-top:16px;">Todos os números, protocolos, tabelas e citações de energia deste infográfico vêm exclusivamente do material suplementar do artigo acima (Supporting Methods S1–S5, Tabelas S1–S14, Equações S1–S3). Nenhum dado foi extrapolado ou inventado.</p>
+  </section>
+
+  <footer class="institutional-footer">
+    <p>Infográfico elaborado pelos projetos Amor à Pele e PET-Saúde Digital G10 Feridas Crônicas, UFPel, em Agosto de 2026.</p>
+  </footer>
+
+</body>
+</html>
