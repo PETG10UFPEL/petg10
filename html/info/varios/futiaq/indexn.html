@@ -1,0 +1,1053 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Além da IA — o que vem por trás do radar (e o que pode significar para a Indústria 4.0)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Source+Sans+3:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg: #FAFAF6;
+    --bg-alt: #F1F3EF;
+    --ink: #182233;
+    --ink-soft: #454F5E;
+    --blue: #2C5F8D;
+    --blue-deep: #1E4463;
+    --moss: #3F6E52;
+    --gold: #B9822A;
+    --gold-bg: #FBF1DE;
+    --gold-line: #DDBD82;
+    --line: #E1E1D8;
+    --card: #FFFFFF;
+    --radius: 14px;
+  }
+
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    background:var(--bg);
+    color:var(--ink);
+    font-family:'Source Sans 3', sans-serif;
+    font-size:17px;
+    line-height:1.65;
+    -webkit-font-smoothing:antialiased;
+  }
+  h1,h2,h3{
+    font-family:'Fraunces', serif;
+    color:var(--ink);
+    line-height:1.15;
+    margin:0;
+  }
+  a{color:var(--blue-deep);}
+  p{margin:0 0 1em 0;}
+  .mono{font-family:'IBM Plex Mono', monospace;}
+
+  /* HEADER INSTITUCIONAL */
+  .institutional-header{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:16px 6vw;
+    background:#fff;
+    border-bottom:1px solid var(--line);
+    position:sticky;
+    top:0;
+    z-index:20;
+  }
+  .header-identity{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:.75rem;
+    letter-spacing:.08em;
+    text-transform:uppercase;
+    color:var(--ink-soft);
+  }
+  .institutional-header img{max-height:48px; display:block;}
+
+  /* HERO */
+  .hero{
+    padding:9vw 6vw 6vw;
+    max-width:920px;
+    margin:0 auto;
+  }
+  .eyebrow{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:.78rem;
+    letter-spacing:.12em;
+    text-transform:uppercase;
+    color:var(--blue);
+    display:flex;
+    align-items:center;
+    gap:10px;
+    margin-bottom:22px;
+  }
+  .eyebrow::before{
+    content:"";
+    width:26px;height:1px;background:var(--blue);
+    display:inline-block;
+  }
+  .hero h1{
+    font-size:clamp(2.1rem, 5vw, 3.4rem);
+    font-weight:600;
+    letter-spacing:-.01em;
+  }
+  .hero .subtitle{
+    margin-top:22px;
+    font-size:1.18rem;
+    color:var(--ink-soft);
+    max-width:640px;
+    font-weight:400;
+  }
+  .hero-meta{
+    margin-top:34px;
+    display:flex;
+    gap:28px;
+    flex-wrap:wrap;
+    font-size:.85rem;
+    color:var(--ink-soft);
+    font-family:'IBM Plex Mono', monospace;
+  }
+
+  /* SECTIONS */
+  main{max-width:920px; margin:0 auto; padding:0 6vw 4vw;}
+  section{padding:52px 0; border-top:1px solid var(--line);}
+  section:first-child{border-top:none;}
+
+  .section-num{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:.78rem;
+    color:var(--blue);
+    letter-spacing:.1em;
+    margin-bottom:10px;
+    display:block;
+  }
+  section h2{
+    font-size:clamp(1.5rem, 3.2vw, 2.1rem);
+    font-weight:600;
+    max-width:640px;
+    margin-bottom:22px;
+  }
+  section .lede{
+    font-size:1.12rem;
+    color:var(--ink-soft);
+    max-width:640px;
+    margin-bottom:24px;
+  }
+
+  .two-col{
+    display:grid;
+    grid-template-columns: 1.15fr .85fr;
+    gap:40px;
+    align-items:start;
+  }
+  @media (max-width: 760px){
+    .two-col{grid-template-columns:1fr;}
+  }
+
+  sup.cite{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:.7em;
+    color:var(--blue-deep);
+    cursor:default;
+  }
+  sup.cite a{color:inherit; text-decoration:none;}
+  sup.cite a:hover{text-decoration:underline;}
+
+  /* FIGURE / IMAGE PLACEHOLDER */
+  figure{margin:0 0 12px 0;}
+  .img-placeholder .placeholder-box{
+    border:2px dashed #C6CBBE;
+    background:var(--bg-alt);
+    border-radius:var(--radius);
+    padding:28px 20px;
+    text-align:center;
+    color:#6B7566;
+    min-height:200px;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+    gap:8px;
+  }
+  .placeholder-icon{font-size:1.8rem;}
+  .placeholder-label{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:.78rem;
+    background:#fff;
+    border:1px solid var(--line);
+    padding:4px 10px;
+    border-radius:5px;
+    color:#3B4430;
+  }
+  .placeholder-hint{
+    font-size:.8rem;
+    color:#828C79;
+    font-style:italic;
+    max-width:320px;
+  }
+  /* Imagem real: tag <img> existe sempre no HTML, apontando para img/.
+     Fica oculta por padrão; se o arquivo carregar com sucesso, ela aparece
+     e o placeholder correspondente é escondido automaticamente. */
+  .real-photo{
+    display:none;
+    width:100%;
+    height:auto;
+    border-radius:var(--radius);
+    margin-bottom:10px;
+  }
+  .real-photo.is-visible{display:block;}
+  figcaption{
+    font-size:.85rem;
+    color:var(--ink-soft);
+    margin-top:10px;
+    line-height:1.5;
+  }
+
+  /* PULL STAT */
+  .stat-row{
+    display:flex;
+    gap:28px;
+    flex-wrap:wrap;
+    margin:26px 0;
+  }
+  .stat{
+    background:var(--card);
+    border:1px solid var(--line);
+    border-radius:var(--radius);
+    padding:18px 20px;
+    flex:1 1 190px;
+  }
+  .stat .num{
+    font-family:'Fraunces', serif;
+    font-size:1.9rem;
+    font-weight:600;
+    color:var(--blue-deep);
+    display:block;
+  }
+  .stat .label{
+    font-size:.86rem;
+    color:var(--ink-soft);
+    margin-top:4px;
+  }
+
+  /* TIMELINE */
+  .timeline{
+    border-left:2px solid var(--gold-line);
+    margin:24px 0 10px 6px;
+    padding-left:24px;
+  }
+  .timeline-item{
+    position:relative;
+    padding-bottom:22px;
+  }
+  .timeline-item::before{
+    content:"";
+    position:absolute;
+    left:-30px;
+    top:5px;
+    width:9px;height:9px;
+    background:var(--gold);
+    border-radius:50%;
+  }
+  .timeline-item .t-year{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:.78rem;
+    color:var(--gold);
+    font-weight:600;
+  }
+  .timeline-item p{margin-top:4px; font-size:.97rem;}
+
+  /* CALLOUT QUADRO — computador tolerante a falhas */
+  .quadro{
+    background:var(--gold-bg);
+    border:1px solid var(--gold-line);
+    border-left:5px solid var(--gold);
+    border-radius:10px;
+    padding:30px 32px;
+    margin:34px 0;
+  }
+  .quadro-tag{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:.72rem;
+    letter-spacing:.1em;
+    text-transform:uppercase;
+    color:var(--gold);
+    font-weight:600;
+    display:flex;
+    align-items:center;
+    gap:8px;
+    margin-bottom:12px;
+  }
+  .quadro-tag::before{content:"▣";}
+  .quadro h3{
+    font-size:1.28rem;
+    margin-bottom:14px;
+    color:#5A400F;
+  }
+  .quadro p{font-size:.98rem;}
+  .quadro .qcols{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:18px;
+    margin-top:18px;
+  }
+  @media (max-width:600px){.quadro .qcols{grid-template-columns:1fr;}}
+  .quadro .qcard{
+    background:#fff;
+    border:1px solid var(--gold-line);
+    border-radius:8px;
+    padding:14px 16px;
+  }
+  .quadro .qcard h4{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:.78rem;
+    text-transform:uppercase;
+    letter-spacing:.05em;
+    color:var(--gold);
+    margin:0 0 6px 0;
+  }
+  .quadro .qcard p{font-size:.9rem; margin:0;}
+  .quadro figure{margin-top:20px;}
+
+  /* COMPARISON BLOCK (China/EUA/Europa) */
+  .compare-grid{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:16px;
+    margin:26px 0;
+  }
+  @media (max-width:700px){.compare-grid{grid-template-columns:1fr;}}
+  .compare-card{
+    background:var(--card);
+    border:1px solid var(--line);
+    border-radius:var(--radius);
+    padding:20px;
+  }
+  .compare-card .flag{font-size:1.4rem;}
+  .compare-card h4{
+    font-family:'Fraunces', serif;
+    font-size:1.05rem;
+    margin:8px 0 8px 0;
+  }
+  .compare-card p{font-size:.9rem; color:var(--ink-soft); margin:0;}
+
+  /* SYNTHESIS / FINAL SECTION highlight */
+  .final-section{
+    background:linear-gradient(180deg, #F4F8F3 0%, #FAFAF6 100%);
+    border-top:1px solid var(--line);
+    border-bottom:1px solid var(--line);
+  }
+  .final-section .section-num{color:var(--moss);}
+  .analogy-frame{
+    border:1px solid #CBD9C7;
+    border-radius:var(--radius);
+    padding:26px 28px;
+    background:#fff;
+    margin-top:20px;
+  }
+  .analogy-step{
+    display:grid;
+    grid-template-columns:120px 1fr;
+    gap:16px;
+    padding:14px 0;
+    border-bottom:1px solid var(--bg-alt);
+  }
+  .analogy-step:last-child{border-bottom:none;}
+  .analogy-step .step-label{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:.72rem;
+    text-transform:uppercase;
+    letter-spacing:.06em;
+    color:var(--moss);
+    font-weight:600;
+  }
+  .analogy-step p{font-size:.95rem; margin:0;}
+  .analogy-step.limit .step-label{color:#A15A2E;}
+
+  .source-card{margin:18px 0 0 0; background:var(--card); border:1px solid var(--line); border-radius:var(--radius); padding:14px; max-width:480px;}
+  .source-card a{display:block;}
+  .source-card img{width:100%; height:auto; border-radius:8px; border:1px solid var(--line); display:block; transition:opacity .15s ease;}
+  .source-card a:hover img{opacity:.85;}
+  .source-card figcaption{margin-top:10px; font-size:.82rem; color:var(--ink-soft); line-height:1.5;}
+
+  .synthesis-quote{
+    font-family:'Fraunces', serif;
+    font-size:1.4rem;
+    font-weight:500;
+    color:var(--ink);
+    max-width:680px;
+    margin:30px auto 0;
+    text-align:center;
+    line-height:1.4;
+  }
+
+  /* SEÇÃO BRASIL — caixa com fundo verde-claro */
+  .brasil-section{
+    background:#EAF4E7;
+    border-top:1px solid var(--line);
+    border-bottom:1px solid var(--line);
+  }
+
+  /* CENÁRIO PROSPECTIVO (hipotético) */
+  .scenario-box{
+    margin-top:44px;
+    background:#fff;
+    border:1.5px dashed #9FB89F;
+    border-radius:16px;
+    padding:32px 34px;
+  }
+  .scenario-tag{
+    display:inline-block;
+    font-family:'IBM Plex Mono', monospace;
+    font-size:.7rem;
+    letter-spacing:.03em;
+    text-transform:uppercase;
+    color:#5A7A5D;
+    background:#EEF4EC;
+    border:1px solid #CBDDC8;
+    border-radius:20px;
+    padding:5px 12px;
+    margin-bottom:16px;
+    line-height:1.4;
+  }
+  .scenario-box h3{
+    font-size:1.3rem;
+    margin-bottom:12px;
+  }
+  .scenario-box > p{font-size:.98rem; color:var(--ink-soft);}
+
+  .scenario-timeline{
+    margin:24px 0 8px 0;
+    border-left:2px solid #CBDDC8;
+    padding-left:0;
+  }
+  .scenario-step{
+    position:relative;
+    padding:14px 0 14px 26px;
+    border-bottom:1px solid var(--bg-alt);
+  }
+  .scenario-step:last-child{border-bottom:none;}
+  .scenario-step::before{
+    content:"";
+    position:absolute;
+    left:-6px;
+    top:20px;
+    width:9px;height:9px;
+    border-radius:50%;
+    background:var(--moss);
+  }
+  .scenario-step.gap::before{background:#B9822A;}
+  .scenario-step.future::before{background:var(--blue);}
+  .scenario-step .s-year{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:.76rem;
+    font-weight:600;
+    color:var(--moss);
+    text-transform:uppercase;
+    letter-spacing:.04em;
+  }
+  .scenario-step.gap .s-year{color:#B9822A;}
+  .scenario-step.future .s-year{color:var(--blue-deep);}
+  .scenario-step p{margin:6px 0 0 0; font-size:.95rem;}
+
+  .scenario-caveat{
+    margin-top:18px;
+    font-size:.86rem;
+    color:#7A8371;
+    font-style:italic;
+    border-top:1px solid var(--bg-alt);
+    padding-top:16px;
+  }
+  .scenario-box figure{margin-top:22px;}
+
+  /* QUIZ / VERIFICAÇÃO DE COMPREENSÃO */
+  .quiz-section{
+    background:var(--bg-alt);
+    border-top:1px solid var(--line);
+    border-bottom:1px solid var(--line);
+    padding:52px 6vw;
+  }
+  .quiz-wrap{max-width:820px; margin:0 auto;}
+  .quiz-card{
+    background:var(--card);
+    border:1px solid var(--line);
+    border-radius:var(--radius);
+    padding:22px 24px;
+    margin-bottom:16px;
+  }
+  .quiz-card .q-num{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:.75rem;
+    color:var(--moss);
+    letter-spacing:.06em;
+    text-transform:uppercase;
+    margin-bottom:8px;
+    display:block;
+  }
+  .quiz-card .q-prompt{
+    font-size:1.02rem;
+    font-weight:600;
+    margin-bottom:14px;
+  }
+  .quiz-card .q-options{display:flex; flex-direction:column; gap:8px;}
+  .quiz-opt{
+    text-align:left;
+    background:#fff;
+    border:1px solid var(--line);
+    border-radius:8px;
+    padding:10px 14px;
+    font-family:'Source Sans 3', sans-serif;
+    font-size:.94rem;
+    color:var(--ink);
+    cursor:pointer;
+    transition:border-color .15s ease, background .15s ease;
+  }
+  .quiz-opt:hover{border-color:var(--moss);}
+  .quiz-opt.correct{background:#EAF3EB; border-color:var(--moss); font-weight:600;}
+  .quiz-opt.incorrect{background:#FAECEA; border-color:#C1594A;}
+  .quiz-opt[disabled]{cursor:default;}
+  .q-feedback{
+    margin-top:12px;
+    font-size:.9rem;
+    padding:12px 14px;
+    border-radius:8px;
+    display:none;
+  }
+  .q-feedback.show{display:block;}
+  .q-feedback.ok{background:#EAF3EB; color:#2C4E33; border:1px solid #BFDCC3;}
+  .q-feedback.no{background:#FAECEA; color:#7A3126; border:1px solid #E8C3BC;}
+  .quiz-score{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:.85rem;
+    color:var(--ink-soft);
+    margin-top:6px;
+    text-align:right;
+  }
+
+  .reflect-block{margin-top:36px;}
+  .reflect-block h3{
+    font-family:'Fraunces', serif;
+    font-size:1.2rem;
+    margin-bottom:16px;
+  }
+  .reflect-q{
+    background:#fff;
+    border:1px solid #CBD9C7;
+    border-left:4px solid var(--moss);
+    border-radius:8px;
+    padding:16px 18px;
+    margin-bottom:14px;
+  }
+  .reflect-tag{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:.72rem;
+    text-transform:uppercase;
+    letter-spacing:.06em;
+    color:var(--moss);
+    font-weight:600;
+  }
+  .reflect-q p{margin:8px 0 0 0; font-size:.96rem;}
+
+  /* REFERENCES */
+  .references{
+    padding:56px 6vw 30px;
+    max-width:920px;
+    margin:0 auto;
+    border-top:1px solid var(--line);
+  }
+  .references h2{
+    font-size:1.3rem;
+    margin-bottom:20px;
+  }
+  .references ol{
+    padding-left:22px;
+    columns:1;
+  }
+  .references li{
+    font-size:.86rem;
+    color:var(--ink-soft);
+    margin-bottom:12px;
+    line-height:1.55;
+    word-break:break-word;
+  }
+  .references li a{color:var(--blue-deep);}
+  .references .ref-id{
+    font-family:'IBM Plex Mono', monospace;
+    color:var(--ink);
+  }
+
+  /* IMAGE REPORT TABLE (visible in-page too, optional aid) */
+  .img-report{
+    max-width:920px;
+    margin:0 auto;
+    padding:0 6vw 60px;
+  }
+  .img-report table{
+    width:100%;
+    border-collapse:collapse;
+    font-size:.82rem;
+    margin-top:16px;
+  }
+  .img-report th, .img-report td{
+    border:1px solid var(--line);
+    padding:8px 10px;
+    text-align:left;
+    vertical-align:top;
+  }
+  .img-report th{background:var(--bg-alt); font-family:'IBM Plex Mono', monospace; font-size:.75rem;}
+
+  /* INSTITUTIONAL FOOTER */
+  .institutional-footer{
+    background:var(--bg-alt);
+    border-top:1px solid var(--line);
+    padding:26px 6vw;
+    text-align:center;
+  }
+  .institutional-footer p{
+    font-size:.8rem;
+    color:var(--ink-soft);
+    margin:0;
+  }
+</style>
+</head>
+<body>
+
+  <!-- CABEÇALHO INSTITUCIONAL -->
+  <header class="institutional-header">
+    <div class="header-identity">NEAI — Núcleo de Estudos Aplicados em Indústria 4.0 · UFPel</div>
+    <img src="img/logo-neai.png" alt="Logo do NEAI — Núcleo de Estudos Aplicados em Indústria 4.0">
+  </header>
+
+  <!-- HERO -->
+  <div class="hero">
+    <span class="eyebrow">Prospecção tecnológica · Agosto de 2026</span>
+    <h1>Além da IA: os meteoros tecnológicos fora do radar — e o que podem significar para a Indústria 4.0</h1>
+    <p class="subtitle">DNA que vira HD, computadores que pensam em qubits, uma corrida global entre EUA, China, Europa e o Brasil tentando entrar no jogo. No fim, a pergunta que interessa à nossa turma: isso chega ao chão de fábrica?</p>
+    <div class="hero-meta">
+      <span>6 seções</span>
+      <span>Estudantes e pesquisadores de Indústria 4.0, IoT e IA</span>
+      <span>Fontes citadas ao final</span>
+    </div>
+  </div>
+
+  <main>
+
+    <!-- SEÇÃO 1 — ABERTURA / METÁFORA -->
+    <section>
+      <span class="section-num">01 — O panorama</span>
+      <h2>A maratona em que ninguém está olhando para o corredor certo</h2>
+      <div class="two-col">
+        <div>
+          <p class="lede">Em março de 2026, na Maratona de Los Angeles, um professor substituto de 36 anos ultrapassou o líder da prova nos últimos metros — a diferença final foi de 0,01 segundo.<sup class="cite"><a href="#ref1">1</a></sup> A cena virou metáfora para o momento tecnológico atual: toda a atenção está na IA, mas outros "corredores" avançam por fora do radar — e podem, com um sprint final, mudar tudo antes dela.</p>
+          <p>Dois desses corredores aceleraram muito em 2026: o armazenamento de dados em <strong>DNA</strong> e a <strong>computação quântica</strong>. Ambos nasceram como hipóteses teóricas décadas atrás (1964 e anos 1980, respectivamente) e hoje já concentram apostas bilionárias de mercado.<sup class="cite"><a href="#ref1">1</a></sup></p>
+        </div>
+        <figure class="img-placeholder" data-img-path="img/maratona-metafora.jpg">
+          <img class="real-photo" src="img/maratona-metafora.jpg" alt="Foto de linha de chegada de maratona, dois corredores emparelhados no instante da ultrapassagem" onload="this.classList.add('is-visible'); this.nextElementSibling.style.display='none';" onerror="this.remove();">
+          <div class="placeholder-box">
+            <span class="placeholder-icon">🖼</span>
+            <p class="placeholder-label">img/maratona-metafora.jpg</p>
+            <p class="placeholder-hint">Foto de linha de chegada de maratona, dois corredores emparelhados no instante da ultrapassagem, ângulo frontal baixo, luz natural de fim de manhã.</p>
+          </div>
+          <figcaption>A imagem da virada nos últimos metros de uma corrida ilustra bem o momento: tecnologias "atrasadas" podem ultrapassar a favorita na reta final.</figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <!-- SEÇÃO 2 — DNA STORAGE -->
+    <section>
+      <span class="section-num">02 — Armazenamento em DNA</span>
+      <h2>Um grama de DNA guarda o equivalente a toda a internet audiovisual do mundo</h2>
+      <p class="lede">A ideia é de 1964 (o físico russo Mikhail Neiman) e o primeiro experimento real veio só em 1987, quando Joe Davis codificou uma runa dentro do DNA de uma bactéria.<sup class="cite"><a href="#ref1">1</a></sup> Hoje isso é indústria de verdade.</p>
+
+      <div class="stat-row">
+        <div class="stat">
+          <span class="num">215 mil TB</span>
+          <span class="label">capacidade teórica de armazenamento por grama de DNA<sup class="cite"><a href="#ref1">1</a></sup></span>
+        </div>
+        <div class="stat">
+          <span class="num">US$ 155 mi</span>
+          <span class="label">capital semente da Atlas Data Storage (spin-off da Twist Bioscience, com Jeff Bezos entre investidores)<sup class="cite"><a href="#ref1">1</a></sup></span>
+        </div>
+        <div class="stat">
+          <span class="num">150 anos</span>
+          <span class="label">retenção de dados prometida pelos cartões de DNA da Biomemory<sup class="cite"><a href="#ref3">3</a></sup></span>
+        </div>
+      </div>
+
+      <div class="two-col">
+        <figure class="img-placeholder" data-img-path="img/dna-armazenamento-dados.png">
+          <img class="real-photo" src="img/dna-armazenamento-dados.png" alt="Diagrama de arquivo binário sendo convertido em sequência de DNA" onload="this.classList.add('is-visible'); this.nextElementSibling.style.display='none';" onerror="this.remove();">
+          <div class="placeholder-box">
+            <span class="placeholder-icon">🖼</span>
+            <p class="placeholder-label">img/dna-armazenamento-dados.png</p>
+            <p class="placeholder-hint">Diagrama esquemático mostrando um arquivo digital binário (0s e 1s) sendo convertido em uma fita de dupla hélice de DNA com as quatro bases (A, C, G, T) coloridas, estilo infográfico limpo, fundo transparente.</p>
+          </div>
+          <figcaption>Fig. 1 — Do bit à base nitrogenada: como um arquivo digital é codificado em sequência de DNA.</figcaption>
+        </figure>
+        <div>
+          <p>Em 2026 o campo saiu do laboratório para o mercado: a <strong>Atlas Data Storage</strong> fechou parceria com a fabricante de chips belga imec para escalar a produção em silício<sup class="cite"><a href="#ref2">2</a></sup> e foi convidada a apresentar sua tecnologia no simpósio da TSMC.<sup class="cite"><a href="#ref4">4</a></sup> Já a francesa <strong>Biomemory</strong> comprou os ativos da histórica Catalog Technologies e promete lançar a primeira solução comercial de armazenamento em DNA para data centers ainda no segundo semestre de 2026.<sup class="cite"><a href="#ref3">3</a></sup></p>
+          <p>Por que importa: uma vez "escrito", o DNA não consome eletricidade para se manter estável — ao contrário de HDs e fitas magnéticas, que precisam de energia e migração periódica de dados.<sup class="cite"><a href="#ref1">1</a></sup></p>
+        </div>
+      </div>
+    </section>
+
+    <!-- SEÇÃO 3 — COMPUTAÇÃO QUÂNTICA -->
+    <section>
+      <span class="section-num">03 — Computação quântica</span>
+      <h2>Da teoria de Feynman ao maior IPO da história do setor</h2>
+      <div class="two-col">
+        <div>
+          <p class="lede">Proposta como possibilidade teórica por Richard Feynman nos anos 1980, a computação quântica usa <strong>qubits</strong> — que, graças à superposição, podem representar múltiplos estados ao mesmo tempo, e podem se entrelaçar entre si, permitindo processar certos problemas em paralelo.<sup class="cite"><a href="#ref1">1</a></sup></p>
+          <p>Isso a torna especialmente promissora para simular moléculas e materiais — inclusive proteínas e fármacos, como veremos na seção final.</p>
+        </div>
+        <figure class="img-placeholder" data-img-path="img/qubit-superposicao.png">
+          <img class="real-photo" src="img/qubit-superposicao.png" alt="Esfera de Bloch representando um qubit em superposição" onload="this.classList.add('is-visible'); this.nextElementSibling.style.display='none';" onerror="this.remove();">
+          <div class="placeholder-box">
+            <span class="placeholder-icon">🖼</span>
+            <p class="placeholder-label">img/qubit-superposicao.png</p>
+            <p class="placeholder-hint">Ilustração vetorial de uma esfera de Bloch (esfera translúcida azul com eixos), representando um qubit em superposição entre os estados 0 e 1, estilo científico minimalista, fundo transparente.</p>
+          </div>
+          <figcaption>Fig. 2 — Enquanto um bit clássico é 0 ou 1, um qubit pode existir em superposição dos dois estados simultaneamente.</figcaption>
+        </figure>
+      </div>
+
+      <div class="timeline">
+        <div class="timeline-item">
+          <span class="t-year">Maio 2026</span>
+          <p>Governo dos EUA investe mais de US$ 2 bilhões em participações acionárias em nove empresas de computação quântica, via duas ordens executivas.<sup class="cite"><a href="#ref1">1</a></sup></p>
+        </div>
+        <div class="timeline-item">
+          <span class="t-year">4 de junho de 2026</span>
+          <p>A Quantinuum estreia na Nasdaq com valuation entre US$ 15,7 e 17,6 bilhões — a maior oferta pública da história do setor quântico.<sup class="cite"><a href="#ref5">5</a></sup><sup class="cite"><a href="#ref6">6</a></sup></p>
+        </div>
+        <div class="timeline-item">
+          <span class="t-year">22 de junho de 2026</span>
+          <p>Nos Estados Unidos é assinada a Ordem Executiva 14413, "Ushering in the Next Frontier of Quantum Innovation", criando um esforço nacional para computação quântica aplicada à ciência.<sup class="cite"><a href="#ref7">7</a></sup></p>
+        </div>
+      </div>
+
+      <!-- QUADRO: computador tolerante a falhas -->
+      <div class="quadro">
+        <span class="quadro-tag">Quadro explicativo</span>
+        <h3>O que é um computador quântico tolerante a falhas?</h3>
+        <p>Qubits são extremamente sensíveis: vibração, calor residual ou até um raio cósmico corrompem sua informação — fenômeno chamado <strong>decoerência</strong>. Os computadores quânticos de hoje (chamados <span class="mono">NISQ</span> — "noisy intermediate-scale quantum") acumulam erro rápido demais para cálculos longos.</p>
+        <p>Um computador <strong>tolerante a falhas</strong> é capaz de <strong>detectar e corrigir esses erros automaticamente</strong>, em tempo real, durante o próprio cálculo — usando dezenas ou centenas de qubits físicos redundantes para formar um único "qubit lógico" mais robusto.</p>
+        <div class="qcols">
+          <div class="qcard">
+            <h4>Por que ainda não existe</h4>
+            <p>Exige correção de erro quântico em escala — algo tecnicamente equivalente a construir um HD perfeito sem nunca poder "olhar" diretamente o dado sem destruí-lo.</p>
+          </div>
+          <div class="qcard">
+            <h4>Quando chega</h4>
+            <p>A IBM revisou sua estimativa interna de 2032 para 2030, e mais recentemente para 2029 — o gargalo central de toda a corrida quântica global.<sup class="cite"><a href="#ref16">16</a></sup></p>
+          </div>
+        </div>
+        <figure>
+          <div class="img-placeholder" data-img-path="img/correcao-erro-quantico.png">
+            <img class="real-photo" src="img/correcao-erro-quantico.png" alt="Diagrama de qubits físicos formando um qubit lógico protegido por correção de erro" onload="this.classList.add('is-visible'); this.nextElementSibling.style.display='none';" onerror="this.remove();">
+            <div class="placeholder-box">
+              <span class="placeholder-icon">🖼</span>
+              <p class="placeholder-label">img/correcao-erro-quantico.png</p>
+            </div>
+            <figcaption>Fig. 3 — Um qubit físico isolado perde a informação ao primeiro erro; um qubit lógico, formado por vários qubits físicos redundantes, corrige o erro internamente e mantém a informação estável.</figcaption>
+          </div>
+        </figure>
+      </div>
+    </section>
+
+    <!-- SEÇÃO 4 — CORRIDA GLOBAL -->
+    <section>
+      <span class="section-num">04 — A corrida global</span>
+      <h2>Não é EUA contra China — é uma corrida em três frentes</h2>
+      <p class="lede">O quadro é mais tripolar do que parece à primeira vista: cada bloco lidera em uma frente diferente.</p>
+
+      <div class="compare-grid">
+        <div class="compare-card">
+          <span class="flag">🇺🇸</span>
+          <h4>Estados Unidos</h4>
+          <p>Lidera em capital privado e maturidade de hardware (IBM, Google). Investiu US$ 2 bi em participações estatais em 9 empresas quânticas e viu a maior IPO do setor (Quantinuum).<sup class="cite"><a href="#ref1">1</a></sup><sup class="cite"><a href="#ref7">7</a></sup></p>
+        </div>
+        <div class="compare-card">
+          <span class="flag">🇨🇳</span>
+          <h4>China</h4>
+          <p>Elegeu a quântica prioridade do 15º Plano Quinquenal, com fundo estatal de ~US$ 17,5 bi. Lidera em infraestrutura de comunicação quântica segura (12 mil km de rede, satélites Micius).<sup class="cite"><a href="#ref8">8</a></sup><sup class="cite"><a href="#ref11">11</a></sup></p>
+        </div>
+        <div class="compare-card">
+          <span class="flag">🇪🇺</span>
+          <h4>Europa</h4>
+          <p>Lidera hoje em armazenamento comercial em DNA (Biomemory, França; imec, Bélgica) e investe pesado via programas como o ProQure (Reino Unido, ~£2 bi).<sup class="cite"><a href="#ref2">2</a></sup><sup class="cite"><a href="#ref3">3</a></sup></p>
+        </div>
+      </div>
+
+      <figure class="img-placeholder" data-img-path="img/investimento-quantico-comparativo.png">
+        <img class="real-photo" src="img/investimento-quantico-comparativo.png" alt="Gráfico de barras comparando investimento em computação quântica entre EUA, China e Europa" onload="this.classList.add('is-visible'); this.nextElementSibling.style.display='none';" onerror="this.remove();">
+        <div class="placeholder-box">
+          <span class="placeholder-icon">🖼</span>
+          <p class="placeholder-label">img/investimento-quantico-comparativo.png</p>
+          <p class="placeholder-hint">Gráfico de barras horizontais comparando investimento acumulado em computação quântica em 2026 (EUA, China, Europa/Reino Unido), com valores aproximados em bilhões de dólares, paleta azul-marinho e dourado, estilo editorial limpo (sem 3D).</p>
+        </div>
+        <figcaption>Fig. 4 — Estimativas de investimento público+privado em quântica por bloco em 2026. Nota: analistas independentes questionam a precisão das cifras chinesas amplamente citadas (podem estar superestimadas em até 3×).<sup class="cite"><a href="#ref9">9</a></sup></figcaption>
+      </figure>
+
+      <p style="font-size:.92rem; color:var(--ink-soft);">Um detalhe curioso: depois de fecharem seus laboratórios quânticos entre 2023-2024, Alibaba, Baidu, Tencent e Huawei voltaram a investir pesado em 2026, com rodadas de financiamento privado batendo recordes internos — ainda que em volume absoluto menor que o americano.<sup class="cite"><a href="#ref10">10</a></sup></p>
+    </section>
+
+    <!-- SEÇÃO 5 — BRASIL -->
+    <section class="brasil-section" style="margin:0 -6vw; padding:52px 6vw;">
+      <span class="section-num" style="color:var(--moss);">05 — E o Brasil?</span>
+      <h2>Fora da escala global, mas dentro do jogo</h2>
+      <div class="two-col">
+        <div>
+          <p class="lede">O Brasil não compete em volume com EUA, China ou Europa — mas está construindo nichos de competência em vez de ficar de fora.</p>
+          <ul style="padding-left:20px; font-size:.97rem;">
+            <li style="margin-bottom:10px;">O MCTI lançou em junho/2026 o Projeto Residência em Tecnologias Quânticas: R$ 20 milhões, 156 bolsas, ~500 profissionais formados em 6 cidades.<sup class="cite"><a href="#ref12">12</a></sup></li>
+            <li style="margin-bottom:10px;">Em João Pessoa (PB), o CIQuanta vai abrigar os dois primeiros computadores quânticos operacionais da América Latina (20 e 100 qubits), em parceria com o Suzhou Quantum Center (China).<sup class="cite"><a href="#ref13">13</a></sup></li>
+            <li style="margin-bottom:10px;">Desde janeiro/2026, pesquisadores do CBPF usam o computador quântico da IBM via nuvem, em parceria com a ExxonMobil, para algoritmos aplicados à indústria do petróleo.<sup class="cite"><a href="#ref14">14</a></sup></li>
+            <li>Bradesco e Itaú já integram a rede global de computação quântica da IBM, segundo o presidente da IBM Brasil (jul/2026).<sup class="cite"><a href="#ref15">15</a></sup></li>
+          </ul>
+        </div>
+        <figure class="img-placeholder" data-img-path="img/ciquanta-paraiba.jpg">
+          <img class="real-photo" src="img/ciquanta-paraiba.jpg" alt="Fachada do centro de computação quântica CIQuanta em João Pessoa, PB" onload="this.classList.add('is-visible'); this.nextElementSibling.style.display='none';" onerror="this.remove();">
+          <div class="placeholder-box">
+            <span class="placeholder-icon">🖼</span>
+            <p class="placeholder-label">img/ciquanta-paraiba.jpg</p>
+            <p class="placeholder-hint">Foto de fachada ou obra do Centro Internacional de Computação Quântica da Paraíba (CIQuanta), em João Pessoa — arquitetura institucional moderna, luz de dia, se disponível; alternativa: mapa estilizado do Brasil destacando João Pessoa/PB, Campinas/SP e Campina Grande/PB.</p>
+          </div>
+          <figcaption>Fig. 5 — João Pessoa (PB) sediará os dois primeiros computadores quânticos operacionais da América Latina.</figcaption>
+        </figure>
+      </div>
+      <p class="synthesis-quote" style="font-size:1.1rem; margin-top:10px; text-align:left; color:var(--ink-soft); font-family:'Source Sans 3', sans-serif; font-style:italic;">"As pessoas contempladas por essa residência não podem se tornar meras usuárias de tecnologias desenvolvidas em outros países." — análise no MIT Technology Review Brasil sobre a estratégia nacional.<sup class="cite"><a href="#ref15">15</a></sup></p>
+    </section>
+
+    <!-- SEÇÃO 6 — PROSPECÇÃO INDÚSTRIA 4.0 -->
+    <section class="final-section" style="margin:0 -6vw; padding:52px 6vw;">
+      <span class="section-num">06 — Prospecção: e a Indústria 4.0?</span>
+      <h2>O que essas tecnologias podem significar para quem trabalha com IoT e IA</h2>
+      <p class="lede">Aqui a leitura precisa ser honesta: o que já é real (Seções 02 a 05), a ponte lógica até a fábrica — e um limite explícito de onde a especulação para.</p>
+
+      <div class="analogy-frame">
+        <div class="analogy-step">
+          <span class="step-label">Mecanismo</span>
+          <p>A computação quântica promete simular moléculas, materiais e problemas de otimização com uma precisão que métodos clássicos só aproximam — porque fenômenos como ligação química e interação entre partículas são, na origem, fenômenos quânticos.<sup class="cite"><a href="#ref1">1</a></sup> O armazenamento em DNA, por sua vez, promete guardar volumes gigantescos de dados por décadas sem gasto contínuo de energia (Seção 02).<sup class="cite"><a href="#ref1">1</a></sup></p>
+        </div>
+        <div class="analogy-step">
+          <span class="step-label">Ponte</span>
+          <p>Uma planta de Indústria 4.0 madura — sensores IoT, gêmeos digitais, manutenção preditiva — gera um volume de dados que cresce mais rápido do que a capacidade viável de mídias tradicionais, exatamente o tipo de gargalo que o armazenamento em DNA mira resolver. Na outra ponta, problemas típicos do chão de fábrica — otimização de rotas logísticas, escalonamento de produção, descoberta de novos materiais e catalisadores — são problemas combinatórios que a computação quântica promete atacar de um jeito que computadores clássicos não conseguem em escala.</p>
+        </div>
+        <div class="analogy-step limit">
+          <span class="step-label">Limite</span>
+          <p>Nada disso está pronto para adoção industrial em massa hoje. A computação quântica pura ainda depende de computadores <strong>tolerantes a falhas</strong>, que a própria IBM projeta só para 2029-2030 (ver Quadro na Seção 03) — até lá, aplicações reais rodam majoritariamente em simuladores clássicos "emprestando" lógica quântica. E o armazenamento em DNA ainda não tem custo competitivo com HDs e fitas para uso corriqueiro — só faz sentido, por ora, para dados de arquivamento de longuíssimo prazo.</p>
+        </div>
+      </div>
+
+      <p class="synthesis-quote">O link entre essas tecnologias e a Indústria 4.0 é real e promissor — mas hoje é P&amp;D em estágio inicial, não algo que muda a linha de produção amanhã.</p>
+
+      <div class="scenario-box">
+        <span class="scenario-tag">Cenário prospectivo — hipotético, construído a partir dos mecanismos reais descritos acima, não um caso real nem uma previsão oficial</span>
+        <h3>Como isso poderia chegar, na prática, a uma fábrica brasileira</h3>
+        <p>Para tornar tudo isso concreto, vale imaginar uma cadeia de eventos plausível — apoiada só nos mecanismos já citados, sem inventar nenhuma tecnologia nova.</p>
+
+        <div class="scenario-timeline">
+          <div class="scenario-step">
+            <span class="s-year">Hoje</span>
+            <p>Uma fábrica com sensores IoT espalhados pela linha de produção já gera, todos os dias, terabytes de dados de vibração, temperatura e desempenho — e já usa modelos de IA para manutenção preditiva, apontando qual máquina tende a falhar antes que isso aconteça.</p>
+          </div>
+          <div class="scenario-step">
+            <span class="s-year">Insumo</span>
+            <p>Anos de dados históricos de sensores se acumulam — informação valiosa para treinar modelos melhores, mas cara demais para manter indefinidamente em mídias convencionais em escala industrial.</p>
+          </div>
+          <div class="scenario-step">
+            <span class="s-year">Simulação</span>
+            <p>Em paralelo, pesquisadores rodam simulações de química quântica para testar candidatos a novos materiais ou catalisadores mais eficientes para aquele processo produtivo — o mesmo tipo de cálculo descrito na Seção 03, aplicado a materiais em vez de fármacos.</p>
+          </div>
+          <div class="scenario-step gap">
+            <span class="s-year">2029–2030</span>
+            <p>Só quando computadores <strong>tolerantes a falhas</strong> estiverem operacionais (ver Quadro, Seção 03) essas simulações ganham a precisão necessária para apontar candidatos com confiança — hoje esse é exatamente o gargalo que separa a simulação promissora da aplicação industrial.<sup class="cite"><a href="#ref16">16</a></sup></p>
+          </div>
+          <div class="scenario-step future">
+            <span class="s-year">Um futuro possível</span>
+            <p>Se a cadeia acima se confirmar, essa fábrica poderia arquivar décadas de dados de sensores em DNA sintético a baixo custo energético, e usar materiais desenvolvidos a partir de simulação quântica — não por tentativa e erro, mas por cálculo.</p>
+          </div>
+        </div>
+
+        <p class="scenario-caveat">Nada disso está garantido: pode esbarrar em custo, escala, ou levar mais tempo que o previsto para virar produto comercial. A cadeia serve para mostrar <em>por onde</em> o caminho passaria — não <em>quando</em> exatamente ele chega.</p>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- VERIFICAÇÃO DE COMPREENSÃO -->
+  <section class="quiz-section">
+    <div class="quiz-wrap">
+      <span class="section-num" style="color:var(--moss);">07 — Antes de fechar</span>
+      <h2>Testando o que ficou</h2>
+      <p class="lede">Cinco perguntas objetivas para checar os fatos, e duas perguntas abertas — sem resposta pronta — para pensar como isso se conecta com a prática de vocês.</p>
+
+      <div id="quiz-app"></div>
+
+      <div class="reflect-block">
+        <h3>Para pensar em grupo</h3>
+        <div class="reflect-q">
+          <span class="reflect-tag">Questão 1</span>
+          <p>Hoje, aplicações de computação quântica em problemas industriais costumam rodar em simuladores clássicos "emprestando" lógica quântica, não em hardware quântico real — e mesmo assim já geram valor. Se essa promessa já se sustenta sem computador tolerante a falhas, o que exatamente muda quando essa tecnologia amadurecer? O que hoje é gargalo — precisão, escala, tempo, custo — e qual desses gargalos mais afeta um problema real de Indústria 4.0 (por exemplo, otimização de manutenção preditiva ou descoberta de novos materiais)?</p>
+        </div>
+        <div class="reflect-q">
+          <span class="reflect-tag">Questão 2</span>
+          <p>O Brasil optou por formar pessoas e construir nichos (residência em tecnologias quânticas, CIQuanta) em vez de tentar competir em volume de investimento com EUA e China. Pensando na área de vocês — Indústria 4.0, IoT e IA — que tipo de "nicho" um grupo de pesquisa brasileiro conseguiria ocupar com mais realismo diante dessas tecnologias emergentes: gerar dados industriais de qualidade para alimentar esses modelos, aplicar achados já validados lá fora, ou outra coisa? Por quê?</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- REFERÊNCIAS -->
+  <section class="references">
+    <h2>Referências</h2>
+    <ol>
+      <li id="ref1"><span class="ref-id">[1]</span> Campanario, S. "Más allá de la IA: meteoritos tecnológicos de alto impacto que merodean por fuera del radar." <em>La Nación</em>, 23 ago. 2026. <a href="https://www.lanacion.com.ar/economia/mas-alla-de-la-ia-meteoritos-tecnologicos-de-alto-impacto-que-merodean-por-fuera-del-radar-nid23082026/" target="_blank" rel="noopener">lanacion.com.ar</a></li>
+      <li id="ref2"><span class="ref-id">[2]</span> "Nanoelectronics Firm Imec Takes Stake in Twist Spinout Atlas Data Storage." <em>GenomeWeb</em>, 5 mar. 2026. <a href="https://www.genomeweb.com/business-news/nanoelectronics-firm-imec-takes-stake-twist-spinout-atlas-data-storage" target="_blank" rel="noopener">genomeweb.com</a></li>
+      <li id="ref3"><span class="ref-id">[3]</span> "DNA data storage startup Biomemory acquires Catalog Technologies, plans data center deployment in H2 2026." <em>Data Center Dynamics</em>, 22 jul. 2026. <a href="https://www.datacenterdynamics.com/en/news/dna-data-storage-startup-biomemory-acquires-catalog-technologies-plans-data-center-deployment-in-h2-2026/" target="_blank" rel="noopener">datacenterdynamics.com</a></li>
+      <li id="ref4"><span class="ref-id">[4]</span> "Atlas Data Storage Selected to Present at TSMC Technology Symposium." <em>PR Newswire</em>, 20 abr. 2026. <a href="https://www.prnewswire.com/news-releases/atlas-data-storage-selected-to-present-at-tsmc-technology-symposium-302746453.html" target="_blank" rel="noopener">prnewswire.com</a></li>
+      <li id="ref5"><span class="ref-id">[5]</span> Palmer, A.; Subin, S. "Quantinuum stock opens at $68 per share after IPO." <em>CNBC</em>, 4 jun. 2026. <a href="https://www.cnbc.com/2026/06/04/quantinuum-qnt-stock-first-trade-ipo.html" target="_blank" rel="noopener">cnbc.com</a></li>
+      <li id="ref6"><span class="ref-id">[6]</span> "Honeywell's Quantinuum valued at $17.6 billion as shares rise in Nasdaq debut." <em>Reuters/Investing.com</em>, 4 jun. 2026. <a href="https://www.investing.com/news/stock-market-news/honeywells-quantinuum-heads-for-nasdaq-debut-as-quantum-computing-gains-momentum-4726269" target="_blank" rel="noopener">investing.com</a></li>
+      <li id="ref7"><span class="ref-id">[7]</span> "Ushering in the Next Frontier of Quantum Innovation." Executive Order 14413. <em>The White House</em>, 22 jun. 2026. <a href="https://www.whitehouse.gov/presidential-actions/2026/06/ushering-in-the-next-frontier-of-quantum-innovation/" target="_blank" rel="noopener">whitehouse.gov</a></li>
+      <li id="ref8"><span class="ref-id">[8]</span> Ottinger, L. "China's Quantum Flywheel." <em>ChinaTalk</em>, 12 ago. 2026. <a href="https://www.chinatalk.media/p/chinas-quantum-flywheel" target="_blank" rel="noopener">chinatalk.media</a></li>
+      <li id="ref9"><span class="ref-id">[9]</span> Ivezic, M. "The $15.3 Billion Number That Everyone Cites and Nobody Can [Verify]." <em>PostQuantum.com</em>, 3 abr. 2026. <a href="https://postquantum.com/china-quantum-ambition/china-quantum-investment-unknowable/" target="_blank" rel="noopener">postquantum.com</a></li>
+      <li id="ref10"><span class="ref-id">[10]</span> "China's Quantum Tech Sector Sees Capital Surge as State Funds and Startups Accelerate Growth." <em>ChinaTechNews.com</em>, 8 ago. 2026. <a href="https://www.chinatechnews.com/2026/08/09/126918-chinas-quantum-tech-sector-sees-capital-surge-as-state-funds-and-startups-accelerate-growth" target="_blank" rel="noopener">chinatechnews.com</a></li>
+      <li id="ref11"><span class="ref-id">[11]</span> "China's Quantum Sector Sees Investment Surge as Larger Funding Rounds Return." <em>The Quantum Insider</em>, 6 abr. 2026. <a href="https://thequantuminsider.com/2026/04/06/chinas-quantum-sector-sees-investment-surge-as-larger-funding-rounds-return/" target="_blank" rel="noopener">thequantuminsider.com</a></li>
+      <li id="ref12"><span class="ref-id">[12]</span> "MCTI lança programa de residência em tecnologias quânticas." <em>Ministério da Ciência, Tecnologia e Inovação</em>, 19 jun. 2026. <a href="https://www.gov.br/mcti/pt-br/acompanhe-o-mcti/noticias/2026/06/mcti-lanca-programa-de-residencia-em-tecnologias-quanticas-para-formar-especialistas-e-impulsionar-deeptechs-brasileiras" target="_blank" rel="noopener">gov.br/mcti</a></li>
+      <li id="ref13"><span class="ref-id">[13]</span> "Centro na Paraíba vai receber primeiros computadores quânticos operacionais do País." <em>MCTI</em>, 30 mar. 2026. <a href="https://www.gov.br/mcti/pt-br/acompanhe-o-mcti/noticias/2026/03/centro-na-paraiba-vai-receber-primeiros-computadores-quanticos-operacionais-do-pais" target="_blank" rel="noopener">gov.br/mcti</a></li>
+      <li id="ref14"><span class="ref-id">[14]</span> "Acordo internacional por computador quântico busca solucionar algoritmos aplicáveis à indústria do petróleo." <em>MCTI</em>, 27 jan. 2026. <a href="https://www.gov.br/mcti/pt-br/acompanhe-o-mcti/noticias/2026/01/acordo-internacional-por-computador-quantico-busca-solucionar-algoritmos-aplicaveis-a-industria-do-petroleo" target="_blank" rel="noopener">gov.br/mcti</a></li>
+      <li id="ref15"><span class="ref-id">[15]</span> Guimarães, R. "Brasil entra na corrida quântica." <em>MIT Technology Review Brasil</em>, 26 jun. 2026. <a href="https://mittechreview.com.br/brasil-corrida-quantica-formacao-especialistas/" target="_blank" rel="noopener">mittechreview.com.br</a></li>
+      <li id="ref16"><span class="ref-id">[16]</span> "'Computação quântica já chegou ao Brasil', diz presidente da IBM Brasil." <em>Folha de S.Paulo — Painel S.A.</em>, 15 jul. 2026. <a href="https://www1.folha.uol.com.br/colunas/painelsa/2026/07/computacao-quantica-ja-chegou-no-brasil-diz-presidente-da-ibm-brasil.shtml" target="_blank" rel="noopener">folha.uol.com.br</a></li>
+    </ol>
+  </section>
+
+  <!-- RODAPÉ INSTITUCIONAL -->
+  <footer class="institutional-footer">
+    <p>Infográfico elaborado pelo NEAI — Núcleo de Estudos Aplicados em Indústria 4.0, UFPel, em Agosto de 2026.</p>
+  </footer>
+
+  <script>
+    var quizData = [
+      {
+        prompt: "Por que o armazenamento de dados em DNA é considerado energeticamente vantajoso frente a HDs e fitas magnéticas?",
+        options: [
+          "Porque o DNA processa dados mais rápido que um chip de silício",
+          "Porque, uma vez 'escrito', o DNA não consome eletricidade para manter a informação estável",
+          "Porque o DNA é imune a qualquer tipo de degradação química"
+        ],
+        correct: 1,
+        feedback: "O DNA guarda a informação de forma estável sem gasto contínuo de energia — diferente de mídias magnéticas, que precisam de energia e migração periódica."
+      },
+      {
+        prompt: "O que faz um computador quântico ser chamado de 'tolerante a falhas'?",
+        options: [
+          "Ele nunca comete erro de cálculo, por design físico",
+          "Ele detecta e corrige erros automaticamente durante o cálculo, usando qubits físicos redundantes agrupados em um qubit lógico",
+          "Ele funciona mesmo sem refrigeração criogênica"
+        ],
+        correct: 1,
+        feedback: "A tolerância a falhas vem da correção de erro quântico: vários qubits físicos redundantes formam um qubit lógico mais estável."
+      },
+      {
+        prompt: "Qual das afirmações resume melhor a corrida global em tecnologia quântica hoje?",
+        options: [
+          "É uma disputa exclusiva entre Estados Unidos e China",
+          "É uma corrida tripolar, com EUA, China e Europa liderando frentes diferentes (hardware/capital, infraestrutura de comunicação, e armazenamento em DNA, respectivamente)",
+          "A Europa está fora dessa disputa"
+        ],
+        correct: 1,
+        feedback: "Cada bloco lidera uma frente distinta — não é uma disputa de dois lados só."
+      },
+      {
+        prompt: "Segundo o texto, que tipo de problema de Indústria 4.0 a computação quântica promete atacar melhor do que computadores clássicos?",
+        options: [
+          "Armazenar arquivos de texto simples",
+          "Problemas combinatórios de larga escala, como otimização de rotas logísticas, escalonamento de produção e descoberta de novos materiais",
+          "Exibir dashboards de produção em tempo real"
+        ],
+        correct: 1,
+        feedback: "A promessa da computação quântica está em simular materiais e resolver problemas de otimização que crescem rápido demais para métodos clássicos em escala."
+      },
+      {
+        prompt: "Qual é, segundo o texto, o principal motivo para tratar a computação quântica aplicada à Indústria 4.0 como 'promissora, mas ainda inicial'?",
+        options: [
+          "Porque nenhuma empresa investe nisso hoje",
+          "Porque a maior parte dos resultados hoje depende de simuladores clássicos e a aplicação em escala industrial exige computadores tolerantes a falhas, ainda projetados para 2029-2030",
+          "Porque a mecânica quântica não tem relação nenhuma com materiais ou otimização"
+        ],
+        correct: 1,
+        feedback: "O gargalo é o hardware: sem tolerância a falhas em escala, a precisão necessária para decisões industriais confiáveis ainda não está garantida de forma consistente."
+      }
+    ];
+
+    var app = document.getElementById('quiz-app');
+    var score = 0;
+    var answered = 0;
+
+    quizData.forEach(function(q, qi){
+      var card = document.createElement('div');
+      card.className = 'quiz-card';
+
+      var num = document.createElement('span');
+      num.className = 'q-num';
+      num.textContent = 'Pergunta ' + (qi+1) + ' de ' + quizData.length;
+      card.appendChild(num);
+
+      var prompt = document.createElement('p');
+      prompt.className = 'q-prompt';
+      prompt.textContent = q.prompt;
+      card.appendChild(prompt);
+
+      var optsWrap = document.createElement('div');
+      optsWrap.className = 'q-options';
+
+      var feedback = document.createElement('div');
+      feedback.className = 'q-feedback';
+      feedback.textContent = q.feedback;
+
+      q.options.forEach(function(optText, oi){
+        var btn = document.createElement('button');
+        btn.type = 'button';
+        btn.className = 'quiz-opt';
+        btn.textContent = optText;
+        btn.addEventListener('click', function(){
+          if (btn.disabled) return;
+          var allBtns = optsWrap.querySelectorAll('.quiz-opt');
+          allBtns.forEach(function(b){ b.disabled = true; });
+
+          if (oi === q.correct) {
+            btn.classList.add('correct');
+            feedback.classList.add('show','ok');
+            score++;
+          } else {
+            btn.classList.add('incorrect');
+            allBtns[q.correct].classList.add('correct');
+            feedback.classList.add('show','no');
+          }
+          answered++;
+          updateScore();
+        });
+        optsWrap.appendChild(btn);
+      });
+
+      card.appendChild(optsWrap);
+      card.appendChild(feedback);
+      app.appendChild(card);
+    });
+
+    var scoreLine = document.createElement('div');
+    scoreLine.className = 'quiz-score';
+    app.appendChild(scoreLine);
+
+    function updateScore(){
+      scoreLine.textContent = answered === quizData.length
+        ? 'Resultado final: ' + score + ' de ' + quizData.length + ' corretas'
+        : score + ' de ' + answered + ' respondidas até agora';
+    }
+  </script>
+
+</body>
+</html>
