@@ -320,7 +320,7 @@
 
   <!-- SAFC: senha própria -->
   <div class="acesso-bloco">
-    <label class="acesso-label">Senha de acesso ao complexasferidas</label>
+    <label class="acesso-label">Senha de acesso ao SAFC</label>
     <div class="acesso-row">
       <input type="password" id="senhaSafc" class="acesso-input" placeholder="Digite a senha" onkeydown="if(event.key==='Enter')tentarAbrirSafc()">
       <button class="btn-acessar acesso-btn" onclick="tentarAbrirSafc()">Entrar</button>
@@ -330,7 +330,7 @@
 
   <!-- SAFC2: senha própria, diferente da do SAFC -->
   <div class="acesso-bloco">
-    <label class="acesso-label">Senha de acesso ao iscontexto</label>
+    <label class="acesso-label">Senha de acesso ao SAFC2 (Contexto das solicitações no SIS)</label>
     <div class="acesso-row">
       <input type="password" id="senhaSafc2" class="acesso-input" placeholder="Digite a senha" onkeydown="if(event.key==='Enter')tentarAbrirSafc2()">
       <button class="btn-acessar acesso-btn safc2" onclick="tentarAbrirSafc2()">Entrar</button>
@@ -348,8 +348,8 @@
 <script>
 // Hashes SHA-256 das senhas (não são as senhas em texto puro).
 // Para trocar uma senha: gere um novo hash e substitua a constante correspondente.
-const HASH_SAFC  = "3544a1b4d28c82774e6db39736e7401ff843d7290e51b96e7b0b0cb4ee2c6257";
-const HASH_SAFC2 = "bef82a7d9e31299b33e8dddb37426dc03cceb27098cffe6abb4d964e7116f1d7";
+const HASH_SAFC  = "25790123d028b6bb406dc829e22b4a45e4b8081841160fc2939b84283245f08a";
+const HASH_SAFC2 = "8503aaac7d3dbea70f138128cb1159e4b9105a6a9ae5ef5b7ce35da983fa9dab";
 
 async function sha256(texto) {
   const buffer = new TextEncoder().encode(texto);
