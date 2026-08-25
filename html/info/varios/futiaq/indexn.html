@@ -311,6 +311,58 @@
   .quadro .qcard p{font-size:.9rem; margin:0;}
   .quadro figure{margin-top:20px;}
 
+  /* CROSS-LINK BOX — chamada para outro infográfico do grupo */
+  .crosslink-box{
+    display:flex;
+    gap:18px;
+    align-items:flex-start;
+    background:#EFF4F9;
+    border:1px solid #C9DCEC;
+    border-left:5px solid var(--blue);
+    border-radius:10px;
+    padding:22px 26px;
+    margin:28px 0;
+  }
+  .crosslink-icon{
+    flex:none;
+    width:38px; height:38px;
+    border-radius:50%;
+    background:var(--blue);
+    color:#fff;
+    display:flex; align-items:center; justify-content:center;
+    font-family:'IBM Plex Mono', monospace;
+    font-size:1rem;
+  }
+  .crosslink-box .crosslink-tag{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:.72rem;
+    letter-spacing:.1em;
+    text-transform:uppercase;
+    color:var(--blue);
+    font-weight:600;
+    display:block;
+    margin-bottom:6px;
+  }
+  .crosslink-box h3{font-size:1.08rem; color:var(--blue-deep); margin-bottom:8px;}
+  .crosslink-box p{font-size:.94rem; color:var(--ink-soft); margin-bottom:12px;}
+  .crosslink-btn{
+    display:inline-flex;
+    align-items:center;
+    gap:6px;
+    font-family:'IBM Plex Mono', monospace;
+    font-size:.82rem;
+    font-weight:600;
+    color:#fff;
+    background:var(--blue-deep);
+    padding:9px 16px;
+    border-radius:7px;
+    text-decoration:none;
+  }
+  .crosslink-btn:hover{background:var(--blue);}
+  @media (max-width:600px){
+    .crosslink-box{flex-direction:column; padding:20px;}
+  }
+
   /* COMPARISON BLOCK (China/EUA/Europa) */
   .compare-grid{
     display:grid;
@@ -700,7 +752,7 @@
       <div class="two-col">
         <div>
           <p class="lede">Proposta como possibilidade teórica por Richard Feynman nos anos 1980, a computação quântica usa <strong>qubits</strong> — que, graças à superposição, podem representar múltiplos estados ao mesmo tempo, e podem se entrelaçar entre si, permitindo processar certos problemas em paralelo.<sup class="cite"><a href="#ref1">1</a></sup></p>
-          <p>Isso a torna especialmente promissora para simular moléculas e materiais — inclusive proteínas e fármacos, como veremos na seção final.</p>
+          <p>Isso a torna especialmente promissora para simular moléculas e materiais — o mesmo tipo de cálculo que veremos aplicado à Indústria 4.0 na seção final, e que já foi usado por outro grupo do nosso time para simular a interação entre fármacos e proteínas.</p>
         </div>
         <figure class="img-placeholder" data-img-path="img/qubit-superposicao.png">
           <img class="real-photo" src="img/qubit-superposicao.png" alt="Esfera de Bloch representando um qubit em superposição" onload="this.classList.add('is-visible'); this.nextElementSibling.style.display='none';" onerror="this.remove();">
@@ -711,6 +763,16 @@
           </div>
           <figcaption>Fig. 2 — Enquanto um bit clássico é 0 ou 1, um qubit pode existir em superposição dos dois estados simultaneamente.</figcaption>
         </figure>
+      </div>
+
+      <div class="crosslink-box">
+        <span class="crosslink-icon">↗</span>
+        <div>
+          <span class="crosslink-tag">Ver também · outro projeto do nosso grupo</span>
+          <h3>Esse mesmo pipeline, passo a passo, aplicado a um fármaco real</h3>
+          <p>Como a IA e a simulação de química quântica trabalham juntas — do funil de triagem de milhares de moléculas até os pontos cegos de cada técnica isolada — está detalhado, com todo o método explicado, no infográfico sobre a descoberta computacional de um candidato a fármaco para feridas crônicas.</p>
+          <a class="crosslink-btn" href="index2.html">Ver o infográfico completo →</a>
+        </div>
       </div>
 
       <div class="timeline">
