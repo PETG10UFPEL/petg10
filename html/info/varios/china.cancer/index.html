@@ -9,16 +9,16 @@
 <link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;0,8..60,700;1,8..60,500&family=Libre+Franklin:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 <style>
   :root{
-    --bg: #F7F5EF;
-    --bg-alt: #EFE9DC;
+    --bg: #E7F0F7;
+    --bg-alt: #D9E7F2;
     --panel: #FFFFFF;
     --ink: #1B2430;
-    --ink-soft: #52596A;
+    --ink-soft: #4A5568;
     --rust: #A8442E;
     --teal: #1F6E5C;
     --gold: #B8862F;
-    --line: #DAD3C2;
-    --line-soft: #E7E2D4;
+    --line: #C4D5E2;
+    --line-soft: #D8E5EF;
   }
   *{box-sizing:border-box;}
   html{scroll-behavior:smooth;}
@@ -84,7 +84,7 @@
   .hero .answer-strip{
     margin-top:36px;
     display:grid;
-    grid-template-columns:repeat(3,1fr);
+    grid-template-columns:repeat(2,1fr);
     gap:1px;
     background:var(--line);
     border:1px solid var(--line);
@@ -102,6 +102,56 @@
   .answer-strip .lbl{
     font-size:0.92rem;
     color:var(--ink-soft);
+  }
+  @media(max-width:480px){
+    .hero .answer-strip{ grid-template-columns:1fr; }
+  }
+
+  .hero-duo{
+    margin-top:1px;
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:1px;
+    background:var(--line);
+    border:1px solid var(--line);
+    border-top:none;
+  }
+  .hero-duo .duo-stat{
+    background:var(--panel);
+    padding:20px 22px;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+  }
+  .hero-duo .duo-stat .num{
+    font-family:'Source Serif 4', serif;
+    font-size:1.8rem;
+    color:var(--rust);
+    display:block;
+  }
+  .hero-duo .duo-stat .lbl{
+    font-size:0.92rem;
+    color:var(--ink-soft);
+  }
+  .hero-duo .duo-figure{
+    background:var(--panel);
+    padding:14px;
+    margin:0;
+  }
+  .hero-duo .duo-figure img{
+    width:100%;
+    height:auto;
+    border-radius:3px;
+    display:block;
+  }
+  .hero-duo .duo-figure figcaption{
+    font-size:0.72rem;
+    color:var(--ink-soft);
+    margin-top:8px;
+    line-height:1.4;
+  }
+  @media(max-width:480px){
+    .hero-duo{ grid-template-columns:1fr; }
   }
 
   /* GENERIC SECTION */
@@ -143,12 +193,12 @@
     line-height:1.5;
   }
   .img-placeholder .placeholder-box{
-    border:1.5px dashed #B7AF9C;
-    background:#F1ECDF;
+    border:1.5px dashed #A9C0D3;
+    background:#EAF1F7;
     border-radius:4px;
     padding:28px 22px;
     text-align:center;
-    color:#6B6250;
+    color:#55677A;
     min-height:230px;
     display:none;
     flex-direction:column;
@@ -166,14 +216,14 @@
   .placeholder-label{
     font-family:monospace;
     font-size:0.78rem;
-    background:#E4DCC9;
+    background:#D2E1EC;
     padding:3px 9px;
     border-radius:3px;
-    color:#3A3226;
+    color:#2C3E4E;
   }
   .placeholder-hint{
     font-size:0.82rem;
-    color:#7A7261;
+    color:#6A7C8C;
     font-style:italic;
     max-width:360px;
   }
@@ -184,6 +234,14 @@
     border:1px solid var(--line-soft);
     border-radius:4px;
     padding:22px;
+  }
+  .timeline-grid{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:16px;
+  }
+  @media(max-width:640px){
+    .timeline-grid{ grid-template-columns:1fr; }
   }
 
   /* 5 whys */
@@ -337,6 +395,42 @@
   }
   .related-box-link:hover{ text-decoration:underline; }
 
+  /* Brazil box */
+  section.section-brazil{
+    background:linear-gradient(135deg, #F4F8E4 0%, #FBF6DC 100%);
+  }
+  .brazil-box{
+    background:var(--panel);
+    border:1px solid #E2E0B8;
+    border-left:4px solid var(--gold);
+    padding:26px 28px;
+  }
+  .brazil-stats{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:20px;
+    margin-bottom:22px;
+    padding-bottom:20px;
+    border-bottom:1px solid var(--line-soft);
+  }
+  .brazil-stats .num{
+    font-family:'Source Serif 4', serif;
+    font-size:1.35rem;
+    color:var(--gold);
+    display:block;
+    margin-bottom:4px;
+    line-height:1.15;
+  }
+  .brazil-stats .lbl{
+    font-size:0.84rem;
+    color:var(--ink-soft);
+  }
+  @media(max-width:640px){
+    .brazil-stats{ grid-template-columns:1fr; gap:16px; }
+  }
+  .brazil-box p{ font-size:0.96rem; margin-bottom:10px; max-width:none; }
+  .brazil-box p:last-child{ margin-bottom:0; }
+
   /* institutional header */
   header.institutional-header{
     display:flex;
@@ -345,6 +439,10 @@
     background:#FFFFFF;
     padding:14px 26px;
     border-bottom:1px solid var(--line-soft);
+    position:sticky;
+    top:0;
+    z-index:100;
+    box-shadow:0 1px 4px rgba(27,36,48,0.06);
   }
   header.institutional-header .header-identity{
     font-family:'Source Serif 4', serif;
@@ -363,7 +461,7 @@
   footer.institutional-footer{
     padding:24px 26px;
     text-align:center;
-    background:#FBFAF6;
+    background:#EFF5FA;
     border-top:1px solid var(--line-soft);
   }
   footer.institutional-footer p{
@@ -391,13 +489,18 @@
     <div class="answer-strip">
       <div><span class="num">½ a ⅓</span><span class="lbl">do custo de terapias como a CAR-T, comparando China com EUA/Europa</span></div>
       <div><span class="num">30 dias</span><span class="lbl">é hoje o prazo de revisão de ensaios clínicos na China — quase igual ao da FDA</span></div>
-      <div><span class="num">206</span><span class="lbl">ensaios de terapia celular contra câncer conduzidos na China entre 2014 e 2024</span></div>
     </div>
 
-    <figure style="max-width:220px;margin:32px 0 0 0;">
-      <img src="img/patients.png" alt="Reportagem do Wall Street Journal: 'Patients Are Flying to China for the Latest Cancer Treatment'" style="width:100%;height:auto;border-radius:4px;border:1px solid var(--line-soft);display:block;">
-      <figcaption>Wall Street Journal, "Patients Are Flying to China for the Latest Cancer Treatment", 6 set. 2026. Foto: Qilai Shen para o WSJ.</figcaption>
-    </figure>
+    <div class="hero-duo">
+      <div class="duo-stat">
+        <span class="num">206</span>
+        <span class="lbl">ensaios de terapia celular contra câncer conduzidos na China entre 2014 e 2024</span>
+      </div>
+      <figure class="duo-figure">
+        <img src="img/patients.png" alt="Reportagem do Wall Street Journal: 'Patients Are Flying to China for the Latest Cancer Treatment'">
+        <figcaption>Wall Street Journal, "Patients Are Flying to China for the Latest Cancer Treatment", 6 set. 2026. Foto: Qilai Shen para o WSJ.</figcaption>
+      </figure>
+    </div>
   </div>
 </section>
 
@@ -619,42 +722,49 @@
       <h2>A reforma regulatória que abriu a rota</h2>
       <p class="dek">A vantagem chinesa não nasceu da noite para o dia — é resultado de uma década de mudanças deliberadas.</p>
     </div>
-    <div class="diagram-frame">
-      <svg class="diagram" viewBox="0 0 900 180" xmlns="http://www.w3.org/2000/svg">
-        <line x1="40" y1="90" x2="860" y2="90" stroke="var(--line)" stroke-width="2"/>
+    <div class="timeline-grid">
+      <div class="diagram-frame">
+        <svg class="diagram" viewBox="0 0 460 180" xmlns="http://www.w3.org/2000/svg">
+          <line x1="40" y1="90" x2="420" y2="90" stroke="var(--line)" stroke-width="2"/>
 
-        <circle cx="90" cy="90" r="6" fill="var(--teal)"/>
-        <text x="90" y="70" font-size="12" text-anchor="middle" fill="var(--ink)" font-weight="600">2015</text>
-        <text x="90" y="115" font-size="10.5" text-anchor="middle" fill="var(--ink-soft)">China passa a</text>
-        <text x="90" y="128" font-size="10.5" text-anchor="middle" fill="var(--ink-soft)">permitir ensaios</text>
-        <text x="90" y="141" font-size="10.5" text-anchor="middle" fill="var(--ink-soft)">multirregionais</text>
+          <circle cx="80" cy="90" r="6" fill="var(--teal)"/>
+          <text x="80" y="70" font-size="12" text-anchor="middle" fill="var(--ink)" font-weight="600">2015</text>
+          <text x="80" y="115" font-size="10.5" text-anchor="middle" fill="var(--ink-soft)">China passa a</text>
+          <text x="80" y="128" font-size="10.5" text-anchor="middle" fill="var(--ink-soft)">permitir ensaios</text>
+          <text x="80" y="141" font-size="10.5" text-anchor="middle" fill="var(--ink-soft)">multirregionais</text>
 
-        <circle cx="270" cy="90" r="6" fill="var(--teal)"/>
-        <text x="270" y="70" font-size="12" text-anchor="middle" fill="var(--ink)" font-weight="600">2017</text>
-        <text x="270" y="115" font-size="10.5" text-anchor="middle" fill="var(--ink-soft)">Entrada no</text>
-        <text x="270" y="128" font-size="10.5" text-anchor="middle" fill="var(--ink-soft)">conselho ICH de</text>
-        <text x="270" y="141" font-size="10.5" text-anchor="middle" fill="var(--ink-soft)">harmonização</text>
+          <circle cx="230" cy="90" r="6" fill="var(--teal)"/>
+          <text x="230" y="70" font-size="12" text-anchor="middle" fill="var(--ink)" font-weight="600">2017</text>
+          <text x="230" y="115" font-size="10.5" text-anchor="middle" fill="var(--ink-soft)">Entrada no</text>
+          <text x="230" y="128" font-size="10.5" text-anchor="middle" fill="var(--ink-soft)">conselho ICH de</text>
+          <text x="230" y="141" font-size="10.5" text-anchor="middle" fill="var(--ink-soft)">harmonização</text>
 
-        <circle cx="450" cy="90" r="6" fill="var(--teal)"/>
-        <text x="450" y="70" font-size="12" text-anchor="middle" fill="var(--ink)" font-weight="600">2018</text>
-        <text x="450" y="115" font-size="10.5" text-anchor="middle" fill="var(--ink-soft)">Prazo de revisão</text>
-        <text x="450" y="128" font-size="10.5" text-anchor="middle" fill="var(--ink-soft)">de ensaios cai</text>
-        <text x="450" y="141" font-size="10.5" text-anchor="middle" fill="var(--ink-soft)">para 60 dias</text>
+          <circle cx="380" cy="90" r="6" fill="var(--teal)"/>
+          <text x="380" y="70" font-size="12" text-anchor="middle" fill="var(--ink)" font-weight="600">2018</text>
+          <text x="380" y="115" font-size="10.5" text-anchor="middle" fill="var(--ink-soft)">Prazo de revisão</text>
+          <text x="380" y="128" font-size="10.5" text-anchor="middle" fill="var(--ink-soft)">de ensaios cai</text>
+          <text x="380" y="141" font-size="10.5" text-anchor="middle" fill="var(--ink-soft)">para 60 dias</text>
+        </svg>
+      </div>
+      <div class="diagram-frame">
+        <svg class="diagram" viewBox="0 0 460 180" xmlns="http://www.w3.org/2000/svg">
+          <line x1="40" y1="90" x2="420" y2="90" stroke="var(--line)" stroke-width="2"/>
 
-        <circle cx="630" cy="90" r="6" fill="var(--teal)"/>
-        <text x="630" y="70" font-size="12" text-anchor="middle" fill="var(--ink)" font-weight="600">2020</text>
-        <text x="630" y="115" font-size="10.5" text-anchor="middle" fill="var(--ink-soft)">Aprovação</text>
-        <text x="630" y="128" font-size="10.5" text-anchor="middle" fill="var(--ink-soft)">implícita em 30</text>
-        <text x="630" y="141" font-size="10.5" text-anchor="middle" fill="var(--ink-soft)">dias — nível FDA</text>
+          <circle cx="150" cy="90" r="6" fill="var(--teal)"/>
+          <text x="150" y="70" font-size="12" text-anchor="middle" fill="var(--ink)" font-weight="600">2020</text>
+          <text x="150" y="115" font-size="10.5" text-anchor="middle" fill="var(--ink-soft)">Aprovação</text>
+          <text x="150" y="128" font-size="10.5" text-anchor="middle" fill="var(--ink-soft)">implícita em 30</text>
+          <text x="150" y="141" font-size="10.5" text-anchor="middle" fill="var(--ink-soft)">dias — nível FDA</text>
 
-        <circle cx="810" cy="90" r="7" fill="var(--rust)"/>
-        <text x="810" y="70" font-size="12" text-anchor="middle" fill="var(--rust)" font-weight="700">2026</text>
-        <text x="810" y="115" font-size="10.5" text-anchor="middle" fill="var(--ink-soft)">1ª CAR-T do</text>
-        <text x="810" y="128" font-size="10.5" text-anchor="middle" fill="var(--ink-soft)">mundo p/ tumor</text>
-        <text x="810" y="141" font-size="10.5" text-anchor="middle" fill="var(--ink-soft)">sólido, via NMPA</text>
-      </svg>
+          <circle cx="330" cy="90" r="7" fill="var(--rust)"/>
+          <text x="330" y="70" font-size="12" text-anchor="middle" fill="var(--rust)" font-weight="700">2026</text>
+          <text x="330" y="115" font-size="10.5" text-anchor="middle" fill="var(--ink-soft)">1ª CAR-T do</text>
+          <text x="330" y="128" font-size="10.5" text-anchor="middle" fill="var(--ink-soft)">mundo p/ tumor</text>
+          <text x="330" y="141" font-size="10.5" text-anchor="middle" fill="var(--ink-soft)">sólido, via NMPA</text>
+        </svg>
+      </div>
     </div>
-    <p style="font-size:0.86rem;color:var(--ink-soft);margin-top:14px;">Fontes: FierceBiotech (jun. 2025); IntuitionLabs, guia regulatório NMPA (2026); Caixin Global (jun. 2026). Para comparação: a versão original da terapia axicabtagene ciloleucel, desenvolvida nos EUA, levou 3,5 anos a mais para ser aprovada na China do que na FDA — a diferença de ritmo se inverteu apenas na década seguinte.</p>
+    <p style="font-size:0.86rem;color:var(--ink-soft);margin-top:14px;">Fontes: FierceBiotech (17 jun. 2025); IntuitionLabs, guia regulatório NMPA (16 abr. 2026); Caixin Global (24 jun. 2026). Para comparação: a versão original da terapia axicabtagene ciloleucel, desenvolvida nos EUA, levou 3,5 anos a mais para ser aprovada na China do que na FDA — a diferença de ritmo se inverteu apenas na década seguinte.</p>
 
     <figure class="img-placeholder" data-img-path="img/duas-pistas-regulatorias.png" style="margin-top:32px;">
       <img class="real-img" src="img/duas-pistas-regulatorias.png" alt="Ilustração: duas pistas regulatórias" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
@@ -665,6 +775,27 @@
       </div>
       <figcaption>Figura 5 — Duas estradas regulatórias, o mesmo destino científico.</figcaption>
     </figure>
+  </div>
+</section>
+
+<!-- BRASIL -->
+<section class="section-brazil">
+  <div class="wrap narrow">
+    <div class="section-head">
+      <h2>E no Brasil?</h2>
+      <p class="dek">Não é o foco deste material, mas vale registrar onde o país está nessa mesma corrida.</p>
+    </div>
+    <div class="brazil-box">
+      <div class="brazil-stats">
+        <div><span class="num">R$ 1,5 mi – R$ 3 mi</span><span class="lbl">custo hoje no Brasil, com produtos importados (Kymriah, Yescarta, Carvykti, Breyanzi)</span></div>
+        <div><span class="num">~R$ 200 mil</span><span class="lbl">meta de custo da CAR-T nacional em desenvolvimento (Butantan/USP/Fiocruz)</span></div>
+        <div><span class="num">~70 dias úteis</span><span class="lbl">prazo médio hoje da Anvisa para medicamentos em fluxo prioritário</span></div>
+      </div>
+      <p>O Brasil já tem terapia CAR-T aprovada pela Anvisa desde março de 2022 — mas até agora só via produtos importados, e o acesso é majoritariamente judicializado: uma pesquisa da UNIDAS (entidade de operadoras de autogestão em saúde) encontrou que 85% dos pacientes só chegaram ao tratamento por decisão judicial, com custo entre R$ 1,5 milhão e R$ 3 milhões por infusão.</p>
+      <p>A resposta brasileira ao problema do custo se parece, guardadas as proporções, com a resposta chinesa: produção nacional. O Instituto Butantan, a USP e o Hemocentro de Ribeirão Preto desenvolvem uma CAR-T própria, com meta de reduzir o custo em até 10 vezes — para algo perto de R$ 200 mil. A Fiocruz, em parceria com a americana Caring Cross e o Inca, persegue objetivo semelhante, com primeiros pacientes previstos entre o fim de 2026 e o início de 2027.</p>
+      <p>A CAR-T nacional já entrou no fluxo prioritário de avaliação da Anvisa em 2026. Hoje, o prazo médio de análise de medicamentos prioritários no Brasil gira em torno de 70 dias úteis — bem mais rápido que os cerca de 270 dias que a agência levava antes da reforma regulatória de 2017, mas ainda sujeito a filas e exigências técnicas que, na prática, podem esticar esse prazo, como reconhece a própria Anvisa em resoluções recentes voltadas a reduzir esse passivo.</p>
+      <p style="font-size:0.78rem;color:var(--ink-soft);margin-top:16px;">Fontes: Migalhas, "Guia jurídico definitivo sobre a terapia CAR-T no Brasil" (fev. 2026); Futuro da Saúde, "Fiocruz quer lançar CAR-T em 2026..." (nov. 2025) e "CAR-T no Brasil: após três anos, preço e acesso não avança..." (ago. 2025); Instituto Butantan, "Câncer custa R$ 3 bi por ano ao SUS..."; Abrale, "Car-T pode ter pedido de registro na Anvisa em 2026..." (nov. 2025); Anvisa, dados históricos de priorização de análise de medicamentos.</p>
+    </div>
   </div>
 </section>
 
@@ -768,19 +899,19 @@
       <p class="dek">Fontes jornalísticas, clínicas e regulatórias consultadas na elaboração deste material.</p>
     </div>
     <ol>
-      <li><strong>BBC World Service</strong> — "Why cancer patients are flying to China for treatment", podcast/vídeo <em>Asia Specific</em>, 2026.</li>
-      <li><strong>The Wall Street Journal</strong> — "Patients Are Flying to China for the Latest Cancer Treatment", reportagem de Jonathan Cheng, 2026.</li>
-      <li><strong>CGTN</strong> — "Why a 78-year-old patient traveled to China for CAR-T therapy", nov. 2025.</li>
-      <li><strong>Caixin Global</strong> — "China Approves World's First CAR-T Therapy for Solid Tumors", jun. 2026.</li>
-      <li><strong>FierceBiotech</strong> — "China proposes shorter clinical trial reviews in efforts to accelerate drug development", jun. 2025.</li>
-      <li><strong>IntuitionLabs</strong> — "China NMPA Drug Approval Pathways: Regulatory Guide", 2026.</li>
-      <li><strong>PMC / periódico científico</strong> — "Chimeric antigen receptor-T-cell therapy: China leading the way" — comentário clínico sobre a trajetória regulatória do CAR-T na China.</li>
-      <li><strong>PMC / periódico científico</strong> — "Current Progress of Cell Therapy Clinical Trials in China in 2014–2024".</li>
-      <li><strong>PMC / periódico científico</strong> — "Redefining chimeric antigen receptor T-cell (CAR-T) regulation: China's responses to address secondary cancer risks of CAR-T therapy".</li>
-      <li><strong>MedPath</strong> — "China Emerges as a Global Hub for Affordable CAR-T Therapy, Drawing Foreign Patients with Advanced Cancer Care", jun. 2026.</li>
-      <li><strong>MedBridge NZ</strong> — "China Medical Tourism: Pros, Cons & Patient Safety Guide", fev. 2026.</li>
-      <li><strong>Dovepress</strong> — "Assessing the Risks of China's Medical Tourism" (comentário).</li>
-      <li><strong>The Asia Business Daily</strong> (Asia Economy, Coreia do Sul) — "Patients Pack Their Bags as Healthcare Costs Soar... Americans Emerge as Major Players in China's Medical Tourism", jul. 2026.</li>
+      <li><strong>BBC World Service</strong> — "Why cancer patients are flying to China for treatment", podcast/vídeo <em>Asia Specific</em>, jun. 2026.</li>
+      <li><strong>The Wall Street Journal</strong> — "Patients Are Flying to China for the Latest Cancer Treatment", reportagem de Jonathan Cheng, 6 set. 2026.</li>
+      <li><strong>CGTN</strong> — "Why a 78-year-old patient traveled to China for CAR-T therapy", 16 nov. 2025.</li>
+      <li><strong>Caixin Global</strong> — "China Approves World's First CAR-T Therapy for Solid Tumors", 24 jun. 2026.</li>
+      <li><strong>FierceBiotech</strong> — "China proposes shorter clinical trial reviews in efforts to accelerate drug development", 17 jun. 2025.</li>
+      <li><strong>IntuitionLabs</strong> — "China NMPA Drug Approval Pathways: Regulatory Guide", 16 abr. 2026.</li>
+      <li><strong>Robert Peter Gale, Blood Science (periódico científico)</strong> — "Chimeric antigen receptor-T-cell therapy: China leading the way", 20 jul. 2022.</li>
+      <li><strong>Shi et al., BioMed Research International (periódico científico)</strong> — "Current Progress of Cell Therapy Clinical Trials in China in 2014–2024", 23 out. 2025.</li>
+      <li><strong>Tan et al., Journal of Hematology & Oncology (periódico científico)</strong> — "Redefining chimeric antigen receptor T-cell (CAR-T) regulation: China's responses to address secondary cancer risks of CAR-T therapy", 8 out. 2024.</li>
+      <li><strong>MedPath</strong> — "China Emerges as a Global Hub for Affordable CAR-T Therapy, Drawing Foreign Patients with Advanced Cancer Care", 11 jun. 2026.</li>
+      <li><strong>MedBridge NZ</strong> — "China Medical Tourism: Pros, Cons & Patient Safety Guide", 20 fev. 2026.</li>
+      <li><strong>Shen, Qu &amp; Wu, Risk Management and Healthcare Policy (periódico científico)</strong> — "Assessing the Risks of China's Medical Tourism from the Legal Perspective", 28 out. 2020.</li>
+      <li><strong>The Asia Business Daily</strong> (Asia Economy, Coreia do Sul) — "Patients Pack Their Bags as Healthcare Costs Soar... Americans Emerge as Major Players in China's Medical Tourism", 10 jul. 2026.</li>
     </ol>
   </div>
 </section>
