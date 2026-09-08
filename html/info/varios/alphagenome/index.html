@@ -374,6 +374,54 @@
     justify-content:center;
     margin-bottom:14px;
   }
+
+  /* card do documentário */
+  .film-box{
+    background:var(--dark);
+    color:#fff;
+    border-radius:14px;
+    padding:26px 28px;
+    margin:28px 0 0;
+  }
+  .film-badge{
+    display:inline-block;
+    font-size:.72rem;
+    font-weight:700;
+    text-transform:uppercase;
+    letter-spacing:1px;
+    color:#B9D3E8;
+    margin-bottom:10px;
+  }
+  .film-box h4{color:#fff;font-size:1.15rem;margin-bottom:.5em;}
+  .film-box p{color:#DCE3EA;}
+  .film-embed{
+    position:relative;
+    width:100%;
+    padding-top:56.25%; /* 16:9 */
+    margin:18px 0 6px;
+    border-radius:10px;
+    overflow:hidden;
+    background:#000;
+  }
+  .film-embed iframe{
+    position:absolute;
+    top:0;left:0;
+    width:100%;
+    height:100%;
+    border:0;
+  }
+  .film-link{
+    display:inline-block;
+    margin-top:14px;
+    background:var(--terracota);
+    color:#fff;
+    text-decoration:none;
+    font-weight:600;
+    font-size:.92rem;
+    padding:10px 20px;
+    border-radius:24px;
+  }
+  .film-link:hover{background:#a84a2e;}
 </style>
 </head>
 <body>
@@ -593,6 +641,17 @@
     <img src="img/ilustracao-alphafold-vs-alphagenome.jpg" alt="Ilustração comparativa entre o dobramento de uma proteína (AlphaFold) e uma variante de DNA sendo pontuada por IA (AlphaGenome Atlas)">
     <figcaption>Ilustração comparativa: dobramento de proteína (AlphaFold) x variante de DNA pontuada (AlphaGenome Atlas).</figcaption>
   </figure>
+
+  <div class="film-box">
+    <span class="film-badge">🎬 Para quem quiser ir além do infográfico</span>
+    <h4>O começo de tudo: <em>"The Thinking Game"</em> (2024)</h4>
+    <p>Quer entender como a equipe por trás do AlphaFold — e, por extensão, do AlphaGenome Atlas — chegou até aqui? Esse documentário acompanha Demis Hassabis e o time do Google DeepMind ao longo de cinco anos de bastidores, culminando na resolução do problema do dobramento de proteínas (o mesmo AlphaFold do quadro acima), conquista que rendeu o Prêmio Nobel de Química de 2024.</p>
+    <p style="font-size:.88rem;color:var(--muted);">Dirigido por Greg Kohs (mesma equipe do premiado documentário <em>AlphaGo</em>), foi seleção oficial do Festival de Tribeca e está disponível <strong>gratuitamente e legendado</strong> no canal oficial do Google DeepMind no YouTube desde novembro de 2025.</p>
+    <div class="film-embed">
+      <iframe src="https://www.youtube.com/embed/d95J8yzvjbQ" title="The Thinking Game | Full documentary | Tribeca Film Festival official selection" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+    </div>
+    <a class="film-link" href="https://www.youtube.com/watch?v=d95J8yzvjbQ" target="_blank">▶ Assistir "The Thinking Game" no YouTube (gratuito, ~1h24)</a>
+  </div>
 </section>
 
 <section class="limits-section">
@@ -729,6 +788,7 @@
     <li>Blog oficial do Google DeepMind sobre o lançamento do modelo AlphaGenome (base do Atlas) — <a href="https://deepmind.google/blog/alphagenome-ai-for-better-understanding-the-genome/" target="_blank">"AlphaGenome: AI for better understanding the genome"</a>, 25 de junho de 2025. Fonte do gráfico de desempenho comparativo.</li>
     <li>Repositório e API do modelo AlphaGenome — <a href="https://github.com/google-deepmind/alphagenome" target="_blank">github.com/google-deepmind/alphagenome</a></li>
     <li><em>"Google's new AI will help researchers understand how our genes work."</em> MIT Technology Review, 25 de junho de 2025. <a href="https://www.technologyreview.com/2025/06/25/1119345/google-deepmind-alphagenome-ai/" target="_blank">technologyreview.com</a> (contexto sobre o modelo original AlphaGenome e o AlphaFold).</li>
+    <li>Kohs, G. (diretor). <em>The Thinking Game</em>. Documentário, 2024. Seleção oficial do Festival de Tribeca; disponível gratuitamente desde nov. 2025 no <a href="https://www.youtube.com/watch?v=d95J8yzvjbQ" target="_blank">canal oficial do Google DeepMind no YouTube</a>.</li>
   </ol>
 </section>
 
