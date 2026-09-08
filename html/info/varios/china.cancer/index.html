@@ -1,0 +1,874 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Por que Xangai? — A rota do câncer entre o Ocidente e a China</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;0,8..60,700;1,8..60,500&family=Libre+Franklin:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg: #F7F5EF;
+    --bg-alt: #EFE9DC;
+    --panel: #FFFFFF;
+    --ink: #1B2430;
+    --ink-soft: #52596A;
+    --rust: #A8442E;
+    --teal: #1F6E5C;
+    --gold: #B8862F;
+    --line: #DAD3C2;
+    --line-soft: #E7E2D4;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    background:var(--bg);
+    color:var(--ink);
+    font-family:'Libre Franklin', sans-serif;
+    font-weight:400;
+    line-height:1.65;
+    -webkit-font-smoothing:antialiased;
+  }
+  h1,h2,h3,h4{
+    font-family:'Source Serif 4', serif;
+    color:var(--ink);
+    margin:0 0 0.4em 0;
+    line-height:1.2;
+  }
+  p{ margin:0 0 1em 0; max-width:70ch; }
+  a{ color:var(--rust); }
+  .wrap{ max-width:1120px; margin:0 auto; padding:0 28px; }
+  .narrow{ max-width:680px; }
+
+  /* HEADER */
+  header.top{
+    background:var(--panel);
+    border-bottom:1px solid var(--line-soft);
+    padding:16px 0;
+  }
+  header.top .wrap{ display:flex; align-items:center; justify-content:space-between; }
+  .kicker-mark{
+    font-family:'Source Serif 4', serif;
+    font-style:italic;
+    font-size:0.95rem;
+    color:var(--ink-soft);
+  }
+  .kicker-mark strong{ color:var(--rust); font-style:normal; }
+
+  /* HERO */
+  .hero{
+    padding:76px 0 56px 0;
+    border-bottom:1px solid var(--line-soft);
+  }
+  .hero .eyebrow-q{
+    font-family:'Source Serif 4', serif;
+    font-style:italic;
+    font-size:1.35rem;
+    color:var(--teal);
+    max-width:40ch;
+    margin-bottom:18px;
+  }
+  .hero h1{
+    font-size:clamp(2.4rem, 5vw, 3.6rem);
+    max-width:16ch;
+    letter-spacing:-0.01em;
+  }
+  .hero .sub{
+    font-size:1.18rem;
+    color:var(--ink-soft);
+    max-width:56ch;
+    margin-top:18px;
+  }
+  .hero .answer-strip{
+    margin-top:36px;
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:1px;
+    background:var(--line);
+    border:1px solid var(--line);
+  }
+  .answer-strip div{
+    background:var(--panel);
+    padding:20px 22px;
+  }
+  .answer-strip .num{
+    font-family:'Source Serif 4', serif;
+    font-size:1.8rem;
+    color:var(--rust);
+    display:block;
+  }
+  .answer-strip .lbl{
+    font-size:0.92rem;
+    color:var(--ink-soft);
+  }
+
+  /* GENERIC SECTION */
+  section{ padding:64px 0; border-bottom:1px solid var(--line-soft); }
+  section.alt{ background:var(--bg-alt); }
+  .section-head{ max-width:60ch; margin-bottom:36px; }
+  .section-head h2{ font-size:clamp(1.7rem,3vw,2.3rem); }
+  .section-head .dek{ color:var(--ink-soft); font-size:1.05rem; }
+
+  blockquote{
+    font-family:'Source Serif 4', serif;
+    font-size:1.3rem;
+    font-style:italic;
+    color:var(--ink);
+    border-left:3px solid var(--rust);
+    padding:4px 0 4px 22px;
+    margin:26px 0;
+    max-width:60ch;
+  }
+  blockquote cite{
+    display:block;
+    font-family:'Libre Franklin', sans-serif;
+    font-style:normal;
+    font-size:0.85rem;
+    color:var(--ink-soft);
+    margin-top:10px;
+  }
+
+  /* two-column layout */
+  .split{ display:grid; grid-template-columns:1.1fr 0.9fr; gap:48px; align-items:start; }
+  @media(max-width:860px){ .split{ grid-template-columns:1fr; } }
+
+  /* figures / placeholders */
+  figure{ margin:0; }
+  figcaption{
+    font-size:0.86rem;
+    color:var(--ink-soft);
+    margin-top:10px;
+    line-height:1.5;
+  }
+  .img-placeholder .placeholder-box{
+    border:1.5px dashed #B7AF9C;
+    background:#F1ECDF;
+    border-radius:4px;
+    padding:28px 22px;
+    text-align:center;
+    color:#6B6250;
+    min-height:230px;
+    display:none;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+    gap:8px;
+  }
+  .img-placeholder .real-img{
+    display:block;
+    width:100%;
+    height:auto;
+    border-radius:4px;
+  }
+  .placeholder-icon{ font-size:1.8rem; }
+  .placeholder-label{
+    font-family:monospace;
+    font-size:0.78rem;
+    background:#E4DCC9;
+    padding:3px 9px;
+    border-radius:3px;
+    color:#3A3226;
+  }
+  .placeholder-hint{
+    font-size:0.82rem;
+    color:#7A7261;
+    font-style:italic;
+    max-width:360px;
+  }
+
+  svg.diagram{ width:100%; height:auto; display:block; }
+  .diagram-frame{
+    background:var(--panel);
+    border:1px solid var(--line-soft);
+    border-radius:4px;
+    padding:22px;
+  }
+
+  /* 5 whys */
+  .whys{ display:flex; flex-direction:column; gap:0; }
+  .why-step{
+    display:grid;
+    grid-template-columns:64px 1fr;
+    gap:20px;
+    padding:22px 0;
+    border-top:1px solid var(--line-soft);
+  }
+  .why-step:first-child{ border-top:none; }
+  .why-step .why-n{
+    font-family:'Source Serif 4', serif;
+    font-size:2rem;
+    color:var(--line);
+    line-height:1;
+  }
+  .why-step h3{ font-size:1.15rem; margin-bottom:6px; }
+  .why-step p{ margin-bottom:6px; }
+  .why-step .src{ font-size:0.82rem; color:var(--ink-soft); }
+
+  /* conditioning factors grid */
+  .factors{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:1px;
+    background:var(--line);
+    border:1px solid var(--line);
+  }
+  @media(max-width:760px){ .factors{ grid-template-columns:1fr 1fr; } }
+  @media(max-width:520px){ .factors{ grid-template-columns:1fr; } }
+  .factor{
+    background:var(--panel);
+    padding:26px 22px;
+  }
+  .factor .ficon{ width:40px; height:40px; margin-bottom:14px; }
+  .factor h4{ font-size:1.05rem; margin-bottom:8px; }
+  .factor p{ font-size:0.94rem; margin-bottom:8px; }
+  .factor .src{ font-size:0.78rem; color:var(--ink-soft); }
+
+  /* reflection prompts */
+  .prompts{ display:flex; flex-direction:column; gap:0; }
+  .prompt{
+    padding:26px 0;
+    border-top:1px solid var(--line-soft);
+    max-width:64ch;
+  }
+  .prompt:first-child{ border-top:none; }
+  .prompt h3{
+    font-size:1.25rem;
+    color:var(--teal);
+  }
+  .prompt p{ color:var(--ink-soft); font-size:0.98rem; }
+
+  /* risk cards */
+  .risks{ display:grid; grid-template-columns:1fr 1fr; gap:28px; }
+  @media(max-width:760px){ .risks{ grid-template-columns:1fr; } }
+  .risk{
+    background:var(--panel);
+    border:1px solid var(--line-soft);
+    border-left:3px solid var(--gold);
+    padding:22px 24px;
+  }
+  .risk h4{ font-size:1.02rem; }
+  .risk p{ font-size:0.93rem; margin-bottom:6px; }
+  .risk .src{ font-size:0.78rem; color:var(--ink-soft); }
+
+  /* quiz */
+  .quiz-card{
+    background:var(--panel);
+    border:1px solid var(--line-soft);
+    border-radius:4px;
+    padding:28px 30px;
+    margin-bottom:20px;
+  }
+  .quiz-card h4{ font-size:1.05rem; margin-bottom:14px; }
+  .quiz-opts label{
+    display:flex;
+    gap:10px;
+    align-items:flex-start;
+    padding:9px 0;
+    font-size:0.96rem;
+    cursor:pointer;
+  }
+  .quiz-opts input{ margin-top:4px; }
+  .quiz-feedback{
+    display:none;
+    margin-top:14px;
+    padding:12px 14px;
+    border-radius:3px;
+    font-size:0.9rem;
+  }
+  .quiz-feedback.ok{ background:#E3EFE9; color:var(--teal); display:block; }
+  .quiz-feedback.bad{ background:#F5E7E2; color:var(--rust); display:block; }
+  #quiz-submit{
+    background:var(--rust);
+    color:#fff;
+    border:none;
+    padding:14px 26px;
+    font-family:'Libre Franklin', sans-serif;
+    font-size:1rem;
+    font-weight:600;
+    border-radius:3px;
+    cursor:pointer;
+  }
+  #quiz-submit:hover{ background:#8E3623; }
+  #quiz-result{
+    margin-top:24px;
+    font-family:'Source Serif 4', serif;
+    font-size:1.3rem;
+    display:none;
+  }
+  .quiz-card.correct{ border-left:4px solid var(--teal); }
+  .quiz-card.incorrect{ border-left:4px solid var(--rust); }
+
+  /* references */
+  .refs{ font-size:0.92rem; color:var(--ink-soft); }
+  .refs ol{ padding-left:1.2em; }
+  .refs li{ margin-bottom:14px; }
+  .refs li strong{ color:var(--ink); }
+
+  footer.sign{
+    padding:30px 0 40px 0;
+    text-align:center;
+    font-size:0.82rem;
+    color:var(--ink-soft);
+  }
+
+  /* related content box */
+  .related-box{
+    margin-top:26px;
+    background:var(--panel);
+    border:1px solid var(--line);
+    border-left:3px solid var(--teal);
+    padding:24px 26px;
+  }
+  .related-box-label{
+    font-size:0.78rem;
+    color:var(--teal);
+    font-weight:600;
+    margin-bottom:10px;
+  }
+  .related-box p{ font-size:0.95rem; margin-bottom:12px; }
+  .related-box-link{
+    display:inline-block;
+    font-size:0.92rem;
+    font-weight:600;
+    color:var(--rust);
+    text-decoration:none;
+  }
+  .related-box-link:hover{ text-decoration:underline; }
+
+  /* institutional header */
+  header.institutional-header{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    background:#FFFFFF;
+    padding:14px 26px;
+    border-bottom:1px solid var(--line-soft);
+  }
+  header.institutional-header .header-identity{
+    font-family:'Source Serif 4', serif;
+    font-style:italic;
+    font-size:0.95rem;
+    color:var(--ink-soft);
+  }
+  header.institutional-header .header-identity strong{ color:var(--rust); font-style:normal; }
+  header.institutional-header img.institutional-logo{
+    max-height:52px;
+    width:auto;
+    display:block;
+  }
+
+  /* institutional footer */
+  footer.institutional-footer{
+    padding:24px 26px;
+    text-align:center;
+    background:#FBFAF6;
+    border-top:1px solid var(--line-soft);
+  }
+  footer.institutional-footer p{
+    font-size:0.8rem;
+    color:var(--ink-soft);
+    max-width:none;
+    margin:0;
+  }
+</style>
+</head>
+<body>
+
+<header class="institutional-header">
+  <div class="header-identity">Desdobramento jornalístico &amp; clínico — <strong>saúde global</strong></div>
+  <img class="institutional-logo" src="data:image/png;base64,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" alt="Logos Amor-à-Pele e PET-Saúde Digital G10 Feridas Crônicas – UFPel">
+</header>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="wrap narrow">
+    <p class="eyebrow-q">Por que pacientes com câncer estão embarcando para a China para se tratar?</p>
+    <h1>A rota de Xangai</h1>
+    <p class="sub">Um número crescente de pacientes da Austrália, Nova Zelândia, Europa e Estados Unidos está trocando os melhores centros de oncologia do Ocidente por hospitais em Xangai e Pequim. Este infográfico desdobra essa pergunta — camada por camada — até a raiz.</p>
+
+    <div class="answer-strip">
+      <div><span class="num">½ a ⅓</span><span class="lbl">do custo de terapias como a CAR-T, comparando China com EUA/Europa</span></div>
+      <div><span class="num">30 dias</span><span class="lbl">é hoje o prazo de revisão de ensaios clínicos na China — quase igual ao da FDA</span></div>
+      <div><span class="num">206</span><span class="lbl">ensaios de terapia celular contra câncer conduzidos na China entre 2014 e 2024</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- O CASO REAL -->
+<section>
+  <div class="wrap">
+    <div class="split">
+      <div>
+        <div class="section-head">
+          <h2>O caso que chegou aos microfones da BBC</h2>
+          <p class="dek">Não é um boato de fórum de internet. É uma reportagem verificável, com pacientes reais e hospitais identificados.</p>
+        </div>
+        <p>Em 2026, o podcast <em>Asia Specific</em>, do BBC World Service, dedicou um episódio a uma pergunta direta: por que pacientes com câncer estão voando para a China para se tratar? A resposta, segundo a reportagem, tem nome técnico: terapia com células CAR-T — um tratamento que reprograma geneticamente as próprias células de defesa do paciente para que passem a reconhecer e atacar o câncer.</p>
+        <p>Casos como o de uma mulher australiana com mieloma múltiplo, que temia falência financeira antes de encontrar tratamento em Xangai, e de pacientes neozelandeses tratados no Hospital Internacional Jiahui — incluindo um homem de 78 anos com mieloma recorrente e insuficiência renal crônica — ilustram um padrão que se repete: doença avançada, tratamento esgotado em casa, e uma alternativa do outro lado do mundo que custa uma fração do preço.</p>
+        <blockquote>“Se eu não tivesse tido complicações, provavelmente teria falido a nossa família.”<cite>Paciente entrevistada pelo podcast Asia Specific, BBC World Service — sobre o custo do tratamento em seu país de origem antes de buscar a terapia CAR-T em Xangai</cite></blockquote>
+        <p>Sete meses depois do tratamento, ela estava em remissão completa. Essa não é uma história isolada: é uma entre um número crescente de casos de australianos, neozelandeses, europeus e americanos que vêm buscando na China tratamentos indisponíveis, financeiramente inacessíveis, ou simplesmente mais rápidos de obter em seus países de origem.</p>
+      </div>
+      <div>
+        <figure class="img-placeholder" data-img-path="img/jornada-transcontinental.png">
+          <img class="real-img" src="img/jornada-transcontinental.png" alt="Ilustração: jornada transcontinental de um paciente" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+          <div class="placeholder-box">
+            <span class="placeholder-icon">🖼</span>
+            <p class="placeholder-label">[ Coloque aqui: img/jornada-transcontinental.png ]</p>
+            <p class="placeholder-hint">Ilustração editorial conceitual: uma silhueta humana anônima carregando uma pasta médica, caminhando sobre um arco luminoso dourado que conecta um horizonte hospitalar ocidental estilizado a um horizonte de Xangai simplificado. Ver prompt completo nº 1.</p>
+          </div>
+          <figcaption>Figura 1 — A viagem como parte do tratamento: para muitos pacientes, o avião é hoje uma etapa tão planejada quanto a própria terapia.</figcaption>
+        </figure>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 5 WHYS -->
+<section class="alt">
+  <div class="wrap">
+    <div class="section-head">
+      <h2>Desdobrando a pergunta: cinco porquês</h2>
+      <p class="dek">Uma ferramenta emprestada da área de qualidade — perguntar "por quê" sucessivamente até alcançar a causa raiz, não apenas o sintoma mais visível.</p>
+    </div>
+
+    <div class="split" style="margin-bottom:36px;">
+      <div>
+        <figure class="img-placeholder" data-img-path="img/raizes-do-problema.png" style="margin:0;">
+          <img class="real-img" src="img/raizes-do-problema.png" alt="Ilustração: raízes das causas ocultas" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+          <div class="placeholder-box" style="min-height:280px;">
+            <span class="placeholder-icon">🖼</span>
+            <p class="placeholder-label">[ Coloque aqui: img/raizes-do-problema.png ]</p>
+            <p class="placeholder-hint">Ilustração em corte tipo "iceberg/raízes": acima da linha, um ícone simples do sintoma visível; abaixo, camadas de raízes cada vez mais profundas e ramificadas representando as causas ocultas. Ver prompt completo nº 2.</p>
+          </div>
+          <figcaption>Figura 2 — O que se vê é a viagem. O que sustenta a viagem está mais fundo.</figcaption>
+        </figure>
+      </div>
+      <div class="whys">
+      <div class="why-step">
+        <span class="why-n">1</span>
+        <div>
+          <h3>Por que pacientes viajam à China para tratar câncer?</h3>
+          <p>Porque terapias avançadas contra o câncer — sobretudo a CAR-T, e mais recentemente terapias para tumores sólidos — custam uma fração do preço praticado nos Estados Unidos e na Europa.</p>
+          <p class="src">Fonte: Wall Street Journal (citado por reportagens especializadas); Asia Business Daily, jul. 2026.</p>
+        </div>
+      </div>
+      <div class="why-step">
+        <span class="why-n">2</span>
+        <div>
+          <h3>Por que o tratamento é tão mais barato na China?</h3>
+          <p>Porque o país combina escala industrial de manufatura celular, um volume muito alto de ensaios clínicos (206 estudos de terapia celular contra câncer só entre 2014 e 2024) e preços definidos fora da lógica de seguradoras e intermediários que infla custos nos EUA.</p>
+          <p class="src">Fonte: estudo publicado em periódico revisado por pares sobre progresso de ensaios de terapia celular na China (2014–2024).</p>
+        </div>
+      </div>
+      <div class="why-step">
+        <span class="why-n">3</span>
+        <div>
+          <h3>Por que a China conseguiu montar essa escala tão rápido?</h3>
+          <p>Porque, a partir de 2015, o regulador chinês (NMPA) passou por uma reforma profunda: entrou para o conselho internacional de harmonização regulatória (ICH) em 2017, fixou prazo de 60 dias para revisão de ensaios em 2018 e, em 2020, adotou aprovação implícita em 30 dias — hoje próxima do padrão da FDA americana.</p>
+          <p class="src">Fonte: FierceBiotech, jun. 2025; IntuitionLabs, análise regulatória NMPA, 2026.</p>
+        </div>
+      </div>
+      <div class="why-step">
+        <span class="why-n">4</span>
+        <div>
+          <h3>Por que o Ocidente, tendo inventado a tecnologia, não acompanhou esse ritmo?</h3>
+          <p>Porque o modelo ocidental de precificação de terapias avançadas foi construído para recuperar, em poucos anos e sobre uma base pequena de pacientes pagantes ou seguradoras, o custo bilionário de décadas de pesquisa e ensaios clínicos — um cálculo econômico diferente do de um país que subsidia escala industrial e concorre por volume, não por margem.</p>
+          <p class="src">Fonte: comentário clínico "CAR-T-cell therapy: China leading the way" (PMC); reportagem sobre custo e acesso global em oncologia.</p>
+        </div>
+      </div>
+      <div class="why-step">
+        <span class="why-n">5</span>
+        <div>
+          <h3>Causa raiz: dois modelos de inovação competindo pelo mesmo paciente</h3>
+          <p>No fundo, não é uma disputa entre "ciência americana" e "ciência chinesa" — a tecnologia-base é a mesma. É uma disputa entre dois modelos de economia da inovação: um que prioriza retorno financeiro sobre propriedade intelectual, outro que prioriza escala, velocidade regulatória e volume de mercado interno. O paciente com câncer avançado, sem tempo para esperar essa disputa se resolver, vota com a passagem aérea.</p>
+        </div>
+      </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- COST CHART -->
+<section>
+  <div class="wrap">
+    <div class="split">
+      <div>
+        <div class="section-head">
+          <h2>A diferença que cabe numa passagem de avião</h2>
+          <p class="dek">O mesmo tratamento, em dois sistemas de saúde diferentes.</p>
+        </div>
+        <p>Segundo o Wall Street Journal, a terapia CAR-T pode custar entre US$ 550 mil e US$ 850 mil nos Estados Unidos. Na China, tratamentos comparáveis já foram relatados por valores próximos de US$ 60 mil — e mesmo a terapia CAR-T mais recente, aprovada para tumores sólidos, foi precificada pela desenvolvedora CARsgen em cerca de US$ 146,5 mil por infusão.</p>
+        <p>Para uma família que já esgotou economias com diagnóstico, cirurgia e quimioterapia, essa diferença não é um detalhe: é frequentemente o que separa endividamento severo de um tratamento factível. É esse o fenômeno que pesquisadores em oncologia chamam de <strong>toxicidade financeira</strong> — o dano econômico que o próprio tratamento causa, independentemente do resultado clínico.</p>
+      </div>
+      <div class="diagram-frame">
+        <svg class="diagram" viewBox="0 0 480 320" xmlns="http://www.w3.org/2000/svg">
+          <text x="0" y="24" font-family="Source Serif 4, serif" font-size="17" fill="var(--ink)">Custo da terapia CAR-T (faixa reportada)</text>
+
+          <!-- axis -->
+          <line x1="140" y1="50" x2="140" y2="270" stroke="var(--line)" stroke-width="1"/>
+          <text x="60" y="60" font-family="Libre Franklin, sans-serif" font-size="11" fill="var(--ink-soft)">US$ 850k</text>
+          <text x="60" y="160" font-family="Libre Franklin, sans-serif" font-size="11" fill="var(--ink-soft)">US$ 400k</text>
+          <text x="70" y="265" font-family="Libre Franklin, sans-serif" font-size="11" fill="var(--ink-soft)">US$ 0</text>
+
+          <!-- gridlines -->
+          <line x1="140" y1="60" x2="450" y2="60" stroke="var(--line-soft)" stroke-width="1"/>
+          <line x1="140" y1="160" x2="450" y2="160" stroke="var(--line-soft)" stroke-width="1"/>
+          <line x1="140" y1="265" x2="450" y2="265" stroke="var(--line)" stroke-width="1"/>
+
+          <!-- US bar: 550k-850k mapped, scale 850k=60px 0=265px -> px per 1k = (265-60)/850=0.241 -->
+          <rect x="190" y="60" width="60" height="88" fill="var(--rust)" opacity="0.85"/>
+          <text x="196" y="52" font-family="Libre Franklin, sans-serif" font-size="12" fill="var(--rust)" font-weight="600">EUA / Europa</text>
+          <text x="196" y="165" font-family="Libre Franklin, sans-serif" font-size="11" fill="var(--ink-soft)">US$ 550–850 mil</text>
+
+          <!-- China bar: 60k-150k -->
+          <rect x="320" y="223" width="60" height="25" fill="var(--teal)" opacity="0.9"/>
+          <text x="322" y="215" font-family="Libre Franklin, sans-serif" font-size="12" fill="var(--teal)" font-weight="600">China</text>
+          <text x="322" y="260" font-family="Libre Franklin, sans-serif" font-size="11" fill="var(--ink-soft)">US$ 60–150 mil</text>
+        </svg>
+        <p style="font-size:0.82rem;color:var(--ink-soft);margin-top:10px;">Faixas de custo aproximadas para terapia CAR-T, conforme reportadas pelo Wall Street Journal e pela Caixin Global (preço da CARsgen para satri-cel, aprovado pela NMPA em 2026). Valores variam por tipo de câncer, hospital e protocolo.</p>
+      </div>
+    </div>
+    <figure class="img-placeholder" data-img-path="img/balanca-de-custos.png" style="margin-top:32px;max-width:520px;">
+      <img class="real-img" src="img/balanca-de-custos.png" alt="Ilustração: balança de custos entre EUA e China" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+      <div class="placeholder-box">
+        <span class="placeholder-icon">🖼</span>
+        <p class="placeholder-label">[ Coloque aqui: img/balanca-de-custos.png ]</p>
+        <p class="placeholder-hint">Ilustração editorial de uma balança de dois pratos fortemente desequilibrada, representando a disparidade de custo entre os dois sistemas de saúde. Ver prompt completo nº 3.</p>
+      </div>
+      <figcaption>Figura 3 — O mesmo tratamento, pesado em duas balanças diferentes.</figcaption>
+    </figure>
+  </div>
+</section>
+
+<!-- CONDICIONANTES -->
+<section class="alt">
+  <div class="wrap">
+    <div class="section-head">
+      <h2>Os condicionantes: o que realmente pesa nessa decisão</h2>
+      <p class="dek">Nenhuma família decide voar 12 mil quilômetros com um paciente oncológico por um único motivo. São camadas que se somam.</p>
+    </div>
+
+    <figure class="img-placeholder" data-img-path="img/rede-de-condicionantes.png" style="max-width:460px;margin:0 auto 36px auto;">
+      <img class="real-img" src="img/rede-de-condicionantes.png" alt="Ilustração: rede de condicionantes da decisão" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+      <div class="placeholder-box" style="min-height:300px;">
+        <span class="placeholder-icon">🖼</span>
+        <p class="placeholder-label">[ Coloque aqui: img/rede-de-condicionantes.png ]</p>
+        <p class="placeholder-hint">Ilustração tipo mapa de decisão: figura humana central com seis linhas irradiando para seis pequenos ícones simbólicos (um para cada condicionante abaixo). Ver prompt completo nº 4.</p>
+      </div>
+      <figcaption>Figura 4 — Seis fios puxando na mesma direção.</figcaption>
+    </figure>
+
+    <div class="factors">
+      <div class="factor">
+        <svg class="ficon" viewBox="0 0 40 40"><circle cx="20" cy="20" r="17" fill="none" stroke="var(--gold)" stroke-width="2"/><text x="20" y="26" font-size="16" text-anchor="middle" fill="var(--gold)" font-family="Source Serif 4, serif">$</text></svg>
+        <h4>Custo — a metade ou menos do preço</h4>
+        <p>Terapias que custam centenas de milhares de dólares no Ocidente podem custar uma fração disso na China, sem necessariamente abrir mão da mesma tecnologia.</p>
+        <p class="src">WSJ; Asia Business Daily, jul. 2026</p>
+      </div>
+      <div class="factor">
+        <svg class="ficon" viewBox="0 0 40 40"><rect x="8" y="8" width="24" height="24" rx="4" fill="none" stroke="var(--gold)" stroke-width="2"/><line x1="14" y1="20" x2="26" y2="20" stroke="var(--gold)" stroke-width="2"/></svg>
+        <h4>Terapias indisponíveis em casa</h4>
+        <p>Alguns tratamentos — como o CAR-T para tumores sólidos aprovado pela NMPA em 2026 — simplesmente ainda não existem comercialmente em vários países de origem dos pacientes.</p>
+        <p class="src">Caixin Global, jun. 2026; CGTN, nov. 2025</p>
+      </div>
+      <div class="factor">
+        <svg class="ficon" viewBox="0 0 40 40"><circle cx="20" cy="20" r="16" fill="none" stroke="var(--gold)" stroke-width="2"/><line x1="20" y1="20" x2="20" y2="10" stroke="var(--gold)" stroke-width="2"/><line x1="20" y1="20" x2="27" y2="24" stroke="var(--gold)" stroke-width="2"/></svg>
+        <h4>Tempo de espera</h4>
+        <p>Filas para ensaios clínicos ou vagas em centros especializados no Ocidente podem levar meses — tempo que pacientes com câncer avançado frequentemente não têm.</p>
+        <p class="src">Dovepress, comentário sobre riscos do turismo médico chinês</p>
+      </div>
+      <div class="factor">
+        <svg class="ficon" viewBox="0 0 40 40"><path d="M8 26 L16 16 L24 22 L32 10" fill="none" stroke="var(--gold)" stroke-width="2"/><circle cx="32" cy="10" r="2.5" fill="var(--gold)"/></svg>
+        <h4>Resultados clínicos comparáveis</h4>
+        <p>Dados apresentados em encontros como o ASH e publicados em periódicos como <em>Journal of Clinical Oncology</em> e <em>Nature Medicine</em> mostram desfechos de centros chineses de alto volume equivalentes — em alguns casos superiores — aos de centros ocidentais.</p>
+        <p class="src">Europeans24, jul. 2026, citando dados do ASH Annual Meeting 2025</p>
+      </div>
+      <div class="factor">
+        <svg class="ficon" viewBox="0 0 40 40"><rect x="10" y="12" width="20" height="16" rx="2" fill="none" stroke="var(--gold)" stroke-width="2"/><line x1="10" y1="18" x2="30" y2="18" stroke="var(--gold)" stroke-width="2"/></svg>
+        <h4>Ecossistema regulatório mais ágil</h4>
+        <p>A reforma da NMPA entre 2015 e 2020 encurtou drasticamente o tempo entre desenvolver uma terapia e colocá-la à disposição de pacientes, aproximando-se do ritmo da FDA.</p>
+        <p class="src">FierceBiotech, jun. 2025; IntuitionLabs, 2026</p>
+      </div>
+      <div class="factor">
+        <svg class="ficon" viewBox="0 0 40 40"><rect x="9" y="18" width="8" height="12" fill="none" stroke="var(--gold)" stroke-width="2"/><rect x="19" y="12" width="8" height="18" fill="none" stroke="var(--gold)" stroke-width="2"/><rect x="29" y="8" width="8" height="22" fill="none" stroke="var(--gold)" stroke-width="2"/></svg>
+        <h4>Escala industrial e investimento estatal</h4>
+        <p>Shanghai concentra sozinha 31,6% dos ensaios de terapia celular do país; Pequim, 20,4%. Essa concentração gera experiência prática — hospitais que tratam centenas de casos por ano desenvolvem repertório para manejar complicações que centros menores não acumulam.</p>
+        <p class="src">Estudo sobre ensaios de terapia celular na China, 2014–2024 (periódico revisado por pares)</p>
+      </div>
+    </div>
+
+    <div class="related-box">
+      <div class="related-box-label">Um sinal mais amplo</div>
+      <p>A concentração de ensaios clínicos em Shanghai e Pequim não é um fenômeno isolado do câncer — ela acompanha uma curva mais geral de produção científica na Ásia. O infográfico <strong>"Publicações Científicas Globais — NSB 2025"</strong>, produzido pelo projeto G10 Feridas Crônicas, reúne dados que mostram esse crescimento de publicações científicas asiáticas ano a ano, contextualizando a base de pesquisa que também sustenta o avanço chinês em terapias como a CAR-T.</p>
+      <a class="related-box-link" href="https://petg10ufpel.github.io/petg10/html/info/paper/pd2026/" target="_blank" rel="noopener">Ver infográfico completo (G10 Feridas Crônicas) →</a>
+    </div>
+  </div>
+</section>
+
+<!-- ROTA / TIMELINE -->
+<section>
+  <div class="wrap">
+    <div class="section-head">
+      <h2>A reforma regulatória que abriu a rota</h2>
+      <p class="dek">A vantagem chinesa não nasceu da noite para o dia — é resultado de uma década de mudanças deliberadas.</p>
+    </div>
+    <div class="diagram-frame">
+      <svg class="diagram" viewBox="0 0 900 180" xmlns="http://www.w3.org/2000/svg">
+        <line x1="40" y1="90" x2="860" y2="90" stroke="var(--line)" stroke-width="2"/>
+
+        <circle cx="90" cy="90" r="6" fill="var(--teal)"/>
+        <text x="90" y="70" font-size="12" text-anchor="middle" fill="var(--ink)" font-weight="600">2015</text>
+        <text x="90" y="115" font-size="10.5" text-anchor="middle" fill="var(--ink-soft)">China passa a</text>
+        <text x="90" y="128" font-size="10.5" text-anchor="middle" fill="var(--ink-soft)">permitir ensaios</text>
+        <text x="90" y="141" font-size="10.5" text-anchor="middle" fill="var(--ink-soft)">multirregionais</text>
+
+        <circle cx="270" cy="90" r="6" fill="var(--teal)"/>
+        <text x="270" y="70" font-size="12" text-anchor="middle" fill="var(--ink)" font-weight="600">2017</text>
+        <text x="270" y="115" font-size="10.5" text-anchor="middle" fill="var(--ink-soft)">Entrada no</text>
+        <text x="270" y="128" font-size="10.5" text-anchor="middle" fill="var(--ink-soft)">conselho ICH de</text>
+        <text x="270" y="141" font-size="10.5" text-anchor="middle" fill="var(--ink-soft)">harmonização</text>
+
+        <circle cx="450" cy="90" r="6" fill="var(--teal)"/>
+        <text x="450" y="70" font-size="12" text-anchor="middle" fill="var(--ink)" font-weight="600">2018</text>
+        <text x="450" y="115" font-size="10.5" text-anchor="middle" fill="var(--ink-soft)">Prazo de revisão</text>
+        <text x="450" y="128" font-size="10.5" text-anchor="middle" fill="var(--ink-soft)">de ensaios cai</text>
+        <text x="450" y="141" font-size="10.5" text-anchor="middle" fill="var(--ink-soft)">para 60 dias</text>
+
+        <circle cx="630" cy="90" r="6" fill="var(--teal)"/>
+        <text x="630" y="70" font-size="12" text-anchor="middle" fill="var(--ink)" font-weight="600">2020</text>
+        <text x="630" y="115" font-size="10.5" text-anchor="middle" fill="var(--ink-soft)">Aprovação</text>
+        <text x="630" y="128" font-size="10.5" text-anchor="middle" fill="var(--ink-soft)">implícita em 30</text>
+        <text x="630" y="141" font-size="10.5" text-anchor="middle" fill="var(--ink-soft)">dias — nível FDA</text>
+
+        <circle cx="810" cy="90" r="7" fill="var(--rust)"/>
+        <text x="810" y="70" font-size="12" text-anchor="middle" fill="var(--rust)" font-weight="700">2026</text>
+        <text x="810" y="115" font-size="10.5" text-anchor="middle" fill="var(--ink-soft)">1ª CAR-T do</text>
+        <text x="810" y="128" font-size="10.5" text-anchor="middle" fill="var(--ink-soft)">mundo p/ tumor</text>
+        <text x="810" y="141" font-size="10.5" text-anchor="middle" fill="var(--ink-soft)">sólido, via NMPA</text>
+      </svg>
+    </div>
+    <p style="font-size:0.86rem;color:var(--ink-soft);margin-top:14px;">Fontes: FierceBiotech (jun. 2025); IntuitionLabs, guia regulatório NMPA (2026); Caixin Global (jun. 2026). Para comparação: a versão original da terapia axicabtagene ciloleucel, desenvolvida nos EUA, levou 3,5 anos a mais para ser aprovada na China do que na FDA — a diferença de ritmo se inverteu apenas na década seguinte.</p>
+
+    <figure class="img-placeholder" data-img-path="img/duas-pistas-regulatorias.png" style="margin-top:32px;">
+      <img class="real-img" src="img/duas-pistas-regulatorias.png" alt="Ilustração: duas pistas regulatórias" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+      <div class="placeholder-box">
+        <span class="placeholder-icon">🖼</span>
+        <p class="placeholder-label">[ Coloque aqui: img/duas-pistas-regulatorias.png ]</p>
+        <p class="placeholder-hint">Ilustração de duas pistas vistas de cima: uma sinuosa e cheia de obstáculos (burocracia), outra reta e livre (aprovação rápida). Ver prompt completo nº 5.</p>
+      </div>
+      <figcaption>Figura 5 — Duas estradas regulatórias, o mesmo destino científico.</figcaption>
+    </figure>
+  </div>
+</section>
+
+<!-- REFLEXÃO -->
+<section class="alt">
+  <div class="wrap narrow">
+    <div class="section-head">
+      <h2>Perguntas que ficam depois da leitura</h2>
+      <p class="dek">Os dados respondem "o quê" e "quanto". Estas perguntas são para pensar no "e daí".</p>
+    </div>
+    <div class="prompts">
+      <div class="prompt">
+        <h3>Se a CAR-T foi inventada nos Estados Unidos, o que precisou ser verdade para que hoje ela seja mais barata — e em alguns casos mais avançada — na China?</h3>
+        <p>Vale separar duas coisas que costumam ser confundidas: quem inventou uma tecnologia e quem consegue escalá-la, baratear e distribuí-la mais rápido.</p>
+      </div>
+      <div class="prompt">
+        <h3>Um sistema de saúde desenhado para recuperar, em poucos anos, o investimento bilionário de uma pesquisa persegue os mesmos objetivos que um paciente com poucos meses de vida?</h3>
+        <p>Os incentivos de quem financia a inovação nem sempre coincidem com os incentivos de quem precisa dela amanhã.</p>
+      </div>
+      <div class="prompt">
+        <h3>Se metade do preço estivesse a 12 mil quilômetros de distância, que peso teriam custo, tempo de espera e incerteza regulatória na sua própria decisão?</h3>
+        <p>É fácil julgar essa escolha à distância. É mais difícil simular o cálculo real de quem está diante dela.</p>
+      </div>
+      <div class="prompt">
+        <h3>A vantagem chinesa é uma vantagem de ciência, ou uma vantagem de política industrial e escala? Essa diferença muda alguma coisa?</h3>
+        <p>Reconhecer uma vantagem de execução não é o mesmo que reconhecer uma vantagem de descoberta científica — mas para o paciente, o efeito prático pode ser idêntico.</p>
+      </div>
+      <div class="prompt">
+        <h3>O que aconteceria com essa "rota de Xangai" se a China alinhasse seus preços aos padrões ocidentais, ou se o Ocidente reduzisse os seus?</h3>
+        <p>Essa é, no fundo, uma pergunta sobre quanto desse fluxo de pacientes é estrutural — e quanto é uma janela temporária de preço.</p>
+      </div>
+      <div class="prompt">
+        <h3>Por que parece mais fácil copiar velocidade regulatória do que copiar a descoberta científica original?</h3>
+        <p>Regras e prazos são decisões políticas, revisáveis a qualquer momento. Descobertas científicas não se replicam por decreto.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- RISCOS -->
+<section>
+  <div class="wrap">
+    <div class="section-head">
+      <h2>O que a manchete não mostra</h2>
+      <p class="dek">Nenhuma decisão dessa magnitude é isenta de risco — e as próprias reportagens sobre o tema não escondem isso.</p>
+    </div>
+
+    <figure class="img-placeholder" data-img-path="img/equilibrio-esperanca-risco.png" style="max-width:420px;margin:0 0 36px 0;">
+      <img class="real-img" src="img/equilibrio-esperanca-risco.png" alt="Ilustração: equilíbrio entre esperança e risco" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+      <div class="placeholder-box" style="min-height:300px;">
+        <span class="placeholder-icon">🖼</span>
+        <p class="placeholder-label">[ Coloque aqui: img/equilibrio-esperanca-risco.png ]</p>
+        <p class="placeholder-hint">Figura humana estilizada em equilíbrio sobre uma linha fina, entre um símbolo de destino/esperança de um lado e um símbolo genérico de alerta do outro. Ver prompt completo nº 6.</p>
+      </div>
+      <figcaption>Figura 6 — Entre a esperança do tratamento e a cautela que ele exige.</figcaption>
+    </figure>
+
+    <div class="risks">
+      <div class="risk">
+        <h4>Variação de qualidade entre hospitais</h4>
+        <p>Nem todos os hospitais chineses seguem o mesmo padrão internacional; a acreditação (como a JCI) existe, mas não é universal, e clínicas menores já promoveram terapias experimentais sem validação suficiente.</p>
+        <p class="src">MedBridge NZ, guia de segurança do paciente</p>
+      </div>
+      <div class="risk">
+        <h4>Um "mercado cinza" que o próprio regulador reconhece</h4>
+        <p>Analistas do setor descrevem anos de preocupação com terapias celulares não aprovadas e insuficientemente reguladas — o que motivou as próprias reformas recentes da NMPA.</p>
+        <p class="src">MedPath, citando Zhao Bing, China Renaissance Securities</p>
+      </div>
+      <div class="risk">
+        <h4>Coordenação de cuidados após o retorno ao país de origem</h4>
+        <p>Um paciente tratado em Xangai geralmente retorna semanas ou meses depois. Se surgem complicações, a comunicação entre o médico chinês e o médico do país de origem se torna essencial — e nem sempre é simples.</p>
+        <p class="src">Blog especializado em biotecnologia e acesso a tratamento oncológico global</p>
+      </div>
+      <div class="risk">
+        <h4>Um risco clínico real, não exclusivo da China</h4>
+        <p>Em novembro de 2023, a FDA americana emitiu alerta sobre risco de câncer secundário associado à própria terapia CAR-T. A NMPA respondeu com exigências de monitoramento vitalício — um risco inerente à tecnologia, não ao país onde ela é aplicada.</p>
+        <p class="src">Artigo sobre regulação de CAR-T e riscos de câncer secundário (periódico científico, 2026)</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- QUIZ -->
+<section class="alt" id="quiz">
+  <div class="wrap narrow">
+    <div class="section-head">
+      <h2>Teste o que você reteve</h2>
+      <p class="dek">Seis perguntas para verificar se as ideias centrais deste infográfico ficaram claras.</p>
+    </div>
+    <div id="quiz-container"></div>
+    <button id="quiz-submit">Verificar respostas</button>
+    <div id="quiz-result"></div>
+  </div>
+</section>
+
+<!-- REFERÊNCIAS -->
+<section>
+  <div class="wrap narrow refs">
+    <div class="section-head">
+      <h2>Referências</h2>
+      <p class="dek">Fontes jornalísticas, clínicas e regulatórias consultadas na elaboração deste material.</p>
+    </div>
+    <ol>
+      <li><strong>BBC World Service</strong> — "Why cancer patients are flying to China for treatment", podcast/vídeo <em>Asia Specific</em>, 2026.</li>
+      <li><strong>The Wall Street Journal</strong> — "Patients Are Flying to China for the Latest Cancer Treatment", reportagem de Jonathan Cheng, 2026.</li>
+      <li><strong>CGTN</strong> — "Why a 78-year-old patient traveled to China for CAR-T therapy", nov. 2025.</li>
+      <li><strong>Caixin Global</strong> — "China Approves World's First CAR-T Therapy for Solid Tumors", jun. 2026.</li>
+      <li><strong>FierceBiotech</strong> — "China proposes shorter clinical trial reviews in efforts to accelerate drug development", jun. 2025.</li>
+      <li><strong>IntuitionLabs</strong> — "China NMPA Drug Approval Pathways: Regulatory Guide", 2026.</li>
+      <li><strong>PMC / periódico científico</strong> — "Chimeric antigen receptor-T-cell therapy: China leading the way" — comentário clínico sobre a trajetória regulatória do CAR-T na China.</li>
+      <li><strong>PMC / periódico científico</strong> — "Current Progress of Cell Therapy Clinical Trials in China in 2014–2024".</li>
+      <li><strong>PMC / periódico científico</strong> — "Redefining chimeric antigen receptor T-cell (CAR-T) regulation: China's responses to address secondary cancer risks of CAR-T therapy".</li>
+      <li><strong>MedPath</strong> — "China Emerges as a Global Hub for Affordable CAR-T Therapy, Drawing Foreign Patients with Advanced Cancer Care", jun. 2026.</li>
+      <li><strong>MedBridge NZ</strong> — "China Medical Tourism: Pros, Cons & Patient Safety Guide", fev. 2026.</li>
+      <li><strong>Dovepress</strong> — "Assessing the Risks of China's Medical Tourism" (comentário).</li>
+      <li><strong>The Asia Business Daily</strong> (Asia Economy, Coreia do Sul) — "Patients Pack Their Bags as Healthcare Costs Soar... Americans Emerge as Major Players in China's Medical Tourism", jul. 2026.</li>
+    </ol>
+  </div>
+</section>
+
+<footer class="institutional-footer sign">
+  <p>Infográfico elaborado pelos projetos Amor à Pele e PET-Saúde Digital G10 Feridas Crônicas, UFPel, em Setembro de 2026, a partir de reportagem jornalística e literatura clínica publicamente disponível. Este material tem finalidade informativa e não substitui orientação médica individualizada.</p>
+</footer>
+
+<script>
+const QUIZ = [
+  {
+    q: "Qual terapia contra câncer está no centro da migração de pacientes para a China descrita pela BBC?",
+    opts: ["Quimioterapia convencional", "Terapia CAR-T", "Radioterapia de precisão", "Transplante de medula alogênico"],
+    correct: 1,
+    exp: "A reportagem da BBC (podcast Asia Specific) e a cobertura da CGTN e do WSJ tratam da terapia CAR-T, que reprograma células T do próprio paciente para atacar o câncer."
+  },
+  {
+    q: "Qual é, aproximadamente, a diferença de custo da terapia CAR-T entre EUA/Europa e China?",
+    opts: ["A China cobra o dobro", "Os preços são praticamente iguais", "Na China, o tratamento pode custar menos da metade", "Não há diferença relevante de preço"],
+    correct: 2,
+    exp: "Segundo o Wall Street Journal, a terapia custa entre US$ 550 mil e US$ 850 mil nos EUA, contra uma fração disso na China — em alguns casos próxima de US$ 60 mil."
+  },
+  {
+    q: "O que a NMPA (agência regulatória chinesa) fez entre 2018 e 2020 que ajudou a acelerar o desenvolvimento de terapias?",
+    opts: ["Proibiu ensaios clínicos estrangeiros", "Criou um prazo de aprovação de ensaios que hoje se aproxima do padrão da FDA", "Eliminou toda regulação sobre terapias celulares", "Passou a exigir cinco anos de testes pré-clínicos"],
+    correct: 1,
+    exp: "A NMPA reduziu o prazo de revisão de ensaios clínicos para 60 dias em 2018 e depois adotou aprovação implícita em 30 dias em 2020 — hoje próxima do padrão da FDA."
+  },
+  {
+    q: "Por que a tecnologia CAR-T, inventada nos EUA, hoje é mais acessível na China?",
+    opts: ["Porque os EUA pararam de pesquisar o tema", "Porque a China combina escala de manufatura, alto volume de ensaios clínicos e investimento estatal direcionado", "Porque a tecnologia foi vendida para a China", "Porque não há mais pesquisa americana sobre células T"],
+    correct: 1,
+    exp: "A vantagem chinesa vem de escala industrial, investimento estatal em biotecnologia e um volume de ensaios clínicos elevado — não da ausência de pesquisa americana."
+  },
+  {
+    q: "Qual é um risco real, e não hipotético, apontado pelas próprias reportagens sobre esse tipo de turismo médico?",
+    opts: ["Nenhum: o tratamento é sempre seguro", "Variação de qualidade entre hospitais e dificuldade de acompanhamento pós-tratamento no país de origem", "A proibição total de pacientes estrangeiros na China", "O tratamento nunca funciona fora dos EUA"],
+    correct: 1,
+    exp: "Guias de segurança do paciente e comentários especializados apontam riscos reais: nem todos os hospitais têm o mesmo padrão, e a coordenação de cuidados após o retorno ao país de origem pode ser complexa."
+  },
+  {
+    q: "O termo \"toxicidade financeira\", citado nas reportagens, se refere a quê?",
+    opts: ["Efeitos colaterais tóxicos da quimioterapia", "O impacto do custo do tratamento sobre a estabilidade financeira do paciente e da família", "Contaminação química em hospitais chineses", "Um efeito adverso raro da terapia CAR-T"],
+    correct: 1,
+    exp: "\"Toxicidade financeira\" descreve como o custo de tratamentos avançados pode, por si só, levar famílias à ruína — mesmo quando o tratamento funciona clinicamente."
+  }
+];
+
+const container = document.getElementById('quiz-container');
+QUIZ.forEach((item, i) => {
+  const card = document.createElement('div');
+  card.className = 'quiz-card';
+  card.id = 'q' + i;
+  let optsHtml = '';
+  item.opts.forEach((opt, j) => {
+    optsHtml += `<label><input type="radio" name="q${i}" value="${j}"> <span>${opt}</span></label>`;
+  });
+  card.innerHTML = `<h4>${i+1}. ${item.q}</h4><div class="quiz-opts">${optsHtml}</div><div class="quiz-feedback" id="fb${i}"></div>`;
+  container.appendChild(card);
+});
+
+document.getElementById('quiz-submit').addEventListener('click', () => {
+  let score = 0;
+  QUIZ.forEach((item, i) => {
+    const selected = document.querySelector(`input[name="q${i}"]:checked`);
+    const card = document.getElementById('q' + i);
+    const fb = document.getElementById('fb' + i);
+    if (!selected) {
+      fb.className = 'quiz-feedback bad';
+      fb.style.display = 'block';
+      fb.textContent = 'Nenhuma resposta selecionada. ' + item.exp;
+      card.classList.remove('correct'); card.classList.add('incorrect');
+      return;
+    }
+    const val = parseInt(selected.value);
+    if (val === item.correct) {
+      score++;
+      card.classList.remove('incorrect'); card.classList.add('correct');
+      fb.className = 'quiz-feedback ok';
+      fb.textContent = 'Correto. ' + item.exp;
+    } else {
+      card.classList.remove('correct'); card.classList.add('incorrect');
+      fb.className = 'quiz-feedback bad';
+      fb.textContent = 'Não é essa. ' + item.exp;
+    }
+    fb.style.display = 'block';
+  });
+  const resultEl = document.getElementById('quiz-result');
+  resultEl.style.display = 'block';
+  resultEl.textContent = `Você acertou ${score} de ${QUIZ.length} perguntas.`;
+  resultEl.scrollIntoView({behavior:'smooth', block:'center'});
+});
+</script>
+
+</body>
+</html>
