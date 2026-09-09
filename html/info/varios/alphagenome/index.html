@@ -210,6 +210,53 @@
     margin-bottom:12px;
   }
 
+  /* spotlight de pesquisador(a) */
+  .spotlight{
+    display:flex;
+    align-items:flex-start;
+    gap:16px;
+    background:var(--soft-blue);
+    border-radius:12px;
+    padding:16px 18px;
+    margin:12px 0 18px;
+  }
+  .spotlight-photo{
+    position:relative;
+    width:64px;
+    height:64px;
+    border-radius:50%;
+    overflow:hidden;
+    flex-shrink:0;
+    background:var(--blue);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+  }
+  .spotlight-photo img{
+    width:100%;height:100%;object-fit:cover;
+    position:absolute;top:0;left:0;
+  }
+  .spotlight-initials{
+    color:#fff;
+    font-family:'Source Serif 4',serif;
+    font-weight:700;
+    font-size:1.3rem;
+    z-index:0;
+  }
+  .spotlight-photo:not(.no-photo) .spotlight-initials{opacity:0;}
+  .spotlight-photo.no-photo img{display:none;}
+  .spotlight-info{display:flex;flex-direction:column;line-height:1.4;}
+  .spotlight-info strong{font-family:'Source Serif 4',serif;font-size:1.02rem;color:var(--dark);}
+  .spotlight-info span{font-size:.85rem;color:var(--muted);}
+  .spotlight-education{
+    font-size:.78rem !important;
+    color:var(--blue-dark) !important;
+    margin-top:3px;
+    line-height:1.35;
+  }
+  .spotlight-info a{font-size:.82rem;color:var(--blue);text-decoration:none;margin-top:2px;}
+  .spotlight-info a:hover{text-decoration:underline;}
+
   /* limitações */
   .limit-list{list-style:none;padding:0;margin:20px 0;}
   .limit-list li{
@@ -564,7 +611,22 @@
   <div class="case-box">
     <span class="case-tag">Exemplo real citado no artigo original</span>
     <h4>Priorizando uma variante no gene DNM1</h4>
-    <p>Uma diretora de produto do Google DeepMind demonstrou como a equipe usou o Atlas para decidir qual variante do gene <strong>DNM1</strong> — envolvido na comunicação entre neurônios — priorizar para investigação. Ao selecionar dados específicos de tecido cerebral dentro da plataforma, foi possível visualizar o que mudava na sequência ao redor da variante e como isso afetava a região.</p>
+
+    <div class="spotlight">
+      <div class="spotlight-photo">
+        <img src="img/dhavi-hariharan.jpg" alt="Dhavi Hariharan, diretora sênior de produto do Google DeepMind" onerror="this.parentElement.classList.add('no-photo')">
+        <span class="spotlight-initials">DH</span>
+      </div>
+      <div class="spotlight-info">
+        <strong>Dhavi Hariharan</strong>
+        <span>Diretora sênior de produto, Google DeepMind</span>
+        <span class="spotlight-education">🎓 Bacharelado em Engenharia (Mecatrônica, Robótica e Automação) e Bacharelado em Comércio — University of Auckland, 2010–2014</span>
+        <a href="https://www.linkedin.com/in/dhavi-hariharan-30412554/" target="_blank">🔗 Perfil no LinkedIn</a>
+      </div>
+    </div>
+
+    <p>Foi ela quem demonstrou, na prática, como a equipe usou o Atlas para decidir qual variante do gene <strong>DNM1</strong> — envolvido na comunicação entre neurônios — priorizar para investigação. Ao selecionar dados específicos de tecido cerebral dentro da plataforma, foi possível visualizar o que mudava na sequência ao redor da variante e como isso afetava a região.</p>
+    <p style="font-size:.92rem;color:var(--muted);">Em suas palavras (traduzido e adaptado do artigo original): sabendo que a variante tinha relação com o cérebro, ela filtrou o Atlas para uma pista de dados específica de tecido cerebral e as demais variáveis de interesse — o que permitiu dar um "zoom" no que estava acontecendo ao redor daquela posição do genoma e entender como a sequência ao redor se alterava.</p>
     <p>No próprio artigo científico (ainda não revisado por pares), os autores relatam que a pontuação AVI ajudou a entender melhor um caso de <strong>encefalopatia epiléptica</strong>, uma doença rara. A expectativa dos pesquisadores é que a ferramenta também ajude a refinar alvos para o desenvolvimento de medicamentos.</p>
   </div>
 
@@ -756,7 +818,7 @@
 
 <section class="socratic-section">
   <p class="eyebrow">Para refletir — perguntas socráticas</p>
-  <h2>Além do quiz: construir suas próprias conclusões</h2>
+  <h2>Além do quiz: pensar com a própria cabeça</h2>
   <p style="font-size:.92rem;color:var(--muted);">Estas perguntas não têm uma única resposta certa. O objetivo é provocar reflexão crítica sobre o uso de IA em saúde.</p>
 
   <details class="socratic-card">
