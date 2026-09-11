@@ -194,6 +194,8 @@ img {
     }
     table.tabela-organizacao{
       width:100%;
+      max-width:100%;
+      table-layout:fixed;
       border-collapse:collapse;
       font-size:.92rem;
       background:#fff;
@@ -204,7 +206,9 @@ img {
       padding:8px 10px;
       text-align:left;
       vertical-align:middle;
-      white-space:nowrap;
+      white-space:normal;
+      word-break:break-word;
+      overflow-wrap:break-word;
     }
     table.tabela-organizacao thead th{
       background: linear-gradient(90deg, var(--blue), var(--blue2));
