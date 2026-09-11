@@ -183,6 +183,47 @@ img {
   max-width: 100%;
   height: auto;
     }
+
+    /* Tabela "Organização presencial 2026-2" puxada do Google Sheets */
+    .tabela-organizacao-wrap{
+      margin-top:12px;
+      width:100%;
+      overflow-x:auto;
+      border-radius:12px;
+      border:1px solid var(--border);
+    }
+    table.tabela-organizacao{
+      width:100%;
+      border-collapse:collapse;
+      font-size:.92rem;
+      background:#fff;
+    }
+    table.tabela-organizacao th,
+    table.tabela-organizacao td{
+      border:1px solid var(--border);
+      padding:8px 10px;
+      text-align:left;
+      vertical-align:middle;
+      white-space:nowrap;
+    }
+    table.tabela-organizacao thead th{
+      background: linear-gradient(90deg, var(--blue), var(--blue2));
+      color:#fff;
+      font-weight:700;
+      position:sticky;
+      top:0;
+    }
+    table.tabela-organizacao tbody tr:nth-child(even){
+      background:rgba(59,130,196,.05);
+    }
+    table.tabela-organizacao tbody tr:hover{
+      background:rgba(212,101,59,.08);
+    }
+    .tabela-organizacao-status{
+      margin-top:10px;
+      color:var(--muted);
+      font-size:.88rem;
+    }
   </style>
 </head>
 
@@ -235,8 +276,15 @@ Se Presença <0, há débitos de presença (precisa recuperar faltas)
   <h2>Organização presencial 2026-2</h2>
   <p>Escala dos locais e turnos de atuação presencial do G10 no semestre 2026-2.</p>
   <div class="actions">
-    <a class="btn primary" href="https://docs.google.com/spreadsheets/d/1vAfYbsIp47kNf_sMLuq-x4qLB_iUrbr70CqIXfIg7F8/edit?gid=0#gid=0&range=A1:F15" target="_blank" rel="noopener">Ver tabela de organização</a>
+    <a class="btn primary" href="https://docs.google.com/spreadsheets/d/1vAfYbsIp47kNf_sMLuq-x4qLB_iUrbr70CqIXfIg7F8/edit?gid=0#gid=0&range=A1:F15" target="_blank" rel="noopener">Abrir no Google Sheets</a>
   </div>
+  <div class="tabela-organizacao-wrap">
+    <table class="tabela-organizacao" id="tabela-organizacao-presencial">
+      <thead><tr><th colspan="6">Carregando tabela…</th></tr></thead>
+      <tbody></tbody>
+    </table>
+  </div>
+  <p class="tabela-organizacao-status" id="tabela-organizacao-status"></p>
 </div>
 
 <div class="card span-2">
@@ -904,6 +952,76 @@ function alternarTabela() {
     }
   }
 })();
+</script>
+
+<script>
+  // Carrega a faixa A1:F4 da planilha "Organização presencial 2026-2" e monta
+  // uma tabela HTML de verdade (sem imagem, sem iframe), usando a API gviz do Google Sheets.
+  (function(){
+    var SHEET_ID = '1vAfYbsIp47kNf_sMLuq-x4qLB_iUrbr70CqIXfIg7F8';
+    var GID = '0';
+    var RANGE = 'A1:F4';
+    var url = 'https://docs.google.com/spreadsheets/d/' + SHEET_ID +
+               '/gviz/tq?tqx=out:json&gid=' + GID + '&range=' + RANGE;
+
+    var tabela = document.getElementById('tabela-organizacao-presencial');
+    var status = document.getElementById('tabela-organizacao-status');
+    if(!tabela) return;
+
+    fetch(url)
+      .then(function(res){
+        if(!res.ok) throw new Error('HTTP ' + res.status);
+        return res.text();
+      })
+      .then(function(texto){
+        // A resposta vem envolta em: google.visualization.Query.setResponse({...});
+        var inicio = texto.indexOf('{');
+        var fim = texto.lastIndexOf('}');
+        var json = JSON.parse(texto.substring(inicio, fim + 1));
+        var cols = json.table.cols.map(function(c){ return c.label || c.id || ''; });
+        var linhas = json.table.rows || [];
+
+        var thead = tabela.querySelector('thead');
+        var tbody = tabela.querySelector('tbody');
+        tbody.innerHTML = '';
+
+        // Cabeçalho: usa os rótulos das colunas se existirem, senão usa a 1ª linha de dados
+        var usarPrimeiraLinhaComoHeader = cols.every(function(c){ return !c; });
+        var headerLabels = cols;
+        var linhasDados = linhas;
+        if(usarPrimeiraLinhaComoHeader && linhas.length){
+          headerLabels = linhas[0].c.map(function(cel){ return cel ? (cel.f || cel.v || '') : ''; });
+          linhasDados = linhas.slice(1);
+        }
+
+        thead.innerHTML = '<tr>' + headerLabels.map(function(h){
+          return '<th>' + (h === '' ? '&nbsp;' : escapeHtml(String(h))) + '</th>';
+        }).join('') + '</tr>';
+
+        linhasDados.forEach(function(row){
+          var tds = (row.c || []).map(function(cel){
+            var valor = cel ? (cel.f !== undefined && cel.f !== null ? cel.f : cel.v) : '';
+            valor = (valor === null || valor === undefined) ? '' : valor;
+            return '<td>' + escapeHtml(String(valor)) + '</td>';
+          }).join('');
+          tbody.innerHTML += '<tr>' + tds + '</tr>';
+        });
+
+        if(status) status.textContent = 'Dados carregados diretamente do Google Sheets.';
+      })
+      .catch(function(err){
+        console.error('Erro ao carregar tabela de organização:', err);
+        var thead = tabela.querySelector('thead');
+        thead.innerHTML = '<tr><th>Não foi possível carregar a tabela automaticamente.</th></tr>';
+        if(status) status.textContent = 'Use o botão "Abrir no Google Sheets" acima para consultar a escala.';
+      });
+
+    function escapeHtml(str){
+      return str.replace(/[&<>"']/g, function(c){
+        return ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'})[c];
+      });
+    }
+  })();
 </script>
 
 </body>
