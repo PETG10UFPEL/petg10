@@ -225,6 +225,16 @@
       box-shadow: none;
     }
 
+    .acesso-btn.painel {
+      background: #ffffff;
+      color: var(--azul-profundo);
+      box-shadow: none;
+    }
+
+    .acesso-btn.painel:hover {
+      background: #f0f0f0;
+    }
+
     .acesso-erro {
       display: none;
       font-size: 0.74rem;
@@ -278,6 +288,16 @@
     <div class="acesso-erro" id="erroSafc">Senha incorreta.</div>
   </div>
 
+  <!-- Painel de Gestão (Dashboard): senha própria -->
+  <div class="acesso-bloco">
+    <label class="acesso-label">Senha de acesso ao Painel de Gestão (Dashboard)</label>
+    <div class="acesso-row">
+      <input type="password" id="senhaPainel" class="acesso-input" placeholder="Digite a senha" onkeydown="if(event.key==='Enter')tentarAbrirPainel()">
+      <button class="btn-acessar acesso-btn painel" onclick="tentarAbrirPainel()">Entrar</button>
+    </div>
+    <div class="acesso-erro" id="erroPainel">Senha incorreta.</div>
+  </div>
+
   <p class="footer">
     Acesso restrito à equipe autorizada.<br>
     Projetos Amor à Pele e PET-Saúde G10 Feridas Crônicas / Universidade Federal de Pelotas UFPel
@@ -286,8 +306,9 @@
 </div>
 
 <script>
-// Hash SHA-256 da senha (não é a senha em texto puro).
-// Para trocar a senha: gere um novo hash e substitua a constante abaixo.
+// Hashes SHA-256 das senhas (não são as senhas em texto puro).
+// Para trocar uma senha: gere um novo hash e substitua a constante correspondente.
+const HASH_PAINEL = "e315e6ee5589eb8d0d334f0d4f4cf675d3395432f257aec2afad644121592156";
 const HASH_SAFC = "25790123d028b6bb406dc829e22b4a45e4b8081841160fc2939b84283245f08a";
 
 async function sha256(texto) {
@@ -306,6 +327,18 @@ async function tentarAbrirSafc() {
   }
   const url = "https://script.google.com/macros/s/AKfycbzEiQQCkiQV_1SWWF78sa2dM5tkz7RVPx69DjNu_gTLzCKH4cskqyGBx8uh9Qh9knm7/exec";
   window.open(url + '?v=' + Date.now(), '_blank');
+}
+
+async function tentarAbrirPainel() {
+  const senha = document.getElementById('senhaPainel').value;
+  const hash = await sha256(senha);
+  document.getElementById('erroPainel').style.display = 'none';
+  if (hash !== HASH_PAINEL) {
+    document.getElementById('erroPainel').style.display = 'block';
+    return;
+  }
+  const url = "https://script.google.com/macros/s/AKfycbzEiQQCkiQV_1SWWF78sa2dM5tkz7RVPx69DjNu_gTLzCKH4cskqyGBx8uh9Qh9knm7/exec";
+  window.open(url + '?page=dashboard&v=' + Date.now(), '_blank');
 }
 </script>
 
