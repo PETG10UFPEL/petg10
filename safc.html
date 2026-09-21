@@ -127,13 +127,6 @@
       font-weight: 700;
     }
 
-    .badge.safc2 {
-      background: rgba(255,255,255,0.9);
-      border-color: rgba(255,255,255,0.9);
-      color: var(--azul-profundo);
-      font-weight: 700;
-    }
-
     .divider {
       width: 48px;
       height: 2px;
@@ -175,37 +168,6 @@
 
     .btn-acessar svg {
       flex-shrink: 0;
-    }
-
-    /* segundo botão (SAFC2) - visualmente distinto do primeiro para não confundir */
-    .btn-secundario {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      gap: 0.6rem;
-      width: 100%;
-      padding: 1rem 1.5rem;
-      margin-top: 0.75rem;
-      background: rgba(255,255,255,0.1);
-      color: var(--branco);
-      font-family: 'Inter', sans-serif;
-      font-size: 1rem;
-      font-weight: 700;
-      letter-spacing: 0.03em;
-      border: 1.5px solid rgba(255,255,255,0.35);
-      border-radius: 12px;
-      cursor: pointer;
-      text-decoration: none;
-      transition: transform 0.18s ease, background 0.18s ease;
-    }
-
-    .btn-secundario:hover {
-      transform: translateY(-2px);
-      background: rgba(255,255,255,0.18);
-    }
-
-    .btn-secundario:active {
-      transform: translateY(0);
     }
 
     .footer {
@@ -263,17 +225,6 @@
       box-shadow: none;
     }
 
-    .acesso-btn.safc2 {
-      background: #ffffff;
-      color: var(--azul-profundo);
-      border: none;
-    }
-
-    .acesso-btn.safc2:hover {
-      background: #f0f0f0;
-      transform: translateY(-2px);
-    }
-
     .acesso-erro {
       display: none;
       font-size: 0.74rem;
@@ -283,7 +234,7 @@
 
     @media (prefers-reduced-motion: reduce) {
       .card { animation: none; }
-      .btn-acessar, .btn-secundario { transition: none; }
+      .btn-acessar { transition: none; }
     }
 
     @media (max-width: 480px) {
@@ -313,7 +264,6 @@
 
   <div class="badges">
     <span class="badge safc">SAFC</span>
-    <span class="badge safc2">SAFC2</span>
   </div>
 
   <div class="divider"></div>
@@ -328,35 +278,6 @@
     <div class="acesso-erro" id="erroSafc">Senha incorreta.</div>
   </div>
 
-  <!-- SAFC2: senha própria, diferente da do SAFC -->
-  <div class="acesso-bloco">
-    <label class="acesso-label">Senha de acesso ao SAFC2 (Contexto das solicitações no SIS)</label>
-    <div class="acesso-row">
-      <input type="password" id="senhaSafc2" class="acesso-input" placeholder="Digite a senha" onkeydown="if(event.key==='Enter')tentarAbrirSafc2()">
-      <button class="btn-acessar acesso-btn safc2" onclick="tentarAbrirSafc2()">Entrar</button>
-    </div>
-    <div class="acesso-erro" id="erroSafc2">Senha incorreta.</div>
-  </div>
-
-  <div class="divider"></div>
-
-  <!-- SAFC2 - UBS: link direto para a visão das UBS (sem senha), a ser repassado às unidades -->
-  <div class="acesso-bloco">
-    <label class="acesso-label">Link do SAFC2 para as UBS</label>
-    <p style="font-size:0.76rem; color:rgba(255,255,255,0.6); line-height:1.5; margin-bottom:0.6rem;">
-      Este é o link de visão do SAFC2 que deve ser repassado às UBS (contexto das solicitações no SIS).
-    </p>
-    <a href="https://tinyurl.com/safc2-ubs" target="_blank" rel="noopener" class="btn-secundario" style="margin-top:0;">
-      tinyurl.com/safc2-ubs
-    </a>
-    <p style="font-size:0.7rem; color:rgba(255,255,255,0.45); margin-top:0.5rem; word-break:break-all;">
-      Link completo (mesmo destino):<br>
-      <a href="https://petg10ufpel.github.io/petg10/safc2-ubs.html" target="_blank" rel="noopener" style="color:rgba(255,255,255,0.7); text-decoration:underline;">
-        https://petg10ufpel.github.io/petg10/safc2-ubs.html
-      </a>
-    </p>
-  </div>
-
   <p class="footer">
     Acesso restrito à equipe autorizada.<br>
     Projetos Amor à Pele e PET-Saúde G10 Feridas Crônicas / Universidade Federal de Pelotas UFPel
@@ -365,10 +286,9 @@
 </div>
 
 <script>
-// Hashes SHA-256 das senhas (não são as senhas em texto puro).
-// Para trocar uma senha: gere um novo hash e substitua a constante correspondente.
-const HASH_SAFC  = "25790123d028b6bb406dc829e22b4a45e4b8081841160fc2939b84283245f08a";
-const HASH_SAFC2 = "8503aaac7d3dbea70f138128cb1159e4b9105a6a9ae5ef5b7ce35da983fa9dab";
+// Hash SHA-256 da senha (não é a senha em texto puro).
+// Para trocar a senha: gere um novo hash e substitua a constante abaixo.
+const HASH_SAFC = "25790123d028b6bb406dc829e22b4a45e4b8081841160fc2939b84283245f08a";
 
 async function sha256(texto) {
   const buffer = new TextEncoder().encode(texto);
@@ -384,21 +304,8 @@ async function tentarAbrirSafc() {
     document.getElementById('erroSafc').style.display = 'block';
     return;
   }
-  const url = "https://script.google.com/macros/s/AKfycbxvPzWPVUBS_MEG4SOfovUspUE1nWfLgw_gR-eGB1dcbRWAs63yGB1jRi9YfrM4FRVn/exec";
+  const url = "https://script.google.com/macros/s/AKfycbzEiQQCkiQV_1SWWF78sa2dM5tkz7RVPx69DjNu_gTLzCKH4cskqyGBx8uh9Qh9knm7/exec";
   window.open(url + '?v=' + Date.now(), '_blank');
-}
-
-async function tentarAbrirSafc2() {
-  const senha = document.getElementById('senhaSafc2').value;
-  const hash = await sha256(senha);
-  document.getElementById('erroSafc2').style.display = 'none';
-  if (hash !== HASH_SAFC2) {
-    document.getElementById('erroSafc2').style.display = 'block';
-    return;
-  }
-  const urlBase = "https://script.google.com/macros/s/AKfycbzTaZ4TW8KFTqxmjhjvVEfJoEQ6FN9Pc8on30mzh1Uokhrat2EWyZvcp6VNRbZpM-f7/exec";
-  const chave = "7RhfAnUOBxxmgkaRdd62NS7dv055yHq9";
-  window.open(urlBase + '?view=amb&key=' + chave + '&v=' + Date.now(), '_blank');
 }
 </script>
 
