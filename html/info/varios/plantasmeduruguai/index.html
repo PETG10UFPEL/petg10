@@ -1,0 +1,818 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Plantas medicinais ligadas a tradições indígenas no norte uruguaio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Source+Serif+4:opsz,wght@8..60,400;8..60,500;8..60,600;8..60,700&family=Source+Sans+3:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg: #FBF7EE;
+    --bg-alt: #F3ECDA;
+    --ink: #2B2620;
+    --ink-soft: #5b5346;
+    --moss: #3D6B4F;
+    --moss-dark: #294a37;
+    --terracotta: #B85C38;
+    --terracotta-soft: #E7C9B4;
+    --gold: #C79A3E;
+    --line: #DDD3BC;
+    --card: #ffffff;
+    --maxw: 980px;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    background:var(--bg);
+    color:var(--ink);
+    font-family:'Source Sans 3', sans-serif;
+    line-height:1.65;
+    font-size:17px;
+  }
+  h1,h2,h3,.serif{font-family:'DM Serif Display', 'Source Serif 4', serif; font-weight:400;}
+  h2{font-size:2rem; color:var(--moss-dark); line-height:1.15;}
+  h3{font-size:1.35rem; color:var(--terracotta); font-family:'Source Serif 4', serif; font-weight:700;}
+  a{color:var(--moss-dark);}
+  img{max-width:100%; display:block;}
+  .wrap{max-width:var(--maxw); margin:0 auto; padding:0 24px;}
+
+  .institutional-header{
+    display:flex; justify-content:space-between; align-items:center;
+    padding:14px 24px; background:#fff; border-bottom:1px solid var(--line);
+    position:sticky; top:0; z-index:50;
+  }
+  .header-identity{font-family:'Source Serif 4', serif; font-weight:700; letter-spacing:.03em; color:var(--moss-dark); font-size:.95rem; text-transform:uppercase;}
+  .header-tag{font-size:.72rem; color:var(--ink-soft); font-weight:400; text-transform:none; display:block; margin-top:2px;}
+  .header-logos{display:flex; align-items:center; gap:10px; flex-shrink:0;}
+  .header-logos img{height:34px; width:auto; display:block; opacity:.92;}
+  @media (max-width:600px){ .header-logos img{height:26px;} .header-logos{gap:6px;} }
+
+  .hero{position:relative; color:#FBF7EE; padding:0; overflow:hidden;}
+  .hero-img-wrap{
+    position:relative; min-height:440px; display:flex; align-items:flex-end;
+    background: linear-gradient(135deg, #294a37 0%, #3D6B4F 45%, #6d5a2e 100%);
+  }
+  .hero-bg-img{position:absolute; inset:0; width:100%; height:100%; object-fit:cover; z-index:0;}
+  .hero-overlay{position:absolute; inset:0; background:linear-gradient(180deg, rgba(41,74,55,.72), rgba(41,74,55,.55)); z-index:1;}
+  .hero-content{position:relative; z-index:2; padding:64px 24px 40px; max-width:var(--maxw); margin:0 auto; width:100%;}
+  .kicker{
+    display:inline-block; text-transform:uppercase; letter-spacing:.12em; font-size:.78rem;
+    font-weight:700; color:var(--gold); margin-bottom:14px;
+  }
+  .hero h1{font-size:2.7rem; line-height:1.08; margin:0 0 16px; color:#fff;}
+  .hero p.lede{font-size:1.15rem; max-width:640px; color:#EFE8D6; font-family:'Source Serif 4',serif;}
+  .hero-meta{margin-top:24px; font-size:.85rem; color:#D8CFB4; display:flex; gap:18px; flex-wrap:wrap;}
+
+  .stat-strip{
+    display:grid; grid-template-columns:repeat(4,1fr); gap:1px;
+    background:var(--line); border-top:1px solid var(--line); border-bottom:1px solid var(--line);
+  }
+  @media (max-width:640px){ .stat-strip{grid-template-columns:repeat(2,1fr);} }
+  .stat{background:var(--bg-alt); padding:26px 18px; text-align:center;}
+  .stat .num{font-family:'DM Serif Display', serif; font-size:2.4rem; color:var(--terracotta); display:block; line-height:1;}
+  .stat .lbl{font-size:.82rem; color:var(--ink-soft); margin-top:8px; display:block;}
+
+  main{padding-top:8px;}
+  section{padding:56px 0;}
+  section.alt{background:var(--bg-alt);}
+  .section-head{max-width:680px; margin-bottom:32px;}
+  .eyebrow{text-transform:uppercase; letter-spacing:.1em; font-size:.75rem; font-weight:700; color:var(--moss); margin-bottom:8px; display:block;}
+
+  p{color:var(--ink); }
+  .lead-text{font-size:1.12rem; font-family:'Source Serif 4', serif; color:#3a352c;}
+
+  .cols-2{display:grid; grid-template-columns:1.1fr .9fr; gap:40px; align-items:center;}
+  @media (max-width:800px){ .cols-2{grid-template-columns:1fr;} }
+
+  blockquote.pullquote{
+    font-family:'Source Serif 4', serif; font-style:italic; font-size:1.25rem;
+    color:var(--moss-dark); border-left:4px solid var(--terracotta);
+    padding:6px 0 6px 22px; margin:28px 0;
+  }
+  blockquote.pullquote cite{display:block; font-style:normal; font-size:.8rem; text-transform:uppercase; letter-spacing:.06em; color:var(--ink-soft); margin-top:10px;}
+
+  .quote-card{
+    background:var(--card); border:1px solid var(--line); border-radius:10px;
+    padding:22px 24px; font-family:'Source Serif 4', serif; font-style:italic; color:#443f34;
+    box-shadow:0 2px 10px rgba(43,38,32,.04);
+  }
+  .quote-card cite{display:block; margin-top:12px; font-style:normal; font-size:.78rem; text-transform:uppercase; letter-spacing:.05em; color:var(--terracotta); font-family:'Source Sans 3',sans-serif; font-weight:700;}
+
+  .timeline{position:relative; margin-top:20px; padding-left:28px; border-left:3px solid var(--terracotta-soft);}
+  .tl-item{position:relative; padding-bottom:30px;}
+  .tl-item:last-child{padding-bottom:0;}
+  .tl-item::before{
+    content:''; position:absolute; left:-35px; top:4px; width:14px; height:14px; border-radius:50%;
+    background:var(--terracotta); border:3px solid var(--bg);
+  }
+  .tl-year{font-family:'DM Serif Display', serif; color:var(--terracotta); font-size:1.15rem;}
+  .tl-text{margin-top:2px; color:var(--ink-soft); font-size:.96rem;}
+
+  .distmap-wrap{
+    background:#fff; border:1px solid var(--line); border-radius:12px;
+    box-shadow:0 4px 18px rgba(43,38,32,.08); padding:10px;
+  }
+  .distmap-wrap img{width:100%; height:auto; display:block; border-radius:8px;}
+  .locality-grid{display:grid; grid-template-columns:repeat(auto-fill,minmax(150px,1fr)); gap:10px; margin-top:18px;}
+  .locality-chip{
+    background:var(--card); border:1px solid var(--line); border-radius:8px; padding:10px 12px; font-size:.82rem;
+  }
+  .locality-chip .lname{font-weight:700; color:var(--moss-dark); display:block;}
+  .locality-chip .lmeta{color:var(--ink-soft); font-size:.76rem;}
+  .locality-chip.r5{border-left:4px solid var(--terracotta);}
+  .locality-chip.r26{border-left:4px solid var(--moss);}
+  .locality-chip.capital{border-left:4px solid var(--gold);}
+
+  .actor-grid{display:grid; grid-template-columns:repeat(auto-fill, minmax(150px,1fr)); gap:14px; margin-top:24px;}
+  .actor-chip{
+    background:var(--card); border:1px solid var(--line); border-radius:10px; padding:16px 14px;
+    text-align:center; font-size:.88rem; color:var(--ink-soft);
+  }
+  .actor-chip .ico{font-size:1.5rem; display:block; margin-bottom:8px;}
+
+  .chart-wrap{display:flex; gap:36px; align-items:center; flex-wrap:wrap; margin-top:24px;}
+  .donut{width:230px; height:230px; border-radius:50%; flex-shrink:0;}
+  .donut-legend{flex:1; min-width:220px;}
+  .donut-legend .row{display:flex; align-items:center; justify-content:space-between; padding:6px 0; border-bottom:1px dashed var(--line); font-size:.9rem;}
+  .donut-legend .row:last-child{border-bottom:none;}
+  .donut-legend .sw{width:12px; height:12px; border-radius:3px; display:inline-block; margin-right:8px;}
+  .donut-legend .pct{font-weight:700; color:var(--moss-dark);}
+
+  .bars{margin-top:20px;}
+  .bar-row{display:grid; grid-template-columns:150px 1fr 50px; align-items:center; gap:12px; margin-bottom:14px; font-size:.92rem;}
+  @media (max-width:480px){
+    .bar-row{grid-template-columns:1fr 40px; grid-template-areas:"label value" "track track"; row-gap:4px;}
+    .bar-row span:first-child{grid-area:label;}
+    .bar-row span:last-child{grid-area:value; text-align:right;}
+    .bar-row .bar-track{grid-area:track;}
+  }
+  .bar-track{background:var(--bg-alt); border-radius:6px; overflow:hidden; height:22px;}
+  .bar-fill{height:100%; background:linear-gradient(90deg, var(--terracotta), var(--gold)); border-radius:6px;}
+
+  .plant-toolbar{display:flex; gap:10px; flex-wrap:wrap; margin:20px 0;}
+  .plant-toolbar button{
+    background:#fff; border:1px solid var(--line); color:var(--ink-soft); padding:7px 14px;
+    border-radius:20px; font-size:.82rem; cursor:pointer; font-family:'Source Sans 3',sans-serif;
+  }
+  .plant-toolbar button.active{background:var(--moss); color:#fff; border-color:var(--moss);}
+  .plant-grid{display:grid; grid-template-columns:repeat(auto-fill,minmax(230px,1fr)); gap:16px; margin-top:10px;}
+  .plant-card{
+    background:var(--card); border:1px solid var(--line); border-radius:12px; padding:18px;
+    box-shadow:0 2px 10px rgba(43,38,32,.04);
+  }
+  .plant-card .sketch{width:56px; height:56px; margin-bottom:10px;}
+  .plant-card .name{font-family:'Source Serif 4',serif; font-weight:700; font-size:1.05rem; color:var(--moss-dark);}
+  .plant-card .sci{font-style:italic; color:var(--ink-soft); font-size:.85rem; margin-bottom:10px; display:block;}
+  .plant-card .tags{display:flex; gap:6px; flex-wrap:wrap; margin-top:10px;}
+  .tag{font-size:.7rem; padding:3px 9px; border-radius:12px; background:var(--bg-alt); color:var(--ink-soft); border:1px solid var(--line);}
+  .tag.origin-native{background:#E4EEE6; color:var(--moss-dark); border-color:#c9dfcd;}
+  .tag.origin-intro{background:#F5E6DC; color:var(--terracotta); border-color:var(--terracotta-soft);}
+  .tag.chew{background:#FBE9C6; color:#7a5b12; border-color:#eed9a4;}
+
+  table.data-table{width:100%; border-collapse:collapse; margin-top:20px; font-size:.88rem;}
+  table.data-table th{background:var(--moss-dark); color:#fff; text-align:left; padding:10px 12px; font-weight:600;}
+  table.data-table td{padding:9px 12px; border-bottom:1px solid var(--line);}
+  table.data-table tr:nth-child(even) td{background:#F6F1E4;}
+  .table-scroll{overflow-x:auto; border-radius:10px; border:1px solid var(--line);}
+
+  figure{margin:0;}
+  figure img{border-radius:10px;}
+  figcaption{font-size:.82rem; color:var(--ink-soft); margin-top:10px; font-style:italic;}
+
+  .img-placeholder .real-img {
+    width: 100%;
+    height: auto;
+    display: block;
+    border-radius: 10px;
+  }
+  .img-placeholder .placeholder-box {
+    display: none;
+    border: 2px dashed #b7ab8a;
+    background: #F1E9D8;
+    border-radius: 10px;
+    padding: 28px 20px;
+    text-align: center;
+    color: #7a6f57;
+    min-height: 220px;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+  }
+  .placeholder-icon { font-size: 1.9rem; }
+  .placeholder-label {
+    font-family: monospace;
+    font-size: 0.8rem;
+    background: #E4D9BE;
+    padding: 4px 10px;
+    border-radius: 4px;
+    color: #4a4230;
+  }
+  .placeholder-hint {
+    font-size: 0.78rem;
+    color: #8a7f64;
+    font-style: italic;
+    max-width: 400px;
+  }
+  .placeholder-prompt{
+    font-size:.72rem; color:#5b5346; background:#fff; border:1px dashed #cbbf9c;
+    padding:8px 10px; border-radius:6px; max-width:420px; text-align:left; margin-top:4px;
+  }
+  .placeholder-prompt b{color:var(--terracotta);}
+
+  .synthesis{
+    background: var(--moss-dark); color:#F4EFDC; border-radius:16px; padding:44px 36px;
+  }
+  .synthesis h2{color:#fff;}
+  .synthesis p{color:#DCE4D9;}
+
+  footer.refs{padding:40px 0; font-size:.82rem; color:var(--ink-soft);}
+  footer.refs details summary{cursor:pointer; font-weight:700; color:var(--moss-dark); margin-bottom:14px;}
+  footer.refs ul{columns:2; gap:28px; padding-left:18px;}
+  footer.refs li{break-inside:avoid; margin-bottom:8px;}
+  @media (max-width:700px){footer.refs ul{columns:1;}}
+
+  .institutional-footer{
+    background:#fff; border-top:1px solid var(--line); padding:26px 24px; text-align:center;
+  }
+  .institutional-footer p{font-size:.8rem; color:var(--ink-soft); margin:0;}
+
+  .img-credit{font-size:.72rem; color:var(--ink-soft); margin-top:4px;}
+  .note-box{
+    background:#FBF0DE; border:1px solid #EAD9AE; border-radius:10px; padding:16px 18px;
+    font-size:.85rem; color:#5b4a20; margin-top:18px;
+  }
+  .translation-note{font-size:.72rem; color:var(--ink-soft); margin-top:8px; font-style:normal;}
+
+  @media (max-width:600px){
+    body{font-size:16px;}
+    .hero h1{font-size:1.9rem;}
+    .hero-content{padding:40px 20px 28px;}
+    .hero p.lede{font-size:1rem;}
+    h2{font-size:1.5rem;}
+    section{padding:36px 0;}
+    .wrap{padding:0 18px;}
+    .stat{padding:18px 10px;}
+    .stat .num{font-size:1.7rem;}
+    .stat .lbl{font-size:.74rem;}
+    .synthesis{padding:28px 20px;}
+    .plant-card{padding:14px;}
+    table.data-table{font-size:.78rem;}
+    table.data-table th, table.data-table td{padding:7px 8px;}
+  }
+</style>
+</head>
+<body>
+
+<header class="institutional-header">
+  <div class="header-identity">Etnobotânica &amp; Território
+    <span class="header-tag">Revista Trama · Associação Uruguaia de Antropologia Social e Cultural</span>
+  </div>
+  <div class="header-logos">
+    <img src="img/picras.png" alt="Logo PIC-RAS">
+    <img src="img/fen.png" alt="Logo Faculdade de Enfermagem - UFPel">
+    <img src="img/ufpel.png" alt="Logo Universidade Federal de Pelotas">
+  </div>
+</header>
+
+<div class="hero">
+  <div class="hero-img-wrap" id="heroImgWrap">
+    <img class="hero-bg-img" src="img/hero-monte-nativo-tacuarembo.jpg" alt="" onerror="this.style.display='none';">
+    <div class="hero-overlay"></div>
+    <div class="hero-content">
+      <span class="kicker">Etnobotânica · Norte do Uruguai</span>
+      <h1>As plantas que guardam a memória indígena de Tacuarembó</h1>
+      <p class="lede">Entre 2014 e 2015, o antropólogo Gregorio Tabakián percorreu o maior departamento do Uruguai para resgatar, na voz de curandeiros, herboristas e camponeses, um saber vegetal que resiste através da tradição oral.</p>
+      <div class="hero-meta">
+        <span>📍 Departamento de Tacuarembó, Uruguai</span>
+        <span>🗓️ Trabalho de campo: out. 2014 – nov. 2015</span>
+        <span>✍️ Gregorio Tabakián · Revista Trama, 2017 &nbsp;(<a href="https://www.researchgate.net/profile/Gregorio-Tabakian" target="_blank" rel="noopener" style="color:#EFE8D6; text-decoration:underline;">ResearchGate</a> · <a href="https://www.linkedin.com/in/gregorio-tabakian-6aa87b69/" target="_blank" rel="noopener" style="color:#EFE8D6; text-decoration:underline;">LinkedIn</a>)</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="stat-strip">
+  <div class="stat"><span class="num">27%</span><span class="lbl">dos entrevistados se declarou descendente de indígenas</span></div>
+  <div class="stat"><span class="num">21</span><span class="lbl">plantas apontadas como de possível uso indígena</span></div>
+  <div class="stat"><span class="num">67%</span><span class="lbl">dessas plantas são espécies nativas</span></div>
+  <div class="stat"><span class="num">54%</span><span class="lbl">são consumidas por mastigação, hábito ligado ao indígena</span></div>
+</div>
+
+<main>
+
+<section>
+  <div class="wrap cols-2">
+    <div>
+      <span class="eyebrow">O ponto de partida</span>
+      <h2>Um saber tecido entre culturas</h2>
+      <p class="lead-text">O Uruguai se formou a partir de contribuições indígenas, europeias e afrodescendentes que, misturadas, deram forma a uma <strong>cultura híbrida</strong>. Os saberes medicinais sobre plantas que hoje circulam no campo de Tacuarembó são, em grande medida, resultado dessa mistura &mdash;e nem sempre é possível saber com exatidão o que corresponde a cada tradição.</p>
+      <p>Com este trabalho, Tabakián se propôs algo pontual dentro dessa trama: escutar quem se reconhece descendente de povos indígenas e registrar quais plantas associam a essa origem, como as usam e que lugar esse saber ocupa em suas vidas.</p>
+    </div>
+    <blockquote class="pullquote">
+      "Há bom alecrim, há boa hortelã, e boa camomila" &mdash;plantas que um colono acreditava serem europeias, mas que já enxergava em espécies locais parecidas. "Bom maracujá e boa erva-do-galo", acrescentava: essas sim eram daqui.
+      <cite>La Herbolaria, em Hernández &amp; Tabakián, 2011 (tradução do espanhol)</cite>
+    </blockquote>
+  </div>
+</section>
+
+<section class="alt">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="eyebrow">Cinco séculos de registro</span>
+      <h2>Dos cronistas coloniais à etnobotânica contemporânea</h2>
+    </div>
+    <div class="timeline">
+      <div class="tl-item">
+        <div class="tl-year">~1515</div>
+        <div class="tl-text">Fernández de Oviedo documenta e desenha, pela primeira vez na América, um capítulo dedicado a plantas medicinais.</div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-year">1548–1585</div>
+        <div class="tl-text">Frei Bernardino de Sahagún compila o Códice Florentino, com mais de 700 plantas de uso medicinal.</div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-year">Séculos XVII–XVIII</div>
+        <div class="tl-text">Os jesuítas impulsionam o estudo da história natural na Bacia do Prata. O irmão Pedro Montenegro escreve <em>Materia Médica Misionera</em>, referência sobre as plantas das Missões.</div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-year">1799–1853</div>
+        <div class="tl-text">Auguste de Saint-Hilaire percorre o território uruguaio e descreve cientificamente, pela primeira vez, a erva-mate (<em>Ilex paraguariensis</em>).</div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-year">1876</div>
+        <div class="tl-text">A Faculdade de Medicina cria a Cátedra de Botânica Médica, a cargo de José Arechavaleta, iniciando o registro acadêmico sistemático.</div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-year">1900–1930</div>
+        <div class="tl-text">A sociedade uruguaia se medicaliza. O saber popular sobre plantas fica relegado ao espaço doméstico, entre o receio de ser visto como "curandeirismo".</div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-year">2011–2017</div>
+        <div class="tl-text">A Revista Trama publica o primeiro Dossiê de Etnobotânica uruguaia; Tabakián desenvolve o trabalho de campo em Tacuarembó que origina este artigo.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="territorio">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="eyebrow">O território</span>
+      <h2>A que distância isso acontece?</h2>
+      <p>O levantamento se concentrou nas populações distribuídas ao longo de dois corredores viários do departamento de Tacuarembó &mdash;desde a cidade de Tacuarembó (54.757 hab.) até povoados de apenas 19 habitantes, como Laureles. Para dar uma noção de escala a partir de Pelotas (RS), eis a distância até a capital do departamento:</p>
+    </div>
+
+    <div class="distmap-wrap">
+      <img src="img/tacuarembo.png" alt="Mapa mostrando a localização e a distância entre Tacuarembó (Uruguai) e Pelotas (RS, Brasil)" style="border-radius:8px;">
+    </div>
+    <p class="map-caption">De Pelotas (RS) até Tacuarembó: cerca de <strong>344&nbsp;km em linha reta</strong>. Por estrada, a distância real fica entre <strong>437&nbsp;e 460&nbsp;km</strong> (aprox. 5h46&ndash;6h07 de carro), variando conforme a fronteira escolhida &mdash;via Jaguarão/Aceguá (rota mais curta) ou via Rivera/Dom Pedrito.</p>
+
+    <div class="note-box">
+      📌 As versões anteriores deste infográfico tentaram um mapa interativo com tiles do OpenStreetMap/CARTO, mas esses provedores passaram a exigir chave de API para uso gratuito. Esta versão usa a imagem estática fornecida, sem depender de nenhum serviço externo.
+    </div>
+
+    <h3 style="margin-top:32px;">Localidades visitadas no levantamento</h3>
+    <p style="font-size:.92rem; color:#5b5346;">Distribuídas sobre os eixos das rotas 5 (sul&ndash;norte) e 26 (sul&ndash;noroeste) do departamento de Tacuarembó (INE, 2011):</p>
+    <div class="locality-grid">
+      <div class="locality-chip capital"><span class="lname">Tacuarembó (capital)</span><span class="lmeta">54.757 hab.</span></div>
+      <div class="locality-chip r5"><span class="lname">Paso de los Toros</span><span class="lmeta">12.985 hab. · Rota 5</span></div>
+      <div class="locality-chip r5"><span class="lname">Curtina</span><span class="lmeta">1.037 hab. · Rota 5</span></div>
+      <div class="locality-chip r5"><span class="lname">Cuchilla de Peralta</span><span class="lmeta">218 hab. · Rota 5</span></div>
+      <div class="locality-chip r5"><span class="lname">Paso Bonilla</span><span class="lmeta">510 hab. · Rota 5</span></div>
+      <div class="locality-chip r5"><span class="lname">Estación Chamberlain</span><span class="lmeta">52 hab. · Rota 5</span></div>
+      <div class="locality-chip r26"><span class="lname">Ansina</span><span class="lmeta">2.712 hab. · Rota 26</span></div>
+      <div class="locality-chip r26"><span class="lname">Las Toscas</span><span class="lmeta">1.142 hab. · Rota 26</span></div>
+      <div class="locality-chip r26"><span class="lname">Pueblo de Arriba</span><span class="lmeta">170 hab. · Rota 26</span></div>
+      <div class="locality-chip r26"><span class="lname">Pueblo del Barro</span><span class="lmeta">98 hab. · Rota 26</span></div>
+      <div class="locality-chip r26"><span class="lname">Rincón de la Aldea</span><span class="lmeta">s/d · Rota 26</span></div>
+      <div class="locality-chip r26"><span class="lname">Valle Edén</span><span class="lmeta">s/d · Rota 26</span></div>
+      <div class="locality-chip r26"><span class="lname">Laureles</span><span class="lmeta">19 hab. · Rota 26</span></div>
+    </div>
+  </div>
+</section>
+
+<section class="alt">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="eyebrow">Quem transmite o saber</span>
+      <h2>Atores entrevistados em feiras, ervanarias e residências</h2>
+      <p>As entrevistas &mdash;semiestruturadas e informais&mdash; foram realizadas em espaços bem diversos: feiras, ervanarias, domicílios particulares, consultórios médicos e até no mato, junto a quem coleta as plantas.</p>
+    </div>
+    <div class="actor-grid">
+      <div class="actor-chip"><span class="ico">🌿</span>Coletores e catadores</div>
+      <div class="actor-chip"><span class="ico">🧺</span>Vendedores de plantas</div>
+      <div class="actor-chip"><span class="ico">🚜</span>Camponeses e produtores orgânicos</div>
+      <div class="actor-chip"><span class="ico">🪡</span>Artesãos</div>
+      <div class="actor-chip"><span class="ico">🌱</span>Herboristas</div>
+      <div class="actor-chip"><span class="ico">👵</span>Pessoas idosas</div>
+      <div class="actor-chip"><span class="ico">🕯️</span>Curandeiros rurais</div>
+      <div class="actor-chip"><span class="ico">🙏</span>Curandeiros de religião umbanda</div>
+      <div class="actor-chip"><span class="ico">⚕️</span>Profissionais de saúde</div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap cols-2">
+    <div>
+      <span class="eyebrow">Raízes familiares</span>
+      <h2>De onde dizem vir os entrevistados?</h2>
+      <p>Ao indagar sobre sua ascendência, a maioria dos entrevistados em Tacuarembó mencionou ao menos um antepassado "brasileiro" &mdash;categoria ampla que pode incluir origem indígena, africana ou europeia. É sobre o 27% que se declarou <strong>exclusivamente</strong> descendente de indígenas que se apoia a análise das 21 plantas de possível uso indígena.</p>
+      <div class="bars">
+        <div class="bar-row">
+          <span>Ascend. "brasileira"</span>
+          <div class="bar-track"><div class="bar-fill" style="width:53%;"></div></div>
+          <span>53%</span>
+        </div>
+        <div class="bar-row">
+          <span>Ascend. indígena</span>
+          <div class="bar-track"><div class="bar-fill" style="width:27%; background:linear-gradient(90deg,#3D6B4F,#6d9c7c);"></div></div>
+          <span>27%</span>
+        </div>
+        <div class="bar-row">
+          <span>Ascend. europeia</span>
+          <div class="bar-track"><div class="bar-fill" style="width:20%;"></div></div>
+          <span>20%</span>
+        </div>
+        <div class="bar-row">
+          <span>"Natural da região"</span>
+          <div class="bar-track"><div class="bar-fill" style="width:17%;"></div></div>
+          <span>17%</span>
+        </div>
+      </div>
+    </div>
+    <figure>
+      <blockquote class="quote-card">
+        "Sim, eu acho que por parte da minha avó eram indígenas. Meu avô era basco, gente loira. Meus filhos são todos misturados, uns loiros, outro moreno, são todos entremeados."
+        <cite>Curandeira indígena TDMC</cite>
+        <span class="translation-note">Tradução do espanhol</span>
+      </blockquote>
+    </figure>
+  </div>
+</section>
+
+<section class="alt" id="plantas">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="eyebrow">O coração do estudo</span>
+      <h2>21 plantas de possível uso indígena</h2>
+      <p>Esta é a lista central do artigo: as plantas que os declarados descendentes de indígenas apontaram como utilizadas por seus antepassados. Para cada uma, Tabakián registrou o sistema orgânico onde atua, a forma de consumo, a parte da planta utilizada e se é uma espécie nativa ou introduzida. Os ícones são esboços ilustrativos genéricos (não são desenhos botânicos precisos de cada espécie).</p>
+    </div>
+
+    <div class="chart-wrap">
+      <div class="donut" id="donut-origem"></div>
+      <div class="donut-legend">
+        <div class="row"><span><span class="sw" style="background:#3D6B4F;"></span>Origem nativa</span><span class="pct">67%</span></div>
+        <div class="row"><span><span class="sw" style="background:#C79A3E;"></span>Origem introduzida</span><span class="pct">33%</span></div>
+      </div>
+    </div>
+
+    <div class="plant-toolbar">
+      <button class="active" data-filter="all">Todas (21)</button>
+      <button data-filter="native">Só nativas</button>
+      <button data-filter="intro">Só introduzidas</button>
+    </div>
+
+    <div class="plant-grid" id="plantGrid"></div>
+
+    <p style="margin-top:26px;">
+      <a href="#tabela-completa" onclick="document.getElementById('tabela-completa').style.display='block'; this.style.display='none'; return false;">
+        ▾ Ver tabela completa (Tabela 1 do artigo original)
+      </a>
+    </p>
+    <div id="tabela-completa" style="display:none; margin-top:16px;">
+      <div class="table-scroll">
+        <table class="data-table" id="fullTable">
+          <thead>
+            <tr><th>#</th><th>Nome popular</th><th>Nome científico</th><th>Sistema(s)</th><th>Consumo</th><th>Parte usada</th><th>Origem</th></tr>
+          </thead>
+          <tbody></tbody>
+        </table>
+      </div>
+      <figure style="margin-top:20px;">
+        <img src="img/tabela1-original-scan.png" alt="Tabela 1 revisada — plantas medicinais de possível uso indígena, Tacuarembó (2017)">
+        <figcaption>Tabela 1 reorganizada em planilha e revisada a partir do escaneamento original (Trama, 2017), com nomes científicos conferidos.</figcaption>
+      </figure>
+    </div>
+
+    <div class="note-box">
+      ✅ Esta tabela foi revisada em planilha (com nomes científicos conferidos contra Arrillaga de Maffei, B. (1969), <em>Plantas Medicinales</em>, Coleção Nuestra Tierra n.º 31 — uma das fontes já citadas na bibliografia do artigo de Tabakián). Isso resolveu o registro de "Mercúrio" (ilegível no scan original: é <em>Modiola caroliniana</em>) e ajustou origem/partes de algumas espécies.
+    </div>
+    <div class="note-box">
+      ⚠️ <strong>Divergência a registrar:</strong> nesta planilha revisada, a coluna "Formas de Consumo" usa <em>Maceração</em> onde o scan original parecia indicar <em>Mastigação</em> (provável erro de leitura do escaneamento de baixa qualidade). Isso não contradiz, porém, os relatos citados em texto no artigo original — várias falas transcritas dos entrevistados mencionam explicitamente <em>"mastigar"</em> plantas como prática de cura (ver seção abaixo, "Mastigar plantas"). Ou seja: a coluna da tabela mudou, mas a prática de mastigação relatada em entrevista permanece registrada no texto do artigo.
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap cols-2">
+    <div>
+      <span class="eyebrow">Onde essas plantas atuam</span>
+      <h2>O sistema digestivo concentra um terço dos usos</h2>
+      <p>Das 21 plantas de possível uso indígena, <strong>70%</strong> têm dois ou mais usos medicinais registrados. O sistema digestivo é, de longe, o mais tratado, seguido por afecções sensoriais e do sistema musculoesquelético.</p>
+    </div>
+    <div class="donut" id="donut-sistema" style="margin:0 auto;"></div>
+  </div>
+  <div class="wrap">
+    <div class="donut-legend" style="margin-top:10px; max-width:640px;">
+      <div class="row"><span><span class="sw" style="background:#3D6B4F;"></span>Sistema Digestivo</span><span class="pct">33%</span></div>
+      <div class="row"><span><span class="sw" style="background:#5c8c6e;"></span>Sistema Sensorial</span><span class="pct">21%</span></div>
+      <div class="row"><span><span class="sw" style="background:#B85C38;"></span>Sistema Musculoesquelético</span><span class="pct">12%</span></div>
+      <div class="row"><span><span class="sw" style="background:#C79A3E;"></span>Sistema Nervoso</span><span class="pct">10%</span></div>
+      <div class="row"><span><span class="sw" style="background:#8a7350;"></span>Sistema Respiratório</span><span class="pct">8%</span></div>
+      <div class="row"><span><span class="sw" style="background:#a68f6c;"></span>Sistema Geniturinário</span><span class="pct">8%</span></div>
+      <div class="row"><span><span class="sw" style="background:#c9b89a;"></span>Sistema Cardiovascular</span><span class="pct">4%</span></div>
+      <div class="row"><span><span class="sw" style="background:#dcd2b8;"></span>Sistema Hemolinfático</span><span class="pct">2%</span></div>
+      <div class="row"><span><span class="sw" style="background:#e8e0c8;"></span>Sistêmico</span><span class="pct">2%</span></div>
+    </div>
+  </div>
+</section>
+
+<section class="alt">
+  <div class="wrap cols-2">
+    <figure class="img-placeholder" data-img-path="img/masticacion-palma-imperial.jpg">
+      <img src="img/masticacion-palma-imperial.jpg" alt="Folha de palma imperial sendo preparada como remédio tradicional" class="real-img" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+      <div class="placeholder-box">
+        <span class="placeholder-icon">🖼</span>
+        <p class="placeholder-label">[ Colocar aqui: img/masticacion-palma-imperial.jpg ]</p>
+        <p class="placeholder-hint">Foto documental de uma folha ou galho de "palma imperial" sendo preparado/mastigado como remédio tradicional, em ambiente rural.</p>
+        <p class="placeholder-prompt"><b>Prompt sugerido (em inglês, para gerar a imagem):</b> "Documentary close-up photograph of weathered hands holding a fresh green plant stem (palma imperial / Tanacetum vulgare) about to be chewed as folk medicine, rural Uruguayan countryside background softly blurred, natural warm afternoon light, earthy tones, editorial ethnobotany photography style, no visible faces for anonymity"</p>
+      </div>
+      <figcaption>A mastigação como prática de cura, ligada a tradições indígenas.</figcaption>
+    </figure>
+    <div>
+      <span class="eyebrow">Um hábito revelador</span>
+      <h2>Mastigar plantas: um traço indígena persistente</h2>
+      <p>54% das plantas de possível uso indígena são consumidas por <strong>mastigação</strong>, segundo o próprio texto do artigo &mdash;uma prática que vários entrevistados associaram diretamente à tradição indígena, comparável à mastigação da folha de coca ou do tabaco em outras regiões da América. <em>(Nota: a tabela revisada na seção anterior usa "maceração" nessa coluna; ver aviso ali sobre essa divergência entre tabela e texto.)</em></p>
+      <blockquote class="quote-card">
+        "Sim, há plantas que se mastigam que eram usadas pelos indígenas, como a palma imperial. Se você tem um ferimento que não cicatriza, ferve, lava bem lavadinho e cura. Depois mastiga um galho de palma imperial e coloca no ferimento (...) Eles usavam tudo o que havia no mato, quase tudo era medicinal para os indígenas."
+        <cite>Camponês indígena TIB</cite>
+        <span class="translation-note">Tradução do espanhol</span>
+      </blockquote>
+      <blockquote class="quote-card" style="margin-top:14px;">
+        "Com a saliva, dizia minha mãe, ajudava a curar. Por exemplo, arrancar uma folha do 'mercúrio', mastigar e colocar no ferimento (...) Quando aquilo se solta, está curado."
+        <cite>Avó indígena TNC</cite>
+        <span class="translation-note">Tradução do espanhol</span>
+      </blockquote>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap cols-2">
+    <div>
+      <span class="eyebrow">Memória e identidade</span>
+      <h2>"O que resta é a etnia"</h2>
+      <p>Além do catálogo de plantas, o artigo registra uma tensão de fundo: a dificuldade de reconstruir com certeza quais práticas vêm efetivamente dos povos indígenas, num território onde a identidade foi historicamente negada ou silenciada.</p>
+      <blockquote class="pullquote">
+        "Eu não me sinto charrua. Eu me sinto de povo originário (...) Meus ancestrais deixaram os ossos aqui (...) Roubaram a nossa identidade, roubaram... A única coisa que podemos identificar e dizer 'aqui estamos' é com os rostos. É a única coisa que resta!"
+        <cite>Historiador indígena TRC · tradução do espanhol</cite>
+      </blockquote>
+    </div>
+    <figure>
+      <img src="img/mural-ansina-original.png" alt="Mural da igreja de Ansina, Tacuarembó, representando figuras indígenas e missionárias">
+      <figcaption>Imagem 1 do artigo original: mural da Igreja de Ansina, Tacuarembó &mdash;digitalização de baixa resolução preservada como documento histórico.</figcaption>
+      <p class="img-credit">Fonte: Tabakián, G. (2017). Trama, ano 8, n.º 8.</p>
+    </figure>
+  </div>
+</section>
+
+<section class="alt">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="eyebrow">Como se usam</span>
+      <h2>Folha e parte aérea: 63% dos usos</h2>
+    </div>
+    <div class="chart-wrap">
+      <div class="donut" id="donut-partes"></div>
+      <div class="donut-legend">
+        <div class="row"><span><span class="sw" style="background:#3D6B4F;"></span>Folha / parte aérea</span><span class="pct">63%</span></div>
+        <div class="row"><span><span class="sw" style="background:#C79A3E;"></span>Flor</span><span class="pct">11%</span></div>
+        <div class="row"><span><span class="sw" style="background:#B85C38;"></span>Caule</span><span class="pct">7%</span></div>
+        <div class="row"><span><span class="sw" style="background:#a68f6c;"></span>Raiz</span><span class="pct">7%</span></div>
+        <div class="row"><span><span class="sw" style="background:#dcd2b8;"></span>Outras (casca, fruto, etc.)</span><span class="pct">12%</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap cols-2">
+    <figure class="img-placeholder" data-img-path="img/herboristeria-feira-tacuarembo.jpg">
+      <img src="img/herboristeria-feira-tacuarembo.jpg" alt="Barraca de feira com ervas medicinais expostas" class="real-img" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+      <div class="placeholder-box">
+        <span class="placeholder-icon">🖼</span>
+        <p class="placeholder-label">[ Colocar aqui: img/herboristeria-feira-tacuarembo.jpg ]</p>
+        <p class="placeholder-hint">Barraca de feira ou ervanaria com maços de ervas medicinais secas e frescas expostas, ambiente rural uruguaio.</p>
+        <p class="placeholder-prompt"><b>Prompt sugerido (em inglês, para gerar a imagem):</b> "Wide-angle documentary photo of a rustic herbalist market stall in rural Uruguay, bundles of dried medicinal herbs hanging and displayed in baskets, warm natural light, muted earthy color palette (terracotta, moss green, cream), editorial photojournalism style, no readable text or logos"</p>
+      </div>
+      <figcaption>As feiras e ervanarias, novos espaços sociais de transmissão do saber.</figcaption>
+    </figure>
+    <div>
+      <span class="eyebrow">Do lar para a feira</span>
+      <h2>Um saber que sai do espaço doméstico</h2>
+      <p>Tradicionalmente, o conhecimento sobre plantas medicinais era transmitido dentro do núcleo familiar. Hoje, segundo registra o artigo, surgem novas formas de transmissão: feiras, ervanarias e cursos que instalam esse saber fora da órbita doméstica, alcançando novos espaços sociais antes restringidos pelo receio da marginalização ou do estigma de "curandeirismo".</p>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="synthesis">
+      <span class="eyebrow" style="color:#C79A3E;">Para encerrar</span>
+      <h2>Um acervo cultural, não um catálogo fechado</h2>
+      <p class="lead-text" style="color:#EFE8D6;">É complexo &mdash;e talvez impossível&mdash; estabelecer com certeza quais plantas "pertencem" a um grupo cultural específico. Mas o cruzamento entre a origem nativa das espécies, o hábito da mastigação e os relatos dos próprios descendentes indígenas permite traçar, ainda que parcialmente, uma possível tradição fitoterápica local.</p>
+      <p>Além dos percentuais, o que o trabalho de Tabakián deixa claro é que essas plantas fazem parte de um acervo cultural vivo: um saber que se adapta, se mistura e se transmite &mdash;às vezes em silêncio, às vezes na feira do povoado&mdash; e cuja permanência depende, hoje como sempre, de continuar sendo contado às próximas gerações.</p>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer class="refs">
+  <div class="wrap">
+    <details>
+      <summary>Referências citadas no artigo original (seleção)</summary>
+      <ul>
+        <li>Acosta y Lara, E. (1989). <em>La Guerra de los Charrúas en la Banda Oriental</em>. Linardi y Risso.</li>
+        <li>Alonso Paz, E.; Bassagoda, M. J. &amp; Ferreira, F. (2008). <em>Yuyos</em>. Fin de Siglo.</li>
+        <li><strong>Arrillaga de Maffei, B. (1969). <em>Plantas Medicinales</em>. Coleção Nuestra Tierra, n.º 31. Montevidéu: Nuestra Tierra. (Usada aqui para conferir nomes científicos — ver notas na seção das 21 plantas.)</strong></li>
+        <li>Barrán, J. P. (1992). <em>Medicina y sociedad en el Uruguay del Novecientos</em>. Banda Oriental.</li>
+        <li>Barreto, I. &amp; Curbelo, C. (2008/2009). Presencia indígena en el Uruguay. <em>Estudios Históricos</em>, n.º 1.</li>
+        <li>Bourdieu, P. &amp; Wacquant, L. (2005). <em>Una invitación a la sociología reflexiva</em>. Siglo XXI.</li>
+        <li>Bouton, R. J. ([1958] 2014). <em>La vida rural en el Uruguay</em>. Banda Oriental.</li>
+        <li>Curbelo, C. (2009). Lengua y poder en San Borja del Yi. Em <em>Herencia Indígena en el Uruguay</em>. Linardi y Risso.</li>
+        <li>García Canclini, N. ([1990] 2010). <em>Culturas híbridas</em>. Paidós.</li>
+        <li>Hernández, D. &amp; Tabakián, G. (2011). La mujer de las plantas. <em>Revista Trama</em>, n.º 3.</li>
+        <li>Instituto Nacional de Estadística (INE) (2011). Departamento de Tacuarembó.</li>
+        <li>Mañé Garzón, F. (1996; 2005). <em>Historia de la ciencia en el Uruguay</em>, T. I e III.</li>
+        <li>Pereda Valdés, I. (1943). <em>Medicina Popular y Folklore Mágico del Uruguay</em>.</li>
+        <li>Schiaffino, R. (1927). <em>Historia de la Medicina en el Uruguay</em>, T. I.</li>
+        <li>Vidart, D. (2010). <em>El mundo de los charrúas</em>. Banda Oriental.</li>
+      </ul>
+      <p style="margin-top:10px; font-size:.78rem;">Lista não exaustiva; ver bibliografia completa no artigo original: Tabakián, G. (2017). Plantas medicinales vinculadas a tradiciones indígenas en el norte uruguayo. <em>Trama</em>, ano 8, n.º 8, pp. 44&ndash;56. Montevidéu: AUAS.</p>
+      <p style="margin-top:6px; font-size:.78rem;">Perfil do autor: <a href="https://www.researchgate.net/profile/Gregorio-Tabakian" target="_blank" rel="noopener">ResearchGate</a> &middot; <a href="https://www.linkedin.com/in/gregorio-tabakian-6aa87b69/" target="_blank" rel="noopener">LinkedIn</a></p>
+    </details>
+  </div>
+</footer>
+
+<footer class="institutional-footer">
+  <p>Infográfico elaborado a partir do artigo de Gregorio Tabakián (Revista Trama, 2017) &middot; Setembro de 2026.<br>Mapa e visualizações de dados são interpretações adicionais, não fazem parte do artigo original.</p>
+</footer>
+
+
+<script>
+const plants = [
+  {n:1, pop:"Arnica", sci:"Arnica montana", sys:"Musculoesq. / Digestivo / Sensorial", consumo:"Maceração, compressas, cataplasma", parte:"Flor", origem:"intro", tipo:"flor"},
+  {n:2, pop:"Barba-de-velho", sci:"Tillandsia usneoides", sys:"Digestivo", consumo:"Infusão", parte:"Parte aérea", origem:"native", tipo:"folha"},
+  {n:3, pop:"Calaguala", sci:"Rumohra adiantiformis", sys:"Geniturinário", consumo:"Decocção", parte:"Raiz", origem:"native", tipo:"raiz"},
+  {n:4, pop:"Carqueja", sci:"Baccharis articulata / B. trimera", sys:"Digestivo / Geniturinário", consumo:"Infusão, maceração", parte:"Parte aérea", origem:"native", tipo:"folha"},
+  {n:5, pop:"Chapéu-de-couro", sci:"Echinodorus grandiflorus", sys:"Musculoesq. / Respiratório", consumo:"Infusão", parte:"Folha", origem:"native", tipo:"folha"},
+  {n:6, pop:"Coronilha", sci:"Scutia buxifolia", sys:"Sensorial / Hemolinfático / Cardiovascular", consumo:"Decocção", parte:"Entrecasca", origem:"native", tipo:"casca"},
+  {n:7, pop:"Goiabeira-serrana", sci:"Acca sellowiana", sys:"Digestivo / Respiratório", consumo:"Infusão, alimento", parte:"Folha", origem:"native", tipo:"folha"},
+  {n:8, pop:"Guazatumba", sci:"Cestrum euanthes", sys:"Sensorial / Musculoesq.", consumo:"Infusão, maceração", parte:"Folha", origem:"native", tipo:"folha"},
+  {n:9, pop:"Tanchagem", sci:"Plantago major", sys:"Digestivo / Respiratório", consumo:"Infusão, compressas, maceração", parte:"Parte aérea", origem:"intro", tipo:"folha"},
+  {n:10, pop:"Malvaísco", sci:"Althaea officinalis", sys:"Sensorial", consumo:"Maceração, lavagem", parte:"Folha, flor", origem:"intro", tipo:"folha"},
+  {n:11, pop:"Marroio", sci:"Marrubium vulgare", sys:"Digestivo", consumo:"Infusão, maceração, decocção", parte:"Parte aérea", origem:"intro", tipo:"folha"},
+  {n:12, pop:"Maracujá", sci:"Passiflora caerulea", sys:"Nervoso / Cardiovascular", consumo:"Infusão", parte:"Folha, caule", origem:"native", tipo:"folha"},
+  {n:13, pop:"Melissa / erva-cidreira", sci:"Melissa officinalis", sys:"Digestivo / Nervoso", consumo:"Infusão, maceração", parte:"Folha", origem:"intro", tipo:"folha"},
+  {n:14, pop:"Menta / hortelã", sci:"Mentha piperita / M. arvensis / sp.", sys:"Nervoso / Digestivo", consumo:"Infusão, maceração", parte:"Folha", origem:"intro", tipo:"folha"},
+  {n:15, pop:"Mercúrio", sci:"Modiola caroliniana", sys:"Sensorial", consumo:"Maceração, cataplasma", parte:"Folha", origem:"native", tipo:"folha"},
+  {n:16, pop:"Palma-imperial", sci:"Tanacetum vulgare", sys:"Sensorial / Digestivo / Musculoesq.", consumo:"Infusão, maceração, cataplasma", parte:"Parte aérea", origem:"intro", tipo:"folha"},
+  {n:17, pop:"Pau-de-sabão", sci:"Quillaja brasiliensis", sys:"Sensorial", consumo:"Lavagem", parte:"Folha", origem:"native", tipo:"folha"},
+  {n:18, pop:"Pitanga", sci:"Eugenia uniflora", sys:"Geniturinário / Digestivo", consumo:"Infusão, maceração", parte:"Folha, fruto", origem:"native", tipo:"fruto"},
+  {n:19, pop:"Quina", sci:"Discaria americana", sys:"Respiratório / Sistêmico / Geniturinário", consumo:"Infusão, maceração, decocção", parte:"Folha, raiz", origem:"native", tipo:"raiz"},
+  {n:20, pop:"Salgueiro", sci:"Salix humboldtiana", sys:"Nervoso / Musculoesq.", consumo:"Decocção", parte:"Casca", origem:"native", tipo:"casca"},
+  {n:21, pop:"Buva", sci:"Conyza bonariensis", sys:"Digestivo", consumo:"Infusão", parte:"Folha, caule, flor", origem:"native", tipo:"flor"},
+];
+
+const sketches = {
+  folha: `<svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <circle cx="32" cy="32" r="30" fill="#EEF3EA"/>
+    <path d="M32 14C20 20 16 34 24 46C28 40 30 34 32 14Z" stroke="#3D6B4F" stroke-width="2" fill="#DCEAE0"/>
+    <path d="M32 14C44 20 48 34 40 46C36 40 34 34 32 14Z" stroke="#3D6B4F" stroke-width="2" fill="#CFE2D8"/>
+    <path d="M32 16 L32 44" stroke="#294a37" stroke-width="1.4"/>
+    <path d="M32 24 L26 30 M32 24 L38 30 M32 32 L27 37 M32 32 L37 37" stroke="#294a37" stroke-width="1"/>
+  </svg>`,
+  flor: `<svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <circle cx="32" cy="32" r="30" fill="#FBF0E4"/>
+    <g>
+      <ellipse cx="32" cy="20" rx="7" ry="10" fill="#E7C9B4" stroke="#B85C38" stroke-width="1.5"/>
+      <ellipse cx="32" cy="44" rx="7" ry="10" fill="#E7C9B4" stroke="#B85C38" stroke-width="1.5"/>
+      <ellipse cx="20" cy="32" rx="10" ry="7" fill="#E7C9B4" stroke="#B85C38" stroke-width="1.5"/>
+      <ellipse cx="44" cy="32" rx="10" ry="7" fill="#E7C9B4" stroke="#B85C38" stroke-width="1.5"/>
+    </g>
+    <circle cx="32" cy="32" r="6" fill="#C79A3E" stroke="#8a6a20" stroke-width="1.2"/>
+  </svg>`,
+  raiz: `<svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <circle cx="32" cy="32" r="30" fill="#F3ECDA"/>
+    <path d="M32 12 L32 30" stroke="#3D6B4F" stroke-width="2.5"/>
+    <path d="M32 30 C28 36 26 40 22 50 M32 30 C36 36 38 40 42 50 M32 34 C30 40 29 44 26 52 M32 34 C34 40 35 44 38 52" stroke="#a68f6c" stroke-width="1.6" fill="none"/>
+    <ellipse cx="32" cy="12" rx="6" ry="3" fill="#DCEAE0" stroke="#3D6B4F" stroke-width="1.4"/>
+  </svg>`,
+  casca: `<svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <circle cx="32" cy="32" r="30" fill="#F1E9D8"/>
+    <rect x="22" y="12" width="20" height="40" rx="3" fill="#DCC9A3" stroke="#8a6a20" stroke-width="1.6"/>
+    <path d="M25 16 C28 20 24 24 27 28 C30 32 25 36 28 40 C31 44 26 48 29 50" stroke="#7a5b12" stroke-width="1.3" fill="none"/>
+    <path d="M36 15 C39 19 35 23 38 27 C41 31 36 35 39 39 C42 43 37 47 40 50" stroke="#7a5b12" stroke-width="1.3" fill="none"/>
+  </svg>`,
+  caule: `<svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <circle cx="32" cy="32" r="30" fill="#EEF3EA"/>
+    <path d="M32 10 L32 54" stroke="#3D6B4F" stroke-width="3"/>
+    <path d="M32 20 L22 14 M32 28 L42 22 M32 36 L22 30 M32 44 L42 38" stroke="#5c8c6e" stroke-width="2" stroke-linecap="round"/>
+  </svg>`,
+  fruto: `<svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <circle cx="32" cy="32" r="30" fill="#FBF0E4"/>
+    <circle cx="32" cy="36" r="16" fill="#E7C9B4" stroke="#B85C38" stroke-width="1.8"/>
+    <path d="M32 20 C32 16 35 14 38 14" stroke="#3D6B4F" stroke-width="2" fill="none"/>
+    <path d="M32 20 C28 16 26 20 28 24 C30 20 30 20 32 20Z" fill="#5c8c6e"/>
+  </svg>`
+};
+
+function renderPlants(filter){
+  const grid = document.getElementById('plantGrid');
+  grid.innerHTML = '';
+  plants.filter(p=>{
+    if(filter==='all') return true;
+    if(filter==='native') return p.origem==='native';
+    if(filter==='intro') return p.origem==='intro';
+  }).forEach(p=>{
+    const card = document.createElement('div');
+    card.className='plant-card';
+    card.innerHTML = `
+      <div class="sketch">${sketches[p.tipo] || sketches.folha}</div>
+      <span class="name">${p.n}. ${p.pop}</span>
+      <span class="sci">${p.sci}</span>
+      <div style="font-size:.85rem; color:#5b5346;"><strong>Sistema:</strong> ${p.sys}</div>
+      <div style="font-size:.85rem; color:#5b5346;"><strong>Consumo:</strong> ${p.consumo}</div>
+      <div style="font-size:.85rem; color:#5b5346;"><strong>Parte usada:</strong> ${p.parte}</div>
+      <div class="tags">
+        <span class="tag ${p.origem==='native'?'origin-native':'origin-intro'}">${p.origem==='native'?'Nativa':'Introduzida'}</span>
+      </div>`;
+    grid.appendChild(card);
+  });
+}
+renderPlants('all');
+document.querySelectorAll('.plant-toolbar button').forEach(btn=>{
+  btn.addEventListener('click', ()=>{
+    document.querySelectorAll('.plant-toolbar button').forEach(b=>b.classList.remove('active'));
+    btn.classList.add('active');
+    renderPlants(btn.dataset.filter);
+  });
+});
+
+const tbody = document.querySelector('#fullTable tbody');
+plants.forEach(p=>{
+  const tr = document.createElement('tr');
+  tr.innerHTML = `<td>${p.n}</td><td>${p.pop}</td><td><em>${p.sci}</em></td><td>${p.sys}</td><td>${p.consumo}</td><td>${p.parte}</td><td>${p.origem==='native'?'Nativa':'Introduzida'}</td>`;
+  tbody.appendChild(tr);
+});
+
+function makeDonut(el, segments){
+  let acc = 0;
+  const stops = segments.map(s=>{
+    const start = acc;
+    acc += s.pct;
+    return `${s.color} ${start}% ${acc}%`;
+  }).join(', ');
+  el.style.background = `conic-gradient(${stops})`;
+  el.style.borderRadius = '50%';
+  el.style.position = 'relative';
+  const hole = document.createElement('div');
+  hole.style.position='absolute';
+  hole.style.inset='22%';
+  hole.style.background='var(--bg)';
+  hole.style.borderRadius='50%';
+  el.appendChild(hole);
+}
+makeDonut(document.getElementById('donut-origem'), [
+  {color:'#3D6B4F', pct:67},
+  {color:'#C79A3E', pct:33},
+]);
+makeDonut(document.getElementById('donut-sistema'), [
+  {color:'#3D6B4F', pct:33},
+  {color:'#5c8c6e', pct:21},
+  {color:'#B85C38', pct:12},
+  {color:'#C79A3E', pct:10},
+  {color:'#8a7350', pct:8},
+  {color:'#a68f6c', pct:8},
+  {color:'#c9b89a', pct:4},
+  {color:'#dcd2b8', pct:2},
+  {color:'#e8e0c8', pct:2},
+]);
+makeDonut(document.getElementById('donut-partes'), [
+  {color:'#3D6B4F', pct:63},
+  {color:'#C79A3E', pct:11},
+  {color:'#B85C38', pct:7},
+  {color:'#a68f6c', pct:7},
+  {color:'#dcd2b8', pct:12},
+]);
+
+</script>
+
+</body>
+</html>
