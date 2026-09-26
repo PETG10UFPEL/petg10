@@ -189,13 +189,12 @@ img {
       margin-top:12px;
       width:100%;
       overflow-x:auto;
+      -webkit-overflow-scrolling:touch;
       border-radius:12px;
       border:1px solid var(--border);
     }
     table.tabela-organizacao{
       width:100%;
-      max-width:100%;
-      table-layout:fixed;
       border-collapse:collapse;
       font-size:.92rem;
       background:#fff;
@@ -206,16 +205,12 @@ img {
       padding:8px 10px;
       text-align:left;
       vertical-align:middle;
-      white-space:normal;
-      word-break:break-word;
       overflow-wrap:break-word;
     }
     table.tabela-organizacao thead th{
       background: linear-gradient(90deg, var(--blue), var(--blue2));
       color:#fff;
       font-weight:700;
-      position:sticky;
-      top:0;
     }
     table.tabela-organizacao tbody tr:nth-child(even){
       background:rgba(59,130,196,.05);
@@ -227,6 +222,48 @@ img {
       margin-top:10px;
       color:var(--muted);
       font-size:.88rem;
+    }
+
+    /* Celular: cada linha da planilha vira um bloco empilhado (rótulo + valor) */
+    @media (max-width:640px){
+      .tabela-organizacao-wrap{ border:0; border-radius:0; overflow:visible; }
+      table.tabela-organizacao,
+      table.tabela-organizacao tbody,
+      table.tabela-organizacao tr,
+      table.tabela-organizacao td{ display:block; width:100%; }
+      table.tabela-organizacao{ background:transparent; font-size:.95rem; }
+      table.tabela-organizacao.carregado thead{ display:none; }
+      table.tabela-organizacao:not(.carregado) thead th{ display:block; border-radius:12px; }
+      table.tabela-organizacao tbody tr{
+        background:#fff !important;
+        border:1px solid var(--border);
+        border-radius:12px;
+        margin-bottom:10px;
+        overflow:hidden;
+      }
+      table.tabela-organizacao td{
+        border:0;
+        border-top:1px solid var(--border);
+        display:grid;
+        grid-template-columns: minmax(90px, 38%) 1fr;
+        gap:10px;
+        padding:9px 12px;
+      }
+      table.tabela-organizacao td::before{
+        content:attr(data-label);
+        font-weight:700;
+        color:var(--blue2);
+      }
+      /* 1ª célula de cada linha funciona como título do bloco */
+      table.tabela-organizacao td:first-child{
+        border-top:0;
+        display:block;
+        font-weight:700;
+        color:#fff;
+        background: linear-gradient(90deg, var(--blue), var(--blue2));
+      }
+      table.tabela-organizacao td:first-child::before{ content:none; }
+      table.tabela-organizacao td.vazio{ display:none; }
     }
   </style>
 </head>
@@ -1003,14 +1040,17 @@ function alternarTabela() {
         }).join('') + '</tr>';
 
         linhasDados.forEach(function(row){
-          var tds = (row.c || []).map(function(cel){
+          var tds = (row.c || []).map(function(cel, i){
             var valor = cel ? (cel.f !== undefined && cel.f !== null ? cel.f : cel.v) : '';
-            valor = (valor === null || valor === undefined) ? '' : valor;
-            return '<td>' + escapeHtml(String(valor)) + '</td>';
+            valor = (valor === null || valor === undefined) ? '' : String(valor);
+            var rotulo = headerLabels[i] ? escapeHtml(String(headerLabels[i])) : '';
+            var classe = valor.trim() === '' ? ' class="vazio"' : '';
+            return '<td data-label="' + rotulo + '"' + classe + '>' + escapeHtml(valor) + '</td>';
           }).join('');
           tbody.innerHTML += '<tr>' + tds + '</tr>';
         });
 
+        tabela.classList.add('carregado');
         if(status) status.textContent = 'Dados carregados diretamente do Google Sheets.';
       })
       .catch(function(err){
