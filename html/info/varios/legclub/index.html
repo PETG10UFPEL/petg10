@@ -1,0 +1,1201 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Leg Clubs: cuidar de úlceras de perna em comunidade</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@6..72,400;6..72,500;6..72,600;6..72,700&family=Public+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --paper:#F6F7F4;
+  --white:#FFFFFF;
+  --ink:#1D3340;
+  --ink-soft:#4A5E6A;
+  --sage:#4F8468;
+  --sage-soft:#E3EEE7;
+  --wound:#B8475A;
+  --wound-soft:#F6E3E6;
+  --home:#8A9BA8;
+  --ochre:#C9922E;
+  --ochre-soft:#F8EDD6;
+  --line:#D9DFDB;
+  --serif:"Newsreader", Georgia, "Times New Roman", serif;
+  --sans:"Public Sans", "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  box-sizing:border-box;
+  padding-top:env(safe-area-inset-top,0px);
+  padding-bottom:env(safe-area-inset-bottom,0px);
+}
+*,*::before,*::after{box-sizing:inherit}
+html{scroll-padding-top:calc(env(safe-area-inset-top,0px) + 96px)}
+body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--sans);font-size:17px;line-height:1.62;-webkit-font-smoothing:antialiased}
+img,svg{max-width:100%;height:auto;display:block}
+a{color:var(--sage);text-underline-offset:3px}
+a:focus-visible,button:focus-visible{outline:3px solid var(--ochre);outline-offset:3px;border-radius:4px}
+
+/* Cabeçalho institucional */
+.institutional-header{position:sticky;top:0;z-index:50;background:rgba(255,255,255,.96);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);border-bottom:1px solid var(--line);box-shadow:0 2px 10px rgba(29,51,64,.06);display:flex;justify-content:space-between;align-items:center;padding:14px 18px;gap:16px}
+.header-identity{font-family:var(--serif);font-size:1.05rem;font-weight:500;color:var(--ink-soft)}
+.header-identity strong{color:var(--ink);font-weight:600}
+.logo-slot{max-height:52px}
+.institutional-header .logo-slot .placeholder-box{min-height:52px;max-height:52px;padding:6px 14px;flex-direction:row;gap:8px;border-radius:6px}
+.logo-slot .placeholder-label{font-size:.72rem}
+.logo-slot img{max-height:52px;width:auto}
+
+main{max-width:1120px;margin:0 auto;padding:0 22px}
+.measure{max-width:680px}
+section{padding:64px 0;border-bottom:1px solid var(--line)}
+section:last-of-type{border-bottom:none}
+
+h1,h2,h3{font-family:var(--serif);font-weight:600;line-height:1.15;margin:0 0 .5em;letter-spacing:-.01em}
+h1{font-size:clamp(2.2rem,5.2vw,3.6rem);font-weight:600}
+h2{font-size:clamp(1.7rem,3.4vw,2.35rem)}
+h3{font-size:1.3rem;font-weight:600}
+p{margin:0 0 1em}
+.lede{font-family:var(--serif);font-size:clamp(1.18rem,2.1vw,1.4rem);line-height:1.5;color:var(--ink-soft);font-weight:400}
+.small{font-size:.88rem;color:var(--ink-soft)}
+
+/* Hero */
+.hero{display:grid;grid-template-columns:1.05fr 1fr;gap:48px;align-items:center;padding:56px 0 64px}
+.hero-cite{font-size:.88rem;color:var(--ink-soft);border-left:3px solid var(--sage);padding-left:12px;margin-top:1.4em}
+.hero-cite em{font-style:italic}
+.hero figure{margin:0}
+
+/* Duas colunas */
+.split{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:center}
+.split.wide-left{grid-template-columns:1.1fr .9fr}
+figure{margin:0}
+figcaption{font-size:.86rem;color:var(--ink-soft);margin-top:10px;line-height:1.5}
+
+/* Callouts */
+.callout{background:var(--sage-soft);border-radius:14px;padding:22px 26px;margin:28px 0}
+.callout.wound{background:var(--wound-soft)}
+.callout.ochre{background:var(--ochre-soft)}
+.callout p:last-child{margin-bottom:0}
+.pull{font-family:var(--serif);font-size:clamp(1.35rem,2.6vw,1.8rem);line-height:1.35;font-weight:500;border-top:2px solid var(--ink);border-bottom:1px solid var(--line);padding:22px 0;margin:36px 0;max-width:820px}
+
+/* Pilares */
+.pillars{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;margin-top:32px}
+.pillar{background:var(--white);border:1px solid var(--line);border-radius:12px;padding:20px 18px}
+.pillar svg{width:56px;height:56px;margin-bottom:10px}
+.pillar h3{font-size:1.08rem;margin-bottom:.35em}
+.pillar p{font-size:.93rem;margin:0;color:var(--ink-soft)}
+
+/* Mapa de pontos */
+.clubs{display:flex;flex-wrap:wrap;gap:28px;margin-top:22px}
+.club-group{min-width:160px}
+.dots{display:flex;flex-wrap:wrap;gap:5px;max-width:230px;margin-bottom:8px}
+.dots span{width:12px;height:12px;border-radius:50%;background:var(--sage)}
+.club-group strong{font-family:var(--serif);font-size:1.5rem;display:block;line-height:1}
+
+/* Waffle */
+.waffle{display:grid;grid-template-columns:repeat(7,1fr);gap:6px;max-width:360px;margin:18px 0}
+.waffle span{aspect-ratio:1;border-radius:4px}
+.legend{list-style:none;padding:0;margin:0;display:grid;gap:6px;font-size:.92rem}
+.legend li{display:flex;align-items:center;gap:10px}
+.legend i{width:14px;height:14px;border-radius:3px;display:inline-block;flex:none}
+.c-ecr{background:var(--ink)}.c-qual{background:var(--sage)}.c-mix{background:#8DB39E}
+.c-tra{background:var(--ochre)}.c-caso{background:#D9C9A6}.c-aud{background:var(--home)}
+
+/* Resultados */
+.result-block{padding:40px 0;border-top:1px dashed var(--line)}
+.result-block:first-of-type{border-top:none;padding-top:8px}
+.tag{display:inline-block;font-size:.8rem;font-weight:600;padding:3px 10px;border-radius:99px;background:var(--ochre-soft);color:#7A5510;margin-bottom:10px}
+.tag.mod{background:var(--sage-soft);color:#2F5C45}
+.tag.low{background:#EEE9DE;color:#6B5A36}
+.tag.vlow{background:#F1E4E1;color:#8A3F3A}
+
+.bars{display:grid;gap:14px;margin:18px 0}
+.bar-row{display:grid;grid-template-columns:120px 1fr 112px;align-items:center;gap:12px;font-size:.92rem}
+.bar-track{background:#E8ECE9;border-radius:6px;height:22px;overflow:hidden}
+.bar-fill{height:100%;border-radius:6px;width:0;transition:width 1.4s cubic-bezier(.2,.7,.2,1)}
+.bar-row b{font-variant-numeric:tabular-nums;text-align:right;white-space:nowrap}
+
+.rings{display:flex;gap:30px;flex-wrap:wrap;margin-top:18px}
+.ring{text-align:center;font-size:.9rem}
+.ring svg{width:120px;height:120px;margin:0 auto 6px}
+
+.chips{display:flex;flex-wrap:wrap;gap:10px;margin:14px 0 6px}
+.chip{background:var(--white);border:1px solid var(--line);border-radius:99px;padding:6px 14px;font-family:var(--serif);}
+.chip.big{font-size:1.35rem;border-color:var(--sage);color:#2F5C45}
+.chip.mid{font-size:1.1rem}
+.chip.muted{color:var(--ink-soft);font-style:italic;font-size:.98rem}
+
+.stat-line{display:flex;gap:28px;flex-wrap:wrap;margin:16px 0}
+.stat-line div{flex:1 1 140px}
+.stat-line strong{display:block;font-family:var(--serif);font-size:2.1rem;line-height:1.05;color:var(--ink)}
+.stat-line span{font-size:.88rem;color:var(--ink-soft)}
+
+/* GRADE */
+.grade{background:var(--white);border:1px solid var(--line);border-radius:14px;padding:8px 0;margin-top:24px;overflow-x:auto}
+.grade table{border-collapse:collapse;width:100%;min-width:600px;font-size:.93rem}
+.grade th,.grade td{padding:12px 18px;text-align:left;border-bottom:1px solid #EEF1EF;vertical-align:middle}
+.grade tr:last-child td{border-bottom:none}
+.grade th{font-weight:600;color:var(--ink-soft);font-size:.84rem}
+.grade .group td{background:#F3F6F4;font-family:var(--serif);font-weight:600;font-size:1rem}
+.meter{display:flex;gap:4px;align-items:center}
+.meter em{font-style:normal;font-size:.84rem;color:var(--ink-soft);margin-left:10px;white-space:nowrap}
+.meter i{width:34px;height:12px;border-radius:3px;background:#E5E9E6}
+.meter.l1 i:nth-child(-n+1){background:#C7746C}
+.meter.l2 i:nth-child(-n+2){background:#D6A55A}
+.meter.l3 i:nth-child(-n+3){background:var(--sage)}
+.meter.l4 i{background:var(--ink)}
+.grade-key{display:flex;gap:18px;flex-wrap:wrap;font-size:.84rem;color:var(--ink-soft);padding:10px 18px 4px}
+
+/* Limitações */
+.limits{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:26px}
+.limit{border-top:3px solid var(--wound);padding-top:12px}
+.limit h3{font-size:1.05rem}
+.limit p{font-size:.93rem;color:var(--ink-soft);margin:0}
+
+/* Síntese */
+.synthesis{background:var(--ink);color:#EEF3F0;border-radius:20px;padding:48px 44px;margin:64px 0}
+.synthesis h2{color:#fff}
+.synthesis ol{margin:0;padding-left:1.3em;display:grid;gap:14px;font-size:1.05rem}
+.synthesis li::marker{font-family:var(--serif);color:#A9CDB8;font-weight:600}
+
+/* Placeholder de imagem */
+.img-placeholder .placeholder-box{border:2px dashed #b0b8c1;background:#f4f6f8;border-radius:8px;padding:32px 24px;text-align:center;color:#6c757d;min-height:220px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px}
+.placeholder-icon{font-size:2rem}
+.placeholder-label{font-family:monospace;font-size:.85rem;background:#e9ecef;padding:4px 10px;border-radius:4px;color:#343a40;margin:0}
+.placeholder-hint{font-size:.8rem;color:#868e96;font-style:italic;max-width:340px;margin:0}
+.img-placeholder img{width:100%;border-radius:10px}
+
+
+/* Galeria de fotos */
+.fig-row{display:grid;grid-template-columns:1fr 1fr;gap:28px;margin:36px 0 8px}
+.fig-row.three{grid-template-columns:repeat(3,1fr)}
+
+/* Quiz */
+.quiz{display:grid;gap:18px;margin-top:26px}
+.q{background:var(--white);border:1px solid var(--line);border-radius:14px;padding:22px 24px}
+.q-num{font-size:.82rem;color:var(--ink-soft);margin:0 0 4px}
+.q-text{font-family:var(--serif);font-size:1.18rem;font-weight:600;line-height:1.35;margin:0 0 14px}
+.opts{display:grid;gap:8px}
+@media (min-width:881px){.opts{grid-template-columns:1fr 1fr}}
+.opt{font:inherit;font-size:.96rem;text-align:left;background:var(--paper);border:1.5px solid var(--line);border-radius:10px;padding:11px 14px;color:var(--ink);cursor:pointer;transition:border-color .15s,background .15s}
+.opt:hover:not(:disabled){border-color:var(--sage)}
+.opt:disabled{cursor:default}
+.opt.correct{background:var(--sage-soft);border-color:var(--sage);color:#1F4A34;font-weight:600}
+.opt.wrong{background:var(--wound-soft);border-color:var(--wound);color:#7A2434}
+.opt.dim{opacity:.55}
+.feedback{margin-top:12px;font-size:.93rem;border-left:3px solid var(--sage);padding:4px 0 4px 12px;display:none}
+.feedback.show{display:block}
+.feedback.bad{border-left-color:var(--wound)}
+.feedback strong{display:block;margin-bottom:2px}
+.score{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:14px;background:var(--ink);color:#EEF3F0;border-radius:14px;padding:20px 24px;margin-top:6px}
+.score strong{font-family:var(--serif);font-size:1.6rem}
+.score button{font:inherit;font-weight:600;background:#EEF3F0;color:var(--ink);border:none;border-radius:99px;padding:9px 18px;cursor:pointer}
+
+/* Perguntas socráticas */
+.socratic{display:grid;gap:14px;margin-top:26px}
+.socratic details{background:var(--white);border:1px solid var(--line);border-left:4px solid var(--ochre);border-radius:12px;padding:18px 22px}
+.socratic summary{cursor:pointer;list-style:none;font-family:var(--serif);font-size:1.15rem;font-weight:600;line-height:1.4}
+.socratic summary::-webkit-details-marker{display:none}
+.socratic summary .kind{display:block;font-family:var(--sans);font-size:.8rem;font-weight:600;color:#7A5510;margin-bottom:4px}
+.socratic summary::after{content:"Mostrar pista";display:block;font-family:var(--sans);font-size:.82rem;font-weight:500;color:var(--sage);margin-top:8px}
+.socratic details[open] summary::after{content:"Ocultar pista"}
+.socratic .hint{margin-top:12px;font-size:.95rem;color:var(--ink-soft)}
+.socratic .hint p:last-child{margin-bottom:0}
+@media (max-width:880px){.fig-row,.fig-row.three{grid-template-columns:1fr}}
+
+
+/* Citações numeradas */
+sup.cite{font-size:.68em;line-height:0;margin-left:1px;font-weight:600;white-space:nowrap}
+sup.cite a{text-decoration:none;color:var(--sage)}
+sup.cite a:hover{text-decoration:underline}
+.refs li:target{background:var(--ochre-soft);border-radius:4px}
+.refs ol.numbered{list-style:none;padding-left:0}
+.refs ol.numbered li{display:grid;grid-template-columns:2.2em 1fr;gap:4px}
+.refs ol.numbered li .n{font-weight:700;color:var(--ink)}
+
+/* Quadro de origem */
+.origin{background:var(--white);border:1px solid var(--line);border-top:5px solid var(--ochre);border-radius:16px;padding:30px 30px 26px;margin:36px 0}
+.origin .kicker{font-size:.82rem;font-weight:600;color:#7A5510;margin:0 0 6px}
+.timeline{list-style:none;margin:22px 0 0;padding:0;display:grid;grid-template-columns:repeat(4,1fr);gap:0;position:relative}
+.timeline::before{content:"";position:absolute;left:0;right:0;top:9px;height:2px;background:var(--line)}
+.timeline li{position:relative;padding:28px 16px 0 0;font-size:.9rem;color:var(--ink-soft)}
+.timeline li::before{content:"";position:absolute;top:2px;left:0;width:16px;height:16px;border-radius:50%;background:var(--white);border:3px solid var(--ochre)}
+.timeline li.key::before{background:var(--ochre)}
+.timeline b{display:block;font-family:var(--serif);font-size:1.25rem;color:var(--ink);line-height:1.1;margin-bottom:4px}
+@media (max-width:880px){
+  .timeline{grid-template-columns:1fr;gap:18px;padding-left:4px}
+  .timeline::before{left:11px;right:auto;top:0;bottom:0;width:2px;height:auto}
+  .timeline li{padding:0 0 0 34px}
+  .timeline li::before{left:4px;top:4px}
+}
+
+/* Vídeos (carregam só ao clicar) */
+.video{margin:0}
+.yt{position:relative;display:block;width:100%;aspect-ratio:16/9;border:none;padding:0;border-radius:12px;overflow:hidden;background:#1D3340;cursor:pointer}
+.yt img{width:100%;height:100%;object-fit:cover;opacity:.85;transition:opacity .2s}
+.yt:hover img{opacity:1}
+.yt svg{position:absolute;left:50%;top:50%;width:68px;height:48px;transform:translate(-50%,-50%)}
+.yt iframe{width:100%;height:100%;border:0;display:block}
+.video-grid{display:grid;grid-template-columns:1fr 1fr;gap:28px;margin:28px 0}
+.video figcaption strong{color:var(--ink)}
+
+/* Cartões PET G10 */
+.petcards{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:16px;margin:18px 0}
+.petcard{display:flex;flex-direction:column;gap:6px;background:var(--white);border:1px solid var(--line);border-left:4px solid var(--sage);border-radius:12px;padding:16px 18px;text-decoration:none;color:var(--ink);transition:border-color .15s,transform .15s}
+.petcard:hover{border-color:var(--sage);transform:translateY(-2px)}
+.petcard img{height:30px;width:auto;align-self:flex-start;margin-bottom:4px}
+.petcard .k{font-size:.76rem;font-weight:600;color:#2F5C45}
+.petcard strong{font-family:var(--serif);font-size:1.08rem;line-height:1.25}
+.petcard span.d{font-size:.88rem;color:var(--ink-soft)}
+.petcard .go{font-size:.85rem;font-weight:600;color:var(--sage);margin-top:auto;padding-top:6px}
+.deep{background:#EEF3F0;border-radius:16px;padding:26px 28px;margin:32px 0}
+.deep h3{margin-bottom:.3em}
+
+/* Destaque Upton */
+.spotlight{background:var(--white);border:1px solid var(--line);border-top:5px solid var(--sage);border-radius:16px;padding:30px;margin-top:40px}
+.spotlight .kicker{font-size:.82rem;font-weight:600;color:#2F5C45;margin:0 0 6px}
+.themes{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;margin:14px 0}
+.themes div{background:var(--sage-soft);border-radius:10px;padding:10px 14px;font-size:.9rem}
+.themes b{display:block;font-family:var(--serif);font-size:1rem}
+@media (max-width:880px){.video-grid{grid-template-columns:1fr}.origin,.spotlight{padding:22px 20px}}
+@media (max-width:520px){.themes{grid-template-columns:1fr}}
+
+.photo{width:100%;height:auto;border-radius:14px;display:block}
+
+/* Referências */
+.refs{font-size:.86rem;color:var(--ink-soft)}
+.refs ol{padding-left:1.2em;display:grid;gap:8px}
+.refs h3{font-size:1.05rem;margin-top:1.6em;color:var(--ink)}
+
+.institutional-footer{background:var(--white);border-top:1px solid var(--line);padding:28px 18px;text-align:center}
+.institutional-footer p{margin:0;font-size:13px;color:#3F4B52}
+
+/* Animação única: encolhimento das feridas */
+.shrink{transform-box:fill-box;transform-origin:center;transform:scale(1);transition:transform 2.2s cubic-bezier(.25,.8,.25,1) .3s}
+.in-view .shrink{transform:scale(var(--s))}
+@media (prefers-reduced-motion:reduce){
+  .shrink,.bar-fill{transition:none}
+}
+
+@media (max-width:880px){
+  .hero,.split,.split.wide-left{grid-template-columns:1fr;gap:28px}
+  .pillars{grid-template-columns:repeat(2,1fr)}
+  .limits{grid-template-columns:1fr}
+  .synthesis{padding:34px 24px}
+}
+@media (max-width:520px){
+  body{font-size:16px}
+  .pillars{grid-template-columns:1fr}
+  .bar-row{grid-template-columns:1fr auto;row-gap:6px;font-size:.88rem}
+  .bar-track{grid-column:1/-1;order:3}
+  .logo-slot{max-width:52%}
+  .institutional-header .logo-slot .placeholder-label{font-size:.62rem;word-break:break-all}
+  .header-identity{font-size:.84rem;line-height:1.35}
+  .institutional-header{padding:8px 12px}
+  .logo-slot img{max-height:40px}
+}
+</style>
+</head>
+<body>
+
+<header class="institutional-header">
+  <div class="header-identity"><strong>Leituras em feridas crônicas</strong><br>Infográfico de artigo científico</div>
+  <figure class="img-placeholder logo-slot" data-img-path="img/logos-amor-a-pele-pet-saude.png" data-img-fallback="https://petg10ufpel.github.io/petg10/html/info/itb/img/logo.png" data-alt="Logos Amor-à-Pele e PET-Saúde Digital – UFPel">
+    <div class="placeholder-box">
+      <p class="placeholder-label">[ Coloque aqui: img/logos-amor-a-pele-pet-saude.png ]</p>
+    </div>
+  </figure>
+</header>
+
+<main>
+
+<!-- HERO -->
+<section class="hero" aria-labelledby="titulo">
+  <div>
+    <h1 id="titulo">Cuidar da ferida em roda de conversa</h1>
+    <p class="lede">Os Leg Clubs levam o curativo de úlceras de perna para um salão comunitário, sem hora marcada, com chá e companhia. Uma revisão sistemática<sup class="cite"><a href="#ref-1">1</a></sup> reuniu tudo o que se publicou sobre o modelo até 2017 para responder: isso cicatriza melhor, custa menos e é seguro?</p>
+    <p class="hero-cite">Abu Ghazaleh H, Artom M, Sturt J. <em>A systematic review of community Leg Clubs for patients with chronic leg ulcers.</em> Primary Health Care Research &amp; Development. 2019;20:e65 (publicado online em 30 ago. 2018). King’s College London. <a href="https://doi.org/10.1017/S1463423618000610">doi:10.1017/S1463423618000610</a></p>
+  </div>
+  <figure>
+    <img class="photo" src="img/ambientelegclub.png" width="1536" height="1024" alt="Salão comunitário de um Leg Club: quatro idosos conversam e tomam chá em volta de uma mesa com flores, enquanto ao fundo uma enfermeira aplica bandagem de compressão na perna de uma senhora, junto a biombos azuis, e outra enfermeira prepara materiais.">
+    <figcaption>O cenário de um Leg Club: a conversa em volta do chá acontece no mesmo salão em que as enfermeiras fazem os curativos. Os biombos ao fundo oferecem privacidade a quem prefere não expor a ferida. Imagem ilustrativa.</figcaption>
+  </figure>
+</section>
+
+<!-- O PROBLEMA -->
+<section aria-labelledby="problema">
+  <div class="split wide-left">
+    <div class="measure">
+      <h2 id="problema">Uma ferida que insiste em não fechar</h2>
+      <p>Úlcera de perna é a perda de pele abaixo do joelho, na perna ou no pé, que leva mais de duas semanas para cicatrizar. Há dois tipos principais. A <strong>venosa</strong> nasce da hipertensão venosa sustentada, quando as válvulas das veias falham e o sangue se acumula. A <strong>arterial</strong> vem da falta de sangue chegando ao membro.<sup class="cite"><a href="#ref-1">1</a></sup></p>
+      <p>No Reino Unido, cerca de 0,56% da população tem úlcera de perna, e as venosas são aproximadamente 30 vezes mais comuns que as arteriais. Mulheres e idosos são os mais atingidos. Só em 2012/2013, tratar essas úlceras custou ao NHS £1,94 bilhão.<sup class="cite"><a href="#ref-1">1</a>–<a href="#ref-3">3</a></sup></p>
+      <p>O tratamento padrão-ouro da úlcera venosa é a <strong>terapia compressiva</strong>. O ponto fraco não está na técnica, mas na adesão: dor, desconforto, orientação pobre e vínculo frágil entre paciente e profissional fazem muita gente abandonar a compressão, e isso atrasa a cicatrização e favorece a recidiva.<sup class="cite"><a href="#ref-1">1</a></sup></p>
+    </div>
+    <figure>
+      <img class="photo" src="img/venosaarterial.png" width="1536" height="1024" loading="lazy" alt="Ilustração anatômica comparando duas pernas. À esquerda, veia dilatada com válvula incompetente e refluxo, pele escurecida e úlcera acima do tornozelo. À direita, artéria com placa de gordura estreitando a luz do vaso e pequena lesão na ponta de um dedo do pé.">
+      <figcaption>Figura 1. Úlcera venosa (à esquerda): a válvula venosa falha, o sangue reflui e a pressão alta nas veias leva a escurecimento da pele e úlcera acima do tornozelo. Úlcera arterial (à direita): a placa estreita a artéria, pouco sangue chega ao pé e a lesão aparece nas extremidades, como os dedos. A compressão trata a causa venosa, mas pode ser perigosa se houver doença arterial importante. Imagem ilustrativa.</figcaption>
+    </figure>
+  </div>
+  <div class="fig-row three">
+    <figure class="img-placeholder" data-img-path="img/ulcera-venosa-regiao-maleolar.jpg" data-alt="Aspecto típico da úlcera venosa: localização acima do tornozelo, bordas irregulares e alterações de pele ao redor causadas pela hipertensão venosa">
+      <div class="placeholder-box" style="min-height:220px">
+        <span class="placeholder-icon">🖼</span>
+        <p class="placeholder-label">[ Coloque aqui: img/ulcera-venosa-regiao-maleolar.jpg ]</p>
+        <p class="placeholder-hint">Descrição esperada: foto clínica de úlcera venosa na região do maléolo medial (“área de polaina”), com pele circundante hiperpigmentada; somente com consentimento do paciente e sem identificação</p>
+      </div>
+      <figcaption>Figura 2. Aspecto típico da úlcera venosa: localização acima do tornozelo, bordas irregulares e alterações de pele ao redor causadas pela hipertensão venosa.</figcaption>
+    </figure>
+    <figure class="img-placeholder" data-img-path="img/avaliacao-itb-doppler.jpg" data-alt="Antes de comprimir, avaliar a circulação arterial: o índice tornozelo-braço ajuda a descartar doença arterial que contraindique a compressão">
+      <div class="placeholder-box" style="min-height:220px">
+        <span class="placeholder-icon">🖼</span>
+        <p class="placeholder-label">[ Coloque aqui: img/avaliacao-itb-doppler.jpg ]</p>
+        <p class="placeholder-hint">Descrição esperada: profissional medindo o índice tornozelo-braço com Doppler vascular portátil e esfigmomanômetro no tornozelo do paciente deitado</p>
+      </div>
+      <figcaption>Figura 3. Antes de comprimir, avaliar a circulação arterial: o índice tornozelo-braço ajuda a descartar doença arterial que contraindique a compressão.</figcaption>
+    </figure>
+    <figure class="img-placeholder" data-img-path="img/terapia-compressiva-bandagem-multicamadas.jpg" data-alt="Terapia compressiva: o tratamento padrão-ouro da úlcera venosa depende de aplicação correta e de o paciente mantê-la por semanas">
+      <div class="placeholder-box" style="min-height:220px">
+        <span class="placeholder-icon">🖼</span>
+        <p class="placeholder-label">[ Coloque aqui: img/terapia-compressiva-bandagem-multicamadas.jpg ]</p>
+        <p class="placeholder-hint">Descrição esperada: mãos de profissional aplicando bandagem compressiva multicamadas na perna, do pé até abaixo do joelho</p>
+      </div>
+      <figcaption>Figura 4. Terapia compressiva: o tratamento padrão-ouro da úlcera venosa depende de aplicação correta e de o paciente mantê-la por semanas.</figcaption>
+    </figure>
+  </div>
+
+  <div class="deep">
+    <h3>Para aprofundar: avaliar a circulação antes de comprimir</h3>
+    <p class="small" style="margin-bottom:0">A compressão só é segura depois de afastar doença arterial importante. O índice tornozelo-braquial (ITB) é o exame que faz essa triagem, e o PET-Saúde G10 já produziu dois materiais interativos sobre ele.</p>
+    <div class="video-grid" style="margin-bottom:8px">
+      <figure class="video">
+        <button type="button" class="yt" data-yt="9reKujBDN4w" aria-label="Reproduzir vídeo: Índice Tornozelo-Braquial"><img src="https://i.ytimg.com/vi/9reKujBDN4w/hqdefault.jpg" alt="" loading="lazy" onerror="this.style.display='none'"><svg viewBox="0 0 68 48" aria-hidden="true"><path d="M66.5 7.7c-.8-2.9-2.5-5.4-5.4-6.2C55.8.1 34 0 34 0S12.2.1 6.9 1.6c-3 .8-4.6 3.3-5.4 6.2C.1 13 0 24 0 24s.1 11 1.5 16.3c.8 2.9 2.5 5.4 5.4 6.2C12.2 47.9 34 48 34 48s21.8-.1 27.1-1.6c3-.8 4.6-3.3 5.4-6.2C67.9 35 68 24 68 24s-.1-11-1.5-16.3z" fill="#C4302B"/><path d="M45 24 27 14v20" fill="#fff"/></svg></button>
+        <figcaption>Vídeo 1. <strong>Índice Tornozelo-Braquial</strong>, Stanford Medicine 25, legendado em português pelo canal Medicina Traduzida. Demonstração passo a passo da medida com Doppler vascular portátil. <a href="https://www.youtube.com/watch?v=9reKujBDN4w" target="_blank" rel="noopener">Abrir no YouTube</a>.</figcaption>
+      </figure>
+      <div class="petcards" style="margin:0;grid-template-columns:1fr">
+        <a class="petcard" href="https://itb-eight.vercel.app/" target="_blank" rel="noopener">
+          <img src="https://petg10ufpel.github.io/petg10/html/info/itb/img/logo.png" alt="" loading="lazy" onerror="this.remove()">
+          <span class="k">Material do PET-Saúde G10</span>
+          <strong>ITB Interactive</strong>
+          <span class="d">Plataforma em seis módulos: fundamentos, protocolo, simulador de cálculo, ondas Doppler, quiz e cenário clínico.</span>
+          <span class="go">Abrir material</span>
+        </a>
+        <a class="petcard" href="https://petg10ufpel.github.io/petg10/html/info/itb/itb_simulador.html" target="_blank" rel="noopener">
+          <img src="https://petg10ufpel.github.io/petg10/html/info/itb/img/logo.png" alt="" loading="lazy" onerror="this.remove()">
+          <span class="k">Material do PET-Saúde G10</span>
+          <strong>ITB Simulador</strong>
+          <span class="d">Infográfico com simulador de três casos: normal, doença arterial moderada e o falso resultado alto da calcificação de Mönckeberg.</span>
+          <span class="go">Abrir material</span>
+        </a>
+      </div>
+    </div>
+  </div>
+  <div class="callout ochre measure">
+    <p><strong>E no Brasil?</strong> Os dados populacionais ainda são escassos. O estudo clássico de Botucatu (SP), com 1.755 adultos atendidos em um centro de saúde universitário, encontrou insuficiência venosa crônica na forma grave, com úlcera ativa ou cicatrizada, em 3,6% das pessoas (2,3% dos homens e 4% das mulheres).<sup class="cite"><a href="#ref-4">4</a></sup></p>
+    <p>A adesão também é um problema aqui. Em Unidades de Saúde da Família de Juiz de Fora (MG), 48% dos 25 usuários entrevistados tinham compressão prescrita mas não a usavam, citando dor e incômodo. Os autores apontam a falta de protocolos clínicos e de capacitação permanente na Atenção Primária.<sup class="cite"><a href="#ref-5">5</a></sup></p>
+    <p class="small">Nota de revisão: parte da literatura nacional cita o estudo de Botucatu com prevalência de 1,5%. O resumo original de Maffei et al. (1986) informa 3,6%, valor adotado aqui.<sup class="cite"><a href="#ref-4">4</a></sup></p>
+  </div>
+</section>
+
+<!-- O MODELO -->
+<section aria-labelledby="modelo">
+  <div class="measure">
+    <h2 id="modelo">O que muda quando o curativo vira encontro</h2>
+    <p class="lede">O Leg Club é um modelo social de cuidado: a mesma enfermagem especializada, só que num espaço comunitário e em grupo.</p>
+    <p>Criado no Reino Unido pela enfermeira Ellie Lindsay em 1995, o modelo reúne pessoas com lesões de membros inferiores para receber tratamento de enfermeiras comunitárias treinadas. O atendimento é coletivo, o que permite conversar, comparar evoluções e dar apoio mútuo. A ideia de fundo é cuidar da perna inteira, e não só da ferida.<sup class="cite"><a href="#ref-1">1</a>,<a href="#ref-6">6</a></sup></p>
+  </div>
+
+  <aside class="origin" aria-labelledby="origem-t">
+    <p class="kicker">Quadro 1. Como tudo começou</p>
+    <h3 id="origem-t" style="font-size:1.5rem">De um chalé em Suffolk a uma rede internacional</h3>
+    <div class="split" style="align-items:start;gap:32px">
+      <div>
+        <p>Em maio de 1995, a enfermeira distrital Ellie Lindsay abriu o primeiro Leg Club na vila de Debenham, em Suffolk, na Inglaterra.<sup class="cite"><a href="#ref-7">7</a>,<a href="#ref-8">8</a></sup> Ela havia percebido que o isolamento e os fatores sociais pesavam na resposta ao tratamento das pessoas com problemas nas pernas, e que as visitas domiciliares não davam conta dessas necessidades.<sup class="cite"><a href="#ref-9">9</a></sup></p>
+        <p>O clube funcionava uma vez por semana num chalé comunitário, sem agendamento. Os atendimentos chegavam a cerca de 1.200 por ano, e só 40% eram curativos: o restante era avaliação, acompanhamento e orientação.<sup class="cite"><a href="#ref-9">9</a></sup> A ideia era uma parceria entre enfermagem e comunidade, em que os membros se tornam corresponsáveis pelo próprio tratamento.<sup class="cite"><a href="#ref-6">6</a>,<a href="#ref-7">7</a></sup></p>
+        <p class="small">Um detalhe de linguagem diz muito: no Leg Club, quem é tratado é chamado de <em>membro</em>, não de paciente.</p>
+      </div>
+      <figure class="video">
+        <button type="button" class="yt" data-yt="RgR4nZWVZs0" aria-label="Reproduzir vídeo: The Leg Club Journey"><img src="https://i.ytimg.com/vi/RgR4nZWVZs0/hqdefault.jpg" alt="" loading="lazy" onerror="this.style.display='none'"><svg viewBox="0 0 68 48" aria-hidden="true"><path d="M66.5 7.7c-.8-2.9-2.5-5.4-5.4-6.2C55.8.1 34 0 34 0S12.2.1 6.9 1.6c-3 .8-4.6 3.3-5.4 6.2C.1 13 0 24 0 24s.1 11 1.5 16.3c.8 2.9 2.5 5.4 5.4 6.2C12.2 47.9 34 48 34 48s21.8-.1 27.1-1.6c3-.8 4.6-3.3 5.4-6.2C67.9 35 68 24 68 24s-.1-11-1.5-16.3z" fill="#C4302B"/><path d="M45 24 27 14v20" fill="#fff"/></svg></button>
+        <figcaption>Vídeo 2. <strong>The Leg Club Journey</strong>, The Leg Club Channel. Montagem comemorativa exibida na 20ª conferência dos Leg Clubs, com fotos da trajetória do modelo; tem apenas música. <a href="https://www.youtube.com/watch?v=RgR4nZWVZs0" target="_blank" rel="noopener">Abrir no YouTube</a>.</figcaption>
+      </figure>
+    </div>
+    <ol class="timeline">
+      <li class="key"><b>1995</b>Primeiro Leg Club em Debenham, Suffolk.<sup class="cite"><a href="#ref-7">7</a></sup></li>
+      <li><b>2001–2004</b>Artigos de Lindsay descrevem o modelo e seus benefícios.<sup class="cite"><a href="#ref-6">6</a>,<a href="#ref-10">10</a></sup></li>
+      <li><b>2004–2005</b>Criação da Lindsay Leg Club Foundation, registrada como instituição beneficente em 2005.<sup class="cite"><a href="#ref-11">11</a></sup></li>
+      <li class="key"><b>2018</b>39 clubes em atividade: 30 no Reino Unido, 8 na Austrália e 1 na Alemanha.<sup class="cite"><a href="#ref-1">1</a></sup></li>
+    </ol>
+  </aside>
+
+  <div class="pillars">
+    <div class="pillar">
+      <svg viewBox="0 0 56 56" aria-hidden="true"><rect x="8" y="12" width="40" height="36" rx="6" fill="#E3EEE7" stroke="#1D3340" stroke-width="2"/><line x1="8" y1="22" x2="48" y2="22" stroke="#1D3340" stroke-width="2"/><line x1="18" y1="7" x2="18" y2="16" stroke="#1D3340" stroke-width="2.5" stroke-linecap="round"/><line x1="38" y1="7" x2="38" y2="16" stroke="#1D3340" stroke-width="2.5" stroke-linecap="round"/><path d="M18 36 L25 42 L38 29" fill="none" stroke="#4F8468" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      <h3>Sem agendamento</h3>
+      <p>A pessoa chega no horário de funcionamento do clube, o que dá flexibilidade de acesso.</p>
+    </div>
+    <div class="pillar">
+      <svg viewBox="0 0 56 56" aria-hidden="true"><circle cx="28" cy="18" r="7" fill="#4F8468"/><circle cx="13" cy="24" r="6" fill="#C9922E"/><circle cx="43" cy="24" r="6" fill="#B8475A"/><path d="M18 46 C18 34 38 34 38 46 Z" fill="#4F8468"/><path d="M4 48 C4 38 22 38 22 48 Z" fill="#C9922E"/><path d="M34 48 C34 38 52 38 52 48 Z" fill="#B8475A"/></svg>
+      <h3>Tratamento coletivo</h3>
+      <p>O cuidado acontece em grupo, num ambiente informal como um salão de bairro.</p>
+    </div>
+    <div class="pillar">
+      <svg viewBox="0 0 56 56" aria-hidden="true"><rect x="4" y="8" width="30" height="20" rx="9" fill="#FFFFFF" stroke="#1D3340" stroke-width="2"/><path d="M12 28 L10 36 L20 28" fill="#FFFFFF" stroke="#1D3340" stroke-width="2" stroke-linejoin="round"/><rect x="22" y="24" width="30" height="20" rx="9" fill="#E3EEE7" stroke="#1D3340" stroke-width="2"/><path d="M44 44 L46 52 L36 44" fill="#E3EEE7" stroke="#1D3340" stroke-width="2" stroke-linejoin="round"/><path d="M37 38 C33 35 31 33 33 31 C34.5 30 36 31 37 32 C38 31 39.5 30 41 31 C43 33 41 35 37 38 Z" fill="#B8475A"/></svg>
+      <h3>Apoio entre pares</h3>
+      <p>Membros compartilham experiências e se encorajam durante a cicatrização.</p>
+    </div>
+    <div class="pillar">
+      <svg viewBox="0 0 56 56" aria-hidden="true"><path d="M20 4 C19 16 17 26 19 36 C19 42 21 46 26 47 L44 47 C48 47 48 42 44 41 L31 38 C30 30 31 20 32 4 Z" fill="#F1D7C4" stroke="#1D3340" stroke-width="2"/><path d="M40 10 L50 14 L50 22 C50 28 45 32 40 34 C35 32 30 28 30 22 L30 14 Z" fill="#4F8468" stroke="#1D3340" stroke-width="1.5"/><path d="M35 21 L39 25 L46 17" fill="none" stroke="#FFFFFF" stroke-width="2.5" stroke-linecap="round"/></svg>
+      <h3>Perna saudável</h3>
+      <p>Um componente de “well leg” integra prevenção e manutenção ao plano de tratamento.</p>
+    </div>
+  </div>
+
+  <div class="video-grid">
+    <figure class="video">
+        <button type="button" class="yt" data-yt="-taTPCd4jPM" aria-label="Reproduzir vídeo: Leg Club Animation: the philosophy, creation, management and maintenance of Leg Clubs"><img src="https://i.ytimg.com/vi/-taTPCd4jPM/hqdefault.jpg" alt="" loading="lazy" onerror="this.style.display='none'"><svg viewBox="0 0 68 48" aria-hidden="true"><path d="M66.5 7.7c-.8-2.9-2.5-5.4-5.4-6.2C55.8.1 34 0 34 0S12.2.1 6.9 1.6c-3 .8-4.6 3.3-5.4 6.2C.1 13 0 24 0 24s.1 11 1.5 16.3c.8 2.9 2.5 5.4 5.4 6.2C12.2 47.9 34 48 34 48s21.8-.1 27.1-1.6c3-.8 4.6-3.3 5.4-6.2C67.9 35 68 24 68 24s-.1-11-1.5-16.3z" fill="#C4302B"/><path d="M45 24 27 14v20" fill="#fff"/></svg></button>
+        <figcaption>Vídeo 3. <strong>Leg Club Animation: the philosophy, creation, management and maintenance of Leg Clubs</strong>, The Leg Club Channel. Animação curta que explica o que é um Leg Club, para quem serve e como funciona. Em inglês: ative as legendas automáticas em português. <a href="https://www.youtube.com/watch?v=-taTPCd4jPM" target="_blank" rel="noopener">Abrir no YouTube</a>.</figcaption>
+      </figure>
+    <div>
+      <h3>O que o vídeo mostra</h3>
+      <p>A animação apresenta a filosofia do modelo e como um clube é criado, administrado e mantido. Reconheça nela os quatro pilares acima: ambiente comunitário não clínico, tratamento coletivo, livre acesso e o programa de perna saudável. Observe também como o funcionamento depende de uma parceria com a comunidade local, e não só da equipe de enfermagem.</p>
+      <p class="small">Dica: no YouTube, clique em Configurações, depois em Legendas e escolha Traduzir automaticamente para Português.</p>
+    </div>
+  </div>
+  <div class="split" style="margin-top:48px">
+    <div>
+      <h3>Onde os clubes existiam em 2018</h3>
+      <div class="clubs" aria-label="Número de Leg Clubs por país em 2018">
+        <div class="club-group"><div class="dots" aria-hidden="true">
+          <span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span>
+        </div><strong>30</strong><span class="small">Reino Unido</span></div>
+        <div class="club-group"><div class="dots" aria-hidden="true"><span style="background:#C9922E"></span><span style="background:#C9922E"></span><span style="background:#C9922E"></span><span style="background:#C9922E"></span><span style="background:#C9922E"></span><span style="background:#C9922E"></span><span style="background:#C9922E"></span><span style="background:#C9922E"></span></div><strong>8</strong><span class="small">Austrália</span></div>
+        <div class="club-group"><div class="dots" aria-hidden="true"><span style="background:#B8475A"></span></div><strong>1</strong><span class="small">Alemanha</span></div>
+      </div>
+      <p class="small" style="margin-top:16px">Novos clubes abriram na última década, mas outros fecharam. Segundo os autores, a expansão esbarra na falta de evidência para convencer gestores a financiar o modelo.<sup class="cite"><a href="#ref-1">1</a></sup></p>
+    </div>
+    <figure class="img-placeholder" data-img-path="img/leg-club-sessao-comunitaria.jpg" data-alt="Sessão de um Leg Club em espaço comunitário">
+      <div class="placeholder-box">
+        <span class="placeholder-icon">🖼</span>
+        <p class="placeholder-label">[ Coloque aqui: img/leg-club-sessao-comunitaria.jpg ]</p>
+        <p class="placeholder-hint">Descrição esperada: foto de uma sessão de Leg Club ou de atendimento coletivo de feridas em espaço comunitário, com autorização de uso de imagem</p>
+      </div>
+      <figcaption>Figura 5. O ambiente acolhedor é parte da intervenção: pacientes e enfermeiras descrevem o espaço como amigável e receptivo.</figcaption>
+    </figure>
+  </div>
+  <div class="fig-row three">
+    <figure class="img-placeholder" data-img-path="img/salao-comunitario-fachada.jpg" data-alt="Fora do ambiente clínico: os clubes funcionam em espaços do bairro, como salões paroquiais e centros comunitários">
+      <div class="placeholder-box" style="min-height:220px">
+        <span class="placeholder-icon">🖼</span>
+        <p class="placeholder-label">[ Coloque aqui: img/salao-comunitario-fachada.jpg ]</p>
+        <p class="placeholder-hint">Descrição esperada: fachada ou entrada de um salão comunitário, igreja ou centro de convivência onde funciona o clube, com placa ou cartaz de identificação</p>
+      </div>
+      <figcaption>Figura 6. Fora do ambiente clínico: os clubes funcionam em espaços do bairro, como salões paroquiais e centros comunitários.</figcaption>
+    </figure>
+    <figure class="img-placeholder" data-img-path="img/leg-club-conversa-entre-membros.jpg" data-alt="Apoio entre pares: a espera vira momento de troca de experiências, algo que os membros destacam como diferencial em relação ao ambulatório">
+      <div class="placeholder-box" style="min-height:220px">
+        <span class="placeholder-icon">🖼</span>
+        <p class="placeholder-label">[ Coloque aqui: img/leg-club-conversa-entre-membros.jpg ]</p>
+        <p class="placeholder-hint">Descrição esperada: membros de um grupo de cuidado de feridas conversando enquanto aguardam atendimento, com xícaras de chá sobre a mesa; rostos com autorização de uso de imagem</p>
+      </div>
+      <figcaption>Figura 7. Apoio entre pares: a espera vira momento de troca de experiências, algo que os membros destacam como diferencial em relação ao ambulatório.</figcaption>
+    </figure>
+    <figure class="img-placeholder" data-img-path="img/leg-club-voluntarios-recepcao.jpg" data-alt="Voluntários da comunidade organizam a recepção e o lanche, e aparecem nos relatos dos membros como parte importante da experiência">
+      <div class="placeholder-box" style="min-height:220px">
+        <span class="placeholder-icon">🖼</span>
+        <p class="placeholder-label">[ Coloque aqui: img/leg-club-voluntarios-recepcao.jpg ]</p>
+        <p class="placeholder-hint">Descrição esperada: voluntários da comunidade recebendo membros na entrada ou servindo lanche no salão onde funciona o clube</p>
+      </div>
+      <figcaption>Figura 8. Voluntários da comunidade organizam a recepção e o lanche, e aparecem nos relatos dos membros como parte importante da experiência.</figcaption>
+    </figure>
+  </div>
+</section>
+
+<!-- MÉTODO -->
+<section aria-labelledby="metodo">
+  <div class="split">
+    <div class="measure">
+      <h2 id="metodo">Como a revisão garimpou as evidências</h2>
+      <p>Os autores seguiram o protocolo PRISMA e buscaram em seis bases (Medline, Embase, PsycINFO, Cinahl, Web of Science e Cochrane Library) até março de 2017, cruzando termos de úlcera de perna com “Leg Club”. Não houve restrição de ano nem de desenho de estudo.<sup class="cite"><a href="#ref-1">1</a></sup></p>
+      <p>Como os estudos eram muito diferentes entre si, não foi possível fazer metanálise: a síntese é narrativa. A qualidade de cada estudo foi avaliada com seis ferramentas distintas, e a confiança no conjunto das evidências com os sistemas <strong>GRADE</strong> (dados quantitativos) e <strong>CERQual</strong> (dados qualitativos).</p>
+    </div>
+    <figure>
+      <svg viewBox="0 0 520 330" role="img" aria-labelledby="prisma-t">
+        <title id="prisma-t">Funil de seleção: 212 citações encontradas, 97 após remover 115 duplicatas, 17 publicações incluídas, correspondendo a 14 estudos únicos com pelo menos 532 participantes</title>
+        <polygon points="10,10 510,10 470,70 50,70" fill="#E3EEE7"/>
+        <text x="260" y="36" text-anchor="middle" font-family="Newsreader, serif" font-size="22" font-weight="600" fill="#1D3340">212 citações</text>
+        <text x="260" y="56" text-anchor="middle" font-family="Public Sans, sans-serif" font-size="12.5" fill="#4A5E6A">encontradas em 6 bases de dados</text>
+        <polygon points="54,78 466,78 420,138 100,138" fill="#C4DCCD"/>
+        <text x="260" y="104" text-anchor="middle" font-family="Newsreader, serif" font-size="22" font-weight="600" fill="#1D3340">97 triadas</text>
+        <text x="260" y="124" text-anchor="middle" font-family="Public Sans, sans-serif" font-size="12.5" fill="#1D3340">após remover 115 duplicatas</text>
+        <polygon points="104,146 416,146 370,206 150,206" fill="#7FAE93"/>
+        <text x="260" y="172" text-anchor="middle" font-family="Newsreader, serif" font-size="22" font-weight="600" fill="#FFFFFF">17 publicações</text>
+        <text x="260" y="192" text-anchor="middle" font-family="Public Sans, sans-serif" font-size="12.5" fill="#FFFFFF">lidas na íntegra e incluídas</text>
+        <polygon points="146,214 374,214 344,274 176,274" fill="#1D3340"/>
+        <text x="260" y="240" text-anchor="middle" font-family="Newsreader, serif" font-size="22" font-weight="600" fill="#FFFFFF">14 estudos</text>
+        <text x="260" y="260" text-anchor="middle" font-family="Public Sans, sans-serif" font-size="11.5" fill="#E3EEE7">4 artigos vêm do mesmo ECR</text>
+        <text x="260" y="306" text-anchor="middle" font-family="Public Sans, sans-serif" font-size="14" font-weight="600" fill="#4F8468">pelo menos 532 participantes</text>
+      </svg>
+      <figcaption>Figura 9. Funil de seleção dos estudos, adaptado do fluxograma PRISMA do artigo. Muitas exclusões eram textos históricos ou notícias sobre os clubes.</figcaption>
+    </figure>
+  </div>
+
+  <div class="split" style="margin-top:40px">
+    <div>
+      <h3>Que tipo de estudo sustenta a revisão</h3>
+      <div class="waffle" role="img" aria-label="14 estudos: 1 ensaio clínico randomizado, 7 relatos de caso, 2 métodos mistos, 2 transversais, 1 qualitativo e 1 auditoria">
+        <span class="c-ecr"></span><span class="c-caso"></span><span class="c-caso"></span><span class="c-caso"></span><span class="c-caso"></span><span class="c-caso"></span><span class="c-caso"></span>
+        <span class="c-caso"></span><span class="c-mix"></span><span class="c-mix"></span><span class="c-tra"></span><span class="c-tra"></span><span class="c-qual"></span><span class="c-aud"></span>
+      </div>
+      <p class="small">11 estudos do Reino Unido e 3 da Austrália.</p>
+    </div>
+    <ul class="legend">
+      <li><i class="c-ecr"></i>1 ensaio clínico randomizado (ECR), australiano, publicado em 4 artigos</li>
+      <li><i class="c-caso"></i>7 relatos de caso</li>
+      <li><i class="c-mix"></i>2 estudos de métodos mistos</li>
+      <li><i class="c-tra"></i>2 estudos transversais (questionários)</li>
+      <li><i class="c-qual"></i>1 estudo qualitativo</li>
+      <li><i class="c-aud"></i>1 relatório de auditoria clínica</li>
+    </ul>
+  </div>
+  <p class="pull">Um único ensaio randomizado, pequeno e sem poder estatístico suficiente, carrega quase todo o peso das conclusões clínicas.</p>
+</section>
+
+<!-- RESULTADOS -->
+<section aria-labelledby="resultados">
+  <div class="measure">
+    <h2 id="resultados">O que os estudos encontraram</h2>
+    <p class="lede">Os sinais são favoráveis em quase todas as frentes.<sup class="cite"><a href="#ref-1">1</a></sup> A força desses sinais é que varia muito.</p>
+  </div>
+
+  <!-- Cicatrização -->
+  <div class="result-block" id="cicatrizacao">
+    <div class="split">
+      <div class="measure">
+        <span class="tag mod">Certeza moderada</span>
+        <h3>Feridas encolhem mais rápido no clube</h3>
+        <p>No ECR australiano, pessoas atendidas no Leg Club tiveram redução de 69 a 77% na área média da úlcera em 12 semanas.<sup class="cite"><a href="#ref-1">1</a>,<a href="#ref-12">12</a>,<a href="#ref-13">13</a></sup> No grupo que recebia visita domiciliar de enfermagem, a redução foi de 10 a 11%.</p>
+        <p>Em 24 semanas, os dois grupos melhoraram, mas a velocidade de cicatrização continuou três vezes maior no clube. Houve ainda menos eczema venoso e edema entre os membros do Leg Club.<sup class="cite"><a href="#ref-1">1</a>,<a href="#ref-14">14</a></sup></p>
+      </div>
+      <figure>
+        <svg viewBox="0 0 520 290" role="img" aria-labelledby="shrink-t" id="shrink-fig">
+          <title id="shrink-t">Comparação da área da úlcera em 12 semanas: no Leg Club a ferida reduz cerca de 73% da área; na visita domiciliar reduz cerca de 10%</title>
+          <defs>
+            <path id="ulcer" d="M-80,-20 C-85,-60 -40,-88 5,-82 C50,-78 88,-50 86,-5 C84,40 60,78 15,82 C-30,86 -70,60 -80,20 Z"/>
+            <radialGradient id="gran2" cx="50%" cy="50%" r="55%">
+              <stop offset="0%" stop-color="#9E3246"/><stop offset="65%" stop-color="#C4505E"/><stop offset="100%" stop-color="#EDB3B9"/>
+            </radialGradient>
+          </defs>
+          <rect x="4" y="4" width="248" height="282" rx="16" fill="#E3EEE7"/>
+          <rect x="268" y="4" width="248" height="282" rx="16" fill="#EEF0F1"/>
+          <text x="128" y="34" text-anchor="middle" font-family="Newsreader, serif" font-size="19" font-weight="600" fill="#2F5C45">Leg Club</text>
+          <text x="392" y="34" text-anchor="middle" font-family="Newsreader, serif" font-size="19" font-weight="600" fill="#4A5E6A">Visita domiciliar</text>
+          <g transform="translate(128,142)">
+            <use href="#ulcer" fill="#F5E6DD" stroke="#8A9BA8" stroke-width="1.5" stroke-dasharray="5 4"/>
+            <g class="shrink" style="--s:.52"><use href="#ulcer" fill="url(#gran2)"/></g>
+          </g>
+          <g transform="translate(392,142)">
+            <use href="#ulcer" fill="#F5E6DD" stroke="#8A9BA8" stroke-width="1.5" stroke-dasharray="5 4"/>
+            <g class="shrink" style="--s:.946"><use href="#ulcer" fill="url(#gran2)"/></g>
+          </g>
+          <text x="128" y="252" text-anchor="middle" font-family="Newsreader, serif" font-size="24" font-weight="700" fill="#1D3340">−69 a 77%</text>
+          <text x="128" y="272" text-anchor="middle" font-family="Public Sans, sans-serif" font-size="12" fill="#4A5E6A">área média em 12 semanas</text>
+          <text x="392" y="252" text-anchor="middle" font-family="Newsreader, serif" font-size="24" font-weight="700" fill="#1D3340">−10 a 11%</text>
+          <text x="392" y="272" text-anchor="middle" font-family="Public Sans, sans-serif" font-size="12" fill="#4A5E6A">área média em 12 semanas</text>
+        </svg>
+        <figcaption>Figura 10. Contorno tracejado: tamanho inicial da ferida. Mancha vermelha: área proporcional após 12 semanas, usando o ponto médio das reduções relatadas no ECR.</figcaption>
+      </figure>
+    </div>
+
+    <div class="split" style="margin-top:28px;align-items:start">
+      <div>
+        <h3 style="font-size:1.1rem">Velocidade de cicatrização (24 semanas)</h3>
+        <div class="bars" data-animate>
+          <div class="bar-row"><span>Leg Club</span><div class="bar-track"><div class="bar-fill" data-w="100" style="background:var(--sage)"></div></div><b>0,267 cm²/sem</b></div>
+          <div class="bar-row"><span>Visita domiciliar</span><div class="bar-track"><div class="bar-fill" data-w="33.3" style="background:var(--home)"></div></div><b>0,089 cm²/sem</b></div>
+        </div>
+      </div>
+      <div>
+        <h3 style="font-size:1.1rem">Cicatrização em 6 meses, por país</h3>
+        <div class="rings">
+          <div class="ring">
+            <svg viewBox="0 0 120 120" aria-hidden="true"><circle cx="60" cy="60" r="48" fill="none" stroke="#E5E9E6" stroke-width="14"/><circle cx="60" cy="60" r="48" fill="none" stroke="#C9922E" stroke-width="14" stroke-dasharray="180.96 301.6" transform="rotate(-90 60 60)" stroke-linecap="round"/><text x="60" y="68" text-anchor="middle" font-family="Newsreader, serif" font-size="26" font-weight="700" fill="#1D3340">60%</text></svg>
+            Austrália<br><span class="small">ECR</span>
+          </div>
+          <div class="ring">
+            <svg viewBox="0 0 120 120" aria-hidden="true"><circle cx="60" cy="60" r="48" fill="none" stroke="#E5E9E6" stroke-width="14"/><circle cx="60" cy="60" r="48" fill="none" stroke="#4F8468" stroke-width="14" stroke-dasharray="126.67 301.6" transform="rotate(-90 60 60)" stroke-linecap="round"/><text x="60" y="68" text-anchor="middle" font-family="Newsreader, serif" font-size="26" font-weight="700" fill="#1D3340">42%</text></svg>
+            Reino Unido<br><span class="small">auditoria, sem grupo controle</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <p class="small measure" style="margin-top:14px">Sobre recidiva, há apenas auditorias e depoimentos sem grupo de comparação. Os autores consideram esses dados insuficientes para afirmar que o clube reduz o retorno das úlceras.<sup class="cite"><a href="#ref-1">1</a></sup></p>
+    <div class="fig-row">
+      <figure class="img-placeholder" data-img-path="img/mensuracao-area-ferida.jpg" data-alt="Como se mede o desfecho principal: a área da úlcera é acompanhada por decalque ou régua, permitindo calcular a redução percentual ao longo das semanas">
+      <div class="placeholder-box" style="min-height:220px">
+        <span class="placeholder-icon">🖼</span>
+        <p class="placeholder-label">[ Coloque aqui: img/mensuracao-area-ferida.jpg ]</p>
+        <p class="placeholder-hint">Descrição esperada: enfermeira medindo a úlcera com régua descartável ou decalque em filme transparente sobre a ferida</p>
+      </div>
+      <figcaption>Figura 11. Como se mede o desfecho principal: a área da úlcera é acompanhada por decalque ou régua, permitindo calcular a redução percentual ao longo das semanas.</figcaption>
+    </figure>
+      <figure class="img-placeholder" data-img-path="img/evolucao-cicatrizacao-12-semanas.jpg" data-alt="Registro fotográfico padronizado da evolução, útil para visualizar a redução de área que o ECR mediu numericamente">
+      <div class="placeholder-box" style="min-height:220px">
+        <span class="placeholder-icon">🖼</span>
+        <p class="placeholder-label">[ Coloque aqui: img/evolucao-cicatrizacao-12-semanas.jpg ]</p>
+        <p class="placeholder-hint">Descrição esperada: sequência de três fotos da mesma úlcera, padronizadas em distância e iluminação, nas semanas 0, 6 e 12</p>
+      </div>
+      <figcaption>Figura 12. Registro fotográfico padronizado da evolução, útil para visualizar a redução de área que o ECR mediu numericamente.</figcaption>
+    </figure>
+    </div>
+  </div>
+
+  <!-- Segurança -->
+  <div class="result-block">
+    <div class="split wide-left">
+      <div class="measure">
+        <span class="tag low">Certeza baixa a muito baixa</span>
+        <h3>Cuidar em grupo não aumentou infecções</h3>
+        <p>Era uma preocupação legítima: tratar feridas em ambiente coletivo poderia facilitar infecção. Apenas três estudos mediram o desfecho. No ECR, houve um caso de infecção no grupo de cuidado domiciliar e uma nova úlcera no grupo Leg Club. Uma auditoria de 11 meses em dois clubes britânicos (93 membros) não registrou nenhuma infecção clínica, assim como um relato de caso australiano de três anos de acompanhamento.<sup class="cite"><a href="#ref-1">1</a></sup></p>
+        <p class="small">Ao todo, só 127 participantes. Resultados consistentes, mas imprecisos.</p>
+      </div>
+      <svg viewBox="0 0 300 220" role="img" aria-labelledby="shield-t" style="max-width:260px;margin:0 auto">
+        <title id="shield-t">Escudo representando segurança: nenhuma infecção registrada nos Leg Clubs estudados, com base em apenas 127 participantes</title>
+        <path d="M150 16 L250 50 L250 110 C250 160 205 196 150 210 C95 196 50 160 50 110 L50 50 Z" fill="#E3EEE7" stroke="#1D3340" stroke-width="2.5"/>
+        <text x="150" y="104" text-anchor="middle" font-family="Newsreader, serif" font-size="46" font-weight="700" fill="#2F5C45">0</text>
+        <text x="150" y="130" text-anchor="middle" font-family="Public Sans, sans-serif" font-size="13" fill="#1D3340">infecções nos clubes</text>
+        <text x="150" y="150" text-anchor="middle" font-family="Public Sans, sans-serif" font-size="13" fill="#1D3340">auditados</text>
+        <text x="150" y="178" text-anchor="middle" font-family="Public Sans, sans-serif" font-size="12" fill="#4A5E6A">n = 127 no total</text>
+      </svg>
+    </div>
+  </div>
+
+  <!-- Desfechos relatados -->
+  <div class="result-block">
+    <div class="split">
+      <div class="measure">
+        <span class="tag low">Certeza baixa</span>
+        <h3>Menos dor, mais sono e bom humor</h3>
+        <p>Quatro estudos sugerem que o Leg Club pode melhorar qualidade de vida, capacidade funcional, moral, humor e autoestima. A redução da dor parece puxar outras melhorias, como sono e retomada da rotina de trabalho.<sup class="cite"><a href="#ref-1">1</a>,<a href="#ref-14">14</a></sup></p>
+        <p>Nem tudo mudou: no ECR, apoio social e escores de depressão não diferiram entre os grupos em 24 semanas. E embora mais da metade de 49 membros em um estudo dissesse que o clube melhorou sua vida social e bem-estar<sup class="cite"><a href="#ref-15">15</a></sup>, a evidência é fraca demais para afirmar que o convívio, por si só, acelera a cicatrização.<sup class="cite"><a href="#ref-1">1</a></sup></p>
+      </div>
+      <svg viewBox="0 0 440 300" role="img" aria-labelledby="chain-t">
+        <title id="chain-t">Cadeia hipotética: menos dor leva a melhor sono, humor e rotina, e a mais qualidade de vida. A ligação entre convívio social e cicatrização permanece incerta</title>
+        <defs><marker id="arrI" markerWidth="9" markerHeight="9" refX="5" refY="4.5" orient="auto"><path d="M0,0 L9,4.5 L0,9 Z" fill="#1D3340"/></marker></defs>
+        <rect x="10" y="20" width="130" height="56" rx="28" fill="#F6E3E6" stroke="#B8475A" stroke-width="1.5"/>
+        <text x="75" y="54" text-anchor="middle" font-family="Public Sans, sans-serif" font-size="15" font-weight="600" fill="#1D3340">menos dor</text>
+        <line x1="140" y1="48" x2="178" y2="48" stroke="#1D3340" stroke-width="2" marker-end="url(#arrI)"/>
+        <rect x="184" y="4" width="130" height="36" rx="18" fill="#FFFFFF" stroke="#4F8468" stroke-width="1.5"/>
+        <text x="249" y="27" text-anchor="middle" font-family="Public Sans, sans-serif" font-size="13.5" fill="#1D3340">melhor sono</text>
+        <rect x="184" y="48" width="130" height="36" rx="18" fill="#FFFFFF" stroke="#4F8468" stroke-width="1.5"/>
+        <text x="249" y="71" text-anchor="middle" font-family="Public Sans, sans-serif" font-size="13.5" fill="#1D3340">humor</text>
+        <rect x="184" y="92" width="130" height="36" rx="18" fill="#FFFFFF" stroke="#4F8468" stroke-width="1.5"/>
+        <text x="249" y="115" text-anchor="middle" font-family="Public Sans, sans-serif" font-size="13.5" fill="#1D3340">rotina de trabalho</text>
+        <line x1="314" y1="66" x2="340" y2="66" stroke="#1D3340" stroke-width="2" marker-end="url(#arrI)"/>
+        <rect x="346" y="36" width="88" height="60" rx="14" fill="#4F8468"/>
+        <text x="390" y="62" text-anchor="middle" font-family="Public Sans, sans-serif" font-size="13" font-weight="600" fill="#FFFFFF">qualidade</text>
+        <text x="390" y="79" text-anchor="middle" font-family="Public Sans, sans-serif" font-size="13" font-weight="600" fill="#FFFFFF">de vida</text>
+        <rect x="10" y="196" width="140" height="56" rx="28" fill="#F8EDD6" stroke="#C9922E" stroke-width="1.5"/>
+        <text x="80" y="229" text-anchor="middle" font-family="Public Sans, sans-serif" font-size="15" font-weight="600" fill="#1D3340">convívio social</text>
+        <line x1="150" y1="224" x2="272" y2="224" stroke="#8A9BA8" stroke-width="2" stroke-dasharray="6 5"/>
+        <text x="212" y="214" text-anchor="middle" font-family="Newsreader, serif" font-size="22" font-weight="700" fill="#8A9BA8">?</text>
+        <rect x="278" y="196" width="150" height="56" rx="28" fill="#FFFFFF" stroke="#B8475A" stroke-width="1.5"/>
+        <text x="353" y="229" text-anchor="middle" font-family="Public Sans, sans-serif" font-size="15" font-weight="600" fill="#1D3340">cicatrização</text>
+        <text x="220" y="284" text-anchor="middle" font-family="Public Sans, sans-serif" font-size="12" fill="#4A5E6A">ligação plausível, ainda não comprovada</text>
+      </svg>
+    </div>
+  </div>
+
+    <aside class="spotlight" aria-labelledby="upton-t">
+      <p class="kicker">Quadro 2. Estudo em destaque</p>
+      <h3 id="upton-t" style="font-size:1.45rem">Quanto o convívio pesa no bem-estar de quem vive com uma ferida?</h3>
+      <div class="split" style="align-items:start;gap:32px">
+        <div>
+          <p>Pesquisadores da Universidade de Canberra entrevistaram 49 membros de Leg Clubs em sete localidades do Reino Unido, com idades entre 50 e 94 anos, a maioria com úlcera venosa. Aplicaram um instrumento específico de bem-estar em feridas em dois momentos, com pelo menos seis semanas de intervalo.<sup class="cite"><a href="#ref-15">15</a></sup></p>
+          <p>O fator que mais explicou as preocupações com a ferida foi a percepção da própria situação social (45% da variação), seguida do incômodo com a aparência da ferida (18%). O tempo de frequência ao clube acrescentou uma parcela menor (6%), e também se associou a mais recursos pessoais, como otimismo e capacidade de enfrentamento.<sup class="cite"><a href="#ref-15">15</a></sup></p>
+          <div class="bars" data-animate aria-label="Percentual de membros que relataram melhora">
+            <div class="bar-row"><span>Tratamento</span><div class="bar-track"><div class="bar-fill" data-w="82.2" style="background:var(--sage)"></div></div><b>82%</b></div>
+            <div class="bar-row"><span>Ferida</span><div class="bar-track"><div class="bar-fill" data-w="77.8" style="background:var(--sage)"></div></div><b>78%</b></div>
+            <div class="bar-row"><span>Satisfação com a vida</span><div class="bar-track"><div class="bar-fill" data-w="57.8" style="background:#8DB39E"></div></div><b>58%</b></div>
+            <div class="bar-row"><span>Autoestima</span><div class="bar-track"><div class="bar-fill" data-w="53.3" style="background:#8DB39E"></div></div><b>53%</b></div>
+            <div class="bar-row"><span>Humor</span><div class="bar-track"><div class="bar-fill" data-w="51.1" style="background:#8DB39E"></div></div><b>51%</b></div>
+          </div>
+          <p class="small">Percentual dos 45 respondentes que relataram melhora em cada aspecto desde que entraram no clube.<sup class="cite"><a href="#ref-15">15</a></sup></p>
+        </div>
+        <figure>
+          <svg viewBox="0 0 420 350" role="img" aria-labelledby="ciclo-t">
+            <title id="ciclo-t">Ciclo vicioso: isolamento social aumenta o estresse, que retarda a cicatrização, o que aumenta dor, odor e limitação, levando a mais isolamento. No centro, o apoio social do Leg Club atua para interromper o ciclo</title>
+            <defs><marker id="arrC" markerWidth="9" markerHeight="9" refX="6" refY="4.5" orient="auto"><path d="M0,0 L9,4.5 L0,9 Z" fill="#B8475A"/></marker></defs>
+            <rect x="135" y="18" width="150" height="46" rx="23" fill="#F6E3E6" stroke="#B8475A" stroke-width="1.5"/>
+            <text x="210" y="46" text-anchor="middle" font-family="Public Sans, sans-serif" font-size="13.5" font-weight="600" fill="#1D3340">isolamento social</text>
+            <rect x="262" y="152" width="154" height="46" rx="23" fill="#F6E3E6" stroke="#B8475A" stroke-width="1.5"/>
+            <text x="339" y="172" text-anchor="middle" font-family="Public Sans, sans-serif" font-size="12.5" font-weight="600" fill="#1D3340">estresse e</text>
+            <text x="339" y="188" text-anchor="middle" font-family="Public Sans, sans-serif" font-size="12.5" font-weight="600" fill="#1D3340">emoções negativas</text>
+            <rect x="135" y="286" width="150" height="46" rx="23" fill="#F6E3E6" stroke="#B8475A" stroke-width="1.5"/>
+            <text x="210" y="306" text-anchor="middle" font-family="Public Sans, sans-serif" font-size="12.5" font-weight="600" fill="#1D3340">cicatrização</text>
+            <text x="210" y="322" text-anchor="middle" font-family="Public Sans, sans-serif" font-size="12.5" font-weight="600" fill="#1D3340">mais lenta</text>
+            <rect x="4" y="152" width="154" height="46" rx="23" fill="#F6E3E6" stroke="#B8475A" stroke-width="1.5"/>
+            <text x="81" y="172" text-anchor="middle" font-family="Public Sans, sans-serif" font-size="12.5" font-weight="600" fill="#1D3340">dor, odor e</text>
+            <text x="81" y="188" text-anchor="middle" font-family="Public Sans, sans-serif" font-size="12.5" font-weight="600" fill="#1D3340">menos mobilidade</text>
+            <path d="M288 42 Q350 50 345 146" fill="none" stroke="#B8475A" stroke-width="2" marker-end="url(#arrC)"/>
+            <path d="M345 204 Q345 296 292 308" fill="none" stroke="#B8475A" stroke-width="2" marker-end="url(#arrC)"/>
+            <path d="M132 308 Q75 300 75 206" fill="none" stroke="#B8475A" stroke-width="2" marker-end="url(#arrC)"/>
+            <path d="M75 148 Q75 50 130 42" fill="none" stroke="#B8475A" stroke-width="2" marker-end="url(#arrC)"/>
+            <circle cx="210" cy="175" r="56" fill="#4F8468"/>
+            <text x="210" y="170" text-anchor="middle" font-family="Newsreader, serif" font-size="17" font-weight="600" fill="#FFFFFF">apoio social</text>
+            <text x="210" y="190" text-anchor="middle" font-family="Public Sans, sans-serif" font-size="11.5" fill="#E3EEE7">do Leg Club</text>
+            <line x1="210" y1="119" x2="210" y2="70" stroke="#4F8468" stroke-width="2" stroke-dasharray="4 4"/>
+            <line x1="266" y1="175" x2="258" y2="175" stroke="#4F8468" stroke-width="2"/>
+            <line x1="210" y1="231" x2="210" y2="280" stroke="#4F8468" stroke-width="2" stroke-dasharray="4 4"/>
+          </svg>
+          <figcaption>Figura 13. O ciclo vicioso descrito na literatura sobre feridas crônicas, que o modelo Leg Club tenta romper com apoio social. Adaptado da introdução de Upton et al.<sup class="cite"><a href="#ref-15">15</a></sup></figcaption>
+        </figure>
+      </div>
+      <h3 style="font-size:1.1rem;margin-top:10px">O que os membros disseram sobre o clube</h3>
+      <div class="themes">
+        <div><b>Interação social</b>convívio, alívio da solidão, relações descritas como família e atividades em grupo</div>
+        <div><b>Tratamento e cuidado</b>qualidade, vínculo com as enfermeiras, continuidade com a mesma equipe e acesso fácil</div>
+        <div><b>Comparação com os outros</b>inspirar-se na melhora alheia ajuda; ver-se entre pessoas idosas pode abalar a autoimagem</div>
+        <div><b>Recursos internos</b>otimismo, resiliência e esperança</div>
+      </div>
+      <p class="small"><strong>Leitura crítica.</strong> A análise é correlacional, então não permite afirmar que o clube causa a melhora. A amostra é de conveniência e o estudo foi financiado pela Urgo Foundation; os agradecimentos citam a Urgo Medical, fabricante de coberturas. Os próprios autores pedem desenhos experimentais para entender os mecanismos.<sup class="cite"><a href="#ref-15">15</a></sup></p>
+    </aside>
+
+  <!-- Experiência -->
+  <div class="result-block">
+    <div class="split" style="align-items:start">
+      <div class="measure">
+        <span class="tag vlow">GRADE muito baixa, CERQual moderada a baixa</span>
+        <h3>Quem frequenta, recomenda</h3>
+        <p>Doze estudos, a maioria relatos de caso, registraram a experiência de pelo menos 283 membros. Em qualquer país, os relatos são positivos e destacam o apoio entre pares. Comparando com os serviços do NHS, mais da metade dos membros disse preferir o clube pelo clima social e por confiar mais na orientação recebida.<sup class="cite"><a href="#ref-1">1</a></sup></p>
+        <p>Cinco publicações relatam que os pacientes recuperaram senso de propósito e passaram a se sentir donos do próprio tratamento, algo que conversa diretamente com o problema da baixa adesão à compressão.</p>
+        <div class="stat-line">
+          <div><strong>71 de 86</strong><span>membros muito satisfeitos com o serviço</span></div>
+          <div><strong>&gt; 50%</strong><span>frequentam pelo clima social e pela confiança na orientação</span></div>
+        </div>
+        <figure class="video">
+        <button type="button" class="yt" data-yt="nOHmZg7dSbw" aria-label="Reproduzir vídeo: Living with a chronic wound: the Leg Club model of care"><img src="https://i.ytimg.com/vi/nOHmZg7dSbw/hqdefault.jpg" alt="" loading="lazy" onerror="this.style.display='none'"><svg viewBox="0 0 68 48" aria-hidden="true"><path d="M66.5 7.7c-.8-2.9-2.5-5.4-5.4-6.2C55.8.1 34 0 34 0S12.2.1 6.9 1.6c-3 .8-4.6 3.3-5.4 6.2C.1 13 0 24 0 24s.1 11 1.5 16.3c.8 2.9 2.5 5.4 5.4 6.2C12.2 47.9 34 48 34 48s21.8-.1 27.1-1.6c3-.8 4.6-3.3 5.4-6.2C67.9 35 68 24 68 24s-.1-11-1.5-16.3z" fill="#C4302B"/><path d="M45 24 27 14v20" fill="#fff"/></svg></button>
+        <figcaption>Vídeo 4. <strong>Living with a chronic wound: the Leg Club model of care</strong>, The Leg Club Channel. Depoimentos sobre o impacto de viver com uma ferida crônica e o papel do ambiente do clube. Em inglês: ative as legendas automáticas em português. Produzido com apoio de uma empresa do setor de curativos. <a href="https://www.youtube.com/watch?v=nOHmZg7dSbw" target="_blank" rel="noopener">Abrir no YouTube</a>.</figcaption>
+      </figure>
+      </div>
+      <div>
+        <h3 style="font-size:1.1rem">O que dizem as enfermeiras</h3>
+        <p class="small">Um estudo qualitativo com 15 profissionais de dois clubes britânicos.<sup class="cite"><a href="#ref-1">1</a></sup> Temas que emergiram das falas:</p>
+        <div class="chips">
+          <span class="chip big">empoderamento</span>
+          <span class="chip big">educação</span>
+          <span class="chip mid">camaradagem</span>
+          <span class="chip mid">ambiente acolhedor</span>
+          <span class="chip muted">trabalho desafiador</span>
+          <span class="chip muted">cansaço</span>
+        </div>
+        <p class="small">O clube foi descrito como um ambiente de aprendizagem colaborativa em que pacientes e equipe crescem juntos. Para as enfermeiras, o ganho mais importante é ver o paciente assumir o próprio cuidado.</p>
+        <figure class="img-placeholder" data-img-path="img/enfermeira-orientando-membro.jpg" data-alt="Educação em saúde durante o atendimento: entender a própria condição é um dos caminhos propostos para melhorar a adesão">
+      <div class="placeholder-box" style="min-height:200px">
+        <span class="placeholder-icon">🖼</span>
+        <p class="placeholder-label">[ Coloque aqui: img/enfermeira-orientando-membro.jpg ]</p>
+        <p class="placeholder-hint">Descrição esperada: enfermeira explicando a um paciente idoso, sentado, como funciona a compressão ou mostrando a evolução da ferida</p>
+      </div>
+      <figcaption>Figura 14. Educação em saúde durante o atendimento: entender a própria condição é um dos caminhos propostos para melhorar a adesão.</figcaption>
+    </figure>
+      </div>
+    </div>
+  </div>
+
+  <!-- Custos -->
+  <div class="result-block">
+    <div class="split">
+      <div class="measure">
+        <span class="tag mod">Certeza moderada</span>
+        <h3>Cicatrizar mais pode sair mais barato</h3>
+        <p>A análise econômica do ECR australiano (67 participantes) estimou que o Leg Club custa $1.727 a menos que a visita domiciliar em três meses, com gasto 30% menor em materiais.<sup class="cite"><a href="#ref-16">16</a></sup> O custo total para a comunidade foi 20% maior, mas como mais úlceras cicatrizaram, o <strong>custo por úlcera cicatrizada</strong> ficou menor no clube.<sup class="cite"><a href="#ref-1">1</a>,<a href="#ref-16">16</a></sup></p>
+        <p class="small">No Reino Unido, só há uma auditoria de 11 meses: 73% dos membros tiveram custo de tratamento de cerca de £50, e 13% passaram de £200.<sup class="cite"><a href="#ref-1">1</a></sup></p>
+      </div>
+      <figure>
+        <svg viewBox="0 0 460 300" role="img" aria-labelledby="cost-t">
+          <title id="cost-t">Custo por úlcera cicatrizada: em 3 meses, 1.019 no Leg Club contra 1.571 na visita domiciliar; em 6 meses, 1.546 contra 2.061</title>
+          <line x1="40" y1="240" x2="440" y2="240" stroke="#1D3340" stroke-width="1.5"/>
+          <line x1="40" y1="44" x2="440" y2="44" stroke="#E5E9E6"/>
+          <line x1="40" y1="142" x2="440" y2="142" stroke="#E5E9E6"/>
+          <text x="34" y="244" text-anchor="end" font-family="Public Sans, sans-serif" font-size="11" fill="#4A5E6A">0</text>
+          <text x="34" y="146" text-anchor="end" font-family="Public Sans, sans-serif" font-size="11" fill="#4A5E6A">1.000</text>
+          <text x="34" y="48" text-anchor="end" font-family="Public Sans, sans-serif" font-size="11" fill="#4A5E6A">2.000</text>
+          <!-- 3 meses -->
+          <rect x="80" y="140" width="62" height="100" rx="5" fill="#4F8468"/>
+          <rect x="150" y="86" width="62" height="154" rx="5" fill="#8A9BA8"/>
+          <text x="111" y="130" text-anchor="middle" font-family="Public Sans, sans-serif" font-size="13" font-weight="700" fill="#1D3340">1.019</text>
+          <text x="181" y="76" text-anchor="middle" font-family="Public Sans, sans-serif" font-size="13" font-weight="700" fill="#1D3340">1.571</text>
+          <text x="146" y="262" text-anchor="middle" font-family="Newsreader, serif" font-size="16" font-weight="600" fill="#1D3340">3 meses</text>
+          <!-- 6 meses -->
+          <rect x="260" y="88" width="62" height="152" rx="5" fill="#4F8468"/>
+          <rect x="330" y="38" width="62" height="202" rx="5" fill="#8A9BA8"/>
+          <text x="291" y="78" text-anchor="middle" font-family="Public Sans, sans-serif" font-size="13" font-weight="700" fill="#1D3340">1.546</text>
+          <text x="361" y="30" text-anchor="middle" font-family="Public Sans, sans-serif" font-size="13" font-weight="700" fill="#1D3340">2.061</text>
+          <text x="326" y="262" text-anchor="middle" font-family="Newsreader, serif" font-size="16" font-weight="600" fill="#1D3340">6 meses</text>
+          <rect x="90" y="280" width="12" height="12" rx="2" fill="#4F8468"/><text x="108" y="291" font-family="Public Sans, sans-serif" font-size="12" fill="#1D3340">Leg Club</text>
+          <rect x="190" y="280" width="12" height="12" rx="2" fill="#8A9BA8"/><text x="208" y="291" font-family="Public Sans, sans-serif" font-size="12" fill="#1D3340">Visita domiciliar</text>
+        </svg>
+        <figcaption>Figura 15. Custo por úlcera cicatrizada para o prestador, em dólares, conforme reportado no estudo australiano de Gordon et al.<sup class="cite"><a href="#ref-16">16</a></sup></figcaption>
+      </figure>
+    </div>
+  </div>
+</section>
+
+<!-- QUALIDADE DA EVIDÊNCIA -->
+<section aria-labelledby="confianca">
+  <div class="measure">
+    <h2 id="confianca">Quanto dá para confiar em cada achado</h2>
+    <p>A revisão classificou a certeza de cada resultado com o GRADE, em quatro níveis.<sup class="cite"><a href="#ref-1">1</a></sup> Quanto mais cheio o medidor, mais provável que novos estudos confirmem o achado. O CERQual faz o mesmo para achados qualitativos.</p>
+  </div>
+  <div class="grade">
+    <table>
+      <thead><tr><th>Desfecho</th><th>Direção do efeito</th><th>Confiança</th></tr></thead>
+      <tbody>
+        <tr class="group"><td colspan="3">GRADE, achados quantitativos</td></tr>
+        <tr><td>Cicatrização da úlcera (ECR)</td><td>Favorece o Leg Club</td><td><div class="meter l3" aria-label="moderada"><i></i><i></i><i></i><i></i><em>moderada</em></div></td></tr>
+        <tr><td>Custos e custo-efetividade</td><td>Provavelmente favorece o Leg Club</td><td><div class="meter l3" aria-label="moderada"><i></i><i></i><i></i><i></i><em>moderada</em></div></td></tr>
+        <tr><td>Qualidade de vida, dor, humor, sono</td><td>Favorece o Leg Club</td><td><div class="meter l2" aria-label="baixa"><i></i><i></i><i></i><i></i><em>baixa</em></div></td></tr>
+        <tr><td>Infecção da ferida</td><td>Sem infecções nos clubes</td><td><div class="meter l2" aria-label="baixa a muito baixa"><i></i><i></i><i></i><i></i><em>baixa a muito baixa</em></div></td></tr>
+        <tr><td>Convívio social ligado à cicatrização</td><td>Incerta</td><td><div class="meter l1" aria-label="muito baixa"><i></i><i></i><i></i><i></i><em>muito baixa</em></div></td></tr>
+        <tr><td>Experiência dos pacientes</td><td>Positiva</td><td><div class="meter l1" aria-label="muito baixa"><i></i><i></i><i></i><i></i><em>muito baixa</em></div></td></tr>
+        <tr class="group"><td colspan="3">CERQual, achados qualitativos</td></tr>
+        <tr><td>Valor da interação social</td><td>Positivo</td><td><div class="meter l3" aria-label="moderada"><i></i><i></i><i></i><i></i><em>moderada</em></div></td></tr>
+        <tr><td>Percepção das enfermeiras</td><td>Positiva</td><td><div class="meter l3" aria-label="moderada"><i></i><i></i><i></i><i></i><em>moderada</em></div></td></tr>
+        <tr><td>Alta qualidade do cuidado</td><td>Positiva</td><td><div class="meter l2" aria-label="baixa"><i></i><i></i><i></i><i></i><em>baixa</em></div></td></tr>
+      </tbody>
+    </table>
+    <div class="grade-key"><span>Quatro segmentos: muito baixa, baixa, moderada e alta.</span></div>
+  </div>
+
+  <h3 style="margin-top:44px">Por que a certeza caiu</h3>
+  <div class="limits">
+    <div class="limit"><h3>Amostras pequenas</h3><p>O principal motivo de rebaixamento no GRADE foi a imprecisão. O próprio ECR tinha tamanhos de amostra diferentes entre suas publicações, que os autores não conseguiram esclarecer.<sup class="cite"><a href="#ref-1">1</a></sup></p></div>
+    <div class="limit"><h3>Falta de comparação</h3><p>Relatos de caso, auditorias e questionários não tinham grupo controle, o que impede atribuir os resultados ao clube.</p></div>
+    <div class="limit"><h3>Sem cegamento</h3><p>No ECR, nem participantes nem avaliadores podiam ser cegados, o que abre espaço para viés de desempenho e de detecção.</p></div>
+    <div class="limit"><h3>Comparador fraco</h3><p>O ECR comparou o clube com visita domiciliar. A diretriz britânica já recomenda clínicas comunitárias especializadas, que seriam o comparador justo.</p></div>
+    <div class="limit"><h3>Contextos diferentes</h3><p>A cicatrização britânica foi cerca de dois terços da australiana. Sem dados demográficos, não se sabe se a diferença vem dos pacientes, da equipe ou do serviço.</p></div>
+    <div class="limit"><h3>Adesão sem mecanismo</h3><p>Dois estudos viram melhora na adesão ao tratamento, mas ninguém testou se ela se deve ao clube nem por qual caminho.</p></div>
+  </div>
+</section>
+
+<!-- IMPLICAÇÕES -->
+<section aria-labelledby="implicacoes">
+  <div class="split wide-left" style="align-items:start">
+    <div class="measure">
+      <h2 id="implicacoes">Um modelo promissor à espera de prova</h2>
+      <p>A revisão mostra um modelo rico em resultados positivos e pobre em evidência robusta. Alguns clubes britânicos já estavam sendo contratados por grupos locais do NHS, convencidos por auditorias de economia e melhora no cuidado. Mas diretrizes como as do NICE exigem evidência de alta qualidade para recomendar um serviço.<sup class="cite"><a href="#ref-1">1</a></sup></p>
+      <p>Os autores defendem um ECR britânico com poder estatístico adequado e comparadores apropriados, como uma clínica comunitária especializada, para medir o valor real do modelo.<sup class="cite"><a href="#ref-1">1</a></sup></p>
+      <div class="callout">
+        <p><strong>Para a prática de enfermagem.</strong> O modelo recoloca no centro dois elementos que a literatura associa à adesão: vínculo com o profissional e compreensão da própria condição. Um questionário com membros sugeriu que o clube ajuda o paciente a entender melhor sua perna, o que pode favorecer o autocuidado.<sup class="cite"><a href="#ref-1">1</a></sup> Essa é uma hipótese a ser testada, não uma certeza.</p>
+      </div>
+    </div>
+    <div>
+      <figure class="img-placeholder" data-img-path="img/curativo-atencao-primaria-sus.jpg" data-alt="No Brasil, o cuidado de úlceras venosas acontece em grande parte nas UBS: um cenário onde modelos coletivos poderiam ser testados">
+      <div class="placeholder-box" style="min-height:240px">
+        <span class="placeholder-icon">🖼</span>
+        <p class="placeholder-label">[ Coloque aqui: img/curativo-atencao-primaria-sus.jpg ]</p>
+        <p class="placeholder-hint">Descrição esperada: enfermeira da Atenção Primária realizando curativo em perna numa sala de Unidade Básica de Saúde</p>
+      </div>
+      <figcaption>Figura 16. No Brasil, o cuidado de úlceras venosas acontece em grande parte nas UBS: um cenário onde modelos coletivos poderiam ser testados.</figcaption>
+    </figure>
+      <div style="height:24px"></div>
+      <figure class="img-placeholder" data-img-path="img/grupo-educacao-saude-ubs.jpg" data-alt="Grupos de educação em saúde já fazem parte da rotina de muitas UBS e poderiam servir de base para testar um cuidado de feridas em formato coletivo">
+      <div class="placeholder-box" style="min-height:220px">
+        <span class="placeholder-icon">🖼</span>
+        <p class="placeholder-label">[ Coloque aqui: img/grupo-educacao-saude-ubs.jpg ]</p>
+        <p class="placeholder-hint">Descrição esperada: roda de conversa ou grupo de educação em saúde numa Unidade Básica de Saúde, com enfermeira e usuários idosos sentados em círculo</p>
+      </div>
+      <figcaption>Figura 17. Grupos de educação em saúde já fazem parte da rotina de muitas UBS e poderiam servir de base para testar um cuidado de feridas em formato coletivo.</figcaption>
+    </figure>
+    </div>
+  </div>
+
+  <div style="margin-top:44px">
+    <h3>O que veio depois desta revisão</h3>
+    <div class="split" style="align-items:start;gap:28px">
+      <div class="callout ochre" style="margin:0">
+        <p><strong>Metassíntese qualitativa (2022).</strong> Crispin, Holloway e Galazka revisaram 25 publicações com relatos de membros e identificaram temas como apoio social, competência das enfermeiras, empoderamento pela educação, qualidade de vida e acessibilidade. Também apareceram pontos de atenção: alguns membros se incomodam ao ver as feridas dos outros, e há quem siga sem cicatrizar. As autoras sugerem oferecer biombos a quem quiser privacidade e apoio extra a quem tem feridas de difícil cicatrização.<sup class="cite"><a href="#ref-17">17</a></sup></p>
+      </div>
+      <div>
+      <div class="callout ochre" style="margin:0">
+        <p><strong>Revisão sobre o regime “Well Leg” (2023).</strong> McIntyre e colaboradores reuniram dados do banco de registros da rede de clubes e narrativas de uma avaliação de serviço. Os achados sugerem que permanecer no acompanhamento de perna saudável por meses após a cicatrização pode ajudar a prevenir recidivas e trazer ganhos de bem-estar.<sup class="cite"><a href="#ref-18">18</a>,<a href="#ref-19">19</a></sup></p>
+        <p class="small">Nenhum dos dois trabalhos é ensaio randomizado: são sínteses de relatos e de dados de auditoria, e reforçam a lacuna apontada pela revisão de 2019.</p>
+      </div>
+      <div style="height:20px"></div>
+      <figure class="img-placeholder" data-img-path="img/meia-compressao-prevencao-recidiva.jpg" data-alt="Depois da cicatrização, a meia de compressão é a principal aliada contra a recidiva, e é o foco do acompanhamento de perna saudável">
+      <div class="placeholder-box" style="min-height:200px">
+        <span class="placeholder-icon">🖼</span>
+        <p class="placeholder-label">[ Coloque aqui: img/meia-compressao-prevencao-recidiva.jpg ]</p>
+        <p class="placeholder-hint">Descrição esperada: perna com meia de compressão elástica calçada após a cicatrização, ou profissional ajudando o paciente a vesti-la</p>
+      </div>
+      <figcaption>Figura 18. Depois da cicatrização, a meia de compressão é a principal aliada contra a recidiva, e é o foco do acompanhamento de perna saudável.</figcaption>
+    </figure>
+      <div class="petcards"><a class="petcard" href="https://petg10ufpel.github.io/petg10/html/info/varios/meias/" target="_blank" rel="noopener">
+          <img src="https://petg10ufpel.github.io/petg10/html/info/itb/img/logo.png" alt="" loading="lazy" onerror="this.remove()">
+          <span class="k">Material do PET-Saúde G10</span>
+          <strong>Por que as meias de compressão têm pressões diferentes?</strong>
+          <span class="d">Classes britânica e europeia, gradiente de pressão, ITB antes da compressão e evidências sobre recorrência.</span>
+          <span class="go">Abrir material</span>
+        </a></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SÍNTESE -->
+<section class="synthesis" aria-labelledby="sintese">
+  <h2 id="sintese">O que fica</h2>
+  <ol>
+    <li>Leg Clubs tratam úlceras de perna em grupo, em espaço comunitário, sem hora marcada, com foco em apoio entre pares e na saúde da perna.</li>
+    <li>O melhor dado disponível, um ECR australiano pequeno, mostra feridas encolhendo muito mais rápido no clube do que com visita domiciliar.</li>
+    <li>O modelo parece seguro, bem aceito e provavelmente mais barato por úlcera cicatrizada.</li>
+    <li>A maior parte da evidência, porém, é de baixa ou muito baixa certeza: 14 estudos, apenas 1 randomizado.</li>
+    <li>Falta um ensaio robusto, comparando o clube com o melhor cuidado especializado disponível.</li>
+  </ol>
+</section>
+
+
+<!-- QUIZ -->
+<section aria-labelledby="quiz-t">
+  <div class="measure">
+    <h2 id="quiz-t">Teste sua leitura</h2>
+    <p>Dez questões sobre o artigo e o estudo em destaque. Escolha uma alternativa para ver a explicação.</p>
+  </div>
+  <div class="quiz" id="quiz">
+    <div class="q" data-q="1">
+      <p class="q-num">Questão 1 de 10</p>
+      <p class="q-text">Qual é o tratamento considerado padrão-ouro para a úlcera venosa?</p>
+      <div class="opts"><button type="button" class="opt" data-ok="0">a) Pomada antibiótica sobre a ferida</button><button type="button" class="opt" data-ok="1">b) Terapia compressiva</button><button type="button" class="opt" data-ok="0">c) Repouso absoluto no leito</button><button type="button" class="opt" data-ok="0">d) Desbridamento cirúrgico semanal</button></div>
+      <div class="feedback" role="status" aria-live="polite"><strong></strong>A compressão reduz a hipertensão venosa, causa da úlcera. O desafio apontado pelo artigo não é a técnica, e sim a adesão do paciente ao longo das semanas.</div>
+    </div>
+    <div class="q" data-q="2">
+      <p class="q-num">Questão 2 de 10</p>
+      <p class="q-text">O que distingue um Leg Club de um ambulatório convencional?</p>
+      <div class="opts"><button type="button" class="opt" data-ok="0">a) Atendimento exclusivo por cirurgiões vasculares</button><button type="button" class="opt" data-ok="0">b) Consultas individuais com hora marcada</button><button type="button" class="opt" data-ok="1">c) Cuidado coletivo por enfermeiras em espaço comunitário, sem agendamento</button><button type="button" class="opt" data-ok="0">d) Tratamento feito somente no domicílio</button></div>
+      <div class="feedback" role="status" aria-live="polite"><strong></strong>O modelo combina enfermagem treinada, ambiente informal, atendimento em grupo, livre acesso e um componente de “perna saudável” para prevenção.</div>
+    </div>
+    <div class="q" data-q="3">
+      <p class="q-num">Questão 3 de 10</p>
+      <p class="q-text">Por que os autores fizeram síntese narrativa em vez de metanálise?</p>
+      <div class="opts"><button type="button" class="opt" data-ok="0">a) Porque encontraram apenas um estudo</button><button type="button" class="opt" data-ok="1">b) Por heterogeneidade dos desenhos de estudo e dos desfechos avaliados</button><button type="button" class="opt" data-ok="0">c) Porque os dados eram sigilosos</button><button type="button" class="opt" data-ok="0">d) Porque metanálise só se aplica a estudos qualitativos</button></div>
+      <div class="feedback" role="status" aria-live="polite"><strong></strong>Havia ECR, relatos de caso, estudos transversais, métodos mistos, qualitativo e auditoria, medindo coisas diferentes. Somar esses resultados num único número não faria sentido.</div>
+    </div>
+    <div class="q" data-q="4">
+      <p class="q-num">Questão 4 de 10</p>
+      <p class="q-text">Das 17 publicações incluídas, quantos estudos eram ensaios clínicos randomizados distintos?</p>
+      <div class="opts"><button type="button" class="opt" data-ok="1">a) Um</button><button type="button" class="opt" data-ok="0">b) Quatro</button><button type="button" class="opt" data-ok="0">c) Sete</button><button type="button" class="opt" data-ok="0">d) Catorze</button></div>
+      <div class="feedback" role="status" aria-live="polite"><strong></strong>Quatro artigos vinham do mesmo ECR australiano (fases de viabilidade, piloto, ensaio e análise econômica). Por isso 17 publicações correspondem a 14 estudos, e apenas 1 é randomizado.</div>
+    </div>
+    <div class="q" data-q="5">
+      <p class="q-num">Questão 5 de 10</p>
+      <p class="q-text">No ECR, qual foi a redução média da área da úlcera em 12 semanas no grupo Leg Club?</p>
+      <div class="opts"><button type="button" class="opt" data-ok="0">a) 10 a 11%</button><button type="button" class="opt" data-ok="0">b) 30 a 40%</button><button type="button" class="opt" data-ok="1">c) 69 a 77%</button><button type="button" class="opt" data-ok="0">d) Cicatrização total em todos os casos</button></div>
+      <div class="feedback" role="status" aria-live="polite"><strong></strong>No Leg Club a área caiu 69 a 77%, contra 10 a 11% com visita domiciliar. É o achado clínico mais forte da revisão, com certeza moderada.</div>
+    </div>
+    <div class="q" data-q="6">
+      <p class="q-num">Questão 6 de 10</p>
+      <p class="q-text">O que a revisão conclui sobre infecção nas feridas tratadas em grupo?</p>
+      <div class="opts"><button type="button" class="opt" data-ok="0">a) Evidência de alta certeza comprova que não há risco</button><button type="button" class="opt" data-ok="1">b) Nenhuma infecção foi registrada nos clubes, mas só três estudos e 127 pessoas avaliaram isso</button><button type="button" class="opt" data-ok="0">c) Houve aumento de infecção por contato entre membros</button><button type="button" class="opt" data-ok="0">d) O desfecho não foi investigado</button></div>
+      <div class="feedback" role="status" aria-live="polite"><strong></strong>Os resultados são consistentes, mas imprecisos: certeza baixa no ECR e muito baixa nos demais estudos.</div>
+    </div>
+    <div class="q" data-q="7">
+      <p class="q-num">Questão 7 de 10</p>
+      <p class="q-text">Sobre custos, qual afirmação é correta segundo a análise australiana?</p>
+      <div class="opts"><button type="button" class="opt" data-ok="0">a) O Leg Club foi mais caro em todos os aspectos</button><button type="button" class="opt" data-ok="1">b) O custo total para a comunidade foi 20% maior, mas o custo por úlcera cicatrizada foi menor</button><button type="button" class="opt" data-ok="0">c) Os custos foram idênticos</button><button type="button" class="opt" data-ok="0">d) O estudo não mediu custos com materiais</button></div>
+      <div class="feedback" role="status" aria-live="polite"><strong></strong>Como mais úlceras cicatrizaram, cada ferida curada custou menos ao serviço (por exemplo, 1.019 contra 1.571 em três meses), e os materiais custaram 30% menos.</div>
+    </div>
+    <div class="q" data-q="8">
+      <p class="q-num">Questão 8 de 10</p>
+      <p class="q-text">Qual foi o principal motivo para rebaixar a certeza das evidências no GRADE?</p>
+      <div class="opts"><button type="button" class="opt" data-ok="0">a) Conflito de interesse dos autores</button><button type="button" class="opt" data-ok="1">b) Imprecisão por amostras pequenas</button><button type="button" class="opt" data-ok="0">c) Estudos publicados em outros idiomas</button><button type="button" class="opt" data-ok="0">d) Excesso de ensaios randomizados</button></div>
+      <div class="feedback" role="status" aria-live="polite"><strong></strong>Poucos participantes geram estimativas imprecisas. Soma-se a isso a falta de grupo controle na maioria dos estudos e a impossibilidade de cegamento no ECR.</div>
+    </div>
+    <div class="q" data-q="9">
+      <p class="q-num">Questão 9 de 10</p>
+      <p class="q-text">Que comparador os autores recomendam para um futuro ECR no Reino Unido?</p>
+      <div class="opts"><button type="button" class="opt" data-ok="0">a) Nenhum tratamento</button><button type="button" class="opt" data-ok="0">b) Visita domiciliar, como no estudo australiano</button><button type="button" class="opt" data-ok="1">c) Clínica comunitária especializada em feridas</button><button type="button" class="opt" data-ok="0">d) Internação hospitalar</button></div>
+      <div class="feedback" role="status" aria-live="polite"><strong></strong>A diretriz britânica já recomenda clínicas comunitárias especializadas. Comparar o Leg Club com a melhor prática atual é o teste justo do modelo.</div>
+    </div>
+    <div class="q" data-q="10">
+      <p class="q-num">Questão 10 de 10</p>
+      <p class="q-text">No estudo de Upton et al. (2015) com membros de Leg Clubs, qual fator mais explicou as preocupações com a ferida?</p>
+      <div class="opts"><button type="button" class="opt" data-ok="0">a) O tempo de frequência ao clube</button><button type="button" class="opt" data-ok="1">b) A percepção da própria situação social</button><button type="button" class="opt" data-ok="0">c) A idade do participante</button><button type="button" class="opt" data-ok="0">d) O tipo de curativo utilizado</button></div>
+      <div class="feedback" role="status" aria-live="polite"><strong></strong>A situação social percebida explicou 45% da variação, a aparência da ferida mais 18% e o tempo no clube mais 6%. Como a análise é correlacional, isso indica associação, não causa.</div>
+    </div>
+    <div class="score" aria-live="polite"><span>Acertos: <strong id="score-n">0</strong> de 10 <span id="score-msg" class="small" style="color:#C9DDD1;margin-left:8px">Responda todas para ver o resultado.</span></span><button type="button" id="quiz-reset">Refazer o quiz</button></div>
+  </div>
+</section>
+
+<!-- PERGUNTAS SOCRÁTICAS -->
+<section aria-labelledby="soc-t">
+  <div class="measure">
+    <h2 id="soc-t">Perguntas para pensar mais fundo</h2>
+    <p>Perguntas socráticas não têm uma resposta certa pronta. Servem para discussão em grupo, tutoria ou estudo individual. Tente responder antes de abrir a pista.</p>
+  </div>
+  <div class="socratic">
+    <details>
+      <summary><span class="kind">Clarificação</span>O que exatamente é “a intervenção” num Leg Club?</summary>
+      <div class="hint"><p>Enfermagem especializada, atendimento em grupo, ausência de agendamento, voluntários, chá, prevenção após a cicatrização: tudo chega junto. Se as feridas cicatrizam mais rápido, qual desses ingredientes você apostaria que faz a diferença?</p><p>Como um estudo poderia separar o efeito de cada um? Pense em um desenho que compare o clube com uma clínica especializada individual, em que só o componente social muda.</p></div>
+    </details>
+    <details>
+      <summary><span class="kind">Pressupostos</span>O que se pressupõe ao comparar o Leg Club com a visita domiciliar?</summary>
+      <div class="hint"><p>A visita domiciliar pode ser um cuidado menos especializado e menos frequente. Parte da vantagem do clube pode vir simplesmente de mais contato com enfermeiras treinadas em compressão.</p><p>O resultado de 69–77% contra 10–11% se manteria diante de uma clínica comunitária especializada? Por que os autores insistem nesse comparador?</p></div>
+    </details>
+    <details>
+      <summary><span class="kind">Evidências</span>Quem aparece nos relatos de caso e depoimentos, e quem fica de fora?</summary>
+      <div class="hint"><p>Sete dos 14 estudos são relatos de caso, em geral de membros com boa evolução. Quem abandonou o clube, quem não cicatrizou, quem se incomodou em tratar a ferida em público raramente é ouvido.</p><p>Que vieses isso produz? Pense em viés de seleção e em viés de publicação. Como você desenharia uma coleta que capturasse também as experiências negativas?</p></div>
+    </details>
+    <details>
+      <summary><span class="kind">Perspectivas</span>Como o mesmo ambiente coletivo pode ser acolhedor para uns e constrangedor para outros?</summary>
+      <div class="hint"><p>A metassíntese de 2022 registrou membros que se incomodavam ao ver feridas alheias.<sup class="cite"><a href="#ref-17">17</a></sup> Úlceras podem ter odor, exsudato e carregar estigma.</p><p>Como equilibrar apoio entre pares e privacidade? Que ajustes práticos (biombos, horários, espaços separados) preservariam a proposta sem expor quem não deseja?</p></div>
+    </details>
+    <details>
+      <summary><span class="kind">Implicações</span>Um espaço coletivo na Atenção Primária mudaria a adesão à compressão no Brasil?</summary>
+      <div class="hint"><p>Em Juiz de Fora, quase metade dos usuários com compressão prescrita não a usava, por dor e incômodo.<sup class="cite"><a href="#ref-5">5</a></sup> O Leg Club aposta em vínculo, educação e troca entre pares para enfrentar exatamente isso.</p><p>Que recursos o SUS precisaria garantir para testar o modelo numa UBS: materiais de compressão multicamadas, enfermeiras capacitadas, avaliação vascular prévia, espaço físico, voluntários? O telemonitoramento poderia complementar o acompanhamento entre encontros?</p></div>
+    </details>
+    <details>
+      <summary><span class="kind">Sobre a própria decisão</span>Implementar agora ou esperar um ensaio robusto?</summary>
+      <div class="hint"><p>O modelo parece seguro, é bem aceito e provavelmente reduz o custo por úlcera cicatrizada, mas a certeza das evidências é baixa na maioria dos desfechos.</p><p>Que argumentos sustentam implantar um projeto-piloto com avaliação rigorosa desde o início? E quais sustentam esperar? Que desfechos você mediria para que a experiência local também gerasse evidência útil?</p></div>
+    </details>
+  </div>
+</section>
+
+<!-- REFERÊNCIAS -->
+<section class="refs" aria-labelledby="refs">
+  <h2 id="refs" style="font-size:1.4rem">Referências</h2>
+  <p class="small">Numeradas na ordem em que aparecem no texto, no estilo Vancouver. Conferidas nas fontes originais em setembro de 2026. Clique no número sobrescrito no texto para ir à referência.</p>
+  <ol class="numbered">
+    <li id="ref-1"><span class="n">1.</span><span>Abu Ghazaleh H, Artom M, Sturt J. A systematic review of community Leg Clubs for patients with chronic leg ulcers. Prim Health Care Res Dev. 2019;20:e65. doi:<a href="https://doi.org/10.1017/S1463423618000610">10.1017/S1463423618000610</a>. PMID: 30157983. Acesso aberto: <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC8512534/">PMC8512534</a>.</span></li>
+    <li id="ref-2"><span class="n">2.</span><span>Guest JF, Ayoub N, McIlwraith T, Uchegbu I, Gerrish A, Weidlich D, et al. Health economic burden that wounds impose on the National Health Service in the UK. BMJ Open. 2015;5(12):e009283. doi:<a href="https://doi.org/10.1136/bmjopen-2015-009283">10.1136/bmjopen-2015-009283</a>.</span></li>
+    <li id="ref-3"><span class="n">3.</span><span>Guest JF, Ayoub N, McIlwraith T, Uchegbu I, Gerrish A, Weidlich D, et al. Health economic burden that different wound types impose on the UK’s National Health Service. Int Wound J. 2017;14(2):322-30. doi:<a href="https://doi.org/10.1111/iwj.12603">10.1111/iwj.12603</a>.</span></li>
+    <li id="ref-4"><span class="n">4.</span><span>Maffei FH, Magaldi C, Pinho SZ, Lastoria S, Pinho W, Yoshida WB, et al. Varicose veins and chronic venous insufficiency in Brazil: prevalence among 1755 inhabitants of a country town. Int J Epidemiol. 1986;15(2):210-7. doi:<a href="https://doi.org/10.1093/ije/15.2.210">10.1093/ije/15.2.210</a>.</span></li>
+    <li id="ref-5"><span class="n">5.</span><span>Silva MH, Jesus MCP, Merighi MAB, Oliveira DM, Santos SMR, Vicente EJD. Manejo clínico de úlceras venosas na atenção primária à saúde. Acta Paul Enferm. 2012;25(3):329-33. Disponível em: <a href="https://www.redalyc.org/articulo.oa?id=307023885002">redalyc.org</a>.</span></li>
+    <li id="ref-6"><span class="n">6.</span><span>Lindsay E. The Lindsay Leg Club Model: a model for evidence-based leg ulcer management. Br J Community Nurs. 2004;9(Suppl):S15-20.</span></li>
+    <li id="ref-7"><span class="n">7.</span><span>The Lindsay Leg Club Foundation. About Leg Clubs [Internet]. Suffolk: The Lindsay Leg Club Foundation; [citado 2026 set 26]. Disponível em: <a href="https://www.legclub.org/about-leg-clubs">legclub.org/about-leg-clubs</a>.</span></li>
+    <li id="ref-8"><span class="n">8.</span><span>Lindsay E. Thirty years of celebratory achievements: May 1995 to date! Wounds UK. 2025;21(1).</span></li>
+    <li id="ref-9"><span class="n">9.</span><span>The Lindsay Leg Club Foundation. The Leg Club approach [Internet]. Suffolk: The Lindsay Leg Club Foundation; [citado 2026 set 26]. Disponível em: <a href="https://www.legclub.org/the-leg-club-approach">legclub.org/the-leg-club-approach</a>.</span></li>
+    <li id="ref-10"><span class="n">10.</span><span>Lindsay E. Compliance with science: benefits of developing community leg clubs. Br J Nurs. 2001;10(Sup5):S66-S70. doi:<a href="https://doi.org/10.12968/bjon.2001.10.Sup5.12327">10.12968/bjon.2001.10.Sup5.12327</a>.</span></li>
+    <li id="ref-11"><span class="n">11.</span><span>The Lindsay Leg Club Foundation. Ellie Lindsay, Trustee [Internet]. Suffolk: The Lindsay Leg Club Foundation; [citado 2026 set 26]. Disponível em: <a href="https://www.legclub.org/trustees/ellie-lindsay">legclub.org/trustees/ellie-lindsay</a>.</span></li>
+    <li id="ref-12"><span class="n">12.</span><span>Edwards H, Courtney M, Finlayson K, Lewis C, Lindsay E, Dumble J. Improved healing rates for chronic venous leg ulcers: pilot study results from a randomized controlled trial of a community nursing intervention. Int J Nurs Pract. 2005;11(4):169-76. doi:<a href="https://doi.org/10.1111/j.1440-172X.2005.00521.x">10.1111/j.1440-172X.2005.00521.x</a>.</span></li>
+    <li id="ref-13"><span class="n">13.</span><span>Edwards H, Courtney M, Finlayson K, Lindsay E, Lewis C, Shuter P, et al. Chronic venous leg ulcers: effect of a community nursing intervention on pain and healing. Nurs Stand. 2005;19(52):47-54. doi:<a href="https://doi.org/10.7748/ns2005.09.19.52.47.c3950">10.7748/ns2005.09.19.52.47.c3950</a>.</span></li>
+    <li id="ref-14"><span class="n">14.</span><span>Edwards H, Courtney M, Finlayson K, Shuter P, Lindsay E. A randomised controlled trial of a community nursing intervention: improved quality of life and healing for clients with chronic leg ulcers. J Clin Nurs. 2009;18(11):1541-9. doi:<a href="https://doi.org/10.1111/j.1365-2702.2008.02648.x">10.1111/j.1365-2702.2008.02648.x</a>.</span></li>
+    <li id="ref-15"><span class="n">15.</span><span>Upton D, Upton P, Alexander R. Contribution of the Leg Club model of care to the well-being of people living with chronic wounds. J Wound Care. 2015;24(9):397-405. doi:<a href="https://doi.org/10.12968/jowc.2015.24.9.397">10.12968/jowc.2015.24.9.397</a>. Texto completo: <a href="https://www.legclub.org/uploads/files/documents/Contribution-of-the-Leg-Club-model-of-care-to-the-well-being-of-people-living-with-chronic-wounds.pdf">legclub.org (PDF)</a>.</span></li>
+    <li id="ref-16"><span class="n">16.</span><span>Gordon L, Edwards H, Courtney M, Finlayson K, Shuter P, Lindsay E. A cost-effectiveness analysis of two community models of care for patients with venous leg ulcers. J Wound Care. 2006;15(8):348-53. doi:<a href="https://doi.org/10.12968/jowc.2006.15.8.26942">10.12968/jowc.2006.15.8.26942</a>.</span></li>
+    <li id="ref-17"><span class="n">17.</span><span>Crispin FJ, Holloway S, Galazka AM. Members’ experiences of Lindsay Leg Clubs®: a thematic metasynthesis of published narratives in qualitative research. J Wound Manag. 2022;23(3). doi:<a href="https://doi.org/10.35279/jowm2022.23.03.03">10.35279/jowm2022.23.03.03</a>.</span></li>
+    <li id="ref-18"><span class="n">18.</span><span>McIntyre N, Finlayson K, Galazka A, Lindsay E, Renyi R. The Lindsay Leg Club® Well Leg Regime: an evidence review. J Wound Care. 2023;32(10):642-50. doi:<a href="https://doi.org/10.12968/jowc.2023.32.10.642">10.12968/jowc.2023.32.10.642</a>.</span></li>
+    <li id="ref-19"><span class="n">19.</span><span>McIntyre N, Galazka AM, Lindsay E, Bawden R, Renyi R. A relational database within the Leg Club Network: an audit. Int Wound J. 2021;18(2):233-41. doi:<a href="https://doi.org/10.1111/iwj.13522">10.1111/iwj.13522</a>.</span></li>
+  </ol>
+  <h3>Vídeos citados</h3>
+  <ul>
+    <li>Índice Tornozelo-Braquial (Stanford Medicine 25, legendado). Medicina Traduzida. YouTube. Disponível em: <a href="https://www.youtube.com/watch?v=9reKujBDN4w">youtube.com/watch?v=9reKujBDN4w</a>.</li>
+    <li>The Leg Club Journey. The Leg Club Channel. YouTube. Disponível em: <a href="https://www.youtube.com/watch?v=RgR4nZWVZs0">youtube.com/watch?v=RgR4nZWVZs0</a>.</li>
+    <li>Leg Club Animation: the philosophy, creation, management and maintenance of Leg Clubs. The Leg Club Channel. YouTube. Disponível em: <a href="https://www.youtube.com/watch?v=-taTPCd4jPM">youtube.com/watch?v=-taTPCd4jPM</a>.</li>
+    <li>Living with a chronic wound: the Leg Club model of care. The Leg Club Channel. YouTube. Disponível em: <a href="https://www.youtube.com/watch?v=nOHmZg7dSbw">youtube.com/watch?v=nOHmZg7dSbw</a>.</li>
+  </ul>
+  <h3>Materiais do PET-Saúde Digital G10 (UFPel)</h3>
+  <ul>
+    <li>ITB Interactive: plataforma interativa de aprendizado do índice tornozelo-braquial. Disponível em: <a href="https://itb-eight.vercel.app/">itb-eight.vercel.app</a>.</li>
+    <li>ITB Simulador: infográfico e simulador do índice tornozelo-braquial. Disponível em: <a href="https://petg10ufpel.github.io/petg10/html/info/itb/itb_simulador.html">petg10ufpel.github.io</a>.</li>
+    <li>Por que as meias de compressão têm pressões diferentes? Infográfico científico. Disponível em: <a href="https://petg10ufpel.github.io/petg10/html/info/varios/meias/">petg10ufpel.github.io</a>.</li>
+  </ul>
+</section>
+
+</main>
+
+<footer class="institutional-footer">
+  <p>Infográfico elaborado pelos projetos Amor à Pele e PET-Saúde Digital G10 Feridas Crônicas, UFPel, em Setembro de 2026.</p>
+</footer>
+
+<script>
+// Substitui placeholders pelas imagens quando elas existirem na pasta img/
+document.querySelectorAll('.img-placeholder[data-img-path]').forEach(function(fig){
+  var path = fig.getAttribute('data-img-path');
+  var probe = new Image();
+  probe.onload = function(){
+    var box = fig.querySelector('.placeholder-box');
+    var img = document.createElement('img');
+    img.src = path;
+    img.alt = fig.getAttribute('data-alt') || '';
+    if (box) box.replaceWith(img);
+  };
+  probe.onerror = function(){
+    var fb = fig.getAttribute('data-img-fallback');
+    if (fb && probe.src.indexOf(fb) === -1) { path = fb; probe.src = fb; }
+  };
+  probe.src = path;
+});
+
+// Momento animado único: feridas encolhendo e barras crescendo ao entrar na tela
+(function(){
+  var targets = [document.getElementById('shrink-fig')].concat(Array.prototype.slice.call(document.querySelectorAll('[data-animate]')));
+  function reveal(el){
+    el.classList.add('in-view');
+    el.querySelectorAll && el.querySelectorAll('.bar-fill').forEach(function(b){ b.style.width = b.getAttribute('data-w') + '%'; });
+  }
+  if (!('IntersectionObserver' in window)) { targets.forEach(reveal); return; }
+  var io = new IntersectionObserver(function(entries){
+    entries.forEach(function(e){ if (e.isIntersecting){ reveal(e.target); io.unobserve(e.target); } });
+  }, {threshold: 0.4});
+  targets.forEach(function(t){ if (t) io.observe(t); });
+})();
+
+// Vídeos: o player só carrega quando a pessoa clica
+document.querySelectorAll('.yt[data-yt]').forEach(function(btn){
+  btn.addEventListener('click', function(){
+    var id = btn.getAttribute('data-yt');
+    var f = document.createElement('iframe');
+    f.src = 'https://www.youtube-nocookie.com/embed/' + id + '?autoplay=1&rel=0';
+    f.title = btn.getAttribute('aria-label');
+    f.allow = 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture';
+    f.allowFullscreen = true;
+    f.referrerPolicy = 'strict-origin-when-cross-origin';
+    var box = document.createElement('div');
+    box.className = 'yt'; box.style.cursor = 'default';
+    box.appendChild(f); btn.replaceWith(box);
+  }, {once:true});
+});
+
+// Quiz
+(function(){
+  var quiz = document.getElementById('quiz'); if(!quiz) return;
+  var total = quiz.querySelectorAll('.q').length, answered = 0, right = 0;
+  function shuffleAll(){
+    quiz.querySelectorAll('.opts').forEach(function(box){
+      var items = Array.prototype.slice.call(box.children);
+      for (var i = items.length - 1; i > 0; i--){ var j = Math.floor(Math.random()*(i+1)); var t = items[i]; items[i] = items[j]; items[j] = t; }
+      items.forEach(function(b, k){ b.textContent = 'abcd'[k] + ') ' + b.textContent.replace(/^[a-d]\) /, ''); box.appendChild(b); });
+    });
+  }
+  shuffleAll();
+  var nEl = document.getElementById('score-n'), msg = document.getElementById('score-msg');
+  var okLabels = ['Isso mesmo.','Correto.','Exato.','Boa leitura.'];
+  var badLabels = ['Ainda não.','Quase.','Reveja este ponto.','Não exatamente.'];
+  function finish(){
+    var t = right === total ? 'Leitura impecável.' : right >= total*0.7 ? 'Muito bem, poucos pontos a revisar.' : 'Vale reler as seções de resultados e de certeza das evidências.';
+    msg.textContent = t;
+  }
+  quiz.querySelectorAll('.q').forEach(function(q, i){
+    q.querySelectorAll('.opt').forEach(function(b){
+      b.addEventListener('click', function(){
+        var ok = b.dataset.ok === '1';
+        q.querySelectorAll('.opt').forEach(function(o){
+          o.disabled = true;
+          if (o.dataset.ok === '1') o.classList.add('correct');
+          else if (o !== b) o.classList.add('dim');
+        });
+        if (!ok) b.classList.add('wrong');
+        var fb = q.querySelector('.feedback');
+        fb.querySelector('strong').textContent = ok ? okLabels[i % 4] : badLabels[i % 4];
+        fb.classList.toggle('bad', !ok); fb.classList.add('show');
+        answered++; if (ok) right++;
+        nEl.textContent = right;
+        if (answered === total) finish();
+      });
+    });
+  });
+  document.getElementById('quiz-reset').addEventListener('click', function(){
+    answered = 0; right = 0; nEl.textContent = 0; msg.textContent = 'Responda todas para ver o resultado.';
+    quiz.querySelectorAll('.opt').forEach(function(o){ o.disabled = false; o.className = 'opt'; });
+    quiz.querySelectorAll('.feedback').forEach(function(f){ f.className = 'feedback'; });
+    shuffleAll();
+    quiz.querySelector('.q').scrollIntoView({behavior:'smooth', block:'start'});
+  });
+})();
+</script>
+</body>
+</html>
