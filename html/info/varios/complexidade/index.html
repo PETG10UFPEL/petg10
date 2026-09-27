@@ -113,6 +113,30 @@ ul.refs a, .intro-refs a { color: var(--accent); }
 .notes { max-width: 68ch; margin-top: 26px; }
 .notes h3 { font-size: 1.2rem; margin: 0 0 8px; }
 .notes p { margin: 0 0 12px; }
+.quiz, .socratic { margin-top: 26px; padding: 18px 20px 14px; border-radius: 14px; background: var(--panel); border: 1px solid var(--rule); }
+.quiz h3, .socratic h3 { margin-top: 0; }
+.quiz-intro { font: 400 14px/1.45 "Figtree", system-ui, sans-serif; color: var(--ink-soft); margin: -4px 0 14px !important; }
+.qitem { margin-bottom: 18px; }
+.qq { margin: 0 0 8px !important; }
+.qopts { display: grid; gap: 6px; }
+.qopt { display: flex; gap: 10px; align-items: flex-start; text-align: left; font: 400 15px/1.4 "Figtree", system-ui, sans-serif; color: var(--ink);
+  background: var(--paper); border: 1px solid var(--rule); border-radius: 10px; padding: 9px 12px; cursor: pointer; }
+.qopt:hover:not(:disabled) { border-color: var(--accent); }
+.qopt:disabled { cursor: default; }
+.qopt .ql { flex: none; width: 22px; height: 22px; border-radius: 50%; display: grid; place-items: center; font-weight: 600; font-size: 13px;
+  background: var(--tint); color: var(--accent); }
+.qopt.is-right { border-color: #2F8A55; background: color-mix(in srgb, #2F8A55 14%, var(--paper)); }
+.qopt.is-right .ql { background: #2F8A55; color: #fff; }
+.qopt.is-wrong { border-color: #C4513C; background: color-mix(in srgb, #C4513C 12%, var(--paper)); }
+.qopt.is-wrong .ql { background: #C4513C; color: #fff; }
+.qwhy { font: 400 14.5px/1.5 "Figtree", system-ui, sans-serif; margin: 8px 0 0 !important; padding: 8px 12px; border-left: 3px solid var(--accent); background: var(--tint); border-radius: 0 8px 8px 0; }
+.qscore { display: flex; flex-wrap: wrap; align-items: center; gap: 12px; font: 600 15px "Figtree", system-ui, sans-serif; }
+.qreset { font: 600 14px "Figtree", system-ui, sans-serif; border-radius: 8px; padding: 7px 12px; cursor: pointer; border: 1px solid var(--accent); background: transparent; color: var(--accent); }
+.socratic ol { padding-left: 1.3em; margin: 0; }
+.socratic li { margin-bottom: 14px; }
+.socratic li p { margin: 0 0 4px !important; }
+.socratic summary { font: 600 14px "Figtree", system-ui, sans-serif; color: var(--accent); cursor: pointer; width: fit-content; }
+.socratic details p { font: 400 14.5px/1.5 "Figtree", system-ui, sans-serif; color: var(--ink-soft); margin-top: 6px !important; }
 .notes .limits { color: var(--ink-soft); border-top: 1px solid var(--rule); padding-top: 14px; margin-top: 18px; }
 
 .panel { font-family: "Figtree", system-ui, sans-serif; font-size: 15px; background: var(--panel); border-radius: 14px; padding: 18px 18px 10px; }
@@ -636,6 +660,192 @@ function createBiofilm(W, H) {
   return m;
 }
 
+// ---------- quiz de fixação e perguntas socráticas ----------
+const QUIZ = {
+  cardume: {
+    quiz: [
+      { q: 'Por que a polarização do cardume é considerada uma propriedade emergente?',
+        opts: ['Porque cada peixe calcula a direção média do cardume inteiro.',
+               'Porque é uma característica do grupo que nenhum peixe possui sozinho e que resulta de interações locais.',
+               'Porque existe um peixe líder que define a direção dos outros.',
+               'Porque surge do ruído aleatório no movimento dos peixes.'],
+        a: 1, why: 'Cada peixe só enxerga alguns vizinhos. A direção comum é uma medida do todo, que aparece das interações locais sem que ninguém a calcule ou comande.' },
+      { q: 'Com os parâmetros do moinho, começar com os peixes agrupados ou espalhados leva a padrões diferentes. Isso ilustra:',
+        opts: ['Um erro da simulação.',
+               'Que as regras mudaram entre as duas tentativas.',
+               'Aleatoriedade pura, sem nenhum padrão.',
+               'Dependência do histórico: o estado de partida influencia o estado coletivo final.'],
+        a: 3, why: 'As regras são idênticas nas duas tentativas. O que muda é o ponto de partida, e o sistema “lembra” dele. Couzin e colegas chamaram isso de memória coletiva.' },
+      { q: 'Ao baixar o alinhamento aos poucos, a polarização se mantém alta e depois despenca a partir de certo valor. Esse comportamento lembra:',
+        opts: ['Uma transição de fase.', 'Uma relação linear entre causa e efeito.', 'Um mecanismo de homeostase.', 'Um efeito que não depende do alinhamento.'],
+        a: 0, why: 'Uma mudança pequena num parâmetro individual provoca uma mudança grande e rápida no estado do grupo, como na passagem de líquido para sólido.' },
+    ],
+    socratic: [
+      { q: 'Se nenhum peixe conhece a forma do cardume, onde essa forma “mora”?', hint: 'Pense se ela existiria com um peixe só. E se existiria com os peixes parados.' },
+      { q: 'Se cada peixe enxergasse o aquário inteiro e seguisse a média de todos, o padrão ainda seria emergente?', hint: 'Compare informação local com informação global. O que muda quando alguém tem a visão do todo?' },
+      { q: 'Que sistema do corpo humano você descreveria como “muitos agentes, regras locais, padrão global”?', hint: 'Pense em células de um tecido, em batimentos do coração, em respostas imunes.' },
+    ],
+  },
+  reepi: {
+    quiz: [
+      { q: 'Na simulação, as células líderes da frente de migração:',
+        opts: ['São escolhidas no início da simulação.',
+               'São sempre as mesmas do começo ao fim.',
+               'Surgem da posição na borda, onde há espaço livre de um lado.',
+               'São as que se dividem mais rápido.'],
+        a: 2, why: 'Nenhuma regra diz quem lidera. A célula na borda tem vizinhas só de um lado e se polariza para o espaço livre; a liderança muda conforme a frente avança.' },
+      { q: 'Com a motilidade da borda em zero e a proliferação mantida, a cobertura do leito:',
+        opts: ['Praticamente não avança.', 'Fecha mais rápido.', 'Fecha no mesmo tempo da ferida aguda.', 'Fecha e depois reabre.'],
+        a: 0, why: 'A divisão celular sozinha não leva o epitélio para dentro da ferida. Sem migração, a borda fica viva e proliferando, mas parada.' },
+      { q: 'Ao aumentar a hostilidade do leito gradualmente, observa-se que:',
+        opts: ['O efeito é sempre proporcional à hostilidade.',
+               'A partir de certo nível a frente estaciona, mesmo com células saudáveis logo atrás.',
+               'A hostilidade só afeta a proliferação.',
+               'A hostilidade não muda o tempo de fechamento.'],
+        a: 1, why: 'O efeito não é linear: existe um ponto em que a frente deixa de progredir. O problema passa a estar no leito, e não nas células.' },
+    ],
+    socratic: [
+      { q: 'Se as células da borda estão vivas, o que as impede de avançar?', hint: 'O problema está na célula ou no ambiente em que ela precisa se mover?' },
+      { q: '“Estimular a cicatrização” é uma meta clara? O que exatamente você estaria estimulando?', hint: 'Separe migração, proliferação e condições do leito. Qual delas está falhando?' },
+      { q: 'Uma cobertura feita de células soltas cumpre a mesma função que um epitélio contínuo?', hint: 'Pense na função de barreira da pele.' },
+    ],
+  },
+  chronic: {
+    quiz: [
+      { q: 'Os cenários “Ferida aguda” e “Ferida crônica” têm parâmetros idênticos. O que os diferencia?',
+        opts: ['A carga bacteriana.', 'O tipo de macrófago disponível.', 'A velocidade da simulação.', 'O estado inicial do leito.'],
+        a: 3, why: 'A crônica começa colonizada e necrótica. Com as mesmas regras, cada ponto de partida leva a um estado estável diferente: são dois atratores.' },
+      { q: 'Em “Biofilme intenso”, depois de desbridar tudo, o leito melhora e depois recai. O que isso sugere?',
+        opts: ['Que o desbridamento é inútil.',
+               'Que o desbridamento precisa ser repetido e associado ao controle da carga bacteriana.',
+               'Que basta um único desbridamento mais profundo.',
+               'Que só o antibiótico resolveria.'],
+        a: 1, why: 'O desbridamento muda o ponto de partida, mas as bactérias voltam a crescer e empurram o leito de volta. Daí a ideia de desbridamento seriado com controle da carga bacteriana.' },
+      { q: 'No modelo, histerese significa que:',
+        opts: ['O caminho de volta não é o mesmo da ida: remover a causa pode não bastar para sair do estado.',
+               'O sistema sempre volta ao estado anterior quando a causa é removida.',
+               'O sistema oscila entre os dois estados sem parar.',
+               'O comportamento do leito é totalmente aleatório.'],
+        a: 0, why: 'O leito inflama a partir de uma carga bacteriana alta, mas só volta a cicatrizar sozinho com uma carga bem mais baixa do que a que o fez inflamar.' },
+    ],
+    socratic: [
+      { q: 'Se a ferida ficou crônica por causa das bactérias, por que eliminá-las às vezes não basta?', hint: 'O que mais ficou diferente no leito além das bactérias? Necrose, perfil das células, dano acumulado.' },
+      { q: 'Ao desbridar só uma pequena área, ela às vezes se espalha e às vezes encolhe. De que isso depende?', hint: 'Compare o que acontece com carga baixa e com carga alta. Quem “vence” na fronteira entre as duas regiões?' },
+      { q: 'Como explicar a um paciente que um tratamento pode passar semanas sem resultado visível e depois “virar”?', hint: 'Use a imagem de uma bola que precisa ser empurrada por cima de uma colina para cair no outro vale.' },
+    ],
+  },
+  swarm: {
+    quiz: [
+      { q: 'O que faz o recrutamento acelerar no enxame?',
+        opts: ['A lesão passa a emitir mais sinal.',
+               'Novos neutrófilos são produzidos no local.',
+               'O sinal se degrada mais devagar.',
+               'Os neutrófilos ativados retransmitem o sinal, numa retroalimentação positiva.'],
+        a: 3, why: 'A lesão só inicia o chamado. Cada neutrófilo que chega libera mais sinal e atrai outros, e é essa amplificação que acelera o recrutamento.' },
+      { q: 'O que acontece quando a dessensibilização é desligada?',
+        opts: ['O enxame não se forma.',
+               'O sinal permanece alto no tecido e os neutrófilos não param.',
+               'O recrutamento diminui.',
+               'Os neutrófilos morrem mais cedo.'],
+        a: 1, why: 'A dessensibilização é o freio. Sem ela, a amplificação continua e o tecido inteiro fica sinalizado.' },
+      { q: 'Por que a retroalimentação positiva precisa de um mecanismo de parada?',
+        opts: ['Porque sem freio a resposta que protege pode se manter e causar dano.',
+               'Porque ela nunca consegue amplificar uma resposta.',
+               'Porque ela é sempre patológica.',
+               'Porque ela impede o recrutamento de células.'],
+        a: 0, why: 'A amplificação é útil para responder rápido, mas sem resolução a inflamação persiste, como se vê em feridas crônicas com excesso de neutrófilos e proteases.' },
+    ],
+    socratic: [
+      { q: 'Se a lesão emite sinal por pouco tempo, de onde vem o sinal que atrai os neutrófilos mais distantes?', hint: 'Observe a cor das células que já chegaram ao foco.' },
+      { q: 'Que outros exemplos de retroalimentação positiva existem no corpo, e o que os interrompe?', hint: 'Pense na coagulação, no trabalho de parto, no potencial de ação.' },
+      { q: 'Bloquear a inflamação e resolver a inflamação são a mesma coisa?', hint: 'Na simulação, o que acontece com o sinal quando os neutrófilos param? E se você só reduzisse o sinal da lesão?' },
+    ],
+  },
+  biofilm: {
+    quiz: [
+      { q: 'Quando as bactérias passam para o modo biofilme na simulação?',
+        opts: ['Assim que a primeira bactéria chega ao leito.',
+               'Depois que o antibiótico é aplicado.',
+               'Quando a concentração local do sinal ultrapassa um limiar, o que depende da densidade.',
+               'De forma aleatória, sem relação com a população.'],
+        a: 2, why: 'Cada bactéria libera um pouco de sinal. Só onde muitas estão juntas a concentração passa do limiar: é o quorum sensing.' },
+      { q: 'O que acontece com o antibiótico aplicado sozinho sobre um biofilme maduro?',
+        opts: ['Elimina todas as bactérias.',
+               'Mata as bactérias livres e poupa as do biofilme, que depois recolonizam o leito.',
+               'Mata apenas as bactérias do biofilme.',
+               'Não tem nenhum efeito.'],
+        a: 1, why: 'No modelo, as bactérias em modo biofilme são muito mais tolerantes. As sobreviventes voltam a crescer e reconstroem a população.' },
+      { q: 'A “janela terapêutica” após o desbridamento se refere a:',
+        opts: ['O período em que o biofilme em reconstrução é mais suscetível a antimicrobianos.',
+               'O período em que o curativo pode ser dispensado.',
+               'O tempo até a ferida fechar completamente.',
+               'O intervalo recomendado entre consultas.'],
+        a: 0, why: 'Depois do desbridamento, as bactérias remanescentes ainda não se reorganizaram em biofilme maduro, e o antimicrobiano age melhor.' },
+    ],
+    socratic: [
+      { q: 'Se as bactérias do biofilme são as mesmas das livres, de onde vem a tolerância ao antibiótico?', hint: 'É uma propriedade de cada bactéria ou do estado coletivo em que ela está?' },
+      { q: 'Como a limpeza e a irrigação do leito poderiam agir sobre o quórum mesmo sem matar bactérias?', hint: 'Veja o controle “Remoção do sinal” e o cenário “Remoção intensa”.' },
+      { q: 'Tolerância e resistência são a mesma coisa? Por que a diferença importa na escolha do tratamento?', hint: 'Uma depende do estado do grupo; a outra, de mudanças que passam para as descendentes.' },
+    ],
+  },
+};
+
+function renderQuiz(id) {
+  const Z = QUIZ[id]; if (!Z) return '';
+  const letters = ['a', 'b', 'c', 'd'];
+  let h = `<section class="quiz" data-quiz="${id}"><h3>Teste seu entendimento</h3>
+    <p class="quiz-intro">Responda antes de conferir. Cada resposta mostra uma explicação.</p>`;
+  Z.quiz.forEach((it, i) => {
+    h += `<div class="qitem" data-i="${i}"><p class="qq"><strong>${i + 1}.</strong> ${it.q}</p><div class="qopts">`;
+    it.opts.forEach((o, j) => { h += `<button type="button" class="qopt" data-j="${j}"><span class="ql">${letters[j]}</span>${o}</button>`; });
+    h += `</div><p class="qwhy" hidden></p></div>`;
+  });
+  h += `<div class="qscore"><span class="qscore-t"></span><button type="button" class="qreset" hidden>Refazer o quiz</button></div></section>`;
+  h += `<section class="socratic"><h3>Perguntas para pensar</h3>
+    <p class="quiz-intro">Não há resposta única. Escreva o seu raciocínio antes de abrir a pista.</p><ol>`;
+  Z.socratic.forEach(s => { h += `<li><p>${s.q}</p><details><summary>Mostrar uma pista</summary><p>${s.hint}</p></details></li>`; });
+  h += `</ol></section>`;
+  return h;
+}
+
+function wireQuiz(root) {
+  const box = root.querySelector('.quiz'); if (!box) return;
+  const Z = QUIZ[box.dataset.quiz], total = Z.quiz.length;
+  const score = box.querySelector('.qscore-t'), reset = box.querySelector('.qreset');
+  let answered = 0, right = 0;
+  const update = () => {
+    score.textContent = answered === total ? `Você acertou ${right} de ${total}.` : `${answered} de ${total} respondidas.`;
+    reset.hidden = answered < total;
+  };
+  box.querySelectorAll('.qitem').forEach(item => {
+    const it = Z.quiz[+item.dataset.i], why = item.querySelector('.qwhy');
+    item.querySelectorAll('.qopt').forEach(btn => btn.addEventListener('click', () => {
+      if (item.dataset.done) return;
+      item.dataset.done = '1'; answered++;
+      const j = +btn.dataset.j, ok = j === it.a;
+      if (ok) right++;
+      item.querySelectorAll('.qopt').forEach(b => {
+        b.disabled = true;
+        if (+b.dataset.j === it.a) b.classList.add('is-right');
+      });
+      if (!ok) btn.classList.add('is-wrong');
+      why.innerHTML = `<strong>${ok ? 'Correto.' : 'Não é essa.'}</strong> ${it.why}`;
+      why.hidden = false;
+      update();
+    }));
+  });
+  reset.addEventListener('click', () => {
+    answered = 0; right = 0;
+    box.querySelectorAll('.qitem').forEach(item => {
+      delete item.dataset.done;
+      item.querySelector('.qwhy').hidden = true;
+      item.querySelectorAll('.qopt').forEach(b => { b.disabled = false; b.classList.remove('is-right', 'is-wrong'); });
+    });
+    update();
+  });
+  update();
+}
+
 // =================== aplicação ===================
 const W = 900, H = 600;
 const C1 = '#F2B33D', C2 = '#7FCBB9', CORAL = '#E8735E', PALE = '#EDE3C8';
@@ -1063,8 +1273,9 @@ function select(id) {
     <figure class="head-img"><img src="${D.img}" alt="${D.imgAlt}" onerror="this.closest('figure').hidden=true; this.closest('.mod-head').classList.add('no-img')"><figcaption>${D.caption}</figcaption></figure>`;
   $('legend').innerHTML = D.legend.map(l => `<span><i style="background:${l.c}"></i>${l.t}</span>`).join('');
   $('readout').innerHTML = D.metrics.map(mt => `<div><div class="v" id="mv_${mt.key}">–</div><div class="k">${mt.color ? `<i style="background:${mt.color}"></i>` : ''}${mt.label}</div></div>`).join('');
-  $('notes').innerHTML = `<h3>O que observar</h3>${D.observe.map(p => `<p>${p}</p>`).join('')}<p class="limits"><strong>Onde a analogia termina.</strong> ${D.limits}</p>
+  $('notes').innerHTML = `<h3>O que observar</h3>${D.observe.map(p => `<p>${p}</p>`).join('')}${renderQuiz(D.id)}<p class="limits"><strong>Onde a analogia termina.</strong> ${D.limits}</p>
     <h3 class="refs-h">Referências desta seção</h3><ul class="refs">${D.refs.slice().sort((x, y) => REFS[x].localeCompare(REFS[y], 'pt')).map(k => `<li>${REFS[k]}</li>`).join('')}</ul>`;
+  wireQuiz($('notes'));
   buildPanel();
   updateHint(); clearView(); drawChart(); sample();
 }
