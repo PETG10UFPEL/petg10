@@ -185,85 +185,51 @@ img {
     }
 
     /* Tabela "Organização presencial 2026-2" puxada do Google Sheets */
-    .tabela-organizacao-wrap{
-      margin-top:12px;
-      width:100%;
-      overflow-x:auto;
-      -webkit-overflow-scrolling:touch;
-      border-radius:12px;
-      border:1px solid var(--border);
+    .org-wrap{ margin-top:12px; }
+    .org-tabela-scroll{
+      width:100%; overflow-x:auto; -webkit-overflow-scrolling:touch;
+      border-radius:12px; border:1px solid var(--border);
     }
-    table.tabela-organizacao{
-      width:100%;
-      border-collapse:collapse;
-      font-size:.92rem;
-      background:#fff;
+    table.org-tabela{ width:100%; border-collapse:collapse; font-size:.9rem; background:#fff; }
+    table.org-tabela th, table.org-tabela td{
+      border:1px solid var(--border); padding:9px 10px; text-align:left; vertical-align:top;
     }
-    table.tabela-organizacao th,
-    table.tabela-organizacao td{
-      border:1px solid var(--border);
-      padding:8px 10px;
-      text-align:left;
-      vertical-align:middle;
-      overflow-wrap:break-word;
+    table.org-tabela thead th{
+      background:linear-gradient(90deg, var(--blue), var(--blue2)); color:#fff; font-weight:700;
     }
-    table.tabela-organizacao thead th{
-      background: linear-gradient(90deg, var(--blue), var(--blue2));
-      color:#fff;
-      font-weight:700;
-    }
-    table.tabela-organizacao tbody tr:nth-child(even){
-      background:rgba(59,130,196,.05);
-    }
-    table.tabela-organizacao tbody tr:hover{
-      background:rgba(212,101,59,.08);
-    }
-    .tabela-organizacao-status{
-      margin-top:10px;
-      color:var(--muted);
-      font-size:.88rem;
-    }
+    table.org-tabela th.org-turno{ background:rgba(59,130,196,.08); color:var(--blue2); white-space:nowrap; }
+    table.org-tabela th.hoje, table.org-tabela td.hoje{ box-shadow: inset 0 3px 0 var(--orange); }
+    .org-vazio{ color:#94a3b8; }
+    .org-bloco + .org-bloco{ margin-top:8px; padding-top:8px; border-top:1px dashed var(--border); }
+    .org-local{ font-weight:700; color:var(--text); }
+    .org-linha{ color:var(--muted); line-height:1.4; }
+    .org-papel{ font-weight:600; color:var(--blue2); }
 
-    /* Celular: cada linha da planilha vira um bloco empilhado (rótulo + valor) */
+    /* Versão celular: um cartão por dia */
+    .org-dias{ display:none; }
+    .org-dia{
+      background:#fff; border:1px solid var(--border); border-radius:12px;
+      margin-bottom:10px; overflow:hidden;
+    }
+    .org-dia h3{
+      margin:0; padding:10px 14px; font-size:1rem; color:#fff;
+      background:linear-gradient(90deg, var(--blue), var(--blue2));
+      display:flex; justify-content:space-between; align-items:center;
+    }
+    .org-dia.hoje{ border-color:var(--orange); }
+    .org-dia.hoje h3{ background:linear-gradient(90deg, var(--orange), #b4492a); }
+    .org-selo{ font-size:.72rem; background:rgba(255,255,255,.25); padding:2px 8px; border-radius:999px; }
+    .org-turno-bloco{ padding:10px 14px; border-top:1px solid var(--border); }
+    .org-turno-bloco:first-of-type{ border-top:0; }
+    .org-turno-nome{
+      font-size:.75rem; font-weight:700; letter-spacing:.06em; text-transform:uppercase;
+      color:var(--orange); margin-bottom:4px;
+    }
+    .org-status{ margin-top:10px; color:var(--muted); font-size:.88rem; }
+
     @media (max-width:640px){
-      .tabela-organizacao-wrap{ border:0; border-radius:0; overflow:visible; }
-      table.tabela-organizacao,
-      table.tabela-organizacao tbody,
-      table.tabela-organizacao tr,
-      table.tabela-organizacao td{ display:block; width:100%; }
-      table.tabela-organizacao{ background:transparent; font-size:.95rem; }
-      table.tabela-organizacao.carregado thead{ display:none; }
-      table.tabela-organizacao:not(.carregado) thead th{ display:block; border-radius:12px; }
-      table.tabela-organizacao tbody tr{
-        background:#fff !important;
-        border:1px solid var(--border);
-        border-radius:12px;
-        margin-bottom:10px;
-        overflow:hidden;
-      }
-      table.tabela-organizacao td{
-        border:0;
-        border-top:1px solid var(--border);
-        display:grid;
-        grid-template-columns: minmax(90px, 38%) 1fr;
-        gap:10px;
-        padding:9px 12px;
-      }
-      table.tabela-organizacao td::before{
-        content:attr(data-label);
-        font-weight:700;
-        color:var(--blue2);
-      }
-      /* 1ª célula de cada linha funciona como título do bloco */
-      table.tabela-organizacao td:first-child{
-        border-top:0;
-        display:block;
-        font-weight:700;
-        color:#fff;
-        background: linear-gradient(90deg, var(--blue), var(--blue2));
-      }
-      table.tabela-organizacao td:first-child::before{ content:none; }
-      table.tabela-organizacao td.vazio{ display:none; }
+      .org-tabela-scroll{ display:none; }
+      .org-dias{ display:block; }
     }
   </style>
 </head>
@@ -319,13 +285,11 @@ Se Presença <0, há débitos de presença (precisa recuperar faltas)
   <div class="actions">
     <a class="btn primary" href="https://docs.google.com/spreadsheets/d/1vAfYbsIp47kNf_sMLuq-x4qLB_iUrbr70CqIXfIg7F8/edit?gid=0#gid=0&range=A1:F15" target="_blank" rel="noopener">Abrir no Google Sheets</a>
   </div>
-  <div class="tabela-organizacao-wrap">
-    <table class="tabela-organizacao" id="tabela-organizacao-presencial">
-      <thead><tr><th colspan="6">Carregando tabela…</th></tr></thead>
-      <tbody></tbody>
-    </table>
+  <div class="org-wrap" id="org-presencial">
+    <div class="org-tabela-scroll"><table class="org-tabela"><tbody><tr><td>Carregando escala…</td></tr></tbody></table></div>
+    <div class="org-dias"><div class="org-dia"><div class="org-turno-bloco">Carregando escala…</div></div></div>
   </div>
-  <p class="tabela-organizacao-status" id="tabela-organizacao-status"></p>
+  <p class="org-status" id="org-status"></p>
 </div>
 
 <div class="card span-2">
@@ -996,75 +960,95 @@ function alternarTabela() {
 </script>
 
 <script>
-  // Carrega a faixa A1:F4 da planilha "Organização presencial 2026-2" e monta
-  // uma tabela HTML de verdade (sem imagem, sem iframe), usando a API gviz do Google Sheets.
+  // Escala "Organização presencial 2026-2" lida direto do Google Sheets (API gviz).
+  // headers=0 obriga o Google a entregar TODAS as linhas como dados; a 1ª linha
+  // (Turno, Segunda-feira, …) vira o cabeçalho aqui no código. Antes o Google
+  // devolvia os nomes internos das colunas (A, B, C…), que apareciam no celular.
   (function(){
     var SHEET_ID = '1vAfYbsIp47kNf_sMLuq-x4qLB_iUrbr70CqIXfIg7F8';
     var GID = '0';
-    var RANGE = 'A1:F4';
+    var RANGE = 'A1:F6';
     var url = 'https://docs.google.com/spreadsheets/d/' + SHEET_ID +
-               '/gviz/tq?tqx=out:json&gid=' + GID + '&range=' + RANGE;
+              '/gviz/tq?tqx=out:json&headers=0&gid=' + GID + '&range=' + RANGE + '&t=' + Date.now();
 
-    var tabela = document.getElementById('tabela-organizacao-presencial');
-    var status = document.getElementById('tabela-organizacao-status');
-    if(!tabela) return;
+    var raiz = document.getElementById('org-presencial');
+    var status = document.getElementById('org-status');
+    if(!raiz) return;
+
+    function esc(str){
+      return String(str).replace(/[&<>"']/g, function(c){
+        return ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'})[c];
+      });
+    }
+    function valor(cel){
+      if(!cel) return '';
+      var v = (cel.f !== undefined && cel.f !== null) ? cel.f : cel.v;
+      return (v === null || v === undefined) ? '' : String(v).trim();
+    }
+    // Formata o conteúdo da célula: cada parágrafo (separado por linha em branco)
+    // é um local; a 1ª linha é o local em negrito, as demais são pessoas.
+    function formatar(texto){
+      if(!texto) return '<span class="org-vazio">—</span>';
+      return texto.split(/\n\s*\n/).map(function(par){
+        var linhas = par.split('\n').map(function(l){ return l.trim(); }).filter(Boolean);
+        if(!linhas.length) return '';
+        var html = '<div class="org-local">' + esc(linhas[0]) + '</div>';
+        html += linhas.slice(1).map(function(l){
+          var m = l.match(/^(Prec\.|Coord\.|Tutor|Or\. de Serviço)\s*(.*)$/i);
+          return '<div class="org-linha">' + (m ? '<span class="org-papel">' + esc(m[1]) + '</span> ' + esc(m[2]) : esc(l)) + '</div>';
+        }).join('');
+        return '<div class="org-bloco">' + html + '</div>';
+      }).join('');
+    }
+    function normalizar(t){ return t.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,''); }
 
     fetch(url)
-      .then(function(res){
-        if(!res.ok) throw new Error('HTTP ' + res.status);
-        return res.text();
-      })
+      .then(function(res){ if(!res.ok) throw new Error('HTTP ' + res.status); return res.text(); })
       .then(function(texto){
-        // A resposta vem envolta em: google.visualization.Query.setResponse({...});
-        var inicio = texto.indexOf('{');
-        var fim = texto.lastIndexOf('}');
-        var json = JSON.parse(texto.substring(inicio, fim + 1));
-        var cols = json.table.cols.map(function(c){ return c.label || c.id || ''; });
-        var linhas = json.table.rows || [];
+        var json = JSON.parse(texto.substring(texto.indexOf('{'), texto.lastIndexOf('}') + 1));
+        var linhas = (json.table.rows || []).map(function(r){ return (r.c || []).map(valor); })
+          .filter(function(l){ return l.some(function(v){ return v !== ''; }); }); // ignora linhas vazias (células mescladas)
+        if(linhas.length < 2) throw new Error('Planilha sem dados');
 
-        var thead = tabela.querySelector('thead');
-        var tbody = tabela.querySelector('tbody');
-        tbody.innerHTML = '';
+        var cabecalho = linhas[0];           // Turno, Segunda-feira, …
+        var dias = cabecalho.slice(1);
+        var turnos = linhas.slice(1);        // [ ['Manhã', …], ['Tarde', …] ]
 
-        // Cabeçalho: usa os rótulos das colunas se existirem, senão usa a 1ª linha de dados
-        var usarPrimeiraLinhaComoHeader = cols.every(function(c){ return !c; });
-        var headerLabels = cols;
-        var linhasDados = linhas;
-        if(usarPrimeiraLinhaComoHeader && linhas.length){
-          headerLabels = linhas[0].c.map(function(cel){ return cel ? (cel.f || cel.v || '') : ''; });
-          linhasDados = linhas.slice(1);
-        }
+        var nomesSemana = ['domingo','segunda','terca','quarta','quinta','sexta','sabado'];
+        var hojeChave = nomesSemana[new Date().getDay()];
+        function ehHoje(dia){ return normalizar(dia).indexOf(hojeChave) === 0; }
 
-        thead.innerHTML = '<tr>' + headerLabels.map(function(h){
-          return '<th>' + (h === '' ? '&nbsp;' : escapeHtml(String(h))) + '</th>';
-        }).join('') + '</tr>';
+        // --- Tabela (computador/tablet) ---
+        var t = '<table class="org-tabela"><thead><tr><th>' + esc(cabecalho[0] || 'Turno') + '</th>' +
+          dias.map(function(d){ return '<th' + (ehHoje(d) ? ' class="hoje"' : '') + '>' + esc(d) + '</th>'; }).join('') +
+          '</tr></thead><tbody>' +
+          turnos.map(function(l){
+            return '<tr><th class="org-turno">' + esc(l[0]) + '</th>' +
+              dias.map(function(d, i){ return '<td' + (ehHoje(d) ? ' class="hoje"' : '') + '>' + formatar(l[i+1]) + '</td>'; }).join('') + '</tr>';
+          }).join('') + '</tbody></table>';
+        raiz.querySelector('.org-tabela-scroll').innerHTML = t;
 
-        linhasDados.forEach(function(row){
-          var tds = (row.c || []).map(function(cel, i){
-            var valor = cel ? (cel.f !== undefined && cel.f !== null ? cel.f : cel.v) : '';
-            valor = (valor === null || valor === undefined) ? '' : String(valor);
-            var rotulo = headerLabels[i] ? escapeHtml(String(headerLabels[i])) : '';
-            var classe = valor.trim() === '' ? ' class="vazio"' : '';
-            return '<td data-label="' + rotulo + '"' + classe + '>' + escapeHtml(valor) + '</td>';
+        // --- Cartões por dia (celular) ---
+        var c = dias.map(function(d, i){
+          var blocos = turnos.filter(function(l){ return l[i+1]; }).map(function(l){
+            return '<div class="org-turno-bloco"><div class="org-turno-nome">' + esc(l[0]) + '</div>' + formatar(l[i+1]) + '</div>';
           }).join('');
-          tbody.innerHTML += '<tr>' + tds + '</tr>';
-        });
+          if(!blocos) blocos = '<div class="org-turno-bloco org-vazio">Sem atividade presencial</div>';
+          var hoje = ehHoje(d);
+          return '<div class="org-dia' + (hoje ? ' hoje' : '') + '"><h3>' + esc(d) +
+            (hoje ? '<span class="org-selo">Hoje</span>' : '') + '</h3>' + blocos + '</div>';
+        }).join('');
+        raiz.querySelector('.org-dias').innerHTML = c;
 
-        tabela.classList.add('carregado');
         if(status) status.textContent = 'Dados carregados diretamente do Google Sheets.';
       })
       .catch(function(err){
         console.error('Erro ao carregar tabela de organização:', err);
-        var thead = tabela.querySelector('thead');
-        thead.innerHTML = '<tr><th>Não foi possível carregar a tabela automaticamente.</th></tr>';
+        var msg = '<div class="org-turno-bloco">Não foi possível carregar a escala automaticamente.</div>';
+        raiz.querySelector('.org-tabela-scroll').innerHTML = '<table class="org-tabela"><tbody><tr><td>Não foi possível carregar a escala automaticamente.</td></tr></tbody></table>';
+        raiz.querySelector('.org-dias').innerHTML = '<div class="org-dia">' + msg + '</div>';
         if(status) status.textContent = 'Use o botão "Abrir no Google Sheets" acima para consultar a escala.';
       });
-
-    function escapeHtml(str){
-      return str.replace(/[&<>"']/g, function(c){
-        return ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'})[c];
-      });
-    }
   })();
 </script>
 
