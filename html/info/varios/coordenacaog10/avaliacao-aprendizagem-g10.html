@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Avaliação para a aprendizagem no ambulatório de feridas crônicas</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;0,8..60,700;1,8..60,400&family=Public+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --paper:#F8F9F7; --panel:#FFFFFF; --ink:#1B2428; --muted:#56636A;
+  --petrol:#1F4E5F; --petrol-soft:#E3EDF0; --rose:#A8475A; --rose-soft:#F6E6E9;
+  --rule:#D5DDDF;
+  --serif:"Source Serif 4", Georgia, "Times New Roman", serif;
+  --sans:"Public Sans", "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  box-sizing:border-box;
+  padding-top:env(safe-area-inset-top,0px);
+  padding-bottom:env(safe-area-inset-bottom,0px);
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --paper:#11181B; --panel:#172125; --ink:#E4EAEC; --muted:#9AA8AE;
+    --petrol:#86BACB; --petrol-soft:#1B2C32; --rose:#E08C9C; --rose-soft:#2D1C21;
+    --rule:#2B3A40;
+  }
+}
+:root[data-theme="dark"]{
+  --paper:#11181B; --panel:#172125; --ink:#E4EAEC; --muted:#9AA8AE;
+  --petrol:#86BACB; --petrol-soft:#1B2C32; --rose:#E08C9C; --rose-soft:#2D1C21;
+  --rule:#2B3A40;
+}
+*,*::before,*::after{box-sizing:inherit}
+html{scroll-padding-top:calc(env(safe-area-inset-top,0px) + 16px);scroll-behavior:smooth}
+@media (prefers-reduced-motion: reduce){html{scroll-behavior:auto}}
+body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--serif);font-size:1.075rem;line-height:1.68;-webkit-font-smoothing:antialiased}
+img{max-width:100%}
+a{color:var(--petrol);text-underline-offset:2px}
+a:focus-visible,summary:focus-visible,input:focus-visible{outline:2px solid var(--rose);outline-offset:3px;border-radius:2px}
+
+/* Masthead */
+.masthead{border-bottom:1px solid var(--rule);background:var(--panel)}
+.masthead-inner{max-width:1180px;margin:0 auto;padding:18px clamp(18px,4vw,40px);display:flex;justify-content:space-between;align-items:center;gap:16px;font-family:var(--sans);font-size:.86rem;color:var(--muted)}
+.masthead strong{color:var(--petrol);font-weight:600}
+
+.title-block{max-width:1180px;margin:0 auto;padding:clamp(40px,7vw,84px) clamp(18px,4vw,40px) clamp(28px,4vw,44px)}
+.title-block h1{font-family:var(--serif);font-weight:700;font-size:clamp(2rem,4.6vw,3.3rem);line-height:1.08;letter-spacing:-.015em;margin:0;max-width:22ch}
+.title-block .subtitle{font-family:var(--serif);font-style:italic;font-size:clamp(1.1rem,2vw,1.35rem);color:var(--muted);margin:18px 0 0;max-width:46ch;line-height:1.45}
+.byline{margin-top:28px;font-family:var(--sans);font-size:.9rem;color:var(--muted)}
+.byline b{color:var(--ink);font-weight:600}
+
+/* Layout */
+.layout{max-width:1180px;margin:0 auto;padding:0 clamp(18px,4vw,40px) 64px;display:grid;grid-template-columns:1fr;gap:32px}
+@media (min-width:1000px){.layout{grid-template-columns:220px minmax(0,1fr);gap:56px}}
+nav.toc{font-family:var(--sans);font-size:.88rem}
+nav.toc details{border-top:1px solid var(--rule);border-bottom:1px solid var(--rule);padding:10px 0}
+nav.toc summary{cursor:pointer;font-weight:600;color:var(--ink);list-style:none}
+nav.toc summary::-webkit-details-marker{display:none}
+nav.toc summary::after{content:"+";float:right;color:var(--muted)}
+nav.toc details[open] summary::after{content:"–"}
+nav.toc ul{list-style:none;margin:10px 0 0;padding:0}
+nav.toc li{margin:0}
+nav.toc a{display:block;padding:5px 0;color:var(--muted);text-decoration:none;line-height:1.35}
+nav.toc a:hover{color:var(--petrol)}
+nav.toc li.sub a{padding-left:14px;font-size:.84rem}
+@media (min-width:1000px){
+  nav.toc .sticky{position:sticky;top:calc(env(safe-area-inset-top,0px) + 24px)}
+  nav.toc details{border:0;padding:0}
+  nav.toc summary{pointer-events:none;margin-bottom:6px;color:var(--muted);font-weight:500}
+  nav.toc summary::after,nav.toc details[open] summary::after{content:""}
+}
+
+article{max-width:70ch;min-width:0}
+article > section{padding-top:8px;margin-bottom:56px}
+h2{font-family:var(--serif);font-weight:700;font-size:clamp(1.5rem,2.6vw,1.95rem);line-height:1.2;margin:0 0 18px;padding-top:22px;border-top:2px solid var(--ink)}
+h3{font-family:var(--sans);font-weight:600;font-size:1.08rem;color:var(--petrol);margin:36px 0 10px;line-height:1.3}
+p{margin:0 0 1.05em}
+.lead{font-size:1.2rem;line-height:1.6}
+em{font-style:italic}
+ul.plain{padding-left:1.2em;margin:0 0 1.1em}
+ul.plain li{margin-bottom:.45em}
+ul.plain li::marker{color:var(--petrol)}
+.cite{}
+
+/* Tables */
+.table-wrap{overflow-x:auto;margin:22px 0 26px;border:1px solid var(--rule);border-radius:6px;background:var(--panel)}
+table{border-collapse:collapse;width:100%;font-family:var(--sans);font-size:.9rem;line-height:1.45}
+th,td{text-align:left;vertical-align:top;padding:11px 14px;border-bottom:1px solid var(--rule)}
+thead th{font-weight:600;color:var(--petrol);background:var(--petrol-soft);border-bottom:1px solid var(--rule)}
+tbody tr:last-child td{border-bottom:0}
+td:first-child{font-weight:500}
+table.refs td:first-child{min-width:230px}
+table.compare td,table.compare th{text-align:center}
+table.compare td:first-child,table.compare th:first-child{text-align:left}
+table.compare tr.gap td{background:var(--rose-soft)}
+table.compare tr.gap td:nth-child(2),table.compare tr.gap td:nth-child(3){color:var(--rose);font-weight:700}
+.caption{font-family:var(--sans);font-size:.84rem;color:var(--muted);margin:-14px 0 24px}
+
+/* Cycle: the one bold element */
+.cycle{margin:30px 0 14px;counter-reset:step}
+.cycle ol{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:1fr;gap:0;border:1px solid var(--rule);border-radius:8px;overflow:hidden;background:var(--panel)}
+@media (min-width:640px){.cycle ol{grid-template-columns:1fr 1fr 1fr}}
+.cycle li{position:relative;padding:18px 18px 20px 18px;border-bottom:1px solid var(--rule);font-family:var(--sans);font-size:.9rem;line-height:1.5;counter-increment:step}
+@media (min-width:640px){
+  .cycle li{border-right:1px solid var(--rule)}
+  .cycle li:nth-child(3n){border-right:0}
+  .cycle li:nth-child(n+4){border-bottom:0}
+}
+.cycle li::before{content:counter(step);display:inline-flex;align-items:center;justify-content:center;width:30px;height:30px;border-radius:50%;background:var(--petrol);color:var(--panel);font-weight:700;font-size:.9rem;margin-bottom:10px}
+.cycle li.critical::before{background:var(--rose)}
+.cycle li b{display:block;font-size:.98rem;margin-bottom:4px;color:var(--ink)}
+.cycle li .time{color:var(--muted);font-weight:400}
+.cycle .loop{display:flex;align-items:center;gap:12px;margin-top:12px;font-family:var(--sans);font-size:.86rem;color:var(--muted)}
+.cycle .loop svg{flex:none}
+
+/* Callouts */
+.rule-callout{margin:26px 0;padding:20px 22px;border-left:4px solid var(--rose);background:var(--rose-soft);border-radius:0 6px 6px 0}
+.rule-callout .rule-name{font-family:var(--serif);font-weight:700;font-size:1.35rem;margin:0 0 6px;color:var(--ink)}
+.rule-callout p:last-child{margin-bottom:0}
+.note{font-family:var(--sans);font-size:.9rem;background:var(--petrol-soft);padding:14px 18px;border-radius:6px;margin:20px 0}
+.speech{font-style:italic}
+
+/* Checklist */
+ul.tasks{list-style:none;padding:0;margin:0 0 1em;font-family:var(--sans);font-size:.95rem}
+ul.tasks li{display:flex;gap:12px;align-items:flex-start;padding:10px 0;border-bottom:1px solid var(--rule)}
+ul.tasks input{margin-top:4px;width:18px;height:18px;accent-color:var(--petrol);flex:none}
+
+/* References */
+.refs-list{font-size:.95rem}
+.ref{margin:0 0 22px;padding-bottom:18px;border-bottom:1px solid var(--rule)}
+.ref:last-child{border-bottom:0}
+.ref .entry{margin:0 0 8px;line-height:1.55}
+.ref .comment{margin:0;padding-left:16px;border-left:2px solid var(--petrol);color:var(--muted);font-family:var(--sans);font-size:.88rem;line-height:1.55}
+.ref-note{font-family:var(--sans);font-size:.84rem;color:var(--muted);font-style:italic}
+
+footer.institutional-footer{border-top:1px solid var(--rule);background:var(--panel);padding:28px clamp(18px,4vw,40px);text-align:center;font-family:var(--sans);font-size:.8rem;color:var(--muted)}
+footer.institutional-footer p{margin:0 auto;max-width:70ch}
+
+@media print{
+  nav.toc,.masthead{display:none}
+  .layout{display:block}
+  body{font-size:11pt;background:#fff;color:#000}
+  h2{break-after:avoid}
+  .ref,.table-wrap,.cycle{break-inside:avoid}
+}
+</style>
+</head>
+<body>
+
+<header class="masthead">
+  <div class="masthead-inner">
+    <span><strong>PET-Saúde Digital G10</strong>, Feridas Crônicas, UFPel</span>
+    <span>Documento para preceptores</span>
+  </div>
+</header>
+
+<div class="title-block">
+  <h1>Avaliação para a aprendizagem no ambulatório de feridas crônicas</h1>
+  <p class="subtitle">Proposta de curativo observado com feedback para os monitores do G10</p>
+  <p class="byline"><b>Documento interno. PET G10</b>, setembro de 2026</p>
+</div>
+
+<div class="layout">
+  <nav class="toc" aria-label="Sumário">
+    <div class="sticky">
+      <details open>
+        <summary>Neste documento</summary>
+        <ul>
+          <li><a href="#apresentacao">Apresentação</a></li>
+          <li><a href="#fundamentacao">Fundamentação</a></li>
+          <li><a href="#experiencias">Experiências de referência</a></li>
+          <li><a href="#proposta">A proposta</a></li>
+          <li class="sub"><a href="#hipotese">Da pergunta à hipótese</a></li>
+          <li><a href="#instrumentos">Instrumentos</a></li>
+          <li><a href="#safc">Uso do SAFC</a></li>
+          <li><a href="#cuidados">Cuidados e condições</a></li>
+          <li><a href="#encaminhamentos">Considerações finais</a></li>
+          <li><a href="#referencias">Referências comentadas</a></li>
+        </ul>
+      </details>
+    </div>
+  </nav>
+
+  <article>
+
+    <section id="apresentacao">
+      <h2>Apresentação</h2>
+      <p class="lead">Propomos aos preceptores do G10 uma atividade de observação direta do monitor durante a realização de curativos no ambulatório de feridas crônicas, seguida de feedback estruturado. A atividade se apoia no referencial de avaliação para a aprendizagem (<em>assessment for learning</em>) e usa três fontes de informação: o registro do monitor, o registro independente do preceptor e o histórico do paciente no SAFC.</p>
+      <p>O objetivo não é criar mais uma instância de nota. É tornar visível, para o monitor e para nós, o raciocínio clínico que sustenta cada conduta, e usar as divergências de avaliação como matéria-prima do ensino. O texto apresenta a fundamentação, experiências institucionais de referência, o desenho da atividade, os instrumentos e os cuidados necessários para sua implantação.</p>
+    </section>
+
+    <section id="fundamentacao">
+      <h2>Fundamentação: avaliação para a aprendizagem</h2>
+      <p>Na avaliação para a aprendizagem, a finalidade primária da avaliação é orientar o próximo passo de quem aprende e de quem ensina, e não certificar um resultado. A preposição “para” tem sentido de apoio: a avaliação acontece durante o processo e alimenta decisões pedagógicas em tempo real <span class="cite">(DEWEY, 2019; STIGGINS, 2006)</span>. A revisão de Black e Wiliam (1998) consolidou a evidência de que práticas formativas bem conduzidas produzem ganhos consistentes de aprendizagem.</p>
+      <p>O ciclo costuma ser descrito em três momentos:</p>
+      <ul class="plain">
+        <li><strong>Diagnóstico:</strong> estabelece o ponto de partida do grupo antes de definir metas, sem pontuação nem consequência por revelar lacunas.</li>
+        <li><strong>Formativo:</strong> atividades cotidianas identificam lacunas e permitem redirecionar o ensino enquanto ele ocorre.</li>
+        <li><strong>Somativo:</strong> permanece necessário, mas passa a ser lido à luz do percurso documentado <span class="cite">(DEWEY, 2019)</span>.</li>
+      </ul>
+      <p>O feedback é o mecanismo central. Hattie e Timperley (2007) o organizam em três perguntas: aonde vou (objetivo), como estou indo (desempenho atual em relação ao objetivo) e qual o próximo passo (<em>feed forward</em>). Feedback que não responde à terceira pergunta tende a ter pouco efeito sobre a prática seguinte.</p>
+      <p>O próprio referencial reconhece limites. É trabalhoso, funciona melhor em grupos pequenos, depende de comunicação franca, o que a hierarquia e a nota dificultam, e pode deixar sem desafio os estudantes mais adiantados <span class="cite">(DEWEY, 2019)</span>. No G10, os três primeiros pesam menos: os grupos são pequenos, a relação preceptor–monitor é próxima e a atividade não precisa gerar nota. O quarto limite exige atenção deliberada no desenho da atividade.</p>
+    </section>
+
+    <section id="experiencias">
+      <h2>Experiências de referência</h2>
+      <p>A proposta não é inédita: adapta ao nosso contexto modelos consolidados em escolas de saúde.</p>
+      <div class="table-wrap">
+        <table class="refs">
+          <thead><tr><th>Experiência</th><th>Instituição</th><th>Princípio aproveitado no G10</th></tr></thead>
+          <tbody>
+            <tr><td>Avaliação programática <span class="cite">(VAN DER VLEUTEN et al., 2012;</span> <span class="cite">SCHUWIRTH; VAN DER VLEUTEN, 2011)</span></td><td>Universidade de Maastricht, Holanda</td><td>Múltiplas avaliações de baixo impacto, cada uma com função de feedback; decisões só sobre o conjunto</td></tr>
+            <tr><td>Avaliação programática no internato <span class="cite">(DRIESSEN et al., 2012)</span></td><td>Universidade de Maastricht, Holanda</td><td>Aplicação do modelo à avaliação em serviço</td></tr>
+            <tr><td>Portfólio por competências sem notas <span class="cite">(DANNEFER; HENSON, 2007;</span> <span class="cite">ALTAHAWI et al., 2012)</span></td><td>Cleveland Clinic Lerner College of Medicine, EUA</td><td>Evidências acumuladas e feedback de múltiplas fontes, com reflexão do estudante</td></tr>
+            <tr><td>Avaliação no local de trabalho: mini-CEX, DOPS <span class="cite">(NORCINI; BURCH, 2007)</span></td><td>FAIMER, EUA; University of Cape Town, África do Sul</td><td>Observação direta de procedimento seguida de feedback imediato</td></tr>
+            <tr><td>Teste de Progresso em consórcios <span class="cite">(BICUDO et al., 2019)</span></td><td>ABEM e escolas médicas brasileiras</td><td>Acompanhamento longitudinal com função formativa</td></tr>
+            <tr><td>Ferramenta semanal de progresso clínico (WCSP) em enfermagem <span class="cite">(MOHAMED et al., 2025)</span></td><td>University of Calgary in Qatar</td><td>Registro semanal de progresso em estágio de condições crônicas</td></tr>
+            <tr><td>COPPs na supervisão de habilidades clínicas <span class="cite">(PLATHE; SOLHEIM; EIDE, 2021)</span></td><td>Serviços municipais de saúde, Noruega</td><td>Instrumento estruturado para feedback e reflexão entre preceptor e estudante</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p>Duas conclusões dessa literatura orientam o desenho. Primeiro, estudantes são raramente observados em serviço, e a observação com feedback é um meio eficaz de mudar a prática <span class="cite">(NORCINI; BURCH, 2007)</span>. Segundo, uma observação isolada informa pouco; o valor está na série <span class="cite">(VAN DER VLEUTEN et al., 2012)</span>. O papel do monitor como par próximo de estudantes mais novos encontra fundamento em Ten Cate e Durning (2007).</p>
+      <p>Dois relatos de enfermagem estão especialmente próximos do que propomos. Plathe, Solheim e Eide (2021) observaram que um instrumento estruturado deu a estudantes e preceptores uma linguagem comum para articular o que o estudante sabe e o que caracteriza um bom desempenho, favorecendo a reflexão e o raciocínio clínico. Mohamed et al. (2025) relatam que explicitar expectativas por escrito tornou mais consistentes as avaliações feitas por diferentes instrutores, problema que também teremos entre preceptores e que motiva a sessão de calibração proposta adiante.</p>
+    </section>
+
+    <section id="proposta">
+      <h2>A proposta: curativo observado com feedback</h2>
+      <p>A atividade adapta o DOPS (<em>Direct Observation of Procedural Skills</em>) ao ambulatório de feridas. Cada monitor passa por observações curtas e de baixo impacto ao longo do semestre, sugerimos uma por mês, e não por uma avaliação única. O ciclo completo leva cerca de 20 minutos além do atendimento.</p>
+
+      <div class="cycle" role="group" aria-label="Ciclo da atividade em seis etapas">
+        <ol>
+          <li><b>Pré-briefing <span class="time">2 a 3 min</span></b>O monitor declara um objetivo de aprendizagem específico (por exemplo, “estimar com mais precisão o percentual de esfacelo”) e revisa no SAFC a última medida, a cobertura em uso e a evolução registrada.</li>
+          <li><b>Atendimento observado</b>O preceptor observa com roteiro próprio e só intervém se houver risco ao paciente. O paciente é informado de que há atividade de ensino em curso.</li>
+          <li class="critical"><b>Registros independentes</b>Logo após o atendimento, monitor e preceptor preenchem os mesmos campos de avaliação da ferida, separadamente e sem acesso ao registro do outro.</li>
+          <li><b>Comparação em três colunas</b>Os dois registros são postos lado a lado com o último registro do SAFC. As divergências delimitam o conteúdo do feedback.</li>
+          <li><b>Conversa de feedback <span class="time">10 min</span></b>O monitor fala primeiro, a partir da autoavaliação. O preceptor aponta concordâncias, divergências e no máximo dois pontos de melhoria. A conversa termina com um próximo passo concreto.</li>
+          <li><b>Registro em portfólio</b>As fichas se acumulam e documentam a evolução do monitor ao longo do semestre.</li>
+        </ol>
+        <div class="loop">
+          <svg width="34" height="22" viewBox="0 0 34 22" aria-hidden="true"><path d="M30 4 H10 a6 6 0 0 0 0 12 H26" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="M22 12 l5 4 -5 4" fill="none" stroke="currentColor" stroke-width="1.6"/></svg>
+          <span>O próximo passo definido na etapa 5 torna-se o objetivo do pré-briefing seguinte.</span>
+        </div>
+      </div>
+
+      <p>A etapa 3 é o ponto crítico do desenho. Se o monitor preencher depois de ouvir o preceptor, o registro deixa de revelar a percepção dele e a comparação perde valor diagnóstico.</p>
+      <p>Para não deixar sem desafio os monitores mais adiantados, o objetivo do pré-briefing pode avançar para casos de maior complexidade: feridas estagnadas, suspeita de componente arterial, necessidade de reavaliar a conduta. Esses monitores também podem assumir o papel de observador de colegas mais novos, sob supervisão.</p>
+
+      <h3 id="hipotese">Da pergunta à hipótese</h3>
+      <p>Há uma queixa recorrente entre os preceptores: os monitores perguntam muito e elaboram pouco. A pergunta chega antes do raciocínio. Em vez de <span class="speech">“acho que é esfacelo aderido, pensei em desbridamento autolítico com hidrogel, faz sentido?”</span>, ouvimos <span class="speech">“que cobertura eu uso aqui?”</span>. O problema não é a curiosidade, que é bem-vinda, mas a transferência do trabalho cognitivo para o preceptor. E cada resposta pronta reforça esse hábito.</p>
+      <p>O fenômeno está descrito na literatura. No ambulatório, o estudante tende a se limitar a relatar dados ao preceptor, sem expor o que pensa sobre eles <span class="cite">(WOLPAW; WOLPAW; PAPP, 2003)</span>. Dois modelos de ensino clínico oferecem uma resposta simples. O preceptor-minuto começa por obter do estudante um compromisso com uma interpretação e, em seguida, pede as evidências que a sustentam <span class="cite">(NEHER et al., 1992)</span>. O SNAPPS inverte a ordem da conversa: o estudante resume, delimita as possibilidades, analisa, e só então interroga o preceptor, já sobre incertezas e alternativas, e não sobre a resposta <span class="cite">(WOLPAW; WOLPAW; PAPP, 2003)</span>.</p>
+      <div class="rule-callout">
+        <p class="rule-name">Hipótese antes da pergunta</p>
+        <p>Propomos adotar no G10 um acordo explícito, apresentado aos monitores como regra da atividade e não como repreensão. Toda dúvida chega acompanhada de uma leitura e de uma proposta, ainda que insegura. Diante de uma pergunta crua, o preceptor devolve <span class="speech">“o que você faria, e por quê?”</span> e só depois complementa.</p>
+        <p>A pergunta continua legítima; muda o seu lugar na conversa. O formulário reforça o acordo ao pedir que a principal dúvida seja registrada como hipótese, e a qualidade dessas hipóteses ao longo do semestre é, por si, um indicador de desenvolvimento do raciocínio clínico.</p>
+      </div>
+    </section>
+
+    <section id="instrumentos">
+      <h2>Instrumentos</h2>
+      <p>São dois instrumentos com um bloco comum de avaliação da ferida, o que permite a comparação direta. Se o ambulatório já adota um escore validado, como PUSH ou RESVECH 2.0, ele deve integrar esse bloco.</p>
+
+      <h3>Bloco comum: avaliação da ferida</h3>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>Campo</th><th>Forma de registro</th></tr></thead>
+          <tbody>
+            <tr><td>Localização e etiologia registrada</td><td>Texto; etiologia conforme prontuário</td></tr>
+            <tr><td>Dimensões</td><td>Comprimento × largura × profundidade (cm)</td></tr>
+            <tr><td>Tecido do leito</td><td>Percentual de granulação, esfacelo, necrose e epitelização (soma 100%)</td></tr>
+            <tr><td>Exsudato</td><td>Quantidade (ausente, pequena, moderada, grande) e aspecto</td></tr>
+            <tr><td>Bordas e pele perilesional</td><td>Descrição: maceração, hiperqueratose, eritema, descolamento</td></tr>
+            <tr><td>Sinais de infecção</td><td>Presentes ou ausentes, com quais sinais</td></tr>
+            <tr><td>Dor</td><td>Escala numérica 0–10</td></tr>
+            <tr><td>Escore</td><td>PUSH ou RESVECH 2.0, se adotado</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h3>Formulário do monitor</h3>
+      <ul class="plain">
+        <li><strong>Identificação:</strong> código do paciente, sem nome; data; número do atendimento; objetivo de aprendizagem declarado no pré-briefing.</li>
+        <li><strong>Bloco comum de avaliação da ferida.</strong></li>
+        <li><strong>Registro fotográfico padronizado:</strong> mesma distância, ângulo perpendicular, régua milimetrada com o código do paciente, sem elementos identificáveis, feito em dispositivo institucional.</li>
+        <li><strong>Procedimento realizado:</strong> limpeza, manejo do leito (desbridamento e tipo), cobertura primária e secundária, fixação, terapia compressiva quando indicada.</li>
+        <li><strong>Justificativa da conduta:</strong> por que essa cobertura; o que mudou em relação ao último registro do SAFC (melhora, estagnação ou piora); o que se espera encontrar no retorno; o que foi orientado ao paciente.</li>
+        <li><strong>Autoavaliação:</strong> confiança de 1 a 5 em avaliação da ferida, técnica, escolha da conduta, comunicação com o paciente e registro; principal dúvida, formulada como hipótese (“fiquei entre X e Y porque…”); o que faria diferente.</li>
+      </ul>
+      <p class="note">O campo de justificativa é o que distingue o instrumento de um registro de enfermagem comum. É ele que torna o raciocínio clínico observável.</p>
+
+      <h3>Roteiro do preceptor</h3>
+      <p>Além do bloco comum, preenchido de forma independente, o preceptor registra seis domínios em escala de três níveis: <em>precisa de apoio</em>, <em>adequado para a etapa</em> e <em>acima do esperado</em>.</p>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>Domínio</th><th>O que observar</th></tr></thead>
+          <tbody>
+            <tr><td>Biossegurança</td><td>Higiene das mãos, técnica asséptica ou limpa conforme protocolo, descarte</td></tr>
+            <tr><td>Avaliação da ferida</td><td>Sistemática, completude, coerência com o bloco comum</td></tr>
+            <tr><td>Raciocínio e justificativa</td><td>Relação entre achados, etiologia, histórico e conduta</td></tr>
+            <tr><td>Comunicação</td><td>Explicação do procedimento, escuta, orientação para o autocuidado</td></tr>
+            <tr><td>Segurança do paciente</td><td>Manejo da dor, identificação de sinais de alerta, encaminhamentos</td></tr>
+            <tr><td>Registro</td><td>Clareza e completude no SAFC</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p>Fecham o roteiro três campos abertos: o que foi bem feito, o que melhorar e o próximo passo.</p>
+    </section>
+
+    <section id="safc">
+      <h2>Uso do SAFC: calibração e trajetória</h2>
+      <p>O histórico do paciente no SAFC sustenta duas leituras distintas, que não devem ser confundidas.</p>
+      <p><strong>Calibração.</strong> Compara-se a medida do monitor com a do preceptor e com a série histórica. Divergências grandes indicam onde está a lacuna perceptiva. A redução dessas divergências ao longo do semestre é evidência objetiva de aprendizagem e pode ser acompanhada no portfólio.</p>
+      <div class="table-wrap">
+        <table class="compare">
+          <thead><tr><th>Campo</th><th>Monitor</th><th>Preceptor</th><th>Último registro SAFC</th></tr></thead>
+          <tbody>
+            <tr><td>Área (cm²)</td><td>12,0</td><td>10,5</td><td>11,8</td></tr>
+            <tr class="gap"><td>Esfacelo (%)</td><td>40</td><td>15</td><td>20</td></tr>
+            <tr><td>Exsudato</td><td>Moderado</td><td>Moderado</td><td>Grande</td></tr>
+            <tr><td>Escore PUSH</td><td>13</td><td>11</td><td>12</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="caption">Exemplo fictício. A divergência de 25 pontos percentuais no esfacelo, em destaque, seria o foco do feedback.</p>
+      <p><strong>Raciocínio sobre a trajetória.</strong> O monitor precisa explicar se a conduta atual é coerente com a evolução registrada. Uma ferida sem redução de área em quatro semanas, por exemplo, exige rever etiologia, perfusão, carga microbiana e adesão, e não apenas trocar a cobertura.</p>
+      <p>A cicatrização não deve ser usada como medida do desempenho do monitor. Ela depende de etiologia, perfusão, comorbidades, adesão e do cuidado prestado pela equipe como um todo. O histórico serve para avaliar o raciocínio, e não para atribuir ao monitor o desfecho clínico.</p>
+    </section>
+
+    <section id="cuidados">
+      <h2>Cuidados éticos e condições de funcionamento</h2>
+      <p><strong>Imagem e dados.</strong> O uso de fotografias em atividade de ensino exige consentimento específico do paciente para uso de imagem. O tratamento dos dados deve seguir a Lei Geral de Proteção de Dados <span class="cite">(BRASIL, 2018)</span>, que classifica dados de saúde como sensíveis. Na prática: nenhuma imagem em celular pessoal ou aplicativo de mensagens; armazenamento no SAFC ou em repositório institucional.</p>
+      <p><strong>Caráter formativo.</strong> A ficha não deve compor nota nem critério de seleção ou permanência no programa. Quando o registro passa a ter consequência, o monitor tende a escrever o que presume ser esperado, e a comparação perde valor diagnóstico. A experiência brasileira com o Teste de Progresso vai na mesma direção: avaliações de caráter formativo reduzem a tendência de estudar apenas para a prova somativa <span class="cite">(BICUDO et al., 2019)</span>. Isso deve ser combinado explicitamente com a coordenação e com os monitores.</p>
+      <p><strong>Calibração entre preceptores.</strong> A comparação pressupõe que os preceptores avaliem de modo razoavelmente consistente. Recomenda-se uma sessão inicial em que todos avaliem as mesmas imagens com o bloco comum e discutam as divergências entre si antes de aplicar a atividade aos monitores.</p>
+      <p><strong>Qualidade do feedback.</strong> Feedback efetivo em cenário clínico é específico, baseado no que foi observado, oportuno e orientado ao próximo passo <span class="cite">(BURGESS; MELLIS, 2015;</span> <span class="cite">NORCINI; BURCH, 2007)</span>. Duas regras simples ajudam: o monitor fala antes do preceptor, e a conversa não termina sem um próximo passo registrado.</p>
+      <p><strong>Orientação dos monitores.</strong> Instrumentos reflexivos causam estranhamento no início. Na Cleveland Clinic, estudantes relataram sentir-se sobrecarregados ao montar o primeiro portfólio, e o valor do sistema só se tornou evidente com o uso continuado e o apoio dos orientadores <span class="cite">(ALTAHAWI et al., 2012)</span>. Convém apresentar a atividade aos monitores antes da primeira observação, com um formulário preenchido como exemplo.</p>
+      <p><strong>Carga de trabalho.</strong> Uma observação mensal por monitor, com cerca de 20 minutos além do atendimento, é compatível com a rotina. Frequência maior tende a comprometer a adesão dos próprios preceptores.</p>
+    </section>
+
+    <section id="encaminhamentos">
+      <h2>Considerações finais e encaminhamentos</h2>
+      <p>A proposta usa o que já existe no ambulatório (o atendimento, o registro no SAFC e a presença do preceptor) e acrescenta o que falta para transformá-lo em avaliação para a aprendizagem: registro independente, comparação sistemática e feedback orientado ao próximo passo. O custo adicional é pequeno, e a série de observações gera dados que também podem subsidiar a avaliação do próprio programa.</p>
+      <p>Para discussão na próxima reunião de preceptores:</p>
+      <ul class="tasks">
+        <li><input type="checkbox" id="t1"><label for="t1">Validar os campos do bloco comum e definir o escore a ser adotado (PUSH ou RESVECH 2.0)</label></li>
+        <li><input type="checkbox" id="t2"><label for="t2">Definir modelo de termo de consentimento para uso de imagem em ensino</label></li>
+        <li><input type="checkbox" id="t3"><label for="t3">Agendar sessão de calibração entre preceptores com imagens do acervo</label></li>
+        <li><input type="checkbox" id="t4"><label for="t4">Pactuar com a coordenação o caráter exclusivamente formativo da ficha</label></li>
+        <li><input type="checkbox" id="t5"><label for="t5">Definir o formato: impresso ou formulário digital integrado ao fluxo do SAFC</label></li>
+        <li><input type="checkbox" id="t6"><label for="t6">Pilotar com dois ou três monitores durante um mês e revisar os instrumentos</label></li>
+      </ul>
+    </section>
+
+    <section id="referencias">
+      <h2>Referências comentadas</h2>
+      <p>Cada referência é seguida de um comentário sobre seu conteúdo e sua utilidade para o G10.</p>
+      <div class="refs-list">
+        <div class="ref"><p class="entry">ALTAHAWI, F. et al. Student perspectives on assessment: experience in a competency-based portfolio system. <strong>Medical Teacher</strong>, v. 34, n. 3, p. 221-225, 2012.</p>
+        <p class="comment">Estudo qualitativo com a visão dos próprios estudantes sobre o sistema de portfólio da Cleveland Clinic, em que a promoção depende de ensaios reflexivos apoiados em feedback formativo. É útil porque mostra o lado de quem é avaliado: o estranhamento inicial, a necessidade de orientação e o ganho de autoconhecimento com o tempo.</p></div>
+
+        <div class="ref"><p class="entry">BICUDO, A. M. et al. Teste de Progresso em consórcios para todas as escolas médicas do Brasil. <strong>Revista Brasileira de Educação Médica</strong>, v. 43, n. 4, p. 151-156, 2019.</p>
+        <p class="comment">Relata a implantação nacional do Teste de Progresso em consórcios de escolas médicas, coordenada pela ABEM, com 58 escolas e mais de 23 mil estudantes na primeira prova. É a principal experiência brasileira de avaliação longitudinal com função formativa e mostra que o modelo é viável no nosso contexto institucional.</p></div>
+
+        <div class="ref"><p class="entry">BLACK, P.; WILIAM, D. Assessment and classroom learning. <strong>Assessment in Education: Principles, Policy &amp; Practice</strong>, v. 5, n. 1, p. 7-74, 1998.</p>
+        <p class="comment">Revisão que consolidou a evidência de que a avaliação formativa, quando bem conduzida, produz ganhos consistentes de aprendizagem. É o texto fundador do campo e a citação de referência para justificar a proposta em qualquer instância acadêmica.</p></div>
+
+        <div class="ref"><p class="entry">BRASIL. Lei nº 13.709, de 14 de agosto de 2018. Lei Geral de Proteção de Dados Pessoais (LGPD). <strong>Diário Oficial da União</strong>: seção 1, Brasília, DF, 15 ago. 2018.</p>
+        <p class="comment">Lei Geral de Proteção de Dados. Classifica dados de saúde, incluindo imagens de pacientes, como dados pessoais sensíveis, o que fundamenta as regras de consentimento e armazenamento das fotografias usadas na atividade.</p></div>
+
+        <div class="ref"><p class="entry">BURGESS, A.; MELLIS, C. Feedback and assessment for clinical placements: achieving the right balance. <strong>Advances in Medical Education and Practice</strong>, v. 6, p. 373-381, 2015. DOI: <a href="https://doi.org/10.2147/AMEP.S77890">https://doi.org/10.2147/AMEP.S77890</a>.</p>
+        <p class="comment">Revisão voltada a supervisores clínicos sobre como equilibrar avaliação e feedback nos estágios. Reúne recomendações práticas (especificidade, oportunidade, foco no comportamento observado) e é a leitura mais direta para preparar a conversa de feedback.</p></div>
+
+        <div class="ref"><p class="entry">DANNEFER, E. F.; HENSON, L. C. The portfolio approach to competency-based assessment at the Cleveland Clinic Lerner College of Medicine. <strong>Academic Medicine</strong>, v. 82, n. 5, p. 493-502, 2007. DOI: <a href="https://doi.org/10.1097/ACM.0b013e31803ead30">https://doi.org/10.1097/ACM.0b013e31803ead30</a>.</p>
+        <p class="comment">Descreve o desenho de um sistema de avaliação por competências baseado em portfólio, sem notas, integrado ao currículo e alimentado por feedback de múltiplas fontes. Inspira a ideia de acumular as fichas do G10 como evidência longitudinal do desenvolvimento do monitor.</p></div>
+
+        <div class="ref"><p class="entry">DEWEY, J. Assessment for learning. <em>In</em>: <strong>Research Starters: Education</strong>. Ipswich: EBSCO, 2019. Disponível em: <a href="https://www.ebsco.com/research-starters/education/assessment-learning">https://www.ebsco.com/research-starters/education/assessment-learning</a>. Acesso em: 29 set. 2026.</p>
+        <p class="comment">Verbete introdutório que motivou esta proposta. Apresenta o conceito, o ciclo diagnóstico–formativo–somativo e as limitações do modelo. Serve como porta de entrada, mas não substitui as fontes primárias listadas aqui.</p></div>
+
+        <div class="ref"><p class="entry">DRIESSEN, E. W. et al. The use of programmatic assessment in the clinical workplace: a Maastricht case report. <strong>Medical Teacher</strong>, v. 34, n. 3, p. 226-231, 2012. DOI: <a href="https://doi.org/10.3109/0142159X.2012.652242">https://doi.org/10.3109/0142159X.2012.652242</a>.</p>
+        <p class="comment">Relato de caso da aplicação da avaliação programática ao internato médico em Maastricht. Mostra como o modelo teórico se traduz em avaliação em serviço, com múltiplas observações e feedback em cenários clínicos reais, situação análoga à do ambulatório.</p></div>
+
+        <div class="ref"><p class="entry">HATTIE, J.; TIMPERLEY, H. The power of feedback. <strong>Review of Educational Research</strong>, v. 77, n. 1, p. 81-112, 2007.</p>
+        <p class="comment">Revisão que propõe o modelo das três perguntas do feedback (aonde vou, como estou indo, qual o próximo passo). Fundamenta a regra de que a conversa com o monitor só termina com um próximo passo registrado.</p></div>
+
+        <div class="ref"><p class="entry">MOHAMED, S. et al. Assessing and monitoring clinical practice of undergraduate nursing students: a middle eastern context. <strong>Frontiers in Medicine</strong>, v. 12, 1524230, 2025. DOI: <a href="https://doi.org/10.3389/fmed.2025.1524230">https://doi.org/10.3389/fmed.2025.1524230</a>.</p>
+        <p class="comment">Relato de experiência da University of Calgary in Qatar com uma ferramenta semanal de acompanhamento de habilidades clínicas, testada com 87 estudantes do terceiro ano de enfermagem em disciplina de alta complexidade e condições crônicas. A definição de metas claras reduziu a variação entre avaliadores. Os próprios autores reconhecem que os dados são preliminares.</p></div>
+
+        <div class="ref"><p class="entry">NEHER, J. O. et al. A five-step “microskills” model of clinical teaching. <strong>Journal of the American Board of Family Practice</strong>, v. 5, n. 4, p. 419-424, 1992.</p>
+        <p class="comment">Artigo que propõe o modelo conhecido como preceptor-minuto, com cinco microcompetências de ensino em cenário clínico: obter um compromisso do estudante, investigar as evidências que o sustentam, ensinar regras gerais, reforçar o que foi bem feito e corrigir erros. Os dois primeiros passos são a resposta mais direta ao monitor que pergunta antes de pensar.</p></div>
+
+        <div class="ref"><p class="entry">NORCINI, J.; BURCH, V. Workplace-based assessment as an educational tool: AMEE Guide No. 31. <strong>Medical Teacher</strong>, v. 29, n. 9, p. 855-871, 2007. DOI: <a href="https://doi.org/10.1080/01421590701775453">https://doi.org/10.1080/01421590701775453</a>.</p>
+        <p class="comment">Guia da AMEE que revisa a evidência sobre avaliação no local de trabalho e descreve instrumentos como mini-CEX e DOPS. Parte da constatação de que estudantes raramente são observados em serviço. É a base metodológica direta da atividade proposta, e a coautora sul-africana discute sua aplicação em contextos de recursos limitados.</p></div>
+
+        <div class="ref"><p class="entry">PLATHE, H.; SOLHEIM, E.; EIDE, H. Nursing students’ and preceptors’ experiences with using an assessment tool for feedback and reflection in supervision of clinical skills: a qualitative pilot study. <strong>Nursing Research and Practice</strong>, v. 2021, 5551662, 2021. DOI: <a href="https://doi.org/10.1155/2021/5551662">https://doi.org/10.1155/2021/5551662</a>.</p>
+        <p class="comment">Estudo piloto qualitativo, com quatro estudantes do primeiro ano e quatro preceptores em serviços municipais da Noruega, sobre um instrumento estruturado de feedback e reflexão na supervisão de habilidades clínicas. A amostra é pequena, mas o achado central, uma linguagem comum entre preceptor e estudante, é exatamente o que o bloco comum de avaliação da ferida pretende criar.</p></div>
+
+        <div class="ref"><p class="entry">SCHUWIRTH, L. W. T.; VAN DER VLEUTEN, C. P. M. Programmatic assessment: from assessment of learning to assessment for learning. <strong>Medical Teacher</strong>, v. 33, n. 6, p. 478-485, 2011.</p>
+        <p class="comment">Artigo que propõe a passagem da avaliação <em>da</em> aprendizagem para a avaliação <em>para</em> a aprendizagem em escala de programa. Explica por que nenhuma avaliação isolada é suficiente e por que decisões devem se apoiar no conjunto de observações.</p></div>
+
+        <div class="ref"><p class="entry">STIGGINS, R. Assessment for learning: a key to motivation and achievement. <strong>Edge</strong>, v. 2, n. 2, 2006.</p>
+        <p class="comment">Texto de divulgação de um dos principais autores do campo, relacionando avaliação para a aprendizagem e motivação. É citado no verbete da EBSCO e ajuda a argumentar que o envolvimento do estudante na própria avaliação é o que sustenta o engajamento.</p></div>
+
+        <div class="ref"><p class="entry">TEN CATE, O.; DURNING, S. Peer teaching in medical education: twelve reasons to move from theory to practice. <strong>Medical Teacher</strong>, v. 29, n. 6, p. 591-599, 2007.</p>
+        <p class="comment">Guia que sistematiza as razões para o ensino entre pares na educação médica, com benefícios tanto para quem aprende quanto para quem ensina. Fundamenta o papel do monitor do G10 como par próximo e a possibilidade de monitores experientes observarem colegas mais novos.</p></div>
+
+        <div class="ref"><p class="entry">VAN DER VLEUTEN, C. P. M. et al. A model for programmatic assessment fit for purpose. <strong>Medical Teacher</strong>, v. 34, n. 3, p. 205-214, 2012. DOI: <a href="https://doi.org/10.3109/0142159X.2012.652239">https://doi.org/10.3109/0142159X.2012.652239</a>.</p>
+        <p class="comment">Artigo de referência mundial da avaliação programática. Propõe um modelo que otimiza, ao mesmo tempo, a avaliação para a aprendizagem e as decisões sobre a progressão do estudante, por meio de múltiplas avaliações de baixo impacto. É a justificativa teórica para a observação mensal, e não única, proposta aqui.</p></div>
+
+        <div class="ref"><p class="entry">WOLPAW, T. M.; WOLPAW, D. R.; PAPP, K. K. SNAPPS: a learner-centered model for outpatient education. <strong>Academic Medicine</strong>, v. 78, n. 9, p. 893-898, 2003.</p>
+        <p class="comment">Parte da observação de que, no ambulatório, o estudante se comporta como relator passivo de dados e propõe um roteiro em seis passos em que ele conduz a apresentação do caso e expõe seu raciocínio antes de interrogar o preceptor. Fundamenta o acordo “hipótese antes da pergunta” e pode ser ensinado aos monitores como estrutura para discutir casos no próprio ambulatório.</p></div>
+      </div>
+      <p class="ref-note">Nota: os dados de volume e páginas de Black e Wiliam (1998), Hattie e Timperley (2007), Schuwirth e van der Vleuten (2011) e Ten Cate e Durning (2007) devem ser conferidos na fonte antes de publicação formal.</p>
+    </section>
+
+  </article>
+</div>
+
+<footer class="institutional-footer">
+  <p>Documento elaborado no âmbito dos projetos Amor à Pele e PET-Saúde Digital G10 Feridas Crônicas, UFPel, em Setembro de 2026.</p>
+</footer>
+
+</body>
+</html>
