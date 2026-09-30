@@ -176,10 +176,34 @@
     .botao:active { filter: brightness(.95); }
     .botao:focus-visible { outline: 3px solid var(--laranja); outline-offset: 2px; }
 
+    /* Sistema SAFC: os dois botões em azul */
     .botao.safc   { background: var(--azul); color: var(--branco); }
-    .botao.painel { background: var(--laranja); color: var(--tinta); }
-    .botao.tele   { background: var(--branco); color: var(--azul); border-color: var(--azul); }
-    .botao.tele:hover { background: #EEF3FB; filter: none; }
+    .botao.painel { background: #E8F0FB; color: var(--azul); border-color: var(--azul); }
+    .botao.painel:hover { background: #DCE8F8; filter: none; }
+    /* Telematriciamento: sistema à parte, em laranja */
+    .botao.tele   { background: var(--laranja); color: var(--tinta); }
+
+    .linha-senha { display: flex; gap: .5rem; }
+    .linha-senha .senha { flex: 1; min-width: 0; }
+    .botao.verificar {
+      width: auto;
+      flex-shrink: 0;
+      padding: .8rem 1.1rem;
+      font-size: .95rem;
+      background: var(--tinta);
+      color: var(--branco);
+    }
+
+    .grupo { margin-top: 1.4rem; }
+    .grupo + .grupo { margin-top: 1.25rem; padding-top: 1.25rem; border-top: 1px dashed var(--linha); }
+    .grupo-titulo {
+      display: block;
+      font-size: .85rem;
+      font-weight: 700;
+      color: var(--suave);
+      margin-bottom: .55rem;
+    }
+    .grupo .acessos { margin-top: 0; }
 
     .rodape {
       margin-top: 1.75rem;
@@ -195,6 +219,8 @@
       .botao, .senha { transition: none; }
     }
     @media (max-width: 480px) {
+      .linha-senha { flex-direction: column; }
+      .botao.verificar { width: 100%; }
       body { padding: 1.5rem .75rem; }
       .card { padding: 1.5rem 1.25rem; }
       h1 { font-size: 1.4rem; }
@@ -221,15 +247,27 @@
   <div class="divisor" aria-hidden="true"><span></span><span></span></div>
 
   <label for="senha">Senha</label>
-  <input type="password" id="senha" class="senha" placeholder="Digite a senha" autocomplete="current-password"
-         onkeydown="if(event.key==='Enter'){event.preventDefault();validar();}">
+  <div class="linha-senha">
+    <input type="password" id="senha" class="senha" placeholder="Digite a senha" autocomplete="current-password"
+           onkeydown="if(event.key==='Enter'){event.preventDefault();validar();}">
+    <button type="button" class="botao verificar" onclick="validar()">Verificar senha</button>
+  </div>
   <div class="erro" id="erro" role="alert">Senha incorreta.</div>
   <div class="ok" id="ok" role="status">Senha correta. Escolha abaixo o acesso.</div>
 
-  <div class="acessos">
-    <button type="button" class="botao safc" onclick="abrir('safc')">Acesso ao SAFC</button>
-    <button type="button" class="botao painel" onclick="abrir('painel')">Acesso ao Painel de Gestão (Dashboard)</button>
-    <button type="button" class="botao tele" onclick="abrir('tele')">Acesso à Gestão do Telematriciamento</button>
+  <div class="grupo">
+    <span class="grupo-titulo">Sistema SAFC</span>
+    <div class="acessos">
+      <button type="button" class="botao safc" onclick="abrir('safc')">Acesso ao SAFC</button>
+      <button type="button" class="botao painel" onclick="abrir('painel')">Acesso ao Painel de Gestão (Dashboard)</button>
+    </div>
+  </div>
+
+  <div class="grupo">
+    <span class="grupo-titulo">Telematriciamento de feridas crônicas</span>
+    <div class="acessos">
+      <button type="button" class="botao tele" onclick="abrir('tele')">Acesso à Gestão do Telematriciamento</button>
+    </div>
   </div>
 
   <p class="rodape">
