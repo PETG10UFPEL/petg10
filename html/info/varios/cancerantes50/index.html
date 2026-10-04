@@ -1,0 +1,660 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Câncer antes dos 50: o que está subindo, o que preocupa e o que ainda não sabemos</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,600;1,6..72,400;1,6..72,500&family=Public+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --paper:#F6F7F4; --paper-2:#ECEFEA; --ink:#14292E; --ink-soft:#43565A;
+  --teal:#1E6B73; --teal-soft:#DCEBEA; --amber:#B9781A; --amber-soft:#F7EAD2;
+  --plum:#674C70; --plum-soft:#ECE4EE; --line:rgba(20,41,46,.14);
+  --serif:"Newsreader", Georgia, "Times New Roman", serif;
+  --sans:"Public Sans", "Segoe UI", Roboto, Arial, sans-serif;
+  --banner-h:62px;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth; scroll-padding-top:calc(var(--banner-h) + 16px)}
+@media (prefers-reduced-motion: reduce){html{scroll-behavior:auto}}
+body{margin:0; background:var(--paper); color:var(--ink); font-family:var(--sans);
+  font-size:clamp(1rem, .96rem + .25vw, 1.0625rem); line-height:1.62; -webkit-text-size-adjust:100%}
+img,svg{max-width:100%; height:auto; display:block}
+a{color:var(--teal)}
+:focus-visible{outline:3px solid var(--amber); outline-offset:2px}
+
+/* ---------- Banner fixo ---------- */
+.site-banner{position:sticky; top:0; z-index:100; display:flex; justify-content:space-between; align-items:center; gap:12px;
+  padding:calc(8px + env(safe-area-inset-top,0px)) clamp(14px,4vw,32px) 8px; min-height:var(--banner-h);
+  background:rgba(246,247,244,.94); -webkit-backdrop-filter:blur(8px); backdrop-filter:blur(8px); border-bottom:1px solid var(--line)}
+.banner-identity{min-width:0}
+.banner-kicker{display:block; font-size:.72rem; color:var(--ink-soft); letter-spacing:.01em}
+.banner-title{display:none; font-family:var(--serif); font-weight:600; font-size:1.02rem; white-space:nowrap; overflow:hidden; text-overflow:ellipsis}
+.banner-logo{max-height:34px; width:auto; flex-shrink:0}
+.logo-fallback{font-size:.72rem; font-weight:600; color:var(--teal); text-align:right; max-width:52vw}
+@media (min-width:640px){ .banner-title{display:block} .banner-logo{max-height:46px} }
+
+/* ---------- Estrutura ---------- */
+main{padding:0 clamp(16px,5vw,40px)}
+.wrap{max-width:68ch; margin:0 auto}
+.wide{max-width:1100px; margin:0 auto}
+section{padding:clamp(40px,7vw,80px) 0; border-bottom:1px solid var(--line)}
+h1,h2,h3{font-family:var(--serif); font-weight:600; line-height:1.15; color:var(--ink); margin:0 0 .5em}
+h2{font-size:clamp(1.6rem,1.2rem + 1.8vw,2.4rem)}
+h3{font-size:clamp(1.15rem,1.05rem + .5vw,1.35rem)}
+p{margin:0 0 1em}
+.lede{font-family:var(--serif); font-size:clamp(1.15rem,1.05rem + .6vw,1.4rem); line-height:1.5; color:var(--ink-soft)}
+sup.cite{font-size:.68em; line-height:0; margin-left:1px}
+sup.cite a{text-decoration:none; font-weight:700; padding:2px 2px}
+.pull{font-family:var(--serif); font-style:italic; font-size:clamp(1.25rem,1.1rem + .8vw,1.65rem); line-height:1.4;
+  border-left:4px solid var(--teal); padding:.2em 0 .2em 1em; margin:1.6em 0; color:var(--ink)}
+
+/* ---------- Hero ---------- */
+.hero{padding-top:clamp(36px,6vw,72px)}
+.hero h1{font-size:clamp(2.1rem,1.4rem + 3.6vw,4rem); letter-spacing:-.01em; max-width:18ch}
+.hero .lede{max-width:56ch}
+.hero-top{display:grid; gap:24px; grid-template-columns:minmax(0,1fr)}
+.hero-photo{margin:0}
+.hero-photo img{width:100%; border-radius:6px; aspect-ratio:557/371; object-fit:cover; background:var(--paper-2)}
+.credit{display:block; font-size:.78rem; margin-top:4px; opacity:.85}
+@media (min-width:900px){ .hero-top{grid-template-columns:minmax(0,1.15fr) minmax(0,.85fr); align-items:center; gap:48px} .hero-photo img{max-width:557px} }
+.gap{margin-top:clamp(28px,5vw,48px); display:grid; gap:14px}
+.gap-row{display:grid; grid-template-columns:7.2rem 1fr; align-items:center; gap:12px}
+.gap-num{font-family:var(--serif); font-weight:600; font-size:clamp(2rem,1.6rem + 2vw,3rem); line-height:1}
+.gap-bar{height:18px; background:var(--paper-2); border-radius:3px; overflow:hidden}
+.gap-bar span{display:block; height:100%; border-radius:3px; transform-origin:left; animation:grow 1.4s cubic-bezier(.2,.7,.2,1) both}
+@keyframes grow{from{transform:scaleX(0)} to{transform:scaleX(1)}}
+@media (prefers-reduced-motion: reduce){.gap-bar span{animation:none}}
+.gap-label{grid-column:2; font-size:.9rem; color:var(--ink-soft); margin-top:-4px}
+.gap-note{font-size:.85rem; color:var(--ink-soft); margin-top:6px}
+.origin{font-size:.85rem; color:var(--ink-soft); margin-top:22px; padding-top:12px; border-top:1px dashed var(--line)}
+
+/* ---------- Quadros ---------- */
+.box{border-radius:6px; padding:18px 20px; margin:1.6em 0; border:1px solid var(--line); border-left-width:5px}
+.box h3{font-size:1.08rem; margin-bottom:.35em; display:flex; gap:.45em; align-items:baseline}
+.box p:last-child,.box ul:last-child{margin-bottom:0}
+.box-conceito{background:var(--teal-soft); border-left-color:var(--teal)}
+.box-alerta{background:var(--amber-soft); border-left-color:var(--amber)}
+.box-contraponto{background:var(--plum-soft); border-left-color:var(--plum)}
+.box ul{padding-left:1.15em; margin:.4em 0 0}
+.box li{margin-bottom:.35em}
+
+/* ---------- Figuras ---------- */
+figure{margin:1.8em 0}
+figcaption{font-size:.86rem; color:var(--ink-soft); margin-top:10px; line-height:1.45}
+.chart{background:#fff; border:1px solid var(--line); border-radius:6px; padding:16px}
+.chart-scroll{overflow-x:auto}
+.img-placeholder .placeholder-box{border:2px dashed #A9B6B8; background:#EEF2F1; border-radius:6px; padding:28px 20px; text-align:center;
+  color:var(--ink-soft); min-height:220px; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:8px}
+.placeholder-icon{font-size:2rem}
+.real-img{width:100%; border-radius:6px}
+.placeholder-label{font-family:ui-monospace,Menlo,Consolas,monospace; font-size:.8rem; background:#DDE4E3; padding:4px 10px; border-radius:4px; color:var(--ink); margin:0; word-break:break-all}
+.placeholder-hint{font-size:.8rem; font-style:italic; max-width:340px; margin:0}
+
+/* ---------- Grade desktop ---------- */
+.split{display:grid; gap:0 40px; grid-template-columns:minmax(0,1fr)}
+.split > *, figure{min-width:0}
+.chart-scroll{max-width:100%}
+@media (min-width:900px){ .split{grid-template-columns:minmax(0,1.1fr) minmax(0,.9fr); align-items:start} .split > figure{margin-top:.4em} }
+
+/* ---------- Causas ---------- */
+.causes{display:grid; gap:14px; margin:1.4em 0}
+@media (min-width:700px){ .causes{grid-template-columns:1fr 1fr} }
+.cause{background:#fff; border:1px solid var(--line); border-radius:6px; padding:16px 18px}
+.cause h3{font-size:1.05rem}
+.cause p{font-size:.95rem; margin:0}
+.evid{display:inline-block; font-size:.74rem; font-weight:600; padding:2px 8px; border-radius:20px; margin-bottom:8px}
+.evid.forte{background:var(--teal-soft); color:var(--teal)}
+.evid.media{background:var(--amber-soft); color:#7A4E0E}
+.evid.fraca{background:var(--plum-soft); color:var(--plum)}
+
+/* ---------- Síntese ---------- */
+.synthesis ol{padding-left:1.2em}
+.synthesis li{margin-bottom:.7em}
+
+/* ---------- Quiz ---------- */
+.q{background:#fff; border:1px solid var(--line); border-radius:6px; padding:18px; margin-bottom:16px}
+.q-prompt{font-weight:600; margin-bottom:12px}
+.q-opts{display:grid; gap:8px}
+.q-opts button{font:inherit; font-size:.97rem; text-align:left; min-height:48px; padding:10px 14px; border-radius:6px; border:1px solid var(--line);
+  background:var(--paper); color:var(--ink); cursor:pointer; width:100%}
+.q-opts button:hover:not(:disabled){border-color:var(--teal)}
+.q-opts button.right{background:var(--teal-soft); border-color:var(--teal); font-weight:600}
+.q-opts button.wrong{background:#F6E1DC; border-color:#B4523C}
+.q-opts button:disabled{cursor:default}
+.q-feedback{margin-top:12px; font-size:.93rem; display:none}
+.q-feedback.show{display:block}
+.q-score{font-family:var(--serif); font-size:1.2rem; margin-top:8px}
+
+/* ---------- Para pensar ---------- */
+.think-list{list-style:none; padding:0; margin:0; display:grid; gap:14px}
+.think-list li{border-top:2px solid var(--ink); padding-top:12px}
+.think-list p{font-family:var(--serif); font-size:clamp(1.12rem,1.05rem + .4vw,1.3rem); line-height:1.45; margin-bottom:.5em}
+details{font-size:.93rem; color:var(--ink-soft)}
+summary{cursor:pointer; min-height:44px; display:flex; align-items:center; color:var(--teal); font-weight:600}
+
+/* ---------- Rede semântica ---------- */
+.net{display:grid; gap:20px; grid-template-columns:minmax(0,1fr); margin:8px auto 40px}
+@media (min-width:1000px){ .net{grid-template-columns:minmax(0,1.7fr) minmax(0,1fr); align-items:start} .net-panel{position:sticky; top:calc(var(--banner-h) + 16px)} }
+.net-graph{background:#fff; border:1px solid var(--line); border-radius:6px; padding:8px}
+#netSvg{width:100%; height:auto; display:block; touch-action:manipulation}
+#netSvg .edge{transition:opacity .2s}
+#netSvg .node{cursor:pointer}
+#netSvg .node circle{transition:r .2s, opacity .2s}
+#netSvg .node text{pointer-events:none; transition:opacity .2s}
+#netSvg .node:focus-visible circle{stroke:#B9781A; stroke-width:4}
+#netSvg.has-sel .edge{opacity:.12}
+#netSvg.has-sel .edge.on{opacity:1}
+#netSvg.has-sel .node{opacity:.28}
+#netSvg.has-sel .node.on,#netSvg.has-sel .node.sel{opacity:1}
+.net-legend{display:grid; gap:8px; padding:10px 8px 4px; font-size:.8rem; color:var(--ink-soft)}
+.lg-group{display:flex; flex-wrap:wrap; gap:6px 16px}
+.lg-group span{display:inline-flex; align-items:center; gap:6px}
+.dot{display:inline-block; width:11px; height:11px; border-radius:50%}
+.lg-note{margin:2px 0 0; font-size:.76rem}
+.net-panel{background:#fff; border:1px solid var(--line); border-top:5px solid var(--teal); border-radius:6px; padding:18px 20px}
+.net-panel .np-kicker{font-size:.78rem; font-weight:600; margin:0 0 4px}
+.net-panel h3{margin-bottom:.2em}
+.net-panel .np-src{font-size:.85rem; color:var(--ink-soft); margin-bottom:.8em}
+.net-panel .np-comment{font-family:var(--serif); font-size:1.08rem; line-height:1.5}
+.net-panel h4{font-size:.85rem; margin:1.1em 0 .5em; color:var(--ink-soft); font-weight:600}
+.np-links{list-style:none; padding:0; margin:0; display:grid; gap:8px}
+.np-links button{font:inherit; font-size:.9rem; text-align:left; width:100%; min-height:44px; padding:8px 10px; background:var(--paper); border:1px solid var(--line); border-radius:6px; color:var(--ink); cursor:pointer; line-height:1.4}
+.np-links button:hover{border-color:var(--teal)}
+.np-links b{display:block; font-size:.78rem; margin-bottom:2px}
+.np-ref{display:inline-block; margin-top:12px; font-size:.88rem; font-weight:600}
+.ref-title{margin-top:.5em}
+
+/* ---------- Referências e rodapé ---------- */
+.references ol{padding-left:1.4em; font-size:.88rem; line-height:1.5}
+.references li{margin-bottom:.7em; word-break:break-word}
+.references li:target{background:var(--amber-soft); outline:6px solid var(--amber-soft)}
+.institutional-footer{text-align:center; font-size:.8rem; color:var(--ink-soft); padding:28px 16px calc(28px + env(safe-area-inset-bottom,0px)); border-top:1px solid var(--line); background:#fff}
+</style>
+</head>
+<body>
+
+<header class="site-banner">
+  <div class="banner-identity">
+    <span class="banner-kicker">Amor à Pele e PET-Saúde Digital G10</span>
+    <span class="banner-title">Câncer antes dos 50</span>
+  </div>
+  <img class="banner-logo" src="img/logo-institucional.png" alt="Logos Amor-à-Pele e PET-Saúde Digital – UFPel"
+       onerror="this.replaceWith(Object.assign(document.createElement('span'),{className:'logo-fallback',textContent:'Amor à Pele · PET-Saúde Digital – UFPel'}))">
+</header>
+
+<main>
+
+<!-- ================= HERO ================= -->
+<section class="hero">
+  <div class="wide">
+    <div class="hero-top">
+    <div>
+    <h1>Câncer antes dos 50: subindo, mas não do jeito que parece</h1>
+    <p class="lede">Por décadas, o câncer foi tratado como doença do envelhecimento. Hoje, adultos jovens recebem mais diagnósticos do que seus pais recebiam na mesma idade<sup class="cite"><a href="#ref-1">1</a></sup>. A pergunta que importa já não é só “quantos casos?”, mas “quais casos, por quê e diagnosticados quando?”.</p>
+    </div>
+    <figure class="hero-photo">
+      <img src="img/quimioterapia-exercicio-efe.jpg" width="557" height="371"
+           alt="De costas, uma criança sem cabelo, ligada a um suporte de soro, pedala numa bicicleta ergométrica com tela, enquanto um adulto apoia o braço no encosto da cadeira dela.">
+      <figcaption>Em qualquer idade, o diagnóstico interrompe a vida comum, e o cuidado tenta devolvê-la. Na foto, um paciente pediátrico pedala durante a quimioterapia no Hospital La Paz, em Madri, num programa que une exercício e tratamento. <span class="credit">Foto: EFE/J.J. Guillén</span></figcaption>
+    </figure>
+    </div>
+
+    <div class="gap" role="img" aria-label="Entre 1990 e 2019, os casos de câncer em pessoas com menos de 50 anos aumentaram 79 por cento no mundo, e as mortes aumentaram 28 por cento.">
+      <div class="gap-row">
+        <span class="gap-num" style="color:var(--teal)">+79%</span>
+        <div class="gap-bar"><span style="width:100%; background:var(--teal)"></span></div>
+        <span class="gap-label">casos novos em menores de 50 anos no mundo, 1990→2019 (de 1,82 para 3,26 milhões)<sup class="cite"><a href="#ref-2">2</a></sup></span>
+      </div>
+      <div class="gap-row">
+        <span class="gap-num" style="color:var(--plum)">+28%</span>
+        <div class="gap-bar"><span style="width:35%; background:var(--plum)"></span></div>
+        <span class="gap-label">mortes por câncer na mesma faixa e período (de 0,83 para 1,06 milhão)<sup class="cite"><a href="#ref-2">2</a></sup></span>
+      </div>
+      <p class="gap-note">São números absolutos: parte do aumento vem simplesmente de haver mais gente no mundo. É por isso que os estudos que usam <em>taxas</em> por 100 mil pessoas, mais abaixo, contam a história com mais precisão.</p>
+    </div>
+
+    <p class="origin">Ponto de partida: matéria do jornal espanhol <em>El Confidencial</em> (4 out. 2026) sobre a preocupação com o câncer entre jovens. Este infográfico vai às pesquisas originais por trás do tema.</p>
+  </div>
+</section>
+
+<!-- ================= CONCEITO ================= -->
+<section class="concept">
+  <div class="wrap">
+    <h2>Do que estamos falando</h2>
+
+    <aside class="box box-conceito">
+      <h3><span aria-hidden="true">📘</span> O que é câncer “de início precoce”</h3>
+      <p>É o câncer diagnosticado antes dos 50 anos. Não há um recorte único: o estudo global de carga de doença usa 14 a 49 anos<sup class="cite"><a href="#ref-2">2</a></sup>; o Instituto Nacional do Câncer dos EUA analisou as faixas de 15–29, 30–39 e 40–49 anos<sup class="cite"><a href="#ref-3">3</a></sup>. Não se confunde com câncer infantojuvenil, que tem biologia e estatísticas próprias.</p>
+    </aside>
+
+    <p>Nos Estados Unidos, onde há registros que cobrem toda a população, 14 dos 33 tipos de câncer analisados aumentaram entre 2010 e 2019 em pelo menos uma faixa abaixo dos 50 anos, enquanto 19 tipos diminuíram, entre eles pulmão e próstata<sup class="cite"><a href="#ref-3">3</a></sup>. Ou seja: não é “todo câncer” subindo. É um grupo específico.</p>
+    <p>Cinco tumores responderam por mais de 80% dos casos adicionais: mama, colorretal, rim, útero e pâncreas. E 63% dos diagnósticos precoces ocorreram em mulheres<sup class="cite"><a href="#ref-3">3</a></sup>.</p>
+    <p>O colorretal é o que mais chama atenção fora dos EUA. Num levantamento de 50 países e territórios, a incidência em adultos de 25 a 49 anos subiu em 27 deles; em 20, a alta foi exclusiva dos jovens ou mais rápida que entre os mais velhos. As maiores altas anuais, perto de 4% ao ano, apareceram na Nova Zelândia e no Chile<sup class="cite"><a href="#ref-4">4</a></sup>.</p>
+  </div>
+</section>
+
+<!-- ================= COORTE ================= -->
+<section class="how">
+  <div class="wide split">
+    <div class="wrap" style="margin:0">
+      <h2>Uma pista no ano de nascimento</h2>
+      <p>Quando os pesquisadores organizam os dados por <strong>geração</strong>, e não só por idade, aparece um padrão. Comparando pessoas nascidas entre 1920 e 1990 nos EUA, 17 de 34 tipos de câncer têm incidência maior nas gerações mais novas, incluindo 9 que vinham caindo nas gerações anteriores<sup class="cite"><a href="#ref-1">1</a></sup>.</p>
+      <p>Quem nasceu em 1990 tem risco duas a três vezes maior de câncer de pâncreas, rim e intestino delgado do que quem nasceu em 1955, na mesma idade<sup class="cite"><a href="#ref-1">1</a></sup>.</p>
+
+      <aside class="box box-conceito">
+        <h3><span aria-hidden="true">📘</span> Por que olhar o ano de nascimento</h3>
+        <p>Pessoas nascidas na mesma época compartilham alimentação, ambiente, uso de medicamentos e hábitos durante a infância e a juventude. Se o risco muda de uma geração para outra, a explicação provavelmente está em algo a que essas pessoas foram expostas cedo na vida, e não num erro de contagem de um ano específico<sup class="cite"><a href="#ref-1">1</a></sup>.</p>
+      </aside>
+    </div>
+
+    <!-- PROMPT: ver prompt nº 1 no relatório (ilustração de gerações) -->
+    <figure class="img-placeholder" data-img-path="img/geracoes-exposicao.png" data-alt="Ilustração de três gerações e os ambientes da infância de cada uma.">
+      <div class="placeholder-box" style="min-height:300px">
+        <span class="placeholder-icon" aria-hidden="true">🖼</span>
+        <p class="placeholder-label">[ Coloque aqui: img/geracoes-exposicao.png ]</p>
+        <p class="placeholder-hint">Ilustração a gerar — ver prompt nº 1 no relatório</p>
+      </div>
+      <figcaption>Figura 1 — Três gerações, três ambientes de infância. O efeito de coorte procura o que mudou entre eles.</figcaption>
+    </figure>
+  </div>
+</section>
+
+<!-- ================= REAL OU APARENTE ================= -->
+<section class="implications">
+  <div class="wrap">
+    <h2>Mais diagnósticos significam mais doença?</h2>
+    <p>Nem sempre. Um diagnóstico depende de alguém procurar. Exames de imagem mais acessíveis e mais sensíveis encontram tumores pequenos que, em muitos casos, nunca causariam problema.</p>
+
+    <aside class="box box-contraponto">
+      <h3><span aria-hidden="true">⚖</span> A leitura cética</h3>
+      <p>Uma análise publicada em 2025 olhou os oito cânceres que mais cresceram em adultos jovens nos EUA (tireoide, ânus, rim, intestino delgado, colorretal, endométrio, pâncreas e mieloma). Juntos, os diagnósticos dobraram desde 1992, mas a mortalidade somada ficou parada: 5,9 mortes por 100 mil em 1992 e em 2022<sup class="cite"><a href="#ref-5">5</a></sup>. Para os autores, boa parte da alta reflete <strong>mais investigação e sobrediagnóstico</strong>, e não mais doença<sup class="cite"><a href="#ref-5">5</a></sup>.</p>
+    </aside>
+
+    <figure>
+      <div class="chart chart-scroll">
+        <svg viewBox="0 0 560 250" role="img" aria-labelledby="ch1t ch1d" style="min-width:420px">
+          <title id="ch1t">Diagnósticos dobraram, mortes não mudaram</title>
+          <desc id="ch1d">Para os oito cânceres de crescimento mais rápido em adultos jovens nos EUA, a incidência dobrou entre 1992 e 2022, enquanto a mortalidade ficou em 5,9 por 100 mil nos dois anos.</desc>
+          <g font-family="Public Sans, Arial, sans-serif" font-size="13" fill="#14292E">
+            <text x="20" y="28" font-weight="700">Diagnósticos (índice, 1992 = 1)</text>
+            <rect x="20" y="42" width="120" height="30" fill="#9CC4C6"/><text x="148" y="62">1992 · 1×</text>
+            <rect x="20" y="80" width="240" height="30" fill="#1E6B73"/><text x="268" y="100" font-weight="700">2022 · cerca de 2×</text>
+            <text x="20" y="152" font-weight="700">Mortes por 100 mil</text>
+            <rect x="20" y="166" width="177" height="30" fill="#C9B6CE"/><text x="205" y="186">1992 · 5,9</text>
+            <rect x="20" y="204" width="177" height="30" fill="#674C70"/><text x="205" y="224" font-weight="700">2022 · 5,9</text>
+          </g>
+        </svg>
+      </div>
+      <figcaption>Figura 2 — Oito cânceres de crescimento mais rápido em adultos jovens nos EUA. Os diagnósticos dobraram; a mortalidade somada não se moveu. Dados de Patel, Adamson e Welch<sup class="cite"><a href="#ref-5">5</a></sup>.</figcaption>
+    </figure>
+
+    <p class="pull">A mesma análise cética reconhece exceções: no colorretal e no endométrio, a mortalidade também sobe<sup class="cite"><a href="#ref-5">5</a></sup>. É ali que o alerta é mais difícil de explicar só pelo excesso de exames.</p>
+
+    <p>O estudo do Instituto Nacional do Câncer dos EUA chega a um quadro parecido: a mortalidade geral não aumentou nos jovens, mas subiu em pelo menos uma faixa abaixo dos 50 anos para quatro tumores: colorretal, útero, testículo e ossos e articulações<sup class="cite"><a href="#ref-3">3</a></sup>. Na análise por gerações, as mortes também cresceram nas gerações mais novas para colorretal, útero, vesícula, testículo e fígado em mulheres<sup class="cite"><a href="#ref-1">1</a></sup>.</p>
+    <p>E há o lado oposto: no câncer de mama, o mais comum antes dos 50, os diagnósticos sobem devagar, mas a mortalidade nessa faixa caiu aproximadamente pela metade<sup class="cite"><a href="#ref-5">5</a></sup>. Tratamento melhor também muda a curva.</p>
+  </div>
+</section>
+
+<!-- ================= ATRASO ================= -->
+<section class="example">
+  <div class="wrap">
+    <h2>A outra preocupação: chegar tarde</h2>
+    <p>O jovem raramente é o paciente que alguém espera ver com câncer, nem ele mesmo. Numa revisão de 39 estudos, adultos com menos de 50 anos tinham 76% mais chance de receber o diagnóstico de câncer colorretal já em estágio III ou IV, e os atrasos mais longos aconteciam <em>antes</em> do diagnóstico, entre o primeiro sintoma e a investigação<sup class="cite"><a href="#ref-6">6</a></sup>.</p>
+    <p>Outra revisão, com 81 estudos, mostrou que quase metade desses pacientes chega com sangue nas fezes e quase metade com dor abdominal; o tempo entre o sinal e o diagnóstico teve mediana de 4 meses e média de 6,4 meses<sup class="cite"><a href="#ref-7">7</a></sup>.</p>
+
+    <aside class="box box-alerta">
+      <h3><span aria-hidden="true">⚠</span> Sinais que não devem ser normalizados pela idade</h3>
+      <ul>
+        <li>Sangue nas fezes ou sangramento pelo ânus, mesmo que pareça “só hemorroida”.</li>
+        <li>Dor abdominal persistente ou que volta.</li>
+        <li>Mudança no hábito intestinal que dura semanas.</li>
+        <li>Anemia sem causa clara.</li>
+      </ul>
+      <p style="margin-top:.6em">Esses foram os sinais mais associados ao câncer colorretal precoce<sup class="cite"><a href="#ref-7">7</a></sup>. A grande maioria tem outra causa, mas ser jovem não é motivo para deixar de investigar. Sinais persistentes pedem avaliação na Unidade Básica de Saúde.</p>
+    </aside>
+
+    <!-- Foto real: ver item nº 3 no relatório -->
+    <figure class="img-placeholder" data-img-path="img/consulta-adulto-jovem.jpg" data-alt="Adulto jovem em atendimento numa unidade básica de saúde.">
+      <div class="placeholder-box">
+        <span class="placeholder-icon" aria-hidden="true">📷</span>
+        <p class="placeholder-label">[ Coloque aqui: img/consulta-adulto-jovem.jpg ]</p>
+        <p class="placeholder-hint">Foto real: adulto jovem em atendimento na atenção primária — ver relatório</p>
+      </div>
+      <figcaption>Figura 3 — A porta de entrada costuma ser a atenção primária. É ali que um sintoma persistente pode ganhar ou perder meses.</figcaption>
+    </figure>
+  </div>
+</section>
+
+<!-- ================= POR QUÊ ================= -->
+<section class="why">
+  <div class="wrap">
+    <h2>Por que isso está acontecendo?</h2>
+    <p>A resposta honesta: ainda não se sabe. O que existe são hipóteses com graus muito diferentes de evidência.</p>
+  </div>
+  <div class="wide">
+    <div class="causes">
+      <article class="cause">
+        <span class="evid forte">Evidência consistente</span>
+        <h3>Obesidade, dieta, álcool e tabaco</h3>
+        <p>Vários dos tumores em alta estão ligados ao excesso de peso<sup class="cite"><a href="#ref-3">3</a></sup>. No estudo global, dieta (muita carne vermelha e sódio, poucas frutas), álcool e tabaco foram os principais fatores de risco identificados<sup class="cite"><a href="#ref-2">2</a></sup>.</p>
+      </article>
+      <article class="cause">
+        <span class="evid media">Pista forte, ainda em estudo</span>
+        <h3>Uma toxina bacteriana na infância</h3>
+        <p>A colibactina, produzida por algumas bactérias intestinais, deixa uma “marca” no DNA. Em 981 tumores colorretais de 11 países, essa marca foi 3,3 vezes mais comum em quem adoeceu antes dos 40 do que depois dos 70<sup class="cite"><a href="#ref-8">8</a></sup>. É associação, não prova de causa.</p>
+      </article>
+      <article class="cause">
+        <span class="evid media">Explica uma parte</span>
+        <h3>Herança genética</h3>
+        <p>Mutações hereditárias de alto risco aparecem em 18,4% dos cânceres precoces, contra 12,3% dos tardios. Ou seja, cerca de 80% dos jovens com câncer não têm essa explicação, e genes não mudam em poucas décadas<sup class="cite"><a href="#ref-9">9</a></sup>.</p>
+      </article>
+      <article class="cause">
+        <span class="evid fraca">Hipóteses abertas</span>
+        <h3>O “exposoma” moderno</h3>
+        <p>Ultraprocessados, microplásticos, poluentes, sono, estresse, antibióticos e alterações da microbiota estão sendo investigados. Para muitos deles, ainda não há evidência epidemiológica forte<sup class="cite"><a href="#ref-9">9</a></sup><sup class="cite"><a href="#ref-10">10</a></sup>.</p>
+      </article>
+    </div>
+
+    <!-- PROMPT: ver prompt nº 2 no relatório (colibactina) -->
+    <figure class="img-placeholder wrap" data-img-path="img/colibactina-dna.png" data-alt="Ilustração de bactérias junto à parede do intestino e de uma marca no DNA.">
+      <div class="placeholder-box">
+        <span class="placeholder-icon" aria-hidden="true">🖼</span>
+        <p class="placeholder-label">[ Coloque aqui: img/colibactina-dna.png ]</p>
+        <p class="placeholder-hint">Ilustração a gerar — ver prompt nº 2 no relatório</p>
+      </div>
+      <figcaption>Figura 4 — Bactérias produtoras de colibactina junto ao epitélio do intestino deixam um padrão reconhecível de mutações no DNA.</figcaption>
+    </figure>
+  </div>
+</section>
+
+<!-- ================= BRASIL ================= -->
+<section class="brasil">
+  <div class="wide split">
+    <div class="wrap" style="margin:0">
+      <h2>E no Brasil?</h2>
+      <p>O INCA estima 781 mil casos novos de câncer por ano entre 2026 e 2028, ou 518 mil sem contar o câncer de pele não melanoma<sup class="cite"><a href="#ref-11">11</a></sup>. O colorretal é o segundo mais frequente em homens e mulheres, com cerca de 53,8 mil casos por ano, e o próprio INCA destaca seu aumento como uma das principais tendências do triênio<sup class="cite"><a href="#ref-11">11</a></sup>.</p>
+      <p>As taxas passam de 20 casos por 100 mil habitantes no Sudeste e ficam perto disso no Sul e no Centro-Oeste<sup class="cite"><a href="#ref-11">11</a></sup>.</p>
+      <p>Há, porém, um limite importante. A estimativa nacional não separa os adultos jovens, e os registros de base populacional que a alimentam cobrem cerca de 25% da população brasileira. O INCA também alerta que as edições da estimativa não devem ser comparadas diretamente como tendência<sup class="cite"><a href="#ref-11">11</a></sup>. Para saber se o fenômeno se repete aqui na mesma intensidade, precisamos de registros melhores.</p>
+      <p>Na Espanha, de onde veio a matéria, a Sociedade Espanhola de Oncologia Médica estima mais de 8 mil cânceres em adultos jovens em 2026, a maioria em mulheres<sup class="cite"><a href="#ref-10">10</a></sup>.</p>
+    </div>
+
+    <figure>
+      <div class="chart chart-scroll">
+        <svg viewBox="0 0 450 280" role="img" aria-labelledby="ch2t ch2d" style="min-width:340px">
+          <title id="ch2t">Câncer colorretal por região do Brasil, 2026–2028</title>
+          <desc id="ch2d">Taxa ajustada por 100 mil habitantes, ambos os sexos: Sudeste 20,76; Sul 19,85; Centro-Oeste 19,64; Nordeste 10,63; Norte 8,42; Brasil 11,39.</desc>
+          <g font-family="Public Sans, Arial, sans-serif" font-size="13" fill="#14292E">
+            <text x="10" y="22" font-weight="700">Colorretal: casos por 100 mil (taxa ajustada)</text>
+            <!-- escala: 1 unidade = 13 px -->
+            <text x="10" y="56">Sudeste</text><rect x="110" y="42" width="270" height="22" fill="#1E6B73"/><text x="386" y="58">20,8</text>
+            <text x="10" y="92">Sul</text><rect x="110" y="78" width="258" height="22" fill="#1E6B73"/><text x="374" y="94">19,9</text>
+            <text x="10" y="128">Centro-Oeste</text><rect x="110" y="114" width="255" height="22" fill="#1E6B73"/><text x="371" y="130">19,6</text>
+            <text x="10" y="164">Nordeste</text><rect x="110" y="150" width="138" height="22" fill="#7FB0B4"/><text x="254" y="166">10,6</text>
+            <text x="10" y="200">Norte</text><rect x="110" y="186" width="109" height="22" fill="#7FB0B4"/><text x="225" y="202">8,4</text>
+            <line x1="110" y1="226" x2="410" y2="226" stroke="#14292E" stroke-opacity=".25"/>
+            <text x="10" y="252" font-weight="700">Brasil</text><rect x="110" y="238" width="148" height="22" fill="#B9781A"/><text x="264" y="254" font-weight="700">11,4</text>
+          </g>
+        </svg>
+      </div>
+      <figcaption>Figura 5 — Estimativa de câncer de cólon e reto por região, ambos os sexos, por ano do triênio 2026–2028. Dados do INCA<sup class="cite"><a href="#ref-11">11</a></sup>.</figcaption>
+    </figure>
+  </div>
+</section>
+
+<!-- ================= SÍNTESE ================= -->
+<section class="synthesis">
+  <div class="wrap">
+    <h2>O que fica</h2>
+    <ol>
+      <li><strong>O aumento é real para alguns cânceres e aparente para outros.</strong> Colorretal e endométrio sobem também em mortalidade; tireoide e rim parecem refletir mais detecção<sup class="cite"><a href="#ref-5">5</a></sup>.</li>
+      <li><strong>O padrão segue as gerações,</strong> o que aponta para exposições no início da vida<sup class="cite"><a href="#ref-1">1</a></sup>.</li>
+      <li><strong>A causa ainda é desconhecida.</strong> Obesidade e dieta explicam parte; a colibactina é uma pista nova; genética explica pouco do aumento<sup class="cite"><a href="#ref-8">8</a></sup><sup class="cite"><a href="#ref-9">9</a></sup>.</li>
+      <li><strong>Tempo importa.</strong> Jovens chegam ao diagnóstico mais tarde e em estágio mais avançado<sup class="cite"><a href="#ref-6">6</a></sup>. Sintoma persistente merece investigação em qualquer idade.</li>
+    </ol>
+  </div>
+</section>
+
+<!-- ================= QUIZ ================= -->
+<section class="quiz" id="teste">
+  <div class="wrap">
+    <h2>Teste seu entendimento</h2>
+    <div id="quiz"></div>
+    <p class="q-score" id="score" aria-live="polite"></p>
+  </div>
+</section>
+
+<!-- ================= PARA PENSAR ================= -->
+<section class="think" id="para-pensar">
+  <div class="wrap">
+    <h2>Para pensar</h2>
+    <ul class="think-list">
+      <li>
+        <p>Se uma cidade compra um tomógrafo novo e, no ano seguinte, registra mais casos de câncer de rim, a população dessa cidade ficou mais doente?</p>
+        <details><summary>Uma pista para a reflexão</summary>Pense no que precisaria acontecer com as mortes por esse câncer para você concluir que sim.</details>
+      </li>
+      <li>
+        <p>Antecipar o rastreamento colorretal para todos a partir dos 40 anos salvaria vidas no SUS, ou tiraria colonoscopias de quem já tem sintomas e está na fila?</p>
+        <details><summary>Uma pista para a reflexão</summary>Recursos limitados obrigam a escolher. Quem ganha e quem perde com cada escolha?</details>
+      </li>
+      <li>
+        <p>Por que um jovem com sangue nas fezes demora mais para ser investigado do que um idoso com o mesmo sintoma? De quem é essa demora: do paciente, do profissional ou do sistema?</p>
+        <details><summary>Uma pista para a reflexão</summary>Lembre do que você mesmo pensaria se isso acontecesse com você aos 25 anos.</details>
+      </li>
+      <li>
+        <p>Se a exposição decisiva acontece na infância, como seria uma prevenção do câncer que começa na merenda escolar, e não no consultório do adulto?</p>
+      </li>
+    </ul>
+  </div>
+</section>
+
+<!-- ================= REFERÊNCIAS ================= -->
+<section class="references" id="referencias">
+  <div class="wrap">
+    <h2>Como as fontes conversam entre si</h2>
+    <p>Cada círculo é uma referência deste infográfico; cada linha, uma relação de sentido entre duas delas. Toque num artigo para ler o comentário e ver com quem ele dialoga.</p>
+  </div>
+  <div class="wide net">
+    <div class="net-graph">
+      <svg id="netSvg" role="group" aria-label="Rede semântica das referências"></svg>
+      <div class="net-legend" aria-hidden="false">
+        <div class="lg-group">
+          <span><i class="dot" style="background:#1E6B73"></i>Tamanho do fenômeno</span>
+          <span><i class="dot" style="background:#674C70"></i>Contraponto</span>
+          <span><i class="dot" style="background:#B9781A"></i>Diagnóstico tardio</span>
+          <span><i class="dot" style="background:#3F7D4E"></i>Causas</span>
+          <span><i class="dot" style="background:#5B6E8C"></i>Contexto nacional</span>
+        </div>
+        <div class="lg-group">
+          <span><svg width="34" height="10" aria-hidden="true"><line x1="0" y1="5" x2="34" y2="5" stroke="#14292E" stroke-width="2"/></svg>complementa</span>
+          <span><svg width="34" height="10" aria-hidden="true"><line x1="0" y1="5" x2="34" y2="5" stroke="#674C70" stroke-width="2" stroke-dasharray="6 4"/></svg>contrapõe</span>
+          <span><svg width="34" height="10" aria-hidden="true"><line x1="0" y1="5" x2="30" y2="5" stroke="#B9781A" stroke-width="2" stroke-dasharray="2 3"/><path d="M28 1 L34 5 L28 9 Z" fill="#B9781A"/></svg>cita ou resume</span>
+        </div>
+        <p class="lg-note">As relações de complementar e contrapor são uma leitura editorial nossa; as de citar ou resumir constam nos próprios documentos.</p>
+      </div>
+    </div>
+    <aside class="net-panel" id="netPanel" aria-live="polite"></aside>
+  </div>
+  <div class="wrap">
+    <h3 class="ref-title">Lista completa</h3>
+    <ol>
+      <li id="ref-1">Sung H, et al. Differences in cancer rates among adults born between 1920 and 1990 in the USA: an analysis of population-based cancer registry data. Lancet Public Health. 2024;9(8):e583-93. doi:<a href="https://doi.org/10.1016/S2468-2667(24)00156-7">10.1016/S2468-2667(24)00156-7</a></li>
+      <li id="ref-2">Zhao J, Xu L, Sun J, et al. Global trends in incidence, death, burden and risk factors of early-onset cancer from 1990 to 2019. BMJ Oncology. 2023;2(1):e000049. doi:<a href="https://doi.org/10.1136/bmjonc-2023-000049">10.1136/bmjonc-2023-000049</a></li>
+      <li id="ref-3">Shiels MS, Haque AT, Berrington de González A, et al. Trends in cancer incidence and mortality rates in early-onset and older-onset age groups in the United States, 2010–2019. Cancer Discov. 2025;15(7):1363. doi:<a href="https://doi.org/10.1158/2159-8290.CD-24-1678">10.1158/2159-8290.CD-24-1678</a></li>
+      <li id="ref-4">Sung H, Siegel RL, Laversanne M, Jiang C, Morgan E, Zahwe M, et al. Colorectal cancer incidence trends in younger versus older adults: an analysis of population-based cancer registry data. Lancet Oncol. 2025;26(1):51-63. doi:<a href="https://doi.org/10.1016/S1470-2045(24)00600-4">10.1016/S1470-2045(24)00600-4</a></li>
+      <li id="ref-5">Patel VR, Adamson AS, Welch HG. The rise in early-onset cancer in the US population—more apparent than real. JAMA Intern Med. 2025;185(11):1370-4. doi:<a href="https://doi.org/10.1001/jamainternmed.2025.4917">10.1001/jamainternmed.2025.4917</a></li>
+      <li id="ref-6">Castelo M, et al. Clinical delays and comparative outcomes in younger and older adults with colorectal cancer: a systematic review. Curr Oncol. 2022;29(11):8609-25. Disponível em: <a href="https://pubmed.ncbi.nlm.nih.gov/36421332/">https://pubmed.ncbi.nlm.nih.gov/36421332/</a></li>
+      <li id="ref-7">Demb J, Kolb JM, Dounel J, Fritz CDL, Advani SM, Cao Y, et al. Red flag signs and symptoms for patients with early-onset colorectal cancer: a systematic review and meta-analysis. JAMA Netw Open. 2024;7(5):e2413157. doi:<a href="https://doi.org/10.1001/jamanetworkopen.2024.13157">10.1001/jamanetworkopen.2024.13157</a></li>
+      <li id="ref-8">Díaz-Gay M, dos Santos W, Moody S, Kazachkova M, Abbasi A, et al. Geographic and age variations in mutational processes in colorectal cancer. Nature. 2025. Publicado online em 23 abr. 2025. PMID: 40267983. Disponível em: <a href="https://pubmed.ncbi.nlm.nih.gov/40267983/">https://pubmed.ncbi.nlm.nih.gov/40267983/</a></li>
+      <li id="ref-9">Matthius A. Examining the rise of early-onset incidence across cancer types [Internet]. Philadelphia: American Association for Cancer Research; 25 jul. 2025 [acesso em 4 out. 2026]. Disponível em: <a href="https://www.aacr.org/blog/2025/07/25/examining-the-rise-of-early-onset-incidence-across-cancer-types/">aacr.org</a></li>
+      <li id="ref-10">Sociedad Española de Oncología Médica (SEOM). Más de 300.000 nuevos casos de cáncer en 2026, con mayor supervivencia y calidad de vida gracias a la investigación [Internet]. Madrid: SEOM; 2026 [acesso em 4 out. 2026]. Disponível em: <a href="https://seom.org/notas-prensa/211481-mas-de-300-000-nuevos-casos-de-cancer-en-2026-con-mayor-superviviencia-y-calidad-de-vida-gracias-a-la-investigacion-ndp">seom.org</a></li>
+      <li id="ref-11">Martins LFL, Chaves GV, Oliveira JFP, Souza LBL, Chagas Neto P, Carvalho FN, et al. Perfil epidemiológico da incidência de câncer no Brasil e regiões: estimativas para o triênio 2026-2028. Rev Bras Cancerol. 2026;72(2):e-025587. doi:<a href="https://doi.org/10.32635/2176-9745.RBC.2026v72n2.5587">10.32635/2176-9745.RBC.2026v72n2.5587</a></li>
+    </ol>
+  </div>
+</section>
+
+</main>
+
+<footer class="institutional-footer">
+  <p>Infográfico elaborado pelos projetos Amor à Pele e PET-Saúde Digital G10 Feridas Crônicas, UFPel, em Outubro de 2026.</p>
+</footer>
+
+<script>
+/* Troca cada quadro reservado pela imagem real assim que o arquivo existir em img/ */
+document.querySelectorAll('.img-placeholder[data-img-path]').forEach(function(fig){
+  var im=new Image();
+  im.onload=function(){
+    im.alt=fig.dataset.alt||''; im.className='real-img'; im.loading='lazy';
+    var box=fig.querySelector('.placeholder-box'); if(box){ box.replaceWith(im); }
+    fig.classList.remove('img-placeholder');
+  };
+  im.src=fig.dataset.imgPath;
+});
+
+(function(){
+  var Q = [
+    {p:"Entre 1990 e 2019, os casos de câncer em menores de 50 anos no mundo subiram 79%. Por que esse número sozinho não prova que o risco individual aumentou tanto?",
+     o:["Porque os dados de 1990 foram perdidos","Porque é um número absoluto e a população mundial também cresceu","Porque o câncer em jovens não é registrado","Porque as mortes caíram no mesmo período"], c:1,
+     e:"Contagens absolutas crescem quando a população cresce. Taxas por 100 mil pessoas, ou comparações por geração, separam esse efeito do aumento real do risco."},
+    {p:"Em quais cânceres de adultos jovens a mortalidade também está subindo, e não só os diagnósticos?",
+     o:["Tireoide e rim","Mama e próstata","Colorretal e endométrio","Pulmão e fígado"], c:2,
+     e:"Mesmo a análise mais cética encontrou alta de mortalidade no colorretal e no endométrio. Em tireoide e rim, o padrão sugere sobrediagnóstico."},
+    {p:"O que significa dizer que o aumento segue um “efeito de coorte de nascimento”?",
+     o:["Que o câncer passa de pais para filhos","Que pessoas nascidas mais recentemente têm mais risco na mesma idade que as gerações anteriores","Que só quem nasceu em 1990 adoece","Que o diagnóstico é feito no nascimento"], c:1,
+     e:"Quem nasceu em 1990 tem, por exemplo, duas a três vezes mais risco de câncer de pâncreas, rim e intestino delgado do que quem nasceu em 1955, na mesma idade."},
+    {p:"O que o estudo sobre a colibactina mostrou?",
+     o:["Que a toxina causa todos os cânceres colorretais","Que sua marca no DNA é 3,3 vezes mais comum em quem adoeceu antes dos 40 do que depois dos 70","Que antibióticos eliminam o risco","Que a marca aparece só em países ricos"], c:1,
+     e:"É uma associação forte, mas não prova causa. A hipótese é de exposição na infância às bactérias produtoras da toxina."},
+    {p:"Qual destes sinais está entre os mais associados ao câncer colorretal em adultos jovens?",
+     o:["Queda de cabelo","Sangue nas fezes","Febre alta repentina","Dor nas articulações"], c:1,
+     e:"Quase metade dos pacientes jovens chega com sangue nas fezes, e quase metade com dor abdominal. O tempo até o diagnóstico tem mediana de 4 meses."}
+  ];
+  var root=document.getElementById('quiz'), scoreEl=document.getElementById('score'), answered=0, right=0;
+  Q.forEach(function(q,i){
+    var d=document.createElement('div'); d.className='q';
+    var h=document.createElement('p'); h.className='q-prompt'; h.textContent=(i+1)+'. '+q.p; d.appendChild(h);
+    var opts=document.createElement('div'); opts.className='q-opts'; opts.setAttribute('role','group');
+    var fb=document.createElement('p'); fb.className='q-feedback'; fb.setAttribute('aria-live','polite');
+    q.o.forEach(function(t,j){
+      var b=document.createElement('button'); b.type='button'; b.textContent=t;
+      b.addEventListener('click',function(){
+        var all=opts.querySelectorAll('button');
+        all.forEach(function(x){x.disabled=true});
+        all[q.c].classList.add('right');
+        if(j!==q.c){ b.classList.add('wrong'); fb.innerHTML='<strong>Não foi essa.</strong> '+q.e; }
+        else { right++; fb.innerHTML='<strong>Isso mesmo.</strong> '+q.e; }
+        fb.classList.add('show'); answered++;
+        if(answered===Q.length){ scoreEl.textContent='Você acertou '+right+' de '+Q.length+'.'; }
+      });
+      opts.appendChild(b);
+    });
+    d.appendChild(opts); d.appendChild(fb); root.appendChild(d);
+  });
+})();
+
+/* ================= Rede semântica das referências ================= */
+(function(){
+  var C={mag:'#1E6B73',con:'#674C70',diag:'#B9781A',cau:'#3F7D4E',nac:'#5B6E8C'};
+  var G={mag:'Tamanho do fenômeno',con:'Contraponto',diag:'Diagnóstico tardio',cau:'Causas',nac:'Contexto nacional'};
+  var N=[
+    {id:1,l:'Sung 2024',g:'mag',x:300,y:110,src:'Lancet Public Health · EUA, nascidos de 1920 a 1990',
+     c:'Muda a pergunta de “que idade?” para “que geração?”: 17 de 34 cânceres aumentam nos nascidos mais recentemente. É a base da hipótese de exposições no início da vida.'},
+    {id:2,l:'Zhao 2023',g:'mag',x:110,y:150,src:'BMJ Oncology · 204 países, 29 cânceres',
+     c:'O retrato global: +79% de casos e +28% de mortes em menores de 50 anos entre 1990 e 2019. Forte em escala, frágil no detalhe, porque trabalha com números absolutos e modelos estatísticos.'},
+    {id:3,l:'Shiels 2025',g:'mag',x:190,y:330,src:'Cancer Discovery · EUA, 2010–2019',
+     c:'O mapa mais completo dos EUA: 14 tipos sobem e 19 caem nos jovens, e a mortalidade geral não aumenta. Separa o que sobe só nos jovens do que sobe em todas as idades.'},
+    {id:4,l:'Sung 2025',g:'mag',x:560,y:110,src:'Lancet Oncology · 50 países',
+     c:'Mostra que o colorretal precoce não é fenômeno só norte-americano: sobe em 27 de 50 países, incluindo a América Latina. É o nó mais conectado da rede.'},
+    {id:5,l:'Patel 2025',g:'con',x:460,y:330,src:'JAMA Internal Medicine · EUA, 1992–2022',
+     c:'O contraponto necessário: para oito cânceres, os diagnósticos dobram e as mortes não mudam, assinatura do sobrediagnóstico. Mas admite que, no colorretal e no endométrio, a alta é real.'},
+    {id:6,l:'Castelo 2022',g:'diag',x:690,y:300,src:'Current Oncology · revisão de 39 estudos',
+     c:'Desloca o foco do “quantos” para o “quando”: jovens chegam mais em estágio III ou IV, e o atraso acontece antes do diagnóstico.'},
+    {id:7,l:'Demb 2024',g:'diag',x:790,y:440,src:'JAMA Network Open · metanálise de 81 estudos',
+     c:'Traduz o atraso em sinais concretos: sangue nas fezes, dor abdominal, mudança do hábito intestinal e anemia, com meses entre o sinal e o diagnóstico.'},
+    {id:8,l:'Díaz-Gay 2025',g:'cau',x:300,y:480,src:'Nature · 981 tumores de 11 países',
+     c:'A primeira pista molecular forte: a marca da colibactina no DNA é 3,3 vezes mais frequente em quem adoece antes dos 40. Associação, ainda não causa.'},
+    {id:9,l:'AACR 2025',g:'cau',x:95,y:480,src:'Blog da American Association for Cancer Research',
+     c:'Ponte de divulgação: resume o estudo de Shiels, mostra que cerca de 80% dos jovens com câncer não têm mutação hereditária e lista as hipóteses do “exposoma” com cautela.'},
+    {id:10,l:'SEOM 2026',g:'nac',x:850,y:150,src:'Sociedade Espanhola de Oncologia Médica',
+     c:'O contexto da matéria espanhola: mais de 8 mil cânceres em adultos jovens previstos para 2026 na Espanha, com hipóteses ligadas a dieta, microbiota, obesidade e antibióticos.'},
+    {id:11,l:'INCA 2026',g:'nac',x:700,y:70,src:'Revista Brasileira de Cancerologia · Brasil, 2026–2028',
+     c:'O Brasil: colorretal em alta e segundo mais frequente, mas sem recorte de idade e com registros que cobrem cerca de 25% da população.'}
+  ];
+  /* t: c = complementa, x = contrapõe, r = cita/resume (de a para b) */
+  var E=[
+    {a:1,b:2,t:'c',w:3,d:'A mesma pergunta em escalas diferentes: o mundo em números absolutos e os EUA por geração.'},
+    {a:1,b:3,t:'c',w:3,d:'Os mesmos registros dos EUA com recortes diferentes: por geração e pelo período 2010–2019.'},
+    {a:1,b:4,t:'c',w:3,d:'A mesma equipe da American Cancer Society leva o padrão do colorretal para 50 países.'},
+    {a:5,b:1,t:'x',w:3,d:'A principal disputa do tema: efeito de geração (mais doença) ou efeito de diagnóstico (mais detecção).'},
+    {a:5,b:3,t:'x',w:2,d:'Ambos encontram mortalidade geral estável; Shiels a trata como ponto a investigar, Patel como sinal de sobrediagnóstico.'},
+    {a:5,b:2,t:'x',w:2,d:'Lidos juntos, mostram por que contar casos e contar mortes pode levar a conclusões opostas.'},
+    {a:5,b:4,t:'c',w:2,d:'Um ponto de acordo: até a leitura cética reconhece que a alta do colorretal é real.'},
+    {a:4,b:6,t:'c',w:2,d:'Se o colorretal sobe em jovens, o atraso no diagnóstico pesa ainda mais.'},
+    {a:6,b:7,t:'c',w:3,d:'Uma revisão mede o atraso; a outra mostra quais sinais estão sendo ignorados.'},
+    {a:4,b:8,t:'c',w:2,d:'Da tendência ao mecanismo: a colibactina é candidata a explicar parte da alta do colorretal precoce.'},
+    {a:8,b:1,t:'c',w:2,d:'Uma exposição bacteriana na infância é exatamente o tipo de causa que o efeito de geração sugere.'},
+    {a:9,b:3,t:'r',w:2,d:'O texto da AACR resume e divulga os resultados de Shiels.'},
+    {a:9,b:8,t:'c',w:1,d:'Duas frentes sobre causas: genética e exposoma de um lado, microbiota do outro.'},
+    {a:11,b:4,t:'r',w:2,d:'A estimativa do INCA cita o estudo dos 50 países.'},
+    {a:10,b:11,t:'c',w:2,d:'Estimativas nacionais de dois países; só a espanhola destaca os adultos jovens.'}
+  ];
+  var svg=document.getElementById('netSvg'), panel=document.getElementById('netPanel'), NS='http://www.w3.org/2000/svg';
+  var byId={}; N.forEach(function(n){byId[n.id]=n});
+  var sel=null, mobile;
+  function el(t,a){var e=document.createElementNS(NS,t); for(var k in a){e.setAttribute(k,a[k])} return e}
+  function pos(n){return mobile?{x:n.y+40,y:n.x+30}:{x:n.x+20,y:n.y+20}}
+  function draw(){
+    mobile=window.matchMedia('(max-width: 699px)').matches;
+    var W=mobile?600:920, H=mobile?960:560, R=mobile?34:28, FS=mobile?21:15;
+    svg.setAttribute('viewBox','0 0 '+W+' '+H); svg.innerHTML='';
+    var defs=el('defs',{}); var m=el('marker',{id:'arr',viewBox:'0 0 10 10',refX:'10',refY:'5',markerWidth:'7',markerHeight:'7',orient:'auto-start-reverse'});
+    m.appendChild(el('path',{d:'M0 0 L10 5 L0 10 Z',fill:'#B9781A'})); defs.appendChild(m); svg.appendChild(defs);
+    var ge=el('g',{}), gn=el('g',{}); svg.appendChild(ge); svg.appendChild(gn);
+    E.forEach(function(e,i){
+      var p=pos(byId[e.a]), q=pos(byId[e.b]); var dx=q.x-p.x, dy=q.y-p.y, L=Math.sqrt(dx*dx+dy*dy);
+      var x2=q.x-dx/L*(R+4), y2=q.y-dy/L*(R+4), x1=p.x+dx/L*R, y1=p.y+dy/L*R;
+      var a={x1:x1,y1:y1,x2:x2,y2:y2,class:'edge','data-i':i,'stroke-width':(e.w*0.9+0.6)*(mobile?1.4:1),'stroke-linecap':'round'};
+      if(e.t==='c'){a.stroke='#14292E'; a['stroke-opacity']=.55}
+      if(e.t==='x'){a.stroke='#674C70'; a['stroke-dasharray']='7 5'}
+      if(e.t==='r'){a.stroke='#B9781A'; a['stroke-dasharray']='2 4'; a['marker-end']='url(#arr)'}
+      ge.appendChild(el('line',a));
+    });
+    N.forEach(function(n){
+      var p=pos(n), g=el('g',{class:'node',tabindex:'0',role:'button','aria-label':n.l+', '+G[n.g],'data-id':n.id});
+      g.appendChild(el('circle',{cx:p.x,cy:p.y,r:R,fill:C[n.g],stroke:'#fff','stroke-width':3}));
+      var t=el('text',{x:p.x,y:p.y+FS*0.36,'text-anchor':'middle','font-family':'Newsreader, Georgia, serif','font-size':FS*1.25,'font-weight':600,fill:'#fff'}); t.textContent=n.id; g.appendChild(t);
+      var lb=el('text',{x:p.x,y:p.y+R+FS+4,'text-anchor':'middle','font-family':'Public Sans, Arial, sans-serif','font-size':FS,'font-weight':600,fill:'#14292E',stroke:'#fff','stroke-width':4,'paint-order':'stroke'}); lb.textContent=n.l; g.appendChild(lb);
+      g.addEventListener('click',function(){select(n.id,false)});
+      g.addEventListener('keydown',function(ev){if(ev.key==='Enter'||ev.key===' '){ev.preventDefault(); select(n.id,false)}});
+      gn.appendChild(g);
+    });
+    if(sel) select(sel,false,true);
+  }
+  function select(id,scroll,silent){
+    sel=id; var n=byId[id]; svg.classList.add('has-sel');
+    var nb={}; svg.querySelectorAll('.edge').forEach(function(l){
+      var e=E[+l.getAttribute('data-i')], on=(e.a===id||e.b===id); l.classList.toggle('on',on);
+      if(on){nb[e.a===id?e.b:e.a]=e}
+    });
+    svg.querySelectorAll('.node').forEach(function(g){var k=+g.getAttribute('data-id'); g.classList.toggle('sel',k===id); g.classList.toggle('on',!!nb[k]);
+      g.querySelector('circle').setAttribute('r', (k===id? (mobile?42:34) : (mobile?34:28)))});
+    var lab={c:'Complementa',x:'Contrapõe',r:'Cita ou resume'};
+    var h='<p class="np-kicker" style="color:'+C[n.g]+'">'+G[n.g]+'</p><h3>['+n.id+'] '+n.l+'</h3><p class="np-src">'+n.src+'</p><p class="np-comment">'+n.c+'</p>';
+    var keys=Object.keys(nb);
+    if(keys.length){ h+='<h4>Dialoga com</h4><ul class="np-links">';
+      keys.forEach(function(k){var e=nb[k], o=byId[k]; var dir=(e.t==='r')?(e.a===id?'Cita ou resume':'É citado ou resumido por'):lab[e.t];
+        h+='<li><button type="button" data-go="'+k+'"><b style="color:'+(e.t==='x'?'#674C70':e.t==='r'?'#7A4E0E':'#14292E')+'">'+dir+' · ['+o.id+'] '+o.l+'</b>'+e.d+'</button></li>'});
+      h+='</ul>'; }
+    h+='<a class="np-ref" href="#ref-'+n.id+'">Ver referência completa</a>';
+    panel.style.borderTopColor=C[n.g]; panel.innerHTML=h;
+    panel.querySelectorAll('[data-go]').forEach(function(b){b.addEventListener('click',function(){select(+b.getAttribute('data-go'),false);
+      var t=svg.querySelector('.node[data-id="'+b.getAttribute('data-go')+'"]'); if(t) t.focus({preventScroll:true});})});
+  }
+  draw(); select(5,false);
+  var rt; window.addEventListener('resize',function(){clearTimeout(rt); rt=setTimeout(draw,150)});
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,6 @@
+Coloque nesta pasta:
+  logo-institucional.png      (logos Amor-à-Pele + PET-Saúde Digital, fundo transparente, altura >= 120 px)
+  geracoes-exposicao.png      (ilustração a gerar - prompt 1)
+  colibactina-dna.png         (ilustração a gerar - prompt 2)
+  consulta-adulto-jovem.jpg   (foto real)
+Os gráficos (figuras 2 e 5) já estão desenhados dentro do index.html.
