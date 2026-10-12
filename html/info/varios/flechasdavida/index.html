@@ -521,25 +521,43 @@
   .joinville-card .practical-grid .pill b{ color:var(--br-green-deep); }
 
   /* MÚSICA DE ABERTURA */
-  .music-toggle{
+  .music-widget{
     position:fixed;
     bottom:24px; right:24px;
     z-index:50;
-    width:52px; height:52px;
+    display:flex;
+    align-items:center;
+    gap:10px;
+    background:#fff;
+    padding:7px 16px 7px 7px;
+    border-radius:999px;
+    box-shadow:0 6px 18px rgba(0,0,0,.2);
+  }
+  .music-toggle{
+    flex:none;
+    width:38px; height:38px;
     border:none; border-radius:999px;
     background:var(--rose-deep);
     color:#fff;
-    font-size:1.25rem;
+    font-size:1.05rem;
     display:flex; align-items:center; justify-content:center;
     cursor:pointer;
-    box-shadow:0 6px 18px rgba(0,0,0,.25);
     transition:transform .15s ease;
   }
   .music-toggle:hover{ transform:scale(1.08); }
   .music-toggle.playing{ animation:pulse-music 1.8s ease-in-out infinite; }
   @keyframes pulse-music{
-    0%,100%{ box-shadow:0 6px 18px rgba(140,63,86,.35); }
-    50%{ box-shadow:0 6px 28px rgba(140,63,86,.6); }
+    0%,100%{ box-shadow:0 0 0 0 rgba(140,63,86,.35); }
+    50%{ box-shadow:0 0 0 6px rgba(140,63,86,0); }
+  }
+  .music-volume{
+    width:80px;
+    accent-color:var(--rose-deep);
+    cursor:pointer;
+  }
+  @media (max-width:480px){
+    .music-widget{ bottom:16px; right:16px; padding:6px 12px 6px 6px; }
+    .music-volume{ width:60px; }
   }
 
   .references{ font-size:.88rem; color:var(--ink-soft); }
@@ -672,11 +690,19 @@
 <body>
 
 <audio id="bg-music" src="img/DREAMS.mp3" loop preload="none"></audio>
-<button id="music-toggle" class="music-toggle" aria-label="Tocar música de abertura" title="Tocar música de abertura">🎵</button>
+<div class="music-widget">
+  <button id="music-toggle" class="music-toggle" aria-label="Tocar música de abertura" title="Tocar música de abertura">🎵</button>
+  <input type="range" id="music-volume" class="music-volume" min="0" max="100" value="60" aria-label="Volume da música">
+</div>
 <script>
 (function(){
   var audio = document.getElementById('bg-music');
   var btn = document.getElementById('music-toggle');
+  var volumeSlider = document.getElementById('music-volume');
+  audio.volume = Number(volumeSlider.value) / 100;
+  volumeSlider.addEventListener('input', function(){
+    audio.volume = Number(volumeSlider.value) / 100;
+  });
   function setUI(playing){
     btn.textContent = playing ? '🔊' : '🎵';
     btn.classList.toggle('playing', playing);
