@@ -1,0 +1,1378 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Flechas Rosas — Quando o arco vira parte da recuperação</title>
+<link rel="icon" type="image/png" href="img/logo.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500&family=Source+Sans+3:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg: #FBF7F4;
+    --bg-soft: #F3E8E4;
+    --ink: #2B2420;
+    --ink-soft: #5B5450;
+    --rose: #B35C73;
+    --rose-deep: #8C3F56;
+    --rose-pale: #F3DCE2;
+    --navy: #2E3A4E;
+    --line: #E4D4CE;
+    --card: #FFFFFF;
+    --serif: 'Playfair Display', 'Source Serif 4', serif;
+    --sans: 'Source Sans 3', 'Lato', sans-serif;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    background:var(--bg);
+    color:var(--ink);
+    font-family:var(--sans);
+    line-height:1.65;
+    -webkit-font-smoothing:antialiased;
+  }
+  img{max-width:100%; display:block;}
+  a{color:var(--rose-deep);}
+
+  /* HEADER */
+  .institutional-header{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:16px 6vw;
+    background:#fff;
+    border-bottom:1px solid var(--line);
+    position:sticky;
+    top:0;
+    z-index:20;
+  }
+  .header-identity{
+    font-family:var(--serif);
+    font-weight:600;
+    font-size:1rem;
+    color:var(--rose-deep);
+    letter-spacing:.02em;
+  }
+  .header-tag{
+    font-size:.72rem;
+    color:var(--ink-soft);
+    text-transform:uppercase;
+    letter-spacing:.12em;
+  }
+  .header-right{ display:flex; align-items:center; gap:14px; }
+  .header-logo{ max-height:44px; display:block; }
+
+  /* HERO */
+  .hero{
+    padding:7vw 6vw 5vw;
+    background:
+      radial-gradient(1100px 500px at 85% -10%, var(--rose-pale) 0%, transparent 60%),
+      var(--bg);
+    display:grid;
+    grid-template-columns: 1.3fr 1fr;
+    gap:48px;
+    align-items:center;
+  }
+  .hero .eyebrow{
+    font-size:.78rem;
+    text-transform:uppercase;
+    letter-spacing:.16em;
+    color:var(--rose-deep);
+    font-weight:600;
+    margin-bottom:14px;
+  }
+  .hero h1{
+    font-family:var(--serif);
+    font-size:clamp(2.1rem, 4.2vw, 3.4rem);
+    line-height:1.08;
+    margin:0 0 18px;
+    color:var(--ink);
+  }
+  .hero h1 em{ color:var(--rose-deep); font-style:italic; }
+  .hero .lede{
+    font-size:1.12rem;
+    color:var(--ink-soft);
+    max-width:46ch;
+  }
+  .hero-stats{
+    display:flex;
+    gap:28px;
+    margin-top:28px;
+    flex-wrap:wrap;
+  }
+  .hero-stats .stat{ min-width:120px; }
+  .hero-stats .stat strong{
+    display:block;
+    font-family:var(--serif);
+    font-size:1.9rem;
+    color:var(--rose-deep);
+    line-height:1;
+  }
+  .hero-stats .stat span{
+    font-size:.78rem;
+    color:var(--ink-soft);
+  }
+
+  main{ max-width:1180px; margin:0 auto; padding:0 6vw; }
+  section{ padding:56px 0; border-bottom:1px solid var(--line); }
+  section:last-of-type{ border-bottom:none; }
+
+  .kicker{
+    font-size:.76rem;
+    text-transform:uppercase;
+    letter-spacing:.14em;
+    color:var(--rose-deep);
+    font-weight:700;
+    margin-bottom:10px;
+    display:block;
+  }
+  h2.section-title{
+    font-family:var(--serif);
+    font-size:clamp(1.5rem, 2.4vw, 2.1rem);
+    margin:0 0 28px;
+    max-width:24ch;
+    color:var(--ink);
+  }
+  p.lead-p{ font-size:1.08rem; color:var(--ink-soft); max-width:70ch; }
+
+  .two-col{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:48px;
+    align-items:start;
+  }
+  .two-col.reverse .text{ order:2; }
+  .two-col.reverse .visual{ order:1; }
+
+  /* TIMELINE */
+  .timeline{
+    position:relative;
+    margin-top:36px;
+    padding-left:28px;
+    border-left:2px solid var(--rose-pale);
+  }
+  .tl-item{ position:relative; padding:0 0 36px 24px; }
+  .tl-item:last-child{ padding-bottom:0; }
+  .tl-item::before{
+    content:"";
+    position:absolute;
+    left:-33px;
+    top:3px;
+    width:14px; height:14px;
+    border-radius:50%;
+    background:var(--rose);
+    border:3px solid var(--bg);
+    box-shadow:0 0 0 2px var(--rose-pale);
+  }
+  .tl-year{
+    font-family:var(--serif);
+    font-weight:700;
+    color:var(--rose-deep);
+    font-size:1.15rem;
+  }
+  .tl-item p{ margin:6px 0 0; color:var(--ink-soft); max-width:62ch;}
+
+  /* CARDS / GRID PAÍSES */
+  .country-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit, minmax(210px,1fr));
+    gap:20px;
+    margin-top:32px;
+  }
+  .country-card{
+    background:var(--card);
+    border:1px solid var(--line);
+    border-radius:14px;
+    padding:22px 20px;
+  }
+  .country-card .flag-emoji{
+    display:inline-block;
+    margin-right:8px;
+    font-size:1.1rem;
+    vertical-align:-1px;
+  }
+  .country-card h3{
+    font-family:var(--serif);
+    font-size:1.05rem;
+    margin:10px 0 8px;
+  }
+  .country-card p{ font-size:.92rem; color:var(--ink-soft); margin:0;}
+
+  /* CALLOUT */
+  .callout{
+    background:var(--rose-pale);
+    border-left:4px solid var(--rose-deep);
+    border-radius:4px;
+    padding:22px 28px;
+    margin:32px 0;
+    font-family:var(--serif);
+    font-style:italic;
+    font-size:1.15rem;
+    color:var(--rose-deep);
+    line-height:1.5;
+  }
+  .callout.muted{
+    background:#F4F1EE;
+    border-left-color:var(--navy);
+    color:var(--navy);
+    font-style:normal;
+    font-family:var(--sans);
+    font-size:1rem;
+  }
+
+  /* CRITERIA LIST */
+  .criteria{
+    display:grid;
+    grid-template-columns:repeat(auto-fit, minmax(230px,1fr));
+    gap:16px;
+    margin-top:28px;
+  }
+  .criteria .item{
+    background:var(--card);
+    border:1px solid var(--line);
+    border-radius:12px;
+    padding:18px 20px;
+    display:flex; gap:12px; align-items:flex-start;
+  }
+  .criteria .item .n{
+    font-family:var(--serif);
+    font-weight:700;
+    color:var(--rose-deep);
+    font-size:1.1rem;
+    flex:none;
+  }
+  .criteria .item p{ margin:0; font-size:.92rem; color:var(--ink-soft);}
+
+  /* TESTIMONIAL */
+  .testimonial{
+    background:var(--navy);
+    color:#F3EDE9;
+    border-radius:18px;
+    padding:40px 44px;
+    display:grid;
+    grid-template-columns:140px 1fr;
+    gap:28px;
+    align-items:center;
+    margin-top:12px;
+  }
+  .testimonial .avatar-ph{
+    width:120px;height:120px;border-radius:50%;
+    background:rgba(255,255,255,.08);
+    border:2px dashed rgba(255,255,255,.3);
+    display:flex;align-items:center;justify-content:center;
+    font-size:1.8rem;
+  }
+  .testimonial blockquote{
+    margin:0 0 10px;
+    font-family:var(--serif);
+    font-style:italic;
+    font-size:1.2rem;
+    line-height:1.5;
+  }
+  .testimonial cite{
+    font-style:normal;
+    font-size:.85rem;
+    opacity:.75;
+  }
+
+  /* STUDY RESULTS BOX */
+  .study-box{
+    background:var(--card);
+    border:1px solid var(--line);
+    border-radius:16px;
+    padding:30px 32px;
+    margin-top:24px;
+  }
+  .study-box h4{
+    font-family:var(--serif);
+    margin:0 0 14px;
+    font-size:1.1rem;
+    color:var(--rose-deep);
+  }
+  .study-box ul{ margin:0; padding-left:20px; color:var(--ink-soft);}
+  .study-box li{ margin-bottom:8px; }
+  .caveat{
+    margin-top:16px;
+    font-size:.85rem;
+    color:var(--ink-soft);
+    border-top:1px dashed var(--line);
+    padding-top:14px;
+  }
+
+  /* IMAGE PLACEHOLDER */
+  figure.img-placeholder{ margin:0; }
+  figure.img-placeholder > img{
+    width:100%;
+    height:auto;
+    border-radius:12px;
+    object-fit:cover;
+    display:block;
+  }
+  .img-placeholder .placeholder-box{
+    border:2px dashed #cbb7bd;
+    background:#F6ECEE;
+    border-radius:12px;
+    padding:32px 24px;
+    text-align:center;
+    color:#8C6B74;
+    min-height:220px;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+    gap:8px;
+  }
+  .placeholder-icon{ font-size:2rem; }
+  .placeholder-label{
+    font-family:monospace;
+    font-size:.82rem;
+    background:#fff;
+    padding:4px 10px;
+    border-radius:4px;
+    color:#5B4349;
+    border:1px solid #e3cdd3;
+  }
+  .placeholder-hint{
+    font-size:.8rem;
+    color:#9a7e85;
+    font-style:italic;
+    max-width:340px;
+  }
+  figcaption{
+    font-size:.82rem;
+    color:var(--ink-soft);
+    margin-top:10px;
+    line-height:1.4;
+  }
+
+  /* JOINVILLE SECTION */
+  .badge-pioneer{
+    display:inline-flex;
+    align-items:center;
+    gap:8px;
+    background:var(--rose-pale);
+    color:var(--rose-deep);
+    font-size:.78rem;
+    font-weight:700;
+    padding:6px 14px;
+    border-radius:999px;
+    margin-bottom:18px;
+    text-transform:uppercase;
+    letter-spacing:.06em;
+  }
+  .attribution-note{
+    font-size:.85rem;
+    color:var(--ink-soft);
+    font-style:italic;
+    margin-top:6px;
+  }
+  .practical-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
+    gap:18px;
+    margin-top:28px;
+  }
+  .practical-grid .pill{
+    background:#fff;
+    border:1px solid var(--line);
+    border-radius:12px;
+    padding:18px;
+  }
+  .practical-grid .pill b{ display:block; color:var(--rose-deep); font-family:var(--serif); margin-bottom:4px;}
+  .practical-grid .pill span{ font-size:.88rem; color:var(--ink-soft);}
+
+  /* SYNTHESIS */
+  .synthesis{
+    background: linear-gradient(135deg, var(--rose-deep), #6F3146);
+    color:#fff;
+    border-radius:22px;
+    padding:48px 44px;
+    margin:12px 0 0;
+  }
+  .synthesis h2{
+    font-family:var(--serif);
+    font-size:1.7rem;
+    margin:0 0 18px;
+    color:#fff;
+  }
+  .synthesis p{ color:rgba(255,255,255,.9); max-width:70ch; }
+  .synthesis .dos-donts{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:24px;
+    margin-top:28px;
+  }
+  .synthesis .col h4{
+    font-size:.85rem;
+    text-transform:uppercase;
+    letter-spacing:.08em;
+    margin:0 0 12px;
+    opacity:.85;
+  }
+  .synthesis .col ul{ margin:0; padding-left:20px; }
+  .synthesis .col li{ margin-bottom:10px; color:rgba(255,255,255,.92); font-size:.95rem; }
+
+  /* REFERENCES */
+  /* QUIZ DE ENTENDIMENTO */
+  .quiz-list{ display:flex; flex-direction:column; gap:12px; margin-top:28px; }
+  .quiz-item{
+    background:var(--card);
+    border:1px solid var(--line);
+    border-radius:12px;
+    padding:4px 20px;
+  }
+  .quiz-item summary{
+    cursor:pointer;
+    padding:16px 0;
+    font-weight:600;
+    color:var(--ink);
+    list-style:none;
+    display:flex;
+    align-items:center;
+    gap:10px;
+  }
+  .quiz-item summary::-webkit-details-marker{ display:none; }
+  .quiz-item summary::before{
+    content:"+";
+    font-family:var(--serif);
+    font-size:1.2rem;
+    color:var(--rose-deep);
+    flex:none;
+    width:20px;
+  }
+  .quiz-item[open] summary::before{ content:"–"; }
+  .quiz-item .answer{
+    padding:0 0 18px 30px;
+    color:var(--ink-soft);
+    font-size:.95rem;
+    border-top:1px dashed var(--line);
+    margin-top:-2px;
+    padding-top:14px;
+  }
+  .quiz-item .answer strong{ color:var(--rose-deep); }
+
+  /* QUESTÕES SOCRÁTICAS */
+  .socratic-list{
+    display:grid;
+    grid-template-columns:repeat(auto-fit, minmax(260px,1fr));
+    gap:18px;
+    margin-top:28px;
+  }
+  .socratic-item{
+    background:var(--navy);
+    color:#F3EDE9;
+    border-radius:14px;
+    padding:24px 22px;
+  }
+  .socratic-item .q-num{
+    font-family:var(--serif);
+    font-style:italic;
+    color:var(--rose-pale);
+    font-size:.85rem;
+    display:block;
+    margin-bottom:8px;
+  }
+  .socratic-item p{ margin:0; font-size:1rem; line-height:1.55; }
+
+  /* STANFORD — card vermelho cardinal claro (EUA) */
+  .stanford-card{
+    --sf-red:#FBEAEA;
+    --sf-red-line:#E8C2C2;
+    --sf-red-deep:#8C1515;
+    background:var(--sf-red);
+    border:1px solid var(--sf-red-line);
+    border-radius:20px;
+    padding:36px;
+    margin-top:28px;
+  }
+  .stanford-card .cs-flag{
+    font-size:.78rem; font-weight:700; background:#fff; color:var(--sf-red-deep);
+    padding:5px 12px; border-radius:999px; text-transform:uppercase; letter-spacing:.05em;
+  }
+  .stanford-card .lead-p{ color:#4A2F2F; }
+  .stanford-card figcaption{ color:#6B4A4A; }
+  .stanford-card .cs-stats .stat{ background:#fff; border-color:var(--sf-red-line); }
+  .stanford-card .cs-stats .stat strong{ color:var(--sf-red-deep); }
+  .stanford-card .callout.muted{ background:#fff; border-left-color:var(--sf-red-deep); color:#2E3A4E; }
+
+  /* JOINVILLE — card verde claro (Brasil) */
+  .joinville-card{
+    --br-green:#E8F5E9;
+    --br-green-line:#BFE3C0;
+    --br-green-deep:#2E7D4F;
+    background:var(--br-green);
+    border:1px solid var(--br-green-line);
+    border-radius:20px;
+    padding:36px;
+  }
+  .joinville-card .kicker{ color:var(--br-green-deep); }
+  .joinville-card .badge-pioneer{
+    background:#fff;
+    color:var(--br-green-deep);
+  }
+  .joinville-card .lead-p{ color:#2F4335; }
+  .joinville-card figcaption{ color:#4A5E4E; }
+  .joinville-card .practical-grid .pill{
+    background:#fff;
+    border-color:var(--br-green-line);
+  }
+  .joinville-card .practical-grid .pill b{ color:var(--br-green-deep); }
+
+  /* MENU DE NAVEGAÇÃO */
+  .topnav{
+    position:sticky;
+    top:var(--header-h, 72px);
+    z-index:19;
+    background:#fff;
+    border-bottom:1px solid var(--line);
+    padding:12px 6vw;
+    display:flex;
+    gap:24px;
+    overflow-x:auto;
+    white-space:nowrap;
+    -webkit-overflow-scrolling:touch;
+    scrollbar-width:none;
+  }
+  .topnav::-webkit-scrollbar{ display:none; }
+  .topnav a{
+    flex:none;
+    color:var(--ink-soft);
+    text-decoration:none;
+    font-size:.78rem;
+    font-weight:700;
+    text-transform:uppercase;
+    letter-spacing:.05em;
+    padding:4px 0 6px;
+    border-bottom:2px solid transparent;
+    transition:color .15s ease, border-color .15s ease;
+  }
+  .topnav a:hover{ color:var(--rose-deep); }
+  .topnav a.active{ color:var(--rose-deep); border-bottom-color:var(--rose-deep); }
+  section[id]{ scroll-margin-top:118px; }
+
+  /* MÚSICA DE ABERTURA */
+  .music-widget{
+    position:fixed;
+    bottom:24px; right:24px;
+    z-index:50;
+    display:flex;
+    align-items:center;
+    gap:10px;
+    background:#fff;
+    padding:7px 16px 7px 7px;
+    border-radius:999px;
+    box-shadow:0 6px 18px rgba(0,0,0,.2);
+  }
+  .music-toggle{
+    flex:none;
+    width:38px; height:38px;
+    border:none; border-radius:999px;
+    background:var(--rose-deep);
+    color:#fff;
+    font-size:1.05rem;
+    display:flex; align-items:center; justify-content:center;
+    cursor:pointer;
+    transition:transform .15s ease;
+  }
+  .music-toggle:hover{ transform:scale(1.08); }
+  .music-toggle.playing{ animation:pulse-music 1.8s ease-in-out infinite; }
+  @keyframes pulse-music{
+    0%,100%{ box-shadow:0 0 0 0 rgba(140,63,86,.35); }
+    50%{ box-shadow:0 0 0 6px rgba(140,63,86,0); }
+  }
+  .music-volume{
+    width:80px;
+    accent-color:var(--rose-deep);
+    cursor:pointer;
+  }
+  @media (max-width:480px){
+    .music-widget{ bottom:16px; right:16px; padding:6px 12px 6px 6px; }
+    .music-volume{ width:60px; }
+  }
+
+  .references{ font-size:.88rem; color:var(--ink-soft); }
+  .references ol{ padding-left:22px; }
+  .references li{ margin-bottom:12px; }
+  .references a{ word-break:break-word; }
+  .references .ref-meta{ display:block; font-size:.78rem; color:#9a8f89; margin-top:2px; }
+
+  sup.cite{ font-size:.68em; }
+  sup.cite a{
+    color:var(--rose-deep);
+    text-decoration:none;
+    font-weight:700;
+    padding:0 1px;
+  }
+  sup.cite a:hover{ text-decoration:underline; }
+
+  /* CASE STUDY (Flechas de Vida) */
+  .case-study{
+    --uy-blue:#EAF2F8;
+    --uy-blue-line:#BBD6E8;
+    --uy-blue-deep:#2E5E7E;
+    background:var(--uy-blue);
+    border:1px solid var(--uy-blue-line);
+    border-radius:20px;
+    padding:36px;
+    margin-top:28px;
+  }
+  .case-study .cs-head{
+    display:flex;
+    align-items:center;
+    gap:12px;
+    margin-bottom:20px;
+    flex-wrap:wrap;
+  }
+  .case-study .cs-flag{
+    font-size:.78rem;
+    font-weight:700;
+    background:#fff;
+    color:var(--uy-blue-deep);
+    padding:5px 12px;
+    border-radius:999px;
+    text-transform:uppercase;
+    letter-spacing:.05em;
+  }
+  .case-study .lead-p{ color:#3C4A54; }
+  .case-study figcaption{ color:#52636D; }
+  .cs-gallery-top{ margin:24px 0 20px; }
+  .cs-gallery-top img{
+    border-radius:14px;
+    width:100%;
+    display:block;
+  }
+  .cs-gallery{
+    display:grid;
+    grid-template-columns: 1fr 1fr;
+    gap:20px;
+    margin:0 0 24px;
+  }
+  .cs-gallery img{
+    border-radius:14px;
+    width:100%;
+    height:100%;
+    object-fit:cover;
+  }
+  .cs-gallery .col{ display:flex; flex-direction:column; gap:20px; }
+  .cs-video{
+    position:relative;
+    width:100%;
+    padding-top:56.25%;
+    border-radius:14px;
+    overflow:hidden;
+    margin:24px 0;
+    background:#000;
+  }
+  .cs-video iframe{
+    position:absolute; top:0; left:0; width:100%; height:100%; border:0;
+  }
+  .cs-stats{
+    display:grid;
+    grid-template-columns:repeat(auto-fit, minmax(140px,1fr));
+    gap:16px;
+    margin:28px 0;
+  }
+  .cs-stats .stat{
+    text-align:center;
+    background:#fff;
+    border:1px solid var(--uy-blue-line);
+    border-radius:12px;
+    padding:18px 10px;
+  }
+  .cs-stats .stat strong{
+    display:block;
+    font-family:var(--serif);
+    font-size:1.6rem;
+    color:var(--uy-blue-deep);
+  }
+  .cs-stats .stat span{ font-size:.78rem; color:#52636D; }
+  .case-study .callout.muted{
+    background:#fff;
+    border-left-color:var(--uy-blue-deep);
+    color:#2E3A4E;
+  }
+  @media (max-width:720px){
+    .cs-gallery{ grid-template-columns:1fr; }
+  }
+
+  .institutional-footer{
+    background:#fff;
+    border-top:1px solid var(--line);
+    padding:28px 6vw;
+    text-align:center;
+  }
+  .institutional-footer p{
+    font-size:.8rem;
+    color:#8a8178;
+    margin:0;
+  }
+
+  @media (max-width:860px){
+    .hero{ grid-template-columns:1fr; padding:12vw 6vw 8vw; }
+    .two-col, .two-col.reverse{ grid-template-columns:1fr; }
+    .two-col.reverse .text, .two-col.reverse .visual{ order:unset; }
+    .testimonial{ grid-template-columns:1fr; text-align:center; }
+    .testimonial .avatar-ph{ margin:0 auto; }
+    .synthesis .dos-donts{ grid-template-columns:1fr; }
+  }
+</style>
+</head>
+<body>
+
+<audio id="bg-music" src="img/DREAMS.mp3" loop preload="none"></audio>
+<div class="music-widget">
+  <button id="music-toggle" class="music-toggle" aria-label="Tocar música de abertura" title="Tocar música de abertura">🎵</button>
+  <input type="range" id="music-volume" class="music-volume" min="0" max="100" value="60" aria-label="Volume da música">
+</div>
+<script>
+(function(){
+  var audio = document.getElementById('bg-music');
+  var btn = document.getElementById('music-toggle');
+  var volumeSlider = document.getElementById('music-volume');
+  audio.volume = Number(volumeSlider.value) / 100;
+  volumeSlider.addEventListener('input', function(){
+    audio.volume = Number(volumeSlider.value) / 100;
+  });
+  function setUI(playing){
+    btn.textContent = playing ? '🔊' : '🎵';
+    btn.classList.toggle('playing', playing);
+    btn.title = playing ? 'Pausar música' : 'Tocar música de abertura';
+    btn.setAttribute('aria-label', btn.title);
+  }
+  function tryAutoplay(){
+    var p = audio.play();
+    if (p && p.then){
+      p.then(function(){ setUI(true); }).catch(function(){ setUI(false); });
+    }
+  }
+  btn.addEventListener('click', function(){
+    if (audio.paused){
+      audio.play().then(function(){ setUI(true); }).catch(function(){});
+    } else {
+      audio.pause();
+      setUI(false);
+    }
+  });
+  if (document.readyState === 'loading'){
+    document.addEventListener('DOMContentLoaded', tryAutoplay);
+  } else {
+    tryAutoplay();
+  }
+
+  function setHeaderHeightVar(){
+    var h = document.querySelector('.institutional-header');
+    if (h) document.documentElement.style.setProperty('--header-h', h.offsetHeight + 'px');
+  }
+  function setupNavHighlight(){
+    var links = Array.prototype.slice.call(document.querySelectorAll('.topnav a'));
+    var sections = links.map(function(a){ return document.querySelector(a.getAttribute('href')); }).filter(Boolean);
+    if (!sections.length || !('IntersectionObserver' in window)) return;
+    var obs = new IntersectionObserver(function(entries){
+      entries.forEach(function(entry){
+        if (entry.isIntersecting){
+          var id = '#' + entry.target.id;
+          links.forEach(function(a){ a.classList.toggle('active', a.getAttribute('href') === id); });
+        }
+      });
+    }, { rootMargin: '-45% 0px -50% 0px', threshold: 0 });
+    sections.forEach(function(s){ obs.observe(s); });
+  }
+  function initNav(){
+    setHeaderHeightVar();
+    setupNavHighlight();
+  }
+  window.addEventListener('resize', setHeaderHeightVar);
+  window.addEventListener('load', setHeaderHeightVar);
+  if (document.readyState === 'loading'){
+    document.addEventListener('DOMContentLoaded', initNav);
+  } else {
+    initNav();
+  }
+})();
+</script>
+
+<header class="institutional-header">
+  <div>
+    <div class="header-identity">Flechas Rosas · Arco Rosa</div>
+    <div class="header-tag">Do tratamento à recuperação, flecha por flecha</div>
+  </div>
+  <div class="header-right">
+    <img src="img/logo.png" alt="Logo institucional — Amor à Pele / PET-Saúde Digital G10, UFPel" class="header-logo"
+         onerror="this.style.display='none';">
+    <div class="header-tag">Editorial de saúde</div>
+  </div>
+</header>
+
+<nav class="topnav" id="topnav">
+  <a href="#origem">Origem</a>
+  <a href="#paises">Países</a>
+  <a href="#caso-uruguai">Uruguai</a>
+  <a href="#caso-stanford">Stanford</a>
+  <a href="#processo">Processo clínico</a>
+  <a href="#evidencias">Evidências</a>
+  <a href="#depoimentos">Depoimentos</a>
+  <a href="#joinville">Joinville</a>
+  <a href="#sintese">Síntese</a>
+  <a href="#referencias">Fontes</a>
+</nav>
+
+<section class="hero">
+  <div class="hero-text">
+    <span class="eyebrow">Origem · Expansão · Evidências</span>
+    <h1>Quando o <em>arco</em> vira parte da recuperação do câncer de mama</h1>
+    <p class="lede">Nascido na Espanha em 2016 como observação clínica, o projeto Flechas Rosas transformou tiro com arco em espaço de convívio e reabilitação para mulheres tratadas de câncer de mama — e, em setembro de 2026, chegou a Joinville. A proposta é promissora. A ciência, ainda em construção.</p>
+    <div class="hero-stats">
+      <div class="stat"><strong>2016</strong><span>primeira observação clínica, Madri</span></div>
+      <div class="stat"><strong>2017</strong><span>criação formal em Lorca, Espanha</span></div>
+      <div class="stat"><strong>2026</strong><span>chega a Joinville, Brasil</span></div>
+    </div>
+  </div>
+  <figure class="img-placeholder" data-img-path="img/arco-origem-espanha.jpg">
+    <img src="img/arco-origem-espanha.jpg" alt="Arqueiras em treino de tiro com arco, clube espanhol"
+         onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+    <div class="placeholder-box" style="display:none;">
+      <span class="placeholder-icon">🏹</span>
+      <p class="placeholder-label">[ Coloque aqui: img/arco-origem-espanha.jpg ]</p>
+      <p class="placeholder-hint">Arqueiras em treino ao ar livre, clube espanhol, luz natural, clima de acolhimento</p>
+    </div>
+  </figure>
+</section>
+
+<main>
+
+  <!-- ORIGEM -->
+  <section id="origem">
+    <span class="kicker">Origem</span>
+    <h2 class="section-title">Uma observação clínica que virou movimento</h2>
+    <div class="two-col">
+      <div class="text">
+        <p class="lead-p">A história começa em um consultório, não em uma quadra de tiro. Por volta de 2016, no Hospital Universitário Infanta Leonor, em Madri, a equipe de Reabilitação passou a oferecer tiro com arco a pacientes operadas de câncer de mama, dentro de um convênio com a Federação Espanhola de Tiro com Arco, para estudar os efeitos do esporte sobre o braço afetado e sobre o linfedema<sup class="cite"><a href="#ref3">[3]</a></sup>. Em 2017, essa experiência ganhou um nome e um formato replicável em Lorca, na região de Múrcia: o clube de Tiro com Arco de Lorca, a Fundação Alimer e o Hospital Virgen del Alcázar se uniram para criar formalmente o projeto Flechas Rosas<sup class="cite"><a href="#ref1">[1]</a></sup>.</p>
+        <div class="timeline">
+          <div class="tl-item">
+            <div class="tl-year">~2016 — Madri</div>
+            <p>No Hospital Infanta Leonor, pacientes selecionadas na consulta de Rehabilitación passam a treinar tiro com arco, com apoio da Federação Espanhola de Tiro com Arco e do Clube de Tiro com Arco de Moratalaz.<sup class="cite"><a href="#ref3">[3]</a></sup></p>
+          </div>
+          <div class="tl-item">
+            <div class="tl-year">2017 — Lorca</div>
+            <p>O Clube de Tiro com Arco de Lorca formaliza o Flechas Rosas, somando forças com a Fundação Alimer e o Hospital Virgen del Alcázar.<sup class="cite"><a href="#ref1">[1]</a></sup></p>
+          </div>
+          <div class="tl-item">
+            <div class="tl-year">Balanço do Infanta Leonor</div>
+            <p>Em comunicado oficial, o hospital relata melhora de força e agilidade na maioria das participantes, sem piora do linfedema entre as que já o tinham e sem novos casos entre as que não tinham.<sup class="cite"><a href="#ref3">[3]</a></sup></p>
+          </div>
+          <div class="tl-item">
+            <div class="tl-year">2023–2026 — Expansão</div>
+            <p>O modelo inspira versões próprias em outros clubes espanhóis (Menorca, Navarra)<sup class="cite"><a href="#ref4">[4]</a></sup><sup class="cite"><a href="#ref6">[6]</a></sup>, no Uruguai (Flechas de Vida, 2023)<sup class="cite"><a href="#ref7">[7]</a></sup> e, em setembro de 2026, chega a Joinville, no Brasil.<sup class="cite"><a href="#ref1">[1]</a></sup></p>
+          </div>
+        </div>
+      </div>
+      <figure class="img-placeholder" data-img-path="img/hospital-infanta-leonor.jpg">
+        <img src="img/hospital-infanta-leonor.jpg" alt="Hospital Universitário Infanta Leonor, Madri"
+             onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+        <div class="placeholder-box" style="display:none;">
+          <span class="placeholder-icon">🏥</span>
+          <p class="placeholder-label">[ Coloque aqui: img/hospital-infanta-leonor.jpg ]</p>
+          <p class="placeholder-hint">Fachada ou ala de reabilitação do Hospital Universitário Infanta Leonor, Madri</p>
+        </div>
+        <figcaption>O Hospital Infanta Leonor, em Madri, foi onde a ideia nasceu — dentro da consulta de reabilitação, antes de existir qualquer clube.</figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <!-- PAÍSES -->
+  <section id="paises">
+    <span class="kicker">Onde o movimento chegou</span>
+    <h2 class="section-title">De Lorca para o mundo: um mosaico de clubes, não uma rede única</h2>
+    <p class="lead-p">Não existe um cadastro internacional centralizado do Flechas Rosas. O que existe é um mosaico: clubes de tiro com arco, hospitais e federações que, de forma independente, adaptaram a ideia original espanhola ao seu território — cada um com seu próprio desenho de programa.</p>
+    <div class="country-grid">
+      <div class="country-card">
+        <h3><span class="flag-emoji">🇪🇸</span>Espanha — berço do projeto</h3>
+        <p>Lorca (origem formal), Menorca (Club d'Arc Mahó, desde 2019) e Navarra (Arrow Salud, Universidade de Navarra) desenvolveram versões próprias, cada uma com seu clube e seu hospital de apoio.<sup class="cite"><a href="#ref1">[1]</a></sup><sup class="cite"><a href="#ref4">[4]</a></sup><sup class="cite"><a href="#ref6">[6]</a></sup></p>
+      </div>
+      <div class="country-card">
+        <h3><span class="flag-emoji">🇺🇾</span>Uruguai — Flechas de Vida</h3>
+        <p>Criado em Montevidéu em maio de 2023 por Alejandra Borsani e Andrea Castromán; hoje referência latino-americana do movimento, com cobertura da World Archery.<sup class="cite"><a href="#ref7">[7]</a></sup><sup class="cite"><a href="#ref9">[9]</a></sup></p>
+      </div>
+      <div class="country-card">
+        <h3><span class="flag-emoji">🇧🇷</span>Brasil — Joinville, 2026</h3>
+        <p>Primeira cidade brasileira, segundo os organizadores, a receber oficialmente o movimento, com apoio do Centro de Treinamento de Tiro com Arco Tradicional (CTAT).<sup class="cite"><a href="#ref1">[1]</a></sup><sup class="cite"><a href="#ref2">[2]</a></sup></p>
+      </div>
+      <div class="country-card">
+        <h3><span class="flag-emoji">🇺🇸</span>Estados Unidos — via pesquisa</h3>
+        <p>O programa Archery Rx, de Stanford, nasceu depois que sua idealizadora conheceu a cobertura da World Archery sobre o Flechas de Vida, no Uruguai — e testa o tiro com arco com participação de voluntários da equipe universitária.<sup class="cite"><a href="#ref8">[8]</a></sup></p>
+      </div>
+    </div>
+    <p class="attribution-note" style="margin-top:18px;">Segundo reportagens locais, o movimento também já havia chegado a clubes da Argentina e do Chile antes de Joinville — mas sem o mesmo nível de documentação pública disponível para Espanha, Uruguai e Brasil.<sup class="cite"><a href="#ref2">[2]</a></sup></p>
+    <figure class="img-placeholder" data-img-path="img/mapa-paises.png" style="margin-top:32px;">
+      <img src="img/mapa-paises.png" alt="Mapa com pinos nas cidades do movimento Flechas Rosas"
+           onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+      <div class="placeholder-box" style="min-height:260px; display:none;">
+        <span class="placeholder-icon">🗺️</span>
+        <p class="placeholder-label">[ Coloque aqui: img/mapa-paises.png ]</p>
+        <p class="placeholder-hint">Mapa ilustrado com pinos nas cidades: Lorca, Menorca e Navarra (Espanha); Montevidéu (Uruguai); Joinville (Brasil); Stanford, Califórnia (EUA) — cada pino rotulado com o nome da iniciativa local. Prompt de geração de imagem logo abaixo, na resposta.</p>
+      </div>
+      <figcaption>Figura — Cidades e iniciativas documentadas do movimento até 2026, por nome próprio. Não há um registro único e oficial que consolide todas as experiências.</figcaption>
+    </figure>
+  </section>
+
+  <!-- ESTUDO DE CASO: FLECHAS DE VIDA -->
+  <section id="caso-uruguai">
+    <span class="kicker">Estudo de caso</span>
+    <h2 class="section-title">Flechas de Vida: de 2 para mais de 40 arqueiras em três anos</h2>
+    <div class="case-study">
+      <div class="cs-head">
+        <span class="cs-flag">🇺🇾 Montevidéu, Uruguai</span>
+        <span class="attribution-note" style="margin:0;">Criado em maio de 2023 — o programa mais documentado da América Latina até aqui</span>
+      </div>
+      <p class="lead-p">Antes de ser notícia, foi uma enfermeira arqueira. Andrea Castromán, junto com Alejandra Borsani, criou o Flechas de Vida depois de conhecer um programa espanhol que mostrava que a vibração da corda do arco agia como estímulo à drenagem linfática, ajudando na mobilidade do braço após a mastectomia.<sup class="cite"><a href="#ref7">[7]</a></sup></p>
+
+      <!-- Foto em paisagem, sozinha, no topo -->
+      <figure class="cs-gallery-top" style="margin-top:24px;">
+        <img src="img/flechas-de-vida-colagem.jpg" alt="Arqueiras do Flechas de Vida em treino, Montevidéu, Uruguai">
+        <figcaption>Quadro retirado do vídeo de divulgação do Flechas de Vida — participantes durante treino em Montevidéu, prática gratuita e mediante autorização médica. <a href="https://www.youtube.com/watch?v=gZsDkb8meg4" target="_blank" rel="noopener">Assista ao vídeo completo</a>.</figcaption>
+      </figure>
+
+      <!-- Vídeo embutido -->
+      <div class="cs-video">
+        <iframe src="https://www.youtube.com/embed/gZsDkb8meg4" title="Flechas de Vida" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe>
+      </div>
+
+      <!-- Capa do livro + retrato, lado a lado (ambos em retrato) -->
+      <div class="cs-gallery">
+        <figure style="margin:0;">
+          <img src="img/flechas-de-vida-livro-capa.jpg" alt="Capa do livro Programa Flechas de Vida, de Andrea Castromán e Alejandra Borsani">
+          <figcaption>Capa do livro lançado pelas fundadoras em outubro de 2026, apresentado no Palácio Legislativo do Uruguai.<sup class="cite"><a href="#ref10">[10]</a></sup></figcaption>
+        </figure>
+        <figure style="margin:0;">
+          <img src="img/flechas-de-vida-retrato-arqueira.jpg" alt="Retrato de arqueira do Flechas de Vida em posição de disparo">
+          <figcaption>O gesto de ancoragem e disparo é repetido de forma supervisionada — é esse movimento repetitivo que a hipótese da drenagem linfática tenta explicar.</figcaption>
+        </figure>
+      </div>
+
+      <div class="cs-stats">
+        <div class="stat"><strong>2</strong><span>arqueiras no início, 2023</span></div>
+        <div class="stat"><strong>42</strong><span>arqueiras ativas hoje</span></div>
+        <div class="stat"><strong>100+</strong><span>na lista de espera</span></div>
+        <div class="stat"><strong>1 ano</strong><span>de pós-operatório exigido para ingressar</span></div>
+      </div>
+
+      <p class="lead-p">Qualquer mulher que teve câncer de mama pode participar, desde que tenha ao menos um ano de operação e um termo de consentimento assinado pelo médico.<sup class="cite"><a href="#ref7">[7]</a></sup> Duas clínicas de Montevidéu já encaminham pacientes diretamente para o programa como parte da recuperação, e Castromán levou a proposta formalmente à ASSE (sistema público de saúde do Uruguai) e ao Instituto Nacional del Cáncer, pedindo reconhecimento do esporte como terapia complementar — um passo institucional que ainda está em avaliação, não uma aprovação concluída.</p>
+
+      <div class="callout muted" style="margin-top:24px;">As próprias fundadoras relatam melhora já na primeira aula para muitas participantes, e dizem que manter a prática ao menos uma vez por semana sustenta o ganho — um relato de experiência, não um resultado de estudo controlado e publicado.</div>
+    </div>
+  </section>
+
+  <!-- ESTUDO DE CASO: ARCHERY RX (STANFORD) -->
+  <section id="caso-stanford">
+    <span class="kicker">Estudo de caso</span>
+    <h2 class="section-title">Archery Rx: quando uma arqueira olímpica vira ponte entre o esporte e a oncologia</h2>
+    <div class="stanford-card">
+      <div class="cs-head">
+        <span class="cs-flag">🇺🇸 Stanford, Califórnia, EUA</span>
+        <span class="attribution-note" style="margin:0;">Programa-piloto, com primeiro resultado preliminar já medido</span>
+      </div>
+      <p class="lead-p">Katherine Wu é arqueira do Team USA, quatro vezes All-American, duas vezes recordista do Guinness e, hoje, estudante de Direito em Stanford. A ideia do Archery Rx nasceu depois que ela viu a cobertura da World Archery sobre o Flechas de Vida, no Uruguai, e se perguntou por que ninguém tinha feito algo parecido nos Estados Unidos.<sup class="cite"><a href="#ref8">[8]</a></sup> Foi ela quem conectou o Cancer Survivorship Program de Stanford à equipe de tiro com arco da universidade, adaptando modelos já usados no Uruguai e na França — e a ideia saiu do papel rápido.<sup class="cite"><a href="#ref8">[8]</a></sup><sup class="cite"><a href="#ref11">[11]</a></sup></p>
+
+      <figure class="img-placeholder" data-img-path="img/katherine-wu-sorrindo.jpg" style="margin-top:20px;">
+        <img src="img/katherine-wu-sorrindo.jpg" alt="Katherine Wu sorrindo, carregando seu arco, uniforme do Team USA">
+        <figcaption>Katherine Wu, representando o Team USA — a mesma arqueira que, em Stanford, conectou seu esporte à oncologia para criar o Archery Rx.<sup class="cite"><a href="#ref12">[12]</a></sup></figcaption>
+      </figure>
+
+      <div class="cs-stats">
+        <div class="stat"><strong>25–72</strong><span>anos, faixa etária da primeira turma</span></div>
+        <div class="stat"><strong>12–18 lb</strong><span>peso dos arcos usados (vs. ~40 lb de competição)</span></div>
+        <div class="stat"><strong>+13°</strong><span>aumento médio na flexão do ombro</span></div>
+        <div class="stat"><strong>Piloto</strong><span>amostra pequena, sem grupo de comparação</span></div>
+      </div>
+      <p class="attribution-note" style="margin-top:4px;">O ganho de 13 graus e a manutenção dos escores de qualidade de vida vêm de um piloto inicial pequeno — um resultado real, mas ainda preliminar, sem grupo controle nem publicação revisada por pares.<sup class="cite"><a href="#ref11">[11]</a></sup></p>
+
+      <div class="cs-video" style="margin-top:20px;">
+        <iframe src="https://www.youtube.com/embed/hFhHGSvKCow" title="Katherine Wu — Archery Rx" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe>
+      </div>
+
+      <figure class="img-placeholder" data-img-path="img/KatherineWubreastcancerarcheryprogram.jpg" style="margin-top:20px;">
+        <img src="img/KatherineWubreastcancerarcheryprogram.jpg" alt="Grupo de participantes do Archery Rx em treino ao ar livre, com Katherine Wu orientando"
+             onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+        <div class="placeholder-box" style="display:none;">
+          <span class="placeholder-icon">🎯</span>
+          <p class="placeholder-label">[ Coloque aqui: img/KatherineWubreastcancerarcheryprogram.jpg ]</p>
+          <p class="placeholder-hint">Foto real de Katherine Wu e o Archery Rx, publicada pela USA Archery.</p>
+        </div>
+        <figcaption>Katherine Wu (primeira à esquerda) orienta um grupo do Archery Rx em treino ao ar livre.<sup class="cite"><a href="#ref8">[8]</a></sup></figcaption>
+      </figure>
+
+      <div class="callout muted" style="margin-top:20px;">Um aumento médio de 13° na flexão do ombro, mantido ao longo das sessões, é o primeiro número concreto que aparece neste texto inteiro — mas ainda é uma amostra pequena de uma primeira turma, sem grupo de comparação. Promissor, na mesma categoria dos outros pilotos: ainda não comprovado em larga escala.</div>
+    </div>
+  </section>
+
+  <!-- PROCESSO CLÍNICO -->
+  <section id="processo">
+    <span class="kicker">Processo clínico</span>
+    <h2 class="section-title">Não é "pegar um arco": é um programa com critérios</h2>
+    <div class="two-col reverse">
+      <figure class="img-placeholder visual" data-img-path="img/processo-clinico-diagrama.png">
+        <img src="img/processo-clinico-diagrama.png" alt="Diagrama do fluxo clínico do programa de tiro com arco"
+             onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+        <div class="placeholder-box" style="display:none;">
+          <span class="placeholder-icon">📋</span>
+          <p class="placeholder-label">[ Coloque aqui: img/processo-clinico-diagrama.png ]</p>
+          <p class="placeholder-hint">Diagrama de 4 etapas: seleção na consulta de Reabilitação → encaminhamento via convênio com a Federação (instalações + monitora) → treino supervisionado 2×/semana durante 1 ano → avaliação de acompanhamento a cada 3 meses. Prompt de geração na resposta do chat.</p>
+        </div>
+        <figcaption>Fluxo do programa do Hospital Infanta Leonor, Madri — a entrada acontece dentro do próprio acompanhamento hospitalar, não por inscrição aberta.<sup class="cite"><a href="#ref3">[3]</a></sup></figcaption>
+      </figure>
+      <div class="text">
+        <p class="lead-p">No programa do Hospital Infanta Leonor, em Madri, as participantes são selecionadas dentro da própria consulta de Reabilitação, e não por inscrição aberta. O treino acontece duas vezes por semana, em sessões de uma hora, sempre com monitora, por um ano completo, com revisões a cada três meses na consulta do hospital.<sup class="cite"><a href="#ref3">[3]</a></sup> Isso importa: são critérios daquele contexto clínico específico, não uma regra universal válida para qualquer mulher em qualquer lugar.</p>
+        <div class="criteria">
+          <div class="item">
+            <span class="n">01</span>
+            <p>Tratamento oncológico concluído havia pelo menos <strong>seis meses</strong>.</p>
+          </div>
+          <div class="item">
+            <span class="n">02</span>
+            <p>Ausência de linfedema, ou quadro <strong>leve e estável</strong> no braço afetado.</p>
+          </div>
+          <div class="item">
+            <span class="n">03</span>
+            <p>Nenhuma outra condição comprometendo o membro superior.</p>
+          </div>
+          <div class="item">
+            <span class="n">04</span>
+            <p>Preparação fisioterapêutica prévia e treinamento sempre <strong>supervisionado</strong>.</p>
+          </div>
+          <div class="item">
+            <span class="n">05</span>
+            <p>Avaliações de acompanhamento a cada <strong>três meses</strong>.<sup class="cite"><a href="#ref3">[3]</a></sup></p>
+          </div>
+        </div>
+        <div class="callout muted">Em Joinville, a proposta divulgada segue essa mesma lógica de cuidado: participação gratuita, exigência de liberação médica prévia e acompanhamento voluntário de psicóloga e fisioterapeuta.<sup class="cite"><a href="#ref2">[2]</a></sup></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- O QUE A CIÊNCIA MOSTRA -->
+  <section id="evidencias">
+    <span class="kicker">O que a ciência mostra até agora</span>
+    <h2 class="section-title">Resultados encorajadores — e ainda preliminares</h2>
+    <p class="lead-p">É tentador transformar uma boa história em uma promessa de cura. Os dois registros mais citados sobre o tema pedem mais cautela do que isso.</p>
+    <div class="two-col">
+      <div class="study-box">
+        <h4>Hospital Infanta Leonor (Madri)<sup class="cite"><a href="#ref3">[3]</a></sup></h4>
+        <ul>
+          <li>A iniciativa busca estudar os possíveis benefícios do tiro com arco sobre o braço afetado pela cirurgia e pela radioterapia, e sobre a prevenção e manutenção do linfedema.</li>
+          <li>Nenhuma participante apresentou piora do linfedema já existente.</li>
+          <li>Não surgiram novos casos entre as que não tinham a condição.</li>
+        </ul>
+        <div class="caveat">A divulgação oficial não traz tamanho de amostra, grupo de comparação nem análise estatística — por isso não permite falar em "eficácia comprovada", só em "ausência de piora observada".</div>
+      </div>
+      <div class="study-box">
+        <h4>Archery Rx (Stanford)<sup class="cite"><a href="#ref8">[8]</a></sup><sup class="cite"><a href="#ref11">[11]</a></sup></h4>
+        <ul>
+          <li>Programa-piloto criado por Katherine Wu, arqueira do Team USA, em parceria com o Cancer Survivorship Program de Stanford, adaptando modelos do Uruguai e da França.</li>
+          <li>Primeira turma: sobreviventes de câncer de mama entre 25 e 72 anos, com arcos bem mais leves (12–18 libras) e instrução individualizada de arqueiros voluntários da equipe de Stanford.</li>
+          <li>Resultado preliminar: aumento médio de 13° na flexão do ombro, com manutenção dos escores de qualidade de vida ao longo das sessões.</li>
+        </ul>
+        <div class="caveat">É um resultado real, mas de uma amostra pequena e inicial, sem grupo de comparação nem publicação revisada por pares — não é, ainda, um ensaio clínico com desfechos estatísticos robustos sobre linfedema.</div>
+      </div>
+    </div>
+
+    <h3 style="font-family:var(--serif); font-size:1.2rem; margin:32px 0 10px; color:var(--ink);">A hipótese mecânica, por trás de todos esses programas</h3>
+    <p class="lead-p">Espanha, Uruguai e o piloto de Stanford partem da mesma ideia física, não de descobertas separadas: segurar o arco, tensionar e soltar a corda recruta deltoide, trapézio, romboides e grande dorsal em contrações repetidas — e esse bombeamento muscular, somado à vibração da corda no momento do disparo, teoricamente estimula o fluxo linfático no braço operado. É uma hipótese plausível e consistente com o que já se sabe sobre exercício e drenagem linfática, mas, como os dois quadros acima mostram, ainda sem o desenho experimental que comprove o efeito isoladamente.</p>
+
+    <figure class="img-placeholder" data-img-path="img/diagrama-musculatura-arco.png" style="margin-top:16px;">
+      <img src="img/diagrama-musculatura-arco.png" alt="Diagrama da musculatura ativada durante o tiro com arco"
+           onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+      <div class="placeholder-box" style="display:none;">
+        <span class="placeholder-icon">💪</span>
+        <p class="placeholder-label">[ Coloque aqui: img/diagrama-musculatura-arco.png ]</p>
+        <p class="placeholder-hint">Diagrama anatômico simplificado: silhueta de costas/braço em posição de tiro, com deltoide, trapézio, romboides e grande dorsal destacados — setas indicando o bombeamento muscular que teoricamente auxilia o fluxo linfático.</p>
+      </div>
+      <figcaption>Ilustração esquemática da hipótese mecânica, comum aos programas de Espanha, Uruguai e Stanford — não uma imagem médica diagnóstica.</figcaption>
+    </figure>
+
+    <figure class="img-placeholder" data-img-path="img/fisiologia-linfatica-arco.png" style="margin-top:20px;">
+      <img src="img/fisiologia-linfatica-arco.png" alt="Diagrama da fisiologia linfática do braço e o papel do bombeamento muscular"
+           onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+      <div class="placeholder-box" style="display:none;">
+        <span class="placeholder-icon">🫧</span>
+        <p class="placeholder-label">[ Coloque aqui: img/fisiologia-linfatica-arco.png ]</p>
+        <p class="placeholder-hint">Diagrama da fisiologia: braço com linfonodos axilares removidos, vasos linfáticos e acúmulo de líquido (linfedema) de um lado; do outro, o "efeito bomba" da contração muscular empurrando a linfa de volta. Prompt de geração logo na resposta do chat.</p>
+      </div>
+      <figcaption>A fisiologia por trás da hipótese: sem os linfonodos removidos na cirurgia, o fluido linfático se acumula; a contração muscular repetida ajudaria a empurrá-lo de volta à circulação.</figcaption>
+    </figure>
+
+    <!--
+      ROTEIRO DE GERAÇÃO — img/sequencia-movimento-arco.mp4
+      Loop de 6–8s · 4:3 ou 1:1 · mesma paleta do diagrama estático (img/diagrama-musculatura-arco.png)
+
+      GLOBAL STYLE (aplicar em todas as cenas):
+      Flat-vector 2D animation, soft off-white background (#FBF7F4), simplified stylized
+      silhouette of a woman's upper body in archery position, side view. No face detail,
+      no skin texture, no photorealism — same schematic/infographic style as a medical-adjacent
+      explainer video, not a medical illustration. Smooth, gentle easing between poses
+      (no snappy/aggressive motion). Muscle groups appear as soft rounded color patches
+      that fade in/out and pulse, never as exposed anatomy. Loopable: last frame blends
+      back into first frame.
+
+      #1 — Armar (0:00–0:02s)
+      Silhouette stands relaxed, bow arm extends forward holding the bow at chest height,
+      drawing-arm hand rises to meet the string. All muscle patches are neutral/transparent.
+      A small label fades in at bottom: "1. Armar"
+
+      #2 — Puxar (0:02–0:04s)
+      Drawing arm pulls the string smoothly backward toward the jaw. As the arm moves,
+      two color patches fade in and gently pulse in sync with the motion:
+      deltoide (shoulder, dusty rose #B35C73) and trapézio (upper back, deep rose #8C3F56).
+      Label updates: "2. Puxar"
+
+      #3 — Ancorar (0:04–0:05.5s)
+      Arm reaches full draw and holds briefly. Two more patches fade in: romboides
+      (between shoulder blades, plum #6F3146) and grande dorsal (lower back/side,
+      navy #2E5E7E). All four patches now visible, pulsing slowly together — representing
+      sustained muscular engagement. Label: "3. Ancorar"
+
+      #4 — Soltar (0:05.5–0:06.5s)
+      Quick release: the string snaps forward. A thin wavy vibration line ripples along
+      the bowstring and travels down the drawing arm toward the shoulder/back area.
+      All four muscle patches pulse once, brighter, in unison with the vibration wave —
+      the key visual beat of the whole loop. Label: "4. Soltar"
+
+      #5 — Relaxar (0:06.5–0:08s)
+      Arm relaxes back toward the starting position, muscle patches fade back to neutral,
+      vibration wave fades out. Small caption fades in at the very bottom, small sans-serif,
+      navy (#2E3A4E): "Hipótese mecânica: contração + vibração → estímulo ao fluxo linfático"
+      Then crossfades seamlessly back into Cena 1 to loop.
+    -->
+    <figure class="img-placeholder" data-img-path="img/sequencia-movimento-arco.mp4" style="margin-top:20px;">
+      <video src="img/sequencia-movimento-arco.mp4" poster="img/diagrama-musculatura-arco.png"
+             autoplay muted loop playsinline controls
+             style="width:100%; border-radius:14px; display:block; background:#000;"
+             onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+      </video>
+      <div class="placeholder-box" style="display:none;">
+        <span class="placeholder-icon">🎞️</span>
+        <p class="placeholder-label">[ Coloque aqui: img/sequencia-movimento-arco.mp4 ]</p>
+        <p class="placeholder-hint">Animação em loop (6–8s) mostrando a sequência armar → puxar → ancorar → soltar, com os grupos musculares acendendo em sincronia.</p>
+      </div>
+      <figcaption>Sequência animada da hipótese mecânica — contração muscular progressiva e vibração da corda no momento do disparo.</figcaption>
+    </figure>
+
+    <figure class="img-placeholder" data-img-path="img/grafico-estudo-viabilidade.png" style="margin-top:28px;">
+      <img src="img/grafico-estudo-viabilidade.png" alt="Comparação conceitual entre piloto exploratório e ensaio clínico"
+           onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+      <div class="placeholder-box" style="display:none;">
+        <span class="placeholder-icon">📊</span>
+        <p class="placeholder-label">[ Coloque aqui: img/grafico-estudo-viabilidade.png ]</p>
+        <p class="placeholder-hint">Comparativo esquemático (não dados reais): "programa-piloto exploratório" (Archery Rx, Stanford) vs. "ensaio clínico robusto" — eixos conceituais de rigor metodológico, não números medidos. Prompt de geração na resposta do chat.</p>
+      </div>
+      <figcaption>Figura — A diferença entre um programa-piloto exploratório e um ensaio clínico robusto é justamente o que ainda falta para comprovar benefícios específicos no linfedema.<sup class="cite"><a href="#ref8">[8]</a></sup></figcaption>
+    </figure>
+  </section>
+
+  <!-- QUIZ DE ENTENDIMENTO -->
+  <section id="quiz">
+    <span class="kicker">Teste seu entendimento</span>
+    <h2 class="section-title">Os conceitos ficaram claros?</h2>
+    <p class="lead-p">Clique em cada pergunta para revelar a resposta. Não é uma prova — é uma forma de checar se as distinções mais importantes do texto realmente grudaram.</p>
+    <div class="quiz-list">
+      <details class="quiz-item">
+        <summary>O que é linfedema, no contexto deste texto?</summary>
+        <div class="answer"><strong>Resposta:</strong> É um inchaço crônico nos tecidos do braço, comum após a retirada de linfonodos (gânglios linfáticos) na cirurgia de câncer de mama — causa a sensação de peso e rigidez que os programas de tiro com arco tentam aliviar.</div>
+      </details>
+      <details class="quiz-item">
+        <summary>Qual a diferença entre um "programa-piloto exploratório" e um "ensaio clínico robusto"?</summary>
+        <div class="answer"><strong>Resposta:</strong> O piloto testa se a ideia é praticável, geralmente com amostra pequena e sem grupo de comparação. O ensaio clínico busca comprovar eficácia, com amostra grande, grupo controle e análise estatística. O Archery Rx (Stanford) está na primeira categoria.</div>
+      </details>
+      <details class="quiz-item">
+        <summary>O comunicado do Hospital Infanta Leonor prova que o tiro com arco trata o linfedema?</summary>
+        <div class="answer"><strong>Resposta:</strong> Não. Ele registra ausência de piora e ausência de novos casos entre as participantes — o que é encorajador, mas não é o mesmo que uma eficácia estatisticamente comprovada, já que não há amostra, grupo de comparação nem análise estatística publicados.</div>
+      </details>
+      <details class="quiz-item">
+        <summary>Por que a frase "Joinville é a primeira cidade brasileira" deve vir acompanhada de "segundo os organizadores"?</summary>
+        <div class="answer"><strong>Resposta:</strong> Porque essa informação vem dos próprios organizadores do projeto, e não existe um cadastro nacional independente que confirme o pioneirismo de forma verificável.</div>
+      </details>
+      <details class="quiz-item">
+        <summary>Qual é a hipótese mecânica por trás do possível benefício do tiro com arco?</summary>
+        <div class="answer"><strong>Resposta:</strong> A contração muscular repetida (deltoide, trapézio, romboides, grande dorsal) ao puxar e segurar a corda, somada à vibração da corda no momento do disparo, estimularia o fluxo linfático no braço operado — uma hipótese plausível, mas ainda não isolada experimentalmente.</div>
+      </details>
+      <details class="quiz-item">
+        <summary>Os critérios do programa espanhol (6 meses pós-tratamento, linfedema ausente ou leve) valem para qualquer mulher que queira praticar?</summary>
+        <div class="answer"><strong>Resposta:</strong> Não. São os critérios daquele programa clínico específico, definidos dentro de uma consulta de reabilitação — não uma regra médica universal aplicável a qualquer contexto.</div>
+      </details>
+    </div>
+  </section>
+
+  <!-- QUESTÕES SOCRÁTICAS -->
+  <section id="socraticas">
+    <span class="kicker">Para refletir</span>
+    <h2 class="section-title">Perguntas sem resposta única</h2>
+    <p class="lead-p">Estas perguntas não têm gabarito — servem para pensar sobre como histórias, ciência e esperança se cruzam neste tipo de projeto.</p>
+    <div class="socratic-list">
+      <div class="socratic-item">
+        <span class="q-num">01</span>
+        <p>Se um relato de melhora não vem acompanhado de dados estatísticos, isso significa que a melhora não é real — ou apenas que ela ainda não foi medida da forma certa? O que muda na resposta que você dá a uma paciente, dependendo de qual dessas duas coisas for verdade?</p>
+      </div>
+      <div class="socratic-item">
+        <span class="q-num">02</span>
+        <p>O que muda, na prática, quando um projeto diz "apoiamos a recuperação" em vez de "tratamos o linfedema"? Por que essa diferença de poucas palavras importa tanto para quem está decidindo participar?</p>
+      </div>
+      <div class="socratic-item">
+        <span class="q-num">03</span>
+        <p>Por que histórias de uma ou duas pessoas — como as de Márcia ou María Fernández — convencem tão rápido, mesmo quando a ciência ainda não comprovou nada em grande escala? O que isso revela sobre como formamos opiniões sobre saúde?</p>
+      </div>
+      <div class="socratic-item">
+        <span class="q-num">04</span>
+        <p>Se você fosse responsável por levar este projeto a uma nova cidade, que cuidados de linguagem adotaria para ser, ao mesmo tempo, inspirador e honesto sobre o que ainda não se sabe?</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- DEPOIMENTOS -->
+  <section id="depoimentos">
+    <span class="kicker">Depoimentos</span>
+    <h2 class="section-title">O que fica não é só o braço — é a companhia</h2>
+    <p class="lead-p">Relatos publicados pela imprensa em clubes espanhóis e no primeiro encontro de Joinville ajudam a entender por que tantas mulheres permanecem no projeto muito depois do tratamento terminar.</p>
+
+    <div class="testimonial" style="background:var(--card); color:var(--ink); border:1px solid var(--line);">
+      <div class="avatar-ph" style="background:var(--rose-pale); border-color:var(--rose);">🏹</div>
+      <div>
+        <blockquote style="color:var(--rose-deep);">Uma arqueira de Menorca contou à imprensa local que não sabia nem como se segurava um arco quando entrou no programa — e que foi ao lado da própria irmã, que havia passado pelo mesmo tratamento meses antes. Hoje ela preside o clube que fundou aquele grupo.</blockquote>
+        <cite style="color:var(--ink-soft); opacity:1;">— Relato parafraseado de María Fernández, presidenta do Club d'Arc Mahó, Menorca, Espanha<sup class="cite"><a href="#ref4">[4]</a></sup></cite>
+      </div>
+    </div>
+
+    <div class="testimonial" style="margin-top:20px;">
+      <div class="avatar-ph">🏹</div>
+      <div>
+        <blockquote>"Me apaixonei no primeiro tiro com arco", conta Márcia — que já praticava o esporte havia 11 anos na Ordem dos Arqueiros de Joinville quando parou, há 5 anos, ao ser diagnosticada com câncer de mama. Agora voltou a praticar, e diz que o retorno ajudou não só na recuperação física, mas também na parte psicológica, pelo contato com outras mulheres que passaram pelo mesmo processo.</blockquote>
+        <cite>— Márcia Regina Cadorin de Castilho, 62 anos, primeira integrante do Flechas Rosas Brasil, Joinville<sup class="cite"><a href="#ref2">[2]</a></sup></cite>
+      </div>
+    </div>
+
+    <p class="attribution-note" style="margin-top:16px;">Em Joinville, o projeto conta ainda com o apoio voluntário de Patrícia Rathunde Santos, arqueira campeã mundial, responsável por explicar os critérios de entrada (parecer médico, acompanhamento de psicóloga e fisioterapeuta) às novas interessadas.<sup class="cite"><a href="#ref2">[2]</a></sup></p>
+    <figure class="img-placeholder" data-img-path="img/depoimento-arqueira.jpg" style="margin-top:24px;">
+      <img src="img/depoimento-arqueira.jpg" alt="Arqueira do Flechas de Vida sorrindo ao lado do alvo, Uruguai"
+           onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+      <div class="placeholder-box" style="display:none;">
+        <span class="placeholder-icon">📷</span>
+        <p class="placeholder-label">[ Coloque aqui: img/depoimento-arqueira.jpg ]</p>
+        <p class="placeholder-hint">Foto de uma arqueira do grupo Flechas de Vida (Uruguai), sorrindo ao lado do alvo.</p>
+      </div>
+      <figcaption>Participante do Flechas de Vida, Uruguai — não é uma foto de Joinville. Imagem: Flechas de Vida, via World Archery.<sup class="cite"><a href="#ref7">[7]</a></sup></figcaption>
+    </figure>
+    <p class="attribution-note" style="margin-top:12px;">Ainda não recebemos foto autorizada de nenhuma participante de Joinville — por isso o depoimento de Márcia, acima, segue sem imagem.</p>
+  </section>
+
+  <!-- JOINVILLE -->
+  <section id="joinville">
+    <div class="joinville-card">
+      <span class="kicker">Joinville, setembro de 2026</span>
+      <div class="badge-pioneer">🇧🇷 Primeira cidade brasileira, segundo os organizadores</div>
+      <h2 class="section-title">O Brasil entra na roda do Flechas Rosas</h2>
+      <div class="two-col">
+        <div class="text">
+          <p class="lead-p">Reportagens publicadas em 29 de setembro de 2026 registraram o primeiro encontro do projeto no Brasil, realizado um dia antes, 28 de setembro, no Centro de Treinamento de Tiro com Arco Tradicional (CTAT), em Joinville, com apoio da instrutora e proprietária do espaço, Carmen Schmidt.<sup class="cite"><a href="#ref1">[1]</a></sup><sup class="cite"><a href="#ref2">[2]</a></sup></p>
+          <p class="lead-p">A informação de que Joinville é a primeira cidade brasileira a aderir ao movimento é atribuída aos organizadores do próprio projeto, que também descrevem o Flechas Rosas Brasil como parte de um movimento que já inclui outros países da América Latina.<sup class="cite"><a href="#ref2">[2]</a></sup> Não localizamos um cadastro nacional ou documento de adesão público que permita confirmar esse pioneirismo de forma independente — por isso, a formulação mais precisa para divulgação é: <em>"Segundo os organizadores, Joinville é a primeira cidade brasileira a participar do Flechas Rosas."</em></p>
+        </div>
+        <figure class="img-placeholder" data-img-path="img/joinville-ctat.jpg">
+          <img src="img/joinville-ctat.jpg" alt="Primeiro encontro do Flechas Rosas Brasil no CTAT, Joinville"
+               onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+          <div class="placeholder-box" style="display:none;">
+            <span class="placeholder-icon">🎯</span>
+            <p class="placeholder-label">[ Coloque aqui: img/joinville-ctat.jpg ]</p>
+            <p class="placeholder-hint">Foto do primeiro encontro no CTAT, 28 de setembro de 2026, grupo de mulheres com arcos em posição de treino</p>
+          </div>
+          <figcaption>Primeiro encontro do Flechas Rosas no Brasil, no Centro de Treinamento de Tiro com Arco Tradicional (CTAT), Joinville — 28 de setembro de 2026.</figcaption>
+        </figure>
+      </div>
+      <div class="practical-grid">
+        <div class="pill"><b>Gratuito</b><span>Participação sem custo para as mulheres atendidas.</span></div>
+        <div class="pill"><b>Liberação médica</b><span>Exigida antes do ingresso no programa.</span></div>
+        <div class="pill"><b>Apoio multidisciplinar</b><span>Acompanhamento voluntário de psicóloga e fisioterapeuta.</span></div>
+        <div class="pill"><b>Foco declarado</b><span>Apoiar a recuperação física <em>e emocional</em> — não tratar o linfedema.</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SÍNTESE / COMO COMUNICAR -->
+  <section id="sintese" style="border-bottom:none;">
+    <div class="synthesis">
+      <span class="kicker" style="color:#F3DCE2;">Síntese para divulgação responsável</span>
+      <h2>Uma proposta promissora — comunicada com precisão</h2>
+      <p>O Flechas Rosas tem trajetória real, documentada desde 2016 na Espanha, e uma chegada já registrada em Joinville em 2026. Isso é motivo legítimo de entusiasmo. Mas o salto entre "mulheres relatam bem-estar" e "o tiro com arco trata o linfedema" ainda não foi dado pela ciência.</p>
+      <div class="dos-donts">
+        <div class="col">
+          <h4>✓ Pode afirmar</h4>
+          <ul>
+            <li>O projeto apoia a recuperação física e emocional após o câncer de mama.</li>
+            <li>É gratuito, exige liberação médica e conta com apoio de psicóloga e fisioterapeuta.</li>
+            <li>Segundo os organizadores, Joinville é a primeira cidade brasileira a participar.</li>
+          </ul>
+        </div>
+        <div class="col">
+          <h4>✗ Evitar afirmar</h4>
+          <ul>
+            <li>Que o tiro com arco comprovadamente previne ou trata o linfedema.</li>
+            <li>Que Joinville é pioneira de forma independentemente verificada.</li>
+            <li>Que os critérios do programa espanhol valem como regra para qualquer mulher.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- REFERÊNCIAS -->
+  <section id="referencias" style="padding-top:40px;">
+    <span class="kicker">Fontes consultadas</span>
+    <div class="references">
+      <ol>
+        <li id="ref1">Prefeitura de Joinville / Global News BR — "Joinville é a primeira cidade do Brasil a participar do projeto Flechas Rosas", 29 de setembro de 2026.
+          <span class="ref-meta"><a href="https://www.globalnewsbr.com.br/noticia/472/joinville-e-a-primeira-cidade-do-brasil-a-participar-do-projeto-flechas-rosas" target="_blank" rel="noopener">globalnewsbr.com.br/noticia/472</a></span>
+        </li>
+        <li id="ref2">Aconteceu em Joinville — "Joinville é a primeira cidade do Brasil a participar do projeto Flechas Rosas", 29 de setembro de 2026 (cobertura com mais detalhes sobre o CTAT, Carmen Schmidt e as primeiras participantes).
+          <span class="ref-meta"><a href="https://aconteceuemjoinville.com.br/joinville-e-a-primeira-cidade-do-brasil-a-participar-do-projeto-flechas-rosas/" target="_blank" rel="noopener">aconteceuemjoinville.com.br</a></span>
+        </li>
+        <li id="ref3">Comunidad de Madrid / Hospital Universitario Infanta Leonor — "El Infanta Leonor estudia los beneficios del tiro con arco en pacientes operadas de cáncer de mama".
+          <span class="ref-meta"><a href="https://www.comunidad.madrid/node/53054" target="_blank" rel="noopener">comunidad.madrid/node/53054</a></span>
+        </li>
+        <li id="ref4">Menorca.info — "El tiro con arco, la mejor terapia para las afectadas de cáncer de mama", 26 de outubro de 2024.
+          <span class="ref-meta"><a href="https://www.menorca.info/menorca/vivir-menorca/2024/10/26/2264139/tiro-arco-mejor-terapia-para-afectadas-cancer-mama.html" target="_blank" rel="noopener">menorca.info</a></span>
+        </li>
+        <li id="ref5">Menorca.info — "Menorca brilla en Arco y Salud", sobre o Trofeo Nacional Arco y Salud 2025.
+          <span class="ref-meta"><a href="https://www.menorca.info/deportes/polideportivo/2025/07/03/2421707/menorca-brilla-arco-salud.html" target="_blank" rel="noopener">menorca.info</a></span>
+        </li>
+        <li id="ref6">Noticias de Navarra — reportagem sobre o projeto Arrow Salud, da Universidade de Navarra, agosto de 2024.
+          <span class="ref-meta"><a href="https://www.noticiasdenavarra.com/mas-deportes/2024/08/04/flechas-rosas-cancer-mama-8554336.html" target="_blank" rel="noopener">noticiasdenavarra.com</a></span>
+        </li>
+        <li id="ref7">World Archery — "How archery is helping breast cancer patients in Uruguay".
+          <span class="ref-meta"><a href="https://www.worldarchery.sport/fr/node/201827" target="_blank" rel="noopener">worldarchery.sport/fr/node/201827</a></span>
+        </li>
+        <li id="ref8">USA Archery — "Katherine Wu, the driving force behind a project using archery to aid breast cancer survivors" (sobre o Archery Rx, Stanford).
+          <span class="ref-meta"><a href="https://www.usarchery.org/news/katherine-wu-the-driving-force-behind-a-project-using-archery-to-aid-breast-cancer-survivors" target="_blank" rel="noopener">usarchery.org</a></span>
+        </li>
+        <li id="ref9">Flechas de Vida — site e Instagram oficiais do programa, Montevidéu, Uruguai.
+          <span class="ref-meta"><a href="https://flechasdevida.com.uy/" target="_blank" rel="noopener">flechasdevida.com.uy</a> · <a href="https://flechasdevida.com.uy/e-book" target="_blank" rel="noopener">e-book</a> · <a href="https://www.instagram.com/flechas_devida/" target="_blank" rel="noopener">@flechas_devida</a></span>
+        </li>
+        <li id="ref10">World Archery — "Flechas de Vida book published", sobre o lançamento do livro no Palácio Legislativo do Uruguai, 29 de setembro de 2026.
+          <span class="ref-meta"><a href="https://www.worldarchery.sport/news/202654/flechas-vida-breast-cancer-archery-programme-publishes-book" target="_blank" rel="noopener">worldarchery.sport/news/202654</a></span>
+        </li>
+        <li id="ref11">Stanford Recreation &amp; Wellness — "A Real-Life Robin Hood: How Team USA Athlete Katherine P. Wu Balances Stanford Law and Elite Sport".
+          <span class="ref-meta"><a href="https://rec.stanford.edu/news/usa-athlete-katherine-p-wu" target="_blank" rel="noopener">rec.stanford.edu/news/usa-athlete-katherine-p-wu</a></span>
+        </li>
+        <li id="ref12">Rice Magazine (Office of Public Affairs, Rice University) — "Rice's Katniss Everdeen". Foto: Brandon Martin.
+          <span class="ref-meta"><a href="https://magazine.rice.edu/spring-2023/rices-katniss-everdeen" target="_blank" rel="noopener">magazine.rice.edu/spring-2023/rices-katniss-everdeen</a></span>
+        </li>
+      </ol>
+      <p class="attribution-note" style="margin-top:20px;">Imagens do Flechas de Vida (Uruguai) e a foto de Katherine Wu (Stanford) usadas nesta peça foram fornecidas diretamente para esta produção; demais seções usam placeholders porque não recebemos fotos autorizadas de Joinville ou da Espanha.</p>
+    </div>
+  </section>
+
+</main>
+
+<footer class="institutional-footer">
+  <p>Infográfico editorial sobre o projeto Flechas Rosas / Arco Rosa, com base em fontes públicas, elaborado em Outubro de 2026, projetos Amor à Pele e PETG10 Feridas Crônicas, Universidade Federal de Pelotas — UFPel.</p>
+</footer>
+
+</body>
+</html>
