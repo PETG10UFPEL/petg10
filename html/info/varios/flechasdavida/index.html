@@ -520,6 +520,28 @@
   }
   .joinville-card .practical-grid .pill b{ color:var(--br-green-deep); }
 
+  /* MÚSICA DE ABERTURA */
+  .music-toggle{
+    position:fixed;
+    bottom:24px; right:24px;
+    z-index:50;
+    width:52px; height:52px;
+    border:none; border-radius:999px;
+    background:var(--rose-deep);
+    color:#fff;
+    font-size:1.25rem;
+    display:flex; align-items:center; justify-content:center;
+    cursor:pointer;
+    box-shadow:0 6px 18px rgba(0,0,0,.25);
+    transition:transform .15s ease;
+  }
+  .music-toggle:hover{ transform:scale(1.08); }
+  .music-toggle.playing{ animation:pulse-music 1.8s ease-in-out infinite; }
+  @keyframes pulse-music{
+    0%,100%{ box-shadow:0 6px 18px rgba(140,63,86,.35); }
+    50%{ box-shadow:0 6px 28px rgba(140,63,86,.6); }
+  }
+
   .references{ font-size:.88rem; color:var(--ink-soft); }
   .references ol{ padding-left:22px; }
   .references li{ margin-bottom:12px; }
@@ -648,6 +670,40 @@
 </style>
 </head>
 <body>
+
+<audio id="bg-music" src="img/DREAMS.mp3" loop preload="none"></audio>
+<button id="music-toggle" class="music-toggle" aria-label="Tocar música de abertura" title="Tocar música de abertura">🎵</button>
+<script>
+(function(){
+  var audio = document.getElementById('bg-music');
+  var btn = document.getElementById('music-toggle');
+  function setUI(playing){
+    btn.textContent = playing ? '🔊' : '🎵';
+    btn.classList.toggle('playing', playing);
+    btn.title = playing ? 'Pausar música' : 'Tocar música de abertura';
+    btn.setAttribute('aria-label', btn.title);
+  }
+  function tryAutoplay(){
+    var p = audio.play();
+    if (p && p.then){
+      p.then(function(){ setUI(true); }).catch(function(){ setUI(false); });
+    }
+  }
+  btn.addEventListener('click', function(){
+    if (audio.paused){
+      audio.play().then(function(){ setUI(true); }).catch(function(){});
+    } else {
+      audio.pause();
+      setUI(false);
+    }
+  });
+  if (document.readyState === 'loading'){
+    document.addEventListener('DOMContentLoaded', tryAutoplay);
+  } else {
+    tryAutoplay();
+  }
+})();
+</script>
 
 <header class="institutional-header">
   <div>
@@ -932,6 +988,17 @@
         <p class="placeholder-hint">Diagrama anatômico simplificado: silhueta de costas/braço em posição de tiro, com deltoide, trapézio, romboides e grande dorsal destacados — setas indicando o bombeamento muscular que teoricamente auxilia o fluxo linfático.</p>
       </div>
       <figcaption>Ilustração esquemática da hipótese mecânica, comum aos programas de Espanha, Uruguai e Stanford — não uma imagem médica diagnóstica.</figcaption>
+    </figure>
+
+    <figure class="img-placeholder" data-img-path="img/fisiologia-linfatica-arco.png" style="margin-top:20px;">
+      <img src="img/fisiologia-linfatica-arco.png" alt="Diagrama da fisiologia linfática do braço e o papel do bombeamento muscular"
+           onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+      <div class="placeholder-box" style="display:none;">
+        <span class="placeholder-icon">🫧</span>
+        <p class="placeholder-label">[ Coloque aqui: img/fisiologia-linfatica-arco.png ]</p>
+        <p class="placeholder-hint">Diagrama da fisiologia: braço com linfonodos axilares removidos, vasos linfáticos e acúmulo de líquido (linfedema) de um lado; do outro, o "efeito bomba" da contração muscular empurrando a linfa de volta. Prompt de geração logo na resposta do chat.</p>
+      </div>
+      <figcaption>A fisiologia por trás da hipótese: sem os linfonodos removidos na cirurgia, o fluido linfático se acumula; a contração muscular repetida ajudaria a empurrá-lo de volta à circulação.</figcaption>
     </figure>
 
     <!--
