@@ -520,6 +520,38 @@
   }
   .joinville-card .practical-grid .pill b{ color:var(--br-green-deep); }
 
+  /* MENU DE NAVEGAÇÃO */
+  .topnav{
+    position:sticky;
+    top:var(--header-h, 72px);
+    z-index:19;
+    background:#fff;
+    border-bottom:1px solid var(--line);
+    padding:12px 6vw;
+    display:flex;
+    gap:24px;
+    overflow-x:auto;
+    white-space:nowrap;
+    -webkit-overflow-scrolling:touch;
+    scrollbar-width:none;
+  }
+  .topnav::-webkit-scrollbar{ display:none; }
+  .topnav a{
+    flex:none;
+    color:var(--ink-soft);
+    text-decoration:none;
+    font-size:.78rem;
+    font-weight:700;
+    text-transform:uppercase;
+    letter-spacing:.05em;
+    padding:4px 0 6px;
+    border-bottom:2px solid transparent;
+    transition:color .15s ease, border-color .15s ease;
+  }
+  .topnav a:hover{ color:var(--rose-deep); }
+  .topnav a.active{ color:var(--rose-deep); border-bottom-color:var(--rose-deep); }
+  section[id]{ scroll-margin-top:118px; }
+
   /* MÚSICA DE ABERTURA */
   .music-widget{
     position:fixed;
@@ -728,6 +760,36 @@
   } else {
     tryAutoplay();
   }
+
+  function setHeaderHeightVar(){
+    var h = document.querySelector('.institutional-header');
+    if (h) document.documentElement.style.setProperty('--header-h', h.offsetHeight + 'px');
+  }
+  function setupNavHighlight(){
+    var links = Array.prototype.slice.call(document.querySelectorAll('.topnav a'));
+    var sections = links.map(function(a){ return document.querySelector(a.getAttribute('href')); }).filter(Boolean);
+    if (!sections.length || !('IntersectionObserver' in window)) return;
+    var obs = new IntersectionObserver(function(entries){
+      entries.forEach(function(entry){
+        if (entry.isIntersecting){
+          var id = '#' + entry.target.id;
+          links.forEach(function(a){ a.classList.toggle('active', a.getAttribute('href') === id); });
+        }
+      });
+    }, { rootMargin: '-45% 0px -50% 0px', threshold: 0 });
+    sections.forEach(function(s){ obs.observe(s); });
+  }
+  function initNav(){
+    setHeaderHeightVar();
+    setupNavHighlight();
+  }
+  window.addEventListener('resize', setHeaderHeightVar);
+  window.addEventListener('load', setHeaderHeightVar);
+  if (document.readyState === 'loading'){
+    document.addEventListener('DOMContentLoaded', initNav);
+  } else {
+    initNav();
+  }
 })();
 </script>
 
@@ -742,6 +804,19 @@
     <div class="header-tag">Editorial de saúde</div>
   </div>
 </header>
+
+<nav class="topnav" id="topnav">
+  <a href="#origem">Origem</a>
+  <a href="#paises">Países</a>
+  <a href="#caso-uruguai">Uruguai</a>
+  <a href="#caso-stanford">Stanford</a>
+  <a href="#processo">Processo clínico</a>
+  <a href="#evidencias">Evidências</a>
+  <a href="#depoimentos">Depoimentos</a>
+  <a href="#joinville">Joinville</a>
+  <a href="#sintese">Síntese</a>
+  <a href="#referencias">Fontes</a>
+</nav>
 
 <section class="hero">
   <div class="hero-text">
@@ -1184,9 +1259,10 @@
         <p class="placeholder-label">[ Coloque aqui: img/depoimento-arqueira.jpg ]</p>
         <p class="placeholder-hint">Foto de uma arqueira do grupo Flechas de Vida (Uruguai), sorrindo ao lado do alvo.</p>
       </div>
-      <figcaption>Participante do Flechas de Vida, Uruguai. Imagem: Flechas de Vida, via World Archery.<sup class="cite"><a href="#ref7">[7]</a></sup></figcaption>
+      <figcaption>Participante do Flechas de Vida, Uruguai — não é uma foto de Joinville. Imagem: Flechas de Vida, via World Archery.<sup class="cite"><a href="#ref7">[7]</a></sup></figcaption>
     </figure>
-     </section>
+    <p class="attribution-note" style="margin-top:12px;">Ainda não recebemos foto autorizada de nenhuma participante de Joinville — por isso o depoimento de Márcia, acima, segue sem imagem.</p>
+  </section>
 
   <!-- JOINVILLE -->
   <section id="joinville">
