@@ -648,12 +648,14 @@
     grid-template-columns: 1fr 1fr;
     gap:20px;
     margin:0 0 24px;
+    align-items:start;
   }
   .cs-gallery img{
     border-radius:14px;
     width:100%;
-    height:100%;
+    aspect-ratio:3/4;
     object-fit:cover;
+    display:block;
   }
   .cs-gallery .col{ display:flex; flex-direction:column; gap:20px; }
   .cs-video{
@@ -830,13 +832,14 @@
     </div>
   </div>
   <figure class="img-placeholder" data-img-path="img/arco-origem-espanha.jpg">
-    <img src="img/arco-origem-espanha.jpg" alt="Arqueiras em treino de tiro com arco, clube espanhol"
+    <img src="img/arco-origem-espanha.jpg" alt="Arqueiras do Club Arquero Chiclana, grupo Flechas Rosas, em treino"
          onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
     <div class="placeholder-box" style="display:none;">
       <span class="placeholder-icon">🏹</span>
       <p class="placeholder-label">[ Coloque aqui: img/arco-origem-espanha.jpg ]</p>
       <p class="placeholder-hint">Arqueiras em treino ao ar livre, clube espanhol, luz natural, clima de acolhimento</p>
     </div>
+    <figcaption>Arqueiras "Flechas Rosas" do Club Arquero Chiclana, antes do XII Trofeo Solo Mujeres, em Huelva.<sup class="cite"><a href="#ref13">[13]</a></sup></figcaption>
   </figure>
 </section>
 
@@ -877,6 +880,15 @@
           <p class="placeholder-hint">Fachada ou ala de reabilitação do Hospital Universitário Infanta Leonor, Madri</p>
         </div>
         <figcaption>O Hospital Infanta Leonor, em Madri, foi onde a ideia nasceu — dentro da consulta de reabilitação, antes de existir qualquer clube.</figcaption>
+      </figure>
+    </div>
+
+    <div class="callout muted" style="margin-top:32px;">
+      <strong>Por que justamente o arco?</strong> A escolha não é nova — o tiro com arco já era usado como reabilitação quase 80 anos antes do Flechas Rosas. Em 1946, o neurologista Ludwig Guttmann introduziu o esporte no Hospital de Stoke Mandeville, na Inglaterra, para veteranos da Segunda Guerra com lesão na medula espinhal; em 1948, organizou a primeira competição de arco no gramado do hospital — o evento que, com o tempo, deu origem aos Jogos Paralímpicos.<sup class="cite"><a href="#ref14">[14]</a></sup> O raciocínio da época é o mesmo que volta a aparecer aqui: o arco fortalece ombro e braço de forma progressiva e de baixo impacto, pode ser adaptado a diferentes limitações físicas, e combina esforço físico com concentração mental. O Flechas Rosas não inventou essa lógica — está emprestando uma tradição terapêutica bem mais antiga, e aplicando a uma população diferente.
+
+      <figure style="margin:20px 0 0; max-width:420px;">
+        <img src="img/1948/arqueiros.1948.png" alt="Tiro com arco em cadeira de rodas, Hospital de Stoke Mandeville, 1948" style="border-radius:10px; width:100%; display:block;">
+        <figcaption style="margin-top:8px;">Tiro com arco em cadeira de rodas no Hospital de Stoke Mandeville, Inglaterra — foto de um cartão de Natal de 1948, o mesmo ano da primeira competição organizada por Guttmann.<sup class="cite"><a href="#ref15">[15]</a></sup></figcaption>
       </figure>
     </div>
   </section>
@@ -948,7 +960,7 @@
         <figure style="margin:0;">
           <img src="img/flechas-de-vida-retrato-arqueira.jpg" alt="Retrato de arqueira do Flechas de Vida em posição de disparo">
           <figcaption>O gesto de ancoragem e disparo é repetido de forma supervisionada — é esse movimento repetitivo que a hipótese da drenagem linfática tenta explicar.</figcaption>
-        </figure><br>
+        </figure>
       </div>
 
       <div class="cs-stats">
@@ -1362,8 +1374,17 @@
         <li id="ref12">Rice Magazine (Office of Public Affairs, Rice University) — "Rice's Katniss Everdeen". Foto: Brandon Martin.
           <span class="ref-meta"><a href="https://magazine.rice.edu/spring-2023/rices-katniss-everdeen" target="_blank" rel="noopener">magazine.rice.edu/spring-2023/rices-katniss-everdeen</a></span>
         </li>
+        <li id="ref13">Instagram — @clubarqueroschiclana, post sobre as "Flechas Rosas" no XII Trofeo Solo Mujeres, organizado pelo Club Asirio de Tiro con Arco (Huelva), 28 de setembro.
+          <span class="ref-meta"><a href="https://www.instagram.com/clubarqueroschiclana/" target="_blank" rel="noopener">instagram.com/clubarqueroschiclana</a></span>
+        </li>
+        <li id="ref14">World Archery — "History of Para-Archery", sobre a introdução do tiro com arco como reabilitação por Ludwig Guttmann em Stoke Mandeville (1946–1948).
+          <span class="ref-meta"><a href="https://www.worldarchery.sport/news/100270/history-para-archery" target="_blank" rel="noopener">worldarchery.sport/news/100270</a></span>
+        </li>
+        <li id="ref15">Flickr — "Wheelchair archery at Stoke Mandeville Hospital, Bucks", foto de um cartão de Natal de 1948. Usuário dlanorsmada.
+          <span class="ref-meta"><a href="https://www.flickr.com/photos/dlanorsmada/5765163072" target="_blank" rel="noopener">flickr.com/photos/dlanorsmada/5765163072</a></span>
+        </li>
       </ol>
-      <p class="attribution-note" style="margin-top:20px;">Imagens do Flechas de Vida (Uruguai) e a foto de Katherine Wu (Stanford) usadas nesta peça foram fornecidas diretamente para esta produção; demais seções usam placeholders porque não recebemos fotos autorizadas de Joinville ou da Espanha.</p>
+      <p class="attribution-note" style="margin-top:20px;">Imagens do Flechas de Vida (Uruguai), a foto de Katherine Wu (Stanford) e a foto histórica de 1948 (Stoke Mandeville) usadas nesta peça foram fornecidas diretamente para esta produção; demais seções usam placeholders porque não recebemos fotos autorizadas de Joinville ou da Espanha.</p>
     </div>
   </section>
 
