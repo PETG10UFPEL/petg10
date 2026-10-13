@@ -1,142 +1,162 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>PET-Saúde UFPel | G10 – Central de Sistemas</title>
-  <style>
-    :root{
-      --bg:#f6f8fb;
-      --card:#ffffff;
-      --text:#0f172a;
-      --muted:#475569;
-      --border:#e2e8f0;
-      --blue:#3b82c4;
-      --blue2:#1e3a8a;
-      --orange:#d4653b;
-      --shadow: 0 10px 30px rgba(15, 23, 42, .08);
-      --radius: 14px;
-    }
-    *{box-sizing:border-box}
-    body{
-      margin:0;
-      font-family: system-ui, -apple-system, sans-serif;
-      background: linear-gradient(180deg, rgba(59,130,196,.08), transparent 35%),
-                  linear-gradient(90deg, rgba(212,101,59,.06), transparent 45%),
-                  var(--bg);
-      color:var(--text);
-    }
-    .wrap{max-width:980px;margin:0 auto;padding:24px}
-    header{
-      display:flex; gap:18px; align-items:center;
-      background:var(--card);
-      border:1px solid var(--border);
-      border-radius:var(--radius);
-      padding:18px;
-      box-shadow:var(--shadow);
-      margin-bottom: 20px;
-    }
-    header img{width:96px;height:96px;object-fit:contain;border-radius:12px}
-    .title h1{margin:0;font-size:1.25rem;line-height:1.2}
-    .title p{margin:.35rem 0 0;color:var(--muted)}
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>PET-Saúde UFPel | G10 — Sistemas Acadêmicos</title>
+<link rel="icon" type="image/png" href="data:image/png;base64,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">
+<style>
+  :root{
+    --bg: #F6F3EC;
+    --ink: #1C2630;
+    --ink-soft: #5B6470;
+    --card: #FFFFFF;
+    --border: #E3DDCD;
+    --accent: #1F6F62;
+    --accent-soft: #E4EEEB;
+    --accent2: #3A5E8C;
+    --focus: #1F6F62;
+  }
+  *{ box-sizing: border-box; }
+  body{
+    margin:0;
+    background:var(--bg);
+    color:var(--ink);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    line-height:1.5;
+  }
+  h1,h2,h3{
+    font-family: Georgia, "Iowan Old Style", "Palatino Linotype", serif;
+    font-weight:600;
+    margin:0;
+  }
+  a{ color:inherit; }
+  :focus-visible{ outline: 2px solid var(--focus); outline-offset: 2px; }
 
-    .grid{
-      display:grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap:14px;
-      margin-bottom: 14px;
-    }
-    @media (max-width: 780px){ .grid{ grid-template-columns: 1fr; } }
-    .span-2{grid-column: 1 / -1;}
+  .wrap{ max-width: 980px; margin: 0 auto; padding: 28px 20px 60px; }
 
-    .card{
-      background:var(--card);
-      border:1px solid var(--border);
-      border-radius:var(--radius);
-      box-shadow:var(--shadow);
-      padding:16px;
-      position:relative;
-      overflow:hidden;
-    }
-    .card:before{
-      content:"";
-      position:absolute;
-      inset:-2px -2px auto -2px;
-      height:4px;
-      background: linear-gradient(90deg, var(--blue), var(--orange), var(--blue2));
-    }
-    .card h2{margin:10px 0 6px;font-size:1.05rem}
-    .card p{margin:0 0 12px;color:var(--muted);font-size:.95rem}
-    .actions{display:flex;flex-wrap:wrap;gap:10px}
-    
-    a.btn{
-      display:inline-flex; align-items:center; justify-content:center;
-      padding:10px 12px;
-      border-radius:12px;
-      border:1px solid var(--border);
-      text-decoration:none;
-      color:var(--text);
-      background:#fff;
-      font-weight:600;
-      font-size: 0.85rem;
-      transition: all .2s ease;
-    }
-    a.btn:hover{
-      transform: translateY(-1px);
-      border-color: var(--blue);
-      box-shadow: 0 5px 15px rgba(15,23,42,.10);
-    }
-    a.btn.primary{
-      background: linear-gradient(90deg, rgba(59,130,196,.12), rgba(212,101,59,.10));
-      border-color: rgba(59,130,196,.25);
-    }
-  </style>
+  header{
+    display:flex;
+    gap:16px;
+    align-items:center;
+    margin-bottom: 26px;
+  }
+  header a.logo-link{ display:block; flex-shrink:0; line-height:0; }
+  header img{
+    width:52px; height:52px;
+    border-radius:10px;
+    object-fit:cover;
+  }
+  header .title-block h1{
+    font-size: clamp(1.3rem, 2.4vw, 1.7rem);
+    letter-spacing: -0.01em;
+  }
+  header .title-block h1 a{ text-decoration:none; }
+  header .title-block p{
+    margin: 4px 0 0;
+    color: var(--ink-soft);
+    font-size: 0.92rem;
+  }
+
+  .grid{
+    display:grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 16px;
+    margin-bottom: 16px;
+  }
+  @media (max-width: 720px){ .grid{ grid-template-columns: 1fr; } }
+  .span-2{ grid-column: 1 / -1; }
+
+  .card{
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-left: 4px solid var(--accent);
+    border-radius: 10px;
+    padding: 16px 18px;
+    display:flex;
+    flex-direction:column;
+    gap: 10px;
+  }
+  .card.featured{ background: var(--accent-soft); }
+  .card h2{
+    font-size: 1.02rem;
+    line-height:1.3;
+  }
+  .card p{
+    font-size: 0.9rem;
+    color: var(--ink-soft);
+    margin:0;
+    flex-grow:1;
+  }
+  .actions{
+    display:flex;
+    flex-wrap:wrap;
+    gap:8px;
+  }
+  .actions a.btn{
+    font-size: 0.85rem;
+    text-decoration:none;
+    font-weight:600;
+    color: var(--accent2);
+    border: 1px solid var(--accent2);
+    padding: 7px 14px;
+    border-radius: 7px;
+    transition: background 0.12s ease, color 0.12s ease;
+  }
+  .actions a.btn:hover{ background: var(--accent2); color: #fff; }
+
+  footer{
+    text-align:center;
+    padding: 24px 0 10px;
+    color: var(--ink-soft);
+    font-size: 0.8rem;
+  }
+</style>
 </head>
-
 <body>
-  <div class="wrap">
-    <header>
+<div class="wrap">
+
+  <header>
+    <a class="logo-link" href="../../../index.html">
       <img src="img/logo2.jpeg" alt="PET-Saúde UFPel">
-      <div class="title">
-        <h1><a href="../../../index.html" style="text-decoration: none; color: inherit;">PET-Saúde UFPel – Informação e Saúde Digital</a>
-</h1>
-        <p><strong>G10</strong> · Telemonitoramento de Feridas Crônicas · Sistemas Acadêmicos</p>
-      </div>
-    </header>
-
-<div class="grid">
-     <div class="card" style="background-color: #fff8e1;">
-  <h2>Prepação para o SIIEPE</h2>
-  <p>Organização das publicações SIIEPE</p>
-  <div class="actions">
-    <a href="siiepe.html" target="_blank" class="btn primary">SIIEPE 2026</a>
-  </div>
-</div>
-
-<div class="card" style="background-color:;">
-  <h2>Preparação SEURS</h2>
-  <p>Artigo em Desenvolvimento</p>
-  <div class="actions">
-    <a href="https://docs.google.com/document/d/1kpjfqKgXPh2RI6n52kMOJRIO356ob_en/edit?usp=sharing&ouid=108886314513379456241&rtpof=true&sd=true" target="_blank" class="btn primary">Artigo SEURS</a>
-  </div>
-</div>
+    </a>
+    <div class="title-block">
+      <h1><a href="../../../index.html">PET-Saúde UFPel – Informação e Saúde Digital</a></h1>
+      <p><strong>G10</strong> · Telemonitoramento de Feridas Crônicas · Sistemas Acadêmicos</p>
     </div>
+  </header>
 
-   <div class="grid">
-      <div class="card span-2">
-        <h2>Apresentações</h2>
-        <p><a href="v4.polilaminina.pdf"><i>Breakthrough</i> Polilaminina</a></p>
-      </div>
-
-      <div class="card span-2">
-        <h2>Publicações</h2>
-        <p><a href="https://aljmartins.github.io/content/livroia/info_livroia.html" target="_blank">Livro: Descomplicando a Inteligência Artificial</a></p>
+  <div class="grid">
+    <div class="card featured">
+      <h2>Preparação para o SIIEPE</h2>
+      <p>Organização das publicações SIIEPE</p>
+      <div class="actions">
+        <a class="btn" href="siiepe.html" target="_blank">SIIEPE 2026</a>
       </div>
     </div>
 
-    <footer>
-      <p>PET-Saúde UFPel © 2026 · G10 Central de Sistemas</p>
-    </footer>
+    <div class="card">
+      <h2>Preparação SEURS</h2>
+      <p>Artigo em Desenvolvimento</p>
+      <div class="actions">
+        <a class="btn" href="https://docs.google.com/document/d/1kpjfqKgXPh2RI6n52kMOJRIO356ob_en/edit?usp=sharing&amp;ouid=108886314513379456241&amp;rtpof=true&amp;sd=true" target="_blank">Artigo SEURS</a>
+      </div>
+    </div>
   </div>
+
+  <div class="grid">
+    <div class="card span-2">
+      <h2>Apresentações</h2>
+      <p><a href="v4.polilaminina.pdf">Breakthrough Polilaminina</a></p>
+    </div>
+
+    <div class="card span-2">
+      <h2>Publicações</h2>
+      <p><a href="https://aljmartins.github.io/content/livroia/info_livroia.html" target="_blank">Livro: Descomplicando a Inteligência Artificial</a></p>
+    </div>
+  </div>
+
+  <footer>PET-Saúde UFPel © 2026 · G10 Central de Sistemas</footer>
+</div>
 </body>
 </html>
