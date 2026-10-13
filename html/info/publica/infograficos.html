@@ -1,0 +1,684 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>PET-Saúde UFPel | G10 — Central de Infográficos</title>
+<link rel="icon" type="image/png" href="data:image/png;base64,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">
+<style>
+  :root{
+    --bg: #F6F3EC;
+    --ink: #1C2630;
+    --ink-soft: #5B6470;
+    --card: #FFFFFF;
+    --border: #E3DDCD;
+    --accent: #1F6F62;      /* verde clínico / cicatrização */
+    --accent-soft: #E4EEEB;
+    --accent2: #3A5E8C;     /* azul institucional, usado em chips/links secundários */
+    --focus: #1F6F62;
+  }
+
+  *{ box-sizing: border-box; }
+  html{ scroll-behavior: smooth; }
+  body{
+    margin:0;
+    background:var(--bg);
+    color:var(--ink);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    line-height:1.5;
+  }
+  h1,h2,h3{
+    font-family: Georgia, "Iowan Old Style", "Palatino Linotype", serif;
+    font-weight:600;
+    margin:0;
+  }
+  a{ color:inherit; }
+  :focus-visible{
+    outline: 2px solid var(--focus);
+    outline-offset: 2px;
+  }
+
+  /* ---------- header ---------- */
+  header{
+    padding: 28px 20px 18px;
+    max-width: 1180px;
+    margin: 0 auto;
+    display:flex;
+    gap:16px;
+    align-items:center;
+  }
+  header img{
+    width:52px; height:52px;
+    border-radius:10px;
+    object-fit:cover;
+    flex-shrink:0;
+  }
+  header .title-block h1{
+    font-size: clamp(1.3rem, 2.4vw, 1.7rem);
+    letter-spacing: -0.01em;
+  }
+  header .title-block p{
+    margin: 4px 0 0;
+    color: var(--ink-soft);
+    font-size: 0.92rem;
+  }
+
+  /* ---------- controls (sticky) ---------- */
+  .controls{
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    background: var(--bg);
+    border-bottom: 1px solid var(--border);
+    padding: 14px 20px 16px;
+  }
+  .controls-inner{
+    max-width: 1180px;
+    margin: 0 auto;
+  }
+  .search-row{
+    display:flex;
+    gap:10px;
+    margin-bottom: 12px;
+  }
+  .search-row input[type="search"]{
+    flex:1;
+    font-size: 0.98rem;
+    padding: 10px 14px;
+    border-radius: 8px;
+    border: 1px solid var(--border);
+    background: var(--card);
+    color: var(--ink);
+    font-family: inherit;
+  }
+  .search-row input[type="search"]::placeholder{ color:#9A9488; }
+
+  .tag-row{
+    display:flex;
+    flex-wrap:wrap;
+    gap:8px;
+  }
+  .tag-btn{
+    font-family: inherit;
+    font-size: 0.85rem;
+    padding: 6px 13px;
+    border-radius: 999px;
+    border: 1px solid var(--border);
+    background: var(--card);
+    color: var(--ink-soft);
+    cursor:pointer;
+    transition: background 0.12s ease, color 0.12s ease, border-color 0.12s ease;
+  }
+  .tag-btn:hover{ border-color: var(--accent); }
+  .tag-btn[aria-pressed="true"]{
+    background: var(--accent);
+    border-color: var(--accent);
+    color: #fff;
+  }
+
+  .count-row{
+    max-width: 1180px;
+    margin: 10px auto 0;
+    padding: 0 20px;
+    font-size: 0.85rem;
+    color: var(--ink-soft);
+  }
+
+  /* ---------- grid ---------- */
+  main{
+    max-width: 1180px;
+    margin: 0 auto;
+    padding: 18px 20px 60px;
+  }
+  .grid{
+    display:grid;
+    grid-template-columns: repeat(auto-fill, minmax(290px, 1fr));
+    gap: 16px;
+  }
+
+  .card{
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-left: 4px solid var(--accent-card, var(--accent));
+    border-radius: 10px;
+    padding: 16px 18px;
+    display:flex;
+    flex-direction:column;
+    gap: 10px;
+  }
+  .card h2{
+    font-size: 1.05rem;
+    line-height:1.3;
+  }
+  .card .summary{
+    font-size: 0.9rem;
+    color: var(--ink-soft);
+    margin:0;
+    flex-grow:1;
+  }
+  .card .tags{
+    display:flex;
+    flex-wrap:wrap;
+    gap:6px;
+  }
+  .card .tags span{
+    font-size: 0.72rem;
+    padding: 3px 9px;
+    border-radius: 999px;
+    background: var(--accent-soft);
+    color: var(--accent);
+  }
+  .card .links{
+    display:flex;
+    flex-wrap:wrap;
+    gap:8px;
+    margin-top: 4px;
+  }
+  .card .links a{
+    font-size: 0.85rem;
+    text-decoration:none;
+    font-weight:600;
+    color: var(--accent2);
+    border: 1px solid var(--accent2);
+    padding: 7px 12px;
+    border-radius: 7px;
+    transition: background 0.12s ease, color 0.12s ease;
+  }
+  .card .links a:hover{
+    background: var(--accent2);
+    color: #fff;
+  }
+
+  .empty-state{
+    text-align:center;
+    padding: 60px 20px;
+    color: var(--ink-soft);
+  }
+  .empty-state button{
+    margin-top: 12px;
+    font-family: inherit;
+    font-size: 0.9rem;
+    padding: 8px 16px;
+    border-radius: 7px;
+    border: 1px solid var(--accent);
+    background: #fff;
+    color: var(--accent);
+    cursor:pointer;
+  }
+
+  footer{
+    text-align:center;
+    padding: 24px 20px 40px;
+    color: var(--ink-soft);
+    font-size: 0.8rem;
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <a href="https://petg10ufpel.github.io/petg10/index.html" style="display:block;flex-shrink:0;line-height:0;">
+    <img src="https://petg10ufpel.github.io/petg10/img/logo2.jpeg" alt="Logo PET-Saúde UFPel G10">
+  </a>
+  <div class="title-block">
+    <h1>PET-Saúde UFPel — Central de Infográficos</h1>
+    <p>G10 · Telemonitoramento de Feridas Crônicas</p>
+  </div>
+</header>
+
+<div class="controls">
+  <div class="controls-inner">
+    <div class="search-row">
+      <label for="searchInput" class="sr-only" style="position:absolute;left:-9999px;">Buscar infográficos</label>
+      <input type="search" id="searchInput" placeholder="Buscar por título ou assunto…" autocomplete="off">
+    </div>
+    <div class="tag-row" id="tagRow" role="group" aria-label="Filtrar por categoria"></div>
+  </div>
+</div>
+
+<div class="count-row" id="countRow"></div>
+
+<main>
+  <div class="grid" id="grid"></div>
+  <div class="empty-state" id="emptyState" style="display:none;">
+    <p>Nenhum infográfico encontrado com esses termos.</p>
+    <button id="clearFiltersBtn">Limpar busca e filtros</button>
+  </div>
+</main>
+
+<footer>
+  PET-Saúde Informação e Saúde Digital · G10 — Amor à Pele · UFPel
+</footer>
+
+<script>
+/* =========================================================================
+   COMO ADICIONAR UM NOVO INFOGRÁFICO
+   -------------------------------------------------------------------------
+   Copie o bloco abaixo, cole no final do array INFOGRAFICOS (antes do ]),
+   preencha os campos e salve. Nada mais no código precisa mudar: os
+   botões de filtro são gerados automaticamente a partir das tags usadas
+   em todos os itens — se você usar uma tag nova, ela vira um filtro novo
+   sozinha.
+
+   {
+     title: "Título curto do infográfico",
+     summary: "Uma frase (até ~160 caracteres) resumindo o conteúdo.",
+     tags: ["Feridas Crônicas"],            // 1 a 3 tags, da lista existente
+                                             // ou uma tag nova (vira filtro novo)
+     links: [
+       { label: "Abrir infográfico", url: "https://..." }
+       // pode ter mais de um link, ex. duas versões de um simulador
+     ]
+   },
+
+   Tags em uso atualmente (reaproveite quando fizer sentido, para não
+   fragmentar os filtros):
+   Feridas Crônicas · IA & Saúde · Ciência & Tecnologia ·
+   Humanidades & Reflexão · Casos Clínicos · Guias & Estudo ·
+   Saúde Pública & Ambiental · Ferramentas Interativas
+   ========================================================================= */
+
+const INFOGRAFICOS = [
+  {
+    title: "Minerais x Curativos",
+    summary: "Conecta os minerais usados em data centers aos minerais presentes em curativos modernos de feridas.",
+    tags: ["Feridas Crônicas", "Ciência & Tecnologia"],
+    links: [{ label: "Abrir infográfico", url: "https://petg10ufpel.github.io/petg10/html/info/mineraisdata/minerais_data.html" }]
+  },
+  {
+    title: "Livro Guia Feridas Crônicas",
+    summary: "Mapa visual do Guia Prático Unicentro: tipos de feridas, fases da cicatrização e o framework T.I.M.E.R.S.",
+    tags: ["Feridas Crônicas", "Guias & Estudo"],
+    links: [{ label: "Abrir infográfico", url: "https://petg10ufpel.github.io/petg10/html/info/livroferidas/guia_feridas.html" }]
+  },
+  {
+    title: "O Olho como Janela Sistêmica",
+    summary: "Como a retina revela, de forma não invasiva, a microangiopatia que trava a cicatrização.",
+    tags: ["Feridas Crônicas", "Ciência & Tecnologia"],
+    links: [{ label: "Abrir infográfico", url: "https://petg10ufpel.github.io/petg10/html/info/olho.ferida/index.html" }]
+  },
+  {
+    title: "IA MEC",
+    summary: "Síntese do Referencial do MEC para uso responsável de IA na educação, do ensino sobre IA ao ensino com IA.",
+    tags: ["IA & Saúde"],
+    links: [{ label: "Abrir infográfico", url: "https://petg10ufpel.github.io/petg10/html/info/mecia/index.html" }]
+  },
+  {
+    title: "Glicose, Alzheimer & Pé Diabético",
+    summary: "Cruza glicose, Alzheimer e pé diabético num só olhar metabólico, neurológico e clínico.",
+    tags: ["Feridas Crônicas", "Ciência & Tecnologia"],
+    links: [{ label: "Abrir infográfico", url: "https://petg10ufpel.github.io/petg10/html/info/glicose/indexag.html" }]
+  },
+  {
+    title: "Pele como Espelho do Envelhecimento",
+    summary: "A pele como espelho do tempo biológico: colágeno, regeneração e capacidade de cicatrização.",
+    tags: ["Feridas Crônicas", "Ciência & Tecnologia"],
+    links: [{ label: "Abrir infográfico", url: "https://petg10ufpel.github.io/petg10/html/info/inspire_t/inspire-t-visual.html" }]
+  },
+  {
+    title: "ITB — Índice Tornozelo-Braquial",
+    summary: "Guia prático do ITB: conceito, cálculo e leitura clínica, com simulador interativo.",
+    tags: ["Feridas Crônicas", "Ferramentas Interativas"],
+    links: [
+      { label: "Simulador ITB", url: "https://petg10ufpel.github.io/petg10/html/info/itb/itb_simulador.html" },
+      { label: "ITB (versão 2)", url: "https://itb-eight.vercel.app/" }
+    ]
+  },
+  {
+    title: "Comunicação Sistêmica dos Vírus",
+    summary: "Vírus como sistemas de comunicação: interação viral, resposta do hospedeiro e disseminação.",
+    tags: ["Ciência & Tecnologia"],
+    links: [{ label: "Abrir infográfico", url: "https://petg10ufpel.github.io/petg10/html/info/viruscom/" }]
+  },
+  {
+    title: "O Intestino que Prevê a Demência",
+    summary: "O eixo intestino-cérebro e seu papel na cognição, no humor e no risco de demência.",
+    tags: ["Ciência & Tecnologia"],
+    links: [{ label: "Abrir infográfico", url: "https://petg10ufpel.github.io/petg10/html/info/varios/intestinocerebro.html" }]
+  },
+  {
+    title: "A Roda que Guarda Hidrogênio",
+    summary: "Produção, armazenamento e uso do hidrogênio como vetor energético na transição limpa.",
+    tags: ["Ciência & Tecnologia"],
+    links: [{ label: "Abrir infográfico", url: "https://petg10ufpel.github.io/petg10/html/info/varios/rodah.html" }]
+  },
+  {
+    title: "Schopenhauer Revisitado",
+    summary: "Revisita o conceito de felicidade de Schopenhauer e sua relação com o cuidado em feridas.",
+    tags: ["Humanidades & Reflexão"],
+    links: [{ label: "Abrir infográfico", url: "https://petg10ufpel.github.io/petg10/html/info/varios/schopen.html" }]
+  },
+  {
+    title: "Maiêutica & Feridas Crônicas",
+    summary: "O cuidado como diálogo: maiêutica e aporia na escuta clínica da pessoa com ferida.",
+    tags: ["Humanidades & Reflexão", "Feridas Crônicas"],
+    links: [{ label: "Abrir infográfico", url: "https://petg10ufpel.github.io/petg10/html/info/varios/mayeutica-infografico.html" }]
+  },
+  {
+    title: "Inovação em Feridas Crônicas — 04/26",
+    summary: "Panorama de IA, telemonitoramento, curativos inteligentes e medicina regenerativa no cuidado de feridas.",
+    tags: ["Feridas Crônicas", "Ciência & Tecnologia"],
+    links: [{ label: "Abrir infográfico", url: "https://petg10ufpel.github.io/petg10/html/info/varios/inn042026.html" }]
+  },
+  {
+    title: "O Processo do Pé Diabético",
+    summary: "Do excesso de glicose à ferida crônica: AGEs, biofilme, neuropatia e risco de amputação.",
+    tags: ["Feridas Crônicas"],
+    links: [{ label: "Abrir infográfico", url: "https://petg10ufpel.github.io/petg10/html/info/varios/acucaraferida.html" }]
+  },
+  {
+    title: "Intuição, IA e Sistemas",
+    summary: "Por que a cicatrização emerge do sistema de cuidado, e não de dados ou algoritmos isolados.",
+    tags: ["IA & Saúde", "Feridas Crônicas"],
+    links: [{ label: "Abrir infográfico", url: "https://petg10ufpel.github.io/petg10/html/info/varios/intuicao/index.html" }]
+  },
+  {
+    title: "Pitágoras, o Corpo & Alma",
+    summary: "Saúde como equilíbrio corpo-alma e seu impacto direto na cicatrização de feridas crônicas.",
+    tags: ["Humanidades & Reflexão", "Feridas Crônicas"],
+    links: [{ label: "Abrir infográfico", url: "https://petg10ufpel.github.io/petg10/html/info/varios/pit/indexpit.html" }]
+  },
+  {
+    title: "Maria, Maria",
+    summary: "Caso clínico de úlcera venosa narrado em sete momentos, do diagnóstico à cicatrização.",
+    tags: ["Casos Clínicos", "Feridas Crônicas"],
+    links: [{ label: "Abrir infográfico", url: "https://petg10ufpel.github.io/petg10/html/info/varios/maria/" }]
+  },
+  {
+    title: "Erasmo de Rotterdam",
+    summary: "A persistência no cuidado contínuo pensada a partir do Elogio da Loucura.",
+    tags: ["Humanidades & Reflexão", "Feridas Crônicas"],
+    links: [{ label: "Abrir infográfico", url: "https://petg10ufpel.github.io/petg10/html/info/varios/erasmo/index.html" }]
+  },
+  {
+    title: "Mantis Biotech",
+    summary: "Startup que cria gêmeos digitais do corpo humano para gerar dados sintéticos de treinamento de IA.",
+    tags: ["Ciência & Tecnologia", "IA & Saúde"],
+    links: [{ label: "Abrir infográfico", url: "https://petg10ufpel.github.io/petg10/html/info/varios/mantisbiotech/index.html" }]
+  },
+  {
+    title: "FemTech",
+    summary: "Tecnologia, dados e IA aplicados à saúde da mulher: mercado, players e desafios.",
+    tags: ["Ciência & Tecnologia"],
+    links: [{ label: "Abrir infográfico", url: "https://petg10ufpel.github.io/petg10/html/info/varios/femtech/" }]
+  },
+  {
+    title: "Mãos, Microbiota, Bactérias",
+    summary: "Higiene das mãos e os \"5 Momentos\" da OMS na prevenção de infecções hospitalares.",
+    tags: ["Feridas Crônicas", "Guias & Estudo"],
+    links: [{ label: "Abrir infográfico", url: "https://petg10ufpel.github.io/petg10/html/info/varios/maos/" }]
+  },
+  {
+    title: "Fuligem",
+    summary: "Como a poluição por carbono negro pode interferir na cicatrização de feridas crônicas.",
+    tags: ["Feridas Crônicas", "Saúde Pública & Ambiental"],
+    links: [{ label: "Abrir infográfico", url: "https://petg10ufpel.github.io/petg10/html/info/varios/fuligem/index.html" }]
+  },
+  {
+    title: "PRF — Fibrina Rica em Plaquetas",
+    summary: "Terapia biológica autóloga como adjuvante no preparo do leito de feridas refratárias.",
+    tags: ["Feridas Crônicas"],
+    links: [{ label: "Abrir infográfico", url: "https://petg10ufpel.github.io/petg10/html/info/varios/platelet/" }]
+  },
+  {
+    title: "IQWiG — Feridas Crônicas",
+    summary: "Definição, avaliação e tratamento de feridas crônicas segundo o instituto alemão IQWiG.",
+    tags: ["Feridas Crônicas", "Guias & Estudo"],
+    links: [{ label: "Abrir infográfico", url: "https://petg10ufpel.github.io/petg10/html/info/varios/iqwig/" }]
+  },
+  {
+    title: "O Silêncio",
+    summary: "O silêncio como comunicação clínica: do conceito japonês de ma ao cuidado em feridas.",
+    tags: ["Humanidades & Reflexão", "Feridas Crônicas"],
+    links: [{ label: "Abrir infográfico", url: "https://petg10ufpel.github.io/petg10/html/info/varios/silencio/" }]
+  },
+  {
+    title: "Indicadores 2026",
+    summary: "Panorama mundial da produção científica em saúde, com base no National Science Board.",
+    tags: ["Ciência & Tecnologia"],
+    links: [{ label: "Abrir infográfico", url: "https://petg10ufpel.github.io/petg10/html/info/paper/pd2026/" }]
+  },
+  {
+    title: "Câncer: Genética ou Metabólica?",
+    summary: "O Efeito Warburg e a hipótese metabólica da origem do câncer.",
+    tags: ["Ciência & Tecnologia"],
+    links: [{ label: "Abrir infográfico", url: "https://petg10ufpel.github.io/petg10/html/info/paper/genmet/" }]
+  },
+  {
+    title: "Feridas Crônicas no Mundo",
+    summary: "Fisiopatologia, principais tipos de feridas crônicas e manejo multiprofissional no SUS.",
+    tags: ["Feridas Crônicas", "Guias & Estudo"],
+    links: [{ label: "Abrir infográfico", url: "https://petg10ufpel.github.io/petg10/html/info/varios/feridas/" }]
+  },
+  {
+    title: "Fungos Micorrízicos Arbusculares",
+    summary: "O primeiro mapa global da rede subterrânea que sustenta 70% das plantas da Terra.",
+    tags: ["Ciência & Tecnologia", "Saúde Pública & Ambiental"],
+    links: [{ label: "Abrir infográfico", url: "https://petg10ufpel.github.io/petg10/html/info/varios/fungos/" }]
+  },
+  {
+    title: "Saúde da População Negra, Pelotas",
+    summary: "Desigualdades sistêmicas em saúde da população negra, com dados do boletim municipal.",
+    tags: ["Saúde Pública & Ambiental"],
+    links: [{ label: "Abrir infográfico", url: "https://petg10ufpel.github.io/petg10/html/info/varios/popnegra/" }]
+  },
+  {
+    title: "Epidermólise Bolhosa Distrófica",
+    summary: "O caso de Leo e a primeira terapia gênica tópica aprovada para a \"pele de borboleta\".",
+    tags: ["Casos Clínicos", "Feridas Crônicas"],
+    links: [{ label: "Abrir infográfico", url: "https://petg10ufpel.github.io/petg10/html/info/varios/leoebd/" }]
+  },
+  {
+    title: "Padrões de Meias de Compressão",
+    summary: "Por que sistemas britânico e europeu divergem na pressão terapêutica das meias de compressão.",
+    tags: ["Feridas Crônicas", "Guias & Estudo"],
+    links: [{ label: "Abrir infográfico", url: "https://petg10ufpel.github.io/petg10/html/info/varios/meias/" }]
+  },
+  {
+    title: "O Poder dos Símbolos",
+    summary: "Real, Imaginário e Simbólico de Lacan aplicados à comunicação em saúde.",
+    tags: ["Humanidades & Reflexão"],
+    links: [{ label: "Abrir infográfico", url: "https://petg10ufpel.github.io/petg10/html/info/varios/lacan/" }]
+  },
+  {
+    title: "Cold Blob — Ferida Crônica Mista",
+    summary: "Analogia entre uma anomalia oceânica e a úlcera mista: o que a superfície esconde.",
+    tags: ["Feridas Crônicas"],
+    links: [{ label: "Abrir infográfico", url: "https://petg10ufpel.github.io/petg10/html/info/varios/coldblob/" }]
+  },
+  {
+    title: "Vacina IA",
+    summary: "Vacina de amplo espectro contra sarbecovírus com antígeno desenhado por IA, testada em fase I.",
+    tags: ["Ciência & Tecnologia", "IA & Saúde"],
+    links: [{ label: "Abrir infográfico", url: "https://petg10ufpel.github.io/petg10/html/info/varios/vacinaia/" }]
+  },
+  {
+    title: "GLP-1 — Hormônio Digestivo",
+    summary: "Do hormônio digestivo ao medicamento mais vendido do mundo, e seu uso no cuidado em diabetes.",
+    tags: ["Ciência & Tecnologia"],
+    links: [{ label: "Abrir infográfico", url: "https://petg10ufpel.github.io/petg10/html/info/varios/obesochina/" }]
+  },
+  {
+    title: "IA & Radiologia (GazeX)",
+    summary: "Modelo de IA treinado a partir do rastreamento ocular real de radiologistas experientes.",
+    tags: ["IA & Saúde"],
+    links: [{ label: "Abrir infográfico", url: "https://petg10ufpel.github.io/petg10/html/info/varios/radiologia/" }]
+  },
+  {
+    title: "Plásticos no Coração",
+    summary: "Micro e nanoplásticos encontrados no sangue coronário de pacientes com infarto agudo.",
+    tags: ["Ciência & Tecnologia", "Saúde Pública & Ambiental"],
+    links: [{ label: "Abrir infográfico", url: "https://petg10ufpel.github.io/petg10/html/info/varios/coracao/" }]
+  },
+  {
+    title: "Existe Cura p/ Diabetes?",
+    summary: "Terapia celular e reprogramação de células como caminho para o diabetes tipo 1.",
+    tags: ["Ciência & Tecnologia", "Feridas Crônicas"],
+    links: [{ label: "Abrir infográfico", url: "https://petg10ufpel.github.io/petg10/html/info/varios/pecura/" }]
+  },
+  {
+    title: "Da Vinci: Engenharia, Enfermagem e Cirurgia",
+    summary: "A trajetória da cirurgia robótica e as profissões que sustentam essa tecnologia.",
+    tags: ["Ciência & Tecnologia"],
+    links: [{ label: "Abrir infográfico", url: "https://petg10ufpel.github.io/petg10/html/info/varios/davinci/" }]
+  },
+  {
+    title: "Linfedema",
+    summary: "Caso real de dez anos de linfedema e três semanas de resposta à Terapia Complexa Descongestiva.",
+    tags: ["Casos Clínicos", "Feridas Crônicas"],
+    links: [{ label: "Abrir infográfico", url: "https://petg10ufpel.github.io/petg10/html/info/varios/safc/casos/" }]
+  },
+  {
+    title: "Além da IA",
+    summary: "Armazenamento de dados em DNA e computação quântica aplicados ao futuro das feridas crônicas.",
+    tags: ["Ciência & Tecnologia", "Feridas Crônicas"],
+    links: [{ label: "Abrir infográfico", url: "https://petg10ufpel.github.io/petg10/html/info/varios/futiaq/" }]
+  },
+  {
+    title: "Câncer, a Rota de Xangai",
+    summary: "Por que pacientes oncológicos de vários países viajam a Xangai para terapia CAR-T.",
+    tags: ["Ciência & Tecnologia"],
+    links: [{ label: "Abrir infográfico", url: "https://petg10ufpel.github.io/petg10/html/info/varios/china.cancer/" }]
+  },
+  {
+    title: "AlphaGenome Atlas",
+    summary: "Plataforma gratuita do Google DeepMind para consultar o efeito estimado de variantes genéticas.",
+    tags: ["Ciência & Tecnologia", "IA & Saúde"],
+    links: [{ label: "Abrir infográfico", url: "https://petg10ufpel.github.io/petg10/html/info/varios/alphagenome/" }]
+  },
+  {
+    title: "Leg Club",
+    summary: "Modelo britânico comunitário de cuidado de úlceras de perna, com revisão sistemática.",
+    tags: ["Feridas Crônicas", "Guias & Estudo"],
+    links: [{ label: "Abrir infográfico", url: "https://petg10ufpel.github.io/petg10/html/info/varios/legclub/" }]
+  },
+  {
+    title: "Feridas como Sistemas Complexos",
+    summary: "Laboratório virtual interativo sobre a ferida crônica como sistema vivo e emergente.",
+    tags: ["Feridas Crônicas", "Ferramentas Interativas"],
+    links: [{ label: "Abrir infográfico", url: "https://petg10ufpel.github.io/petg10/html/info/varios/complexidade/" }]
+  },
+  {
+    title: "Câncer Antes dos 50",
+    summary: "O aumento de diagnósticos oncológicos em jovens, com rede semântica interativa de referências.",
+    tags: ["Ciência & Tecnologia"],
+    links: [{ label: "Abrir infográfico", url: "https://petg10ufpel.github.io/petg10/html/info/varios/cancerantes50/" }]
+  },
+  {
+    title: "Nobel de Medicina 2026",
+    summary: "A história da optogenética, do laboratório ao controle da luz sobre neurônios.",
+    tags: ["Ciência & Tecnologia", "Feridas Crônicas"],
+    links: [{ label: "Abrir infográfico", url: "https://petg10ufpel.github.io/petg10/html/info/varios/nobelmedicina2026/" }]
+  },
+  {
+    title: "Flechas — Outubro Rosa",
+    summary: "Como o tiro com arco pode favorecer o fluxo linfático após câncer de mama.",
+    tags: ["Casos Clínicos", "Saúde Pública & Ambiental"],
+    links: [{ label: "Abrir infográfico", url: "https://petg10ufpel.github.io/petg10/html/info/varios/flechasdavida/" }]
+  }
+];
+
+/* =========================================================================
+   Daqui pra baixo é só motor de renderização/filtro — não precisa mexer.
+   ========================================================================= */
+
+const TAG_COLORS = {
+  "Feridas Crônicas": "#1F6F62",
+  "IA & Saúde": "#3A5E8C",
+  "Ciência & Tecnologia": "#8A6A2F",
+  "Humanidades & Reflexão": "#7A4B6E",
+  "Casos Clínicos": "#B4542C",
+  "Guias & Estudo": "#2D6E8E",
+  "Saúde Pública & Ambiental": "#4C7A3A",
+  "Ferramentas Interativas": "#6A5A8C"
+};
+function colorForTags(tags){
+  return TAG_COLORS[tags[0]] || "#1F6F62";
+}
+
+const grid = document.getElementById('grid');
+const tagRow = document.getElementById('tagRow');
+const searchInput = document.getElementById('searchInput');
+const countRow = document.getElementById('countRow');
+const emptyState = document.getElementById('emptyState');
+const clearFiltersBtn = document.getElementById('clearFiltersBtn');
+
+let activeTags = new Set();
+
+// build tag filter chips dynamically from whatever tags exist in the data
+const allTags = [...new Set(INFOGRAFICOS.flatMap(i => i.tags))].sort((a,b)=>a.localeCompare(b,'pt-BR'));
+
+function buildTagRow(){
+  tagRow.innerHTML = '';
+  const allBtn = document.createElement('button');
+  allBtn.className = 'tag-btn';
+  allBtn.textContent = 'Todos';
+  allBtn.setAttribute('aria-pressed', activeTags.size === 0 ? 'true' : 'false');
+  allBtn.addEventListener('click', () => {
+    activeTags.clear();
+    render();
+  });
+  tagRow.appendChild(allBtn);
+
+  allTags.forEach(tag => {
+    const btn = document.createElement('button');
+    btn.className = 'tag-btn';
+    btn.textContent = tag;
+    btn.setAttribute('aria-pressed', activeTags.has(tag) ? 'true' : 'false');
+    btn.addEventListener('click', () => {
+      if (activeTags.has(tag)) activeTags.delete(tag);
+      else activeTags.add(tag);
+      render();
+    });
+    tagRow.appendChild(btn);
+  });
+}
+
+function matchesSearch(item, term){
+  if (!term) return true;
+  const haystack = (item.title + ' ' + item.summary + ' ' + item.tags.join(' ')).toLowerCase();
+  return haystack.includes(term);
+}
+
+function matchesTags(item){
+  if (activeTags.size === 0) return true;
+  return item.tags.some(t => activeTags.has(t));
+}
+
+function cardHTML(item){
+  const tagsHTML = item.tags.map(t => `<span>${t}</span>`).join('');
+  const linksHTML = item.links.map(l => `<a href="${l.url}" target="_blank" rel="noopener">${l.label}</a>`).join('');
+  return `
+    <article class="card" style="--accent-card:${colorForTags(item.tags)}">
+      <h2>${item.title}</h2>
+      <p class="summary">${item.summary}</p>
+      <div class="tags">${tagsHTML}</div>
+      <div class="links">${linksHTML}</div>
+    </article>
+  `;
+}
+
+function render(){
+  buildTagRow();
+  const term = searchInput.value.trim().toLowerCase();
+  const results = INFOGRAFICOS.filter(item => matchesSearch(item, term) && matchesTags(item));
+
+  grid.innerHTML = results.map(cardHTML).join('');
+  countRow.textContent = `Mostrando ${results.length} de ${INFOGRAFICOS.length} infográficos`;
+
+  const noResults = results.length === 0;
+  grid.style.display = noResults ? 'none' : 'grid';
+  emptyState.style.display = noResults ? 'block' : 'none';
+}
+
+searchInput.addEventListener('input', render);
+clearFiltersBtn.addEventListener('click', () => {
+  searchInput.value = '';
+  activeTags.clear();
+  render();
+});
+
+render();
+</script>
+</body>
+</html>
