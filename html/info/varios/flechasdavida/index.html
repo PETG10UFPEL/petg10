@@ -200,6 +200,32 @@
   }
   .country-card p{ font-size:.92rem; color:var(--ink-soft); margin:0;}
 
+  .compare-table{
+    width:100%;
+    border-collapse:collapse;
+    margin-top:24px;
+    font-size:.9rem;
+    background:var(--card);
+    border-radius:12px;
+    overflow:hidden;
+    box-shadow:0 1px 3px rgba(0,0,0,.04);
+  }
+  .compare-table th, .compare-table td{
+    text-align:left;
+    padding:12px 16px;
+    border-bottom:1px solid var(--line);
+  }
+  .compare-table th{
+    background:var(--rose-pale);
+    color:var(--rose-deep);
+    font-weight:700;
+    font-size:.8rem;
+    text-transform:uppercase;
+    letter-spacing:.03em;
+  }
+  .compare-table tr:last-child td{ border-bottom:none; }
+  .compare-table td.muted{ color:var(--ink-soft); font-size:.85rem; }
+
   /* CALLOUT */
   .callout{
     background:var(--rose-pale);
@@ -476,6 +502,41 @@
   }
   .socratic-item p{ margin:0; font-size:1rem; line-height:1.55; }
 
+  /* ARGENTINA — card celeste claro */
+  .argentina-card{
+    --ar-blue:#EAF3FB;
+    --ar-blue-line:#BBDBF2;
+    --ar-blue-deep:#3E7CAE;
+    background:var(--ar-blue);
+    border:1px solid var(--ar-blue-line);
+    border-radius:20px;
+    padding:36px;
+    margin-top:28px;
+  }
+  .argentina-card .cs-flag{
+    font-size:.78rem; font-weight:700; background:#fff; color:var(--ar-blue-deep);
+    padding:5px 12px; border-radius:999px; text-transform:uppercase; letter-spacing:.05em;
+  }
+  .argentina-card .lead-p{ color:#2F4A5E; }
+  .argentina-card figcaption{ color:#4A6578; }
+  .argentina-card .cs-stats .stat{ background:#fff; border-color:var(--ar-blue-line); }
+  .argentina-card .cs-stats .stat strong{ color:var(--ar-blue-deep); }
+  .argentina-card .callout.muted{ background:#fff; border-left-color:var(--ar-blue-deep); color:#2E3A4E; }
+  .argentina-card .node-list{
+    display:grid;
+    grid-template-columns:repeat(auto-fit, minmax(200px,1fr));
+    gap:14px;
+    margin:20px 0 0;
+  }
+  .argentina-card .node-list .node{
+    background:#fff;
+    border:1px solid var(--ar-blue-line);
+    border-radius:12px;
+    padding:14px 16px;
+  }
+  .argentina-card .node-list .node b{ display:block; color:var(--ar-blue-deep); font-family:var(--serif); font-size:.95rem; margin-bottom:4px; }
+  .argentina-card .node-list .node span{ font-size:.85rem; color:#4A6578; }
+
   /* STANFORD — card vermelho cardinal claro (EUA) */
   .stanford-card{
     --sf-red:#FBEAEA;
@@ -591,6 +652,42 @@
     .music-widget{ bottom:16px; right:16px; padding:6px 12px 6px 6px; }
     .music-volume{ width:60px; }
   }
+
+  /* RIZOMA */
+  .rhizome-card{
+    background:var(--navy);
+    color:#F3EDE9;
+    border-radius:20px;
+    padding:40px;
+    margin-top:28px;
+  }
+  .rhizome-card h3{
+    font-family:var(--serif);
+    font-size:1.3rem;
+    margin:0 0 16px;
+    color:#fff;
+  }
+  .rhizome-card p{ color:rgba(255,255,255,.88); max-width:75ch; }
+  .rhizome-principles{
+    display:grid;
+    grid-template-columns:repeat(auto-fit, minmax(240px,1fr));
+    gap:16px;
+    margin:24px 0;
+  }
+  .rhizome-principles .rp{
+    background:rgba(255,255,255,.06);
+    border:1px solid rgba(255,255,255,.15);
+    border-radius:12px;
+    padding:16px 18px;
+  }
+  .rhizome-principles .rp b{
+    display:block;
+    color:var(--rose-pale);
+    font-family:var(--serif);
+    font-size:.95rem;
+    margin-bottom:6px;
+  }
+  .rhizome-principles .rp span{ font-size:.85rem; color:rgba(255,255,255,.82); line-height:1.5; }
 
   .references{ font-size:.88rem; color:var(--ink-soft); }
   .references ol{ padding-left:22px; }
@@ -811,11 +908,13 @@
   <a href="#origem">Origem</a>
   <a href="#paises">Países</a>
   <a href="#caso-uruguai">Uruguai</a>
+  <a href="#caso-argentina">Argentina</a>
   <a href="#caso-stanford">Stanford</a>
   <a href="#processo">Processo clínico</a>
   <a href="#evidencias">Evidências</a>
   <a href="#depoimentos">Depoimentos</a>
   <a href="#joinville">Joinville</a>
+  <a href="#rizoma">Rizoma</a>
   <a href="#sintese">Síntese</a>
   <a href="#referencias">Fontes</a>
 </nav>
@@ -824,10 +923,10 @@
   <div class="hero-text">
     <span class="eyebrow">Origem · Expansão · Evidências</span>
     <h1>Quando o <em>arco</em> vira parte da recuperação do câncer de mama</h1>
-    <p class="lede">Nascido na Espanha em 2016 como observação clínica, o projeto Flechas Rosas transformou tiro com arco em espaço de convívio e reabilitação para mulheres tratadas de câncer de mama — e, em setembro de 2026, chegou a Joinville. A proposta é promissora. A ciência, ainda em construção.</p>
+    <p class="lede">Nascido na Espanha em 2016 como observação clínica, o tiro com arco como apoio à recuperação do câncer de mama virou um mosaico de iniciativas independentes — Argentina, Uruguai, Brasil, Estados Unidos — cada uma com sua própria origem, seu próprio ritmo de crescimento, sua própria gente. A proposta é promissora em todas elas. A ciência, em todas elas, ainda em construção.</p>
     <div class="hero-stats">
       <div class="stat"><strong>2016</strong><span>primeira observação clínica, Madri</span></div>
-      <div class="stat"><strong>2017</strong><span>criação formal em Lorca, Espanha</span></div>
+      <div class="stat"><strong>2021</strong><span>primeiros focos na Argentina</span></div>
       <div class="stat"><strong>2026</strong><span>chega a Joinville, Brasil</span></div>
     </div>
   </div>
@@ -907,7 +1006,11 @@
     <div class="country-grid">
       <div class="country-card">
         <h3><span class="flag-emoji">🇪🇸</span>Espanha — berço do projeto</h3>
-        <p>Lorca (origem formal), Menorca (Club d'Arc Mahó, desde 2019) e Navarra (Arrow Salud, Universidade de Navarra) desenvolveram versões próprias, cada uma com seu clube e seu hospital de apoio.<sup class="cite"><a href="#ref1">[1]</a></sup><sup class="cite"><a href="#ref4">[4]</a></sup><sup class="cite"><a href="#ref6">[6]</a></sup></p>
+        <p>Lorca (origem formal), Menorca (Club d'Arc Mahó, desde 2019), Navarra (Arrow Salud, Universidade de Navarra) e Pozuelo (Arqueras Rosas, Fundación La Vida en Rosa, desde 2019) desenvolveram versões próprias, cada uma com seu clube e seu hospital de apoio.<sup class="cite"><a href="#ref1">[1]</a></sup><sup class="cite"><a href="#ref4">[4]</a></sup><sup class="cite"><a href="#ref6">[6]</a></sup><sup class="cite"><a href="#ref16">[16]</a></sup></p>
+      </div>
+      <div class="country-card">
+        <h3><span class="flag-emoji">🇦🇷</span>Argentina — mosaico regional</h3>
+        <p>De Chajarí (2021) a uma fundação nacional (2023), com focos independentes também em Neuquén e Córdoba — ver estudo de caso abaixo.<sup class="cite"><a href="#ref17">[17]</a></sup></p>
       </div>
       <div class="country-card">
         <h3><span class="flag-emoji">🇺🇾</span>Uruguai — Flechas de Vida</h3>
@@ -922,14 +1025,32 @@
         <p>O programa Archery Rx, de Stanford, nasceu depois que sua idealizadora conheceu a cobertura da World Archery sobre o Flechas de Vida, no Uruguai — e testa o tiro com arco com participação de voluntários da equipe universitária.<sup class="cite"><a href="#ref8">[8]</a></sup></p>
       </div>
     </div>
-    <p class="attribution-note" style="margin-top:18px;">Segundo reportagens locais, o movimento também já havia chegado a clubes da Argentina e do Chile antes de Joinville — mas sem o mesmo nível de documentação pública disponível para Espanha, Uruguai e Brasil.<sup class="cite"><a href="#ref2">[2]</a></sup></p>
+    <p class="attribution-note" style="margin-top:18px;">Há também relatos de iniciativas em clubes do Chile, mas não encontramos documentação pública independente suficiente para incluí-las aqui com segurança — um lembrete de que este mapa é necessariamente incompleto, não uma lista fechada.</p>
+    <table class="compare-table">
+      <thead>
+        <tr>
+          <th>Iniciativa</th>
+          <th>País</th>
+          <th>Ano de origem / formalização local</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td>Flechas Rosas (Lorca) + variantes (Menorca, Navarra, Pozuelo)</td><td>🇪🇸 Espanha</td><td class="muted">2016–2017 (origem); expansões 2019–2024</td></tr>
+        <tr><td>Flechas Rosas Argentina (foco inicial em Chajarí; fundação em Maschwitz)</td><td>🇦🇷 Argentina</td><td class="muted">2021 (foco regional) / 2023 (fundação nacional)</td></tr>
+        <tr><td>Flechas de Vida</td><td>🇺🇾 Uruguai</td><td class="muted">2023</td></tr>
+        <tr><td>Flechas Rosas Brasil (Joinville)</td><td>🇧🇷 Brasil</td><td class="muted">2026</td></tr>
+        <tr><td>Archery Rx (Stanford)</td><td>🇺🇸 Estados Unidos</td><td class="muted">2026 (piloto)</td></tr>
+      </tbody>
+    </table>
+    <p class="attribution-note" style="margin-top:10px;">Tabela construída a partir das fontes já citadas nesta seção — não é um levantamento exaustivo, e outras iniciativas regionais certamente existem sem cobertura de imprensa suficiente para entrar aqui com segurança.</p>
+
     <figure class="img-placeholder" data-img-path="img/mapa-paises.png" style="margin-top:32px;">
       <img src="img/mapa-paises.png" alt="Mapa com pinos nas cidades do movimento Flechas Rosas"
            onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
       <div class="placeholder-box" style="min-height:260px; display:none;">
         <span class="placeholder-icon">🗺️</span>
         <p class="placeholder-label">[ Coloque aqui: img/mapa-paises.png ]</p>
-        <p class="placeholder-hint">Mapa ilustrado com pinos nas cidades: Lorca, Menorca e Navarra (Espanha); Montevidéu (Uruguai); Joinville (Brasil); Stanford, Califórnia (EUA) — cada pino rotulado com o nome da iniciativa local. Prompt de geração de imagem logo abaixo, na resposta.</p>
+        <p class="placeholder-hint">Mapa ilustrado com pinos nas cidades: Lorca, Menorca, Navarra e Pozuelo (Espanha); Chajarí e Ingeniero Maschwitz (Argentina); Montevidéu (Uruguai); Joinville (Brasil); Stanford, Califórnia (EUA) — cada pino rotulado com o nome da iniciativa local.</p>
       </div>
       <figcaption>Figura — Cidades e iniciativas documentadas do movimento até 2026, por nome próprio. Não há um registro único e oficial que consolide todas as experiências.</figcaption>
     </figure>
@@ -979,6 +1100,44 @@
       <p class="lead-p">Qualquer mulher que teve câncer de mama pode participar, desde que tenha ao menos um ano de operação e um termo de consentimento assinado pelo médico.<sup class="cite"><a href="#ref7">[7]</a></sup> Duas clínicas de Montevidéu já encaminham pacientes diretamente para o programa como parte da recuperação, e Castromán levou a proposta formalmente à ASSE (sistema público de saúde do Uruguai) e ao Instituto Nacional del Cáncer, pedindo reconhecimento do esporte como terapia complementar — um passo institucional que ainda está em avaliação, não uma aprovação concluída.</p>
 
       <div class="callout muted" style="margin-top:24px;">As próprias fundadoras relatam melhora já na primeira aula para muitas participantes, e dizem que manter a prática ao menos uma vez por semana sustenta o ganho — um relato de experiência, não um resultado de estudo controlado e publicado.</div>
+    </div>
+  </section>
+
+  <!-- ESTUDO DE CASO: FLECHAS ROSAS ARGENTINA -->
+  <section id="caso-argentina">
+    <span class="kicker">Estudo de caso</span>
+    <h2 class="section-title">Argentina: um mosaico que virou fundação nacional</h2>
+    <div class="argentina-card">
+      <div class="cs-head">
+        <span class="cs-flag">🇦🇷 Entre Ríos → Buenos Aires → todo o país</span>
+        <span class="attribution-note" style="margin:0;">De um clube de bairro a uma fundação com sede própria</span>
+      </div>
+      <p class="lead-p">A história argentina não começa com uma fundação — começa com uma arqueira. Em 2021, Julieta Sirtori se uniu à Liga Argentina de Lucha contra el Cáncer (AALCEC) para abrir as primeiras oficinas gratuitas de "Flechas Rosas" no Club Ferrocarril, em Chajarí (Entre Ríos). Foi o primeiro foco documentado no país.<sup class="cite"><a href="#ref17">[17]</a></sup></p>
+      <p class="lead-p">A virada institucional veio em 2023: as irmãs Fernanda e Patricia Molina Ferreyra, depois de uma experiência familiar difícil com a doença, fundaram o Flechas Rosas Argentina. Começaram como monitoras numa escola de Vicente López e, ainda em 2023, estabeleceram a sede principal no Club Arenal de Ingeniero Maschwitz (Buenos Aires), onde o treinamento e o equipamento são inteiramente gratuitos.<sup class="cite"><a href="#ref17">[17]</a></sup></p>
+
+      <div class="node-list">
+        <div class="node"><b>Chajarí, Entre Ríos</b><span>Primeiro foco, 2021 — Julieta Sirtori + AALCEC, Club Ferrocarril</span></div>
+        <div class="node"><b>Ingeniero Maschwitz, Buenos Aires</b><span>Sede nacional, 2023 — irmãs Molina Ferreyra, Club Arenal</span></div>
+        <div class="node"><b>Neuquén</b><span>Projeto articulado em 2023 com Arqueros del Comahue e as Secretarias de Esporte e Saúde provinciais</span></div>
+        <div class="node"><b>Córdoba</b><span>Fundación Amazonas — remo em bote-dragão como atividade principal, com arquearia incorporada mais recentemente</span></div>
+      </div>
+
+      <p class="lead-p" style="margin-top:20px;">Instrutores e profissionais de saúde em outras cidades — Rosario, Gualeguay — seguem se capacitando para abrir novas escolas locais sob a mesma filosofía de gratuidade e acolhimento. Não existe, nem aqui, um registro único: é uma rede que cresce por replicação informal, cidade a cidade.</p>
+
+      <p class="lead-p">Vale registrar que o arco não é a única prática do mosaico argentino: em paralelo, várias dessas mulheres remam — o remo em bote-dragão é tão presente no país quanto o tiro com arco, às vezes dentro do mesmo grupo (como na Fundación Amazonas, em Córdoba), às vezes em coletivos próprios. É a mesma lógica fisiológica (fortalecer tronco e braço para favorecer a drenagem linfática), em uma embarcação em vez de um arco.<sup class="cite"><a href="#ref17">[17]</a></sup></p>
+
+      <div class="cs-gallery" style="margin-top:20px;">
+        <figure style="margin:0;">
+          <img src="img/argentina-arqueiras.jpg" alt="Arqueiras argentinas treinando, camisetas rosa, em homenagem ao Outubro Rosa" style="aspect-ratio:4/3;">
+          <figcaption style="font-style:italic;">Imagem gerada com IA, inspirada na reportagem da TN sobre o Flechas Rosas Argentina — não é uma fotografia documental de Chajarí ou Ingeniero Maschwitz.<sup class="cite"><a href="#ref17">[17]</a></sup></figcaption>
+        </figure>
+        <figure style="margin:0;">
+          <img src="img/argentina-remeiras.jpg" alt="Mulheres remando em bote-dragão, camisetas rosa, Argentina" style="aspect-ratio:4/3;">
+          <figcaption style="font-style:italic;">Imagem gerada com IA, inspirada na mesma reportagem — ilustra o remo em bote-dragão, a prática irmã do tiro com arco no país.<sup class="cite"><a href="#ref17">[17]</a></sup></figcaption>
+        </figure>
+      </div>
+
+      <div class="callout muted" style="margin-top:24px;">"Quando te preparás e largás a flecha, tenés que concentrarte. No podés pensar ni en poner el lavarropas ni en la enfermedad" — uma arqueira do grupo, descrevendo por que o esporte virou também uma pausa mental, não só física.<sup class="cite"><a href="#ref17">[17]</a></sup></div>
     </div>
   </section>
 
@@ -1093,6 +1252,15 @@
         </ul>
         <div class="caveat">É um resultado real, mas de uma amostra pequena e inicial, sem grupo de comparação nem publicação revisada por pares — não é, ainda, um ensaio clínico com desfechos estatísticos robustos sobre linfedema.</div>
       </div>
+      <div class="study-box">
+        <h4>Arqueras Rosas, Pozuelo (Madri)<sup class="cite"><a href="#ref16">[16]</a></sup></h4>
+        <ul>
+          <li>Programa dentro da Fundación La Vida en Rosa, no Club de Arqueros de Pozuelo, reunindo pacientes com linfedema desde 2019.</li>
+          <li>Treinamento trimestral, uma vez por semana, com medições de volume do braço antes e depois de cada ciclo.</li>
+          <li>Equipe médica reforça: o objetivo é fortalecer a musculatura dorsal, peitoral e dos braços para prevenir o linfedema — ou reduzir volume e sensação de peso em quem já o tem.</li>
+        </ul>
+        <div class="caveat">Mais um programa espanhol independente, não ligado a Lorca — reforça que a prática se espalhou por adesão médica local, não por uma rede única coordenada.</div>
+      </div>
     </div>
 
     <h3 style="font-family:var(--serif); font-size:1.2rem; margin:32px 0 10px; color:var(--ink);">A hipótese mecânica, por trás de todos esses programas</h3>
@@ -1119,6 +1287,20 @@
       </div>
       <figcaption>A fisiologia por trás da hipótese: sem os linfonodos removidos na cirurgia, o fluido linfático se acumula; a contração muscular repetida ajudaria a empurrá-lo de volta à circulação.</figcaption>
     </figure>
+
+    <h3 style="font-family:var(--serif); font-size:1.2rem; margin:32px 0 10px; color:var(--ink);">A base científica mais ampla — não é só sobre arco</h3>
+    <p class="lead-p">Vale separar duas coisas com cuidado. Uma é a evidência específica sobre tiro com arco, que é toda a que você acabou de ler — relatos institucionais, pilotos pequenos, ainda sem ensaio clínico randomizado. A outra é a evidência, bem mais robusta, sobre <strong>exercício resistido em geral</strong> e linfedema — e é essa segunda que dá respaldo científico à hipótese do arco, mesmo sem provar o arco especificamente.</p>
+    <div class="study-box" style="margin-top:16px;">
+      <h4>O que revisões sistemáticas e metanálises já mostraram</h4>
+      <ul>
+        <li>Uma revisão sistemática de 2016, com 6 ensaios clínicos randomizados e 805 sobreviventes de câncer de mama, concluiu que o treinamento de força produz ganhos significativos de força muscular sem provocar linfedema.<sup class="cite"><a href="#ref18">[18]</a></sup></li>
+        <li>Uma atualização sistemática com metanálise, em 2020, reunindo 29 estudos, encontrou melhoras significativas em força do membro superior, força do membro inferior e capacidade funcional — sem efeitos negativos sobre o linfedema.<sup class="cite"><a href="#ref19">[19]</a></sup></li>
+        <li>Um protocolo de revisão sistemática e metanálise, da Universidad Católica de la Santísima Concepción (Chile), está avaliando especificamente se o treinamento de força pode <em>prevenir</em> o linfedema relacionado ao câncer de mama — sinal de que a pergunta ainda está sendo respondida, não encerrada.<sup class="cite"><a href="#ref20">[20]</a></sup></li>
+      </ul>
+      <div class="caveat">Nenhum desses estudos testou tiro com arco especificamente — testaram exercício resistido de forma geral (musculação, remo, treino de força). O arco se encaixa nessa categoria mais ampla, mas emprestar essa evidência para ele, sem um estudo dedicado, é uma inferência razoável — não uma prova direta.</div>
+    </div>
+
+    <p class="attribution-note" style="margin-top:16px;">Essa mesma lógica fisiológica — fortalecer a musculatura do tronco e do braço para favorecer a drenagem linfática — também sustenta movimentos irmãos na América Latina, como as equipes de remo em bote-dragão ("Remadoras Rosas", "Río Rosa", Fundación Amazonas), que crescem lado a lado com o tiro com arco em vários países da região.</p>
 
     <!--
       ROTEIRO DE GERAÇÃO — img/sequencia-movimento-arco.mp4
@@ -1269,6 +1451,15 @@
     </div>
 
     <p class="attribution-note" style="margin-top:16px;">Em Joinville, o projeto conta ainda com o apoio voluntário de Patrícia Rathunde Santos, arqueira campeã mundial, responsável por explicar os critérios de entrada (parecer médico, acompanhamento de psicóloga e fisioterapeuta) às novas interessadas.<sup class="cite"><a href="#ref2">[2]</a></sup></p>
+
+    <div style="margin-top:28px;">
+      <span class="kicker" style="display:block; margin-bottom:10px;">Atualização de outubro — Mês de Conscientização do Câncer de Mama</span>
+      <div class="cs-video">
+        <iframe src="https://www.youtube.com/embed/xK8uNusNcS4" title="Arco e flecha ajuda mulheres com câncer de mama em Joinville — SCC News" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe>
+      </div>
+      <p class="attribution-note" style="margin-top:8px;">Reportagem do SCC News sobre o grupo de Joinville, publicada em 2 de outubro de 2026 — bem no início do Outubro Rosa.<sup class="cite"><a href="#ref21">[21]</a></sup></p>
+    </div>
+
     <figure class="img-placeholder" data-img-path="img/depoimento-arqueira.jpg" style="margin-top:24px;">
       <img src="img/depoimento-arqueira.jpg" alt="Arqueira do Flechas de Vida sorrindo ao lado do alvo, Uruguai"
            onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
@@ -1313,6 +1504,35 @@
   </section>
 
   <!-- SÍNTESE / COMO COMUNICAR -->
+  <!-- RIZOMA -->
+  <section id="rizoma">
+    <span class="kicker">Uma lente para entender tudo isso</span>
+    <h2 class="section-title">Por que este mapa não tem um centro</h2>
+    <div class="rhizome-card">
+      <h3>A metáfora do rizoma</h3>
+      <p>Repare em algo que este infográfico insiste em repetir: não existe cadastro único, não existe rede centralizada, não existe "a" origem controlando o resto. Lorca não é a raiz da qual tudo brota — é só o primeiro ponto documentado de uma estrutura que se parece menos com uma árvore e mais com um <strong>rizoma</strong>: um caule subterrâneo que cresce em todas as direções, sem copa, sem tronco, sem hierarquia entre os brotos.</p>
+      <div class="rhizome-principles">
+        <div class="rp"><b>1. Conexões</b><span>Katherine Wu (Stanford) conheceu o Flechas de Vida pela cobertura da World Archery; Joinville cita outros países latino-americanos; a Argentina nasce da junção entre uma arqueira e uma ONG. Nada aqui brotou isolado — tudo se conectou a outra coisa.</span></div>
+        <div class="rp"><b>2. Heterogeneidade</b><span>Espanha, Argentina, Uruguai, Brasil e Estados Unidos não têm hierarquia entre si. Qualquer ponto do mapa poderia, em princípio, se conectar a qualquer outro — e nenhum deles é "mais importante" que os demais.</span></div>
+        <div class="rp"><b>3. Multiplicidade</b><span>Não há uma estrutura única por trás disso — é um conjunto de iniciativas que não remete a uma unidade anterior. Até dentro de um só país (veja a Argentina) existem vários focos independentes, não um comitê central.</span></div>
+        <div class="rp"><b>4. Ruptura significativa</b><span>Se um clube fecha ou um programa para, o movimento não morre — ele recomeça em outra linha, em outra cidade, com outra gente. Foi assim que a Argentina foi de um clube em Chajarí a uma fundação nacional.</span></div>
+        <div class="rp"><b>5–6. Cartografia, não decalque</b><span>Nenhum país copiou o modelo espanhol à risca. Cada um desenhou seu próprio mapa — critérios próprios, parcerias próprias, ritmo próprio — em vez de decalcar um modelo fixo sobre um território novo.</span></div>
+      </div>
+      <figure class="img-placeholder" data-img-path="img/diagrama-rizoma.png" style="margin-top:24px;">
+        <img src="img/diagrama-rizoma.png" alt="Diagrama comparando uma estrutura em árvore com raiz única e uma estrutura em rizoma sem centro"
+             onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+        <div class="placeholder-box" style="display:none; background:rgba(255,255,255,.06); border-color:rgba(255,255,255,.2);">
+          <span class="placeholder-icon">🌱</span>
+          <p class="placeholder-label" style="background:rgba(0,0,0,.2); color:#fff; border-color:rgba(255,255,255,.2);">[ Coloque aqui: img/diagrama-rizoma.png ]</p>
+          <p class="placeholder-hint" style="color:rgba(255,255,255,.75);">Diagrama em três painéis: rizoma na natureza (gengibre/bambu), árvore com raiz única, e rizoma conceitual sem centro, com os 5 países do infográfico como nós interligados. Prompt na resposta do chat.</p>
+        </div>
+        <figcaption style="color:rgba(255,255,255,.65);">Duas formas de organizar a mesma ideia: uma com raiz e hierarquia, outra sem centro — só conexões.</figcaption>
+      </figure>
+
+      <p style="font-size:.85rem; opacity:.75; margin-top:8px;">Os seis princípios do rizoma vêm de Gilles Deleuze e Félix Guattari (<em>Mil Platôs</em>, 1980); a leitura aplicada a este material é de uma colega professora, a partir de material do prof. Alejandro Martins (CEng, UFPel).</p>
+    </div>
+  </section>
+
   <section id="sintese" style="border-bottom:none;">
     <div class="synthesis">
       <span class="kicker" style="color:#F3DCE2;">Síntese para divulgação responsável</span>
@@ -1388,6 +1608,24 @@
         </li>
         <li id="ref15">Flickr — "Wheelchair archery at Stoke Mandeville Hospital, Bucks", foto de um cartão de Natal de 1948. Usuário dlanorsmada.
           <span class="ref-meta"><a href="https://www.flickr.com/photos/dlanorsmada/5765163072" target="_blank" rel="noopener">flickr.com/photos/dlanorsmada/5765163072</a></span>
+        </li>
+        <li id="ref16">Quirónsalud — "Arqueras rosas: cómo el tiro con arco ayuda a superar el linfedema en supervivientes de cáncer de mama", sobre o programa no Club de Arqueros de Pozuelo (Fundación La Vida en Rosa).
+          <span class="ref-meta"><a href="https://www.quironsalud.com/es/comunicacion/actualidad/arqueras-rosas-tiro-arco-ayuda-superar-linfedema-supervivie" target="_blank" rel="noopener">quironsalud.com — Arqueras rosas</a></span>
+        </li>
+        <li id="ref17">TN (Todo Noticias, Argentina) — "Flechas y remos contra el cáncer de mamas: mujeres que transforman la recuperación en movimiento", 30 de outubro de 2025.
+          <span class="ref-meta"><a href="https://tn.com.ar/sociedad/2025/10/30/flechas-y-remos-contra-el-cancer-de-mamas-mujeres-que-transforman-la-recuperacion-en-movimiento/" target="_blank" rel="noopener">tn.com.ar</a></span>
+        </li>
+        <li id="ref18">Nelson, N.L. — "Breast Cancer-Related Lymphedema and Resistance Exercise: A Systematic Review", Journal of Strength and Conditioning Research, 2016.
+          <span class="ref-meta"><a href="https://search.pedro.org.au/search-results/record-detail/47562" target="_blank" rel="noopener">PEDro — Nelson 2016</a></span>
+        </li>
+        <li id="ref19">"Resistance exercise and breast cancer-related lymphedema — a systematic review update and meta-analysis", 2020 (29 estudos analisados).
+          <span class="ref-meta"><a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC7316683/" target="_blank" rel="noopener">PMC7316683</a></span>
+        </li>
+        <li id="ref20">Aguilera-Eguía, R. et al. — "Can resistance exercise prevent breast cancer–related lymphoedema? A systematic review and metanalysis protocol", BMJ Open, 2024.
+          <span class="ref-meta"><a href="https://repositorio.ufro.cl/files/original/0bd1bcb4016c514a0ea305ccddeb9b2b83034094.pdf" target="_blank" rel="noopener">BMJ Open 2024;14:e080935</a></span>
+        </li>
+        <li id="ref21">SCC News — "Arco e flecha ajuda mulheres com câncer de mama em Joinville", 2 de outubro de 2026.
+          <span class="ref-meta"><a href="https://www.youtube.com/watch?v=xK8uNusNcS4" target="_blank" rel="noopener">youtube.com/watch?v=xK8uNusNcS4</a></span>
         </li>
       </ol>
       <p class="attribution-note" style="margin-top:20px;">Imagens do Flechas de Vida (Uruguai), a foto de Katherine Wu (Stanford) e a foto histórica de 1948 (Stoke Mandeville) usadas nesta peça foram fornecidas diretamente para esta produção; demais seções usam placeholders porque não recebemos fotos autorizadas de Joinville ou da Espanha.</p>
