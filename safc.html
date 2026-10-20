@@ -114,44 +114,12 @@
     .divisor span:first-child { background: var(--azul); }
     .divisor span:last-child  { background: var(--laranja); }
 
-    label {
-      display: block;
-      font-weight: 600;
-      font-size: .95rem;
-      margin-bottom: .4rem;
-    }
-
-    .senha {
-      width: 100%;
-      padding: .8rem 1rem;
-      font: inherit;
-      font-size: 1rem;
-      color: var(--tinta);
-      background: var(--branco);
-      border: 1.5px solid var(--linha);
-      border-radius: 10px;
-      outline: none;
-      transition: border-color .15s ease, box-shadow .15s ease;
-    }
-    .senha:focus {
-      border-color: var(--laranja);
-      box-shadow: 0 0 0 3px rgba(235, 132, 3, .18);
-    }
-
     .erro {
       display: none;
       margin-top: .45rem;
       font-size: .9rem;
       font-weight: 600;
       color: #B3261E;
-    }
-
-    .ok {
-      display: none;
-      margin-top: .45rem;
-      font-size: .9rem;
-      font-weight: 600;
-      color: #1E6B3A;
     }
 
     .acessos {
@@ -180,19 +148,11 @@
     .botao.safc   { background: var(--azul); color: var(--branco); }
     .botao.painel { background: #E8F0FB; color: var(--azul); border-color: var(--azul); }
     .botao.painel:hover { background: #DCE8F8; filter: none; }
-    /* Telematriciamento: sistema à parte, em laranja */
-    .botao.tele   { background: var(--laranja); color: var(--tinta); }
-
-    .linha-senha { display: flex; gap: .5rem; }
-    .linha-senha .senha { flex: 1; min-width: 0; }
-    .botao.verificar {
-      width: auto;
-      flex-shrink: 0;
-      padding: .8rem 1.1rem;
-      font-size: .95rem;
-      background: var(--tinta);
-      color: var(--branco);
-    }
+    /* Telematriciamento: sistema à parte, em laranja — dois tons da mesma cor,
+       mais escuro para a ação (responder) e mais claro para a consulta (indicadores) */
+    .botao.resposta     { background: #B36A00; color: var(--branco); }
+    .botao.indicadores  { background: #FDEEDD; color: #B36A00; border-color: var(--laranja); }
+    .botao.indicadores:hover { background: #FCE2C7; filter: none; }
 
     .grupo { margin-top: 0; }
     .grupo + .grupo { margin-top: 1.25rem; padding-top: 1.25rem; border-top: 1px dashed var(--linha); }
@@ -217,11 +177,9 @@
 
     @media (prefers-reduced-motion: reduce) {
       .card { animation: none; }
-      .botao, .senha { transition: none; }
+      .botao { transition: none; }
     }
     @media (max-width: 480px) {
-      .linha-senha { flex-direction: column; }
-      .botao.verificar { width: 100%; }
       body { padding: 1.5rem .75rem; }
       .card { padding: 1.5rem 1.25rem; }
       h1 { font-size: 1.4rem; }
@@ -257,16 +215,10 @@
 
   <div class="grupo">
     <span class="grupo-titulo">Telematriciamento de feridas crônicas</span>
-    <label for="senha">Senha do Telematriciamento</label>
-    <div class="linha-senha">
-      <input type="password" id="senha" class="senha" placeholder="Digite a senha" autocomplete="current-password"
-             onkeydown="if(event.key==='Enter'){event.preventDefault();validar();}">
-      <button type="button" class="botao verificar" onclick="validar()">Verificar senha</button>
-    </div>
-    <div class="erro" id="erro" role="alert">Senha incorreta.</div>
-    <div class="ok" id="ok" role="status">Senha correta. Clique no botão abaixo.</div>
+    <div class="erro" id="erro" role="alert"></div>
     <div class="acessos acessos-tele">
-      <button type="button" class="botao tele" onclick="abrir('tele')">Acesso à Gestão do Telematriciamento</button>
+      <button type="button" class="botao resposta" onclick="abrir('resposta')">Análise e respostas</button>
+      <button type="button" class="botao indicadores" onclick="abrir('indicadores')">Indicadores de gestão</button>
     </div>
   </div>
 
@@ -278,58 +230,28 @@
 </main>
 
 <script>
-// Hash SHA-256 da senha única (não é a senha em texto puro).
-// Maiúsculas, minúsculas e espaços são ignorados na digitação.
-// Para trocar a senha: gere o hash da nova senha, em minúsculas e sem espaços, e substitua abaixo.
-const HASH_SENHA = "25790123d028b6bb406dc829e22b4a45e4b8081841160fc2939b84283245f08a";
-
 const URL_SAFC = "https://script.google.com/macros/s/AKfycbzEiQQCkiQV_1SWWF78sa2dM5tkz7RVPx69DjNu_gTLzCKH4cskqyGBx8uh9Qh9knm7/exec";
+const URL_TELE = "https://script.google.com/macros/s/AKfycbyuH1ESYo9DhOS9nlbCShvxKMWuQBtaf5m0VaFf7Fpr2YMtF3TFPc162JpOM3rI1HyhXw/exec";
 const DESTINOS = {
-  safc:   URL_SAFC,
-  painel: URL_SAFC + "?page=dashboard",
-  tele:   "https://script.google.com/macros/s/AKfycbyQlRzAVAMj5oguddncGqSPIOM8f9szf-lqkXymX39Il1D1GOpRPTwp5ntwlCGBpNyCbA/exec"
+  safc:        URL_SAFC,
+  painel:      URL_SAFC + "?page=dashboard",
+  resposta:    URL_TELE + "?view=gestao",
+  indicadores: URL_TELE
 };
 
-async function sha256(texto) {
-  const buffer = new TextEncoder().encode(texto);
-  const hashBuffer = await crypto.subtle.digest('SHA-256', buffer);
-  return Array.from(new Uint8Array(hashBuffer)).map(b => b.toString(16).padStart(2, '0')).join('');
-}
-
-function senhaDigitada() {
-  return document.getElementById('senha').value.replace(/\s+/g, '').toLowerCase();
-}
-
 function mostrar(id, texto) {
-  const erro = document.getElementById('erro'), ok = document.getElementById('ok');
+  const erro = document.getElementById('erro');
   erro.style.display = 'none';
-  ok.style.display = 'none';
   if (!id) return;
   const alvo = document.getElementById(id);
   if (texto) alvo.textContent = texto;
   alvo.style.display = 'block';
 }
 
-// Enter só confere a senha do Telematriciamento; não abre nenhum sistema
-async function validar() {
-  if (await sha256(senhaDigitada()) === HASH_SENHA) {
-    mostrar('ok', 'Senha correta. Clique no botão abaixo.');
-  } else {
-    mostrar('erro', 'Senha incorreta.');
-    document.getElementById('senha').focus();
-  }
-}
-
-// Os botões do SAFC abrem direto (o acesso é controlado pela conta Google).
-// Só o Telematriciamento ainda exige a senha.
-const EXIGE_SENHA = { tele: true };
-
-async function abrir(destino) {
-  if (EXIGE_SENHA[destino] && await sha256(senhaDigitada()) !== HASH_SENHA) {
-    mostrar('erro', 'Senha incorreta.');
-    document.getElementById('senha').focus();
-    return;
-  }
+// Todos os acessos abrem direto — quem controla quem entra é a conta Google
+// (associação ao Google Group com permissão na planilha/implantação), não
+// mais uma senha local.
+function abrir(destino) {
   const url = DESTINOS[destino];
   if (!url || url.indexOf('http') !== 0) {
     mostrar('erro', 'O link deste acesso ainda não foi configurado.');
