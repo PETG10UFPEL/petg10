@@ -144,15 +144,10 @@
     .botao:active { filter: brightness(.95); }
     .botao:focus-visible { outline: 3px solid var(--laranja); outline-offset: 2px; }
 
-    /* Sistema SAFC: os dois botões em azul */
-    .botao.safc   { background: var(--azul); color: var(--branco); }
-    .botao.painel { background: #E8F0FB; color: var(--azul); border-color: var(--azul); }
-    .botao.painel:hover { background: #DCE8F8; filter: none; }
-    /* Telematriciamento: sistema à parte, em laranja — dois tons da mesma cor,
-       mais escuro para a ação (responder) e mais claro para a consulta (indicadores) */
-    .botao.resposta     { background: #B36A00; color: var(--branco); }
-    .botao.indicadores  { background: #FDEEDD; color: #B36A00; border-color: var(--laranja); }
-    .botao.indicadores:hover { background: #FCE2C7; filter: none; }
+    /* Sistema SAFC em azul escuro; Telematriciamento em laranja escuro.
+       O Painel de Gestão e os Indicadores abrem por botões dentro de cada sistema. */
+    .botao.safc     { background: var(--azul); color: var(--branco); }
+    .botao.resposta { background: #B36A00; color: var(--branco); }
 
     .grupo { margin-top: 0; }
     .grupo + .grupo { margin-top: 1.25rem; padding-top: 1.25rem; border-top: 1px dashed var(--linha); }
@@ -164,7 +159,7 @@
       margin-bottom: .55rem;
     }
     .grupo .acessos { margin-top: 0; }
-    .grupo .acessos-tele { margin-top: .9rem; }
+    .grupo .acessos-tele { margin-top: 0; }
 
     .rodape {
       margin-top: 1.75rem;
@@ -209,7 +204,6 @@
     <span class="grupo-titulo">Sistema SAFC</span>
     <div class="acessos">
       <button type="button" class="botao safc" onclick="abrir('safc')">Acesso ao SAFC</button>
-      <button type="button" class="botao painel" onclick="abrir('painel')">Acesso ao Painel de Gestão (Dashboard)</button>
     </div>
   </div>
 
@@ -218,7 +212,6 @@
     <div class="erro" id="erro" role="alert"></div>
     <div class="acessos acessos-tele">
       <button type="button" class="botao resposta" onclick="abrir('resposta')">Análise e respostas</button>
-      <button type="button" class="botao indicadores" onclick="abrir('indicadores')">Indicadores de gestão</button>
     </div>
   </div>
 
@@ -233,10 +226,8 @@
 const URL_SAFC = "https://script.google.com/macros/s/AKfycbzEiQQCkiQV_1SWWF78sa2dM5tkz7RVPx69DjNu_gTLzCKH4cskqyGBx8uh9Qh9knm7/exec";
 const URL_TELE = "https://script.google.com/macros/s/AKfycbyuH1ESYo9DhOS9nlbCShvxKMWuQBtaf5m0VaFf7Fpr2YMtF3TFPc162JpOM3rI1HyhXw/exec";
 const DESTINOS = {
-  safc:        URL_SAFC,
-  painel:      URL_SAFC + "?page=dashboard",
-  resposta:    URL_TELE + "?view=gestao",
-  indicadores: URL_TELE
+  safc:     URL_SAFC,
+  resposta: URL_TELE + "?view=gestao"
 };
 
 function mostrar(id, texto) {
