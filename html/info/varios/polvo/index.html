@@ -1,0 +1,1708 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Três corações e sangue azul: o polvo diante do coração humano</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Literata:opsz,wght@7..72,400;7..72,600;7..72,700&family=Figtree:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#F2F6F6; --surface:#FFFFFF; --surface-2:#E6EEEF; --ink:#13252C; --ink-2:#4A5D64; --rule:#CBD8DA;
+  --hc:#2F6DB5;        /* hemocianina oxigenada */
+  --hc-deoxy:#B9C7CF;  /* hemocianina desoxigenada: quase incolor */
+  --hb:#B42335;        /* hemoglobina oxigenada */
+  --hb-deoxy:#6E1E2C;  /* hemoglobina desoxigenada */
+  --warn:#9A5B00; --warn-bg:#FFF3DC; --ok-bg:#E3F0EA;
+  --hc-bg:#E4EEF8; --hb-bg:#F8E6E8;
+  --serif:"Literata", Georgia, "Times New Roman", serif;
+  --sans:"Figtree", "Segoe UI", system-ui, -apple-system, sans-serif;
+  box-sizing:border-box;
+  padding-top:env(safe-area-inset-top,0px); padding-bottom:env(safe-area-inset-bottom,0px);
+  color-scheme:light;
+}
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme="light"]){
+    --bg:#0F1A1E; --surface:#16252B; --surface-2:#1D2F36; --ink:#E5EEF0; --ink-2:#A6B8BE; --rule:#2C434B;
+    --hc:#6FA6E8; --hc-deoxy:#5A6B74; --hb:#E2566A; --hb-deoxy:#8E3445;
+    --warn:#F2B866; --warn-bg:#3A2D14; --ok-bg:#183229; --hc-bg:#18304A; --hb-bg:#3A1C23;
+    color-scheme:dark;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#0F1A1E; --surface:#16252B; --surface-2:#1D2F36; --ink:#E5EEF0; --ink-2:#A6B8BE; --rule:#2C434B;
+  --hc:#6FA6E8; --hc-deoxy:#5A6B74; --hb:#E2566A; --hb-deoxy:#8E3445;
+  --warn:#F2B866; --warn-bg:#3A2D14; --ok-bg:#183229; --hc-bg:#18304A; --hb-bg:#3A1C23;
+  color-scheme:dark;
+}
+*,*::before,*::after{box-sizing:inherit}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--sans);font-size:17px;line-height:1.6;-webkit-font-smoothing:antialiased}
+img{max-width:100%}
+a{color:var(--hc)}
+:focus-visible{outline:3px solid var(--hc);outline-offset:2px}
+
+/* Cabeçalho institucional */
+.institutional-header{display:flex;justify-content:space-between;align-items:center;gap:16px;padding:14px 18px;background:var(--surface);border-bottom:1px solid var(--rule)}
+.header-identity{font-family:var(--serif);font-size:15px;color:var(--ink-2)}
+.logo-slot{border:2px dashed var(--rule);border-radius:6px;padding:6px 12px;font-size:12px;color:var(--ink-2);text-align:center;max-width:260px;line-height:1.3}
+.logo-slot code{font-size:11px}
+
+.wrap{max-width:1180px;margin:0 auto;padding:0 22px}
+.prose{max-width:720px}
+
+/* Hero */
+.hero{padding:64px 0 36px;display:grid;grid-template-columns:1.25fr 1fr;gap:40px;align-items:end}
+.hero h1{font-family:var(--serif);font-weight:700;font-size:clamp(2.1rem,4.6vw,3.6rem);line-height:1.06;letter-spacing:-.015em;margin:0 0 18px}
+.hero .dek{font-size:1.15rem;color:var(--ink-2);margin:0;max-width:600px}
+.hero-stat{display:grid;grid-template-columns:1fr 1fr;border-top:2px solid var(--ink)}
+.hero-stat div{padding:14px 12px 0 0}
+.hero-stat strong{display:block;font-family:var(--serif);font-size:2.3rem;line-height:1.1}
+.hero-stat .hc{color:var(--hc)} .hero-stat .hb{color:var(--hb)}
+.hero-stat span{font-size:.92rem;color:var(--ink-2)}
+
+section{padding:28px 0}
+h2{font-family:var(--serif);font-size:clamp(1.55rem,2.6vw,2.1rem);line-height:1.18;margin:0 0 14px;letter-spacing:-.01em}
+h3{font-family:var(--serif);font-size:1.25rem;margin:0 0 8px}
+p{margin:0 0 14px}
+.lead-p{font-size:1.18rem;font-family:var(--serif);line-height:1.6}
+
+/* Simulador */
+.sim{background:var(--surface);border:1px solid var(--rule);border-radius:14px;padding:22px;margin:10px 0 24px}
+.sim-top{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px;margin-bottom:12px}
+.sim-top p{margin:0;color:var(--ink-2);font-size:.95rem;max-width:640px}
+.btn{font:600 .95rem var(--sans);border:1.5px solid var(--ink);background:transparent;color:var(--ink);border-radius:999px;padding:8px 16px;cursor:pointer}
+.btn:hover{background:var(--surface-2)}
+.panels{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+.panel{border-radius:12px;padding:18px;border:1px solid var(--rule)}
+.panel.oct{background:linear-gradient(180deg,var(--hc-bg),transparent 60%)}
+.panel.hum{background:linear-gradient(180deg,var(--hb-bg),transparent 60%)}
+.panel h3{display:flex;align-items:baseline;gap:10px;flex-wrap:wrap}
+.panel h3 small{font-family:var(--sans);font-size:.85rem;color:var(--ink-2);font-weight:500}
+.heart-svg{width:100%;height:auto;display:block;max-height:300px}
+.status{min-height:2.6em;font-size:.92rem;margin:6px 0 10px;padding:8px 12px;border-radius:8px;background:var(--surface-2)}
+.status.alert{background:var(--warn-bg);color:var(--warn);font-weight:600}
+.trace{width:100%;height:92px;display:block;background:var(--surface);border:1px solid var(--rule);border-radius:8px}
+.trace-label{font-size:.8rem;color:var(--ink-2);margin:4px 0 12px}
+
+.ctrl{margin:12px 0}
+.ctrl label{display:flex;justify-content:space-between;font-size:.92rem;font-weight:600;gap:10px}
+.ctrl label output{font-weight:500;color:var(--ink-2);font-variant-numeric:tabular-nums}
+.ctrl input[type=range]{width:100%;margin:6px 0 0}
+.oct input[type=range]{accent-color:var(--hc)} .hum input[type=range]{accent-color:var(--hb)}
+.hint{font-size:.8rem;color:var(--ink-2);margin-top:2px}
+.seg{display:flex;gap:6px;flex-wrap:wrap;margin-top:6px}
+.seg button{font:500 .9rem var(--sans);padding:7px 12px;border-radius:8px;border:1px solid var(--rule);background:var(--surface);color:var(--ink);cursor:pointer}
+.seg button[aria-pressed="true"]{background:var(--hc);color:#fff;border-color:var(--hc)}
+.jet{width:100%;margin-top:10px;font:700 1rem var(--sans);padding:12px;border-radius:10px;border:2px solid var(--hc);background:var(--surface);color:var(--hc);cursor:pointer;touch-action:none;user-select:none;-webkit-user-select:none}
+.jet.active{background:var(--hc);color:#fff}
+.debt{height:10px;border-radius:5px;background:var(--surface-2);overflow:hidden;margin-top:8px}
+.debt i{display:block;height:100%;width:0;background:var(--warn);transition:width .1s linear}
+
+/* tabela de leitura */
+.readout{margin-top:22px;overflow-x:auto}
+table{border-collapse:collapse;width:100%;min-width:560px;font-size:.95rem;font-variant-numeric:tabular-nums}
+th,td{text-align:left;padding:9px 10px;border-bottom:1px solid var(--rule)}
+thead th{font-size:.85rem;color:var(--ink-2);font-weight:600}
+td.o{color:var(--hc);font-weight:600} td.h{color:var(--hb);font-weight:600}
+td.r{color:var(--ink-2)}
+
+.curve-box{margin-top:24px}
+.curve-head{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px}
+#curve{width:100%;height:340px;display:block;background:var(--surface);border:1px solid var(--rule);border-radius:10px;margin-top:10px}
+.legend{display:flex;gap:18px;flex-wrap:wrap;font-size:.88rem;color:var(--ink-2);margin-top:8px}
+.legend b{display:inline-block;width:22px;height:4px;border-radius:2px;vertical-align:middle;margin-right:6px}
+
+/* blocos editoriais */
+.two{display:grid;grid-template-columns:1fr 1fr;gap:28px}
+.callout{border-left:4px solid var(--hc);background:var(--hc-bg);padding:16px 20px;border-radius:0 10px 10px 0;margin:18px 0}
+.callout.red{border-color:var(--hb);background:var(--hb-bg)}
+.pull{font-family:var(--serif);font-size:1.45rem;line-height:1.35;margin:26px 0;max-width:760px}
+.compare{width:100%;border-collapse:collapse;margin-top:8px}
+.facts{display:grid;gap:14px}
+.fact{background:var(--surface);border:1px solid var(--rule);border-radius:10px;padding:16px 18px}
+.fact .claim{font-family:var(--serif);font-style:italic;color:var(--ink-2);margin-bottom:6px}
+.verdict{font-weight:700;font-size:.9rem;display:inline-block;padding:2px 10px;border-radius:999px;margin-bottom:6px}
+.v-ok{background:var(--ok-bg)} .v-part{background:var(--warn-bg);color:var(--warn)}
+.clin{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.clin div{background:var(--surface);border-top:3px solid var(--hb);padding:16px;border-radius:0 0 10px 10px}
+.qs li{margin-bottom:10px}
+details{background:var(--surface);border:1px solid var(--rule);border-radius:10px;padding:10px 14px;margin-bottom:10px}
+summary{cursor:pointer;font-weight:600}
+
+/* placeholders da skill */
+.img-placeholder{margin:0}
+.img-placeholder .placeholder-box{border:2px dashed #b0b8c1;background:var(--surface-2);border-radius:8px;padding:28px 20px;text-align:center;color:var(--ink-2);min-height:220px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px}
+.placeholder-icon{font-size:2rem}
+.placeholder-label{font-family:monospace;font-size:.85rem;background:var(--surface);padding:4px 10px;border-radius:4px;color:var(--ink);margin:0}
+.placeholder-hint{font-size:.8rem;font-style:italic;max-width:340px;margin:0}
+figcaption{font-size:.85rem;color:var(--ink-2);margin-top:8px}
+
+.refs{font-size:.88rem;color:var(--ink-2)}
+.refs li{margin-bottom:6px}
+.institutional-footer{background:var(--surface);border-top:1px solid var(--rule);padding:28px 18px;text-align:center;font-size:13px;color:var(--ink-2);margin-top:40px}
+.institutional-footer p{margin:0}
+
+@media (max-width:900px){
+  .hero,.panels,.two{grid-template-columns:1fr}
+  .clin{grid-template-columns:1fr}
+  .hero{padding-top:36px}
+}
+sup.cit{font-size:.68em;line-height:0;font-family:var(--sans);font-weight:600;margin-left:1px}
+sup.cit a{text-decoration:none;color:var(--hc)}
+sup.cit a:hover{text-decoration:underline}
+.refs li:target{background:var(--hc-bg);border-radius:4px}
+.part{border-top:2px solid var(--ink);margin-top:36px;padding-top:10px;font-size:.95rem;color:var(--ink-2)}
+.part strong{font-family:var(--serif);font-size:1.2rem;color:var(--ink);display:block}
+
+.swatch-row{display:flex;gap:12px;align-items:center;margin:10px 0 4px}
+.swatch{width:64px;height:44px;border-radius:22px 22px 10px 10px;border:1px solid var(--rule);flex:none;transition:background .4s}
+.swatch-txt{font-size:.88rem;line-height:1.4}
+.swatch-txt b{font-variant-numeric:tabular-nums}
+
+.skin-sim{background:var(--surface);border:1px solid var(--rule);border-radius:14px;padding:22px;margin:16px 0 24px}
+.skin-grid{display:grid;grid-template-columns:1.35fr 1fr;gap:22px;align-items:start}
+#skin{width:100%;aspect-ratio:16/10;display:block;border-radius:10px;border:1px solid var(--rule);background:#ddd}
+.skin-meta{display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px;font-size:.85rem;color:var(--ink-2);margin-top:6px}
+.presets{display:flex;flex-wrap:wrap;gap:6px;margin:4px 0 10px}
+.presets button{font:500 .88rem var(--sans);padding:6px 11px;border-radius:8px;border:1px solid var(--rule);background:var(--surface);color:var(--ink);cursor:pointer}
+.presets button:hover{background:var(--surface-2)}
+.skin-sim input[type=range]{accent-color:var(--hc)}
+.toggle{display:flex;align-items:center;gap:8px;font-size:.92rem;font-weight:600;margin:8px 0}
+.toggle input{width:18px;height:18px;accent-color:var(--hc)}
+.dot{display:inline-block;width:11px;height:11px;border-radius:50%;vertical-align:-1px;margin-right:4px;border:1px solid rgba(0,0,0,.25)}
+
+.layers{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin:14px 0}
+.layers div{background:var(--surface);border:1px solid var(--rule);border-radius:10px;padding:14px}
+.layers h3{font-size:1.05rem}
+.layers p{font-size:.93rem;margin:0}
+
+.timeline{overflow-x:auto;margin:14px 0}
+.timeline svg{min-width:720px;width:100%;height:auto;display:block}
+@media (max-width:900px){.skin-grid,.layers{grid-template-columns:1fr}}
+
+.hero{align-items:center}
+.hero .hero-stat{margin-top:26px}
+.hero-art{margin:0;text-align:center}
+.hero-art svg{width:100%;max-width:420px;height:auto;display:block;margin:0 auto}
+.hero-art figcaption{font-size:.85rem}
+
+.anat,.jetfig{margin:0;background:var(--surface);border:1px solid var(--rule);border-radius:12px;padding:16px}
+.anat svg,.jetfig svg{width:100%;height:auto;display:block}
+.anat .ap{cursor:pointer;transition:opacity .25s,filter .25s}
+.anat.focus .ap{opacity:.28}
+.anat.focus .ap.on{opacity:1;filter:drop-shadow(0 0 6px var(--hc))}
+.anat-btns{margin:10px 0}
+.anat-btns button[aria-pressed="true"]{background:var(--hc);color:#fff;border-color:var(--hc)}
+.anat-info p{background:var(--hc-bg);border-radius:8px;padding:10px 12px;font-size:.95rem;margin:0}
+
+.gauges{display:grid;gap:6px;margin:10px 0 4px;font-size:.85rem;color:var(--ink-2)}
+.gauges>div{display:grid;grid-template-columns:130px 1fr;align-items:center;gap:8px}
+.bar{height:10px;background:var(--surface-2);border-radius:5px;overflow:hidden}
+.bar i{display:block;height:100%;background:var(--hc);width:0}
+#gM{background:var(--warn)}
+.jetfig input[type=range]{accent-color:var(--hc)}
+
+.chromo{display:grid;grid-template-columns:300px 1fr;gap:24px;align-items:center;background:var(--surface);border:1px solid var(--rule);border-radius:14px;padding:20px;margin:18px 0}
+.chromo svg{width:100%;max-width:300px;height:auto;border-radius:50%}
+.chromo input[type=range]{accent-color:#B5432E}
+
+.woundsim{background:var(--surface);border:1px solid var(--rule);border-radius:14px;padding:20px;margin:18px 0}
+.woundsim svg{width:100%;height:auto;display:block;max-height:340px}
+.woundsim input[type=range]{accent-color:var(--hb)}
+.wread{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.wread .status{margin:0}
+@media (max-width:900px){.chromo,.wread{grid-template-columns:1fr}.chromo svg{margin:0 auto}}
+
+.lifesim,.mothersim{background:var(--surface);border:1px solid var(--rule);border-radius:14px;padding:20px;margin:16px 0}
+.lifesim svg,.mothersim svg{width:100%;height:auto;display:block}
+.mothersim svg{border-radius:10px}
+.mothersim input[type=range]{accent-color:var(--hc)}
+.gens-head{display:flex;align-items:center;gap:14px;flex-wrap:wrap;margin:10px 0}
+.gens{display:flex;flex-wrap:wrap;gap:4px;min-height:10px}
+.gens span{font-size:22px;line-height:1;opacity:0;transform:scale(.3);animation:pop .35s forwards}
+@keyframes pop{to{opacity:1;transform:scale(1)}}
+@media (prefers-reduced-motion:reduce){.gens span{animation:none;opacity:1;transform:none}}
+
+.quiz{display:grid;gap:14px;max-width:820px}
+.qprog{display:flex;align-items:center;gap:12px;font-size:.9rem;color:var(--ink-2);position:sticky;top:env(safe-area-inset-top,0px);background:var(--bg);padding:8px 0;z-index:2}
+.qbar{flex:1;height:8px;background:var(--surface-2);border-radius:4px;overflow:hidden}
+.qbar i{display:block;height:100%;width:0;background:var(--hc);transition:width .3s}
+.q{border:1px solid var(--rule);border-radius:12px;background:var(--surface);padding:16px 18px;margin:0}
+.q legend{font-weight:600;padding:0;margin-bottom:10px;display:flex;gap:10px;align-items:baseline;float:left;width:100%}
+.q legend+*{clear:both}
+.qn{flex:none;display:inline-grid;place-items:center;width:28px;height:28px;border-radius:50%;background:var(--hc);color:#fff;font-size:.85rem}
+.qopts{display:grid;gap:8px}
+.qopts button{text-align:left;font:400 .97rem var(--sans);padding:10px 14px;border-radius:9px;border:1.5px solid var(--rule);background:var(--surface);color:var(--ink);cursor:pointer}
+.qopts button:hover:not(:disabled){border-color:var(--hc)}
+.qopts button:disabled{cursor:default}
+.qopts button.right{border-color:#2E8B57;background:var(--ok-bg)}
+.qopts button.wrong{border-color:var(--hb);background:var(--hb-bg)}
+.qexp{margin-top:10px;font-size:.95rem;background:var(--surface-2);border-radius:8px;padding:10px 14px}
+.qexp p{margin:0 0 6px}.qexp p:last-child{margin:0}
+.qverdict{font-weight:700}
+.qend{background:var(--hc-bg);border-radius:12px;padding:18px;text-align:center;font-size:1.05rem}
+
+.logo-wrap{background:#fff;border-radius:10px;padding:4px 8px;display:inline-flex;line-height:0}
+.logo-wrap img{height:52px;width:auto}
+@media (max-width:520px){.logo-wrap img{height:40px}}
+.photo{margin:18px 0}
+.photo img{display:block;width:100%;height:auto;border-radius:12px;background:var(--surface-2)}
+.photo figcaption{margin-top:8px}
+.hero-photo{margin:0 0 10px}
+.hero-photo img{border-radius:16px}
+.wide-in{max-width:980px}
+.square{max-width:560px}
+.tall img{width:auto;max-width:100%;max-height:min(82vh,760px);margin:0 auto}
+.two>*,.panels>*,.skin-grid>*{min-width:0}
+table.compare{min-width:0}
+.tscroll{overflow-x:auto}
+@media (max-width:520px){table.compare{font-size:.85rem}table.compare th,table.compare td{padding:7px 6px;overflow-wrap:anywhere}}
+.refs li{overflow-wrap:anywhere}
+</style>
+</head>
+<body>
+
+<header class="institutional-header">
+  <div class="header-identity">Fisiologia comparada para a graduação em saúde</div>
+  <span class="logo-wrap"><img src="img/logos-amor-a-pele-pet-saude.png" alt="Logos Amor-à-Pele (FE-UFPel) e PET-Saúde Informação e Saúde Digital, UFPel" width="305" height="125"></span>
+</header>
+
+<main class="wrap">
+
+  <section class="hero" aria-labelledby="titulo">
+    <div>
+      <h1 id="titulo">Coração e pele: o polvo diante do ser humano</h1>
+      <p class="dek">Três corações, sangue azul e uma pele comandada pelo cérebro. Simulações para entender débito cardíaco, transporte de oxigênio, cor da pele e cicatrização comparando dois projetos de corpo muito diferentes.</p>
+      <div class="hero-stat" aria-label="Comparações-chave">
+      <div><strong class="hc">≈ 3–6 mL</strong><span>de O₂ em 100 mL de sangue de polvo<sup class="cit">[<a href="#ref-1">1</a>,<a href="#ref-2">2</a>]</sup></span></div>
+      <div><strong class="hb">≈ 20 mL</strong><span>de O₂ em 100 mL de sangue humano com Hb de 15 g/dL<sup class="cit">[<a href="#ref-3">3</a>]</sup></span></div>
+      <div><strong class="hc">≈ 0,1 s</strong><span>para um cromatóforo do polvo se expandir<sup class="cit">[<a href="#ref-4">4</a>]</sup></span></div>
+      <div><strong class="hb">3–5 dias</strong><span>para o bronzeado tardio aparecer na pele humana<sup class="cit">[<a href="#ref-5">5</a>]</sup></span></div>
+    </div>
+    </div>
+    <figure class="hero-art">
+      <svg id="heroOcto" viewBox="0 0 400 440" role="img" aria-labelledby="heroT">
+        <title id="heroT">Ilustração animada de um polvo: a pele muda de cor e de padrão, e uma janela no manto mostra os três corações batendo</title>
+        <g id="heroArms"></g>
+        <path id="heroMantle" d="M200 20 C290 20 320 110 300 190 C288 238 250 262 200 262 C150 262 112 238 100 190 C80 110 110 20 200 20 Z"/>
+        <g id="heroDots"></g>
+        <ellipse cx="200" cy="268" rx="70" ry="44" id="heroHead"/>
+        <g id="heroEyes">
+          <ellipse cx="166" cy="262" rx="17" ry="14" fill="#F5EFD8" stroke="#3A2418" stroke-width="2"/>
+          <ellipse cx="234" cy="262" rx="17" ry="14" fill="#F5EFD8" stroke="#3A2418" stroke-width="2"/>
+          <rect x="157" y="259" width="18" height="6" rx="3" fill="#1A1210"/>
+          <rect x="225" y="259" width="18" height="6" rx="3" fill="#1A1210"/>
+        </g>
+        <g id="heroWindow">
+          <ellipse cx="200" cy="140" rx="70" ry="54" fill="rgba(255,255,255,.72)" stroke="#fff" stroke-width="2" stroke-dasharray="5 4"/>
+          <path d="M150 140 Q175 150 200 150 Q225 150 250 140" fill="none" stroke="#2F6DB5" stroke-width="4"/>
+          <circle id="hbL" cx="155" cy="128" r="11" fill="#B9C7CF" stroke="#13252C" stroke-width="1.5"/>
+          <circle id="hbR" cx="245" cy="128" r="11" fill="#B9C7CF" stroke="#13252C" stroke-width="1.5"/>
+          <ellipse id="hbS" cx="200" cy="150" rx="20" ry="16" fill="#2F6DB5" stroke="#13252C" stroke-width="1.5"/>
+          <text x="200" y="104" text-anchor="middle" font-size="11" fill="#13252C" font-family="Figtree, sans-serif">3 corações</text>
+        </g>
+      </svg>
+      <figcaption id="heroCap">A pele percorre padrões de camuflagem enquanto os corações batem.</figcaption>
+    </figure>
+  </section>
+
+  <section class="wide" aria-label="Fotografia de abertura">
+    <figure class="photo hero-photo"><img src="img/polvo-hero.jpg" alt="Polvo-comum sobre fundo rochoso, pele manchada em tons de marrom e creme e papilas erguidas acima do olho" width="1586" height="992" loading="lazy" decoding="async"><figcaption>Polvo-comum (<i>Octopus vulgaris</i>) com papilas erguidas e padrão manchado. Imagem ilustrativa gerada por IA.</figcaption></figure>
+  </section>
+
+  <section aria-labelledby="ideia">
+    <div class="prose">
+      <h2 id="ideia">Dois órgãos, duas estratégias</h2>
+      <p class="lead-p">No ser humano, a cor da pele é sobretudo um espelho do sangue: palidez, rubor e cianose contam como o coração e os pulmões estão funcionando. No polvo, a cor da pele é um espelho do cérebro: milhares de pequenos órgãos de pigmento obedecem a nervos e mudam em frações de segundo<sup class="cit">[<a href="#ref-4">4</a>,<a href="#ref-6">6</a>]</sup>.</p>
+      <p>O ponto em comum é o oxigênio. O sangue do polvo carrega cerca de cinco vezes menos O₂ que o nosso<sup class="cit">[<a href="#ref-1">1</a>,<a href="#ref-3">3</a>]</sup>, e uma pele que se repara precisa de oxigênio chegando ao tecido<sup class="cit">[<a href="#ref-7">7</a>]</sup>. A página começa pelo coração e termina na pele, inclusive quando ela se rompe.</p>
+      <p class="hint">Ponto de partida: matéria do El Confidencial sobre o sangue azul e os três corações do polvo<sup class="cit">[<a href="#ref-8">8</a>]</sup>, verificada e ampliada com a literatura científica.</p>
+    </div>
+  </section>
+
+  <div class="part"><strong>Parte 1. O coração</strong>bombas, pressões e transporte de oxigênio</div>
+
+  <section aria-labelledby="sim-titulo">
+    <h2 id="sim-titulo">Simulação: os dois corações batendo lado a lado</h2>
+    <div class="sim">
+      <div class="sim-top">
+        <p>Os batimentos seguem a frequência calculada em tempo real. O traçado mostra a pressão na aorta dos dois animais na mesma escala, em mmHg.</p>
+        <button class="btn" id="pauseBtn" type="button" aria-pressed="false">Pausar</button>
+      </div>
+
+      <div class="panels">
+        <div class="panel oct" aria-labelledby="h-oct">
+          <h3 id="h-oct">Polvo-comum <small><i>Octopus vulgaris</i>, valores por kg</small></h3>
+          <svg class="heart-svg" viewBox="0 0 360 250" role="img" aria-labelledby="octsvgt">
+            <title id="octsvgt">Esquema da circulação do polvo: dois corações branquiais na base das brânquias e um coração sistêmico central</title>
+            <g opacity=".9">
+              <ellipse cx="60" cy="150" rx="26" ry="62" fill="none" stroke="var(--hc)" stroke-width="2" stroke-dasharray="3 4"/>
+              <ellipse cx="300" cy="150" rx="26" ry="62" fill="none" stroke="var(--hc)" stroke-width="2" stroke-dasharray="3 4"/>
+              <text x="60" y="228" text-anchor="middle" font-size="12" fill="var(--ink-2)">brânquia</text>
+              <text x="306" y="228" text-anchor="middle" font-size="12" fill="var(--ink-2)">brânquia</text>
+            </g>
+            <path d="M180 14 V60 Q180 70 160 74 L110 86 M180 60 Q180 70 200 74 L250 86" fill="none" stroke="var(--hc-deoxy)" stroke-width="7" stroke-linecap="round"/>
+            <path class="flow-o-in" d="M180 14 V60 Q180 70 160 74 L110 86 M180 60 Q180 70 200 74 L250 86" fill="none" stroke="var(--surface)" stroke-width="2" stroke-dasharray="4 14" stroke-linecap="round"/>
+            <path d="M96 100 Q78 110 70 130 M264 100 Q282 110 290 130" fill="none" stroke="var(--hc-deoxy)" stroke-width="6" stroke-linecap="round"/>
+            <path class="flow-o-in" d="M96 100 Q78 110 70 130 M264 100 Q282 110 290 130" fill="none" stroke="var(--surface)" stroke-width="2" stroke-dasharray="4 14"/>
+            <path d="M74 196 Q120 200 150 170 M286 196 Q240 200 210 170" fill="none" stroke="var(--hc)" stroke-width="7" stroke-linecap="round"/>
+            <path class="flow-o-mid" d="M74 196 Q120 200 150 170 M286 196 Q240 200 210 170" fill="none" stroke="var(--surface)" stroke-width="2" stroke-dasharray="4 14"/>
+            <path d="M180 134 V100 M180 196 V236" fill="none" stroke="var(--hc)" stroke-width="8" stroke-linecap="round"/>
+            <path class="flow-o-out" d="M180 134 V100 M180 196 V236" fill="none" stroke="var(--surface)" stroke-width="2" stroke-dasharray="4 14"/>
+            <text x="172" y="118" text-anchor="end" font-size="11" fill="var(--ink-2)">aorta cefálica</text>
+            <text x="188" y="246" font-size="11" fill="var(--ink-2)">aorta abdominal</text>
+            <text x="190" y="22" font-size="11" fill="var(--ink-2)">veia cava</text>
+            <g id="bhL" style="transform-origin:102px 92px"><circle cx="102" cy="92" r="17" fill="var(--hc-deoxy)" stroke="var(--ink)" stroke-width="1.5"/></g>
+            <g id="bhR" style="transform-origin:258px 92px"><circle cx="258" cy="92" r="17" fill="var(--hc-deoxy)" stroke="var(--ink)" stroke-width="1.5"/></g>
+            <text x="102" y="64" text-anchor="middle" font-size="11" fill="var(--ink-2)">c. branquial</text>
+            <text x="258" y="64" text-anchor="middle" font-size="11" fill="var(--ink-2)">c. branquial</text>
+            <g id="sysH" style="transform-origin:180px 165px">
+              <path d="M150 165 Q150 132 180 132 Q210 132 210 165 Q210 198 180 198 Q150 198 150 165 Z" fill="var(--hc)" stroke="var(--ink)" stroke-width="1.5"/>
+            </g>
+            <text x="180" y="169" text-anchor="middle" font-size="11" font-weight="700" fill="#fff">sistêmico</text>
+          </svg>
+          <div class="status" id="oStatus" aria-live="polite">Em repouso.</div>
+          <canvas class="trace" id="oTrace" aria-label="Traçado da pressão aórtica do polvo"></canvas>
+          <div class="trace-label">Pressão aórtica do polvo (escala 0–160 mmHg)</div>
+
+          <div class="ctrl">
+            <label>Atividade</label>
+            <div class="seg" role="group" aria-label="Atividade do polvo">
+              <button type="button" data-act="0" aria-pressed="true">Repouso</button>
+              <button type="button" data-act="1" aria-pressed="false">Rastejando</button>
+            </div>
+            <button type="button" class="jet" id="jetBtn">Segure para nadar a jato</button>
+            <div class="debt" aria-hidden="true"><i id="debtBar"></i></div>
+            <div class="hint" id="debtTxt">Dívida de O₂: 0 de ~22 mL/kg</div>
+          </div>
+          <div class="ctrl">
+            <label for="oTemp">Temperatura da água <output id="oTempV">22 °C</output></label>
+            <input type="range" id="oTemp" min="5" max="30" step="1" value="22">
+            <div class="hint">Q₁₀ ≈ 3 para a frequência: cada 10 °C a mais triplica o ritmo.</div>
+          </div>
+          <div class="ctrl">
+            <label for="oO2">Oxigênio na água <output id="oO2V">100% da saturação</output></label>
+            <input type="range" id="oO2" min="20" max="100" step="1" value="100">
+            <div class="hint">Abaixo de ~2,5 ppm de O₂ o coração sistêmico para, de forma reversível.</div>
+          </div>
+          <div class="ctrl">
+            <label for="oPH">pH arterial <output id="oPHV">7,40</output></label>
+            <input type="range" id="oPH" min="7.10" max="7.70" step="0.01" value="7.40">
+          </div>
+        </div>
+
+        <div class="panel hum" aria-labelledby="h-hum">
+          <h3 id="h-hum">Ser humano <small>adulto de 70 kg, valores por kg</small></h3>
+          <svg class="heart-svg" viewBox="0 0 360 250" role="img" aria-labelledby="humsvgt">
+            <title id="humsvgt">Esquema do coração humano com quatro câmaras e circulações pulmonar e sistêmica</title>
+            <ellipse cx="50" cy="70" rx="34" ry="46" fill="none" stroke="var(--hb)" stroke-width="2" stroke-dasharray="3 4"/>
+            <ellipse cx="310" cy="70" rx="34" ry="46" fill="none" stroke="var(--hb)" stroke-width="2" stroke-dasharray="3 4"/>
+            <text x="50" y="134" text-anchor="middle" font-size="12" fill="var(--ink-2)">pulmão</text>
+            <text x="312" y="134" text-anchor="start" font-size="12" fill="var(--ink-2)">pulmão</text>
+            <path d="M120 10 V82 M120 240 V170" fill="none" stroke="var(--hb-deoxy)" stroke-width="8" stroke-linecap="round"/>
+            <path class="flow-h-in" d="M120 10 V82 M120 240 V170" fill="none" stroke="var(--surface)" stroke-width="2" stroke-dasharray="4 14"/>
+            <path d="M150 150 Q150 40 84 66 M150 110 Q220 30 276 66" fill="none" stroke="var(--hb-deoxy)" stroke-width="7" stroke-linecap="round"/>
+            <path class="flow-h-mid" d="M150 150 Q150 40 84 66 M150 110 Q220 30 276 66" fill="none" stroke="var(--surface)" stroke-width="2" stroke-dasharray="4 14"/>
+            <path d="M84 84 Q190 70 228 96 M276 84 Q250 90 236 98" fill="none" stroke="var(--hb)" stroke-width="7" stroke-linecap="round"/>
+            <path class="flow-h-mid" d="M84 84 Q190 70 228 96 M276 84 Q250 90 236 98" fill="none" stroke="var(--surface)" stroke-width="2" stroke-dasharray="4 14"/>
+            <path d="M212 150 Q200 30 250 26 Q300 22 300 60 V240" fill="none" stroke="var(--hb)" stroke-width="9" stroke-linecap="round"/>
+            <path class="flow-h-out" d="M212 150 Q200 30 250 26 Q300 22 300 60 V240" fill="none" stroke="var(--surface)" stroke-width="2" stroke-dasharray="4 14"/>
+            <text x="250" y="18" text-anchor="middle" font-size="11" fill="var(--ink-2)">aorta</text>
+            <g id="hAtria">
+              <ellipse cx="135" cy="112" rx="28" ry="24" fill="var(--hb-deoxy)" stroke="var(--ink)" stroke-width="1.5"/>
+              <ellipse cx="225" cy="112" rx="28" ry="24" fill="var(--hb)" stroke="var(--ink)" stroke-width="1.5"/>
+            </g>
+            <g id="hVent" style="transform-origin:180px 175px">
+              <path d="M110 140 H178 V215 Q140 205 110 160 Z" fill="var(--hb-deoxy)" stroke="var(--ink)" stroke-width="1.5"/>
+              <path d="M182 140 H250 Q245 200 182 230 Z" fill="var(--hb)" stroke="var(--ink)" stroke-width="1.5"/>
+            </g>
+            <text x="135" y="116" text-anchor="middle" font-size="11" font-weight="700" fill="#fff">AD</text>
+            <text x="225" y="116" text-anchor="middle" font-size="11" font-weight="700" fill="#fff">AE</text>
+            <text x="150" y="172" text-anchor="middle" font-size="11" font-weight="700" fill="#fff">VD</text>
+            <text x="212" y="172" text-anchor="middle" font-size="11" font-weight="700" fill="#fff">VE</text>
+          </svg>
+          <div class="status" id="hStatus" aria-live="polite">Em repouso.</div>
+          <canvas class="trace" id="hTrace" aria-label="Traçado da pressão aórtica humana"></canvas>
+          <div class="trace-label">Pressão aórtica humana (escala 0–160 mmHg; sistólica acima de 160 sai do quadro)</div>
+          <div class="swatch-row">
+            <div class="swatch" data-skin-swatch aria-hidden="true"></div>
+            <div class="swatch-txt" data-skin-txt>Cor estimada do lábio e do leito ungueal.</div>
+          </div>
+
+          <div class="ctrl">
+            <label for="hAct">Intensidade do exercício <output id="hActV">repouso</output></label>
+            <input type="range" id="hAct" min="0" max="100" step="1" value="0">
+          </div>
+          <div class="ctrl">
+            <label for="hPaO2">PaO₂ arterial <output id="hPaO2V">100 mmHg</output></label>
+            <input type="range" id="hPaO2" min="30" max="100" step="1" value="100">
+            <div class="hint">Simula hipoxemia (doença pulmonar, altitude).</div>
+          </div>
+          <div class="ctrl">
+            <label for="hTemp">Temperatura corporal <output id="hTempV">37,0 °C</output></label>
+            <input type="range" id="hTemp" min="34" max="41" step="0.1" value="37">
+            <div class="hint">Regra clínica aproximada: cerca de 10 bpm a mais por °C de febre.</div>
+          </div>
+          <div class="ctrl">
+            <label for="hPH">pH arterial <output id="hPHV">7,40</output></label>
+            <input type="range" id="hPH" min="7.00" max="7.60" step="0.01" value="7.40">
+          </div>
+          <div class="ctrl">
+            <label for="hHb">Hemoglobina <output id="hHbV">15,0 g/dL</output></label>
+            <input type="range" id="hHb" min="6" max="18" step="0.5" value="15">
+            <div class="hint">Baixe para simular anemia: a capacidade de transporte cai, a curva de saturação não muda.</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="readout">
+        <table aria-label="Parâmetros calculados">
+          <thead><tr><th>Parâmetro</th><th>Polvo</th><th>Humano</th><th>Como ler</th></tr></thead>
+          <tbody>
+            <tr><td>Frequência cardíaca (sistêmico)</td><td class="o" id="r_hr_o"></td><td class="h" id="r_hr_h"></td><td class="r">O polvo quase não acelera no esforço.</td></tr>
+            <tr><td>Volume sistólico por kg</td><td class="o" id="r_sv_o"></td><td class="h" id="r_sv_h"></td><td class="r">É aqui que o polvo ajusta o débito.</td></tr>
+            <tr><td>Débito cardíaco por kg</td><td class="o" id="r_co_o"></td><td class="h" id="r_co_h"></td><td class="r">DC = FC × VS</td></tr>
+            <tr><td>Pressão aórtica (sist./diast.)</td><td class="o" id="r_bp_o"></td><td class="h" id="r_bp_h"></td><td class="r">Polvo medido em cmH₂O; 1 cmH₂O ≈ 0,74 mmHg.</td></tr>
+            <tr><td>P50 (afinidade pelo O₂)</td><td class="o" id="r_p50_o"></td><td class="h" id="r_p50_h"></td><td class="r">P50 maior = solta O₂ com mais facilidade.</td></tr>
+            <tr><td>Saturação arterial / venosa</td><td class="o" id="r_sat_o"></td><td class="h" id="r_sat_h"></td><td class="r">Diferença = fração extraída pelos tecidos.</td></tr>
+            <tr><td>Conteúdo arterial de O₂ (CaO₂)</td><td class="o" id="r_ca_o"></td><td class="h" id="r_ca_h"></td><td class="r">Inclui O₂ dissolvido no plasma.</td></tr>
+            <tr><td>Diferença arteriovenosa de O₂</td><td class="o" id="r_av_o"></td><td class="h" id="r_av_h"></td><td class="r">O₂ entregue por 100 mL de sangue.</td></tr>
+            <tr><td>Oferta de O₂ (DO₂) por kg</td><td class="o" id="r_do2_o"></td><td class="h" id="r_do2_h"></td><td class="r">DO₂ = DC × CaO₂</td></tr>
+            <tr><td>Consumo de O₂ (VO₂) por kg</td><td class="o" id="r_vo2_o"></td><td class="h" id="r_vo2_h"></td><td class="r">Princípio de Fick: DC × (CaO₂ − CvO₂)</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="curve-box">
+        <div class="curve-head">
+          <h3 style="margin:0">Curvas de dissociação do oxigênio nas condições atuais</h3>
+          <div class="seg" role="group" aria-label="Eixo vertical da curva">
+            <button type="button" data-curve="sat" aria-pressed="true">% de saturação</button>
+            <button type="button" data-curve="cont" aria-pressed="false">mL de O₂ por 100 mL</button>
+          </div>
+        </div>
+        <canvas id="curve" aria-label="Curvas de dissociação do oxigênio do polvo e do humano"></canvas>
+        <div class="legend">
+          <span><b style="background:var(--hc)"></b>Hemocianina do polvo (Hill n ≈ 3)</span>
+          <span><b style="background:var(--hb)"></b>Hemoglobina humana (Hill n ≈ 2,7)</span>
+          <span>● ponto arterial &nbsp; ○ ponto venoso</span>
+        </div>
+        <p class="hint" style="margin-top:8px">Troque o eixo para "mL de O₂". Em porcentagem as curvas parecem primas; em conteúdo, a do polvo achata perto do chão. O ponto venoso fica abaixo da curva desenhada (que usa o pH arterial) porque o sangue venoso é mais ácido: é o efeito Bohr em ação.</p>
+      </div>
+    </div>
+    <p class="hint">Modelo didático. Frequência, pressões e efeito da temperatura do polvo seguem Wells<sup class="cit">[<a href="#ref-9">9</a>,<a href="#ref-10">10</a>]</sup>; a curva usa a equação de Hill com P50, cooperatividade e efeito Bohr da literatura de cefalópodes<sup class="cit">[<a href="#ref-11">11</a>,<a href="#ref-12">12</a>,<a href="#ref-13">13</a>]</sup>. No humano, o consumo de O₂ é fixado pela atividade e o sangue venoso é calculado pelo princípio de Fick<sup class="cit">[<a href="#ref-3">3</a>]</sup>. A taxa de acúmulo da dívida de O₂ durante o jato é ilustrativa; o teto de ~22 mL O₂/kg é medido<sup class="cit">[<a href="#ref-10">10</a>]</sup>.</p>
+  </section>
+
+  <section aria-labelledby="tres">
+    <div class="two">
+      <div>
+        <h2 id="tres">Três corações, dois circuitos em série</h2>
+        <p>Os dois corações branquiais ficam na base de cada brânquia e empurram o sangue venoso através delas. O sangue já oxigenado chega aos átrios do coração sistêmico, que o lança pelas aortas para o corpo<sup class="cit">[<a href="#ref-14">14</a>]</sup>.</p>
+        <p>A lógica lembra o nosso coração direito e esquerdo, só que separada em órgãos distintos. Em repouso, o polvo de cerca de 500 g a 22 °C bate 40–50 vezes por minuto, com pressão aórtica de 40/15 cmH₂O<sup class="cit">[<a href="#ref-9">9</a>]</sup>. Quando precisa de mais sangue, quase não acelera: aumenta o volume sistólico<sup class="cit">[<a href="#ref-9">9</a>,<a href="#ref-10">10</a>]</sup>.</p>
+        <div class="callout">
+          <strong>Ponte com a clínica:</strong> é a mesma ideia da lei de Frank-Starling. Menos enchimento, menos volume sistólico<sup class="cit">[<a href="#ref-3">3</a>]</sup>. No polvo, o caso extremo é o jato; em humanos, pense em hipovolemia ou tamponamento cardíaco.
+        </div>
+        <figure class="photo"><img src="img/polvo-anatomia-coracoes.png" alt="Ilustração do manto do polvo aberto mostrando as duas brânquias, os dois corações branquiais e o coração sistêmico ao centro" width="1254" height="1254" loading="lazy" decoding="async"><figcaption>Figura 1. Manto aberto: brânquias, corações branquiais e coração sistêmico. Ilustração artística gerada por IA, sem escala; as cores dos vasos seguem a convenção da página (azul = sangue oxigenado).</figcaption></figure>
+      </div>
+      <figure class="anat">
+        <svg viewBox="0 0 360 300" role="img" aria-labelledby="anatT">
+          <title id="anatT">Esquema do manto do polvo aberto, com brânquias, corações branquiais, coração sistêmico, veia cava e aortas; toque em cada parte para ler a descrição</title>
+          <path data-part="manto" class="ap" d="M180 12 C300 12 346 90 340 170 C334 250 270 292 180 292 C90 292 26 250 20 170 C14 90 60 12 180 12 Z" fill="var(--hc-bg)" stroke="var(--rule)" stroke-width="10"/>
+          <g data-part="branquias" class="ap">
+            <path d="M58 90 Q40 170 70 250 Q98 170 84 90 Z" fill="#E7B9A6" stroke="#B5432E" stroke-width="1.5"/>
+            <path d="M302 90 Q320 170 290 250 Q262 170 276 90 Z" fill="#E7B9A6" stroke="#B5432E" stroke-width="1.5"/>
+            <path d="M52 110 H86 M48 130 H88 M47 150 H90 M48 170 H90 M51 190 H88 M56 210 H84 M62 230 H78 M274 110 H308 M272 130 H312 M270 150 H313 M270 170 H312 M272 190 H309 M276 210 H304 M282 230 H298" stroke="#B5432E" stroke-width="1" opacity=".6"/>
+          </g>
+          <path data-part="cava" class="ap" d="M180 40 V90 Q180 100 160 104 L112 118 M180 90 Q180 100 200 104 L248 118" fill="none" stroke="var(--hc-deoxy)" stroke-width="9" stroke-linecap="round"/>
+          <path data-part="aortas" class="ap" d="M180 168 V128 M180 226 V272" fill="none" stroke="var(--hc)" stroke-width="10" stroke-linecap="round"/>
+          <path d="M84 232 Q120 236 150 200 M276 232 Q240 236 210 200" fill="none" stroke="var(--hc)" stroke-width="7" stroke-linecap="round"/>
+          <g data-part="branquiais" class="ap"><circle cx="104" cy="124" r="17" fill="var(--hc-deoxy)" stroke="var(--ink)" stroke-width="1.5"/><circle cx="256" cy="124" r="17" fill="var(--hc-deoxy)" stroke="var(--ink)" stroke-width="1.5"/></g>
+          <path data-part="sistemico" class="ap" d="M148 197 Q148 164 180 164 Q212 164 212 197 Q212 230 180 230 Q148 230 148 197 Z" fill="var(--hc)" stroke="var(--ink)" stroke-width="1.5"/>
+        </svg>
+        <div class="anat-side">
+          <div class="seg anat-btns" role="group" aria-label="Partes da anatomia">
+            <button type="button" data-show="manto" aria-pressed="false">Manto</button>
+            <button type="button" data-show="branquias" aria-pressed="false">Brânquias</button>
+            <button type="button" data-show="branquiais" aria-pressed="true">Corações branquiais</button>
+            <button type="button" data-show="sistemico" aria-pressed="false">Coração sistêmico</button>
+            <button type="button" data-show="cava" aria-pressed="false">Veia cava</button>
+            <button type="button" data-show="aortas" aria-pressed="false">Aortas</button>
+          </div>
+          <div class="anat-info" aria-live="polite">
+            <p data-info="manto" hidden><b>Manto.</b> Bolsa muscular que envolve as vísceras e as brânquias. Ao contrair com força, expulsa a água pelo funil e produz o jato; essa mesma pressão dificulta o retorno do sangue aos corações<sup class="cit">[<a href="#ref-10">10</a>]</sup>.</p>
+            <p data-info="branquias" hidden><b>Brânquias.</b> Onde a hemocianina recebe oxigênio da água. Sem as bombas auxiliares, o sangue não atravessaria esse leito com pressão suficiente<sup class="cit">[<a href="#ref-14">14</a>]</sup>.</p>
+            <p data-info="branquiais"><b>Corações branquiais.</b> Um na base de cada brânquia. Recebem o sangue venoso, ainda quase incolor, e o empurram através das brânquias<sup class="cit">[<a href="#ref-14">14</a>]</sup>. Continuam batendo quando o coração sistêmico para no jato.</p>
+            <p data-info="sistemico" hidden><b>Coração sistêmico.</b> Recebe o sangue oxigenado das duas brânquias e o lança no corpo. Em repouso bate 40–50 vezes por minuto num polvo de ~500 g a 22 °C<sup class="cit">[<a href="#ref-9">9</a>]</sup>; no esforço, aumenta o volume sistólico em vez da frequência<sup class="cit">[<a href="#ref-10">10</a>]</sup>.</p>
+            <p data-info="cava" hidden><b>Veia cava.</b> Traz o sangue de volta do corpo e se divide em direção aos corações branquiais. É ela que colapsa quando a pressão do manto sobe demais<sup class="cit">[<a href="#ref-10">10</a>]</sup>.</p>
+            <p data-info="aortas" hidden><b>Aortas.</b> Saem do coração sistêmico em direção à cabeça e ao abdome. Foi na aorta dorsal que Wells mediu as pressões de 40/15 cmH₂O em repouso<sup class="cit">[<a href="#ref-9">9</a>]</sup>.</p>
+          </div>
+          <p class="hint">Esquema simplificado, sem escala. Toque nas partes ou nos botões.</p>
+        </div>
+      </figure>
+    </div>
+  </section>
+
+  <section aria-labelledby="hemo">
+    <div class="prose">
+      <h2 id="hemo">Hemocianina e hemoglobina: duas soluções para carregar oxigênio</h2>
+      <p>A hemoglobina humana fica dentro das hemácias, usa ferro e cada molécula leva 4 O₂<sup class="cit">[<a href="#ref-3">3</a>]</sup>. A hemocianina do polvo é uma proteína gigante dissolvida no plasma; cada sítio liga O₂ entre dois átomos de cobre e cada molécula pode levar até 70 O₂<sup class="cit">[<a href="#ref-2">2</a>]</sup>.</p>
+      <p>Ainda assim, por volume de sangue, o polvo carrega muito menos. Em <i>Octopus dofleini</i>, a capacidade média foi de 3,06 mL de O₂ por 100 mL<sup class="cit">[<a href="#ref-1">1</a>]</sup>. A cor também engana: só a hemocianina ligada ao oxigênio é azul. Sem oxigênio, ela é praticamente incolor. Na simulação, o sangue venoso do polvo aparece acinzentado por isso.</p>
+    </div>
+    <p class="pull">O trunfo da hemocianina não é carregar muito. É descarregar quase tudo quando o tecido acidifica.</p>
+    <div class="prose">
+      <p>Na maioria das hemocianinas de cefalópodes estudadas, o coeficiente de Bohr fica abaixo de −1<sup class="cit">[<a href="#ref-11">11</a>]</sup>, contra cerca de −0,48 na hemoglobina humana. A sensibilidade ao pH também muda com a temperatura<sup class="cit">[<a href="#ref-12">12</a>]</sup>. No coração isolado de <i>O. vulgaris</i>, a hemocianina liberou cerca de 70% do O₂ ligado ao atravessar a parede do ventrículo<sup class="cit">[<a href="#ref-15">15</a>]</sup>.</p>
+      <p>O frio tem o efeito oposto. A afinidade da hemocianina aumenta quando a temperatura cai, o que dificulta a liberação de O₂ para os tecidos<sup class="cit">[<a href="#ref-2">2</a>]</sup>. Polvos antárticos compensam isso com uma hemocianina de afinidade mais baixa<sup class="cit">[<a href="#ref-13">13</a>]</sup>.</p>
+    </div>
+  </section>
+
+  <section aria-labelledby="jato">
+    <div class="two">
+      <figure class="jetfig">
+        <svg id="jetSvg" viewBox="0 0 384 260" role="img" aria-labelledby="jetT">
+          <title id="jetT">Esquema do manto em corte: quando a pressão no manto supera a pressão venosa, a veia colapsa, o sangue para de voltar e o coração sistêmico deixa de bater</title>
+          <g id="jWater"></g>
+          <g transform="translate(34 0)">
+          <path id="jMantle" d="M60 130 C60 60 140 30 220 40 C290 50 320 95 320 130 C320 165 290 210 220 220 C140 230 60 200 60 130 Z" fill="var(--hc-bg)" stroke="var(--hc)" stroke-width="10"/>
+          <path d="M60 118 L22 108 L22 152 L60 142" fill="var(--hc-bg)" stroke="var(--hc)" stroke-width="6" stroke-linejoin="round"/>
+          <text x="24" y="100" font-size="11" fill="var(--ink-2)">funil</text>
+          <path id="jVein" d="M300 130 C260 130 240 160 200 160 C170 160 160 140 150 130" fill="none" stroke="var(--hc-deoxy)" stroke-width="14" stroke-linecap="round"/>
+          <path id="jVeinFlow" d="M300 130 C260 130 240 160 200 160 C170 160 160 140 150 130" fill="none" stroke="var(--surface)" stroke-width="3" stroke-dasharray="3 12" stroke-linecap="round"/>
+          <text x="232" y="186" font-size="11" fill="var(--ink-2)">veia cava</text>
+          <ellipse id="jHeart" cx="132" cy="126" rx="22" ry="18" fill="var(--hc)" stroke="var(--ink)" stroke-width="1.5" style="transform-origin:132px 126px"/>
+          <text x="132" y="92" text-anchor="middle" font-size="11" fill="var(--ink-2)">c. sistêmico</text>
+          </g>
+        </svg>
+        <div class="gauges">
+          <div><span>Pressão no manto</span><div class="bar"><i id="gM"></i></div></div>
+          <div><span>Pressão venosa</span><div class="bar"><i id="gV" style="width:35%"></i></div></div>
+        </div>
+        <div class="ctrl"><label for="jForce">Força de contração do manto <output id="jForceV">repouso</output></label><input type="range" id="jForce" min="0" max="100" value="0"></div>
+        <div class="status" id="jStatus" aria-live="polite">Manto relaxado: o sangue volta ao coração normalmente.</div>
+        <figcaption>Figura 2. Esquema qualitativo do mecanismo proposto por Wells e colaboradores para a parada cardíaca no jato<sup class="cit">[<a href="#ref-10">10</a>]</sup>.</figcaption>
+      </figure>
+      <div>
+        <h2 id="jato">Por que o coração para quando o polvo nada</h2>
+        <p>Wells e colaboradores registraram a pressão na aorta de polvos soltos no aquário. Ao se movimentar, a pressão média, a amplitude do pulso e o fluxo dobraram, enquanto a frequência mal mudou. No jato, o coração sistêmico parou<sup class="cit">[<a href="#ref-10">10</a>]</sup>.</p>
+        <p>A explicação proposta é mecânica: a pressão interna do manto supera a pressão venosa, o sangue não retorna e os corações não enchem. A dívida de oxigênio máxima que o polvo tolera é pequena, cerca de 22 mL de O₂ por kg, o que limita o jato a poucos metros<sup class="cit">[<a href="#ref-10">10</a>]</sup>.</p>
+        <div class="callout red">
+          <strong>Compare com você:</strong> no exercício humano o débito cardíaco aumenta várias vezes, em grande parte pela frequência cardíaca, com a ajuda da bomba muscular no retorno venoso<sup class="cit">[<a href="#ref-3">3</a>]</sup>. O polvo faz o contrário: aumenta o volume sistólico.
+        </div>
+        <figure class="photo"><img src="img/polvo-nado-jato.jpg" alt="Polvo nadando a jato em água azul, com os braços estendidos para trás e um jato de água saindo do funil" width="1672" height="941" loading="lazy" decoding="async"><figcaption>O jato: a água sai pelo funil e os braços seguem o corpo. Imagem ilustrativa gerada por IA.</figcaption></figure>
+      </div>
+    </div>
+  </section>
+
+  <div class="part"><strong>Parte 2. A pele</strong>cor, textura, luz e cicatrização</div>
+
+  <section aria-labelledby="pele">
+    <div class="prose">
+      <h2 id="pele">Uma pele que obedece a nervos</h2>
+      <p>Os cromatóforos do polvo não são células soltas como os melanócitos humanos. Cada um é um pequeno órgão neuromuscular: uma bolsa elástica cheia de pigmento, rodeada por fibras musculares radiais, cada uma com seus nervos, sem controle hormonal<sup class="cit">[<a href="#ref-6">6</a>]</sup>. Quando os neurônios motores disparam, os músculos se contraem, puxam a bolsa e a mancha de cor se abre em cerca de 100 milissegundos<sup class="cit">[<a href="#ref-4">4</a>]</sup>.</p>
+      <p>Por isso o padrão da pele funciona como uma leitura direta da atividade do cérebro<sup class="cit">[<a href="#ref-16">16</a>]</sup>. O animal pode escolher, a cada momento, um entre muitos padrões corporais, e trocar quase instantaneamente<sup class="cit">[<a href="#ref-6">6</a>]</sup>.</p>
+    </div>
+
+    <figure class="photo wide-in"><img src="img/polvo-camuflagem.jpg" alt="Polvo quase invisível sobre rocha coberta de algas, com cor, padrão e textura iguais aos do fundo" width="1586" height="992" loading="lazy" decoding="async"><figcaption>Camuflagem completa: cor, padrão manchado e textura das papilas copiam o fundo. Só o olho denuncia o animal. Imagem ilustrativa gerada por IA.</figcaption></figure>
+
+    <div class="chromo">
+      <svg id="chromoSvg" viewBox="0 0 300 300" role="img" aria-labelledby="chromoT">
+        <title id="chromoT">Um cromatóforo visto de cima: bolsa de pigmento central rodeada por fibras musculares radiais e um nervo que traz os impulsos do cérebro</title>
+        <circle cx="150" cy="150" r="140" fill="#F1E8DC"/>
+        <g id="chromoMuscles"></g>
+        <circle id="chromoSac" cx="150" cy="150" r="18" fill="#6B3A22" stroke="#3E2012" stroke-width="2"/>
+        <path id="chromoNerve" d="M0 24 C60 30 90 60 112 96" fill="none" stroke="#C9A227" stroke-width="4"/>
+        <g id="chromoSpikes"></g>
+      </svg>
+      <div>
+        <h3>De perto: um único cromatóforo</h3>
+        <p>Cada cromatóforo tem uma bolsa elástica de pigmento presa a fibras musculares radiais, por volta de 15 a 25<sup class="cit">[<a href="#ref-6">6</a>]</sup>. Quando o nervo dispara, as fibras se contraem, puxam a borda para fora e a bolsa se abre. Quanto maior a frequência de impulsos, mais ela se alarga<sup class="cit">[<a href="#ref-6">6</a>]</sup>.</p>
+        <div class="ctrl"><label for="cFreq">Frequência de impulsos do nervo <output id="cFreqV">0 por segundo</output></label><input type="range" id="cFreq" min="0" max="20" value="0"></div>
+        <button type="button" class="btn" id="cPulse">Disparar um impulso</button>
+        <p class="hint" id="cInfo" style="margin-top:8px">Diâmetro da bolsa: 1×</p>
+      </div>
+    </div>
+
+    <figure class="photo square"><img src="img/cromatoforos-microscopia.jpg" alt="Pele de cefalópode ampliada, com centenas de cromatóforos amarelos, vermelhos e marrons de tamanhos diferentes sobre um fundo iridescente azul-esverdeado" width="1254" height="1254" loading="lazy" decoding="async"><figcaption>As três camadas em uma imagem: cromatóforos amarelos, vermelhos e marrons, uns abertos e outros fechados, sobre o brilho estrutural dos iridóforos e o fundo branco dos leucóforos. Imagem ilustrativa gerada por IA.</figcaption></figure>
+
+    <div class="layers">
+      <div><h3><span class="dot" style="background:#C9962A"></span>Cromatóforos</h3><p>Bolsas de pigmento amarelo, vermelho e marrom abertas por músculos. Rápidos e controlados pelo cérebro<sup class="cit">[<a href="#ref-4">4</a>,<a href="#ref-6">6</a>]</sup>.</p></div>
+      <div><h3><span class="dot" style="background:linear-gradient(135deg,#6EC6D9,#7C8FE0)"></span>Iridóforos</h3><p>Pilhas de plaquetas que refletem a luz e criam cor estrutural. A mudança é bem mais lenta, cerca de 30 segundos<sup class="cit">[<a href="#ref-4">4</a>]</sup>.</p></div>
+      <div><h3><span class="dot" style="background:#F4F1EA"></span>Leucóforos</h3><p>Espalham a luz e formam um fundo branco difuso, que dá contraste aos padrões<sup class="cit">[<a href="#ref-4">4</a>]</sup>.</p></div>
+    </div>
+
+    <div class="skin-sim">
+      <h3>Simulação: monte a pele do polvo</h3>
+      <p class="hint" style="margin-bottom:12px">Cada ponto é um cromatóforo. Os controles representam a atividade dos neurônios motores. As papilas mudam o relevo da pele, que os cefalópodes também alteram durante a camuflagem<sup class="cit">[<a href="#ref-4">4</a>]</sup>.</p>
+      <div class="skin-grid">
+        <div>
+          <canvas id="skin" aria-label="Pele simulada do polvo com cromatóforos, iridóforos e papilas"></canvas>
+          <div class="skin-meta"><span id="skinCover">Área com pigmento: 0%</span><span>Cromatóforos em tempo real; iridóforos acelerados 5×</span></div>
+        </div>
+        <div>
+          <div class="presets" role="group" aria-label="Padrões prontos">
+            <button type="button" data-preset="palido">Pálido</button>
+            <button type="button" data-preset="areia">Areia</button>
+            <button type="button" data-preset="rocha">Rocha com algas</button>
+            <button type="button" data-preset="alarme">Escurecimento súbito</button>
+          </div>
+          <div class="ctrl"><label for="kY"><span><span class="dot" style="background:#D9A520"></span>Cromatóforos amarelos</span><output id="kYV">0%</output></label><input type="range" id="kY" min="0" max="100" value="0"></div>
+          <div class="ctrl"><label for="kR"><span><span class="dot" style="background:#B5432E"></span>Cromatóforos vermelhos</span><output id="kRV">0%</output></label><input type="range" id="kR" min="0" max="100" value="0"></div>
+          <div class="ctrl"><label for="kB"><span><span class="dot" style="background:#4A2A1C"></span>Cromatóforos marrons</span><output id="kBV">0%</output></label><input type="range" id="kB" min="0" max="100" value="0"></div>
+          <div class="ctrl"><label for="kP">Padrão: uniforme a manchado <output id="kPV">0%</output></label><input type="range" id="kP" min="0" max="100" value="0"></div>
+          <div class="ctrl"><label for="kI">Iridóforos (reflexo estrutural) <output id="kIV">0%</output></label><input type="range" id="kI" min="0" max="100" value="0"></div>
+          <div class="ctrl"><label for="kT">Papilas (textura) <output id="kTV">0%</output></label><input type="range" id="kT" min="0" max="100" value="0"></div>
+          <label class="toggle"><input type="checkbox" id="kBrain" checked> Pele conectada ao cérebro</label>
+          <label class="toggle"><input type="checkbox" id="kLight"> Iluminar com luz azul</label>
+          <p class="hint">Desligue o cérebro e acenda a luz: mesmo em pele isolada, os cromatóforos do polvo se expandem com a luz, graças a opsinas na própria pele<sup class="cit">[<a href="#ref-17">17</a>]</sup>.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="prose">
+      <h3>A pele que sente a luz</h3>
+      <p>Em pedaços de pele de <i>Octopus bimaculoides</i> separados do corpo, a luz fez os cromatóforos se expandirem. Os pesquisadores chamaram o fenômeno de LACE (expansão de cromatóforos ativada pela luz) e encontraram na pele a mesma via de opsina usada pelos olhos, com sensibilidade máxima por volta de 480 nm, luz azul<sup class="cit">[<a href="#ref-17">17</a>]</sup>. Ainda não se sabe quanto isso contribui para a camuflagem no animal vivo<sup class="cit">[<a href="#ref-17">17</a>]</sup>.</p>
+    </div>
+  </section>
+
+  <section aria-labelledby="pele-humana">
+    <div class="two">
+      <div>
+        <h2 id="pele-humana">E a pele humana? Um monitor do coração</h2>
+        <p>Nossa pele também muda de cor, mas por outros caminhos. O pigmento é lento: o escurecimento imediato por UVA dura até cerca de 2 horas, e o bronzeado verdadeiro, com produção de nova melanina, só aparece 3 a 5 dias após a exposição<sup class="cit">[<a href="#ref-5">5</a>]</sup>.</p>
+        <p>As mudanças rápidas vêm do sangue. A cianose aparece quando há cerca de 5 g/dL de hemoglobina desoxigenada nos capilares<sup class="cit">[<a href="#ref-18">18</a>,<a href="#ref-19">19</a>]</sup>. Como depende da quantidade absoluta de hemoglobina sem oxigênio, um paciente com anemia grave pode estar hipoxêmico e não parecer cianótico<sup class="cit">[<a href="#ref-18">18</a>,<a href="#ref-19">19</a>]</sup>.</p>
+        <div class="callout red">
+          <strong>Teste no simulador do coração:</strong> em repouso, baixe a PaO₂ para ~40 mmHg com Hb 15 g/dL e a amostra de cor fica cianótica. Agora baixe a Hb para 7,5 g/dL: a hipoxemia piora o quadro, mas a cianose some. É o que a literatura clínica descreve<sup class="cit">[<a href="#ref-18">18</a>]</sup>.
+        </div>
+      </div>
+      <div>
+        <figure class="photo"><img src="img/pele-humana-cianose.png" alt="Três polegares lado a lado: leito ungueal rosado normal, leito ungueal pálido e leito ungueal arroxeado de cianose" width="1774" height="887" loading="lazy" decoding="async"><figcaption>Da esquerda para a direita: leito ungueal normal, palidez e cianose. Os tons de pele variam entre os dedos; em peles mais escuras, a cianose pode exigir dessaturação maior para ser percebida<sup class="cit">[<a href="#ref-18">18</a>]</sup>. Imagem ilustrativa gerada por IA.</figcaption></figure>
+        <div class="swatch-row" style="margin-top:8px">
+          <div class="swatch" data-skin-swatch style="width:120px;height:80px;border-radius:40px 40px 18px 18px" aria-hidden="true"></div>
+          <div class="swatch-txt" data-skin-txt>Cor estimada do lábio e do leito ungueal.</div>
+        </div>
+        <p class="hint">Esta amostra segue os controles do ser humano na Parte 1. A cor é uma representação didática da mistura de hemoglobina oxigenada e desoxigenada, não uma escala clínica.</p>
+        <div class="tscroll"><table class="compare" aria-label="Comparação da pele">
+          <thead><tr><th></th><th>Polvo</th><th>Humano</th></tr></thead>
+          <tbody>
+            <tr><td>Quem muda a cor</td><td class="o">Neurônios motores e músculos<sup class="cit">[<a href="#ref-6">6</a>]</sup></td><td class="h">Sangue capilar e melanina<sup class="cit">[<a href="#ref-5">5</a>,<a href="#ref-19">19</a>]</sup></td></tr>
+            <tr><td>Velocidade</td><td class="o">~0,1 s<sup class="cit">[<a href="#ref-4">4</a>]</sup></td><td class="h">Segundos a minutos (perfusão); dias (melanina)<sup class="cit">[<a href="#ref-5">5</a>]</sup></td></tr>
+            <tr><td>O que a cor revela</td><td class="o">O padrão que o cérebro escolheu, para camuflagem e comunicação<sup class="cit">[<a href="#ref-6">6</a>]</sup></td><td class="h">O estado da perfusão e da oxigenação, um sinal clínico<sup class="cit">[<a href="#ref-19">19</a>]</sup></td></tr>
+          </tbody>
+        </table></div>
+      </div>
+    </div>
+  </section>
+
+  <section aria-labelledby="ferida">
+    <div class="prose">
+      <h2 id="ferida">Quando a pele se rompe</h2>
+      <p>Na natureza, ferimentos nos braços são comuns: cerca de metade dos polvos-comuns capturados na Baía de Nápoles tinha algum braço danificado<sup class="cit">[<a href="#ref-20">20</a>]</sup>. Depois de amputar experimentalmente a ponta de um braço, Shaw e colaboradores viram a ferida 64% fechada em 6 horas, com fechamento quase completo em alguns animais entre 6 e 24 horas<sup class="cit">[<a href="#ref-20">20</a>]</sup>.</p>
+      <p>O primeiro movimento é mecânico: os músculos ao redor contraem como o cordão de uma bolsa, e células se acumulam formando um tampão sobre a lesão<sup class="cit">[<a href="#ref-20">20</a>,<a href="#ref-21">21</a>]</sup>. Em feridas de pele de cefalópodes, o fechamento costuma se completar após cerca de 5 dias, com hemócitos assumindo aspecto semelhante a fibroblastos<sup class="cit">[<a href="#ref-21">21</a>]</sup>.</p>
+      <p>Na pele humana, a cicatrização segue quatro fases sobrepostas: hemostasia, inflamação, proliferação e remodelação, e esta última pode durar anos<sup class="cit">[<a href="#ref-7">7</a>]</sup>. Para a ferida fechar, as fases precisam acontecer na sequência e no tempo certos; a oxigenação é um dos fatores que mais interferem nesse processo<sup class="cit">[<a href="#ref-7">7</a>]</sup>.</p>
+    </div>
+
+    <figure class="photo wide-in"><img src="img/ferida-polvo-humano.png" alt="À esquerda, corte transversal de um braço de polvo com anel muscular e cordão nervoso central; à direita, ferida na pele humana com tecido de granulação vermelho e borda epitelial avançando" width="1672" height="941" loading="lazy" decoding="async"><figcaption>Duas peles feridas. Esquerda: corte de um braço de polvo, com o anel muscular que contrai em bolsa. Direita: ferida humana na fase de proliferação, com tecido de granulação e borda epitelial avançando. Ilustração gerada por IA.</figcaption></figure>
+
+    <div class="timeline" role="img" aria-label="Linha do tempo comparando o fechamento de feridas no polvo e as fases da cicatrização humana, em escala logarítmica de 1 minuto a 2 anos">
+      <svg viewBox="0 0 900 230">
+        <g font-family="Figtree, system-ui, sans-serif" font-size="12" fill="var(--ink-2)">
+          <line x1="130" y1="200" x2="880" y2="200" stroke="var(--rule)" stroke-width="1.5"/>
+          <g stroke="var(--rule)">
+            <line x1="130" y1="30" x2="130" y2="204"/><line x1="351" y1="30" x2="351" y2="204"/><line x1="448" y1="30" x2="448" y2="204"/><line x1="523" y1="30" x2="523" y2="204"/><line x1="611" y1="30" x2="611" y2="204"/><line x1="708" y1="30" x2="708" y2="204"/><line x1="843" y1="30" x2="843" y2="204"/>
+          </g>
+          <text x="130" y="220" text-anchor="middle">1 min</text><text x="351" y="220" text-anchor="middle">1 h</text><text x="448" y="220" text-anchor="middle">6 h</text><text x="523" y="220" text-anchor="middle">24 h</text><text x="611" y="220" text-anchor="middle">5 dias</text><text x="708" y="220" text-anchor="middle">1 mês</text><text x="843" y="220" text-anchor="middle">1 ano</text>
+          <text x="10" y="64" font-weight="700" fill="var(--hc)">Polvo</text>
+          <text x="10" y="80">braço e pele</text>
+          <rect x="130" y="40" width="318" height="16" rx="8" fill="var(--hc)" opacity=".85"/>
+          <text x="138" y="52" fill="#fff" font-size="11">contração em bolsa + tampão celular</text>
+          <circle cx="448" cy="72" r="6" fill="var(--hc)"/><text x="456" y="76">64% fechada</text>
+          <circle cx="523" cy="92" r="6" fill="var(--hc)"/><text x="531" y="96">quase fechada em alguns animais</text>
+          <circle cx="611" cy="112" r="6" fill="none" stroke="var(--hc)" stroke-width="2.5"/><text x="619" y="116">ferida de pele fechada</text>
+          <text x="10" y="150" font-weight="700" fill="var(--hb)">Ser humano</text>
+          <text x="10" y="166">pele</text>
+          <rect x="130" y="136" width="221" height="14" rx="7" fill="var(--hb)" opacity=".9"/><text x="138" y="147" fill="#fff" font-size="11">hemostasia</text>
+          <rect x="300" y="154" width="330" height="14" rx="7" fill="var(--hb)" opacity=".7"/><text x="308" y="165" fill="#fff" font-size="11">inflamação</text>
+          <rect x="560" y="172" width="170" height="14" rx="7" fill="var(--hb)" opacity=".55"/><text x="568" y="183" fill="#fff" font-size="11">proliferação</text>
+          <rect x="690" y="136" width="190" height="14" rx="7" fill="var(--hb-deoxy)" opacity=".85"/><text x="698" y="147" fill="#fff" font-size="11">remodelação (até anos)</text>
+        </g>
+      </svg>
+    </div>
+    <p class="hint">Escala logarítmica. Polvo: dados de amputação experimental da ponta do braço e de feridas de pele de cefalópodes<sup class="cit">[<a href="#ref-20">20</a>,<a href="#ref-21">21</a>]</sup>. Humano: fases sobrepostas descritas por Guo e DiPietro<sup class="cit">[<a href="#ref-7">7</a>]</sup>; a posição das faixas é qualitativa.</p>
+
+    <div class="woundsim">
+      <h3>Simulação: avance o relógio da ferida</h3>
+      <svg id="woundSvg" viewBox="0 0 640 300" role="img" aria-labelledby="woundT">
+        <title id="woundT">À esquerda, o coto de um braço de polvo em corte, com a ferida se fechando pela contração muscular; à direita, uma ferida na pele humana passando pelas fases de cicatrização</title>
+        <g id="wOct"></g>
+        <g id="wHum"></g>
+        <text x="160" y="290" text-anchor="middle" font-size="13" font-weight="700" fill="var(--hc)" font-family="Figtree, sans-serif">Polvo: ponta do braço</text>
+        <text x="480" y="290" text-anchor="middle" font-size="13" font-weight="700" fill="var(--hb)" font-family="Figtree, sans-serif">Ser humano: pele</text>
+      </svg>
+      <div class="ctrl"><label for="wTime">Tempo após a lesão <output id="wTimeV">0 min</output></label><input type="range" id="wTime" min="0" max="1000" value="0"></div>
+      <label class="toggle"><input type="checkbox" id="wBad"> Condições adversas no ser humano (hipóxia, infecção, diabetes)</label>
+      <div class="wread">
+        <p id="wOctTxt" class="status"></p>
+        <p id="wHumTxt" class="status"></p>
+      </div>
+      <p class="hint">Polvo: fechamento interpolado entre os pontos medidos (64% em 6 h; quase completo em alguns animais em 24 h)<sup class="cit">[<a href="#ref-20">20</a>]</sup> e fechamento de feridas de pele em ~5 dias<sup class="cit">[<a href="#ref-21">21</a>]</sup>. Humano: esquema qualitativo com durações típicas de livro-texto, que variam muito entre feridas; as quatro fases e a oxigenação como fator crítico vêm de Guo e DiPietro<sup class="cit">[<a href="#ref-7">7</a>]</sup>.</p>
+    </div>
+
+    <div class="callout">
+      <strong>Para o cuidado com feridas crônicas:</strong> o polvo mostra uma pele que fecha rápido porque contrai, tampa e reorganiza sem demora. Na ferida crônica humana, uma ou mais fases deixam de avançar<sup class="cit">[<a href="#ref-7">7</a>]</sup>. Volte ao simulador do coração e observe a oferta de O₂ (DO₂): anemia, baixo débito e hipoxemia reduzem o oxigênio que chega ao leito da ferida, um dos fatores que comprometem a cicatrização<sup class="cit">[<a href="#ref-7">7</a>]</sup>.
+    </div>
+  </section>
+
+  <div class="part"><strong>Parte 3. Uma vida curta</strong>quanto vive um polvo, e por quê</div>
+
+  <section aria-labelledby="vida">
+    <div class="prose">
+      <h2 id="vida">Um corpo sofisticado que dura um ou dois anos</h2>
+      <p class="lead-p">O polvo-comum vive de 1 a 2 anos<sup class="cit">[<a href="#ref-22">22</a>]</sup>. O polvo-gigante-do-Pacífico, um dos maiores, chega a 3 a 5 anos, com estimativas de 4,5 a 5 anos no Golfo do Alasca<sup class="cit">[<a href="#ref-23">23</a>]</sup>. No Brasil, a expectativa de vida ao nascer chegou a 76,6 anos em 2024<sup class="cit">[<a href="#ref-24">24</a>]</sup>.</p>
+      <p>A razão é o modo de reproduzir: o polvo se reproduz uma única vez e morre (semelparidade). Depois da desova, a fêmea protege os ovos até a eclosão; nas espécies de águas rasas esse cuidado dura de 1 a 3 meses<sup class="cit">[<a href="#ref-25">25</a>]</sup>.</p>
+    </div>
+
+    <figure class="photo wide-in"><img src="img/paralarvas.jpg" alt="Paralarvas de polvo translúcidas flutuando em água azul-escura, com olhos grandes e pontos de cromatóforos" width="1672" height="941" loading="lazy" decoding="async"><figcaption>Paralarvas recém-eclodidas: translúcidas, já com cromatóforos visíveis. Começam a vida no plâncton. Imagem ilustrativa gerada por IA.</figcaption></figure>
+
+    <div class="lifesim">
+      <h3>Quantas gerações de polvo cabem em uma vida humana?</h3>
+      <svg id="lifeBars" viewBox="0 0 700 170" role="img" aria-labelledby="lifeT">
+        <title id="lifeT">Barras comparando a duração da vida: polvo-comum 1 a 2 anos, polvo-gigante-do-Pacífico 3 a 5 anos, ser humano 76,6 anos no Brasil</title>
+      </svg>
+      <div class="gens-head">
+        <button type="button" class="btn" id="gensBtn">Mostrar as gerações</button>
+        <span id="gensTxt" class="hint">Cada ícone é uma geração de polvo-comum, considerando 1,5 ano por geração.</span>
+      </div>
+      <div id="gens" class="gens" aria-live="polite"></div>
+    </div>
+  </section>
+
+  <section aria-labelledby="mae">
+    <div class="two">
+      <div>
+        <h2 id="mae">A glândula que encerra a vida</h2>
+        <p>Entre os olhos do polvo há duas glândulas ópticas, comparadas à hipófise dos vertebrados<sup class="cit">[<a href="#ref-26">26</a>]</sup>. Em 1977, Jerome Wodinsky removeu essas glândulas de fêmeas de <i>Octopus hummelincki</i> que já cuidavam dos ovos e tinham parado de comer. Elas abandonaram os ovos, voltaram a se alimentar, ganharam peso, algumas acasalaram de novo, e viveram em média 5,75 meses a mais<sup class="cit">[<a href="#ref-26">26</a>,<a href="#ref-27">27</a>]</sup>.</p>
+        <p>Em <i>Octopus bimaculoides</i>, as mães continuaram comendo por cerca de 8 dias após a desova; depois pararam de repente e, após 3 a 19 dias de jejum, entraram em declínio rápido<sup class="cit">[<a href="#ref-26">26</a>]</sup>. Em vez de um único "hormônio da morte", a glândula óptica usa várias vias de sinalização<sup class="cit">[<a href="#ref-26">26</a>]</sup>, incluindo mudanças no metabolismo do colesterol e na produção de hormônios esteroides<sup class="cit">[<a href="#ref-28">28</a>]</sup>.</p>
+        <div class="callout">
+          <strong>O frio estica o relógio:</strong> uma fêmea do polvo de águas profundas <i>Graneledone boreopacifica</i>, observada a 1.397 m, cuidou dos ovos por 53 meses, o período de incubação mais longo já registrado em um animal<sup class="cit">[<a href="#ref-25">25</a>]</sup>.
+        </div>
+        <figure class="photo tall"><img src="img/mae-polvo-ovos.jpg" alt="Fêmea de polvo pálida dentro da toca, cuidando de cordões de ovos brancos pendurados no teto" width="1100" height="1430" loading="lazy" decoding="async"><figcaption>Mãe polvo na toca com os cordões de ovos. Ela não sai nem para comer até a eclosão. Imagem ilustrativa gerada por IA.</figcaption></figure>
+      </div>
+      <div class="mothersim">
+        <svg id="momSvg" viewBox="0 0 360 280" role="img" aria-labelledby="momT">
+          <title id="momT">Fêmea de polvo dentro da toca cuidando de cordões de ovos; com o passar dos dias ela para de comer e definha, enquanto os embriões se desenvolvem</title>
+          <path d="M10 270 Q20 40 180 30 Q340 40 350 270 Z" fill="#8C7B6B"/>
+          <path d="M40 270 Q50 80 180 70 Q310 80 320 270 Z" fill="#3B3029"/>
+          <g id="momEggs"></g>
+          <g id="momBody"></g>
+          <g id="momFood"></g>
+        </svg>
+        <div class="ctrl"><label for="momDay">Dias após a desova <output id="momDayV">0</output></label><input type="range" id="momDay" min="0" max="70" value="0"></div>
+        <label class="toggle"><input type="checkbox" id="momGland"> Remover as glândulas ópticas (experimento de 1977)</label>
+        <div class="status" id="momTxt" aria-live="polite"></div>
+        <p class="hint">Esquema: tempos de alimentação e jejum de <i>O. bimaculoides</i><sup class="cit">[<a href="#ref-26">26</a>]</sup>; incubação de 1 a 3 meses típica de espécies rasas<sup class="cit">[<a href="#ref-25">25</a>]</sup>; efeito da remoção das glândulas observado em <i>O. hummelincki</i><sup class="cit">[<a href="#ref-27">27</a>]</sup>. A curva de condição corporal é ilustrativa.</p>
+      </div>
+    </div>
+  </section>
+
+  <section aria-labelledby="checagem">
+    <h2 id="checagem">O que a matéria do El Confidencial acerta e simplifica</h2>
+    <div class="facts">
+      <div class="fact">
+        <div class="claim">"Dois corações branquiais e um sistêmico"</div>
+        <span class="verdict v-ok">Correto</span>
+        <p style="margin:0">A divisão de funções está bem descrita<sup class="cit">[<a href="#ref-14">14</a>]</sup>.</p>
+      </div>
+      <div class="fact">
+        <div class="claim">A hemocianina seria "muito mais eficiente" para fornecer oxigênio</div>
+        <span class="verdict v-part">Simplificado</span>
+        <p style="margin:0">Ela carrega bem menos O₂ por volume que a hemoglobina<sup class="cit">[<a href="#ref-1">1</a>]</sup>. A vantagem está na liberação sensível ao pH<sup class="cit">[<a href="#ref-11">11</a>]</sup> e na adaptação a cada faixa de temperatura<sup class="cit">[<a href="#ref-13">13</a>]</sup>, não na quantidade.</p>
+      </div>
+      <div class="fact">
+        <div class="claim">Adaptação a "águas abaixo de zero"</div>
+        <span class="verdict v-part">Simplificado</span>
+        <p style="margin:0">Há polvos polares, mas o polvo-comum vive em águas costeiras temperadas e tropicais. E o frio, na verdade, atrapalha a liberação de O₂ pela hemocianina<sup class="cit">[<a href="#ref-2">2</a>]</sup>.</p>
+      </div>
+      <div class="fact">
+        <div class="claim">O coração sistêmico para durante o esforço intenso</div>
+        <span class="verdict v-ok">Correto, com ressalva</span>
+        <p style="margin:0">A parada está documentada no nado a jato. A causa proposta é a falha de retorno venoso pela pressão do manto, não o esforço em si: ao se movimentar sem jato, o débito dobra sem parada<sup class="cit">[<a href="#ref-10">10</a>]</sup>.</p>
+      </div>
+      <div class="fact">
+        <div class="claim">Camuflagem por cromatóforos, leucóforos e iridóforos</div>
+        <span class="verdict v-ok">Correto, com ressalva</span>
+        <p style="margin:0">A matéria fala em mudança "instantânea". Isso vale para os cromatóforos, de controle neural; os iridóforos levam cerca de 30 segundos<sup class="cit">[<a href="#ref-4">4</a>]</sup>.</p>
+      </div>
+    </div>
+  </section>
+
+  <section aria-labelledby="clinica">
+    <h2 id="clinica">O que levar para a prática em saúde</h2>
+    <div class="clin">
+      <div><h3>Saturação não é conteúdo</h3><p style="margin:0">Uma pessoa anêmica pode ter SpO₂ normal e pouco oxigênio no sangue. Reduza a hemoglobina no simulador: a curva de % não se mexe, a de mL achata.</p></div>
+      <div><h3>Cianose engana</h3><p style="margin:0">Ela depende da hemoglobina desoxigenada em g/dL. Na anemia grave pode faltar mesmo com hipoxemia; na policitemia aparece mais cedo<sup class="cit">[<a href="#ref-19">19</a>]</sup>.</p></div>
+      <div><h3>Ferida também é perfusão</h3><p style="margin:0">Oxigenação é um dos principais fatores da cicatrização<sup class="cit">[<a href="#ref-7">7</a>]</sup>. Avaliar a ferida inclui avaliar coração, pulmão e hemoglobina.</p></div>
+    </div>
+  </section>
+
+  <section aria-labelledby="pense">
+    <div class="prose">
+      <h2 id="pense">Para refletir</h2>
+      <details><summary>Por que o débito do polvo por kg pode ser parecido com o humano, mas a oferta de O₂ é cerca de 10 vezes menor?</summary><p>Porque DO₂ = DC × CaO₂. O conteúdo arterial do polvo é cerca de cinco vezes menor e o débito em repouso também é menor. Ele sobrevive porque, como ectotérmico, gasta muito menos energia.</p></details>
+      <details><summary>Simule água a 8 °C. O que acontece com a frequência e com o ponto venoso?</summary><p>A frequência cai (Q₁₀ ≈ 3) e a P50 diminui: a hemocianina segura mais O₂ e a saturação venosa sobe. A extração fica mais difícil.</p></details>
+      <details><summary>Por que a pele do polvo não fica "cianótica" quando o sangue perde oxigênio?</summary><p>A cor da pele do polvo vem dos cromatóforos sob comando neural, não do sangue. Além disso, a hemocianina sem O₂ é quase incolor.</p></details>
+      <details><summary>Que situação humana se parece com o jato do polvo?</summary><p>Qualquer condição em que o retorno venoso cai abruptamente: manobra de Valsalva prolongada, pneumotórax hipertensivo, tamponamento cardíaco, ventilação com pressão positiva elevada.</p></details>
+    </div>
+  </section>
+
+  <section aria-labelledby="quiz">
+    <h2 id="quiz">Quiz: teste o que você aprendeu</h2>
+    <p class="hint">12 questões. Escolha uma alternativa para ver a explicação com a fonte.</p>
+    <div class="quiz" id="quizBox">
+      <div class="qprog"><div class="qbar"><i id="qBar"></i></div><span id="qScore">0 de 12 respondidas</span></div>
+      <fieldset class="q" data-correct="1">
+        <legend><span class="qn">1</span>Qual é a função dos dois corações branquiais do polvo?</legend>
+        <div class="qopts">
+          <button type="button" data-i="0"><b>a)</b> Bombear o sangue oxigenado para o corpo</button>
+          <button type="button" data-i="1"><b>b)</b> Empurrar o sangue venoso através das brânquias</button>
+          <button type="button" data-i="2"><b>c)</b> Bombear a água para dentro do manto</button>
+          <button type="button" data-i="3"><b>d)</b> Levar sangue ao cérebro durante o jato</button>
+        </div>
+        <div class="qexp" hidden><p class="qverdict"></p><p>Cada coração branquial fica na base de uma brânquia e empurra o sangue venoso através dela; o coração sistêmico recebe o sangue já oxigenado e o envia ao corpo<sup class="cit">[<a href="#ref-14">14</a>]</sup>.</p></div>
+      </fieldset>
+      <fieldset class="q" data-correct="2">
+        <legend><span class="qn">2</span>Quando o polvo se movimenta e precisa de mais sangue, o que ele ajusta principalmente?</legend>
+        <div class="qopts">
+          <button type="button" data-i="0"><b>a)</b> A frequência cardíaca, que quase triplica</button>
+          <button type="button" data-i="1"><b>b)</b> A concentração de hemocianina</button>
+          <button type="button" data-i="2"><b>c)</b> O volume sistólico, com frequência quase igual</button>
+          <button type="button" data-i="3"><b>d)</b> A pressão venosa, que cai a zero</button>
+        </div>
+        <div class="qexp" hidden><p class="qverdict"></p><p>Pressão, pulso e fluxo dobram, mas a frequência muda pouco: o aumento do débito vem do volume sistólico<sup class="cit">[<a href="#ref-9">9</a>,<a href="#ref-10">10</a>]</sup>. No ser humano, a frequência tem papel muito maior<sup class="cit">[<a href="#ref-3">3</a>]</sup>.</p></div>
+      </fieldset>
+      <fieldset class="q" data-correct="1">
+        <legend><span class="qn">3</span>Por que o coração sistêmico para durante o nado a jato?</legend>
+        <div class="qopts">
+          <button type="button" data-i="0"><b>a)</b> Falta de oxigênio no cérebro</button>
+          <button type="button" data-i="1"><b>b)</b> A pressão no manto supera a pressão venosa e o sangue não volta ao coração</button>
+          <button type="button" data-i="2"><b>c)</b> O nervo cardíaco é desligado para economizar energia</button>
+          <button type="button" data-i="3"><b>d)</b> A hemocianina se desfaz com o esforço</button>
+        </div>
+        <div class="qexp" hidden><p class="qverdict"></p><p>A explicação proposta é mecânica: a pressão interna do manto impede o retorno venoso, os corações não enchem e o sistêmico para<sup class="cit">[<a href="#ref-10">10</a>]</sup>. Teste na Figura 2.</p></div>
+      </fieldset>
+      <fieldset class="q" data-correct="2">
+        <legend><span class="qn">4</span>Em 100 mL de sangue, quanto oxigênio carregam aproximadamente o polvo e o ser humano?</legend>
+        <div class="qopts">
+          <button type="button" data-i="0"><b>a)</b> Polvo ~20 mL; humano ~3 mL</button>
+          <button type="button" data-i="1"><b>b)</b> Os dois carregam ~20 mL</button>
+          <button type="button" data-i="2"><b>c)</b> Polvo ~3 mL; humano ~20 mL</button>
+          <button type="button" data-i="3"><b>d)</b> Polvo ~10 mL; humano ~10 mL</button>
+        </div>
+        <div class="qexp" hidden><p class="qverdict"></p><p>Em <i>Octopus dofleini</i> a capacidade média foi de cerca de 3 mL de O₂ por 100 mL<sup class="cit">[<a href="#ref-1">1</a>]</sup>; no ser humano com Hb de 15 g/dL, cerca de 20 mL<sup class="cit">[<a href="#ref-3">3</a>]</sup>. Troque o eixo da curva de dissociação para ver.</p></div>
+      </fieldset>
+      <fieldset class="q" data-correct="1">
+        <legend><span class="qn">5</span>O que significa dizer que a hemocianina dos cefalópodes tem um efeito Bohr muito grande?</legend>
+        <div class="qopts">
+          <button type="button" data-i="0"><b>a)</b> Que ela carrega mais oxigênio que a hemoglobina</button>
+          <button type="button" data-i="1"><b>b)</b> Que uma pequena queda de pH libera muito oxigênio para o tecido</button>
+          <button type="button" data-i="2"><b>c)</b> Que ela só funciona em água muito fria</button>
+          <button type="button" data-i="3"><b>d)</b> Que ela não é afetada pelo pH</button>
+        </div>
+        <div class="qexp" hidden><p class="qverdict"></p><p>Na maioria das hemocianinas de cefalópodes o coeficiente de Bohr fica abaixo de −1<sup class="cit">[<a href="#ref-11">11</a>]</sup>: o tecido que acidifica recebe grande parte do O₂. Baixe o pH do polvo no simulador e veja o ponto venoso.</p></div>
+      </fieldset>
+      <fieldset class="q" data-correct="1">
+        <legend><span class="qn">6</span>Um paciente tem Hb de 7,5 g/dL e PaO₂ de 40 mmHg, mas não parece cianótico. Qual a explicação mais provável?</legend>
+        <div class="qopts">
+          <button type="button" data-i="0"><b>a)</b> A hipoxemia não é real</button>
+          <button type="button" data-i="1"><b>b)</b> A cianose depende da quantidade absoluta de hemoglobina desoxigenada, cerca de 5 g/dL nos capilares</button>
+          <button type="button" data-i="2"><b>c)</b> A anemia aumenta a afinidade da hemoglobina</button>
+          <button type="button" data-i="3"><b>d)</b> A cianose só aparece com febre</button>
+        </div>
+        <div class="qexp" hidden><p class="qverdict"></p><p>Com pouca hemoglobina, é difícil acumular ~5 g/dL de Hb desoxigenada nos capilares; por isso a anemia grave pode mascarar a cianose<sup class="cit">[<a href="#ref-18">18</a>,<a href="#ref-19">19</a>]</sup>. Reproduza no simulador do coração.</p></div>
+      </fieldset>
+      <fieldset class="q" data-correct="1">
+        <legend><span class="qn">7</span>O que faz um cromatóforo do polvo se abrir?</legend>
+        <div class="qopts">
+          <button type="button" data-i="0"><b>a)</b> Um hormônio liberado no sangue</button>
+          <button type="button" data-i="1"><b>b)</b> A contração de músculos radiais comandados por neurônios motores</button>
+          <button type="button" data-i="2"><b>c)</b> A produção de nova melanina</button>
+          <button type="button" data-i="3"><b>d)</b> A entrada de água na célula de pigmento</button>
+        </div>
+        <div class="qexp" hidden><p class="qverdict"></p><p>Cada cromatóforo é um órgão neuromuscular: a bolsa de pigmento é puxada por fibras radiais sob controle nervoso, sem controle hormonal<sup class="cit">[<a href="#ref-6">6</a>]</sup>, e se expande em cerca de 100 ms<sup class="cit">[<a href="#ref-4">4</a>]</sup>.</p></div>
+      </fieldset>
+      <fieldset class="q" data-correct="2">
+        <legend><span class="qn">8</span>Qual elemento da pele do polvo muda de forma mais lenta?</legend>
+        <div class="qopts">
+          <button type="button" data-i="0"><b>a)</b> Cromatóforos amarelos</button>
+          <button type="button" data-i="1"><b>b)</b> Cromatóforos marrons</button>
+          <button type="button" data-i="2"><b>c)</b> Iridóforos</button>
+          <button type="button" data-i="3"><b>d)</b> Papilas</button>
+        </div>
+        <div class="qexp" hidden><p class="qverdict"></p><p>Os iridóforos produzem cor estrutural e mudam em cerca de 30 segundos, bem mais devagar que os cromatóforos<sup class="cit">[<a href="#ref-4">4</a>]</sup>.</p></div>
+      </fieldset>
+      <fieldset class="q" data-correct="1">
+        <legend><span class="qn">9</span>Em pedaços de pele de polvo separados do corpo, o que acontece quando se aplica luz?</legend>
+        <div class="qopts">
+          <button type="button" data-i="0"><b>a)</b> Nada, porque a pele depende dos olhos</button>
+          <button type="button" data-i="1"><b>b)</b> Os cromatóforos se expandem, por meio de opsinas presentes na pele</button>
+          <button type="button" data-i="2"><b>c)</b> A pele produz melanina</button>
+          <button type="button" data-i="3"><b>d)</b> As papilas se erguem</button>
+        </div>
+        <div class="qexp" hidden><p class="qverdict"></p><p>É a expansão de cromatóforos ativada pela luz (LACE), mediada pela mesma via de opsina dos olhos, com sensibilidade máxima por volta de 480 nm<sup class="cit">[<a href="#ref-17">17</a>]</sup>.</p></div>
+      </fieldset>
+      <fieldset class="q" data-correct="2">
+        <legend><span class="qn">10</span>Após a amputação experimental da ponta do braço, quanto da ferida do polvo estava fechada em 6 horas?</legend>
+        <div class="qopts">
+          <button type="button" data-i="0"><b>a)</b> Cerca de 5%</button>
+          <button type="button" data-i="1"><b>b)</b> Cerca de 25%</button>
+          <button type="button" data-i="2"><b>c)</b> Cerca de 64%</button>
+          <button type="button" data-i="3"><b>d)</b> 100%</button>
+        </div>
+        <div class="qexp" hidden><p class="qverdict"></p><p>A ferida estava cerca de 64% fechada em 6 h, com fechamento quase completo em alguns animais em 24 h, graças à contração muscular em bolsa e a um tampão celular<sup class="cit">[<a href="#ref-20">20</a>]</sup>. Teste no relógio da ferida.</p></div>
+      </fieldset>
+      <fieldset class="q" data-correct="2">
+        <legend><span class="qn">11</span>Na cicatrização humana, qual afirmação está correta?</legend>
+        <div class="qopts">
+          <button type="button" data-i="0"><b>a)</b> As fases ocorrem isoladas e sem sobreposição</button>
+          <button type="button" data-i="1"><b>b)</b> A remodelação termina em poucos dias</button>
+          <button type="button" data-i="2"><b>c)</b> As quatro fases se sobrepõem e a oxigenação é um dos fatores que mais interferem</button>
+          <button type="button" data-i="3"><b>d)</b> A oxigenação não influencia a cicatrização</button>
+        </div>
+        <div class="qexp" hidden><p class="qverdict"></p><p>Hemostasia, inflamação, proliferação e remodelação se sobrepõem; a remodelação pode durar anos, e a oxigenação está entre os principais fatores que afetam o processo<sup class="cit">[<a href="#ref-7">7</a>]</sup>.</p></div>
+      </fieldset>
+      <fieldset class="q" data-correct="1">
+        <legend><span class="qn">12</span>O que aconteceu quando as glândulas ópticas foram removidas de fêmeas que cuidavam dos ovos?</legend>
+        <div class="qopts">
+          <button type="button" data-i="0"><b>a)</b> Morreram mais cedo</button>
+          <button type="button" data-i="1"><b>b)</b> Abandonaram os ovos, voltaram a comer e viveram meses a mais</button>
+          <button type="button" data-i="2"><b>c)</b> Os ovos eclodiram imediatamente</button>
+          <button type="button" data-i="3"><b>d)</b> Nada mudou</button>
+        </div>
+        <div class="qexp" hidden><p class="qverdict"></p><p>No experimento de 1977, as fêmeas abandonaram os ovos, voltaram a se alimentar e viveram em média 5,75 meses a mais<sup class="cit">[<a href="#ref-26">26</a>,<a href="#ref-27">27</a>]</sup>.</p></div>
+      </fieldset>
+      <div class="qend" id="qEnd" hidden>
+        <p id="qEndTxt"></p>
+        <button type="button" class="btn" id="qReset">Refazer o quiz</button>
+      </div>
+    </div>
+  </section>
+
+  <section aria-labelledby="sintese">
+    <div class="prose">
+      <h2 id="sintese">Em uma frase</h2>
+      <p class="lead-p">O ser humano aposta em um sangue rico em oxigênio, um coração que acelera e uma pele que denuncia a circulação; o polvo, em um sangue pobre, bombas extras nas brânquias e uma pele comandada pelo cérebro, que fecha feridas em horas.</p>
+    </div>
+  </section>
+
+  <section aria-labelledby="refs">
+    <h2 id="refs">Referências</h2>
+    <ol class="refs">
+      <li id="ref-1">LENFANT, C.; JOHANSEN, K. Gas transport by hemocyanin-containing blood of the cephalopod <i>Octopus dofleini</i>. <i>American Journal of Physiology</i>, v. 209, n. 5, p. 991–998, 1965.</li>
+      <li id="ref-2">OELLERMANN, M.; STRUGNELL, J. M.; LIEB, B.; MARK, F. C. Positive selection in octopus haemocyanin indicates functional links to temperature adaptation. <i>BMC Evolutionary Biology</i>, v. 15, art. 133, 2015. DOI: 10.1186/s12862-015-0411-4.</li>
+      <li id="ref-3">HALL, J. E.; HALL, M. E. <i>Guyton &amp; Hall: tratado de fisiologia médica</i>. 14. ed. Rio de Janeiro: GEN Guanabara Koogan, 2021.</li>
+      <li id="ref-4">MONTAGUE, T. G. Neural control of cephalopod camouflage. <i>Current Biology</i>, v. 33, n. 20, p. R1095–R1100, 2023. DOI: 10.1016/j.cub.2023.08.095.</li>
+      <li id="ref-5">SKLAR, L. R.; ALMUTAWA, F.; LIM, H. W.; HAMZAVI, I. Effects of ultraviolet radiation, visible light, and infrared radiation on erythema and pigmentation: a review. <i>Photochemical &amp; Photobiological Sciences</i>, v. 12, n. 1, p. 54–64, 2013. DOI: 10.1039/C2PP25152C.</li>
+      <li id="ref-6">MESSENGER, J. B. Cephalopod chromatophores: neurobiology and natural history. <i>Biological Reviews</i>, v. 76, n. 4, p. 473–528, 2001. DOI: 10.1017/S1464793101005772.</li>
+      <li id="ref-7">GUO, S.; DIPIETRO, L. A. Factors affecting wound healing. <i>Journal of Dental Research</i>, v. 89, n. 3, p. 219–229, 2010. DOI: 10.1177/0022034509359125.</li>
+      <li id="ref-8">GARCÍA GONZÁLEZ, J. La razón por la que el pulpo tiene sangre azul y tres corazones para sobrevivir (y no es un mito de la realeza). <i>El Confidencial</i>, Madri, 22 out. 2026. Disponível em: https://www.elconfidencial.com/tecnologia/ciencia/2026-10-22/motivo-biologico-sangre-pulpo-azul-tres-corazones-sobrevivir-1qrt_4451025. Acesso em: 24 out. 2026.</li>
+      <li id="ref-9">WELLS, M. J. The heartbeat of <i>Octopus vulgaris</i>. <i>Journal of Experimental Biology</i>, v. 78, n. 1, p. 87–104, 1979.</li>
+      <li id="ref-10">WELLS, M. J.; DUTHIE, G. G.; HOULIHAN, D. F.; SMITH, P. J. S.; WELLS, J. Blood flow and pressure changes in exercising octopuses (<i>Octopus vulgaris</i>). <i>Journal of Experimental Biology</i>, v. 131, n. 1, p. 175–187, 1987.</li>
+      <li id="ref-11">BRIDGES, C. R. Bohr and Root effects in cephalopod haemocyanins: paradox or pressure in <i>Sepia officinalis</i>? <i>Marine and Freshwater Behaviour and Physiology</i>, v. 25, n. 1–3, p. 121–130, 1994.</li>
+      <li id="ref-12">ZIELINSKI, S.; SARTORIS, F. J.; PÖRTNER, H. O. Temperature effects on hemocyanin oxygen binding in an Antarctic cephalopod. <i>Biological Bulletin</i>, v. 200, n. 1, p. 67–76, 2001.</li>
+      <li id="ref-13">OELLERMANN, M.; LIEB, B.; PÖRTNER, H. O.; SEMMENS, J. M.; MARK, F. C. Blue blood on ice: modulated blood oxygen transport facilitates cold compensation and eurythermy in an Antarctic octopod. <i>Frontiers in Zoology</i>, v. 12, art. 6, 2015. DOI: 10.1186/s12983-015-0097-x.</li>
+      <li id="ref-14">WELLS, M. J.; SMITH, P. J. S. The performance of the octopus circulatory system: a triumph of engineering over design. <i>Experientia</i>, v. 43, p. 487–499, 1987.</li>
+      <li id="ref-15">AGNISOLA, C.; HOULIHAN, D. F. Oxygen supply and in vitro performance of the systemic heart of <i>Octopus vulgaris</i>: effects of haemocyanin. <i>Journal of Experimental Biology</i>, v. 157, p. 523–541, 1991.</li>
+      <li id="ref-16">SHOOK, E. N.; BARLOW, G. T.; GARCIA-ROSALES, D.; GIBBONS, C. J.; MONTAGUE, T. G. Dynamic skin behaviors in cephalopods. <i>Current Opinion in Neurobiology</i>, v. 86, art. 102876, 2024.</li>
+      <li id="ref-17">RAMIREZ, M. D.; OAKLEY, T. H. Eye-independent, light-activated chromatophore expansion (LACE) and expression of phototransduction genes in the skin of <i>Octopus bimaculoides</i>. <i>Journal of Experimental Biology</i>, v. 218, n. 10, p. 1513–1520, 2015.</li>
+      <li id="ref-18">CYANOSIS. In: WALKER, H. K.; HALL, W. D.; HURST, J. W. (ed.). <i>Clinical Methods: the history, physical, and laboratory examinations</i>. 3. ed. Boston: Butterworths, 1990. Disponível em: https://www.ncbi.nlm.nih.gov/books/NBK367/. Acesso em: 24 out. 2026.</li>
+      <li id="ref-19">ADEYINKA, A.; KONDAMUDI, N. P. Cyanosis. In: <i>StatPearls</i>. Treasure Island (FL): StatPearls Publishing, 2026. Disponível em: https://www.ncbi.nlm.nih.gov/books/NBK482247/. Acesso em: 24 out. 2026.</li>
+      <li id="ref-20">SHAW, T. J.; OSBORNE, M.; PONTE, G.; FIORITO, G.; ANDREWS, P. L. R. Mechanisms of wound closure following acute arm injury in <i>Octopus vulgaris</i>. <i>Zoological Letters</i>, v. 2, art. 8, 2016. DOI: 10.1186/s40851-016-0044-5.</li>
+      <li id="ref-21">IMPERADORE, P.; FIORITO, G. Cephalopod tissue regeneration: consolidating over a century of knowledge. <i>Frontiers in Physiology</i>, v. 9, art. 593, 2018. DOI: 10.3389/fphys.2018.00593.</li>
+      <li id="ref-22">MANGOLD, K. <i>Octopus vulgaris</i>. In: BOYLE, P. R. (ed.). <i>Cephalopod Life Cycles</i>. v. 1. London: Academic Press, 1983. p. 335–364.</li>
+      <li id="ref-23">CONRATH, C. L.; CONNERS, M. E. Aspects of the reproductive biology of the North Pacific giant octopus (<i>Enteroctopus dofleini</i>) in the Gulf of Alaska. <i>Fishery Bulletin</i>, v. 112, n. 4, p. 253–260, 2014. DOI: 10.7755/FB.112.4.2.</li>
+      <li id="ref-24">IBGE – INSTITUTO BRASILEIRO DE GEOGRAFIA E ESTATÍSTICA. <i>Tábua completa de mortalidade para o Brasil – 2024</i>. Rio de Janeiro: IBGE, 2025.</li>
+      <li id="ref-25">ROBISON, B.; SEIBEL, B.; DRAZEN, J. Deep-sea octopus (<i>Graneledone boreopacifica</i>) conducts the longest-known egg-brooding period of any animal. <i>PLOS ONE</i>, v. 9, n. 7, e103437, 2014. DOI: 10.1371/journal.pone.0103437.</li>
+      <li id="ref-26">WANG, Z. Y.; RAGSDALE, C. W. Multiple optic gland signaling pathways implicated in octopus maternal behaviors and death. <i>Journal of Experimental Biology</i>, v. 221, n. 19, jeb185751, 2018.</li>
+      <li id="ref-27">WODINSKY, J. Hormonal inhibition of feeding and death in octopus: control by optic gland secretion. <i>Science</i>, v. 198, n. 4320, p. 948–951, 1977. DOI: 10.1126/science.198.4320.948.</li>
+      <li id="ref-28">WANG, Z. Y.; PERGANDE, M. R.; RAGSDALE, C. W.; COLOGNA, S. M. Steroid hormones of the octopus self-destruct system. <i>Current Biology</i>, v. 32, n. 11, p. 2572–2579.e4, 2022. DOI: 10.1016/j.cub.2022.04.043.</li>
+    </ol>
+  </section>
+</main>
+
+<footer class="institutional-footer">
+  <p>Infográfico elaborado pelos projetos Amor à Pele e PET-Saúde Digital G10 Feridas Crônicas, UFPel, em Outubro de 2026.</p>
+</footer>
+<script>
+(function(){
+  const $ = id => document.getElementById(id);
+  const fmt = (v,d=1) => v.toFixed(d).replace('.',',');
+  const css = n => getComputedStyle(document.documentElement).getPropertyValue(n).trim();
+  const clamp = (v,a,b) => Math.max(a,Math.min(b,v));
+
+  const S = { oAct:0, jet:false, debt:0, paused:false, curveMode:'sat',
+    oPhase:0, bPhase:0.15, hPhase:0, oP:20 };
+
+  const hill = (p, p50, n) => Math.pow(p,n)/(Math.pow(p,n)+Math.pow(p50,n));
+  const invHill = (s, p50, n) => p50*Math.pow(s/(1-s),1/n);
+  const KPA = 7.50062;
+
+  function octopus(){
+    const T = +$('oTemp').value, O2 = +$('oO2').value, pH = +$('oPH').value;
+    const crawl = S.oAct===1;
+    let hr = 45*Math.pow(3,(T-22)/10);
+    if (crawl) hr *= 0.95;
+    const hypo = clamp((O2-36)/(60-36),0,1);
+    hr *= hypo;
+    const sv = 0.7*(crawl?2:1);
+    let sys = crawl?100:40; const dia = crawl?50:15;
+    sys = dia + (sys-dia)*Math.max(hypo,0.0001);
+    let stopped = false;
+    if (S.jet || hypo===0){ hr = 0; stopped = true; }
+    const co = hr*sv;
+    const p50a = Math.max(0.6, 3.0 + 0.12*(T-20));
+    const bohr = -1.4;
+    const active = crawl || S.jet;
+    const pHv = pH - 0.11 - (active?0.05:0);
+    const P50art = p50a*Math.pow(10, bohr*(pH-7.4));
+    const P50ven = p50a*Math.pow(10, bohr*(pHv-7.4));
+    const PaO2 = 13*(O2/100), PvO2 = Math.min(PaO2*0.9, active?1.6:4.0);
+    const cap = 4.0, sol = 0.004;
+    const Sa = hill(PaO2,P50art,3), Sv = hill(PvO2,P50ven,3);
+    const Ca = cap*Sa + sol*PaO2*KPA, Cv = cap*Sv + sol*PvO2*KPA;
+    return {hr,sv,co,sys,dia,stopped,hypo,P50:P50art,Sa,Sv,Ca,Cv,PaO2,PvO2,cap,sol,P50art,P50ven,T,
+      vo2: co*(Ca-Cv)/100};
+  }
+  function human(){
+    const a = +$('hAct').value/100, T = +$('hTemp').value, pH = +$('hPH').value, Hb = +$('hHb').value, PaO2 = +$('hPaO2').value;
+    let hr = 70 + 115*a + 10*(T-37);
+    hr += Math.max(0,13-Hb)*2.5*(1-a);
+    hr += Math.max(0,85-PaO2)*0.4*(1-a);
+    hr = clamp(hr,35,200);
+    const sv = 70 + 40*Math.min(1,a*1.6);
+    const co = hr*sv/70;
+    const sys = 120 + 60*a, dia = 80 - 5*a;
+    const tF = Math.pow(10, 0.024*(T-37));
+    const pHv = pH - 0.03 - 0.12*a;
+    const P50art = 26.8*tF*Math.pow(10,-0.48*(pH-7.4));
+    const P50ven = 26.8*tF*Math.pow(10,-0.48*(pHv-7.4));
+    const cap = 1.34*Hb, sol = 0.003;
+    const Sa = hill(PaO2,P50art,2.7);
+    const Ca = cap*Sa + sol*PaO2;
+    const vo2Need = 3.5*(1+10*a)*(1+0.07*(T-37));
+    let Cv = Ca - vo2Need*100/co, deficit=false;
+    const CvMin = 0.25*Ca;
+    if (Cv < CvMin){ Cv = CvMin; deficit = true; }
+    const Sv = clamp((Cv-0.08)/cap,0.02,0.98);
+    const PvO2 = Math.min(PaO2-2, invHill(Sv,P50ven,2.7));
+    const capDeoxy = Hb*(1-(Sa+Sv)/2);
+    return {hr,sv:sv/70,co,sys,dia,P50:P50art,Sa,Sv,Ca,Cv,PaO2,PvO2,cap,sol,P50art,P50ven,a,T,Hb,
+      vo2: co*(Ca-Cv)/100, deficit, capDeoxy};
+  }
+
+  let O, H;
+  function skinSwatch(){
+    const t = clamp((H.capDeoxy-1.5)/5.5,0,1);
+    const ox=[201,86,98], de=[92,78,146], pale=[236,214,208];
+    let c = ox.map((v,i)=>v+(de[i]-v)*t);
+    const p = clamp((13-H.Hb)/8,0,0.75)*(1-t*0.5);
+    c = c.map((v,i)=>Math.round(v+(pale[i]-v)*p));
+    const col = 'rgb('+c.join(',')+')';
+    const cyan = H.capDeoxy>=5;
+    const msg = 'Hb desoxigenada nos capilares: <b>'+fmt(H.capDeoxy,1)+' g/dL</b>. '+
+      (cyan?'Acima de ~5 g/dL: <b>cianose visível</b>.':
+        (H.Hb<10 && H.Sa<0.9?'Hipoxemia sem cianose aparente: efeito da anemia.':
+          (H.Hb<11?'Palidez: pouca hemoglobina nos capilares.':'Sem cianose (limiar ~5 g/dL).')));
+    document.querySelectorAll('[data-skin-swatch]').forEach(e=>e.style.background=col);
+    document.querySelectorAll('[data-skin-txt]').forEach(e=>e.innerHTML=msg);
+  }
+
+  function update(){
+    O = octopus(); H = human();
+    $('oTempV').textContent = $('oTemp').value+' °C';
+    $('oO2V').textContent = $('oO2').value+'% da saturação';
+    $('oPHV').textContent = fmt(+$('oPH').value,2);
+    const a = +$('hAct').value;
+    $('hActV').textContent = a===0?'repouso':a<35?'leve ('+a+'%)':a<70?'moderado ('+a+'%)':'intenso ('+a+'%)';
+    $('hPaO2V').textContent = $('hPaO2').value+' mmHg';
+    $('hTempV').textContent = fmt(+$('hTemp').value)+' °C';
+    $('hPHV').textContent = fmt(+$('hPH').value,2);
+    $('hHbV').textContent = fmt(+$('hHb').value)+' g/dL';
+
+    $('r_hr_o').textContent = O.stopped ? 'parado' : fmt(O.hr,0)+' bpm';
+    $('r_hr_h').textContent = fmt(H.hr,0)+' bpm';
+    $('r_sv_o').textContent = fmt(O.sv,2)+' mL/kg';
+    $('r_sv_h').textContent = fmt(H.sv,2)+' mL/kg ('+fmt(H.sv*70,0)+' mL)';
+    $('r_co_o').textContent = fmt(O.co,0)+' mL/kg/min';
+    $('r_co_h').textContent = fmt(H.co,0)+' mL/kg/min ('+fmt(H.co*70/1000,1)+' L/min)';
+    $('r_bp_o').textContent = O.stopped ? 'caindo' : fmt(O.sys,0)+'/'+fmt(O.dia,0)+' cmH₂O ≈ '+fmt(O.sys*0.7356,0)+'/'+fmt(O.dia*0.7356,0)+' mmHg';
+    $('r_bp_h').textContent = fmt(H.sys,0)+'/'+fmt(H.dia,0)+' mmHg';
+    $('r_p50_o').textContent = fmt(O.P50*KPA,0)+' mmHg ('+fmt(O.P50,1)+' kPa)';
+    $('r_p50_h').textContent = fmt(H.P50,1)+' mmHg';
+    $('r_sat_o').textContent = fmt(O.Sa*100,0)+'% / '+fmt(O.Sv*100,0)+'%';
+    $('r_sat_h').textContent = fmt(H.Sa*100,0)+'% / '+fmt(H.Sv*100,0)+'%';
+    $('r_ca_o').textContent = fmt(O.Ca,1)+' mL/dL';
+    $('r_ca_h').textContent = fmt(H.Ca,1)+' mL/dL';
+    $('r_av_o').textContent = fmt(O.Ca-O.Cv,1)+' mL/dL';
+    $('r_av_h').textContent = fmt(H.Ca-H.Cv,1)+' mL/dL';
+    $('r_do2_o').textContent = fmt(O.co*O.Ca/100,2)+' mL O₂/kg/min';
+    $('r_do2_h').textContent = fmt(H.co*H.Ca/100,1)+' mL O₂/kg/min';
+    $('r_vo2_o').textContent = fmt(O.vo2,2)+' mL O₂/kg/min';
+    $('r_vo2_h').textContent = fmt(H.vo2,1)+' mL O₂/kg/min';
+
+    const os = $('oStatus');
+    if (S.jet){ os.textContent='Nado a jato: a pressão do manto bloqueia o retorno venoso e o coração sistêmico para. Os branquiais seguem batendo.'; os.classList.add('alert'); }
+    else if (O.hypo===0){ os.textContent='Hipóxia severa: abaixo de ~2,5 ppm de O₂ o coração sistêmico para (reversível por pouco tempo).'; os.classList.add('alert'); }
+    else if (O.hypo<1){ os.textContent='Água pobre em O₂: a frequência e a amplitude do pulso caem.'; os.classList.add('alert'); }
+    else if (S.debt>0.5){ os.textContent='Recuperando a dívida de oxigênio.'; os.classList.remove('alert'); }
+    else if (S.oAct===1){ os.textContent='Rastejando: pressão, pulso e fluxo dobram com frequência quase igual. O ajuste vem do volume sistólico.'; os.classList.remove('alert'); }
+    else { os.textContent='Em repouso.'; os.classList.remove('alert'); }
+    const hs = $('hStatus'); const msgs=[];
+    if (H.a>0) msgs.push('Exercício: o débito sobe sobretudo pela frequência.');
+    if (H.PaO2<60) msgs.push('Hipoxemia: saturação arterial baixa.');
+    if (H.T>=38) msgs.push('Febre: taquicardia e curva desviada para a direita.');
+    if (H.T<=35.5) msgs.push('Hipotermia: bradicardia e hemoglobina segurando mais O₂.');
+    if (H.Hb<12) msgs.push('Anemia: menos O₂ por litro, mais extração.');
+    const pH = +$('hPH').value;
+    if (pH<7.35) msgs.push('Acidose: efeito Bohr facilita a liberação de O₂.');
+    if (pH>7.45) msgs.push('Alcalose: maior afinidade, menos O₂ liberado.');
+    if (H.deficit) msgs.push('Oferta insuficiente para a demanda: metabolismo anaeróbio.');
+    hs.textContent = msgs.length?msgs.join(' '):'Em repouso.';
+    hs.classList.toggle('alert', H.deficit || H.Hb<10 || H.PaO2<60 || H.T>=39.5 || H.T<=35 || pH<7.2);
+    skinSwatch();
+    drawCurve();
+  }
+
+  ['oTemp','oO2','oPH','hAct','hPaO2','hTemp','hPH','hHb'].forEach(id=>$(id).addEventListener('input',update));
+  document.querySelectorAll('[data-act]').forEach(b=>b.addEventListener('click',()=>{
+    S.oAct=+b.dataset.act;
+    document.querySelectorAll('[data-act]').forEach(x=>x.setAttribute('aria-pressed', x===b?'true':'false'));
+    update();
+  }));
+  document.querySelectorAll('[data-curve]').forEach(b=>b.addEventListener('click',()=>{
+    S.curveMode=b.dataset.curve;
+    document.querySelectorAll('[data-curve]').forEach(x=>x.setAttribute('aria-pressed', x===b?'true':'false'));
+    drawCurve();
+  }));
+  const jetBtn=$('jetBtn');
+  const jetOn=e=>{ if(e) e.preventDefault(); if(S.debt>=22) return; S.jet=true; jetBtn.classList.add('active'); jetBtn.textContent='Nadando a jato…'; update(); };
+  const jetOff=()=>{ if(!S.jet) return; S.jet=false; jetBtn.classList.remove('active'); jetBtn.textContent='Segure para nadar a jato'; update(); };
+  jetBtn.addEventListener('pointerdown',jetOn);
+  ['pointerup','pointerleave','pointercancel'].forEach(ev=>jetBtn.addEventListener(ev,jetOff));
+  jetBtn.addEventListener('keydown',e=>{ if((e.key===' '||e.key==='Enter') && !e.repeat) jetOn(e); });
+  jetBtn.addEventListener('keyup',e=>{ if(e.key===' '||e.key==='Enter') jetOff(); });
+  $('pauseBtn').addEventListener('click',function(){
+    S.paused=!S.paused; this.textContent=S.paused?'Retomar':'Pausar'; this.setAttribute('aria-pressed',S.paused);
+    if(!S.paused){ last=performance.now(); requestAnimationFrame(loop); }
+  });
+
+  function fit(c){
+    const r=c.getBoundingClientRect(), d=window.devicePixelRatio||1;
+    if (c.width!==Math.round(r.width*d) || c.height!==Math.round(r.height*d)){ c.width=Math.round(r.width*d); c.height=Math.round(r.height*d); }
+    const ctx=c.getContext('2d'); ctx.setTransform(d,0,0,d,0,0); return [ctx,r.width,r.height];
+  }
+
+  function drawCurve(){
+    if(!O) return;
+    const [ctx,w,h]=fit($('curve'));
+    const L=52,R=16,T=16,B=40, pw=w-L-R, ph=h-T-B;
+    ctx.clearRect(0,0,w,h);
+    const ink2=css('--ink-2'), rule=css('--rule'), cO=css('--hc'), cH=css('--hb');
+    const xmax=120; const sat=S.curveMode==='sat';
+    const ymax = sat?100:Math.max(24, Math.ceil((H.cap+0.6)/4)*4);
+    const X=p=>L+pw*p/xmax, Y=v=>T+ph*(1-v/ymax);
+    ctx.font='12px Figtree, system-ui, sans-serif'; ctx.fillStyle=ink2; ctx.strokeStyle=rule; ctx.lineWidth=1;
+    for(let p=0;p<=xmax;p+=20){ ctx.beginPath(); ctx.moveTo(X(p),T); ctx.lineTo(X(p),T+ph); ctx.stroke(); ctx.textAlign='center'; ctx.fillText(p,X(p),T+ph+16); }
+    const ys = sat?20:4;
+    for(let v=0;v<=ymax;v+=ys){ ctx.beginPath(); ctx.moveTo(L,Y(v)); ctx.lineTo(L+pw,Y(v)); ctx.stroke(); ctx.textAlign='right'; ctx.fillText(v,L-8,Y(v)+4); }
+    ctx.textAlign='center'; ctx.fillText('PO₂ (mmHg)',L+pw/2,h-6);
+    ctx.save(); ctx.translate(14,T+ph/2); ctx.rotate(-Math.PI/2); ctx.fillText(sat?'Saturação (%)':'O₂ (mL/100 mL)',0,0); ctx.restore();
+    function curve(m, color, n, isOct){
+      ctx.strokeStyle=color; ctx.lineWidth=3; ctx.beginPath();
+      for(let i=0;i<=240;i++){
+        const pm=xmax*i/240; const pk=isOct?pm/KPA:pm;
+        const s=hill(pk, m.P50art, n);
+        const v = sat? s*100 : m.cap*s + m.sol*pm;
+        i?ctx.lineTo(X(pm),Y(v)):ctx.moveTo(X(pm),Y(v));
+      }
+      ctx.stroke();
+      const pa=isOct?m.PaO2*KPA:m.PaO2, pv=isOct?m.PvO2*KPA:m.PvO2;
+      const va= sat? m.Sa*100 : m.Ca, vv= sat? m.Sv*100 : m.Cv;
+      ctx.fillStyle=color; ctx.beginPath(); ctx.arc(X(Math.min(pa,xmax)),Y(va),6,0,7); ctx.fill();
+      ctx.lineWidth=2.5; ctx.fillStyle=css('--surface'); ctx.beginPath(); ctx.arc(X(pv),Y(vv),6,0,7); ctx.fill(); ctx.stroke();
+      ctx.setLineDash([4,4]); ctx.lineWidth=1.5; ctx.beginPath(); ctx.moveTo(X(pv),Y(vv)); ctx.lineTo(X(pv),Y(va)); ctx.stroke(); ctx.setLineDash([]);
+    }
+    curve(H,cH,2.7,false); curve(O,cO,3,true);
+  }
+
+  const traces={o:[],h:[]};
+  function pushTrace(key,val,c){ const arr=traces[key]; arr.push(val); const max=Math.ceil(c.getBoundingClientRect().width); while(arr.length>max) arr.shift(); }
+  function drawTrace(key,c,color){
+    const [ctx,w,h]=fit(c); ctx.clearRect(0,0,w,h);
+    const Y=v=>h-4-(h-8)*Math.min(v,160)/160;
+    ctx.strokeStyle=css('--rule'); ctx.lineWidth=1; ctx.font='10px Figtree, sans-serif'; ctx.fillStyle=css('--ink-2');
+    [40,80,120].forEach(v=>{ctx.beginPath();ctx.moveTo(0,Y(v));ctx.lineTo(w,Y(v));ctx.stroke();ctx.fillText(v,4,Y(v)-2);});
+    const arr=traces[key]; ctx.strokeStyle=color; ctx.lineWidth=2; ctx.beginPath();
+    const off=w-arr.length; arr.forEach((v,i)=>{ i?ctx.lineTo(off+i,Y(v)):ctx.moveTo(off+i,Y(v)); }); ctx.stroke();
+  }
+  function wave(p){ if(p<0.3) return Math.sin(Math.PI*p/0.6); return Math.exp(-(p-0.3)*3.2); }
+  function contraction(p,frac){ return p<frac? Math.sin(Math.PI*p/frac):0; }
+
+  /* ---------------- PELE DO POLVO ---------------- */
+  const skinC = $('skin');
+  let seed = 7; const rnd = () => (seed = (seed*16807)%2147483647)/2147483647;
+  const dots=[], paps=[];
+  for(let i=0;i<900;i++){ const r=rnd(); dots.push({x:rnd(),y:rnd(),type:r<0.4?0:r<0.75?1:2,thr:rnd(),a:0}); }
+  for(let i=0;i<34;i++) paps.push({x:rnd(),y:rnd(),s:0.6+rnd()*0.8});
+  const noise=(x,y)=>(Math.sin(x*7.3+1.3)*Math.cos(y*5.1+0.7)+0.6*Math.sin(x*12.7+y*9.1)+0.4*Math.cos(x*3.1-y*11.3))/2;
+  const K = {iri:0, pap:0};
+  const PRE = {
+    palido:{kY:0,kR:0,kB:0,kP:0,kI:10,kT:0},
+    areia:{kY:55,kR:25,kB:15,kP:30,kI:25,kT:10},
+    rocha:{kY:45,kR:60,kB:70,kP:90,kI:10,kT:85},
+    alarme:{kY:40,kR:90,kB:100,kP:0,kI:0,kT:15}
+  };
+  const skinIds=['kY','kR','kB','kP','kI','kT'];
+  function skinLabels(){ skinIds.forEach(id=>$(id+'V').textContent=$(id).value+'%'); }
+  skinIds.forEach(id=>$(id).addEventListener('input',skinLabels));
+  document.querySelectorAll('[data-preset]').forEach(b=>b.addEventListener('click',()=>{
+    const p=PRE[b.dataset.preset]; Object.keys(p).forEach(k=>$(k).value=p[k]); $('kBrain').checked=true; skinLabels();
+  }));
+  $('kBrain').addEventListener('change',()=>{ const on=$('kBrain').checked; skinIds.forEach(id=>$(id).disabled=!on); });
+  skinLabels();
+
+  function drawSkin(dt){
+    const [ctx,w,h]=fit(skinC);
+    const brain=$('kBrain').checked, light=$('kLight').checked;
+    const lv=[+$('kY').value/100,+$('kR').value/100,+$('kB').value/100];
+    const pat=+$('kP').value/100;
+    const iriT = brain? +$('kI').value/100 : K.iri;
+    const papT = brain? +$('kT').value/100 : 0;
+    K.iri += (iriT-K.iri)*(1-Math.exp(-dt/6));      // ~30 s real, acelerado 5x
+    K.pap += (papT-K.pap)*(1-Math.exp(-dt/0.4));
+    // leucóforos: fundo branco difuso
+    ctx.fillStyle='#EFE9DF'; ctx.fillRect(0,0,w,h);
+    // iridóforos: cor estrutural
+    if(K.iri>0.01){
+      const t=performance.now()/1000;
+      const g=ctx.createLinearGradient(0,0,w,h);
+      g.addColorStop(0,'hsla('+(185+20*Math.sin(t*0.4))+',70%,62%,'+(0.55*K.iri)+')');
+      g.addColorStop(0.5,'hsla('+(215+25*Math.sin(t*0.3+1))+',65%,66%,'+(0.45*K.iri)+')');
+      g.addColorStop(1,'hsla('+(160+20*Math.sin(t*0.5+2))+',60%,60%,'+(0.55*K.iri)+')');
+      ctx.fillStyle=g; ctx.fillRect(0,0,w,h);
+    }
+    ctx.fillStyle='rgba(222,196,178,0.30)'; ctx.fillRect(0,0,w,h);
+    // cromatóforos
+    const cols=['rgba(217,165,32,0.92)','rgba(181,67,46,0.9)','rgba(74,42,28,0.92)'];
+    const scale=w/600, rMin=1.2*scale, rMax=[10*scale,11*scale,12*scale];
+    let cover=0;
+    const kc = 1-Math.exp(-dt/0.15);                  // ~0,1–0,3 s
+    for(const d of dots){
+      let tgt;
+      if(brain){
+        const n=noise(d.x,d.y);
+        const patchy = clamp((n+0.15)/0.45,0,1)*1.5;
+        tgt = lv[d.type]*((1-pat) + pat*patchy)*(0.75+0.5*d.thr);
+        if(light) tgt += 0.2;
+      } else {
+        tgt = light ? 0.55*(0.5+0.5*d.thr) : 0.02;
+      }
+      tgt=clamp(tgt,0,1);
+      d.a += (tgt-d.a)*kc;
+      const r=rMin+(rMax[d.type]-rMin)*d.a;
+      cover += Math.PI*r*r;
+      ctx.fillStyle=cols[d.type];
+      ctx.beginPath(); ctx.arc(d.x*w,d.y*h,r,0,7); ctx.fill();
+    }
+    // papilas
+    if(K.pap>0.02){
+      for(const p of paps){
+        const R=(10+26*p.s)*scale*K.pap, x=p.x*w, y=p.y*h;
+        const g=ctx.createRadialGradient(x-R*0.35,y-R*0.35,R*0.1,x,y,R);
+        g.addColorStop(0,'rgba(255,255,255,'+(0.32*K.pap)+')');
+        g.addColorStop(0.55,'rgba(255,255,255,0)');
+        g.addColorStop(0.8,'rgba(40,25,15,'+(0.18*K.pap)+')');
+        g.addColorStop(1,'rgba(40,25,15,0)');
+        ctx.fillStyle=g; ctx.beginPath(); ctx.arc(x,y,R,0,7); ctx.fill();
+      }
+    }
+    if(light){ ctx.fillStyle='rgba(70,120,255,0.10)'; ctx.fillRect(0,0,w,h); }
+    $('skinCover').textContent='Área com pigmento: '+Math.min(100,Math.round(cover/(w*h)*100))+'%';
+  }
+
+  /* ---------------- LAÇO ---------------- */
+  const flowEls = {
+    oIn:document.querySelectorAll('.flow-o-in'), oMid:document.querySelectorAll('.flow-o-mid'), oOut:document.querySelectorAll('.flow-o-out'),
+    hIn:document.querySelectorAll('.flow-h-in'), hMid:document.querySelectorAll('.flow-h-mid'), hOut:document.querySelectorAll('.flow-h-out')
+  };
+  const off={oIn:0,oMid:0,oOut:0,hIn:0,hMid:0,hOut:0};
+  let last=performance.now(), traceAcc=0, wasRecovering=false;
+  function loop(now){
+    if(S.paused) return;
+    const dt=Math.min(0.05,(now-last)/1000); last=now;
+
+    if(S.jet){ S.debt=Math.min(22,S.debt+1.6*dt); if(S.debt>=22){ jetOff(); $('oStatus').textContent='Dívida máxima (~22 mL O₂/kg): o polvo precisa parar e se recuperar.'; $('oStatus').classList.add('alert'); } }
+    else S.debt=Math.max(0,S.debt-0.35*dt);
+    const rec = !S.jet && S.debt>0.5; if(rec!==wasRecovering){ wasRecovering=rec; if(!rec) update(); }
+    $('debtBar').style.width=(S.debt/22*100)+'%';
+    $('debtTxt').textContent='Dívida de O₂: '+fmt(S.debt,1)+' de ~22 mL/kg';
+
+    const bhr = 45*Math.pow(3,(O.T-22)/10)*(O.hypo>0?Math.max(0.5,O.hypo):0.5);
+    S.bPhase=(S.bPhase+bhr/60*dt)%1;
+    if(!O.stopped) S.oPhase=(S.oPhase+O.hr/60*dt)%1;
+    const kb=1-0.16*contraction(S.bPhase,0.35);
+    $('bhL').style.transform='scale('+kb+')'; $('bhR').style.transform='scale('+kb+')';
+    const ks=O.stopped?1:1-0.12*(S.oAct?1.5:1)*contraction(S.oPhase,0.35);
+    $('sysH').style.transform='scale('+ks+')';
+    let oVal;
+    if(O.stopped){ S.oP += (4-S.oP)*dt*0.6; oVal=S.oP; }
+    else { const s=O.sys*0.7356, d=O.dia*0.7356; oVal=d+(s-d)*wave(S.oPhase); S.oP=oVal; }
+
+    S.hPhase=(S.hPhase+H.hr/60*dt)%1;
+    const pa=(S.hPhase+0.82)%1;
+    $('hAtria').style.opacity=1-0.25*contraction(pa,0.15);
+    $('hVent').style.transform='scale('+(1-0.1*contraction(S.hPhase,0.35))+')';
+    const hp=H.dia+(H.sys-H.dia)*wave(S.hPhase);
+
+    const vo=O.co/30, vh=H.co/70;
+    off.oIn-=dt*28*Math.max(0.15,S.jet?0.3:vo); off.oMid-=dt*28*(S.jet?0.3:vo); off.oOut-=dt*28*(O.stopped?0:vo);
+    off.hIn-=dt*28*vh; off.hMid-=dt*28*vh; off.hOut-=dt*28*vh;
+    for(const k in flowEls) flowEls[k].forEach(e=>e.style.strokeDashoffset=off[k]);
+
+    traceAcc+=dt;
+    while(traceAcc>1/60){ traceAcc-=1/60; pushTrace('o',oVal,$('oTrace')); pushTrace('h',hp,$('hTrace')); }
+    drawTrace('o',$('oTrace'),css('--hc')); drawTrace('h',$('hTrace'),css('--hb'));
+    drawSkin(dt);
+    requestAnimationFrame(loop);
+  }
+  window.addEventListener('resize',drawCurve);
+  update();
+  requestAnimationFrame(t=>{last=t;loop(t);});
+})();
+
+(function(){
+  const $=id=>document.getElementById(id);
+  const NS='http://www.w3.org/2000/svg';
+  const mk=(tag,attrs,parent)=>{const e=document.createElementNS(NS,tag);for(const k in attrs)e.setAttribute(k,attrs[k]);if(parent)parent.appendChild(e);return e;};
+  const clamp=(v,a,b)=>Math.max(a,Math.min(b,v));
+  const lerp=(a,b,t)=>a+(b-a)*t;
+  const reduce=window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const fmt=(v,d=0)=>v.toFixed(d).replace('.',',');
+
+  /* ===== HERO: polvo animado ===== */
+  const armsG=$('heroArms'), dotsG=$('heroDots');
+  const arms=[];
+  const bases=[[150,280,-2.3],[165,295,-1.95],[182,305,-1.7],[194,308,-1.55],[206,308,-1.6],[218,305,-1.45],[235,295,-1.2],[250,280,-0.85]];
+  bases.forEach((b,i)=>{ const p=mk('path',{},armsG); arms.push({el:p,x:b[0],y:b[1],a0:lerp(2.45,0.7,i/7),ph:i*0.8}); });
+  const suckers=mk('g',{},armsG);
+  const hdots=[]; let sd=11; const r=()=>(sd=(sd*16807)%2147483647)/2147483647;
+  for(let i=0;i<140;i++){ const a=r()*Math.PI*2, rr=Math.sqrt(r()); const x=200+Math.cos(a)*rr*92, y=140+Math.sin(a)*rr*112;
+    if(Math.abs(x-200)<72 && Math.abs(y-140)<56) continue;
+    hdots.push({el:mk('circle',{cx:x,cy:y,r:2},dotsG),x,y,k:r()}); }
+  // ciclo de padrões de pele
+  const looks=[
+    {name:'Repouso: tom marrom-avermelhado',base:[176,92,64],dot:[90,40,25],amt:0.5,pat:0.2},
+    {name:'Pálido: cromatóforos fechados',base:[226,206,190],dot:[150,100,80],amt:0.08,pat:0},
+    {name:'Manchado: camuflagem em fundo de rocha',base:[160,120,84],dot:[60,34,20],amt:0.9,pat:1},
+    {name:'Escurecimento súbito: sinal de alarme',base:[110,40,30],dot:[50,20,14],amt:1,pat:0}
+  ];
+  let lookI=0, lookT=0;
+  const cur={base:[...looks[0].base],dot:[...looks[0].dot],amt:looks[0].amt,pat:looks[0].pat};
+  const heroCap=$('heroCap');
+  function heroFrame(t,dt){
+    lookT+=dt; if(lookT>3.5){ lookT=0; lookI=(lookI+1)%looks.length; heroCap.textContent='Padrão atual: '+looks[lookI].name+'.'; }
+    const L=looks[lookI], k=1-Math.exp(-dt/0.25);
+    for(let i=0;i<3;i++){ cur.base[i]=lerp(cur.base[i],L.base[i],k); cur.dot[i]=lerp(cur.dot[i],L.dot[i],k); }
+    cur.amt=lerp(cur.amt,L.amt,k); cur.pat=lerp(cur.pat,L.pat,k);
+    const bc='rgb('+cur.base.map(Math.round).join(',')+')', dc='rgb('+cur.dot.map(Math.round).join(',')+')';
+    $('heroMantle').setAttribute('fill',bc); $('heroHead').setAttribute('fill',bc);
+    hdots.forEach(d=>{ const n=Math.sin(d.x*0.07)+Math.cos(d.y*0.06); const on=(1-cur.pat)+cur.pat*(n>0.3?1.5:0.1);
+      d.el.setAttribute('r',(1+6*clamp(cur.amt*on*(0.6+0.6*d.k),0,1)).toFixed(2)); d.el.setAttribute('fill',dc); });
+    // braços
+    let sk='';
+    arms.forEach((a,i)=>{
+      const N=22, left=[], right=[]; let x=a.x, y=a.y, ang=a.a0;
+      for(let j=0;j<=N;j++){
+        const s=j/N, w=13*(1-s)+1.5;
+        ang += (0.06+0.05*Math.sin(t*1.1+a.ph+s*3))*(i<4?1:-1)*(s>0.5?1.8:0.6);
+        const nx=Math.cos(ang+Math.PI/2), ny=Math.sin(ang+Math.PI/2);
+        left.push([x+nx*w,y+ny*w]); right.push([x-nx*w,y-ny*w]);
+        if(j%3===1 && j<N-2) sk+='<circle cx="'+(x-nx*w*0.45).toFixed(1)+'" cy="'+(y-ny*w*0.45).toFixed(1)+'" r="'+(w*0.32).toFixed(1)+'" fill="#F3D9C8" opacity=".85"/>';
+        x+=Math.cos(ang)*6.2; y+=Math.sin(ang)*6.2;
+      }
+      const d='M'+left.map(p=>p[0].toFixed(1)+' '+p[1].toFixed(1)).join(' L')+' L'+right.reverse().map(p=>p[0].toFixed(1)+' '+p[1].toFixed(1)).join(' L')+'Z';
+      a.el.setAttribute('d',d); a.el.setAttribute('fill',bc);
+    });
+    suckers.innerHTML=sk;
+    // corações
+    const pb=(t*0.75)%1, ps=(t*0.75-0.15+1)%1;
+    const sc=(p)=>p<0.35?1-0.18*Math.sin(Math.PI*p/0.35):1;
+    $('hbL').setAttribute('r',(11*sc(pb)).toFixed(2)); $('hbR').setAttribute('r',(11*sc(pb)).toFixed(2));
+    $('hbS').setAttribute('rx',(20*sc(ps)).toFixed(2)); $('hbS').setAttribute('ry',(16*sc(ps)).toFixed(2));
+  }
+
+  /* ===== ANATOMIA ===== */
+  const anat=document.querySelector('.anat');
+  function showPart(p){
+    anat.classList.add('focus');
+    anat.querySelectorAll('.ap').forEach(e=>e.classList.toggle('on',e.dataset.part===p));
+    anat.querySelectorAll('[data-show]').forEach(b=>b.setAttribute('aria-pressed',b.dataset.show===p?'true':'false'));
+    anat.querySelectorAll('[data-info]').forEach(x=>x.hidden=x.dataset.info!==p);
+  }
+  anat.querySelectorAll('[data-show]').forEach(b=>b.addEventListener('click',()=>showPart(b.dataset.show)));
+  anat.querySelectorAll('.ap').forEach(e=>e.addEventListener('click',()=>showPart(e.dataset.part)));
+  showPart('branquiais');
+
+  /* ===== JATO ===== */
+  const jWater=$('jWater'); const drops=[];
+  for(let i=0;i<26;i++) drops.push({el:mk('circle',{r:3.5,fill:'var(--hc)'},jWater),x:Math.random()*56,y:118+Math.random()*24,v:0});
+  let jPhase=0, jFlow=0;
+  function jetFrame(dt){
+    const f=+$('jForce').value/100;
+    const pm=f, pv=0.35;
+    $('gM').style.width=(pm*100)+'%';
+    const blocked=pm>pv;
+    const squeeze=blocked?clamp((pm-pv)/(1-pv),0,1):0;
+    $('jForceV').textContent=f===0?'repouso':f<0.35?'respiração ('+Math.round(f*100)+'%)':'jato ('+Math.round(f*100)+'%)';
+    $('jVein').setAttribute('stroke-width',(14-11*squeeze).toFixed(1));
+    $('jVeinFlow').setAttribute('stroke-width',blocked?0.8:3);
+    $('jMantle').setAttribute('stroke-width',(10+14*f).toFixed(1));
+    if(!blocked){ jFlow-=dt*30; jPhase=(jPhase+dt*0.75)%1; }
+    $('jVeinFlow').style.strokeDashoffset=jFlow;
+    const hs=blocked?1:(jPhase<0.35?1-0.15*Math.sin(Math.PI*jPhase/0.35):1);
+    $('jHeart').style.transform='scale('+hs+')';
+    drops.forEach(d=>{ d.x-=dt*(20+260*f); if(d.x<-6){ d.x=56; d.y=118+Math.random()*24; }
+      d.el.setAttribute('cx',d.x.toFixed(1)); d.el.setAttribute('cy',(d.y+(Math.random()-.5)*f*4).toFixed(1)); d.el.setAttribute('opacity',f>0.05?.85:.2); });
+    const st=$('jStatus');
+    if(!blocked){ st.textContent=f<0.05?'Manto relaxado: o sangue volta ao coração normalmente.':'Contração leve (ventilação): a pressão no manto ainda fica abaixo da venosa, e o coração segue batendo.'; st.classList.remove('alert'); }
+    else { st.textContent='Pressão no manto acima da venosa: a veia cava colapsa, o coração não enche e para de bater.'; st.classList.add('alert'); }
+  }
+  $('jForce').addEventListener('input',()=>jetFrame(0));
+
+  /* ===== CROMATÓFORO ÚNICO ===== */
+  const mG=$('chromoMuscles'), spG=$('chromoSpikes');
+  const muscles=[];
+  for(let i=0;i<20;i++){ const a=i/20*Math.PI*2+0.08; muscles.push({a,el:mk('line',{stroke:'#B5432E','stroke-linecap':'round',opacity:'.8'},mG)}); }
+  let cExp=0, cPulse=0, cTimer=0; const spikes=[];
+  $('cPulse').addEventListener('click',()=>{ cPulse=Math.min(1,cPulse+0.55); spikes.push({t:0}); });
+  function chromoFrame(dt){
+    const f=+$('cFreq').value;
+    $('cFreqV').textContent=f+' por segundo';
+    if(f>0){ cTimer+=dt; if(cTimer>1/f){ cTimer=0; spikes.push({t:0}); } }
+    cPulse*=Math.exp(-dt/0.25);
+    const tgt=clamp(f/(f+5)+cPulse,0,1);
+    cExp+= (tgt-cExp)*(1-Math.exp(-dt/0.12));
+    const R=18+92*cExp;
+    $('chromoSac').setAttribute('r',R.toFixed(1));
+    muscles.forEach(m=>{ const x1=150+Math.cos(m.a)*R, y1=150+Math.sin(m.a)*R, x2=150+Math.cos(m.a)*138, y2=150+Math.sin(m.a)*138;
+      m.el.setAttribute('x1',x1.toFixed(1)); m.el.setAttribute('y1',y1.toFixed(1)); m.el.setAttribute('x2',x2.toFixed(1)); m.el.setAttribute('y2',y2.toFixed(1));
+      m.el.setAttribute('stroke-width',(3+5*cExp).toFixed(1)); });
+    spG.innerHTML='';
+    for(let i=spikes.length-1;i>=0;i--){ const s=spikes[i]; s.t+=dt*3; if(s.t>1){spikes.splice(i,1);continue;}
+      const p=$('chromoNerve').getPointAtLength(s.t*$('chromoNerve').getTotalLength());
+      mk('circle',{cx:p.x,cy:p.y,r:6,fill:'#F2C230',stroke:'#7A5A00','stroke-width':1.5},spG); }
+    $('cInfo').textContent='Diâmetro da bolsa: '+fmt(R/18,1)+'× o repouso. Ilustrativo: a relação exata entre frequência e expansão varia entre espécies.';
+  }
+
+  /* ===== FERIDA ===== */
+  const wOct=$('wOct'), wHum=$('wHum');
+  const minutesOf=v=>Math.pow(10,v/1000*Math.log10(86400));     // 1 min a 60 dias
+  function tLabel(m){ if(m<60) return fmt(m)+' min'; const h=m/60; if(h<48) return fmt(h,h<10?1:0)+' h'; return fmt(h/24)+' dias'; }
+  const octPts=[[0,0],[0.25,0.05],[6,0.64],[24,0.9],[120,1]];
+  function octClose(h){ for(let i=1;i<octPts.length;i++){ const [h0,c0]=octPts[i-1],[h1,c1]=octPts[i]; if(h<=h1){ const t=(Math.log(h+1)-Math.log(h0+1))/(Math.log(h1+1)-Math.log(h0+1)); return lerp(c0,c1,clamp(t,0,1)); } } return 1; }
+  function humState(h,bad){
+    const d=h/24;
+    let phase = h<1?0 : d<4?1 : d<21?2 : 3;
+    if(bad && phase>1) phase=1;
+    let close = d<3?0 : clamp(Math.log(d/3)/Math.log(21/3),0,1);
+    if(bad) close=Math.min(close,0.08);
+    return {phase,close};
+  }
+  const phaseNames=['Hemostasia: coágulo e plaquetas fecham os vasos','Inflamação: neutrófilos e macrófagos limpam a ferida','Proliferação: tecido de granulação, novos vasos e reepitelização','Remodelação: o colágeno se reorganiza; a cicatriz amadurece por meses'];
+  function woundFrame(){
+    const m=minutesOf(+$('wTime').value), h=m/60, bad=$('wBad').checked;
+    $('wTimeV').textContent=tLabel(m);
+    // polvo
+    const c=octClose(h);
+    let s='<circle cx="160" cy="140" r="118" fill="#A0563A"/>';
+    s+='<circle cx="160" cy="140" r="104" fill="#C98266"/>';
+    const ring=86-30*c;
+    s+='<circle cx="160" cy="140" r="'+(ring+12)+'" fill="none" stroke="#7E3B2A" stroke-width="'+(10+12*c)+'" opacity=".75"/>';
+    s+='<circle cx="160" cy="140" r="16" fill="#E8D7A8" stroke="#8A6D2A" stroke-width="2"/>';
+    const rw=ring*Math.sqrt(1-c);
+    if(rw>0.5) s+='<circle cx="160" cy="140" r="'+rw.toFixed(1)+'" fill="#F2B3A6" opacity=".9"/>';
+    const plug=clamp(h/6,0,1);
+    for(let i=0;i<(c>=0.99?0:Math.round(28*plug));i++){ const a=i*2.4, rr=(rw||4)*0.8*Math.sqrt((i%7+1)/7); s+='<circle cx="'+(160+Math.cos(a)*rr).toFixed(1)+'" cy="'+(140+Math.sin(a)*rr).toFixed(1)+'" r="3" fill="#7DA7D9" opacity=".85"/>'; }
+    if(c>=0.99) s+='<text x="160" y="104" text-anchor="middle" font-size="13" font-weight="700" fill="#fff" font-family="Figtree, sans-serif">pele fechada</text>';
+    wOct.innerHTML=s;
+    $('wOctTxt').innerHTML='<b>Polvo:</b> '+Math.round(c*100)+'% da ferida coberta. '+(h<0.3?'Os músculos começam a contrair em bolsa.':h<6?'Contração em bolsa e tampão de células (azul) sobre a lesão.':h<24?'A ferida encolhe rápido; em alguns animais estará quase fechada em 24 h.':c<0.99?'Quase fechada; a pele termina de se reorganizar.':'Pele fechada; o braço segue regenerando.');
+    // humano
+    const H=humState(h,bad);
+    let u='<rect x="340" y="22" width="280" height="236" rx="18" fill="#E7B9A0"/>';
+    u+='<rect x="340" y="22" width="280" height="236" rx="18" fill="url(#skinTex)" opacity=".4"/>';
+    const rx=95*(1-H.close)+2, ry=62*(1-H.close)+1;
+    if(H.phase>=1 && !(H.phase===3 && H.close>0.95)) u+='<ellipse cx="480" cy="140" rx="'+(rx+18)+'" ry="'+(ry+16)+'" fill="#E07A6E" opacity="'+(H.phase===1?(bad?0.7:0.5):0.25)+'"/>';
+    if(H.close<0.97){
+      const col=H.phase===0?'#5E1018':H.phase===1?(bad?'#9C5A3C':'#8E2A2E'):'#D0485A';
+      u+='<ellipse cx="480" cy="140" rx="'+rx.toFixed(1)+'" ry="'+ry.toFixed(1)+'" fill="'+col+'"/>';
+      if(H.phase===2) for(let i=0;i<30;i++){ const a=i*2.4, rr=Math.sqrt((i%10+1)/10); u+='<circle cx="'+(480+Math.cos(a)*rr*rx*0.8).toFixed(1)+'" cy="'+(140+Math.sin(a)*rr*ry*0.8).toFixed(1)+'" r="3.5" fill="#F07C8A" opacity=".7"/>'; }
+      if(bad && H.phase===1) u+='<ellipse cx="480" cy="140" rx="'+(rx*0.6)+'" ry="'+(ry*0.5)+'" fill="#C9B26A" opacity=".55"/>';
+    } else {
+      u+='<path d="M400 140 Q480 128 560 140" fill="none" stroke="#F1D2C2" stroke-width="'+(H.phase===3?6:3)+'" stroke-linecap="round"/>';
+    }
+    u+='<defs><pattern id="skinTex" width="10" height="10" patternUnits="userSpaceOnUse"><circle cx="5" cy="5" r="1" fill="#B47C66"/></pattern></defs>';
+    wHum.innerHTML=u;
+    $('wHumTxt').innerHTML='<b>Humano:</b> '+(bad&&h>=24?'<b>Ferida estagnada na inflamação.</b> Sem oxigênio e com infecção, as fases não avançam: é o retrato da ferida crônica.':phaseNames[H.phase]+'. Fechamento estimado: '+Math.round(H.close*100)+'%.');
+  }
+  $('wTime').addEventListener('input',woundFrame); $('wBad').addEventListener('change',woundFrame);
+  woundFrame();
+
+  /* ===== laço ===== */
+  let last=performance.now(), t=0;
+  function loop(now){
+    const dt=Math.min(0.05,(now-last)/1000); last=now; t+=dt;
+    if(!reduce) heroFrame(t,dt);
+    jetFrame(dt); chromoFrame(dt);
+    requestAnimationFrame(loop);
+  }
+  heroFrame(0,0.016); for(let i=0;i<30;i++) heroFrame(0,0.05);
+  requestAnimationFrame(n=>{last=n;loop(n);});
+})();
+
+(function(){
+  const $=id=>document.getElementById(id);
+  const clamp=(v,a,b)=>Math.max(a,Math.min(b,v));
+  const lerp=(a,b,t)=>a+(b-a)*t;
+
+  /* ===== barras de duração da vida ===== */
+  const svg=$('lifeBars'); const X0=170, PX=(680-170)/80;
+  const rows=[
+    {lab:'Polvo-comum',sub:'1–2 anos',a:1,b:2,col:'var(--hc)'},
+    {lab:'Polvo-gigante',sub:'do Pacífico: 3–5 anos',a:3,b:5,col:'var(--hc)'},
+    {lab:'Ser humano (Brasil)',sub:'76,6 anos (2024)',a:76.6,b:76.6,col:'var(--hb)'}
+  ];
+  let h='<g font-family="Figtree, system-ui, sans-serif" font-size="12" fill="var(--ink-2)">';
+  [0,10,20,30,40,50,60,70,80].forEach(y=>{ h+='<line x1="'+(X0+y*PX)+'" y1="10" x2="'+(X0+y*PX)+'" y2="140" stroke="var(--rule)"/><text x="'+(X0+y*PX)+'" y="160" text-anchor="middle">'+y+'</text>'; });
+  h+='<text x="0" y="160">idade (anos)</text>';
+  rows.forEach((r,i)=>{ const y=22+i*42;
+    h+='<text x="0" y="'+(y+8)+'" font-weight="700" fill="var(--ink)">'+r.lab+'</text><text x="0" y="'+(y+23)+'">'+r.sub+'</text>';
+    h+='<rect class="lb" data-w="'+(r.b*PX)+'" x="'+X0+'" y="'+(y)+'" width="0" height="20" rx="4" fill="'+r.col+'" opacity=".35"/>';
+    h+='<rect class="lb" data-w="'+(r.a*PX)+'" x="'+X0+'" y="'+(y)+'" width="0" height="20" rx="4" fill="'+r.col+'"/>';
+  });
+  svg.innerHTML=h+'</g>';
+  function growBars(){ svg.querySelectorAll('.lb').forEach((e,i)=>{ const w=+e.dataset.w; let t0=null;
+    const step=n=>{ if(!t0)t0=n; const k=clamp((n-t0)/1200,0,1); e.setAttribute('width',(w*(1-Math.pow(1-k,3))).toFixed(1)); if(k<1) requestAnimationFrame(step); };
+    setTimeout(()=>requestAnimationFrame(step),i*120); }); }
+  if('IntersectionObserver' in window){ const io=new IntersectionObserver(es=>{ if(es[0].isIntersecting){ growBars(); io.disconnect(); } },{threshold:.4}); io.observe(svg); } else growBars();
+
+  $('gensBtn').addEventListener('click',()=>{
+    const g=$('gens'); g.innerHTML=''; const n=Math.round(76.6/1.5);
+    for(let i=0;i<n;i++){ const s=document.createElement('span'); s.textContent='🐙'; s.style.animationDelay=(i*45)+'ms'; s.setAttribute('aria-hidden','true'); g.appendChild(s); }
+    $('gensTxt').textContent='≈ '+n+' gerações de polvo-comum (entre 38 e 77, conforme a vida dure 2 ou 1 ano) no tempo de uma vida humana média no Brasil.';
+  });
+
+  /* ===== mãe polvo ===== */
+  const HATCH=60;
+  const eggsG=$('momEggs'), bodyG=$('momBody'), foodG=$('momFood');
+  let glandDay=null;
+  $('momGland').addEventListener('change',()=>{ glandDay=$('momGland').checked?Math.max(10,+$('momDay').value):null; drawMom(); });
+  $('momDay').addEventListener('input',drawMom);
+
+  function state(d){
+    let feeding=d<8, cond, eggsCared=true, dead=false, hatched=d>=HATCH;
+    cond = d<19?1 : clamp(lerp(1,0.12,(d-19)/(HATCH-19)),0.12,1);
+    if(d>HATCH+2){ dead=true; cond=0.05; }
+    if(glandDay!==null && d>=glandDay){
+      eggsCared=false; hatched=false; dead=false;
+      const back=d-glandDay;
+      feeding = back>=2;
+      const c0 = glandDay<19?1:lerp(1,0.12,(glandDay-19)/(HATCH-19));
+      cond = clamp(back<2?c0:lerp(c0,1,(back-2)/14),0,1);
+    }
+    return {feeding,cond,eggsCared,dead,hatched};
+  }
+  function drawMom(){
+    const d=+$('momDay').value; $('momDayV').textContent=d;
+    const S=state(d);
+    // ovos
+    let e='';
+    const dev=clamp(d/HATCH,0,1);
+    for(let s=0;s<7;s++){ const x=110+s*24;
+      if(S.hatched && S.eggsCared){ continue; }
+      e+='<path d="M'+x+' 78 Q'+(x+3)+' 110 '+x+' 140" stroke="#CFC6B4" stroke-width="1.2" fill="none"/>';
+      for(let k=0;k<7;k++){ const y=88+k*8, xx=x+(k%2?3:-3);
+        const col = S.eggsCared ? 'rgb('+Math.round(lerp(246,214,dev))+','+Math.round(lerp(242,190,dev))+','+Math.round(lerp(228,140,dev))+')' : '#9E9A92';
+        e+='<ellipse cx="'+xx+'" cy="'+y+'" rx="3.4" ry="5.5" fill="'+col+'" stroke="#8C7B6B" stroke-width=".5"/>';
+        if(S.eggsCared && dev>0.45) e+='<circle cx="'+xx+'" cy="'+(y-1.5)+'" r="'+(0.6+0.9*dev)+'" fill="#1A1210"/>';
+      }
+    }
+    if(S.hatched && S.eggsCared){ for(let i=0;i<26;i++){ const a=i*2.3; e+='<circle cx="'+(180+Math.cos(a)*(30+i*3)).toFixed(1)+'" cy="'+(70+Math.sin(a)*18-i*1.2).toFixed(1)+'" r="2.2" fill="#F2E6C9" opacity=".9"/>'; } e+='<text x="180" y="52" text-anchor="middle" font-size="11" fill="#F2E6C9" font-family="Figtree, sans-serif">paralarvas</text>'; }
+    eggsG.innerHTML=e;
+    // fêmea
+    const c=S.cond, col='rgb('+Math.round(lerp(196,178,c))+','+Math.round(lerp(186,88,c))+','+Math.round(lerp(176,60,c))+')';
+    const sc=0.65+0.35*c, cx= S.eggsCared?180:270, cy=S.dead?250:205;
+    let b='';
+    if(!S.dead){
+      const reach = S.eggsCared? -1:0;
+      for(let i=0;i<6;i++){ const ax=cx-30+i*12; const ty= reach? 150-(i%2)*8 : 262; const tx= reach? 120+i*24 : ax+(i-2.5)*14;
+        b+='<path d="M'+ax+' '+(cy+10)+' Q'+((ax+tx)/2)+' '+(reach?cy+40:cy+50)+' '+tx+' '+ty+'" stroke="'+col+'" stroke-width="'+(6*sc).toFixed(1)+'" fill="none" stroke-linecap="round"/>'; }
+      b+='<ellipse cx="'+cx+'" cy="'+(cy-18*sc)+'" rx="'+(30*sc).toFixed(1)+'" ry="'+(38*sc).toFixed(1)+'" fill="'+col+'"/>';
+      b+='<ellipse cx="'+cx+'" cy="'+(cy+8)+'" rx="'+(26*sc).toFixed(1)+'" ry="'+(14*sc).toFixed(1)+'" fill="'+col+'"/>';
+      b+='<circle cx="'+(cx-11*sc)+'" cy="'+(cy+4)+'" r="4.5" fill="#F5EFD8"/><circle cx="'+(cx+11*sc)+'" cy="'+(cy+4)+'" r="4.5" fill="#F5EFD8"/>';
+      b+='<rect x="'+(cx-14*sc)+'" y="'+(cy+3)+'" width="6" height="2.4" fill="#1A1210"/><rect x="'+(cx+8*sc)+'" y="'+(cy+3)+'" width="6" height="2.4" fill="#1A1210"/>';
+    } else {
+      b+='<ellipse cx="180" cy="258" rx="40" ry="8" fill="'+col+'" opacity=".7"/>';
+    }
+    bodyG.innerHTML=b;
+    // alimento
+    foodG.innerHTML='<text x="'+(S.feeding?(cx+52):300)+'" y="'+(S.feeding?(cy+30):258)+'" font-size="24" opacity="'+(S.feeding?1:.45)+'">🦀</text>';
+    // texto
+    let t;
+    if(glandDay!==null && d>=glandDay) t= d-glandDay<2 ? 'Glândulas ópticas removidas no dia '+glandDay+'. A fêmea começa a mudar de comportamento.' : 'Sem as glândulas ópticas, a fêmea abandonou os ovos, voltou a comer e recupera peso. No experimento, essas fêmeas viveram em média 5,75 meses a mais.';
+    else if(d<8) t='Dias 0–8: a mãe ventila e limpa os ovos e ainda se alimenta.';
+    else if(d<19) t='A mãe para de comer de repente e fica só com os ovos. O jejum já começou.';
+    else if(d<HATCH) t='Após 3 a 19 dias de jejum, a condição corporal cai rapidamente: a mãe definha enquanto os embriões crescem (olhos visíveis nos ovos).';
+    else if(d<=HATCH+2) t='Os ovos eclodem e as paralarvas sobem para o plâncton. A mãe está no fim da vida.';
+    else t='A mãe morre logo após a eclosão. O ciclo recomeça com os filhotes.';
+    $('momTxt').textContent=t; $('momTxt').classList.toggle('alert', !glandDay && d>=19);
+  }
+  drawMom();
+})();
+
+(function(){
+  const box=document.getElementById('quizBox'); if(!box) return;
+  const qs=[...box.querySelectorAll('.q')], N=qs.length;
+  const okMsg=['Isso mesmo.','Certo!','Exato.','Muito bem.'], noMsg=['Ainda não.','Quase lá.','Não é essa.','Reveja este ponto.'];
+  function refresh(){
+    const done=qs.filter(q=>q.dataset.done), right=qs.filter(q=>q.dataset.done==='1').length;
+    document.getElementById('qBar').style.width=(done.length/N*100)+'%';
+    document.getElementById('qScore').textContent=done.length+' de '+N+' respondidas, '+right+' certas';
+    const end=document.getElementById('qEnd');
+    if(done.length===N){ end.hidden=false;
+      document.getElementById('qEndTxt').innerHTML='<b>Você acertou '+right+' de '+N+'.</b> '+(right>=10?'Excelente domínio dos conceitos de coração, pele e ciclo de vida.':right>=7?'Bom resultado. Revise as explicações das questões que errou e volte às simulações.':'Vale percorrer de novo as simulações: elas mostram cada conceito em ação.'); }
+    else end.hidden=true;
+  }
+  function shuffle(q){ const wrap=q.querySelector('.qopts'); const bs=[...wrap.children];
+    for(let i=bs.length-1;i>0;i--){ const k=Math.floor(Math.random()*(i+1)); [bs[i],bs[k]]=[bs[k],bs[i]]; }
+    bs.forEach((b,i)=>{ b.querySelector('b').textContent='abcd'[i]+')'; wrap.appendChild(b); }); }
+  qs.forEach(shuffle);
+  qs.forEach((q,i)=>{
+    const c=+q.dataset.correct, btns=[...q.querySelectorAll('.qopts button')];
+    btns.forEach(b=>b.addEventListener('click',()=>{
+      if(q.dataset.done) return;
+      const ok=+b.dataset.i===c;
+      q.dataset.done=ok?'1':'0';
+      btns.forEach(x=>{ x.disabled=true; if(+x.dataset.i===c) x.classList.add('right'); });
+      if(!ok) b.classList.add('wrong');
+      const e=q.querySelector('.qexp'); e.hidden=false;
+      e.querySelector('.qverdict').textContent=ok?okMsg[i%4]:noMsg[i%4]+' A resposta correta está destacada.';
+      refresh();
+    }));
+  });
+  document.getElementById('qReset').addEventListener('click',()=>{
+    qs.forEach(q=>{ delete q.dataset.done; q.querySelectorAll('button').forEach(b=>{b.disabled=false;b.classList.remove('right','wrong');}); q.querySelector('.qexp').hidden=true; shuffle(q); });
+    refresh(); qs[0].scrollIntoView({behavior:'smooth',block:'center'});
+  });
+  refresh();
+})();
+</script>
+</body>
+</html>
