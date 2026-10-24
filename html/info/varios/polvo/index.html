@@ -260,6 +260,19 @@ table.compare{min-width:0}
 .tscroll{overflow-x:auto}
 @media (max-width:520px){table.compare{font-size:.85rem}table.compare th,table.compare td{padding:7px 6px;overflow-wrap:anywhere}}
 .refs li{overflow-wrap:anywhere}
+
+.watch{display:grid;grid-template-columns:auto 1fr;gap:20px;align-items:start;margin:34px 0 10px;padding:26px 26px 24px;border-radius:16px;background:linear-gradient(135deg,#0E3354 0%,#14507E 60%,#1C6A8F 100%);color:#EAF4FA}
+.watch h2{color:#fff;margin:2px 0 10px}
+.watch p{margin:0 0 10px;color:#DCEBF3}
+.watch b{color:#fff}
+.watch sup.cit a{color:#9FD3F5}
+.watch-kicker{font-size:.9rem;font-weight:700;color:#9FD3F5 !important;margin-bottom:2px !important}
+.watch-icon{width:56px;height:56px;border-radius:50%;background:#fff;color:#B80000;display:grid;place-items:center;font-size:1.4rem;padding-left:4px}
+.watch-meta{font-size:.9rem}
+.watch-btn{display:inline-block;margin-top:6px;background:#fff;color:#0E3354;font-weight:700;text-decoration:none;padding:10px 18px;border-radius:999px}
+.watch-btn:hover{background:#DCEBF3}
+.watch-btn:focus-visible{outline:3px solid #9FD3F5;outline-offset:3px}
+@media (max-width:600px){.watch{grid-template-columns:1fr;padding:20px}.watch-icon{width:44px;height:44px;font-size:1.1rem}}
 </style>
 </head>
 <body>
@@ -593,13 +606,26 @@ table.compare{min-width:0}
     </div>
   </section>
 
+
+  <aside class="watch" aria-labelledby="bbc-t">
+    <div class="watch-icon" aria-hidden="true">▶</div>
+    <div>
+      <p class="watch-kicker">Para assistir</p>
+      <h2 id="bbc-t">Um polvo fora d’água, em <i>Blue Planet III</i></h2>
+      <p>Em 23 de outubro de 2026, a BBC divulgou uma prévia da nova série: uma fêmea de polvo se aventura para fora do seu habitat durante uma caçada e escapa por pouco da morte<sup class="cit">[<a href="#ref-16">16</a>]</sup>. Assista com o que você viu aqui em mente: fora da água, as brânquias não conseguem extrair oxigênio, e a dívida de O₂ que um polvo tolera é pequena, cerca de 22 mL por kg<sup class="cit">[<a href="#ref-10">10</a>]</sup>.</p>
+      <p>A série é narrada por <b>Sir David Attenborough</b>, que completou 100 anos em maio de 2026 e segue produzindo documentários sobre a natureza<sup class="cit">[<a href="#ref-16">16</a>,<a href="#ref-17">17</a>]</sup>. Uma lição de curiosidade que não se aposenta.</p>
+      <p class="watch-meta"><i>Blue Planet III</i> estreia no Reino Unido em 1º de novembro de 2026, na BBC One e no iPlayer, e chega aos outros países entre novembro e 2027<sup class="cit">[<a href="#ref-16">16</a>]</sup>.</p>
+      <a class="watch-btn" href="https://www.bbc.com/news/videos/ck240lmvqjyjo" target="_blank" rel="noopener">Assistir ao vídeo na BBC</a>
+    </div>
+  </aside>
+
   <div class="part"><strong>Parte 2. A pele</strong>cor, textura, luz e cicatrização</div>
 
   <section aria-labelledby="pele">
     <div class="prose">
       <h2 id="pele">Uma pele que obedece a nervos</h2>
       <p>Os cromatóforos do polvo não são células soltas como os melanócitos humanos. Cada um é um pequeno órgão neuromuscular: uma bolsa elástica cheia de pigmento, rodeada por fibras musculares radiais, cada uma com seus nervos, sem controle hormonal<sup class="cit">[<a href="#ref-6">6</a>]</sup>. Quando os neurônios motores disparam, os músculos se contraem, puxam a bolsa e a mancha de cor se abre em cerca de 100 milissegundos<sup class="cit">[<a href="#ref-4">4</a>]</sup>.</p>
-      <p>Por isso o padrão da pele funciona como uma leitura direta da atividade do cérebro<sup class="cit">[<a href="#ref-16">16</a>]</sup>. O animal pode escolher, a cada momento, um entre muitos padrões corporais, e trocar quase instantaneamente<sup class="cit">[<a href="#ref-6">6</a>]</sup>.</p>
+      <p>Por isso o padrão da pele funciona como uma leitura direta da atividade do cérebro<sup class="cit">[<a href="#ref-18">18</a>]</sup>. O animal pode escolher, a cada momento, um entre muitos padrões corporais, e trocar quase instantaneamente<sup class="cit">[<a href="#ref-6">6</a>]</sup>.</p>
     </div>
 
     <figure class="photo wide-in"><img src="img/polvo-camuflagem.jpg" alt="Polvo quase invisível sobre rocha coberta de algas, com cor, padrão e textura iguais aos do fundo" width="1586" height="992" loading="lazy" decoding="async"><figcaption>Camuflagem completa: cor, padrão manchado e textura das papilas copiam o fundo. Só o olho denuncia o animal. Imagem ilustrativa gerada por IA.</figcaption></figure>
@@ -653,14 +679,14 @@ table.compare{min-width:0}
           <div class="ctrl"><label for="kT">Papilas (textura) <output id="kTV">0%</output></label><input type="range" id="kT" min="0" max="100" value="0"></div>
           <label class="toggle"><input type="checkbox" id="kBrain" checked> Pele conectada ao cérebro</label>
           <label class="toggle"><input type="checkbox" id="kLight"> Iluminar com luz azul</label>
-          <p class="hint">Desligue o cérebro e acenda a luz: mesmo em pele isolada, os cromatóforos do polvo se expandem com a luz, graças a opsinas na própria pele<sup class="cit">[<a href="#ref-17">17</a>]</sup>.</p>
+          <p class="hint">Desligue o cérebro e acenda a luz: mesmo em pele isolada, os cromatóforos do polvo se expandem com a luz, graças a opsinas na própria pele<sup class="cit">[<a href="#ref-19">19</a>]</sup>.</p>
         </div>
       </div>
     </div>
 
     <div class="prose">
       <h3>A pele que sente a luz</h3>
-      <p>Em pedaços de pele de <i>Octopus bimaculoides</i> separados do corpo, a luz fez os cromatóforos se expandirem. Os pesquisadores chamaram o fenômeno de LACE (expansão de cromatóforos ativada pela luz) e encontraram na pele a mesma via de opsina usada pelos olhos, com sensibilidade máxima por volta de 480 nm, luz azul<sup class="cit">[<a href="#ref-17">17</a>]</sup>. Ainda não se sabe quanto isso contribui para a camuflagem no animal vivo<sup class="cit">[<a href="#ref-17">17</a>]</sup>.</p>
+      <p>Em pedaços de pele de <i>Octopus bimaculoides</i> separados do corpo, a luz fez os cromatóforos se expandirem. Os pesquisadores chamaram o fenômeno de LACE (expansão de cromatóforos ativada pela luz) e encontraram na pele a mesma via de opsina usada pelos olhos, com sensibilidade máxima por volta de 480 nm, luz azul<sup class="cit">[<a href="#ref-19">19</a>]</sup>. Ainda não se sabe quanto isso contribui para a camuflagem no animal vivo<sup class="cit">[<a href="#ref-19">19</a>]</sup>.</p>
     </div>
   </section>
 
@@ -669,13 +695,13 @@ table.compare{min-width:0}
       <div>
         <h2 id="pele-humana">E a pele humana? Um monitor do coração</h2>
         <p>Nossa pele também muda de cor, mas por outros caminhos. O pigmento é lento: o escurecimento imediato por UVA dura até cerca de 2 horas, e o bronzeado verdadeiro, com produção de nova melanina, só aparece 3 a 5 dias após a exposição<sup class="cit">[<a href="#ref-5">5</a>]</sup>.</p>
-        <p>As mudanças rápidas vêm do sangue. A cianose aparece quando há cerca de 5 g/dL de hemoglobina desoxigenada nos capilares<sup class="cit">[<a href="#ref-18">18</a>,<a href="#ref-19">19</a>]</sup>. Como depende da quantidade absoluta de hemoglobina sem oxigênio, um paciente com anemia grave pode estar hipoxêmico e não parecer cianótico<sup class="cit">[<a href="#ref-18">18</a>,<a href="#ref-19">19</a>]</sup>.</p>
+        <p>As mudanças rápidas vêm do sangue. A cianose aparece quando há cerca de 5 g/dL de hemoglobina desoxigenada nos capilares<sup class="cit">[<a href="#ref-20">20</a>,<a href="#ref-21">21</a>]</sup>. Como depende da quantidade absoluta de hemoglobina sem oxigênio, um paciente com anemia grave pode estar hipoxêmico e não parecer cianótico<sup class="cit">[<a href="#ref-20">20</a>,<a href="#ref-21">21</a>]</sup>.</p>
         <div class="callout red">
-          <strong>Teste no simulador do coração:</strong> em repouso, baixe a PaO₂ para ~40 mmHg com Hb 15 g/dL e a amostra de cor fica cianótica. Agora baixe a Hb para 7,5 g/dL: a hipoxemia piora o quadro, mas a cianose some. É o que a literatura clínica descreve<sup class="cit">[<a href="#ref-18">18</a>]</sup>.
+          <strong>Teste no simulador do coração:</strong> em repouso, baixe a PaO₂ para ~40 mmHg com Hb 15 g/dL e a amostra de cor fica cianótica. Agora baixe a Hb para 7,5 g/dL: a hipoxemia piora o quadro, mas a cianose some. É o que a literatura clínica descreve<sup class="cit">[<a href="#ref-20">20</a>]</sup>.
         </div>
       </div>
       <div>
-        <figure class="photo"><img src="img/pele-humana-cianose.png" alt="Três polegares lado a lado: leito ungueal rosado normal, leito ungueal pálido e leito ungueal arroxeado de cianose" width="1774" height="887" loading="lazy" decoding="async"><figcaption>Da esquerda para a direita: leito ungueal normal, palidez e cianose. Os tons de pele variam entre os dedos; em peles mais escuras, a cianose pode exigir dessaturação maior para ser percebida<sup class="cit">[<a href="#ref-18">18</a>]</sup>. Imagem ilustrativa gerada por IA.</figcaption></figure>
+        <figure class="photo"><img src="img/pele-humana-cianose.png" alt="Três polegares lado a lado: leito ungueal rosado normal, leito ungueal pálido e leito ungueal arroxeado de cianose" width="1774" height="887" loading="lazy" decoding="async"><figcaption>Da esquerda para a direita: leito ungueal normal, palidez e cianose. Os tons de pele variam entre os dedos; em peles mais escuras, a cianose pode exigir dessaturação maior para ser percebida<sup class="cit">[<a href="#ref-20">20</a>]</sup>. Imagem ilustrativa gerada por IA.</figcaption></figure>
         <div class="swatch-row" style="margin-top:8px">
           <div class="swatch" data-skin-swatch style="width:120px;height:80px;border-radius:40px 40px 18px 18px" aria-hidden="true"></div>
           <div class="swatch-txt" data-skin-txt>Cor estimada do lábio e do leito ungueal.</div>
@@ -684,9 +710,9 @@ table.compare{min-width:0}
         <div class="tscroll"><table class="compare" aria-label="Comparação da pele">
           <thead><tr><th></th><th>Polvo</th><th>Humano</th></tr></thead>
           <tbody>
-            <tr><td>Quem muda a cor</td><td class="o">Neurônios motores e músculos<sup class="cit">[<a href="#ref-6">6</a>]</sup></td><td class="h">Sangue capilar e melanina<sup class="cit">[<a href="#ref-5">5</a>,<a href="#ref-19">19</a>]</sup></td></tr>
+            <tr><td>Quem muda a cor</td><td class="o">Neurônios motores e músculos<sup class="cit">[<a href="#ref-6">6</a>]</sup></td><td class="h">Sangue capilar e melanina<sup class="cit">[<a href="#ref-5">5</a>,<a href="#ref-21">21</a>]</sup></td></tr>
             <tr><td>Velocidade</td><td class="o">~0,1 s<sup class="cit">[<a href="#ref-4">4</a>]</sup></td><td class="h">Segundos a minutos (perfusão); dias (melanina)<sup class="cit">[<a href="#ref-5">5</a>]</sup></td></tr>
-            <tr><td>O que a cor revela</td><td class="o">O padrão que o cérebro escolheu, para camuflagem e comunicação<sup class="cit">[<a href="#ref-6">6</a>]</sup></td><td class="h">O estado da perfusão e da oxigenação, um sinal clínico<sup class="cit">[<a href="#ref-19">19</a>]</sup></td></tr>
+            <tr><td>O que a cor revela</td><td class="o">O padrão que o cérebro escolheu, para camuflagem e comunicação<sup class="cit">[<a href="#ref-6">6</a>]</sup></td><td class="h">O estado da perfusão e da oxigenação, um sinal clínico<sup class="cit">[<a href="#ref-21">21</a>]</sup></td></tr>
           </tbody>
         </table></div>
       </div>
@@ -696,8 +722,8 @@ table.compare{min-width:0}
   <section aria-labelledby="ferida">
     <div class="prose">
       <h2 id="ferida">Quando a pele se rompe</h2>
-      <p>Na natureza, ferimentos nos braços são comuns: cerca de metade dos polvos-comuns capturados na Baía de Nápoles tinha algum braço danificado<sup class="cit">[<a href="#ref-20">20</a>]</sup>. Depois de amputar experimentalmente a ponta de um braço, Shaw e colaboradores viram a ferida 64% fechada em 6 horas, com fechamento quase completo em alguns animais entre 6 e 24 horas<sup class="cit">[<a href="#ref-20">20</a>]</sup>.</p>
-      <p>O primeiro movimento é mecânico: os músculos ao redor contraem como o cordão de uma bolsa, e células se acumulam formando um tampão sobre a lesão<sup class="cit">[<a href="#ref-20">20</a>,<a href="#ref-21">21</a>]</sup>. Em feridas de pele de cefalópodes, o fechamento costuma se completar após cerca de 5 dias, com hemócitos assumindo aspecto semelhante a fibroblastos<sup class="cit">[<a href="#ref-21">21</a>]</sup>.</p>
+      <p>Na natureza, ferimentos nos braços são comuns: cerca de metade dos polvos-comuns capturados na Baía de Nápoles tinha algum braço danificado<sup class="cit">[<a href="#ref-22">22</a>]</sup>. Depois de amputar experimentalmente a ponta de um braço, Shaw e colaboradores viram a ferida 64% fechada em 6 horas, com fechamento quase completo em alguns animais entre 6 e 24 horas<sup class="cit">[<a href="#ref-22">22</a>]</sup>.</p>
+      <p>O primeiro movimento é mecânico: os músculos ao redor contraem como o cordão de uma bolsa, e células se acumulam formando um tampão sobre a lesão<sup class="cit">[<a href="#ref-22">22</a>,<a href="#ref-23">23</a>]</sup>. Em feridas de pele de cefalópodes, o fechamento costuma se completar após cerca de 5 dias, com hemócitos assumindo aspecto semelhante a fibroblastos<sup class="cit">[<a href="#ref-23">23</a>]</sup>.</p>
       <p>Na pele humana, a cicatrização segue quatro fases sobrepostas: hemostasia, inflamação, proliferação e remodelação, e esta última pode durar anos<sup class="cit">[<a href="#ref-7">7</a>]</sup>. Para a ferida fechar, as fases precisam acontecer na sequência e no tempo certos; a oxigenação é um dos fatores que mais interferem nesse processo<sup class="cit">[<a href="#ref-7">7</a>]</sup>.</p>
     </div>
 
@@ -727,7 +753,7 @@ table.compare{min-width:0}
         </g>
       </svg>
     </div>
-    <p class="hint">Escala logarítmica. Polvo: dados de amputação experimental da ponta do braço e de feridas de pele de cefalópodes<sup class="cit">[<a href="#ref-20">20</a>,<a href="#ref-21">21</a>]</sup>. Humano: fases sobrepostas descritas por Guo e DiPietro<sup class="cit">[<a href="#ref-7">7</a>]</sup>; a posição das faixas é qualitativa.</p>
+    <p class="hint">Escala logarítmica. Polvo: dados de amputação experimental da ponta do braço e de feridas de pele de cefalópodes<sup class="cit">[<a href="#ref-22">22</a>,<a href="#ref-23">23</a>]</sup>. Humano: fases sobrepostas descritas por Guo e DiPietro<sup class="cit">[<a href="#ref-7">7</a>]</sup>; a posição das faixas é qualitativa.</p>
 
     <div class="woundsim">
       <h3>Simulação: avance o relógio da ferida</h3>
@@ -744,7 +770,7 @@ table.compare{min-width:0}
         <p id="wOctTxt" class="status"></p>
         <p id="wHumTxt" class="status"></p>
       </div>
-      <p class="hint">Polvo: fechamento interpolado entre os pontos medidos (64% em 6 h; quase completo em alguns animais em 24 h)<sup class="cit">[<a href="#ref-20">20</a>]</sup> e fechamento de feridas de pele em ~5 dias<sup class="cit">[<a href="#ref-21">21</a>]</sup>. Humano: esquema qualitativo com durações típicas de livro-texto, que variam muito entre feridas; as quatro fases e a oxigenação como fator crítico vêm de Guo e DiPietro<sup class="cit">[<a href="#ref-7">7</a>]</sup>.</p>
+      <p class="hint">Polvo: fechamento interpolado entre os pontos medidos (64% em 6 h; quase completo em alguns animais em 24 h)<sup class="cit">[<a href="#ref-22">22</a>]</sup> e fechamento de feridas de pele em ~5 dias<sup class="cit">[<a href="#ref-23">23</a>]</sup>. Humano: esquema qualitativo com durações típicas de livro-texto, que variam muito entre feridas; as quatro fases e a oxigenação como fator crítico vêm de Guo e DiPietro<sup class="cit">[<a href="#ref-7">7</a>]</sup>.</p>
     </div>
 
     <div class="callout">
@@ -757,8 +783,8 @@ table.compare{min-width:0}
   <section aria-labelledby="vida">
     <div class="prose">
       <h2 id="vida">Um corpo sofisticado que dura um ou dois anos</h2>
-      <p class="lead-p">O polvo-comum vive de 1 a 2 anos<sup class="cit">[<a href="#ref-22">22</a>]</sup>. O polvo-gigante-do-Pacífico, um dos maiores, chega a 3 a 5 anos, com estimativas de 4,5 a 5 anos no Golfo do Alasca<sup class="cit">[<a href="#ref-23">23</a>]</sup>. No Brasil, a expectativa de vida ao nascer chegou a 76,6 anos em 2024<sup class="cit">[<a href="#ref-24">24</a>]</sup>.</p>
-      <p>A razão é o modo de reproduzir: o polvo se reproduz uma única vez e morre (semelparidade). Depois da desova, a fêmea protege os ovos até a eclosão; nas espécies de águas rasas esse cuidado dura de 1 a 3 meses<sup class="cit">[<a href="#ref-25">25</a>]</sup>.</p>
+      <p class="lead-p">O polvo-comum vive de 1 a 2 anos<sup class="cit">[<a href="#ref-24">24</a>]</sup>. O polvo-gigante-do-Pacífico, um dos maiores, chega a 3 a 5 anos, com estimativas de 4,5 a 5 anos no Golfo do Alasca<sup class="cit">[<a href="#ref-25">25</a>]</sup>. No Brasil, a expectativa de vida ao nascer chegou a 76,6 anos em 2024<sup class="cit">[<a href="#ref-26">26</a>]</sup>.</p>
+      <p>A razão é o modo de reproduzir: o polvo se reproduz uma única vez e morre (semelparidade). Depois da desova, a fêmea protege os ovos até a eclosão; nas espécies de águas rasas esse cuidado dura de 1 a 3 meses<sup class="cit">[<a href="#ref-27">27</a>]</sup>.</p>
     </div>
 
     <figure class="photo wide-in"><img src="img/paralarvas.jpg" alt="Paralarvas de polvo translúcidas flutuando em água azul-escura, com olhos grandes e pontos de cromatóforos" width="1672" height="941" loading="lazy" decoding="async"><figcaption>Paralarvas recém-eclodidas: translúcidas, já com cromatóforos visíveis. Começam a vida no plâncton. Imagem ilustrativa gerada por IA.</figcaption></figure>
@@ -780,10 +806,10 @@ table.compare{min-width:0}
     <div class="two">
       <div>
         <h2 id="mae">A glândula que encerra a vida</h2>
-        <p>Entre os olhos do polvo há duas glândulas ópticas, comparadas à hipófise dos vertebrados<sup class="cit">[<a href="#ref-26">26</a>]</sup>. Em 1977, Jerome Wodinsky removeu essas glândulas de fêmeas de <i>Octopus hummelincki</i> que já cuidavam dos ovos e tinham parado de comer. Elas abandonaram os ovos, voltaram a se alimentar, ganharam peso, algumas acasalaram de novo, e viveram em média 5,75 meses a mais<sup class="cit">[<a href="#ref-26">26</a>,<a href="#ref-27">27</a>]</sup>.</p>
-        <p>Em <i>Octopus bimaculoides</i>, as mães continuaram comendo por cerca de 8 dias após a desova; depois pararam de repente e, após 3 a 19 dias de jejum, entraram em declínio rápido<sup class="cit">[<a href="#ref-26">26</a>]</sup>. Em vez de um único "hormônio da morte", a glândula óptica usa várias vias de sinalização<sup class="cit">[<a href="#ref-26">26</a>]</sup>, incluindo mudanças no metabolismo do colesterol e na produção de hormônios esteroides<sup class="cit">[<a href="#ref-28">28</a>]</sup>.</p>
+        <p>Entre os olhos do polvo há duas glândulas ópticas, comparadas à hipófise dos vertebrados<sup class="cit">[<a href="#ref-28">28</a>]</sup>. Em 1977, Jerome Wodinsky removeu essas glândulas de fêmeas de <i>Octopus hummelincki</i> que já cuidavam dos ovos e tinham parado de comer. Elas abandonaram os ovos, voltaram a se alimentar, ganharam peso, algumas acasalaram de novo, e viveram em média 5,75 meses a mais<sup class="cit">[<a href="#ref-28">28</a>,<a href="#ref-29">29</a>]</sup>.</p>
+        <p>Em <i>Octopus bimaculoides</i>, as mães continuaram comendo por cerca de 8 dias após a desova; depois pararam de repente e, após 3 a 19 dias de jejum, entraram em declínio rápido<sup class="cit">[<a href="#ref-28">28</a>]</sup>. Em vez de um único "hormônio da morte", a glândula óptica usa várias vias de sinalização<sup class="cit">[<a href="#ref-28">28</a>]</sup>, incluindo mudanças no metabolismo do colesterol e na produção de hormônios esteroides<sup class="cit">[<a href="#ref-30">30</a>]</sup>.</p>
         <div class="callout">
-          <strong>O frio estica o relógio:</strong> uma fêmea do polvo de águas profundas <i>Graneledone boreopacifica</i>, observada a 1.397 m, cuidou dos ovos por 53 meses, o período de incubação mais longo já registrado em um animal<sup class="cit">[<a href="#ref-25">25</a>]</sup>.
+          <strong>O frio estica o relógio:</strong> uma fêmea do polvo de águas profundas <i>Graneledone boreopacifica</i>, observada a 1.397 m, cuidou dos ovos por 53 meses, o período de incubação mais longo já registrado em um animal<sup class="cit">[<a href="#ref-27">27</a>]</sup>.
         </div>
         <figure class="photo tall"><img src="img/mae-polvo-ovos.jpg" alt="Fêmea de polvo pálida dentro da toca, cuidando de cordões de ovos brancos pendurados no teto" width="1100" height="1430" loading="lazy" decoding="async"><figcaption>Mãe polvo na toca com os cordões de ovos. Ela não sai nem para comer até a eclosão. Imagem ilustrativa gerada por IA.</figcaption></figure>
       </div>
@@ -799,7 +825,7 @@ table.compare{min-width:0}
         <div class="ctrl"><label for="momDay">Dias após a desova <output id="momDayV">0</output></label><input type="range" id="momDay" min="0" max="70" value="0"></div>
         <label class="toggle"><input type="checkbox" id="momGland"> Remover as glândulas ópticas (experimento de 1977)</label>
         <div class="status" id="momTxt" aria-live="polite"></div>
-        <p class="hint">Esquema: tempos de alimentação e jejum de <i>O. bimaculoides</i><sup class="cit">[<a href="#ref-26">26</a>]</sup>; incubação de 1 a 3 meses típica de espécies rasas<sup class="cit">[<a href="#ref-25">25</a>]</sup>; efeito da remoção das glândulas observado em <i>O. hummelincki</i><sup class="cit">[<a href="#ref-27">27</a>]</sup>. A curva de condição corporal é ilustrativa.</p>
+        <p class="hint">Esquema: tempos de alimentação e jejum de <i>O. bimaculoides</i><sup class="cit">[<a href="#ref-28">28</a>]</sup>; incubação de 1 a 3 meses típica de espécies rasas<sup class="cit">[<a href="#ref-27">27</a>]</sup>; efeito da remoção das glândulas observado em <i>O. hummelincki</i><sup class="cit">[<a href="#ref-29">29</a>]</sup>. A curva de condição corporal é ilustrativa.</p>
       </div>
     </div>
   </section>
@@ -839,7 +865,7 @@ table.compare{min-width:0}
     <h2 id="clinica">O que levar para a prática em saúde</h2>
     <div class="clin">
       <div><h3>Saturação não é conteúdo</h3><p style="margin:0">Uma pessoa anêmica pode ter SpO₂ normal e pouco oxigênio no sangue. Reduza a hemoglobina no simulador: a curva de % não se mexe, a de mL achata.</p></div>
-      <div><h3>Cianose engana</h3><p style="margin:0">Ela depende da hemoglobina desoxigenada em g/dL. Na anemia grave pode faltar mesmo com hipoxemia; na policitemia aparece mais cedo<sup class="cit">[<a href="#ref-19">19</a>]</sup>.</p></div>
+      <div><h3>Cianose engana</h3><p style="margin:0">Ela depende da hemoglobina desoxigenada em g/dL. Na anemia grave pode faltar mesmo com hipoxemia; na policitemia aparece mais cedo<sup class="cit">[<a href="#ref-21">21</a>]</sup>.</p></div>
       <div><h3>Ferida também é perfusão</h3><p style="margin:0">Oxigenação é um dos principais fatores da cicatrização<sup class="cit">[<a href="#ref-7">7</a>]</sup>. Avaliar a ferida inclui avaliar coração, pulmão e hemoglobina.</p></div>
     </div>
   </section>
@@ -917,7 +943,7 @@ table.compare{min-width:0}
           <button type="button" data-i="2"><b>c)</b> A anemia aumenta a afinidade da hemoglobina</button>
           <button type="button" data-i="3"><b>d)</b> A cianose só aparece com febre</button>
         </div>
-        <div class="qexp" hidden><p class="qverdict"></p><p>Com pouca hemoglobina, é difícil acumular ~5 g/dL de Hb desoxigenada nos capilares; por isso a anemia grave pode mascarar a cianose<sup class="cit">[<a href="#ref-18">18</a>,<a href="#ref-19">19</a>]</sup>. Reproduza no simulador do coração.</p></div>
+        <div class="qexp" hidden><p class="qverdict"></p><p>Com pouca hemoglobina, é difícil acumular ~5 g/dL de Hb desoxigenada nos capilares; por isso a anemia grave pode mascarar a cianose<sup class="cit">[<a href="#ref-20">20</a>,<a href="#ref-21">21</a>]</sup>. Reproduza no simulador do coração.</p></div>
       </fieldset>
       <fieldset class="q" data-correct="1">
         <legend><span class="qn">7</span>O que faz um cromatóforo do polvo se abrir?</legend>
@@ -947,7 +973,7 @@ table.compare{min-width:0}
           <button type="button" data-i="2"><b>c)</b> A pele produz melanina</button>
           <button type="button" data-i="3"><b>d)</b> As papilas se erguem</button>
         </div>
-        <div class="qexp" hidden><p class="qverdict"></p><p>É a expansão de cromatóforos ativada pela luz (LACE), mediada pela mesma via de opsina dos olhos, com sensibilidade máxima por volta de 480 nm<sup class="cit">[<a href="#ref-17">17</a>]</sup>.</p></div>
+        <div class="qexp" hidden><p class="qverdict"></p><p>É a expansão de cromatóforos ativada pela luz (LACE), mediada pela mesma via de opsina dos olhos, com sensibilidade máxima por volta de 480 nm<sup class="cit">[<a href="#ref-19">19</a>]</sup>.</p></div>
       </fieldset>
       <fieldset class="q" data-correct="2">
         <legend><span class="qn">10</span>Após a amputação experimental da ponta do braço, quanto da ferida do polvo estava fechada em 6 horas?</legend>
@@ -957,7 +983,7 @@ table.compare{min-width:0}
           <button type="button" data-i="2"><b>c)</b> Cerca de 64%</button>
           <button type="button" data-i="3"><b>d)</b> 100%</button>
         </div>
-        <div class="qexp" hidden><p class="qverdict"></p><p>A ferida estava cerca de 64% fechada em 6 h, com fechamento quase completo em alguns animais em 24 h, graças à contração muscular em bolsa e a um tampão celular<sup class="cit">[<a href="#ref-20">20</a>]</sup>. Teste no relógio da ferida.</p></div>
+        <div class="qexp" hidden><p class="qverdict"></p><p>A ferida estava cerca de 64% fechada em 6 h, com fechamento quase completo em alguns animais em 24 h, graças à contração muscular em bolsa e a um tampão celular<sup class="cit">[<a href="#ref-22">22</a>]</sup>. Teste no relógio da ferida.</p></div>
       </fieldset>
       <fieldset class="q" data-correct="2">
         <legend><span class="qn">11</span>Na cicatrização humana, qual afirmação está correta?</legend>
@@ -977,7 +1003,7 @@ table.compare{min-width:0}
           <button type="button" data-i="2"><b>c)</b> Os ovos eclodiram imediatamente</button>
           <button type="button" data-i="3"><b>d)</b> Nada mudou</button>
         </div>
-        <div class="qexp" hidden><p class="qverdict"></p><p>No experimento de 1977, as fêmeas abandonaram os ovos, voltaram a se alimentar e viveram em média 5,75 meses a mais<sup class="cit">[<a href="#ref-26">26</a>,<a href="#ref-27">27</a>]</sup>.</p></div>
+        <div class="qexp" hidden><p class="qverdict"></p><p>No experimento de 1977, as fêmeas abandonaram os ovos, voltaram a se alimentar e viveram em média 5,75 meses a mais<sup class="cit">[<a href="#ref-28">28</a>,<a href="#ref-29">29</a>]</sup>.</p></div>
       </fieldset>
       <div class="qend" id="qEnd" hidden>
         <p id="qEndTxt"></p>
@@ -1011,19 +1037,21 @@ table.compare{min-width:0}
       <li id="ref-13">OELLERMANN, M.; LIEB, B.; PÖRTNER, H. O.; SEMMENS, J. M.; MARK, F. C. Blue blood on ice: modulated blood oxygen transport facilitates cold compensation and eurythermy in an Antarctic octopod. <i>Frontiers in Zoology</i>, v. 12, art. 6, 2015. DOI: 10.1186/s12983-015-0097-x.</li>
       <li id="ref-14">WELLS, M. J.; SMITH, P. J. S. The performance of the octopus circulatory system: a triumph of engineering over design. <i>Experientia</i>, v. 43, p. 487–499, 1987.</li>
       <li id="ref-15">AGNISOLA, C.; HOULIHAN, D. F. Oxygen supply and in vitro performance of the systemic heart of <i>Octopus vulgaris</i>: effects of haemocyanin. <i>Journal of Experimental Biology</i>, v. 157, p. 523–541, 1991.</li>
-      <li id="ref-16">SHOOK, E. N.; BARLOW, G. T.; GARCIA-ROSALES, D.; GIBBONS, C. J.; MONTAGUE, T. G. Dynamic skin behaviors in cephalopods. <i>Current Opinion in Neurobiology</i>, v. 86, art. 102876, 2024.</li>
-      <li id="ref-17">RAMIREZ, M. D.; OAKLEY, T. H. Eye-independent, light-activated chromatophore expansion (LACE) and expression of phototransduction genes in the skin of <i>Octopus bimaculoides</i>. <i>Journal of Experimental Biology</i>, v. 218, n. 10, p. 1513–1520, 2015.</li>
-      <li id="ref-18">CYANOSIS. In: WALKER, H. K.; HALL, W. D.; HURST, J. W. (ed.). <i>Clinical Methods: the history, physical, and laboratory examinations</i>. 3. ed. Boston: Butterworths, 1990. Disponível em: https://www.ncbi.nlm.nih.gov/books/NBK367/. Acesso em: 24 out. 2026.</li>
-      <li id="ref-19">ADEYINKA, A.; KONDAMUDI, N. P. Cyanosis. In: <i>StatPearls</i>. Treasure Island (FL): StatPearls Publishing, 2026. Disponível em: https://www.ncbi.nlm.nih.gov/books/NBK482247/. Acesso em: 24 out. 2026.</li>
-      <li id="ref-20">SHAW, T. J.; OSBORNE, M.; PONTE, G.; FIORITO, G.; ANDREWS, P. L. R. Mechanisms of wound closure following acute arm injury in <i>Octopus vulgaris</i>. <i>Zoological Letters</i>, v. 2, art. 8, 2016. DOI: 10.1186/s40851-016-0044-5.</li>
-      <li id="ref-21">IMPERADORE, P.; FIORITO, G. Cephalopod tissue regeneration: consolidating over a century of knowledge. <i>Frontiers in Physiology</i>, v. 9, art. 593, 2018. DOI: 10.3389/fphys.2018.00593.</li>
-      <li id="ref-22">MANGOLD, K. <i>Octopus vulgaris</i>. In: BOYLE, P. R. (ed.). <i>Cephalopod Life Cycles</i>. v. 1. London: Academic Press, 1983. p. 335–364.</li>
-      <li id="ref-23">CONRATH, C. L.; CONNERS, M. E. Aspects of the reproductive biology of the North Pacific giant octopus (<i>Enteroctopus dofleini</i>) in the Gulf of Alaska. <i>Fishery Bulletin</i>, v. 112, n. 4, p. 253–260, 2014. DOI: 10.7755/FB.112.4.2.</li>
-      <li id="ref-24">IBGE – INSTITUTO BRASILEIRO DE GEOGRAFIA E ESTATÍSTICA. <i>Tábua completa de mortalidade para o Brasil – 2024</i>. Rio de Janeiro: IBGE, 2025.</li>
-      <li id="ref-25">ROBISON, B.; SEIBEL, B.; DRAZEN, J. Deep-sea octopus (<i>Graneledone boreopacifica</i>) conducts the longest-known egg-brooding period of any animal. <i>PLOS ONE</i>, v. 9, n. 7, e103437, 2014. DOI: 10.1371/journal.pone.0103437.</li>
-      <li id="ref-26">WANG, Z. Y.; RAGSDALE, C. W. Multiple optic gland signaling pathways implicated in octopus maternal behaviors and death. <i>Journal of Experimental Biology</i>, v. 221, n. 19, jeb185751, 2018.</li>
-      <li id="ref-27">WODINSKY, J. Hormonal inhibition of feeding and death in octopus: control by optic gland secretion. <i>Science</i>, v. 198, n. 4320, p. 948–951, 1977. DOI: 10.1126/science.198.4320.948.</li>
-      <li id="ref-28">WANG, Z. Y.; PERGANDE, M. R.; RAGSDALE, C. W.; COLOGNA, S. M. Steroid hormones of the octopus self-destruct system. <i>Current Biology</i>, v. 32, n. 11, p. 2572–2579.e4, 2022. DOI: 10.1016/j.cub.2022.04.043.</li>
+      <li id="ref-16">BBC NEWS. <i>Blue Planet III: moment octopus escapes death after hunt gone wrong</i>. Londres: BBC, 23 out. 2026. 1 vídeo. Disponível em: https://www.bbc.com/news/videos/ck240lmvqjyjo. Acesso em: 24 out. 2026.</li>
+      <li id="ref-17">BBC MEDIA CENTRE. <i>Sir David Attenborough to narrate BBC’s Blue Planet III</i>. Londres: BBC, 8 maio 2026. Disponível em: https://www.bbc.co.uk/mediacentre/2026/sir-david-attenborough-blue-planet-3. Acesso em: 24 out. 2026.</li>
+      <li id="ref-18">SHOOK, E. N.; BARLOW, G. T.; GARCIA-ROSALES, D.; GIBBONS, C. J.; MONTAGUE, T. G. Dynamic skin behaviors in cephalopods. <i>Current Opinion in Neurobiology</i>, v. 86, art. 102876, 2024.</li>
+      <li id="ref-19">RAMIREZ, M. D.; OAKLEY, T. H. Eye-independent, light-activated chromatophore expansion (LACE) and expression of phototransduction genes in the skin of <i>Octopus bimaculoides</i>. <i>Journal of Experimental Biology</i>, v. 218, n. 10, p. 1513–1520, 2015.</li>
+      <li id="ref-20">CYANOSIS. In: WALKER, H. K.; HALL, W. D.; HURST, J. W. (ed.). <i>Clinical Methods: the history, physical, and laboratory examinations</i>. 3. ed. Boston: Butterworths, 1990. Disponível em: https://www.ncbi.nlm.nih.gov/books/NBK367/. Acesso em: 24 out. 2026.</li>
+      <li id="ref-21">ADEYINKA, A.; KONDAMUDI, N. P. Cyanosis. In: <i>StatPearls</i>. Treasure Island (FL): StatPearls Publishing, 2026. Disponível em: https://www.ncbi.nlm.nih.gov/books/NBK482247/. Acesso em: 24 out. 2026.</li>
+      <li id="ref-22">SHAW, T. J.; OSBORNE, M.; PONTE, G.; FIORITO, G.; ANDREWS, P. L. R. Mechanisms of wound closure following acute arm injury in <i>Octopus vulgaris</i>. <i>Zoological Letters</i>, v. 2, art. 8, 2016. DOI: 10.1186/s40851-016-0044-5.</li>
+      <li id="ref-23">IMPERADORE, P.; FIORITO, G. Cephalopod tissue regeneration: consolidating over a century of knowledge. <i>Frontiers in Physiology</i>, v. 9, art. 593, 2018. DOI: 10.3389/fphys.2018.00593.</li>
+      <li id="ref-24">MANGOLD, K. <i>Octopus vulgaris</i>. In: BOYLE, P. R. (ed.). <i>Cephalopod Life Cycles</i>. v. 1. London: Academic Press, 1983. p. 335–364.</li>
+      <li id="ref-25">CONRATH, C. L.; CONNERS, M. E. Aspects of the reproductive biology of the North Pacific giant octopus (<i>Enteroctopus dofleini</i>) in the Gulf of Alaska. <i>Fishery Bulletin</i>, v. 112, n. 4, p. 253–260, 2014. DOI: 10.7755/FB.112.4.2.</li>
+      <li id="ref-26">IBGE – INSTITUTO BRASILEIRO DE GEOGRAFIA E ESTATÍSTICA. <i>Tábua completa de mortalidade para o Brasil – 2024</i>. Rio de Janeiro: IBGE, 2025.</li>
+      <li id="ref-27">ROBISON, B.; SEIBEL, B.; DRAZEN, J. Deep-sea octopus (<i>Graneledone boreopacifica</i>) conducts the longest-known egg-brooding period of any animal. <i>PLOS ONE</i>, v. 9, n. 7, e103437, 2014. DOI: 10.1371/journal.pone.0103437.</li>
+      <li id="ref-28">WANG, Z. Y.; RAGSDALE, C. W. Multiple optic gland signaling pathways implicated in octopus maternal behaviors and death. <i>Journal of Experimental Biology</i>, v. 221, n. 19, jeb185751, 2018.</li>
+      <li id="ref-29">WODINSKY, J. Hormonal inhibition of feeding and death in octopus: control by optic gland secretion. <i>Science</i>, v. 198, n. 4320, p. 948–951, 1977. DOI: 10.1126/science.198.4320.948.</li>
+      <li id="ref-30">WANG, Z. Y.; PERGANDE, M. R.; RAGSDALE, C. W.; COLOGNA, S. M. Steroid hormones of the octopus self-destruct system. <i>Current Biology</i>, v. 32, n. 11, p. 2572–2579.e4, 2022. DOI: 10.1016/j.cub.2022.04.043.</li>
     </ol>
   </section>
 </main>
