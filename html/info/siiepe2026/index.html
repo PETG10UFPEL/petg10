@@ -212,6 +212,12 @@ footer a{color:#fff}
 
 .logo-siiepe{display:block;height:96px;width:auto;max-width:100%;border-radius:12px;margin-bottom:22px}
 @media (max-width:760px){.logo-siiepe{height:70px;margin-bottom:16px}}
+.av{position:relative;display:inline-flex;align-items:center;justify-content:center;flex:0 0 auto;width:var(--av,32px);height:var(--av,32px);border-radius:50%;overflow:hidden;background:var(--cor-av,var(--azul));color:#fff;font:600 calc(var(--av,32px)*.38)/1 var(--texto);letter-spacing:.02em;vertical-align:middle}
+.av img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 30%}
+.av.g{--av:120px;box-shadow:0 0 0 4px var(--papel),0 0 0 6px var(--cor-av,var(--azul));margin:4px 0 16px}
+.pessoa-chip{display:inline-flex;align-items:center;gap:8px;padding:4px 12px 4px 4px}
+.pessoa-chip .av{--av:28px}
+.q .av{--av:26px;margin-right:6px}
 .botao-claro{display:inline-block;color:#fff;border:1.5px solid #fff;border-radius:999px;padding:9px 16px;text-decoration:none;font-size:16px}
 .botao-claro:hover{background:#fff;color:#1A1A1A}
 .eixo-img{display:block;width:100%;aspect-ratio:4/3;object-fit:cover;border-radius:16px;margin-bottom:12px;background:var(--linha)}
@@ -233,8 +239,8 @@ ol.linha a{font-size:15px}
 .agradece p:last-child{font:16px/1.6 var(--texto);color:var(--suave);margin:0}
 .gente-svg .pn{cursor:pointer;outline:none}
 .gente-svg .pn text{font-family:var(--texto);fill:var(--tinta)}
-.gente-svg .pn:focus-visible circle{stroke:var(--azul);stroke-width:4}
-.gente-svg .pn.sel circle{stroke:var(--tinta);stroke-width:3.5}
+.gente-svg .pn:focus-visible .aro{stroke:var(--azul);stroke-width:5}
+.gente-svg .pn.sel .aro{stroke:var(--tinta);stroke-width:5}
 .gente-svg .pn.sel text{font-weight:700}
 .gente-svg .ar{fill:none;stroke:var(--azul-escuro)}
 .gente-svg .anel{fill:none;stroke:var(--linha);stroke-width:1.5}
@@ -372,7 +378,7 @@ ol.linha a{font-size:15px}
 
 <section class="vista" id="v-pessoas" hidden aria-labelledby="h-pes">
   <div class="envelope">
-    <div class="cab-vista"><h1 id="h-pes">Quem escreveu</h1><p>As 19 pessoas que assinam os trabalhos. No centro, a coordenação; no anel do meio, as profissionais da Prefeitura de Pelotas; por fora, a UFPel. O tamanho de cada círculo indica quantos trabalhos a pessoa assina, e as linhas ligam quem escreveu junto. Toque em alguém para ver seus trabalhos e parcerias.</p></div>
+    <div class="cab-vista"><h1 id="h-pes">Quem escreveu</h1><p>As 19 pessoas que assinam os trabalhos. No centro, a coordenação; no anel do meio, as profissionais da Prefeitura de Pelotas; por fora, a UFPel. O tamanho de cada foto indica quantos trabalhos a pessoa assina, e as linhas ligam quem escreveu junto. Toque em alguém para ver seus trabalhos e parcerias.</p></div>
     <div class="conex">
       <div class="arcos"><svg id="svg-gente" role="img" aria-label="Constelação das 19 pessoas que assinam os trabalhos. As mesmas informações aparecem em texto no painel ao lado."></svg></div>
       <aside class="painel" id="painel-gente" aria-live="polite"></aside>
@@ -433,6 +439,11 @@ P.forEach(p=>{if(PES[p.ap.apres])PES[p.ap.apres].apres++; if(PES[p.ap.orient])PE
 const inst=n=>DADOS.inst[n]||"Universidade Federal de Pelotas";
 const nomesOrd=Object.keys(PES).sort((a,b)=>PES[b].trab.length-PES[a].trab.length||a.localeCompare(b,"pt"));
 const slug=n=>"p-"+n.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g,"").replace(/[^a-z]+/g,"-");
+const semAcento=s=>s.normalize("NFD").replace(/[\u0300-\u036f]/g,"");
+const foto=n=>"autores/"+semAcento(n.split(" ")[0].toLowerCase())+".gif";
+const iniciais=n=>{const w=n.split(" ").filter(x=>x.length>2);return (w[0][0]+(w.length>1?w[w.length-1][0]:"")).toUpperCase();};
+const corAv=n=>DADOS.coord.includes(n)?"#1A1A1A":(DADOS.inst[n]?"#2A8C82":"#4F81BD");
+const avatar=(n,cls)=>`<span class="av${cls?" "+cls:""}" style="--cor-av:${corAv(n)}" aria-hidden="true">${iniciais(n)}<img src="${foto(n)}" alt="" loading="lazy" onerror="this.remove()"></span>`;
 
 /* relações */
 const LIG=[];
@@ -501,7 +512,7 @@ function ficha(n){
   <h3>O que encontrou</h3><ul class="ach">${p.achados.map(x=>`<li>${esc(x)}</li>`).join("")}</ul>${p.nota?`<p style="font-size:15px;color:var(--suave);margin-top:10px">${esc(p.nota).replace(/trabalhos 22 e 30/,`trabalhos <a href="#t22">22</a> e <a href="#t30">30</a>`)}</p>`:""}
   <p class="importa">${esc(p.importa)}</p>
   <h3>Conversa com</h3>${relHtml}
-  <h3>Autoria</h3><div class="pessoas-ficha">${p.autores.map(x=>`<a class="pessoa-chip" href="#pessoas" data-pessoa="${esc(x)}">${esc(x)}</a>`).join("")}</div>
+  <h3>Autoria</h3><div class="pessoas-ficha">${p.autores.map(x=>`<a class="pessoa-chip" href="#pessoas" data-pessoa="${esc(x)}">${avatar(x)}${esc(x)}</a>`).join("")}</div>
   <h3>Apresentação</h3><p>${DIAS[a.dia].charAt(0).toUpperCase()+DIAS[a.dia].slice(1)}, ${a.dia}, das ${a.ini} às ${a.fim}, sessão ${esc(a.sessao)} (${CONG[a.sessao.slice(0,3)]}), sala ${a.sala}, ${andar(a.sala)}. Apresenta ${esc(a.apres)}; orientação de ${esc(a.orient)}. ${a.sit==="conferir"?'<span class="selo">Confirmar na grade</span>':""}</p>${a.obs?`<p style="font-size:15px;color:var(--suave)">${esc(a.obs)}</p>`:""}
   <h3>Texto completo</h3><p style="font-size:15px;color:var(--suave)">${p.nref} referências no artigo.</p><div class="links"><a class="botao" href="${p.md}" target="_blank" rel="noopener">Abrir texto (MD)</a><a class="botao" href="${p.pdf}" target="_blank" rel="noopener">Abrir PDF</a></div>`;
 }
@@ -575,7 +586,7 @@ function cartao(nome){const o=PES[nome];
   const parc={}; o.trab.forEach(n=>byN[n].autores.forEach(x=>{if(x!==nome&&!COORD.includes(x))parc[x]=(parc[x]||0)+1;}));
   const top=Object.entries(parc).sort((a,b)=>b[1]-a[1]||a[0].localeCompare(b[0],"pt")).slice(0,3);
   const papel=COORD.includes(nome)?"Coordenação do grupo":"";
-  return `<h2>${esc(nome)}</h2><div class="inst" style="font-size:15px;color:var(--suave);margin:2px 0 12px">${esc(inst(nome))}${papel?". "+papel:""}</div>
+  return `${avatar(nome,"g")}<h2>${esc(nome)}</h2><div class="inst" style="font-size:15px;color:var(--suave);margin:2px 0 12px">${esc(inst(nome))}${papel?". "+papel:""}</div>
   <div class="papeis"><span><b>${o.trab.length}</b>trabalhos</span>${o.primeira?`<span><b>${o.primeira}</b>como 1ª autoria</span>`:""}${o.apres?`<span><b>${o.apres}</b>apresenta</span>`:""}${o.orient?`<span><b>${o.orient}</b>orienta</span>`:""}</div>
   <h3>Trabalhos</h3><ul class="rel">${o.trab.map(n=>`<li><a href="#t${n}">${esc(byN[n].curto)}</a></li>`).join("")}</ul>
   ${top.length?`<h3>Publica mais com</h3><p>${top.map(t=>`<button class="linkbtn" type="button" data-p="${esc(t[0])}">${esc(t[0])}</button> (${t[1]})`).join(", ")}</p>`:""}
@@ -600,12 +611,12 @@ function gente(){
   for(let i=0;i<nomes.length;i++)for(let j=i+1;j<nomes.length;j++){const w=juntos(nomes[i],nomes[j]);if(!w)continue;
     const A=pos[nomes[i]],B=pos[nomes[j]],mx=(A.x+B.x)/2,my=(A.y+B.y)/2,qx=mx+(GX-mx)*.35,qy=my+(GY-my)*.35;
     s+=`<path class="ar" data-a="${esc(nomes[i])}" data-b="${esc(nomes[j])}" stroke-width="${(0.6+0.9*w).toFixed(1)}" d="M${A.x.toFixed(1)},${A.y.toFixed(1)} Q${qx.toFixed(1)},${qy.toFixed(1)} ${B.x.toFixed(1)},${B.y.toFixed(1)}"/>`;}
-  nomes.forEach(n=>{const p=pos[n],r=8+3.3*Math.sqrt(PES[n].trab.length),g=grupoDe(n);
+  nomes.forEach(n=>{const p=pos[n],r=12+3.6*Math.sqrt(PES[n].trab.length),g=grupoDe(n);
     let lx,ly,anc;
     if(g==="coord"){const c=Math.cos(p.a);lx=p.x;ly=p.y+(c>0?r+20:-r-9);anc="middle";}
     else{const c=Math.cos(p.a),sn=Math.sin(p.a);lx=p.x+c*(r+8);ly=p.y+sn*(r+8)+5;anc=c>.3?"start":c<-.3?"end":"middle";if(anc==="middle")ly=p.y+(sn>0?r+20:-r-8);}
     const rot=estreito?n.split(" ")[0]:curto(n), fs=estreito?24:15;
-    s+=`<g class="pn" data-p="${esc(n)}" tabindex="0" role="button" aria-label="${esc(n)}, ${PES[n].trab.length} trabalhos"><circle cx="${p.x.toFixed(1)}" cy="${p.y.toFixed(1)}" r="${r.toFixed(1)}" fill="${CORG[g]}" stroke="var(--papel)" stroke-width="2.5"/><text x="${lx.toFixed(1)}" y="${ly.toFixed(1)}" text-anchor="${anc}" font-size="${fs}" style="paint-order:stroke;stroke:var(--papel);stroke-width:5px">${esc(rot)}</text></g>`;});
+    s+=`<g class="pn" data-p="${esc(n)}" tabindex="0" role="button" aria-label="${esc(n)}, ${PES[n].trab.length} trabalhos"><clipPath id="cp-${slug(n)}"><circle cx="${p.x.toFixed(1)}" cy="${p.y.toFixed(1)}" r="${r.toFixed(1)}"/></clipPath><circle cx="${p.x.toFixed(1)}" cy="${p.y.toFixed(1)}" r="${r.toFixed(1)}" fill="${CORG[g]}"/><text x="${p.x.toFixed(1)}" y="${(p.y+r*.36).toFixed(1)}" text-anchor="middle" font-size="${(r*.9).toFixed(1)}" style="fill:#fff;font-weight:600;pointer-events:none">${iniciais(n)}</text><image href="${foto(n)}" x="${(p.x-r).toFixed(1)}" y="${(p.y-r).toFixed(1)}" width="${(2*r).toFixed(1)}" height="${(2*r).toFixed(1)}" preserveAspectRatio="xMidYMid slice" clip-path="url(#cp-${slug(n)})" onerror="this.remove()"/><circle class="aro" cx="${p.x.toFixed(1)}" cy="${p.y.toFixed(1)}" r="${(r+1).toFixed(1)}" fill="none" stroke="${CORG[g]}" stroke-width="3"/><text x="${lx.toFixed(1)}" y="${ly.toFixed(1)}" text-anchor="${anc}" font-size="${fs}" style="paint-order:stroke;stroke:var(--papel);stroke-width:5px">${esc(rot)}</text></g>`;});
   svgG.innerHTML=s; realcaGente(); painelGente();
 }
 function realcaGente(){
@@ -649,7 +660,7 @@ function agenda(){
       if(!amb.length)return "";return `<div class="aviso">No mesmo horário, a sessão ${o.sessao} acontece na sala ${o.sala}${o.sala.charAt(0)!==s.sala.charAt(0)?" ("+andar(o.sala)+")":""}. ${ori.length?`Orienta trabalhos nas duas: ${ori.map(esc).join(", ")}. `:""}Também assinam trabalhos nas duas: ${amb.filter(x=>!ori.includes(x)).map(esc).join(", ")||"ninguém além da orientação"}.</div>`;}).join("");
     const emCurso=dataDe(s.dia,s.ini)<=agora&&agora<dataDe(s.dia,s.fim);
     const blocos=s.trab[0].ap.obs.startsWith("Sessão em dois blocos")?" (em dois blocos)":"";
-    return `<div class="sessao"><div><div class="hora">${s.ini}–${s.fim}</div><div class="onde">${esc(s.sessao)}${blocos}<br>Sala ${s.sala}, ${andar(s.sala)}<br>${CONG[s.sessao.slice(0,3)]}</div>${emCurso?'<span class="agora" style="margin:8px 0 0">Acontecendo agora</span>':(proxima===s?'<span class="agora" style="margin:8px 0 0">Próxima</span>':"")}</div><div>${s.trab.map(p=>`<div class="trab-ag${pes&&p.autores.includes(pes)?" meu":""}"><a class="tt" href="#t${p.n}">${esc(p.curto)}</a><div class="q">Apresenta ${esc(p.ap.apres)}. Orientação de ${esc(p.ap.orient)}. ${p.ap.sit==="conferir"?'<span class="selo">Confirmar na grade</span>':""}</div>${p.ap.obs&&!p.ap.obs.startsWith("Sessão em dois blocos")?`<div class="q">${esc(p.ap.obs)}</div>`:""}</div>`).join("")}${avisos}</div></div>`;
+    return `<div class="sessao"><div><div class="hora">${s.ini}–${s.fim}</div><div class="onde">${esc(s.sessao)}${blocos}<br>Sala ${s.sala}, ${andar(s.sala)}<br>${CONG[s.sessao.slice(0,3)]}</div>${emCurso?'<span class="agora" style="margin:8px 0 0">Acontecendo agora</span>':(proxima===s?'<span class="agora" style="margin:8px 0 0">Próxima</span>':"")}</div><div>${s.trab.map(p=>`<div class="trab-ag${pes&&p.autores.includes(pes)?" meu":""}"><a class="tt" href="#t${p.n}">${esc(p.curto)}</a><div class="q" style="display:flex;align-items:center;flex-wrap:wrap;gap:2px 0">${avatar(p.ap.apres)}Apresenta ${esc(p.ap.apres)}.&nbsp;Orientação de ${esc(p.ap.orient)}. ${p.ap.sit==="conferir"?'<span class="selo">Confirmar na grade</span>':""}</div>${p.ap.obs&&!p.ap.obs.startsWith("Sessão em dois blocos")?`<div class="q">${esc(p.ap.obs)}</div>`:""}</div>`).join("")}${avisos}</div></div>`;
   }).join(""):`<p class="vazio">${pes?esc(pes)+" não apresenta nem orienta trabalhos neste dia. Escolha outro dia acima.":"Nenhuma sessão neste dia."}</p>`;
 }
 $("dias").addEventListener("click",e=>{const b=e.target.closest("[data-d]");if(!b)return;diaSel=b.dataset.d;agenda();});
