@@ -273,6 +273,17 @@ table.compare{min-width:0}
 .watch-btn:hover{background:#DCEBF3}
 .watch-btn:focus-visible{outline:3px solid #9FD3F5;outline-offset:3px}
 @media (max-width:600px){.watch{grid-template-columns:1fr;padding:20px}.watch-icon{width:44px;height:44px;font-size:1.1rem}}
+
+.affbox{background:var(--surface);border:1px solid var(--rule);border-left:5px solid var(--hc);border-radius:12px;padding:20px;margin:22px 0;scroll-margin-top:20px}
+.aff-grid{display:grid;grid-template-columns:1fr 1fr;gap:22px;align-items:start}
+.aff-grid>*{min-width:0}
+.affbox input[type=range]{accent-color:var(--hc)}
+#affCanvas{width:100%;height:240px;display:block;border:1px solid var(--rule);border-radius:10px;background:var(--surface)}
+.aff-read{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:10px;text-align:center}
+.aff-read div{background:var(--surface-2);border-radius:8px;padding:8px 4px}
+.aff-read span{display:block;font-size:.8rem;color:var(--ink-2)}
+.aff-read b{font-size:1.25rem;font-variant-numeric:tabular-nums}
+@media (max-width:900px){.aff-grid{grid-template-columns:1fr}}
 </style>
 </head>
 <body>
@@ -477,7 +488,7 @@ table.compare{min-width:0}
             <tr><td>Volume sistólico por kg</td><td class="o" id="r_sv_o"></td><td class="h" id="r_sv_h"></td><td class="r">É aqui que o polvo ajusta o débito.</td></tr>
             <tr><td>Débito cardíaco por kg</td><td class="o" id="r_co_o"></td><td class="h" id="r_co_h"></td><td class="r">DC = FC × VS</td></tr>
             <tr><td>Pressão aórtica (sist./diast.)</td><td class="o" id="r_bp_o"></td><td class="h" id="r_bp_h"></td><td class="r">Polvo medido em cmH₂O; 1 cmH₂O ≈ 0,74 mmHg.</td></tr>
-            <tr><td>P50 (afinidade pelo O₂)</td><td class="o" id="r_p50_o"></td><td class="h" id="r_p50_h"></td><td class="r">P50 maior = solta O₂ com mais facilidade.</td></tr>
+            <tr><td>P50 (afinidade pelo O₂)</td><td class="o" id="r_p50_o"></td><td class="h" id="r_p50_h"></td><td class="r">P50 maior = afinidade menor = solta O₂ com mais facilidade.</td></tr>
             <tr><td>Saturação arterial / venosa</td><td class="o" id="r_sat_o"></td><td class="h" id="r_sat_h"></td><td class="r">Diferença = fração extraída pelos tecidos.</td></tr>
             <tr><td>Conteúdo arterial de O₂ (CaO₂)</td><td class="o" id="r_ca_o"></td><td class="h" id="r_ca_h"></td><td class="r">Inclui O₂ dissolvido no plasma.</td></tr>
             <tr><td>Diferença arteriovenosa de O₂</td><td class="o" id="r_av_o"></td><td class="h" id="r_av_h"></td><td class="r">O₂ entregue por 100 mL de sangue.</td></tr>
@@ -489,12 +500,13 @@ table.compare{min-width:0}
 
       <div class="curve-box">
         <div class="curve-head">
-          <h3 style="margin:0">Curvas de dissociação do oxigênio nas condições atuais</h3>
+          <h3 style="margin:0">Curvas de dissociação do O₂: o retrato da afinidade</h3>
           <div class="seg" role="group" aria-label="Eixo vertical da curva">
             <button type="button" data-curve="sat" aria-pressed="true">% de saturação</button>
             <button type="button" data-curve="cont" aria-pressed="false">mL de O₂ por 100 mL</button>
           </div>
         </div>
+        <p class="hint" style="margin:8px 0 0"><b>Como ler:</b> a curva de dissociação é o gráfico da <b>afinidade</b>. Ela mostra quanto da proteína está ligada ao O₂ em cada pressão. Curva deslocada para a esquerda = afinidade maior (P50 menor, segura mais o O₂); para a direita = afinidade menor (P50 maior, solta mais o O₂). Veja a explicação completa em <a href="#afinidade">“Afinidade: segurar e soltar”</a>.</p>
         <canvas id="curve" aria-label="Curvas de dissociação do oxigênio do polvo e do humano"></canvas>
         <div class="legend">
           <span><b style="background:var(--hc)"></b>Hemocianina do polvo (Hill n ≈ 3)</span>
@@ -564,8 +576,35 @@ table.compare{min-width:0}
     </div>
     <p class="pull">O trunfo da hemocianina não é carregar muito. É descarregar quase tudo quando o tecido acidifica.</p>
     <div class="prose">
-      <p>Na maioria das hemocianinas de cefalópodes estudadas, o coeficiente de Bohr fica abaixo de −1<sup class="cit">[<a href="#ref-11">11</a>]</sup>, contra cerca de −0,48 na hemoglobina humana. A sensibilidade ao pH também muda com a temperatura<sup class="cit">[<a href="#ref-12">12</a>]</sup>. No coração isolado de <i>O. vulgaris</i>, a hemocianina liberou cerca de 70% do O₂ ligado ao atravessar a parede do ventrículo<sup class="cit">[<a href="#ref-15">15</a>]</sup>.</p>
-      <p>O frio tem o efeito oposto. A afinidade da hemocianina aumenta quando a temperatura cai, o que dificulta a liberação de O₂ para os tecidos<sup class="cit">[<a href="#ref-2">2</a>]</sup>. Polvos antárticos compensam isso com uma hemocianina de afinidade mais baixa<sup class="cit">[<a href="#ref-13">13</a>]</sup>.</p>
+      <p>Em termos de afinidade: quando o tecido fica ácido, a afinidade da proteína pelo O₂ cai, a curva de dissociação se desloca para a direita e o oxigênio é liberado. É o efeito Bohr. Na maioria das hemocianinas de cefalópodes estudadas, o coeficiente de Bohr fica abaixo de −1<sup class="cit">[<a href="#ref-11">11</a>]</sup>, contra cerca de −0,48 na hemoglobina humana: a mesma queda de pH muda muito mais a afinidade da hemocianina. A sensibilidade ao pH também muda com a temperatura<sup class="cit">[<a href="#ref-12">12</a>]</sup>. No coração isolado de <i>O. vulgaris</i>, a hemocianina liberou cerca de 70% do O₂ ligado ao atravessar a parede do ventrículo<sup class="cit">[<a href="#ref-15">15</a>]</sup>.</p>
+      <p>O frio tem o efeito oposto: a afinidade da hemocianina aumenta quando a temperatura cai, a curva vai para a esquerda e a liberação de O₂ para os tecidos fica mais difícil<sup class="cit">[<a href="#ref-2">2</a>]</sup>. Polvos antárticos compensam isso com uma hemocianina de afinidade mais baixa<sup class="cit">[<a href="#ref-13">13</a>]</sup>.</p>
+    </div>
+
+    <div class="affbox" id="afinidade">
+      <h3>Afinidade: segurar e soltar</h3>
+      <div class="aff-grid">
+        <div>
+          <p><b>Afinidade</b> é a força com que a proteína (hemoglobina ou hemocianina) segura o oxigênio. Pense numa mão segurando uma bolinha: com afinidade alta, a mão aperta forte, pega fácil e custa a soltar; com afinidade baixa, segura de leve e solta fácil.</p>
+          <p>A medida é o <b>P50</b>, a pressão de O₂ em que metade da proteína está ligada ao oxigênio. A leitura é inversa: <b>P50 baixo = afinidade alta</b>; <b>P50 alto = afinidade baixa</b>. A <b>curva de dissociação</b> é o desenho dessa afinidade: quando a afinidade muda, a curva inteira se desloca para a esquerda ou para a direita.</p>
+          <p>O ideal é segurar bem no pulmão ou na brânquia e soltar bem no tecido. Mova o controle e acompanhe quanto O₂ é entregue entre o pulmão (100 mmHg) e um tecido (30 mmHg).</p>
+          <div class="ctrl"><label for="affP50">P50 <output id="affP50V">27 mmHg</output></label><input type="range" id="affP50" min="10" max="50" step="1" value="27"></div>
+          <div class="presets" role="group" aria-label="Situações">
+            <button type="button" data-p50="17">Hipotermia ou alcalose</button>
+            <button type="button" data-p50="27">Normal</button>
+            <button type="button" data-p50="36">Febre, acidose ou exercício</button>
+          </div>
+        </div>
+        <div>
+          <canvas id="affCanvas" aria-label="Curva de dissociação conforme o P50 escolhido, comparada à curva normal"></canvas>
+          <div class="aff-read" aria-live="polite">
+            <div><span>No pulmão</span><b id="affLung">97%</b></div>
+            <div><span>No tecido</span><b id="affTis">57%</b></div>
+            <div><span>Entregue</span><b id="affDel">40%</b></div>
+          </div>
+          <p class="hint" id="affMsg">Afinidade normal: equilíbrio entre carregar e entregar.</p>
+        </div>
+      </div>
+      <p class="hint">Curva didática (equação de Hill, n = 2,7) com a hemoglobina humana como exemplo; P50 normal de cerca de 27 mmHg<sup class="cit">[<a href="#ref-3">3</a>]</sup>. Os valores das situações são ilustrativos.</p>
     </div>
   </section>
 
@@ -874,7 +913,7 @@ table.compare{min-width:0}
     <div class="prose">
       <h2 id="pense">Para refletir</h2>
       <details><summary>Por que o débito do polvo por kg pode ser parecido com o humano, mas a oferta de O₂ é cerca de 10 vezes menor?</summary><p>Porque DO₂ = DC × CaO₂. O conteúdo arterial do polvo é cerca de cinco vezes menor e o débito em repouso também é menor. Ele sobrevive porque, como ectotérmico, gasta muito menos energia.</p></details>
-      <details><summary>Simule água a 8 °C. O que acontece com a frequência e com o ponto venoso?</summary><p>A frequência cai (Q₁₀ ≈ 3) e a P50 diminui: a hemocianina segura mais O₂ e a saturação venosa sobe. A extração fica mais difícil.</p></details>
+      <details><summary>Simule água a 8 °C. O que acontece com a frequência e com o ponto venoso?</summary><p>A frequência cai (Q₁₀ ≈ 3) e o P50 diminui, ou seja, a afinidade aumenta: a curva vai para a esquerda, a hemocianina segura mais O₂ e a saturação venosa sobe. A extração fica mais difícil.</p></details>
       <details><summary>Por que a pele do polvo não fica "cianótica" quando o sangue perde oxigênio?</summary><p>A cor da pele do polvo vem dos cromatóforos sob comando neural, não do sangue. Além disso, a hemocianina sem O₂ é quase incolor.</p></details>
       <details><summary>Que situação humana se parece com o jato do polvo?</summary><p>Qualquer condição em que o retorno venoso cai abruptamente: manobra de Valsalva prolongada, pneumotórax hipertensivo, tamponamento cardíaco, ventilação com pressão positiva elevada.</p></details>
     </div>
@@ -926,14 +965,14 @@ table.compare{min-width:0}
         <div class="qexp" hidden><p class="qverdict"></p><p>Em <i>Octopus dofleini</i> a capacidade média foi de cerca de 3 mL de O₂ por 100 mL<sup class="cit">[<a href="#ref-1">1</a>]</sup>; no ser humano com Hb de 15 g/dL, cerca de 20 mL<sup class="cit">[<a href="#ref-3">3</a>]</sup>. Troque o eixo da curva de dissociação para ver.</p></div>
       </fieldset>
       <fieldset class="q" data-correct="1">
-        <legend><span class="qn">5</span>O que significa dizer que a hemocianina dos cefalópodes tem um efeito Bohr muito grande?</legend>
+        <legend><span class="qn">5</span>Um tecido em atividade fica mais ácido. O que acontece com a afinidade e com a curva de dissociação?</legend>
         <div class="qopts">
-          <button type="button" data-i="0"><b>a)</b> Que ela carrega mais oxigênio que a hemoglobina</button>
-          <button type="button" data-i="1"><b>b)</b> Que uma pequena queda de pH libera muito oxigênio para o tecido</button>
-          <button type="button" data-i="2"><b>c)</b> Que ela só funciona em água muito fria</button>
-          <button type="button" data-i="3"><b>d)</b> Que ela não é afetada pelo pH</button>
+          <button type="button" data-i="0"><b>a)</b> A afinidade aumenta e a curva vai para a esquerda</button>
+          <button type="button" data-i="1"><b>b)</b> A afinidade diminui, a curva vai para a direita e mais O₂ é liberado</button>
+          <button type="button" data-i="2"><b>c)</b> Nada muda, porque a afinidade é fixa</button>
+          <button type="button" data-i="3"><b>d)</b> A afinidade diminui, mas a proteína passa a carregar mais O₂ no tecido</button>
         </div>
-        <div class="qexp" hidden><p class="qverdict"></p><p>Na maioria das hemocianinas de cefalópodes o coeficiente de Bohr fica abaixo de −1<sup class="cit">[<a href="#ref-11">11</a>]</sup>: o tecido que acidifica recebe grande parte do O₂. Baixe o pH do polvo no simulador e veja o ponto venoso.</p></div>
+        <div class="qexp" hidden><p class="qverdict"></p><p>É o efeito Bohr: o ácido reduz a afinidade (P50 sobe), a curva se desloca para a direita e o O₂ é entregue onde é mais necessário. Nas hemocianinas de cefalópodes o efeito é muito grande, com coeficientes abaixo de −1<sup class="cit">[<a href="#ref-11">11</a>]</sup>. Teste no quadro “Afinidade: segurar e soltar”.</p></div>
       </fieldset>
       <fieldset class="q" data-correct="1">
         <legend><span class="qn">6</span>Um paciente tem Hb de 7,5 g/dL e PaO₂ de 40 mmHg, mas não parece cianótico. Qual a explicação mais provável?</legend>
@@ -1730,6 +1769,41 @@ table.compare{min-width:0}
     refresh(); qs[0].scrollIntoView({behavior:'smooth',block:'center'});
   });
   refresh();
+})();
+
+(function(){
+  const $=id=>document.getElementById(id); if(!$('affCanvas')) return;
+  const n=2.7, hill=(p,p50)=>Math.pow(p,n)/(Math.pow(p,n)+Math.pow(p50,n));
+  const css=v=>getComputedStyle(document.documentElement).getPropertyValue(v).trim();
+  function draw(){
+    const p50=+$('affP50').value;
+    $('affP50V').textContent=p50+' mmHg';
+    const c=$('affCanvas'), r=c.getBoundingClientRect(), d=window.devicePixelRatio||1;
+    c.width=Math.round(r.width*d); c.height=Math.round(r.height*d);
+    const ctx=c.getContext('2d'); ctx.setTransform(d,0,0,d,0,0);
+    const w=r.width,h=r.height,L=40,R=10,T=12,B=30,pw=w-L-R,ph=h-T-B;
+    const X=p=>L+pw*p/110, Y=v=>T+ph*(1-v);
+    ctx.clearRect(0,0,w,h); ctx.font='11px Figtree, system-ui, sans-serif'; ctx.fillStyle=css('--ink-2'); ctx.strokeStyle=css('--rule'); ctx.lineWidth=1;
+    for(let p=0;p<=100;p+=20){ctx.beginPath();ctx.moveTo(X(p),T);ctx.lineTo(X(p),T+ph);ctx.stroke();ctx.textAlign='center';ctx.fillText(p,X(p),T+ph+14);}
+    for(let v=0;v<=1;v+=0.25){ctx.beginPath();ctx.moveTo(L,Y(v));ctx.lineTo(L+pw,Y(v));ctx.stroke();ctx.textAlign='right';ctx.fillText(Math.round(v*100)+'%',L-5,Y(v)+4);}
+    ctx.textAlign='center'; ctx.fillText('PO₂ (mmHg)',L+pw/2,h-3);
+    // zona pulmão / tecido
+    [[30,'tecido'],[100,'pulmão']].forEach(([p,t])=>{ctx.setLineDash([3,4]);ctx.strokeStyle=css('--ink-2');ctx.beginPath();ctx.moveTo(X(p),T);ctx.lineTo(X(p),T+ph);ctx.stroke();ctx.setLineDash([]);ctx.fillStyle=css('--ink-2');ctx.textAlign=p>90?'right':'left';ctx.fillText(t,X(p)+(p>90?-5:5),T+ph-6);ctx.textAlign='center';});
+    const curve=(p,col,wd,dash)=>{ctx.strokeStyle=col;ctx.lineWidth=wd;ctx.setLineDash(dash||[]);ctx.beginPath();for(let i=0;i<=220;i++){const x=110*i/220;i?ctx.lineTo(X(x),Y(hill(x,p))):ctx.moveTo(X(x),Y(hill(x,p)));}ctx.stroke();ctx.setLineDash([]);};
+    if(p50!==27) curve(27,css('--ink-2'),1.5,[5,4]);
+    curve(p50,css('--hc'),3);
+    const sl=hill(100,p50), st=hill(30,p50);
+    ctx.fillStyle=css('--hc'); [[100,sl],[30,st]].forEach(([p,v])=>{ctx.beginPath();ctx.arc(X(p),Y(v),5,0,7);ctx.fill();});
+    ctx.strokeStyle=css('--hc'); ctx.lineWidth=2; ctx.beginPath(); ctx.moveTo(X(30)-8,Y(sl)); ctx.lineTo(X(30)-8,Y(st)); ctx.stroke();
+    $('affLung').textContent=Math.round(sl*100)+'%'; $('affTis').textContent=Math.round(st*100)+'%'; $('affDel').textContent=Math.round((sl-st)*100)+'%';
+    $('affMsg').textContent = p50<22 ? 'Afinidade alta (curva à esquerda): carrega bem, mas entrega pouco ao tecido.' :
+                              p50>32 ? 'Afinidade baixa (curva à direita): entrega mais ao tecido, mas carrega um pouco menos no pulmão.' :
+                              'Afinidade normal: equilíbrio entre carregar e entregar.'+(p50!==27?'':' A linha tracejada aparece como referência quando você muda o P50.');
+  }
+  $('affP50').addEventListener('input',draw);
+  document.querySelectorAll('[data-p50]').forEach(b=>b.addEventListener('click',()=>{$('affP50').value=b.dataset.p50;draw();}));
+  window.addEventListener('resize',draw);
+  draw();
 })();
 </script>
 </body>
