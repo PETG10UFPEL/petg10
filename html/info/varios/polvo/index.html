@@ -284,6 +284,9 @@ table.compare{min-width:0}
 .aff-read span{display:block;font-size:.8rem;color:var(--ink-2)}
 .aff-read b{font-size:1.25rem;font-variant-numeric:tabular-nums}
 @media (max-width:900px){.aff-grid{grid-template-columns:1fr}}
+.jlegend{display:grid;gap:6px;margin:8px 0 4px;font-size:.88rem}
+.jlegend p{margin:0}
+.sw{display:inline-block;width:12px;height:12px;border-radius:3px;margin-right:6px;vertical-align:-1px}
 </style>
 </head>
 <body>
@@ -611,27 +614,40 @@ table.compare{min-width:0}
   <section aria-labelledby="jato">
     <div class="two">
       <figure class="jetfig">
-        <svg id="jetSvg" viewBox="0 0 384 260" role="img" aria-labelledby="jetT">
-          <title id="jetT">Esquema do manto em corte: quando a pressão no manto supera a pressão venosa, a veia colapsa, o sangue para de voltar e o coração sistêmico deixa de bater</title>
+        <svg id="jetSvg" viewBox="0 0 384 262" role="img" aria-labelledby="jetT">
+          <title id="jetT">Esquema do manto em corte. Setas laranja: pressão no manto, que a água da cavidade exerce de fora sobre as vísceras e sobre a veia cava. Setas azuis: pressão venosa, a pressão do sangue dentro da veia. Quando a laranja supera a azul, a veia colapsa, o sangue para de voltar e o coração sistêmico deixa de bater</title>
+          <defs>
+            <marker id="arO" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 Z" fill="var(--warn)"/></marker>
+            <marker id="arB" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 Z" fill="var(--hc)"/></marker>
+          </defs>
           <g id="jWater"></g>
           <g transform="translate(34 0)">
           <path id="jMantle" d="M60 130 C60 60 140 30 220 40 C290 50 320 95 320 130 C320 165 290 210 220 220 C140 230 60 200 60 130 Z" fill="var(--hc-bg)" stroke="var(--hc)" stroke-width="10"/>
+          <path id="jCavity" d="M60 130 C60 60 140 30 220 40 C290 50 320 95 320 130 C320 165 290 210 220 220 C140 230 60 200 60 130 Z" fill="var(--warn)" opacity="0"/>
           <path d="M60 118 L22 108 L22 152 L60 142" fill="var(--hc-bg)" stroke="var(--hc)" stroke-width="6" stroke-linejoin="round"/>
           <text x="24" y="100" font-size="11" fill="var(--ink-2)">funil</text>
+          <g id="jMA"></g>
           <path id="jVein" d="M300 130 C260 130 240 160 200 160 C170 160 160 140 150 130" fill="none" stroke="var(--hc-deoxy)" stroke-width="14" stroke-linecap="round"/>
           <path id="jVeinFlow" d="M300 130 C260 130 240 160 200 160 C170 160 160 140 150 130" fill="none" stroke="var(--surface)" stroke-width="3" stroke-dasharray="3 12" stroke-linecap="round"/>
-          <text x="232" y="186" font-size="11" fill="var(--ink-2)">veia cava</text>
+          <g id="jVA"></g>
           <ellipse id="jHeart" cx="132" cy="126" rx="22" ry="18" fill="var(--hc)" stroke="var(--ink)" stroke-width="1.5" style="transform-origin:132px 126px"/>
-          <text x="132" y="92" text-anchor="middle" font-size="11" fill="var(--ink-2)">c. sistêmico</text>
+          <text x="132" y="96" text-anchor="middle" font-size="11" fill="var(--ink-2)">c. sistêmico</text>
+          <text x="190" y="18" text-anchor="middle" font-size="11" fill="var(--warn)"><tspan font-weight="700">cavidade do manto</tspan> (água sob pressão)</text>
+          <path d="M190 23 L190 46" stroke="var(--warn)" stroke-width="1" stroke-dasharray="2 2"/>
+          <text x="214" y="184" text-anchor="middle" font-size="10.5" fill="var(--hc)"><tspan font-weight="700">veia cava</tspan>: sangue voltando</text>
           </g>
         </svg>
+        <div class="jlegend">
+          <p><span class="sw" style="background:var(--warn)"></span><b>Pressão no manto</b> (setas laranja): o músculo do manto contrai e espreme a água que está na cavidade. Essa água pressionada aperta, <b>de fora</b>, tudo o que está dentro da cavidade, inclusive a veia cava.</p>
+          <p><span class="sw" style="background:var(--hc)"></span><b>Pressão venosa</b> (setas azuis): a pressão do sangue <b>dentro</b> da veia cava, que mantém a veia aberta e empurra o sangue de volta ao coração.</p>
+        </div>
         <div class="gauges">
-          <div><span>Pressão no manto</span><div class="bar"><i id="gM"></i></div></div>
-          <div><span>Pressão venosa</span><div class="bar"><i id="gV" style="width:35%"></i></div></div>
+          <div><span><span class="sw" style="background:var(--warn)"></span>Pressão no manto</span><div class="bar"><i id="gM"></i></div></div>
+          <div><span><span class="sw" style="background:var(--hc)"></span>Pressão venosa</span><div class="bar"><i id="gV" style="width:35%"></i></div></div>
         </div>
         <div class="ctrl"><label for="jForce">Força de contração do manto <output id="jForceV">repouso</output></label><input type="range" id="jForce" min="0" max="100" value="0"></div>
         <div class="status" id="jStatus" aria-live="polite">Manto relaxado: o sangue volta ao coração normalmente.</div>
-        <figcaption>Figura 2. Esquema qualitativo do mecanismo proposto por Wells e colaboradores para a parada cardíaca no jato<sup class="cit">[<a href="#ref-10">10</a>]</sup>.</figcaption>
+        <figcaption>Figura 2. É um cabo de guerra na parede da veia: enquanto a pressão de dentro (azul) vence a de fora (laranja), a veia fica aberta e o coração enche. Quando a de fora vence, a veia é achatada e o retorno para. Esquema qualitativo do mecanismo proposto por Wells e colaboradores para a parada cardíaca no jato<sup class="cit">[<a href="#ref-10">10</a>]</sup>.</figcaption>
       </figure>
       <div>
         <h2 id="jato">Por que o coração para quando o polvo nada</h2>
@@ -1522,6 +1538,34 @@ table.compare{min-width:0}
   const jWater=$('jWater'); const drops=[];
   for(let i=0;i<26;i++) drops.push({el:mk('circle',{r:3.5,fill:'var(--hc)'},jWater),x:Math.random()*56,y:118+Math.random()*24,v:0});
   let jPhase=0, jFlow=0;
+  // setas de pressão
+  const jMA=$('jMA'), jVA=$('jVA');
+  const mArrows=[]; for(let i=0;i<12;i++){ const ang=i/12*Math.PI*2+0.26; mArrows.push({ang,el:mk('line',{stroke:'var(--warn)','stroke-width':2.5,'marker-end':'url(#arO)','stroke-linecap':'round'},jMA)}); }
+  const vein=$('jVein'), vLen=vein.getTotalLength(), vArrows=[];
+  [0.15,0.45,0.75].forEach(t=>{ const p=vein.getPointAtLength(t*vLen), q=vein.getPointAtLength(Math.min(vLen,t*vLen+1));
+    const tx=q.x-p.x, ty=q.y-p.y, m=Math.hypot(tx,ty)||1, nx=-ty/m, ny=tx/m;
+    [1,-1].forEach(sg=>vArrows.push({p,nx:nx*sg,ny:ny*sg,el:mk('line',{stroke:'var(--hc)','stroke-width':2,'marker-end':'url(#arB)','stroke-linecap':'round'},jVA)}));
+    [1,-1].forEach(sg=>vArrows.push({p,nx:nx*sg,ny:ny*sg,ext:true,el:mk('line',{stroke:'var(--warn)','stroke-width':2.5,'marker-end':'url(#arO)','stroke-linecap':'round'},jVA)}));
+  });
+  function drawPressure(f,squeeze){
+    const cx=190, cy=130, rx=122, ry=82;
+    mArrows.forEach(a=>{ const r0=0.97, r1=0.97-(0.06+0.11*f); const c=Math.cos(a.ang), s=Math.sin(a.ang);
+      a.el.setAttribute('x1',(cx+c*rx*r0).toFixed(1)); a.el.setAttribute('y1',(cy+s*ry*r0).toFixed(1));
+      a.el.setAttribute('x2',(cx+c*rx*r1).toFixed(1)); a.el.setAttribute('y2',(cy+s*ry*r1).toFixed(1));
+      a.el.setAttribute('opacity',f<0.02?0:(0.35+0.65*f).toFixed(2)); });
+    const half=(14-11*squeeze)/2;
+    vArrows.forEach(a=>{
+      if(a.ext){ const len=4+16*f, start=half+3+len;   // laranja: de fora para a parede
+        a.el.setAttribute('x1',(a.p.x+a.nx*start).toFixed(1)); a.el.setAttribute('y1',(a.p.y+a.ny*start).toFixed(1));
+        a.el.setAttribute('x2',(a.p.x+a.nx*(half+2)).toFixed(1)); a.el.setAttribute('y2',(a.p.y+a.ny*(half+2)).toFixed(1));
+        a.el.setAttribute('opacity',f<0.02?0:(0.4+0.6*f).toFixed(2));
+      } else { const len=8;                              // azul: de dentro para a parede
+        a.el.setAttribute('x1',a.p.x.toFixed(1)); a.el.setAttribute('y1',a.p.y.toFixed(1));
+        const L2=half+1+9*(1-squeeze); a.el.setAttribute('x2',(a.p.x+a.nx*L2).toFixed(1)); a.el.setAttribute('y2',(a.p.y+a.ny*L2).toFixed(1));
+        a.el.setAttribute('opacity',(1-0.6*squeeze).toFixed(2)); }
+    });
+    $('jCavity').setAttribute('opacity',(0.22*f).toFixed(2));
+  }
   function jetFrame(dt){
     const f=+$('jForce').value/100;
     const pm=f, pv=0.35;
@@ -1531,7 +1575,7 @@ table.compare{min-width:0}
     $('jForceV').textContent=f===0?'repouso':f<0.35?'respiração ('+Math.round(f*100)+'%)':'jato ('+Math.round(f*100)+'%)';
     $('jVein').setAttribute('stroke-width',(14-11*squeeze).toFixed(1));
     $('jVeinFlow').setAttribute('stroke-width',blocked?0.8:3);
-    $('jMantle').setAttribute('stroke-width',(10+14*f).toFixed(1));
+    $('jMantle').setAttribute('stroke-width',(10+14*f).toFixed(1)); drawPressure(f,squeeze);
     if(!blocked){ jFlow-=dt*30; jPhase=(jPhase+dt*0.75)%1; }
     $('jVeinFlow').style.strokeDashoffset=jFlow;
     const hs=blocked?1:(jPhase<0.35?1-0.15*Math.sin(Math.PI*jPhase/0.35):1);
