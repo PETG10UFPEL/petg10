@@ -299,6 +299,13 @@ table.compare{min-width:0}
 .cc-res.cc-yes{color:#5C4C92;font-weight:700}
 .cc-key{font-size:.78rem;color:var(--ink-2);margin:2px 0 0}
 .cc-line{display:inline-block;width:0;height:12px;border-left:2px dashed var(--ink);margin:0 6px 0 12px;vertical-align:-2px}
+.gloss{margin-top:20px;background:var(--surface-2);border-radius:10px;padding:14px 16px}
+.gloss h3{font-size:1.05rem;margin-bottom:8px}
+.gloss dl{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:6px 18px;margin:0}
+.gloss dl>div{display:grid;grid-template-columns:78px 1fr;gap:8px;font-size:.88rem}
+.gloss dt{font-weight:700;color:var(--hc)}
+.gloss dd{margin:0}
+@media (max-width:700px){.gloss dl{grid-template-columns:1fr}}
 </style>
 </head>
 <body>
@@ -495,20 +502,35 @@ table.compare{min-width:0}
         </div>
       </div>
 
+      <div class="gloss" id="siglas">
+        <h3>Antes da tabela: as siglas</h3>
+        <dl>
+          <div><dt>FC</dt><dd><b>Frequência cardíaca</b>: batimentos por minuto.</dd></div>
+          <div><dt>VS</dt><dd><b>Volume sistólico</b>: sangue ejetado a cada batimento.</dd></div>
+          <div><dt>DC</dt><dd><b>Débito cardíaco</b>: sangue bombeado por minuto. DC = FC × VS.</dd></div>
+          <div><dt>CaO₂</dt><dd><b>Conteúdo arterial de O₂</b>: quanto oxigênio há em 100 mL de sangue arterial (mL/dL).</dd></div>
+          <div><dt>CvO₂</dt><dd><b>Conteúdo venoso de O₂</b>: o que sobra no sangue que volta dos tecidos.</dd></div>
+          <div><dt>DO₂</dt><dd><b>Oferta de O₂</b>: oxigênio levado aos tecidos por minuto. DO₂ = DC × CaO₂ (o caminhão × a carga).</dd></div>
+          <div><dt>VO₂</dt><dd><b>Consumo de O₂</b>: oxigênio que os tecidos usam. VO₂ = DC × (CaO₂ − CvO₂), o princípio de Fick<sup class="cit">[<a href="#ref-3">3</a>]</sup>.</dd></div>
+          <div><dt>PaO₂ · P50</dt><dd><b>Pressão arterial de O₂</b> e <b>P50</b>, a pressão em que metade da proteína está ligada ao O₂ (medida da afinidade).</dd></div>
+        </dl>
+        <p class="hint">Para comparar animais de tamanhos diferentes, a tabela divide os valores pelo peso corporal (por kg).</p>
+      </div>
+
       <div class="readout">
         <table aria-label="Parâmetros calculados">
           <thead><tr><th>Parâmetro</th><th>Polvo</th><th>Humano</th><th>Como ler</th></tr></thead>
           <tbody>
             <tr><td>Frequência cardíaca (sistêmico)</td><td class="o" id="r_hr_o"></td><td class="h" id="r_hr_h"></td><td class="r">O polvo quase não acelera no esforço.</td></tr>
             <tr><td>Volume sistólico por kg</td><td class="o" id="r_sv_o"></td><td class="h" id="r_sv_h"></td><td class="r">É aqui que o polvo ajusta o débito.</td></tr>
-            <tr><td>Débito cardíaco por kg</td><td class="o" id="r_co_o"></td><td class="h" id="r_co_h"></td><td class="r">DC = FC × VS</td></tr>
+            <tr><td>Débito cardíaco por kg</td><td class="o" id="r_co_o"></td><td class="h" id="r_co_h"></td><td class="r">DC = FC × VS: batimentos por minuto × sangue por batimento.</td></tr>
             <tr><td>Pressão aórtica (sist./diast.)</td><td class="o" id="r_bp_o"></td><td class="h" id="r_bp_h"></td><td class="r">Polvo medido em cmH₂O; 1 cmH₂O ≈ 0,74 mmHg.</td></tr>
             <tr><td>P50 (afinidade pelo O₂)</td><td class="o" id="r_p50_o"></td><td class="h" id="r_p50_h"></td><td class="r">P50 maior = afinidade menor = solta O₂ com mais facilidade.</td></tr>
             <tr><td>Saturação arterial / venosa</td><td class="o" id="r_sat_o"></td><td class="h" id="r_sat_h"></td><td class="r">Diferença = fração extraída pelos tecidos.</td></tr>
             <tr><td>Conteúdo arterial de O₂ (CaO₂)</td><td class="o" id="r_ca_o"></td><td class="h" id="r_ca_h"></td><td class="r">Inclui O₂ dissolvido no plasma.</td></tr>
             <tr><td>Diferença arteriovenosa de O₂</td><td class="o" id="r_av_o"></td><td class="h" id="r_av_h"></td><td class="r">O₂ entregue por 100 mL de sangue.</td></tr>
-            <tr><td>Oferta de O₂ (DO₂) por kg</td><td class="o" id="r_do2_o"></td><td class="h" id="r_do2_h"></td><td class="r">DO₂ = DC × CaO₂</td></tr>
-            <tr><td>Consumo de O₂ (VO₂) por kg</td><td class="o" id="r_vo2_o"></td><td class="h" id="r_vo2_h"></td><td class="r">Princípio de Fick: DC × (CaO₂ − CvO₂)</td></tr>
+            <tr><td>Oferta de O₂ (DO₂) por kg</td><td class="o" id="r_do2_o"></td><td class="h" id="r_do2_h"></td><td class="r">DO₂ = DC × CaO₂: quanto sangue passa × quanto O₂ ele carrega.</td></tr>
+            <tr><td>Consumo de O₂ (VO₂) por kg</td><td class="o" id="r_vo2_o"></td><td class="h" id="r_vo2_h"></td><td class="r">Princípio de Fick: DC × (CaO₂ − CvO₂), o que entrou menos o que voltou.</td></tr>
           </tbody>
         </table>
       </div>
@@ -947,7 +969,7 @@ table.compare{min-width:0}
   <section aria-labelledby="pense">
     <div class="prose">
       <h2 id="pense">Para refletir</h2>
-      <details><summary>Por que o débito do polvo por kg pode ser parecido com o humano, mas a oferta de O₂ é cerca de 10 vezes menor?</summary><p>Porque DO₂ = DC × CaO₂. O conteúdo arterial do polvo é cerca de cinco vezes menor e o débito em repouso também é menor. Ele sobrevive porque, como ectotérmico, gasta muito menos energia.</p></details>
+      <details><summary>Quando o polvo rasteja, seu débito cardíaco por kg fica parecido com o humano em repouso. Por que, mesmo assim, ele entrega muito menos oxigênio aos tecidos?</summary><p>Use as siglas do simulador. A oferta de O₂ depende de duas coisas: <b>DO₂ = DC × CaO₂</b>, ou seja, quanto sangue o coração bombeia por minuto (DC) vezes quanto oxigênio cada 100 mL desse sangue carrega (CaO₂). Pense num caminhão de entregas: DC é quantas viagens ele faz, CaO₂ é a carga em cada viagem.</p><p>Rastejando, o polvo faz quase tantas “viagens” por kg quanto você (cerca de 60 contra 70 mL/kg/min no simulador), mas cada viagem leva cerca de cinco vezes menos carga (CaO₂ de ~4 contra ~20 mL/dL)<sup class="cit">[<a href="#ref-1">1</a>,<a href="#ref-3">3</a>]</sup>. Resultado: a oferta fica cerca de cinco vezes menor; em repouso, quando o débito do polvo também cai, a diferença chega a cerca de dez vezes. Ele sobrevive porque, como ectotérmico, gasta muito menos energia e precisa de bem menos O₂.</p></details>
       <details><summary>Simule água a 8 °C. O que acontece com a frequência e com o ponto venoso?</summary><p>A frequência cai (Q₁₀ ≈ 3) e o P50 diminui, ou seja, a afinidade aumenta: a curva vai para a esquerda, a hemocianina segura mais O₂ e a saturação venosa sobe. A extração fica mais difícil.</p></details>
       <details><summary>Por que a pele do polvo não fica "cianótica" quando o sangue perde oxigênio?</summary><p>A cor da pele do polvo vem dos cromatóforos sob comando neural, não do sangue. Além disso, a hemocianina sem O₂ é quase incolor.</p></details>
       <details><summary>Que situação humana se parece com o jato do polvo?</summary><p>Qualquer condição em que o retorno venoso cai abruptamente: manobra de Valsalva prolongada, pneumotórax hipertensivo, tamponamento cardíaco, ventilação com pressão positiva elevada.</p></details>
