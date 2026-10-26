@@ -16,6 +16,7 @@
 :root{
   --fundo:#FAF7F7; --papel:#FFFFFF; --tinta:#1A1A1A; --suave:#5B5B5B; --linha:#E4DEDC; --realce:#EEF3FA;
   --azul:#4F81BD; --azul-escuro:#2F5F99; --faixa:#4F81BD; --faixa-txt:#F3F6FB;
+  --pet-azul:#1A3159; --pet-verm:#C9502A; --pet-verm-txt:#C9502A;
   --tec:#4F81BD; --tel:#2A8C82; --cli:#B8524A; --ges:#C98A1B; --for:#7A5BA6;
   --dial:#2F5F99; --ref:#A0522D; --coaut:#9C9592; --alerta:#8A5A00; --alerta-fundo:#FFF4DC;
   --titulo:"Calistoga", Georgia, "Times New Roman", serif;
@@ -28,11 +29,13 @@
 @media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
   --fundo:#161819; --papel:#202325; --tinta:#ECEAE8; --suave:#AAA6A3; --linha:#383C3F; --realce:#22303F;
   --azul:#7FA6D6; --azul-escuro:#9DBDE6; --faixa:#26456B; --faixa-txt:#E3ECF7;
+  --pet-azul:#8DB8E3; --pet-verm-txt:#E8774E;
   --dial:#9DBDE6; --ref:#D9926A; --coaut:#7C7774; --alerta:#F2C46B; --alerta-fundo:#3A2F17;
   color-scheme:dark}}
 :root[data-theme="dark"]{
   --fundo:#161819; --papel:#202325; --tinta:#ECEAE8; --suave:#AAA6A3; --linha:#383C3F; --realce:#22303F;
   --azul:#7FA6D6; --azul-escuro:#9DBDE6; --faixa:#26456B; --faixa-txt:#E3ECF7;
+  --pet-azul:#8DB8E3; --pet-verm-txt:#E8774E;
   --dial:#9DBDE6; --ref:#D9926A; --coaut:#7C7774; --alerta:#F2C46B; --alerta-fundo:#3A2F17;
   color-scheme:dark}
 *,*::before,*::after{box-sizing:border-box}
@@ -49,13 +52,14 @@ h1,h2,h3{font-family:var(--titulo);font-weight:400;line-height:1.15;margin:0}
 /* menu fixo */
 .menu{position:sticky;top:env(safe-area-inset-top,0px);z-index:20;background:var(--papel);border-bottom:1.5px solid var(--linha)}
 .menu .envelope{display:flex;align-items:center;gap:18px;min-height:60px}
-.marca{font:400 19px/1.1 var(--titulo);color:var(--tinta);text-decoration:none;white-space:nowrap}
+.marca{font:400 19px/1.1 var(--titulo);color:var(--pet-azul);text-decoration:none;white-space:nowrap}
+.marca .g10{color:var(--pet-verm-txt)}
 .marca small{display:block;font:13px/1.2 var(--texto);color:var(--suave)}
 .abas{display:flex;gap:4px;overflow-x:auto;scrollbar-width:none;margin-left:auto}
 .abas::-webkit-scrollbar{display:none}
 .abas a{font-size:16px;text-decoration:none;color:var(--suave);padding:9px 14px;border-radius:999px;white-space:nowrap}
-.abas a:hover{color:var(--tinta);background:var(--fundo)}
-.abas a[aria-current="page"]{background:var(--tinta);color:var(--papel)}
+.abas a:hover{color:var(--pet-verm-txt);background:var(--fundo)}
+.abas a[aria-current="page"]{background:var(--pet-verm);color:#fff}
 @media (max-width:760px){.menu .envelope{flex-direction:column;align-items:stretch;gap:2px;padding-top:8px;padding-bottom:6px;min-height:0}.marca small{display:none}.abas{margin-left:-6px}.abas{gap:0}.abas a{padding:6px 8px;font-size:14px}}
 
 .vista[hidden]{display:none}
@@ -276,7 +280,7 @@ ol.linha a{font-size:15px}
 <body>
 <nav class="menu" aria-label="Seções">
   <div class="envelope">
-    <a class="marca" href="#panorama">PET-Saúde Digital UFPel, G10 Feridas Crônicas<small>12ª SIIEPE, 09 a 13 de novembro de 2026</small></a>
+    <a class="marca" href="#panorama">PET-Saúde Digital UFPel, <span class="g10">G10 Feridas Crônicas</span><small>12ª SIIEPE, 09 a 13 de novembro de 2026</small></a>
     <div class="abas">
       <a href="#panorama" data-v="panorama">Panorama</a>
       <a href="#trabalhos" data-v="trabalhos">Trabalhos</a>
