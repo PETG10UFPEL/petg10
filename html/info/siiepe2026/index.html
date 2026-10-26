@@ -246,6 +246,10 @@ footer a{color:#fff}
 .som .rot{font-size:13px;color:var(--suave);white-space:nowrap}
 .som .rot a{color:var(--suave)}
 @media (max-width:640px){.som .rot{display:none}.som input[type=range]{width:76px}}
+.agr-img{float:right;width:min(300px,42%);margin:4px 0 14px 24px}
+.agr-img img{display:block;width:100%;height:auto;border-radius:14px}
+.agradece::after{content:"";display:block;clear:both}
+@media (max-width:640px){.agr-img{float:none;width:100%;margin:0 0 16px}}
 .botao-claro{display:inline-block;color:#fff;border:1.5px solid #fff;border-radius:999px;padding:9px 16px;text-decoration:none;font-size:16px}
 .botao-claro:hover{background:#fff;color:#1A1A1A}
 .eixo-img{display:block;width:100%;aspect-ratio:4/3;object-fit:cover;border-radius:16px;margin-bottom:12px;background:var(--linha)}
@@ -369,6 +373,7 @@ ol.linha a{font-size:15px}
     <div class="bloco" id="agradecimentos">
       <h2 style="margin-bottom:16px">Agradecimentos</h2>
       <div class="agradece">
+        <figure class="agr-img" data-opc><img src="img/agradece.png" alt="Ilustração de estudantes e profissionais de saúde entre duas unidades de saúde, conversando com uma paciente num banco; à frente, um livro aberto com gráficos e folhas de trabalhos" width="502" height="282" loading="lazy" onerror="this.closest('figure').remove()"></figure>
         <p>À Dra. Gabriela Carpena Schramm Coelho, que na época atuava como médica da Estratégia Saúde da Família na UBS Sansca, e à enfermeira Alini Silveira Duarte, coordenadora da unidade. Em setembro de 2025, elas abriram as portas da UBS Sansca para a tutoria e as ações assistenciais do PET-Saúde Digital UFPel, G10 Feridas Crônicas, quando o projeto dava os primeiros passos.</p>
         <p>À Prefeitura Municipal de Pelotas e, em especial, à enfermeira Lilian Rubira, que da mesma forma abriram as portas do Ambulatório de Feridas Complexas, recém-inaugurado em maio de 2026.</p>
         <p>Sem essas portas abertas, boa parte dos trabalhos reunidos nesta página não existiria.</p>
