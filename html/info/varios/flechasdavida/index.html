@@ -689,6 +689,38 @@
   }
   .rhizome-principles .rp span{ font-size:.85rem; color:rgba(255,255,255,.82); line-height:1.5; }
 
+  /* QUEM É, NA VERDADE — box de esclarecimento clínico */
+  .clinical-box{
+    background:#FFF8EC;
+    border:1px solid #F0DCA8;
+    border-left:5px solid #B8860B;
+    border-radius:14px;
+    padding:28px 32px;
+    margin-bottom:32px;
+  }
+  .clinical-box h3{
+    font-family:var(--serif);
+    font-size:1.15rem;
+    margin:0 0 12px;
+    color:#8A6400;
+  }
+  .clinical-box p{ color:#5C4A1F; max-width:75ch; }
+  .clinical-box .stat-row{
+    display:grid;
+    grid-template-columns:repeat(auto-fit, minmax(160px,1fr));
+    gap:14px;
+    margin:18px 0;
+  }
+  .clinical-box .stat-row .s{
+    background:#fff;
+    border:1px solid #F0DCA8;
+    border-radius:10px;
+    padding:14px 16px;
+    text-align:center;
+  }
+  .clinical-box .stat-row .s strong{ display:block; font-family:var(--serif); font-size:1.4rem; color:#8A6400; }
+  .clinical-box .stat-row .s span{ font-size:.78rem; color:#5C4A1F; }
+
   .references{ font-size:.88rem; color:var(--ink-soft); }
   .references ol{ padding-left:22px; }
   .references li{ margin-bottom:12px; }
@@ -1067,6 +1099,8 @@
       </div>
       <p class="lead-p">Antes de ser notícia, foi uma enfermeira arqueira. Andrea Castromán, junto com Alejandra Borsani, criou o Flechas de Vida depois de conhecer um programa espanhol que mostrava que a vibração da corda do arco agia como estímulo à drenagem linfática, ajudando na mobilidade do braço após a mastectomia.<sup class="cite"><a href="#ref7">[7]</a></sup></p>
 
+      <p class="lead-p">É importante não simplificar essa origem como "copiaram a Espanha". A inspiração veio de lá, mas o método que existe hoje foi desenvolvido especificamente no Uruguai: Castromán e Borsani projetaram proteções próprias, modificaram a tensão dos arcos e adaptaram as distâncias de tiro para esse público — decisões técnicas que não vieram prontas de lugar nenhum.<sup class="cite"><a href="#ref25">[25]</a></sup> O livro que lançaram em 2026 documenta esse protocolo completo: quem pode participar, como uma sessão se desenvolve passo a passo, as características específicas do equipamento, uma explicação do funcionamento do sistema linfático, e cuidados cotidianos para o braço afetado — como evitar picadas de inseto, ferimentos de jardinagem ou voar de avião sem manga de compressão.<sup class="cite"><a href="#ref10">[10]</a></sup> É um corpo de conhecimento próprio, não um manual importado.</p>
+
       <!-- Foto em paisagem, sozinha, no topo -->
       <figure class="cs-gallery-top" style="margin-top:24px;">
         <img src="img/flechas-de-vida-colagem.jpg" alt="Arqueiras do Flechas de Vida em treino, Montevidéu, Uruguai">
@@ -1188,6 +1222,19 @@
   <section id="processo">
     <span class="kicker">Processo clínico</span>
     <h2 class="section-title">Não é "pegar um arco": é um programa com critérios</h2>
+
+    <div class="clinical-box">
+      <h3>⚠️ Para quem é, na verdade</h3>
+      <p>Vale repetir isto com todas as letras, porque é fácil ler este material e concluir, errado, que "toda mulher que teve câncer de mama é candidata a virar arqueira". Não é isso. O critério clínico central não é o diagnóstico de câncer de mama em si — é ter passado por <strong>esvaziamento ou retirada de linfonodos axilares (gânglios)</strong> durante a cirurgia, e por isso carregar risco real de linfedema no braço.</p>
+      <p>A própria Andrea Castromán, cofundadora do Flechas de Vida e enfermeira, é direta sobre isso: o programa é voltado a "operados de cáncer de mama que le extirparon los ganglios" — não a qualquer pessoa que tenha tido a doença.<sup class="cite"><a href="#ref23">[23]</a></sup></p>
+      <div class="stat-row">
+        <div class="s"><strong>~17–22%</strong><span>risco médio de linfedema após câncer de mama, em geral</span></div>
+        <div class="s"><strong>~6%</strong><span>risco após biópsia do linfonodo sentinela (retirada mínima)</span></div>
+        <div class="s"><strong>~20–30%</strong><span>risco após esvaziamento axilar completo (retirada extensa)</span></div>
+      </div>
+      <p>Esses números vêm da maior revisão sistemática já feita sobre o tema, com mais de 70 estudos analisados.<sup class="cite"><a href="#ref24">[24]</a></sup> Ou seja: uma mulher que teve câncer de mama mas fez só a biópsia do linfonodo sentinela — cada vez mais comum em diagnósticos precoces — tem risco bem menor de linfedema, e não é o público-alvo específico desses programas. Ela pode praticar arco à vontade, como qualquer pessoa — só não estaria fazendo isso "por causa" de um diagnóstico de linfedema que ela não tem.</p>
+    </div>
+
     <div class="two-col reverse">
       <figure class="img-placeholder visual" data-img-path="img/processo-clinico-diagrama.png">
         <img src="img/processo-clinico-diagrama.png" alt="Diagrama do fluxo clínico do programa de tiro com arco"
@@ -1629,6 +1676,15 @@
         </li>
         <li id="ref22">Música de abertura ("DREAMS") — fonte do áudio usado no player flutuante desta página.
           <span class="ref-meta"><a href="https://youtu.be/rnQ-slv_xHc" target="_blank" rel="noopener">youtu.be/rnQ-slv_xHc</a></span>
+        </li>
+        <li id="ref23">Subrayado (Uruguai) — "'Nunca imaginé que arco y flecha me fueran a ayudar': arquería para rehabilitación de pacientes oncológicos", com declarações de Andrea Castromán.
+          <span class="ref-meta"><a href="https://www.subrayado.com.uy/nunca-imagine-que-arco-y-flecha-me-fueran-ayudar-arqueria-rehabilitacion-pacientes-oncologicos-n951894" target="_blank" rel="noopener">subrayado.com.uy</a></span>
+        </li>
+        <li id="ref24">DiSipio, T., Rye, S., Newman, B., Hayes, S. — "Incidence of unilateral arm lymphoedema after breast cancer: a systematic review and meta-analysis", The Lancet Oncology, 2013;14(6):500–15.
+          <span class="ref-meta"><a href="https://sciencedaily.com/releases/2013/08/130807094648.htm" target="_blank" rel="noopener">sciencedaily.com — resumo do estudo</a></span>
+        </li>
+        <li id="ref25">Radio Yi Durazno (Uruguai) — "'Flechas de Vida': El programa de tiro con arco adaptado que ayuda a mujeres recuperadas de cáncer de mama en Uruguay", com declarações de Alejandra Borsani sobre o desenvolvimento do método.
+          <span class="ref-meta"><a href="https://roumedia.com/noti/contenidos.htm" target="_blank" rel="noopener">roumedia.com</a></span>
         </li>
       </ol>
       <p class="attribution-note" style="margin-top:20px;">Imagens do Flechas de Vida (Uruguai), a foto de Katherine Wu (Stanford) e a foto histórica de 1948 (Stoke Mandeville) usadas nesta peça foram fornecidas diretamente para esta produção; demais seções usam placeholders porque não recebemos fotos autorizadas de Joinville ou da Espanha.</p>
