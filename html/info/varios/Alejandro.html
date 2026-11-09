@@ -1,0 +1,320 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Minha agenda SIIEPE 2026: Alejandro</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700&family=Source+Sans+3:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#F3F5F7; --surface:#FFFFFF; --ink:#14283C; --muted:#5B6B7B; --line:#D6DDE4; --soft:#E9EEF2;
+  --A:#2C64A8; --D:#B06E0A; --V:#2D7A5A; --warn:#B3261E; --warnbg:#FCECEA; --new:#6B4FA0;
+  --cond:"Barlow Condensed","Arial Narrow",Arial,sans-serif; --body:"Source Sans 3","Segoe UI",Helvetica,Arial,sans-serif;
+  color-scheme:light;
+  box-sizing:border-box; padding-top:env(safe-area-inset-top,0px); padding-bottom:env(safe-area-inset-bottom,0px);
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --bg:#0E1923; --surface:#15232F; --ink:#E4ECF2; --muted:#9AAAB8; --line:#2A3B4A; --soft:#1C2D3B;
+  --A:#7FB0EC; --D:#E7A94A; --V:#6CC59D; --warn:#FF8A80; --warnbg:#3A1E1D; --new:#B9A2E6; color-scheme:dark;}}
+:root[data-theme="dark"]{
+  --bg:#0E1923; --surface:#15232F; --ink:#E4ECF2; --muted:#9AAAB8; --line:#2A3B4A; --soft:#1C2D3B;
+  --A:#7FB0EC; --D:#E7A94A; --V:#6CC59D; --warn:#FF8A80; --warnbg:#3A1E1D; --new:#B9A2E6; color-scheme:dark;}
+*,*::before,*::after{box-sizing:inherit}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--body);font-size:16px;line-height:1.45}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:10;background:var(--surface)}
+.wrap{max-width:980px;margin:0 auto;padding:0 18px 48px}
+header.top{padding:28px 0 14px}
+h1{font-family:var(--cond);font-weight:700;font-size:clamp(2rem,6vw,3.2rem);line-height:1;margin:0;letter-spacing:.01em}
+.sub{color:var(--muted);margin:.4rem 0 0}
+.bar{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;background:var(--bg);padding:10px 0 10px;border-bottom:1px solid var(--line)}
+.row{display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+.row+.row{margin-top:8px}
+.chip{font:inherit;font-size:.95rem;border:1.5px solid var(--line);background:var(--surface);color:var(--ink);border-radius:999px;padding:5px 12px 5px 9px;cursor:pointer;display:inline-flex;align-items:center;gap:7px}
+.chip .dot{width:12px;height:12px;border-radius:50%;background:var(--c);opacity:.25}
+.chip[aria-pressed="true"]{border-color:var(--c);}
+.chip[aria-pressed="true"] .dot{opacity:1}
+.seg{display:inline-flex;border:1.5px solid var(--line);border-radius:8px;overflow:hidden;background:var(--surface)}
+.seg button{font:inherit;font-size:.92rem;border:0;background:none;color:var(--muted);padding:5px 11px;cursor:pointer}
+.seg button[aria-pressed="true"]{background:var(--ink);color:var(--bg)}
+button:focus-visible,a:focus-visible{outline:3px solid var(--A);outline-offset:2px}
+.days{display:grid;grid-template-columns:repeat(5,1fr);gap:6px;margin-top:10px}
+/* números */
+.kpis{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:10px;margin-top:18px}
+.kpi{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:12px 14px}
+.kpi b{display:block;font-family:var(--cond);font-weight:700;font-size:2.4rem;line-height:1}
+.kpi span{color:var(--muted);font-size:.92rem}
+.kpi.warn b{color:var(--warn)}
+.panel{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:14px;margin-top:14px}
+.panel h2{font-family:var(--cond);font-weight:700;font-size:1.35rem;margin:0 0 10px}
+.brow{display:grid;grid-template-columns:110px 1fr 64px;gap:10px;align-items:center;margin:7px 0;font-size:.93rem}
+.track{height:18px;background:var(--soft);border-radius:4px;display:flex;overflow:hidden}
+.track i{display:block;height:100%}
+.brow .n{font-family:var(--cond);font-weight:700;font-size:1.1rem;text-align:right}
+.tbl{width:100%;border-collapse:collapse;font-size:.93rem}
+.tbl th,.tbl td{padding:6px 8px;border-bottom:1px solid var(--soft);text-align:right}
+.tbl th:first-child,.tbl td:first-child{text-align:left}
+.tbl th{color:var(--muted);font-weight:600}
+.tbl td.w{color:var(--warn);font-weight:700}
+.scroll{overflow-x:auto}
+.day{font:inherit;border:1.5px solid var(--line);background:var(--surface);color:var(--ink);border-radius:8px;padding:6px 4px;cursor:pointer;text-align:center;line-height:1.1}
+.day b{display:block;font-family:var(--cond);font-size:1.35rem;font-weight:700}
+.day small{color:var(--muted);font-size:.78rem}
+.day[aria-current="true"]{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+.day[aria-current="true"] small{color:inherit;opacity:.8}
+.day .today{display:block;font-size:.7rem;color:var(--warn);font-weight:700}
+.day[aria-current="true"] .today{color:inherit}
+.notice{margin:16px 0 0;padding:12px 14px;border-left:4px solid var(--ink);background:var(--surface);border-radius:0 8px 8px 0}
+.notice strong{font-family:var(--cond);font-size:1.15rem;letter-spacing:.01em}
+.slot{display:grid;grid-template-columns:86px 1fr;gap:14px;margin-top:22px}
+.time{font-family:var(--cond);font-weight:700;font-size:1.6rem;line-height:1;text-align:right;padding-top:6px}
+.time span{display:block;font-size:1rem;color:var(--muted);font-weight:600;margin-top:3px}
+.stack{display:flex;flex-direction:column;gap:10px}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:10px;overflow:hidden}
+.card.debate{border-style:dashed;border-width:2px}
+.card.live{box-shadow:0 0 0 3px var(--A)}
+.head{display:flex;gap:10px;align-items:flex-start;padding:10px 14px;cursor:pointer;width:100%;border:0;background:none;color:inherit;font:inherit;text-align:left}
+.stripe{width:6px;align-self:stretch;border-radius:3px;display:flex;flex-direction:column;gap:2px;flex:none}
+.stripe i{flex:1;border-radius:3px}
+.hmain{flex:1;min-width:0}
+.code{font-family:var(--cond);font-weight:700;font-size:1.35rem;line-height:1.1}
+.code em{font-style:normal;font-weight:600;color:var(--muted);font-size:1rem;margin-left:6px}
+.meta{color:var(--muted);font-size:.92rem}
+.tags{display:flex;flex-wrap:wrap;gap:5px;margin-top:5px}
+.tag{font-size:.78rem;font-weight:600;padding:1px 8px;border-radius:4px;background:var(--soft);color:var(--ink)}
+.tag.p{color:#fff;background:var(--c)}
+:root[data-theme="dark"] .tag.p{color:#0E1923}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .tag.p{color:#0E1923}}
+.tag.warn{background:var(--warnbg);color:var(--warn)}
+.tag.new{background:transparent;border:1px solid var(--new);color:var(--new)}
+.chev{font-size:1.2rem;color:var(--muted);transition:transform .15s}
+.card[data-open="true"] .chev{transform:rotate(90deg)}
+.body{display:none;border-top:1px solid var(--line);padding:4px 14px 12px 30px}
+.card[data-open="true"] .body{display:block}
+.work{padding:10px 0;border-bottom:1px solid var(--soft)}
+.work:last-child{border-bottom:0}
+.work h3{font-size:1rem;margin:0 0 3px;font-weight:700;line-height:1.3}
+.work p{margin:2px 0;font-size:.93rem}
+.work .lbl{color:var(--muted)}
+.work a{color:var(--A);font-weight:600}
+.conf{margin:8px 0 0;padding:8px 10px;background:var(--warnbg);color:var(--warn);border-radius:6px;font-size:.9rem}
+.empty{margin-top:28px;padding:24px;text-align:center;color:var(--muted);border:1.5px dashed var(--line);border-radius:10px}
+/* semana */
+.week{margin-top:18px;overflow-x:auto}
+.grid{display:grid;grid-template-columns:70px repeat(5,minmax(150px,1fr));gap:4px;min-width:820px}
+.gh{font-family:var(--cond);font-weight:700;font-size:1.1rem;padding:6px;text-align:center}
+.gt{font-family:var(--cond);font-weight:700;color:var(--muted);padding:6px 4px;text-align:right}
+.gc{background:var(--surface);border:1px solid var(--line);border-radius:6px;padding:4px;min-height:44px;display:flex;flex-direction:column;gap:4px}
+.mini{font:inherit;font-size:.82rem;text-align:left;border:0;border-left:5px solid var(--c);background:var(--soft);color:var(--ink);padding:3px 6px;border-radius:3px;cursor:pointer;line-height:1.2}
+.mini.debate{border-left-style:dashed}
+.mini b{font-family:var(--cond);font-size:.98rem}
+.mini.clash{outline:1.5px solid var(--warn)}
+.legend{display:flex;flex-wrap:wrap;gap:14px;margin-top:10px;color:var(--muted);font-size:.88rem}
+.legend span::before{content:"";display:inline-block;width:18px;height:10px;margin-right:6px;vertical-align:middle;border:2px solid var(--muted);border-radius:2px}
+.legend .ld::before{border-style:dashed}
+.legend .lc::before{border-color:var(--warn)}
+footer{margin-top:40px;color:var(--muted);font-size:.86rem;border-top:1px solid var(--line);padding-top:14px}
+footer a{color:inherit}
+@media (max-width:560px){
+  .slot{grid-template-columns:1fr;gap:6px}
+  .time{text-align:left;display:flex;gap:8px;align-items:baseline}
+  .time span{display:inline;margin:0}
+  .body{padding-left:14px}
+  .days{grid-template-columns:repeat(5,1fr)}
+  .day b{font-size:1.1rem}
+  .day small{font-size:.7rem}
+  .brow{grid-template-columns:80px 1fr 52px}
+}
+@media (prefers-reduced-motion:reduce){.chev{transition:none}}
+</style>
+</head>
+<body>
+<div class="wrap">
+<header class="top">
+  <h1>Minha agenda na SIIEPE 2026</h1>
+  <p class="sub">Alejandro Martins Rodriguez: orientações, coautorias e bancas de 9 a 13 de novembro, Campus Anglo. Programação oficial conferida em 8 de novembro de 2026.</p>
+</header>
+<div class="bar">
+  <div class="row" id="people" hidden></div>
+  <div class="row">
+    <div class="seg" role="group" aria-label="Tipo de compromisso" id="kind">
+      <button data-k="all" aria-pressed="true">Tudo</button>
+      <button data-k="apresentacao" aria-pressed="false">Apresentações</button>
+      <button data-k="debate" aria-pressed="false">Bancas</button>
+    </div>
+    <div class="seg" role="group" aria-label="Visualização" id="viewsel">
+      <button data-v="day" aria-pressed="true">Dia</button>
+      <button data-v="week" aria-pressed="false">Semana</button>
+      <button data-v="stats" aria-pressed="false">Números</button>
+    </div>
+  </div>
+  <nav class="days" id="days" aria-label="Dias"></nav>
+</div>
+<main id="main"></main>
+<footer>
+  Fontes: planilhas oficiais de programação do XIII CEC, XII CEG, XXXV CIC e XXVIII ENPOS, relações de debatedores do CEC e do CEG, as planilhas de bancas do CIC e do ENPOS de Ciências Exatas e da Terra e a relação atualizada de debatedores do ENPOS de Ciências da Saúde (12ª SIIEPE, UFPel), cruzadas com a sua tabela de trabalhos. Aqui aparecem só os trabalhos em que você é orientador ou coautor e as bancas em que você é debatedor. Nenhum horário mudou em relação à tabela. As organizações avisam que horários podem mudar sem aviso prévio: confira de novo na véspera em <a href="https://wp.ufpel.edu.br/siiepe/home/programacao/" target="_blank" rel="noopener">wp.ufpel.edu.br/siiepe</a>.
+</footer>
+</div>
+<script>
+const DATA = [{"id": "ENPOS-67", "ev": "ENPOS", "day": 11, "slots": [["08:30", "10:00"], ["10:30", "12:00"]], "local": "3º Andar Sala 341", "area": "Ciências da Saúde, Enfermagem", "kind": "debate", "debater": "A", "debatedores": ["Valéria Cristina Christello Coimbra", "Lieni Fredo Herreira", "Alejandro Martins Rodriguez"], "works": [], "avaliados": [{"apres": "Daniela Correa Pereira", "orient": "Adrize Rutz Porto", "titulo": "Reiki como prática de cuidado: relato de uma experiência extensionista"}, {"apres": "Lídia Garcia Schmidt Nornberg", "orient": "Adrize Rutz Porto", "titulo": "Facilitadores para a implementação das Práticas Integrativas e Complementares na Atenção Primária à Saúde: revisão integrativa"}, {"apres": "Prince Chaiene Meireles Duarte", "orient": "Adrize Rutz Porto", "titulo": "Entre o ingresso e o pertencimento: reflexões sobre a mulher negra servidora pública federal"}, {"apres": "Rafaela Victoria da Rocha Ferreira Silva", "orient": "Adrize Rutz Porto", "titulo": "Percepção do prazer sexual em mulheres trans submetidas à vaginoplastia de afirmação de gênero: revisão de escopo"}, {"apres": "Aline Kohler Geppert", "orient": "Adrize Rutz Porto", "titulo": "Efeitos da auriculoterapia no cuidado multidimensional de pessoas com dor crônica: uma revisão de literatura"}, {"apres": "Caroline Bitencourt Soares", "orient": "Aliteia Santiago Dilelio", "titulo": "Fatores associados à orientação da Atenção Primária à Saúde na perspectiva de profissionais de saúde: uma revisão sistemática da literatura"}, {"apres": "Emanuelly Moura da Costa", "orient": "Aliteia Santiago Dilelio", "titulo": "Qualidade da assistência ao parto em serviços hospitalares brasileiros e latino-americanos: uma revisão sistemática"}, {"apres": "Josiane da Costa Moreira", "orient": "Ariane da Cruz Guedes", "titulo": "Palavras que profissionais de uma Unidade Básica de Saúde relacionam com o uso de benzodiazepínicos"}, {"apres": "Taciana Py de Oliveira Osielski", "orient": "Ariane da Cruz Guedes", "titulo": "O corpo e a subjetividade para Psicodinâmica do Trabalho"}, {"apres": "Marina Borges Longaray", "orient": "Bruno Pereira Nunes", "titulo": "Metodologias ativas: relato sobre a experiência com docência no curso de Enfermagem"}, {"apres": "Juarez Pereira Dorneles Junior", "orient": "Camilla Oleiro da Costa Milczarski", "titulo": "Vulnerabilidade social e adesão terapêutica em linfoma linfocítico de pequenas células B: um relato de caso sob a perspectiva multiprofissional em um programa de residência"}, {"apres": "Gabriela Laudares Albuquerque de Oliveira", "orient": "Clarice Alves Bonow", "titulo": "Efetividade de intervenções de comunicação de riscos ocupacionais em trabalhadores de saúde: revisão sistemática com metanálise"}, {"apres": "Jordana Heres da Costa", "orient": "Deisi Cardoso Soares", "titulo": "Percepção dos profissionais da Atenção Primária à Saúde sobre o programa de vigilância da criança de risco Prá-Nenê"}, {"apres": "Jovelyne E. Saintil", "orient": "Jamila Geri Tomaschewski Barlem", "titulo": "O corpo invisibilizado: representações sociais da rede de apoio a adolescentes grávidas expostas ao HIV em Cabo-Haitiano"}]},{"id": "CEG-02", "ev": "CEG", "day": 9, "slots": [["08:30", "10:00"]], "local": "3º Andar Sala 345", "area": "Tecnologias Educacionais na Educação Superior", "kind": "apresentacao", "works": [{"apres": "Giovana Machado Xavier", "orient": "Alejandro Martins Rodriguez", "titulo": "RAG-EDU Feridas: arquitetura de um sistema de apoio ao ensino sobre feridas crônicas baseado em Retrieval-Augmented Generation", "autores": "Giovana Machado Xavier; Adrize Rutz Porto; Alejandro Martins Rodriguez", "pdf": "https://cobalto-api-nestjs.ufpel.edu.br/api/files/3817521/download", "proj": "PET", "novo": false, "people": ["A", "D"]}], "debatedores": []}, {"id": "ENPOS-14", "ev": "ENPOS", "day": 9, "slots": [["14:00", "15:30"], ["16:00", "17:30"]], "local": "2º Andar Sala 224", "area": "Ciências Exatas e da Terra, Ciência da Computação", "kind": "debate", "debater": "A", "debatedores": ["Marcelo Lemos Rossi", "Vinícius Vieira dos Santos", "Alejandro Martins Rodriguez"], "works": [], "avaliados": [{"apres": "Felix Leonel Vasconcelos da Silva", "orient": "Larissa Astrogildo de Freitas", "titulo": "Avaliação multidimensional de grandes modelos de linguagem em ambientes RAG para detecção de alucinações"}, {"apres": "Andrew Borges de Campos", "orient": "Larissa Astrogildo de Freitas", "titulo": "GASANN: uma plataforma web para anotação de tarefas de análise de sentimento"}, {"apres": "João Pedro dos Santos Lopes", "orient": "Guilherme Ribeiro Correa", "titulo": "Patrimônio cultural em realidade virtual: exploração do Museu das Missões com imagens 360° e malhas tridimensionais reconstruídas por algoritmos clássicos"}, {"apres": "Gustavo Hubner Rehbein", "orient": "Marcelo Schiavon Porto", "titulo": "Aceleração da codificação V-PCC usando árvores de decisão para particionamento de blocos"}, {"apres": "Marcello Morales Munoz", "orient": "Marcelo Schiavon Porto", "titulo": "Coding efficiency and hardware cost of learned affine interpolation for VVC"}, {"apres": "Juliano Strelow Buss", "orient": "Renata Hax Sander Reiser", "titulo": "Promovendo interpretabilidade na classificação de recursos computacionais em nuvem via rede neural fuzzy"}, {"apres": "Gabriel Rosa de Oliveira Silva", "orient": "Renata Hax Sander Reiser", "titulo": "Abordando classificação de tráfego de rede através da análise exploratória de dados no StreamDataNetClass"}, {"apres": "Romeu Papa Viera Co", "orient": "Marilton Sanchotene de Aguiar", "titulo": "Agentes tutores inteligentes e equidade educacional: uma arquitetura com memória longitudinal, aprendizado de máquina e conhecimento externo"}, {"apres": "Santiago Del Valle Alvarez Martinez", "orient": "Marilton Sanchotene de Aguiar", "titulo": "Reprodução e validação da arquitetura EMPT em benchmarks da MOABB"}, {"apres": "Fabrício Gonzales Scaglioni", "orient": "Marilton Sanchotene de Aguiar", "titulo": "Avaliação de modelos de linguagem de pequeno porte para a predição de evasão em dados tabulares acadêmicos"}, {"apres": "Marcelo Clasen Ribeiro", "orient": "Marilton Sanchotene de Aguiar", "titulo": "Desempenho e custo térmico de aceleradores de hardware para segmentação de instâncias em tempo real em dispositivos móveis"}, {"apres": "Marcelo da Silva Dias", "orient": "Marilton Sanchotene de Aguiar", "titulo": "Uma abordagem baseada em YOLO para a detecção e segmentação de tumores ósseos em imagens radiográficas"}, {"apres": "Alexandre Thurow Bender", "orient": "Ricardo Matsumura de Araujo", "titulo": "Distributional fidelity of a compressed DeepSeek-V4-Flash deployment across text domains"}, {"apres": "Laura Quevedo Jurgina", "orient": "Tiago Thompsen Primo", "titulo": "Adaptação de atividades em um dispositivo tangível para alfabetização com base em competências fonêmicas"}]}, {"id": "CEG-40", "ev": "CEG", "day": 10, "slots": [["08:30", "10:00"]], "local": "4º Andar Sala 415", "area": "Projetos e Programas Institucionais", "kind": "apresentacao", "works": [{"apres": "Felipe da Silva Borges", "orient": "Alejandro Martins Rodriguez", "titulo": "Desenvolvimento e fabricação de um sistema de recuperação para um foguete experimental", "autores": null, "pdf": "https://cobalto-api-nestjs.ufpel.edu.br/api/files/3815812/download", "proj": "ROCKET", "novo": false, "people": ["A"]}, {"apres": "Isabelle Michielin Perin", "orient": "Alejandro Martins Rodriguez", "titulo": "Desenvolvimento de aeroestruturas e sistema de recuperação do foguete experimental Minuano: a experiência formativa da Rocket Team na Latin American Space Challenge 2026", "autores": null, "pdf": "https://cobalto-api-nestjs.ufpel.edu.br/api/files/3815963/download", "proj": "ROCKET", "novo": false, "people": ["A"]}], "debatedores": []}, {"id": "CEC-37", "ev": "CEC", "day": 10, "slots": [["14:00", "15:30"]], "local": "3º Andar Sala 347", "area": "Saúde", "kind": "apresentacao", "works": [{"apres": "Yanka Garcia Reis", "orient": "Alejandro Martins Rodriguez", "titulo": "Feridas e cicatrização: resumo de conteúdo informativo no Instagram", "autores": "Yanka Garcia Reis; Giovana Machado Xavier; Patrícia Bartz; Viviane Costa Rodrigues; Lilian Rubira da Silva; Alejandro Martins Rodriguez", "pdf": "https://cobalto-api-nestjs.ufpel.edu.br/api/files/3809470/download", "proj": "PET", "novo": false, "people": ["A", "V"]}, {"apres": "Danusa da Silva de Moura", "orient": "Alejandro Martins Rodriguez", "titulo": "Gestão, educação em saúde e melhoria de processos no Projeto Amor-à-Pele: contribuições da Engenharia de Produção", "autores": "Danusa da Silva de Moura; Patrícia Bartz; Thallya Shara Rufino Aguiar; Viviane Costa Rodrigues; Adrize Rutz Porto; Alejandro Martins Rodriguez", "pdf": "https://cobalto-api-nestjs.ufpel.edu.br/api/files/3780024/download", "proj": "PET", "novo": false, "people": ["A", "D", "V"]}], "debatedores": []}, {"id": "CEC-52", "ev": "CEC", "day": 10, "slots": [["16:00", "17:30"]], "local": "3º Andar Sala 345", "area": "Saúde", "kind": "apresentacao", "works": [{"apres": "Julia Rodrigues Jackson", "orient": "Alejandro Martins Rodriguez", "titulo": "JONAH RAG: inteligência artificial generativa e embeddings semânticos para integrar o conhecimento científico de um periódico de Enfermagem", "autores": "Julia Rodrigues Jackson; Danusa da Silva de Moura; Leonardo Blank Weymar; Adrize Rutz Porto; Alejandro Martins Rodriguez", "pdf": "https://cobalto-api-nestjs.ufpel.edu.br/api/files/3799560/download", "proj": "PET", "novo": false, "people": ["A", "D"]}, {"apres": "Thallya Shara Rufino Aguiar", "orient": "Alejandro Martins Rodriguez", "titulo": "Organização e controle de estoque no telemonitoramento de feridas crônicas: uma ação extensionista no PET-Saúde", "autores": "Thallya Shara Rufino Aguiar; Danusa da Silva de Moura; Patrícia Bartz; Lucas Samuel Soares Oliveira; Lilian Rubira da Silva; Alejandro Martins Rodriguez", "pdf": "https://cobalto-api-nestjs.ufpel.edu.br/api/files/3778009/download", "proj": "PET", "novo": false, "people": ["A"]}], "debatedores": []}, {"id": "CEC-53", "ev": "CEC", "day": 10, "slots": [["16:00", "17:30"]], "local": "3º Andar Sala 347", "area": "Saúde", "kind": "apresentacao", "works": [{"apres": "Thaislan San Martins Rodrigues", "orient": "Adrize Rutz Porto", "titulo": "Tecnologias para o tratamento de feridas e a tomada de decisão clínica do enfermeiro: relato de experiência", "autores": "Thaislan San Martins Rodrigues; Lilian Rubira da Silva; Alejandro Martins Rodriguez; Adrize Rutz Porto", "pdf": "https://cobalto-api-nestjs.ufpel.edu.br/api/files/3799025/download", "proj": "PET", "novo": false, "people": ["A", "D"]}], "debatedores": []}, {"id": "CEG-72", "ev": "CEG", "day": 10, "slots": [["19:00", "20:30"]], "local": "4º Andar Sala 435", "area": "Projetos e Programas Institucionais", "kind": "debate", "debater": "A", "debatedores": ["Nadia Miranda Leschko", "Alejandro Martins Rodriguez", "Julio Caetano Costa"], "works": []}, {"id": "CEG-92", "ev": "CEG", "day": 11, "slots": [["08:30", "10:00"]], "local": "4º Andar Sala 445", "area": "Relato de experiência na Graduação", "kind": "apresentacao", "works": [{"apres": "Ana Beatriz Monte da Silva", "orient": "Alejandro Martins Rodriguez", "titulo": "Do propelente ao empuxo: princípios de propulsão espacial e desenvolvimento de motores na UFPel Rocket Team", "autores": null, "pdf": "https://cobalto-api-nestjs.ufpel.edu.br/api/files/3819819/download", "proj": "ROCKET", "novo": false, "people": ["A"]}, {"apres": "Thales da Silva Rodrigues", "orient": "Alejandro Martins Rodriguez", "titulo": "Projeto, integração e validação da aviônica do foguete experimental Minuano para a Latin American Space Challenge 2026", "autores": null, "pdf": "https://cobalto-api-nestjs.ufpel.edu.br/api/files/3815654/download", "proj": "ROCKET", "novo": false, "people": ["A"]}, {"apres": "Thierry Holz Marth", "orient": "Alejandro Martins Rodriguez", "titulo": "Do planejamento à competição: organização multidisciplinar e formação estudantil na UFPel Rocket Team", "autores": null, "pdf": "https://cobalto-api-nestjs.ufpel.edu.br/api/files/3816041/download", "proj": "ROCKET", "novo": false, "people": ["A"]}, {"apres": "Wesley Bueno Pereira", "orient": "Alejandro Martins Rodriguez", "titulo": "Mapeamento de processos na gestão de energia: relato de experiência em Engenharia de Produção", "autores": null, "pdf": "https://cobalto-api-nestjs.ufpel.edu.br/api/files/3813445/download", "proj": "ENGPRODUCAO", "novo": false, "people": ["A"]}], "debatedores": []}, {"id": "CIC-68", "ev": "CIC", "day": 11, "slots": [["08:30", "10:00"], ["10:30", "12:00"]], "local": "3º Andar Sala 314", "area": "Ciências da Saúde", "kind": "apresentacao", "works": [{"apres": "Julia Rodrigues Jackson", "orient": "Adrize Rutz Porto", "titulo": "SAFC: arquitetura de um sistema baseado em Google Apps Script para gestão do ambulatório de feridas crônicas", "autores": "Julia Rodrigues Jackson; Alejandro Martins Rodriguez; Lilian Rubira da Silva; Danusa da Silva de Moura; Adrize Rutz Porto", "pdf": "https://cobalto-api-nestjs.ufpel.edu.br/api/files/3799558/download", "proj": "PET", "novo": false, "people": ["A", "D"]}, {"apres": "Giovana Machado Xavier", "orient": "Adrize Rutz Porto", "titulo": "Telemonitoramento como estratégia para o acompanhamento de feridas crônicas em parceria com o Serviço de Atenção às Feridas Complexas de Pelotas", "autores": "Giovana Machado Xavier; Alejandro Martins Rodriguez; Adrize Rutz Porto", "pdf": "https://cobalto-api-nestjs.ufpel.edu.br/api/files/3810774/download", "proj": "PET", "novo": false, "people": ["A", "D"]}, {"apres": "Bruna Cronemberger Geraldes", "orient": "Adrize Rutz Porto", "titulo": "Identificação de sinais de alarme para infecção em feridas crônicas: revisão de literatura", "autores": "Bruna Cronemberger Geraldes; Laura Barreiro de Assis; Alejandro Martins Rodriguez; Viviane Costa Rodrigues; Gabriela Carpena Schramm; Adrize Rutz Porto", "pdf": "https://cobalto-api-nestjs.ufpel.edu.br/api/files/3807619/download", "proj": "PET", "novo": false, "people": ["A", "D", "V"]}], "debatedores": []}, {"id": "CIC-84", "ev": "CIC", "day": 11, "slots": [["14:00", "15:30"], ["16:00", "17:30"]], "local": "3º Andar Sala 314", "area": "Multidisciplinar", "kind": "apresentacao", "works": [{"apres": "Lívia Martins Silveira", "orient": "Alejandro Martins Rodriguez", "titulo": "Como gerenciar uma equipe universitária de foguetes experimentais: uma proposta metodológica", "autores": null, "pdf": "https://cobalto-api-nestjs.ufpel.edu.br/api/files/3816055/download", "proj": "ROCKET", "novo": false, "people": ["A"]}], "debatedores": []}, {"id": "CEC-104", "ev": "CEC", "day": 11, "slots": [["16:00", "17:30"]], "local": "4º Andar Sala 437", "area": "Comunicação", "kind": "apresentacao", "works": [{"apres": "Henri Porto Dias", "orient": "Alejandro Martins Rodriguez", "titulo": "Divulgação científica sobre foguetemodelismo nas redes sociais", "autores": null, "pdf": "https://cobalto-api-nestjs.ufpel.edu.br/api/files/3815911/download", "proj": "ROCKET", "novo": false, "people": ["A"]}], "debatedores": []}, {"id": "CIC-96", "ev": "CIC", "day": 12, "slots": [["08:30", "10:00"], ["10:30", "12:00"]], "local": "2º Andar Sala 252", "area": "Engenharias", "kind": "apresentacao", "works": [{"apres": "Robert Camargo Pinheiro", "orient": "Alejandro Martins Rodriguez", "titulo": "Paginação de malhas para cobertura de superfícies utilizando otimização por algoritmo genético", "autores": null, "pdf": "https://cobalto-api-nestjs.ufpel.edu.br/api/files/3790978/download", "proj": "PET", "novo": false, "people": ["A"]}], "debatedores": []}, {"id": "CEG-128", "ev": "CEG", "day": 12, "slots": [["10:30", "12:00"]], "local": "3º Andar Sala 344", "area": "Tecnologias Educacionais na Educação Superior", "kind": "apresentacao", "works": [{"apres": "Pedro Aloísio da Silva", "orient": "Adrize Rutz Porto", "titulo": "Simulação interativa da evolução do pé diabético: da literatura científica a uma ferramenta digital para o ensino de graduação", "autores": "Pedro Aloísio da Silva; Patrícia Bartz; Letícia Sayuri Sumida Guimarães; Alejandro Martins Rodriguez; Adrize Rutz Porto", "pdf": "https://cobalto-api-nestjs.ufpel.edu.br/api/files/3801959/download", "proj": "PET", "novo": false, "people": ["A", "D"]}], "debatedores": []}, {"id": "CEG-136", "ev": "CEG", "day": 12, "slots": [["10:30", "12:00"]], "local": "4º Andar Sala 429", "area": "Relato de experiência na Graduação", "kind": "apresentacao", "works": [{"apres": "Patrícia Bartz", "orient": "Viviane Costa Rodrigues", "titulo": "Importância da rede de apoio no tratamento de pacientes com ferida pós-operatória: relato de experiência", "autores": "Patrícia Bartz; Danusa da Silva de Moura; Thallya Shara Rufino Aguiar; Gabriela Carpena Schramm; Alejandro Martins Rodriguez; Viviane Costa Rodrigues", "pdf": "https://cobalto-api-nestjs.ufpel.edu.br/api/files/3808062/download", "proj": "PET", "novo": false, "people": ["A", "V"]}], "debatedores": []}, {"id": "CEC-110", "ev": "CEC", "day": 12, "slots": [["14:00", "15:30"]], "local": "3º Andar Sala 347", "area": "Saúde", "kind": "debate", "debater": "A", "debatedores": ["Vanessa Polina Pereira da Costa", "Bhárbara Marinho Barcellos", "Alejandro Martins Rodriguez"], "works": []}, {"id": "CIC-125", "ev": "CIC", "day": 13, "slots": [["08:30", "10:00"], ["10:30", "12:00"]], "local": "2º Andar Sala 253", "area": "Engenharias", "kind": "apresentacao", "works": [{"apres": "Maik Conceição Dias", "orient": "Gilson Simões Porciúncula", "titulo": "Causa & Ação: ferramenta de apoio à manutenção hidráulica com inteligência artificial", "autores": null, "pdf": "https://cobalto-api-nestjs.ufpel.edu.br/api/files/3814760/download", "proj": "NEAI", "novo": false, "people": ["A"]}], "debatedores": []}, {"id": "CIC-128", "ev": "CIC", "day": 13, "slots": [["08:30", "10:00"], ["10:30", "12:00"]], "local": "3º Andar Sala 340", "area": "Ciências da Saúde", "kind": "apresentacao", "works": [{"apres": "Patrícia Bartz", "orient": "Alejandro Martins Rodriguez", "titulo": "A utilização de inteligência artificial no cuidado de lesões crônicas: revisão de literatura", "autores": "Patrícia Bartz; Danusa da Silva de Moura; Thallya Shara Rufino Aguiar; Lilian Rubira da Silva; Adrize Rutz Porto; Alejandro Martins Rodriguez", "pdf": "https://cobalto-api-nestjs.ufpel.edu.br/api/files/3808032/download", "proj": "PET", "novo": false, "people": ["A", "D"]}], "debatedores": []}];
+const PEOPLE = {A:{name:"Alejandro",full:"Alejandro Martins Rodriguez"}};
+const DAYS = [{d:9,k:"seg",n:"Seg"},{d:10,k:"ter",n:"Ter"},{d:11,k:"qua",n:"Qua"},{d:12,k:"qui",n:"Qui"},{d:13,k:"sex",n:"Sex"}];
+const LONG = {8:"domingo, 8 de novembro",9:"segunda, 9 de novembro",10:"terça, 10 de novembro",11:"quarta, 11 de novembro",12:"quinta, 12 de novembro",13:"sexta, 13 de novembro"};
+const EVN = {CEC:"Extensão e Cultura",CEG:"Ensino de Graduação",CIC:"Iniciação Científica",ENPOS:"Pós-Graduação"};
+const esc = s => String(s??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+const mins = t => {const [h,m]=t.split(":").map(Number);return h*60+m};
+DATA.forEach((s,i)=>{
+  s.uid="s"+i;
+  s.start=mins(s.slots[0][0]); s.end=mins(s.slots[s.slots.length-1][1]);
+  s.people = s.kind==="debate" ? [s.debater] : [...new Set(s.works.flatMap(w=>w.people))];
+});
+// conflitos por pessoa
+DATA.forEach(s=>{s.clash={};});
+for(const p of Object.keys(PEOPLE)){
+  const mine=DATA.filter(s=>s.people.includes(p));
+  for(const a of mine) for(const b of mine){
+    if(a===b||a.day!==b.day||a.local===b.local) continue;
+    if(a.start<b.end && b.start<a.end){(a.clash[p]=a.clash[p]||[]).push(b.id);}
+  }
+}
+let st={people:{A:true},kind:"all",view:"day",day:null,open:{}};
+try{const sv=JSON.parse(localStorage.getItem("siiepe26a")||"null"); if(sv){st.kind=sv.kind||"all";}}catch(e){}
+const save=()=>{try{localStorage.setItem("siiepe26a",JSON.stringify({people:st.people,kind:st.kind}))}catch(e){}};
+function nowBR(){const f=new Intl.DateTimeFormat("en-CA",{timeZone:"America/Sao_Paulo",year:"numeric",month:"2-digit",day:"2-digit",hour:"2-digit",minute:"2-digit",hour12:false}).formatToParts(new Date());const g=k=>f.find(x=>x.type===k).value;return {y:+g("year"),m:+g("month"),d:+g("day"),min:(+g("hour")%24)*60+ +g("minute")}}
+const NOW=nowBR(); const TODAY=(NOW.y===2026&&NOW.m===11)?NOW.d:null;
+function visible(){
+  const on=Object.keys(st.people).filter(p=>st.people[p]);
+  return DATA.filter(s=>(st.kind==="all"||s.kind===st.kind) && s.people.some(p=>on.includes(p)));
+}
+function stripe(ps,s){const c=s.kind==="debate"?"D":(s.works.some(w=>w.orient===PEOPLE.A.full)?"A":"V");return `<span class="stripe" aria-hidden="true"><i style="background:var(--${c})"></i></span>`}
+function ptags(ps){return ps.map(p=>`<span class="tag p" style="--c:var(--${p})">${PEOPLE[p].name}</span>`).join("")}
+function role(w,p){if(w.orient===PEOPLE[p].full)return "orienta";return "coautoria"}
+function roleTags(s){if(s.kind==="debate")return `<span class="tag p" style="--c:var(--D)">Debatedor</span>`;const o=s.works.some(w=>w.orient===PEOPLE.A.full),c=s.works.some(w=>w.orient!==PEOPLE.A.full);return (o?`<span class="tag p" style="--c:var(--A)">Orientador</span>`:"")+(c?`<span class="tag p" style="--c:var(--V)">Coautor</span>`:"");}
+function card(s){
+  const on=Object.keys(st.people).filter(p=>st.people[p]);
+  const ps=s.people.filter(p=>on.includes(p));
+  const hrs=s.slots.map(x=>x.join("–")).join(" e ");
+  const live=TODAY===s.day&&NOW.min>=s.start&&NOW.min<s.end;
+  let tags=roleTags(s);
+  if(s.kind==="debate") tags+=`<span class="tag">Banca de debatedores${s.avaliados?`, ${s.avaliados.length} trabalhos`:""}</span>`;
+  else tags+=`<span class="tag">${s.works.length} ${s.works.length>1?"trabalhos":"trabalho"}</span>`;
+  if(s.works.some(w=>w.novo)) tags+=`<span class="tag new">Novo na programação</span>`;
+  const cl=ps.filter(p=>s.clash[p]);
+  if(cl.length) tags+=`<span class="tag warn">Coincide com outra sessão</span>`;
+  let body="";
+  if(s.kind==="debate"){
+    body+=`<div class="work"><h3>Você integra a banca de debatedores</h3><p><span class="lbl">Banca:</span> ${s.debatedores.map(esc).join("; ")}</p><p><span class="lbl">Área:</span> ${esc(s.area)}</p>${s.slots.length>1?`<p class="lbl">Banca dos dois blocos (${esc(s.id)}).</p>`:""}</div>`;
+    if(s.avaliados){body+=`<p class="lbl" style="margin-top:8px">Trabalhos que você vai debater:</p>`+s.avaliados.map(a=>`<div class="work"><h3>${esc(a.titulo)}</h3><p><span class="lbl">Apresenta:</span> ${esc(a.apres)}</p><p><span class="lbl">Orientação:</span> ${esc(a.orient)}</p></div>`).join("");}
+  } else {
+    for(const w of s.works){
+      const roles=w.orient===PEOPLE.A.full?"orientador":"coautor";
+      body+=`<div class="work"><h3>${esc(w.titulo)}</h3>
+      <p><span class="lbl">Apresenta:</span> ${esc(w.apres)}</p>
+      <p><span class="lbl">Orientação:</span> ${esc(w.orient)}</p>
+      <p><span class="lbl">Autores:</span> ${w.autores?esc(w.autores):"constam no resumo (a programação lista só apresentador e orientação)"}</p>
+      ${roles?`<p><span class="lbl">Seu papel:</span> ${esc(roles)}</p>`:""}
+      ${w.pdf?`<p><a href="${esc(w.pdf)}" target="_blank" rel="noopener">Abrir resumo (PDF)</a></p>`:""}
+      ${w.novo?`<p class="lbl">Não estava na tabela enviada.</p>`:""}</div>`;
+    }
+  }
+  for(const p of cl){
+    const others=[...new Set(s.clash[p])].map(id=>{const o=DATA.find(x=>x.id===id);return `${id} (${o.local})`}).join(", ");
+    body+=`<p class="conf">Mesmo horário que ${esc(others)}.</p>`;
+  }
+  const open=!!st.open[s.uid];
+  return `<article class="card${s.kind==="debate"?" debate":""}${live?" live":""}" id="${s.uid}" data-open="${open}">
+   <button class="head" aria-expanded="${open}" data-uid="${s.uid}">${stripe(ps,s)}
+    <span class="hmain"><span class="code">${esc(s.id)}<em>${esc(s.ev)}, ${EVN[s.ev]}</em></span>
+    <span class="meta">${esc(hrs)}, ${esc(s.local)}${live?", acontecendo agora":""}</span>
+    <span class="tags">${tags}</span></span><span class="chev" aria-hidden="true">›</span></button>
+   <div class="body">${body}</div></article>`;
+}
+function renderDay(){
+  const list=visible().filter(s=>s.day===st.day);
+  let h="";
+  if(false){
+    const mon=visible().filter(s=>s.day===9);
+    h+=`<div class="notice"><strong>Hoje é domingo, véspera da SIIEPE.</strong><br>Não há sessões hoje. ${mon.length?`Amanhã ${mon.length===1?"há 1 compromisso":`há ${mon.length} compromissos`}, a partir das ${mon[0].slots[0][0]}:`:"Amanhã não há compromissos com os filtros atuais."}</div>`;
+    if(mon.length){h+=group(mon);}
+    return h;
+  }
+  if(!list.length) return `<div class="empty">Nenhum compromisso em ${LONG[st.day]} com os filtros escolhidos. Ative outra pessoa ou mude para “Tudo”.</div>`;
+  return h+group(list);
+}
+function group(list){
+  const by={};list.forEach(s=>{(by[s.slots[0][0]]=by[s.slots[0][0]]||[]).push(s)});
+  return Object.keys(by).sort().map(t=>{const end=by[t].map(s=>s.slots[s.slots.length-1][1]).sort().pop();
+    return `<section class="slot"><div class="time">${t}<span>até ${end}</span></div><div class="stack">${by[t].map(card).join("")}</div></section>`}).join("");
+}
+function renderWeek(){
+  const v=visible(); const rows=["08:30","10:30","14:00","16:00","19:00"];
+  const days=DAYS.filter(d=>d.d>=9);
+  let g=`<div class="grid"><div></div>${days.map(d=>`<div class="gh">${d.n} ${d.d}/11</div>`).join("")}`;
+  const on=Object.keys(st.people).filter(p=>st.people[p]);
+  for(const r of rows){
+    g+=`<div class="gt">${r}</div>`;
+    for(const d of days){
+      const rm=mins(r);
+      const items=v.filter(s=>s.day===d.d && s.slots.some(x=>mins(x[0])===rm));
+      g+=`<div class="gc">${items.map(s=>{const ps=s.people.filter(p=>on.includes(p));const c=ps.some(p=>s.clash[p]);
+        return `<button class="mini${s.kind==="debate"?" debate":""}${c?" clash":""}" style="--c:var(--${s.kind==="debate"?"D":(s.works.some(w=>w.orient===PEOPLE.A.full)?"A":"V")})" data-go="${s.uid}" data-day="${s.day}"><b>${esc(s.id)}</b><br>${s.kind==="debate"?"Banca":(s.works.some(w=>w.orient===PEOPLE.A.full)?"Orientador":"Coautor")}<br>${esc(s.local.replace(/^\d+º Andar\s*/,""))}</button>`}).join("")}</div>`;
+    }
+  }
+  g+="</div>";
+  return `<div class="week">${g}</div><div class="legend"><span style="color:var(--A)">Orientador</span><span style="color:var(--V)">Coautor</span><span class="ld">Banca de debatedores</span><span class="lc">Coincide com outra sessão</span></div><p class="meta">Sessões do CIC e do ENPOS ocupam a manhã ou a tarde inteira e aparecem nos dois blocos. Toque numa sessão para ver os trabalhos.</p>`;
+}
+function render(){
+  document.getElementById("people").innerHTML=Object.entries(PEOPLE).map(([k,p])=>`<button class="chip" style="--c:var(--${k})" aria-pressed="${st.people[k]}" data-p="${k}"><span class="dot"></span>${p.name}</button>`).join("");
+  document.querySelectorAll("#kind button").forEach(b=>b.setAttribute("aria-pressed",b.dataset.k===st.kind));
+  document.querySelectorAll("#viewsel button").forEach(b=>b.setAttribute("aria-pressed",b.dataset.v===st.view));
+  const v=visible();
+  const dn=document.getElementById("days"); dn.style.display=st.view==="day"?"":"none";
+  dn.innerHTML=DAYS.map(d=>{const n=v.filter(s=>s.day===d.d).length;return `<button class="day" data-d="${d.d}" aria-current="${st.day===d.d}">${TODAY===d.d?'<span class="today">hoje</span>':""}<b>${d.n} ${d.d}</b><small>${n?n+(n>1?" sessões":" sessão"):"livre"}</small></button>`}).join("");
+  document.getElementById("kind").style.display=st.view==="stats"?"none":"";
+  document.getElementById("main").innerHTML=st.view==="day"?renderDay():st.view==="week"?renderWeek():renderStats();
+}
+function busyMin(list){const iv=list.flatMap(s=>s.slots.map(x=>[mins(x[0]),mins(x[1])])).sort((a,b)=>a[0]-b[0]);let t=0,cs=-1,ce=-1;for(const [a,b] of iv){if(a>ce){if(ce>cs)t+=ce-cs;cs=a;ce=b}else ce=Math.max(ce,b)}if(ce>cs)t+=ce-cs;return t}
+const fmtH=m=>{const h=Math.floor(m/60),r=m%60;return r?`${h}h${String(r).padStart(2,"0")}`:`${h}h`};
+function clashPairs(list){const seen=new Set();for(const a of list)for(const b of list){if(a===b||a.day!==b.day||a.local===b.local)continue;if(a.start<b.end&&b.start<a.end)seen.add([a.uid,b.uid].sort().join("|"))}return seen.size}
+function renderStats(){
+  const me=PEOPLE.A.full;
+  const works=DATA.flatMap(s=>s.works.map(w=>({...w,ev:s.ev,day:s.day})));
+  const ori=works.filter(w=>w.orient===me), coa=works.filter(w=>w.orient!==me);
+  const deb=DATA.filter(s=>s.kind==="debate");
+  const nDeb=deb.reduce((a,s)=>a+(s.avaliados?s.avaliados.length:0),0);
+  const busy=DAYS.reduce((a,d)=>a+busyMin(DATA.filter(s=>s.day===d.d)),0), clashes=clashPairs(DATA);
+  const kpi=(n,l,c)=>`<div class="kpi${c?" "+c:""}"><b>${n}</b><span>${l}</span></div>`;
+  let h=`<div class="kpis">${kpi(DATA.length,"sessões na semana")}${kpi(ori.length,"trabalhos que você orienta")}${kpi(coa.length,"trabalhos em coautoria")}${kpi(deb.length,"bancas como debatedor")}${kpi(fmtH(busy),"de agenda ocupada")}${kpi(clashes,"choques de horário",clashes?"warn":"")}</div>`;
+  const days=DAYS.map(d=>{const l=DATA.filter(s=>s.day===d.d);return {d,l,busy:busyMin(l),o:l.filter(s=>s.kind!=="debate"&&s.works.some(w=>w.orient===me)).length,c:l.filter(s=>s.kind!=="debate"&&s.works.some(w=>w.orient!==me)).length,b:l.filter(s=>s.kind==="debate").length,x:clashPairs(l)}});
+  const maxB=Math.max(...days.map(x=>x.busy),1);
+  h+=`<section class="panel"><h2>Horas ocupadas por dia</h2>${days.map(x=>`<div class="brow"><span>${x.d.n} ${x.d.d}/11</span><span class="track" role="img" aria-label="${fmtH(x.busy)} ocupadas"><i style="width:${x.busy/maxB*100}%;background:var(--A)"></i></span><span class="n">${fmtH(x.busy)}</span></div>`).join("")}<p class="meta">Horários sobrepostos contam uma vez só.</p></section>`;
+  h+=`<section class="panel"><h2>Sessões por dia e papel</h2><div class="scroll"><table class="tbl"><thead><tr><th>Dia</th><th>Orientação</th><th>Coautoria</th><th>Banca</th><th>Choques</th></tr></thead><tbody>${days.map(x=>`<tr><td>${LONG[x.d.d]}</td><td>${x.o}</td><td>${x.c}</td><td>${x.b}</td><td class="${x.x?"w":""}">${x.x}</td></tr>`).join("")}</tbody></table></div><p class="meta">Uma sessão com trabalhos orientados e em coautoria conta nas duas colunas.</p></section>`;
+  const evs=["CEC","CEG","CIC","ENPOS"];
+  const maxE=Math.max(...evs.map(e=>works.filter(w=>w.ev===e).length+deb.filter(s=>s.ev===e).length),1);
+  h+=`<section class="panel"><h2>Por congresso</h2>${evs.map(e=>{const o=ori.filter(w=>w.ev===e).length,c=coa.filter(w=>w.ev===e).length,b=deb.filter(s=>s.ev===e).length;return `<div class="brow"><span>${e}</span><span class="track" role="img" aria-label="${o} orientações, ${c} coautorias, ${b} bancas"><i style="width:${o/maxE*100}%;background:var(--A)"></i><i style="width:${c/maxE*100}%;background:var(--V)"></i><i style="width:${b/maxE*100}%;background:var(--D)"></i></span><span class="n">${o+c+b}</span></div>`}).join("")}<div class="legend"><span style="color:var(--A)">Orientação (trabalhos)</span><span style="color:var(--V)">Coautoria (trabalhos)</span><span style="color:var(--D)">Bancas</span></div></section>`;
+  const pj={PET:"PET-Saúde G10",ROCKET:"UFPel Rocket Team",ENGPRODUCAO:"Engenharia de Produção",NEAI:"NEAI"};
+  const cnt={};works.forEach(w=>{const k=pj[w.proj]||"Outros";cnt[k]=(cnt[k]||0)+1});
+  const maxP=Math.max(...Object.values(cnt),1);
+  h+=`<section class="panel"><h2>Trabalhos por projeto</h2>${Object.entries(cnt).sort((a,b)=>b[1]-a[1]).map(([k,n])=>`<div class="brow"><span>${esc(k)}</span><span class="track"><i style="width:${n/maxP*100}%;background:var(--A)"></i></span><span class="n">${n}</span></div>`).join("")}<p class="meta">Nas bancas, você vai debater ${nDeb} trabalhos de outros orientadores.</p></section>`;
+  return h;
+}
+function setHash(){const h=st.view==="week"?"semana":st.view==="stats"?"numeros":DAYS.find(d=>d.d===st.day).k; if(location.hash!=="#"+h) history.replaceState(null,"","#"+h);}
+function fromHash(){const h=location.hash.slice(1);
+  if(h==="semana"){st.view="week";}else if(h==="numeros"){st.view="stats";}else{const d=DAYS.find(x=>x.k===h); if(d){st.view="day";st.day=d.d;}}
+  if(st.day==null) st.day=(TODAY&&TODAY>=9&&TODAY<=13)?TODAY:9;}
+document.addEventListener("click",e=>{
+  const t=e.target.closest("button"); if(!t) return;
+  if(t.dataset.p){st.people[t.dataset.p]=!st.people[t.dataset.p];save();render();}
+  else if(t.dataset.k){st.kind=t.dataset.k;save();render();}
+  else if(t.dataset.v){st.view=t.dataset.v;setHash();render();}
+  else if(t.dataset.d){st.day=+t.dataset.d;st.view="day";setHash();render();}
+  else if(t.dataset.uid){st.open[t.dataset.uid]=!st.open[t.dataset.uid];const c=document.getElementById(t.dataset.uid);c.dataset.open=st.open[t.dataset.uid];t.setAttribute("aria-expanded",st.open[t.dataset.uid]);}
+  else if(t.dataset.go){st.view="day";st.day=+t.dataset.day;st.open[t.dataset.go]=true;setHash();render();document.getElementById(t.dataset.go)?.scrollIntoView({block:"center"});}
+});
+window.addEventListener("hashchange",()=>{fromHash();render();});
+fromHash();render();
+</script>
+</body>
+</html>
